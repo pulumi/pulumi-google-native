@@ -84,18 +84,22 @@ class InstanceConfigArgs:
 class SAMLParamsArgs:
     def __init__(__self__, *,
                  certificate: Optional[pulumi.Input[str]] = None,
+                 email_mapping: Optional[pulumi.Input[str]] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  sso_uri: Optional[pulumi.Input[str]] = None,
                  user_email: Optional[pulumi.Input[str]] = None):
         """
         Message storing SAML params to enable Google as IDP.
         :param pulumi.Input[str] certificate: SAML certificate
+        :param pulumi.Input[str] email_mapping: IdP field that maps to the user’s email address
         :param pulumi.Input[str] entity_id: Entity id URL
         :param pulumi.Input[str] sso_uri: Single sign-on URL
         :param pulumi.Input[str] user_email: Email address of the first admin users.
         """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
+        if email_mapping is not None:
+            pulumi.set(__self__, "email_mapping", email_mapping)
         if entity_id is not None:
             pulumi.set(__self__, "entity_id", entity_id)
         if sso_uri is not None:
@@ -114,6 +118,18 @@ class SAMLParamsArgs:
     @certificate.setter
     def certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="emailMapping")
+    def email_mapping(self) -> Optional[pulumi.Input[str]]:
+        """
+        IdP field that maps to the user’s email address
+        """
+        return pulumi.get(self, "email_mapping")
+
+    @email_mapping.setter
+    def email_mapping(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email_mapping", value)
 
     @property
     @pulumi.getter(name="entityId")

@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
         /// </summary>
         public readonly double Size;
         /// <summary>
-        /// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+        /// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
         /// </summary>
         public readonly string Unit;
 

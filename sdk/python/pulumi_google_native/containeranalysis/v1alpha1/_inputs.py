@@ -19,7 +19,9 @@ __all__ = [
     'AttestationArgs',
     'BasisArgs',
     'BindingArgs',
+    'BuildDefinitionArgs',
     'BuildDetailsArgs',
+    'BuildMetadataArgs',
     'BuildProvenanceArgs',
     'BuildSignatureArgs',
     'BuildTypeArgs',
@@ -68,6 +70,7 @@ __all__ = [
     'HashArgs',
     'IdentifierHelperArgs',
     'InTotoProvenanceArgs',
+    'InTotoSlsaProvenanceV1Args',
     'InTotoStatementArgs',
     'InstallationArgs',
     'JustificationArgs',
@@ -83,6 +86,7 @@ __all__ = [
     'PackageArgs',
     'PgpSignedAttestationArgs',
     'ProductArgs',
+    'ProvenanceBuilderArgs',
     'PublisherArgs',
     'RecipeArgs',
     'RelatedUrlArgs',
@@ -90,7 +94,9 @@ __all__ = [
     'RelationshipOccurrenceArgs',
     'RemediationArgs',
     'RepoSourceArgs',
+    'ResourceDescriptorArgs',
     'ResourceArgs',
+    'RunDetailsArgs',
     'SBOMReferenceNoteArgs',
     'SBOMReferenceOccurrenceArgs',
     'SbomReferenceIntotoPayloadArgs',
@@ -98,6 +104,7 @@ __all__ = [
     'SlsaBuilderArgs',
     'SlsaCompletenessArgs',
     'SlsaMetadataArgs',
+    'SlsaProvenanceV1Args',
     'SlsaProvenanceZeroTwoArgs',
     'SlsaProvenanceArgs',
     'SlsaRecipeArgs',
@@ -229,7 +236,8 @@ class AssessmentArgs:
                  related_uris: Optional[pulumi.Input[Sequence[pulumi.Input['URIArgs']]]] = None,
                  remediations: Optional[pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['AssessmentState']] = None):
+                 state: Optional[pulumi.Input['AssessmentState']] = None,
+                 vulnerability_id: Optional[pulumi.Input[str]] = None):
         """
         Assessment provides all information that is related to a single vulnerability for this product.
         :param pulumi.Input[str] cve: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
@@ -240,6 +248,7 @@ class AssessmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]] remediations: Specifies details on how to handle (and presumably, fix) a vulnerability.
         :param pulumi.Input[str] short_description: A one sentence description of this Vex.
         :param pulumi.Input['AssessmentState'] state: Provides the state of this Vulnerability assessment.
+        :param pulumi.Input[str] vulnerability_id: The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
         """
         if cve is not None:
             pulumi.set(__self__, "cve", cve)
@@ -257,6 +266,8 @@ class AssessmentArgs:
             pulumi.set(__self__, "short_description", short_description)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if vulnerability_id is not None:
+            pulumi.set(__self__, "vulnerability_id", vulnerability_id)
 
     @property
     @pulumi.getter
@@ -353,6 +364,18 @@ class AssessmentArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input['AssessmentState']]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="vulnerabilityId")
+    def vulnerability_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+        """
+        return pulumi.get(self, "vulnerability_id")
+
+    @vulnerability_id.setter
+    def vulnerability_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vulnerability_id", value)
 
 
 @pulumi.input_type
@@ -516,19 +539,76 @@ class BindingArgs:
 
 
 @pulumi.input_type
+class BuildDefinitionArgs:
+    def __init__(__self__, *,
+                 build_type: Optional[pulumi.Input[str]] = None,
+                 external_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 internal_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resolved_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]] = None):
+        if build_type is not None:
+            pulumi.set(__self__, "build_type", build_type)
+        if external_parameters is not None:
+            pulumi.set(__self__, "external_parameters", external_parameters)
+        if internal_parameters is not None:
+            pulumi.set(__self__, "internal_parameters", internal_parameters)
+        if resolved_dependencies is not None:
+            pulumi.set(__self__, "resolved_dependencies", resolved_dependencies)
+
+    @property
+    @pulumi.getter(name="buildType")
+    def build_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "build_type")
+
+    @build_type.setter
+    def build_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_type", value)
+
+    @property
+    @pulumi.getter(name="externalParameters")
+    def external_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "external_parameters")
+
+    @external_parameters.setter
+    def external_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "external_parameters", value)
+
+    @property
+    @pulumi.getter(name="internalParameters")
+    def internal_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "internal_parameters")
+
+    @internal_parameters.setter
+    def internal_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "internal_parameters", value)
+
+    @property
+    @pulumi.getter(name="resolvedDependencies")
+    def resolved_dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]]:
+        return pulumi.get(self, "resolved_dependencies")
+
+    @resolved_dependencies.setter
+    def resolved_dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]]):
+        pulumi.set(self, "resolved_dependencies", value)
+
+
+@pulumi.input_type
 class BuildDetailsArgs:
     def __init__(__self__, *,
+                 in_toto_slsa_provenance_v1: Optional[pulumi.Input['InTotoSlsaProvenanceV1Args']] = None,
                  intoto_provenance: Optional[pulumi.Input['InTotoProvenanceArgs']] = None,
                  intoto_statement: Optional[pulumi.Input['InTotoStatementArgs']] = None,
                  provenance: Optional[pulumi.Input['BuildProvenanceArgs']] = None,
                  provenance_bytes: Optional[pulumi.Input[str]] = None):
         """
         Message encapsulating build provenance details.
+        :param pulumi.Input['InTotoSlsaProvenanceV1Args'] in_toto_slsa_provenance_v1: In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
         :param pulumi.Input['InTotoProvenanceArgs'] intoto_provenance: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         :param pulumi.Input['InTotoStatementArgs'] intoto_statement: In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
         :param pulumi.Input['BuildProvenanceArgs'] provenance: The actual provenance
         :param pulumi.Input[str] provenance_bytes: Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
         """
+        if in_toto_slsa_provenance_v1 is not None:
+            pulumi.set(__self__, "in_toto_slsa_provenance_v1", in_toto_slsa_provenance_v1)
         if intoto_provenance is not None:
             warnings.warn("""Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""", DeprecationWarning)
             pulumi.log.warn("""intoto_provenance is deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""")
@@ -540,6 +620,18 @@ class BuildDetailsArgs:
             pulumi.set(__self__, "provenance", provenance)
         if provenance_bytes is not None:
             pulumi.set(__self__, "provenance_bytes", provenance_bytes)
+
+    @property
+    @pulumi.getter(name="inTotoSlsaProvenanceV1")
+    def in_toto_slsa_provenance_v1(self) -> Optional[pulumi.Input['InTotoSlsaProvenanceV1Args']]:
+        """
+        In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+        """
+        return pulumi.get(self, "in_toto_slsa_provenance_v1")
+
+    @in_toto_slsa_provenance_v1.setter
+    def in_toto_slsa_provenance_v1(self, value: Optional[pulumi.Input['InTotoSlsaProvenanceV1Args']]):
+        pulumi.set(self, "in_toto_slsa_provenance_v1", value)
 
     @property
     @pulumi.getter(name="intotoProvenance")
@@ -591,6 +683,47 @@ class BuildDetailsArgs:
     @provenance_bytes.setter
     def provenance_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provenance_bytes", value)
+
+
+@pulumi.input_type
+class BuildMetadataArgs:
+    def __init__(__self__, *,
+                 finished_on: Optional[pulumi.Input[str]] = None,
+                 invocation_id: Optional[pulumi.Input[str]] = None,
+                 started_on: Optional[pulumi.Input[str]] = None):
+        if finished_on is not None:
+            pulumi.set(__self__, "finished_on", finished_on)
+        if invocation_id is not None:
+            pulumi.set(__self__, "invocation_id", invocation_id)
+        if started_on is not None:
+            pulumi.set(__self__, "started_on", started_on)
+
+    @property
+    @pulumi.getter(name="finishedOn")
+    def finished_on(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "finished_on")
+
+    @finished_on.setter
+    def finished_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "finished_on", value)
+
+    @property
+    @pulumi.getter(name="invocationId")
+    def invocation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "invocation_id")
+
+    @invocation_id.setter
+    def invocation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "invocation_id", value)
+
+    @property
+    @pulumi.getter(name="startedOn")
+    def started_on(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "started_on")
+
+    @started_on.setter
+    def started_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "started_on", value)
 
 
 @pulumi.input_type
@@ -3816,6 +3949,65 @@ class InTotoProvenanceArgs:
 
 
 @pulumi.input_type
+class InTotoSlsaProvenanceV1Args:
+    def __init__(__self__, *,
+                 predicate: Optional[pulumi.Input['SlsaProvenanceV1Args']] = None,
+                 predicate_type: Optional[pulumi.Input[str]] = None,
+                 subject: Optional[pulumi.Input[Sequence[pulumi.Input['SubjectArgs']]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+        """
+        if predicate is not None:
+            pulumi.set(__self__, "predicate", predicate)
+        if predicate_type is not None:
+            pulumi.set(__self__, "predicate_type", predicate_type)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def predicate(self) -> Optional[pulumi.Input['SlsaProvenanceV1Args']]:
+        return pulumi.get(self, "predicate")
+
+    @predicate.setter
+    def predicate(self, value: Optional[pulumi.Input['SlsaProvenanceV1Args']]):
+        pulumi.set(self, "predicate", value)
+
+    @property
+    @pulumi.getter(name="predicateType")
+    def predicate_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "predicate_type")
+
+    @predicate_type.setter
+    def predicate_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predicate_type", value)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubjectArgs']]]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubjectArgs']]]]):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class InTotoStatementArgs:
     def __init__(__self__, *,
                  predicate_type: Optional[pulumi.Input[str]] = None,
@@ -5064,6 +5256,47 @@ class ProductArgs:
 
 
 @pulumi.input_type
+class ProvenanceBuilderArgs:
+    def __init__(__self__, *,
+                 builder_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        if builder_dependencies is not None:
+            pulumi.set(__self__, "builder_dependencies", builder_dependencies)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="builderDependencies")
+    def builder_dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]]:
+        return pulumi.get(self, "builder_dependencies")
+
+    @builder_dependencies.setter
+    def builder_dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]]):
+        pulumi.set(self, "builder_dependencies", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
 class PublisherArgs:
     def __init__(__self__, *,
                  issuing_authority: Optional[pulumi.Input[str]] = None,
@@ -5472,6 +5705,95 @@ class RepoSourceArgs:
 
 
 @pulumi.input_type
+class ResourceDescriptorArgs:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 digest: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 download_location: Optional[pulumi.Input[str]] = None,
+                 media_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if download_location is not None:
+            pulumi.set(__self__, "download_location", download_location)
+        if media_type is not None:
+            pulumi.set(__self__, "media_type", media_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter(name="downloadLocation")
+    def download_location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "download_location")
+
+    @download_location.setter
+    def download_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "download_location", value)
+
+    @property
+    @pulumi.getter(name="mediaType")
+    def media_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "media_type")
+
+    @media_type.setter
+    def media_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "media_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
 class ResourceArgs:
     def __init__(__self__, *,
                  content_hash: Optional[pulumi.Input['HashArgs']] = None,
@@ -5525,6 +5847,47 @@ class ResourceArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class RunDetailsArgs:
+    def __init__(__self__, *,
+                 builder: Optional[pulumi.Input['ProvenanceBuilderArgs']] = None,
+                 byproducts: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]] = None,
+                 metadata: Optional[pulumi.Input['BuildMetadataArgs']] = None):
+        if builder is not None:
+            pulumi.set(__self__, "builder", builder)
+        if byproducts is not None:
+            pulumi.set(__self__, "byproducts", byproducts)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def builder(self) -> Optional[pulumi.Input['ProvenanceBuilderArgs']]:
+        return pulumi.get(self, "builder")
+
+    @builder.setter
+    def builder(self, value: Optional[pulumi.Input['ProvenanceBuilderArgs']]):
+        pulumi.set(self, "builder", value)
+
+    @property
+    @pulumi.getter
+    def byproducts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]]:
+        return pulumi.get(self, "byproducts")
+
+    @byproducts.setter
+    def byproducts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]]):
+        pulumi.set(self, "byproducts", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input['BuildMetadataArgs']]:
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input['BuildMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
 
 
 @pulumi.input_type
@@ -5933,6 +6296,38 @@ class SlsaMetadataArgs:
     @reproducible.setter
     def reproducible(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reproducible", value)
+
+
+@pulumi.input_type
+class SlsaProvenanceV1Args:
+    def __init__(__self__, *,
+                 build_definition: Optional[pulumi.Input['BuildDefinitionArgs']] = None,
+                 run_details: Optional[pulumi.Input['RunDetailsArgs']] = None):
+        """
+        Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.
+        """
+        if build_definition is not None:
+            pulumi.set(__self__, "build_definition", build_definition)
+        if run_details is not None:
+            pulumi.set(__self__, "run_details", run_details)
+
+    @property
+    @pulumi.getter(name="buildDefinition")
+    def build_definition(self) -> Optional[pulumi.Input['BuildDefinitionArgs']]:
+        return pulumi.get(self, "build_definition")
+
+    @build_definition.setter
+    def build_definition(self, value: Optional[pulumi.Input['BuildDefinitionArgs']]):
+        pulumi.set(self, "build_definition", value)
+
+    @property
+    @pulumi.getter(name="runDetails")
+    def run_details(self) -> Optional[pulumi.Input['RunDetailsArgs']]:
+        return pulumi.get(self, "run_details")
+
+    @run_details.setter
+    def run_details(self, value: Optional[pulumi.Input['RunDetailsArgs']]):
+        pulumi.set(self, "run_details", value)
 
 
 @pulumi.input_type
@@ -6776,7 +7171,8 @@ class VexAssessmentArgs:
                  note_name: Optional[pulumi.Input[str]] = None,
                  related_uris: Optional[pulumi.Input[Sequence[pulumi.Input['URIArgs']]]] = None,
                  remediations: Optional[pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]]] = None,
-                 state: Optional[pulumi.Input['VexAssessmentState']] = None):
+                 state: Optional[pulumi.Input['VexAssessmentState']] = None,
+                 vulnerability_id: Optional[pulumi.Input[str]] = None):
         """
         VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
         :param pulumi.Input[str] cve: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
@@ -6786,6 +7182,7 @@ class VexAssessmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['URIArgs']]] related_uris: Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
         :param pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]] remediations: Specifies details on how to handle (and presumably, fix) a vulnerability.
         :param pulumi.Input['VexAssessmentState'] state: Provides the state of this Vulnerability assessment.
+        :param pulumi.Input[str] vulnerability_id: The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
         """
         if cve is not None:
             pulumi.set(__self__, "cve", cve)
@@ -6801,6 +7198,8 @@ class VexAssessmentArgs:
             pulumi.set(__self__, "remediations", remediations)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if vulnerability_id is not None:
+            pulumi.set(__self__, "vulnerability_id", vulnerability_id)
 
     @property
     @pulumi.getter
@@ -6885,6 +7284,18 @@ class VexAssessmentArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input['VexAssessmentState']]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="vulnerabilityId")
+    def vulnerability_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+        """
+        return pulumi.get(self, "vulnerability_id")
+
+    @vulnerability_id.setter
+    def vulnerability_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vulnerability_id", value)
 
 
 @pulumi.input_type
@@ -7013,6 +7424,7 @@ class VulnerabilityDetailsArgs:
                  cvss_v2: Optional[pulumi.Input['CVSSArgs']] = None,
                  cvss_v3: Optional[pulumi.Input['CVSSArgs']] = None,
                  effective_severity: Optional[pulumi.Input['VulnerabilityDetailsEffectiveSeverity']] = None,
+                 extra_details: Optional[pulumi.Input[str]] = None,
                  package_issue: Optional[pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vex_assessment: Optional[pulumi.Input['VexAssessmentArgs']] = None):
@@ -7021,6 +7433,7 @@ class VulnerabilityDetailsArgs:
         :param pulumi.Input['CVSSArgs'] cvss_v2: The CVSS v2 score of this vulnerability.
         :param pulumi.Input['CVSSArgs'] cvss_v3: The CVSS v3 score of this vulnerability.
         :param pulumi.Input['VulnerabilityDetailsEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
+        :param pulumi.Input[str] extra_details: Occurrence-specific extra details about the vulnerability.
         :param pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
         :param pulumi.Input[str] type: The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
         :param pulumi.Input['VexAssessmentArgs'] vex_assessment: VexAssessment provides all publisher provided Vex information that is related to this vulnerability for this resource.
@@ -7031,6 +7444,8 @@ class VulnerabilityDetailsArgs:
             pulumi.set(__self__, "cvss_v3", cvss_v3)
         if effective_severity is not None:
             pulumi.set(__self__, "effective_severity", effective_severity)
+        if extra_details is not None:
+            pulumi.set(__self__, "extra_details", extra_details)
         if package_issue is not None:
             pulumi.set(__self__, "package_issue", package_issue)
         if type is not None:
@@ -7073,6 +7488,18 @@ class VulnerabilityDetailsArgs:
     @effective_severity.setter
     def effective_severity(self, value: Optional[pulumi.Input['VulnerabilityDetailsEffectiveSeverity']]):
         pulumi.set(self, "effective_severity", value)
+
+    @property
+    @pulumi.getter(name="extraDetails")
+    def extra_details(self) -> Optional[pulumi.Input[str]]:
+        """
+        Occurrence-specific extra details about the vulnerability.
+        """
+        return pulumi.get(self, "extra_details")
+
+    @extra_details.setter
+    def extra_details(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "extra_details", value)
 
     @property
     @pulumi.getter(name="packageIssue")

@@ -9,25 +9,47 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
+from ._inputs import *
 
 __all__ = ['FleetArgs', 'Fleet']
 
 @pulumi.input_type
 class FleetArgs:
     def __init__(__self__, *,
+                 default_cluster_config: Optional[pulumi.Input['DefaultClusterConfigArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Fleet resource.
+        :param pulumi.Input['DefaultClusterConfigArgs'] default_cluster_config: Optional. The default cluster configurations to apply across the fleet.
         :param pulumi.Input[str] display_name: Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this Fleet.
         """
+        if default_cluster_config is not None:
+            pulumi.set(__self__, "default_cluster_config", default_cluster_config)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="defaultClusterConfig")
+    def default_cluster_config(self) -> Optional[pulumi.Input['DefaultClusterConfigArgs']]:
+        """
+        Optional. The default cluster configurations to apply across the fleet.
+        """
+        return pulumi.get(self, "default_cluster_config")
+
+    @default_cluster_config.setter
+    def default_cluster_config(self, value: Optional[pulumi.Input['DefaultClusterConfigArgs']]):
+        pulumi.set(self, "default_cluster_config", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -40,6 +62,18 @@ class FleetArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Labels for this Fleet.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -65,7 +99,9 @@ class Fleet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_cluster_config: Optional[pulumi.Input[pulumi.InputType['DefaultClusterConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -75,7 +111,9 @@ class Fleet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['DefaultClusterConfigArgs']] default_cluster_config: Optional. The default cluster configurations to apply across the fleet.
         :param pulumi.Input[str] display_name: Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this Fleet.
         """
         ...
     @overload
@@ -102,7 +140,9 @@ class Fleet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_cluster_config: Optional[pulumi.Input[pulumi.InputType['DefaultClusterConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -114,7 +154,9 @@ class Fleet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FleetArgs.__new__(FleetArgs)
 
+            __props__.__dict__["default_cluster_config"] = default_cluster_config
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
@@ -148,8 +190,10 @@ class Fleet(pulumi.CustomResource):
         __props__ = FleetArgs.__new__(FleetArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["default_cluster_config"] = None
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -167,6 +211,14 @@ class Fleet(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="defaultClusterConfig")
+    def default_cluster_config(self) -> pulumi.Output['outputs.DefaultClusterConfigResponse']:
+        """
+        Optional. The default cluster configurations to apply across the fleet.
+        """
+        return pulumi.get(self, "default_cluster_config")
+
+    @property
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> pulumi.Output[str]:
         """
@@ -181,6 +233,14 @@ class Fleet(pulumi.CustomResource):
         Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Labels for this Fleet.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

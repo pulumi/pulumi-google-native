@@ -18,15 +18,26 @@ __all__ = [
     'ConsumerPscConfigResponse',
     'ConsumerPscConnectionResponse',
     'ExprResponse',
+    'FilterResponse',
+    'GoogleRpcErrorInfoResponse',
     'GoogleRpcStatusResponse',
+    'InterconnectAttachmentResponse',
     'LinkedInterconnectAttachmentsResponse',
     'LinkedRouterApplianceInstancesResponse',
+    'LinkedVpcNetworkResponse',
     'LinkedVpnTunnelsResponse',
     'ProducerPscConfigResponse',
     'PscConfigResponse',
     'PscConnectionResponse',
     'RouterApplianceInstanceResponse',
     'RoutingVPCResponse',
+    'SpokeStateCountResponse',
+    'SpokeStateReasonCountResponse',
+    'SpokeSummaryResponse',
+    'SpokeTypeCountResponse',
+    'StateReasonResponse',
+    'VirtualMachineResponse',
+    'WarningsResponse',
 ]
 
 @pulumi.output_type
@@ -200,16 +211,19 @@ class ConsumerPscConfigResponse(dict):
     def __init__(__self__, *,
                  disable_global_access: bool,
                  network: str,
-                 project: str):
+                 project: str,
+                 state: str):
         """
         Allow the producer to specify which consumers can connect to it.
         :param bool disable_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param str network: The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
         :param str project: The consumer project where PSC connections are allowed to be created in.
+        :param str state: Overall state of PSC Connections management for this consumer psc config.
         """
         pulumi.set(__self__, "disable_global_access", disable_global_access)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="disableGlobalAccess")
@@ -235,6 +249,14 @@ class ConsumerPscConfigResponse(dict):
         """
         return pulumi.get(self, "project")
 
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Overall state of PSC Connections management for this consumer psc config.
+        """
+        return pulumi.get(self, "state")
+
 
 @pulumi.output_type
 class ConsumerPscConnectionResponse(dict):
@@ -244,7 +266,9 @@ class ConsumerPscConnectionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "errorType":
+        if key == "errorInfo":
+            suggest = "error_info"
+        elif key == "errorType":
             suggest = "error_type"
         elif key == "forwardingRule":
             suggest = "forwarding_rule"
@@ -268,6 +292,7 @@ class ConsumerPscConnectionResponse(dict):
 
     def __init__(__self__, *,
                  error: 'outputs.GoogleRpcStatusResponse',
+                 error_info: 'outputs.GoogleRpcErrorInfoResponse',
                  error_type: str,
                  forwarding_rule: str,
                  gce_operation: str,
@@ -280,6 +305,7 @@ class ConsumerPscConnectionResponse(dict):
         """
         PSC connection details on consumer side.
         :param 'GoogleRpcStatusResponse' error: The most recent error during operating this connection.
+        :param 'GoogleRpcErrorInfoResponse' error_info: The error info for the latest error during operating this connection.
         :param str error_type: The error type indicates whether the error is consumer facing, producer facing or system internal.
         :param str forwarding_rule: The URI of the consumer forwarding rule created. Example: projects/{projectNumOrId}/regions/us-east1/networks/{resourceId}.
         :param str gce_operation: The last Compute Engine operation to setup PSC connection.
@@ -291,6 +317,7 @@ class ConsumerPscConnectionResponse(dict):
         :param str state: The state of the PSC connection.
         """
         pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "error_info", error_info)
         pulumi.set(__self__, "error_type", error_type)
         pulumi.set(__self__, "forwarding_rule", forwarding_rule)
         pulumi.set(__self__, "gce_operation", gce_operation)
@@ -308,6 +335,14 @@ class ConsumerPscConnectionResponse(dict):
         The most recent error during operating this connection.
         """
         return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="errorInfo")
+    def error_info(self) -> 'outputs.GoogleRpcErrorInfoResponse':
+        """
+        The error info for the latest error during operating this connection.
+        """
+        return pulumi.get(self, "error_info")
 
     @property
     @pulumi.getter(name="errorType")
@@ -438,6 +473,128 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class FilterResponse(dict):
+    """
+    Filter matches L4 traffic.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destRange":
+            suggest = "dest_range"
+        elif key == "ipProtocol":
+            suggest = "ip_protocol"
+        elif key == "protocolVersion":
+            suggest = "protocol_version"
+        elif key == "srcRange":
+            suggest = "src_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dest_range: str,
+                 ip_protocol: str,
+                 protocol_version: str,
+                 src_range: str):
+        """
+        Filter matches L4 traffic.
+        :param str dest_range: Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        :param str ip_protocol: Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+        :param str protocol_version: Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+        :param str src_range: Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        """
+        pulumi.set(__self__, "dest_range", dest_range)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "protocol_version", protocol_version)
+        pulumi.set(__self__, "src_range", src_range)
+
+    @property
+    @pulumi.getter(name="destRange")
+    def dest_range(self) -> str:
+        """
+        Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        """
+        return pulumi.get(self, "dest_range")
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> str:
+        """
+        Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter(name="protocolVersion")
+    def protocol_version(self) -> str:
+        """
+        Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+        """
+        return pulumi.get(self, "protocol_version")
+
+    @property
+    @pulumi.getter(name="srcRange")
+    def src_range(self) -> str:
+        """
+        Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        """
+        return pulumi.get(self, "src_range")
+
+
+@pulumi.output_type
+class GoogleRpcErrorInfoResponse(dict):
+    """
+    Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+    """
+    def __init__(__self__, *,
+                 domain: str,
+                 metadata: Mapping[str, str],
+                 reason: str):
+        """
+        Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+        :param str domain: The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        :param Mapping[str, str] metadata: Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        :param str reason: The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
 class GoogleRpcStatusResponse(dict):
     """
     The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -479,6 +636,28 @@ class GoogleRpcStatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class InterconnectAttachmentResponse(dict):
+    """
+    InterconnectAttachment that this route applies to.
+    """
+    def __init__(__self__, *,
+                 region: str):
+        """
+        InterconnectAttachment that this route applies to.
+        :param str region: Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -608,6 +787,56 @@ class LinkedRouterApplianceInstancesResponse(dict):
 
 
 @pulumi.output_type
+class LinkedVpcNetworkResponse(dict):
+    """
+    An existing VPC network.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeExportRanges":
+            suggest = "exclude_export_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LinkedVpcNetworkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LinkedVpcNetworkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LinkedVpcNetworkResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclude_export_ranges: Sequence[str],
+                 uri: str):
+        """
+        An existing VPC network.
+        :param Sequence[str] exclude_export_ranges: Optional. IP ranges encompassing the subnets to be excluded from peering.
+        :param str uri: The URI of the VPC network resource.
+        """
+        pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="excludeExportRanges")
+    def exclude_export_ranges(self) -> Sequence[str]:
+        """
+        Optional. IP ranges encompassing the subnets to be excluded from peering.
+        """
+        return pulumi.get(self, "exclude_export_ranges")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The URI of the VPC network resource.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class LinkedVpnTunnelsResponse(dict):
     """
     A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
@@ -719,7 +948,7 @@ class PscConfigResponse(dict):
                  subnetworks: Sequence[str]):
         """
         Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
-        :param str limit: Max number of PSC connections for this policy.
+        :param str limit: Optional. Max number of PSC connections for this policy.
         :param Sequence[str] subnetworks: The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
         """
         pulumi.set(__self__, "limit", limit)
@@ -729,7 +958,7 @@ class PscConfigResponse(dict):
     @pulumi.getter
     def limit(self) -> str:
         """
-        Max number of PSC connections for this policy.
+        Optional. Max number of PSC connections for this policy.
         """
         return pulumi.get(self, "limit")
 
@@ -756,6 +985,8 @@ class PscConnectionResponse(dict):
             suggest = "consumer_forwarding_rule"
         elif key == "consumerTargetProject":
             suggest = "consumer_target_project"
+        elif key == "errorInfo":
+            suggest = "error_info"
         elif key == "errorType":
             suggest = "error_type"
         elif key == "gceOperation":
@@ -779,6 +1010,7 @@ class PscConnectionResponse(dict):
                  consumer_forwarding_rule: str,
                  consumer_target_project: str,
                  error: 'outputs.GoogleRpcStatusResponse',
+                 error_info: 'outputs.GoogleRpcErrorInfoResponse',
                  error_type: str,
                  gce_operation: str,
                  psc_connection_id: str,
@@ -789,6 +1021,7 @@ class PscConnectionResponse(dict):
         :param str consumer_forwarding_rule: The resource reference of the PSC Forwarding Rule within the consumer VPC.
         :param str consumer_target_project: The project where the PSC connection is created.
         :param 'GoogleRpcStatusResponse' error: The most recent error during operating this connection.
+        :param 'GoogleRpcErrorInfoResponse' error_info: The error info for the latest error during operating this connection.
         :param str error_type: The error type indicates whether the error is consumer facing, producer facing or system internal.
         :param str gce_operation: The last Compute Engine operation to setup PSC connection.
         :param str psc_connection_id: The PSC connection id of the PSC forwarding rule.
@@ -798,6 +1031,7 @@ class PscConnectionResponse(dict):
         pulumi.set(__self__, "consumer_forwarding_rule", consumer_forwarding_rule)
         pulumi.set(__self__, "consumer_target_project", consumer_target_project)
         pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "error_info", error_info)
         pulumi.set(__self__, "error_type", error_type)
         pulumi.set(__self__, "gce_operation", gce_operation)
         pulumi.set(__self__, "psc_connection_id", psc_connection_id)
@@ -834,6 +1068,14 @@ class PscConnectionResponse(dict):
         The most recent error during operating this connection.
         """
         return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="errorInfo")
+    def error_info(self) -> 'outputs.GoogleRpcErrorInfoResponse':
+        """
+        The error info for the latest error during operating this connection.
+        """
+        return pulumi.get(self, "error_info")
 
     @property
     @pulumi.getter(name="errorType")
@@ -968,5 +1210,347 @@ class RoutingVPCResponse(dict):
         The URI of the VPC network.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class SpokeStateCountResponse(dict):
+    """
+    The number of spokes that are in a particular state and associated with a given hub.
+    """
+    def __init__(__self__, *,
+                 count: str,
+                 state: str):
+        """
+        The number of spokes that are in a particular state and associated with a given hub.
+        :param str count: The total number of spokes that are in this state and associated with a given hub.
+        :param str state: The state of the spokes.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def count(self) -> str:
+        """
+        The total number of spokes that are in this state and associated with a given hub.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the spokes.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class SpokeStateReasonCountResponse(dict):
+    """
+    The number of spokes in the hub that are inactive for this reason.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stateReasonCode":
+            suggest = "state_reason_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpokeStateReasonCountResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpokeStateReasonCountResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpokeStateReasonCountResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 count: str,
+                 state_reason_code: str):
+        """
+        The number of spokes in the hub that are inactive for this reason.
+        :param str count: The total number of spokes that are inactive for a particular reason and associated with a given hub.
+        :param str state_reason_code: The reason that a spoke is inactive.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "state_reason_code", state_reason_code)
+
+    @property
+    @pulumi.getter
+    def count(self) -> str:
+        """
+        The total number of spokes that are inactive for a particular reason and associated with a given hub.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="stateReasonCode")
+    def state_reason_code(self) -> str:
+        """
+        The reason that a spoke is inactive.
+        """
+        return pulumi.get(self, "state_reason_code")
+
+
+@pulumi.output_type
+class SpokeSummaryResponse(dict):
+    """
+    Summarizes information about the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "spokeStateCounts":
+            suggest = "spoke_state_counts"
+        elif key == "spokeStateReasonCounts":
+            suggest = "spoke_state_reason_counts"
+        elif key == "spokeTypeCounts":
+            suggest = "spoke_type_counts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpokeSummaryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpokeSummaryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpokeSummaryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 spoke_state_counts: Sequence['outputs.SpokeStateCountResponse'],
+                 spoke_state_reason_counts: Sequence['outputs.SpokeStateReasonCountResponse'],
+                 spoke_type_counts: Sequence['outputs.SpokeTypeCountResponse']):
+        """
+        Summarizes information about the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
+        :param Sequence['SpokeStateCountResponse'] spoke_state_counts: Counts the number of spokes that are in each state and associated with a given hub.
+        :param Sequence['SpokeStateReasonCountResponse'] spoke_state_reason_counts: Counts the number of spokes that are inactive for each possible reason and associated with a given hub.
+        :param Sequence['SpokeTypeCountResponse'] spoke_type_counts: Counts the number of spokes of each type that are associated with a specific hub.
+        """
+        pulumi.set(__self__, "spoke_state_counts", spoke_state_counts)
+        pulumi.set(__self__, "spoke_state_reason_counts", spoke_state_reason_counts)
+        pulumi.set(__self__, "spoke_type_counts", spoke_type_counts)
+
+    @property
+    @pulumi.getter(name="spokeStateCounts")
+    def spoke_state_counts(self) -> Sequence['outputs.SpokeStateCountResponse']:
+        """
+        Counts the number of spokes that are in each state and associated with a given hub.
+        """
+        return pulumi.get(self, "spoke_state_counts")
+
+    @property
+    @pulumi.getter(name="spokeStateReasonCounts")
+    def spoke_state_reason_counts(self) -> Sequence['outputs.SpokeStateReasonCountResponse']:
+        """
+        Counts the number of spokes that are inactive for each possible reason and associated with a given hub.
+        """
+        return pulumi.get(self, "spoke_state_reason_counts")
+
+    @property
+    @pulumi.getter(name="spokeTypeCounts")
+    def spoke_type_counts(self) -> Sequence['outputs.SpokeTypeCountResponse']:
+        """
+        Counts the number of spokes of each type that are associated with a specific hub.
+        """
+        return pulumi.get(self, "spoke_type_counts")
+
+
+@pulumi.output_type
+class SpokeTypeCountResponse(dict):
+    """
+    The number of spokes of a given type that are associated with a specific hub. The type indicates what kind of resource is associated with the spoke.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "spokeType":
+            suggest = "spoke_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpokeTypeCountResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpokeTypeCountResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpokeTypeCountResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 count: str,
+                 spoke_type: str):
+        """
+        The number of spokes of a given type that are associated with a specific hub. The type indicates what kind of resource is associated with the spoke.
+        :param str count: The total number of spokes of this type that are associated with the hub.
+        :param str spoke_type: The type of the spokes.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "spoke_type", spoke_type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> str:
+        """
+        The total number of spokes of this type that are associated with the hub.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="spokeType")
+    def spoke_type(self) -> str:
+        """
+        The type of the spokes.
+        """
+        return pulumi.get(self, "spoke_type")
+
+
+@pulumi.output_type
+class StateReasonResponse(dict):
+    """
+    The reason a spoke is inactive.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userDetails":
+            suggest = "user_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StateReasonResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StateReasonResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StateReasonResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: str,
+                 message: str,
+                 user_details: str):
+        """
+        The reason a spoke is inactive.
+        :param str code: The code associated with this reason.
+        :param str message: Human-readable details about this reason.
+        :param str user_details: Additional information provided by the user in the RejectSpoke call.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "user_details", user_details)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The code associated with this reason.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Human-readable details about this reason.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="userDetails")
+    def user_details(self) -> str:
+        """
+        Additional information provided by the user in the RejectSpoke call.
+        """
+        return pulumi.get(self, "user_details")
+
+
+@pulumi.output_type
+class VirtualMachineResponse(dict):
+    """
+    VM instances to which this policy-based route applies to.
+    """
+    def __init__(__self__, *,
+                 tags: Sequence[str]):
+        """
+        VM instances to which this policy-based route applies to.
+        :param Sequence[str] tags: Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+        """
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class WarningsResponse(dict):
+    """
+    Informational warning message.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "warningMessage":
+            suggest = "warning_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WarningsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WarningsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WarningsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: str,
+                 data: Mapping[str, str],
+                 warning_message: str):
+        """
+        Informational warning message.
+        :param str code: A warning code, if applicable.
+        :param Mapping[str, str] data: Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+        :param str warning_message: A human-readable description of the warning code.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "warning_message", warning_message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        A warning code, if applicable.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Mapping[str, str]:
+        """
+        Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter(name="warningMessage")
+    def warning_message(self) -> str:
+        """
+        A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "warning_message")
 
 

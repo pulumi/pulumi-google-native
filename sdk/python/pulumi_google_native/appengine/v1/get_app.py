@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAppResult:
-    def __init__(__self__, auth_domain=None, code_bucket=None, database_type=None, default_bucket=None, default_cookie_expiration=None, default_hostname=None, dispatch_rules=None, feature_settings=None, gcr_domain=None, iap=None, location=None, name=None, service_account=None, serving_status=None):
+    def __init__(__self__, auth_domain=None, code_bucket=None, database_type=None, default_bucket=None, default_cookie_expiration=None, default_hostname=None, dispatch_rules=None, feature_settings=None, gcr_domain=None, generated_customer_metadata=None, iap=None, location=None, name=None, service_account=None, serving_status=None):
         if auth_domain and not isinstance(auth_domain, str):
             raise TypeError("Expected argument 'auth_domain' to be a str")
         pulumi.set(__self__, "auth_domain", auth_domain)
@@ -47,6 +47,9 @@ class GetAppResult:
         if gcr_domain and not isinstance(gcr_domain, str):
             raise TypeError("Expected argument 'gcr_domain' to be a str")
         pulumi.set(__self__, "gcr_domain", gcr_domain)
+        if generated_customer_metadata and not isinstance(generated_customer_metadata, dict):
+            raise TypeError("Expected argument 'generated_customer_metadata' to be a dict")
+        pulumi.set(__self__, "generated_customer_metadata", generated_customer_metadata)
         if iap and not isinstance(iap, dict):
             raise TypeError("Expected argument 'iap' to be a dict")
         pulumi.set(__self__, "iap", iap)
@@ -136,6 +139,14 @@ class GetAppResult:
         return pulumi.get(self, "gcr_domain")
 
     @property
+    @pulumi.getter(name="generatedCustomerMetadata")
+    def generated_customer_metadata(self) -> Mapping[str, str]:
+        """
+        Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+        """
+        return pulumi.get(self, "generated_customer_metadata")
+
+    @property
     @pulumi.getter
     def iap(self) -> 'outputs.IdentityAwareProxyResponse':
         return pulumi.get(self, "iap")
@@ -188,6 +199,7 @@ class AwaitableGetAppResult(GetAppResult):
             dispatch_rules=self.dispatch_rules,
             feature_settings=self.feature_settings,
             gcr_domain=self.gcr_domain,
+            generated_customer_metadata=self.generated_customer_metadata,
             iap=self.iap,
             location=self.location,
             name=self.name,
@@ -196,12 +208,14 @@ class AwaitableGetAppResult(GetAppResult):
 
 
 def get_app(app_id: Optional[str] = None,
+            include_extra_data: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppResult:
     """
     Gets information about an application.
     """
     __args__ = dict()
     __args__['appId'] = app_id
+    __args__['includeExtraData'] = include_extra_data
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1:getApp', __args__, opts=opts, typ=GetAppResult).value
 
@@ -215,6 +229,7 @@ def get_app(app_id: Optional[str] = None,
         dispatch_rules=pulumi.get(__ret__, 'dispatch_rules'),
         feature_settings=pulumi.get(__ret__, 'feature_settings'),
         gcr_domain=pulumi.get(__ret__, 'gcr_domain'),
+        generated_customer_metadata=pulumi.get(__ret__, 'generated_customer_metadata'),
         iap=pulumi.get(__ret__, 'iap'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
@@ -224,6 +239,7 @@ def get_app(app_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_app)
 def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
+                   include_extra_data: Optional[pulumi.Input[Optional[str]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
     """
     Gets information about an application.

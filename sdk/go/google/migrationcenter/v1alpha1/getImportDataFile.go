@@ -33,7 +33,7 @@ type LookupImportDataFileArgs struct {
 type LookupImportDataFileResult struct {
 	// The timestamp when the file was created.
 	CreateTime string `pulumi:"createTime"`
-	// User-friendly display name. Maximum length is 63 characters.
+	// Optional. User-friendly display name. Maximum length is 256 characters.
 	DisplayName string `pulumi:"displayName"`
 	// The payload format.
 	Format string `pulumi:"format"`
@@ -94,7 +94,7 @@ func (o LookupImportDataFileResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImportDataFileResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// User-friendly display name. Maximum length is 63 characters.
+// Optional. User-friendly display name. Maximum length is 256 characters.
 func (o LookupImportDataFileResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImportDataFileResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }

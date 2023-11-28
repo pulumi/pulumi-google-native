@@ -32,6 +32,10 @@ export interface GetCloneJobArgs {
 
 export interface GetCloneJobResult {
     /**
+     * Details of the target Persistent Disks in Compute Engine.
+     */
+    readonly computeEngineDisksTargetDetails: outputs.vmmigration.v1.ComputeEngineDisksTargetDetailsResponse;
+    /**
      * Details of the target VM in Compute Engine.
      */
     readonly computeEngineTargetDetails: outputs.vmmigration.v1.ComputeEngineTargetDetailsResponse;

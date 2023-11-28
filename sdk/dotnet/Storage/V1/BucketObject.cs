@@ -97,6 +97,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Generation { get; private set; } = null!;
 
         /// <summary>
+        /// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+        /// </summary>
+        [Output("hardDeleteTime")]
+        public Output<string> HardDeleteTime { get; private set; } = null!;
+
+        /// <summary>
         /// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
         /// </summary>
         [Output("ifGenerationMatch")]
@@ -157,7 +163,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Metageneration { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
+        /// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -181,6 +187,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string?> Projection { get; private set; } = null!;
 
         /// <summary>
+        /// A collection of object level retention parameters.
+        /// </summary>
+        [Output("retention")]
+        public Output<Outputs.BucketObjectRetentionResponse> Retention { get; private set; } = null!;
+
+        /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         /// </summary>
         [Output("retentionExpirationTime")]
@@ -197,6 +209,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("size")]
         public Output<string> Size { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the object became soft-deleted in RFC 3339 format.
+        /// </summary>
+        [Output("softDeleteTime")]
+        public Output<string> SoftDeleteTime { get; private set; } = null!;
 
         /// <summary>
         /// Storage class of the object.
@@ -217,7 +235,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> TimeCreated { get; private set; } = null!;
 
         /// <summary>
-        /// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        /// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         /// </summary>
         [Output("timeDeleted")]
         public Output<string> TimeDeleted { get; private set; } = null!;
@@ -380,6 +398,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string>? Generation { get; set; }
 
         /// <summary>
+        /// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+        /// </summary>
+        [Input("hardDeleteTime")]
+        public Input<string>? HardDeleteTime { get; set; }
+
+        /// <summary>
         /// The ID of the object, including the bucket name, object name, and generation number.
         /// </summary>
         [Input("id")]
@@ -476,6 +500,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string>? Projection { get; set; }
 
         /// <summary>
+        /// A collection of object level retention parameters.
+        /// </summary>
+        [Input("retention")]
+        public Input<Inputs.BucketObjectRetentionArgs>? Retention { get; set; }
+
+        /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         /// </summary>
         [Input("retentionExpirationTime")]
@@ -492,6 +522,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
+
+        /// <summary>
+        /// The time at which the object became soft-deleted in RFC 3339 format.
+        /// </summary>
+        [Input("softDeleteTime")]
+        public Input<string>? SoftDeleteTime { get; set; }
 
         [Input("source")]
         public Input<AssetOrArchive>? Source { get; set; }
@@ -515,7 +551,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string>? TimeCreated { get; set; }
 
         /// <summary>
-        /// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        /// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         /// </summary>
         [Input("timeDeleted")]
         public Input<string>? TimeDeleted { get; set; }

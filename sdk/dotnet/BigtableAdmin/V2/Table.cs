@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+        /// </summary>
+        [Output("changeStreamConfig")]
+        public Output<Outputs.ChangeStreamConfigResponse> ChangeStreamConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
         /// </summary>
         [Output("clusterStates")]
@@ -113,6 +119,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+        /// </summary>
+        [Input("changeStreamConfig")]
+        public Input<Inputs.ChangeStreamConfigArgs>? ChangeStreamConfig { get; set; }
+
         [Input("columnFamilies")]
         private InputMap<string>? _columnFamilies;
 
@@ -160,12 +172,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
-        /// </summary>
-        [Input("stats")]
-        public Input<Inputs.TableStatsArgs>? Stats { get; set; }
 
         /// <summary>
         /// The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.

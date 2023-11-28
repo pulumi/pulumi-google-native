@@ -41,9 +41,17 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// </summary>
         public readonly int OrdinalPosition;
         /// <summary>
+        /// Column precision.
+        /// </summary>
+        public readonly int Precision;
+        /// <summary>
         /// Whether or not the column represents a primary key.
         /// </summary>
         public readonly bool PrimaryKey;
+        /// <summary>
+        /// Column scale.
+        /// </summary>
+        public readonly int Scale;
 
         [OutputConstructor]
         private MysqlColumnResponse(
@@ -59,7 +67,11 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
             int ordinalPosition,
 
-            bool primaryKey)
+            int precision,
+
+            bool primaryKey,
+
+            int scale)
         {
             Collation = collation;
             Column = column;
@@ -67,7 +79,9 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
             Length = length;
             Nullable = nullable;
             OrdinalPosition = ordinalPosition;
+            Precision = precision;
             PrimaryKey = primaryKey;
+            Scale = scale;
         }
     }
 }

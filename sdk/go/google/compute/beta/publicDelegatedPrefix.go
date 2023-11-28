@@ -17,13 +17,15 @@ import (
 type PublicDelegatedPrefix struct {
 	pulumi.CustomResourceState
 
+	// The version of BYOIP API.
+	ByoipApiVersion pulumi.StringOutput `pulumi:"byoipApiVersion"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolOutput `pulumi:"isLiveMigration"`
@@ -95,7 +97,7 @@ func (PublicDelegatedPrefixState) ElementType() reflect.Type {
 type publicDelegatedPrefixArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
@@ -115,7 +117,7 @@ type publicDelegatedPrefixArgs struct {
 type PublicDelegatedPrefixArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringPtrInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
@@ -180,6 +182,11 @@ func (o PublicDelegatedPrefixOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// The version of BYOIP API.
+func (o PublicDelegatedPrefixOutput) ByoipApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.ByoipApiVersion }).(pulumi.StringOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o PublicDelegatedPrefixOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -195,7 +202,7 @@ func (o PublicDelegatedPrefixOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+// The IP address range, in CIDR format, represented by this public delegated prefix.
 func (o PublicDelegatedPrefixOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
 }

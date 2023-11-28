@@ -35,6 +35,8 @@ type LookupRoutineResult struct {
 	Arguments []ArgumentResponse `pulumi:"arguments"`
 	// The time when this routine was created, in milliseconds since the epoch.
 	CreationTime string `pulumi:"creationTime"`
+	// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+	DataGovernanceType string `pulumi:"dataGovernanceType"`
 	// The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
 	DefinitionBody string `pulumi:"definitionBody"`
 	// Optional. The description of the routine, if defined.
@@ -59,6 +61,8 @@ type LookupRoutineResult struct {
 	RoutineReference RoutineReferenceResponse `pulumi:"routineReference"`
 	// The type of routine.
 	RoutineType string `pulumi:"routineType"`
+	// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+	SecurityMode string `pulumi:"securityMode"`
 	// Optional. Spark specific options.
 	SparkOptions SparkOptionsResponse `pulumi:"sparkOptions"`
 	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
@@ -119,6 +123,11 @@ func (o LookupRoutineResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutineResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+func (o LookupRoutineResultOutput) DataGovernanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoutineResult) string { return v.DataGovernanceType }).(pulumi.StringOutput)
+}
+
 // The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
 func (o LookupRoutineResultOutput) DefinitionBody() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutineResult) string { return v.DefinitionBody }).(pulumi.StringOutput)
@@ -177,6 +186,11 @@ func (o LookupRoutineResultOutput) RoutineReference() RoutineReferenceResponseOu
 // The type of routine.
 func (o LookupRoutineResultOutput) RoutineType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutineResult) string { return v.RoutineType }).(pulumi.StringOutput)
+}
+
+// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+func (o LookupRoutineResultOutput) SecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoutineResult) string { return v.SecurityMode }).(pulumi.StringOutput)
 }
 
 // Optional. Spark specific options.

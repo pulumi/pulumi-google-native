@@ -58,19 +58,19 @@ namespace Pulumi.GoogleNative.Pubsub.V1
     public sealed class GetTopicResult
     {
         /// <summary>
-        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         public readonly string KmsKeyName;
         /// <summary>
-        /// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        /// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
+        /// Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
         /// </summary>
         public readonly string MessageRetentionDuration;
         /// <summary>
-        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+        /// Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         /// </summary>
         public readonly Outputs.MessageStoragePolicyResponse MessageStoragePolicy;
         /// <summary>
@@ -78,11 +78,11 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        /// Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
-        /// Settings for validating messages published against a schema.
+        /// Optional. Settings for validating messages published against a schema.
         /// </summary>
         public readonly Outputs.SchemaSettingsResponse SchemaSettings;
 

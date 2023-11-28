@@ -17,24 +17,25 @@ __all__ = ['CertificateArgs', 'Certificate']
 @pulumi.input_type
 class CertificateArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  product_id: pulumi.Input[str],
                  certificate_status: Optional[pulumi.Input['CertificateCertificateStatus']] = None,
                  credential_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  raw_certificate: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaClientCertificateArgs']] = None,
                  requestor_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+        :param pulumi.Input[str] display_name: Name of the certificate
         :param pulumi.Input['CertificateCertificateStatus'] certificate_status: Status of the certificate
         :param pulumi.Input[str] credential_id: Immutable. Credential id that will be used to register with trawler INTERNAL_ONLY
         :param pulumi.Input[str] description: Description of the certificate
-        :param pulumi.Input[str] display_name: Name of the certificate
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaClientCertificateArgs'] raw_certificate: Input only. Raw client certificate which would be registered with trawler
         :param pulumi.Input[str] requestor_id: Immutable. Requestor ID to be used to register certificate with trawler
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "product_id", product_id)
         if certificate_status is not None:
             pulumi.set(__self__, "certificate_status", certificate_status)
@@ -42,8 +43,6 @@ class CertificateArgs:
             pulumi.set(__self__, "credential_id", credential_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -52,6 +51,18 @@ class CertificateArgs:
             pulumi.set(__self__, "raw_certificate", raw_certificate)
         if requestor_id is not None:
             pulumi.set(__self__, "requestor_id", requestor_id)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Name of the certificate
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="productId")
@@ -97,18 +108,6 @@ class CertificateArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the certificate
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -227,6 +226,8 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["certificate_status"] = certificate_status
             __props__.__dict__["credential_id"] = credential_id
             __props__.__dict__["description"] = description
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["location"] = location
             if product_id is None and not opts.urn:

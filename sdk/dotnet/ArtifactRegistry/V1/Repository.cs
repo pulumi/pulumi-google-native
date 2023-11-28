@@ -16,6 +16,18 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+        /// </summary>
+        [Output("cleanupPolicies")]
+        public Output<ImmutableDictionary<string, string>> CleanupPolicies { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// </summary>
+        [Output("cleanupPolicyDryRun")]
+        public Output<bool> CleanupPolicyDryRun { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the repository was created.
         /// </summary>
         [Output("createTime")]
@@ -34,7 +46,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Output<Outputs.DockerRepositoryConfigResponse> DockerConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The format of packages that are stored in the repository.
+        /// Optional. The format of packages that are stored in the repository.
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -61,13 +73,13 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Output<Outputs.MavenRepositoryConfigResponse> MavenConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The mode of the repository.
+        /// Optional. The mode of the repository.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -82,10 +94,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Output<Outputs.RemoteRepositoryConfigResponse> RemoteRepositoryConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The repository id to use for this repository.
+        /// Required. The repository id to use for this repository.
         /// </summary>
         [Output("repositoryId")]
-        public Output<string?> RepositoryId { get; private set; } = null!;
+        public Output<string> RepositoryId { get; private set; } = null!;
 
         /// <summary>
         /// If set, the repository satisfies physical zone separation.
@@ -119,7 +131,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Repository(string name, RepositoryArgs? args = null, CustomResourceOptions? options = null)
+        public Repository(string name, RepositoryArgs args, CustomResourceOptions? options = null)
             : base("google-native:artifactregistry/v1:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -138,6 +150,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
                 {
                     "location",
                     "project",
+                    "repositoryId",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -161,6 +174,24 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
+        [Input("cleanupPolicies")]
+        private InputMap<string>? _cleanupPolicies;
+
+        /// <summary>
+        /// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+        /// </summary>
+        public InputMap<string> CleanupPolicies
+        {
+            get => _cleanupPolicies ?? (_cleanupPolicies = new InputMap<string>());
+            set => _cleanupPolicies = value;
+        }
+
+        /// <summary>
+        /// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// </summary>
+        [Input("cleanupPolicyDryRun")]
+        public Input<bool>? CleanupPolicyDryRun { get; set; }
+
         /// <summary>
         /// The user-provided description of the repository.
         /// </summary>
@@ -174,7 +205,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Input<Inputs.DockerRepositoryConfigArgs>? DockerConfig { get; set; }
 
         /// <summary>
-        /// The format of packages that are stored in the repository.
+        /// Optional. The format of packages that are stored in the repository.
         /// </summary>
         [Input("format")]
         public Input<Pulumi.GoogleNative.ArtifactRegistry.V1.RepositoryFormat>? Format { get; set; }
@@ -207,13 +238,13 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Input<Inputs.MavenRepositoryConfigArgs>? MavenConfig { get; set; }
 
         /// <summary>
-        /// The mode of the repository.
+        /// Optional. The mode of the repository.
         /// </summary>
         [Input("mode")]
         public Input<Pulumi.GoogleNative.ArtifactRegistry.V1.RepositoryMode>? Mode { get; set; }
 
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -228,10 +259,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Input<Inputs.RemoteRepositoryConfigArgs>? RemoteRepositoryConfig { get; set; }
 
         /// <summary>
-        /// The repository id to use for this repository.
+        /// Required. The repository id to use for this repository.
         /// </summary>
-        [Input("repositoryId")]
-        public Input<string>? RepositoryId { get; set; }
+        [Input("repositoryId", required: true)]
+        public Input<string> RepositoryId { get; set; } = null!;
 
         /// <summary>
         /// Configuration specific for a Virtual Repository.

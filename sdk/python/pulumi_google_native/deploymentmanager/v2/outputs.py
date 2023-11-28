@@ -21,11 +21,13 @@ __all__ = [
     'DeploymentUpdateResponse',
     'ExprResponse',
     'ImportFileResponse',
+    'InstancesBulkInsertOperationMetadataResponse',
     'OperationErrorErrorsItemResponse',
     'OperationErrorResponse',
     'OperationResponse',
     'OperationWarningsItemDataItemResponse',
     'OperationWarningsItemResponse',
+    'SetCommonInstanceMetadataOperationMetadataResponse',
     'TargetConfigurationResponse',
 ]
 
@@ -384,6 +386,41 @@ class ImportFileResponse(dict):
 
 
 @pulumi.output_type
+class InstancesBulkInsertOperationMetadataResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "perLocationStatus":
+            suggest = "per_location_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancesBulkInsertOperationMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancesBulkInsertOperationMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancesBulkInsertOperationMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 per_location_status: Mapping[str, str]):
+        """
+        :param Mapping[str, str] per_location_status: Status information per location (location name is key). Example key: zones/us-central1-a
+        """
+        pulumi.set(__self__, "per_location_status", per_location_status)
+
+    @property
+    @pulumi.getter(name="perLocationStatus")
+    def per_location_status(self) -> Mapping[str, str]:
+        """
+        Status information per location (location name is key). Example key: zones/us-central1-a
+        """
+        return pulumi.get(self, "per_location_status")
+
+
+@pulumi.output_type
 class OperationErrorErrorsItemResponse(dict):
     def __init__(__self__, *,
                  code: str,
@@ -448,7 +485,7 @@ class OperationErrorResponse(dict):
 @pulumi.output_type
 class OperationResponse(dict):
     """
-    Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
+    Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information, read Global, Regional, and Zonal Resources.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -465,12 +502,16 @@ class OperationResponse(dict):
             suggest = "http_error_status_code"
         elif key == "insertTime":
             suggest = "insert_time"
+        elif key == "instancesBulkInsertOperationMetadata":
+            suggest = "instances_bulk_insert_operation_metadata"
         elif key == "operationGroupId":
             suggest = "operation_group_id"
         elif key == "operationType":
             suggest = "operation_type"
         elif key == "selfLink":
             suggest = "self_link"
+        elif key == "setCommonInstanceMetadataOperationMetadata":
+            suggest = "set_common_instance_metadata_operation_metadata"
         elif key == "startTime":
             suggest = "start_time"
         elif key == "statusMessage":
@@ -500,6 +541,7 @@ class OperationResponse(dict):
                  http_error_message: str,
                  http_error_status_code: int,
                  insert_time: str,
+                 instances_bulk_insert_operation_metadata: 'outputs.InstancesBulkInsertOperationMetadataResponse',
                  kind: str,
                  name: str,
                  operation_group_id: str,
@@ -507,6 +549,7 @@ class OperationResponse(dict):
                  progress: int,
                  region: str,
                  self_link: str,
+                 set_common_instance_metadata_operation_metadata: 'outputs.SetCommonInstanceMetadataOperationMetadataResponse',
                  start_time: str,
                  status: str,
                  status_message: str,
@@ -516,7 +559,7 @@ class OperationResponse(dict):
                  warnings: Sequence['outputs.OperationWarningsItemResponse'],
                  zone: str):
         """
-        Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
+        Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information, read Global, Regional, and Zonal Resources.
         :param str client_operation_id: The value of `requestId` if you provided it in the request. Not present otherwise.
         :param str creation_timestamp: [Deprecated] This field is deprecated.
         :param str description: A textual description of the operation, which is set when the operation is created.
@@ -532,12 +575,13 @@ class OperationResponse(dict):
         :param int progress: An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
         :param str region: The URL of the region where the operation resides. Only applicable when performing regional operations.
         :param str self_link: Server-defined URL for the resource.
+        :param 'SetCommonInstanceMetadataOperationMetadataResponse' set_common_instance_metadata_operation_metadata: If the operation is for projects.setCommonInstanceMetadata, this field will contain information on all underlying zonal actions and their state.
         :param str start_time: The time that this operation was started by the server. This value is in RFC3339 text format.
         :param str status: The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
         :param str status_message: An optional textual description of the current status of the operation.
         :param str target_id: The unique target ID, which identifies a specific incarnation of the target resource.
         :param str target_link: The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
-        :param str user: User who requested the operation, for example: `user@example.com`.
+        :param str user: User who requested the operation, for example: `user@example.com` or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
         :param Sequence['OperationWarningsItemResponse'] warnings: If warning messages are generated during processing of the operation, this field will be populated.
         :param str zone: The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         """
@@ -549,6 +593,7 @@ class OperationResponse(dict):
         pulumi.set(__self__, "http_error_message", http_error_message)
         pulumi.set(__self__, "http_error_status_code", http_error_status_code)
         pulumi.set(__self__, "insert_time", insert_time)
+        pulumi.set(__self__, "instances_bulk_insert_operation_metadata", instances_bulk_insert_operation_metadata)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "operation_group_id", operation_group_id)
@@ -556,6 +601,7 @@ class OperationResponse(dict):
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "set_common_instance_metadata_operation_metadata", set_common_instance_metadata_operation_metadata)
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_message", status_message)
@@ -633,6 +679,11 @@ class OperationResponse(dict):
         return pulumi.get(self, "insert_time")
 
     @property
+    @pulumi.getter(name="instancesBulkInsertOperationMetadata")
+    def instances_bulk_insert_operation_metadata(self) -> 'outputs.InstancesBulkInsertOperationMetadataResponse':
+        return pulumi.get(self, "instances_bulk_insert_operation_metadata")
+
+    @property
     @pulumi.getter
     def kind(self) -> str:
         """
@@ -689,6 +740,14 @@ class OperationResponse(dict):
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="setCommonInstanceMetadataOperationMetadata")
+    def set_common_instance_metadata_operation_metadata(self) -> 'outputs.SetCommonInstanceMetadataOperationMetadataResponse':
+        """
+        If the operation is for projects.setCommonInstanceMetadata, this field will contain information on all underlying zonal actions and their state.
+        """
+        return pulumi.get(self, "set_common_instance_metadata_operation_metadata")
+
+    @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         """
@@ -732,7 +791,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def user(self) -> str:
         """
-        User who requested the operation, for example: `user@example.com`.
+        User who requested the operation, for example: `user@example.com` or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
         """
         return pulumi.get(self, "user")
 
@@ -820,6 +879,54 @@ class OperationWarningsItemResponse(dict):
         A human-readable description of the warning code.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class SetCommonInstanceMetadataOperationMetadataResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientOperationId":
+            suggest = "client_operation_id"
+        elif key == "perLocationOperations":
+            suggest = "per_location_operations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SetCommonInstanceMetadataOperationMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SetCommonInstanceMetadataOperationMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SetCommonInstanceMetadataOperationMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_operation_id: str,
+                 per_location_operations: Mapping[str, str]):
+        """
+        :param str client_operation_id: The client operation id.
+        :param Mapping[str, str] per_location_operations: Status information per location (location name is key). Example key: zones/us-central1-a
+        """
+        pulumi.set(__self__, "client_operation_id", client_operation_id)
+        pulumi.set(__self__, "per_location_operations", per_location_operations)
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> str:
+        """
+        The client operation id.
+        """
+        return pulumi.get(self, "client_operation_id")
+
+    @property
+    @pulumi.getter(name="perLocationOperations")
+    def per_location_operations(self) -> Mapping[str, str]:
+        """
+        Status information per location (location name is key). Example key: zones/us-central1-a
+        """
+        return pulumi.get(self, "per_location_operations")
 
 
 @pulumi.output_type

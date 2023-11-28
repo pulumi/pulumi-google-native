@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, config=None, create_time=None, display_name=None, endpoint_uris=None, free_instance_metadata=None, instance_type=None, labels=None, name=None, node_count=None, processing_units=None, state=None, update_time=None):
+    def __init__(__self__, autoscaling_config=None, config=None, create_time=None, display_name=None, endpoint_uris=None, free_instance_metadata=None, instance_type=None, labels=None, name=None, node_count=None, processing_units=None, state=None, update_time=None):
+        if autoscaling_config and not isinstance(autoscaling_config, dict):
+            raise TypeError("Expected argument 'autoscaling_config' to be a dict")
+        pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
@@ -56,6 +59,14 @@ class GetInstanceResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> 'outputs.AutoscalingConfigResponse':
+        """
+        Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+        """
+        return pulumi.get(self, "autoscaling_config")
 
     @property
     @pulumi.getter
@@ -163,6 +174,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            autoscaling_config=self.autoscaling_config,
             config=self.config,
             create_time=self.create_time,
             display_name=self.display_name,
@@ -192,6 +204,7 @@ def get_instance(field_mask: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:spanner/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        autoscaling_config=pulumi.get(__ret__, 'autoscaling_config'),
         config=pulumi.get(__ret__, 'config'),
         create_time=pulumi.get(__ret__, 'create_time'),
         display_name=pulumi.get(__ret__, 'display_name'),

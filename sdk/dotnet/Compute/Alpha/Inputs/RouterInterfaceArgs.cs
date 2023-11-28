@@ -19,13 +19,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? IpRange { get; set; }
 
         /// <summary>
-        /// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+        /// IP version of this interface.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.RouterInterfaceIpVersion>? IpVersion { get; set; }
+
+        /// <summary>
+        /// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
         /// </summary>
         [Input("linkedInterconnectAttachment")]
         public Input<string>? LinkedInterconnectAttachment { get; set; }
 
         /// <summary>
-        /// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+        /// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
         /// </summary>
         [Input("linkedVpnTunnel")]
         public Input<string>? LinkedVpnTunnel { get; set; }

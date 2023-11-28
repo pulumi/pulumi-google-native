@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupPlanResult:
-    def __init__(__self__, backup_config=None, backup_schedule=None, cluster=None, create_time=None, deactivated=None, description=None, etag=None, labels=None, name=None, protected_pod_count=None, retention_policy=None, uid=None, update_time=None):
+    def __init__(__self__, backup_config=None, backup_schedule=None, cluster=None, create_time=None, deactivated=None, description=None, etag=None, labels=None, name=None, protected_pod_count=None, retention_policy=None, state=None, state_reason=None, uid=None, update_time=None):
         if backup_config and not isinstance(backup_config, dict):
             raise TypeError("Expected argument 'backup_config' to be a dict")
         pulumi.set(__self__, "backup_config", backup_config)
@@ -53,6 +53,12 @@ class GetBackupPlanResult:
         if retention_policy and not isinstance(retention_policy, dict):
             raise TypeError("Expected argument 'retention_policy' to be a dict")
         pulumi.set(__self__, "retention_policy", retention_policy)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+        if state_reason and not isinstance(state_reason, str):
+            raise TypeError("Expected argument 'state_reason' to be a str")
+        pulumi.set(__self__, "state_reason", state_reason)
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
@@ -64,7 +70,7 @@ class GetBackupPlanResult:
     @pulumi.getter(name="backupConfig")
     def backup_config(self) -> 'outputs.BackupConfigResponse':
         """
-        Defines the configuration of Backups created via this BackupPlan.
+        Optional. Defines the configuration of Backups created via this BackupPlan.
         """
         return pulumi.get(self, "backup_config")
 
@@ -72,7 +78,7 @@ class GetBackupPlanResult:
     @pulumi.getter(name="backupSchedule")
     def backup_schedule(self) -> 'outputs.ScheduleResponse':
         """
-        Defines a schedule for automatic Backup creation via this BackupPlan.
+        Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
         """
         return pulumi.get(self, "backup_schedule")
 
@@ -96,7 +102,7 @@ class GetBackupPlanResult:
     @pulumi.getter
     def deactivated(self) -> bool:
         """
-        This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         """
         return pulumi.get(self, "deactivated")
 
@@ -104,7 +110,7 @@ class GetBackupPlanResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        User specified descriptive string for this BackupPlan.
+        Optional. User specified descriptive string for this BackupPlan.
         """
         return pulumi.get(self, "description")
 
@@ -120,7 +126,7 @@ class GetBackupPlanResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        A set of custom labels supplied by user.
+        Optional. A set of custom labels supplied by user.
         """
         return pulumi.get(self, "labels")
 
@@ -144,9 +150,25 @@ class GetBackupPlanResult:
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> 'outputs.RetentionPolicyResponse':
         """
-        RetentionPolicy governs lifecycle of Backups created under this plan.
+        Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
         """
         return pulumi.get(self, "retention_policy")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> str:
+        """
+        Human-readable description of why BackupPlan is in the current `state`
+        """
+        return pulumi.get(self, "state_reason")
 
     @property
     @pulumi.getter
@@ -182,6 +204,8 @@ class AwaitableGetBackupPlanResult(GetBackupPlanResult):
             name=self.name,
             protected_pod_count=self.protected_pod_count,
             retention_policy=self.retention_policy,
+            state=self.state,
+            state_reason=self.state_reason,
             uid=self.uid,
             update_time=self.update_time)
 
@@ -212,6 +236,8 @@ def get_backup_plan(backup_plan_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         protected_pod_count=pulumi.get(__ret__, 'protected_pod_count'),
         retention_policy=pulumi.get(__ret__, 'retention_policy'),
+        state=pulumi.get(__ret__, 'state'),
+        state_reason=pulumi.get(__ret__, 'state_reason'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

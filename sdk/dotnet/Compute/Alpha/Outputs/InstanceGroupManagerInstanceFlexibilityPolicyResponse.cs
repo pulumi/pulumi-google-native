@@ -14,14 +14,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class InstanceGroupManagerInstanceFlexibilityPolicyResponse
     {
         /// <summary>
-        /// List of instance selection options that the group will use when creating new VMs.
+        /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
         public readonly ImmutableDictionary<string, string> InstanceSelectionLists;
+        /// <summary>
+        /// Named instance selections configuring properties that the group will use when creating new VMs.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> InstanceSelections;
 
         [OutputConstructor]
-        private InstanceGroupManagerInstanceFlexibilityPolicyResponse(ImmutableDictionary<string, string> instanceSelectionLists)
+        private InstanceGroupManagerInstanceFlexibilityPolicyResponse(
+            ImmutableDictionary<string, string> instanceSelectionLists,
+
+            ImmutableDictionary<string, string> instanceSelections)
         {
             InstanceSelectionLists = instanceSelectionLists;
+            InstanceSelections = instanceSelections;
         }
     }
 }

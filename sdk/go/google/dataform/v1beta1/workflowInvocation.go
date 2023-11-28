@@ -18,7 +18,7 @@ import (
 type WorkflowInvocation struct {
 	pulumi.CustomResourceState
 
-	// Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+	// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 	CompilationResult pulumi.StringOutput `pulumi:"compilationResult"`
 	// Immutable. If left unset, a default InvocationConfig will be used.
 	InvocationConfig InvocationConfigResponseOutput `pulumi:"invocationConfig"`
@@ -29,6 +29,8 @@ type WorkflowInvocation struct {
 	Name         pulumi.StringOutput `pulumi:"name"`
 	Project      pulumi.StringOutput `pulumi:"project"`
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
+	// The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+	ResolvedCompilationResult pulumi.StringOutput `pulumi:"resolvedCompilationResult"`
 	// This workflow invocation's current state.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
@@ -84,7 +86,7 @@ func (WorkflowInvocationState) ElementType() reflect.Type {
 }
 
 type workflowInvocationArgs struct {
-	// Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+	// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 	CompilationResult *string `pulumi:"compilationResult"`
 	// Immutable. If left unset, a default InvocationConfig will be used.
 	InvocationConfig *InvocationConfig `pulumi:"invocationConfig"`
@@ -97,7 +99,7 @@ type workflowInvocationArgs struct {
 
 // The set of arguments for constructing a WorkflowInvocation resource.
 type WorkflowInvocationArgs struct {
-	// Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+	// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 	CompilationResult pulumi.StringPtrInput
 	// Immutable. If left unset, a default InvocationConfig will be used.
 	InvocationConfig InvocationConfigPtrInput
@@ -157,7 +159,7 @@ func (o WorkflowInvocationOutput) ToOutput(ctx context.Context) pulumix.Output[*
 	}
 }
 
-// Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 func (o WorkflowInvocationOutput) CompilationResult() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowInvocation) pulumi.StringOutput { return v.CompilationResult }).(pulumi.StringOutput)
 }
@@ -187,6 +189,11 @@ func (o WorkflowInvocationOutput) Project() pulumi.StringOutput {
 
 func (o WorkflowInvocationOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowInvocation) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
+}
+
+// The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+func (o WorkflowInvocationOutput) ResolvedCompilationResult() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkflowInvocation) pulumi.StringOutput { return v.ResolvedCompilationResult }).(pulumi.StringOutput)
 }
 
 // This workflow invocation's current state.

@@ -30,6 +30,8 @@ type LookupInstanceArgs struct {
 }
 
 type LookupInstanceResult struct {
+	// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+	AutoscalingConfig AutoscalingConfigResponse `pulumi:"autoscalingConfig"`
 	// The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
 	Config string `pulumi:"config"`
 	// The time at which the instance was created.
@@ -99,6 +101,11 @@ func (o LookupInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output
 	return pulumix.Output[LookupInstanceResult]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+func (o LookupInstanceResultOutput) AutoscalingConfig() AutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) AutoscalingConfigResponse { return v.AutoscalingConfig }).(AutoscalingConfigResponseOutput)
 }
 
 // The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.

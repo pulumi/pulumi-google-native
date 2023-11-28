@@ -11,6 +11,195 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Optional. The type of disk provisioning to use for the VM.
+type BootDiskDefaultsDiskType string
+
+const (
+	// An unspecified disk type. Will be used as STANDARD.
+	BootDiskDefaultsDiskTypeComputeEngineDiskTypeUnspecified = BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED")
+	// A Standard disk type.
+	BootDiskDefaultsDiskTypeComputeEngineDiskTypeStandard = BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_STANDARD")
+	// SSD hard disk type.
+	BootDiskDefaultsDiskTypeComputeEngineDiskTypeSsd = BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_SSD")
+	// An alternative to SSD persistent disks that balance performance and cost.
+	BootDiskDefaultsDiskTypeComputeEngineDiskTypeBalanced = BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_BALANCED")
+)
+
+func (BootDiskDefaultsDiskType) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootDiskDefaultsDiskType)(nil)).Elem()
+}
+
+func (e BootDiskDefaultsDiskType) ToBootDiskDefaultsDiskTypeOutput() BootDiskDefaultsDiskTypeOutput {
+	return pulumi.ToOutput(e).(BootDiskDefaultsDiskTypeOutput)
+}
+
+func (e BootDiskDefaultsDiskType) ToBootDiskDefaultsDiskTypeOutputWithContext(ctx context.Context) BootDiskDefaultsDiskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BootDiskDefaultsDiskTypeOutput)
+}
+
+func (e BootDiskDefaultsDiskType) ToBootDiskDefaultsDiskTypePtrOutput() BootDiskDefaultsDiskTypePtrOutput {
+	return e.ToBootDiskDefaultsDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (e BootDiskDefaultsDiskType) ToBootDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) BootDiskDefaultsDiskTypePtrOutput {
+	return BootDiskDefaultsDiskType(e).ToBootDiskDefaultsDiskTypeOutputWithContext(ctx).ToBootDiskDefaultsDiskTypePtrOutputWithContext(ctx)
+}
+
+func (e BootDiskDefaultsDiskType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BootDiskDefaultsDiskType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BootDiskDefaultsDiskType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BootDiskDefaultsDiskType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BootDiskDefaultsDiskTypeOutput struct{ *pulumi.OutputState }
+
+func (BootDiskDefaultsDiskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootDiskDefaultsDiskType)(nil)).Elem()
+}
+
+func (o BootDiskDefaultsDiskTypeOutput) ToBootDiskDefaultsDiskTypeOutput() BootDiskDefaultsDiskTypeOutput {
+	return o
+}
+
+func (o BootDiskDefaultsDiskTypeOutput) ToBootDiskDefaultsDiskTypeOutputWithContext(ctx context.Context) BootDiskDefaultsDiskTypeOutput {
+	return o
+}
+
+func (o BootDiskDefaultsDiskTypeOutput) ToBootDiskDefaultsDiskTypePtrOutput() BootDiskDefaultsDiskTypePtrOutput {
+	return o.ToBootDiskDefaultsDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (o BootDiskDefaultsDiskTypeOutput) ToBootDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) BootDiskDefaultsDiskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BootDiskDefaultsDiskType) *BootDiskDefaultsDiskType {
+		return &v
+	}).(BootDiskDefaultsDiskTypePtrOutput)
+}
+
+func (o BootDiskDefaultsDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskDefaultsDiskType] {
+	return pulumix.Output[BootDiskDefaultsDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BootDiskDefaultsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BootDiskDefaultsDiskTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BootDiskDefaultsDiskType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BootDiskDefaultsDiskTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BootDiskDefaultsDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BootDiskDefaultsDiskType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BootDiskDefaultsDiskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (BootDiskDefaultsDiskTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BootDiskDefaultsDiskType)(nil)).Elem()
+}
+
+func (o BootDiskDefaultsDiskTypePtrOutput) ToBootDiskDefaultsDiskTypePtrOutput() BootDiskDefaultsDiskTypePtrOutput {
+	return o
+}
+
+func (o BootDiskDefaultsDiskTypePtrOutput) ToBootDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) BootDiskDefaultsDiskTypePtrOutput {
+	return o
+}
+
+func (o BootDiskDefaultsDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDefaultsDiskType] {
+	return pulumix.Output[*BootDiskDefaultsDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BootDiskDefaultsDiskTypePtrOutput) Elem() BootDiskDefaultsDiskTypeOutput {
+	return o.ApplyT(func(v *BootDiskDefaultsDiskType) BootDiskDefaultsDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret BootDiskDefaultsDiskType
+		return ret
+	}).(BootDiskDefaultsDiskTypeOutput)
+}
+
+func (o BootDiskDefaultsDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BootDiskDefaultsDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BootDiskDefaultsDiskType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BootDiskDefaultsDiskTypeInput is an input type that accepts BootDiskDefaultsDiskTypeArgs and BootDiskDefaultsDiskTypeOutput values.
+// You can construct a concrete instance of `BootDiskDefaultsDiskTypeInput` via:
+//
+//	BootDiskDefaultsDiskTypeArgs{...}
+type BootDiskDefaultsDiskTypeInput interface {
+	pulumi.Input
+
+	ToBootDiskDefaultsDiskTypeOutput() BootDiskDefaultsDiskTypeOutput
+	ToBootDiskDefaultsDiskTypeOutputWithContext(context.Context) BootDiskDefaultsDiskTypeOutput
+}
+
+var bootDiskDefaultsDiskTypePtrType = reflect.TypeOf((**BootDiskDefaultsDiskType)(nil)).Elem()
+
+type BootDiskDefaultsDiskTypePtrInput interface {
+	pulumi.Input
+
+	ToBootDiskDefaultsDiskTypePtrOutput() BootDiskDefaultsDiskTypePtrOutput
+	ToBootDiskDefaultsDiskTypePtrOutputWithContext(context.Context) BootDiskDefaultsDiskTypePtrOutput
+}
+
+type bootDiskDefaultsDiskTypePtr string
+
+func BootDiskDefaultsDiskTypePtr(v string) BootDiskDefaultsDiskTypePtrInput {
+	return (*bootDiskDefaultsDiskTypePtr)(&v)
+}
+
+func (*bootDiskDefaultsDiskTypePtr) ElementType() reflect.Type {
+	return bootDiskDefaultsDiskTypePtrType
+}
+
+func (in *bootDiskDefaultsDiskTypePtr) ToBootDiskDefaultsDiskTypePtrOutput() BootDiskDefaultsDiskTypePtrOutput {
+	return pulumi.ToOutput(in).(BootDiskDefaultsDiskTypePtrOutput)
+}
+
+func (in *bootDiskDefaultsDiskTypePtr) ToBootDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) BootDiskDefaultsDiskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BootDiskDefaultsDiskTypePtrOutput)
+}
+
+func (in *bootDiskDefaultsDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDefaultsDiskType] {
+	return pulumix.Output[*BootDiskDefaultsDiskType]{
+		OutputState: in.ToBootDiskDefaultsDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The disk type to use in the VM.
 type ComputeEngineTargetDefaultsDiskType string
 
@@ -761,6 +950,382 @@ func (in *computeSchedulingRestartTypePtr) ToOutput(ctx context.Context) pulumix
 	}
 }
 
+// Immutable. The target type of this group.
+type GroupMigrationTargetType string
+
+const (
+	// Group type is not specified. This defaults to Compute Engine targets.
+	GroupMigrationTargetTypeMigrationTargetTypeUnspecified = GroupMigrationTargetType("MIGRATION_TARGET_TYPE_UNSPECIFIED")
+	// All MigratingVMs in the group must have Compute Engine targets.
+	GroupMigrationTargetTypeMigrationTargetTypeGce = GroupMigrationTargetType("MIGRATION_TARGET_TYPE_GCE")
+	// All MigratingVMs in the group must have Compute Engine Disks targets.
+	GroupMigrationTargetTypeMigrationTargetTypeDisks = GroupMigrationTargetType("MIGRATION_TARGET_TYPE_DISKS")
+)
+
+func (GroupMigrationTargetType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMigrationTargetType)(nil)).Elem()
+}
+
+func (e GroupMigrationTargetType) ToGroupMigrationTargetTypeOutput() GroupMigrationTargetTypeOutput {
+	return pulumi.ToOutput(e).(GroupMigrationTargetTypeOutput)
+}
+
+func (e GroupMigrationTargetType) ToGroupMigrationTargetTypeOutputWithContext(ctx context.Context) GroupMigrationTargetTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GroupMigrationTargetTypeOutput)
+}
+
+func (e GroupMigrationTargetType) ToGroupMigrationTargetTypePtrOutput() GroupMigrationTargetTypePtrOutput {
+	return e.ToGroupMigrationTargetTypePtrOutputWithContext(context.Background())
+}
+
+func (e GroupMigrationTargetType) ToGroupMigrationTargetTypePtrOutputWithContext(ctx context.Context) GroupMigrationTargetTypePtrOutput {
+	return GroupMigrationTargetType(e).ToGroupMigrationTargetTypeOutputWithContext(ctx).ToGroupMigrationTargetTypePtrOutputWithContext(ctx)
+}
+
+func (e GroupMigrationTargetType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GroupMigrationTargetType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GroupMigrationTargetType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GroupMigrationTargetType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GroupMigrationTargetTypeOutput struct{ *pulumi.OutputState }
+
+func (GroupMigrationTargetTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMigrationTargetType)(nil)).Elem()
+}
+
+func (o GroupMigrationTargetTypeOutput) ToGroupMigrationTargetTypeOutput() GroupMigrationTargetTypeOutput {
+	return o
+}
+
+func (o GroupMigrationTargetTypeOutput) ToGroupMigrationTargetTypeOutputWithContext(ctx context.Context) GroupMigrationTargetTypeOutput {
+	return o
+}
+
+func (o GroupMigrationTargetTypeOutput) ToGroupMigrationTargetTypePtrOutput() GroupMigrationTargetTypePtrOutput {
+	return o.ToGroupMigrationTargetTypePtrOutputWithContext(context.Background())
+}
+
+func (o GroupMigrationTargetTypeOutput) ToGroupMigrationTargetTypePtrOutputWithContext(ctx context.Context) GroupMigrationTargetTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMigrationTargetType) *GroupMigrationTargetType {
+		return &v
+	}).(GroupMigrationTargetTypePtrOutput)
+}
+
+func (o GroupMigrationTargetTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMigrationTargetType] {
+	return pulumix.Output[GroupMigrationTargetType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GroupMigrationTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GroupMigrationTargetTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GroupMigrationTargetType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GroupMigrationTargetTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GroupMigrationTargetTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GroupMigrationTargetType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GroupMigrationTargetTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GroupMigrationTargetTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMigrationTargetType)(nil)).Elem()
+}
+
+func (o GroupMigrationTargetTypePtrOutput) ToGroupMigrationTargetTypePtrOutput() GroupMigrationTargetTypePtrOutput {
+	return o
+}
+
+func (o GroupMigrationTargetTypePtrOutput) ToGroupMigrationTargetTypePtrOutputWithContext(ctx context.Context) GroupMigrationTargetTypePtrOutput {
+	return o
+}
+
+func (o GroupMigrationTargetTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMigrationTargetType] {
+	return pulumix.Output[*GroupMigrationTargetType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GroupMigrationTargetTypePtrOutput) Elem() GroupMigrationTargetTypeOutput {
+	return o.ApplyT(func(v *GroupMigrationTargetType) GroupMigrationTargetType {
+		if v != nil {
+			return *v
+		}
+		var ret GroupMigrationTargetType
+		return ret
+	}).(GroupMigrationTargetTypeOutput)
+}
+
+func (o GroupMigrationTargetTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GroupMigrationTargetTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GroupMigrationTargetType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GroupMigrationTargetTypeInput is an input type that accepts GroupMigrationTargetTypeArgs and GroupMigrationTargetTypeOutput values.
+// You can construct a concrete instance of `GroupMigrationTargetTypeInput` via:
+//
+//	GroupMigrationTargetTypeArgs{...}
+type GroupMigrationTargetTypeInput interface {
+	pulumi.Input
+
+	ToGroupMigrationTargetTypeOutput() GroupMigrationTargetTypeOutput
+	ToGroupMigrationTargetTypeOutputWithContext(context.Context) GroupMigrationTargetTypeOutput
+}
+
+var groupMigrationTargetTypePtrType = reflect.TypeOf((**GroupMigrationTargetType)(nil)).Elem()
+
+type GroupMigrationTargetTypePtrInput interface {
+	pulumi.Input
+
+	ToGroupMigrationTargetTypePtrOutput() GroupMigrationTargetTypePtrOutput
+	ToGroupMigrationTargetTypePtrOutputWithContext(context.Context) GroupMigrationTargetTypePtrOutput
+}
+
+type groupMigrationTargetTypePtr string
+
+func GroupMigrationTargetTypePtr(v string) GroupMigrationTargetTypePtrInput {
+	return (*groupMigrationTargetTypePtr)(&v)
+}
+
+func (*groupMigrationTargetTypePtr) ElementType() reflect.Type {
+	return groupMigrationTargetTypePtrType
+}
+
+func (in *groupMigrationTargetTypePtr) ToGroupMigrationTargetTypePtrOutput() GroupMigrationTargetTypePtrOutput {
+	return pulumi.ToOutput(in).(GroupMigrationTargetTypePtrOutput)
+}
+
+func (in *groupMigrationTargetTypePtr) ToGroupMigrationTargetTypePtrOutputWithContext(ctx context.Context) GroupMigrationTargetTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GroupMigrationTargetTypePtrOutput)
+}
+
+func (in *groupMigrationTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GroupMigrationTargetType] {
+	return pulumix.Output[*GroupMigrationTargetType]{
+		OutputState: in.ToGroupMigrationTargetTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The disk type to use.
+type PersistentDiskDefaultsDiskType string
+
+const (
+	// An unspecified disk type. Will be used as STANDARD.
+	PersistentDiskDefaultsDiskTypeComputeEngineDiskTypeUnspecified = PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED")
+	// A Standard disk type.
+	PersistentDiskDefaultsDiskTypeComputeEngineDiskTypeStandard = PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_STANDARD")
+	// SSD hard disk type.
+	PersistentDiskDefaultsDiskTypeComputeEngineDiskTypeSsd = PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_SSD")
+	// An alternative to SSD persistent disks that balance performance and cost.
+	PersistentDiskDefaultsDiskTypeComputeEngineDiskTypeBalanced = PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_BALANCED")
+)
+
+func (PersistentDiskDefaultsDiskType) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistentDiskDefaultsDiskType)(nil)).Elem()
+}
+
+func (e PersistentDiskDefaultsDiskType) ToPersistentDiskDefaultsDiskTypeOutput() PersistentDiskDefaultsDiskTypeOutput {
+	return pulumi.ToOutput(e).(PersistentDiskDefaultsDiskTypeOutput)
+}
+
+func (e PersistentDiskDefaultsDiskType) ToPersistentDiskDefaultsDiskTypeOutputWithContext(ctx context.Context) PersistentDiskDefaultsDiskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PersistentDiskDefaultsDiskTypeOutput)
+}
+
+func (e PersistentDiskDefaultsDiskType) ToPersistentDiskDefaultsDiskTypePtrOutput() PersistentDiskDefaultsDiskTypePtrOutput {
+	return e.ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (e PersistentDiskDefaultsDiskType) ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) PersistentDiskDefaultsDiskTypePtrOutput {
+	return PersistentDiskDefaultsDiskType(e).ToPersistentDiskDefaultsDiskTypeOutputWithContext(ctx).ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(ctx)
+}
+
+func (e PersistentDiskDefaultsDiskType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PersistentDiskDefaultsDiskType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PersistentDiskDefaultsDiskType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PersistentDiskDefaultsDiskType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PersistentDiskDefaultsDiskTypeOutput struct{ *pulumi.OutputState }
+
+func (PersistentDiskDefaultsDiskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistentDiskDefaultsDiskType)(nil)).Elem()
+}
+
+func (o PersistentDiskDefaultsDiskTypeOutput) ToPersistentDiskDefaultsDiskTypeOutput() PersistentDiskDefaultsDiskTypeOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsDiskTypeOutput) ToPersistentDiskDefaultsDiskTypeOutputWithContext(ctx context.Context) PersistentDiskDefaultsDiskTypeOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsDiskTypeOutput) ToPersistentDiskDefaultsDiskTypePtrOutput() PersistentDiskDefaultsDiskTypePtrOutput {
+	return o.ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (o PersistentDiskDefaultsDiskTypeOutput) ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) PersistentDiskDefaultsDiskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersistentDiskDefaultsDiskType) *PersistentDiskDefaultsDiskType {
+		return &v
+	}).(PersistentDiskDefaultsDiskTypePtrOutput)
+}
+
+func (o PersistentDiskDefaultsDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PersistentDiskDefaultsDiskType] {
+	return pulumix.Output[PersistentDiskDefaultsDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PersistentDiskDefaultsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PersistentDiskDefaultsDiskTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PersistentDiskDefaultsDiskType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PersistentDiskDefaultsDiskTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PersistentDiskDefaultsDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PersistentDiskDefaultsDiskType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PersistentDiskDefaultsDiskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PersistentDiskDefaultsDiskTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersistentDiskDefaultsDiskType)(nil)).Elem()
+}
+
+func (o PersistentDiskDefaultsDiskTypePtrOutput) ToPersistentDiskDefaultsDiskTypePtrOutput() PersistentDiskDefaultsDiskTypePtrOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsDiskTypePtrOutput) ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) PersistentDiskDefaultsDiskTypePtrOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PersistentDiskDefaultsDiskType] {
+	return pulumix.Output[*PersistentDiskDefaultsDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PersistentDiskDefaultsDiskTypePtrOutput) Elem() PersistentDiskDefaultsDiskTypeOutput {
+	return o.ApplyT(func(v *PersistentDiskDefaultsDiskType) PersistentDiskDefaultsDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret PersistentDiskDefaultsDiskType
+		return ret
+	}).(PersistentDiskDefaultsDiskTypeOutput)
+}
+
+func (o PersistentDiskDefaultsDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PersistentDiskDefaultsDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PersistentDiskDefaultsDiskType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PersistentDiskDefaultsDiskTypeInput is an input type that accepts PersistentDiskDefaultsDiskTypeArgs and PersistentDiskDefaultsDiskTypeOutput values.
+// You can construct a concrete instance of `PersistentDiskDefaultsDiskTypeInput` via:
+//
+//	PersistentDiskDefaultsDiskTypeArgs{...}
+type PersistentDiskDefaultsDiskTypeInput interface {
+	pulumi.Input
+
+	ToPersistentDiskDefaultsDiskTypeOutput() PersistentDiskDefaultsDiskTypeOutput
+	ToPersistentDiskDefaultsDiskTypeOutputWithContext(context.Context) PersistentDiskDefaultsDiskTypeOutput
+}
+
+var persistentDiskDefaultsDiskTypePtrType = reflect.TypeOf((**PersistentDiskDefaultsDiskType)(nil)).Elem()
+
+type PersistentDiskDefaultsDiskTypePtrInput interface {
+	pulumi.Input
+
+	ToPersistentDiskDefaultsDiskTypePtrOutput() PersistentDiskDefaultsDiskTypePtrOutput
+	ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(context.Context) PersistentDiskDefaultsDiskTypePtrOutput
+}
+
+type persistentDiskDefaultsDiskTypePtr string
+
+func PersistentDiskDefaultsDiskTypePtr(v string) PersistentDiskDefaultsDiskTypePtrInput {
+	return (*persistentDiskDefaultsDiskTypePtr)(&v)
+}
+
+func (*persistentDiskDefaultsDiskTypePtr) ElementType() reflect.Type {
+	return persistentDiskDefaultsDiskTypePtrType
+}
+
+func (in *persistentDiskDefaultsDiskTypePtr) ToPersistentDiskDefaultsDiskTypePtrOutput() PersistentDiskDefaultsDiskTypePtrOutput {
+	return pulumi.ToOutput(in).(PersistentDiskDefaultsDiskTypePtrOutput)
+}
+
+func (in *persistentDiskDefaultsDiskTypePtr) ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) PersistentDiskDefaultsDiskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PersistentDiskDefaultsDiskTypePtrOutput)
+}
+
+func (in *persistentDiskDefaultsDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PersistentDiskDefaultsDiskType] {
+	return pulumix.Output[*PersistentDiskDefaultsDiskType]{
+		OutputState: in.ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The operator to use for the node resources specified in the `values` parameter.
 type SchedulingNodeAffinityOperator string
 
@@ -1327,6 +1892,8 @@ func (in *vmwareVmDetailsPowerStatePtr) ToOutput(ctx context.Context) pulumix.Ou
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BootDiskDefaultsDiskTypeInput)(nil)).Elem(), BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BootDiskDefaultsDiskTypePtrInput)(nil)).Elem(), BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsDiskTypeInput)(nil)).Elem(), ComputeEngineTargetDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsDiskTypePtrInput)(nil)).Elem(), ComputeEngineTargetDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsLicenseTypeInput)(nil)).Elem(), ComputeEngineTargetDefaultsLicenseType("COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"))
@@ -1335,12 +1902,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingOnHostMaintenancePtrInput)(nil)).Elem(), ComputeSchedulingOnHostMaintenance("ON_HOST_MAINTENANCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingRestartTypeInput)(nil)).Elem(), ComputeSchedulingRestartType("RESTART_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingRestartTypePtrInput)(nil)).Elem(), ComputeSchedulingRestartType("RESTART_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMigrationTargetTypeInput)(nil)).Elem(), GroupMigrationTargetType("MIGRATION_TARGET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMigrationTargetTypePtrInput)(nil)).Elem(), GroupMigrationTargetType("MIGRATION_TARGET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistentDiskDefaultsDiskTypeInput)(nil)).Elem(), PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistentDiskDefaultsDiskTypePtrInput)(nil)).Elem(), PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityOperatorInput)(nil)).Elem(), SchedulingNodeAffinityOperator("OPERATOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityOperatorPtrInput)(nil)).Elem(), SchedulingNodeAffinityOperator("OPERATOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UtilizationReportTimeFrameInput)(nil)).Elem(), UtilizationReportTimeFrame("TIME_FRAME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UtilizationReportTimeFramePtrInput)(nil)).Elem(), UtilizationReportTimeFrame("TIME_FRAME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsPowerStateInput)(nil)).Elem(), VmwareVmDetailsPowerState("POWER_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsPowerStatePtrInput)(nil)).Elem(), VmwareVmDetailsPowerState("POWER_STATE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(BootDiskDefaultsDiskTypeOutput{})
+	pulumi.RegisterOutputType(BootDiskDefaultsDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsDiskTypeOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsLicenseTypeOutput{})
@@ -1349,6 +1922,10 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingOnHostMaintenancePtrOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingRestartTypeOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingRestartTypePtrOutput{})
+	pulumi.RegisterOutputType(GroupMigrationTargetTypeOutput{})
+	pulumi.RegisterOutputType(GroupMigrationTargetTypePtrOutput{})
+	pulumi.RegisterOutputType(PersistentDiskDefaultsDiskTypeOutput{})
+	pulumi.RegisterOutputType(PersistentDiskDefaultsDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOperatorOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOperatorPtrOutput{})
 	pulumi.RegisterOutputType(UtilizationReportTimeFrameOutput{})

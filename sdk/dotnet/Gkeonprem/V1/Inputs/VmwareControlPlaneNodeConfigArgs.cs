@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
         [Input("replicas")]
         public Input<string>? Replicas { get; set; }
 
+        /// <summary>
+        /// Vsphere-specific config.
+        /// </summary>
+        [Input("vsphereConfig")]
+        public Input<Inputs.VmwareControlPlaneVsphereConfigArgs>? VsphereConfig { get; set; }
+
         public VmwareControlPlaneNodeConfigArgs()
         {
         }

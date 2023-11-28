@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta.Inputs
         }
 
         /// <summary>
-        /// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+        /// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
         /// </summary>
         [Input("negate")]
         public Input<bool>? Negate { get; set; }

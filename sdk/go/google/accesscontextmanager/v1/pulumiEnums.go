@@ -1623,6 +1623,193 @@ func (in *egressFromIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+type EgressFromSourceRestriction string
+
+const (
+	// Enforcement preference unspecified, will not enforce traffic restrictions based on `sources` in EgressFrom.
+	EgressFromSourceRestrictionSourceRestrictionUnspecified = EgressFromSourceRestriction("SOURCE_RESTRICTION_UNSPECIFIED")
+	// Enforcement preference enabled, traffic restrictions will be enforced based on `sources` in EgressFrom.
+	EgressFromSourceRestrictionSourceRestrictionEnabled = EgressFromSourceRestriction("SOURCE_RESTRICTION_ENABLED")
+	// Enforcement preference disabled, will not enforce traffic restrictions based on `sources` in EgressFrom.
+	EgressFromSourceRestrictionSourceRestrictionDisabled = EgressFromSourceRestriction("SOURCE_RESTRICTION_DISABLED")
+)
+
+func (EgressFromSourceRestriction) ElementType() reflect.Type {
+	return reflect.TypeOf((*EgressFromSourceRestriction)(nil)).Elem()
+}
+
+func (e EgressFromSourceRestriction) ToEgressFromSourceRestrictionOutput() EgressFromSourceRestrictionOutput {
+	return pulumi.ToOutput(e).(EgressFromSourceRestrictionOutput)
+}
+
+func (e EgressFromSourceRestriction) ToEgressFromSourceRestrictionOutputWithContext(ctx context.Context) EgressFromSourceRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EgressFromSourceRestrictionOutput)
+}
+
+func (e EgressFromSourceRestriction) ToEgressFromSourceRestrictionPtrOutput() EgressFromSourceRestrictionPtrOutput {
+	return e.ToEgressFromSourceRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (e EgressFromSourceRestriction) ToEgressFromSourceRestrictionPtrOutputWithContext(ctx context.Context) EgressFromSourceRestrictionPtrOutput {
+	return EgressFromSourceRestriction(e).ToEgressFromSourceRestrictionOutputWithContext(ctx).ToEgressFromSourceRestrictionPtrOutputWithContext(ctx)
+}
+
+func (e EgressFromSourceRestriction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EgressFromSourceRestriction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EgressFromSourceRestriction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EgressFromSourceRestriction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EgressFromSourceRestrictionOutput struct{ *pulumi.OutputState }
+
+func (EgressFromSourceRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EgressFromSourceRestriction)(nil)).Elem()
+}
+
+func (o EgressFromSourceRestrictionOutput) ToEgressFromSourceRestrictionOutput() EgressFromSourceRestrictionOutput {
+	return o
+}
+
+func (o EgressFromSourceRestrictionOutput) ToEgressFromSourceRestrictionOutputWithContext(ctx context.Context) EgressFromSourceRestrictionOutput {
+	return o
+}
+
+func (o EgressFromSourceRestrictionOutput) ToEgressFromSourceRestrictionPtrOutput() EgressFromSourceRestrictionPtrOutput {
+	return o.ToEgressFromSourceRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (o EgressFromSourceRestrictionOutput) ToEgressFromSourceRestrictionPtrOutputWithContext(ctx context.Context) EgressFromSourceRestrictionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EgressFromSourceRestriction) *EgressFromSourceRestriction {
+		return &v
+	}).(EgressFromSourceRestrictionPtrOutput)
+}
+
+func (o EgressFromSourceRestrictionOutput) ToOutput(ctx context.Context) pulumix.Output[EgressFromSourceRestriction] {
+	return pulumix.Output[EgressFromSourceRestriction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EgressFromSourceRestrictionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EgressFromSourceRestrictionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EgressFromSourceRestriction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EgressFromSourceRestrictionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EgressFromSourceRestrictionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EgressFromSourceRestriction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EgressFromSourceRestrictionPtrOutput struct{ *pulumi.OutputState }
+
+func (EgressFromSourceRestrictionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EgressFromSourceRestriction)(nil)).Elem()
+}
+
+func (o EgressFromSourceRestrictionPtrOutput) ToEgressFromSourceRestrictionPtrOutput() EgressFromSourceRestrictionPtrOutput {
+	return o
+}
+
+func (o EgressFromSourceRestrictionPtrOutput) ToEgressFromSourceRestrictionPtrOutputWithContext(ctx context.Context) EgressFromSourceRestrictionPtrOutput {
+	return o
+}
+
+func (o EgressFromSourceRestrictionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EgressFromSourceRestriction] {
+	return pulumix.Output[*EgressFromSourceRestriction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EgressFromSourceRestrictionPtrOutput) Elem() EgressFromSourceRestrictionOutput {
+	return o.ApplyT(func(v *EgressFromSourceRestriction) EgressFromSourceRestriction {
+		if v != nil {
+			return *v
+		}
+		var ret EgressFromSourceRestriction
+		return ret
+	}).(EgressFromSourceRestrictionOutput)
+}
+
+func (o EgressFromSourceRestrictionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EgressFromSourceRestrictionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EgressFromSourceRestriction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EgressFromSourceRestrictionInput is an input type that accepts EgressFromSourceRestrictionArgs and EgressFromSourceRestrictionOutput values.
+// You can construct a concrete instance of `EgressFromSourceRestrictionInput` via:
+//
+//	EgressFromSourceRestrictionArgs{...}
+type EgressFromSourceRestrictionInput interface {
+	pulumi.Input
+
+	ToEgressFromSourceRestrictionOutput() EgressFromSourceRestrictionOutput
+	ToEgressFromSourceRestrictionOutputWithContext(context.Context) EgressFromSourceRestrictionOutput
+}
+
+var egressFromSourceRestrictionPtrType = reflect.TypeOf((**EgressFromSourceRestriction)(nil)).Elem()
+
+type EgressFromSourceRestrictionPtrInput interface {
+	pulumi.Input
+
+	ToEgressFromSourceRestrictionPtrOutput() EgressFromSourceRestrictionPtrOutput
+	ToEgressFromSourceRestrictionPtrOutputWithContext(context.Context) EgressFromSourceRestrictionPtrOutput
+}
+
+type egressFromSourceRestrictionPtr string
+
+func EgressFromSourceRestrictionPtr(v string) EgressFromSourceRestrictionPtrInput {
+	return (*egressFromSourceRestrictionPtr)(&v)
+}
+
+func (*egressFromSourceRestrictionPtr) ElementType() reflect.Type {
+	return egressFromSourceRestrictionPtrType
+}
+
+func (in *egressFromSourceRestrictionPtr) ToEgressFromSourceRestrictionPtrOutput() EgressFromSourceRestrictionPtrOutput {
+	return pulumi.ToOutput(in).(EgressFromSourceRestrictionPtrOutput)
+}
+
+func (in *egressFromSourceRestrictionPtr) ToEgressFromSourceRestrictionPtrOutputWithContext(ctx context.Context) EgressFromSourceRestrictionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EgressFromSourceRestrictionPtrOutput)
+}
+
+func (in *egressFromSourceRestrictionPtr) ToOutput(ctx context.Context) pulumix.Output[*EgressFromSourceRestriction] {
+	return pulumix.Output[*EgressFromSourceRestriction]{
+		OutputState: in.ToEgressFromSourceRestrictionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
 type IngressFromIdentityType string
 
@@ -2211,6 +2398,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyAllowedEncryptionStatusesItemArrayInput)(nil)).Elem(), DevicePolicyAllowedEncryptionStatusesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromIdentityTypeInput)(nil)).Elem(), EgressFromIdentityType("IDENTITY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromIdentityTypePtrInput)(nil)).Elem(), EgressFromIdentityType("IDENTITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromSourceRestrictionInput)(nil)).Elem(), EgressFromSourceRestriction("SOURCE_RESTRICTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromSourceRestrictionPtrInput)(nil)).Elem(), EgressFromSourceRestriction("SOURCE_RESTRICTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressFromIdentityTypeInput)(nil)).Elem(), IngressFromIdentityType("IDENTITY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressFromIdentityTypePtrInput)(nil)).Elem(), IngressFromIdentityType("IDENTITY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OsConstraintOsTypeInput)(nil)).Elem(), OsConstraintOsType("OS_UNSPECIFIED"))
@@ -2235,6 +2424,8 @@ func init() {
 	pulumi.RegisterOutputType(DevicePolicyAllowedEncryptionStatusesItemArrayOutput{})
 	pulumi.RegisterOutputType(EgressFromIdentityTypeOutput{})
 	pulumi.RegisterOutputType(EgressFromIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(EgressFromSourceRestrictionOutput{})
+	pulumi.RegisterOutputType(EgressFromSourceRestrictionPtrOutput{})
 	pulumi.RegisterOutputType(IngressFromIdentityTypeOutput{})
 	pulumi.RegisterOutputType(IngressFromIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(OsConstraintOsTypeOutput{})

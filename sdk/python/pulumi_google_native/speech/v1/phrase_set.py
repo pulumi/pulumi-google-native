@@ -177,8 +177,16 @@ class PhraseSet(pulumi.CustomResource):
             __props__.__dict__["phrase_set_id"] = phrase_set_id
             __props__.__dict__["phrases"] = phrases
             __props__.__dict__["project"] = project
+            __props__.__dict__["annotations"] = None
+            __props__.__dict__["delete_time"] = None
+            __props__.__dict__["display_name"] = None
+            __props__.__dict__["etag"] = None
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["kms_key_name"] = None
             __props__.__dict__["kms_key_version_name"] = None
+            __props__.__dict__["reconciling"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["uid"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(PhraseSet, __self__).__init__(
@@ -203,14 +211,30 @@ class PhraseSet(pulumi.CustomResource):
 
         __props__ = PhraseSetArgs.__new__(PhraseSetArgs)
 
+        __props__.__dict__["annotations"] = None
         __props__.__dict__["boost"] = None
+        __props__.__dict__["delete_time"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["expire_time"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["kms_key_version_name"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["phrases"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["reconciling"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["uid"] = None
         return PhraseSet(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
@@ -219,6 +243,38 @@ class PhraseSet(pulumi.CustomResource):
         Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
         """
         return pulumi.get(self, "boost")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this resource was requested for deletion. This field is not used.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        User-settable, human-readable name for the PhraseSet. Must be 63 characters or less. This field is not used.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this resource will be purged. This field is not used.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -261,4 +317,28 @@ class PhraseSet(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def reconciling(self) -> pulumi.Output[bool]:
+        """
+        Whether or not this PhraseSet is in the process of being updated. This field is not used.
+        """
+        return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The CustomClass lifecycle state. This field is not used.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        System-assigned unique identifier for the PhraseSet. This field is not used.
+        """
+        return pulumi.get(self, "uid")
 

@@ -38,6 +38,8 @@ type LookupCertificateTemplateResult struct {
 	IdentityConstraints CertificateIdentityConstraintsResponse `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
+	// Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+	MaximumLifetime string `pulumi:"maximumLifetime"`
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name string `pulumi:"name"`
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
@@ -111,6 +113,11 @@ func (o LookupCertificateTemplateResultOutput) IdentityConstraints() Certificate
 // Optional. Labels with user-defined metadata.
 func (o LookupCertificateTemplateResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCertificateTemplateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+func (o LookupCertificateTemplateResultOutput) MaximumLifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateTemplateResult) string { return v.MaximumLifetime }).(pulumi.StringOutput)
 }
 
 // The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.

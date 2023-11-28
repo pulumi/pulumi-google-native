@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionCommitmentResult:
-    def __init__(__self__, auto_renew=None, category=None, creation_timestamp=None, description=None, end_timestamp=None, kind=None, license_resource=None, merge_source_commitments=None, name=None, plan=None, region=None, reservations=None, resources=None, self_link=None, self_link_with_id=None, split_source_commitment=None, start_timestamp=None, status=None, status_message=None, type=None):
+    def __init__(__self__, auto_renew=None, category=None, creation_timestamp=None, description=None, end_timestamp=None, existing_reservations=None, kind=None, license_resource=None, merge_source_commitments=None, name=None, plan=None, region=None, reservations=None, resource_status=None, resources=None, self_link=None, self_link_with_id=None, split_source_commitment=None, start_timestamp=None, status=None, status_message=None, type=None):
         if auto_renew and not isinstance(auto_renew, bool):
             raise TypeError("Expected argument 'auto_renew' to be a bool")
         pulumi.set(__self__, "auto_renew", auto_renew)
@@ -35,6 +35,9 @@ class GetRegionCommitmentResult:
         if end_timestamp and not isinstance(end_timestamp, str):
             raise TypeError("Expected argument 'end_timestamp' to be a str")
         pulumi.set(__self__, "end_timestamp", end_timestamp)
+        if existing_reservations and not isinstance(existing_reservations, list):
+            raise TypeError("Expected argument 'existing_reservations' to be a list")
+        pulumi.set(__self__, "existing_reservations", existing_reservations)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -56,6 +59,9 @@ class GetRegionCommitmentResult:
         if reservations and not isinstance(reservations, list):
             raise TypeError("Expected argument 'reservations' to be a list")
         pulumi.set(__self__, "reservations", reservations)
+        if resource_status and not isinstance(resource_status, dict):
+            raise TypeError("Expected argument 'resource_status' to be a dict")
+        pulumi.set(__self__, "resource_status", resource_status)
         if resources and not isinstance(resources, list):
             raise TypeError("Expected argument 'resources' to be a list")
         pulumi.set(__self__, "resources", resources)
@@ -122,6 +128,14 @@ class GetRegionCommitmentResult:
         return pulumi.get(self, "end_timestamp")
 
     @property
+    @pulumi.getter(name="existingReservations")
+    def existing_reservations(self) -> Sequence[str]:
+        """
+        Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation 
+        """
+        return pulumi.get(self, "existing_reservations")
+
+    @property
     @pulumi.getter
     def kind(self) -> str:
         """
@@ -173,9 +187,17 @@ class GetRegionCommitmentResult:
     @pulumi.getter
     def reservations(self) -> Sequence['outputs.ReservationResponse']:
         """
-        List of reservations in this commitment.
+        List of create-on-create reseravtions for this commitment.
         """
         return pulumi.get(self, "reservations")
+
+    @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> 'outputs.CommitmentResourceStatusResponse':
+        """
+        Status information for Commitment resource.
+        """
+        return pulumi.get(self, "resource_status")
 
     @property
     @pulumi.getter
@@ -253,6 +275,7 @@ class AwaitableGetRegionCommitmentResult(GetRegionCommitmentResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             end_timestamp=self.end_timestamp,
+            existing_reservations=self.existing_reservations,
             kind=self.kind,
             license_resource=self.license_resource,
             merge_source_commitments=self.merge_source_commitments,
@@ -260,6 +283,7 @@ class AwaitableGetRegionCommitmentResult(GetRegionCommitmentResult):
             plan=self.plan,
             region=self.region,
             reservations=self.reservations,
+            resource_status=self.resource_status,
             resources=self.resources,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
@@ -290,6 +314,7 @@ def get_region_commitment(commitment: Optional[str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         end_timestamp=pulumi.get(__ret__, 'end_timestamp'),
+        existing_reservations=pulumi.get(__ret__, 'existing_reservations'),
         kind=pulumi.get(__ret__, 'kind'),
         license_resource=pulumi.get(__ret__, 'license_resource'),
         merge_source_commitments=pulumi.get(__ret__, 'merge_source_commitments'),
@@ -297,6 +322,7 @@ def get_region_commitment(commitment: Optional[str] = None,
         plan=pulumi.get(__ret__, 'plan'),
         region=pulumi.get(__ret__, 'region'),
         reservations=pulumi.get(__ret__, 'reservations'),
+        resource_status=pulumi.get(__ret__, 'resource_status'),
         resources=pulumi.get(__ret__, 'resources'),
         self_link=pulumi.get(__ret__, 'self_link'),
         self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),

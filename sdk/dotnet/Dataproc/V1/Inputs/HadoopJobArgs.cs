@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         private InputList<string>? _args;
 
         /// <summary>
-        /// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
         /// </summary>
         public InputList<string> Args
         {
@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+        /// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
         /// </summary>
         public InputMap<string> Properties
         {

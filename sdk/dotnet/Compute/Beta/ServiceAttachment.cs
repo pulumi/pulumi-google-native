@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.Uint128Response> PscServiceAttachmentId { get; private set; } = null!;
 
         /// <summary>
-        /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+        /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
         /// </summary>
         [Output("reconcileConnections")]
         public Output<bool> ReconcileConnections { get; private set; } = null!;
@@ -128,6 +128,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("targetService")]
         public Output<string> TargetService { get; private set; } = null!;
+
+        /// <summary>
+        /// When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+        /// </summary>
+        [Output("tunnelingConfig")]
+        public Output<Outputs.ServiceAttachmentTunnelingConfigResponse> TunnelingConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -261,7 +267,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+        /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
         /// </summary>
         [Input("reconcileConnections")]
         public Input<bool>? ReconcileConnections { get; set; }
@@ -280,6 +286,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("targetService")]
         public Input<string>? TargetService { get; set; }
+
+        /// <summary>
+        /// When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+        /// </summary>
+        [Input("tunnelingConfig")]
+        public Input<Inputs.ServiceAttachmentTunnelingConfigArgs>? TunnelingConfig { get; set; }
 
         public ServiceAttachmentArgs()
         {

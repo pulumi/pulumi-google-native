@@ -36,16 +36,20 @@ type LookupRestorePlanResult struct {
 	Cluster string `pulumi:"cluster"`
 	// The timestamp when this RestorePlan resource was created.
 	CreateTime string `pulumi:"createTime"`
-	// User specified descriptive string for this RestorePlan.
+	// Optional. User specified descriptive string for this RestorePlan.
 	Description string `pulumi:"description"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource.
 	Etag string `pulumi:"etag"`
-	// A set of custom labels supplied by user.
+	// Optional. A set of custom labels supplied by user.
 	Labels map[string]string `pulumi:"labels"`
 	// The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.
 	Name string `pulumi:"name"`
 	// Configuration of Restores created via this RestorePlan.
 	RestoreConfig RestoreConfigResponse `pulumi:"restoreConfig"`
+	// State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation.
+	State string `pulumi:"state"`
+	// Human-readable description of why RestorePlan is in the current `state`
+	StateReason string `pulumi:"stateReason"`
 	// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
 	Uid string `pulumi:"uid"`
 	// The timestamp when this RestorePlan resource was last updated.
@@ -110,7 +114,7 @@ func (o LookupRestorePlanResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// User specified descriptive string for this RestorePlan.
+// Optional. User specified descriptive string for this RestorePlan.
 func (o LookupRestorePlanResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -120,7 +124,7 @@ func (o LookupRestorePlanResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A set of custom labels supplied by user.
+// Optional. A set of custom labels supplied by user.
 func (o LookupRestorePlanResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -133,6 +137,16 @@ func (o LookupRestorePlanResultOutput) Name() pulumi.StringOutput {
 // Configuration of Restores created via this RestorePlan.
 func (o LookupRestorePlanResultOutput) RestoreConfig() RestoreConfigResponseOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) RestoreConfigResponse { return v.RestoreConfig }).(RestoreConfigResponseOutput)
+}
+
+// State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation.
+func (o LookupRestorePlanResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Human-readable description of why RestorePlan is in the current `state`
+func (o LookupRestorePlanResultOutput) StateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.StateReason }).(pulumi.StringOutput)
 }
 
 // Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.

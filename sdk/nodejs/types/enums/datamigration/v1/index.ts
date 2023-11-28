@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AlloyDbSettingsDatabaseVersion = {
+    /**
+     * This is an unknown database version.
+     */
+    DatabaseVersionUnspecified: "DATABASE_VERSION_UNSPECIFIED",
+    /**
+     * The database version is Postgres 14.
+     */
+    Postgres14: "POSTGRES_14",
+    /**
+     * The database version is Postgres 15.
+     */
+    Postgres15: "POSTGRES_15",
+} as const;
+
+/**
+ * Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+ */
+export type AlloyDbSettingsDatabaseVersion = (typeof AlloyDbSettingsDatabaseVersion)[keyof typeof AlloyDbSettingsDatabaseVersion];
+
 export const AuditLogConfigLogType = {
     /**
      * Default case. Should never be this.
@@ -100,6 +120,46 @@ export const CloudSqlSettingsDatabaseVersion = {
      */
     Mysql57: "MYSQL_5_7",
     /**
+     * MySQL 8.0.
+     */
+    Mysql80: "MYSQL_8_0",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 18.
+     */
+    Mysql8018: "MYSQL_8_0_18",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 26.
+     */
+    Mysql8026: "MYSQL_8_0_26",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 27.
+     */
+    Mysql8027: "MYSQL_8_0_27",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 28.
+     */
+    Mysql8028: "MYSQL_8_0_28",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 30.
+     */
+    Mysql8030: "MYSQL_8_0_30",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 31.
+     */
+    Mysql8031: "MYSQL_8_0_31",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 32.
+     */
+    Mysql8032: "MYSQL_8_0_32",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 33.
+     */
+    Mysql8033: "MYSQL_8_0_33",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 34.
+     */
+    Mysql8034: "MYSQL_8_0_34",
+    /**
      * PostgreSQL 9.6.
      */
     Postgres96: "POSTGRES_9_6",
@@ -112,10 +172,6 @@ export const CloudSqlSettingsDatabaseVersion = {
      */
     Postgres10: "POSTGRES_10",
     /**
-     * MySQL 8.0.
-     */
-    Mysql80: "MYSQL_8_0",
-    /**
      * PostgreSQL 12.
      */
     Postgres12: "POSTGRES_12",
@@ -127,12 +183,36 @@ export const CloudSqlSettingsDatabaseVersion = {
      * PostgreSQL 14.
      */
     Postgres14: "POSTGRES_14",
+    /**
+     * PostgreSQL 15.
+     */
+    Postgres15: "POSTGRES_15",
 } as const;
 
 /**
  * The database engine type and version.
  */
 export type CloudSqlSettingsDatabaseVersion = (typeof CloudSqlSettingsDatabaseVersion)[keyof typeof CloudSqlSettingsDatabaseVersion];
+
+export const CloudSqlSettingsEdition = {
+    /**
+     * The instance did not specify the edition.
+     */
+    EditionUnspecified: "EDITION_UNSPECIFIED",
+    /**
+     * The instance is an enterprise edition.
+     */
+    Enterprise: "ENTERPRISE",
+    /**
+     * The instance is an enterprise plus edition.
+     */
+    EnterprisePlus: "ENTERPRISE_PLUS",
+} as const;
+
+/**
+ * Optional. The edition of the given Cloud SQL instance.
+ */
+export type CloudSqlSettingsEdition = (typeof CloudSqlSettingsEdition)[keyof typeof CloudSqlSettingsEdition];
 
 export const ConnectionProfileProvider = {
     /**
@@ -278,6 +358,158 @@ export const DatabaseTypeProvider = {
  */
 export type DatabaseTypeProvider = (typeof DatabaseTypeProvider)[keyof typeof DatabaseTypeProvider];
 
+export const DoubleComparisonFilterValueComparison = {
+    /**
+     * Value comparison unspecified.
+     */
+    ValueComparisonUnspecified: "VALUE_COMPARISON_UNSPECIFIED",
+    /**
+     * Value is smaller than the Compare value.
+     */
+    ValueComparisonIfValueSmallerThan: "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN",
+    /**
+     * Value is smaller or equal than the Compare value.
+     */
+    ValueComparisonIfValueSmallerEqualThan: "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN",
+    /**
+     * Value is larger than the Compare value.
+     */
+    ValueComparisonIfValueLargerThan: "VALUE_COMPARISON_IF_VALUE_LARGER_THAN",
+    /**
+     * Value is larger or equal than the Compare value.
+     */
+    ValueComparisonIfValueLargerEqualThan: "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN",
+} as const;
+
+/**
+ * Required. Relation between source value and compare value
+ */
+export type DoubleComparisonFilterValueComparison = (typeof DoubleComparisonFilterValueComparison)[keyof typeof DoubleComparisonFilterValueComparison];
+
+export const IntComparisonFilterValueComparison = {
+    /**
+     * Value comparison unspecified.
+     */
+    ValueComparisonUnspecified: "VALUE_COMPARISON_UNSPECIFIED",
+    /**
+     * Value is smaller than the Compare value.
+     */
+    ValueComparisonIfValueSmallerThan: "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN",
+    /**
+     * Value is smaller or equal than the Compare value.
+     */
+    ValueComparisonIfValueSmallerEqualThan: "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN",
+    /**
+     * Value is larger than the Compare value.
+     */
+    ValueComparisonIfValueLargerThan: "VALUE_COMPARISON_IF_VALUE_LARGER_THAN",
+    /**
+     * Value is larger or equal than the Compare value.
+     */
+    ValueComparisonIfValueLargerEqualThan: "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN",
+} as const;
+
+/**
+ * Required. Relation between source value and compare value
+ */
+export type IntComparisonFilterValueComparison = (typeof IntComparisonFilterValueComparison)[keyof typeof IntComparisonFilterValueComparison];
+
+export const MappingRuleRuleScope = {
+    /**
+     * Unspecified database entity type.
+     */
+    DatabaseEntityTypeUnspecified: "DATABASE_ENTITY_TYPE_UNSPECIFIED",
+    /**
+     * Schema.
+     */
+    DatabaseEntityTypeSchema: "DATABASE_ENTITY_TYPE_SCHEMA",
+    /**
+     * Table.
+     */
+    DatabaseEntityTypeTable: "DATABASE_ENTITY_TYPE_TABLE",
+    /**
+     * Column.
+     */
+    DatabaseEntityTypeColumn: "DATABASE_ENTITY_TYPE_COLUMN",
+    /**
+     * Constraint.
+     */
+    DatabaseEntityTypeConstraint: "DATABASE_ENTITY_TYPE_CONSTRAINT",
+    /**
+     * Index.
+     */
+    DatabaseEntityTypeIndex: "DATABASE_ENTITY_TYPE_INDEX",
+    /**
+     * Trigger.
+     */
+    DatabaseEntityTypeTrigger: "DATABASE_ENTITY_TYPE_TRIGGER",
+    /**
+     * View.
+     */
+    DatabaseEntityTypeView: "DATABASE_ENTITY_TYPE_VIEW",
+    /**
+     * Sequence.
+     */
+    DatabaseEntityTypeSequence: "DATABASE_ENTITY_TYPE_SEQUENCE",
+    /**
+     * Stored Procedure.
+     */
+    DatabaseEntityTypeStoredProcedure: "DATABASE_ENTITY_TYPE_STORED_PROCEDURE",
+    /**
+     * Function.
+     */
+    DatabaseEntityTypeFunction: "DATABASE_ENTITY_TYPE_FUNCTION",
+    /**
+     * Synonym.
+     */
+    DatabaseEntityTypeSynonym: "DATABASE_ENTITY_TYPE_SYNONYM",
+    /**
+     * Package.
+     */
+    DatabaseEntityTypeDatabasePackage: "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE",
+    /**
+     * UDT.
+     */
+    DatabaseEntityTypeUdt: "DATABASE_ENTITY_TYPE_UDT",
+    /**
+     * Materialized View.
+     */
+    DatabaseEntityTypeMaterializedView: "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW",
+    /**
+     * Database.
+     */
+    DatabaseEntityTypeDatabase: "DATABASE_ENTITY_TYPE_DATABASE",
+} as const;
+
+/**
+ * Required. The rule scope
+ */
+export type MappingRuleRuleScope = (typeof MappingRuleRuleScope)[keyof typeof MappingRuleRuleScope];
+
+export const MappingRuleState = {
+    /**
+     * The state of the mapping rule is unknown.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * The rule is enabled.
+     */
+    Enabled: "ENABLED",
+    /**
+     * The rule is disabled.
+     */
+    Disabled: "DISABLED",
+    /**
+     * The rule is logically deleted.
+     */
+    Deleted: "DELETED",
+} as const;
+
+/**
+ * Optional. The mapping rule state
+ */
+export type MappingRuleState = (typeof MappingRuleState)[keyof typeof MappingRuleState];
+
 export const MigrationJobState = {
     /**
      * The state of the migration job is unknown.
@@ -369,3 +601,99 @@ export const MigrationJobType = {
  * Required. The migration job type.
  */
 export type MigrationJobType = (typeof MigrationJobType)[keyof typeof MigrationJobType];
+
+export const MultiEntityRenameSourceNameTransformation = {
+    /**
+     * Entity name transformation unspecified.
+     */
+    EntityNameTransformationUnspecified: "ENTITY_NAME_TRANSFORMATION_UNSPECIFIED",
+    /**
+     * No transformation.
+     */
+    EntityNameTransformationNoTransformation: "ENTITY_NAME_TRANSFORMATION_NO_TRANSFORMATION",
+    /**
+     * Transform to lower case.
+     */
+    EntityNameTransformationLowerCase: "ENTITY_NAME_TRANSFORMATION_LOWER_CASE",
+    /**
+     * Transform to upper case.
+     */
+    EntityNameTransformationUpperCase: "ENTITY_NAME_TRANSFORMATION_UPPER_CASE",
+    /**
+     * Transform to capitalized case.
+     */
+    EntityNameTransformationCapitalizedCase: "ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE",
+} as const;
+
+/**
+ * Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+ */
+export type MultiEntityRenameSourceNameTransformation = (typeof MultiEntityRenameSourceNameTransformation)[keyof typeof MultiEntityRenameSourceNameTransformation];
+
+export const PerformanceConfigDumpParallelLevel = {
+    /**
+     * Unknown dump parallel level. Will be defaulted to OPTIMAL.
+     */
+    DumpParallelLevelUnspecified: "DUMP_PARALLEL_LEVEL_UNSPECIFIED",
+    /**
+     * Minimal parallel level.
+     */
+    Min: "MIN",
+    /**
+     * Optimal parallel level.
+     */
+    Optimal: "OPTIMAL",
+    /**
+     * Maximum parallel level.
+     */
+    Max: "MAX",
+} as const;
+
+/**
+ * Initial dump parallelism level.
+ */
+export type PerformanceConfigDumpParallelLevel = (typeof PerformanceConfigDumpParallelLevel)[keyof typeof PerformanceConfigDumpParallelLevel];
+
+export const SourceNumericFilterNumericFilterOption = {
+    /**
+     * Numeric filter option unspecified
+     */
+    NumericFilterOptionUnspecified: "NUMERIC_FILTER_OPTION_UNSPECIFIED",
+    /**
+     * Numeric filter option that matches all numeric columns.
+     */
+    NumericFilterOptionAll: "NUMERIC_FILTER_OPTION_ALL",
+    /**
+     * Numeric filter option that matches columns having numeric datatypes with specified precision and scale within the limited range of filter.
+     */
+    NumericFilterOptionLimit: "NUMERIC_FILTER_OPTION_LIMIT",
+    /**
+     * Numeric filter option that matches only the numeric columns with no precision and scale specified.
+     */
+    NumericFilterOptionLimitless: "NUMERIC_FILTER_OPTION_LIMITLESS",
+} as const;
+
+/**
+ * Required. Enum to set the option defining the datatypes numeric filter has to be applied to
+ */
+export type SourceNumericFilterNumericFilterOption = (typeof SourceNumericFilterNumericFilterOption)[keyof typeof SourceNumericFilterNumericFilterOption];
+
+export const ValueListFilterValuePresentList = {
+    /**
+     * Value present in list unspecified
+     */
+    ValuePresentInListUnspecified: "VALUE_PRESENT_IN_LIST_UNSPECIFIED",
+    /**
+     * If the source value is in the supplied list at value_list
+     */
+    ValuePresentInListIfValueList: "VALUE_PRESENT_IN_LIST_IF_VALUE_LIST",
+    /**
+     * If the source value is not in the supplied list at value_list
+     */
+    ValuePresentInListIfValueNotList: "VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST",
+} as const;
+
+/**
+ * Required. Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+ */
+export type ValueListFilterValuePresentList = (typeof ValueListFilterValuePresentList)[keyof typeof ValueListFilterValuePresentList];

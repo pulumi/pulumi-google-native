@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntryResult:
-    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, cloud_bigtable_system_spec=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fileset_spec=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, looker_system_spec=None, name=None, personal_details=None, routine_spec=None, schema=None, service_spec=None, source_system_timestamps=None, sql_database_system_spec=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
+    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, cloud_bigtable_system_spec=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, dataset_spec=None, description=None, display_name=None, fileset_spec=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, looker_system_spec=None, model_spec=None, name=None, personal_details=None, routine_spec=None, schema=None, service_spec=None, source_system_timestamps=None, sql_database_system_spec=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
         if bigquery_date_sharded_spec and not isinstance(bigquery_date_sharded_spec, dict):
             raise TypeError("Expected argument 'bigquery_date_sharded_spec' to be a dict")
         pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
@@ -41,6 +41,9 @@ class GetEntryResult:
         if database_table_spec and not isinstance(database_table_spec, dict):
             raise TypeError("Expected argument 'database_table_spec' to be a dict")
         pulumi.set(__self__, "database_table_spec", database_table_spec)
+        if dataset_spec and not isinstance(dataset_spec, dict):
+            raise TypeError("Expected argument 'dataset_spec' to be a dict")
+        pulumi.set(__self__, "dataset_spec", dataset_spec)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -68,6 +71,9 @@ class GetEntryResult:
         if looker_system_spec and not isinstance(looker_system_spec, dict):
             raise TypeError("Expected argument 'looker_system_spec' to be a dict")
         pulumi.set(__self__, "looker_system_spec", looker_system_spec)
+        if model_spec and not isinstance(model_spec, dict):
+            raise TypeError("Expected argument 'model_spec' to be a dict")
+        pulumi.set(__self__, "model_spec", model_spec)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -159,6 +165,14 @@ class GetEntryResult:
         return pulumi.get(self, "database_table_spec")
 
     @property
+    @pulumi.getter(name="datasetSpec")
+    def dataset_spec(self) -> 'outputs.GoogleCloudDatacatalogV1DatasetSpecResponse':
+        """
+        Specification that applies to a dataset.
+        """
+        return pulumi.get(self, "dataset_spec")
+
+    @property
     @pulumi.getter
     def description(self) -> str:
         """
@@ -231,6 +245,14 @@ class GetEntryResult:
         return pulumi.get(self, "looker_system_spec")
 
     @property
+    @pulumi.getter(name="modelSpec")
+    def model_spec(self) -> 'outputs.GoogleCloudDatacatalogV1ModelSpecResponse':
+        """
+        Model specification.
+        """
+        return pulumi.get(self, "model_spec")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -290,7 +312,7 @@ class GetEntryResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        The type of the entry. For details, see [`EntryType`](#entrytype).
         """
         return pulumi.get(self, "type")
 
@@ -332,6 +354,7 @@ class AwaitableGetEntryResult(GetEntryResult):
             data_source=self.data_source,
             data_source_connection_spec=self.data_source_connection_spec,
             database_table_spec=self.database_table_spec,
+            dataset_spec=self.dataset_spec,
             description=self.description,
             display_name=self.display_name,
             fileset_spec=self.fileset_spec,
@@ -341,6 +364,7 @@ class AwaitableGetEntryResult(GetEntryResult):
             labels=self.labels,
             linked_resource=self.linked_resource,
             looker_system_spec=self.looker_system_spec,
+            model_spec=self.model_spec,
             name=self.name,
             personal_details=self.personal_details,
             routine_spec=self.routine_spec,
@@ -378,6 +402,7 @@ def get_entry(entry_group_id: Optional[str] = None,
         data_source=pulumi.get(__ret__, 'data_source'),
         data_source_connection_spec=pulumi.get(__ret__, 'data_source_connection_spec'),
         database_table_spec=pulumi.get(__ret__, 'database_table_spec'),
+        dataset_spec=pulumi.get(__ret__, 'dataset_spec'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         fileset_spec=pulumi.get(__ret__, 'fileset_spec'),
@@ -387,6 +412,7 @@ def get_entry(entry_group_id: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         linked_resource=pulumi.get(__ret__, 'linked_resource'),
         looker_system_spec=pulumi.get(__ret__, 'looker_system_spec'),
+        model_spec=pulumi.get(__ret__, 'model_spec'),
         name=pulumi.get(__ret__, 'name'),
         personal_details=pulumi.get(__ret__, 'personal_details'),
         routine_spec=pulumi.get(__ret__, 'routine_spec'),

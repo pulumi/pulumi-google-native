@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public Input<Pulumi.GoogleNative.CloudBuild.V1.GitRepoSourceRepoType>? RepoType { get; set; }
 
         /// <summary>
-        /// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+        /// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
         /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }
 
         /// <summary>
-        /// The URI of the repo. Either uri or repository can be specified and is required.
+        /// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }

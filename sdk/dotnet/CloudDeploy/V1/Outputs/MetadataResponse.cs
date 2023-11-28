@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class MetadataResponse
     {
         /// <summary>
+        /// AutomationRolloutMetadata contains the information about the interactions between Automation service and this rollout.
+        /// </summary>
+        public readonly Outputs.AutomationRolloutMetadataResponse Automation;
+        /// <summary>
         /// The name of the Cloud Run Service that is associated with a `Rollout`.
         /// </summary>
         public readonly Outputs.CloudRunMetadataResponse CloudRun;
 
         [OutputConstructor]
-        private MetadataResponse(Outputs.CloudRunMetadataResponse cloudRun)
+        private MetadataResponse(
+            Outputs.AutomationRolloutMetadataResponse automation,
+
+            Outputs.CloudRunMetadataResponse cloudRun)
         {
+            Automation = automation;
             CloudRun = cloudRun;
         }
     }

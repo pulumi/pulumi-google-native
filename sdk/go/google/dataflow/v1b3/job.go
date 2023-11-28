@@ -48,10 +48,12 @@ type Job struct {
 	ReplaceJobId pulumi.StringOutput `pulumi:"replaceJobId"`
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
 	ReplacedByJobId pulumi.StringOutput `pulumi:"replacedByJobId"`
-	// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+	// The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
 	RequestedState pulumi.StringOutput `pulumi:"requestedState"`
 	// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
 	RuntimeUpdatableParams RuntimeUpdatableParamsResponseOutput `pulumi:"runtimeUpdatableParams"`
+	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
@@ -151,7 +153,7 @@ type jobArgs struct {
 	ReplaceJobId *string `pulumi:"replaceJobId"`
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
 	ReplacedByJobId *string `pulumi:"replacedByJobId"`
-	// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+	// The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
 	RequestedState *JobRequestedState `pulumi:"requestedState"`
 	// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
 	RuntimeUpdatableParams *RuntimeUpdatableParams `pulumi:"runtimeUpdatableParams"`
@@ -211,7 +213,7 @@ type JobArgs struct {
 	ReplaceJobId pulumi.StringPtrInput
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
 	ReplacedByJobId pulumi.StringPtrInput
-	// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+	// The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
 	RequestedState JobRequestedStatePtrInput
 	// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
 	RuntimeUpdatableParams RuntimeUpdatableParamsPtrInput
@@ -359,7 +361,7 @@ func (o JobOutput) ReplacedByJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ReplacedByJobId }).(pulumi.StringOutput)
 }
 
-// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+// The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
 func (o JobOutput) RequestedState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.RequestedState }).(pulumi.StringOutput)
 }
@@ -367,6 +369,11 @@ func (o JobOutput) RequestedState() pulumi.StringOutput {
 // This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
 func (o JobOutput) RuntimeUpdatableParams() RuntimeUpdatableParamsResponseOutput {
 	return o.ApplyT(func(v *Job) RuntimeUpdatableParamsResponseOutput { return v.RuntimeUpdatableParams }).(RuntimeUpdatableParamsResponseOutput)
+}
+
+// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+func (o JobOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.

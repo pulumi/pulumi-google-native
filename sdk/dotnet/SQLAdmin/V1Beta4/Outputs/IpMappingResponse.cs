@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 {
 
     /// <summary>
-    /// Database instance IP Mapping.
+    /// Database instance IP mapping
     /// </summary>
     [OutputType]
     public sealed class IpMappingResponse

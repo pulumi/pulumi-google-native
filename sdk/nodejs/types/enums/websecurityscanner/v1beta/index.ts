@@ -171,6 +171,10 @@ export const ScanConfigErrorCode = {
      * The URL scheme of one or more of the supplied URLs is not supported.
      */
     UnsupportedUrlScheme: "UNSUPPORTED_URL_SCHEME",
+    /**
+     * CAI is not able to list assets.
+     */
+    CloudAssetInventoryAssetNotFound: "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND",
 } as const;
 
 /**

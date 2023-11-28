@@ -48,6 +48,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        /// </summary>
+        [Output("streamConfigs")]
+        public Output<ImmutableArray<Outputs.GoogleCloudHealthcareV1DicomStreamConfigResponse>> StreamConfigs { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DicomStore resource with the given unique name, arguments, and options.
@@ -137,6 +143,18 @@ namespace Pulumi.GoogleNative.Healthcare.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("streamConfigs")]
+        private InputList<Inputs.GoogleCloudHealthcareV1DicomStreamConfigArgs>? _streamConfigs;
+
+        /// <summary>
+        /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudHealthcareV1DicomStreamConfigArgs> StreamConfigs
+        {
+            get => _streamConfigs ?? (_streamConfigs = new InputList<Inputs.GoogleCloudHealthcareV1DicomStreamConfigArgs>());
+            set => _streamConfigs = value;
+        }
 
         public DicomStoreArgs()
         {

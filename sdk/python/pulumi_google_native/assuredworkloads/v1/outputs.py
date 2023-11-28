@@ -28,8 +28,12 @@ class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "acknowledgedViolationCount":
+        if key == "acknowledgedResourceViolationCount":
+            suggest = "acknowledged_resource_violation_count"
+        elif key == "acknowledgedViolationCount":
             suggest = "acknowledged_violation_count"
+        elif key == "activeResourceViolationCount":
+            suggest = "active_resource_violation_count"
         elif key == "activeViolationCount":
             suggest = "active_violation_count"
 
@@ -45,29 +49,51 @@ class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 acknowledged_resource_violation_count: int,
                  acknowledged_violation_count: int,
+                 active_resource_violation_count: int,
                  active_violation_count: int):
         """
         Represents the Compliance Status of this workload
-        :param int acknowledged_violation_count: Count of active Violations which are acknowledged in the Workload.
-        :param int active_violation_count: Count of active Violations which haven't been acknowledged.
+        :param int acknowledged_resource_violation_count: Number of current resource violations which are not acknowledged.
+        :param int acknowledged_violation_count: Number of current orgPolicy violations which are acknowledged.
+        :param int active_resource_violation_count: Number of current resource violations which are acknowledged.
+        :param int active_violation_count: Number of current orgPolicy violations which are not acknowledged.
         """
+        pulumi.set(__self__, "acknowledged_resource_violation_count", acknowledged_resource_violation_count)
         pulumi.set(__self__, "acknowledged_violation_count", acknowledged_violation_count)
+        pulumi.set(__self__, "active_resource_violation_count", active_resource_violation_count)
         pulumi.set(__self__, "active_violation_count", active_violation_count)
+
+    @property
+    @pulumi.getter(name="acknowledgedResourceViolationCount")
+    def acknowledged_resource_violation_count(self) -> int:
+        """
+        Number of current resource violations which are not acknowledged.
+        """
+        return pulumi.get(self, "acknowledged_resource_violation_count")
 
     @property
     @pulumi.getter(name="acknowledgedViolationCount")
     def acknowledged_violation_count(self) -> int:
         """
-        Count of active Violations which are acknowledged in the Workload.
+        Number of current orgPolicy violations which are acknowledged.
         """
         return pulumi.get(self, "acknowledged_violation_count")
+
+    @property
+    @pulumi.getter(name="activeResourceViolationCount")
+    def active_resource_violation_count(self) -> int:
+        """
+        Number of current resource violations which are acknowledged.
+        """
+        return pulumi.get(self, "active_resource_violation_count")
 
     @property
     @pulumi.getter(name="activeViolationCount")
     def active_violation_count(self) -> int:
         """
-        Count of active Violations which haven't been acknowledged.
+        Number of current orgPolicy violations which are not acknowledged.
         """
         return pulumi.get(self, "active_violation_count")
 
@@ -197,10 +223,12 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dataLogsViewer":
+        if key == "assuredWorkloadsMonitoring":
+            suggest = "assured_workloads_monitoring"
+        elif key == "dataLogsViewer":
             suggest = "data_logs_viewer"
-        elif key == "remediateFolderViolations":
-            suggest = "remediate_folder_violations"
+        elif key == "serviceAccessApprover":
+            suggest = "service_access_approver"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -214,15 +242,26 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 assured_workloads_monitoring: bool,
                  data_logs_viewer: bool,
-                 remediate_folder_violations: bool):
+                 service_access_approver: bool):
         """
         Permissions granted to the AW Partner SA account for the customer workload
+        :param bool assured_workloads_monitoring: Optional. Allow partner to view violation alerts.
         :param bool data_logs_viewer: Allow the partner to view inspectability logs and monitoring violations.
-        :param bool remediate_folder_violations: Allow partner to monitor folder and remediate violations
+        :param bool service_access_approver: Optional. Allow partner to view access approval logs.
         """
+        pulumi.set(__self__, "assured_workloads_monitoring", assured_workloads_monitoring)
         pulumi.set(__self__, "data_logs_viewer", data_logs_viewer)
-        pulumi.set(__self__, "remediate_folder_violations", remediate_folder_violations)
+        pulumi.set(__self__, "service_access_approver", service_access_approver)
+
+    @property
+    @pulumi.getter(name="assuredWorkloadsMonitoring")
+    def assured_workloads_monitoring(self) -> bool:
+        """
+        Optional. Allow partner to view violation alerts.
+        """
+        return pulumi.get(self, "assured_workloads_monitoring")
 
     @property
     @pulumi.getter(name="dataLogsViewer")
@@ -233,12 +272,12 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse(dict):
         return pulumi.get(self, "data_logs_viewer")
 
     @property
-    @pulumi.getter(name="remediateFolderViolations")
-    def remediate_folder_violations(self) -> bool:
+    @pulumi.getter(name="serviceAccessApprover")
+    def service_access_approver(self) -> bool:
         """
-        Allow partner to monitor folder and remediate violations
+        Optional. Allow partner to view access approval logs.
         """
-        return pulumi.get(self, "remediate_folder_violations")
+        return pulumi.get(self, "service_access_approver")
 
 
 @pulumi.output_type

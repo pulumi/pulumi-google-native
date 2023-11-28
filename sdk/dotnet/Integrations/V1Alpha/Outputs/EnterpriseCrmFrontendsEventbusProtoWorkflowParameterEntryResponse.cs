@@ -30,6 +30,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly Outputs.EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse DefaultValue;
         /// <summary>
+        /// Optional. The description about the parameter
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// Specifies the input/output type for the parameter.
         /// </summary>
         public readonly string InOutType;
@@ -73,6 +77,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             Outputs.EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse defaultValue,
 
+            string description,
+
             string inOutType,
 
             bool isTransient,
@@ -95,6 +101,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             Children = children;
             DataType = dataType;
             DefaultValue = defaultValue;
+            Description = description;
             InOutType = inOutType;
             IsTransient = isTransient;
             JsonSchema = jsonSchema;

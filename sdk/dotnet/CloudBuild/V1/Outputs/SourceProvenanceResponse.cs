@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> FileHashes;
         /// <summary>
+        /// A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+        /// </summary>
+        public readonly Outputs.ConnectedRepositoryResponse ResolvedConnectedRepository;
+        /// <summary>
+        /// A copy of the build's `source.git_source`, if exists, with any revisions resolved.
+        /// </summary>
+        public readonly Outputs.GitSourceResponse ResolvedGitSource;
+        /// <summary>
         /// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
         /// </summary>
         public readonly Outputs.RepoSourceResponse ResolvedRepoSource;
@@ -37,6 +45,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         private SourceProvenanceResponse(
             ImmutableDictionary<string, string> fileHashes,
 
+            Outputs.ConnectedRepositoryResponse resolvedConnectedRepository,
+
+            Outputs.GitSourceResponse resolvedGitSource,
+
             Outputs.RepoSourceResponse resolvedRepoSource,
 
             Outputs.StorageSourceResponse resolvedStorageSource,
@@ -44,6 +56,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             Outputs.StorageSourceManifestResponse resolvedStorageSourceManifest)
         {
             FileHashes = fileHashes;
+            ResolvedConnectedRepository = resolvedConnectedRepository;
+            ResolvedGitSource = resolvedGitSource;
             ResolvedRepoSource = resolvedRepoSource;
             ResolvedStorageSource = resolvedStorageSource;
             ResolvedStorageSourceManifest = resolvedStorageSourceManifest;

@@ -12,9 +12,11 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AggregationFunctionResponse',
     'AggregationResponse',
     'AlertChartResponse',
     'AxisResponse',
+    'BreakdownResponse',
     'ChartOptionsResponse',
     'CollapsibleGroupResponse',
     'ColumnLayoutResponse',
@@ -22,14 +24,21 @@ __all__ = [
     'ColumnSettingsResponse',
     'DashboardFilterResponse',
     'DataSetResponse',
+    'DimensionResponse',
     'EmptyResponse',
+    'ErrorReportingPanelResponse',
     'GaugeViewResponse',
     'GridLayoutResponse',
     'IncidentListResponse',
     'LogsPanelResponse',
+    'MeasureResponse',
     'MonitoredResourceResponse',
     'MosaicLayoutResponse',
+    'OpsAnalyticsQueryResponse',
+    'ParameterResponse',
     'PickTimeSeriesFilterResponse',
+    'PieChartDataSetResponse',
+    'PieChartResponse',
     'RatioPartResponse',
     'RowLayoutResponse',
     'RowResponse',
@@ -39,6 +48,7 @@ __all__ = [
     'TableDataSetResponse',
     'TableDisplayOptionsResponse',
     'TextResponse',
+    'TextStyleResponse',
     'ThresholdResponse',
     'TileResponse',
     'TimeSeriesFilterRatioResponse',
@@ -48,6 +58,39 @@ __all__ = [
     'WidgetResponse',
     'XyChartResponse',
 ]
+
+@pulumi.output_type
+class AggregationFunctionResponse(dict):
+    """
+    Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
+    """
+    def __init__(__self__, *,
+                 parameters: Sequence['outputs.ParameterResponse'],
+                 type: str):
+        """
+        Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
+        :param Sequence['ParameterResponse'] parameters: Optional. Parameters applied to the aggregation function. Only used for functions that require them.
+        :param str type: The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
+        """
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Sequence['outputs.ParameterResponse']:
+        """
+        Optional. Parameters applied to the aggregation function. Only used for functions that require them.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
+        """
+        return pulumi.get(self, "type")
+
 
 @pulumi.output_type
 class AggregationResponse(dict):
@@ -183,17 +226,119 @@ class AxisResponse(dict):
 
 
 @pulumi.output_type
+class BreakdownResponse(dict):
+    """
+    Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregationFunction":
+            suggest = "aggregation_function"
+        elif key == "sortOrder":
+            suggest = "sort_order"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BreakdownResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BreakdownResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BreakdownResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aggregation_function: 'outputs.AggregationFunctionResponse',
+                 column: str,
+                 limit: int,
+                 sort_order: str):
+        """
+        Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release.
+        :param 'AggregationFunctionResponse' aggregation_function: The Aggregation function is applied across all data in each breakdown created.
+        :param str column: The name of the column in the dataset containing the breakdown values.
+        :param int limit: A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
+        :param str sort_order: The sort order is applied to the values of the breakdown column.
+        """
+        pulumi.set(__self__, "aggregation_function", aggregation_function)
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "sort_order", sort_order)
+
+    @property
+    @pulumi.getter(name="aggregationFunction")
+    def aggregation_function(self) -> 'outputs.AggregationFunctionResponse':
+        """
+        The Aggregation function is applied across all data in each breakdown created.
+        """
+        return pulumi.get(self, "aggregation_function")
+
+    @property
+    @pulumi.getter
+    def column(self) -> str:
+        """
+        The name of the column in the dataset containing the breakdown values.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> str:
+        """
+        The sort order is applied to the values of the breakdown column.
+        """
+        return pulumi.get(self, "sort_order")
+
+
+@pulumi.output_type
 class ChartOptionsResponse(dict):
     """
     Options to control visual rendering of a chart.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayHorizontal":
+            suggest = "display_horizontal"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ChartOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ChartOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ChartOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 display_horizontal: bool,
                  mode: str):
         """
         Options to control visual rendering of a chart.
+        :param bool display_horizontal: Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
         :param str mode: The chart mode.
         """
+        pulumi.set(__self__, "display_horizontal", display_horizontal)
         pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="displayHorizontal")
+    def display_horizontal(self) -> bool:
+        """
+        Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
+        """
+        return pulumi.get(self, "display_horizontal")
 
     @property
     @pulumi.getter
@@ -423,24 +568,49 @@ class DataSetResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 breakdowns: Sequence['outputs.BreakdownResponse'],
+                 dimensions: Sequence['outputs.DimensionResponse'],
                  legend_template: str,
+                 measures: Sequence['outputs.MeasureResponse'],
                  min_alignment_period: str,
                  plot_type: str,
                  target_axis: str,
                  time_series_query: 'outputs.TimeSeriesQueryResponse'):
         """
         Groups a time series query definition with charting options.
+        :param Sequence['BreakdownResponse'] breakdowns: Optional. The collection of breakdowns to be applied to the dataset.
+        :param Sequence['DimensionResponse'] dimensions: Optional. A collection of dimension columns.
         :param str legend_template: A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
+        :param Sequence['MeasureResponse'] measures: Optional. A collection of measures.
         :param str min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
         :param str plot_type: How this data should be plotted on the chart.
         :param str target_axis: Optional. The target axis to use for plotting the metric.
         :param 'TimeSeriesQueryResponse' time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         """
+        pulumi.set(__self__, "breakdowns", breakdowns)
+        pulumi.set(__self__, "dimensions", dimensions)
         pulumi.set(__self__, "legend_template", legend_template)
+        pulumi.set(__self__, "measures", measures)
         pulumi.set(__self__, "min_alignment_period", min_alignment_period)
         pulumi.set(__self__, "plot_type", plot_type)
         pulumi.set(__self__, "target_axis", target_axis)
         pulumi.set(__self__, "time_series_query", time_series_query)
+
+    @property
+    @pulumi.getter
+    def breakdowns(self) -> Sequence['outputs.BreakdownResponse']:
+        """
+        Optional. The collection of breakdowns to be applied to the dataset.
+        """
+        return pulumi.get(self, "breakdowns")
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Sequence['outputs.DimensionResponse']:
+        """
+        Optional. A collection of dimension columns.
+        """
+        return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="legendTemplate")
@@ -449,6 +619,14 @@ class DataSetResponse(dict):
         A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
         """
         return pulumi.get(self, "legend_template")
+
+    @property
+    @pulumi.getter
+    def measures(self) -> Sequence['outputs.MeasureResponse']:
+        """
+        Optional. A collection of measures.
+        """
+        return pulumi.get(self, "measures")
 
     @property
     @pulumi.getter(name="minAlignmentPeriod")
@@ -484,6 +662,134 @@ class DataSetResponse(dict):
 
 
 @pulumi.output_type
+class DimensionResponse(dict):
+    """
+    Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnType":
+            suggest = "column_type"
+        elif key == "floatBinSize":
+            suggest = "float_bin_size"
+        elif key == "maxBinCount":
+            suggest = "max_bin_count"
+        elif key == "numericBinSize":
+            suggest = "numeric_bin_size"
+        elif key == "sortColumn":
+            suggest = "sort_column"
+        elif key == "sortOrder":
+            suggest = "sort_order"
+        elif key == "timeBinSize":
+            suggest = "time_bin_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DimensionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DimensionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DimensionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: str,
+                 column_type: str,
+                 float_bin_size: float,
+                 max_bin_count: int,
+                 numeric_bin_size: int,
+                 sort_column: str,
+                 sort_order: str,
+                 time_bin_size: str):
+        """
+        Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+        :param str column: The name of the column in the source SQL query that is used to chart the dimension.
+        :param str column_type: Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
+        :param float float_bin_size: Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
+        :param int max_bin_count: A limit to the number of bins generated. When 0 is specified, the maximum count is not enforced.
+        :param int numeric_bin_size: numeric_bin_size is used when the column type used for a dimension is numeric or string.
+        :param str sort_column: The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
+        :param str sort_order: The sort order applied to the sort column.
+        :param str time_bin_size: time_bin_size is used when the data type specified by column is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours.
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "column_type", column_type)
+        pulumi.set(__self__, "float_bin_size", float_bin_size)
+        pulumi.set(__self__, "max_bin_count", max_bin_count)
+        pulumi.set(__self__, "numeric_bin_size", numeric_bin_size)
+        pulumi.set(__self__, "sort_column", sort_column)
+        pulumi.set(__self__, "sort_order", sort_order)
+        pulumi.set(__self__, "time_bin_size", time_bin_size)
+
+    @property
+    @pulumi.getter
+    def column(self) -> str:
+        """
+        The name of the column in the source SQL query that is used to chart the dimension.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="columnType")
+    def column_type(self) -> str:
+        """
+        Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
+        """
+        return pulumi.get(self, "column_type")
+
+    @property
+    @pulumi.getter(name="floatBinSize")
+    def float_bin_size(self) -> float:
+        """
+        Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
+        """
+        return pulumi.get(self, "float_bin_size")
+
+    @property
+    @pulumi.getter(name="maxBinCount")
+    def max_bin_count(self) -> int:
+        """
+        A limit to the number of bins generated. When 0 is specified, the maximum count is not enforced.
+        """
+        return pulumi.get(self, "max_bin_count")
+
+    @property
+    @pulumi.getter(name="numericBinSize")
+    def numeric_bin_size(self) -> int:
+        """
+        numeric_bin_size is used when the column type used for a dimension is numeric or string.
+        """
+        return pulumi.get(self, "numeric_bin_size")
+
+    @property
+    @pulumi.getter(name="sortColumn")
+    def sort_column(self) -> str:
+        """
+        The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
+        """
+        return pulumi.get(self, "sort_column")
+
+    @property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> str:
+        """
+        The sort order applied to the sort column.
+        """
+        return pulumi.get(self, "sort_order")
+
+    @property
+    @pulumi.getter(name="timeBinSize")
+    def time_bin_size(self) -> str:
+        """
+        time_bin_size is used when the data type specified by column is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours.
+        """
+        return pulumi.get(self, "time_bin_size")
+
+
+@pulumi.output_type
 class EmptyResponse(dict):
     """
     A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } 
@@ -493,6 +799,67 @@ class EmptyResponse(dict):
         A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } 
         """
         pass
+
+
+@pulumi.output_type
+class ErrorReportingPanelResponse(dict):
+    """
+    A widget that displays a list of error groups.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectNames":
+            suggest = "project_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ErrorReportingPanelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ErrorReportingPanelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ErrorReportingPanelResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_names: Sequence[str],
+                 services: Sequence[str],
+                 versions: Sequence[str]):
+        """
+        A widget that displays a list of error groups.
+        :param Sequence[str] project_names: The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
+        :param Sequence[str] services: An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used.
+        :param Sequence[str] versions: Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+        """
+        pulumi.set(__self__, "project_names", project_names)
+        pulumi.set(__self__, "services", services)
+        pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="projectNames")
+    def project_names(self) -> Sequence[str]:
+        """
+        The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
+        """
+        return pulumi.get(self, "project_names")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Sequence[str]:
+        """
+        An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used.
+        """
+        return pulumi.get(self, "services")
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Sequence[str]:
+        """
+        Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+        """
+        return pulumi.get(self, "versions")
 
 
 @pulumi.output_type
@@ -683,6 +1050,56 @@ class LogsPanelResponse(dict):
 
 
 @pulumi.output_type
+class MeasureResponse(dict):
+    """
+    Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregationFunction":
+            suggest = "aggregation_function"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MeasureResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MeasureResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MeasureResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aggregation_function: 'outputs.AggregationFunctionResponse',
+                 column: str):
+        """
+        Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+        :param 'AggregationFunctionResponse' aggregation_function: The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
+        :param str column: The column name within in the dataset used for the measure.
+        """
+        pulumi.set(__self__, "aggregation_function", aggregation_function)
+        pulumi.set(__self__, "column", column)
+
+    @property
+    @pulumi.getter(name="aggregationFunction")
+    def aggregation_function(self) -> 'outputs.AggregationFunctionResponse':
+        """
+        The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
+        """
+        return pulumi.get(self, "aggregation_function")
+
+    @property
+    @pulumi.getter
+    def column(self) -> str:
+        """
+        The column name within in the dataset used for the measure.
+        """
+        return pulumi.get(self, "column")
+
+
+@pulumi.output_type
 class MonitoredResourceResponse(dict):
     """
     An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }} 
@@ -749,6 +1166,80 @@ class MosaicLayoutResponse(dict):
 
 
 @pulumi.output_type
+class OpsAnalyticsQueryResponse(dict):
+    """
+    Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release.
+    """
+    def __init__(__self__, *,
+                 sql: str):
+        """
+        Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release.
+        :param str sql: A SQL query to fetch time series, category series, or numeric series data.
+        """
+        pulumi.set(__self__, "sql", sql)
+
+    @property
+    @pulumi.getter
+    def sql(self) -> str:
+        """
+        A SQL query to fetch time series, category series, or numeric series data.
+        """
+        return pulumi.get(self, "sql")
+
+
+@pulumi.output_type
+class ParameterResponse(dict):
+    """
+    Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "doubleValue":
+            suggest = "double_value"
+        elif key == "intValue":
+            suggest = "int_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 double_value: float,
+                 int_value: str):
+        """
+        Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release.
+        :param float double_value: A floating-point parameter value.
+        :param str int_value: An integer parameter value.
+        """
+        pulumi.set(__self__, "double_value", double_value)
+        pulumi.set(__self__, "int_value", int_value)
+
+    @property
+    @pulumi.getter(name="doubleValue")
+    def double_value(self) -> float:
+        """
+        A floating-point parameter value.
+        """
+        return pulumi.get(self, "double_value")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> str:
+        """
+        An integer parameter value.
+        """
+        return pulumi.get(self, "int_value")
+
+
+@pulumi.output_type
 class PickTimeSeriesFilterResponse(dict):
     """
     Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
@@ -809,6 +1300,136 @@ class PickTimeSeriesFilterResponse(dict):
         ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
         """
         return pulumi.get(self, "ranking_method")
+
+
+@pulumi.output_type
+class PieChartDataSetResponse(dict):
+    """
+    Groups a time series query definition.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minAlignmentPeriod":
+            suggest = "min_alignment_period"
+        elif key == "sliceNameTemplate":
+            suggest = "slice_name_template"
+        elif key == "timeSeriesQuery":
+            suggest = "time_series_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PieChartDataSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PieChartDataSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PieChartDataSetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 min_alignment_period: str,
+                 slice_name_template: str,
+                 time_series_query: 'outputs.TimeSeriesQueryResponse'):
+        """
+        Groups a time series query definition.
+        :param str min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        :param str slice_name_template: Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
+        :param 'TimeSeriesQueryResponse' time_series_query: The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
+        """
+        pulumi.set(__self__, "min_alignment_period", min_alignment_period)
+        pulumi.set(__self__, "slice_name_template", slice_name_template)
+        pulumi.set(__self__, "time_series_query", time_series_query)
+
+    @property
+    @pulumi.getter(name="minAlignmentPeriod")
+    def min_alignment_period(self) -> str:
+        """
+        Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        """
+        return pulumi.get(self, "min_alignment_period")
+
+    @property
+    @pulumi.getter(name="sliceNameTemplate")
+    def slice_name_template(self) -> str:
+        """
+        Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
+        """
+        return pulumi.get(self, "slice_name_template")
+
+    @property
+    @pulumi.getter(name="timeSeriesQuery")
+    def time_series_query(self) -> 'outputs.TimeSeriesQueryResponse':
+        """
+        The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
+        """
+        return pulumi.get(self, "time_series_query")
+
+
+@pulumi.output_type
+class PieChartResponse(dict):
+    """
+    A widget that displays timeseries data as a pie or a donut.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chartType":
+            suggest = "chart_type"
+        elif key == "dataSets":
+            suggest = "data_sets"
+        elif key == "showLabels":
+            suggest = "show_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PieChartResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PieChartResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PieChartResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chart_type: str,
+                 data_sets: Sequence['outputs.PieChartDataSetResponse'],
+                 show_labels: bool):
+        """
+        A widget that displays timeseries data as a pie or a donut.
+        :param str chart_type: Indicates the visualization type for the PieChart.
+        :param Sequence['PieChartDataSetResponse'] data_sets: The queries for the chart's data.
+        :param bool show_labels: Optional. Indicates whether or not the pie chart should show slices' labels
+        """
+        pulumi.set(__self__, "chart_type", chart_type)
+        pulumi.set(__self__, "data_sets", data_sets)
+        pulumi.set(__self__, "show_labels", show_labels)
+
+    @property
+    @pulumi.getter(name="chartType")
+    def chart_type(self) -> str:
+        """
+        Indicates the visualization type for the PieChart.
+        """
+        return pulumi.get(self, "chart_type")
+
+    @property
+    @pulumi.getter(name="dataSets")
+    def data_sets(self) -> Sequence['outputs.PieChartDataSetResponse']:
+        """
+        The queries for the chart's data.
+        """
+        return pulumi.get(self, "data_sets")
+
+    @property
+    @pulumi.getter(name="showLabels")
+    def show_labels(self) -> bool:
+        """
+        Optional. Indicates whether or not the pie chart should show slices' labels
+        """
+        return pulumi.get(self, "show_labels")
 
 
 @pulumi.output_type
@@ -907,7 +1528,9 @@ class ScorecardResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "gaugeView":
+        if key == "blankView":
+            suggest = "blank_view"
+        elif key == "gaugeView":
             suggest = "gauge_view"
         elif key == "sparkChartView":
             suggest = "spark_chart_view"
@@ -926,21 +1549,32 @@ class ScorecardResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 blank_view: 'outputs.EmptyResponse',
                  gauge_view: 'outputs.GaugeViewResponse',
                  spark_chart_view: 'outputs.SparkChartViewResponse',
                  thresholds: Sequence['outputs.ThresholdResponse'],
                  time_series_query: 'outputs.TimeSeriesQueryResponse'):
         """
         A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
+        :param 'EmptyResponse' blank_view: Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
         :param 'GaugeViewResponse' gauge_view: Will cause the scorecard to show a gauge chart.
         :param 'SparkChartViewResponse' spark_chart_view: Will cause the scorecard to show a spark chart.
         :param Sequence['ThresholdResponse'] thresholds: The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
         :param 'TimeSeriesQueryResponse' time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         """
+        pulumi.set(__self__, "blank_view", blank_view)
         pulumi.set(__self__, "gauge_view", gauge_view)
         pulumi.set(__self__, "spark_chart_view", spark_chart_view)
         pulumi.set(__self__, "thresholds", thresholds)
         pulumi.set(__self__, "time_series_query", time_series_query)
+
+    @property
+    @pulumi.getter(name="blankView")
+    def blank_view(self) -> 'outputs.EmptyResponse':
+        """
+        Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
+        """
+        return pulumi.get(self, "blank_view")
 
     @property
     @pulumi.getter(name="gaugeView")
@@ -1203,14 +1837,17 @@ class TextResponse(dict):
     """
     def __init__(__self__, *,
                  content: str,
-                 format: str):
+                 format: str,
+                 style: 'outputs.TextStyleResponse'):
         """
         A widget that displays textual content.
         :param str content: The text content to be displayed.
         :param str format: How the text content is formatted.
+        :param 'TextStyleResponse' style: How the text is styled
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "style", style)
 
     @property
     @pulumi.getter
@@ -1227,6 +1864,129 @@ class TextResponse(dict):
         How the text content is formatted.
         """
         return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def style(self) -> 'outputs.TextStyleResponse':
+        """
+        How the text is styled
+        """
+        return pulumi.get(self, "style")
+
+
+@pulumi.output_type
+class TextStyleResponse(dict):
+    """
+    Properties that determine how the title and content are styled
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backgroundColor":
+            suggest = "background_color"
+        elif key == "fontSize":
+            suggest = "font_size"
+        elif key == "horizontalAlignment":
+            suggest = "horizontal_alignment"
+        elif key == "pointerLocation":
+            suggest = "pointer_location"
+        elif key == "textColor":
+            suggest = "text_color"
+        elif key == "verticalAlignment":
+            suggest = "vertical_alignment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TextStyleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TextStyleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TextStyleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 background_color: str,
+                 font_size: str,
+                 horizontal_alignment: str,
+                 padding: str,
+                 pointer_location: str,
+                 text_color: str,
+                 vertical_alignment: str):
+        """
+        Properties that determine how the title and content are styled
+        :param str background_color: The background color as a hex string. "#RRGGBB" or "#RGB"
+        :param str font_size: Font sizes for both the title and content. The title will still be larger relative to the content.
+        :param str horizontal_alignment: The horizontal alignment of both the title and content
+        :param str padding: The amount of padding around the widget
+        :param str pointer_location: The pointer location for this widget (also sometimes called a "tail")
+        :param str text_color: The text color as a hex string. "#RRGGBB" or "#RGB"
+        :param str vertical_alignment: The vertical alignment of both the title and content
+        """
+        pulumi.set(__self__, "background_color", background_color)
+        pulumi.set(__self__, "font_size", font_size)
+        pulumi.set(__self__, "horizontal_alignment", horizontal_alignment)
+        pulumi.set(__self__, "padding", padding)
+        pulumi.set(__self__, "pointer_location", pointer_location)
+        pulumi.set(__self__, "text_color", text_color)
+        pulumi.set(__self__, "vertical_alignment", vertical_alignment)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> str:
+        """
+        The background color as a hex string. "#RRGGBB" or "#RGB"
+        """
+        return pulumi.get(self, "background_color")
+
+    @property
+    @pulumi.getter(name="fontSize")
+    def font_size(self) -> str:
+        """
+        Font sizes for both the title and content. The title will still be larger relative to the content.
+        """
+        return pulumi.get(self, "font_size")
+
+    @property
+    @pulumi.getter(name="horizontalAlignment")
+    def horizontal_alignment(self) -> str:
+        """
+        The horizontal alignment of both the title and content
+        """
+        return pulumi.get(self, "horizontal_alignment")
+
+    @property
+    @pulumi.getter
+    def padding(self) -> str:
+        """
+        The amount of padding around the widget
+        """
+        return pulumi.get(self, "padding")
+
+    @property
+    @pulumi.getter(name="pointerLocation")
+    def pointer_location(self) -> str:
+        """
+        The pointer location for this widget (also sometimes called a "tail")
+        """
+        return pulumi.get(self, "pointer_location")
+
+    @property
+    @pulumi.getter(name="textColor")
+    def text_color(self) -> str:
+        """
+        The text color as a hex string. "#RRGGBB" or "#RGB"
+        """
+        return pulumi.get(self, "text_color")
+
+    @property
+    @pulumi.getter(name="verticalAlignment")
+    def vertical_alignment(self) -> str:
+        """
+        The vertical alignment of both the title and content
+        """
+        return pulumi.get(self, "vertical_alignment")
 
 
 @pulumi.output_type
@@ -1585,7 +2345,11 @@ class TimeSeriesQueryResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "prometheusQuery":
+        if key == "opsAnalyticsQuery":
+            suggest = "ops_analytics_query"
+        elif key == "outputFullDuration":
+            suggest = "output_full_duration"
+        elif key == "prometheusQuery":
             suggest = "prometheus_query"
         elif key == "timeSeriesFilter":
             suggest = "time_series_filter"
@@ -1608,6 +2372,8 @@ class TimeSeriesQueryResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ops_analytics_query: 'outputs.OpsAnalyticsQueryResponse',
+                 output_full_duration: bool,
                  prometheus_query: str,
                  time_series_filter: 'outputs.TimeSeriesFilterResponse',
                  time_series_filter_ratio: 'outputs.TimeSeriesFilterRatioResponse',
@@ -1615,17 +2381,37 @@ class TimeSeriesQueryResponse(dict):
                  unit_override: str):
         """
         TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
+        :param 'OpsAnalyticsQueryResponse' ops_analytics_query: Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+        :param bool output_full_duration: Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
         :param str prometheus_query: A query used to fetch time series with PromQL.
         :param 'TimeSeriesFilterResponse' time_series_filter: Filter parameters to fetch time series.
         :param 'TimeSeriesFilterRatioResponse' time_series_filter_ratio: Parameters to fetch a ratio between two time series filters.
         :param str time_series_query_language: A query used to fetch time series with MQL.
         :param str unit_override: The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
         """
+        pulumi.set(__self__, "ops_analytics_query", ops_analytics_query)
+        pulumi.set(__self__, "output_full_duration", output_full_duration)
         pulumi.set(__self__, "prometheus_query", prometheus_query)
         pulumi.set(__self__, "time_series_filter", time_series_filter)
         pulumi.set(__self__, "time_series_filter_ratio", time_series_filter_ratio)
         pulumi.set(__self__, "time_series_query_language", time_series_query_language)
         pulumi.set(__self__, "unit_override", unit_override)
+
+    @property
+    @pulumi.getter(name="opsAnalyticsQuery")
+    def ops_analytics_query(self) -> 'outputs.OpsAnalyticsQueryResponse':
+        """
+        Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+        """
+        return pulumi.get(self, "ops_analytics_query")
+
+    @property
+    @pulumi.getter(name="outputFullDuration")
+    def output_full_duration(self) -> bool:
+        """
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
+        """
+        return pulumi.get(self, "output_full_duration")
 
     @property
     @pulumi.getter(name="prometheusQuery")
@@ -1745,10 +2531,14 @@ class WidgetResponse(dict):
             suggest = "alert_chart"
         elif key == "collapsibleGroup":
             suggest = "collapsible_group"
+        elif key == "errorReportingPanel":
+            suggest = "error_reporting_panel"
         elif key == "incidentList":
             suggest = "incident_list"
         elif key == "logsPanel":
             suggest = "logs_panel"
+        elif key == "pieChart":
+            suggest = "pie_chart"
         elif key == "timeSeriesTable":
             suggest = "time_series_table"
         elif key == "xyChart":
@@ -1769,8 +2559,10 @@ class WidgetResponse(dict):
                  alert_chart: 'outputs.AlertChartResponse',
                  blank: 'outputs.EmptyResponse',
                  collapsible_group: 'outputs.CollapsibleGroupResponse',
+                 error_reporting_panel: 'outputs.ErrorReportingPanelResponse',
                  incident_list: 'outputs.IncidentListResponse',
                  logs_panel: 'outputs.LogsPanelResponse',
+                 pie_chart: 'outputs.PieChartResponse',
                  scorecard: 'outputs.ScorecardResponse',
                  text: 'outputs.TextResponse',
                  time_series_table: 'outputs.TimeSeriesTableResponse',
@@ -1781,8 +2573,10 @@ class WidgetResponse(dict):
         :param 'AlertChartResponse' alert_chart: A chart of alert policy data.
         :param 'EmptyResponse' blank: A blank space.
         :param 'CollapsibleGroupResponse' collapsible_group: A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        :param 'ErrorReportingPanelResponse' error_reporting_panel: A widget that displays a list of error groups.
         :param 'IncidentListResponse' incident_list: A widget that shows list of incidents.
         :param 'LogsPanelResponse' logs_panel: A widget that shows a stream of logs.
+        :param 'PieChartResponse' pie_chart: A widget that displays timeseries data as a pie chart.
         :param 'ScorecardResponse' scorecard: A scorecard summarizing time series data.
         :param 'TextResponse' text: A raw string or markdown displaying textual content.
         :param 'TimeSeriesTableResponse' time_series_table: A widget that displays time series data in a tabular format.
@@ -1792,8 +2586,10 @@ class WidgetResponse(dict):
         pulumi.set(__self__, "alert_chart", alert_chart)
         pulumi.set(__self__, "blank", blank)
         pulumi.set(__self__, "collapsible_group", collapsible_group)
+        pulumi.set(__self__, "error_reporting_panel", error_reporting_panel)
         pulumi.set(__self__, "incident_list", incident_list)
         pulumi.set(__self__, "logs_panel", logs_panel)
+        pulumi.set(__self__, "pie_chart", pie_chart)
         pulumi.set(__self__, "scorecard", scorecard)
         pulumi.set(__self__, "text", text)
         pulumi.set(__self__, "time_series_table", time_series_table)
@@ -1825,6 +2621,14 @@ class WidgetResponse(dict):
         return pulumi.get(self, "collapsible_group")
 
     @property
+    @pulumi.getter(name="errorReportingPanel")
+    def error_reporting_panel(self) -> 'outputs.ErrorReportingPanelResponse':
+        """
+        A widget that displays a list of error groups.
+        """
+        return pulumi.get(self, "error_reporting_panel")
+
+    @property
     @pulumi.getter(name="incidentList")
     def incident_list(self) -> 'outputs.IncidentListResponse':
         """
@@ -1839,6 +2643,14 @@ class WidgetResponse(dict):
         A widget that shows a stream of logs.
         """
         return pulumi.get(self, "logs_panel")
+
+    @property
+    @pulumi.getter(name="pieChart")
+    def pie_chart(self) -> 'outputs.PieChartResponse':
+        """
+        A widget that displays timeseries data as a pie chart.
+        """
+        return pulumi.get(self, "pie_chart")
 
     @property
     @pulumi.getter

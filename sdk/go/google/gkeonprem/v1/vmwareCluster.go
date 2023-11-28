@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Creates a new VMware cluster in a given project and location.
+// Creates a new VMware user cluster in a given project and location.
 type VmwareCluster struct {
 	pulumi.CustomResourceState
 
@@ -39,6 +39,8 @@ type VmwareCluster struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A human readable description of this VMware user cluster.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Disable bundled ingress.
+	DisableBundledIngress pulumi.BoolOutput `pulumi:"disableBundledIngress"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolOutput `pulumi:"enableControlPlaneV2"`
 	// The DNS name of VMware user cluster's API server.
@@ -56,7 +58,7 @@ type VmwareCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The VMware user cluster network configuration.
 	NetworkConfig VmwareNetworkConfigResponseOutput `pulumi:"networkConfig"`
-	// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+	// The Anthos clusters on the VMware version for your user cluster.
 	OnPremVersion pulumi.StringOutput `pulumi:"onPremVersion"`
 	Project       pulumi.StringOutput `pulumi:"project"`
 	// If set, there are currently changes in flight to the VMware user cluster.
@@ -71,9 +73,11 @@ type VmwareCluster struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time at which VMware user cluster was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Specifies upgrade policy for the cluster.
+	UpgradePolicy VmwareClusterUpgradePolicyResponseOutput `pulumi:"upgradePolicy"`
 	// ValidationCheck represents the result of the preflight check job.
 	ValidationCheck ValidationCheckResponseOutput `pulumi:"validationCheck"`
-	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+	// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
 	Vcenter VmwareVCenterConfigResponseOutput `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolOutput `pulumi:"vmTrackingEnabled"`
@@ -90,6 +94,9 @@ func NewVmwareCluster(ctx *pulumi.Context,
 
 	if args.AdminClusterMembership == nil {
 		return nil, errors.New("invalid value for required argument 'AdminClusterMembership'")
+	}
+	if args.OnPremVersion == nil {
+		return nil, errors.New("invalid value for required argument 'OnPremVersion'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"location",
@@ -145,6 +152,8 @@ type vmwareClusterArgs struct {
 	DataplaneV2 *VmwareDataplaneV2Config `pulumi:"dataplaneV2"`
 	// A human readable description of this VMware user cluster.
 	Description *string `pulumi:"description"`
+	// Disable bundled ingress.
+	DisableBundledIngress *bool `pulumi:"disableBundledIngress"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 *bool `pulumi:"enableControlPlaneV2"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
@@ -156,11 +165,15 @@ type vmwareClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// The VMware user cluster network configuration.
 	NetworkConfig *VmwareNetworkConfig `pulumi:"networkConfig"`
-	// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
-	OnPremVersion *string `pulumi:"onPremVersion"`
+	// The Anthos clusters on the VMware version for your user cluster.
+	OnPremVersion string  `pulumi:"onPremVersion"`
 	Project       *string `pulumi:"project"`
 	// Storage configuration.
 	Storage *VmwareStorageConfig `pulumi:"storage"`
+	// Specifies upgrade policy for the cluster.
+	UpgradePolicy *VmwareClusterUpgradePolicy `pulumi:"upgradePolicy"`
+	// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
+	Vcenter *VmwareVCenterConfig `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled *bool `pulumi:"vmTrackingEnabled"`
 	// User provided identifier that is used as part of the resource name; This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
@@ -185,6 +198,8 @@ type VmwareClusterArgs struct {
 	DataplaneV2 VmwareDataplaneV2ConfigPtrInput
 	// A human readable description of this VMware user cluster.
 	Description pulumi.StringPtrInput
+	// Disable bundled ingress.
+	DisableBundledIngress pulumi.BoolPtrInput
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
@@ -196,11 +211,15 @@ type VmwareClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// The VMware user cluster network configuration.
 	NetworkConfig VmwareNetworkConfigPtrInput
-	// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
-	OnPremVersion pulumi.StringPtrInput
+	// The Anthos clusters on the VMware version for your user cluster.
+	OnPremVersion pulumi.StringInput
 	Project       pulumi.StringPtrInput
 	// Storage configuration.
 	Storage VmwareStorageConfigPtrInput
+	// Specifies upgrade policy for the cluster.
+	UpgradePolicy VmwareClusterUpgradePolicyPtrInput
+	// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
+	Vcenter VmwareVCenterConfigPtrInput
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolPtrInput
 	// User provided identifier that is used as part of the resource name; This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
@@ -311,6 +330,11 @@ func (o VmwareClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *VmwareCluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Disable bundled ingress.
+func (o VmwareClusterOutput) DisableBundledIngress() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VmwareCluster) pulumi.BoolOutput { return v.DisableBundledIngress }).(pulumi.BoolOutput)
+}
+
 // Enable control plane V2. Default to false.
 func (o VmwareClusterOutput) EnableControlPlaneV2() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VmwareCluster) pulumi.BoolOutput { return v.EnableControlPlaneV2 }).(pulumi.BoolOutput)
@@ -355,7 +379,7 @@ func (o VmwareClusterOutput) NetworkConfig() VmwareNetworkConfigResponseOutput {
 	return o.ApplyT(func(v *VmwareCluster) VmwareNetworkConfigResponseOutput { return v.NetworkConfig }).(VmwareNetworkConfigResponseOutput)
 }
 
-// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+// The Anthos clusters on the VMware version for your user cluster.
 func (o VmwareClusterOutput) OnPremVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *VmwareCluster) pulumi.StringOutput { return v.OnPremVersion }).(pulumi.StringOutput)
 }
@@ -394,12 +418,17 @@ func (o VmwareClusterOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VmwareCluster) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// Specifies upgrade policy for the cluster.
+func (o VmwareClusterOutput) UpgradePolicy() VmwareClusterUpgradePolicyResponseOutput {
+	return o.ApplyT(func(v *VmwareCluster) VmwareClusterUpgradePolicyResponseOutput { return v.UpgradePolicy }).(VmwareClusterUpgradePolicyResponseOutput)
+}
+
 // ValidationCheck represents the result of the preflight check job.
 func (o VmwareClusterOutput) ValidationCheck() ValidationCheckResponseOutput {
 	return o.ApplyT(func(v *VmwareCluster) ValidationCheckResponseOutput { return v.ValidationCheck }).(ValidationCheckResponseOutput)
 }
 
-// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
 func (o VmwareClusterOutput) Vcenter() VmwareVCenterConfigResponseOutput {
 	return o.ApplyT(func(v *VmwareCluster) VmwareVCenterConfigResponseOutput { return v.Vcenter }).(VmwareVCenterConfigResponseOutput)
 }

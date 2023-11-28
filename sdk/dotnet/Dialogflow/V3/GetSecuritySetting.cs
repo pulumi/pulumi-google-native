@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly string RedactionStrategy;
         /// <summary>
+        /// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+        /// </summary>
+        public readonly string RetentionStrategy;
+        /// <summary>
         /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
         /// </summary>
         public readonly int RetentionWindowDays;
@@ -124,6 +128,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
             string redactionStrategy,
 
+            string retentionStrategy,
+
             int retentionWindowDays)
         {
             AudioExportSettings = audioExportSettings;
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             PurgeDataTypes = purgeDataTypes;
             RedactionScope = redactionScope;
             RedactionStrategy = redactionStrategy;
+            RetentionStrategy = retentionStrategy;
             RetentionWindowDays = retentionWindowDays;
         }
     }

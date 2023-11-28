@@ -67,6 +67,9 @@ export const LogsPolicyDestination = {
 export type LogsPolicyDestination = (typeof LogsPolicyDestination)[keyof typeof LogsPolicyDestination];
 
 export const MessageNewJobState = {
+    /**
+     * Job state unspecified.
+     */
     StateUnspecified: "STATE_UNSPECIFIED",
     /**
      * Job is admitted (validated and persisted) and waiting for resources.
@@ -154,3 +157,23 @@ export const MessageType = {
  * The message type.
  */
 export type MessageType = (typeof MessageType)[keyof typeof MessageType];
+
+export const TaskGroupSchedulingPolicy = {
+    /**
+     * Unspecified.
+     */
+    SchedulingPolicyUnspecified: "SCHEDULING_POLICY_UNSPECIFIED",
+    /**
+     * Run Tasks as soon as resources are available. Tasks might be executed in parallel depending on parallelism and task_count values.
+     */
+    AsSoonAsPossible: "AS_SOON_AS_POSSIBLE",
+    /**
+     * Run Tasks sequentially with increased task index.
+     */
+    InOrder: "IN_ORDER",
+} as const;
+
+/**
+ * Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+ */
+export type TaskGroupSchedulingPolicy = (typeof TaskGroupSchedulingPolicy)[keyof typeof TaskGroupSchedulingPolicy];

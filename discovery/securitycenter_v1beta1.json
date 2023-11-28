@@ -896,7 +896,7 @@
       }
     }
   },
-  "revision": "20230512",
+  "revision": "20231102",
   "rootUrl": "https://securitycenter.googleapis.com/",
   "schemas": {
     "Access": {
@@ -936,6 +936,10 @@
         },
         "serviceName": {
           "description": "This is the API service that the service account made a call to, e.g. \"iam.googleapis.com\"",
+          "type": "string"
+        },
+        "userAgent": {
+          "description": "The caller's user agent string associated with the finding.",
           "type": "string"
         },
         "userAgentFamily": {
@@ -1044,6 +1048,56 @@
             "type": "string"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "AttackExposure": {
+      "description": "An attack exposure contains the results of an attack path simulation run.",
+      "id": "AttackExposure",
+      "properties": {
+        "attackExposureResult": {
+          "description": "The resource name of the attack path simulation result that contains the details regarding this attack exposure score. Example: organizations/123/attackExposureResults/456",
+          "type": "string"
+        },
+        "exposedHighValueResourcesCount": {
+          "description": "The number of high value resources that are exposed as a result of this finding.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "exposedLowValueResourcesCount": {
+          "description": "The number of high value resources that are exposed as a result of this finding.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "exposedMediumValueResourcesCount": {
+          "description": "The number of medium value resources that are exposed as a result of this finding.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "latestCalculationTime": {
+          "description": "The most recent time the attack exposure was updated on this finding.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "score": {
+          "description": "A number between 0 (inclusive) and infinity that represents how important this finding is to remediate. The higher the score, the more important it is to remediate.",
+          "format": "double",
+          "type": "number"
+        },
+        "state": {
+          "description": "What state this AttackExposure is in. This captures whether or not an attack exposure has been calculated or not.",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "CALCULATED",
+            "NOT_CALCULATED"
+          ],
+          "enumDescriptions": [
+            "The state is not specified.",
+            "The attack exposure has been calculated.",
+            "The attack exposure has not been calculated."
+          ],
+          "type": "string"
         }
       },
       "type": "object"
@@ -1173,6 +1227,30 @@
       },
       "type": "object"
     },
+    "CloudLoggingEntry": {
+      "description": "Metadata taken from a [Cloud Logging LogEntry](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry)",
+      "id": "CloudLoggingEntry",
+      "properties": {
+        "insertId": {
+          "description": "A unique identifier for the log entry.",
+          "type": "string"
+        },
+        "logId": {
+          "description": "The type of the log (part of `log_name`. `log_name` is the resource name of the log to which this log entry belongs). For example: `cloudresourcemanager.googleapis.com/activity`. Note that this field is not URL-encoded, unlike the `LOG_ID` field in `LogEntry`.",
+          "type": "string"
+        },
+        "resourceContainer": {
+          "description": "The organization, folder, or project of the monitored resource that produced this log entry.",
+          "type": "string"
+        },
+        "timestamp": {
+          "description": "The time the event described by the log entry occurred.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Compliance": {
       "description": "Contains compliance information about a security standard indicating unmet recommendations.",
       "id": "Compliance",
@@ -1269,6 +1347,11 @@
       "description": "Container associated with the finding.",
       "id": "Container",
       "properties": {
+        "createTime": {
+          "description": "The time that the container was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
         "imageId": {
           "description": "Optional container image ID, if provided by the container runtime. Uniquely identifies the container image launched using a container image digest.",
           "type": "string"
@@ -1454,7 +1537,7 @@
       "type": "object"
     },
     "Database": {
-      "description": "Represents database access information, such as queries. A database may be a sub-resource of an instance (as in the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types, such as Cloud SQL databases, are not yet supported by Cloud Asset Inventory. In these cases only the display name is provided. Some database resources may not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types are not yet supported by Cloud Asset Inventory (e.g. Cloud SQL databases). In these cases only the display name will be provided.",
+      "description": "Represents database access information, such as queries. A database may be a sub-resource of an instance (as in the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types, such as Cloud SQL databases, are not yet supported by Cloud Asset Inventory. In these cases only the display name is provided.",
       "id": "Database",
       "properties": {
         "displayName": {
@@ -1469,7 +1552,7 @@
           "type": "array"
         },
         "name": {
-          "description": "The [full resource name](https://google.aip.dev/122#full-resource-names) of the database that the user connected to, if it is supported by Cloud Asset Inventory.",
+          "description": "Some database resources may not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types are not yet supported by Cloud Asset Inventory (e.g. Cloud SQL databases). In these cases only the display name will be provided. The [full resource name](https://google.aip.dev/122#full-resource-names) of the database that the user connected to, if it is supported by Cloud Asset Inventory.",
           "type": "string"
         },
         "query": {
@@ -1478,6 +1561,10 @@
         },
         "userName": {
           "description": "The username used to connect to the database. The username might not be an IAM principal and does not have a set format.",
+          "type": "string"
+        },
+        "version": {
+          "description": "The version of the database, for example, POSTGRES_14. See [the complete list](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/SqlDatabaseVersion).",
           "type": "string"
         }
       },
@@ -1555,6 +1642,11 @@
             "$ref": "ExfilResource"
           },
           "type": "array"
+        },
+        "totalExfiltratedBytes": {
+          "description": "Total exfiltrated bytes processed for the entire job.",
+          "format": "int64",
+          "type": "string"
         }
       },
       "type": "object"
@@ -1622,6 +1714,10 @@
         "access": {
           "$ref": "Access",
           "description": "Access details associated with the finding, such as more information on the caller, which method was accessed, and from where."
+        },
+        "attackExposure": {
+          "$ref": "AttackExposure",
+          "description": "The results of an attack path simulation relevant to this finding."
         },
         "canonicalName": {
           "description": "The canonical name of the finding. It's either \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\", \"folders/{folder_id}/sources/{source_id}/findings/{finding_id}\" or \"projects/{project_number}/sources/{source_id}/findings/{finding_id}\", depending on the closest CRM ancestor of the resource associated with the finding.",
@@ -1717,7 +1813,8 @@
             "VULNERABILITY",
             "MISCONFIGURATION",
             "OBSERVATION",
-            "SCC_ERROR"
+            "SCC_ERROR",
+            "POSTURE_VIOLATION"
           ],
           "enumDescriptions": [
             "Unspecified finding class.",
@@ -1725,7 +1822,8 @@
             "Describes a potential weakness in software that increases risk to Confidentiality \u0026 Integrity \u0026 Availability.",
             "Describes a potential weakness in cloud resource/asset configuration that increases risk.",
             "Describes a security observation that is for informational purposes.",
-            "Describes an error that prevents some SCC functionality."
+            "Describes an error that prevents some SCC functionality.",
+            "Describes a potential security risk due to a change in the security posture."
           ],
           "type": "string"
         },
@@ -1747,6 +1845,20 @@
         "kubernetes": {
           "$ref": "Kubernetes",
           "description": "Kubernetes resources associated with the finding."
+        },
+        "loadBalancers": {
+          "description": "The load balancers associated with the finding.",
+          "items": {
+            "$ref": "LoadBalancer"
+          },
+          "type": "array"
+        },
+        "logEntries": {
+          "description": "Log entries that are relevant to the finding.",
+          "items": {
+            "$ref": "LogEntry"
+          },
+          "type": "array"
         },
         "mitreAttack": {
           "$ref": "MitreAttack",
@@ -1790,6 +1902,13 @@
           "description": "Steps to address the finding.",
           "type": "string"
         },
+        "orgPolicies": {
+          "description": "Contains information about the org policies associated with the finding.",
+          "items": {
+            "$ref": "OrgPolicy"
+          },
+          "type": "array"
+        },
         "parent": {
           "description": "The relative resource name of the source the finding belongs to. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after creation time. For example: \"organizations/{organization_id}/sources/{source_id}\"",
           "type": "string"
@@ -1814,6 +1933,10 @@
           "$ref": "SecurityMarks",
           "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
           "readOnly": true
+        },
+        "securityPosture": {
+          "$ref": "SecurityPosture",
+          "description": "The security posture associated with the finding."
         },
         "severity": {
           "description": "The severity of the finding. This field is managed by the source that writes the finding.",
@@ -2095,12 +2218,12 @@
           "type": "array"
         },
         "externalSystemUpdateTime": {
-          "description": "The most recent time when the corresponding finding's ticket/tracker was updated in the external system.",
+          "description": "The time when the case was last updated, as reported by the external system.",
           "format": "google-datetime",
           "type": "string"
         },
         "externalUid": {
-          "description": "Identifier that's used to track the given finding in the external system.",
+          "description": "The identifier that's used to track the finding's corresponding case in the external system.",
           "type": "string"
         },
         "name": {
@@ -2108,7 +2231,7 @@
           "type": "string"
         },
         "status": {
-          "description": "Most recent status of the corresponding finding's ticket/tracker in the external system.",
+          "description": "The most recent status of the finding's corresponding case, as reported by the external system.",
           "type": "string"
         }
       },
@@ -2129,6 +2252,7 @@
           "type": "string"
         },
         "displayName": {
+          "deprecated": true,
           "description": "The human readable name to be displayed for the mute config.",
           "type": "string"
         },
@@ -2142,7 +2266,7 @@
           "type": "string"
         },
         "name": {
-          "description": "This field will be ignored if provided on config creation. Format \"organizations/{organization}/muteConfigs/{mute_config}\" \"folders/{folder}/muteConfigs/{mute_config}\" \"projects/{project}/muteConfigs/{mute_config}\"",
+          "description": "This field will be ignored if provided on config creation. Format \"organizations/{organization}/muteConfigs/{mute_config}\" \"folders/{folder}/muteConfigs/{mute_config}\" \"projects/{project}/muteConfigs/{mute_config}\" \"organizations/{organization}/locations/global/muteConfigs/{mute_config}\" \"folders/{folder}/locations/global/muteConfigs/{mute_config}\" \"projects/{project}/locations/global/muteConfigs/{mute_config}\"",
           "type": "string"
         },
         "updateTime": {
@@ -2241,6 +2365,73 @@
             "type": "string"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudSecuritycenterV1ResourceValueConfig": {
+      "description": "A resource value config (RVC) is a mapping configuration of user's resources to resource values. Used in Attack path simulations.",
+      "id": "GoogleCloudSecuritycenterV1ResourceValueConfig",
+      "properties": {
+        "createTime": {
+          "description": "Output only. Timestamp this resource value config was created.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the resource value config.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name for the resource value config",
+          "type": "string"
+        },
+        "resourceLabelsSelector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "List of resource labels to search for, evaluated with AND. E.g. \"resource_labels_selector\": {\"key\": \"value\", \"env\": \"prod\"} will match resources with labels \"key\": \"value\" AND \"env\": \"prod\" https://cloud.google.com/resource-manager/docs/creating-managing-labels",
+          "type": "object"
+        },
+        "resourceType": {
+          "description": "Apply resource_value only to resources that match resource_type. resource_type will be checked with \"AND\" of other resources. E.g. \"storage.googleapis.com/Bucket\" with resource_value \"HIGH\" will apply \"HIGH\" value only to \"storage.googleapis.com/Bucket\" resources.",
+          "type": "string"
+        },
+        "resourceValue": {
+          "description": "Required. Resource value level this expression represents",
+          "enum": [
+            "RESOURCE_VALUE_UNSPECIFIED",
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "NONE"
+          ],
+          "enumDescriptions": [
+            "Unspecific value",
+            "High resource value",
+            "Medium resource value",
+            "Low resource value",
+            "No resource value, e.g. ignore these resources"
+          ],
+          "type": "string"
+        },
+        "scope": {
+          "description": "Project or folder to scope this config to. For example, \"project/456\" would apply this config only to resources in \"project/456\" scope will be checked with \"AND\" of other resources.",
+          "type": "string"
+        },
+        "tagValues": {
+          "description": "Required. Tag values combined with AND to check against. Values in the form \"tagValues/123\" E.g. [ \"tagValues/123\", \"tagValues/456\", \"tagValues/789\" ] https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "updateTime": {
+          "description": "Output only. Timestamp this resource value config was last updated.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2904,6 +3095,13 @@
           },
           "type": "array"
         },
+        "objects": {
+          "description": "Kubernetes objects related to the finding.",
+          "items": {
+            "$ref": "Object"
+          },
+          "type": "array"
+        },
         "pods": {
           "description": "Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) associated with the finding. This field contains Pod records for each container that is owned by a Pod.",
           "items": {
@@ -3057,6 +3255,28 @@
       },
       "type": "object"
     },
+    "LoadBalancer": {
+      "description": "Contains information related to the load balancer associated with the finding.",
+      "id": "LoadBalancer",
+      "properties": {
+        "name": {
+          "description": "The name of the load balancer associated with the finding.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LogEntry": {
+      "description": "An individual entry in a log.",
+      "id": "LogEntry",
+      "properties": {
+        "cloudLoggingEntry": {
+          "$ref": "CloudLoggingEntry",
+          "description": "An individual entry in a log stored in Cloud Logging."
+        }
+      },
+      "type": "object"
+    },
     "MemoryHashSignature": {
       "description": "A signature corresponding to memory page hashes.",
       "id": "MemoryHashSignature",
@@ -3159,7 +3379,8 @@
               "NETWORK_SERVICE_DISCOVERY",
               "ACCESS_TOKEN_MANIPULATION",
               "ABUSE_ELEVATION_CONTROL_MECHANISM",
-              "DEFAULT_ACCOUNTS"
+              "DEFAULT_ACCOUNTS",
+              "INHIBIT_SYSTEM_RECOVERY"
             ],
             "enumDescriptions": [
               "Unspecified value.",
@@ -3197,7 +3418,8 @@
               "T1046",
               "T1134",
               "T1548",
-              "T1078.001"
+              "T1078.001",
+              "T1490"
             ],
             "type": "string"
           },
@@ -3280,7 +3502,8 @@
               "NETWORK_SERVICE_DISCOVERY",
               "ACCESS_TOKEN_MANIPULATION",
               "ABUSE_ELEVATION_CONTROL_MECHANISM",
-              "DEFAULT_ACCOUNTS"
+              "DEFAULT_ACCOUNTS",
+              "INHIBIT_SYSTEM_RECOVERY"
             ],
             "enumDescriptions": [
               "Unspecified value.",
@@ -3318,7 +3541,8 @@
               "T1046",
               "T1134",
               "T1548",
-              "T1078.001"
+              "T1078.001",
+              "T1490"
             ],
             "type": "string"
           },
@@ -3360,6 +3584,36 @@
       },
       "type": "object"
     },
+    "Object": {
+      "description": "Kubernetes object related to the finding, uniquely identified by GKNN. Used if the object Kind is not one of Pod, Node, NodePool, Binding, or AccessReview.",
+      "id": "Object",
+      "properties": {
+        "containers": {
+          "description": "Pod containers associated with this finding, if any.",
+          "items": {
+            "$ref": "Container"
+          },
+          "type": "array"
+        },
+        "group": {
+          "description": "Kubernetes object group, such as \"policy.k8s.io/v1\".",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kubernetes object kind, such as “Namespace”.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Kubernetes object name. For details see https://kubernetes.io/docs/concepts/overview/working-with-objects/names/.",
+          "type": "string"
+        },
+        "ns": {
+          "description": "Kubernetes object namespace. Must be a valid DNS label. Named \"ns\" to avoid collision with C++ namespace keyword. For details see https://kubernetes.io/docs/tasks/administer-cluster/namespaces/.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Operation": {
       "description": "This resource represents a long-running operation that is the result of a network API call.",
       "id": "Operation",
@@ -3389,8 +3643,19 @@
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "OrgPolicy": {
+      "description": "Contains information about the org policies associated with the finding.",
+      "id": "OrgPolicy",
+      "properties": {
+        "name": {
+          "description": "The resource name of the org policy. Example: \"organizations/{organization_id}/policies/{constraint_name}\"",
+          "type": "string"
         }
       },
       "type": "object"
@@ -3404,7 +3669,7 @@
           "description": "The configuration used for Asset Discovery runs."
         },
         "enableAssetDiscovery": {
-          "description": "A flag that indicates if Asset Discovery should be enabled. If the flag is set to `true`, then discovery of assets will occur. If it is set to `false, all historical assets will remain, but discovery of future assets will not occur.",
+          "description": "A flag that indicates if Asset Discovery should be enabled. If the flag is set to `true`, then discovery of assets will occur. If it is set to `false`, all historical assets will remain, but discovery of future assets will not occur.",
           "type": "boolean"
         },
         "name": {
@@ -3444,7 +3709,7 @@
       "type": "object"
     },
     "Policy": {
-      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
       "id": "Policy",
       "properties": {
         "auditConfigs": {
@@ -3644,6 +3909,33 @@
         },
         "name": {
           "description": "The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: \"organizations/{organization_id}/assets/{asset_id}/securityMarks\" \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SecurityPosture": {
+      "description": "Represents a posture that is deployed on Google Cloud by the Security Command Center Posture Management service. A posture contains one or more policy sets. A policy set is a group of policies that enforce a set of security rules on Google Cloud.",
+      "id": "SecurityPosture",
+      "properties": {
+        "changedPolicy": {
+          "description": "The name of the policy that has been updated, for example, `projects/{project_id}/policies/{constraint_name}`.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the posture, for example, `organizations/{org_id}/locations/{location}/postures/{posture_name}`.",
+          "type": "string"
+        },
+        "postureDeployment": {
+          "description": "The name of the posture deployment, for example, `projects/{project_id}/posturedeployments/{posture_deployment_id}`.",
+          "type": "string"
+        },
+        "postureDeploymentResource": {
+          "description": "The project, folder, or organization on which the posture is deployed, for example, `projects/{project_id}`.",
+          "type": "string"
+        },
+        "revisionId": {
+          "description": "The version of the posture, for example, `c7cfa2a8`.",
           "type": "string"
         }
       },

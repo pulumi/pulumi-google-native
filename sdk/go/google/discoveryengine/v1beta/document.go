@@ -19,10 +19,14 @@ type Document struct {
 
 	BranchId     pulumi.StringOutput `pulumi:"branchId"`
 	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
-	DataStoreId  pulumi.StringOutput `pulumi:"dataStoreId"`
+	// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+	Content     GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput `pulumi:"content"`
+	DataStoreId pulumi.StringOutput                                           `pulumi:"dataStoreId"`
+	// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
+	DerivedStructData pulumi.StringMapOutput `pulumi:"derivedStructData"`
 	// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
 	DocumentId pulumi.StringOutput `pulumi:"documentId"`
-	// The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+	// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 	JsonData pulumi.StringOutput `pulumi:"jsonData"`
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
@@ -32,7 +36,7 @@ type Document struct {
 	Project          pulumi.StringOutput `pulumi:"project"`
 	// The identifier of the schema located in the same data store.
 	SchemaId pulumi.StringOutput `pulumi:"schemaId"`
-	// The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+	// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 	StructData pulumi.StringMapOutput `pulumi:"structData"`
 }
 
@@ -99,12 +103,14 @@ func (DocumentState) ElementType() reflect.Type {
 type documentArgs struct {
 	BranchId     string `pulumi:"branchId"`
 	CollectionId string `pulumi:"collectionId"`
-	DataStoreId  string `pulumi:"dataStoreId"`
+	// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+	Content     *GoogleCloudDiscoveryengineV1betaDocumentContent `pulumi:"content"`
+	DataStoreId string                                           `pulumi:"dataStoreId"`
 	// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
 	DocumentId string `pulumi:"documentId"`
 	// Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
 	Id *string `pulumi:"id"`
-	// The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+	// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 	JsonData *string `pulumi:"jsonData"`
 	Location *string `pulumi:"location"`
 	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
@@ -114,7 +120,7 @@ type documentArgs struct {
 	Project          *string `pulumi:"project"`
 	// The identifier of the schema located in the same data store.
 	SchemaId *string `pulumi:"schemaId"`
-	// The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+	// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 	StructData map[string]string `pulumi:"structData"`
 }
 
@@ -122,12 +128,14 @@ type documentArgs struct {
 type DocumentArgs struct {
 	BranchId     pulumi.StringInput
 	CollectionId pulumi.StringInput
-	DataStoreId  pulumi.StringInput
+	// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+	Content     GoogleCloudDiscoveryengineV1betaDocumentContentPtrInput
+	DataStoreId pulumi.StringInput
 	// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
 	DocumentId pulumi.StringInput
 	// Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
 	Id pulumi.StringPtrInput
-	// The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+	// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 	JsonData pulumi.StringPtrInput
 	Location pulumi.StringPtrInput
 	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
@@ -137,7 +145,7 @@ type DocumentArgs struct {
 	Project          pulumi.StringPtrInput
 	// The identifier of the schema located in the same data store.
 	SchemaId pulumi.StringPtrInput
-	// The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+	// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 	StructData pulumi.StringMapInput
 }
 
@@ -198,8 +206,18 @@ func (o DocumentOutput) CollectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.CollectionId }).(pulumi.StringOutput)
 }
 
+// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+func (o DocumentOutput) Content() GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput {
+	return o.ApplyT(func(v *Document) GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput { return v.Content }).(GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput)
+}
+
 func (o DocumentOutput) DataStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.DataStoreId }).(pulumi.StringOutput)
+}
+
+// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
+func (o DocumentOutput) DerivedStructData() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringMapOutput { return v.DerivedStructData }).(pulumi.StringMapOutput)
 }
 
 // Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
@@ -207,7 +225,7 @@ func (o DocumentOutput) DocumentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.DocumentId }).(pulumi.StringOutput)
 }
 
-// The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 func (o DocumentOutput) JsonData() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.JsonData }).(pulumi.StringOutput)
 }
@@ -235,7 +253,7 @@ func (o DocumentOutput) SchemaId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.SchemaId }).(pulumi.StringOutput)
 }
 
-// The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 func (o DocumentOutput) StructData() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringMapOutput { return v.StructData }).(pulumi.StringMapOutput)
 }

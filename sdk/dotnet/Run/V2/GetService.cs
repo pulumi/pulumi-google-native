@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         public readonly string Creator;
         /// <summary>
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// </summary>
+        public readonly ImmutableArray<string> CustomAudiences;
+        /// <summary>
         /// The deletion time.
         /// </summary>
         public readonly string DeleteTime;
@@ -152,6 +156,10 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
+        /// Optional. Specifies service-level scaling settings
+        /// </summary>
+        public readonly Outputs.GoogleCloudRunV2ServiceScalingResponse Scaling;
+        /// <summary>
         /// The template used to create revisions for this Service.
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2RevisionTemplateResponse Template;
@@ -196,6 +204,8 @@ namespace Pulumi.GoogleNative.Run.V2
 
             string creator,
 
+            ImmutableArray<string> customAudiences,
+
             string deleteTime,
 
             string description,
@@ -226,6 +236,8 @@ namespace Pulumi.GoogleNative.Run.V2
 
             bool satisfiesPzs,
 
+            Outputs.GoogleCloudRunV2ServiceScalingResponse scaling,
+
             Outputs.GoogleCloudRunV2RevisionTemplateResponse template,
 
             Outputs.GoogleCloudRunV2ConditionResponse terminalCondition,
@@ -247,6 +259,7 @@ namespace Pulumi.GoogleNative.Run.V2
             Conditions = conditions;
             CreateTime = createTime;
             Creator = creator;
+            CustomAudiences = customAudiences;
             DeleteTime = deleteTime;
             Description = description;
             Etag = etag;
@@ -262,6 +275,7 @@ namespace Pulumi.GoogleNative.Run.V2
             ObservedGeneration = observedGeneration;
             Reconciling = reconciling;
             SatisfiesPzs = satisfiesPzs;
+            Scaling = scaling;
             Template = template;
             TerminalCondition = terminalCondition;
             Traffic = traffic;

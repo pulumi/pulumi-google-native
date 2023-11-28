@@ -452,7 +452,7 @@ type BackupConfiguration struct {
 	Kind *string `pulumi:"kind"`
 	// Location of the backup
 	Location *string `pulumi:"location"`
-	// (Postgres only) Whether point in time recovery is enabled.
+	// Whether point in time recovery is enabled.
 	PointInTimeRecoveryEnabled *bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled *bool `pulumi:"replicationLogArchivingEnabled"`
@@ -485,7 +485,7 @@ type BackupConfigurationArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Location of the backup
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// (Postgres only) Whether point in time recovery is enabled.
+	// Whether point in time recovery is enabled.
 	PointInTimeRecoveryEnabled pulumi.BoolPtrInput `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled pulumi.BoolPtrInput `pulumi:"replicationLogArchivingEnabled"`
@@ -616,7 +616,7 @@ func (o BackupConfigurationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// (Postgres only) Whether point in time recovery is enabled.
+// Whether point in time recovery is enabled.
 func (o BackupConfigurationOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackupConfiguration) *bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -716,7 +716,7 @@ func (o BackupConfigurationPtrOutput) Location() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Postgres only) Whether point in time recovery is enabled.
+// Whether point in time recovery is enabled.
 func (o BackupConfigurationPtrOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackupConfiguration) *bool {
 		if v == nil {
@@ -768,7 +768,7 @@ type BackupConfigurationResponse struct {
 	Kind string `pulumi:"kind"`
 	// Location of the backup
 	Location string `pulumi:"location"`
-	// (Postgres only) Whether point in time recovery is enabled.
+	// Whether point in time recovery is enabled.
 	PointInTimeRecoveryEnabled bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled bool `pulumi:"replicationLogArchivingEnabled"`
@@ -824,7 +824,7 @@ func (o BackupConfigurationResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupConfigurationResponse) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// (Postgres only) Whether point in time recovery is enabled.
+// Whether point in time recovery is enabled.
 func (o BackupConfigurationResponseOutput) PointInTimeRecoveryEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackupConfigurationResponse) bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolOutput)
 }
@@ -1064,6 +1064,202 @@ func (o BackupRetentionSettingsResponseOutput) RetainedBackups() pulumi.IntOutpu
 // The unit that 'retained_backups' represents.
 func (o BackupRetentionSettingsResponseOutput) RetentionUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupRetentionSettingsResponse) string { return v.RetentionUnit }).(pulumi.StringOutput)
+}
+
+// Data cache configurations.
+type DataCacheConfig struct {
+	// Whether data cache is enabled for the instance.
+	DataCacheEnabled *bool `pulumi:"dataCacheEnabled"`
+}
+
+// DataCacheConfigInput is an input type that accepts DataCacheConfigArgs and DataCacheConfigOutput values.
+// You can construct a concrete instance of `DataCacheConfigInput` via:
+//
+//	DataCacheConfigArgs{...}
+type DataCacheConfigInput interface {
+	pulumi.Input
+
+	ToDataCacheConfigOutput() DataCacheConfigOutput
+	ToDataCacheConfigOutputWithContext(context.Context) DataCacheConfigOutput
+}
+
+// Data cache configurations.
+type DataCacheConfigArgs struct {
+	// Whether data cache is enabled for the instance.
+	DataCacheEnabled pulumi.BoolPtrInput `pulumi:"dataCacheEnabled"`
+}
+
+func (DataCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCacheConfig)(nil)).Elem()
+}
+
+func (i DataCacheConfigArgs) ToDataCacheConfigOutput() DataCacheConfigOutput {
+	return i.ToDataCacheConfigOutputWithContext(context.Background())
+}
+
+func (i DataCacheConfigArgs) ToDataCacheConfigOutputWithContext(ctx context.Context) DataCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCacheConfigOutput)
+}
+
+func (i DataCacheConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DataCacheConfig] {
+	return pulumix.Output[DataCacheConfig]{
+		OutputState: i.ToDataCacheConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DataCacheConfigArgs) ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput {
+	return i.ToDataCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataCacheConfigArgs) ToDataCacheConfigPtrOutputWithContext(ctx context.Context) DataCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCacheConfigOutput).ToDataCacheConfigPtrOutputWithContext(ctx)
+}
+
+// DataCacheConfigPtrInput is an input type that accepts DataCacheConfigArgs, DataCacheConfigPtr and DataCacheConfigPtrOutput values.
+// You can construct a concrete instance of `DataCacheConfigPtrInput` via:
+//
+//	        DataCacheConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataCacheConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput
+	ToDataCacheConfigPtrOutputWithContext(context.Context) DataCacheConfigPtrOutput
+}
+
+type dataCacheConfigPtrType DataCacheConfigArgs
+
+func DataCacheConfigPtr(v *DataCacheConfigArgs) DataCacheConfigPtrInput {
+	return (*dataCacheConfigPtrType)(v)
+}
+
+func (*dataCacheConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataCacheConfig)(nil)).Elem()
+}
+
+func (i *dataCacheConfigPtrType) ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput {
+	return i.ToDataCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataCacheConfigPtrType) ToDataCacheConfigPtrOutputWithContext(ctx context.Context) DataCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCacheConfigPtrOutput)
+}
+
+func (i *dataCacheConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataCacheConfig] {
+	return pulumix.Output[*DataCacheConfig]{
+		OutputState: i.ToDataCacheConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Data cache configurations.
+type DataCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (DataCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCacheConfig)(nil)).Elem()
+}
+
+func (o DataCacheConfigOutput) ToDataCacheConfigOutput() DataCacheConfigOutput {
+	return o
+}
+
+func (o DataCacheConfigOutput) ToDataCacheConfigOutputWithContext(ctx context.Context) DataCacheConfigOutput {
+	return o
+}
+
+func (o DataCacheConfigOutput) ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput {
+	return o.ToDataCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataCacheConfigOutput) ToDataCacheConfigPtrOutputWithContext(ctx context.Context) DataCacheConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataCacheConfig) *DataCacheConfig {
+		return &v
+	}).(DataCacheConfigPtrOutput)
+}
+
+func (o DataCacheConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DataCacheConfig] {
+	return pulumix.Output[DataCacheConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether data cache is enabled for the instance.
+func (o DataCacheConfigOutput) DataCacheEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataCacheConfig) *bool { return v.DataCacheEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DataCacheConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataCacheConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataCacheConfig)(nil)).Elem()
+}
+
+func (o DataCacheConfigPtrOutput) ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput {
+	return o
+}
+
+func (o DataCacheConfigPtrOutput) ToDataCacheConfigPtrOutputWithContext(ctx context.Context) DataCacheConfigPtrOutput {
+	return o
+}
+
+func (o DataCacheConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataCacheConfig] {
+	return pulumix.Output[*DataCacheConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DataCacheConfigPtrOutput) Elem() DataCacheConfigOutput {
+	return o.ApplyT(func(v *DataCacheConfig) DataCacheConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataCacheConfig
+		return ret
+	}).(DataCacheConfigOutput)
+}
+
+// Whether data cache is enabled for the instance.
+func (o DataCacheConfigPtrOutput) DataCacheEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataCacheConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DataCacheEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Data cache configurations.
+type DataCacheConfigResponse struct {
+	// Whether data cache is enabled for the instance.
+	DataCacheEnabled bool `pulumi:"dataCacheEnabled"`
+}
+
+// Data cache configurations.
+type DataCacheConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DataCacheConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCacheConfigResponse)(nil)).Elem()
+}
+
+func (o DataCacheConfigResponseOutput) ToDataCacheConfigResponseOutput() DataCacheConfigResponseOutput {
+	return o
+}
+
+func (o DataCacheConfigResponseOutput) ToDataCacheConfigResponseOutputWithContext(ctx context.Context) DataCacheConfigResponseOutput {
+	return o
+}
+
+func (o DataCacheConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataCacheConfigResponse] {
+	return pulumix.Output[DataCacheConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether data cache is enabled for the instance.
+func (o DataCacheConfigResponseOutput) DataCacheEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DataCacheConfigResponse) bool { return v.DataCacheEnabled }).(pulumi.BoolOutput)
 }
 
 // Database flags for Cloud SQL instances.
@@ -2704,8 +2900,12 @@ type IpConfiguration struct {
 	Ipv4Enabled *bool `pulumi:"ipv4Enabled"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork *string `pulumi:"privateNetwork"`
-	// Whether SSL connections over IP are enforced or not.
+	// PSC settings for this instance.
+	PscConfig *PscConfig `pulumi:"pscConfig"`
+	// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 	RequireSsl *bool `pulumi:"requireSsl"`
+	// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+	SslMode *IpConfigurationSslMode `pulumi:"sslMode"`
 }
 
 // IpConfigurationInput is an input type that accepts IpConfigurationArgs and IpConfigurationOutput values.
@@ -2731,8 +2931,12 @@ type IpConfigurationArgs struct {
 	Ipv4Enabled pulumi.BoolPtrInput `pulumi:"ipv4Enabled"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
-	// Whether SSL connections over IP are enforced or not.
+	// PSC settings for this instance.
+	PscConfig PscConfigPtrInput `pulumi:"pscConfig"`
+	// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
+	// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+	SslMode IpConfigurationSslModePtrInput `pulumi:"sslMode"`
 }
 
 func (IpConfigurationArgs) ElementType() reflect.Type {
@@ -2856,9 +3060,19 @@ func (o IpConfigurationOutput) PrivateNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Whether SSL connections over IP are enforced or not.
+// PSC settings for this instance.
+func (o IpConfigurationOutput) PscConfig() PscConfigPtrOutput {
+	return o.ApplyT(func(v IpConfiguration) *PscConfig { return v.PscConfig }).(PscConfigPtrOutput)
+}
+
+// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 func (o IpConfigurationOutput) RequireSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
+}
+
+// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+func (o IpConfigurationOutput) SslMode() IpConfigurationSslModePtrOutput {
+	return o.ApplyT(func(v IpConfiguration) *IpConfigurationSslMode { return v.SslMode }).(IpConfigurationSslModePtrOutput)
 }
 
 type IpConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -2941,7 +3155,17 @@ func (o IpConfigurationPtrOutput) PrivateNetwork() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether SSL connections over IP are enforced or not.
+// PSC settings for this instance.
+func (o IpConfigurationPtrOutput) PscConfig() PscConfigPtrOutput {
+	return o.ApplyT(func(v *IpConfiguration) *PscConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PscConfig
+	}).(PscConfigPtrOutput)
+}
+
+// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IpConfiguration) *bool {
 		if v == nil {
@@ -2949,6 +3173,16 @@ func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 		}
 		return v.RequireSsl
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+func (o IpConfigurationPtrOutput) SslMode() IpConfigurationSslModePtrOutput {
+	return o.ApplyT(func(v *IpConfiguration) *IpConfigurationSslMode {
+		if v == nil {
+			return nil
+		}
+		return v.SslMode
+	}).(IpConfigurationSslModePtrOutput)
 }
 
 // IP Management configuration.
@@ -2963,8 +3197,12 @@ type IpConfigurationResponse struct {
 	Ipv4Enabled bool `pulumi:"ipv4Enabled"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork string `pulumi:"privateNetwork"`
-	// Whether SSL connections over IP are enforced or not.
+	// PSC settings for this instance.
+	PscConfig PscConfigResponse `pulumi:"pscConfig"`
+	// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 	RequireSsl bool `pulumi:"requireSsl"`
+	// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+	SslMode string `pulumi:"sslMode"`
 }
 
 // IP Management configuration.
@@ -3013,12 +3251,22 @@ func (o IpConfigurationResponseOutput) PrivateNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) string { return v.PrivateNetwork }).(pulumi.StringOutput)
 }
 
-// Whether SSL connections over IP are enforced or not.
+// PSC settings for this instance.
+func (o IpConfigurationResponseOutput) PscConfig() PscConfigResponseOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) PscConfigResponse { return v.PscConfig }).(PscConfigResponseOutput)
+}
+
+// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 func (o IpConfigurationResponseOutput) RequireSsl() pulumi.BoolOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) bool { return v.RequireSsl }).(pulumi.BoolOutput)
 }
 
-// Database instance IP Mapping.
+// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+func (o IpConfigurationResponseOutput) SslMode() pulumi.StringOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) string { return v.SslMode }).(pulumi.StringOutput)
+}
+
+// Database instance IP mapping
 type IpMapping struct {
 	// The IP address assigned.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -3039,7 +3287,7 @@ type IpMappingInput interface {
 	ToIpMappingOutputWithContext(context.Context) IpMappingOutput
 }
 
-// Database instance IP Mapping.
+// Database instance IP mapping
 type IpMappingArgs struct {
 	// The IP address assigned.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
@@ -3098,7 +3346,7 @@ func (i IpMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]IpMapping
 	}
 }
 
-// Database instance IP Mapping.
+// Database instance IP mapping
 type IpMappingOutput struct{ *pulumi.OutputState }
 
 func (IpMappingOutput) ElementType() reflect.Type {
@@ -3160,7 +3408,7 @@ func (o IpMappingArrayOutput) Index(i pulumi.IntInput) IpMappingOutput {
 	}).(IpMappingOutput)
 }
 
-// Database instance IP Mapping.
+// Database instance IP mapping
 type IpMappingResponse struct {
 	// The IP address assigned.
 	IpAddress string `pulumi:"ipAddress"`
@@ -3170,7 +3418,7 @@ type IpMappingResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// Database instance IP Mapping.
+// Database instance IP mapping
 type IpMappingResponseOutput struct{ *pulumi.OutputState }
 
 func (IpMappingResponseOutput) ElementType() reflect.Type {
@@ -3238,7 +3486,7 @@ type LocationPreference struct {
 	FollowGaeApplication *string `pulumi:"followGaeApplication"`
 	// This is always `sql#locationPreference`.
 	Kind *string `pulumi:"kind"`
-	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
 	SecondaryZone *string `pulumi:"secondaryZone"`
 	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone *string `pulumi:"zone"`
@@ -3261,7 +3509,7 @@ type LocationPreferenceArgs struct {
 	FollowGaeApplication pulumi.StringPtrInput `pulumi:"followGaeApplication"`
 	// This is always `sql#locationPreference`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
 	SecondaryZone pulumi.StringPtrInput `pulumi:"secondaryZone"`
 	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
@@ -3373,7 +3621,7 @@ func (o LocationPreferenceOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationPreference) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
 func (o LocationPreferenceOutput) SecondaryZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationPreference) *string { return v.SecondaryZone }).(pulumi.StringPtrOutput)
 }
@@ -3433,7 +3681,7 @@ func (o LocationPreferencePtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
 func (o LocationPreferencePtrOutput) SecondaryZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocationPreference) *string {
 		if v == nil {
@@ -3459,7 +3707,7 @@ type LocationPreferenceResponse struct {
 	FollowGaeApplication string `pulumi:"followGaeApplication"`
 	// This is always `sql#locationPreference`.
 	Kind string `pulumi:"kind"`
-	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
 	SecondaryZone string `pulumi:"secondaryZone"`
 	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone string `pulumi:"zone"`
@@ -3496,7 +3744,7 @@ func (o LocationPreferenceResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
 func (o LocationPreferenceResponseOutput) SecondaryZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.SecondaryZone }).(pulumi.StringOutput)
 }
@@ -4931,6 +5179,8 @@ func (o PasswordStatusResponseOutput) PasswordExpirationTime() pulumi.StringOutp
 type PasswordValidationPolicy struct {
 	// The complexity of the password.
 	Complexity *PasswordValidationPolicyComplexity `pulumi:"complexity"`
+	// Disallow credentials that have been previously compromised by a public data breach.
+	DisallowCompromisedCredentials *bool `pulumi:"disallowCompromisedCredentials"`
 	// Disallow username as a part of the password.
 	DisallowUsernameSubstring *bool `pulumi:"disallowUsernameSubstring"`
 	// Whether the password policy is enabled or not.
@@ -4958,6 +5208,8 @@ type PasswordValidationPolicyInput interface {
 type PasswordValidationPolicyArgs struct {
 	// The complexity of the password.
 	Complexity PasswordValidationPolicyComplexityPtrInput `pulumi:"complexity"`
+	// Disallow credentials that have been previously compromised by a public data breach.
+	DisallowCompromisedCredentials pulumi.BoolPtrInput `pulumi:"disallowCompromisedCredentials"`
 	// Disallow username as a part of the password.
 	DisallowUsernameSubstring pulumi.BoolPtrInput `pulumi:"disallowUsernameSubstring"`
 	// Whether the password policy is enabled or not.
@@ -5071,6 +5323,11 @@ func (o PasswordValidationPolicyOutput) Complexity() PasswordValidationPolicyCom
 	return o.ApplyT(func(v PasswordValidationPolicy) *PasswordValidationPolicyComplexity { return v.Complexity }).(PasswordValidationPolicyComplexityPtrOutput)
 }
 
+// Disallow credentials that have been previously compromised by a public data breach.
+func (o PasswordValidationPolicyOutput) DisallowCompromisedCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PasswordValidationPolicy) *bool { return v.DisallowCompromisedCredentials }).(pulumi.BoolPtrOutput)
+}
+
 // Disallow username as a part of the password.
 func (o PasswordValidationPolicyOutput) DisallowUsernameSubstring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PasswordValidationPolicy) *bool { return v.DisallowUsernameSubstring }).(pulumi.BoolPtrOutput)
@@ -5136,6 +5393,16 @@ func (o PasswordValidationPolicyPtrOutput) Complexity() PasswordValidationPolicy
 	}).(PasswordValidationPolicyComplexityPtrOutput)
 }
 
+// Disallow credentials that have been previously compromised by a public data breach.
+func (o PasswordValidationPolicyPtrOutput) DisallowCompromisedCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisallowCompromisedCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Disallow username as a part of the password.
 func (o PasswordValidationPolicyPtrOutput) DisallowUsernameSubstring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PasswordValidationPolicy) *bool {
@@ -5190,6 +5457,8 @@ func (o PasswordValidationPolicyPtrOutput) ReuseInterval() pulumi.IntPtrOutput {
 type PasswordValidationPolicyResponse struct {
 	// The complexity of the password.
 	Complexity string `pulumi:"complexity"`
+	// Disallow credentials that have been previously compromised by a public data breach.
+	DisallowCompromisedCredentials bool `pulumi:"disallowCompromisedCredentials"`
 	// Disallow username as a part of the password.
 	DisallowUsernameSubstring bool `pulumi:"disallowUsernameSubstring"`
 	// Whether the password policy is enabled or not.
@@ -5228,6 +5497,11 @@ func (o PasswordValidationPolicyResponseOutput) Complexity() pulumi.StringOutput
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) string { return v.Complexity }).(pulumi.StringOutput)
 }
 
+// Disallow credentials that have been previously compromised by a public data breach.
+func (o PasswordValidationPolicyResponseOutput) DisallowCompromisedCredentials() pulumi.BoolOutput {
+	return o.ApplyT(func(v PasswordValidationPolicyResponse) bool { return v.DisallowCompromisedCredentials }).(pulumi.BoolOutput)
+}
+
 // Disallow username as a part of the password.
 func (o PasswordValidationPolicyResponseOutput) DisallowUsernameSubstring() pulumi.BoolOutput {
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) bool { return v.DisallowUsernameSubstring }).(pulumi.BoolOutput)
@@ -5253,8 +5527,232 @@ func (o PasswordValidationPolicyResponseOutput) ReuseInterval() pulumi.IntOutput
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) int { return v.ReuseInterval }).(pulumi.IntOutput)
 }
 
+// PSC settings for a Cloud SQL instance.
+type PscConfig struct {
+	// Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// Whether PSC connectivity is enabled for this instance.
+	PscEnabled *bool `pulumi:"pscEnabled"`
+}
+
+// PscConfigInput is an input type that accepts PscConfigArgs and PscConfigOutput values.
+// You can construct a concrete instance of `PscConfigInput` via:
+//
+//	PscConfigArgs{...}
+type PscConfigInput interface {
+	pulumi.Input
+
+	ToPscConfigOutput() PscConfigOutput
+	ToPscConfigOutputWithContext(context.Context) PscConfigOutput
+}
+
+// PSC settings for a Cloud SQL instance.
+type PscConfigArgs struct {
+	// Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// Whether PSC connectivity is enabled for this instance.
+	PscEnabled pulumi.BoolPtrInput `pulumi:"pscEnabled"`
+}
+
+func (PscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfig)(nil)).Elem()
+}
+
+func (i PscConfigArgs) ToPscConfigOutput() PscConfigOutput {
+	return i.ToPscConfigOutputWithContext(context.Background())
+}
+
+func (i PscConfigArgs) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput)
+}
+
+func (i PscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
+	return pulumix.Output[PscConfig]{
+		OutputState: i.ToPscConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PscConfigArgs) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return i.ToPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PscConfigArgs) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput).ToPscConfigPtrOutputWithContext(ctx)
+}
+
+// PscConfigPtrInput is an input type that accepts PscConfigArgs, PscConfigPtr and PscConfigPtrOutput values.
+// You can construct a concrete instance of `PscConfigPtrInput` via:
+//
+//	        PscConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PscConfigPtrInput interface {
+	pulumi.Input
+
+	ToPscConfigPtrOutput() PscConfigPtrOutput
+	ToPscConfigPtrOutputWithContext(context.Context) PscConfigPtrOutput
+}
+
+type pscConfigPtrType PscConfigArgs
+
+func PscConfigPtr(v *PscConfigArgs) PscConfigPtrInput {
+	return (*pscConfigPtrType)(v)
+}
+
+func (*pscConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PscConfig)(nil)).Elem()
+}
+
+func (i *pscConfigPtrType) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return i.ToPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pscConfigPtrType) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigPtrOutput)
+}
+
+func (i *pscConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PscConfig] {
+	return pulumix.Output[*PscConfig]{
+		OutputState: i.ToPscConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// PSC settings for a Cloud SQL instance.
+type PscConfigOutput struct{ *pulumi.OutputState }
+
+func (PscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfig)(nil)).Elem()
+}
+
+func (o PscConfigOutput) ToPscConfigOutput() PscConfigOutput {
+	return o
+}
+
+func (o PscConfigOutput) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
+	return o
+}
+
+func (o PscConfigOutput) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return o.ToPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PscConfigOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PscConfig) *PscConfig {
+		return &v
+	}).(PscConfigPtrOutput)
+}
+
+func (o PscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
+	return pulumix.Output[PscConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+func (o PscConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PscConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+// Whether PSC connectivity is enabled for this instance.
+func (o PscConfigOutput) PscEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PscConfig) *bool { return v.PscEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type PscConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PscConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PscConfig)(nil)).Elem()
+}
+
+func (o PscConfigPtrOutput) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return o
+}
+
+func (o PscConfigPtrOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return o
+}
+
+func (o PscConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PscConfig] {
+	return pulumix.Output[*PscConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PscConfigPtrOutput) Elem() PscConfigOutput {
+	return o.ApplyT(func(v *PscConfig) PscConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PscConfig
+		return ret
+	}).(PscConfigOutput)
+}
+
+// Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+func (o PscConfigPtrOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PscConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedConsumerProjects
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether PSC connectivity is enabled for this instance.
+func (o PscConfigPtrOutput) PscEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PscConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PscEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// PSC settings for a Cloud SQL instance.
+type PscConfigResponse struct {
+	// Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// Whether PSC connectivity is enabled for this instance.
+	PscEnabled bool `pulumi:"pscEnabled"`
+}
+
+// PSC settings for a Cloud SQL instance.
+type PscConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PscConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfigResponse)(nil)).Elem()
+}
+
+func (o PscConfigResponseOutput) ToPscConfigResponseOutput() PscConfigResponseOutput {
+	return o
+}
+
+func (o PscConfigResponseOutput) ToPscConfigResponseOutputWithContext(ctx context.Context) PscConfigResponseOutput {
+	return o
+}
+
+func (o PscConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfigResponse] {
+	return pulumix.Output[PscConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+func (o PscConfigResponseOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PscConfigResponse) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+// Whether PSC connectivity is enabled for this instance.
+func (o PscConfigResponseOutput) PscEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v PscConfigResponse) bool { return v.PscEnabled }).(pulumi.BoolOutput)
+}
+
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfiguration struct {
+	// Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+	CascadableReplica *bool `pulumi:"cascadableReplica"`
 	// Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget *bool `pulumi:"failoverTarget"`
 	// This is always `sql#replicaConfiguration`.
@@ -5276,6 +5774,8 @@ type ReplicaConfigurationInput interface {
 
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfigurationArgs struct {
+	// Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+	CascadableReplica pulumi.BoolPtrInput `pulumi:"cascadableReplica"`
 	// Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget pulumi.BoolPtrInput `pulumi:"failoverTarget"`
 	// This is always `sql#replicaConfiguration`.
@@ -5380,6 +5880,11 @@ func (o ReplicaConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+func (o ReplicaConfigurationOutput) CascadableReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReplicaConfiguration) *bool { return v.CascadableReplica }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 func (o ReplicaConfigurationOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReplicaConfiguration) *bool { return v.FailoverTarget }).(pulumi.BoolPtrOutput)
@@ -5425,6 +5930,16 @@ func (o ReplicaConfigurationPtrOutput) Elem() ReplicaConfigurationOutput {
 	}).(ReplicaConfigurationOutput)
 }
 
+// Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+func (o ReplicaConfigurationPtrOutput) CascadableReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReplicaConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CascadableReplica
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 func (o ReplicaConfigurationPtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReplicaConfiguration) *bool {
@@ -5457,6 +5972,8 @@ func (o ReplicaConfigurationPtrOutput) MysqlReplicaConfiguration() MySqlReplicaC
 
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfigurationResponse struct {
+	// Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+	CascadableReplica bool `pulumi:"cascadableReplica"`
 	// Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget bool `pulumi:"failoverTarget"`
 	// This is always `sql#replicaConfiguration`.
@@ -5484,6 +6001,11 @@ func (o ReplicaConfigurationResponseOutput) ToOutput(ctx context.Context) pulumi
 	return pulumix.Output[ReplicaConfigurationResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+func (o ReplicaConfigurationResponseOutput) CascadableReplica() pulumi.BoolOutput {
+	return o.ApplyT(func(v ReplicaConfigurationResponse) bool { return v.CascadableReplica }).(pulumi.BoolOutput)
 }
 
 // Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
@@ -5525,6 +6047,8 @@ type Settings struct {
 	ConnectorEnforcement *SettingsConnectorEnforcement `pulumi:"connectorEnforcement"`
 	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
 	CrashSafeReplicationEnabled *bool `pulumi:"crashSafeReplicationEnabled"`
+	// Configuration for data cache.
+	DataCacheConfig *DataCacheConfig `pulumi:"dataCacheConfig"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb *string `pulumi:"dataDiskSizeGb"`
 	// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
@@ -5537,6 +6061,8 @@ type Settings struct {
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods []DenyMaintenancePeriod `pulumi:"denyMaintenancePeriods"`
+	// Optional. The edition of the instance.
+	Edition *SettingsEdition `pulumi:"edition"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig *InsightsConfig `pulumi:"insightsConfig"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -5604,6 +6130,8 @@ type SettingsArgs struct {
 	ConnectorEnforcement SettingsConnectorEnforcementPtrInput `pulumi:"connectorEnforcement"`
 	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
 	CrashSafeReplicationEnabled pulumi.BoolPtrInput `pulumi:"crashSafeReplicationEnabled"`
+	// Configuration for data cache.
+	DataCacheConfig DataCacheConfigPtrInput `pulumi:"dataCacheConfig"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb pulumi.StringPtrInput `pulumi:"dataDiskSizeGb"`
 	// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
@@ -5616,6 +6144,8 @@ type SettingsArgs struct {
 	DeletionProtectionEnabled pulumi.BoolPtrInput `pulumi:"deletionProtectionEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods DenyMaintenancePeriodArrayInput `pulumi:"denyMaintenancePeriods"`
+	// Optional. The edition of the instance.
+	Edition SettingsEditionPtrInput `pulumi:"edition"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig InsightsConfigPtrInput `pulumi:"insightsConfig"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -5793,6 +6323,11 @@ func (o SettingsOutput) CrashSafeReplicationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Settings) *bool { return v.CrashSafeReplicationEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Configuration for data cache.
+func (o SettingsOutput) DataCacheConfig() DataCacheConfigPtrOutput {
+	return o.ApplyT(func(v Settings) *DataCacheConfig { return v.DataCacheConfig }).(DataCacheConfigPtrOutput)
+}
+
 // The size of data disk, in GB. The data disk size minimum is 10GB.
 func (o SettingsOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.DataDiskSizeGb }).(pulumi.StringPtrOutput)
@@ -5821,6 +6356,11 @@ func (o SettingsOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
 // Deny maintenance periods
 func (o SettingsOutput) DenyMaintenancePeriods() DenyMaintenancePeriodArrayOutput {
 	return o.ApplyT(func(v Settings) []DenyMaintenancePeriod { return v.DenyMaintenancePeriods }).(DenyMaintenancePeriodArrayOutput)
+}
+
+// Optional. The edition of the instance.
+func (o SettingsOutput) Edition() SettingsEditionPtrOutput {
+	return o.ApplyT(func(v Settings) *SettingsEdition { return v.Edition }).(SettingsEditionPtrOutput)
 }
 
 // Insights configuration, for now relevant only for Postgres.
@@ -6022,6 +6562,16 @@ func (o SettingsPtrOutput) CrashSafeReplicationEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Configuration for data cache.
+func (o SettingsPtrOutput) DataCacheConfig() DataCacheConfigPtrOutput {
+	return o.ApplyT(func(v *Settings) *DataCacheConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataCacheConfig
+	}).(DataCacheConfigPtrOutput)
+}
+
 // The size of data disk, in GB. The data disk size minimum is 10GB.
 func (o SettingsPtrOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Settings) *string {
@@ -6080,6 +6630,16 @@ func (o SettingsPtrOutput) DenyMaintenancePeriods() DenyMaintenancePeriodArrayOu
 		}
 		return v.DenyMaintenancePeriods
 	}).(DenyMaintenancePeriodArrayOutput)
+}
+
+// Optional. The edition of the instance.
+func (o SettingsPtrOutput) Edition() SettingsEditionPtrOutput {
+	return o.ApplyT(func(v *Settings) *SettingsEdition {
+		if v == nil {
+			return nil
+		}
+		return v.Edition
+	}).(SettingsEditionPtrOutput)
 }
 
 // Insights configuration, for now relevant only for Postgres.
@@ -6256,6 +6816,8 @@ type SettingsResponse struct {
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
 	CrashSafeReplicationEnabled bool `pulumi:"crashSafeReplicationEnabled"`
+	// Configuration for data cache.
+	DataCacheConfig DataCacheConfigResponse `pulumi:"dataCacheConfig"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb string `pulumi:"dataDiskSizeGb"`
 	// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
@@ -6268,6 +6830,8 @@ type SettingsResponse struct {
 	DeletionProtectionEnabled bool `pulumi:"deletionProtectionEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods []DenyMaintenancePeriodResponse `pulumi:"denyMaintenancePeriods"`
+	// Optional. The edition of the instance.
+	Edition string `pulumi:"edition"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig InsightsConfigResponse `pulumi:"insightsConfig"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -6370,6 +6934,11 @@ func (o SettingsResponseOutput) CrashSafeReplicationEnabled() pulumi.BoolOutput 
 	return o.ApplyT(func(v SettingsResponse) bool { return v.CrashSafeReplicationEnabled }).(pulumi.BoolOutput)
 }
 
+// Configuration for data cache.
+func (o SettingsResponseOutput) DataCacheConfig() DataCacheConfigResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) DataCacheConfigResponse { return v.DataCacheConfig }).(DataCacheConfigResponseOutput)
+}
+
 // The size of data disk, in GB. The data disk size minimum is 10GB.
 func (o SettingsResponseOutput) DataDiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.DataDiskSizeGb }).(pulumi.StringOutput)
@@ -6398,6 +6967,11 @@ func (o SettingsResponseOutput) DeletionProtectionEnabled() pulumi.BoolOutput {
 // Deny maintenance periods
 func (o SettingsResponseOutput) DenyMaintenancePeriods() DenyMaintenancePeriodResponseArrayOutput {
 	return o.ApplyT(func(v SettingsResponse) []DenyMaintenancePeriodResponse { return v.DenyMaintenancePeriods }).(DenyMaintenancePeriodResponseArrayOutput)
+}
+
+// Optional. The edition of the instance.
+func (o SettingsResponseOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.Edition }).(pulumi.StringOutput)
 }
 
 // Insights configuration, for now relevant only for Postgres.
@@ -8601,6 +9175,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupConfigurationPtrInput)(nil)).Elem(), BackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsInput)(nil)).Elem(), BackupRetentionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsPtrInput)(nil)).Elem(), BackupRetentionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCacheConfigInput)(nil)).Elem(), DataCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCacheConfigPtrInput)(nil)).Elem(), DataCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFlagsInput)(nil)).Elem(), DatabaseFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFlagsArrayInput)(nil)).Elem(), DatabaseFlagsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyMaintenancePeriodInput)(nil)).Elem(), DenyMaintenancePeriodArgs{})
@@ -8631,6 +9207,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorPtrInput)(nil)).Elem(), OperationErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PasswordValidationPolicyInput)(nil)).Elem(), PasswordValidationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PasswordValidationPolicyPtrInput)(nil)).Elem(), PasswordValidationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigInput)(nil)).Elem(), PscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigPtrInput)(nil)).Elem(), PscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationInput)(nil)).Elem(), ReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationPtrInput)(nil)).Elem(), ReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsInput)(nil)).Elem(), SettingsArgs{})
@@ -8664,6 +9242,9 @@ func init() {
 	pulumi.RegisterOutputType(BackupRetentionSettingsOutput{})
 	pulumi.RegisterOutputType(BackupRetentionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(BackupRetentionSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DataCacheConfigOutput{})
+	pulumi.RegisterOutputType(DataCacheConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataCacheConfigResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseFlagsOutput{})
 	pulumi.RegisterOutputType(DatabaseFlagsArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseFlagsResponseOutput{})
@@ -8713,6 +9294,9 @@ func init() {
 	pulumi.RegisterOutputType(PasswordValidationPolicyOutput{})
 	pulumi.RegisterOutputType(PasswordValidationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(PasswordValidationPolicyResponseOutput{})
+	pulumi.RegisterOutputType(PscConfigOutput{})
+	pulumi.RegisterOutputType(PscConfigPtrOutput{})
+	pulumi.RegisterOutputType(PscConfigResponseOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationResponseOutput{})

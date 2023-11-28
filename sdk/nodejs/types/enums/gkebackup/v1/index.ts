@@ -36,13 +36,13 @@ export const RestoreConfigClusterResourceConflictPolicy = {
      */
     UseExistingVersion: "USE_EXISTING_VERSION",
     /**
-     * Delete the existing version before re-creating it from the Backup. Note that this is a dangerous option which could cause unintentional data loss if used inappropriately - for example, deleting a CRD will cause Kubernetes to delete all CRs of that type.
+     * Delete the existing version before re-creating it from the Backup. This is a dangerous option which could cause unintentional data loss if used inappropriately. For example, deleting a CRD will cause Kubernetes to delete all CRs of that type.
      */
     UseBackupVersion: "USE_BACKUP_VERSION",
 } as const;
 
 /**
- * Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+ * Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
  */
 export type RestoreConfigClusterResourceConflictPolicy = (typeof RestoreConfigClusterResourceConflictPolicy)[keyof typeof RestoreConfigClusterResourceConflictPolicy];
 
@@ -62,7 +62,7 @@ export const RestoreConfigNamespacedResourceRestoreMode = {
 } as const;
 
 /**
- * Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+ * Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
  */
 export type RestoreConfigNamespacedResourceRestoreMode = (typeof RestoreConfigNamespacedResourceRestoreMode)[keyof typeof RestoreConfigNamespacedResourceRestoreMode];
 
@@ -72,20 +72,56 @@ export const RestoreConfigVolumeDataRestorePolicy = {
      */
     VolumeDataRestorePolicyUnspecified: "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED",
     /**
-     * For each PVC to be restored, will create a new underlying volume (and PV) from the corresponding VolumeBackup contained within the Backup.
+     * For each PVC to be restored, create a new underlying volume and PV from the corresponding VolumeBackup contained within the Backup.
      */
     RestoreVolumeDataFromBackup: "RESTORE_VOLUME_DATA_FROM_BACKUP",
     /**
-     * For each PVC to be restored, attempt to reuse the original PV contained in the Backup (with its original underlying volume). Note that option is likely only usable when restoring a workload to its original cluster.
+     * For each PVC to be restored, attempt to reuse the original PV contained in the Backup (with its original underlying volume). This option is likely only usable when restoring a workload to its original cluster.
      */
     ReuseVolumeHandleFromBackup: "REUSE_VOLUME_HANDLE_FROM_BACKUP",
     /**
-     * For each PVC to be restored, PVCs will be created without any particular action to restore data. In this case, the normal Kubernetes provisioning logic would kick in, and this would likely result in either dynamically provisioning blank PVs or binding to statically provisioned PVs.
+     * For each PVC to be restored, create PVC without any particular action to restore data. In this case, the normal Kubernetes provisioning logic would kick in, and this would likely result in either dynamically provisioning blank PVs or binding to statically provisioned PVs.
      */
     NoVolumeDataRestoration: "NO_VOLUME_DATA_RESTORATION",
 } as const;
 
 /**
- * Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+ * Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
  */
 export type RestoreConfigVolumeDataRestorePolicy = (typeof RestoreConfigVolumeDataRestorePolicy)[keyof typeof RestoreConfigVolumeDataRestorePolicy];
+
+export const TransformationRuleActionOp = {
+    /**
+     * Unspecified operation
+     */
+    OpUnspecified: "OP_UNSPECIFIED",
+    /**
+     * The "remove" operation removes the value at the target location.
+     */
+    Remove: "REMOVE",
+    /**
+     * The "move" operation removes the value at a specified location and adds it to the target location.
+     */
+    Move: "MOVE",
+    /**
+     * The "copy" operation copies the value at a specified location to the target location.
+     */
+    Copy: "COPY",
+    /**
+     * The "add" operation performs one of the following functions, depending upon what the target location references: 1. If the target location specifies an array index, a new value is inserted into the array at the specified index. 2. If the target location specifies an object member that does not already exist, a new member is added to the object. 3. If the target location specifies an object member that does exist, that member's value is replaced.
+     */
+    Add: "ADD",
+    /**
+     * The "test" operation tests that a value at the target location is equal to a specified value.
+     */
+    Test: "TEST",
+    /**
+     * The "replace" operation replaces the value at the target location with a new value. The operation object MUST contain a "value" member whose content specifies the replacement value.
+     */
+    Replace: "REPLACE",
+} as const;
+
+/**
+ * Required. op specifies the operation to perform.
+ */
+export type TransformationRuleActionOp = (typeof TransformationRuleActionOp)[keyof typeof TransformationRuleActionOp];

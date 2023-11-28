@@ -247,8 +247,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// <summary>
         /// The name of the auth config.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.

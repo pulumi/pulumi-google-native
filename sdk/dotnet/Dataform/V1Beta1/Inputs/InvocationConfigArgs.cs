@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1.Inputs
         }
 
         /// <summary>
+        /// Optional. The service account to run workflow invocations under.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
         /// Optional. When set to true, transitive dependencies of included actions will be executed.
         /// </summary>
         [Input("transitiveDependenciesIncluded")]

@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse StringProfile;
         /// <summary>
-        /// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+        /// The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse> TopNValues;
 

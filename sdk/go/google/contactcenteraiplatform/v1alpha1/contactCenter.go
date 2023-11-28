@@ -31,6 +31,8 @@ type ContactCenter struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The configuration of this instance, it is currently immutable once created.
 	InstanceConfig InstanceConfigResponseOutput `pulumi:"instanceConfig"`
+	// Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+	KmsKey pulumi.StringOutput `pulumi:"kmsKey"`
 	// Labels as key value pairs
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -118,6 +120,8 @@ type contactCenterArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The configuration of this instance, it is currently immutable once created.
 	InstanceConfig *InstanceConfig `pulumi:"instanceConfig"`
+	// Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+	KmsKey *string `pulumi:"kmsKey"`
 	// Labels as key value pairs
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -146,6 +150,8 @@ type ContactCenterArgs struct {
 	DisplayName pulumi.StringInput
 	// The configuration of this instance, it is currently immutable once created.
 	InstanceConfig InstanceConfigPtrInput
+	// Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+	KmsKey pulumi.StringPtrInput
 	// Labels as key value pairs
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -242,6 +248,11 @@ func (o ContactCenterOutput) DisplayName() pulumi.StringOutput {
 // The configuration of this instance, it is currently immutable once created.
 func (o ContactCenterOutput) InstanceConfig() InstanceConfigResponseOutput {
 	return o.ApplyT(func(v *ContactCenter) InstanceConfigResponseOutput { return v.InstanceConfig }).(InstanceConfigResponseOutput)
+}
+
+// Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+func (o ContactCenterOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContactCenter) pulumi.StringOutput { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // Labels as key value pairs

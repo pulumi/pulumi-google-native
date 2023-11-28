@@ -28,7 +28,7 @@ class TcpRouteArgs:
         """
         The set of arguments for constructing a TcpRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
-        :param pulumi.Input[str] tcp_route_id: Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+        :param pulumi.Input[str] tcp_route_id: Required. Short name of the TcpRoute resource to be created.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the TcpRoute resource.
@@ -68,7 +68,7 @@ class TcpRouteArgs:
     @pulumi.getter(name="tcpRouteId")
     def tcp_route_id(self) -> pulumi.Input[str]:
         """
-        Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+        Required. Short name of the TcpRoute resource to be created.
         """
         return pulumi.get(self, "tcp_route_id")
 
@@ -181,7 +181,7 @@ class TcpRoute(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name>`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
-        :param pulumi.Input[str] tcp_route_id: Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+        :param pulumi.Input[str] tcp_route_id: Required. Short name of the TcpRoute resource to be created.
         """
         ...
     @overload
@@ -357,7 +357,7 @@ class TcpRoute(pulumi.CustomResource):
     @pulumi.getter(name="tcpRouteId")
     def tcp_route_id(self) -> pulumi.Output[str]:
         """
-        Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+        Required. Short name of the TcpRoute resource to be created.
         """
         return pulumi.get(self, "tcp_route_id")
 

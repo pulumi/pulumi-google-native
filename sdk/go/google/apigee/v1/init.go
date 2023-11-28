@@ -27,8 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Api{}
 	case "google-native:apigee/v1:ApiProduct":
 		r = &ApiProduct{}
-	case "google-native:apigee/v1:App":
-		r = &App{}
+	case "google-native:apigee/v1:AppGroupApp":
+		r = &AppGroupApp{}
+	case "google-native:apigee/v1:Appgroup":
+		r = &Appgroup{}
 	case "google-native:apigee/v1:ArchiveDeployment":
 		r = &ArchiveDeployment{}
 	case "google-native:apigee/v1:CanaryEvaluation":
@@ -41,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DebugSession{}
 	case "google-native:apigee/v1:Developer":
 		r = &Developer{}
+	case "google-native:apigee/v1:DeveloperApp":
+		r = &DeveloperApp{}
 	case "google-native:apigee/v1:EndpointAttachment":
 		r = &EndpointAttachment{}
 	case "google-native:apigee/v1:Entry":
@@ -87,6 +91,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Report{}
 	case "google-native:apigee/v1:Resourcefile":
 		r = &Resourcefile{}
+	case "google-native:apigee/v1:SecurityAction":
+		r = &SecurityAction{}
+	case "google-native:apigee/v1:SecurityProfile":
+		r = &SecurityProfile{}
 	case "google-native:apigee/v1:SecurityReport":
 		r = &SecurityReport{}
 	case "google-native:apigee/v1:Sharedflow":

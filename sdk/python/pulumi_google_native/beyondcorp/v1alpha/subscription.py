@@ -19,12 +19,14 @@ class SubscriptionArgs:
                  sku: pulumi.Input['SubscriptionSku'],
                  type: pulumi.Input['SubscriptionType'],
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 seat_count: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Subscription resource.
         :param pulumi.Input['SubscriptionSku'] sku: SKU of subscription.
         :param pulumi.Input['SubscriptionType'] type: Type of subscription.
         :param pulumi.Input[str] name: Unique resource name of the Subscription. The name is ignored when creating a subscription.
+        :param pulumi.Input[str] seat_count: Optional. Number of seats in the subscription.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "sku", sku)
@@ -33,6 +35,8 @@ class SubscriptionArgs:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if seat_count is not None:
+            pulumi.set(__self__, "seat_count", seat_count)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -88,6 +92,18 @@ class SubscriptionArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="seatCount")
+    def seat_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Number of seats in the subscription.
+        """
+        return pulumi.get(self, "seat_count")
+
+    @seat_count.setter
+    def seat_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "seat_count", value)
+
 
 class Subscription(pulumi.CustomResource):
     @overload
@@ -97,6 +113,7 @@ class Subscription(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 seat_count: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input['SubscriptionSku']] = None,
                  type: Optional[pulumi.Input['SubscriptionType']] = None,
                  __props__=None):
@@ -108,6 +125,7 @@ class Subscription(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Unique resource name of the Subscription. The name is ignored when creating a subscription.
+        :param pulumi.Input[str] seat_count: Optional. Number of seats in the subscription.
         :param pulumi.Input['SubscriptionSku'] sku: SKU of subscription.
         :param pulumi.Input['SubscriptionType'] type: Type of subscription.
         """
@@ -140,6 +158,7 @@ class Subscription(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 seat_count: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input['SubscriptionSku']] = None,
                  type: Optional[pulumi.Input['SubscriptionType']] = None,
                  __props__=None):
@@ -156,6 +175,7 @@ class Subscription(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["seat_count"] = seat_count
             if sku is None and not opts.urn:
                 raise TypeError("Missing required property 'sku'")
             __props__.__dict__["sku"] = sku
@@ -165,7 +185,6 @@ class Subscription(pulumi.CustomResource):
             __props__.__dict__["auto_renew_enabled"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_time"] = None
-            __props__.__dict__["seat_count"] = None
             __props__.__dict__["start_time"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organization_id"])
@@ -251,7 +270,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="seatCount")
     def seat_count(self) -> pulumi.Output[str]:
         """
-        Number of seats in the subscription.
+        Optional. Number of seats in the subscription.
         """
         return pulumi.get(self, "seat_count")
 

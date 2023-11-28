@@ -75,6 +75,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         [Input("state")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.VexAssessmentState>? State { get; set; }
 
+        /// <summary>
+        /// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+        /// </summary>
+        [Input("vulnerabilityId")]
+        public Input<string>? VulnerabilityId { get; set; }
+
         public VexAssessmentArgs()
         {
         }

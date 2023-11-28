@@ -14,6 +14,1896 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions struct {
+	// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	ActionTokenSiteKeys []string `pulumi:"actionTokenSiteKeys"`
+	// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	SessionTokenSiteKeys []string `pulumi:"sessionTokenSiteKeys"`
+}
+
+// SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs and SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsInput` via:
+//
+//	SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{...}
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput
+	ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs struct {
+	// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	ActionTokenSiteKeys pulumi.StringArrayInput `pulumi:"actionTokenSiteKeys"`
+	// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	SessionTokenSiteKeys pulumi.StringArrayInput `pulumi:"sessionTokenSiteKeys"`
+}
+
+func (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput)
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions] {
+	return pulumix.Output[SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions]{
+		OutputState: i.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput).ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs, SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtr and SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput` via:
+//
+//	        SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput
+	ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput
+}
+
+type securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs
+
+func SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtr(v *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput {
+	return (*securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType)(v)
+}
+
+func (*securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
+}
+
+func (i *securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions] {
+	return pulumix.Output[*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions]{
+		OutputState: i.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
+		return &v
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions] {
+	return pulumix.Output[SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ActionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) []string { return v.ActionTokenSiteKeys }).(pulumi.StringArrayOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) SessionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) []string { return v.SessionTokenSiteKeys }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions] {
+	return pulumix.Output[*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) Elem() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
+		return ret
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) ActionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionTokenSiteKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) SessionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTokenSiteKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse struct {
+	// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	ActionTokenSiteKeys []string `pulumi:"actionTokenSiteKeys"`
+	// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	SessionTokenSiteKeys []string `pulumi:"sessionTokenSiteKeys"`
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse] {
+	return pulumix.Output[SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) ActionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse) []string {
+		return v.ActionTokenSiteKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) SessionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse) []string {
+		return v.SessionTokenSiteKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsResponse struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	RecaptchaOptions SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse `pulumi:"recaptchaOptions"`
+}
+
+type SecurityPolicyRuleMatcherExprOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) ToSecurityPolicyRuleMatcherExprOptionsResponseOutput() SecurityPolicyRuleMatcherExprOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) ToSecurityPolicyRuleMatcherExprOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleMatcherExprOptionsResponse] {
+	return pulumix.Output[SecurityPolicyRuleMatcherExprOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsResponse) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse {
+		return v.RecaptchaOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput)
+}
+
+// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+type SecurityPolicyRuleMatcherResponse struct {
+	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+	Config SecurityPolicyRuleMatcherConfigResponse `pulumi:"config"`
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
+	Expr ExprResponse `pulumi:"expr"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions SecurityPolicyRuleMatcherExprOptionsResponse `pulumi:"exprOptions"`
+	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
+	VersionedExpr string `pulumi:"versionedExpr"`
+}
+
+// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+type SecurityPolicyRuleMatcherResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherResponseOutput) ToSecurityPolicyRuleMatcherResponseOutput() SecurityPolicyRuleMatcherResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherResponseOutput) ToSecurityPolicyRuleMatcherResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleMatcherResponse] {
+	return pulumix.Output[SecurityPolicyRuleMatcherResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+func (o SecurityPolicyRuleMatcherResponseOutput) Config() SecurityPolicyRuleMatcherConfigResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) SecurityPolicyRuleMatcherConfigResponse { return v.Config }).(SecurityPolicyRuleMatcherConfigResponseOutput)
+}
+
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
+func (o SecurityPolicyRuleMatcherResponseOutput) Expr() ExprResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) ExprResponse { return v.Expr }).(ExprResponseOutput)
+}
+
+// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+func (o SecurityPolicyRuleMatcherResponseOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) SecurityPolicyRuleMatcherExprOptionsResponse {
+		return v.ExprOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsResponseOutput)
+}
+
+// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
+func (o SecurityPolicyRuleMatcherResponseOutput) VersionedExpr() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) string { return v.VersionedExpr }).(pulumi.StringOutput)
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcher struct {
+	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	DestPorts []string `pulumi:"destPorts"`
+	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+	IpProtocols []string `pulumi:"ipProtocols"`
+	// BGP Autonomous System Number associated with the source IP address.
+	SrcAsns []int `pulumi:"srcAsns"`
+	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	SrcPorts []string `pulumi:"srcPorts"`
+	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+	SrcRegionCodes []string `pulumi:"srcRegionCodes"`
+	// User-defined fields. Each element names a defined field and lists the matching values for that field.
+	UserDefinedFields []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch `pulumi:"userDefinedFields"`
+}
+
+// SecurityPolicyRuleNetworkMatcherInput is an input type that accepts SecurityPolicyRuleNetworkMatcherArgs and SecurityPolicyRuleNetworkMatcherOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherInput` via:
+//
+//	SecurityPolicyRuleNetworkMatcherArgs{...}
+type SecurityPolicyRuleNetworkMatcherInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleNetworkMatcherOutput() SecurityPolicyRuleNetworkMatcherOutput
+	ToSecurityPolicyRuleNetworkMatcherOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherOutput
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcherArgs struct {
+	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
+	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	DestPorts pulumi.StringArrayInput `pulumi:"destPorts"`
+	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
+	// BGP Autonomous System Number associated with the source IP address.
+	SrcAsns pulumi.IntArrayInput `pulumi:"srcAsns"`
+	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	SrcPorts pulumi.StringArrayInput `pulumi:"srcPorts"`
+	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+	SrcRegionCodes pulumi.StringArrayInput `pulumi:"srcRegionCodes"`
+	// User-defined fields. Each element names a defined field and lists the matching values for that field.
+	UserDefinedFields SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput `pulumi:"userDefinedFields"`
+}
+
+func (SecurityPolicyRuleNetworkMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherOutput() SecurityPolicyRuleNetworkMatcherOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherOutput)
+}
+
+func (i SecurityPolicyRuleNetworkMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcher] {
+	return pulumix.Output[SecurityPolicyRuleNetworkMatcher]{
+		OutputState: i.ToSecurityPolicyRuleNetworkMatcherOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherOutput).ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleNetworkMatcherPtrInput is an input type that accepts SecurityPolicyRuleNetworkMatcherArgs, SecurityPolicyRuleNetworkMatcherPtr and SecurityPolicyRuleNetworkMatcherPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherPtrInput` via:
+//
+//	        SecurityPolicyRuleNetworkMatcherArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleNetworkMatcherPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput
+	ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput
+}
+
+type securityPolicyRuleNetworkMatcherPtrType SecurityPolicyRuleNetworkMatcherArgs
+
+func SecurityPolicyRuleNetworkMatcherPtr(v *SecurityPolicyRuleNetworkMatcherArgs) SecurityPolicyRuleNetworkMatcherPtrInput {
+	return (*securityPolicyRuleNetworkMatcherPtrType)(v)
+}
+
+func (*securityPolicyRuleNetworkMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleNetworkMatcherPtrType) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleNetworkMatcherPtrType) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherPtrOutput)
+}
+
+func (i *securityPolicyRuleNetworkMatcherPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleNetworkMatcher] {
+	return pulumix.Output[*SecurityPolicyRuleNetworkMatcher]{
+		OutputState: i.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcherOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherOutput() SecurityPolicyRuleNetworkMatcherOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleNetworkMatcher) *SecurityPolicyRuleNetworkMatcher {
+		return &v
+	}).(SecurityPolicyRuleNetworkMatcherPtrOutput)
+}
+
+func (o SecurityPolicyRuleNetworkMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcher] {
+	return pulumix.Output[SecurityPolicyRuleNetworkMatcher]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherOutput) DestPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.DestPorts }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+func (o SecurityPolicyRuleNetworkMatcherOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
+}
+
+// BGP Autonomous System Number associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherOutput) SrcAsns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []int { return v.SrcAsns }).(pulumi.IntArrayOutput)
+}
+
+// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherOutput) SrcPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.SrcPorts }).(pulumi.StringArrayOutput)
+}
+
+// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.SrcRegionCodes }).(pulumi.StringArrayOutput)
+}
+
+// User-defined fields. Each element names a defined field and lists the matching values for that field.
+func (o SecurityPolicyRuleNetworkMatcherOutput) UserDefinedFields() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
+		return v.UserDefinedFields
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleNetworkMatcher] {
+	return pulumix.Output[*SecurityPolicyRuleNetworkMatcher]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) Elem() SecurityPolicyRuleNetworkMatcherOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) SecurityPolicyRuleNetworkMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleNetworkMatcher
+		return ret
+	}).(SecurityPolicyRuleNetworkMatcherOutput)
+}
+
+// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) DestPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestPorts
+	}).(pulumi.StringArrayOutput)
+}
+
+// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpProtocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// BGP Autonomous System Number associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcAsns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []int {
+		if v == nil {
+			return nil
+		}
+		return v.SrcAsns
+	}).(pulumi.IntArrayOutput)
+}
+
+// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcPorts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcRegionCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// User-defined fields. Each element names a defined field and lists the matching values for that field.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) UserDefinedFields() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
+		if v == nil {
+			return nil
+		}
+		return v.UserDefinedFields
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcherResponse struct {
+	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	DestPorts []string `pulumi:"destPorts"`
+	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+	IpProtocols []string `pulumi:"ipProtocols"`
+	// BGP Autonomous System Number associated with the source IP address.
+	SrcAsns []int `pulumi:"srcAsns"`
+	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	SrcPorts []string `pulumi:"srcPorts"`
+	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+	SrcRegionCodes []string `pulumi:"srcRegionCodes"`
+	// User-defined fields. Each element names a defined field and lists the matching values for that field.
+	UserDefinedFields []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse `pulumi:"userDefinedFields"`
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcherResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) ToSecurityPolicyRuleNetworkMatcherResponseOutput() SecurityPolicyRuleNetworkMatcherResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) ToSecurityPolicyRuleNetworkMatcherResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcherResponse] {
+	return pulumix.Output[SecurityPolicyRuleNetworkMatcherResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) DestPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.DestPorts }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
+}
+
+// BGP Autonomous System Number associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcAsns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []int { return v.SrcAsns }).(pulumi.IntArrayOutput)
+}
+
+// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.SrcPorts }).(pulumi.StringArrayOutput)
+}
+
+// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.SrcRegionCodes }).(pulumi.StringArrayOutput)
+}
+
+// User-defined fields. Each element names a defined field and lists the matching values for that field.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) UserDefinedFields() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse {
+		return v.UserDefinedFields
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch struct {
+	// Name of the user-defined field, as given in the definition.
+	Name *string `pulumi:"name"`
+	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+	Values []string `pulumi:"values"`
+}
+
+// SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput is an input type that accepts SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs and SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput` via:
+//
+//	SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{...}
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput
+	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs struct {
+	// Name of the user-defined field, as given in the definition.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput)
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch] {
+	return pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch]{
+		OutputState: i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput is an input type that accepts SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray and SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput` via:
+//
+//	SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray{ SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{...} }
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput
+	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch] {
+	return pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch]{
+		OutputState: i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch] {
+	return pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the user-defined field, as given in the definition.
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch] {
+	return pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
+		return vs[0].([]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)[vs[1].(int)]
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse struct {
+	// Name of the user-defined field, as given in the definition.
+	Name string `pulumi:"name"`
+	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+	Values []string `pulumi:"values"`
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse] {
+	return pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the user-defined field, as given in the definition.
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse] {
+	return pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse {
+		return vs[0].([]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse)[vs[1].(int)]
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfig struct {
+	// A list of exclusions to apply during preconfigured WAF evaluation.
+	Exclusions []SecurityPolicyRulePreconfiguredWafConfigExclusion `pulumi:"exclusions"`
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigArgs and SecurityPolicyRulePreconfiguredWafConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigArgs{...}
+type SecurityPolicyRulePreconfiguredWafConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigOutput() SecurityPolicyRulePreconfiguredWafConfigOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigArgs struct {
+	// A list of exclusions to apply during preconfigured WAF evaluation.
+	Exclusions SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput `pulumi:"exclusions"`
+}
+
+func (SecurityPolicyRulePreconfiguredWafConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigOutput() SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigOutput)
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfig] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfig]{
+		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigOutput).ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigPtrInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigArgs, SecurityPolicyRulePreconfiguredWafConfigPtr and SecurityPolicyRulePreconfiguredWafConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigPtrInput` via:
+//
+//	        SecurityPolicyRulePreconfiguredWafConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRulePreconfiguredWafConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput
+}
+
+type securityPolicyRulePreconfiguredWafConfigPtrType SecurityPolicyRulePreconfiguredWafConfigArgs
+
+func SecurityPolicyRulePreconfiguredWafConfigPtr(v *SecurityPolicyRulePreconfiguredWafConfigArgs) SecurityPolicyRulePreconfiguredWafConfigPtrInput {
+	return (*securityPolicyRulePreconfiguredWafConfigPtrType)(v)
+}
+
+func (*securityPolicyRulePreconfiguredWafConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyRulePreconfiguredWafConfigPtrType) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRulePreconfiguredWafConfigPtrType) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigPtrOutput)
+}
+
+func (i *securityPolicyRulePreconfiguredWafConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfig] {
+	return pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfig]{
+		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigOutput() SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRulePreconfiguredWafConfig) *SecurityPolicyRulePreconfiguredWafConfig {
+		return &v
+	}).(SecurityPolicyRulePreconfiguredWafConfigPtrOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfig] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list of exclusions to apply during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) Exclusions() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfig) []SecurityPolicyRulePreconfiguredWafConfigExclusion {
+		return v.Exclusions
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfig] {
+	return pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) Elem() SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyRulePreconfiguredWafConfig) SecurityPolicyRulePreconfiguredWafConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRulePreconfiguredWafConfig
+		return ret
+	}).(SecurityPolicyRulePreconfiguredWafConfigOutput)
+}
+
+// A list of exclusions to apply during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) Exclusions() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRulePreconfiguredWafConfig) []SecurityPolicyRulePreconfiguredWafConfigExclusion {
+		if v == nil {
+			return nil
+		}
+		return v.Exclusions
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusion struct {
+	// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookiesToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestCookiesToExclude"`
+	// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeadersToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestHeadersToExclude"`
+	// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParamsToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestQueryParamsToExclude"`
+	// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+	RequestUrisToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestUrisToExclude"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds []string `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet *string `pulumi:"targetRuleSet"`
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionArgs and SecurityPolicyRulePreconfiguredWafConfigExclusionOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...}
+type SecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
+	// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookiesToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestCookiesToExclude"`
+	// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeadersToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestHeadersToExclude"`
+	// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParamsToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestQueryParamsToExclude"`
+	// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+	RequestUrisToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestUrisToExclude"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds pulumi.StringArrayInput `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet pulumi.StringPtrInput `pulumi:"targetRuleSet"`
+}
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusion] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusion]{
+		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionArray and SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionArray{ SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...} }
+type SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionArray []SecurityPolicyRulePreconfiguredWafConfigExclusionInput
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusion] {
+	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusion]{
+		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusion] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusion]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestCookiesToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return v.RequestCookiesToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestHeadersToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return v.RequestHeadersToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestQueryParamsToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return v.RequestQueryParamsToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestUrisToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return v.RequestUrisToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []string { return v.TargetRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Target WAF rule set to apply the preconfigured WAF exclusion.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) *string { return v.TargetRuleSet }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusion] {
+	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusion {
+		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusion)[vs[1].(int)]
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams struct {
+	// The match operator for the field.
+	Op *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp `pulumi:"op"`
+	// The value of the field.
+	Val *string `pulumi:"val"`
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs and SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs{...}
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs struct {
+	// The match operator for the field.
+	Op SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput `pulumi:"op"`
+	// The value of the field.
+	Val pulumi.StringPtrInput `pulumi:"val"`
+}
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput)
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams]{
+		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray and SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray{ SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs{...} }
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams] {
+	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams]{
+		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The match operator for the field.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) Op() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams) *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
+		return v.Op
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
+// The value of the field.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) Val() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams) *string { return v.Val }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams] {
+	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)[vs[1].(int)]
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse struct {
+	// The match operator for the field.
+	Op string `pulumi:"op"`
+	// The value of the field.
+	Val string `pulumi:"val"`
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The match operator for the field.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// The value of the field.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) Val() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse) string { return v.Val }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse] {
+	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse)[vs[1].(int)]
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionResponse struct {
+	// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookiesToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestCookiesToExclude"`
+	// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeadersToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestHeadersToExclude"`
+	// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParamsToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestQueryParamsToExclude"`
+	// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+	RequestUrisToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestUrisToExclude"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds []string `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet string `pulumi:"targetRuleSet"`
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionResponse] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestCookiesToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return v.RequestCookiesToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
+}
+
+// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestHeadersToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return v.RequestHeadersToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
+}
+
+// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestQueryParamsToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return v.RequestQueryParamsToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
+}
+
+// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestUrisToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return v.RequestUrisToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
+}
+
+// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) TargetRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []string { return v.TargetRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Target WAF rule set to apply the preconfigured WAF exclusion.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) TargetRuleSet() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) string { return v.TargetRuleSet }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse] {
+	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusionResponse {
+		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse)[vs[1].(int)]
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigResponse struct {
+	// A list of exclusions to apply during preconfigured WAF evaluation.
+	Exclusions []SecurityPolicyRulePreconfiguredWafConfigExclusionResponse `pulumi:"exclusions"`
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigResponseOutput() SecurityPolicyRulePreconfiguredWafConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigResponse] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list of exclusions to apply during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) Exclusions() SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionResponse {
+		return v.Exclusions
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptions struct {
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec *int `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction *string `pulumi:"conformAction"`
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
+	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig `pulumi:"enforceOnKeyConfigs"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
+	ExceedAction *string `pulumi:"exceedAction"`
+	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+	ExceedActionRpcStatus *SecurityPolicyRuleRateLimitOptionsRpcStatus `pulumi:"exceedActionRpcStatus"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	ExceedRedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"exceedRedirectOptions"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"rateLimitThreshold"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsArgs and SecurityPolicyRuleRateLimitOptionsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsInput` via:
+//
+//	SecurityPolicyRuleRateLimitOptionsArgs{...}
+type SecurityPolicyRuleRateLimitOptionsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsOutput() SecurityPolicyRuleRateLimitOptionsOutput
+	ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsOutput
+}
+
+type SecurityPolicyRuleRateLimitOptionsArgs struct {
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec pulumi.IntPtrInput `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
+	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+	EnforceOnKeyConfigs SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput `pulumi:"enforceOnKeyConfigs"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
+	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
+	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput `pulumi:"exceedActionRpcStatus"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"exceedRedirectOptions"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"rateLimitThreshold"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsOutput() SecurityPolicyRuleRateLimitOptionsOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsOutput)
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleRateLimitOptions] {
+	return pulumix.Output[SecurityPolicyRuleRateLimitOptions]{
+		OutputState: i.ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsOutput).ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleRateLimitOptionsPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsArgs, SecurityPolicyRuleRateLimitOptionsPtr and SecurityPolicyRuleRateLimitOptionsPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsPtrInput` via:
+//
+//	        SecurityPolicyRuleRateLimitOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleRateLimitOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput
+	ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput
+}
+
+type securityPolicyRuleRateLimitOptionsPtrType SecurityPolicyRuleRateLimitOptionsArgs
+
+func SecurityPolicyRuleRateLimitOptionsPtr(v *SecurityPolicyRuleRateLimitOptionsArgs) SecurityPolicyRuleRateLimitOptionsPtrInput {
+	return (*securityPolicyRuleRateLimitOptionsPtrType)(v)
+}
+
+func (*securityPolicyRuleRateLimitOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleRateLimitOptionsPtrType) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleRateLimitOptionsPtrType) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
+}
+
+func (i *securityPolicyRuleRateLimitOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptions] {
+	return pulumix.Output[*SecurityPolicyRuleRateLimitOptions]{
+		OutputState: i.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SecurityPolicyRuleRateLimitOptionsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsOutput() SecurityPolicyRuleRateLimitOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptions {
+		return &v
+	}).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleRateLimitOptions] {
+	return pulumix.Output[SecurityPolicyRuleRateLimitOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) BanDurationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *int { return v.BanDurationSec }).(pulumi.IntPtrOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		return v.BanThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
+}
+
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
+		return v.EnforceOnKey
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
+// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
+		return v.EnforceOnKeyConfigs
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput)
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
+}
+
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
+}
+
+// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		return v.ExceedActionRpcStatus
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
+		return v.ExceedRedirectOptions
+	}).(SecurityPolicyRuleRedirectOptionsPtrOutput)
+}
+
+// Threshold at which to begin ratelimiting.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		return v.RateLimitThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptions] {
+	return pulumix.Output[*SecurityPolicyRuleRateLimitOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) SecurityPolicyRuleRateLimitOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleRateLimitOptions
+		return ret
+	}).(SecurityPolicyRuleRateLimitOptionsOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) BanDurationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BanDurationSec
+	}).(pulumi.IntPtrOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		if v == nil {
+			return nil
+		}
+		return v.BanThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConformAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceOnKey
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
+// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceOnKeyConfigs
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput)
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceOnKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExceedAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		if v == nil {
+			return nil
+		}
+		return v.ExceedActionRpcStatus
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ExceedRedirectOptions
+	}).(SecurityPolicyRuleRedirectOptionsPtrOutput)
+}
+
+// Threshold at which to begin ratelimiting.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		if v == nil {
+			return nil
+		}
+		return v.RateLimitThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig struct {
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
@@ -1417,13 +3307,13 @@ type SecuritySettings struct {
 	AuthorizationConfig *AuthorizationConfig `pulumi:"authorizationConfig"`
 	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
 	AwsV4Authentication *AWSV4Signature `pulumi:"awsV4Authentication"`
-	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 	ClientTlsPolicy *string `pulumi:"clientTlsPolicy"`
 	// [Deprecated] TLS Settings for the backend service.
 	//
 	// Deprecated: [Deprecated] TLS Settings for the backend service.
 	ClientTlsSettings *ClientTlsSettings `pulumi:"clientTlsSettings"`
-	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 	SubjectAltNames []string `pulumi:"subjectAltNames"`
 }
 
@@ -1454,13 +3344,13 @@ type SecuritySettingsArgs struct {
 	AuthorizationConfig AuthorizationConfigPtrInput `pulumi:"authorizationConfig"`
 	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
 	AwsV4Authentication AWSV4SignaturePtrInput `pulumi:"awsV4Authentication"`
-	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 	ClientTlsPolicy pulumi.StringPtrInput `pulumi:"clientTlsPolicy"`
 	// [Deprecated] TLS Settings for the backend service.
 	//
 	// Deprecated: [Deprecated] TLS Settings for the backend service.
 	ClientTlsSettings ClientTlsSettingsPtrInput `pulumi:"clientTlsSettings"`
-	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
 }
 
@@ -1586,7 +3476,7 @@ func (o SecuritySettingsOutput) AwsV4Authentication() AWSV4SignaturePtrOutput {
 	return o.ApplyT(func(v SecuritySettings) *AWSV4Signature { return v.AwsV4Authentication }).(AWSV4SignaturePtrOutput)
 }
 
-// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 func (o SecuritySettingsOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecuritySettings) *string { return v.ClientTlsPolicy }).(pulumi.StringPtrOutput)
 }
@@ -1598,7 +3488,7 @@ func (o SecuritySettingsOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
 	return o.ApplyT(func(v SecuritySettings) *ClientTlsSettings { return v.ClientTlsSettings }).(ClientTlsSettingsPtrOutput)
 }
 
-// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 func (o SecuritySettingsOutput) SubjectAltNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecuritySettings) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
 }
@@ -1679,7 +3569,7 @@ func (o SecuritySettingsPtrOutput) AwsV4Authentication() AWSV4SignaturePtrOutput
 	}).(AWSV4SignaturePtrOutput)
 }
 
-// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 func (o SecuritySettingsPtrOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecuritySettings) *string {
 		if v == nil {
@@ -1701,7 +3591,7 @@ func (o SecuritySettingsPtrOutput) ClientTlsSettings() ClientTlsSettingsPtrOutpu
 	}).(ClientTlsSettingsPtrOutput)
 }
 
-// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 func (o SecuritySettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecuritySettings) []string {
 		if v == nil {
@@ -1727,13 +3617,13 @@ type SecuritySettingsResponse struct {
 	AuthorizationConfig AuthorizationConfigResponse `pulumi:"authorizationConfig"`
 	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
 	AwsV4Authentication AWSV4SignatureResponse `pulumi:"awsV4Authentication"`
-	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 	ClientTlsPolicy string `pulumi:"clientTlsPolicy"`
 	// [Deprecated] TLS Settings for the backend service.
 	//
 	// Deprecated: [Deprecated] TLS Settings for the backend service.
 	ClientTlsSettings ClientTlsSettingsResponse `pulumi:"clientTlsSettings"`
-	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 	SubjectAltNames []string `pulumi:"subjectAltNames"`
 }
 
@@ -1784,7 +3674,7 @@ func (o SecuritySettingsResponseOutput) AwsV4Authentication() AWSV4SignatureResp
 	return o.ApplyT(func(v SecuritySettingsResponse) AWSV4SignatureResponse { return v.AwsV4Authentication }).(AWSV4SignatureResponseOutput)
 }
 
-// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 func (o SecuritySettingsResponseOutput) ClientTlsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v SecuritySettingsResponse) string { return v.ClientTlsPolicy }).(pulumi.StringOutput)
 }
@@ -1796,7 +3686,7 @@ func (o SecuritySettingsResponseOutput) ClientTlsSettings() ClientTlsSettingsRes
 	return o.ApplyT(func(v SecuritySettingsResponse) ClientTlsSettingsResponse { return v.ClientTlsSettings }).(ClientTlsSettingsResponseOutput)
 }
 
-// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 func (o SecuritySettingsResponseOutput) SubjectAltNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecuritySettingsResponse) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
 }
@@ -2434,6 +4324,8 @@ func (o ServiceAccountResponseArrayOutput) Index(i pulumi.IntInput) ServiceAccou
 
 // [Output Only] A connection connected to this service attachment.
 type ServiceAttachmentConnectedEndpointResponse struct {
+	// The url of the consumer network.
+	ConsumerNetwork string `pulumi:"consumerNetwork"`
 	// The url of a connected endpoint.
 	Endpoint string `pulumi:"endpoint"`
 	// The PSC connection id of the connected endpoint.
@@ -2461,6 +4353,11 @@ func (o ServiceAttachmentConnectedEndpointResponseOutput) ToOutput(ctx context.C
 	return pulumix.Output[ServiceAttachmentConnectedEndpointResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// The url of the consumer network.
+func (o ServiceAttachmentConnectedEndpointResponseOutput) ConsumerNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) string { return v.ConsumerNetwork }).(pulumi.StringOutput)
 }
 
 // The url of a connected endpoint.
@@ -2711,6 +4608,232 @@ func (o ServiceAttachmentConsumerProjectLimitResponseArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConsumerProjectLimitResponse {
 		return vs[0].([]ServiceAttachmentConsumerProjectLimitResponse)[vs[1].(int)]
 	}).(ServiceAttachmentConsumerProjectLimitResponseOutput)
+}
+
+// Use to configure this PSC connection in tunneling mode. In tunneling mode traffic from consumer to producer will be encapsulated as it crosses the VPC boundary and traffic from producer to consumer will be decapsulated in the same manner.
+type ServiceAttachmentTunnelingConfig struct {
+	// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+	EncapsulationProfile *ServiceAttachmentTunnelingConfigEncapsulationProfile `pulumi:"encapsulationProfile"`
+	// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+	RoutingMode *ServiceAttachmentTunnelingConfigRoutingMode `pulumi:"routingMode"`
+}
+
+// ServiceAttachmentTunnelingConfigInput is an input type that accepts ServiceAttachmentTunnelingConfigArgs and ServiceAttachmentTunnelingConfigOutput values.
+// You can construct a concrete instance of `ServiceAttachmentTunnelingConfigInput` via:
+//
+//	ServiceAttachmentTunnelingConfigArgs{...}
+type ServiceAttachmentTunnelingConfigInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentTunnelingConfigOutput() ServiceAttachmentTunnelingConfigOutput
+	ToServiceAttachmentTunnelingConfigOutputWithContext(context.Context) ServiceAttachmentTunnelingConfigOutput
+}
+
+// Use to configure this PSC connection in tunneling mode. In tunneling mode traffic from consumer to producer will be encapsulated as it crosses the VPC boundary and traffic from producer to consumer will be decapsulated in the same manner.
+type ServiceAttachmentTunnelingConfigArgs struct {
+	// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+	EncapsulationProfile ServiceAttachmentTunnelingConfigEncapsulationProfilePtrInput `pulumi:"encapsulationProfile"`
+	// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+	RoutingMode ServiceAttachmentTunnelingConfigRoutingModePtrInput `pulumi:"routingMode"`
+}
+
+func (ServiceAttachmentTunnelingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (i ServiceAttachmentTunnelingConfigArgs) ToServiceAttachmentTunnelingConfigOutput() ServiceAttachmentTunnelingConfigOutput {
+	return i.ToServiceAttachmentTunnelingConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentTunnelingConfigArgs) ToServiceAttachmentTunnelingConfigOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentTunnelingConfigOutput)
+}
+
+func (i ServiceAttachmentTunnelingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceAttachmentTunnelingConfig] {
+	return pulumix.Output[ServiceAttachmentTunnelingConfig]{
+		OutputState: i.ToServiceAttachmentTunnelingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ServiceAttachmentTunnelingConfigArgs) ToServiceAttachmentTunnelingConfigPtrOutput() ServiceAttachmentTunnelingConfigPtrOutput {
+	return i.ToServiceAttachmentTunnelingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentTunnelingConfigArgs) ToServiceAttachmentTunnelingConfigPtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentTunnelingConfigOutput).ToServiceAttachmentTunnelingConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceAttachmentTunnelingConfigPtrInput is an input type that accepts ServiceAttachmentTunnelingConfigArgs, ServiceAttachmentTunnelingConfigPtr and ServiceAttachmentTunnelingConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceAttachmentTunnelingConfigPtrInput` via:
+//
+//	        ServiceAttachmentTunnelingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceAttachmentTunnelingConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentTunnelingConfigPtrOutput() ServiceAttachmentTunnelingConfigPtrOutput
+	ToServiceAttachmentTunnelingConfigPtrOutputWithContext(context.Context) ServiceAttachmentTunnelingConfigPtrOutput
+}
+
+type serviceAttachmentTunnelingConfigPtrType ServiceAttachmentTunnelingConfigArgs
+
+func ServiceAttachmentTunnelingConfigPtr(v *ServiceAttachmentTunnelingConfigArgs) ServiceAttachmentTunnelingConfigPtrInput {
+	return (*serviceAttachmentTunnelingConfigPtrType)(v)
+}
+
+func (*serviceAttachmentTunnelingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (i *serviceAttachmentTunnelingConfigPtrType) ToServiceAttachmentTunnelingConfigPtrOutput() ServiceAttachmentTunnelingConfigPtrOutput {
+	return i.ToServiceAttachmentTunnelingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceAttachmentTunnelingConfigPtrType) ToServiceAttachmentTunnelingConfigPtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentTunnelingConfigPtrOutput)
+}
+
+func (i *serviceAttachmentTunnelingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachmentTunnelingConfig] {
+	return pulumix.Output[*ServiceAttachmentTunnelingConfig]{
+		OutputState: i.ToServiceAttachmentTunnelingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Use to configure this PSC connection in tunneling mode. In tunneling mode traffic from consumer to producer will be encapsulated as it crosses the VPC boundary and traffic from producer to consumer will be decapsulated in the same manner.
+type ServiceAttachmentTunnelingConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentTunnelingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (o ServiceAttachmentTunnelingConfigOutput) ToServiceAttachmentTunnelingConfigOutput() ServiceAttachmentTunnelingConfigOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigOutput) ToServiceAttachmentTunnelingConfigOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigOutput) ToServiceAttachmentTunnelingConfigPtrOutput() ServiceAttachmentTunnelingConfigPtrOutput {
+	return o.ToServiceAttachmentTunnelingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceAttachmentTunnelingConfigOutput) ToServiceAttachmentTunnelingConfigPtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceAttachmentTunnelingConfig) *ServiceAttachmentTunnelingConfig {
+		return &v
+	}).(ServiceAttachmentTunnelingConfigPtrOutput)
+}
+
+func (o ServiceAttachmentTunnelingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAttachmentTunnelingConfig] {
+	return pulumix.Output[ServiceAttachmentTunnelingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+func (o ServiceAttachmentTunnelingConfigOutput) EncapsulationProfile() ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentTunnelingConfig) *ServiceAttachmentTunnelingConfigEncapsulationProfile {
+		return v.EncapsulationProfile
+	}).(ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput)
+}
+
+// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+func (o ServiceAttachmentTunnelingConfigOutput) RoutingMode() ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentTunnelingConfig) *ServiceAttachmentTunnelingConfigRoutingMode {
+		return v.RoutingMode
+	}).(ServiceAttachmentTunnelingConfigRoutingModePtrOutput)
+}
+
+type ServiceAttachmentTunnelingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentTunnelingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceAttachmentTunnelingConfig)(nil)).Elem()
+}
+
+func (o ServiceAttachmentTunnelingConfigPtrOutput) ToServiceAttachmentTunnelingConfigPtrOutput() ServiceAttachmentTunnelingConfigPtrOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigPtrOutput) ToServiceAttachmentTunnelingConfigPtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigPtrOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachmentTunnelingConfig] {
+	return pulumix.Output[*ServiceAttachmentTunnelingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceAttachmentTunnelingConfigPtrOutput) Elem() ServiceAttachmentTunnelingConfigOutput {
+	return o.ApplyT(func(v *ServiceAttachmentTunnelingConfig) ServiceAttachmentTunnelingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceAttachmentTunnelingConfig
+		return ret
+	}).(ServiceAttachmentTunnelingConfigOutput)
+}
+
+// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+func (o ServiceAttachmentTunnelingConfigPtrOutput) EncapsulationProfile() ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return o.ApplyT(func(v *ServiceAttachmentTunnelingConfig) *ServiceAttachmentTunnelingConfigEncapsulationProfile {
+		if v == nil {
+			return nil
+		}
+		return v.EncapsulationProfile
+	}).(ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput)
+}
+
+// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+func (o ServiceAttachmentTunnelingConfigPtrOutput) RoutingMode() ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return o.ApplyT(func(v *ServiceAttachmentTunnelingConfig) *ServiceAttachmentTunnelingConfigRoutingMode {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingMode
+	}).(ServiceAttachmentTunnelingConfigRoutingModePtrOutput)
+}
+
+// Use to configure this PSC connection in tunneling mode. In tunneling mode traffic from consumer to producer will be encapsulated as it crosses the VPC boundary and traffic from producer to consumer will be decapsulated in the same manner.
+type ServiceAttachmentTunnelingConfigResponse struct {
+	// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+	EncapsulationProfile string `pulumi:"encapsulationProfile"`
+	// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+	RoutingMode string `pulumi:"routingMode"`
+}
+
+// Use to configure this PSC connection in tunneling mode. In tunneling mode traffic from consumer to producer will be encapsulated as it crosses the VPC boundary and traffic from producer to consumer will be decapsulated in the same manner.
+type ServiceAttachmentTunnelingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentTunnelingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentTunnelingConfigResponse)(nil)).Elem()
+}
+
+func (o ServiceAttachmentTunnelingConfigResponseOutput) ToServiceAttachmentTunnelingConfigResponseOutput() ServiceAttachmentTunnelingConfigResponseOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigResponseOutput) ToServiceAttachmentTunnelingConfigResponseOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigResponseOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAttachmentTunnelingConfigResponse] {
+	return pulumix.Output[ServiceAttachmentTunnelingConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+func (o ServiceAttachmentTunnelingConfigResponseOutput) EncapsulationProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentTunnelingConfigResponse) string { return v.EncapsulationProfile }).(pulumi.StringOutput)
+}
+
+// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+func (o ServiceAttachmentTunnelingConfigResponseOutput) RoutingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentTunnelingConfigResponse) string { return v.RoutingMode }).(pulumi.StringOutput)
 }
 
 // The share setting for reservations and sole tenancy node groups.
@@ -5394,7 +7517,7 @@ func (o StatefulPolicyResponseOutput) PreservedState() StatefulPolicyPreservedSt
 
 // [Output Only] Contains output only fields.
 type StoragePoolResourceStatusResponse struct {
-	// Sum of all the disk' provisioned IOPS.
+	// Sum of all the disks' provisioned IOPS.
 	AggregateDiskProvisionedIops string `pulumi:"aggregateDiskProvisionedIops"`
 	// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
 	AggregateDiskSizeGb string `pulumi:"aggregateDiskSizeGb"`
@@ -5408,6 +7531,8 @@ type StoragePoolResourceStatusResponse struct {
 	UsedBytes string `pulumi:"usedBytes"`
 	// Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
 	UsedReducedBytes string `pulumi:"usedReducedBytes"`
+	// Sum of all the disks' provisioned throughput in MB/s.
+	UsedThroughput string `pulumi:"usedThroughput"`
 }
 
 // [Output Only] Contains output only fields.
@@ -5431,7 +7556,7 @@ func (o StoragePoolResourceStatusResponseOutput) ToOutput(ctx context.Context) p
 	}
 }
 
-// Sum of all the disk' provisioned IOPS.
+// Sum of all the disks' provisioned IOPS.
 func (o StoragePoolResourceStatusResponseOutput) AggregateDiskProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.AggregateDiskProvisionedIops }).(pulumi.StringOutput)
 }
@@ -5464,6 +7589,11 @@ func (o StoragePoolResourceStatusResponseOutput) UsedBytes() pulumi.StringOutput
 // Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
 func (o StoragePoolResourceStatusResponseOutput) UsedReducedBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.UsedReducedBytes }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned throughput in MB/s.
+func (o StoragePoolResourceStatusResponseOutput) UsedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.UsedThroughput }).(pulumi.StringOutput)
 }
 
 // The available logging options for this subnetwork.
@@ -7990,7 +10120,7 @@ func (o Uint128ResponseOutput) Low() pulumi.StringOutput {
 
 // Upcoming Maintenance notification information.
 type UpcomingMaintenanceResponse struct {
-	// Indicates if the maintenance can be customer triggered. From more detail, see go/sf-ctm-design.
+	// Indicates if the maintenance can be customer triggered.
 	CanReschedule bool `pulumi:"canReschedule"`
 	// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
 	//
@@ -7999,9 +10129,9 @@ type UpcomingMaintenanceResponse struct {
 	// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
 	LatestWindowStartTime string `pulumi:"latestWindowStartTime"`
 	MaintenanceStatus     string `pulumi:"maintenanceStatus"`
-	// The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
+	// The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead. TimeWindow is a container for two strings that represent timestamps in "yyyy-MM-dd'T'HH:mm:ssZ" text format.
 	//
-	// Deprecated: [Output Only] The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
+	// Deprecated: [Output Only] The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead. TimeWindow is a container for two strings that represent timestamps in "yyyy-MM-dd'T'HH:mm:ssZ" text format.
 	StartTimeWindow UpcomingMaintenanceTimeWindowResponse `pulumi:"startTimeWindow"`
 	// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
 	//
@@ -8036,7 +10166,7 @@ func (o UpcomingMaintenanceResponseOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// Indicates if the maintenance can be customer triggered. From more detail, see go/sf-ctm-design.
+// Indicates if the maintenance can be customer triggered.
 func (o UpcomingMaintenanceResponseOutput) CanReschedule() pulumi.BoolOutput {
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) bool { return v.CanReschedule }).(pulumi.BoolOutput)
 }
@@ -8057,9 +10187,9 @@ func (o UpcomingMaintenanceResponseOutput) MaintenanceStatus() pulumi.StringOutp
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.MaintenanceStatus }).(pulumi.StringOutput)
 }
 
-// The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
+// The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead. TimeWindow is a container for two strings that represent timestamps in "yyyy-MM-dd'T'HH:mm:ssZ" text format.
 //
-// Deprecated: [Output Only] The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
+// Deprecated: [Output Only] The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead. TimeWindow is a container for two strings that represent timestamps in "yyyy-MM-dd'T'HH:mm:ssZ" text format.
 func (o UpcomingMaintenanceResponseOutput) StartTimeWindow() UpcomingMaintenanceTimeWindowResponseOutput {
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) UpcomingMaintenanceTimeWindowResponse { return v.StartTimeWindow }).(UpcomingMaintenanceTimeWindowResponseOutput)
 }
@@ -8086,13 +10216,13 @@ func (o UpcomingMaintenanceResponseOutput) WindowStartTime() pulumi.StringOutput
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.WindowStartTime }).(pulumi.StringOutput)
 }
 
-// Represents a window of time using two timestamps: `earliest` and `latest`. This timestamp values are in RFC3339 text format.
+// Represents a window of time using two timestamps: `earliest` and `latest`.
 type UpcomingMaintenanceTimeWindowResponse struct {
 	Earliest string `pulumi:"earliest"`
 	Latest   string `pulumi:"latest"`
 }
 
-// Represents a window of time using two timestamps: `earliest` and `latest`. This timestamp values are in RFC3339 text format.
+// Represents a window of time using two timestamps: `earliest` and `latest`.
 type UpcomingMaintenanceTimeWindowResponseOutput struct{ *pulumi.OutputState }
 
 func (UpcomingMaintenanceTimeWindowResponseOutput) ElementType() reflect.Type {
@@ -9298,6 +11428,20 @@ func (o WeightedBackendServiceResponseArrayOutput) Index(i pulumi.IntInput) Weig
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherPtrInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigPtrInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
@@ -9318,6 +11462,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountArrayInput)(nil)).Elem(), ServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerProjectLimitInput)(nil)).Elem(), ServiceAttachmentConsumerProjectLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerProjectLimitArrayInput)(nil)).Elem(), ServiceAttachmentConsumerProjectLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentTunnelingConfigInput)(nil)).Elem(), ServiceAttachmentTunnelingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentTunnelingConfigPtrInput)(nil)).Elem(), ServiceAttachmentTunnelingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsInput)(nil)).Elem(), ShareSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsPtrInput)(nil)).Elem(), ShareSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
@@ -9370,6 +11516,31 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput{})
@@ -9409,6 +11580,9 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitResponseOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentTunnelingConfigOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentTunnelingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentTunnelingConfigResponseOutput{})
 	pulumi.RegisterOutputType(ShareSettingsOutput{})
 	pulumi.RegisterOutputType(ShareSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ShareSettingsResponseOutput{})

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     public sealed class DebugOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration options for sampling elements from a running pipeline.
+        /// </summary>
+        [Input("dataSampling")]
+        public Input<Inputs.DataSamplingConfigArgs>? DataSampling { get; set; }
+
+        /// <summary>
         /// When true, enables the logging of the literal hot key to the user's Cloud Logging.
         /// </summary>
         [Input("enableHotKeyLogging")]

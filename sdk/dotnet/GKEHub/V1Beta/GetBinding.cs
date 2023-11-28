@@ -78,15 +78,15 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         /// </summary>
         public readonly string DeleteTime;
         /// <summary>
-        /// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+        /// Optional. Labels for this MembershipBinding.
         /// </summary>
-        public readonly bool Fleet;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        /// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
         /// </summary>
         public readonly string Scope;
         /// <summary>
@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
 
             string deleteTime,
 
-            bool fleet,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 
@@ -122,7 +122,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         {
             CreateTime = createTime;
             DeleteTime = deleteTime;
-            Fleet = fleet;
+            Labels = labels;
             Name = name;
             Scope = scope;
             State = state;

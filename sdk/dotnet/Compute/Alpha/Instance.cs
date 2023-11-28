@@ -178,6 +178,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.InstanceParamsResponse> Params { get; private set; } = null!;
 
         /// <summary>
+        /// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        /// </summary>
+        [Output("partnerMetadata")]
+        public Output<ImmutableDictionary<string, string>> PartnerMetadata { get; private set; } = null!;
+
+        /// <summary>
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
         [Output("postKeyRevocationActionType")]
@@ -520,6 +526,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("params")]
         public Input<Inputs.InstanceParamsArgs>? Params { get; set; }
+
+        [Input("partnerMetadata")]
+        private InputMap<string>? _partnerMetadata;
+
+        /// <summary>
+        /// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        /// </summary>
+        public InputMap<string> PartnerMetadata
+        {
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<string>());
+            set => _partnerMetadata = value;
+        }
 
         /// <summary>
         /// PostKeyRevocationActionType of the instance.

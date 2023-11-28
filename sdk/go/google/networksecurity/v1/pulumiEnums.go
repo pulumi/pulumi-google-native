@@ -11,6 +11,193 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+type AddressGroupType string
+
+const (
+	// Default value.
+	AddressGroupTypeTypeUnspecified = AddressGroupType("TYPE_UNSPECIFIED")
+	// IP v4 ranges.
+	AddressGroupTypeIpv4 = AddressGroupType("IPV4")
+	// IP v6 ranges.
+	AddressGroupTypeIpv6 = AddressGroupType("IPV6")
+)
+
+func (AddressGroupType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressGroupType)(nil)).Elem()
+}
+
+func (e AddressGroupType) ToAddressGroupTypeOutput() AddressGroupTypeOutput {
+	return pulumi.ToOutput(e).(AddressGroupTypeOutput)
+}
+
+func (e AddressGroupType) ToAddressGroupTypeOutputWithContext(ctx context.Context) AddressGroupTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AddressGroupTypeOutput)
+}
+
+func (e AddressGroupType) ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput {
+	return e.ToAddressGroupTypePtrOutputWithContext(context.Background())
+}
+
+func (e AddressGroupType) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
+	return AddressGroupType(e).ToAddressGroupTypeOutputWithContext(ctx).ToAddressGroupTypePtrOutputWithContext(ctx)
+}
+
+func (e AddressGroupType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AddressGroupType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AddressGroupType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AddressGroupType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AddressGroupTypeOutput struct{ *pulumi.OutputState }
+
+func (AddressGroupTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressGroupType)(nil)).Elem()
+}
+
+func (o AddressGroupTypeOutput) ToAddressGroupTypeOutput() AddressGroupTypeOutput {
+	return o
+}
+
+func (o AddressGroupTypeOutput) ToAddressGroupTypeOutputWithContext(ctx context.Context) AddressGroupTypeOutput {
+	return o
+}
+
+func (o AddressGroupTypeOutput) ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput {
+	return o.ToAddressGroupTypePtrOutputWithContext(context.Background())
+}
+
+func (o AddressGroupTypeOutput) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressGroupType) *AddressGroupType {
+		return &v
+	}).(AddressGroupTypePtrOutput)
+}
+
+func (o AddressGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AddressGroupType] {
+	return pulumix.Output[AddressGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AddressGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AddressGroupTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AddressGroupType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AddressGroupTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AddressGroupTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AddressGroupType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AddressGroupTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AddressGroupTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressGroupType)(nil)).Elem()
+}
+
+func (o AddressGroupTypePtrOutput) ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput {
+	return o
+}
+
+func (o AddressGroupTypePtrOutput) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
+	return o
+}
+
+func (o AddressGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressGroupType] {
+	return pulumix.Output[*AddressGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AddressGroupTypePtrOutput) Elem() AddressGroupTypeOutput {
+	return o.ApplyT(func(v *AddressGroupType) AddressGroupType {
+		if v != nil {
+			return *v
+		}
+		var ret AddressGroupType
+		return ret
+	}).(AddressGroupTypeOutput)
+}
+
+func (o AddressGroupTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AddressGroupTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AddressGroupType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AddressGroupTypeInput is an input type that accepts AddressGroupTypeArgs and AddressGroupTypeOutput values.
+// You can construct a concrete instance of `AddressGroupTypeInput` via:
+//
+//	AddressGroupTypeArgs{...}
+type AddressGroupTypeInput interface {
+	pulumi.Input
+
+	ToAddressGroupTypeOutput() AddressGroupTypeOutput
+	ToAddressGroupTypeOutputWithContext(context.Context) AddressGroupTypeOutput
+}
+
+var addressGroupTypePtrType = reflect.TypeOf((**AddressGroupType)(nil)).Elem()
+
+type AddressGroupTypePtrInput interface {
+	pulumi.Input
+
+	ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput
+	ToAddressGroupTypePtrOutputWithContext(context.Context) AddressGroupTypePtrOutput
+}
+
+type addressGroupTypePtr string
+
+func AddressGroupTypePtr(v string) AddressGroupTypePtrInput {
+	return (*addressGroupTypePtr)(&v)
+}
+
+func (*addressGroupTypePtr) ElementType() reflect.Type {
+	return addressGroupTypePtrType
+}
+
+func (in *addressGroupTypePtr) ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput {
+	return pulumi.ToOutput(in).(AddressGroupTypePtrOutput)
+}
+
+func (in *addressGroupTypePtr) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AddressGroupTypePtrOutput)
+}
+
+func (in *addressGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressGroupType] {
+	return pulumix.Output[*AddressGroupType]{
+		OutputState: in.ToAddressGroupTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
 type AuthorizationPolicyAction string
 
@@ -574,6 +761,193 @@ func (in *mtlspolicyClientValidationModePtr) ToOutput(ctx context.Context) pulum
 	}
 }
 
+// Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+type OrganizationAddressGroupType string
+
+const (
+	// Default value.
+	OrganizationAddressGroupTypeTypeUnspecified = OrganizationAddressGroupType("TYPE_UNSPECIFIED")
+	// IP v4 ranges.
+	OrganizationAddressGroupTypeIpv4 = OrganizationAddressGroupType("IPV4")
+	// IP v6 ranges.
+	OrganizationAddressGroupTypeIpv6 = OrganizationAddressGroupType("IPV6")
+)
+
+func (OrganizationAddressGroupType) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAddressGroupType)(nil)).Elem()
+}
+
+func (e OrganizationAddressGroupType) ToOrganizationAddressGroupTypeOutput() OrganizationAddressGroupTypeOutput {
+	return pulumi.ToOutput(e).(OrganizationAddressGroupTypeOutput)
+}
+
+func (e OrganizationAddressGroupType) ToOrganizationAddressGroupTypeOutputWithContext(ctx context.Context) OrganizationAddressGroupTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationAddressGroupTypeOutput)
+}
+
+func (e OrganizationAddressGroupType) ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput {
+	return e.ToOrganizationAddressGroupTypePtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationAddressGroupType) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
+	return OrganizationAddressGroupType(e).ToOrganizationAddressGroupTypeOutputWithContext(ctx).ToOrganizationAddressGroupTypePtrOutputWithContext(ctx)
+}
+
+func (e OrganizationAddressGroupType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationAddressGroupType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationAddressGroupType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationAddressGroupType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OrganizationAddressGroupTypeOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAddressGroupTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAddressGroupType)(nil)).Elem()
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypeOutput() OrganizationAddressGroupTypeOutput {
+	return o
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypeOutputWithContext(ctx context.Context) OrganizationAddressGroupTypeOutput {
+	return o
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput {
+	return o.ToOrganizationAddressGroupTypePtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationAddressGroupType) *OrganizationAddressGroupType {
+		return &v
+	}).(OrganizationAddressGroupTypePtrOutput)
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationAddressGroupType] {
+	return pulumix.Output[OrganizationAddressGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationAddressGroupType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationAddressGroupType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationAddressGroupTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAddressGroupTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationAddressGroupType)(nil)).Elem()
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput {
+	return o
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
+	return o
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddressGroupType] {
+	return pulumix.Output[*OrganizationAddressGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) Elem() OrganizationAddressGroupTypeOutput {
+	return o.ApplyT(func(v *OrganizationAddressGroupType) OrganizationAddressGroupType {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationAddressGroupType
+		return ret
+	}).(OrganizationAddressGroupTypeOutput)
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationAddressGroupType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OrganizationAddressGroupTypeInput is an input type that accepts OrganizationAddressGroupTypeArgs and OrganizationAddressGroupTypeOutput values.
+// You can construct a concrete instance of `OrganizationAddressGroupTypeInput` via:
+//
+//	OrganizationAddressGroupTypeArgs{...}
+type OrganizationAddressGroupTypeInput interface {
+	pulumi.Input
+
+	ToOrganizationAddressGroupTypeOutput() OrganizationAddressGroupTypeOutput
+	ToOrganizationAddressGroupTypeOutputWithContext(context.Context) OrganizationAddressGroupTypeOutput
+}
+
+var organizationAddressGroupTypePtrType = reflect.TypeOf((**OrganizationAddressGroupType)(nil)).Elem()
+
+type OrganizationAddressGroupTypePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput
+	ToOrganizationAddressGroupTypePtrOutputWithContext(context.Context) OrganizationAddressGroupTypePtrOutput
+}
+
+type organizationAddressGroupTypePtr string
+
+func OrganizationAddressGroupTypePtr(v string) OrganizationAddressGroupTypePtrInput {
+	return (*organizationAddressGroupTypePtr)(&v)
+}
+
+func (*organizationAddressGroupTypePtr) ElementType() reflect.Type {
+	return organizationAddressGroupTypePtrType
+}
+
+func (in *organizationAddressGroupTypePtr) ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput {
+	return pulumi.ToOutput(in).(OrganizationAddressGroupTypePtrOutput)
+}
+
+func (in *organizationAddressGroupTypePtr) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationAddressGroupTypePtrOutput)
+}
+
+func (in *organizationAddressGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddressGroupType] {
+	return pulumix.Output[*OrganizationAddressGroupType]{
+		OutputState: in.ToOrganizationAddressGroupTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. Profile which tells what the primitive action should be.
 type RuleBasicProfile string
 
@@ -761,21 +1135,419 @@ func (in *ruleBasicProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*Rul
 	}
 }
 
+// Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+type TlsInspectionPolicyMinTlsVersion string
+
+const (
+	// Indicates no TLS version was specified.
+	TlsInspectionPolicyMinTlsVersionTlsVersionUnspecified = TlsInspectionPolicyMinTlsVersion("TLS_VERSION_UNSPECIFIED")
+	// TLS 1.0
+	TlsInspectionPolicyMinTlsVersionTls10 = TlsInspectionPolicyMinTlsVersion("TLS_1_0")
+	// TLS 1.1
+	TlsInspectionPolicyMinTlsVersionTls11 = TlsInspectionPolicyMinTlsVersion("TLS_1_1")
+	// TLS 1.2
+	TlsInspectionPolicyMinTlsVersionTls12 = TlsInspectionPolicyMinTlsVersion("TLS_1_2")
+	// TLS 1.3
+	TlsInspectionPolicyMinTlsVersionTls13 = TlsInspectionPolicyMinTlsVersion("TLS_1_3")
+)
+
+func (TlsInspectionPolicyMinTlsVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsInspectionPolicyMinTlsVersion)(nil)).Elem()
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToTlsInspectionPolicyMinTlsVersionOutput() TlsInspectionPolicyMinTlsVersionOutput {
+	return pulumi.ToOutput(e).(TlsInspectionPolicyMinTlsVersionOutput)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToTlsInspectionPolicyMinTlsVersionOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TlsInspectionPolicyMinTlsVersionOutput)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return e.ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(context.Background())
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return TlsInspectionPolicyMinTlsVersion(e).ToTlsInspectionPolicyMinTlsVersionOutputWithContext(ctx).ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TlsInspectionPolicyMinTlsVersionOutput struct{ *pulumi.OutputState }
+
+func (TlsInspectionPolicyMinTlsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsInspectionPolicyMinTlsVersion)(nil)).Elem()
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToTlsInspectionPolicyMinTlsVersionOutput() TlsInspectionPolicyMinTlsVersionOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToTlsInspectionPolicyMinTlsVersionOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return o.ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TlsInspectionPolicyMinTlsVersion) *TlsInspectionPolicyMinTlsVersion {
+		return &v
+	}).(TlsInspectionPolicyMinTlsVersionPtrOutput)
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[TlsInspectionPolicyMinTlsVersion] {
+	return pulumix.Output[TlsInspectionPolicyMinTlsVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsInspectionPolicyMinTlsVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsInspectionPolicyMinTlsVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TlsInspectionPolicyMinTlsVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (TlsInspectionPolicyMinTlsVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TlsInspectionPolicyMinTlsVersion)(nil)).Elem()
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyMinTlsVersion] {
+	return pulumix.Output[*TlsInspectionPolicyMinTlsVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) Elem() TlsInspectionPolicyMinTlsVersionOutput {
+	return o.ApplyT(func(v *TlsInspectionPolicyMinTlsVersion) TlsInspectionPolicyMinTlsVersion {
+		if v != nil {
+			return *v
+		}
+		var ret TlsInspectionPolicyMinTlsVersion
+		return ret
+	}).(TlsInspectionPolicyMinTlsVersionOutput)
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TlsInspectionPolicyMinTlsVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TlsInspectionPolicyMinTlsVersionInput is an input type that accepts TlsInspectionPolicyMinTlsVersionArgs and TlsInspectionPolicyMinTlsVersionOutput values.
+// You can construct a concrete instance of `TlsInspectionPolicyMinTlsVersionInput` via:
+//
+//	TlsInspectionPolicyMinTlsVersionArgs{...}
+type TlsInspectionPolicyMinTlsVersionInput interface {
+	pulumi.Input
+
+	ToTlsInspectionPolicyMinTlsVersionOutput() TlsInspectionPolicyMinTlsVersionOutput
+	ToTlsInspectionPolicyMinTlsVersionOutputWithContext(context.Context) TlsInspectionPolicyMinTlsVersionOutput
+}
+
+var tlsInspectionPolicyMinTlsVersionPtrType = reflect.TypeOf((**TlsInspectionPolicyMinTlsVersion)(nil)).Elem()
+
+type TlsInspectionPolicyMinTlsVersionPtrInput interface {
+	pulumi.Input
+
+	ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput
+	ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput
+}
+
+type tlsInspectionPolicyMinTlsVersionPtr string
+
+func TlsInspectionPolicyMinTlsVersionPtr(v string) TlsInspectionPolicyMinTlsVersionPtrInput {
+	return (*tlsInspectionPolicyMinTlsVersionPtr)(&v)
+}
+
+func (*tlsInspectionPolicyMinTlsVersionPtr) ElementType() reflect.Type {
+	return tlsInspectionPolicyMinTlsVersionPtrType
+}
+
+func (in *tlsInspectionPolicyMinTlsVersionPtr) ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return pulumi.ToOutput(in).(TlsInspectionPolicyMinTlsVersionPtrOutput)
+}
+
+func (in *tlsInspectionPolicyMinTlsVersionPtr) ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TlsInspectionPolicyMinTlsVersionPtrOutput)
+}
+
+func (in *tlsInspectionPolicyMinTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyMinTlsVersion] {
+	return pulumix.Output[*TlsInspectionPolicyMinTlsVersion]{
+		OutputState: in.ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+type TlsInspectionPolicyTlsFeatureProfile string
+
+const (
+	// Indicates no profile was specified.
+	TlsInspectionPolicyTlsFeatureProfileProfileUnspecified = TlsInspectionPolicyTlsFeatureProfile("PROFILE_UNSPECIFIED")
+	// Compatible profile. Allows the broadest set of clients, even those which support only out-of-date SSL features to negotiate with the TLS inspection proxy.
+	TlsInspectionPolicyTlsFeatureProfileProfileCompatible = TlsInspectionPolicyTlsFeatureProfile("PROFILE_COMPATIBLE")
+	// Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the TLS inspection proxy.
+	TlsInspectionPolicyTlsFeatureProfileProfileModern = TlsInspectionPolicyTlsFeatureProfile("PROFILE_MODERN")
+	// Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+	TlsInspectionPolicyTlsFeatureProfileProfileRestricted = TlsInspectionPolicyTlsFeatureProfile("PROFILE_RESTRICTED")
+	// Custom profile. Allow only the set of allowed SSL features specified in the custom_features field of SslPolicy.
+	TlsInspectionPolicyTlsFeatureProfileProfileCustom = TlsInspectionPolicyTlsFeatureProfile("PROFILE_CUSTOM")
+)
+
+func (TlsInspectionPolicyTlsFeatureProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsInspectionPolicyTlsFeatureProfile)(nil)).Elem()
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToTlsInspectionPolicyTlsFeatureProfileOutput() TlsInspectionPolicyTlsFeatureProfileOutput {
+	return pulumi.ToOutput(e).(TlsInspectionPolicyTlsFeatureProfileOutput)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToTlsInspectionPolicyTlsFeatureProfileOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TlsInspectionPolicyTlsFeatureProfileOutput)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return e.ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(context.Background())
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return TlsInspectionPolicyTlsFeatureProfile(e).ToTlsInspectionPolicyTlsFeatureProfileOutputWithContext(ctx).ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TlsInspectionPolicyTlsFeatureProfileOutput struct{ *pulumi.OutputState }
+
+func (TlsInspectionPolicyTlsFeatureProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsInspectionPolicyTlsFeatureProfile)(nil)).Elem()
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToTlsInspectionPolicyTlsFeatureProfileOutput() TlsInspectionPolicyTlsFeatureProfileOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToTlsInspectionPolicyTlsFeatureProfileOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfileOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return o.ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TlsInspectionPolicyTlsFeatureProfile) *TlsInspectionPolicyTlsFeatureProfile {
+		return &v
+	}).(TlsInspectionPolicyTlsFeatureProfilePtrOutput)
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToOutput(ctx context.Context) pulumix.Output[TlsInspectionPolicyTlsFeatureProfile] {
+	return pulumix.Output[TlsInspectionPolicyTlsFeatureProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsInspectionPolicyTlsFeatureProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsInspectionPolicyTlsFeatureProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TlsInspectionPolicyTlsFeatureProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (TlsInspectionPolicyTlsFeatureProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TlsInspectionPolicyTlsFeatureProfile)(nil)).Elem()
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile] {
+	return pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) Elem() TlsInspectionPolicyTlsFeatureProfileOutput {
+	return o.ApplyT(func(v *TlsInspectionPolicyTlsFeatureProfile) TlsInspectionPolicyTlsFeatureProfile {
+		if v != nil {
+			return *v
+		}
+		var ret TlsInspectionPolicyTlsFeatureProfile
+		return ret
+	}).(TlsInspectionPolicyTlsFeatureProfileOutput)
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TlsInspectionPolicyTlsFeatureProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TlsInspectionPolicyTlsFeatureProfileInput is an input type that accepts TlsInspectionPolicyTlsFeatureProfileArgs and TlsInspectionPolicyTlsFeatureProfileOutput values.
+// You can construct a concrete instance of `TlsInspectionPolicyTlsFeatureProfileInput` via:
+//
+//	TlsInspectionPolicyTlsFeatureProfileArgs{...}
+type TlsInspectionPolicyTlsFeatureProfileInput interface {
+	pulumi.Input
+
+	ToTlsInspectionPolicyTlsFeatureProfileOutput() TlsInspectionPolicyTlsFeatureProfileOutput
+	ToTlsInspectionPolicyTlsFeatureProfileOutputWithContext(context.Context) TlsInspectionPolicyTlsFeatureProfileOutput
+}
+
+var tlsInspectionPolicyTlsFeatureProfilePtrType = reflect.TypeOf((**TlsInspectionPolicyTlsFeatureProfile)(nil)).Elem()
+
+type TlsInspectionPolicyTlsFeatureProfilePtrInput interface {
+	pulumi.Input
+
+	ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput
+	ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput
+}
+
+type tlsInspectionPolicyTlsFeatureProfilePtr string
+
+func TlsInspectionPolicyTlsFeatureProfilePtr(v string) TlsInspectionPolicyTlsFeatureProfilePtrInput {
+	return (*tlsInspectionPolicyTlsFeatureProfilePtr)(&v)
+}
+
+func (*tlsInspectionPolicyTlsFeatureProfilePtr) ElementType() reflect.Type {
+	return tlsInspectionPolicyTlsFeatureProfilePtrType
+}
+
+func (in *tlsInspectionPolicyTlsFeatureProfilePtr) ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return pulumi.ToOutput(in).(TlsInspectionPolicyTlsFeatureProfilePtrOutput)
+}
+
+func (in *tlsInspectionPolicyTlsFeatureProfilePtr) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TlsInspectionPolicyTlsFeatureProfilePtrOutput)
+}
+
+func (in *tlsInspectionPolicyTlsFeatureProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile] {
+	return pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile]{
+		OutputState: in.ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupTypeInput)(nil)).Elem(), AddressGroupType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupTypePtrInput)(nil)).Elem(), AddressGroupType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyActionInput)(nil)).Elem(), AuthorizationPolicyAction("ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyActionPtrInput)(nil)).Elem(), AuthorizationPolicyAction("ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyClientValidationModeInput)(nil)).Elem(), MTLSPolicyClientValidationMode("CLIENT_VALIDATION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyClientValidationModePtrInput)(nil)).Elem(), MTLSPolicyClientValidationMode("CLIENT_VALIDATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAddressGroupTypeInput)(nil)).Elem(), OrganizationAddressGroupType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAddressGroupTypePtrInput)(nil)).Elem(), OrganizationAddressGroupType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleBasicProfileInput)(nil)).Elem(), RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleBasicProfilePtrInput)(nil)).Elem(), RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsInspectionPolicyMinTlsVersionInput)(nil)).Elem(), TlsInspectionPolicyMinTlsVersion("TLS_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsInspectionPolicyMinTlsVersionPtrInput)(nil)).Elem(), TlsInspectionPolicyMinTlsVersion("TLS_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsInspectionPolicyTlsFeatureProfileInput)(nil)).Elem(), TlsInspectionPolicyTlsFeatureProfile("PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsInspectionPolicyTlsFeatureProfilePtrInput)(nil)).Elem(), TlsInspectionPolicyTlsFeatureProfile("PROFILE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(AddressGroupTypeOutput{})
+	pulumi.RegisterOutputType(AddressGroupTypePtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyActionOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(MTLSPolicyClientValidationModeOutput{})
 	pulumi.RegisterOutputType(MTLSPolicyClientValidationModePtrOutput{})
+	pulumi.RegisterOutputType(OrganizationAddressGroupTypeOutput{})
+	pulumi.RegisterOutputType(OrganizationAddressGroupTypePtrOutput{})
 	pulumi.RegisterOutputType(RuleBasicProfileOutput{})
 	pulumi.RegisterOutputType(RuleBasicProfilePtrOutput{})
+	pulumi.RegisterOutputType(TlsInspectionPolicyMinTlsVersionOutput{})
+	pulumi.RegisterOutputType(TlsInspectionPolicyMinTlsVersionPtrOutput{})
+	pulumi.RegisterOutputType(TlsInspectionPolicyTlsFeatureProfileOutput{})
+	pulumi.RegisterOutputType(TlsInspectionPolicyTlsFeatureProfilePtrOutput{})
 }

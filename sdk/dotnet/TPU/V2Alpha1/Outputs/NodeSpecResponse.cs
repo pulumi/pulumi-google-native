@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
     public sealed class NodeSpecResponse
     {
         /// <summary>
+        /// Optional. Fields to specify in case of multi-node request.
+        /// </summary>
+        public readonly Outputs.MultiNodeParamsResponse MultiNodeParams;
+        /// <summary>
         /// The node.
         /// </summary>
         public readonly Outputs.NodeResponse Node;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
 
         [OutputConstructor]
         private NodeSpecResponse(
+            Outputs.MultiNodeParamsResponse multiNodeParams,
+
             Outputs.NodeResponse node,
 
             string nodeId,
 
             string parent)
         {
+            MultiNodeParams = multiNodeParams;
             Node = node;
             NodeId = nodeId;
             Parent = parent;

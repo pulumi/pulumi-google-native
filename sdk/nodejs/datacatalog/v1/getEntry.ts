@@ -58,6 +58,10 @@ export interface GetEntryResult {
      */
     readonly databaseTableSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1DatabaseTableSpecResponse;
     /**
+     * Specification that applies to a dataset.
+     */
+    readonly datasetSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1DatasetSpecResponse;
+    /**
      * Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
      */
     readonly description: string;
@@ -94,6 +98,10 @@ export interface GetEntryResult {
      */
     readonly lookerSystemSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1LookerSystemSpecResponse;
     /**
+     * Model specification.
+     */
+    readonly modelSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1ModelSpecResponse;
+    /**
      * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
      */
     readonly name: string;
@@ -122,7 +130,7 @@ export interface GetEntryResult {
      */
     readonly sqlDatabaseSystemSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse;
     /**
-     * The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+     * The type of the entry. For details, see [`EntryType`](#entrytype).
      */
     readonly type: string;
     /**

@@ -26,19 +26,19 @@ export interface GetTopicArgs {
 
 export interface GetTopicResult {
     /**
-     * The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     * Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     readonly kmsKeyName: string;
     /**
-     * See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+     * Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
      */
     readonly labels: {[key: string]: string};
     /**
-     * Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
+     * Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
      */
     readonly messageRetentionDuration: string;
     /**
-     * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+     * Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
      */
     readonly messageStoragePolicy: outputs.pubsub.v1.MessageStoragePolicyResponse;
     /**
@@ -46,11 +46,11 @@ export interface GetTopicResult {
      */
     readonly name: string;
     /**
-     * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+     * Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
      */
     readonly satisfiesPzs: boolean;
     /**
-     * Settings for validating messages published against a schema.
+     * Optional. Settings for validating messages published against a schema.
      */
     readonly schemaSettings: outputs.pubsub.v1.SchemaSettingsResponse;
 }

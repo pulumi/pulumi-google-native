@@ -49,7 +49,7 @@ type LookupTargetHttpsProxyResult struct {
 	Fingerprint string `pulumi:"fingerprint"`
 	// URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
 	HttpFilters []string `pulumi:"httpFilters"`
-	// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+	// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
 	HttpKeepAliveTimeoutSec int `pulumi:"httpKeepAliveTimeoutSec"`
 	// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
 	Kind string `pulumi:"kind"`
@@ -161,7 +161,7 @@ func (o LookupTargetHttpsProxyResultOutput) HttpFilters() pulumi.StringArrayOutp
 	return o.ApplyT(func(v LookupTargetHttpsProxyResult) []string { return v.HttpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
 func (o LookupTargetHttpsProxyResultOutput) HttpKeepAliveTimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupTargetHttpsProxyResult) int { return v.HttpKeepAliveTimeoutSec }).(pulumi.IntOutput)
 }

@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         public readonly string DeleteProtectionState;
         /// <summary>
+        /// The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+        /// </summary>
+        public readonly string EarliestVersionTime;
+        /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         public readonly string Etag;
@@ -82,13 +86,17 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         public readonly string KeyPrefix;
         /// <summary>
-        /// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+        /// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
         /// </summary>
         public readonly string Location;
         /// <summary>
         /// The resource name of the Database. Format: `projects/{project}/databases/{database}`
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Whether to enable the PITR feature on this database.
+        /// </summary>
+        public readonly string PointInTimeRecoveryEnablement;
         /// <summary>
         /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
         /// </summary>
@@ -101,6 +109,10 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
         /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+        /// </summary>
+        public readonly string VersionRetentionPeriod;
 
         [OutputConstructor]
         private GetDatabaseResult(
@@ -112,6 +124,8 @@ namespace Pulumi.GoogleNative.Firestore.V1
 
             string deleteProtectionState,
 
+            string earliestVersionTime,
+
             string etag,
 
             string keyPrefix,
@@ -120,23 +134,30 @@ namespace Pulumi.GoogleNative.Firestore.V1
 
             string name,
 
+            string pointInTimeRecoveryEnablement,
+
             string type,
 
             string uid,
 
-            string updateTime)
+            string updateTime,
+
+            string versionRetentionPeriod)
         {
             AppEngineIntegrationMode = appEngineIntegrationMode;
             ConcurrencyMode = concurrencyMode;
             CreateTime = createTime;
             DeleteProtectionState = deleteProtectionState;
+            EarliestVersionTime = earliestVersionTime;
             Etag = etag;
             KeyPrefix = keyPrefix;
             Location = location;
             Name = name;
+            PointInTimeRecoveryEnablement = pointInTimeRecoveryEnablement;
             Type = type;
             Uid = uid;
             UpdateTime = updateTime;
+            VersionRetentionPeriod = versionRetentionPeriod;
         }
     }
 }

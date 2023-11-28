@@ -33,6 +33,8 @@ type LookupPageArgs struct {
 }
 
 type LookupPageResult struct {
+	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings GoogleCloudDialogflowCxV3AdvancedSettingsResponse `pulumi:"advancedSettings"`
 	// The human-readable name of the page, unique within the flow.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
@@ -41,9 +43,11 @@ type LookupPageResult struct {
 	EventHandlers []GoogleCloudDialogflowCxV3EventHandlerResponse `pulumi:"eventHandlers"`
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	Form GoogleCloudDialogflowCxV3FormResponse `pulumi:"form"`
+	// Optional. Knowledge connector configuration.
+	KnowledgeConnectorSettings GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse `pulumi:"knowledgeConnectorSettings"`
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name string `pulumi:"name"`
-	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+	// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
 	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
 	TransitionRoutes []GoogleCloudDialogflowCxV3TransitionRouteResponse `pulumi:"transitionRoutes"`
@@ -95,6 +99,11 @@ func (o LookupPageResultOutput) ToOutput(ctx context.Context) pulumix.Output[Loo
 	}
 }
 
+// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+func (o LookupPageResultOutput) AdvancedSettings() GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
+	return o.ApplyT(func(v LookupPageResult) GoogleCloudDialogflowCxV3AdvancedSettingsResponse { return v.AdvancedSettings }).(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput)
+}
+
 // The human-readable name of the page, unique within the flow.
 func (o LookupPageResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageResult) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -115,12 +124,19 @@ func (o LookupPageResultOutput) Form() GoogleCloudDialogflowCxV3FormResponseOutp
 	return o.ApplyT(func(v LookupPageResult) GoogleCloudDialogflowCxV3FormResponse { return v.Form }).(GoogleCloudDialogflowCxV3FormResponseOutput)
 }
 
+// Optional. Knowledge connector configuration.
+func (o LookupPageResultOutput) KnowledgeConnectorSettings() GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponseOutput {
+	return o.ApplyT(func(v LookupPageResult) GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse {
+		return v.KnowledgeConnectorSettings
+	}).(GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponseOutput)
+}
+
 // The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 func (o LookupPageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 func (o LookupPageResultOutput) TransitionRouteGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPageResult) []string { return v.TransitionRouteGroups }).(pulumi.StringArrayOutput)
 }

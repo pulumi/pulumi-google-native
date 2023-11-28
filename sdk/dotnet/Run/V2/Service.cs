@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Run.V2
         public Output<string> Creator { get; private set; } = null!;
 
         /// <summary>
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// </summary>
+        [Output("customAudiences")]
+        public Output<ImmutableArray<string>> CustomAudiences { get; private set; } = null!;
+
+        /// <summary>
         /// The deletion time.
         /// </summary>
         [Output("deleteTime")]
@@ -152,6 +158,12 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Specifies service-level scaling settings
+        /// </summary>
+        [Output("scaling")]
+        public Output<Outputs.GoogleCloudRunV2ServiceScalingResponse> Scaling { get; private set; } = null!;
 
         /// <summary>
         /// Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
@@ -282,6 +294,18 @@ namespace Pulumi.GoogleNative.Run.V2
         [Input("clientVersion")]
         public Input<string>? ClientVersion { get; set; }
 
+        [Input("customAudiences")]
+        private InputList<string>? _customAudiences;
+
+        /// <summary>
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// </summary>
+        public InputList<string> CustomAudiences
+        {
+            get => _customAudiences ?? (_customAudiences = new InputList<string>());
+            set => _customAudiences = value;
+        }
+
         /// <summary>
         /// User-provided description of the Service. This field currently has a 512-character limit.
         /// </summary>
@@ -323,6 +347,12 @@ namespace Pulumi.GoogleNative.Run.V2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies service-level scaling settings
+        /// </summary>
+        [Input("scaling")]
+        public Input<Inputs.GoogleCloudRunV2ServiceScalingArgs>? Scaling { get; set; }
 
         /// <summary>
         /// Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.

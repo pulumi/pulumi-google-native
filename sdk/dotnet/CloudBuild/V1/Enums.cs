@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public static BuildOptionsDefaultLogsBucketBehavior DefaultLogsBucketBehaviorUnspecified { get; } = new BuildOptionsDefaultLogsBucketBehavior("DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED");
         /// <summary>
-        /// Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to GCS buckets in the build project.
+        /// Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to Cloud Storage buckets in the build project.
         /// </summary>
         public static BuildOptionsDefaultLogsBucketBehavior RegionalUserOwnedBucket { get; } = new BuildOptionsDefaultLogsBucketBehavior("REGIONAL_USER_OWNED_BUCKET");
 
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     }
 
     /// <summary>
-    /// Option to define build log streaming behavior to Google Cloud Storage.
+    /// Option to define build log streaming behavior to Cloud Storage.
     /// </summary>
     [EnumType]
     public readonly struct BuildOptionsLogStreamingOption : IEquatable<BuildOptionsLogStreamingOption>
@@ -62,11 +62,11 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public static BuildOptionsLogStreamingOption StreamDefault { get; } = new BuildOptionsLogStreamingOption("STREAM_DEFAULT");
         /// <summary>
-        /// Build logs should be streamed to Google Cloud Storage.
+        /// Build logs should be streamed to Cloud Storage.
         /// </summary>
         public static BuildOptionsLogStreamingOption StreamOn { get; } = new BuildOptionsLogStreamingOption("STREAM_ON");
         /// <summary>
-        /// Build logs should not be streamed to Google Cloud Storage; they will be written when the build is completed.
+        /// Build logs should not be streamed to Cloud Storage; they will be written when the build is completed.
         /// </summary>
         public static BuildOptionsLogStreamingOption StreamOff { get; } = new BuildOptionsLogStreamingOption("STREAM_OFF");
 
@@ -171,6 +171,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// Highcpu e2 machine with 32 CPUs.
         /// </summary>
         public static BuildOptionsMachineType E2Highcpu32 { get; } = new BuildOptionsMachineType("E2_HIGHCPU_32");
+        /// <summary>
+        /// E2 machine with 1 CPU.
+        /// </summary>
+        public static BuildOptionsMachineType E2Medium { get; } = new BuildOptionsMachineType("E2_MEDIUM");
 
         public static bool operator ==(BuildOptionsMachineType left, BuildOptionsMachineType right) => left.Equals(right);
         public static bool operator !=(BuildOptionsMachineType left, BuildOptionsMachineType right) => !left.Equals(right);
@@ -525,6 +529,47 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is PullRequestFilterCommentControl other && Equals(other);
         public bool Equals(PullRequestFilterCommentControl other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Option to specify the tool to fetch the source file for the build.
+    /// </summary>
+    [EnumType]
+    public readonly struct StorageSourceSourceFetcher : IEquatable<StorageSourceSourceFetcher>
+    {
+        private readonly string _value;
+
+        private StorageSourceSourceFetcher(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified defaults to GSUTIL.
+        /// </summary>
+        public static StorageSourceSourceFetcher SourceFetcherUnspecified { get; } = new StorageSourceSourceFetcher("SOURCE_FETCHER_UNSPECIFIED");
+        /// <summary>
+        /// Use the "gsutil" tool to download the source file.
+        /// </summary>
+        public static StorageSourceSourceFetcher Gsutil { get; } = new StorageSourceSourceFetcher("GSUTIL");
+        /// <summary>
+        /// Use the Cloud Storage Fetcher tool to download the source file.
+        /// </summary>
+        public static StorageSourceSourceFetcher GcsFetcher { get; } = new StorageSourceSourceFetcher("GCS_FETCHER");
+
+        public static bool operator ==(StorageSourceSourceFetcher left, StorageSourceSourceFetcher right) => left.Equals(right);
+        public static bool operator !=(StorageSourceSourceFetcher left, StorageSourceSourceFetcher right) => !left.Equals(right);
+
+        public static explicit operator string(StorageSourceSourceFetcher value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is StorageSourceSourceFetcher other && Equals(other);
+        public bool Equals(StorageSourceSourceFetcher other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

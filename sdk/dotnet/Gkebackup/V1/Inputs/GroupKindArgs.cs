@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     public sealed class GroupKindArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        /// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
         /// </summary>
         [Input("resourceGroup")]
         public Input<string>? ResourceGroup { get; set; }
 
         /// <summary>
-        /// Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+        /// Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
         /// </summary>
         [Input("resourceKind")]
         public Input<string>? ResourceKind { get; set; }

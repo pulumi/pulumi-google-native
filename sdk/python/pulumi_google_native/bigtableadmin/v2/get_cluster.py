@@ -86,7 +86,7 @@ class GetClusterResult:
     @pulumi.getter(name="serveNodes")
     def serve_nodes(self) -> int:
         """
-        The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         """
         return pulumi.get(self, "serve_nodes")
 

@@ -57,7 +57,7 @@ export class DicomStore extends pulumi.CustomResource {
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.v1beta1.NotificationConfigResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+     * Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
      */
     public readonly streamConfigs!: pulumi.Output<outputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1DicomStreamConfigResponse[]>;
 
@@ -124,7 +124,7 @@ export interface DicomStoreArgs {
     notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfigArgs>;
     project?: pulumi.Input<string>;
     /**
-     * A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+     * Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
      */
     streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1DicomStreamConfigArgs>[]>;
 }

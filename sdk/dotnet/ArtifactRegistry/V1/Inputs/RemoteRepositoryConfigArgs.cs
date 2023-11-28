@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Inputs
     public sealed class RemoteRepositoryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specific settings for an Apt remote repository.
+        /// </summary>
+        [Input("aptRepository")]
+        public Input<Inputs.AptRepositoryArgs>? AptRepository { get; set; }
+
+        /// <summary>
         /// The description of the remote source.
         /// </summary>
         [Input("description")]
@@ -44,6 +50,18 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Inputs
         /// </summary>
         [Input("pythonRepository")]
         public Input<Inputs.PythonRepositoryArgs>? PythonRepository { get; set; }
+
+        /// <summary>
+        /// Optional. The credentials used to access the remote repository.
+        /// </summary>
+        [Input("upstreamCredentials")]
+        public Input<Inputs.UpstreamCredentialsArgs>? UpstreamCredentials { get; set; }
+
+        /// <summary>
+        /// Specific settings for a Yum remote repository.
+        /// </summary>
+        [Input("yumRepository")]
+        public Input<Inputs.YumRepositoryArgs>? YumRepository { get; set; }
 
         public RemoteRepositoryConfigArgs()
         {

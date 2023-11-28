@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly Outputs.AccountResponse Account;
         /// <summary>
-        /// APKs to install in addition to those being directly tested. Currently capped at 100.
+        /// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApkResponse> AdditionalApks;
         /// <summary>
@@ -40,6 +40,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// List of files to push to the device before starting the test.
         /// </summary>
         public readonly ImmutableArray<Outputs.DeviceFileResponse> FilesToPush;
+        /// <summary>
+        /// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ApkResponse> InitialSetupApks;
         /// <summary>
         /// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
         /// </summary>
@@ -63,6 +67,8 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
             ImmutableArray<Outputs.DeviceFileResponse> filesToPush,
 
+            ImmutableArray<Outputs.ApkResponse> initialSetupApks,
+
             string networkProfile,
 
             Outputs.SystraceSetupResponse systrace)
@@ -73,6 +79,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
             DontAutograntPermissions = dontAutograntPermissions;
             EnvironmentVariables = environmentVariables;
             FilesToPush = filesToPush;
+            InitialSetupApks = initialSetupApks;
             NetworkProfile = networkProfile;
             Systrace = systrace;
         }

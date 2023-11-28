@@ -91,6 +91,10 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly generation!: pulumi.Output<string>;
     /**
+     * This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+     */
+    public readonly hardDeleteTime!: pulumi.Output<string>;
+    /**
      * Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
      */
     public readonly ifGenerationMatch!: pulumi.Output<string | undefined>;
@@ -131,7 +135,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly metageneration!: pulumi.Output<string>;
     /**
-     * Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
+     * Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -147,6 +151,10 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly projection!: pulumi.Output<string | undefined>;
     /**
+     * A collection of object level retention parameters.
+     */
+    public readonly retention!: pulumi.Output<outputs.storage.v1.BucketObjectRetentionResponse>;
+    /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */
     public readonly retentionExpirationTime!: pulumi.Output<string>;
@@ -158,6 +166,10 @@ export class BucketObject extends pulumi.CustomResource {
      * Content-Length of the data in bytes.
      */
     public readonly size!: pulumi.Output<string>;
+    /**
+     * The time at which the object became soft-deleted in RFC 3339 format.
+     */
+    public readonly softDeleteTime!: pulumi.Output<string>;
     /**
      * Storage class of the object.
      */
@@ -171,7 +183,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly timeCreated!: pulumi.Output<string>;
     /**
-     * The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+     * The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
      */
     public readonly timeDeleted!: pulumi.Output<string>;
     /**
@@ -215,6 +227,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
             resourceInputs["generation"] = args ? args.generation : undefined;
+            resourceInputs["hardDeleteTime"] = args ? args.hardDeleteTime : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["ifGenerationMatch"] = args ? args.ifGenerationMatch : undefined;
             resourceInputs["ifGenerationNotMatch"] = args ? args.ifGenerationNotMatch : undefined;
@@ -230,9 +243,11 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
             resourceInputs["projection"] = args ? args.projection : undefined;
+            resourceInputs["retention"] = args ? args.retention : undefined;
             resourceInputs["retentionExpirationTime"] = args ? args.retentionExpirationTime : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["softDeleteTime"] = args ? args.softDeleteTime : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["storageClass"] = args ? args.storageClass : undefined;
             resourceInputs["temporaryHold"] = args ? args.temporaryHold : undefined;
@@ -256,6 +271,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["eventBasedHold"] = undefined /*out*/;
             resourceInputs["generation"] = undefined /*out*/;
+            resourceInputs["hardDeleteTime"] = undefined /*out*/;
             resourceInputs["ifGenerationMatch"] = undefined /*out*/;
             resourceInputs["ifGenerationNotMatch"] = undefined /*out*/;
             resourceInputs["ifMetagenerationMatch"] = undefined /*out*/;
@@ -270,9 +286,11 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["predefinedAcl"] = undefined /*out*/;
             resourceInputs["projection"] = undefined /*out*/;
+            resourceInputs["retention"] = undefined /*out*/;
             resourceInputs["retentionExpirationTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["softDeleteTime"] = undefined /*out*/;
             resourceInputs["storageClass"] = undefined /*out*/;
             resourceInputs["temporaryHold"] = undefined /*out*/;
             resourceInputs["timeCreated"] = undefined /*out*/;
@@ -349,6 +367,10 @@ export interface BucketObjectArgs {
      */
     generation?: pulumi.Input<string>;
     /**
+     * This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+     */
+    hardDeleteTime?: pulumi.Input<string>;
+    /**
      * The ID of the object, including the bucket name, object name, and generation number.
      */
     id?: pulumi.Input<string>;
@@ -409,6 +431,10 @@ export interface BucketObjectArgs {
      */
     projection?: pulumi.Input<string>;
     /**
+     * A collection of object level retention parameters.
+     */
+    retention?: pulumi.Input<inputs.storage.v1.BucketObjectRetentionArgs>;
+    /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */
     retentionExpirationTime?: pulumi.Input<string>;
@@ -420,6 +446,10 @@ export interface BucketObjectArgs {
      * Content-Length of the data in bytes.
      */
     size?: pulumi.Input<string>;
+    /**
+     * The time at which the object became soft-deleted in RFC 3339 format.
+     */
+    softDeleteTime?: pulumi.Input<string>;
     source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * Storage class of the object.
@@ -434,7 +464,7 @@ export interface BucketObjectArgs {
      */
     timeCreated?: pulumi.Input<string>;
     /**
-     * The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+     * The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
      */
     timeDeleted?: pulumi.Input<string>;
     /**

@@ -29,7 +29,7 @@ type LookupSourceArgs struct {
 }
 
 type LookupSourceResult struct {
-	// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}" or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+	// The canonical name of the finding source. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}", or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
 	CanonicalName string `pulumi:"canonicalName"`
 	// The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated or insecure libraries."
 	Description string `pulumi:"description"`
@@ -81,7 +81,7 @@ func (o LookupSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[L
 	}
 }
 
-// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}" or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+// The canonical name of the finding source. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}", or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
 func (o LookupSourceResultOutput) CanonicalName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceResult) string { return v.CanonicalName }).(pulumi.StringOutput)
 }

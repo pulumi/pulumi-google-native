@@ -15,11 +15,47 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// </summary>
     public sealed class DataSetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("breakdowns")]
+        private InputList<Inputs.BreakdownArgs>? _breakdowns;
+
+        /// <summary>
+        /// Optional. The collection of breakdowns to be applied to the dataset.
+        /// </summary>
+        public InputList<Inputs.BreakdownArgs> Breakdowns
+        {
+            get => _breakdowns ?? (_breakdowns = new InputList<Inputs.BreakdownArgs>());
+            set => _breakdowns = value;
+        }
+
+        [Input("dimensions")]
+        private InputList<Inputs.DimensionArgs>? _dimensions;
+
+        /// <summary>
+        /// Optional. A collection of dimension columns.
+        /// </summary>
+        public InputList<Inputs.DimensionArgs> Dimensions
+        {
+            get => _dimensions ?? (_dimensions = new InputList<Inputs.DimensionArgs>());
+            set => _dimensions = value;
+        }
+
         /// <summary>
         /// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
         /// </summary>
         [Input("legendTemplate")]
         public Input<string>? LegendTemplate { get; set; }
+
+        [Input("measures")]
+        private InputList<Inputs.MeasureArgs>? _measures;
+
+        /// <summary>
+        /// Optional. A collection of measures.
+        /// </summary>
+        public InputList<Inputs.MeasureArgs> Measures
+        {
+            get => _measures ?? (_measures = new InputList<Inputs.MeasureArgs>());
+            set => _measures = value;
+        }
 
         /// <summary>
         /// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.

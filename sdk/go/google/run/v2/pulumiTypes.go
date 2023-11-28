@@ -539,13 +539,13 @@ func (o GoogleCloudRunV2ConditionResponseArrayOutput) Index(i pulumi.IntInput) G
 	}).(GoogleCloudRunV2ConditionResponseOutput)
 }
 
-// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
 type GoogleCloudRunV2Container struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 	Command []string `pulumi:"command"`
-	// Container names which must start before this container.
+	// Names of the containers that must start before this container.
 	DependsOn []string `pulumi:"dependsOn"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVar `pulumi:"env"`
@@ -578,13 +578,13 @@ type GoogleCloudRunV2ContainerInput interface {
 	ToGoogleCloudRunV2ContainerOutputWithContext(context.Context) GoogleCloudRunV2ContainerOutput
 }
 
-// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
 type GoogleCloudRunV2ContainerArgs struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 	Command pulumi.StringArrayInput `pulumi:"command"`
-	// Container names which must start before this container.
+	// Names of the containers that must start before this container.
 	DependsOn pulumi.StringArrayInput `pulumi:"dependsOn"`
 	// List of environment variables to set in the container.
 	Env GoogleCloudRunV2EnvVarArrayInput `pulumi:"env"`
@@ -655,7 +655,7 @@ func (i GoogleCloudRunV2ContainerArray) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
 type GoogleCloudRunV2ContainerOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRunV2ContainerOutput) ElementType() reflect.Type {
@@ -686,7 +686,7 @@ func (o GoogleCloudRunV2ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// Container names which must start before this container.
+// Names of the containers that must start before this container.
 func (o GoogleCloudRunV2ContainerOutput) DependsOn() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []string { return v.DependsOn }).(pulumi.StringArrayOutput)
 }
@@ -960,13 +960,13 @@ func (o GoogleCloudRunV2ContainerPortResponseArrayOutput) Index(i pulumi.IntInpu
 	}).(GoogleCloudRunV2ContainerPortResponseOutput)
 }
 
-// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
 type GoogleCloudRunV2ContainerResponse struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 	Command []string `pulumi:"command"`
-	// Container names which must start before this container.
+	// Names of the containers that must start before this container.
 	DependsOn []string `pulumi:"dependsOn"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVarResponse `pulumi:"env"`
@@ -988,7 +988,7 @@ type GoogleCloudRunV2ContainerResponse struct {
 	WorkingDir string `pulumi:"workingDir"`
 }
 
-// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
 type GoogleCloudRunV2ContainerResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRunV2ContainerResponseOutput) ElementType() reflect.Type {
@@ -1019,7 +1019,7 @@ func (o GoogleCloudRunV2ContainerResponseOutput) Command() pulumi.StringArrayOut
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// Container names which must start before this container.
+// Names of the containers that must start before this container.
 func (o GoogleCloudRunV2ContainerResponseOutput) DependsOn() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []string { return v.DependsOn }).(pulumi.StringArrayOutput)
 }
@@ -1097,11 +1097,11 @@ func (o GoogleCloudRunV2ContainerResponseArrayOutput) Index(i pulumi.IntInput) G
 	}).(GoogleCloudRunV2ContainerResponseOutput)
 }
 
-// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 type GoogleCloudRunV2EmptyDirVolumeSource struct {
 	// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
 	Medium *GoogleCloudRunV2EmptyDirVolumeSourceMedium `pulumi:"medium"`
-	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 	SizeLimit *string `pulumi:"sizeLimit"`
 }
 
@@ -1116,11 +1116,11 @@ type GoogleCloudRunV2EmptyDirVolumeSourceInput interface {
 	ToGoogleCloudRunV2EmptyDirVolumeSourceOutputWithContext(context.Context) GoogleCloudRunV2EmptyDirVolumeSourceOutput
 }
 
-// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 type GoogleCloudRunV2EmptyDirVolumeSourceArgs struct {
 	// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
 	Medium GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrInput `pulumi:"medium"`
-	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
 }
 
@@ -1189,7 +1189,7 @@ func (i *googleCloudRunV2EmptyDirVolumeSourcePtrType) ToOutput(ctx context.Conte
 	}
 }
 
-// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 type GoogleCloudRunV2EmptyDirVolumeSourceOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRunV2EmptyDirVolumeSourceOutput) ElementType() reflect.Type {
@@ -1227,7 +1227,7 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) Medium() GoogleCloudRunV2Emp
 	}).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
 }
 
-// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2EmptyDirVolumeSource) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
 }
@@ -1272,7 +1272,7 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) Medium() GoogleCloudRunV2
 	}).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
 }
 
-// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2EmptyDirVolumeSource) *string {
 		if v == nil {
@@ -1282,15 +1282,15 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) SizeLimit() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 type GoogleCloudRunV2EmptyDirVolumeSourceResponse struct {
 	// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
 	Medium string `pulumi:"medium"`
-	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 	SizeLimit string `pulumi:"sizeLimit"`
 }
 
-// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 type GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) ElementType() reflect.Type {
@@ -1316,14 +1316,14 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) Medium() pulumi.Stri
 	return o.ApplyT(func(v GoogleCloudRunV2EmptyDirVolumeSourceResponse) string { return v.Medium }).(pulumi.StringOutput)
 }
 
-// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 func (o GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) SizeLimit() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2EmptyDirVolumeSourceResponse) string { return v.SizeLimit }).(pulumi.StringOutput)
 }
 
 // EnvVar represents an environment variable present in a Container.
 type GoogleCloudRunV2EnvVar struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+	// Name of the environment variable. Must not exceed 32768 characters.
 	Name string `pulumi:"name"`
 	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes.
 	Value *string `pulumi:"value"`
@@ -1344,7 +1344,7 @@ type GoogleCloudRunV2EnvVarInput interface {
 
 // EnvVar represents an environment variable present in a Container.
 type GoogleCloudRunV2EnvVarArgs struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+	// Name of the environment variable. Must not exceed 32768 characters.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -1422,7 +1422,7 @@ func (o GoogleCloudRunV2EnvVarOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+// Name of the environment variable. Must not exceed 32768 characters.
 func (o GoogleCloudRunV2EnvVarOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2EnvVar) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1465,7 +1465,7 @@ func (o GoogleCloudRunV2EnvVarArrayOutput) Index(i pulumi.IntInput) GoogleCloudR
 
 // EnvVar represents an environment variable present in a Container.
 type GoogleCloudRunV2EnvVarResponse struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+	// Name of the environment variable. Must not exceed 32768 characters.
 	Name string `pulumi:"name"`
 	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes.
 	Value string `pulumi:"value"`
@@ -1494,7 +1494,7 @@ func (o GoogleCloudRunV2EnvVarResponseOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+// Name of the environment variable. Must not exceed 32768 characters.
 func (o GoogleCloudRunV2EnvVarResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2EnvVarResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1948,7 +1948,7 @@ func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Template() GoogleCloudR
 type GoogleCloudRunV2GRPCAction struct {
 	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
-	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
 	Service *string `pulumi:"service"`
 }
 
@@ -1967,7 +1967,7 @@ type GoogleCloudRunV2GRPCActionInput interface {
 type GoogleCloudRunV2GRPCActionArgs struct {
 	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -2072,7 +2072,7 @@ func (o GoogleCloudRunV2GRPCActionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2GRPCAction) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
 func (o GoogleCloudRunV2GRPCActionOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2GRPCAction) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -2117,7 +2117,7 @@ func (o GoogleCloudRunV2GRPCActionPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
 func (o GoogleCloudRunV2GRPCActionPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2GRPCAction) *string {
 		if v == nil {
@@ -2131,7 +2131,7 @@ func (o GoogleCloudRunV2GRPCActionPtrOutput) Service() pulumi.StringPtrOutput {
 type GoogleCloudRunV2GRPCActionResponse struct {
 	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 	Port int `pulumi:"port"`
-	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
 	Service string `pulumi:"service"`
 }
 
@@ -2161,7 +2161,7 @@ func (o GoogleCloudRunV2GRPCActionResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2GRPCActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
 func (o GoogleCloudRunV2GRPCActionResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2GRPCActionResponse) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -2612,6 +2612,220 @@ func (o GoogleCloudRunV2HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV2HTTPHeaderResponse {
 		return vs[0].([]GoogleCloudRunV2HTTPHeaderResponse)[vs[1].(int)]
 	}).(GoogleCloudRunV2HTTPHeaderResponseOutput)
+}
+
+// Direct VPC egress settings.
+type GoogleCloudRunV2NetworkInterface struct {
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+	Network *string `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+	Subnetwork *string `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run resource.
+	Tags []string `pulumi:"tags"`
+}
+
+// GoogleCloudRunV2NetworkInterfaceInput is an input type that accepts GoogleCloudRunV2NetworkInterfaceArgs and GoogleCloudRunV2NetworkInterfaceOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2NetworkInterfaceInput` via:
+//
+//	GoogleCloudRunV2NetworkInterfaceArgs{...}
+type GoogleCloudRunV2NetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2NetworkInterfaceOutput() GoogleCloudRunV2NetworkInterfaceOutput
+	ToGoogleCloudRunV2NetworkInterfaceOutputWithContext(context.Context) GoogleCloudRunV2NetworkInterfaceOutput
+}
+
+// Direct VPC egress settings.
+type GoogleCloudRunV2NetworkInterfaceArgs struct {
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run resource.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GoogleCloudRunV2NetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2NetworkInterface)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV2NetworkInterfaceArgs) ToGoogleCloudRunV2NetworkInterfaceOutput() GoogleCloudRunV2NetworkInterfaceOutput {
+	return i.ToGoogleCloudRunV2NetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2NetworkInterfaceArgs) ToGoogleCloudRunV2NetworkInterfaceOutputWithContext(ctx context.Context) GoogleCloudRunV2NetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2NetworkInterfaceOutput)
+}
+
+func (i GoogleCloudRunV2NetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2NetworkInterface] {
+	return pulumix.Output[GoogleCloudRunV2NetworkInterface]{
+		OutputState: i.ToGoogleCloudRunV2NetworkInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GoogleCloudRunV2NetworkInterfaceArrayInput is an input type that accepts GoogleCloudRunV2NetworkInterfaceArray and GoogleCloudRunV2NetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2NetworkInterfaceArrayInput` via:
+//
+//	GoogleCloudRunV2NetworkInterfaceArray{ GoogleCloudRunV2NetworkInterfaceArgs{...} }
+type GoogleCloudRunV2NetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2NetworkInterfaceArrayOutput() GoogleCloudRunV2NetworkInterfaceArrayOutput
+	ToGoogleCloudRunV2NetworkInterfaceArrayOutputWithContext(context.Context) GoogleCloudRunV2NetworkInterfaceArrayOutput
+}
+
+type GoogleCloudRunV2NetworkInterfaceArray []GoogleCloudRunV2NetworkInterfaceInput
+
+func (GoogleCloudRunV2NetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRunV2NetworkInterface)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV2NetworkInterfaceArray) ToGoogleCloudRunV2NetworkInterfaceArrayOutput() GoogleCloudRunV2NetworkInterfaceArrayOutput {
+	return i.ToGoogleCloudRunV2NetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2NetworkInterfaceArray) ToGoogleCloudRunV2NetworkInterfaceArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2NetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2NetworkInterfaceArrayOutput)
+}
+
+func (i GoogleCloudRunV2NetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2NetworkInterface] {
+	return pulumix.Output[[]GoogleCloudRunV2NetworkInterface]{
+		OutputState: i.ToGoogleCloudRunV2NetworkInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Direct VPC egress settings.
+type GoogleCloudRunV2NetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2NetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2NetworkInterface)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceOutput) ToGoogleCloudRunV2NetworkInterfaceOutput() GoogleCloudRunV2NetworkInterfaceOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceOutput) ToGoogleCloudRunV2NetworkInterfaceOutputWithContext(ctx context.Context) GoogleCloudRunV2NetworkInterfaceOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2NetworkInterface] {
+	return pulumix.Output[GoogleCloudRunV2NetworkInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+func (o GoogleCloudRunV2NetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+func (o GoogleCloudRunV2NetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+// Network tags applied to this Cloud Run resource.
+func (o GoogleCloudRunV2NetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRunV2NetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2NetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRunV2NetworkInterface)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceArrayOutput) ToGoogleCloudRunV2NetworkInterfaceArrayOutput() GoogleCloudRunV2NetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceArrayOutput) ToGoogleCloudRunV2NetworkInterfaceArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2NetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2NetworkInterface] {
+	return pulumix.Output[[]GoogleCloudRunV2NetworkInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2NetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV2NetworkInterface {
+		return vs[0].([]GoogleCloudRunV2NetworkInterface)[vs[1].(int)]
+	}).(GoogleCloudRunV2NetworkInterfaceOutput)
+}
+
+// Direct VPC egress settings.
+type GoogleCloudRunV2NetworkInterfaceResponse struct {
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+	Network string `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+	Subnetwork string `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run resource.
+	Tags []string `pulumi:"tags"`
+}
+
+// Direct VPC egress settings.
+type GoogleCloudRunV2NetworkInterfaceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2NetworkInterfaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2NetworkInterfaceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceResponseOutput) ToGoogleCloudRunV2NetworkInterfaceResponseOutput() GoogleCloudRunV2NetworkInterfaceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceResponseOutput) ToGoogleCloudRunV2NetworkInterfaceResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2NetworkInterfaceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2NetworkInterfaceResponse] {
+	return pulumix.Output[GoogleCloudRunV2NetworkInterfaceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+func (o GoogleCloudRunV2NetworkInterfaceResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NetworkInterfaceResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+func (o GoogleCloudRunV2NetworkInterfaceResponseOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NetworkInterfaceResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// Network tags applied to this Cloud Run resource.
+func (o GoogleCloudRunV2NetworkInterfaceResponseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NetworkInterfaceResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRunV2NetworkInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2NetworkInterfaceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRunV2NetworkInterfaceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceResponseArrayOutput) ToGoogleCloudRunV2NetworkInterfaceResponseArrayOutput() GoogleCloudRunV2NetworkInterfaceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceResponseArrayOutput) ToGoogleCloudRunV2NetworkInterfaceResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2NetworkInterfaceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2NetworkInterfaceResponse] {
+	return pulumix.Output[[]GoogleCloudRunV2NetworkInterfaceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudRunV2NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2NetworkInterfaceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV2NetworkInterfaceResponse {
+		return vs[0].([]GoogleCloudRunV2NetworkInterfaceResponse)[vs[1].(int)]
+	}).(GoogleCloudRunV2NetworkInterfaceResponseOutput)
 }
 
 // Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
@@ -4205,6 +4419,202 @@ func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) Secret() pulumi.String
 	return o.ApplyT(func(v GoogleCloudRunV2SecretVolumeSourceResponse) string { return v.Secret }).(pulumi.StringOutput)
 }
 
+// Scaling settings applied at the service level rather than at the revision level.
+type GoogleCloudRunV2ServiceScaling struct {
+	// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+	MinInstanceCount *int `pulumi:"minInstanceCount"`
+}
+
+// GoogleCloudRunV2ServiceScalingInput is an input type that accepts GoogleCloudRunV2ServiceScalingArgs and GoogleCloudRunV2ServiceScalingOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2ServiceScalingInput` via:
+//
+//	GoogleCloudRunV2ServiceScalingArgs{...}
+type GoogleCloudRunV2ServiceScalingInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2ServiceScalingOutput() GoogleCloudRunV2ServiceScalingOutput
+	ToGoogleCloudRunV2ServiceScalingOutputWithContext(context.Context) GoogleCloudRunV2ServiceScalingOutput
+}
+
+// Scaling settings applied at the service level rather than at the revision level.
+type GoogleCloudRunV2ServiceScalingArgs struct {
+	// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
+}
+
+func (GoogleCloudRunV2ServiceScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2ServiceScaling)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV2ServiceScalingArgs) ToGoogleCloudRunV2ServiceScalingOutput() GoogleCloudRunV2ServiceScalingOutput {
+	return i.ToGoogleCloudRunV2ServiceScalingOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2ServiceScalingArgs) ToGoogleCloudRunV2ServiceScalingOutputWithContext(ctx context.Context) GoogleCloudRunV2ServiceScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ServiceScalingOutput)
+}
+
+func (i GoogleCloudRunV2ServiceScalingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ServiceScaling] {
+	return pulumix.Output[GoogleCloudRunV2ServiceScaling]{
+		OutputState: i.ToGoogleCloudRunV2ServiceScalingOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudRunV2ServiceScalingArgs) ToGoogleCloudRunV2ServiceScalingPtrOutput() GoogleCloudRunV2ServiceScalingPtrOutput {
+	return i.ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2ServiceScalingArgs) ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2ServiceScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ServiceScalingOutput).ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRunV2ServiceScalingPtrInput is an input type that accepts GoogleCloudRunV2ServiceScalingArgs, GoogleCloudRunV2ServiceScalingPtr and GoogleCloudRunV2ServiceScalingPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2ServiceScalingPtrInput` via:
+//
+//	        GoogleCloudRunV2ServiceScalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRunV2ServiceScalingPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2ServiceScalingPtrOutput() GoogleCloudRunV2ServiceScalingPtrOutput
+	ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(context.Context) GoogleCloudRunV2ServiceScalingPtrOutput
+}
+
+type googleCloudRunV2ServiceScalingPtrType GoogleCloudRunV2ServiceScalingArgs
+
+func GoogleCloudRunV2ServiceScalingPtr(v *GoogleCloudRunV2ServiceScalingArgs) GoogleCloudRunV2ServiceScalingPtrInput {
+	return (*googleCloudRunV2ServiceScalingPtrType)(v)
+}
+
+func (*googleCloudRunV2ServiceScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2ServiceScaling)(nil)).Elem()
+}
+
+func (i *googleCloudRunV2ServiceScalingPtrType) ToGoogleCloudRunV2ServiceScalingPtrOutput() GoogleCloudRunV2ServiceScalingPtrOutput {
+	return i.ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRunV2ServiceScalingPtrType) ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2ServiceScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ServiceScalingPtrOutput)
+}
+
+func (i *googleCloudRunV2ServiceScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2ServiceScaling] {
+	return pulumix.Output[*GoogleCloudRunV2ServiceScaling]{
+		OutputState: i.ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Scaling settings applied at the service level rather than at the revision level.
+type GoogleCloudRunV2ServiceScalingOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2ServiceScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2ServiceScaling)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2ServiceScalingOutput) ToGoogleCloudRunV2ServiceScalingOutput() GoogleCloudRunV2ServiceScalingOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2ServiceScalingOutput) ToGoogleCloudRunV2ServiceScalingOutputWithContext(ctx context.Context) GoogleCloudRunV2ServiceScalingOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2ServiceScalingOutput) ToGoogleCloudRunV2ServiceScalingPtrOutput() GoogleCloudRunV2ServiceScalingPtrOutput {
+	return o.ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2ServiceScalingOutput) ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2ServiceScalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2ServiceScaling) *GoogleCloudRunV2ServiceScaling {
+		return &v
+	}).(GoogleCloudRunV2ServiceScalingPtrOutput)
+}
+
+func (o GoogleCloudRunV2ServiceScalingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ServiceScaling] {
+	return pulumix.Output[GoogleCloudRunV2ServiceScaling]{
+		OutputState: o.OutputState,
+	}
+}
+
+// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+func (o GoogleCloudRunV2ServiceScalingOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ServiceScaling) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+type GoogleCloudRunV2ServiceScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2ServiceScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2ServiceScaling)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2ServiceScalingPtrOutput) ToGoogleCloudRunV2ServiceScalingPtrOutput() GoogleCloudRunV2ServiceScalingPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2ServiceScalingPtrOutput) ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2ServiceScalingPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2ServiceScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2ServiceScaling] {
+	return pulumix.Output[*GoogleCloudRunV2ServiceScaling]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudRunV2ServiceScalingPtrOutput) Elem() GoogleCloudRunV2ServiceScalingOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2ServiceScaling) GoogleCloudRunV2ServiceScaling {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRunV2ServiceScaling
+		return ret
+	}).(GoogleCloudRunV2ServiceScalingOutput)
+}
+
+// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+func (o GoogleCloudRunV2ServiceScalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2ServiceScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scaling settings applied at the service level rather than at the revision level.
+type GoogleCloudRunV2ServiceScalingResponse struct {
+	// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+	MinInstanceCount int `pulumi:"minInstanceCount"`
+}
+
+// Scaling settings applied at the service level rather than at the revision level.
+type GoogleCloudRunV2ServiceScalingResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2ServiceScalingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2ServiceScalingResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2ServiceScalingResponseOutput) ToGoogleCloudRunV2ServiceScalingResponseOutput() GoogleCloudRunV2ServiceScalingResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2ServiceScalingResponseOutput) ToGoogleCloudRunV2ServiceScalingResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2ServiceScalingResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2ServiceScalingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ServiceScalingResponse] {
+	return pulumix.Output[GoogleCloudRunV2ServiceScalingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+func (o GoogleCloudRunV2ServiceScalingResponseOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ServiceScalingResponse) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
 // TCPSocketAction describes an action based on opening a socket
 type GoogleCloudRunV2TCPSocketAction struct {
 	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -5574,12 +5984,14 @@ func (o GoogleCloudRunV2VolumeResponseArrayOutput) Index(i pulumi.IntInput) Goog
 	}).(GoogleCloudRunV2VolumeResponseOutput)
 }
 
-// VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+// VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 type GoogleCloudRunV2VpcAccess struct {
-	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
 	Connector *string `pulumi:"connector"`
-	// Traffic VPC egress settings.
+	// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
 	Egress *GoogleCloudRunV2VpcAccessEgress `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
+	NetworkInterfaces []GoogleCloudRunV2NetworkInterface `pulumi:"networkInterfaces"`
 }
 
 // GoogleCloudRunV2VpcAccessInput is an input type that accepts GoogleCloudRunV2VpcAccessArgs and GoogleCloudRunV2VpcAccessOutput values.
@@ -5593,12 +6005,14 @@ type GoogleCloudRunV2VpcAccessInput interface {
 	ToGoogleCloudRunV2VpcAccessOutputWithContext(context.Context) GoogleCloudRunV2VpcAccessOutput
 }
 
-// VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+// VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 type GoogleCloudRunV2VpcAccessArgs struct {
-	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
-	// Traffic VPC egress settings.
+	// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
 	Egress GoogleCloudRunV2VpcAccessEgressPtrInput `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
+	NetworkInterfaces GoogleCloudRunV2NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 }
 
 func (GoogleCloudRunV2VpcAccessArgs) ElementType() reflect.Type {
@@ -5666,7 +6080,7 @@ func (i *googleCloudRunV2VpcAccessPtrType) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+// VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 type GoogleCloudRunV2VpcAccessOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRunV2VpcAccessOutput) ElementType() reflect.Type {
@@ -5697,14 +6111,19 @@ func (o GoogleCloudRunV2VpcAccessOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
 func (o GoogleCloudRunV2VpcAccessOutput) Connector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VpcAccess) *string { return v.Connector }).(pulumi.StringPtrOutput)
 }
 
-// Traffic VPC egress settings.
+// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
 func (o GoogleCloudRunV2VpcAccessOutput) Egress() GoogleCloudRunV2VpcAccessEgressPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VpcAccess) *GoogleCloudRunV2VpcAccessEgress { return v.Egress }).(GoogleCloudRunV2VpcAccessEgressPtrOutput)
+}
+
+// Direct VPC egress settings. Currently only single network interface is supported.
+func (o GoogleCloudRunV2VpcAccessOutput) NetworkInterfaces() GoogleCloudRunV2NetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2VpcAccess) []GoogleCloudRunV2NetworkInterface { return v.NetworkInterfaces }).(GoogleCloudRunV2NetworkInterfaceArrayOutput)
 }
 
 type GoogleCloudRunV2VpcAccessPtrOutput struct{ *pulumi.OutputState }
@@ -5737,7 +6156,7 @@ func (o GoogleCloudRunV2VpcAccessPtrOutput) Elem() GoogleCloudRunV2VpcAccessOutp
 	}).(GoogleCloudRunV2VpcAccessOutput)
 }
 
-// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
 func (o GoogleCloudRunV2VpcAccessPtrOutput) Connector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2VpcAccess) *string {
 		if v == nil {
@@ -5747,7 +6166,7 @@ func (o GoogleCloudRunV2VpcAccessPtrOutput) Connector() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Traffic VPC egress settings.
+// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
 func (o GoogleCloudRunV2VpcAccessPtrOutput) Egress() GoogleCloudRunV2VpcAccessEgressPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2VpcAccess) *GoogleCloudRunV2VpcAccessEgress {
 		if v == nil {
@@ -5757,15 +6176,27 @@ func (o GoogleCloudRunV2VpcAccessPtrOutput) Egress() GoogleCloudRunV2VpcAccessEg
 	}).(GoogleCloudRunV2VpcAccessEgressPtrOutput)
 }
 
-// VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
-type GoogleCloudRunV2VpcAccessResponse struct {
-	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
-	Connector string `pulumi:"connector"`
-	// Traffic VPC egress settings.
-	Egress string `pulumi:"egress"`
+// Direct VPC egress settings. Currently only single network interface is supported.
+func (o GoogleCloudRunV2VpcAccessPtrOutput) NetworkInterfaces() GoogleCloudRunV2NetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2VpcAccess) []GoogleCloudRunV2NetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(GoogleCloudRunV2NetworkInterfaceArrayOutput)
 }
 
-// VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+// VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+type GoogleCloudRunV2VpcAccessResponse struct {
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
+	Connector string `pulumi:"connector"`
+	// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
+	Egress string `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
+	NetworkInterfaces []GoogleCloudRunV2NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+}
+
+// VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 type GoogleCloudRunV2VpcAccessResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRunV2VpcAccessResponseOutput) ElementType() reflect.Type {
@@ -5786,14 +6217,21 @@ func (o GoogleCloudRunV2VpcAccessResponseOutput) ToOutput(ctx context.Context) p
 	}
 }
 
-// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
 func (o GoogleCloudRunV2VpcAccessResponseOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VpcAccessResponse) string { return v.Connector }).(pulumi.StringOutput)
 }
 
-// Traffic VPC egress settings.
+// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
 func (o GoogleCloudRunV2VpcAccessResponseOutput) Egress() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VpcAccessResponse) string { return v.Egress }).(pulumi.StringOutput)
+}
+
+// Direct VPC egress settings. Currently only single network interface is supported.
+func (o GoogleCloudRunV2VpcAccessResponseOutput) NetworkInterfaces() GoogleCloudRunV2NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2VpcAccessResponse) []GoogleCloudRunV2NetworkInterfaceResponse {
+		return v.NetworkInterfaces
+	}).(GoogleCloudRunV2NetworkInterfaceResponseArrayOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
@@ -6702,6 +7140,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPGetActionPtrInput)(nil)).Elem(), GoogleCloudRunV2HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPHeaderInput)(nil)).Elem(), GoogleCloudRunV2HTTPHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPHeaderArrayInput)(nil)).Elem(), GoogleCloudRunV2HTTPHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2NetworkInterfaceInput)(nil)).Elem(), GoogleCloudRunV2NetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2NetworkInterfaceArrayInput)(nil)).Elem(), GoogleCloudRunV2NetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ProbeInput)(nil)).Elem(), GoogleCloudRunV2ProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ProbePtrInput)(nil)).Elem(), GoogleCloudRunV2ProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ResourceRequirementsInput)(nil)).Elem(), GoogleCloudRunV2ResourceRequirementsArgs{})
@@ -6713,6 +7153,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2SecretKeySelectorPtrInput)(nil)).Elem(), GoogleCloudRunV2SecretKeySelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2SecretVolumeSourceInput)(nil)).Elem(), GoogleCloudRunV2SecretVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2SecretVolumeSourcePtrInput)(nil)).Elem(), GoogleCloudRunV2SecretVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ServiceScalingInput)(nil)).Elem(), GoogleCloudRunV2ServiceScalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ServiceScalingPtrInput)(nil)).Elem(), GoogleCloudRunV2ServiceScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TCPSocketActionInput)(nil)).Elem(), GoogleCloudRunV2TCPSocketActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TCPSocketActionPtrInput)(nil)).Elem(), GoogleCloudRunV2TCPSocketActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TaskTemplateInput)(nil)).Elem(), GoogleCloudRunV2TaskTemplateArgs{})
@@ -6773,6 +7215,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPHeaderResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPHeaderResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2NetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2NetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2NetworkInterfaceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2NetworkInterfaceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ProbeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ProbePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ProbeResponseOutput{})
@@ -6790,6 +7236,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunV2SecretVolumeSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2SecretVolumeSourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2SecretVolumeSourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2ServiceScalingOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2ServiceScalingPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2ServiceScalingResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2TCPSocketActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2TCPSocketActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2TCPSocketActionResponseOutput{})

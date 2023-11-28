@@ -686,6 +686,228 @@ func (o BestEffortResponseOutput) ToOutput(ctx context.Context) pulumix.Output[B
 	}
 }
 
+// Boot disk configurations.
+type BootDiskConfig struct {
+	// Optional. Customer encryption key for boot disk.
+	CustomerEncryptionKey *CustomerEncryptionKey `pulumi:"customerEncryptionKey"`
+	// Optional. Whether the boot disk will be created with confidential compute mode.
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
+}
+
+// BootDiskConfigInput is an input type that accepts BootDiskConfigArgs and BootDiskConfigOutput values.
+// You can construct a concrete instance of `BootDiskConfigInput` via:
+//
+//	BootDiskConfigArgs{...}
+type BootDiskConfigInput interface {
+	pulumi.Input
+
+	ToBootDiskConfigOutput() BootDiskConfigOutput
+	ToBootDiskConfigOutputWithContext(context.Context) BootDiskConfigOutput
+}
+
+// Boot disk configurations.
+type BootDiskConfigArgs struct {
+	// Optional. Customer encryption key for boot disk.
+	CustomerEncryptionKey CustomerEncryptionKeyPtrInput `pulumi:"customerEncryptionKey"`
+	// Optional. Whether the boot disk will be created with confidential compute mode.
+	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (BootDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootDiskConfig)(nil)).Elem()
+}
+
+func (i BootDiskConfigArgs) ToBootDiskConfigOutput() BootDiskConfigOutput {
+	return i.ToBootDiskConfigOutputWithContext(context.Background())
+}
+
+func (i BootDiskConfigArgs) ToBootDiskConfigOutputWithContext(ctx context.Context) BootDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootDiskConfigOutput)
+}
+
+func (i BootDiskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BootDiskConfig] {
+	return pulumix.Output[BootDiskConfig]{
+		OutputState: i.ToBootDiskConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BootDiskConfigArgs) ToBootDiskConfigPtrOutput() BootDiskConfigPtrOutput {
+	return i.ToBootDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BootDiskConfigArgs) ToBootDiskConfigPtrOutputWithContext(ctx context.Context) BootDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootDiskConfigOutput).ToBootDiskConfigPtrOutputWithContext(ctx)
+}
+
+// BootDiskConfigPtrInput is an input type that accepts BootDiskConfigArgs, BootDiskConfigPtr and BootDiskConfigPtrOutput values.
+// You can construct a concrete instance of `BootDiskConfigPtrInput` via:
+//
+//	        BootDiskConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BootDiskConfigPtrInput interface {
+	pulumi.Input
+
+	ToBootDiskConfigPtrOutput() BootDiskConfigPtrOutput
+	ToBootDiskConfigPtrOutputWithContext(context.Context) BootDiskConfigPtrOutput
+}
+
+type bootDiskConfigPtrType BootDiskConfigArgs
+
+func BootDiskConfigPtr(v *BootDiskConfigArgs) BootDiskConfigPtrInput {
+	return (*bootDiskConfigPtrType)(v)
+}
+
+func (*bootDiskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BootDiskConfig)(nil)).Elem()
+}
+
+func (i *bootDiskConfigPtrType) ToBootDiskConfigPtrOutput() BootDiskConfigPtrOutput {
+	return i.ToBootDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bootDiskConfigPtrType) ToBootDiskConfigPtrOutputWithContext(ctx context.Context) BootDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootDiskConfigPtrOutput)
+}
+
+func (i *bootDiskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BootDiskConfig] {
+	return pulumix.Output[*BootDiskConfig]{
+		OutputState: i.ToBootDiskConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Boot disk configurations.
+type BootDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (BootDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootDiskConfig)(nil)).Elem()
+}
+
+func (o BootDiskConfigOutput) ToBootDiskConfigOutput() BootDiskConfigOutput {
+	return o
+}
+
+func (o BootDiskConfigOutput) ToBootDiskConfigOutputWithContext(ctx context.Context) BootDiskConfigOutput {
+	return o
+}
+
+func (o BootDiskConfigOutput) ToBootDiskConfigPtrOutput() BootDiskConfigPtrOutput {
+	return o.ToBootDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BootDiskConfigOutput) ToBootDiskConfigPtrOutputWithContext(ctx context.Context) BootDiskConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BootDiskConfig) *BootDiskConfig {
+		return &v
+	}).(BootDiskConfigPtrOutput)
+}
+
+func (o BootDiskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskConfig] {
+	return pulumix.Output[BootDiskConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Customer encryption key for boot disk.
+func (o BootDiskConfigOutput) CustomerEncryptionKey() CustomerEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v BootDiskConfig) *CustomerEncryptionKey { return v.CustomerEncryptionKey }).(CustomerEncryptionKeyPtrOutput)
+}
+
+// Optional. Whether the boot disk will be created with confidential compute mode.
+func (o BootDiskConfigOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BootDiskConfig) *bool { return v.EnableConfidentialCompute }).(pulumi.BoolPtrOutput)
+}
+
+type BootDiskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BootDiskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BootDiskConfig)(nil)).Elem()
+}
+
+func (o BootDiskConfigPtrOutput) ToBootDiskConfigPtrOutput() BootDiskConfigPtrOutput {
+	return o
+}
+
+func (o BootDiskConfigPtrOutput) ToBootDiskConfigPtrOutputWithContext(ctx context.Context) BootDiskConfigPtrOutput {
+	return o
+}
+
+func (o BootDiskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BootDiskConfig] {
+	return pulumix.Output[*BootDiskConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BootDiskConfigPtrOutput) Elem() BootDiskConfigOutput {
+	return o.ApplyT(func(v *BootDiskConfig) BootDiskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BootDiskConfig
+		return ret
+	}).(BootDiskConfigOutput)
+}
+
+// Optional. Customer encryption key for boot disk.
+func (o BootDiskConfigPtrOutput) CustomerEncryptionKey() CustomerEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *BootDiskConfig) *CustomerEncryptionKey {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerEncryptionKey
+	}).(CustomerEncryptionKeyPtrOutput)
+}
+
+// Optional. Whether the boot disk will be created with confidential compute mode.
+func (o BootDiskConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BootDiskConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boot disk configurations.
+type BootDiskConfigResponse struct {
+	// Optional. Customer encryption key for boot disk.
+	CustomerEncryptionKey CustomerEncryptionKeyResponse `pulumi:"customerEncryptionKey"`
+	// Optional. Whether the boot disk will be created with confidential compute mode.
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+}
+
+// Boot disk configurations.
+type BootDiskConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BootDiskConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootDiskConfigResponse)(nil)).Elem()
+}
+
+func (o BootDiskConfigResponseOutput) ToBootDiskConfigResponseOutput() BootDiskConfigResponseOutput {
+	return o
+}
+
+func (o BootDiskConfigResponseOutput) ToBootDiskConfigResponseOutputWithContext(ctx context.Context) BootDiskConfigResponseOutput {
+	return o
+}
+
+func (o BootDiskConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskConfigResponse] {
+	return pulumix.Output[BootDiskConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Customer encryption key for boot disk.
+func (o BootDiskConfigResponseOutput) CustomerEncryptionKey() CustomerEncryptionKeyResponseOutput {
+	return o.ApplyT(func(v BootDiskConfigResponse) CustomerEncryptionKeyResponse { return v.CustomerEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// Optional. Whether the boot disk will be created with confidential compute mode.
+func (o BootDiskConfigResponseOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v BootDiskConfigResponse) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
 // Further data for the creating state.
 type CreatingDataResponse struct {
 }
@@ -709,6 +931,202 @@ func (o CreatingDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output
 	return pulumix.Output[CreatingDataResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Customer's encryption key.
+type CustomerEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// CustomerEncryptionKeyInput is an input type that accepts CustomerEncryptionKeyArgs and CustomerEncryptionKeyOutput values.
+// You can construct a concrete instance of `CustomerEncryptionKeyInput` via:
+//
+//	CustomerEncryptionKeyArgs{...}
+type CustomerEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToCustomerEncryptionKeyOutput() CustomerEncryptionKeyOutput
+	ToCustomerEncryptionKeyOutputWithContext(context.Context) CustomerEncryptionKeyOutput
+}
+
+// Customer's encryption key.
+type CustomerEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (CustomerEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerEncryptionKey)(nil)).Elem()
+}
+
+func (i CustomerEncryptionKeyArgs) ToCustomerEncryptionKeyOutput() CustomerEncryptionKeyOutput {
+	return i.ToCustomerEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i CustomerEncryptionKeyArgs) ToCustomerEncryptionKeyOutputWithContext(ctx context.Context) CustomerEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerEncryptionKeyOutput)
+}
+
+func (i CustomerEncryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[CustomerEncryptionKey] {
+	return pulumix.Output[CustomerEncryptionKey]{
+		OutputState: i.ToCustomerEncryptionKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CustomerEncryptionKeyArgs) ToCustomerEncryptionKeyPtrOutput() CustomerEncryptionKeyPtrOutput {
+	return i.ToCustomerEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i CustomerEncryptionKeyArgs) ToCustomerEncryptionKeyPtrOutputWithContext(ctx context.Context) CustomerEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerEncryptionKeyOutput).ToCustomerEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// CustomerEncryptionKeyPtrInput is an input type that accepts CustomerEncryptionKeyArgs, CustomerEncryptionKeyPtr and CustomerEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `CustomerEncryptionKeyPtrInput` via:
+//
+//	        CustomerEncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomerEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToCustomerEncryptionKeyPtrOutput() CustomerEncryptionKeyPtrOutput
+	ToCustomerEncryptionKeyPtrOutputWithContext(context.Context) CustomerEncryptionKeyPtrOutput
+}
+
+type customerEncryptionKeyPtrType CustomerEncryptionKeyArgs
+
+func CustomerEncryptionKeyPtr(v *CustomerEncryptionKeyArgs) CustomerEncryptionKeyPtrInput {
+	return (*customerEncryptionKeyPtrType)(v)
+}
+
+func (*customerEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerEncryptionKey)(nil)).Elem()
+}
+
+func (i *customerEncryptionKeyPtrType) ToCustomerEncryptionKeyPtrOutput() CustomerEncryptionKeyPtrOutput {
+	return i.ToCustomerEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *customerEncryptionKeyPtrType) ToCustomerEncryptionKeyPtrOutputWithContext(ctx context.Context) CustomerEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerEncryptionKeyPtrOutput)
+}
+
+func (i *customerEncryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomerEncryptionKey] {
+	return pulumix.Output[*CustomerEncryptionKey]{
+		OutputState: i.ToCustomerEncryptionKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Customer's encryption key.
+type CustomerEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (CustomerEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerEncryptionKey)(nil)).Elem()
+}
+
+func (o CustomerEncryptionKeyOutput) ToCustomerEncryptionKeyOutput() CustomerEncryptionKeyOutput {
+	return o
+}
+
+func (o CustomerEncryptionKeyOutput) ToCustomerEncryptionKeyOutputWithContext(ctx context.Context) CustomerEncryptionKeyOutput {
+	return o
+}
+
+func (o CustomerEncryptionKeyOutput) ToCustomerEncryptionKeyPtrOutput() CustomerEncryptionKeyPtrOutput {
+	return o.ToCustomerEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o CustomerEncryptionKeyOutput) ToCustomerEncryptionKeyPtrOutputWithContext(ctx context.Context) CustomerEncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomerEncryptionKey) *CustomerEncryptionKey {
+		return &v
+	}).(CustomerEncryptionKeyPtrOutput)
+}
+
+func (o CustomerEncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerEncryptionKey] {
+	return pulumix.Output[CustomerEncryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+func (o CustomerEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type CustomerEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomerEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerEncryptionKey)(nil)).Elem()
+}
+
+func (o CustomerEncryptionKeyPtrOutput) ToCustomerEncryptionKeyPtrOutput() CustomerEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o CustomerEncryptionKeyPtrOutput) ToCustomerEncryptionKeyPtrOutputWithContext(ctx context.Context) CustomerEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o CustomerEncryptionKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomerEncryptionKey] {
+	return pulumix.Output[*CustomerEncryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CustomerEncryptionKeyPtrOutput) Elem() CustomerEncryptionKeyOutput {
+	return o.ApplyT(func(v *CustomerEncryptionKey) CustomerEncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerEncryptionKey
+		return ret
+	}).(CustomerEncryptionKeyOutput)
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+func (o CustomerEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer's encryption key.
+type CustomerEncryptionKeyResponse struct {
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// Customer's encryption key.
+type CustomerEncryptionKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomerEncryptionKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerEncryptionKeyResponse)(nil)).Elem()
+}
+
+func (o CustomerEncryptionKeyResponseOutput) ToCustomerEncryptionKeyResponseOutput() CustomerEncryptionKeyResponseOutput {
+	return o
+}
+
+func (o CustomerEncryptionKeyResponseOutput) ToCustomerEncryptionKeyResponseOutputWithContext(ctx context.Context) CustomerEncryptionKeyResponseOutput {
+	return o
+}
+
+func (o CustomerEncryptionKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerEncryptionKeyResponse] {
+	return pulumix.Output[CustomerEncryptionKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+func (o CustomerEncryptionKeyResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 // Further data for the deleting state.
@@ -1212,6 +1630,228 @@ func (o IntervalResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v IntervalResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params.
+type MultiNodeParams struct {
+	// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+	NodeCount int `pulumi:"nodeCount"`
+	// Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+	NodeIdPrefix *string `pulumi:"nodeIdPrefix"`
+}
+
+// MultiNodeParamsInput is an input type that accepts MultiNodeParamsArgs and MultiNodeParamsOutput values.
+// You can construct a concrete instance of `MultiNodeParamsInput` via:
+//
+//	MultiNodeParamsArgs{...}
+type MultiNodeParamsInput interface {
+	pulumi.Input
+
+	ToMultiNodeParamsOutput() MultiNodeParamsOutput
+	ToMultiNodeParamsOutputWithContext(context.Context) MultiNodeParamsOutput
+}
+
+// Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params.
+type MultiNodeParamsArgs struct {
+	// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+	NodeIdPrefix pulumi.StringPtrInput `pulumi:"nodeIdPrefix"`
+}
+
+func (MultiNodeParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiNodeParams)(nil)).Elem()
+}
+
+func (i MultiNodeParamsArgs) ToMultiNodeParamsOutput() MultiNodeParamsOutput {
+	return i.ToMultiNodeParamsOutputWithContext(context.Background())
+}
+
+func (i MultiNodeParamsArgs) ToMultiNodeParamsOutputWithContext(ctx context.Context) MultiNodeParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiNodeParamsOutput)
+}
+
+func (i MultiNodeParamsArgs) ToOutput(ctx context.Context) pulumix.Output[MultiNodeParams] {
+	return pulumix.Output[MultiNodeParams]{
+		OutputState: i.ToMultiNodeParamsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i MultiNodeParamsArgs) ToMultiNodeParamsPtrOutput() MultiNodeParamsPtrOutput {
+	return i.ToMultiNodeParamsPtrOutputWithContext(context.Background())
+}
+
+func (i MultiNodeParamsArgs) ToMultiNodeParamsPtrOutputWithContext(ctx context.Context) MultiNodeParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiNodeParamsOutput).ToMultiNodeParamsPtrOutputWithContext(ctx)
+}
+
+// MultiNodeParamsPtrInput is an input type that accepts MultiNodeParamsArgs, MultiNodeParamsPtr and MultiNodeParamsPtrOutput values.
+// You can construct a concrete instance of `MultiNodeParamsPtrInput` via:
+//
+//	        MultiNodeParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultiNodeParamsPtrInput interface {
+	pulumi.Input
+
+	ToMultiNodeParamsPtrOutput() MultiNodeParamsPtrOutput
+	ToMultiNodeParamsPtrOutputWithContext(context.Context) MultiNodeParamsPtrOutput
+}
+
+type multiNodeParamsPtrType MultiNodeParamsArgs
+
+func MultiNodeParamsPtr(v *MultiNodeParamsArgs) MultiNodeParamsPtrInput {
+	return (*multiNodeParamsPtrType)(v)
+}
+
+func (*multiNodeParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiNodeParams)(nil)).Elem()
+}
+
+func (i *multiNodeParamsPtrType) ToMultiNodeParamsPtrOutput() MultiNodeParamsPtrOutput {
+	return i.ToMultiNodeParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *multiNodeParamsPtrType) ToMultiNodeParamsPtrOutputWithContext(ctx context.Context) MultiNodeParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiNodeParamsPtrOutput)
+}
+
+func (i *multiNodeParamsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MultiNodeParams] {
+	return pulumix.Output[*MultiNodeParams]{
+		OutputState: i.ToMultiNodeParamsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params.
+type MultiNodeParamsOutput struct{ *pulumi.OutputState }
+
+func (MultiNodeParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiNodeParams)(nil)).Elem()
+}
+
+func (o MultiNodeParamsOutput) ToMultiNodeParamsOutput() MultiNodeParamsOutput {
+	return o
+}
+
+func (o MultiNodeParamsOutput) ToMultiNodeParamsOutputWithContext(ctx context.Context) MultiNodeParamsOutput {
+	return o
+}
+
+func (o MultiNodeParamsOutput) ToMultiNodeParamsPtrOutput() MultiNodeParamsPtrOutput {
+	return o.ToMultiNodeParamsPtrOutputWithContext(context.Background())
+}
+
+func (o MultiNodeParamsOutput) ToMultiNodeParamsPtrOutputWithContext(ctx context.Context) MultiNodeParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiNodeParams) *MultiNodeParams {
+		return &v
+	}).(MultiNodeParamsPtrOutput)
+}
+
+func (o MultiNodeParamsOutput) ToOutput(ctx context.Context) pulumix.Output[MultiNodeParams] {
+	return pulumix.Output[MultiNodeParams]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+func (o MultiNodeParamsOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v MultiNodeParams) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+func (o MultiNodeParamsOutput) NodeIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiNodeParams) *string { return v.NodeIdPrefix }).(pulumi.StringPtrOutput)
+}
+
+type MultiNodeParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiNodeParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiNodeParams)(nil)).Elem()
+}
+
+func (o MultiNodeParamsPtrOutput) ToMultiNodeParamsPtrOutput() MultiNodeParamsPtrOutput {
+	return o
+}
+
+func (o MultiNodeParamsPtrOutput) ToMultiNodeParamsPtrOutputWithContext(ctx context.Context) MultiNodeParamsPtrOutput {
+	return o
+}
+
+func (o MultiNodeParamsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiNodeParams] {
+	return pulumix.Output[*MultiNodeParams]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MultiNodeParamsPtrOutput) Elem() MultiNodeParamsOutput {
+	return o.ApplyT(func(v *MultiNodeParams) MultiNodeParams {
+		if v != nil {
+			return *v
+		}
+		var ret MultiNodeParams
+		return ret
+	}).(MultiNodeParamsOutput)
+}
+
+// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+func (o MultiNodeParamsPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MultiNodeParams) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+func (o MultiNodeParamsPtrOutput) NodeIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiNodeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeIdPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params.
+type MultiNodeParamsResponse struct {
+	// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+	NodeCount int `pulumi:"nodeCount"`
+	// Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+	NodeIdPrefix string `pulumi:"nodeIdPrefix"`
+}
+
+// Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params.
+type MultiNodeParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (MultiNodeParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiNodeParamsResponse)(nil)).Elem()
+}
+
+func (o MultiNodeParamsResponseOutput) ToMultiNodeParamsResponseOutput() MultiNodeParamsResponseOutput {
+	return o
+}
+
+func (o MultiNodeParamsResponseOutput) ToMultiNodeParamsResponseOutputWithContext(ctx context.Context) MultiNodeParamsResponseOutput {
+	return o
+}
+
+func (o MultiNodeParamsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MultiNodeParamsResponse] {
+	return pulumix.Output[MultiNodeParamsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+func (o MultiNodeParamsResponseOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v MultiNodeParamsResponse) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+func (o MultiNodeParamsResponseOutput) NodeIdPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiNodeParamsResponse) string { return v.NodeIdPrefix }).(pulumi.StringOutput)
+}
+
 // Network related configurations.
 type NetworkConfig struct {
 	// Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.
@@ -1564,6 +2204,10 @@ type NodeType struct {
 	AcceleratorConfig *AcceleratorConfig `pulumi:"acceleratorConfig"`
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType *string `pulumi:"acceleratorType"`
+	// Optional. Whether Autocheckpoint is enabled.
+	AutocheckpointEnabled *bool `pulumi:"autocheckpointEnabled"`
+	// Optional. Boot disk configuration.
+	BootDiskConfig *BootDiskConfig `pulumi:"bootDiskConfig"`
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The additional data disks for the Node.
@@ -1607,6 +2251,10 @@ type NodeTypeArgs struct {
 	AcceleratorConfig AcceleratorConfigPtrInput `pulumi:"acceleratorConfig"`
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// Optional. Whether Autocheckpoint is enabled.
+	AutocheckpointEnabled pulumi.BoolPtrInput `pulumi:"autocheckpointEnabled"`
+	// Optional. Boot disk configuration.
+	BootDiskConfig BootDiskConfigPtrInput `pulumi:"bootDiskConfig"`
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
 	// The additional data disks for the Node.
@@ -1682,6 +2330,16 @@ func (o NodeTypeOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeType) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Whether Autocheckpoint is enabled.
+func (o NodeTypeOutput) AutocheckpointEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeType) *bool { return v.AutocheckpointEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Boot disk configuration.
+func (o NodeTypeOutput) BootDiskConfig() BootDiskConfigPtrOutput {
+	return o.ApplyT(func(v NodeType) *BootDiskConfig { return v.BootDiskConfig }).(BootDiskConfigPtrOutput)
+}
+
 // The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 func (o NodeTypeOutput) CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeType) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
@@ -1750,6 +2408,10 @@ type NodeResponse struct {
 	AcceleratorType string `pulumi:"acceleratorType"`
 	// The API version that created this Node.
 	ApiVersion string `pulumi:"apiVersion"`
+	// Optional. Whether Autocheckpoint is enabled.
+	AutocheckpointEnabled bool `pulumi:"autocheckpointEnabled"`
+	// Optional. Boot disk configuration.
+	BootDiskConfig BootDiskConfigResponse `pulumi:"bootDiskConfig"`
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock string `pulumi:"cidrBlock"`
 	// The time when the node was created.
@@ -1826,6 +2488,16 @@ func (o NodeResponseOutput) AcceleratorType() pulumi.StringOutput {
 // The API version that created this Node.
 func (o NodeResponseOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeResponse) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// Optional. Whether Autocheckpoint is enabled.
+func (o NodeResponseOutput) AutocheckpointEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeResponse) bool { return v.AutocheckpointEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional. Boot disk configuration.
+func (o NodeResponseOutput) BootDiskConfig() BootDiskConfigResponseOutput {
+	return o.ApplyT(func(v NodeResponse) BootDiskConfigResponse { return v.BootDiskConfig }).(BootDiskConfigResponseOutput)
 }
 
 // The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
@@ -1930,6 +2602,8 @@ func (o NodeResponseOutput) Tags() pulumi.StringArrayOutput {
 
 // Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
 type NodeSpec struct {
+	// Optional. Fields to specify in case of multi-node request.
+	MultiNodeParams *MultiNodeParams `pulumi:"multiNodeParams"`
 	// The node.
 	Node NodeType `pulumi:"node"`
 	// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
@@ -1951,6 +2625,8 @@ type NodeSpecInput interface {
 
 // Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
 type NodeSpecArgs struct {
+	// Optional. Fields to specify in case of multi-node request.
+	MultiNodeParams MultiNodeParamsPtrInput `pulumi:"multiNodeParams"`
 	// The node.
 	Node NodeTypeInput `pulumi:"node"`
 	// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
@@ -2029,6 +2705,11 @@ func (o NodeSpecOutput) ToOutput(ctx context.Context) pulumix.Output[NodeSpec] {
 	}
 }
 
+// Optional. Fields to specify in case of multi-node request.
+func (o NodeSpecOutput) MultiNodeParams() MultiNodeParamsPtrOutput {
+	return o.ApplyT(func(v NodeSpec) *MultiNodeParams { return v.MultiNodeParams }).(MultiNodeParamsPtrOutput)
+}
+
 // The node.
 func (o NodeSpecOutput) Node() NodeTypeOutput {
 	return o.ApplyT(func(v NodeSpec) NodeType { return v.Node }).(NodeTypeOutput)
@@ -2072,6 +2753,8 @@ func (o NodeSpecArrayOutput) Index(i pulumi.IntInput) NodeSpecOutput {
 
 // Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
 type NodeSpecResponse struct {
+	// Optional. Fields to specify in case of multi-node request.
+	MultiNodeParams MultiNodeParamsResponse `pulumi:"multiNodeParams"`
 	// The node.
 	Node NodeResponse `pulumi:"node"`
 	// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
@@ -2099,6 +2782,11 @@ func (o NodeSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Nod
 	return pulumix.Output[NodeSpecResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. Fields to specify in case of multi-node request.
+func (o NodeSpecResponseOutput) MultiNodeParams() MultiNodeParamsResponseOutput {
+	return o.ApplyT(func(v NodeSpecResponse) MultiNodeParamsResponse { return v.MultiNodeParams }).(MultiNodeParamsResponseOutput)
 }
 
 // The node.
@@ -2183,6 +2871,8 @@ type QueuedResourceStateResponse struct {
 	ProvisioningData ProvisioningDataResponse `pulumi:"provisioningData"`
 	// State of the QueuedResource request.
 	State string `pulumi:"state"`
+	// The initiator of the QueuedResources's current state.
+	StateInitiator string `pulumi:"stateInitiator"`
 	// Further data for the suspended state.
 	SuspendedData SuspendedDataResponse `pulumi:"suspendedData"`
 	// Further data for the suspending state.
@@ -2243,6 +2933,11 @@ func (o QueuedResourceStateResponseOutput) ProvisioningData() ProvisioningDataRe
 // State of the QueuedResource request.
 func (o QueuedResourceStateResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v QueuedResourceStateResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The initiator of the QueuedResources's current state.
+func (o QueuedResourceStateResponseOutput) StateInitiator() pulumi.StringOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) string { return v.StateInitiator }).(pulumi.StringOutput)
 }
 
 // Further data for the suspended state.
@@ -3195,6 +3890,176 @@ func (o ShieldedInstanceConfigResponseOutput) EnableSecureBoot() pulumi.BoolOutp
 	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
 }
 
+// Spot tier definition.
+type Spot struct {
+}
+
+// SpotInput is an input type that accepts SpotArgs and SpotOutput values.
+// You can construct a concrete instance of `SpotInput` via:
+//
+//	SpotArgs{...}
+type SpotInput interface {
+	pulumi.Input
+
+	ToSpotOutput() SpotOutput
+	ToSpotOutputWithContext(context.Context) SpotOutput
+}
+
+// Spot tier definition.
+type SpotArgs struct {
+}
+
+func (SpotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Spot)(nil)).Elem()
+}
+
+func (i SpotArgs) ToSpotOutput() SpotOutput {
+	return i.ToSpotOutputWithContext(context.Background())
+}
+
+func (i SpotArgs) ToSpotOutputWithContext(ctx context.Context) SpotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpotOutput)
+}
+
+func (i SpotArgs) ToOutput(ctx context.Context) pulumix.Output[Spot] {
+	return pulumix.Output[Spot]{
+		OutputState: i.ToSpotOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SpotArgs) ToSpotPtrOutput() SpotPtrOutput {
+	return i.ToSpotPtrOutputWithContext(context.Background())
+}
+
+func (i SpotArgs) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpotOutput).ToSpotPtrOutputWithContext(ctx)
+}
+
+// SpotPtrInput is an input type that accepts SpotArgs, SpotPtr and SpotPtrOutput values.
+// You can construct a concrete instance of `SpotPtrInput` via:
+//
+//	        SpotArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpotPtrInput interface {
+	pulumi.Input
+
+	ToSpotPtrOutput() SpotPtrOutput
+	ToSpotPtrOutputWithContext(context.Context) SpotPtrOutput
+}
+
+type spotPtrType SpotArgs
+
+func SpotPtr(v *SpotArgs) SpotPtrInput {
+	return (*spotPtrType)(v)
+}
+
+func (*spotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Spot)(nil)).Elem()
+}
+
+func (i *spotPtrType) ToSpotPtrOutput() SpotPtrOutput {
+	return i.ToSpotPtrOutputWithContext(context.Background())
+}
+
+func (i *spotPtrType) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpotPtrOutput)
+}
+
+func (i *spotPtrType) ToOutput(ctx context.Context) pulumix.Output[*Spot] {
+	return pulumix.Output[*Spot]{
+		OutputState: i.ToSpotPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Spot tier definition.
+type SpotOutput struct{ *pulumi.OutputState }
+
+func (SpotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Spot)(nil)).Elem()
+}
+
+func (o SpotOutput) ToSpotOutput() SpotOutput {
+	return o
+}
+
+func (o SpotOutput) ToSpotOutputWithContext(ctx context.Context) SpotOutput {
+	return o
+}
+
+func (o SpotOutput) ToSpotPtrOutput() SpotPtrOutput {
+	return o.ToSpotPtrOutputWithContext(context.Background())
+}
+
+func (o SpotOutput) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Spot) *Spot {
+		return &v
+	}).(SpotPtrOutput)
+}
+
+func (o SpotOutput) ToOutput(ctx context.Context) pulumix.Output[Spot] {
+	return pulumix.Output[Spot]{
+		OutputState: o.OutputState,
+	}
+}
+
+type SpotPtrOutput struct{ *pulumi.OutputState }
+
+func (SpotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Spot)(nil)).Elem()
+}
+
+func (o SpotPtrOutput) ToSpotPtrOutput() SpotPtrOutput {
+	return o
+}
+
+func (o SpotPtrOutput) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutput {
+	return o
+}
+
+func (o SpotPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Spot] {
+	return pulumix.Output[*Spot]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SpotPtrOutput) Elem() SpotOutput {
+	return o.ApplyT(func(v *Spot) Spot {
+		if v != nil {
+			return *v
+		}
+		var ret Spot
+		return ret
+	}).(SpotOutput)
+}
+
+// Spot tier definition.
+type SpotResponse struct {
+}
+
+// Spot tier definition.
+type SpotResponseOutput struct{ *pulumi.OutputState }
+
+func (SpotResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpotResponse)(nil)).Elem()
+}
+
+func (o SpotResponseOutput) ToSpotResponseOutput() SpotResponseOutput {
+	return o
+}
+
+func (o SpotResponseOutput) ToSpotResponseOutputWithContext(ctx context.Context) SpotResponseOutput {
+	return o
+}
+
+func (o SpotResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SpotResponse] {
+	return pulumix.Output[SpotResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -3573,10 +4438,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskArrayInput)(nil)).Elem(), AttachedDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BestEffortInput)(nil)).Elem(), BestEffortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BestEffortPtrInput)(nil)).Elem(), BestEffortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BootDiskConfigInput)(nil)).Elem(), BootDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BootDiskConfigPtrInput)(nil)).Elem(), BootDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyPtrInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuaranteedInput)(nil)).Elem(), GuaranteedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuaranteedPtrInput)(nil)).Elem(), GuaranteedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntervalInput)(nil)).Elem(), IntervalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntervalPtrInput)(nil)).Elem(), IntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiNodeParamsInput)(nil)).Elem(), MultiNodeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiNodeParamsPtrInput)(nil)).Elem(), MultiNodeParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTypeInput)(nil)).Elem(), NodeTypeArgs{})
@@ -3590,6 +4461,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountPtrInput)(nil)).Elem(), ServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpotInput)(nil)).Elem(), SpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpotPtrInput)(nil)).Elem(), SpotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TpuInput)(nil)).Elem(), TpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TpuPtrInput)(nil)).Elem(), TpuArgs{})
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
@@ -3605,7 +4478,13 @@ func init() {
 	pulumi.RegisterOutputType(BestEffortOutput{})
 	pulumi.RegisterOutputType(BestEffortPtrOutput{})
 	pulumi.RegisterOutputType(BestEffortResponseOutput{})
+	pulumi.RegisterOutputType(BootDiskConfigOutput{})
+	pulumi.RegisterOutputType(BootDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(BootDiskConfigResponseOutput{})
 	pulumi.RegisterOutputType(CreatingDataResponseOutput{})
+	pulumi.RegisterOutputType(CustomerEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(CustomerEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(CustomerEncryptionKeyResponseOutput{})
 	pulumi.RegisterOutputType(DeletingDataResponseOutput{})
 	pulumi.RegisterOutputType(FailedDataResponseOutput{})
 	pulumi.RegisterOutputType(GuaranteedOutput{})
@@ -3614,6 +4493,9 @@ func init() {
 	pulumi.RegisterOutputType(IntervalOutput{})
 	pulumi.RegisterOutputType(IntervalPtrOutput{})
 	pulumi.RegisterOutputType(IntervalResponseOutput{})
+	pulumi.RegisterOutputType(MultiNodeParamsOutput{})
+	pulumi.RegisterOutputType(MultiNodeParamsPtrOutput{})
+	pulumi.RegisterOutputType(MultiNodeParamsResponseOutput{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
@@ -3639,6 +4521,9 @@ func init() {
 	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigResponseOutput{})
+	pulumi.RegisterOutputType(SpotOutput{})
+	pulumi.RegisterOutputType(SpotPtrOutput{})
+	pulumi.RegisterOutputType(SpotResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(SuspendedDataResponseOutput{})
 	pulumi.RegisterOutputType(SuspendingDataResponseOutput{})

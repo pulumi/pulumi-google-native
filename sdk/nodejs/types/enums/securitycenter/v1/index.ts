@@ -26,7 +26,7 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
-export const CustomModuleEnablementState = {
+export const FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState = {
     /**
      * Unspecified enablement state.
      */
@@ -48,31 +48,7 @@ export const CustomModuleEnablementState = {
 /**
  * The enablement state of the custom module.
  */
-export type CustomModuleEnablementState = (typeof CustomModuleEnablementState)[keyof typeof CustomModuleEnablementState];
-
-export const FolderCustomModuleEnablementState = {
-    /**
-     * Unspecified enablement state.
-     */
-    EnablementStateUnspecified: "ENABLEMENT_STATE_UNSPECIFIED",
-    /**
-     * The module is enabled at the given CRM resource.
-     */
-    Enabled: "ENABLED",
-    /**
-     * The module is disabled at the given CRM resource.
-     */
-    Disabled: "DISABLED",
-    /**
-     * State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
-     */
-    Inherited: "INHERITED",
-} as const;
-
-/**
- * The enablement state of the custom module.
- */
-export type FolderCustomModuleEnablementState = (typeof FolderCustomModuleEnablementState)[keyof typeof FolderCustomModuleEnablementState];
+export type FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState = (typeof FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState)[keyof typeof FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState];
 
 export const GoogleCloudSecuritycenterV1CustomConfigSeverity = {
     /**
@@ -102,7 +78,27 @@ export const GoogleCloudSecuritycenterV1CustomConfigSeverity = {
  */
 export type GoogleCloudSecuritycenterV1CustomConfigSeverity = (typeof GoogleCloudSecuritycenterV1CustomConfigSeverity)[keyof typeof GoogleCloudSecuritycenterV1CustomConfigSeverity];
 
-export const OrganizationCustomModuleEnablementState = {
+export const OrganizationEventThreatDetectionSettingCustomModuleEnablementState = {
+    /**
+     * Unspecified enablement state.
+     */
+    EnablementStateUnspecified: "ENABLEMENT_STATE_UNSPECIFIED",
+    /**
+     * The module is enabled at the given level.
+     */
+    Enabled: "ENABLED",
+    /**
+     * The module is disabled at the given level.
+     */
+    Disabled: "DISABLED",
+} as const;
+
+/**
+ * The state of enablement for the module at the given level of the hierarchy.
+ */
+export type OrganizationEventThreatDetectionSettingCustomModuleEnablementState = (typeof OrganizationEventThreatDetectionSettingCustomModuleEnablementState)[keyof typeof OrganizationEventThreatDetectionSettingCustomModuleEnablementState];
+
+export const OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState = {
     /**
      * Unspecified enablement state.
      */
@@ -124,4 +120,28 @@ export const OrganizationCustomModuleEnablementState = {
 /**
  * The enablement state of the custom module.
  */
-export type OrganizationCustomModuleEnablementState = (typeof OrganizationCustomModuleEnablementState)[keyof typeof OrganizationCustomModuleEnablementState];
+export type OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState = (typeof OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState)[keyof typeof OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState];
+
+export const ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState = {
+    /**
+     * Unspecified enablement state.
+     */
+    EnablementStateUnspecified: "ENABLEMENT_STATE_UNSPECIFIED",
+    /**
+     * The module is enabled at the given CRM resource.
+     */
+    Enabled: "ENABLED",
+    /**
+     * The module is disabled at the given CRM resource.
+     */
+    Disabled: "DISABLED",
+    /**
+     * State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
+     */
+    Inherited: "INHERITED",
+} as const;
+
+/**
+ * The enablement state of the custom module.
+ */
+export type ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState = (typeof ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState)[keyof typeof ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState];

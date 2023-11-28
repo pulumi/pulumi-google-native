@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BinaryAuthorization.V1
 {
     /// <summary>
-    /// Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
+    /// Creates an attestor, and returns a copy of the new attestor. Returns `NOT_FOUND` if the project does not exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the attestor already exists.
     /// </summary>
     [GoogleNativeResourceType("google-native:binaryauthorization/v1:Attestor")]
     public partial class Attestor : global::Pulumi.CustomResource

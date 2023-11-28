@@ -95,6 +95,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
+     * Checks how feasible a migration from UmN to WbI is.
+     */
+    public /*out*/ readonly instanceMigrationEligibility!: pulumi.Output<outputs.notebooks.v1.InstanceMigrationEligibilityResponse>;
+    /**
      * Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
      */
     public readonly instanceOwners!: pulumi.Output<string[]>;
@@ -112,9 +116,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly machineType!: pulumi.Output<string>;
     /**
-     * Custom metadata to apply to this instance.
+     * Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Bool indicating whether this notebook has been migrated to a Workbench Instance
+     */
+    public /*out*/ readonly migrated!: pulumi.Output<boolean>;
     /**
      * The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
      */
@@ -132,7 +140,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly noProxyAccess!: pulumi.Output<boolean>;
     /**
-     * If true, no public IP will be assigned to this instance.
+     * If true, no external IP will be assigned to this instance.
      */
     public readonly noPublicIp!: pulumi.Output<boolean>;
     /**
@@ -241,6 +249,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["disks"] = undefined /*out*/;
+            resourceInputs["instanceMigrationEligibility"] = undefined /*out*/;
+            resourceInputs["migrated"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["proxyUri"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -260,12 +270,14 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["disks"] = undefined /*out*/;
             resourceInputs["installGpuDriver"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
+            resourceInputs["instanceMigrationEligibility"] = undefined /*out*/;
             resourceInputs["instanceOwners"] = undefined /*out*/;
             resourceInputs["kmsKey"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["machineType"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["migrated"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["nicType"] = undefined /*out*/;
@@ -359,7 +371,7 @@ export interface InstanceArgs {
      */
     machineType: pulumi.Input<string>;
     /**
-     * Custom metadata to apply to this instance.
+     * Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -375,7 +387,7 @@ export interface InstanceArgs {
      */
     noProxyAccess?: pulumi.Input<boolean>;
     /**
-     * If true, no public IP will be assigned to this instance.
+     * If true, no external IP will be assigned to this instance.
      */
     noPublicIp?: pulumi.Input<boolean>;
     /**

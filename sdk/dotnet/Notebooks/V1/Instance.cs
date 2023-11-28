@@ -101,6 +101,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
+        /// Checks how feasible a migration from UmN to WbI is.
+        /// </summary>
+        [Output("instanceMigrationEligibility")]
+        public Output<Outputs.InstanceMigrationEligibilityResponse> InstanceMigrationEligibility { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         /// </summary>
         [Output("instanceOwners")]
@@ -128,10 +134,16 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> MachineType { get; private set; } = null!;
 
         /// <summary>
-        /// Custom metadata to apply to this instance.
+        /// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Bool indicating whether this notebook has been migrated to a Workbench Instance
+        /// </summary>
+        [Output("migrated")]
+        public Output<bool> Migrated { get; private set; } = null!;
 
         /// <summary>
         /// The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
@@ -158,7 +170,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<bool> NoProxyAccess { get; private set; } = null!;
 
         /// <summary>
-        /// If true, no public IP will be assigned to this instance.
+        /// If true, no external IP will be assigned to this instance.
         /// </summary>
         [Output("noPublicIp")]
         public Output<bool> NoPublicIp { get; private set; } = null!;
@@ -404,7 +416,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Custom metadata to apply to this instance.
+        /// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -431,7 +443,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Input<bool>? NoProxyAccess { get; set; }
 
         /// <summary>
-        /// If true, no public IP will be assigned to this instance.
+        /// If true, no external IP will be assigned to this instance.
         /// </summary>
         [Input("noPublicIp")]
         public Input<bool>? NoPublicIp { get; set; }

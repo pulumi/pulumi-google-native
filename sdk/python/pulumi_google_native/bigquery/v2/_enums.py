@@ -9,9 +9,11 @@ __all__ = [
     'ArgumentMode',
     'AuditLogConfigLogType',
     'DatasetAccessEntryTargetTypesItem',
+    'RoutineDataGovernanceType',
     'RoutineDeterminismLevel',
     'RoutineLanguage',
     'RoutineRoutineType',
+    'RoutineSecurityMode',
     'StandardSqlDataTypeTypeKind',
 ]
 
@@ -21,6 +23,9 @@ class ArgumentArgumentKind(str, Enum):
     Optional. Defaults to FIXED_TYPE.
     """
     ARGUMENT_KIND_UNSPECIFIED = "ARGUMENT_KIND_UNSPECIFIED"
+    """
+    Default value.
+    """
     FIXED_TYPE = "FIXED_TYPE"
     """
     The argument is a variable with fully specified type, which can be a struct or an array, but not a table.
@@ -36,6 +41,9 @@ class ArgumentMode(str, Enum):
     Optional. Specifies whether the argument is input or output. Can be set for procedures only.
     """
     MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Default value.
+    """
     IN_ = "IN"
     """
     The argument is input-only.
@@ -87,6 +95,20 @@ class DatasetAccessEntryTargetTypesItem(str, Enum):
     """
 
 
+class RoutineDataGovernanceType(str, Enum):
+    """
+    Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+    """
+    DATA_GOVERNANCE_TYPE_UNSPECIFIED = "DATA_GOVERNANCE_TYPE_UNSPECIFIED"
+    """
+    The data governance type is unspecified.
+    """
+    DATA_MASKING = "DATA_MASKING"
+    """
+    The data governance type is data masking.
+    """
+
+
 class RoutineDeterminismLevel(str, Enum):
     """
     Optional. The determinism level of the JavaScript UDF, if defined.
@@ -110,6 +132,9 @@ class RoutineLanguage(str, Enum):
     Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
     """
     LANGUAGE_UNSPECIFIED = "LANGUAGE_UNSPECIFIED"
+    """
+    Default value.
+    """
     SQL = "SQL"
     """
     SQL language.
@@ -137,6 +162,9 @@ class RoutineRoutineType(str, Enum):
     Required. The type of routine.
     """
     ROUTINE_TYPE_UNSPECIFIED = "ROUTINE_TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
     SCALAR_FUNCTION = "SCALAR_FUNCTION"
     """
     Non-built-in persistent scalar function.
@@ -152,6 +180,24 @@ class RoutineRoutineType(str, Enum):
     AGGREGATE_FUNCTION = "AGGREGATE_FUNCTION"
     """
     Non-built-in persistent aggregate function.
+    """
+
+
+class RoutineSecurityMode(str, Enum):
+    """
+    Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+    """
+    SECURITY_MODE_UNSPECIFIED = "SECURITY_MODE_UNSPECIFIED"
+    """
+    The security mode of the routine is unspecified.
+    """
+    DEFINER = "DEFINER"
+    """
+    The routine is to be executed with the privileges of the user who defines it.
+    """
+    INVOKER = "INVOKER"
+    """
+    The routine is to be executed with the privileges of the user who invokes it.
     """
 
 
@@ -226,4 +272,8 @@ class StandardSqlDataTypeTypeKind(str, Enum):
     STRUCT = "STRUCT"
     """
     Encoded as a list with fields of type Type.struct_type[i]. List is used because a JSON object cannot have duplicate field names.
+    """
+    RANGE = "RANGE"
+    """
+    Encoded as a pair with types matching range_element_type. Pairs must begin with "[", end with ")", and be separated by ", ".
     """

@@ -44,6 +44,10 @@ export interface GetCertificateTemplateResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+     */
+    readonly maximumLifetime: string;
+    /**
      * The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
      */
     readonly name: string;

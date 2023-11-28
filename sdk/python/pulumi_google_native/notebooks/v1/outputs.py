@@ -23,6 +23,7 @@ __all__ = [
     'ExecutionTemplateResponse',
     'ExprResponse',
     'GuestOsFeatureResponse',
+    'InstanceMigrationEligibilityResponse',
     'LocalDiskInitializeParamsResponse',
     'LocalDiskResponse',
     'ReservationAffinityResponse',
@@ -30,6 +31,7 @@ __all__ = [
     'RuntimeAccessConfigResponse',
     'RuntimeGuestOsFeatureResponse',
     'RuntimeMetricsResponse',
+    'RuntimeMigrationEligibilityResponse',
     'RuntimeShieldedInstanceConfigResponse',
     'RuntimeSoftwareConfigResponse',
     'SchedulerAcceleratorConfigResponse',
@@ -44,7 +46,7 @@ __all__ = [
 @pulumi.output_type
 class AcceleratorConfigResponse(dict):
     """
-    Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+    Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -67,7 +69,7 @@ class AcceleratorConfigResponse(dict):
                  core_count: str,
                  type: str):
         """
-        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
         :param str core_count: Count of cores of this accelerator.
         :param str type: Type of this accelerator.
         """
@@ -840,6 +842,39 @@ class GuestOsFeatureResponse(dict):
 
 
 @pulumi.output_type
+class InstanceMigrationEligibilityResponse(dict):
+    """
+    InstanceMigrationEligibility represents the feasibility information of a migration from UmN to WbI.
+    """
+    def __init__(__self__, *,
+                 errors: Sequence[str],
+                 warnings: Sequence[str]):
+        """
+        InstanceMigrationEligibility represents the feasibility information of a migration from UmN to WbI.
+        :param Sequence[str] errors: Certain configurations make the UmN ineligible for an automatic migration. A manual migration is required.
+        :param Sequence[str] warnings: Certain configurations will be defaulted during the migration.
+        """
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Sequence[str]:
+        """
+        Certain configurations make the UmN ineligible for an automatic migration. A manual migration is required.
+        """
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> Sequence[str]:
+        """
+        Certain configurations will be defaulted during the migration.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
 class LocalDiskInitializeParamsResponse(dict):
     """
     Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
@@ -1156,7 +1191,7 @@ class ReservationAffinityResponse(dict):
 @pulumi.output_type
 class RuntimeAcceleratorConfigResponse(dict):
     """
-    Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+    Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1179,7 +1214,7 @@ class RuntimeAcceleratorConfigResponse(dict):
                  core_count: str,
                  type: str):
         """
-        Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+        Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
         :param str core_count: Count of cores of this accelerator.
         :param str type: Accelerator model.
         """
@@ -1330,9 +1365,42 @@ class RuntimeMetricsResponse(dict):
 
 
 @pulumi.output_type
+class RuntimeMigrationEligibilityResponse(dict):
+    """
+    RuntimeMigrationEligibility represents the feasibility information of a migration from GmN to WbI.
+    """
+    def __init__(__self__, *,
+                 errors: Sequence[str],
+                 warnings: Sequence[str]):
+        """
+        RuntimeMigrationEligibility represents the feasibility information of a migration from GmN to WbI.
+        :param Sequence[str] errors: Certain configurations make the GmN ineligible for an automatic migration. A manual migration is required.
+        :param Sequence[str] warnings: Certain configurations will be defaulted during the migration.
+        """
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Sequence[str]:
+        """
+        Certain configurations make the GmN ineligible for an automatic migration. A manual migration is required.
+        """
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> Sequence[str]:
+        """
+        Certain configurations will be defaulted during the migration.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
 class RuntimeShieldedInstanceConfigResponse(dict):
     """
-    A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+    A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1360,7 +1428,7 @@ class RuntimeShieldedInstanceConfigResponse(dict):
                  enable_secure_boot: bool,
                  enable_vtpm: bool):
         """
-        A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+        A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
         :param bool enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
         :param bool enable_secure_boot: Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
         :param bool enable_vtpm: Defines whether the instance has the vTPM enabled. Enabled by default.
@@ -1586,7 +1654,7 @@ class RuntimeSoftwareConfigResponse(dict):
 @pulumi.output_type
 class SchedulerAcceleratorConfigResponse(dict):
     """
-    Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
+    Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1609,7 +1677,7 @@ class SchedulerAcceleratorConfigResponse(dict):
                  core_count: str,
                  type: str):
         """
-        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
+        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
         :param str core_count: Count of cores of this accelerator.
         :param str type: Type of this accelerator.
         """
@@ -1636,7 +1704,7 @@ class SchedulerAcceleratorConfigResponse(dict):
 @pulumi.output_type
 class ShieldedInstanceConfigResponse(dict):
     """
-    A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+    A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1664,7 +1732,7 @@ class ShieldedInstanceConfigResponse(dict):
                  enable_secure_boot: bool,
                  enable_vtpm: bool):
         """
-        A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+        A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
         :param bool enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
         :param bool enable_secure_boot: Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
         :param bool enable_vtpm: Defines whether the instance has the vTPM enabled. Enabled by default.

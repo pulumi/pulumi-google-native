@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -31,7 +34,15 @@ export interface GetDocumentArgs {
 
 export interface GetDocumentResult {
     /**
-     * The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+     * The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+     */
+    readonly content: outputs.discoveryengine.v1beta.GoogleCloudDiscoveryengineV1betaDocumentContentResponse;
+    /**
+     * This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
+     */
+    readonly derivedStructData: {[key: string]: string};
+    /**
+     * The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
     readonly jsonData: string;
     /**
@@ -47,7 +58,7 @@ export interface GetDocumentResult {
      */
     readonly schemaId: string;
     /**
-     * The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+     * The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
     readonly structData: {[key: string]: string};
 }

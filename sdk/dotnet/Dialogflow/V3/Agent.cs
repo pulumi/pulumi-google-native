@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse> AdvancedSettings { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Answer feedback collection settings.
+        /// </summary>
+        [Output("answerFeedbackSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse> AnswerFeedbackSettings { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         /// </summary>
         [Output("avatarUri")]
@@ -56,6 +62,18 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         [Output("enableStackdriverLogging")]
         public Output<bool> EnableStackdriverLogging { get; private set; } = null!;
+
+        /// <summary>
+        /// Gen App Builder-related agent-level settings.
+        /// </summary>
+        [Output("genAppBuilderSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponse> GenAppBuilderSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Git integration settings for this agent.
+        /// </summary>
+        [Output("gitIntegrationSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse> GitIntegrationSettings { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -168,6 +186,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<Inputs.GoogleCloudDialogflowCxV3AdvancedSettingsArgs>? AdvancedSettings { get; set; }
 
         /// <summary>
+        /// Optional. Answer feedback collection settings.
+        /// </summary>
+        [Input("answerFeedbackSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsArgs>? AnswerFeedbackSettings { get; set; }
+
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         /// </summary>
         [Input("avatarUri")]
@@ -202,6 +226,18 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
+
+        /// <summary>
+        /// Gen App Builder-related agent-level settings.
+        /// </summary>
+        [Input("genAppBuilderSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsArgs>? GenAppBuilderSettings { get; set; }
+
+        /// <summary>
+        /// Git integration settings for this agent.
+        /// </summary>
+        [Input("gitIntegrationSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs>? GitIntegrationSettings { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

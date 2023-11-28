@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 {
 
     /// <summary>
-    /// A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
+    /// A TaskGroup defines one or more Tasks that all share the same TaskSpec.
     /// </summary>
     [OutputType]
     public sealed class TaskGroupResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
+        /// Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
         /// </summary>
         public readonly string Parallelism;
         /// <summary>
@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly bool RequireHostsFile;
         /// <summary>
+        /// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+        /// </summary>
+        public readonly string SchedulingPolicy;
+        /// <summary>
         /// Number of Tasks in the TaskGroup. Default is 1.
         /// </summary>
         public readonly string TaskCount;
@@ -41,7 +45,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly string TaskCountPerNode;
         /// <summary>
-        /// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.
+        /// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1).
         /// </summary>
         public readonly ImmutableArray<Outputs.EnvironmentResponse> TaskEnvironments;
         /// <summary>
@@ -59,6 +63,8 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 
             bool requireHostsFile,
 
+            string schedulingPolicy,
+
             string taskCount,
 
             string taskCountPerNode,
@@ -71,6 +77,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
             Parallelism = parallelism;
             PermissiveSsh = permissiveSsh;
             RequireHostsFile = requireHostsFile;
+            SchedulingPolicy = schedulingPolicy;
             TaskCount = taskCount;
             TaskCountPerNode = taskCountPerNode;
             TaskEnvironments = taskEnvironments;

@@ -8,6 +8,51 @@ using Pulumi;
 namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 {
     /// <summary>
+    /// Optional. The type of disk provisioning to use for the VM.
+    /// </summary>
+    [EnumType]
+    public readonly struct BootDiskDefaultsDiskType : IEquatable<BootDiskDefaultsDiskType>
+    {
+        private readonly string _value;
+
+        private BootDiskDefaultsDiskType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified disk type. Will be used as STANDARD.
+        /// </summary>
+        public static BootDiskDefaultsDiskType ComputeEngineDiskTypeUnspecified { get; } = new BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A Standard disk type.
+        /// </summary>
+        public static BootDiskDefaultsDiskType ComputeEngineDiskTypeStandard { get; } = new BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_STANDARD");
+        /// <summary>
+        /// SSD hard disk type.
+        /// </summary>
+        public static BootDiskDefaultsDiskType ComputeEngineDiskTypeSsd { get; } = new BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_SSD");
+        /// <summary>
+        /// An alternative to SSD persistent disks that balance performance and cost.
+        /// </summary>
+        public static BootDiskDefaultsDiskType ComputeEngineDiskTypeBalanced { get; } = new BootDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_BALANCED");
+
+        public static bool operator ==(BootDiskDefaultsDiskType left, BootDiskDefaultsDiskType right) => left.Equals(right);
+        public static bool operator !=(BootDiskDefaultsDiskType left, BootDiskDefaultsDiskType right) => !left.Equals(right);
+
+        public static explicit operator string(BootDiskDefaultsDiskType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BootDiskDefaultsDiskType other && Equals(other);
+        public bool Equals(BootDiskDefaultsDiskType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The disk type to use in the VM.
     /// </summary>
     [EnumType]
@@ -168,6 +213,92 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ComputeSchedulingRestartType other && Equals(other);
         public bool Equals(ComputeSchedulingRestartType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Immutable. The target type of this group.
+    /// </summary>
+    [EnumType]
+    public readonly struct GroupMigrationTargetType : IEquatable<GroupMigrationTargetType>
+    {
+        private readonly string _value;
+
+        private GroupMigrationTargetType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Group type is not specified. This defaults to Compute Engine targets.
+        /// </summary>
+        public static GroupMigrationTargetType MigrationTargetTypeUnspecified { get; } = new GroupMigrationTargetType("MIGRATION_TARGET_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// All MigratingVMs in the group must have Compute Engine targets.
+        /// </summary>
+        public static GroupMigrationTargetType MigrationTargetTypeGce { get; } = new GroupMigrationTargetType("MIGRATION_TARGET_TYPE_GCE");
+        /// <summary>
+        /// All MigratingVMs in the group must have Compute Engine Disks targets.
+        /// </summary>
+        public static GroupMigrationTargetType MigrationTargetTypeDisks { get; } = new GroupMigrationTargetType("MIGRATION_TARGET_TYPE_DISKS");
+
+        public static bool operator ==(GroupMigrationTargetType left, GroupMigrationTargetType right) => left.Equals(right);
+        public static bool operator !=(GroupMigrationTargetType left, GroupMigrationTargetType right) => !left.Equals(right);
+
+        public static explicit operator string(GroupMigrationTargetType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GroupMigrationTargetType other && Equals(other);
+        public bool Equals(GroupMigrationTargetType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The disk type to use.
+    /// </summary>
+    [EnumType]
+    public readonly struct PersistentDiskDefaultsDiskType : IEquatable<PersistentDiskDefaultsDiskType>
+    {
+        private readonly string _value;
+
+        private PersistentDiskDefaultsDiskType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified disk type. Will be used as STANDARD.
+        /// </summary>
+        public static PersistentDiskDefaultsDiskType ComputeEngineDiskTypeUnspecified { get; } = new PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A Standard disk type.
+        /// </summary>
+        public static PersistentDiskDefaultsDiskType ComputeEngineDiskTypeStandard { get; } = new PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_STANDARD");
+        /// <summary>
+        /// SSD hard disk type.
+        /// </summary>
+        public static PersistentDiskDefaultsDiskType ComputeEngineDiskTypeSsd { get; } = new PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_SSD");
+        /// <summary>
+        /// An alternative to SSD persistent disks that balance performance and cost.
+        /// </summary>
+        public static PersistentDiskDefaultsDiskType ComputeEngineDiskTypeBalanced { get; } = new PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_BALANCED");
+
+        public static bool operator ==(PersistentDiskDefaultsDiskType left, PersistentDiskDefaultsDiskType right) => left.Equals(right);
+        public static bool operator !=(PersistentDiskDefaultsDiskType left, PersistentDiskDefaultsDiskType right) => !left.Equals(right);
+
+        public static explicit operator string(PersistentDiskDefaultsDiskType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PersistentDiskDefaultsDiskType other && Equals(other);
+        public bool Equals(PersistentDiskDefaultsDiskType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

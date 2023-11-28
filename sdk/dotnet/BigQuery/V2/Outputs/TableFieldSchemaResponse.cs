@@ -51,6 +51,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string Precision;
         /// <summary>
+        /// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+        /// </summary>
+        public readonly Outputs.TableFieldSchemaRangeElementTypeResponse RangeElementType;
+        /// <summary>
         /// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
         /// </summary>
         public readonly string RoundingMode;
@@ -85,6 +89,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string precision,
 
+            Outputs.TableFieldSchemaRangeElementTypeResponse rangeElementType,
+
             string roundingMode,
 
             string scale,
@@ -101,6 +107,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             Name = name;
             PolicyTags = policyTags;
             Precision = precision;
+            RangeElementType = rangeElementType;
             RoundingMode = roundingMode;
             Scale = scale;
             Type = type;

@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionResponse EndInteraction;
         /// <summary>
+        /// Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardResponse KnowledgeInfoCard;
+        /// <summary>
         /// Hands off conversation to a human agent.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse LiveAgentHandoff;
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
             Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionResponse endInteraction,
 
+            Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardResponse knowledgeInfoCard,
+
             Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse liveAgentHandoff,
 
             Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioResponse mixedAudio,
@@ -82,6 +88,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
             Channel = channel;
             ConversationSuccess = conversationSuccess;
             EndInteraction = endInteraction;
+            KnowledgeInfoCard = knowledgeInfoCard;
             LiveAgentHandoff = liveAgentHandoff;
             MixedAudio = mixedAudio;
             OutputAudioText = outputAudioText;

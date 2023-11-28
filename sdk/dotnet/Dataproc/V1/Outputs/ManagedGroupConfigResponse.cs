@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly string InstanceGroupManagerName;
         /// <summary>
+        /// The partial URI to the instance group manager for this group. E.g. projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
+        /// </summary>
+        public readonly string InstanceGroupManagerUri;
+        /// <summary>
         /// The name of the Instance Template used for the Managed Instance Group.
         /// </summary>
         public readonly string InstanceTemplateName;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         private ManagedGroupConfigResponse(
             string instanceGroupManagerName,
 
+            string instanceGroupManagerUri,
+
             string instanceTemplateName)
         {
             InstanceGroupManagerName = instanceGroupManagerName;
+            InstanceGroupManagerUri = instanceGroupManagerUri;
             InstanceTemplateName = instanceTemplateName;
         }
     }

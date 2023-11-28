@@ -436,6 +436,8 @@ func (o InstanceConfigResponseOutput) InstanceSize() pulumi.StringOutput {
 type SAMLParams struct {
 	// SAML certificate
 	Certificate *string `pulumi:"certificate"`
+	// IdP field that maps to the user’s email address
+	EmailMapping *string `pulumi:"emailMapping"`
 	// Entity id URL
 	EntityId *string `pulumi:"entityId"`
 	// Single sign-on URL
@@ -459,6 +461,8 @@ type SAMLParamsInput interface {
 type SAMLParamsArgs struct {
 	// SAML certificate
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// IdP field that maps to the user’s email address
+	EmailMapping pulumi.StringPtrInput `pulumi:"emailMapping"`
 	// Entity id URL
 	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
 	// Single sign-on URL
@@ -568,6 +572,11 @@ func (o SAMLParamsOutput) Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SAMLParams) *string { return v.Certificate }).(pulumi.StringPtrOutput)
 }
 
+// IdP field that maps to the user’s email address
+func (o SAMLParamsOutput) EmailMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SAMLParams) *string { return v.EmailMapping }).(pulumi.StringPtrOutput)
+}
+
 // Entity id URL
 func (o SAMLParamsOutput) EntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SAMLParams) *string { return v.EntityId }).(pulumi.StringPtrOutput)
@@ -623,6 +632,16 @@ func (o SAMLParamsPtrOutput) Certificate() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// IdP field that maps to the user’s email address
+func (o SAMLParamsPtrOutput) EmailMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAMLParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailMapping
+	}).(pulumi.StringPtrOutput)
+}
+
 // Entity id URL
 func (o SAMLParamsPtrOutput) EntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SAMLParams) *string {
@@ -657,6 +676,8 @@ func (o SAMLParamsPtrOutput) UserEmail() pulumi.StringPtrOutput {
 type SAMLParamsResponse struct {
 	// SAML certificate
 	Certificate string `pulumi:"certificate"`
+	// IdP field that maps to the user’s email address
+	EmailMapping string `pulumi:"emailMapping"`
 	// Entity id URL
 	EntityId string `pulumi:"entityId"`
 	// Single sign-on URL
@@ -689,6 +710,11 @@ func (o SAMLParamsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[S
 // SAML certificate
 func (o SAMLParamsResponseOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v SAMLParamsResponse) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// IdP field that maps to the user’s email address
+func (o SAMLParamsResponseOutput) EmailMapping() pulumi.StringOutput {
+	return o.ApplyT(func(v SAMLParamsResponse) string { return v.EmailMapping }).(pulumi.StringOutput)
 }
 
 // Entity id URL

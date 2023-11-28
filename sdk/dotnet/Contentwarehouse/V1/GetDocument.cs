@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
         /// </summary>
         public readonly string InlineRawDocument;
         /// <summary>
+        /// Indicates if the document has a legal hold on it.
+        /// </summary>
+        public readonly bool LegalHold;
+        /// <summary>
         /// The resource name of the document. Format: projects/{project_number}/locations/{location}/documents/{document_id}. The name is ignored when creating a document.
         /// </summary>
         public readonly string Name;
@@ -164,6 +168,8 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
 
             string inlineRawDocument,
 
+            bool legalHold,
+
             string name,
 
             string plainText,
@@ -195,6 +201,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
             DispositionTime = dispositionTime;
             DocumentSchemaName = documentSchemaName;
             InlineRawDocument = inlineRawDocument;
+            LegalHold = legalHold;
             Name = name;
             PlainText = plainText;
             Properties = properties;

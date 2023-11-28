@@ -2183,7 +2183,7 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs:
         """
         Detected language for a structural component.
         :param pulumi.Input[float] confidence: Confidence of detected language. Range `[0, 1]`.
-        :param pulumi.Input[str] language_code: The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        :param pulumi.Input[str] language_code: The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
         """
         if confidence is not None:
             pulumi.set(__self__, "confidence", confidence)
@@ -2206,7 +2206,7 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs:
     @pulumi.getter(name="languageCode")
     def language_code(self) -> Optional[pulumi.Input[str]]:
         """
-        The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
         """
         return pulumi.get(self, "language_code")
 
@@ -2414,7 +2414,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Image Quality Defects
-        :param pulumi.Input[float] confidence: Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        :param pulumi.Input[float] confidence: Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
         :param pulumi.Input[str] type: Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
         """
         if confidence is not None:
@@ -2426,7 +2426,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs:
     @pulumi.getter
     def confidence(self) -> Optional[pulumi.Input[float]]:
         """
-        Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
         """
         return pulumi.get(self, "confidence")
 
@@ -2453,9 +2453,9 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs:
                  detected_defects: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs']]]] = None,
                  quality_score: Optional[pulumi.Input[float]] = None):
         """
-        Image Quality Scores for the page image
+        Image quality scores for the page image.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs']]] detected_defects: A list of detected defects.
-        :param pulumi.Input[float] quality_score: The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+        :param pulumi.Input[float] quality_score: The overall quality score. Range `[0, 1]` where `1` is perfect quality.
         """
         if detected_defects is not None:
             pulumi.set(__self__, "detected_defects", detected_defects)
@@ -2478,7 +2478,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs:
     @pulumi.getter(name="qualityScore")
     def quality_score(self) -> Optional[pulumi.Input[float]]:
         """
-        The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+        The overall quality score. Range `[0, 1]` where `1` is perfect quality.
         """
         return pulumi.get(self, "quality_score")
 
@@ -2498,7 +2498,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageArgs:
         Rendered image contents for this page.
         :param pulumi.Input[str] content: Raw byte content of the image.
         :param pulumi.Input[int] height: Height of the image in pixels.
-        :param pulumi.Input[str] mime_type: Encoding mime type for the image.
+        :param pulumi.Input[str] mime_type: Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
         :param pulumi.Input[int] width: Width of the image in pixels.
         """
         if content is not None:
@@ -2538,7 +2538,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageArgs:
     @pulumi.getter(name="mimeType")
     def mime_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Encoding mime type for the image.
+        Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
         """
         return pulumi.get(self, "mime_type")
 
@@ -3483,7 +3483,7 @@ class GoogleCloudDocumentaiV1DocumentPageArgs:
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageDimensionArgs'] dimension: Physical dimension of the page.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageFormFieldArgs']]] form_fields: A list of visually detected form fields on the page.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageImageArgs'] image: Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned.
-        :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs'] image_quality_scores: Image Quality Scores.
+        :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs'] image_quality_scores: Image quality scores.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageLayoutArgs'] layout: Layout for the page.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageLineArgs']]] lines: A list of visually detected text lines on the page. A collection of tokens that a human would perceive as a line.
         :param pulumi.Input[int] page_number: 1-based index for current Page in a parent Document. Useful when a page is taken out of a Document for individual processing.
@@ -3606,7 +3606,7 @@ class GoogleCloudDocumentaiV1DocumentPageArgs:
     @pulumi.getter(name="imageQualityScores")
     def image_quality_scores(self) -> Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs']]:
         """
-        Image Quality Scores.
+        Image quality scores.
         """
         return pulumi.get(self, "image_quality_scores")
 
@@ -4087,7 +4087,7 @@ class GoogleCloudDocumentaiV1DocumentStyleFontSizeArgs:
         """
         Font size with unit.
         :param pulumi.Input[float] size: Font size for the text.
-        :param pulumi.Input[str] unit: Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+        :param pulumi.Input[str] unit: Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
         """
         if size is not None:
             pulumi.set(__self__, "size", size)
@@ -4110,7 +4110,7 @@ class GoogleCloudDocumentaiV1DocumentStyleFontSizeArgs:
     @pulumi.getter
     def unit(self) -> Optional[pulumi.Input[str]]:
         """
-        Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+        Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
         """
         return pulumi.get(self, "unit")
 
@@ -4136,10 +4136,10 @@ class GoogleCloudDocumentaiV1DocumentStyleArgs:
         :param pulumi.Input['GoogleTypeColorArgs'] color: Text color.
         :param pulumi.Input[str] font_family: Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentStyleFontSizeArgs'] font_size: Font size.
-        :param pulumi.Input[str] font_weight: Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp
+        :param pulumi.Input[str] font_weight: [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentTextAnchorArgs'] text_anchor: Text anchor indexing into the Document.text.
-        :param pulumi.Input[str] text_decoration: Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
-        :param pulumi.Input[str] text_style: Text style. Possible values are normal, italic, and oblique. https://www.w3schools.com/cssref/pr_font_font-style.asp
+        :param pulumi.Input[str] text_decoration: [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard. 
+        :param pulumi.Input[str] text_style: [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
         """
         if background_color is not None:
             pulumi.set(__self__, "background_color", background_color)
@@ -4210,7 +4210,7 @@ class GoogleCloudDocumentaiV1DocumentStyleArgs:
     @pulumi.getter(name="fontWeight")
     def font_weight(self) -> Optional[pulumi.Input[str]]:
         """
-        Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp
+        [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
         """
         return pulumi.get(self, "font_weight")
 
@@ -4234,7 +4234,7 @@ class GoogleCloudDocumentaiV1DocumentStyleArgs:
     @pulumi.getter(name="textDecoration")
     def text_decoration(self) -> Optional[pulumi.Input[str]]:
         """
-        Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+        [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard. 
         """
         return pulumi.get(self, "text_decoration")
 
@@ -4246,7 +4246,7 @@ class GoogleCloudDocumentaiV1DocumentStyleArgs:
     @pulumi.getter(name="textStyle")
     def text_style(self) -> Optional[pulumi.Input[str]]:
         """
-        Text style. Possible values are normal, italic, and oblique. https://www.w3schools.com/cssref/pr_font_font-style.asp
+        [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
         """
         return pulumi.get(self, "text_style")
 
@@ -4412,7 +4412,7 @@ class GoogleCloudDocumentaiV1DocumentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentEntityArgs']]] entities: A list of entities detected on Document.text. For document shards, entities in this list may cross shard boundaries.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentEntityRelationArgs']]] entity_relations: Placeholder. Relationship among Document.entities.
         :param pulumi.Input['GoogleRpcStatusArgs'] error: Any error that occurred while processing this document.
-        :param pulumi.Input[str] mime_type: An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+        :param pulumi.Input[str] mime_type: An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageArgs']]] pages: Visual page layout for the Document.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentRevisionArgs']]] revisions: Placeholder. Revision history of this document.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentShardInfoArgs'] shard_info: Information about the sharding if this document is sharded part of a larger document. If the document is not sharded, this message is not specified.
@@ -4498,7 +4498,7 @@ class GoogleCloudDocumentaiV1DocumentArgs:
     @pulumi.getter(name="mimeType")
     def mime_type(self) -> Optional[pulumi.Input[str]]:
         """
-        An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+        An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
         """
         return pulumi.get(self, "mime_type")
 
@@ -4815,7 +4815,7 @@ class GoogleIamV1PolicyArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
-        An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+        An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
         :param pulumi.Input[Sequence[pulumi.Input['GoogleIamV1AuditConfigArgs']]] audit_configs: Specifies cloud audit logging configuration for this policy.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleIamV1BindingArgs']]] bindings: Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
@@ -4943,7 +4943,7 @@ class GoogleTypeColorArgs:
                  green: Optional[pulumi.Input[float]] = None,
                  red: Optional[pulumi.Input[float]] = None):
         """
-        Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't carry information about the absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most 1e-5. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
+        Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
         :param pulumi.Input[float] alpha: The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish between a default value and the value being unset. If omitted, this color object is rendered as a solid color (as if the alpha value had been explicitly given a value of 1.0).
         :param pulumi.Input[float] blue: The amount of blue in the color as a value in the interval [0, 1].
         :param pulumi.Input[float] green: The amount of green in the color as a value in the interval [0, 1].

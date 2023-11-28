@@ -20,9 +20,9 @@ type Group struct {
 
 	// The timestamp when the group was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The description of the resource.
+	// Optional. The description of the group.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// User-friendly display name.
+	// Optional. User-friendly display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
@@ -87,9 +87,9 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// The description of the resource.
+	// Optional. The description of the group.
 	Description *string `pulumi:"description"`
-	// User-friendly display name.
+	// Optional. User-friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
 	GroupId string `pulumi:"groupId"`
@@ -103,9 +103,9 @@ type groupArgs struct {
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// The description of the resource.
+	// Optional. The description of the group.
 	Description pulumi.StringPtrInput
-	// User-friendly display name.
+	// Optional. User-friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
 	GroupId pulumi.StringInput
@@ -171,12 +171,12 @@ func (o GroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the resource.
+// Optional. The description of the group.
 func (o GroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// User-friendly display name.
+// Optional. User-friendly display name.
 func (o GroupOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

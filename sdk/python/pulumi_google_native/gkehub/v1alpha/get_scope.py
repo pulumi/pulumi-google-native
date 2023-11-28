@@ -19,19 +19,22 @@ __all__ = [
 
 @pulumi.output_type
 class GetScopeResult:
-    def __init__(__self__, all_memberships=None, create_time=None, delete_time=None, name=None, state=None, uid=None, update_time=None):
-        if all_memberships and not isinstance(all_memberships, bool):
-            raise TypeError("Expected argument 'all_memberships' to be a bool")
-        pulumi.set(__self__, "all_memberships", all_memberships)
+    def __init__(__self__, create_time=None, delete_time=None, labels=None, name=None, namespace_labels=None, state=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if namespace_labels and not isinstance(namespace_labels, dict):
+            raise TypeError("Expected argument 'namespace_labels' to be a dict")
+        pulumi.set(__self__, "namespace_labels", namespace_labels)
         if state and not isinstance(state, dict):
             raise TypeError("Expected argument 'state' to be a dict")
         pulumi.set(__self__, "state", state)
@@ -41,14 +44,6 @@ class GetScopeResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="allMemberships")
-    def all_memberships(self) -> bool:
-        """
-        If true, all Memberships in the Fleet bind to this Scope.
-        """
-        return pulumi.get(self, "all_memberships")
 
     @property
     @pulumi.getter(name="createTime")
@@ -68,11 +63,27 @@ class GetScopeResult:
 
     @property
     @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. Labels for this Scope.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> Mapping[str, str]:
+        """
+        Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+        """
+        return pulumi.get(self, "namespace_labels")
 
     @property
     @pulumi.getter
@@ -105,10 +116,11 @@ class AwaitableGetScopeResult(GetScopeResult):
         if False:
             yield self
         return GetScopeResult(
-            all_memberships=self.all_memberships,
             create_time=self.create_time,
             delete_time=self.delete_time,
+            labels=self.labels,
             name=self.name,
+            namespace_labels=self.namespace_labels,
             state=self.state,
             uid=self.uid,
             update_time=self.update_time)
@@ -129,10 +141,11 @@ def get_scope(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkehub/v1alpha:getScope', __args__, opts=opts, typ=GetScopeResult).value
 
     return AwaitableGetScopeResult(
-        all_memberships=pulumi.get(__ret__, 'all_memberships'),
         create_time=pulumi.get(__ret__, 'create_time'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
+        labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        namespace_labels=pulumi.get(__ret__, 'namespace_labels'),
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))

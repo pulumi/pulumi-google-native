@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+        /// Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
         /// </summary>
         public readonly int DeleteLockDays;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string DeleteLockExpireTime;
         /// <summary>
-        /// User specified descriptive string for this Backup.
+        /// Optional. User specified descriptive string for this Backup.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// A set of custom labels supplied by user.
+        /// Optional. A set of custom labels supplied by user.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -138,7 +138,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly int ResourceCount;
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        /// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         public readonly int RetainDays;
         /// <summary>

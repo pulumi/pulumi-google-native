@@ -1848,7 +1848,7 @@ class SubjectConfigResponse(dict):
                  subject_alt_name: 'outputs.SubjectAltNamesResponse'):
         """
         These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
-        :param 'SubjectResponse' subject: Contains distinguished name fields such as the common name, location and organization.
+        :param 'SubjectResponse' subject: Optional. Contains distinguished name fields such as the common name, location and organization.
         :param 'SubjectAltNamesResponse' subject_alt_name: Optional. The subject alternative name fields.
         """
         pulumi.set(__self__, "subject", subject)
@@ -1858,7 +1858,7 @@ class SubjectConfigResponse(dict):
     @pulumi.getter
     def subject(self) -> 'outputs.SubjectResponse':
         """
-        Contains distinguished name fields such as the common name, location and organization.
+        Optional. Contains distinguished name fields such as the common name, location and organization.
         """
         return pulumi.get(self, "subject")
 

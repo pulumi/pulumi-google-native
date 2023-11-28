@@ -20,6 +20,8 @@ type Argument struct {
 	ArgumentKind *ArgumentArgumentKind `pulumi:"argumentKind"`
 	// Required unless argument_kind = ANY_TYPE.
 	DataType *StandardSqlDataType `pulumi:"dataType"`
+	// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+	IsAggregate *bool `pulumi:"isAggregate"`
 	// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
 	Mode *ArgumentMode `pulumi:"mode"`
 	// Optional. The name of this argument. Can be absent for function return argument.
@@ -43,6 +45,8 @@ type ArgumentArgs struct {
 	ArgumentKind ArgumentArgumentKindPtrInput `pulumi:"argumentKind"`
 	// Required unless argument_kind = ANY_TYPE.
 	DataType StandardSqlDataTypePtrInput `pulumi:"dataType"`
+	// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+	IsAggregate pulumi.BoolPtrInput `pulumi:"isAggregate"`
 	// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
 	Mode ArgumentModePtrInput `pulumi:"mode"`
 	// Optional. The name of this argument. Can be absent for function return argument.
@@ -129,6 +133,11 @@ func (o ArgumentOutput) DataType() StandardSqlDataTypePtrOutput {
 	return o.ApplyT(func(v Argument) *StandardSqlDataType { return v.DataType }).(StandardSqlDataTypePtrOutput)
 }
 
+// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+func (o ArgumentOutput) IsAggregate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Argument) *bool { return v.IsAggregate }).(pulumi.BoolPtrOutput)
+}
+
 // Optional. Specifies whether the argument is input or output. Can be set for procedures only.
 func (o ArgumentOutput) Mode() ArgumentModePtrOutput {
 	return o.ApplyT(func(v Argument) *ArgumentMode { return v.Mode }).(ArgumentModePtrOutput)
@@ -171,6 +180,8 @@ type ArgumentResponse struct {
 	ArgumentKind string `pulumi:"argumentKind"`
 	// Required unless argument_kind = ANY_TYPE.
 	DataType StandardSqlDataTypeResponse `pulumi:"dataType"`
+	// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+	IsAggregate bool `pulumi:"isAggregate"`
 	// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
 	Mode string `pulumi:"mode"`
 	// Optional. The name of this argument. Can be absent for function return argument.
@@ -206,6 +217,11 @@ func (o ArgumentResponseOutput) ArgumentKind() pulumi.StringOutput {
 // Required unless argument_kind = ANY_TYPE.
 func (o ArgumentResponseOutput) DataType() StandardSqlDataTypeResponseOutput {
 	return o.ApplyT(func(v ArgumentResponse) StandardSqlDataTypeResponse { return v.DataType }).(StandardSqlDataTypeResponseOutput)
+}
+
+// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+func (o ArgumentResponseOutput) IsAggregate() pulumi.BoolOutput {
+	return o.ApplyT(func(v ArgumentResponse) bool { return v.IsAggregate }).(pulumi.BoolOutput)
 }
 
 // Optional. Specifies whether the argument is input or output. Can be set for procedures only.
@@ -936,6 +952,275 @@ func (o BiEngineStatisticsResponseOutput) BiEngineMode() pulumi.StringOutput {
 // In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated.
 func (o BiEngineStatisticsResponseOutput) BiEngineReasons() BiEngineReasonResponseArrayOutput {
 	return o.ApplyT(func(v BiEngineStatisticsResponse) []BiEngineReasonResponse { return v.BiEngineReasons }).(BiEngineReasonResponseArrayOutput)
+}
+
+type BigLakeConfiguration struct {
+	// [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+	ConnectionId *string `pulumi:"connectionId"`
+	// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+	FileFormat *string `pulumi:"fileFormat"`
+	// [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+	StorageUri *string `pulumi:"storageUri"`
+	// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+	TableFormat *string `pulumi:"tableFormat"`
+}
+
+// BigLakeConfigurationInput is an input type that accepts BigLakeConfigurationArgs and BigLakeConfigurationOutput values.
+// You can construct a concrete instance of `BigLakeConfigurationInput` via:
+//
+//	BigLakeConfigurationArgs{...}
+type BigLakeConfigurationInput interface {
+	pulumi.Input
+
+	ToBigLakeConfigurationOutput() BigLakeConfigurationOutput
+	ToBigLakeConfigurationOutputWithContext(context.Context) BigLakeConfigurationOutput
+}
+
+type BigLakeConfigurationArgs struct {
+	// [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
+	// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
+	// [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+	StorageUri pulumi.StringPtrInput `pulumi:"storageUri"`
+	// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+	TableFormat pulumi.StringPtrInput `pulumi:"tableFormat"`
+}
+
+func (BigLakeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigLakeConfiguration)(nil)).Elem()
+}
+
+func (i BigLakeConfigurationArgs) ToBigLakeConfigurationOutput() BigLakeConfigurationOutput {
+	return i.ToBigLakeConfigurationOutputWithContext(context.Background())
+}
+
+func (i BigLakeConfigurationArgs) ToBigLakeConfigurationOutputWithContext(ctx context.Context) BigLakeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigLakeConfigurationOutput)
+}
+
+func (i BigLakeConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[BigLakeConfiguration] {
+	return pulumix.Output[BigLakeConfiguration]{
+		OutputState: i.ToBigLakeConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BigLakeConfigurationArgs) ToBigLakeConfigurationPtrOutput() BigLakeConfigurationPtrOutput {
+	return i.ToBigLakeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i BigLakeConfigurationArgs) ToBigLakeConfigurationPtrOutputWithContext(ctx context.Context) BigLakeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigLakeConfigurationOutput).ToBigLakeConfigurationPtrOutputWithContext(ctx)
+}
+
+// BigLakeConfigurationPtrInput is an input type that accepts BigLakeConfigurationArgs, BigLakeConfigurationPtr and BigLakeConfigurationPtrOutput values.
+// You can construct a concrete instance of `BigLakeConfigurationPtrInput` via:
+//
+//	        BigLakeConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigLakeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToBigLakeConfigurationPtrOutput() BigLakeConfigurationPtrOutput
+	ToBigLakeConfigurationPtrOutputWithContext(context.Context) BigLakeConfigurationPtrOutput
+}
+
+type bigLakeConfigurationPtrType BigLakeConfigurationArgs
+
+func BigLakeConfigurationPtr(v *BigLakeConfigurationArgs) BigLakeConfigurationPtrInput {
+	return (*bigLakeConfigurationPtrType)(v)
+}
+
+func (*bigLakeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigLakeConfiguration)(nil)).Elem()
+}
+
+func (i *bigLakeConfigurationPtrType) ToBigLakeConfigurationPtrOutput() BigLakeConfigurationPtrOutput {
+	return i.ToBigLakeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *bigLakeConfigurationPtrType) ToBigLakeConfigurationPtrOutputWithContext(ctx context.Context) BigLakeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigLakeConfigurationPtrOutput)
+}
+
+func (i *bigLakeConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BigLakeConfiguration] {
+	return pulumix.Output[*BigLakeConfiguration]{
+		OutputState: i.ToBigLakeConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type BigLakeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (BigLakeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigLakeConfiguration)(nil)).Elem()
+}
+
+func (o BigLakeConfigurationOutput) ToBigLakeConfigurationOutput() BigLakeConfigurationOutput {
+	return o
+}
+
+func (o BigLakeConfigurationOutput) ToBigLakeConfigurationOutputWithContext(ctx context.Context) BigLakeConfigurationOutput {
+	return o
+}
+
+func (o BigLakeConfigurationOutput) ToBigLakeConfigurationPtrOutput() BigLakeConfigurationPtrOutput {
+	return o.ToBigLakeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o BigLakeConfigurationOutput) ToBigLakeConfigurationPtrOutputWithContext(ctx context.Context) BigLakeConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigLakeConfiguration) *BigLakeConfiguration {
+		return &v
+	}).(BigLakeConfigurationPtrOutput)
+}
+
+func (o BigLakeConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[BigLakeConfiguration] {
+	return pulumix.Output[BigLakeConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+func (o BigLakeConfigurationOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigLakeConfiguration) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+func (o BigLakeConfigurationOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigLakeConfiguration) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+func (o BigLakeConfigurationOutput) StorageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigLakeConfiguration) *string { return v.StorageUri }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+func (o BigLakeConfigurationOutput) TableFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigLakeConfiguration) *string { return v.TableFormat }).(pulumi.StringPtrOutput)
+}
+
+type BigLakeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (BigLakeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigLakeConfiguration)(nil)).Elem()
+}
+
+func (o BigLakeConfigurationPtrOutput) ToBigLakeConfigurationPtrOutput() BigLakeConfigurationPtrOutput {
+	return o
+}
+
+func (o BigLakeConfigurationPtrOutput) ToBigLakeConfigurationPtrOutputWithContext(ctx context.Context) BigLakeConfigurationPtrOutput {
+	return o
+}
+
+func (o BigLakeConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BigLakeConfiguration] {
+	return pulumix.Output[*BigLakeConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BigLakeConfigurationPtrOutput) Elem() BigLakeConfigurationOutput {
+	return o.ApplyT(func(v *BigLakeConfiguration) BigLakeConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BigLakeConfiguration
+		return ret
+	}).(BigLakeConfigurationOutput)
+}
+
+// [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+func (o BigLakeConfigurationPtrOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigLakeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+func (o BigLakeConfigurationPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigLakeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+func (o BigLakeConfigurationPtrOutput) StorageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigLakeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+func (o BigLakeConfigurationPtrOutput) TableFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigLakeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TableFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+type BigLakeConfigurationResponse struct {
+	// [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+	ConnectionId string `pulumi:"connectionId"`
+	// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+	FileFormat string `pulumi:"fileFormat"`
+	// [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+	StorageUri string `pulumi:"storageUri"`
+	// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+	TableFormat string `pulumi:"tableFormat"`
+}
+
+type BigLakeConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (BigLakeConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigLakeConfigurationResponse)(nil)).Elem()
+}
+
+func (o BigLakeConfigurationResponseOutput) ToBigLakeConfigurationResponseOutput() BigLakeConfigurationResponseOutput {
+	return o
+}
+
+func (o BigLakeConfigurationResponseOutput) ToBigLakeConfigurationResponseOutputWithContext(ctx context.Context) BigLakeConfigurationResponseOutput {
+	return o
+}
+
+func (o BigLakeConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BigLakeConfigurationResponse] {
+	return pulumix.Output[BigLakeConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+func (o BigLakeConfigurationResponseOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v BigLakeConfigurationResponse) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+func (o BigLakeConfigurationResponseOutput) FileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v BigLakeConfigurationResponse) string { return v.FileFormat }).(pulumi.StringOutput)
+}
+
+// [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+func (o BigLakeConfigurationResponseOutput) StorageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v BigLakeConfigurationResponse) string { return v.StorageUri }).(pulumi.StringOutput)
+}
+
+// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+func (o BigLakeConfigurationResponseOutput) TableFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v BigLakeConfigurationResponse) string { return v.TableFormat }).(pulumi.StringOutput)
 }
 
 type BigQueryModelTrainingResponse struct {
@@ -4805,7 +5090,7 @@ func (o DmlStatisticsResponseOutput) UpdatedRowCount() pulumi.StringOutput {
 }
 
 type EncryptionConfiguration struct {
-	// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+	// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 }
 
@@ -4821,7 +5106,7 @@ type EncryptionConfigurationInput interface {
 }
 
 type EncryptionConfigurationArgs struct {
-	// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+	// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 }
 
@@ -4920,7 +5205,7 @@ func (o EncryptionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 func (o EncryptionConfigurationOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfiguration) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
@@ -4955,7 +5240,7 @@ func (o EncryptionConfigurationPtrOutput) Elem() EncryptionConfigurationOutput {
 	}).(EncryptionConfigurationOutput)
 }
 
-// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 func (o EncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EncryptionConfiguration) *string {
 		if v == nil {
@@ -4966,7 +5251,7 @@ func (o EncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 }
 
 type EncryptionConfigurationResponse struct {
-	// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+	// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -4990,7 +5275,7 @@ func (o EncryptionConfigurationResponseOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
-// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 func (o EncryptionConfigurationResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigurationResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -5676,12 +5961,16 @@ type ExternalDataConfiguration struct {
 	CsvOptions *CsvOptions `pulumi:"csvOptions"`
 	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes []string `pulumi:"decimalTargetTypes"`
+	// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+	FileSetSpecType *string `pulumi:"fileSetSpecType"`
 	// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 	GoogleSheetsOptions *GoogleSheetsOptions `pulumi:"googleSheetsOptions"`
 	// [Optional] Options to configure hive partitioning support.
 	HivePartitioningOptions *HivePartitioningOptions `pulumi:"hivePartitioningOptions"`
 	// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
 	IgnoreUnknownValues *bool `pulumi:"ignoreUnknownValues"`
+	// Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+	JsonOptions *JsonOptions `pulumi:"jsonOptions"`
 	// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
 	// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
@@ -5726,12 +6015,16 @@ type ExternalDataConfigurationArgs struct {
 	CsvOptions CsvOptionsPtrInput `pulumi:"csvOptions"`
 	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes pulumi.StringArrayInput `pulumi:"decimalTargetTypes"`
+	// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+	FileSetSpecType pulumi.StringPtrInput `pulumi:"fileSetSpecType"`
 	// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 	GoogleSheetsOptions GoogleSheetsOptionsPtrInput `pulumi:"googleSheetsOptions"`
 	// [Optional] Options to configure hive partitioning support.
 	HivePartitioningOptions HivePartitioningOptionsPtrInput `pulumi:"hivePartitioningOptions"`
 	// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
 	IgnoreUnknownValues pulumi.BoolPtrInput `pulumi:"ignoreUnknownValues"`
+	// Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+	JsonOptions JsonOptionsPtrInput `pulumi:"jsonOptions"`
 	// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
 	// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
@@ -5880,6 +6173,11 @@ func (o ExternalDataConfigurationOutput) DecimalTargetTypes() pulumi.StringArray
 	return o.ApplyT(func(v ExternalDataConfiguration) []string { return v.DecimalTargetTypes }).(pulumi.StringArrayOutput)
 }
 
+// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+func (o ExternalDataConfigurationOutput) FileSetSpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDataConfiguration) *string { return v.FileSetSpecType }).(pulumi.StringPtrOutput)
+}
+
 // [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 func (o ExternalDataConfigurationOutput) GoogleSheetsOptions() GoogleSheetsOptionsPtrOutput {
 	return o.ApplyT(func(v ExternalDataConfiguration) *GoogleSheetsOptions { return v.GoogleSheetsOptions }).(GoogleSheetsOptionsPtrOutput)
@@ -5893,6 +6191,11 @@ func (o ExternalDataConfigurationOutput) HivePartitioningOptions() HivePartition
 // [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
 func (o ExternalDataConfigurationOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
+}
+
+// Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+func (o ExternalDataConfigurationOutput) JsonOptions() JsonOptionsPtrOutput {
+	return o.ApplyT(func(v ExternalDataConfiguration) *JsonOptions { return v.JsonOptions }).(JsonOptionsPtrOutput)
 }
 
 // [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
@@ -6035,6 +6338,16 @@ func (o ExternalDataConfigurationPtrOutput) DecimalTargetTypes() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+func (o ExternalDataConfigurationPtrOutput) FileSetSpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileSetSpecType
+	}).(pulumi.StringPtrOutput)
+}
+
 // [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 func (o ExternalDataConfigurationPtrOutput) GoogleSheetsOptions() GoogleSheetsOptionsPtrOutput {
 	return o.ApplyT(func(v *ExternalDataConfiguration) *GoogleSheetsOptions {
@@ -6063,6 +6376,16 @@ func (o ExternalDataConfigurationPtrOutput) IgnoreUnknownValues() pulumi.BoolPtr
 		}
 		return v.IgnoreUnknownValues
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+func (o ExternalDataConfigurationPtrOutput) JsonOptions() JsonOptionsPtrOutput {
+	return o.ApplyT(func(v *ExternalDataConfiguration) *JsonOptions {
+		if v == nil {
+			return nil
+		}
+		return v.JsonOptions
+	}).(JsonOptionsPtrOutput)
 }
 
 // [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
@@ -6160,12 +6483,16 @@ type ExternalDataConfigurationResponse struct {
 	CsvOptions CsvOptionsResponse `pulumi:"csvOptions"`
 	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes []string `pulumi:"decimalTargetTypes"`
+	// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+	FileSetSpecType string `pulumi:"fileSetSpecType"`
 	// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 	GoogleSheetsOptions GoogleSheetsOptionsResponse `pulumi:"googleSheetsOptions"`
 	// [Optional] Options to configure hive partitioning support.
 	HivePartitioningOptions HivePartitioningOptionsResponse `pulumi:"hivePartitioningOptions"`
 	// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
 	IgnoreUnknownValues bool `pulumi:"ignoreUnknownValues"`
+	// Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+	JsonOptions JsonOptionsResponse `pulumi:"jsonOptions"`
 	// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
 	MaxBadRecords int `pulumi:"maxBadRecords"`
 	// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
@@ -6239,6 +6566,11 @@ func (o ExternalDataConfigurationResponseOutput) DecimalTargetTypes() pulumi.Str
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) []string { return v.DecimalTargetTypes }).(pulumi.StringArrayOutput)
 }
 
+// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+func (o ExternalDataConfigurationResponseOutput) FileSetSpecType() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalDataConfigurationResponse) string { return v.FileSetSpecType }).(pulumi.StringOutput)
+}
+
 // [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 func (o ExternalDataConfigurationResponseOutput) GoogleSheetsOptions() GoogleSheetsOptionsResponseOutput {
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) GoogleSheetsOptionsResponse { return v.GoogleSheetsOptions }).(GoogleSheetsOptionsResponseOutput)
@@ -6254,6 +6586,11 @@ func (o ExternalDataConfigurationResponseOutput) HivePartitioningOptions() HiveP
 // [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
 func (o ExternalDataConfigurationResponseOutput) IgnoreUnknownValues() pulumi.BoolOutput {
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) bool { return v.IgnoreUnknownValues }).(pulumi.BoolOutput)
+}
+
+// Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+func (o ExternalDataConfigurationResponseOutput) JsonOptions() JsonOptionsResponseOutput {
+	return o.ApplyT(func(v ExternalDataConfigurationResponse) JsonOptionsResponse { return v.JsonOptions }).(JsonOptionsResponseOutput)
 }
 
 // [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
@@ -6294,6 +6631,223 @@ func (o ExternalDataConfigurationResponseOutput) SourceFormat() pulumi.StringOut
 // [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
 func (o ExternalDataConfigurationResponseOutput) SourceUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
+}
+
+type ExternalDatasetReference struct {
+	// [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+	Connection *string `pulumi:"connection"`
+	// [Required] External source that backs this dataset.
+	ExternalSource *string `pulumi:"externalSource"`
+}
+
+// ExternalDatasetReferenceInput is an input type that accepts ExternalDatasetReferenceArgs and ExternalDatasetReferenceOutput values.
+// You can construct a concrete instance of `ExternalDatasetReferenceInput` via:
+//
+//	ExternalDatasetReferenceArgs{...}
+type ExternalDatasetReferenceInput interface {
+	pulumi.Input
+
+	ToExternalDatasetReferenceOutput() ExternalDatasetReferenceOutput
+	ToExternalDatasetReferenceOutputWithContext(context.Context) ExternalDatasetReferenceOutput
+}
+
+type ExternalDatasetReferenceArgs struct {
+	// [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+	Connection pulumi.StringPtrInput `pulumi:"connection"`
+	// [Required] External source that backs this dataset.
+	ExternalSource pulumi.StringPtrInput `pulumi:"externalSource"`
+}
+
+func (ExternalDatasetReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDatasetReference)(nil)).Elem()
+}
+
+func (i ExternalDatasetReferenceArgs) ToExternalDatasetReferenceOutput() ExternalDatasetReferenceOutput {
+	return i.ToExternalDatasetReferenceOutputWithContext(context.Background())
+}
+
+func (i ExternalDatasetReferenceArgs) ToExternalDatasetReferenceOutputWithContext(ctx context.Context) ExternalDatasetReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalDatasetReferenceOutput)
+}
+
+func (i ExternalDatasetReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ExternalDatasetReference] {
+	return pulumix.Output[ExternalDatasetReference]{
+		OutputState: i.ToExternalDatasetReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ExternalDatasetReferenceArgs) ToExternalDatasetReferencePtrOutput() ExternalDatasetReferencePtrOutput {
+	return i.ToExternalDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i ExternalDatasetReferenceArgs) ToExternalDatasetReferencePtrOutputWithContext(ctx context.Context) ExternalDatasetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalDatasetReferenceOutput).ToExternalDatasetReferencePtrOutputWithContext(ctx)
+}
+
+// ExternalDatasetReferencePtrInput is an input type that accepts ExternalDatasetReferenceArgs, ExternalDatasetReferencePtr and ExternalDatasetReferencePtrOutput values.
+// You can construct a concrete instance of `ExternalDatasetReferencePtrInput` via:
+//
+//	        ExternalDatasetReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalDatasetReferencePtrInput interface {
+	pulumi.Input
+
+	ToExternalDatasetReferencePtrOutput() ExternalDatasetReferencePtrOutput
+	ToExternalDatasetReferencePtrOutputWithContext(context.Context) ExternalDatasetReferencePtrOutput
+}
+
+type externalDatasetReferencePtrType ExternalDatasetReferenceArgs
+
+func ExternalDatasetReferencePtr(v *ExternalDatasetReferenceArgs) ExternalDatasetReferencePtrInput {
+	return (*externalDatasetReferencePtrType)(v)
+}
+
+func (*externalDatasetReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalDatasetReference)(nil)).Elem()
+}
+
+func (i *externalDatasetReferencePtrType) ToExternalDatasetReferencePtrOutput() ExternalDatasetReferencePtrOutput {
+	return i.ToExternalDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *externalDatasetReferencePtrType) ToExternalDatasetReferencePtrOutputWithContext(ctx context.Context) ExternalDatasetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalDatasetReferencePtrOutput)
+}
+
+func (i *externalDatasetReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*ExternalDatasetReference] {
+	return pulumix.Output[*ExternalDatasetReference]{
+		OutputState: i.ToExternalDatasetReferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ExternalDatasetReferenceOutput struct{ *pulumi.OutputState }
+
+func (ExternalDatasetReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDatasetReference)(nil)).Elem()
+}
+
+func (o ExternalDatasetReferenceOutput) ToExternalDatasetReferenceOutput() ExternalDatasetReferenceOutput {
+	return o
+}
+
+func (o ExternalDatasetReferenceOutput) ToExternalDatasetReferenceOutputWithContext(ctx context.Context) ExternalDatasetReferenceOutput {
+	return o
+}
+
+func (o ExternalDatasetReferenceOutput) ToExternalDatasetReferencePtrOutput() ExternalDatasetReferencePtrOutput {
+	return o.ToExternalDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDatasetReferenceOutput) ToExternalDatasetReferencePtrOutputWithContext(ctx context.Context) ExternalDatasetReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDatasetReference) *ExternalDatasetReference {
+		return &v
+	}).(ExternalDatasetReferencePtrOutput)
+}
+
+func (o ExternalDatasetReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalDatasetReference] {
+	return pulumix.Output[ExternalDatasetReference]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+func (o ExternalDatasetReferenceOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDatasetReference) *string { return v.Connection }).(pulumi.StringPtrOutput)
+}
+
+// [Required] External source that backs this dataset.
+func (o ExternalDatasetReferenceOutput) ExternalSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDatasetReference) *string { return v.ExternalSource }).(pulumi.StringPtrOutput)
+}
+
+type ExternalDatasetReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalDatasetReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalDatasetReference)(nil)).Elem()
+}
+
+func (o ExternalDatasetReferencePtrOutput) ToExternalDatasetReferencePtrOutput() ExternalDatasetReferencePtrOutput {
+	return o
+}
+
+func (o ExternalDatasetReferencePtrOutput) ToExternalDatasetReferencePtrOutputWithContext(ctx context.Context) ExternalDatasetReferencePtrOutput {
+	return o
+}
+
+func (o ExternalDatasetReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalDatasetReference] {
+	return pulumix.Output[*ExternalDatasetReference]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ExternalDatasetReferencePtrOutput) Elem() ExternalDatasetReferenceOutput {
+	return o.ApplyT(func(v *ExternalDatasetReference) ExternalDatasetReference {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalDatasetReference
+		return ret
+	}).(ExternalDatasetReferenceOutput)
+}
+
+// [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+func (o ExternalDatasetReferencePtrOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalDatasetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Connection
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Required] External source that backs this dataset.
+func (o ExternalDatasetReferencePtrOutput) ExternalSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalDatasetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalSource
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExternalDatasetReferenceResponse struct {
+	// [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+	Connection string `pulumi:"connection"`
+	// [Required] External source that backs this dataset.
+	ExternalSource string `pulumi:"externalSource"`
+}
+
+type ExternalDatasetReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ExternalDatasetReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDatasetReferenceResponse)(nil)).Elem()
+}
+
+func (o ExternalDatasetReferenceResponseOutput) ToExternalDatasetReferenceResponseOutput() ExternalDatasetReferenceResponseOutput {
+	return o
+}
+
+func (o ExternalDatasetReferenceResponseOutput) ToExternalDatasetReferenceResponseOutputWithContext(ctx context.Context) ExternalDatasetReferenceResponseOutput {
+	return o
+}
+
+func (o ExternalDatasetReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalDatasetReferenceResponse] {
+	return pulumix.Output[ExternalDatasetReferenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+func (o ExternalDatasetReferenceResponseOutput) Connection() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalDatasetReferenceResponse) string { return v.Connection }).(pulumi.StringOutput)
+}
+
+// [Required] External source that backs this dataset.
+func (o ExternalDatasetReferenceResponseOutput) ExternalSource() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalDatasetReferenceResponse) string { return v.ExternalSource }).(pulumi.StringOutput)
 }
 
 type GoogleSheetsOptions struct {
@@ -7625,6 +8179,8 @@ type JobConfigurationLoad struct {
 	Encoding *string `pulumi:"encoding"`
 	// [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
+	// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+	FileSetSpecType *string `pulumi:"fileSetSpecType"`
 	// [Optional] Options to configure hive partitioning support.
 	HivePartitioningOptions *HivePartitioningOptions `pulumi:"hivePartitioningOptions"`
 	// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
@@ -7711,6 +8267,8 @@ type JobConfigurationLoadArgs struct {
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
 	// [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
+	// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+	FileSetSpecType pulumi.StringPtrInput `pulumi:"fileSetSpecType"`
 	// [Optional] Options to configure hive partitioning support.
 	HivePartitioningOptions HivePartitioningOptionsPtrInput `pulumi:"hivePartitioningOptions"`
 	// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
@@ -7917,6 +8475,11 @@ func (o JobConfigurationLoadOutput) Encoding() pulumi.StringPtrOutput {
 // [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
 func (o JobConfigurationLoadOutput) FieldDelimiter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobConfigurationLoad) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
+}
+
+// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+func (o JobConfigurationLoadOutput) FileSetSpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConfigurationLoad) *string { return v.FileSetSpecType }).(pulumi.StringPtrOutput)
 }
 
 // [Optional] Options to configure hive partitioning support.
@@ -8188,6 +8751,16 @@ func (o JobConfigurationLoadPtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+func (o JobConfigurationLoadPtrOutput) FileSetSpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobConfigurationLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileSetSpecType
+	}).(pulumi.StringPtrOutput)
+}
+
 // [Optional] Options to configure hive partitioning support.
 func (o JobConfigurationLoadPtrOutput) HivePartitioningOptions() HivePartitioningOptionsPtrOutput {
 	return o.ApplyT(func(v *JobConfigurationLoad) *HivePartitioningOptions {
@@ -8429,6 +9002,8 @@ type JobConfigurationLoadResponse struct {
 	Encoding string `pulumi:"encoding"`
 	// [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
 	FieldDelimiter string `pulumi:"fieldDelimiter"`
+	// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+	FileSetSpecType string `pulumi:"fileSetSpecType"`
 	// [Optional] Options to configure hive partitioning support.
 	HivePartitioningOptions HivePartitioningOptionsResponse `pulumi:"hivePartitioningOptions"`
 	// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
@@ -8564,6 +9139,11 @@ func (o JobConfigurationLoadResponseOutput) Encoding() pulumi.StringOutput {
 // [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
 func (o JobConfigurationLoadResponseOutput) FieldDelimiter() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConfigurationLoadResponse) string { return v.FieldDelimiter }).(pulumi.StringOutput)
+}
+
+// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+func (o JobConfigurationLoadResponseOutput) FileSetSpecType() pulumi.StringOutput {
+	return o.ApplyT(func(v JobConfigurationLoadResponse) string { return v.FileSetSpecType }).(pulumi.StringOutput)
 }
 
 // [Optional] Options to configure hive partitioning support.
@@ -10281,7 +10861,7 @@ type JobStatistics2Response struct {
 	DdlDestinationTable TableReferenceResponse `pulumi:"ddlDestinationTable"`
 	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 	DdlOperationPerformed string `pulumi:"ddlOperationPerformed"`
-	// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+	// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP/UNDROP SCHEMA queries.
 	DdlTargetDataset DatasetReferenceResponse `pulumi:"ddlTargetDataset"`
 	// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
 	DdlTargetRoutine RoutineReferenceResponse `pulumi:"ddlTargetRoutine"`
@@ -10391,7 +10971,7 @@ func (o JobStatistics2ResponseOutput) DdlOperationPerformed() pulumi.StringOutpu
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.DdlOperationPerformed }).(pulumi.StringOutput)
 }
 
-// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP/UNDROP SCHEMA queries.
 func (o JobStatistics2ResponseOutput) DdlTargetDataset() DatasetReferenceResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) DatasetReferenceResponse { return v.DdlTargetDataset }).(DatasetReferenceResponseOutput)
 }
@@ -10934,6 +11514,197 @@ func (o JobStatusResponseOutput) Errors() ErrorProtoResponseArrayOutput {
 // Running state of the job.
 func (o JobStatusResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type JsonOptions struct {
+	// [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+	Encoding *string `pulumi:"encoding"`
+}
+
+// JsonOptionsInput is an input type that accepts JsonOptionsArgs and JsonOptionsOutput values.
+// You can construct a concrete instance of `JsonOptionsInput` via:
+//
+//	JsonOptionsArgs{...}
+type JsonOptionsInput interface {
+	pulumi.Input
+
+	ToJsonOptionsOutput() JsonOptionsOutput
+	ToJsonOptionsOutputWithContext(context.Context) JsonOptionsOutput
+}
+
+type JsonOptionsArgs struct {
+	// [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+}
+
+func (JsonOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonOptions)(nil)).Elem()
+}
+
+func (i JsonOptionsArgs) ToJsonOptionsOutput() JsonOptionsOutput {
+	return i.ToJsonOptionsOutputWithContext(context.Background())
+}
+
+func (i JsonOptionsArgs) ToJsonOptionsOutputWithContext(ctx context.Context) JsonOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonOptionsOutput)
+}
+
+func (i JsonOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[JsonOptions] {
+	return pulumix.Output[JsonOptions]{
+		OutputState: i.ToJsonOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i JsonOptionsArgs) ToJsonOptionsPtrOutput() JsonOptionsPtrOutput {
+	return i.ToJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i JsonOptionsArgs) ToJsonOptionsPtrOutputWithContext(ctx context.Context) JsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonOptionsOutput).ToJsonOptionsPtrOutputWithContext(ctx)
+}
+
+// JsonOptionsPtrInput is an input type that accepts JsonOptionsArgs, JsonOptionsPtr and JsonOptionsPtrOutput values.
+// You can construct a concrete instance of `JsonOptionsPtrInput` via:
+//
+//	        JsonOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JsonOptionsPtrInput interface {
+	pulumi.Input
+
+	ToJsonOptionsPtrOutput() JsonOptionsPtrOutput
+	ToJsonOptionsPtrOutputWithContext(context.Context) JsonOptionsPtrOutput
+}
+
+type jsonOptionsPtrType JsonOptionsArgs
+
+func JsonOptionsPtr(v *JsonOptionsArgs) JsonOptionsPtrInput {
+	return (*jsonOptionsPtrType)(v)
+}
+
+func (*jsonOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JsonOptions)(nil)).Elem()
+}
+
+func (i *jsonOptionsPtrType) ToJsonOptionsPtrOutput() JsonOptionsPtrOutput {
+	return i.ToJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *jsonOptionsPtrType) ToJsonOptionsPtrOutputWithContext(ctx context.Context) JsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonOptionsPtrOutput)
+}
+
+func (i *jsonOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*JsonOptions] {
+	return pulumix.Output[*JsonOptions]{
+		OutputState: i.ToJsonOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type JsonOptionsOutput struct{ *pulumi.OutputState }
+
+func (JsonOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonOptions)(nil)).Elem()
+}
+
+func (o JsonOptionsOutput) ToJsonOptionsOutput() JsonOptionsOutput {
+	return o
+}
+
+func (o JsonOptionsOutput) ToJsonOptionsOutputWithContext(ctx context.Context) JsonOptionsOutput {
+	return o
+}
+
+func (o JsonOptionsOutput) ToJsonOptionsPtrOutput() JsonOptionsPtrOutput {
+	return o.ToJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o JsonOptionsOutput) ToJsonOptionsPtrOutputWithContext(ctx context.Context) JsonOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JsonOptions) *JsonOptions {
+		return &v
+	}).(JsonOptionsPtrOutput)
+}
+
+func (o JsonOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[JsonOptions] {
+	return pulumix.Output[JsonOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+func (o JsonOptionsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+type JsonOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (JsonOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JsonOptions)(nil)).Elem()
+}
+
+func (o JsonOptionsPtrOutput) ToJsonOptionsPtrOutput() JsonOptionsPtrOutput {
+	return o
+}
+
+func (o JsonOptionsPtrOutput) ToJsonOptionsPtrOutputWithContext(ctx context.Context) JsonOptionsPtrOutput {
+	return o
+}
+
+func (o JsonOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JsonOptions] {
+	return pulumix.Output[*JsonOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JsonOptionsPtrOutput) Elem() JsonOptionsOutput {
+	return o.ApplyT(func(v *JsonOptions) JsonOptions {
+		if v != nil {
+			return *v
+		}
+		var ret JsonOptions
+		return ret
+	}).(JsonOptionsOutput)
+}
+
+// [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+func (o JsonOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JsonOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+type JsonOptionsResponse struct {
+	// [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+	Encoding string `pulumi:"encoding"`
+}
+
+type JsonOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (JsonOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonOptionsResponse)(nil)).Elem()
+}
+
+func (o JsonOptionsResponseOutput) ToJsonOptionsResponseOutput() JsonOptionsResponseOutput {
+	return o
+}
+
+func (o JsonOptionsResponseOutput) ToJsonOptionsResponseOutputWithContext(ctx context.Context) JsonOptionsResponseOutput {
+	return o
+}
+
+func (o JsonOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JsonOptionsResponse] {
+	return pulumix.Output[JsonOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+func (o JsonOptionsResponseOutput) Encoding() pulumi.StringOutput {
+	return o.ApplyT(func(v JsonOptionsResponse) string { return v.Encoding }).(pulumi.StringOutput)
 }
 
 type MaterializedViewDefinition struct {
@@ -11723,12 +12494,12 @@ func (o ModelDefinitionResponseOutput) TrainingRuns() BqmlTrainingRunResponseArr
 }
 
 type ModelReference struct {
-	// [Required] The ID of the dataset containing this model.
-	DatasetId *string `pulumi:"datasetId"`
-	// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-	ModelId *string `pulumi:"modelId"`
-	// [Required] The ID of the project containing this model.
-	Project *string `pulumi:"project"`
+	// The ID of the dataset containing this model.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+	ModelId string `pulumi:"modelId"`
+	// The ID of the project containing this model.
+	Project string `pulumi:"project"`
 }
 
 // ModelReferenceInput is an input type that accepts ModelReferenceArgs and ModelReferenceOutput values.
@@ -11743,12 +12514,12 @@ type ModelReferenceInput interface {
 }
 
 type ModelReferenceArgs struct {
-	// [Required] The ID of the dataset containing this model.
-	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
-	// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-	ModelId pulumi.StringPtrInput `pulumi:"modelId"`
-	// [Required] The ID of the project containing this model.
-	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The ID of the dataset containing this model.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+	ModelId pulumi.StringInput `pulumi:"modelId"`
+	// The ID of the project containing this model.
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (ModelReferenceArgs) ElementType() reflect.Type {
@@ -11846,19 +12617,19 @@ func (o ModelReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[Model
 	}
 }
 
-// [Required] The ID of the dataset containing this model.
-func (o ModelReferenceOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelReference) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
+// The ID of the dataset containing this model.
+func (o ModelReferenceOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelReference) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-func (o ModelReferenceOutput) ModelId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelReference) *string { return v.ModelId }).(pulumi.StringPtrOutput)
+// The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+func (o ModelReferenceOutput) ModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelReference) string { return v.ModelId }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the project containing this model.
-func (o ModelReferenceOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelReference) *string { return v.Project }).(pulumi.StringPtrOutput)
+// The ID of the project containing this model.
+func (o ModelReferenceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelReference) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type ModelReferencePtrOutput struct{ *pulumi.OutputState }
@@ -11891,42 +12662,42 @@ func (o ModelReferencePtrOutput) Elem() ModelReferenceOutput {
 	}).(ModelReferenceOutput)
 }
 
-// [Required] The ID of the dataset containing this model.
+// The ID of the dataset containing this model.
 func (o ModelReferencePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DatasetId
+		return &v.DatasetId
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+// The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 func (o ModelReferencePtrOutput) ModelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ModelId
+		return &v.ModelId
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Required] The ID of the project containing this model.
+// The ID of the project containing this model.
 func (o ModelReferencePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Project
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
 type ModelReferenceResponse struct {
-	// [Required] The ID of the dataset containing this model.
+	// The ID of the dataset containing this model.
 	DatasetId string `pulumi:"datasetId"`
-	// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+	// The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	ModelId string `pulumi:"modelId"`
-	// [Required] The ID of the project containing this model.
+	// The ID of the project containing this model.
 	Project string `pulumi:"project"`
 }
 
@@ -11950,17 +12721,17 @@ func (o ModelReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// [Required] The ID of the dataset containing this model.
+// The ID of the dataset containing this model.
 func (o ModelReferenceResponseOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelReferenceResponse) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+// The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 func (o ModelReferenceResponseOutput) ModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelReferenceResponse) string { return v.ModelId }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the project containing this model.
+// The ID of the project containing this model.
 func (o ModelReferenceResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -14060,12 +14831,12 @@ func (o RemoteFunctionOptionsResponseOutput) UserDefinedContext() pulumi.StringM
 }
 
 type RoutineReference struct {
-	// [Required] The ID of the dataset containing this routine.
-	DatasetId *string `pulumi:"datasetId"`
-	// [Required] The ID of the project containing this routine.
-	Project *string `pulumi:"project"`
-	// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-	RoutineId *string `pulumi:"routineId"`
+	// The ID of the dataset containing this routine.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this routine.
+	Project string `pulumi:"project"`
+	// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+	RoutineId string `pulumi:"routineId"`
 }
 
 // RoutineReferenceInput is an input type that accepts RoutineReferenceArgs and RoutineReferenceOutput values.
@@ -14080,12 +14851,12 @@ type RoutineReferenceInput interface {
 }
 
 type RoutineReferenceArgs struct {
-	// [Required] The ID of the dataset containing this routine.
-	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
-	// [Required] The ID of the project containing this routine.
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-	RoutineId pulumi.StringPtrInput `pulumi:"routineId"`
+	// The ID of the dataset containing this routine.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this routine.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+	RoutineId pulumi.StringInput `pulumi:"routineId"`
 }
 
 func (RoutineReferenceArgs) ElementType() reflect.Type {
@@ -14183,19 +14954,19 @@ func (o RoutineReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[Rou
 	}
 }
 
-// [Required] The ID of the dataset containing this routine.
-func (o RoutineReferenceOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutineReference) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
+// The ID of the dataset containing this routine.
+func (o RoutineReferenceOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutineReference) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the project containing this routine.
-func (o RoutineReferenceOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutineReference) *string { return v.Project }).(pulumi.StringPtrOutput)
+// The ID of the project containing this routine.
+func (o RoutineReferenceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutineReference) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-func (o RoutineReferenceOutput) RoutineId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutineReference) *string { return v.RoutineId }).(pulumi.StringPtrOutput)
+// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+func (o RoutineReferenceOutput) RoutineId() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutineReference) string { return v.RoutineId }).(pulumi.StringOutput)
 }
 
 type RoutineReferencePtrOutput struct{ *pulumi.OutputState }
@@ -14228,42 +14999,42 @@ func (o RoutineReferencePtrOutput) Elem() RoutineReferenceOutput {
 	}).(RoutineReferenceOutput)
 }
 
-// [Required] The ID of the dataset containing this routine.
+// The ID of the dataset containing this routine.
 func (o RoutineReferencePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoutineReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DatasetId
+		return &v.DatasetId
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Required] The ID of the project containing this routine.
+// The ID of the project containing this routine.
 func (o RoutineReferencePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoutineReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Project
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 func (o RoutineReferencePtrOutput) RoutineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoutineReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.RoutineId
+		return &v.RoutineId
 	}).(pulumi.StringPtrOutput)
 }
 
 type RoutineReferenceResponse struct {
-	// [Required] The ID of the dataset containing this routine.
+	// The ID of the dataset containing this routine.
 	DatasetId string `pulumi:"datasetId"`
-	// [Required] The ID of the project containing this routine.
+	// The ID of the project containing this routine.
 	Project string `pulumi:"project"`
-	// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+	// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId string `pulumi:"routineId"`
 }
 
@@ -14287,17 +15058,17 @@ func (o RoutineReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// [Required] The ID of the dataset containing this routine.
+// The ID of the dataset containing this routine.
 func (o RoutineReferenceResponseOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutineReferenceResponse) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the project containing this routine.
+// The ID of the project containing this routine.
 func (o RoutineReferenceResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutineReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 func (o RoutineReferenceResponseOutput) RoutineId() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutineReferenceResponse) string { return v.RoutineId }).(pulumi.StringOutput)
 }
@@ -14329,13 +15100,13 @@ func (o RoutineReferenceResponseArrayOutput) Index(i pulumi.IntInput) RoutineRef
 }
 
 type RowAccessPolicyReferenceResponse struct {
-	// [Required] The ID of the dataset containing this row access policy.
+	// The ID of the dataset containing this row access policy.
 	DatasetId string `pulumi:"datasetId"`
-	// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+	// The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	PolicyId string `pulumi:"policyId"`
-	// [Required] The ID of the project containing this row access policy.
+	// The ID of the project containing this row access policy.
 	Project string `pulumi:"project"`
-	// [Required] The ID of the table containing this row access policy.
+	// The ID of the table containing this row access policy.
 	TableId string `pulumi:"tableId"`
 }
 
@@ -14359,22 +15130,22 @@ func (o RowAccessPolicyReferenceResponseOutput) ToOutput(ctx context.Context) pu
 	}
 }
 
-// [Required] The ID of the dataset containing this row access policy.
+// The ID of the dataset containing this row access policy.
 func (o RowAccessPolicyReferenceResponseOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v RowAccessPolicyReferenceResponse) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+// The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 func (o RowAccessPolicyReferenceResponseOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v RowAccessPolicyReferenceResponse) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the project containing this row access policy.
+// The ID of the project containing this row access policy.
 func (o RowAccessPolicyReferenceResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v RowAccessPolicyReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// [Required] The ID of the table containing this row access policy.
+// The ID of the table containing this row access policy.
 func (o RowAccessPolicyReferenceResponseOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v RowAccessPolicyReferenceResponse) string { return v.TableId }).(pulumi.StringOutput)
 }
@@ -14539,7 +15310,7 @@ func (o ScriptStatisticsResponseOutput) StackFrames() ScriptStackFrameResponseAr
 
 type SearchStatisticsResponse struct {
 	// When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
-	IndexUnusedReason []IndexUnusedReasonResponse `pulumi:"indexUnusedReason"`
+	IndexUnusedReasons []IndexUnusedReasonResponse `pulumi:"indexUnusedReasons"`
 	// Specifies index usage mode for the query.
 	IndexUsageMode string `pulumi:"indexUsageMode"`
 }
@@ -14565,8 +15336,8 @@ func (o SearchStatisticsResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 }
 
 // When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
-func (o SearchStatisticsResponseOutput) IndexUnusedReason() IndexUnusedReasonResponseArrayOutput {
-	return o.ApplyT(func(v SearchStatisticsResponse) []IndexUnusedReasonResponse { return v.IndexUnusedReason }).(IndexUnusedReasonResponseArrayOutput)
+func (o SearchStatisticsResponseOutput) IndexUnusedReasons() IndexUnusedReasonResponseArrayOutput {
+	return o.ApplyT(func(v SearchStatisticsResponse) []IndexUnusedReasonResponse { return v.IndexUnusedReasons }).(IndexUnusedReasonResponseArrayOutput)
 }
 
 // Specifies index usage mode for the query.
@@ -14643,7 +15414,7 @@ func (o SnapshotDefinitionResponseOutput) SnapshotTime() pulumi.StringOutput {
 
 type SparkLoggingInfoResponse struct {
 	// Project ID used for logging
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// Resource type used for logging
 	ResourceType string `pulumi:"resourceType"`
 }
@@ -14669,8 +15440,8 @@ func (o SparkLoggingInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 }
 
 // Project ID used for logging
-func (o SparkLoggingInfoResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkLoggingInfoResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o SparkLoggingInfoResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkLoggingInfoResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Resource type used for logging
@@ -15163,6 +15934,8 @@ func (o SparkStatisticsResponseOutput) SparkJobLocation() pulumi.StringOutput {
 type StandardSqlDataType struct {
 	// The type of the array's elements, if type_kind = "ARRAY".
 	ArrayElementType *StandardSqlDataType `pulumi:"arrayElementType"`
+	// The type of the range's elements, if type_kind = "RANGE".
+	RangeElementType *StandardSqlDataType `pulumi:"rangeElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType *StandardSqlStructType `pulumi:"structType"`
 	// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
@@ -15184,6 +15957,8 @@ type StandardSqlDataTypeInput interface {
 type StandardSqlDataTypeArgs struct {
 	// The type of the array's elements, if type_kind = "ARRAY".
 	ArrayElementType StandardSqlDataTypePtrInput `pulumi:"arrayElementType"`
+	// The type of the range's elements, if type_kind = "RANGE".
+	RangeElementType StandardSqlDataTypePtrInput `pulumi:"rangeElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypePtrInput `pulumi:"structType"`
 	// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
@@ -15291,6 +16066,11 @@ func (o StandardSqlDataTypeOutput) ArrayElementType() StandardSqlDataTypePtrOutp
 	return o.ApplyT(func(v StandardSqlDataType) *StandardSqlDataType { return v.ArrayElementType }).(StandardSqlDataTypePtrOutput)
 }
 
+// The type of the range's elements, if type_kind = "RANGE".
+func (o StandardSqlDataTypeOutput) RangeElementType() StandardSqlDataTypePtrOutput {
+	return o.ApplyT(func(v StandardSqlDataType) *StandardSqlDataType { return v.RangeElementType }).(StandardSqlDataTypePtrOutput)
+}
+
 // The fields of this struct, in order, if type_kind = "STRUCT".
 func (o StandardSqlDataTypeOutput) StructType() StandardSqlStructTypePtrOutput {
 	return o.ApplyT(func(v StandardSqlDataType) *StandardSqlStructType { return v.StructType }).(StandardSqlStructTypePtrOutput)
@@ -15341,6 +16121,16 @@ func (o StandardSqlDataTypePtrOutput) ArrayElementType() StandardSqlDataTypePtrO
 	}).(StandardSqlDataTypePtrOutput)
 }
 
+// The type of the range's elements, if type_kind = "RANGE".
+func (o StandardSqlDataTypePtrOutput) RangeElementType() StandardSqlDataTypePtrOutput {
+	return o.ApplyT(func(v *StandardSqlDataType) *StandardSqlDataType {
+		if v == nil {
+			return nil
+		}
+		return v.RangeElementType
+	}).(StandardSqlDataTypePtrOutput)
+}
+
 // The fields of this struct, in order, if type_kind = "STRUCT".
 func (o StandardSqlDataTypePtrOutput) StructType() StandardSqlStructTypePtrOutput {
 	return o.ApplyT(func(v *StandardSqlDataType) *StandardSqlStructType {
@@ -15365,6 +16155,8 @@ func (o StandardSqlDataTypePtrOutput) TypeKind() StandardSqlDataTypeTypeKindPtrO
 type StandardSqlDataTypeResponse struct {
 	// The type of the array's elements, if type_kind = "ARRAY".
 	ArrayElementType *StandardSqlDataTypeResponse `pulumi:"arrayElementType"`
+	// The type of the range's elements, if type_kind = "RANGE".
+	RangeElementType *StandardSqlDataTypeResponse `pulumi:"rangeElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypeResponse `pulumi:"structType"`
 	// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
@@ -15395,6 +16187,11 @@ func (o StandardSqlDataTypeResponseOutput) ToOutput(ctx context.Context) pulumix
 // The type of the array's elements, if type_kind = "ARRAY".
 func (o StandardSqlDataTypeResponseOutput) ArrayElementType() StandardSqlDataTypeResponsePtrOutput {
 	return o.ApplyT(func(v StandardSqlDataTypeResponse) *StandardSqlDataTypeResponse { return v.ArrayElementType }).(StandardSqlDataTypeResponsePtrOutput)
+}
+
+// The type of the range's elements, if type_kind = "RANGE".
+func (o StandardSqlDataTypeResponseOutput) RangeElementType() StandardSqlDataTypeResponsePtrOutput {
+	return o.ApplyT(func(v StandardSqlDataTypeResponse) *StandardSqlDataTypeResponse { return v.RangeElementType }).(StandardSqlDataTypeResponsePtrOutput)
 }
 
 // The fields of this struct, in order, if type_kind = "STRUCT".
@@ -15444,6 +16241,16 @@ func (o StandardSqlDataTypeResponsePtrOutput) ArrayElementType() StandardSqlData
 			return nil
 		}
 		return v.ArrayElementType
+	}).(StandardSqlDataTypeResponsePtrOutput)
+}
+
+// The type of the range's elements, if type_kind = "RANGE".
+func (o StandardSqlDataTypeResponsePtrOutput) RangeElementType() StandardSqlDataTypeResponsePtrOutput {
+	return o.ApplyT(func(v *StandardSqlDataTypeResponse) *StandardSqlDataTypeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RangeElementType
 	}).(StandardSqlDataTypeResponsePtrOutput)
 }
 
@@ -15665,7 +16472,9 @@ func (o StandardSqlFieldResponseArrayOutput) Index(i pulumi.IntInput) StandardSq
 	}).(StandardSqlFieldResponseOutput)
 }
 
+// The representation of a SQL STRUCT type.
 type StandardSqlStructType struct {
+	// Fields within the struct.
 	Fields []StandardSqlField `pulumi:"fields"`
 }
 
@@ -15680,7 +16489,9 @@ type StandardSqlStructTypeInput interface {
 	ToStandardSqlStructTypeOutputWithContext(context.Context) StandardSqlStructTypeOutput
 }
 
+// The representation of a SQL STRUCT type.
 type StandardSqlStructTypeArgs struct {
+	// Fields within the struct.
 	Fields StandardSqlFieldArrayInput `pulumi:"fields"`
 }
 
@@ -15749,6 +16560,7 @@ func (i *standardSqlStructTypePtrType) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// The representation of a SQL STRUCT type.
 type StandardSqlStructTypeOutput struct{ *pulumi.OutputState }
 
 func (StandardSqlStructTypeOutput) ElementType() reflect.Type {
@@ -15779,6 +16591,7 @@ func (o StandardSqlStructTypeOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// Fields within the struct.
 func (o StandardSqlStructTypeOutput) Fields() StandardSqlFieldArrayOutput {
 	return o.ApplyT(func(v StandardSqlStructType) []StandardSqlField { return v.Fields }).(StandardSqlFieldArrayOutput)
 }
@@ -15813,6 +16626,7 @@ func (o StandardSqlStructTypePtrOutput) Elem() StandardSqlStructTypeOutput {
 	}).(StandardSqlStructTypeOutput)
 }
 
+// Fields within the struct.
 func (o StandardSqlStructTypePtrOutput) Fields() StandardSqlFieldArrayOutput {
 	return o.ApplyT(func(v *StandardSqlStructType) []StandardSqlField {
 		if v == nil {
@@ -15822,10 +16636,13 @@ func (o StandardSqlStructTypePtrOutput) Fields() StandardSqlFieldArrayOutput {
 	}).(StandardSqlFieldArrayOutput)
 }
 
+// The representation of a SQL STRUCT type.
 type StandardSqlStructTypeResponse struct {
+	// Fields within the struct.
 	Fields []StandardSqlFieldResponse `pulumi:"fields"`
 }
 
+// The representation of a SQL STRUCT type.
 type StandardSqlStructTypeResponseOutput struct{ *pulumi.OutputState }
 
 func (StandardSqlStructTypeResponseOutput) ElementType() reflect.Type {
@@ -15846,6 +16663,7 @@ func (o StandardSqlStructTypeResponseOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
+// Fields within the struct.
 func (o StandardSqlStructTypeResponseOutput) Fields() StandardSqlFieldResponseArrayOutput {
 	return o.ApplyT(func(v StandardSqlStructTypeResponse) []StandardSqlFieldResponse { return v.Fields }).(StandardSqlFieldResponseArrayOutput)
 }
@@ -15880,6 +16698,7 @@ func (o StandardSqlStructTypeResponsePtrOutput) Elem() StandardSqlStructTypeResp
 	}).(StandardSqlStructTypeResponseOutput)
 }
 
+// Fields within the struct.
 func (o StandardSqlStructTypeResponsePtrOutput) Fields() StandardSqlFieldResponseArrayOutput {
 	return o.ApplyT(func(v *StandardSqlStructTypeResponse) []StandardSqlFieldResponse {
 		if v == nil {
@@ -17166,6 +17985,8 @@ type TableFieldSchema struct {
 	PolicyTags *TableFieldSchemaPolicyTags `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision *string `pulumi:"precision"`
+	// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+	RangeElementType *TableFieldSchemaRangeElementType `pulumi:"rangeElementType"`
 	// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
 	RoundingMode *string `pulumi:"roundingMode"`
 	// [Optional] See documentation for precision.
@@ -17205,6 +18026,8 @@ type TableFieldSchemaArgs struct {
 	PolicyTags TableFieldSchemaPolicyTagsPtrInput `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision pulumi.StringPtrInput `pulumi:"precision"`
+	// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+	RangeElementType TableFieldSchemaRangeElementTypePtrInput `pulumi:"rangeElementType"`
 	// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
 	RoundingMode pulumi.StringPtrInput `pulumi:"roundingMode"`
 	// [Optional] See documentation for precision.
@@ -17329,6 +18152,11 @@ func (o TableFieldSchemaOutput) PolicyTags() TableFieldSchemaPolicyTagsPtrOutput
 // [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 func (o TableFieldSchemaOutput) Precision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableFieldSchema) *string { return v.Precision }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+func (o TableFieldSchemaOutput) RangeElementType() TableFieldSchemaRangeElementTypePtrOutput {
+	return o.ApplyT(func(v TableFieldSchema) *TableFieldSchemaRangeElementType { return v.RangeElementType }).(TableFieldSchemaRangeElementTypePtrOutput)
 }
 
 // Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
@@ -17759,6 +18587,202 @@ func (o TableFieldSchemaPolicyTagsResponseOutput) Names() pulumi.StringArrayOutp
 	return o.ApplyT(func(v TableFieldSchemaPolicyTagsResponse) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+type TableFieldSchemaRangeElementType struct {
+	// The field element type of a RANGE
+	Type *string `pulumi:"type"`
+}
+
+// TableFieldSchemaRangeElementTypeInput is an input type that accepts TableFieldSchemaRangeElementTypeArgs and TableFieldSchemaRangeElementTypeOutput values.
+// You can construct a concrete instance of `TableFieldSchemaRangeElementTypeInput` via:
+//
+//	TableFieldSchemaRangeElementTypeArgs{...}
+type TableFieldSchemaRangeElementTypeInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaRangeElementTypeOutput() TableFieldSchemaRangeElementTypeOutput
+	ToTableFieldSchemaRangeElementTypeOutputWithContext(context.Context) TableFieldSchemaRangeElementTypeOutput
+}
+
+// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+type TableFieldSchemaRangeElementTypeArgs struct {
+	// The field element type of a RANGE
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (TableFieldSchemaRangeElementTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaRangeElementType)(nil)).Elem()
+}
+
+func (i TableFieldSchemaRangeElementTypeArgs) ToTableFieldSchemaRangeElementTypeOutput() TableFieldSchemaRangeElementTypeOutput {
+	return i.ToTableFieldSchemaRangeElementTypeOutputWithContext(context.Background())
+}
+
+func (i TableFieldSchemaRangeElementTypeArgs) ToTableFieldSchemaRangeElementTypeOutputWithContext(ctx context.Context) TableFieldSchemaRangeElementTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaRangeElementTypeOutput)
+}
+
+func (i TableFieldSchemaRangeElementTypeArgs) ToOutput(ctx context.Context) pulumix.Output[TableFieldSchemaRangeElementType] {
+	return pulumix.Output[TableFieldSchemaRangeElementType]{
+		OutputState: i.ToTableFieldSchemaRangeElementTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TableFieldSchemaRangeElementTypeArgs) ToTableFieldSchemaRangeElementTypePtrOutput() TableFieldSchemaRangeElementTypePtrOutput {
+	return i.ToTableFieldSchemaRangeElementTypePtrOutputWithContext(context.Background())
+}
+
+func (i TableFieldSchemaRangeElementTypeArgs) ToTableFieldSchemaRangeElementTypePtrOutputWithContext(ctx context.Context) TableFieldSchemaRangeElementTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaRangeElementTypeOutput).ToTableFieldSchemaRangeElementTypePtrOutputWithContext(ctx)
+}
+
+// TableFieldSchemaRangeElementTypePtrInput is an input type that accepts TableFieldSchemaRangeElementTypeArgs, TableFieldSchemaRangeElementTypePtr and TableFieldSchemaRangeElementTypePtrOutput values.
+// You can construct a concrete instance of `TableFieldSchemaRangeElementTypePtrInput` via:
+//
+//	        TableFieldSchemaRangeElementTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableFieldSchemaRangeElementTypePtrInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaRangeElementTypePtrOutput() TableFieldSchemaRangeElementTypePtrOutput
+	ToTableFieldSchemaRangeElementTypePtrOutputWithContext(context.Context) TableFieldSchemaRangeElementTypePtrOutput
+}
+
+type tableFieldSchemaRangeElementTypePtrType TableFieldSchemaRangeElementTypeArgs
+
+func TableFieldSchemaRangeElementTypePtr(v *TableFieldSchemaRangeElementTypeArgs) TableFieldSchemaRangeElementTypePtrInput {
+	return (*tableFieldSchemaRangeElementTypePtrType)(v)
+}
+
+func (*tableFieldSchemaRangeElementTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFieldSchemaRangeElementType)(nil)).Elem()
+}
+
+func (i *tableFieldSchemaRangeElementTypePtrType) ToTableFieldSchemaRangeElementTypePtrOutput() TableFieldSchemaRangeElementTypePtrOutput {
+	return i.ToTableFieldSchemaRangeElementTypePtrOutputWithContext(context.Background())
+}
+
+func (i *tableFieldSchemaRangeElementTypePtrType) ToTableFieldSchemaRangeElementTypePtrOutputWithContext(ctx context.Context) TableFieldSchemaRangeElementTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaRangeElementTypePtrOutput)
+}
+
+func (i *tableFieldSchemaRangeElementTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*TableFieldSchemaRangeElementType] {
+	return pulumix.Output[*TableFieldSchemaRangeElementType]{
+		OutputState: i.ToTableFieldSchemaRangeElementTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+type TableFieldSchemaRangeElementTypeOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaRangeElementTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaRangeElementType)(nil)).Elem()
+}
+
+func (o TableFieldSchemaRangeElementTypeOutput) ToTableFieldSchemaRangeElementTypeOutput() TableFieldSchemaRangeElementTypeOutput {
+	return o
+}
+
+func (o TableFieldSchemaRangeElementTypeOutput) ToTableFieldSchemaRangeElementTypeOutputWithContext(ctx context.Context) TableFieldSchemaRangeElementTypeOutput {
+	return o
+}
+
+func (o TableFieldSchemaRangeElementTypeOutput) ToTableFieldSchemaRangeElementTypePtrOutput() TableFieldSchemaRangeElementTypePtrOutput {
+	return o.ToTableFieldSchemaRangeElementTypePtrOutputWithContext(context.Background())
+}
+
+func (o TableFieldSchemaRangeElementTypeOutput) ToTableFieldSchemaRangeElementTypePtrOutputWithContext(ctx context.Context) TableFieldSchemaRangeElementTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableFieldSchemaRangeElementType) *TableFieldSchemaRangeElementType {
+		return &v
+	}).(TableFieldSchemaRangeElementTypePtrOutput)
+}
+
+func (o TableFieldSchemaRangeElementTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TableFieldSchemaRangeElementType] {
+	return pulumix.Output[TableFieldSchemaRangeElementType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The field element type of a RANGE
+func (o TableFieldSchemaRangeElementTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFieldSchemaRangeElementType) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type TableFieldSchemaRangeElementTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaRangeElementTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFieldSchemaRangeElementType)(nil)).Elem()
+}
+
+func (o TableFieldSchemaRangeElementTypePtrOutput) ToTableFieldSchemaRangeElementTypePtrOutput() TableFieldSchemaRangeElementTypePtrOutput {
+	return o
+}
+
+func (o TableFieldSchemaRangeElementTypePtrOutput) ToTableFieldSchemaRangeElementTypePtrOutputWithContext(ctx context.Context) TableFieldSchemaRangeElementTypePtrOutput {
+	return o
+}
+
+func (o TableFieldSchemaRangeElementTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableFieldSchemaRangeElementType] {
+	return pulumix.Output[*TableFieldSchemaRangeElementType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TableFieldSchemaRangeElementTypePtrOutput) Elem() TableFieldSchemaRangeElementTypeOutput {
+	return o.ApplyT(func(v *TableFieldSchemaRangeElementType) TableFieldSchemaRangeElementType {
+		if v != nil {
+			return *v
+		}
+		var ret TableFieldSchemaRangeElementType
+		return ret
+	}).(TableFieldSchemaRangeElementTypeOutput)
+}
+
+// The field element type of a RANGE
+func (o TableFieldSchemaRangeElementTypePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFieldSchemaRangeElementType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+type TableFieldSchemaRangeElementTypeResponse struct {
+	// The field element type of a RANGE
+	Type string `pulumi:"type"`
+}
+
+// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+type TableFieldSchemaRangeElementTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaRangeElementTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaRangeElementTypeResponse)(nil)).Elem()
+}
+
+func (o TableFieldSchemaRangeElementTypeResponseOutput) ToTableFieldSchemaRangeElementTypeResponseOutput() TableFieldSchemaRangeElementTypeResponseOutput {
+	return o
+}
+
+func (o TableFieldSchemaRangeElementTypeResponseOutput) ToTableFieldSchemaRangeElementTypeResponseOutputWithContext(ctx context.Context) TableFieldSchemaRangeElementTypeResponseOutput {
+	return o
+}
+
+func (o TableFieldSchemaRangeElementTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TableFieldSchemaRangeElementTypeResponse] {
+	return pulumix.Output[TableFieldSchemaRangeElementTypeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The field element type of a RANGE
+func (o TableFieldSchemaRangeElementTypeResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TableFieldSchemaRangeElementTypeResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type TableFieldSchemaResponse struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
 	Categories TableFieldSchemaCategoriesResponse `pulumi:"categories"`
@@ -17779,6 +18803,8 @@ type TableFieldSchemaResponse struct {
 	PolicyTags TableFieldSchemaPolicyTagsResponse `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision string `pulumi:"precision"`
+	// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+	RangeElementType TableFieldSchemaRangeElementTypeResponse `pulumi:"rangeElementType"`
 	// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
 	RoundingMode string `pulumi:"roundingMode"`
 	// [Optional] See documentation for precision.
@@ -17854,6 +18880,11 @@ func (o TableFieldSchemaResponseOutput) PolicyTags() TableFieldSchemaPolicyTagsR
 // [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 func (o TableFieldSchemaResponseOutput) Precision() pulumi.StringOutput {
 	return o.ApplyT(func(v TableFieldSchemaResponse) string { return v.Precision }).(pulumi.StringOutput)
+}
+
+// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+func (o TableFieldSchemaResponseOutput) RangeElementType() TableFieldSchemaRangeElementTypeResponseOutput {
+	return o.ApplyT(func(v TableFieldSchemaResponse) TableFieldSchemaRangeElementTypeResponse { return v.RangeElementType }).(TableFieldSchemaRangeElementTypeResponseOutput)
 }
 
 // Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
@@ -19185,6 +20216,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsInput)(nil)).Elem(), AvroOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsPtrInput)(nil)).Elem(), AvroOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigLakeConfigurationInput)(nil)).Elem(), BigLakeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigLakeConfigurationPtrInput)(nil)).Elem(), BigLakeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnInput)(nil)).Elem(), BigtableColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnArrayInput)(nil)).Elem(), BigtableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnFamilyInput)(nil)).Elem(), BigtableColumnFamilyArgs{})
@@ -19221,6 +20254,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationInput)(nil)).Elem(), ExternalDataConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationPtrInput)(nil)).Elem(), ExternalDataConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDatasetReferenceInput)(nil)).Elem(), ExternalDatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDatasetReferencePtrInput)(nil)).Elem(), ExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsInput)(nil)).Elem(), GoogleSheetsOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsPtrInput)(nil)).Elem(), GoogleSheetsOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsInput)(nil)).Elem(), HivePartitioningOptionsArgs{})
@@ -19237,6 +20272,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyPtrInput)(nil)).Elem(), JobConfigurationTableCopyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobReferenceInput)(nil)).Elem(), JobReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobReferencePtrInput)(nil)).Elem(), JobReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JsonOptionsInput)(nil)).Elem(), JsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JsonOptionsPtrInput)(nil)).Elem(), JsonOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionInput)(nil)).Elem(), MaterializedViewDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionPtrInput)(nil)).Elem(), MaterializedViewDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionInput)(nil)).Elem(), ModelDefinitionArgs{})
@@ -19290,6 +20327,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaCategoriesPtrInput)(nil)).Elem(), TableFieldSchemaCategoriesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaPolicyTagsInput)(nil)).Elem(), TableFieldSchemaPolicyTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaPolicyTagsPtrInput)(nil)).Elem(), TableFieldSchemaPolicyTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaRangeElementTypeInput)(nil)).Elem(), TableFieldSchemaRangeElementTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaRangeElementTypePtrInput)(nil)).Elem(), TableFieldSchemaRangeElementTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceInput)(nil)).Elem(), TableReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableReferencePtrInput)(nil)).Elem(), TableReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceArrayInput)(nil)).Elem(), TableReferenceArray{})
@@ -19319,6 +20358,9 @@ func init() {
 	pulumi.RegisterOutputType(BiEngineReasonResponseOutput{})
 	pulumi.RegisterOutputType(BiEngineReasonResponseArrayOutput{})
 	pulumi.RegisterOutputType(BiEngineStatisticsResponseOutput{})
+	pulumi.RegisterOutputType(BigLakeConfigurationOutput{})
+	pulumi.RegisterOutputType(BigLakeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(BigLakeConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(BigQueryModelTrainingResponseOutput{})
 	pulumi.RegisterOutputType(BigtableColumnOutput{})
 	pulumi.RegisterOutputType(BigtableColumnArrayOutput{})
@@ -19391,6 +20433,9 @@ func init() {
 	pulumi.RegisterOutputType(ExternalDataConfigurationOutput{})
 	pulumi.RegisterOutputType(ExternalDataConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ExternalDataConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ExternalDatasetReferenceOutput{})
+	pulumi.RegisterOutputType(ExternalDatasetReferencePtrOutput{})
+	pulumi.RegisterOutputType(ExternalDatasetReferenceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleSheetsOptionsOutput{})
 	pulumi.RegisterOutputType(GoogleSheetsOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleSheetsOptionsResponseOutput{})
@@ -19429,6 +20474,9 @@ func init() {
 	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatisticsResponseOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
+	pulumi.RegisterOutputType(JsonOptionsOutput{})
+	pulumi.RegisterOutputType(JsonOptionsPtrOutput{})
+	pulumi.RegisterOutputType(JsonOptionsResponseOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionResponseOutput{})
@@ -19531,6 +20579,9 @@ func init() {
 	pulumi.RegisterOutputType(TableFieldSchemaPolicyTagsOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaPolicyTagsPtrOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaPolicyTagsResponseOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaRangeElementTypeOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaRangeElementTypePtrOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaRangeElementTypeResponseOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaResponseOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaResponseArrayOutput{})
 	pulumi.RegisterOutputType(TableReferenceOutput{})

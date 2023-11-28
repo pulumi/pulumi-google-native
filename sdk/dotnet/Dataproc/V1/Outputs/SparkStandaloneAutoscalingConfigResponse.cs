@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly string GracefulDecommissionTimeout;
         /// <summary>
+        /// Optional. Remove only idle workers when scaling down cluster
+        /// </summary>
+        public readonly bool RemoveOnlyIdleWorkers;
+        /// <summary>
         /// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
         /// </summary>
         public readonly double ScaleDownFactor;
@@ -41,6 +45,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         private SparkStandaloneAutoscalingConfigResponse(
             string gracefulDecommissionTimeout,
 
+            bool removeOnlyIdleWorkers,
+
             double scaleDownFactor,
 
             double scaleDownMinWorkerFraction,
@@ -50,6 +56,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
             double scaleUpMinWorkerFraction)
         {
             GracefulDecommissionTimeout = gracefulDecommissionTimeout;
+            RemoveOnlyIdleWorkers = removeOnlyIdleWorkers;
             ScaleDownFactor = scaleDownFactor;
             ScaleDownMinWorkerFraction = scaleDownMinWorkerFraction;
             ScaleUpFactor = scaleUpFactor;

@@ -349,12 +349,15 @@ class DnsSettingsArgs:
         Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
         :param pulumi.Input['CustomDnsArgs'] custom_dns: An arbitrary DNS provider identified by its name servers.
         :param pulumi.Input[Sequence[pulumi.Input['GlueRecordArgs']]] glue_records: The list of glue records for this `Registration`. Commonly empty.
-        :param pulumi.Input['GoogleDomainsDnsArgs'] google_domains_dns: The free DNS zone provided by [Google Domains](https://domains.google/).
+        :param pulumi.Input['GoogleDomainsDnsArgs'] google_domains_dns: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
         """
         if custom_dns is not None:
             pulumi.set(__self__, "custom_dns", custom_dns)
         if glue_records is not None:
             pulumi.set(__self__, "glue_records", glue_records)
+        if google_domains_dns is not None:
+            warnings.warn("""Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).""", DeprecationWarning)
+            pulumi.log.warn("""google_domains_dns is deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).""")
         if google_domains_dns is not None:
             pulumi.set(__self__, "google_domains_dns", google_domains_dns)
 
@@ -386,8 +389,11 @@ class DnsSettingsArgs:
     @pulumi.getter(name="googleDomainsDns")
     def google_domains_dns(self) -> Optional[pulumi.Input['GoogleDomainsDnsArgs']]:
         """
-        The free DNS zone provided by [Google Domains](https://domains.google/).
+        Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
         """
+        warnings.warn("""Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).""", DeprecationWarning)
+        pulumi.log.warn("""google_domains_dns is deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).""")
+
         return pulumi.get(self, "google_domains_dns")
 
     @google_domains_dns.setter
@@ -599,7 +605,7 @@ class GoogleDomainsDnsArgs:
     def __init__(__self__, *,
                  ds_state: pulumi.Input['GoogleDomainsDnsDsState']):
         """
-        Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+        Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
         :param pulumi.Input['GoogleDomainsDnsDsState'] ds_state: The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         """
         pulumi.set(__self__, "ds_state", ds_state)
@@ -620,13 +626,29 @@ class GoogleDomainsDnsArgs:
 @pulumi.input_type
 class ManagementSettingsArgs:
     def __init__(__self__, *,
+                 preferred_renewal_method: Optional[pulumi.Input['ManagementSettingsPreferredRenewalMethod']] = None,
                  transfer_lock_state: Optional[pulumi.Input['ManagementSettingsTransferLockState']] = None):
         """
         Defines renewal, billing, and transfer settings for a `Registration`.
+        :param pulumi.Input['ManagementSettingsPreferredRenewalMethod'] preferred_renewal_method: Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
         :param pulumi.Input['ManagementSettingsTransferLockState'] transfer_lock_state: Controls whether the domain can be transferred to another registrar.
         """
+        if preferred_renewal_method is not None:
+            pulumi.set(__self__, "preferred_renewal_method", preferred_renewal_method)
         if transfer_lock_state is not None:
             pulumi.set(__self__, "transfer_lock_state", transfer_lock_state)
+
+    @property
+    @pulumi.getter(name="preferredRenewalMethod")
+    def preferred_renewal_method(self) -> Optional[pulumi.Input['ManagementSettingsPreferredRenewalMethod']]:
+        """
+        Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+        """
+        return pulumi.get(self, "preferred_renewal_method")
+
+    @preferred_renewal_method.setter
+    def preferred_renewal_method(self, value: Optional[pulumi.Input['ManagementSettingsPreferredRenewalMethod']]):
+        pulumi.set(self, "preferred_renewal_method", value)
 
     @property
     @pulumi.getter(name="transferLockState")

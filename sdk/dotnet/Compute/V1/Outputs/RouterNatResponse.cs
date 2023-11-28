@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class RouterNatResponse
     {
         /// <summary>
+        /// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
+        /// </summary>
+        public readonly string AutoNetworkTier;
+        /// <summary>
         /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
         /// </summary>
         public readonly ImmutableArray<string> DrainNatIps;
@@ -82,12 +86,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly int TcpTransitoryIdleTimeoutSec;
         /// <summary>
+        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
+        /// </summary>
+        public readonly string Type;
+        /// <summary>
         /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         /// </summary>
         public readonly int UdpIdleTimeoutSec;
 
         [OutputConstructor]
         private RouterNatResponse(
+            string autoNetworkTier,
+
             ImmutableArray<string> drainNatIps,
 
             bool enableDynamicPortAllocation,
@@ -122,8 +132,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             int tcpTransitoryIdleTimeoutSec,
 
+            string type,
+
             int udpIdleTimeoutSec)
         {
+            AutoNetworkTier = autoNetworkTier;
             DrainNatIps = drainNatIps;
             EnableDynamicPortAllocation = enableDynamicPortAllocation;
             EnableEndpointIndependentMapping = enableEndpointIndependentMapping;
@@ -141,6 +154,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             TcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
             TcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
             TcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
+            Type = type;
             UdpIdleTimeoutSec = udpIdleTimeoutSec;
         }
     }

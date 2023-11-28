@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
     public sealed class RemoteRepositoryConfigResponse
     {
         /// <summary>
+        /// Specific settings for an Apt remote repository.
+        /// </summary>
+        public readonly Outputs.AptRepositoryResponse AptRepository;
+        /// <summary>
         /// The description of the remote source.
         /// </summary>
         public readonly string Description;
@@ -36,9 +40,19 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
         /// Specific settings for a Python remote repository.
         /// </summary>
         public readonly Outputs.PythonRepositoryResponse PythonRepository;
+        /// <summary>
+        /// Optional. The credentials used to access the remote repository.
+        /// </summary>
+        public readonly Outputs.UpstreamCredentialsResponse UpstreamCredentials;
+        /// <summary>
+        /// Specific settings for a Yum remote repository.
+        /// </summary>
+        public readonly Outputs.YumRepositoryResponse YumRepository;
 
         [OutputConstructor]
         private RemoteRepositoryConfigResponse(
+            Outputs.AptRepositoryResponse aptRepository,
+
             string description,
 
             Outputs.DockerRepositoryResponse dockerRepository,
@@ -47,13 +61,20 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
 
             Outputs.NpmRepositoryResponse npmRepository,
 
-            Outputs.PythonRepositoryResponse pythonRepository)
+            Outputs.PythonRepositoryResponse pythonRepository,
+
+            Outputs.UpstreamCredentialsResponse upstreamCredentials,
+
+            Outputs.YumRepositoryResponse yumRepository)
         {
+            AptRepository = aptRepository;
             Description = description;
             DockerRepository = dockerRepository;
             MavenRepository = mavenRepository;
             NpmRepository = npmRepository;
             PythonRepository = pythonRepository;
+            UpstreamCredentials = upstreamCredentials;
+            YumRepository = yumRepository;
         }
     }
 }

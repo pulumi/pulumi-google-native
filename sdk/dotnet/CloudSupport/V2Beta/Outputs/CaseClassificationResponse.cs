@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Outputs
     public sealed class CaseClassificationResponse
     {
         /// <summary>
-        /// The display name of the classification.
+        /// A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
         /// </summary>
         public readonly string DisplayName;
 

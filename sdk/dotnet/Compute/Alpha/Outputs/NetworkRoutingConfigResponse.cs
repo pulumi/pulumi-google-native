@@ -17,13 +17,35 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class NetworkRoutingConfigResponse
     {
         /// <summary>
+        /// Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm.
+        /// </summary>
+        public readonly bool BgpAlwaysCompareMed;
+        /// <summary>
+        /// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+        /// </summary>
+        public readonly string BgpBestPathSelectionMode;
+        /// <summary>
+        /// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+        /// </summary>
+        public readonly string BgpInterRegionCost;
+        /// <summary>
         /// The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
         /// </summary>
         public readonly string RoutingMode;
 
         [OutputConstructor]
-        private NetworkRoutingConfigResponse(string routingMode)
+        private NetworkRoutingConfigResponse(
+            bool bgpAlwaysCompareMed,
+
+            string bgpBestPathSelectionMode,
+
+            string bgpInterRegionCost,
+
+            string routingMode)
         {
+            BgpAlwaysCompareMed = bgpAlwaysCompareMed;
+            BgpBestPathSelectionMode = bgpBestPathSelectionMode;
+            BgpInterRegionCost = bgpInterRegionCost;
             RoutingMode = routingMode;
         }
     }

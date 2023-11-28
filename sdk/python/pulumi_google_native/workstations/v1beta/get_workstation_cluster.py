@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkstationClusterResult:
-    def __init__(__self__, annotations=None, conditions=None, control_plane_ip=None, create_time=None, degraded=None, delete_time=None, display_name=None, etag=None, labels=None, name=None, network=None, private_cluster_config=None, reconciling=None, subnetwork=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, conditions=None, control_plane_ip=None, create_time=None, degraded=None, delete_time=None, display_name=None, domain_config=None, etag=None, labels=None, name=None, network=None, private_cluster_config=None, reconciling=None, subnetwork=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -41,6 +41,9 @@ class GetWorkstationClusterResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if domain_config and not isinstance(domain_config, dict):
+            raise TypeError("Expected argument 'domain_config' to be a dict")
+        pulumi.set(__self__, "domain_config", domain_config)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -73,7 +76,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        Client-specified annotations.
+        Optional. Client-specified annotations.
         """
         return pulumi.get(self, "annotations")
 
@@ -81,7 +84,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def conditions(self) -> Sequence['outputs.StatusResponse']:
         """
-        Status conditions describing the current resource state.
+        Status conditions describing the workstation cluster's current state.
         """
         return pulumi.get(self, "conditions")
 
@@ -89,7 +92,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter(name="controlPlaneIp")
     def control_plane_ip(self) -> str:
         """
-        The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
         """
         return pulumi.get(self, "control_plane_ip")
 
@@ -97,7 +100,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Time when this resource was created.
+        Time when this workstation cluster was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -105,7 +108,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def degraded(self) -> bool:
         """
-        Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+        Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
         """
         return pulumi.get(self, "degraded")
 
@@ -113,7 +116,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> str:
         """
-        Time when this resource was soft-deleted.
+        Time when this workstation cluster was soft-deleted.
         """
         return pulumi.get(self, "delete_time")
 
@@ -121,15 +124,23 @@ class GetWorkstationClusterResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Human-readable name for this resource.
+        Optional. Human-readable name for this workstation cluster.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="domainConfig")
+    def domain_config(self) -> 'outputs.DomainConfigResponse':
+        """
+        Optional. Configuration options for a custom domain.
+        """
+        return pulumi.get(self, "domain_config")
 
     @property
     @pulumi.getter
     def etag(self) -> str:
         """
-        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -137,7 +148,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
         """
         return pulumi.get(self, "labels")
 
@@ -145,7 +156,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Full name of this resource.
+        Identifier. Full name of this workstation cluster.
         """
         return pulumi.get(self, "name")
 
@@ -153,7 +164,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+        Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
         """
         return pulumi.get(self, "network")
 
@@ -161,7 +172,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter(name="privateClusterConfig")
     def private_cluster_config(self) -> 'outputs.PrivateClusterConfigResponse':
         """
-        Configuration for private cluster.
+        Optional. Configuration for private workstation cluster.
         """
         return pulumi.get(self, "private_cluster_config")
 
@@ -169,7 +180,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def reconciling(self) -> bool:
         """
-        Indicates whether this resource is currently being updated to match its intended state.
+        Indicates whether this workstation cluster is currently being updated to match its intended state.
         """
         return pulumi.get(self, "reconciling")
 
@@ -177,7 +188,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def subnetwork(self) -> str:
         """
-        Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+        Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -185,7 +196,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def uid(self) -> str:
         """
-        A system-assigned unique identified for this resource.
+        A system-assigned unique identifier for this workstation cluster.
         """
         return pulumi.get(self, "uid")
 
@@ -193,7 +204,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        Time when this resource was most recently updated.
+        Time when this workstation cluster was most recently updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -211,6 +222,7 @@ class AwaitableGetWorkstationClusterResult(GetWorkstationClusterResult):
             degraded=self.degraded,
             delete_time=self.delete_time,
             display_name=self.display_name,
+            domain_config=self.domain_config,
             etag=self.etag,
             labels=self.labels,
             name=self.name,
@@ -244,6 +256,7 @@ def get_workstation_cluster(location: Optional[str] = None,
         degraded=pulumi.get(__ret__, 'degraded'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        domain_config=pulumi.get(__ret__, 'domain_config'),
         etag=pulumi.get(__ret__, 'etag'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

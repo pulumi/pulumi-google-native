@@ -24,6 +24,10 @@ type Node struct {
 	AcceleratorType pulumi.StringOutput `pulumi:"acceleratorType"`
 	// The API version that created this Node.
 	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
+	// Optional. Whether Autocheckpoint is enabled.
+	AutocheckpointEnabled pulumi.BoolOutput `pulumi:"autocheckpointEnabled"`
+	// Optional. Boot disk configuration.
+	BootDiskConfig BootDiskConfigResponseOutput `pulumi:"bootDiskConfig"`
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// The time when the node was created.
@@ -124,6 +128,10 @@ type nodeArgs struct {
 	AcceleratorConfig *AcceleratorConfig `pulumi:"acceleratorConfig"`
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType *string `pulumi:"acceleratorType"`
+	// Optional. Whether Autocheckpoint is enabled.
+	AutocheckpointEnabled *bool `pulumi:"autocheckpointEnabled"`
+	// Optional. Boot disk configuration.
+	BootDiskConfig *BootDiskConfig `pulumi:"bootDiskConfig"`
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The additional data disks for the Node.
@@ -162,6 +170,10 @@ type NodeArgs struct {
 	AcceleratorConfig AcceleratorConfigPtrInput
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType pulumi.StringPtrInput
+	// Optional. Whether Autocheckpoint is enabled.
+	AutocheckpointEnabled pulumi.BoolPtrInput
+	// Optional. Boot disk configuration.
+	BootDiskConfig BootDiskConfigPtrInput
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock pulumi.StringPtrInput
 	// The additional data disks for the Node.
@@ -256,6 +268,16 @@ func (o NodeOutput) AcceleratorType() pulumi.StringOutput {
 // The API version that created this Node.
 func (o NodeOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// Optional. Whether Autocheckpoint is enabled.
+func (o NodeOutput) AutocheckpointEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Node) pulumi.BoolOutput { return v.AutocheckpointEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional. Boot disk configuration.
+func (o NodeOutput) BootDiskConfig() BootDiskConfigResponseOutput {
+	return o.ApplyT(func(v *Node) BootDiskConfigResponseOutput { return v.BootDiskConfig }).(BootDiskConfigResponseOutput)
 }
 
 // The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.

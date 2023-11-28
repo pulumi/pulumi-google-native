@@ -72,6 +72,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Output("gcrDomain")]
         public Output<string> GcrDomain { get; private set; } = null!;
 
+        /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+        /// </summary>
+        [Output("generatedCustomerMetadata")]
+        public Output<ImmutableDictionary<string, string>> GeneratedCustomerMetadata { get; private set; } = null!;
+
         [Output("iap")]
         public Output<Outputs.IdentityAwareProxyResponse> Iap { get; private set; } = null!;
 
@@ -86,12 +92,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// The project and location in which the application should be created, specified in the format projects/*/locations/*
-        /// </summary>
-        [Output("parent")]
-        public Output<string?> Parent { get; private set; } = null!;
 
         /// <summary>
         /// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
@@ -186,6 +186,18 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Input("featureSettings")]
         public Input<Inputs.FeatureSettingsArgs>? FeatureSettings { get; set; }
 
+        [Input("generatedCustomerMetadata")]
+        private InputMap<string>? _generatedCustomerMetadata;
+
+        /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+        /// </summary>
+        public InputMap<string> GeneratedCustomerMetadata
+        {
+            get => _generatedCustomerMetadata ?? (_generatedCustomerMetadata = new InputMap<string>());
+            set => _generatedCustomerMetadata = value;
+        }
+
         [Input("iap")]
         public Input<Inputs.IdentityAwareProxyArgs>? Iap { get; set; }
 
@@ -200,12 +212,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
-
-        /// <summary>
-        /// The project and location in which the application should be created, specified in the format projects/*/locations/*
-        /// </summary>
-        [Input("parent")]
-        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.

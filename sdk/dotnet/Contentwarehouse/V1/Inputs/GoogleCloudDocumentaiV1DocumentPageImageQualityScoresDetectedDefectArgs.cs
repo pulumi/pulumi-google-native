@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
     public sealed class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
         /// </summary>
         [Input("confidence")]
         public Input<double>? Confidence { get; set; }

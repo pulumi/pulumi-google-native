@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public readonly ImmutableArray<string> Gateways;
         /// <summary>
+        /// Optional. Set of label tags associated with the TlsRoute resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
         /// </summary>
         public readonly ImmutableArray<string> Meshes;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
 
             ImmutableArray<string> gateways,
 
+            ImmutableDictionary<string, string> labels,
+
             ImmutableArray<string> meshes,
 
             string name,
@@ -117,6 +123,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
             CreateTime = createTime;
             Description = description;
             Gateways = gateways;
+            Labels = labels;
             Meshes = meshes;
             Name = name;
             Rules = rules;

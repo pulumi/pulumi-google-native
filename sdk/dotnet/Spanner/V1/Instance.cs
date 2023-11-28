@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+        /// </summary>
+        [Output("autoscalingConfig")]
+        public Output<Outputs.AutoscalingConfigResponse> AutoscalingConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         /// </summary>
         [Output("config")]
@@ -139,6 +145,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+        /// </summary>
+        [Input("autoscalingConfig")]
+        public Input<Inputs.AutoscalingConfigArgs>? AutoscalingConfig { get; set; }
+
         /// <summary>
         /// The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         /// </summary>

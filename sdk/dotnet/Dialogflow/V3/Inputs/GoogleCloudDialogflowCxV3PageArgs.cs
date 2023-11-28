@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3PageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3AdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The human-readable name of the page, unique within the flow.
         /// </summary>
         [Input("displayName", required: true)]
@@ -46,6 +52,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public Input<Inputs.GoogleCloudDialogflowCxV3FormArgs>? Form { get; set; }
 
         /// <summary>
+        /// Optional. Knowledge connector configuration.
+        /// </summary>
+        [Input("knowledgeConnectorSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs>? KnowledgeConnectorSettings { get; set; }
+
+        /// <summary>
         /// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
         /// </summary>
         [Input("name")]
@@ -55,7 +67,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         private InputList<string>? _transitionRouteGroups;
 
         /// <summary>
-        /// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         public InputList<string> TransitionRouteGroups
         {

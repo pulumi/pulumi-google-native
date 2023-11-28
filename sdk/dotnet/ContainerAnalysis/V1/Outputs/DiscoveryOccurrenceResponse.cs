@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         /// The last time this resource was scanned.
         /// </summary>
         public readonly string LastScanTime;
+        /// <summary>
+        /// The status of an SBOM generation.
+        /// </summary>
+        public readonly Outputs.SBOMStatusResponse SbomStatus;
 
         [OutputConstructor]
         private DiscoveryOccurrenceResponse(
@@ -62,7 +66,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
             string cpe,
 
-            string lastScanTime)
+            string lastScanTime,
+
+            Outputs.SBOMStatusResponse sbomStatus)
         {
             AnalysisCompleted = analysisCompleted;
             AnalysisError = analysisError;
@@ -72,6 +78,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
             ContinuousAnalysis = continuousAnalysis;
             Cpe = cpe;
             LastScanTime = lastScanTime;
+            SbomStatus = sbomStatus;
         }
     }
 }

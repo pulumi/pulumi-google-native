@@ -69,6 +69,10 @@ class InstanceTier(str, Enum):
     """
     ZONAL instances offer expanded capacity and performance scaling capabilities.
     """
+    REGIONAL = "REGIONAL"
+    """
+    REGIONAL instances offer the features and availability needed for mission-critical workloads.
+    """
 
 
 class NetworkConfigConnectMode(str, Enum):

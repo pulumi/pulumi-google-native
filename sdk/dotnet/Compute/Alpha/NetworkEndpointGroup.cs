@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.NetworkEndpointGroupAppEngineResponse> AppEngine { get; private set; } = null!;
 
         /// <summary>
+        /// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+        /// </summary>
+        [Output("clientPortMappingMode")]
+        public Output<string> ClientPortMappingMode { get; private set; } = null!;
+
+        /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         [Output("cloudFunction")]
@@ -217,6 +223,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("appEngine")]
         public Input<Inputs.NetworkEndpointGroupAppEngineArgs>? AppEngine { get; set; }
+
+        /// <summary>
+        /// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+        /// </summary>
+        [Input("clientPortMappingMode")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkEndpointGroupClientPortMappingMode>? ClientPortMappingMode { get; set; }
 
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.

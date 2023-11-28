@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AddressGroupType = {
+    /**
+     * Default value.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * IP v4 ranges.
+     */
+    Ipv4: "IPV4",
+    /**
+     * IP v6 ranges.
+     */
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+ */
+export type AddressGroupType = (typeof AddressGroupType)[keyof typeof AddressGroupType];
+
 export const AuthorizationPolicyAction = {
     /**
      * Default value.
@@ -66,6 +86,26 @@ export const MTLSPolicyClientValidationMode = {
  */
 export type MTLSPolicyClientValidationMode = (typeof MTLSPolicyClientValidationMode)[keyof typeof MTLSPolicyClientValidationMode];
 
+export const OrganizationAddressGroupType = {
+    /**
+     * Default value.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * IP v4 ranges.
+     */
+    Ipv4: "IPV4",
+    /**
+     * IP v6 ranges.
+     */
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+ */
+export type OrganizationAddressGroupType = (typeof OrganizationAddressGroupType)[keyof typeof OrganizationAddressGroupType];
+
 export const RuleBasicProfile = {
     /**
      * If there is not a mentioned action for the target.
@@ -85,3 +125,59 @@ export const RuleBasicProfile = {
  * Required. Profile which tells what the primitive action should be.
  */
 export type RuleBasicProfile = (typeof RuleBasicProfile)[keyof typeof RuleBasicProfile];
+
+export const TlsInspectionPolicyMinTlsVersion = {
+    /**
+     * Indicates no TLS version was specified.
+     */
+    TlsVersionUnspecified: "TLS_VERSION_UNSPECIFIED",
+    /**
+     * TLS 1.0
+     */
+    Tls10: "TLS_1_0",
+    /**
+     * TLS 1.1
+     */
+    Tls11: "TLS_1_1",
+    /**
+     * TLS 1.2
+     */
+    Tls12: "TLS_1_2",
+    /**
+     * TLS 1.3
+     */
+    Tls13: "TLS_1_3",
+} as const;
+
+/**
+ * Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+ */
+export type TlsInspectionPolicyMinTlsVersion = (typeof TlsInspectionPolicyMinTlsVersion)[keyof typeof TlsInspectionPolicyMinTlsVersion];
+
+export const TlsInspectionPolicyTlsFeatureProfile = {
+    /**
+     * Indicates no profile was specified.
+     */
+    ProfileUnspecified: "PROFILE_UNSPECIFIED",
+    /**
+     * Compatible profile. Allows the broadest set of clients, even those which support only out-of-date SSL features to negotiate with the TLS inspection proxy.
+     */
+    ProfileCompatible: "PROFILE_COMPATIBLE",
+    /**
+     * Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the TLS inspection proxy.
+     */
+    ProfileModern: "PROFILE_MODERN",
+    /**
+     * Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+     */
+    ProfileRestricted: "PROFILE_RESTRICTED",
+    /**
+     * Custom profile. Allow only the set of allowed SSL features specified in the custom_features field of SslPolicy.
+     */
+    ProfileCustom: "PROFILE_CUSTOM",
+} as const;
+
+/**
+ * Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+ */
+export type TlsInspectionPolicyTlsFeatureProfile = (typeof TlsInspectionPolicyTlsFeatureProfile)[keyof typeof TlsInspectionPolicyTlsFeatureProfile];

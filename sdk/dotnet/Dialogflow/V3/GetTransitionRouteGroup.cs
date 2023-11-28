@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+        /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` .
         /// </summary>
         public readonly string Name;
         /// <summary>

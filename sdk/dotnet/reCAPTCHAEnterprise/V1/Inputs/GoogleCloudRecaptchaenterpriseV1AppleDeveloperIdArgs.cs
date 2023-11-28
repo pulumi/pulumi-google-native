@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         public Input<string> KeyId { get; set; } = null!;
 
         /// <summary>
-        /// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+        /// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account. Ensure that Apple DeviceCheck is enabled for the private key.
         /// </summary>
         [Input("privateKey", required: true)]
         public Input<string> PrivateKey { get; set; } = null!;

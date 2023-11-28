@@ -49,7 +49,7 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
     public readonly languageCode!: pulumi.Output<string | undefined>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+     * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` .
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -119,7 +119,7 @@ export interface TransitionRouteGroupArgs {
     languageCode?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
-     * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+     * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` .
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

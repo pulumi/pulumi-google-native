@@ -29,6 +29,7 @@ class OrganizationArgs:
                  control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  portal_disabled: Optional[pulumi.Input[bool]] = None,
                  properties: Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']] = None,
@@ -36,7 +37,7 @@ class OrganizationArgs:
                  type: Optional[pulumi.Input['OrganizationType']] = None):
         """
         The set of arguments for constructing a Organization resource.
-        :param pulumi.Input[str] analytics_region: DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] analytics_region: DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[str] parent: Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
         :param pulumi.Input['OrganizationRuntimeType'] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
         :param pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
@@ -48,6 +49,7 @@ class OrganizationArgs:
         :param pulumi.Input[str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[str] customer_name: Not used by Apigee.
         :param pulumi.Input[str] description: Description of the Apigee organization.
+        :param pulumi.Input[bool] disable_vpc_peering: Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
         :param pulumi.Input[str] display_name: Display name for the Apigee organization. Unused, but reserved for future use.
         :param pulumi.Input[bool] portal_disabled: Configuration for the Portals settings.
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Properties defined in the Apigee organization profile.
@@ -55,8 +57,8 @@ class OrganizationArgs:
         :param pulumi.Input['OrganizationType'] type: Not used by Apigee.
         """
         if analytics_region is not None:
-            warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
-            pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
+            warnings.warn("""Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
+            pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
         pulumi.set(__self__, "analytics_region", analytics_region)
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "runtime_type", runtime_type)
@@ -78,6 +80,8 @@ class OrganizationArgs:
             pulumi.set(__self__, "customer_name", customer_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_vpc_peering is not None:
+            pulumi.set(__self__, "disable_vpc_peering", disable_vpc_peering)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if portal_disabled is not None:
@@ -93,10 +97,10 @@ class OrganizationArgs:
     @pulumi.getter(name="analyticsRegion")
     def analytics_region(self) -> pulumi.Input[str]:
         """
-        DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
-        warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
-        pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
+        warnings.warn("""Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
+        pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
 
         return pulumi.get(self, "analytics_region")
 
@@ -237,6 +241,18 @@ class OrganizationArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="disableVpcPeering")
+    def disable_vpc_peering(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+        """
+        return pulumi.get(self, "disable_vpc_peering")
+
+    @disable_vpc_peering.setter
+    def disable_vpc_peering(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_vpc_peering", value)
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -312,6 +328,7 @@ class Organization(pulumi.CustomResource):
                  control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  portal_disabled: Optional[pulumi.Input[bool]] = None,
@@ -327,7 +344,7 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']] addons_config: Addon configurations of the Apigee organization.
-        :param pulumi.Input[str] analytics_region: DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] analytics_region: DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[str] api_consumer_data_location: This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
@@ -336,6 +353,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[str] customer_name: Not used by Apigee.
         :param pulumi.Input[str] description: Description of the Apigee organization.
+        :param pulumi.Input[bool] disable_vpc_peering: Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
         :param pulumi.Input[str] display_name: Display name for the Apigee organization. Unused, but reserved for future use.
         :param pulumi.Input[str] parent: Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
         :param pulumi.Input[bool] portal_disabled: Configuration for the Portals settings.
@@ -379,6 +397,7 @@ class Organization(pulumi.CustomResource):
                  control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  portal_disabled: Optional[pulumi.Input[bool]] = None,
@@ -397,8 +416,8 @@ class Organization(pulumi.CustomResource):
 
             __props__.__dict__["addons_config"] = addons_config
             if analytics_region is not None and not opts.urn:
-                warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
-                pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
+                warnings.warn("""Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
+                pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
             if analytics_region is None and not opts.urn:
                 raise TypeError("Missing required property 'analytics_region'")
             __props__.__dict__["analytics_region"] = analytics_region
@@ -410,6 +429,7 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["control_plane_encryption_key_name"] = control_plane_encryption_key_name
             __props__.__dict__["customer_name"] = customer_name
             __props__.__dict__["description"] = description
+            __props__.__dict__["disable_vpc_peering"] = disable_vpc_peering
             __props__.__dict__["display_name"] = display_name
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
@@ -430,6 +450,7 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["project"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["subscription_plan"] = None
             __props__.__dict__["subscription_type"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["parent"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -468,6 +489,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["created_at"] = None
         __props__.__dict__["customer_name"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["disable_vpc_peering"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["environments"] = None
         __props__.__dict__["expires_at"] = None
@@ -480,6 +502,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["runtime_database_encryption_key_name"] = None
         __props__.__dict__["runtime_type"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["subscription_plan"] = None
         __props__.__dict__["subscription_type"] = None
         __props__.__dict__["type"] = None
         return Organization(resource_name, opts=opts, __props__=__props__)
@@ -496,10 +519,10 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter(name="analyticsRegion")
     def analytics_region(self) -> pulumi.Output[str]:
         """
-        DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
-        warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
-        pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
+        warnings.warn("""Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
+        pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
 
         return pulumi.get(self, "analytics_region")
 
@@ -590,6 +613,14 @@ class Organization(pulumi.CustomResource):
         Description of the Apigee organization.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableVpcPeering")
+    def disable_vpc_peering(self) -> pulumi.Output[bool]:
+        """
+        Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+        """
+        return pulumi.get(self, "disable_vpc_peering")
 
     @property
     @pulumi.getter(name="displayName")
@@ -686,6 +717,14 @@ class Organization(pulumi.CustomResource):
         State of the organization. Values other than ACTIVE means the resource is not ready to use.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="subscriptionPlan")
+    def subscription_plan(self) -> pulumi.Output[str]:
+        """
+        Subscription plan that the customer has purchased. Output only.
+        """
+        return pulumi.get(self, "subscription_plan")
 
     @property
     @pulumi.getter(name="subscriptionType")

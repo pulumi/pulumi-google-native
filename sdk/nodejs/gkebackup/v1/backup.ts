@@ -43,7 +43,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly allNamespaces!: pulumi.Output<boolean>;
     /**
-     * The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+     * Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
      */
     public readonly backupId!: pulumi.Output<string | undefined>;
     public readonly backupPlanId!: pulumi.Output<string>;
@@ -72,7 +72,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+     * Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
      */
     public readonly deleteLockDays!: pulumi.Output<number>;
     /**
@@ -80,7 +80,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteLockExpireTime!: pulumi.Output<string>;
     /**
-     * User specified descriptive string for this Backup.
+     * Optional. User specified descriptive string for this Backup.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -92,7 +92,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * A set of custom labels supplied by user.
+     * Optional. A set of custom labels supplied by user.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
@@ -114,7 +114,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceCount!: pulumi.Output<number>;
     /**
-     * The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+     * Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
      */
     public readonly retainDays!: pulumi.Output<number>;
     /**
@@ -244,26 +244,26 @@ export class Backup extends pulumi.CustomResource {
  */
 export interface BackupArgs {
     /**
-     * The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+     * Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
      */
     backupId?: pulumi.Input<string>;
     backupPlanId: pulumi.Input<string>;
     /**
-     * Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+     * Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
      */
     deleteLockDays?: pulumi.Input<number>;
     /**
-     * User specified descriptive string for this Backup.
+     * Optional. User specified descriptive string for this Backup.
      */
     description?: pulumi.Input<string>;
     /**
-     * A set of custom labels supplied by user.
+     * Optional. A set of custom labels supplied by user.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+     * Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
      */
     retainDays?: pulumi.Input<number>;
 }

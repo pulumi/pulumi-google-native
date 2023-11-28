@@ -36,11 +36,11 @@ export interface GetConversionWorkspaceResult {
      */
     readonly destination: outputs.datamigration.v1.DatabaseEngineInfoResponse;
     /**
-     * The display name for the workspace.
+     * Optional. The display name for the workspace.
      */
     readonly displayName: string;
     /**
-     * A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+     * Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
      */
     readonly globalSettings: {[key: string]: string};
     /**

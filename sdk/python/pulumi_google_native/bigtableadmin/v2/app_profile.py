@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['AppProfileArgs', 'AppProfile']
@@ -23,8 +24,10 @@ class AppProfileArgs:
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input['MultiClusterRoutingUseAnyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input['AppProfilePriority']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input['SingleClusterRoutingArgs']] = None):
+                 single_cluster_routing: Optional[pulumi.Input['SingleClusterRoutingArgs']] = None,
+                 standard_isolation: Optional[pulumi.Input['StandardIsolationArgs']] = None):
         """
         The set of arguments for constructing a AppProfile resource.
         :param pulumi.Input[str] app_profile_id: Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
@@ -33,7 +36,9 @@ class AppProfileArgs:
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when creating the app profile.
         :param pulumi.Input['MultiClusterRoutingUseAnyArgs'] multi_cluster_routing_use_any: Use a multi-cluster routing policy.
         :param pulumi.Input[str] name: The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
+        :param pulumi.Input['AppProfilePriority'] priority: This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
         :param pulumi.Input['SingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input['StandardIsolationArgs'] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
         """
         pulumi.set(__self__, "app_profile_id", app_profile_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -47,10 +52,14 @@ class AppProfileArgs:
             pulumi.set(__self__, "multi_cluster_routing_use_any", multi_cluster_routing_use_any)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if single_cluster_routing is not None:
             pulumi.set(__self__, "single_cluster_routing", single_cluster_routing)
+        if standard_isolation is not None:
+            pulumi.set(__self__, "standard_isolation", standard_isolation)
 
     @property
     @pulumi.getter(name="appProfileId")
@@ -135,6 +144,18 @@ class AppProfileArgs:
 
     @property
     @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input['AppProfilePriority']]:
+        """
+        This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input['AppProfilePriority']]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -154,6 +175,18 @@ class AppProfileArgs:
     def single_cluster_routing(self, value: Optional[pulumi.Input['SingleClusterRoutingArgs']]):
         pulumi.set(self, "single_cluster_routing", value)
 
+    @property
+    @pulumi.getter(name="standardIsolation")
+    def standard_isolation(self) -> Optional[pulumi.Input['StandardIsolationArgs']]:
+        """
+        The standard options used for isolating this app profile's traffic from other use cases.
+        """
+        return pulumi.get(self, "standard_isolation")
+
+    @standard_isolation.setter
+    def standard_isolation(self, value: Optional[pulumi.Input['StandardIsolationArgs']]):
+        pulumi.set(self, "standard_isolation", value)
+
 
 class AppProfile(pulumi.CustomResource):
     @overload
@@ -167,8 +200,10 @@ class AppProfile(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input['AppProfilePriority']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['SingleClusterRoutingArgs']]] = None,
+                 standard_isolation: Optional[pulumi.Input[pulumi.InputType['StandardIsolationArgs']]] = None,
                  __props__=None):
         """
         Creates an app profile within an instance.
@@ -181,7 +216,9 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when creating the app profile.
         :param pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']] multi_cluster_routing_use_any: Use a multi-cluster routing policy.
         :param pulumi.Input[str] name: The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
+        :param pulumi.Input['AppProfilePriority'] priority: This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
         :param pulumi.Input[pulumi.InputType['SingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input[pulumi.InputType['StandardIsolationArgs']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
         """
         ...
     @overload
@@ -214,8 +251,10 @@ class AppProfile(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input['AppProfilePriority']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['SingleClusterRoutingArgs']]] = None,
+                 standard_isolation: Optional[pulumi.Input[pulumi.InputType['StandardIsolationArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -236,8 +275,10 @@ class AppProfile(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["multi_cluster_routing_use_any"] = multi_cluster_routing_use_any
             __props__.__dict__["name"] = name
+            __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
             __props__.__dict__["single_cluster_routing"] = single_cluster_routing
+            __props__.__dict__["standard_isolation"] = standard_isolation
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["app_profile_id", "instance_id", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AppProfile, __self__).__init__(
@@ -269,8 +310,10 @@ class AppProfile(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = None
         __props__.__dict__["multi_cluster_routing_use_any"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["priority"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["single_cluster_routing"] = None
+        __props__.__dict__["standard_isolation"] = None
         return AppProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -328,6 +371,14 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def priority(self) -> pulumi.Output[str]:
+        """
+        This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
 
@@ -338,4 +389,12 @@ class AppProfile(pulumi.CustomResource):
         Use a single-cluster routing policy.
         """
         return pulumi.get(self, "single_cluster_routing")
+
+    @property
+    @pulumi.getter(name="standardIsolation")
+    def standard_isolation(self) -> pulumi.Output['outputs.StandardIsolationResponse']:
+        """
+        The standard options used for isolating this app profile's traffic from other use cases.
+        """
+        return pulumi.get(self, "standard_isolation")
 

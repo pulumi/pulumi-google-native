@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
 {
 
     /// <summary>
-    /// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+    /// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudRunV2ContainerResponse
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Command;
         /// <summary>
-        /// Container names which must start before this container.
+        /// Names of the containers that must start before this container.
         /// </summary>
         public readonly ImmutableArray<string> DependsOn;
         /// <summary>

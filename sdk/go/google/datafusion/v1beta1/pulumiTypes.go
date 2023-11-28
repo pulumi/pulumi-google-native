@@ -1383,10 +1383,14 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Network configuration for a Data Fusion instance. These configurations are used for peering with the customer network. Configurations are optional when a public Data Fusion instance is to be created. However, providing these configurations allows several benefits, such as reduced network latency while accessing the customer resources from managed Data Fusion instance nodes, as well as access to the customer on-prem resources.
 type NetworkConfig struct {
-	// The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+	// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+	ConnectionType *NetworkConfigConnectionType `pulumi:"connectionType"`
+	// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
 	IpAllocation *string `pulumi:"ipAllocation"`
-	// Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+	// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 	Network *string `pulumi:"network"`
+	// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+	PrivateServiceConnectConfig *PrivateServiceConnectConfig `pulumi:"privateServiceConnectConfig"`
 }
 
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
@@ -1402,10 +1406,14 @@ type NetworkConfigInput interface {
 
 // Network configuration for a Data Fusion instance. These configurations are used for peering with the customer network. Configurations are optional when a public Data Fusion instance is to be created. However, providing these configurations allows several benefits, such as reduced network latency while accessing the customer resources from managed Data Fusion instance nodes, as well as access to the customer on-prem resources.
 type NetworkConfigArgs struct {
-	// The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+	// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+	ConnectionType NetworkConfigConnectionTypePtrInput `pulumi:"connectionType"`
+	// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
 	IpAllocation pulumi.StringPtrInput `pulumi:"ipAllocation"`
-	// Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+	// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+	PrivateServiceConnectConfig PrivateServiceConnectConfigPtrInput `pulumi:"privateServiceConnectConfig"`
 }
 
 func (NetworkConfigArgs) ElementType() reflect.Type {
@@ -1504,14 +1512,24 @@ func (o NetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Networ
 	}
 }
 
-// The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+func (o NetworkConfigOutput) ConnectionType() NetworkConfigConnectionTypePtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *NetworkConfigConnectionType { return v.ConnectionType }).(NetworkConfigConnectionTypePtrOutput)
+}
+
+// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
 func (o NetworkConfigOutput) IpAllocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.IpAllocation }).(pulumi.StringPtrOutput)
 }
 
-// Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+func (o NetworkConfigOutput) PrivateServiceConnectConfig() PrivateServiceConnectConfigPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *PrivateServiceConnectConfig { return v.PrivateServiceConnectConfig }).(PrivateServiceConnectConfigPtrOutput)
 }
 
 type NetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1544,7 +1562,17 @@ func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
 	}).(NetworkConfigOutput)
 }
 
-// The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+func (o NetworkConfigPtrOutput) ConnectionType() NetworkConfigConnectionTypePtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *NetworkConfigConnectionType {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionType
+	}).(NetworkConfigConnectionTypePtrOutput)
+}
+
+// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
 func (o NetworkConfigPtrOutput) IpAllocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
 		if v == nil {
@@ -1554,7 +1582,7 @@ func (o NetworkConfigPtrOutput) IpAllocation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
 		if v == nil {
@@ -1564,12 +1592,26 @@ func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+func (o NetworkConfigPtrOutput) PrivateServiceConnectConfig() PrivateServiceConnectConfigPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *PrivateServiceConnectConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateServiceConnectConfig
+	}).(PrivateServiceConnectConfigPtrOutput)
+}
+
 // Network configuration for a Data Fusion instance. These configurations are used for peering with the customer network. Configurations are optional when a public Data Fusion instance is to be created. However, providing these configurations allows several benefits, such as reduced network latency while accessing the customer resources from managed Data Fusion instance nodes, as well as access to the customer on-prem resources.
 type NetworkConfigResponse struct {
-	// The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+	// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+	ConnectionType string `pulumi:"connectionType"`
+	// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
 	IpAllocation string `pulumi:"ipAllocation"`
-	// Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+	// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 	Network string `pulumi:"network"`
+	// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+	PrivateServiceConnectConfig PrivateServiceConnectConfigResponse `pulumi:"privateServiceConnectConfig"`
 }
 
 // Network configuration for a Data Fusion instance. These configurations are used for peering with the customer network. Configurations are optional when a public Data Fusion instance is to be created. However, providing these configurations allows several benefits, such as reduced network latency while accessing the customer resources from managed Data Fusion instance nodes, as well as access to the customer on-prem resources.
@@ -1593,14 +1635,255 @@ func (o NetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+func (o NetworkConfigResponseOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
 func (o NetworkConfigResponseOutput) IpAllocation() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.IpAllocation }).(pulumi.StringOutput)
 }
 
-// Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+func (o NetworkConfigResponseOutput) PrivateServiceConnectConfig() PrivateServiceConnectConfigResponseOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) PrivateServiceConnectConfigResponse {
+		return v.PrivateServiceConnectConfig
+	}).(PrivateServiceConnectConfigResponseOutput)
+}
+
+// Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project.
+type PrivateServiceConnectConfig struct {
+	// The reference to the network attachment used to establish private connectivity. It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+	NetworkAttachment string `pulumi:"networkAttachment"`
+	// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment. This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses. If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632. Example: 192.168.0.0/25
+	UnreachableCidrBlock *string `pulumi:"unreachableCidrBlock"`
+}
+
+// PrivateServiceConnectConfigInput is an input type that accepts PrivateServiceConnectConfigArgs and PrivateServiceConnectConfigOutput values.
+// You can construct a concrete instance of `PrivateServiceConnectConfigInput` via:
+//
+//	PrivateServiceConnectConfigArgs{...}
+type PrivateServiceConnectConfigInput interface {
+	pulumi.Input
+
+	ToPrivateServiceConnectConfigOutput() PrivateServiceConnectConfigOutput
+	ToPrivateServiceConnectConfigOutputWithContext(context.Context) PrivateServiceConnectConfigOutput
+}
+
+// Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project.
+type PrivateServiceConnectConfigArgs struct {
+	// The reference to the network attachment used to establish private connectivity. It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+	// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment. This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses. If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632. Example: 192.168.0.0/25
+	UnreachableCidrBlock pulumi.StringPtrInput `pulumi:"unreachableCidrBlock"`
+}
+
+func (PrivateServiceConnectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i PrivateServiceConnectConfigArgs) ToPrivateServiceConnectConfigOutput() PrivateServiceConnectConfigOutput {
+	return i.ToPrivateServiceConnectConfigOutputWithContext(context.Background())
+}
+
+func (i PrivateServiceConnectConfigArgs) ToPrivateServiceConnectConfigOutputWithContext(ctx context.Context) PrivateServiceConnectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateServiceConnectConfigOutput)
+}
+
+func (i PrivateServiceConnectConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateServiceConnectConfig] {
+	return pulumix.Output[PrivateServiceConnectConfig]{
+		OutputState: i.ToPrivateServiceConnectConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PrivateServiceConnectConfigArgs) ToPrivateServiceConnectConfigPtrOutput() PrivateServiceConnectConfigPtrOutput {
+	return i.ToPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateServiceConnectConfigArgs) ToPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) PrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateServiceConnectConfigOutput).ToPrivateServiceConnectConfigPtrOutputWithContext(ctx)
+}
+
+// PrivateServiceConnectConfigPtrInput is an input type that accepts PrivateServiceConnectConfigArgs, PrivateServiceConnectConfigPtr and PrivateServiceConnectConfigPtrOutput values.
+// You can construct a concrete instance of `PrivateServiceConnectConfigPtrInput` via:
+//
+//	        PrivateServiceConnectConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateServiceConnectConfigPtrInput interface {
+	pulumi.Input
+
+	ToPrivateServiceConnectConfigPtrOutput() PrivateServiceConnectConfigPtrOutput
+	ToPrivateServiceConnectConfigPtrOutputWithContext(context.Context) PrivateServiceConnectConfigPtrOutput
+}
+
+type privateServiceConnectConfigPtrType PrivateServiceConnectConfigArgs
+
+func PrivateServiceConnectConfigPtr(v *PrivateServiceConnectConfigArgs) PrivateServiceConnectConfigPtrInput {
+	return (*privateServiceConnectConfigPtrType)(v)
+}
+
+func (*privateServiceConnectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i *privateServiceConnectConfigPtrType) ToPrivateServiceConnectConfigPtrOutput() PrivateServiceConnectConfigPtrOutput {
+	return i.ToPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *privateServiceConnectConfigPtrType) ToPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) PrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateServiceConnectConfigPtrOutput)
+}
+
+func (i *privateServiceConnectConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateServiceConnectConfig] {
+	return pulumix.Output[*PrivateServiceConnectConfig]{
+		OutputState: i.ToPrivateServiceConnectConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project.
+type PrivateServiceConnectConfigOutput struct{ *pulumi.OutputState }
+
+func (PrivateServiceConnectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o PrivateServiceConnectConfigOutput) ToPrivateServiceConnectConfigOutput() PrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConfigOutput) ToPrivateServiceConnectConfigOutputWithContext(ctx context.Context) PrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConfigOutput) ToPrivateServiceConnectConfigPtrOutput() PrivateServiceConnectConfigPtrOutput {
+	return o.ToPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateServiceConnectConfigOutput) ToPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) PrivateServiceConnectConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateServiceConnectConfig) *PrivateServiceConnectConfig {
+		return &v
+	}).(PrivateServiceConnectConfigPtrOutput)
+}
+
+func (o PrivateServiceConnectConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateServiceConnectConfig] {
+	return pulumix.Output[PrivateServiceConnectConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The reference to the network attachment used to establish private connectivity. It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+func (o PrivateServiceConnectConfigOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateServiceConnectConfig) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment. This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses. If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632. Example: 192.168.0.0/25
+func (o PrivateServiceConnectConfigOutput) UnreachableCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateServiceConnectConfig) *string { return v.UnreachableCidrBlock }).(pulumi.StringPtrOutput)
+}
+
+type PrivateServiceConnectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateServiceConnectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o PrivateServiceConnectConfigPtrOutput) ToPrivateServiceConnectConfigPtrOutput() PrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConfigPtrOutput) ToPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) PrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateServiceConnectConfig] {
+	return pulumix.Output[*PrivateServiceConnectConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PrivateServiceConnectConfigPtrOutput) Elem() PrivateServiceConnectConfigOutput {
+	return o.ApplyT(func(v *PrivateServiceConnectConfig) PrivateServiceConnectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateServiceConnectConfig
+		return ret
+	}).(PrivateServiceConnectConfigOutput)
+}
+
+// The reference to the network attachment used to establish private connectivity. It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+func (o PrivateServiceConnectConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateServiceConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment. This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses. If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632. Example: 192.168.0.0/25
+func (o PrivateServiceConnectConfigPtrOutput) UnreachableCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateServiceConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UnreachableCidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project.
+type PrivateServiceConnectConfigResponse struct {
+	// The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block is /25. The format of this field is governed by RFC 4632. Example: 240.0.0.0/25
+	EffectiveUnreachableCidrBlock string `pulumi:"effectiveUnreachableCidrBlock"`
+	// The reference to the network attachment used to establish private connectivity. It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+	NetworkAttachment string `pulumi:"networkAttachment"`
+	// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment. This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses. If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632. Example: 192.168.0.0/25
+	UnreachableCidrBlock string `pulumi:"unreachableCidrBlock"`
+}
+
+// Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project.
+type PrivateServiceConnectConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateServiceConnectConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateServiceConnectConfigResponse)(nil)).Elem()
+}
+
+func (o PrivateServiceConnectConfigResponseOutput) ToPrivateServiceConnectConfigResponseOutput() PrivateServiceConnectConfigResponseOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConfigResponseOutput) ToPrivateServiceConnectConfigResponseOutputWithContext(ctx context.Context) PrivateServiceConnectConfigResponseOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateServiceConnectConfigResponse] {
+	return pulumix.Output[PrivateServiceConnectConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block is /25. The format of this field is governed by RFC 4632. Example: 240.0.0.0/25
+func (o PrivateServiceConnectConfigResponseOutput) EffectiveUnreachableCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateServiceConnectConfigResponse) string { return v.EffectiveUnreachableCidrBlock }).(pulumi.StringOutput)
+}
+
+// The reference to the network attachment used to establish private connectivity. It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+func (o PrivateServiceConnectConfigResponseOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateServiceConnectConfigResponse) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment. This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses. If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632. Example: 192.168.0.0/25
+func (o PrivateServiceConnectConfigResponseOutput) UnreachableCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateServiceConnectConfigResponse) string { return v.UnreachableCidrBlock }).(pulumi.StringOutput)
 }
 
 // The Data Fusion version.
@@ -1697,6 +1980,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateServiceConnectConfigInput)(nil)).Elem(), PrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateServiceConnectConfigPtrInput)(nil)).Elem(), PrivateServiceConnectConfigArgs{})
 	pulumi.RegisterOutputType(AcceleratorResponseOutput{})
 	pulumi.RegisterOutputType(AcceleratorResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
@@ -1723,6 +2008,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
+	pulumi.RegisterOutputType(PrivateServiceConnectConfigOutput{})
+	pulumi.RegisterOutputType(PrivateServiceConnectConfigPtrOutput{})
+	pulumi.RegisterOutputType(PrivateServiceConnectConfigResponseOutput{})
 	pulumi.RegisterOutputType(VersionResponseOutput{})
 	pulumi.RegisterOutputType(VersionResponseArrayOutput{})
 }

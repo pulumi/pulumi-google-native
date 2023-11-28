@@ -48,6 +48,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> EndTimestamp { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation 
+        /// </summary>
+        [Output("existingReservations")]
+        public Output<ImmutableArray<string>> ExistingReservations { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#commitment for commitments.
         /// </summary>
         [Output("kind")]
@@ -90,10 +96,16 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// List of reservations in this commitment.
+        /// List of create-on-create reseravtions for this commitment.
         /// </summary>
         [Output("reservations")]
         public Output<ImmutableArray<Outputs.ReservationResponse>> Reservations { get; private set; } = null!;
+
+        /// <summary>
+        /// Status information for Commitment resource.
+        /// </summary>
+        [Output("resourceStatus")]
+        public Output<Outputs.CommitmentResourceStatusResponse> ResourceStatus { get; private set; } = null!;
 
         /// <summary>
         /// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
@@ -211,6 +223,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("existingReservations")]
+        private InputList<string>? _existingReservations;
+
+        /// <summary>
+        /// Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation 
+        /// </summary>
+        public InputList<string> ExistingReservations
+        {
+            get => _existingReservations ?? (_existingReservations = new InputList<string>());
+            set => _existingReservations = value;
+        }
+
         /// <summary>
         /// The license specification required as part of a license commitment.
         /// </summary>
@@ -257,7 +281,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private InputList<Inputs.ReservationArgs>? _reservations;
 
         /// <summary>
-        /// List of reservations in this commitment.
+        /// List of create-on-create reseravtions for this commitment.
         /// </summary>
         public InputList<Inputs.ReservationArgs> Reservations
         {

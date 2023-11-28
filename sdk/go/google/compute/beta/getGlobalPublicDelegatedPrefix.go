@@ -29,13 +29,15 @@ type LookupGlobalPublicDelegatedPrefixArgs struct {
 }
 
 type LookupGlobalPublicDelegatedPrefixResult struct {
+	// The version of BYOIP API.
+	ByoipApiVersion string `pulumi:"byoipApiVersion"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
 	Fingerprint string `pulumi:"fingerprint"`
-	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration bool `pulumi:"isLiveMigration"`
@@ -97,6 +99,11 @@ func (o LookupGlobalPublicDelegatedPrefixResultOutput) ToOutput(ctx context.Cont
 	}
 }
 
+// The version of BYOIP API.
+func (o LookupGlobalPublicDelegatedPrefixResultOutput) ByoipApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalPublicDelegatedPrefixResult) string { return v.ByoipApiVersion }).(pulumi.StringOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o LookupGlobalPublicDelegatedPrefixResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalPublicDelegatedPrefixResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -112,7 +119,7 @@ func (o LookupGlobalPublicDelegatedPrefixResultOutput) Fingerprint() pulumi.Stri
 	return o.ApplyT(func(v LookupGlobalPublicDelegatedPrefixResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+// The IP address range, in CIDR format, represented by this public delegated prefix.
 func (o LookupGlobalPublicDelegatedPrefixResultOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalPublicDelegatedPrefixResult) string { return v.IpCidrRange }).(pulumi.StringOutput)
 }

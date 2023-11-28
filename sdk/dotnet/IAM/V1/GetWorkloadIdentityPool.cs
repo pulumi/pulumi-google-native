@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Time after which the workload identity pool will be permanently purged and cannot be recovered.
+        /// </summary>
+        public readonly string ExpireTime;
+        /// <summary>
         /// The resource name of the pool.
         /// </summary>
         public readonly string Name;
@@ -92,6 +96,8 @@ namespace Pulumi.GoogleNative.IAM.V1
 
             string displayName,
 
+            string expireTime,
+
             string name,
 
             string state)
@@ -99,6 +105,7 @@ namespace Pulumi.GoogleNative.IAM.V1
             Description = description;
             Disabled = disabled;
             DisplayName = displayName;
+            ExpireTime = expireTime;
             Name = name;
             State = state;
         }

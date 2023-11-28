@@ -32,9 +32,9 @@ type LookupGroupArgs struct {
 type LookupGroupResult struct {
 	// The timestamp when the group was created.
 	CreateTime string `pulumi:"createTime"`
-	// The description of the resource.
+	// Optional. The description of the group.
 	Description string `pulumi:"description"`
-	// User-friendly display name.
+	// Optional. User-friendly display name.
 	DisplayName string `pulumi:"displayName"`
 	// Labels as key value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -92,12 +92,12 @@ func (o LookupGroupResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the resource.
+// Optional. The description of the group.
 func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// User-friendly display name.
+// Optional. User-friendly display name.
 func (o LookupGroupResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }

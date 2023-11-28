@@ -56,7 +56,11 @@ export interface GetTransferConfigResult {
      */
     readonly emailPreferences: outputs.bigquerydatatransfer.v1.EmailPreferencesResponse;
     /**
-     * The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+     * The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+     */
+    readonly encryptionConfiguration: outputs.bigquerydatatransfer.v1.EncryptionConfigurationResponse;
+    /**
+     * The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
      */
     readonly name: string;
     /**

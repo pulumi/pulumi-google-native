@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, enable_zone_separation=None, event_publish_config=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, satisfies_pzs=None, service_account=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
+    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, enable_zone_separation=None, event_publish_config=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, patch_revision=None, private_instance=None, satisfies_pzs=None, service_account=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, workforce_identity_service_endpoint=None, zone=None):
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
@@ -80,6 +80,9 @@ class GetInstanceResult:
         if p4_service_account and not isinstance(p4_service_account, str):
             raise TypeError("Expected argument 'p4_service_account' to be a str")
         pulumi.set(__self__, "p4_service_account", p4_service_account)
+        if patch_revision and not isinstance(patch_revision, str):
+            raise TypeError("Expected argument 'patch_revision' to be a str")
+        pulumi.set(__self__, "patch_revision", patch_revision)
         if private_instance and not isinstance(private_instance, bool):
             raise TypeError("Expected argument 'private_instance' to be a bool")
         pulumi.set(__self__, "private_instance", private_instance)
@@ -110,6 +113,9 @@ class GetInstanceResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         pulumi.set(__self__, "version", version)
+        if workforce_identity_service_endpoint and not isinstance(workforce_identity_service_endpoint, str):
+            raise TypeError("Expected argument 'workforce_identity_service_endpoint' to be a str")
+        pulumi.set(__self__, "workforce_identity_service_endpoint", workforce_identity_service_endpoint)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
@@ -275,6 +281,14 @@ class GetInstanceResult:
         return pulumi.get(self, "p4_service_account")
 
     @property
+    @pulumi.getter(name="patchRevision")
+    def patch_revision(self) -> str:
+        """
+        Optional. Current patch revision of the Data Fusion.
+        """
+        return pulumi.get(self, "patch_revision")
+
+    @property
     @pulumi.getter(name="privateInstance")
     def private_instance(self) -> bool:
         """
@@ -358,6 +372,14 @@ class GetInstanceResult:
         return pulumi.get(self, "version")
 
     @property
+    @pulumi.getter(name="workforceIdentityServiceEndpoint")
+    def workforce_identity_service_endpoint(self) -> str:
+        """
+        Endpoint on which the Data Fusion UI is accessible to third-party users.
+        """
+        return pulumi.get(self, "workforce_identity_service_endpoint")
+
+    @property
     @pulumi.getter
     def zone(self) -> str:
         """
@@ -392,6 +414,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             network_config=self.network_config,
             options=self.options,
             p4_service_account=self.p4_service_account,
+            patch_revision=self.patch_revision,
             private_instance=self.private_instance,
             satisfies_pzs=self.satisfies_pzs,
             service_account=self.service_account,
@@ -402,6 +425,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             type=self.type,
             update_time=self.update_time,
             version=self.version,
+            workforce_identity_service_endpoint=self.workforce_identity_service_endpoint,
             zone=self.zone)
 
 
@@ -440,6 +464,7 @@ def get_instance(instance_id: Optional[str] = None,
         network_config=pulumi.get(__ret__, 'network_config'),
         options=pulumi.get(__ret__, 'options'),
         p4_service_account=pulumi.get(__ret__, 'p4_service_account'),
+        patch_revision=pulumi.get(__ret__, 'patch_revision'),
         private_instance=pulumi.get(__ret__, 'private_instance'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         service_account=pulumi.get(__ret__, 'service_account'),
@@ -450,6 +475,7 @@ def get_instance(instance_id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         update_time=pulumi.get(__ret__, 'update_time'),
         version=pulumi.get(__ret__, 'version'),
+        workforce_identity_service_endpoint=pulumi.get(__ret__, 'workforce_identity_service_endpoint'),
         zone=pulumi.get(__ret__, 'zone'))
 
 

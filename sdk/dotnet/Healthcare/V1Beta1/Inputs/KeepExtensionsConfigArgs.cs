@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
 {
 
     /// <summary>
-    /// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+    /// The behavior for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
     /// </summary>
     public sealed class KeepExtensionsConfigArgs : global::Pulumi.ResourceArgs
     {

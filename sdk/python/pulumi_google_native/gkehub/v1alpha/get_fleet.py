@@ -19,16 +19,22 @@ __all__ = [
 
 @pulumi.output_type
 class GetFleetResult:
-    def __init__(__self__, create_time=None, delete_time=None, display_name=None, name=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, default_cluster_config=None, delete_time=None, display_name=None, labels=None, name=None, state=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if default_cluster_config and not isinstance(default_cluster_config, dict):
+            raise TypeError("Expected argument 'default_cluster_config' to be a dict")
+        pulumi.set(__self__, "default_cluster_config", default_cluster_config)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -51,6 +57,14 @@ class GetFleetResult:
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="defaultClusterConfig")
+    def default_cluster_config(self) -> 'outputs.DefaultClusterConfigResponse':
+        """
+        Optional. The default cluster configurations to apply across the fleet.
+        """
+        return pulumi.get(self, "default_cluster_config")
+
+    @property
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> str:
         """
@@ -65,6 +79,14 @@ class GetFleetResult:
         Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. Labels for this Fleet.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -106,8 +128,10 @@ class AwaitableGetFleetResult(GetFleetResult):
             yield self
         return GetFleetResult(
             create_time=self.create_time,
+            default_cluster_config=self.default_cluster_config,
             delete_time=self.delete_time,
             display_name=self.display_name,
+            labels=self.labels,
             name=self.name,
             state=self.state,
             uid=self.uid,
@@ -130,8 +154,10 @@ def get_fleet(fleet_id: Optional[str] = None,
 
     return AwaitableGetFleetResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        default_cluster_config=pulumi.get(__ret__, 'default_cluster_config'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),

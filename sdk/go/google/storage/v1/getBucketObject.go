@@ -32,6 +32,7 @@ type LookupBucketObjectArgs struct {
 	IfMetagenerationNotMatch *string `pulumi:"ifMetagenerationNotMatch"`
 	Object                   string  `pulumi:"object"`
 	Projection               *string `pulumi:"projection"`
+	SoftDeleted              *bool   `pulumi:"softDeleted"`
 	UserProject              *string `pulumi:"userProject"`
 }
 
@@ -64,6 +65,8 @@ type LookupBucketObjectResult struct {
 	EventBasedHold bool `pulumi:"eventBasedHold"`
 	// The content generation of this object. Used for object versioning.
 	Generation string `pulumi:"generation"`
+	// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+	HardDeleteTime string `pulumi:"hardDeleteTime"`
 	// The kind of item this is. For objects, this is always storage#object.
 	Kind string `pulumi:"kind"`
 	// Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
@@ -80,19 +83,23 @@ type LookupBucketObjectResult struct {
 	Name string `pulumi:"name"`
 	// The owner of the object. This will always be the uploader of the object.
 	Owner BucketObjectOwnerResponse `pulumi:"owner"`
+	// A collection of object level retention parameters.
+	Retention BucketObjectRetentionResponse `pulumi:"retention"`
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime string `pulumi:"retentionExpirationTime"`
 	// The link to this object.
 	SelfLink string `pulumi:"selfLink"`
 	// Content-Length of the data in bytes.
 	Size string `pulumi:"size"`
+	// The time at which the object became soft-deleted in RFC 3339 format.
+	SoftDeleteTime string `pulumi:"softDeleteTime"`
 	// Storage class of the object.
 	StorageClass string `pulumi:"storageClass"`
 	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
 	TemporaryHold bool `pulumi:"temporaryHold"`
 	// The creation time of the object in RFC 3339 format.
 	TimeCreated string `pulumi:"timeCreated"`
-	// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+	// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
 	TimeDeleted string `pulumi:"timeDeleted"`
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated string `pulumi:"timeStorageClassUpdated"`
@@ -122,6 +129,7 @@ type LookupBucketObjectOutputArgs struct {
 	IfMetagenerationNotMatch pulumi.StringPtrInput `pulumi:"ifMetagenerationNotMatch"`
 	Object                   pulumi.StringInput    `pulumi:"object"`
 	Projection               pulumi.StringPtrInput `pulumi:"projection"`
+	SoftDeleted              pulumi.BoolPtrInput   `pulumi:"softDeleted"`
 	UserProject              pulumi.StringPtrInput `pulumi:"userProject"`
 }
 
@@ -219,6 +227,11 @@ func (o LookupBucketObjectResultOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Generation }).(pulumi.StringOutput)
 }
 
+// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+func (o LookupBucketObjectResultOutput) HardDeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.HardDeleteTime }).(pulumi.StringOutput)
+}
+
 // The kind of item this is. For objects, this is always storage#object.
 func (o LookupBucketObjectResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Kind }).(pulumi.StringOutput)
@@ -259,6 +272,11 @@ func (o LookupBucketObjectResultOutput) Owner() BucketObjectOwnerResponseOutput 
 	return o.ApplyT(func(v LookupBucketObjectResult) BucketObjectOwnerResponse { return v.Owner }).(BucketObjectOwnerResponseOutput)
 }
 
+// A collection of object level retention parameters.
+func (o LookupBucketObjectResultOutput) Retention() BucketObjectRetentionResponseOutput {
+	return o.ApplyT(func(v LookupBucketObjectResult) BucketObjectRetentionResponse { return v.Retention }).(BucketObjectRetentionResponseOutput)
+}
+
 // A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 func (o LookupBucketObjectResultOutput) RetentionExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.RetentionExpirationTime }).(pulumi.StringOutput)
@@ -272,6 +290,11 @@ func (o LookupBucketObjectResultOutput) SelfLink() pulumi.StringOutput {
 // Content-Length of the data in bytes.
 func (o LookupBucketObjectResultOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// The time at which the object became soft-deleted in RFC 3339 format.
+func (o LookupBucketObjectResultOutput) SoftDeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.SoftDeleteTime }).(pulumi.StringOutput)
 }
 
 // Storage class of the object.
@@ -289,7 +312,7 @@ func (o LookupBucketObjectResultOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
-// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
 func (o LookupBucketObjectResultOutput) TimeDeleted() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.TimeDeleted }).(pulumi.StringOutput)
 }

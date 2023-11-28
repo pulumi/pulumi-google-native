@@ -13,29 +13,27 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and tenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
+// Creates a new BeyondCorp Enterprise ProxyConfig in a given organization and PartnerTenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
 // Auto-naming is currently not supported for this resource.
-// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-// on Google Cloud even though it will be deleted from Pulumi state.
 type ProxyConfig struct {
 	pulumi.CustomResourceState
 
-	// Optional. Information to facilitate Authentication against the proxy server.
-	AuthenticationInfo GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput `pulumi:"authenticationInfo"`
 	// Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Optional. Information to encrypt JWT for the proxy server.
+	EncryptionInfo GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput `pulumi:"encryptionInfo"`
 	// ProxyConfig resource name.
-	Name           pulumi.StringOutput `pulumi:"name"`
-	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
+	Name            pulumi.StringOutput `pulumi:"name"`
+	OrganizationId  pulumi.StringOutput `pulumi:"organizationId"`
+	PartnerTenantId pulumi.StringOutput `pulumi:"partnerTenantId"`
 	// The URI of the proxy server.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Routing info to direct traffic to the proxy server.
 	RoutingInfo GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput `pulumi:"routingInfo"`
-	TenantId    pulumi.StringOutput                                                  `pulumi:"tenantId"`
 	// Transport layer information to verify for the proxy server.
 	TransportInfo GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput `pulumi:"transportInfo"`
 	// Timestamp when the resource was last modified.
@@ -52,21 +50,21 @@ func NewProxyConfig(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	if args.PartnerTenantId == nil {
+		return nil, errors.New("invalid value for required argument 'PartnerTenantId'")
+	}
 	if args.ProxyUri == nil {
 		return nil, errors.New("invalid value for required argument 'ProxyUri'")
 	}
 	if args.RoutingInfo == nil {
 		return nil, errors.New("invalid value for required argument 'RoutingInfo'")
 	}
-	if args.TenantId == nil {
-		return nil, errors.New("invalid value for required argument 'TenantId'")
-	}
 	if args.TransportInfo == nil {
 		return nil, errors.New("invalid value for required argument 'TransportInfo'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"organizationId",
-		"tenantId",
+		"partnerTenantId",
 	})
 	opts = append(opts, replaceOnChanges)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -102,36 +100,36 @@ func (ProxyConfigState) ElementType() reflect.Type {
 }
 
 type proxyConfigArgs struct {
-	// Optional. Information to facilitate Authentication against the proxy server.
-	AuthenticationInfo *GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo `pulumi:"authenticationInfo"`
 	// Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
-	DisplayName    *string `pulumi:"displayName"`
-	OrganizationId string  `pulumi:"organizationId"`
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. Information to encrypt JWT for the proxy server.
+	EncryptionInfo  *GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo `pulumi:"encryptionInfo"`
+	OrganizationId  string                                                     `pulumi:"organizationId"`
+	PartnerTenantId string                                                     `pulumi:"partnerTenantId"`
 	// The URI of the proxy server.
 	ProxyUri string `pulumi:"proxyUri"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Routing info to direct traffic to the proxy server.
 	RoutingInfo GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo `pulumi:"routingInfo"`
-	TenantId    string                                                 `pulumi:"tenantId"`
 	// Transport layer information to verify for the proxy server.
 	TransportInfo GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo `pulumi:"transportInfo"`
 }
 
 // The set of arguments for constructing a ProxyConfig resource.
 type ProxyConfigArgs struct {
-	// Optional. Information to facilitate Authentication against the proxy server.
-	AuthenticationInfo GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput
 	// Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
-	DisplayName    pulumi.StringPtrInput
-	OrganizationId pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
+	// Optional. Information to encrypt JWT for the proxy server.
+	EncryptionInfo  GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrInput
+	OrganizationId  pulumi.StringInput
+	PartnerTenantId pulumi.StringInput
 	// The URI of the proxy server.
 	ProxyUri pulumi.StringInput
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Routing info to direct traffic to the proxy server.
 	RoutingInfo GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoInput
-	TenantId    pulumi.StringInput
 	// Transport layer information to verify for the proxy server.
 	TransportInfo GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoInput
 }
@@ -185,13 +183,6 @@ func (o ProxyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ProxyCo
 	}
 }
 
-// Optional. Information to facilitate Authentication against the proxy server.
-func (o ProxyConfigOutput) AuthenticationInfo() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput {
-	return o.ApplyT(func(v *ProxyConfig) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput {
-		return v.AuthenticationInfo
-	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput)
-}
-
 // Timestamp when the resource was created.
 func (o ProxyConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProxyConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -202,6 +193,13 @@ func (o ProxyConfigOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProxyConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Optional. Information to encrypt JWT for the proxy server.
+func (o ProxyConfigOutput) EncryptionInfo() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput {
+	return o.ApplyT(func(v *ProxyConfig) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput {
+		return v.EncryptionInfo
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput)
+}
+
 // ProxyConfig resource name.
 func (o ProxyConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProxyConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -209,6 +207,10 @@ func (o ProxyConfigOutput) Name() pulumi.StringOutput {
 
 func (o ProxyConfigOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProxyConfig) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+func (o ProxyConfigOutput) PartnerTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProxyConfig) pulumi.StringOutput { return v.PartnerTenantId }).(pulumi.StringOutput)
 }
 
 // The URI of the proxy server.
@@ -226,10 +228,6 @@ func (o ProxyConfigOutput) RoutingInfo() GoogleCloudBeyondcorpPartnerservicesV1a
 	return o.ApplyT(func(v *ProxyConfig) GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput {
 		return v.RoutingInfo
 	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput)
-}
-
-func (o ProxyConfigOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProxyConfig) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // Transport layer information to verify for the proxy server.

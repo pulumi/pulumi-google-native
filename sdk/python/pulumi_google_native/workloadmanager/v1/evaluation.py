@@ -17,6 +17,7 @@ __all__ = ['EvaluationArgs', 'Evaluation']
 class EvaluationArgs:
     def __init__(__self__, *,
                  evaluation_id: pulumi.Input[str],
+                 custom_rules_bucket: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -29,15 +30,18 @@ class EvaluationArgs:
         """
         The set of arguments for constructing a Evaluation resource.
         :param pulumi.Input[str] evaluation_id: Required. Id of the requesting object
+        :param pulumi.Input[str] custom_rules_bucket: The Cloud Storage bucket name for custom rules.
         :param pulumi.Input[str] description: Description of the Evaluation
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[str] name: name of resource names have the form 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['ResourceFilterArgs'] resource_filter: annotations as key value pairs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_names: the name of the rule
-        :param pulumi.Input[str] schedule: crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        :param pulumi.Input[str] schedule: crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         """
         pulumi.set(__self__, "evaluation_id", evaluation_id)
+        if custom_rules_bucket is not None:
+            pulumi.set(__self__, "custom_rules_bucket", custom_rules_bucket)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -68,6 +72,18 @@ class EvaluationArgs:
     @evaluation_id.setter
     def evaluation_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "evaluation_id", value)
+
+    @property
+    @pulumi.getter(name="customRulesBucket")
+    def custom_rules_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud Storage bucket name for custom rules.
+        """
+        return pulumi.get(self, "custom_rules_bucket")
+
+    @custom_rules_bucket.setter
+    def custom_rules_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_rules_bucket", value)
 
     @property
     @pulumi.getter
@@ -163,7 +179,7 @@ class EvaluationArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         """
         return pulumi.get(self, "schedule")
 
@@ -177,6 +193,7 @@ class Evaluation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_rules_bucket: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  evaluation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -195,6 +212,7 @@ class Evaluation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_rules_bucket: The Cloud Storage bucket name for custom rules.
         :param pulumi.Input[str] description: Description of the Evaluation
         :param pulumi.Input[str] evaluation_id: Required. Id of the requesting object
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
@@ -202,7 +220,7 @@ class Evaluation(pulumi.CustomResource):
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['ResourceFilterArgs']] resource_filter: annotations as key value pairs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_names: the name of the rule
-        :param pulumi.Input[str] schedule: crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        :param pulumi.Input[str] schedule: crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         """
         ...
     @overload
@@ -230,6 +248,7 @@ class Evaluation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_rules_bucket: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  evaluation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -249,6 +268,7 @@ class Evaluation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EvaluationArgs.__new__(EvaluationArgs)
 
+            __props__.__dict__["custom_rules_bucket"] = custom_rules_bucket
             __props__.__dict__["description"] = description
             if evaluation_id is None and not opts.urn:
                 raise TypeError("Missing required property 'evaluation_id'")
@@ -290,6 +310,7 @@ class Evaluation(pulumi.CustomResource):
         __props__ = EvaluationArgs.__new__(EvaluationArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["custom_rules_bucket"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["evaluation_id"] = None
         __props__.__dict__["labels"] = None
@@ -312,6 +333,14 @@ class Evaluation(pulumi.CustomResource):
         [Output only] Create time stamp
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customRulesBucket")
+    def custom_rules_bucket(self) -> pulumi.Output[str]:
+        """
+        The Cloud Storage bucket name for custom rules.
+        """
+        return pulumi.get(self, "custom_rules_bucket")
 
     @property
     @pulumi.getter
@@ -399,7 +428,7 @@ class Evaluation(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[str]:
         """
-        crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         """
         return pulumi.get(self, "schedule")
 

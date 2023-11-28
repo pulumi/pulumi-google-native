@@ -17,6 +17,8 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
+	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+	ChangeStreamConfig ChangeStreamConfigResponseOutput `pulumi:"changeStreamConfig"`
 	// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
 	ClusterStates pulumi.StringMapOutput `pulumi:"clusterStates"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
@@ -86,6 +88,8 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
+	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+	ChangeStreamConfig *ChangeStreamConfig `pulumi:"changeStreamConfig"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
 	ColumnFamilies map[string]string `pulumi:"columnFamilies"`
 	// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
@@ -98,14 +102,14 @@ type tableArgs struct {
 	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
-	Stats *TableStats `pulumi:"stats"`
 	// The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
 	TableId string `pulumi:"tableId"`
 }
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+	ChangeStreamConfig ChangeStreamConfigPtrInput
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
 	ColumnFamilies pulumi.StringMapInput
 	// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
@@ -118,8 +122,6 @@ type TableArgs struct {
 	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
-	Stats TableStatsPtrInput
 	// The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
 	TableId pulumi.StringInput
 }
@@ -171,6 +173,11 @@ func (o TableOutput) ToOutput(ctx context.Context) pulumix.Output[*Table] {
 	return pulumix.Output[*Table]{
 		OutputState: o.OutputState,
 	}
+}
+
+// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+func (o TableOutput) ChangeStreamConfig() ChangeStreamConfigResponseOutput {
+	return o.ApplyT(func(v *Table) ChangeStreamConfigResponseOutput { return v.ChangeStreamConfig }).(ChangeStreamConfigResponseOutput)
 }
 
 // Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`

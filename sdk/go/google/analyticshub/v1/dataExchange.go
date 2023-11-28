@@ -36,6 +36,8 @@ type DataExchange struct {
 	// Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
 	PrimaryContact pulumi.StringOutput `pulumi:"primaryContact"`
 	Project        pulumi.StringOutput `pulumi:"project"`
+	// Optional. Configurable data sharing environment option for a data exchange.
+	SharingEnvironmentConfig SharingEnvironmentConfigResponseOutput `pulumi:"sharingEnvironmentConfig"`
 }
 
 // NewDataExchange registers a new resource with the given unique name, arguments, and options.
@@ -104,6 +106,8 @@ type dataExchangeArgs struct {
 	// Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
 	PrimaryContact *string `pulumi:"primaryContact"`
 	Project        *string `pulumi:"project"`
+	// Optional. Configurable data sharing environment option for a data exchange.
+	SharingEnvironmentConfig *SharingEnvironmentConfig `pulumi:"sharingEnvironmentConfig"`
 }
 
 // The set of arguments for constructing a DataExchange resource.
@@ -122,6 +126,8 @@ type DataExchangeArgs struct {
 	// Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
 	PrimaryContact pulumi.StringPtrInput
 	Project        pulumi.StringPtrInput
+	// Optional. Configurable data sharing environment option for a data exchange.
+	SharingEnvironmentConfig SharingEnvironmentConfigPtrInput
 }
 
 func (DataExchangeArgs) ElementType() reflect.Type {
@@ -219,6 +225,11 @@ func (o DataExchangeOutput) PrimaryContact() pulumi.StringOutput {
 
 func (o DataExchangeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. Configurable data sharing environment option for a data exchange.
+func (o DataExchangeOutput) SharingEnvironmentConfig() SharingEnvironmentConfigResponseOutput {
+	return o.ApplyT(func(v *DataExchange) SharingEnvironmentConfigResponseOutput { return v.SharingEnvironmentConfig }).(SharingEnvironmentConfigResponseOutput)
 }
 
 func init() {

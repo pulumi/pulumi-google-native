@@ -1688,6 +1688,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         public static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType SfdcCdcChannel { get; } = new EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_CDC_CHANNEL");
         public static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType SfdcPlatformEventsChannel { get; } = new EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_PLATFORM_EVENTS_CHANNEL");
         public static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType CloudScheduler { get; } = new EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("CLOUD_SCHEDULER");
+        public static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType IntegrationConnectorTrigger { get; } = new EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("INTEGRATION_CONNECTOR_TRIGGER");
+        public static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType PrivateTrigger { get; } = new EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("PRIVATE_TRIGGER");
 
         public static bool operator ==(EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType left, EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType right) => left.Equals(right);
         public static bool operator !=(EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType left, EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType right) => !left.Equals(right);
@@ -2041,6 +2043,116 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType other && Equals(other);
         public bool Equals(EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of assertion to perform.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy : IEquatable<GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy>
+    {
+        private readonly string _value;
+
+        private GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified Assertion strategy
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy AssertionStrategyUnspecified { get; } = new GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERTION_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// Test a successful execution
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy AssertSuccessfulExecution { get; } = new GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_SUCCESSFUL_EXECUTION");
+        /// <summary>
+        /// Test a failed execution
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy AssertFailedExecution { get; } = new GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_FAILED_EXECUTION");
+        /// <summary>
+        /// Test that the task was never executed
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy AssertNoExecution { get; } = new GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_NO_EXECUTION");
+        /// <summary>
+        /// Test the parameter selected is equal to the expected value
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy AssertEquals { get; } = new GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_EQUALS");
+        /// <summary>
+        /// Test the parameter selected is not equal to the expected value
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy AssertNotEquals { get; } = new GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_NOT_EQUALS");
+        /// <summary>
+        /// Test the parameter selected contains the configured value
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy AssertContains { get; } = new GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_CONTAINS");
+        /// <summary>
+        /// Test a specific condition
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy AssertCondition { get; } = new GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_CONDITION");
+
+        public static bool operator ==(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy left, GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy left, GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy other && Equals(other);
+        public bool Equals(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity : IEquatable<GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity>
+    {
+        private readonly string _value;
+
+        private GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity CloudLoggingSeverityUnspecified { get; } = new GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("CLOUD_LOGGING_SEVERITY_UNSPECIFIED");
+        /// <summary>
+        /// If Severity selected is `DEFAULT`, then all the Integration Execution States will be sent to Cloud Logging.
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity Default { get; } = new GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("DEFAULT");
+        /// <summary>
+        /// If Severity selected is `INFO`, then only the following Integration Execution States (`IN_PROCESS`, `ON_HOLD`, `SUCCEEDED` and `SUSPENDED`) will be sent to Cloud Logging.
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity Info { get; } = new GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("INFO");
+        /// <summary>
+        /// If Severity selected is `ERROR`, then only the following Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud Logging.
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity Error { get; } = new GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("ERROR");
+        /// <summary>
+        /// If Severity selected is `WARNING`, then only the following Integration Execution States (`RETRY_ON_HOLD`) will be sent to Cloud Logging.
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity Warning { get; } = new GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("WARNING");
+
+        public static bool operator ==(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity left, GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity left, GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity other && Equals(other);
+        public bool Equals(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -2415,6 +2527,55 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType other && Equals(other);
         public bool Equals(GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Mockstrategy defines how the particular task should be mocked during test execution
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudIntegrationsV1alphaMockConfigMockStrategy : IEquatable<GoogleCloudIntegrationsV1alphaMockConfigMockStrategy>
+    {
+        private readonly string _value;
+
+        private GoogleCloudIntegrationsV1alphaMockConfigMockStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This should never be used to annotate a field
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaMockConfigMockStrategy MockStrategyUnspecified { get; } = new GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("MOCK_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// Execute actual task
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaMockConfigMockStrategy NoMockStrategy { get; } = new GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("NO_MOCK_STRATEGY");
+        /// <summary>
+        /// Don't execute actual task, instead use the values specified by user for output of the task
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaMockConfigMockStrategy SpecificMockStrategy { get; } = new GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("SPECIFIC_MOCK_STRATEGY");
+        /// <summary>
+        /// Don't execute actual task, instead return task failure
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaMockConfigMockStrategy FailureMockStrategy { get; } = new GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("FAILURE_MOCK_STRATEGY");
+        /// <summary>
+        /// Don't execute actual task, instead mark it as successful
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaMockConfigMockStrategy SkipMockStrategy { get; } = new GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("SKIP_MOCK_STRATEGY");
+
+        public static bool operator ==(GoogleCloudIntegrationsV1alphaMockConfigMockStrategy left, GoogleCloudIntegrationsV1alphaMockConfigMockStrategy right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudIntegrationsV1alphaMockConfigMockStrategy left, GoogleCloudIntegrationsV1alphaMockConfigMockStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudIntegrationsV1alphaMockConfigMockStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudIntegrationsV1alphaMockConfigMockStrategy other && Equals(other);
+        public bool Equals(GoogleCloudIntegrationsV1alphaMockConfigMockStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -3010,6 +3171,14 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// Trigger by Cloud Scheduler job.
         /// </summary>
         public static GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType CloudScheduler { get; } = new GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType("CLOUD_SCHEDULER");
+        /// <summary>
+        /// Trigger by Connector Event
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType IntegrationConnectorTrigger { get; } = new GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType("INTEGRATION_CONNECTOR_TRIGGER");
+        /// <summary>
+        /// Trigger for private workflow
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType PrivateTrigger { get; } = new GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType("PRIVATE_TRIGGER");
 
         public static bool operator ==(GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType left, GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType right) => left.Equals(right);
         public static bool operator !=(GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType left, GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType right) => !left.Equals(right);
@@ -3047,6 +3216,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// Disables persistence for all execution data.
         /// </summary>
         public static TemplatesVersionDatabasePersistencePolicy DatabasePersistenceDisabled { get; } = new TemplatesVersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_DISABLED");
+        /// <summary>
+        /// Asynchronously persist all execution data.
+        /// </summary>
+        public static TemplatesVersionDatabasePersistencePolicy DatabasePersistenceAsync { get; } = new TemplatesVersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_ASYNC");
 
         public static bool operator ==(TemplatesVersionDatabasePersistencePolicy left, TemplatesVersionDatabasePersistencePolicy right) => left.Equals(right);
         public static bool operator !=(TemplatesVersionDatabasePersistencePolicy left, TemplatesVersionDatabasePersistencePolicy right) => !left.Equals(right);
@@ -3098,6 +3271,47 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
     }
 
     /// <summary>
+    /// Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index..
+    /// </summary>
+    [EnumType]
+    public readonly struct TestCaseDatabasePersistencePolicy : IEquatable<TestCaseDatabasePersistencePolicy>
+    {
+        private readonly string _value;
+
+        private TestCaseDatabasePersistencePolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Enables persistence for all execution data.
+        /// </summary>
+        public static TestCaseDatabasePersistencePolicy DatabasePersistencePolicyUnspecified { get; } = new TestCaseDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// Disables persistence for all execution data.
+        /// </summary>
+        public static TestCaseDatabasePersistencePolicy DatabasePersistenceDisabled { get; } = new TestCaseDatabasePersistencePolicy("DATABASE_PERSISTENCE_DISABLED");
+        /// <summary>
+        /// Asynchronously persist all execution data.
+        /// </summary>
+        public static TestCaseDatabasePersistencePolicy DatabasePersistenceAsync { get; } = new TestCaseDatabasePersistencePolicy("DATABASE_PERSISTENCE_ASYNC");
+
+        public static bool operator ==(TestCaseDatabasePersistencePolicy left, TestCaseDatabasePersistencePolicy right) => left.Equals(right);
+        public static bool operator !=(TestCaseDatabasePersistencePolicy left, TestCaseDatabasePersistencePolicy right) => !left.Equals(right);
+
+        public static explicit operator string(TestCaseDatabasePersistencePolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TestCaseDatabasePersistencePolicy other && Equals(other);
+        public bool Equals(TestCaseDatabasePersistencePolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
     /// </summary>
     [EnumType]
@@ -3118,6 +3332,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// Disables persistence for all execution data.
         /// </summary>
         public static VersionDatabasePersistencePolicy DatabasePersistenceDisabled { get; } = new VersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_DISABLED");
+        /// <summary>
+        /// Asynchronously persist all execution data.
+        /// </summary>
+        public static VersionDatabasePersistencePolicy DatabasePersistenceAsync { get; } = new VersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_ASYNC");
 
         public static bool operator ==(VersionDatabasePersistencePolicy left, VersionDatabasePersistencePolicy right) => left.Equals(right);
         public static bool operator !=(VersionDatabasePersistencePolicy left, VersionDatabasePersistencePolicy right) => !left.Equals(right);
@@ -3164,6 +3382,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// Workflow is being created via Standalone IP Provisioning
         /// </summary>
         public static VersionOrigin ApplicationIpProvisioning { get; } = new VersionOrigin("APPLICATION_IP_PROVISIONING");
+        /// <summary>
+        /// Workflow is being created via Test Case.
+        /// </summary>
+        public static VersionOrigin TestCase { get; } = new VersionOrigin("TEST_CASE");
 
         public static bool operator ==(VersionOrigin left, VersionOrigin right) => left.Equals(right);
         public static bool operator !=(VersionOrigin left, VersionOrigin right) => !left.Equals(right);

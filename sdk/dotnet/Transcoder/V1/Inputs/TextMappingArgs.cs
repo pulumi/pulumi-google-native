@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
 {
 
     /// <summary>
-    /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+    /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
     /// </summary>
     public sealed class TextMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+        /// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
         /// </summary>
         [Input("atomKey", required: true)]
         public Input<string> AtomKey { get; set; } = null!;
 
         /// <summary>
-        /// The `Input.key` that identifies the input file.
+        /// The Input.key that identifies the input file.
         /// </summary>
         [Input("inputKey", required: true)]
         public Input<string> InputKey { get; set; } = null!;

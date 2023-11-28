@@ -40,7 +40,7 @@ class BuildInitArgs:
         :param pulumi.Input['ArtifactsArgs'] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         :param pulumi.Input['SecretsArgs'] available_secrets: Secrets and secret environment variables.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-        :param pulumi.Input[str] logs_bucket: Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        :param pulumi.Input[str] logs_bucket: Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         :param pulumi.Input['BuildOptionsArgs'] options: Special options for this build.
         :param pulumi.Input[str] queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
         :param pulumi.Input[Sequence[pulumi.Input['SecretArgs']]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
@@ -154,7 +154,7 @@ class BuildInitArgs:
     @pulumi.getter(name="logsBucket")
     def logs_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         """
         return pulumi.get(self, "logs_bucket")
 
@@ -301,7 +301,7 @@ class Build(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ArtifactsArgs']] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         :param pulumi.Input[pulumi.InputType['SecretsArgs']] available_secrets: Secrets and secret environment variables.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-        :param pulumi.Input[str] logs_bucket: Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        :param pulumi.Input[str] logs_bucket: Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         :param pulumi.Input[pulumi.InputType['BuildOptionsArgs']] options: Special options for this build.
         :param pulumi.Input[str] project_id: Required. ID of the project.
         :param pulumi.Input[str] queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
@@ -536,7 +536,7 @@ class Build(pulumi.CustomResource):
     @pulumi.getter(name="logsBucket")
     def logs_bucket(self) -> pulumi.Output[str]:
         """
-        Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         """
         return pulumi.get(self, "logs_bucket")
 

@@ -23,6 +23,10 @@ class InstanceMemcacheVersion(str, Enum):
     """
     Memcached 1.5 version.
     """
+    MEMCACHE1615 = "MEMCACHE_1_6_15"
+    """
+    Memcached 1.6.15 version.
+    """
 
 
 class InstanceMessageCode(str, Enum):

@@ -802,6 +802,10 @@ func (o NodeConfigResponseOutput) MemorySizeMb() pulumi.IntOutput {
 type NodeResponse struct {
 	// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
 	Host string `pulumi:"host"`
+	// The full version of memcached server running on this node. e.g. - memcached-1.5.16
+	MemcacheFullVersion string `pulumi:"memcacheFullVersion"`
+	// Major version of memcached server running on this node, e.g. MEMCACHE_1_5
+	MemcacheVersion string `pulumi:"memcacheVersion"`
 	// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
 	NodeId string `pulumi:"nodeId"`
 	// User defined parameters currently applied to the node.
@@ -839,6 +843,16 @@ func (o NodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeRes
 // Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
 func (o NodeResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The full version of memcached server running on this node. e.g. - memcached-1.5.16
+func (o NodeResponseOutput) MemcacheFullVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.MemcacheFullVersion }).(pulumi.StringOutput)
+}
+
+// Major version of memcached server running on this node, e.g. MEMCACHE_1_5
+func (o NodeResponseOutput) MemcacheVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.MemcacheVersion }).(pulumi.StringOutput)
 }
 
 // Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.

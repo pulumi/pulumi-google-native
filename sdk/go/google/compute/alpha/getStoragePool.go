@@ -30,6 +30,8 @@ type LookupStoragePoolArgs struct {
 }
 
 type LookupStoragePoolResult struct {
+	// Provisioning type of the byte capacity of the pool.
+	CapacityProvisioningType string `pulumi:"capacityProvisioningType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -42,8 +44,12 @@ type LookupStoragePoolResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
+	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+	PerformanceProvisioningType string `pulumi:"performanceProvisioningType"`
 	// Provsioned IOPS of the storage pool.
 	ProvisionedIops string `pulumi:"provisionedIops"`
+	// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
 	// Status information for the storage pool resource.
 	ResourceStatus StoragePoolResourceStatusResponse `pulumi:"resourceStatus"`
 	// Server-defined fully-qualified URL for this resource.
@@ -54,8 +60,10 @@ type LookupStoragePoolResult struct {
 	SizeGb string `pulumi:"sizeGb"`
 	// The status of storage pool creation. - CREATING: Storage pool is provisioning. storagePool. - FAILED: Storage pool creation failed. - READY: Storage pool is ready for use. - DELETING: Storage pool is deleting.
 	State string `pulumi:"state"`
-	// Type of the storage pool
-	Type string `pulumi:"type"`
+	// Status information for the storage pool resource.
+	Status StoragePoolResourceStatusResponse `pulumi:"status"`
+	// Type of the storage pool.
+	StoragePoolType string `pulumi:"storagePoolType"`
 	// URL of the zone where the storage pool resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Zone string `pulumi:"zone"`
 }
@@ -103,6 +111,11 @@ func (o LookupStoragePoolResultOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// Provisioning type of the byte capacity of the pool.
+func (o LookupStoragePoolResultOutput) CapacityProvisioningType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.CapacityProvisioningType }).(pulumi.StringOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o LookupStoragePoolResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -133,9 +146,19 @@ func (o LookupStoragePoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+func (o LookupStoragePoolResultOutput) PerformanceProvisioningType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.PerformanceProvisioningType }).(pulumi.StringOutput)
+}
+
 // Provsioned IOPS of the storage pool.
 func (o LookupStoragePoolResultOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.ProvisionedIops }).(pulumi.StringOutput)
+}
+
+// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+func (o LookupStoragePoolResultOutput) ProvisionedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
 
 // Status information for the storage pool resource.
@@ -163,9 +186,14 @@ func (o LookupStoragePoolResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Type of the storage pool
-func (o LookupStoragePoolResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.Type }).(pulumi.StringOutput)
+// Status information for the storage pool resource.
+func (o LookupStoragePoolResultOutput) Status() StoragePoolResourceStatusResponseOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) StoragePoolResourceStatusResponse { return v.Status }).(StoragePoolResourceStatusResponseOutput)
+}
+
+// Type of the storage pool.
+func (o LookupStoragePoolResultOutput) StoragePoolType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.StoragePoolType }).(pulumi.StringOutput)
 }
 
 // URL of the zone where the storage pool resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.

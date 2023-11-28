@@ -1146,7 +1146,9 @@ type DnsSettings struct {
 	CustomDns *CustomDns `pulumi:"customDns"`
 	// The list of glue records for this `Registration`. Commonly empty.
 	GlueRecords []GlueRecord `pulumi:"glueRecords"`
-	// The free DNS zone provided by [Google Domains](https://domains.google/).
+	// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
+	//
+	// Deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
 	GoogleDomainsDns *GoogleDomainsDns `pulumi:"googleDomainsDns"`
 }
 
@@ -1167,7 +1169,9 @@ type DnsSettingsArgs struct {
 	CustomDns CustomDnsPtrInput `pulumi:"customDns"`
 	// The list of glue records for this `Registration`. Commonly empty.
 	GlueRecords GlueRecordArrayInput `pulumi:"glueRecords"`
-	// The free DNS zone provided by [Google Domains](https://domains.google/).
+	// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
+	//
+	// Deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
 	GoogleDomainsDns GoogleDomainsDnsPtrInput `pulumi:"googleDomainsDns"`
 }
 
@@ -1277,7 +1281,9 @@ func (o DnsSettingsOutput) GlueRecords() GlueRecordArrayOutput {
 	return o.ApplyT(func(v DnsSettings) []GlueRecord { return v.GlueRecords }).(GlueRecordArrayOutput)
 }
 
-// The free DNS zone provided by [Google Domains](https://domains.google/).
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
+//
+// Deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
 func (o DnsSettingsOutput) GoogleDomainsDns() GoogleDomainsDnsPtrOutput {
 	return o.ApplyT(func(v DnsSettings) *GoogleDomainsDns { return v.GoogleDomainsDns }).(GoogleDomainsDnsPtrOutput)
 }
@@ -1332,7 +1338,9 @@ func (o DnsSettingsPtrOutput) GlueRecords() GlueRecordArrayOutput {
 	}).(GlueRecordArrayOutput)
 }
 
-// The free DNS zone provided by [Google Domains](https://domains.google/).
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
+//
+// Deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
 func (o DnsSettingsPtrOutput) GoogleDomainsDns() GoogleDomainsDnsPtrOutput {
 	return o.ApplyT(func(v *DnsSettings) *GoogleDomainsDns {
 		if v == nil {
@@ -1348,7 +1356,9 @@ type DnsSettingsResponse struct {
 	CustomDns CustomDnsResponse `pulumi:"customDns"`
 	// The list of glue records for this `Registration`. Commonly empty.
 	GlueRecords []GlueRecordResponse `pulumi:"glueRecords"`
-	// The free DNS zone provided by [Google Domains](https://domains.google/).
+	// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
+	//
+	// Deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
 	GoogleDomainsDns GoogleDomainsDnsResponse `pulumi:"googleDomainsDns"`
 }
 
@@ -1383,7 +1393,9 @@ func (o DnsSettingsResponseOutput) GlueRecords() GlueRecordResponseArrayOutput {
 	return o.ApplyT(func(v DnsSettingsResponse) []GlueRecordResponse { return v.GlueRecords }).(GlueRecordResponseArrayOutput)
 }
 
-// The free DNS zone provided by [Google Domains](https://domains.google/).
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
+//
+// Deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
 func (o DnsSettingsResponseOutput) GoogleDomainsDns() GoogleDomainsDnsResponseOutput {
 	return o.ApplyT(func(v DnsSettingsResponse) GoogleDomainsDnsResponse { return v.GoogleDomainsDns }).(GoogleDomainsDnsResponseOutput)
 }
@@ -2106,7 +2118,7 @@ func (o GlueRecordResponseArrayOutput) Index(i pulumi.IntInput) GlueRecordRespon
 	}).(GlueRecordResponseOutput)
 }
 
-// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDns struct {
 	// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
 	DsState GoogleDomainsDnsDsState `pulumi:"dsState"`
@@ -2123,7 +2135,7 @@ type GoogleDomainsDnsInput interface {
 	ToGoogleDomainsDnsOutputWithContext(context.Context) GoogleDomainsDnsOutput
 }
 
-// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDnsArgs struct {
 	// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
 	DsState GoogleDomainsDnsDsStateInput `pulumi:"dsState"`
@@ -2194,7 +2206,7 @@ func (i *googleDomainsDnsPtrType) ToOutput(ctx context.Context) pulumix.Output[*
 	}
 }
 
-// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDnsOutput struct{ *pulumi.OutputState }
 
 func (GoogleDomainsDnsOutput) ElementType() reflect.Type {
@@ -2270,7 +2282,7 @@ func (o GoogleDomainsDnsPtrOutput) DsState() GoogleDomainsDnsDsStatePtrOutput {
 	}).(GoogleDomainsDnsDsStatePtrOutput)
 }
 
-// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDnsResponse struct {
 	// The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
 	DsRecords []DsRecordResponse `pulumi:"dsRecords"`
@@ -2280,7 +2292,7 @@ type GoogleDomainsDnsResponse struct {
 	NameServers []string `pulumi:"nameServers"`
 }
 
-// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDnsResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleDomainsDnsResponseOutput) ElementType() reflect.Type {
@@ -2318,6 +2330,8 @@ func (o GoogleDomainsDnsResponseOutput) NameServers() pulumi.StringArrayOutput {
 
 // Defines renewal, billing, and transfer settings for a `Registration`.
 type ManagementSettings struct {
+	// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+	PreferredRenewalMethod *ManagementSettingsPreferredRenewalMethod `pulumi:"preferredRenewalMethod"`
 	// Controls whether the domain can be transferred to another registrar.
 	TransferLockState *ManagementSettingsTransferLockState `pulumi:"transferLockState"`
 }
@@ -2335,6 +2349,8 @@ type ManagementSettingsInput interface {
 
 // Defines renewal, billing, and transfer settings for a `Registration`.
 type ManagementSettingsArgs struct {
+	// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+	PreferredRenewalMethod ManagementSettingsPreferredRenewalMethodPtrInput `pulumi:"preferredRenewalMethod"`
 	// Controls whether the domain can be transferred to another registrar.
 	TransferLockState ManagementSettingsTransferLockStatePtrInput `pulumi:"transferLockState"`
 }
@@ -2435,6 +2451,11 @@ func (o ManagementSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[M
 	}
 }
 
+// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+func (o ManagementSettingsOutput) PreferredRenewalMethod() ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return o.ApplyT(func(v ManagementSettings) *ManagementSettingsPreferredRenewalMethod { return v.PreferredRenewalMethod }).(ManagementSettingsPreferredRenewalMethodPtrOutput)
+}
+
 // Controls whether the domain can be transferred to another registrar.
 func (o ManagementSettingsOutput) TransferLockState() ManagementSettingsTransferLockStatePtrOutput {
 	return o.ApplyT(func(v ManagementSettings) *ManagementSettingsTransferLockState { return v.TransferLockState }).(ManagementSettingsTransferLockStatePtrOutput)
@@ -2470,6 +2491,16 @@ func (o ManagementSettingsPtrOutput) Elem() ManagementSettingsOutput {
 	}).(ManagementSettingsOutput)
 }
 
+// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+func (o ManagementSettingsPtrOutput) PreferredRenewalMethod() ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return o.ApplyT(func(v *ManagementSettings) *ManagementSettingsPreferredRenewalMethod {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredRenewalMethod
+	}).(ManagementSettingsPreferredRenewalMethodPtrOutput)
+}
+
 // Controls whether the domain can be transferred to another registrar.
 func (o ManagementSettingsPtrOutput) TransferLockState() ManagementSettingsTransferLockStatePtrOutput {
 	return o.ApplyT(func(v *ManagementSettings) *ManagementSettingsTransferLockState {
@@ -2482,7 +2513,9 @@ func (o ManagementSettingsPtrOutput) TransferLockState() ManagementSettingsTrans
 
 // Defines renewal, billing, and transfer settings for a `Registration`.
 type ManagementSettingsResponse struct {
-	// The renewal method for this `Registration`.
+	// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+	PreferredRenewalMethod string `pulumi:"preferredRenewalMethod"`
+	// The actual renewal method for this `Registration`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be equal to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
 	RenewalMethod string `pulumi:"renewalMethod"`
 	// Controls whether the domain can be transferred to another registrar.
 	TransferLockState string `pulumi:"transferLockState"`
@@ -2509,7 +2542,12 @@ func (o ManagementSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// The renewal method for this `Registration`.
+// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+func (o ManagementSettingsResponseOutput) PreferredRenewalMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementSettingsResponse) string { return v.PreferredRenewalMethod }).(pulumi.StringOutput)
+}
+
+// The actual renewal method for this `Registration`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be equal to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
 func (o ManagementSettingsResponseOutput) RenewalMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagementSettingsResponse) string { return v.RenewalMethod }).(pulumi.StringOutput)
 }

@@ -40,6 +40,10 @@ export class DataTaxonomy extends pulumi.CustomResource {
      */
     public /*out*/ readonly attributeCount!: pulumi.Output<number>;
     /**
+     * The number of classes in the DataTaxonomy.
+     */
+    public /*out*/ readonly classCount!: pulumi.Output<number>;
+    /**
      * The time when the DataTaxonomy was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -100,12 +104,14 @@ export class DataTaxonomy extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["attributeCount"] = undefined /*out*/;
+            resourceInputs["classCount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["attributeCount"] = undefined /*out*/;
+            resourceInputs["classCount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataTaxonomyId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

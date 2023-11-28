@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class OrderedJobResponse
     {
         /// <summary>
+        /// Optional. Job is a Flink job.
+        /// </summary>
+        public readonly Outputs.FlinkJobResponse FlinkJob;
+        /// <summary>
         /// Optional. Job is a Hadoop job.
         /// </summary>
         public readonly Outputs.HadoopJobResponse HadoopJob;
@@ -71,6 +75,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
         [OutputConstructor]
         private OrderedJobResponse(
+            Outputs.FlinkJobResponse flinkJob,
+
             Outputs.HadoopJobResponse hadoopJob,
 
             Outputs.HiveJobResponse hiveJob,
@@ -97,6 +103,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
             Outputs.TrinoJobResponse trinoJob)
         {
+            FlinkJob = flinkJob;
             HadoopJob = hadoopJob;
             HiveJob = hiveJob;
             Labels = labels;

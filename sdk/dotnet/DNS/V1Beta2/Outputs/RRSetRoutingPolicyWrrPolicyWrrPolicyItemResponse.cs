@@ -17,17 +17,17 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
     public sealed class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse
     {
         /// <summary>
-        /// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+        /// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
         /// </summary>
         public readonly Outputs.RRSetRoutingPolicyHealthCheckTargetsResponse HealthCheckedTargets;
         public readonly string Kind;
         public readonly ImmutableArray<string> Rrdatas;
         /// <summary>
-        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
         /// </summary>
         public readonly ImmutableArray<string> SignatureRrdatas;
         /// <summary>
-        /// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+        /// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
         /// </summary>
         public readonly double Weight;
 

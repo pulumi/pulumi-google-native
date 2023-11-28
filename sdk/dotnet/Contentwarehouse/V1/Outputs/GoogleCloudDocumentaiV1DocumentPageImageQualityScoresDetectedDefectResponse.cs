@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
     public sealed class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
         /// </summary>
         public readonly double Confidence;
         /// <summary>

@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.IAM.V1
     public sealed class GetWorkforcePoolResult
     {
         /// <summary>
+        /// Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        /// </summary>
+        public readonly Outputs.AccessRestrictionsResponse AccessRestrictions;
+        /// <summary>
         /// A user-specified description of the pool. Cannot exceed 256 characters.
         /// </summary>
         public readonly string Description;
@@ -69,6 +73,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Time after which the workforce pool will be permanently purged and cannot be recovered.
+        /// </summary>
+        public readonly string ExpireTime;
         /// <summary>
         /// The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`
         /// </summary>
@@ -88,11 +96,15 @@ namespace Pulumi.GoogleNative.IAM.V1
 
         [OutputConstructor]
         private GetWorkforcePoolResult(
+            Outputs.AccessRestrictionsResponse accessRestrictions,
+
             string description,
 
             bool disabled,
 
             string displayName,
+
+            string expireTime,
 
             string name,
 
@@ -102,9 +114,11 @@ namespace Pulumi.GoogleNative.IAM.V1
 
             string state)
         {
+            AccessRestrictions = accessRestrictions;
             Description = description;
             Disabled = disabled;
             DisplayName = displayName;
+            ExpireTime = expireTime;
             Name = name;
             Parent = parent;
             SessionDuration = sessionDuration;

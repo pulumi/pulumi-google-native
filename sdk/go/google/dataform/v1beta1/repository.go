@@ -18,9 +18,13 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
+	// Optional. The repository's user-friendly name.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	GitRemoteSettings GitRemoteSettingsResponseOutput `pulumi:"gitRemoteSettings"`
-	Location          pulumi.StringOutput             `pulumi:"location"`
+	// Optional. Repository user labels.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The repository's name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
@@ -28,6 +32,10 @@ type Repository struct {
 	Project                                pulumi.StringOutput `pulumi:"project"`
 	// Required. The ID to use for the repository, which will become the final component of the repository's resource name.
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
+	// Optional. The service account to run workflow invocations under.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+	SetAuthenticatedUserAdmin pulumi.BoolOutput `pulumi:"setAuthenticatedUserAdmin"`
 	// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
 	WorkspaceCompilationOverrides WorkspaceCompilationOverridesResponseOutput `pulumi:"workspaceCompilationOverrides"`
 }
@@ -81,28 +89,44 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
+	// Optional. The repository's user-friendly name.
+	DisplayName *string `pulumi:"displayName"`
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	GitRemoteSettings *GitRemoteSettings `pulumi:"gitRemoteSettings"`
-	Location          *string            `pulumi:"location"`
+	// Optional. Repository user labels.
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion *string `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
 	Project                                *string `pulumi:"project"`
 	// Required. The ID to use for the repository, which will become the final component of the repository's resource name.
 	RepositoryId string `pulumi:"repositoryId"`
+	// Optional. The service account to run workflow invocations under.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+	SetAuthenticatedUserAdmin *bool `pulumi:"setAuthenticatedUserAdmin"`
 	// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
 	WorkspaceCompilationOverrides *WorkspaceCompilationOverrides `pulumi:"workspaceCompilationOverrides"`
 }
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
+	// Optional. The repository's user-friendly name.
+	DisplayName pulumi.StringPtrInput
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	GitRemoteSettings GitRemoteSettingsPtrInput
-	Location          pulumi.StringPtrInput
+	// Optional. Repository user labels.
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion pulumi.StringPtrInput
 	Project                                pulumi.StringPtrInput
 	// Required. The ID to use for the repository, which will become the final component of the repository's resource name.
 	RepositoryId pulumi.StringInput
+	// Optional. The service account to run workflow invocations under.
+	ServiceAccount pulumi.StringPtrInput
+	// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+	SetAuthenticatedUserAdmin pulumi.BoolPtrInput
 	// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
 	WorkspaceCompilationOverrides WorkspaceCompilationOverridesPtrInput
 }
@@ -156,9 +180,19 @@ func (o RepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[*Reposito
 	}
 }
 
+// Optional. The repository's user-friendly name.
+func (o RepositoryOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
 // Optional. If set, configures this repository to be linked to a Git remote.
 func (o RepositoryOutput) GitRemoteSettings() GitRemoteSettingsResponseOutput {
 	return o.ApplyT(func(v *Repository) GitRemoteSettingsResponseOutput { return v.GitRemoteSettings }).(GitRemoteSettingsResponseOutput)
+}
+
+// Optional. Repository user labels.
+func (o RepositoryOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o RepositoryOutput) Location() pulumi.StringOutput {
@@ -182,6 +216,16 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 // Required. The ID to use for the repository, which will become the final component of the repository's resource name.
 func (o RepositoryOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
+}
+
+// Optional. The service account to run workflow invocations under.
+func (o RepositoryOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+func (o RepositoryOutput) SetAuthenticatedUserAdmin() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Repository) pulumi.BoolOutput { return v.SetAuthenticatedUserAdmin }).(pulumi.BoolOutput)
 }
 
 // Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.

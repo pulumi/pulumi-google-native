@@ -109,6 +109,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+        /// </summary>
+        public readonly Outputs.CustomerEncryptionKeyResponse InstanceEncryptionKey;
+        /// <summary>
         /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         /// </summary>
         public readonly string KeyRevocationActionType;
@@ -250,6 +254,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string hostname,
 
+            Outputs.CustomerEncryptionKeyResponse instanceEncryptionKey,
+
             string keyRevocationActionType,
 
             string kind,
@@ -324,6 +330,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Fingerprint = fingerprint;
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
+            InstanceEncryptionKey = instanceEncryptionKey;
             KeyRevocationActionType = keyRevocationActionType;
             Kind = kind;
             LabelFingerprint = labelFingerprint;

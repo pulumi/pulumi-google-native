@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
     public sealed class CryptoHashConfigResponse
     {
         /// <summary>
-        /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
         /// </summary>
         public readonly string CryptoKey;
         /// <summary>
-        /// KMS wrapped key. Must not be set if `crypto_key` is set.
+        /// KMS wrapped key. Must not be set if crypto_key is set.
         /// </summary>
         public readonly Outputs.KmsWrappedCryptoKeyResponse KmsWrapped;
 

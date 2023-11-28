@@ -212,6 +212,8 @@ const (
 	CryptoKeyPurposeAsymmetricSign = CryptoKeyPurpose("ASYMMETRIC_SIGN")
 	// CryptoKeys with this purpose may be used with AsymmetricDecrypt and GetPublicKey.
 	CryptoKeyPurposeAsymmetricDecrypt = CryptoKeyPurpose("ASYMMETRIC_DECRYPT")
+	// CryptoKeys with this purpose may be used with RawEncrypt and RawDecrypt. This purpose is meant to be used for interoperable symmetric encryption and does not support automatic CryptoKey rotation.
+	CryptoKeyPurposeRawEncryptDecrypt = CryptoKeyPurpose("RAW_ENCRYPT_DECRYPT")
 	// CryptoKeys with this purpose may be used with MacSign.
 	CryptoKeyPurposeMac = CryptoKeyPurpose("MAC")
 )
@@ -602,6 +604,18 @@ const (
 	CryptoKeyVersionTemplateAlgorithmCryptoKeyVersionAlgorithmUnspecified = CryptoKeyVersionTemplateAlgorithm("CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED")
 	// Creates symmetric encryption keys.
 	CryptoKeyVersionTemplateAlgorithmGoogleSymmetricEncryption = CryptoKeyVersionTemplateAlgorithm("GOOGLE_SYMMETRIC_ENCRYPTION")
+	// AES-GCM (Galois Counter Mode) using 128-bit keys.
+	CryptoKeyVersionTemplateAlgorithmAes128Gcm = CryptoKeyVersionTemplateAlgorithm("AES_128_GCM")
+	// AES-GCM (Galois Counter Mode) using 256-bit keys.
+	CryptoKeyVersionTemplateAlgorithmAes256Gcm = CryptoKeyVersionTemplateAlgorithm("AES_256_GCM")
+	// AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+	CryptoKeyVersionTemplateAlgorithmAes128Cbc = CryptoKeyVersionTemplateAlgorithm("AES_128_CBC")
+	// AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+	CryptoKeyVersionTemplateAlgorithmAes256Cbc = CryptoKeyVersionTemplateAlgorithm("AES_256_CBC")
+	// AES-CTR (Counter Mode) using 128-bit keys.
+	CryptoKeyVersionTemplateAlgorithmAes128Ctr = CryptoKeyVersionTemplateAlgorithm("AES_128_CTR")
+	// AES-CTR (Counter Mode) using 256-bit keys.
+	CryptoKeyVersionTemplateAlgorithmAes256Ctr = CryptoKeyVersionTemplateAlgorithm("AES_256_CTR")
 	// RSASSA-PSS 2048 bit key with a SHA256 digest.
 	CryptoKeyVersionTemplateAlgorithmRsaSignPss2048Sha256 = CryptoKeyVersionTemplateAlgorithm("RSA_SIGN_PSS_2048_SHA256")
 	// RSASSA-PSS 3072 bit key with a SHA256 digest.

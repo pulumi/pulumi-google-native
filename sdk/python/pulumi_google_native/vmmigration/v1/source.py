@@ -18,7 +18,9 @@ class SourceArgs:
     def __init__(__self__, *,
                  source_id: pulumi.Input[str],
                  aws: Optional[pulumi.Input['AwsSourceDetailsArgs']] = None,
+                 azure: Optional[pulumi.Input['AzureSourceDetailsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encryption: Optional[pulumi.Input['EncryptionArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -28,7 +30,9 @@ class SourceArgs:
         The set of arguments for constructing a Source resource.
         :param pulumi.Input[str] source_id: Required. The source identifier.
         :param pulumi.Input['AwsSourceDetailsArgs'] aws: AWS type source details.
+        :param pulumi.Input['AzureSourceDetailsArgs'] azure: Azure type source details.
         :param pulumi.Input[str] description: User-provided description of the source.
+        :param pulumi.Input['EncryptionArgs'] encryption: Optional. Immutable. The encryption details of the source data stored by the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the source.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['VmwareSourceDetailsArgs'] vmware: Vmware type source details.
@@ -36,8 +40,12 @@ class SourceArgs:
         pulumi.set(__self__, "source_id", source_id)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if azure is not None:
+            pulumi.set(__self__, "azure", azure)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -75,6 +83,18 @@ class SourceArgs:
 
     @property
     @pulumi.getter
+    def azure(self) -> Optional[pulumi.Input['AzureSourceDetailsArgs']]:
+        """
+        Azure type source details.
+        """
+        return pulumi.get(self, "azure")
+
+    @azure.setter
+    def azure(self, value: Optional[pulumi.Input['AzureSourceDetailsArgs']]):
+        pulumi.set(self, "azure", value)
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         User-provided description of the source.
@@ -84,6 +104,18 @@ class SourceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['EncryptionArgs']]:
+        """
+        Optional. Immutable. The encryption details of the source data stored by the service.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['EncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
 
     @property
     @pulumi.getter
@@ -146,7 +178,9 @@ class Source(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws: Optional[pulumi.Input[pulumi.InputType['AwsSourceDetailsArgs']]] = None,
+                 azure: Optional[pulumi.Input[pulumi.InputType['AzureSourceDetailsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encryption: Optional[pulumi.Input[pulumi.InputType['EncryptionArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -161,7 +195,9 @@ class Source(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AwsSourceDetailsArgs']] aws: AWS type source details.
+        :param pulumi.Input[pulumi.InputType['AzureSourceDetailsArgs']] azure: Azure type source details.
         :param pulumi.Input[str] description: User-provided description of the source.
+        :param pulumi.Input[pulumi.InputType['EncryptionArgs']] encryption: Optional. Immutable. The encryption details of the source data stored by the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the source.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_id: Required. The source identifier.
@@ -193,7 +229,9 @@ class Source(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws: Optional[pulumi.Input[pulumi.InputType['AwsSourceDetailsArgs']]] = None,
+                 azure: Optional[pulumi.Input[pulumi.InputType['AzureSourceDetailsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encryption: Optional[pulumi.Input[pulumi.InputType['EncryptionArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -210,7 +248,9 @@ class Source(pulumi.CustomResource):
             __props__ = SourceArgs.__new__(SourceArgs)
 
             __props__.__dict__["aws"] = aws
+            __props__.__dict__["azure"] = azure
             __props__.__dict__["description"] = description
+            __props__.__dict__["encryption"] = encryption
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
@@ -247,8 +287,10 @@ class Source(pulumi.CustomResource):
         __props__ = SourceArgs.__new__(SourceArgs)
 
         __props__.__dict__["aws"] = None
+        __props__.__dict__["azure"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["encryption"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -268,6 +310,14 @@ class Source(pulumi.CustomResource):
         return pulumi.get(self, "aws")
 
     @property
+    @pulumi.getter
+    def azure(self) -> pulumi.Output['outputs.AzureSourceDetailsResponse']:
+        """
+        Azure type source details.
+        """
+        return pulumi.get(self, "azure")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
@@ -282,6 +332,14 @@ class Source(pulumi.CustomResource):
         User-provided description of the source.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> pulumi.Output['outputs.EncryptionResponse']:
+        """
+        Optional. Immutable. The encryption details of the source data stored by the service.
+        """
+        return pulumi.get(self, "encryption")
 
     @property
     @pulumi.getter

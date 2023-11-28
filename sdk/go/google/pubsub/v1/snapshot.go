@@ -13,20 +13,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Creates a snapshot from the requested subscription. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the returned Snapshot object. Note that for REST API requests, you must specify a name in the request.
+// Creates a snapshot from the requested subscription. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in the returned Snapshot object. Note that for REST API requests, you must specify a name in the request.
 // Auto-naming is currently not supported for this resource.
 type Snapshot struct {
 	pulumi.CustomResourceState
 
-	// The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later than 7 days from the time of its creation. Its exact lifetime is determined at creation by the existing backlog in the source subscription. Specifically, the lifetime of the snapshot is `7 days - (age of oldest unacked message in the subscription)`. For example, consider a subscription whose oldest unacked message is 3 days old. If a snapshot is created from this subscription, the snapshot -- which will always capture this 3-day-old backlog as long as the snapshot exists -- will expire in 4 days. The service will refuse to create a snapshot that would expire in less than 1 hour after creation.
+	// Optional. The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later than 7 days from the time of its creation. Its exact lifetime is determined at creation by the existing backlog in the source subscription. Specifically, the lifetime of the snapshot is `7 days - (age of oldest unacked message in the subscription)`. For example, consider a subscription whose oldest unacked message is 3 days old. If a snapshot is created from this subscription, the snapshot -- which will always capture this 3-day-old backlog as long as the snapshot exists -- will expire in 4 days. The service will refuse to create a snapshot that would expire in less than 1 hour after creation.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
-	// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+	// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The name of the snapshot.
+	// Optional. The name of the snapshot.
 	Name       pulumi.StringOutput `pulumi:"name"`
 	Project    pulumi.StringOutput `pulumi:"project"`
 	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
-	// The name of the topic from which this snapshot is retaining messages.
+	// Optional. The name of the topic from which this snapshot is retaining messages.
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
@@ -81,7 +81,7 @@ func (SnapshotState) ElementType() reflect.Type {
 }
 
 type snapshotArgs struct {
-	// See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+	// Optional. See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
 	Labels     map[string]string `pulumi:"labels"`
 	Project    *string           `pulumi:"project"`
 	SnapshotId string            `pulumi:"snapshotId"`
@@ -91,7 +91,7 @@ type snapshotArgs struct {
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
-	// See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+	// Optional. See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
 	Labels     pulumi.StringMapInput
 	Project    pulumi.StringPtrInput
 	SnapshotId pulumi.StringInput
@@ -148,17 +148,17 @@ func (o SnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*Snapshot] 
 	}
 }
 
-// The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later than 7 days from the time of its creation. Its exact lifetime is determined at creation by the existing backlog in the source subscription. Specifically, the lifetime of the snapshot is `7 days - (age of oldest unacked message in the subscription)`. For example, consider a subscription whose oldest unacked message is 3 days old. If a snapshot is created from this subscription, the snapshot -- which will always capture this 3-day-old backlog as long as the snapshot exists -- will expire in 4 days. The service will refuse to create a snapshot that would expire in less than 1 hour after creation.
+// Optional. The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later than 7 days from the time of its creation. Its exact lifetime is determined at creation by the existing backlog in the source subscription. Specifically, the lifetime of the snapshot is `7 days - (age of oldest unacked message in the subscription)`. For example, consider a subscription whose oldest unacked message is 3 days old. If a snapshot is created from this subscription, the snapshot -- which will always capture this 3-day-old backlog as long as the snapshot exists -- will expire in 4 days. The service will refuse to create a snapshot that would expire in less than 1 hour after creation.
 func (o SnapshotOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
-// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
 func (o SnapshotOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name of the snapshot.
+// Optional. The name of the snapshot.
 func (o SnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -171,7 +171,7 @@ func (o SnapshotOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The name of the topic from which this snapshot is retaining messages.
+// Optional. The name of the topic from which this snapshot is retaining messages.
 func (o SnapshotOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }

@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowCxV3beta1FulfillmentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
         [Input("conditionalCases")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesArgs>? _conditionalCases;
 
@@ -26,6 +32,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
             get => _conditionalCases ?? (_conditionalCases = new InputList<Inputs.GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesArgs>());
             set => _conditionalCases = value;
         }
+
+        /// <summary>
+        /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        /// </summary>
+        [Input("enableGenerativeFallback")]
+        public Input<bool>? EnableGenerativeFallback { get; set; }
 
         [Input("messages")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1ResponseMessageArgs>? _messages;

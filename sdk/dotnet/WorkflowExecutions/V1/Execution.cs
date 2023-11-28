@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+        /// Error regarding the state of the Execution resource. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
         /// </summary>
         [Output("stateError")]
         public Output<Outputs.StateErrorResponse> StateError { get; private set; } = null!;

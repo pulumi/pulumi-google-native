@@ -18,6 +18,66 @@ export const DockerRepositoryPublicRepository = {
  */
 export type DockerRepositoryPublicRepository = (typeof DockerRepositoryPublicRepository)[keyof typeof DockerRepositoryPublicRepository];
 
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase = {
+    /**
+     * Unspecified repository base.
+     */
+    RepositoryBaseUnspecified: "REPOSITORY_BASE_UNSPECIFIED",
+    /**
+     * Debian.
+     */
+    Debian: "DEBIAN",
+    /**
+     * Ubuntu LTS/Pro.
+     */
+    Ubuntu: "UBUNTU",
+    /**
+     * Archived Debian.
+     */
+    DebianSnapshot: "DEBIAN_SNAPSHOT",
+} as const;
+
+/**
+ * A common public repository base for Apt.
+ */
+export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase = (typeof GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase)[keyof typeof GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase];
+
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase = {
+    /**
+     * Unspecified repository base.
+     */
+    RepositoryBaseUnspecified: "REPOSITORY_BASE_UNSPECIFIED",
+    /**
+     * CentOS.
+     */
+    Centos: "CENTOS",
+    /**
+     * CentOS Debug.
+     */
+    CentosDebug: "CENTOS_DEBUG",
+    /**
+     * CentOS Vault.
+     */
+    CentosVault: "CENTOS_VAULT",
+    /**
+     * CentOS Stream.
+     */
+    CentosStream: "CENTOS_STREAM",
+    /**
+     * Rocky.
+     */
+    Rocky: "ROCKY",
+    /**
+     * Fedora Extra Packages for Enterprise Linux (EPEL).
+     */
+    Epel: "EPEL",
+} as const;
+
+/**
+ * A common public repository base for Yum.
+ */
+export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase = (typeof GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase)[keyof typeof GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase];
+
 export const MavenRepositoryConfigVersionPolicy = {
     /**
      * VERSION_POLICY_UNSPECIFIED - the version policy is not defined. When the version policy is not defined, no validation is performed for the versions.
@@ -123,10 +183,14 @@ export const RepositoryFormat = {
      * Kubeflow Pipelines package format.
      */
     Kfp: "KFP",
+    /**
+     * Go package format.
+     */
+    Go: "GO",
 } as const;
 
 /**
- * The format of packages that are stored in the repository.
+ * Optional. The format of packages that are stored in the repository.
  */
 export type RepositoryFormat = (typeof RepositoryFormat)[keyof typeof RepositoryFormat];
 
@@ -150,6 +214,6 @@ export const RepositoryMode = {
 } as const;
 
 /**
- * The mode of the repository.
+ * Optional. The mode of the repository.
  */
 export type RepositoryMode = (typeof RepositoryMode)[keyof typeof RepositoryMode];

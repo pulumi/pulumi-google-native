@@ -16,12 +16,18 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     public sealed class GoogleCloudDataplexV1DataQualitySpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Actions to take upon job completion.
+        /// </summary>
+        [Input("postScanActions")]
+        public Input<Inputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs>? PostScanActions { get; set; }
+
+        /// <summary>
         /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
         /// </summary>
         [Input("rowFilter")]
         public Input<string>? RowFilter { get; set; }
 
-        [Input("rules")]
+        [Input("rules", required: true)]
         private InputList<Inputs.GoogleCloudDataplexV1DataQualityRuleArgs>? _rules;
 
         /// <summary>

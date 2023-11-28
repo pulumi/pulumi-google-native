@@ -1713,7 +1713,7 @@ func (o GoogleCloudChannelV1PeriodResponseOutput) PeriodType() pulumi.StringOutp
 type GoogleCloudChannelV1ProvisionedServiceResponse struct {
 	// The product pertaining to the provisioning resource as specified in the Offer.
 	ProductId string `pulumi:"productId"`
-	// Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount."
+	// Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.
 	ProvisioningId string `pulumi:"provisioningId"`
 	// The SKU pertaining to the provisioning resource as specified in the Offer.
 	SkuId string `pulumi:"skuId"`
@@ -1745,7 +1745,7 @@ func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ProductId() pulumi
 	return o.ApplyT(func(v GoogleCloudChannelV1ProvisionedServiceResponse) string { return v.ProductId }).(pulumi.StringOutput)
 }
 
-// Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount."
+// Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.
 func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ProvisioningId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ProvisionedServiceResponse) string { return v.ProvisioningId }).(pulumi.StringOutput)
 }
@@ -2243,13 +2243,15 @@ func (o GoogleCloudChannelV1RepricingConditionResponseOutput) SkuGroupCondition(
 type GoogleCloudChannelV1RepricingConfig struct {
 	// Information about the adjustment.
 	Adjustment GoogleCloudChannelV1RepricingAdjustment `pulumi:"adjustment"`
-	// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+	// Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
+	//
+	// Deprecated: Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
 	ChannelPartnerGranularity *GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity `pulumi:"channelPartnerGranularity"`
 	// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
 	ConditionalOverrides []GoogleCloudChannelV1ConditionalOverride `pulumi:"conditionalOverrides"`
 	// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
 	EffectiveInvoiceMonth GoogleTypeDate `pulumi:"effectiveInvoiceMonth"`
-	// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+	// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
 	EntitlementGranularity *GoogleCloudChannelV1RepricingConfigEntitlementGranularity `pulumi:"entitlementGranularity"`
 	// The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
 	RebillingBasis GoogleCloudChannelV1RepricingConfigRebillingBasis `pulumi:"rebillingBasis"`
@@ -2270,13 +2272,15 @@ type GoogleCloudChannelV1RepricingConfigInput interface {
 type GoogleCloudChannelV1RepricingConfigArgs struct {
 	// Information about the adjustment.
 	Adjustment GoogleCloudChannelV1RepricingAdjustmentInput `pulumi:"adjustment"`
-	// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+	// Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
+	//
+	// Deprecated: Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
 	ChannelPartnerGranularity GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput `pulumi:"channelPartnerGranularity"`
 	// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
 	ConditionalOverrides GoogleCloudChannelV1ConditionalOverrideArrayInput `pulumi:"conditionalOverrides"`
 	// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
 	EffectiveInvoiceMonth GoogleTypeDateInput `pulumi:"effectiveInvoiceMonth"`
-	// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+	// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
 	EntitlementGranularity GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput `pulumi:"entitlementGranularity"`
 	// The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
 	RebillingBasis GoogleCloudChannelV1RepricingConfigRebillingBasisInput `pulumi:"rebillingBasis"`
@@ -2328,7 +2332,9 @@ func (o GoogleCloudChannelV1RepricingConfigOutput) Adjustment() GoogleCloudChann
 	}).(GoogleCloudChannelV1RepricingAdjustmentOutput)
 }
 
-// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+// Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
+//
+// Deprecated: Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
 func (o GoogleCloudChannelV1RepricingConfigOutput) ChannelPartnerGranularity() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) *GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity {
 		return v.ChannelPartnerGranularity
@@ -2347,7 +2353,7 @@ func (o GoogleCloudChannelV1RepricingConfigOutput) EffectiveInvoiceMonth() Googl
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) GoogleTypeDate { return v.EffectiveInvoiceMonth }).(GoogleTypeDateOutput)
 }
 
-// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
 func (o GoogleCloudChannelV1RepricingConfigOutput) EntitlementGranularity() GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) *GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
 		return v.EntitlementGranularity
@@ -2361,7 +2367,7 @@ func (o GoogleCloudChannelV1RepricingConfigOutput) RebillingBasis() GoogleCloudC
 	}).(GoogleCloudChannelV1RepricingConfigRebillingBasisOutput)
 }
 
-// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object. Deprecated: This is no longer supported. Use RepricingConfig.EntitlementGranularity instead.
 type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity struct {
 }
 
@@ -2376,7 +2382,7 @@ type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityInput interface
 	ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutputWithContext(context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput
 }
 
-// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object. Deprecated: This is no longer supported. Use RepricingConfig.EntitlementGranularity instead.
 type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs struct {
 }
 
@@ -2445,7 +2451,7 @@ func (i *googleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrType) To
 	}
 }
 
-// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object. Deprecated: This is no longer supported. Use RepricingConfig.EntitlementGranularity instead.
 type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput) ElementType() reflect.Type {
@@ -2506,11 +2512,11 @@ func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) E
 	}).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput)
 }
 
-// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object. Deprecated: This is no longer supported. Use RepricingConfig.EntitlementGranularity instead.
 type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse struct {
 }
 
-// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object. Deprecated: This is no longer supported. Use RepricingConfig.EntitlementGranularity instead.
 type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput) ElementType() reflect.Type {
@@ -2731,13 +2737,15 @@ func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput)
 type GoogleCloudChannelV1RepricingConfigResponse struct {
 	// Information about the adjustment.
 	Adjustment GoogleCloudChannelV1RepricingAdjustmentResponse `pulumi:"adjustment"`
-	// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+	// Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
+	//
+	// Deprecated: Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
 	ChannelPartnerGranularity GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse `pulumi:"channelPartnerGranularity"`
 	// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
 	ConditionalOverrides []GoogleCloudChannelV1ConditionalOverrideResponse `pulumi:"conditionalOverrides"`
 	// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
 	EffectiveInvoiceMonth GoogleTypeDateResponse `pulumi:"effectiveInvoiceMonth"`
-	// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+	// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
 	EntitlementGranularity GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse `pulumi:"entitlementGranularity"`
 	// The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
 	RebillingBasis string `pulumi:"rebillingBasis"`
@@ -2771,7 +2779,9 @@ func (o GoogleCloudChannelV1RepricingConfigResponseOutput) Adjustment() GoogleCl
 	}).(GoogleCloudChannelV1RepricingAdjustmentResponseOutput)
 }
 
-// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+// Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
+//
+// Deprecated: Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
 func (o GoogleCloudChannelV1RepricingConfigResponseOutput) ChannelPartnerGranularity() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse {
 		return v.ChannelPartnerGranularity
@@ -2792,7 +2802,7 @@ func (o GoogleCloudChannelV1RepricingConfigResponseOutput) EffectiveInvoiceMonth
 	}).(GoogleTypeDateResponseOutput)
 }
 
-// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
 func (o GoogleCloudChannelV1RepricingConfigResponseOutput) EntitlementGranularity() GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse {
 		return v.EntitlementGranularity

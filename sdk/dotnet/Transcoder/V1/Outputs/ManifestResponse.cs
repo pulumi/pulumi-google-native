@@ -17,11 +17,15 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
     public sealed class ManifestResponse
     {
         /// <summary>
-        /// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+        /// `DASH` manifest configuration.
+        /// </summary>
+        public readonly Outputs.DashConfigResponse Dash;
+        /// <summary>
+        /// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
         /// </summary>
         public readonly string FileName;
         /// <summary>
-        /// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+        /// List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
         /// </summary>
         public readonly ImmutableArray<string> MuxStreams;
         /// <summary>
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 
         [OutputConstructor]
         private ManifestResponse(
+            Outputs.DashConfigResponse dash,
+
             string fileName,
 
             ImmutableArray<string> muxStreams,
 
             string type)
         {
+            Dash = dash;
             FileName = fileName;
             MuxStreams = muxStreams;
             Type = type;

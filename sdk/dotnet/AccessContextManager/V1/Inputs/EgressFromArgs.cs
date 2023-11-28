@@ -33,6 +33,24 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         [Input("identityType")]
         public Input<Pulumi.GoogleNative.AccessContextManager.V1.EgressFromIdentityType>? IdentityType { get; set; }
 
+        /// <summary>
+        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// </summary>
+        [Input("sourceRestriction")]
+        public Input<Pulumi.GoogleNative.AccessContextManager.V1.EgressFromSourceRestriction>? SourceRestriction { get; set; }
+
+        [Input("sources")]
+        private InputList<Inputs.EgressSourceArgs>? _sources;
+
+        /// <summary>
+        /// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// </summary>
+        public InputList<Inputs.EgressSourceArgs> Sources
+        {
+            get => _sources ?? (_sources = new InputList<Inputs.EgressSourceArgs>());
+            set => _sources = value;
+        }
+
         public EgressFromArgs()
         {
         }

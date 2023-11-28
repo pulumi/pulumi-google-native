@@ -13,6 +13,7 @@ import (
 )
 
 // Creates a new data transfer configuration.
+// Auto-naming is currently not supported for this resource.
 type TransferConfig struct {
 	pulumi.CustomResourceState
 
@@ -32,8 +33,10 @@ type TransferConfig struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
 	EmailPreferences EmailPreferencesResponseOutput `pulumi:"emailPreferences"`
-	Location         pulumi.StringOutput            `pulumi:"location"`
-	// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+	// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+	EncryptionConfiguration EncryptionConfigurationResponseOutput `pulumi:"encryptionConfiguration"`
+	Location                pulumi.StringOutput                   `pulumi:"location"`
+	// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Next time when data transfer will run.
 	NextRunTime pulumi.StringOutput `pulumi:"nextRunTime"`
@@ -121,8 +124,10 @@ type transferConfigArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
 	EmailPreferences *EmailPreferences `pulumi:"emailPreferences"`
-	Location         *string           `pulumi:"location"`
-	// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+	// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+	EncryptionConfiguration *EncryptionConfiguration `pulumi:"encryptionConfiguration"`
+	Location                *string                  `pulumi:"location"`
+	// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name *string `pulumi:"name"`
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
@@ -159,8 +164,10 @@ type TransferConfigArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
 	EmailPreferences EmailPreferencesPtrInput
-	Location         pulumi.StringPtrInput
-	// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+	// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+	EncryptionConfiguration EncryptionConfigurationPtrInput
+	Location                pulumi.StringPtrInput
+	// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name pulumi.StringPtrInput
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
 	NotificationPubsubTopic pulumi.StringPtrInput
@@ -270,11 +277,16 @@ func (o TransferConfigOutput) EmailPreferences() EmailPreferencesResponseOutput 
 	return o.ApplyT(func(v *TransferConfig) EmailPreferencesResponseOutput { return v.EmailPreferences }).(EmailPreferencesResponseOutput)
 }
 
+// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+func (o TransferConfigOutput) EncryptionConfiguration() EncryptionConfigurationResponseOutput {
+	return o.ApplyT(func(v *TransferConfig) EncryptionConfigurationResponseOutput { return v.EncryptionConfiguration }).(EncryptionConfigurationResponseOutput)
+}
+
 func (o TransferConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 func (o TransferConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

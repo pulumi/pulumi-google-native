@@ -208,9 +208,9 @@ const (
 	ContactSettingsPrivacyContactPrivacyUnspecified = ContactSettingsPrivacy("CONTACT_PRIVACY_UNSPECIFIED")
 	// All the data from `ContactSettings` is publicly available. When setting this option, you must also provide a `PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT` in the `contact_notices` field of the request.
 	ContactSettingsPrivacyPublicContactData = ContactSettingsPrivacy("PUBLIC_CONTACT_DATA")
-	// None of the data from `ContactSettings` is publicly available. Instead, proxy contact data is published for your domain. Email sent to the proxy email address is forwarded to the registrant's email address. Cloud Domains provides this privacy proxy service at no additional cost.
+	// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) None of the data from `ContactSettings` is publicly available. Instead, proxy contact data is published for your domain. Email sent to the proxy email address is forwarded to the registrant's email address. Cloud Domains provides this privacy proxy service at no additional cost.
 	ContactSettingsPrivacyPrivateContactData = ContactSettingsPrivacy("PRIVATE_CONTACT_DATA")
-	// Some data from `ContactSettings` is publicly available. The actual information redacted depends on the domain. For details, see [the registration privacy article](https://support.google.com/domains/answer/3251242).
+	// The organization name (if provided) and limited non-identifying data from `ContactSettings` is available to the public (e.g. country and state). The remaining data is marked as `REDACTED FOR PRIVACY` in the WHOIS database. The actual information redacted depends on the domain. For details, see [the registration privacy article](https://support.google.com/domains/answer/3251242).
 	ContactSettingsPrivacyRedactedContactData = ContactSettingsPrivacy("REDACTED_CONTACT_DATA")
 )
 
@@ -984,6 +984,195 @@ func (in *googleDomainsDnsDsStatePtr) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
+// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+type ManagementSettingsPreferredRenewalMethod string
+
+const (
+	// The renewal method is undefined.
+	ManagementSettingsPreferredRenewalMethodRenewalMethodUnspecified = ManagementSettingsPreferredRenewalMethod("RENEWAL_METHOD_UNSPECIFIED")
+	// The domain is automatically renewed each year.
+	ManagementSettingsPreferredRenewalMethodAutomaticRenewal = ManagementSettingsPreferredRenewalMethod("AUTOMATIC_RENEWAL")
+	// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) This option was never used. Use RENEWAL_DISABLED instead.
+	ManagementSettingsPreferredRenewalMethodManualRenewal = ManagementSettingsPreferredRenewalMethod("MANUAL_RENEWAL")
+	// The domain won't be renewed and will expire at its expiration time.
+	ManagementSettingsPreferredRenewalMethodRenewalDisabled = ManagementSettingsPreferredRenewalMethod("RENEWAL_DISABLED")
+)
+
+func (ManagementSettingsPreferredRenewalMethod) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementSettingsPreferredRenewalMethod)(nil)).Elem()
+}
+
+func (e ManagementSettingsPreferredRenewalMethod) ToManagementSettingsPreferredRenewalMethodOutput() ManagementSettingsPreferredRenewalMethodOutput {
+	return pulumi.ToOutput(e).(ManagementSettingsPreferredRenewalMethodOutput)
+}
+
+func (e ManagementSettingsPreferredRenewalMethod) ToManagementSettingsPreferredRenewalMethodOutputWithContext(ctx context.Context) ManagementSettingsPreferredRenewalMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ManagementSettingsPreferredRenewalMethodOutput)
+}
+
+func (e ManagementSettingsPreferredRenewalMethod) ToManagementSettingsPreferredRenewalMethodPtrOutput() ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return e.ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(context.Background())
+}
+
+func (e ManagementSettingsPreferredRenewalMethod) ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(ctx context.Context) ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return ManagementSettingsPreferredRenewalMethod(e).ToManagementSettingsPreferredRenewalMethodOutputWithContext(ctx).ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(ctx)
+}
+
+func (e ManagementSettingsPreferredRenewalMethod) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagementSettingsPreferredRenewalMethod) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagementSettingsPreferredRenewalMethod) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ManagementSettingsPreferredRenewalMethod) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ManagementSettingsPreferredRenewalMethodOutput struct{ *pulumi.OutputState }
+
+func (ManagementSettingsPreferredRenewalMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementSettingsPreferredRenewalMethod)(nil)).Elem()
+}
+
+func (o ManagementSettingsPreferredRenewalMethodOutput) ToManagementSettingsPreferredRenewalMethodOutput() ManagementSettingsPreferredRenewalMethodOutput {
+	return o
+}
+
+func (o ManagementSettingsPreferredRenewalMethodOutput) ToManagementSettingsPreferredRenewalMethodOutputWithContext(ctx context.Context) ManagementSettingsPreferredRenewalMethodOutput {
+	return o
+}
+
+func (o ManagementSettingsPreferredRenewalMethodOutput) ToManagementSettingsPreferredRenewalMethodPtrOutput() ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return o.ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsPreferredRenewalMethodOutput) ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(ctx context.Context) ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagementSettingsPreferredRenewalMethod) *ManagementSettingsPreferredRenewalMethod {
+		return &v
+	}).(ManagementSettingsPreferredRenewalMethodPtrOutput)
+}
+
+func (o ManagementSettingsPreferredRenewalMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementSettingsPreferredRenewalMethod] {
+	return pulumix.Output[ManagementSettingsPreferredRenewalMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ManagementSettingsPreferredRenewalMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsPreferredRenewalMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagementSettingsPreferredRenewalMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ManagementSettingsPreferredRenewalMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsPreferredRenewalMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagementSettingsPreferredRenewalMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagementSettingsPreferredRenewalMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagementSettingsPreferredRenewalMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementSettingsPreferredRenewalMethod)(nil)).Elem()
+}
+
+func (o ManagementSettingsPreferredRenewalMethodPtrOutput) ToManagementSettingsPreferredRenewalMethodPtrOutput() ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return o
+}
+
+func (o ManagementSettingsPreferredRenewalMethodPtrOutput) ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(ctx context.Context) ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return o
+}
+
+func (o ManagementSettingsPreferredRenewalMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementSettingsPreferredRenewalMethod] {
+	return pulumix.Output[*ManagementSettingsPreferredRenewalMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ManagementSettingsPreferredRenewalMethodPtrOutput) Elem() ManagementSettingsPreferredRenewalMethodOutput {
+	return o.ApplyT(func(v *ManagementSettingsPreferredRenewalMethod) ManagementSettingsPreferredRenewalMethod {
+		if v != nil {
+			return *v
+		}
+		var ret ManagementSettingsPreferredRenewalMethod
+		return ret
+	}).(ManagementSettingsPreferredRenewalMethodOutput)
+}
+
+func (o ManagementSettingsPreferredRenewalMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsPreferredRenewalMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagementSettingsPreferredRenewalMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ManagementSettingsPreferredRenewalMethodInput is an input type that accepts ManagementSettingsPreferredRenewalMethodArgs and ManagementSettingsPreferredRenewalMethodOutput values.
+// You can construct a concrete instance of `ManagementSettingsPreferredRenewalMethodInput` via:
+//
+//	ManagementSettingsPreferredRenewalMethodArgs{...}
+type ManagementSettingsPreferredRenewalMethodInput interface {
+	pulumi.Input
+
+	ToManagementSettingsPreferredRenewalMethodOutput() ManagementSettingsPreferredRenewalMethodOutput
+	ToManagementSettingsPreferredRenewalMethodOutputWithContext(context.Context) ManagementSettingsPreferredRenewalMethodOutput
+}
+
+var managementSettingsPreferredRenewalMethodPtrType = reflect.TypeOf((**ManagementSettingsPreferredRenewalMethod)(nil)).Elem()
+
+type ManagementSettingsPreferredRenewalMethodPtrInput interface {
+	pulumi.Input
+
+	ToManagementSettingsPreferredRenewalMethodPtrOutput() ManagementSettingsPreferredRenewalMethodPtrOutput
+	ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(context.Context) ManagementSettingsPreferredRenewalMethodPtrOutput
+}
+
+type managementSettingsPreferredRenewalMethodPtr string
+
+func ManagementSettingsPreferredRenewalMethodPtr(v string) ManagementSettingsPreferredRenewalMethodPtrInput {
+	return (*managementSettingsPreferredRenewalMethodPtr)(&v)
+}
+
+func (*managementSettingsPreferredRenewalMethodPtr) ElementType() reflect.Type {
+	return managementSettingsPreferredRenewalMethodPtrType
+}
+
+func (in *managementSettingsPreferredRenewalMethodPtr) ToManagementSettingsPreferredRenewalMethodPtrOutput() ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return pulumi.ToOutput(in).(ManagementSettingsPreferredRenewalMethodPtrOutput)
+}
+
+func (in *managementSettingsPreferredRenewalMethodPtr) ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(ctx context.Context) ManagementSettingsPreferredRenewalMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagementSettingsPreferredRenewalMethodPtrOutput)
+}
+
+func (in *managementSettingsPreferredRenewalMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagementSettingsPreferredRenewalMethod] {
+	return pulumix.Output[*ManagementSettingsPreferredRenewalMethod]{
+		OutputState: in.ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Controls whether the domain can be transferred to another registrar.
 type ManagementSettingsTransferLockState string
 
@@ -1664,6 +1853,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DsRecordDigestTypePtrInput)(nil)).Elem(), DsRecordDigestType("DIGEST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDomainsDnsDsStateInput)(nil)).Elem(), GoogleDomainsDnsDsState("DS_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDomainsDnsDsStatePtrInput)(nil)).Elem(), GoogleDomainsDnsDsState("DS_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagementSettingsPreferredRenewalMethodInput)(nil)).Elem(), ManagementSettingsPreferredRenewalMethod("RENEWAL_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagementSettingsPreferredRenewalMethodPtrInput)(nil)).Elem(), ManagementSettingsPreferredRenewalMethod("RENEWAL_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementSettingsTransferLockStateInput)(nil)).Elem(), ManagementSettingsTransferLockState("TRANSFER_LOCK_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementSettingsTransferLockStatePtrInput)(nil)).Elem(), ManagementSettingsTransferLockState("TRANSFER_LOCK_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistrationContactNoticesItemInput)(nil)).Elem(), RegistrationContactNoticesItem("CONTACT_NOTICE_UNSPECIFIED"))
@@ -1682,6 +1873,8 @@ func init() {
 	pulumi.RegisterOutputType(DsRecordDigestTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDomainsDnsDsStateOutput{})
 	pulumi.RegisterOutputType(GoogleDomainsDnsDsStatePtrOutput{})
+	pulumi.RegisterOutputType(ManagementSettingsPreferredRenewalMethodOutput{})
+	pulumi.RegisterOutputType(ManagementSettingsPreferredRenewalMethodPtrOutput{})
 	pulumi.RegisterOutputType(ManagementSettingsTransferLockStateOutput{})
 	pulumi.RegisterOutputType(ManagementSettingsTransferLockStatePtrOutput{})
 	pulumi.RegisterOutputType(RegistrationContactNoticesItemOutput{})

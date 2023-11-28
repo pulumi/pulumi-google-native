@@ -20,6 +20,7 @@ class TlsRouteArgs:
                  tls_route_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -27,9 +28,10 @@ class TlsRouteArgs:
         """
         The set of arguments for constructing a TlsRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
-        :param pulumi.Input[str] tls_route_id: Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+        :param pulumi.Input[str] tls_route_id: Required. Short name of the TlsRoute resource to be created.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the TlsRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TlsRoute resource. It matches pattern `projects/*/locations/global/tlsRoutes/tls_route_name>`.
         """
@@ -39,6 +41,8 @@ class TlsRouteArgs:
             pulumi.set(__self__, "description", description)
         if gateways is not None:
             pulumi.set(__self__, "gateways", gateways)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if meshes is not None:
@@ -64,7 +68,7 @@ class TlsRouteArgs:
     @pulumi.getter(name="tlsRouteId")
     def tls_route_id(self) -> pulumi.Input[str]:
         """
-        Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+        Required. Short name of the TlsRoute resource to be created.
         """
         return pulumi.get(self, "tls_route_id")
 
@@ -95,6 +99,18 @@ class TlsRouteArgs:
     @gateways.setter
     def gateways(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "gateways", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Set of label tags associated with the TlsRoute resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -146,6 +162,7 @@ class TlsRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -160,10 +177,11 @@ class TlsRoute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the TlsRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TlsRoute resource. It matches pattern `projects/*/locations/global/tlsRoutes/tls_route_name>`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
-        :param pulumi.Input[str] tls_route_id: Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+        :param pulumi.Input[str] tls_route_id: Required. Short name of the TlsRoute resource to be created.
         """
         ...
     @overload
@@ -191,6 +209,7 @@ class TlsRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -208,6 +227,7 @@ class TlsRoute(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["gateways"] = gateways
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["meshes"] = meshes
             __props__.__dict__["name"] = name
@@ -248,6 +268,7 @@ class TlsRoute(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["gateways"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["meshes"] = None
         __props__.__dict__["name"] = None
@@ -281,6 +302,14 @@ class TlsRoute(pulumi.CustomResource):
         Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
         """
         return pulumi.get(self, "gateways")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Set of label tags associated with the TlsRoute resource.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -328,7 +357,7 @@ class TlsRoute(pulumi.CustomResource):
     @pulumi.getter(name="tlsRouteId")
     def tls_route_id(self) -> pulumi.Output[str]:
         """
-        Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+        Required. Short name of the TlsRoute resource to be created.
         """
         return pulumi.get(self, "tls_route_id")
 

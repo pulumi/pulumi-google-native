@@ -19,16 +19,22 @@ __all__ = [
 
 @pulumi.output_type
 class GetNamespaceResult:
-    def __init__(__self__, create_time=None, delete_time=None, name=None, scope=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, labels=None, name=None, namespace_labels=None, scope=None, state=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if namespace_labels and not isinstance(namespace_labels, dict):
+            raise TypeError("Expected argument 'namespace_labels' to be a dict")
+        pulumi.set(__self__, "namespace_labels", namespace_labels)
         if scope and not isinstance(scope, str):
             raise TypeError("Expected argument 'scope' to be a str")
         pulumi.set(__self__, "scope", scope)
@@ -60,11 +66,27 @@ class GetNamespaceResult:
 
     @property
     @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. Labels for this Namespace.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> Mapping[str, str]:
+        """
+        Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
+        """
+        return pulumi.get(self, "namespace_labels")
 
     @property
     @pulumi.getter
@@ -107,7 +129,9 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
         return GetNamespaceResult(
             create_time=self.create_time,
             delete_time=self.delete_time,
+            labels=self.labels,
             name=self.name,
+            namespace_labels=self.namespace_labels,
             scope=self.scope,
             state=self.state,
             uid=self.uid,
@@ -117,6 +141,7 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
 def get_namespace(location: Optional[str] = None,
                   namespace_id: Optional[str] = None,
                   project: Optional[str] = None,
+                  scope_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceResult:
     """
     Returns the details of a fleet namespace.
@@ -125,13 +150,16 @@ def get_namespace(location: Optional[str] = None,
     __args__['location'] = location
     __args__['namespaceId'] = namespace_id
     __args__['project'] = project
+    __args__['scopeId'] = scope_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:gkehub/v1beta:getNamespace', __args__, opts=opts, typ=GetNamespaceResult).value
 
     return AwaitableGetNamespaceResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
+        labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        namespace_labels=pulumi.get(__ret__, 'namespace_labels'),
         scope=pulumi.get(__ret__, 'scope'),
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
@@ -142,6 +170,7 @@ def get_namespace(location: Optional[str] = None,
 def get_namespace_output(location: Optional[pulumi.Input[str]] = None,
                          namespace_id: Optional[pulumi.Input[str]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                         scope_id: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespaceResult]:
     """
     Returns the details of a fleet namespace.

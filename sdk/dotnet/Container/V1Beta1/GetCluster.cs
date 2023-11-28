@@ -144,6 +144,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+        /// </summary>
+        public readonly Outputs.K8sBetaAPIConfigResponse EnableK8sBetaApis;
+        /// <summary>
         /// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
         /// </summary>
         public readonly bool EnableKubernetesAlpha;
@@ -155,6 +159,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
         /// </summary>
         public readonly string Endpoint;
+        /// <summary>
+        /// GKE Enterprise Configuration.
+        /// </summary>
+        public readonly Outputs.EnterpriseConfigResponse EnterpriseConfig;
         /// <summary>
         /// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
@@ -284,6 +292,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly Outputs.NotificationConfigResponse NotificationConfig;
         /// <summary>
+        /// The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+        /// </summary>
+        public readonly Outputs.ParentProductConfigResponse ParentProductConfig;
+        /// <summary>
         /// Configuration for the PodSecurityPolicy feature.
         /// </summary>
         public readonly Outputs.PodSecurityPolicyConfigResponse PodSecurityPolicyConfig;
@@ -296,7 +308,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly Outputs.PrivateClusterConfigResponse PrivateClusterConfig;
         /// <summary>
-        /// Enable/Disable Protect API features for the cluster.
+        /// Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         /// </summary>
         public readonly Outputs.ProtectConfigResponse ProtectConfig;
         /// <summary>
@@ -311,6 +323,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
         /// </summary>
         public readonly Outputs.ResourceUsageExportConfigResponse ResourceUsageExportConfig;
+        /// <summary>
+        /// Enable/Disable Security Posture API features for the cluster.
+        /// </summary>
+        public readonly Outputs.SecurityPostureConfigResponse SecurityPostureConfig;
         /// <summary>
         /// [Output only] Server-defined URL for the resource.
         /// </summary>
@@ -400,11 +416,15 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             string description,
 
+            Outputs.K8sBetaAPIConfigResponse enableK8sBetaApis,
+
             bool enableKubernetesAlpha,
 
             bool enableTpu,
 
             string endpoint,
+
+            Outputs.EnterpriseConfigResponse enterpriseConfig,
 
             string etag,
 
@@ -470,6 +490,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             Outputs.NotificationConfigResponse notificationConfig,
 
+            Outputs.ParentProductConfigResponse parentProductConfig,
+
             Outputs.PodSecurityPolicyConfigResponse podSecurityPolicyConfig,
 
             bool privateCluster,
@@ -483,6 +505,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             ImmutableDictionary<string, string> resourceLabels,
 
             Outputs.ResourceUsageExportConfigResponse resourceUsageExportConfig,
+
+            Outputs.SecurityPostureConfigResponse securityPostureConfig,
 
             string selfLink,
 
@@ -527,9 +551,11 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             DatabaseEncryption = databaseEncryption;
             DefaultMaxPodsConstraint = defaultMaxPodsConstraint;
             Description = description;
+            EnableK8sBetaApis = enableK8sBetaApis;
             EnableKubernetesAlpha = enableKubernetesAlpha;
             EnableTpu = enableTpu;
             Endpoint = endpoint;
+            EnterpriseConfig = enterpriseConfig;
             Etag = etag;
             ExpireTime = expireTime;
             Fleet = fleet;
@@ -562,6 +588,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             NodePoolDefaults = nodePoolDefaults;
             NodePools = nodePools;
             NotificationConfig = notificationConfig;
+            ParentProductConfig = parentProductConfig;
             PodSecurityPolicyConfig = podSecurityPolicyConfig;
             PrivateCluster = privateCluster;
             PrivateClusterConfig = privateClusterConfig;
@@ -569,6 +596,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             ReleaseChannel = releaseChannel;
             ResourceLabels = resourceLabels;
             ResourceUsageExportConfig = resourceUsageExportConfig;
+            SecurityPostureConfig = securityPostureConfig;
             SelfLink = selfLink;
             ServicesIpv4Cidr = servicesIpv4Cidr;
             ShieldedNodes = shieldedNodes;

@@ -53,9 +53,11 @@ type Version struct {
 	ErrorHandlers ErrorHandlerResponseArrayOutput `pulumi:"errorHandlers"`
 	// Settings for App Engine flexible runtimes.
 	FlexibleRuntimeSettings FlexibleRuntimeSettingsResponseOutput `pulumi:"flexibleRuntimeSettings"`
+	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+	GeneratedCustomerMetadata pulumi.StringMapOutput `pulumi:"generatedCustomerMetadata"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 	Handlers UrlMapResponseArrayOutput `pulumi:"handlers"`
-	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
 	HealthCheck HealthCheckResponseOutput `pulumi:"healthCheck"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayOutput `pulumi:"inboundServices"`
@@ -63,7 +65,7 @@ type Version struct {
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
 	Libraries LibraryResponseArrayOutput `pulumi:"libraries"`
-	// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+	// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
 	LivenessCheck LivenessCheckResponseOutput `pulumi:"livenessCheck"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling ManualScalingResponseOutput `pulumi:"manualScaling"`
@@ -73,7 +75,7 @@ type Version struct {
 	Network NetworkResponseOutput `pulumi:"network"`
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
 	NobuildFilesRegex pulumi.StringOutput `pulumi:"nobuildFilesRegex"`
-	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
 	ReadinessCheck ReadinessCheckResponseOutput `pulumi:"readinessCheck"`
 	// Machine resources for this version. Only applicable in the App Engine flexible environment.
 	Resources ResourcesResponseOutput `pulumi:"resources"`
@@ -184,9 +186,11 @@ type versionArgs struct {
 	ErrorHandlers []ErrorHandler `pulumi:"errorHandlers"`
 	// Settings for App Engine flexible runtimes.
 	FlexibleRuntimeSettings *FlexibleRuntimeSettings `pulumi:"flexibleRuntimeSettings"`
+	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+	GeneratedCustomerMetadata map[string]string `pulumi:"generatedCustomerMetadata"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 	Handlers []UrlMap `pulumi:"handlers"`
-	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
 	HealthCheck *HealthCheck `pulumi:"healthCheck"`
 	// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
 	Id *string `pulumi:"id"`
@@ -196,7 +200,7 @@ type versionArgs struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
 	Libraries []Library `pulumi:"libraries"`
-	// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+	// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
 	LivenessCheck *LivenessCheck `pulumi:"livenessCheck"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling *ManualScaling `pulumi:"manualScaling"`
@@ -204,7 +208,7 @@ type versionArgs struct {
 	Network *Network `pulumi:"network"`
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
 	NobuildFilesRegex *string `pulumi:"nobuildFilesRegex"`
-	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
 	ReadinessCheck *ReadinessCheck `pulumi:"readinessCheck"`
 	// Machine resources for this version. Only applicable in the App Engine flexible environment.
 	Resources *Resources `pulumi:"resources"`
@@ -264,9 +268,11 @@ type VersionArgs struct {
 	ErrorHandlers ErrorHandlerArrayInput
 	// Settings for App Engine flexible runtimes.
 	FlexibleRuntimeSettings FlexibleRuntimeSettingsPtrInput
+	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+	GeneratedCustomerMetadata pulumi.StringMapInput
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 	Handlers UrlMapArrayInput
-	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
 	HealthCheck HealthCheckPtrInput
 	// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
 	Id pulumi.StringPtrInput
@@ -276,7 +282,7 @@ type VersionArgs struct {
 	InstanceClass pulumi.StringPtrInput
 	// Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
 	Libraries LibraryArrayInput
-	// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+	// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
 	LivenessCheck LivenessCheckPtrInput
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling ManualScalingPtrInput
@@ -284,7 +290,7 @@ type VersionArgs struct {
 	Network NetworkPtrInput
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
 	NobuildFilesRegex pulumi.StringPtrInput
-	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
 	ReadinessCheck ReadinessCheckPtrInput
 	// Machine resources for this version. Only applicable in the App Engine flexible environment.
 	Resources ResourcesPtrInput
@@ -451,12 +457,17 @@ func (o VersionOutput) FlexibleRuntimeSettings() FlexibleRuntimeSettingsResponse
 	return o.ApplyT(func(v *Version) FlexibleRuntimeSettingsResponseOutput { return v.FlexibleRuntimeSettings }).(FlexibleRuntimeSettingsResponseOutput)
 }
 
+// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+func (o VersionOutput) GeneratedCustomerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringMapOutput { return v.GeneratedCustomerMetadata }).(pulumi.StringMapOutput)
+}
+
 // An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 func (o VersionOutput) Handlers() UrlMapResponseArrayOutput {
 	return o.ApplyT(func(v *Version) UrlMapResponseArrayOutput { return v.Handlers }).(UrlMapResponseArrayOutput)
 }
 
-// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
 func (o VersionOutput) HealthCheck() HealthCheckResponseOutput {
 	return o.ApplyT(func(v *Version) HealthCheckResponseOutput { return v.HealthCheck }).(HealthCheckResponseOutput)
 }
@@ -476,7 +487,7 @@ func (o VersionOutput) Libraries() LibraryResponseArrayOutput {
 	return o.ApplyT(func(v *Version) LibraryResponseArrayOutput { return v.Libraries }).(LibraryResponseArrayOutput)
 }
 
-// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
 func (o VersionOutput) LivenessCheck() LivenessCheckResponseOutput {
 	return o.ApplyT(func(v *Version) LivenessCheckResponseOutput { return v.LivenessCheck }).(LivenessCheckResponseOutput)
 }
@@ -501,7 +512,7 @@ func (o VersionOutput) NobuildFilesRegex() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.NobuildFilesRegex }).(pulumi.StringOutput)
 }
 
-// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
 func (o VersionOutput) ReadinessCheck() ReadinessCheckResponseOutput {
 	return o.ApplyT(func(v *Version) ReadinessCheckResponseOutput { return v.ReadinessCheck }).(ReadinessCheckResponseOutput)
 }

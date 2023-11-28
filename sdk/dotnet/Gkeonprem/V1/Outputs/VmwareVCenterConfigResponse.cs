@@ -44,6 +44,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
         /// The name of the vCenter resource pool for the user cluster.
         /// </summary>
         public readonly string ResourcePool;
+        /// <summary>
+        /// The name of the vCenter storage policy for the user cluster.
+        /// </summary>
+        public readonly string StoragePolicyName;
 
         [OutputConstructor]
         private VmwareVCenterConfigResponse(
@@ -59,7 +63,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
 
             string folder,
 
-            string resourcePool)
+            string resourcePool,
+
+            string storagePolicyName)
         {
             Address = address;
             CaCertData = caCertData;
@@ -68,6 +74,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
             Datastore = datastore;
             Folder = folder;
             ResourcePool = resourcePool;
+            StoragePolicyName = storagePolicyName;
         }
     }
 }

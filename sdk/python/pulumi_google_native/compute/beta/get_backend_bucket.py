@@ -90,7 +90,7 @@ class GetBackendBucketResult:
     @pulumi.getter(name="customResponseHeaders")
     def custom_response_headers(self) -> Sequence[str]:
         """
-        Headers that the HTTP/S load balancer should add to proxied responses.
+        Headers that the Application Load Balancer should add to proxied responses.
         """
         return pulumi.get(self, "custom_response_headers")
 

@@ -16,43 +16,67 @@ __all__ = ['StoragePoolArgs', 'StoragePool']
 @pulumi.input_type
 class StoragePoolArgs:
     def __init__(__self__, *,
+                 capacity_provisioning_type: Optional[pulumi.Input['StoragePoolCapacityProvisioningType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_provisioning_type: Optional[pulumi.Input['StoragePoolPerformanceProvisioningType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  size_gb: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['StoragePoolType']] = None,
+                 storage_pool_type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a StoragePool resource.
+        :param pulumi.Input['StoragePoolCapacityProvisioningType'] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input['StoragePoolPerformanceProvisioningType'] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
         :param pulumi.Input[str] provisioned_iops: Provsioned IOPS of the storage pool.
+        :param pulumi.Input[str] provisioned_throughput: Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] size_gb: Size, in GiB, of the storage pool.
-        :param pulumi.Input['StoragePoolType'] type: Type of the storage pool
+        :param pulumi.Input[str] storage_pool_type: Type of the storage pool.
         """
+        if capacity_provisioning_type is not None:
+            pulumi.set(__self__, "capacity_provisioning_type", capacity_provisioning_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_provisioning_type is not None:
+            pulumi.set(__self__, "performance_provisioning_type", performance_provisioning_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if size_gb is not None:
             pulumi.set(__self__, "size_gb", size_gb)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        if storage_pool_type is not None:
+            pulumi.set(__self__, "storage_pool_type", storage_pool_type)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="capacityProvisioningType")
+    def capacity_provisioning_type(self) -> Optional[pulumi.Input['StoragePoolCapacityProvisioningType']]:
+        """
+        Provisioning type of the byte capacity of the pool.
+        """
+        return pulumi.get(self, "capacity_provisioning_type")
+
+    @capacity_provisioning_type.setter
+    def capacity_provisioning_type(self, value: Optional[pulumi.Input['StoragePoolCapacityProvisioningType']]):
+        pulumi.set(self, "capacity_provisioning_type", value)
 
     @property
     @pulumi.getter
@@ -91,6 +115,18 @@ class StoragePoolArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="performanceProvisioningType")
+    def performance_provisioning_type(self) -> Optional[pulumi.Input['StoragePoolPerformanceProvisioningType']]:
+        """
+        Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+        """
+        return pulumi.get(self, "performance_provisioning_type")
+
+    @performance_provisioning_type.setter
+    def performance_provisioning_type(self, value: Optional[pulumi.Input['StoragePoolPerformanceProvisioningType']]):
+        pulumi.set(self, "performance_provisioning_type", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -110,6 +146,18 @@ class StoragePoolArgs:
     @provisioned_iops.setter
     def provisioned_iops(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioned_throughput", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -136,16 +184,16 @@ class StoragePoolArgs:
         pulumi.set(self, "size_gb", value)
 
     @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['StoragePoolType']]:
+    @pulumi.getter(name="storagePoolType")
+    def storage_pool_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the storage pool
+        Type of the storage pool.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "storage_pool_type")
 
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['StoragePoolType']]):
-        pulumi.set(self, "type", value)
+    @storage_pool_type.setter
+    def storage_pool_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_pool_type", value)
 
     @property
     @pulumi.getter
@@ -162,14 +210,17 @@ class StoragePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 capacity_provisioning_type: Optional[pulumi.Input['StoragePoolCapacityProvisioningType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_provisioning_type: Optional[pulumi.Input['StoragePoolPerformanceProvisioningType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  size_gb: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['StoragePoolType']] = None,
+                 storage_pool_type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -177,13 +228,16 @@ class StoragePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['StoragePoolCapacityProvisioningType'] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input['StoragePoolPerformanceProvisioningType'] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
         :param pulumi.Input[str] provisioned_iops: Provsioned IOPS of the storage pool.
+        :param pulumi.Input[str] provisioned_throughput: Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] size_gb: Size, in GiB, of the storage pool.
-        :param pulumi.Input['StoragePoolType'] type: Type of the storage pool
+        :param pulumi.Input[str] storage_pool_type: Type of the storage pool.
         """
         ...
     @overload
@@ -209,14 +263,17 @@ class StoragePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 capacity_provisioning_type: Optional[pulumi.Input['StoragePoolCapacityProvisioningType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_provisioning_type: Optional[pulumi.Input['StoragePoolPerformanceProvisioningType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  size_gb: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['StoragePoolType']] = None,
+                 storage_pool_type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -227,14 +284,17 @@ class StoragePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StoragePoolArgs.__new__(StoragePoolArgs)
 
+            __props__.__dict__["capacity_provisioning_type"] = capacity_provisioning_type
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            __props__.__dict__["performance_provisioning_type"] = performance_provisioning_type
             __props__.__dict__["project"] = project
             __props__.__dict__["provisioned_iops"] = provisioned_iops
+            __props__.__dict__["provisioned_throughput"] = provisioned_throughput
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["size_gb"] = size_gb
-            __props__.__dict__["type"] = type
+            __props__.__dict__["storage_pool_type"] = storage_pool_type
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
@@ -243,6 +303,7 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["status"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "zone"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(StoragePool, __self__).__init__(
@@ -267,23 +328,35 @@ class StoragePool(pulumi.CustomResource):
 
         __props__ = StoragePoolArgs.__new__(StoragePoolArgs)
 
+        __props__.__dict__["capacity_provisioning_type"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["performance_provisioning_type"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["provisioned_iops"] = None
+        __props__.__dict__["provisioned_throughput"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["resource_status"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["size_gb"] = None
         __props__.__dict__["state"] = None
-        __props__.__dict__["type"] = None
+        __props__.__dict__["status"] = None
+        __props__.__dict__["storage_pool_type"] = None
         __props__.__dict__["zone"] = None
         return StoragePool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="capacityProvisioningType")
+    def capacity_provisioning_type(self) -> pulumi.Output[str]:
+        """
+        Provisioning type of the byte capacity of the pool.
+        """
+        return pulumi.get(self, "capacity_provisioning_type")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -334,6 +407,14 @@ class StoragePool(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="performanceProvisioningType")
+    def performance_provisioning_type(self) -> pulumi.Output[str]:
+        """
+        Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+        """
+        return pulumi.get(self, "performance_provisioning_type")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
@@ -345,6 +426,14 @@ class StoragePool(pulumi.CustomResource):
         Provsioned IOPS of the storage pool.
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> pulumi.Output[str]:
+        """
+        Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="requestId")
@@ -396,11 +485,19 @@ class StoragePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[str]:
+    def status(self) -> pulumi.Output['outputs.StoragePoolResourceStatusResponse']:
         """
-        Type of the storage pool
+        Status information for the storage pool resource.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storagePoolType")
+    def storage_pool_type(self) -> pulumi.Output[str]:
+        """
+        Type of the storage pool.
+        """
+        return pulumi.get(self, "storage_pool_type")
 
     @property
     @pulumi.getter

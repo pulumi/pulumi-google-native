@@ -164,6 +164,26 @@ export const EgressFromIdentityType = {
  */
 export type EgressFromIdentityType = (typeof EgressFromIdentityType)[keyof typeof EgressFromIdentityType];
 
+export const EgressFromSourceRestriction = {
+    /**
+     * Enforcement preference unspecified, will not enforce traffic restrictions based on `sources` in EgressFrom.
+     */
+    SourceRestrictionUnspecified: "SOURCE_RESTRICTION_UNSPECIFIED",
+    /**
+     * Enforcement preference enabled, traffic restrictions will be enforced based on `sources` in EgressFrom.
+     */
+    SourceRestrictionEnabled: "SOURCE_RESTRICTION_ENABLED",
+    /**
+     * Enforcement preference disabled, will not enforce traffic restrictions based on `sources` in EgressFrom.
+     */
+    SourceRestrictionDisabled: "SOURCE_RESTRICTION_DISABLED",
+} as const;
+
+/**
+ * Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+ */
+export type EgressFromSourceRestriction = (typeof EgressFromSourceRestriction)[keyof typeof EgressFromSourceRestriction];
+
 export const IngressFromIdentityType = {
     /**
      * No blanket identity group specified.

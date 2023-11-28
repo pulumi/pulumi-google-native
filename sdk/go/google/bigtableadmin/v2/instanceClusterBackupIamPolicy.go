@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Sets the access control policy on a Table resource. Replaces any existing policy.
+// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type InstanceClusterBackupIamPolicy struct {

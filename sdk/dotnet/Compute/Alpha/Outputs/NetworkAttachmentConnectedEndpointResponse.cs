@@ -17,9 +17,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class NetworkAttachmentConnectedEndpointResponse
     {
         /// <summary>
-        /// The IP address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+        /// The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
         /// </summary>
         public readonly string IpAddress;
+        /// <summary>
+        /// The IPv6 address assigned to the producer instance network interface. This is only assigned when the stack types of both the instance network interface and the consumer subnet are IPv4_IPv6.
+        /// </summary>
+        public readonly string Ipv6Address;
         /// <summary>
         /// The project id or number of the interface to which the IP was assigned.
         /// </summary>
@@ -36,10 +40,16 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// The subnetwork used to assign the IP to the producer instance network interface.
         /// </summary>
         public readonly string Subnetwork;
+        /// <summary>
+        /// The CIDR range of the subnet from which the IPv4 internal IP was allocated from.
+        /// </summary>
+        public readonly string SubnetworkCidrRange;
 
         [OutputConstructor]
         private NetworkAttachmentConnectedEndpointResponse(
             string ipAddress,
+
+            string ipv6Address,
 
             string projectIdOrNum,
 
@@ -47,13 +57,17 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string status,
 
-            string subnetwork)
+            string subnetwork,
+
+            string subnetworkCidrRange)
         {
             IpAddress = ipAddress;
+            Ipv6Address = ipv6Address;
             ProjectIdOrNum = projectIdOrNum;
             SecondaryIpCidrRanges = secondaryIpCidrRanges;
             Status = status;
             Subnetwork = subnetwork;
+            SubnetworkCidrRange = subnetworkCidrRange;
         }
     }
 }

@@ -116,7 +116,7 @@ class GetAddressResult:
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> str:
         """
-        The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+        The IP version that will be used by this address. Valid options are IPV4 or IPV6.
         """
         return pulumi.get(self, "ip_version")
 

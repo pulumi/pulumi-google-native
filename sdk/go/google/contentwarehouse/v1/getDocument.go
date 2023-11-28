@@ -48,6 +48,8 @@ type LookupDocumentResult struct {
 	DocumentSchemaName string `pulumi:"documentSchemaName"`
 	// Raw document content.
 	InlineRawDocument string `pulumi:"inlineRawDocument"`
+	// Indicates if the document has a legal hold on it.
+	LegalHold bool `pulumi:"legalHold"`
 	// The resource name of the document. Format: projects/{project_number}/locations/{location}/documents/{document_id}. The name is ignored when creating a document.
 	Name string `pulumi:"name"`
 	// Other document format, such as PPTX, XLXS
@@ -158,6 +160,11 @@ func (o LookupDocumentResultOutput) DocumentSchemaName() pulumi.StringOutput {
 // Raw document content.
 func (o LookupDocumentResultOutput) InlineRawDocument() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentResult) string { return v.InlineRawDocument }).(pulumi.StringOutput)
+}
+
+// Indicates if the document has a legal hold on it.
+func (o LookupDocumentResultOutput) LegalHold() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDocumentResult) bool { return v.LegalHold }).(pulumi.BoolOutput)
 }
 
 // The resource name of the document. Format: projects/{project_number}/locations/{location}/documents/{document_id}. The name is ignored when creating a document.

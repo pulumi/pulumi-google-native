@@ -6,6 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .device_session import *
+from .get_device_session import *
 from .get_test_matrix import *
 from .test_matrix import *
 from ._inputs import *

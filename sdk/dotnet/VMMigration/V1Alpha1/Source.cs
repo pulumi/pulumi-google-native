@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Output<Outputs.AwsSourceDetailsResponse> Aws { get; private set; } = null!;
 
         /// <summary>
+        /// Azure type source details.
+        /// </summary>
+        [Output("azure")]
+        public Output<Outputs.AzureSourceDetailsResponse> Azure { get; private set; } = null!;
+
+        /// <summary>
         /// The create time timestamp.
         /// </summary>
         [Output("createTime")]
@@ -33,6 +39,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Immutable. The encryption details of the source data stored by the service.
+        /// </summary>
+        [Output("encryption")]
+        public Output<Outputs.EncryptionResponse> Encryption { get; private set; } = null!;
 
         /// <summary>
         /// Provides details on the state of the Source in case of an error.
@@ -140,10 +152,22 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Input<Inputs.AwsSourceDetailsArgs>? Aws { get; set; }
 
         /// <summary>
+        /// Azure type source details.
+        /// </summary>
+        [Input("azure")]
+        public Input<Inputs.AzureSourceDetailsArgs>? Azure { get; set; }
+
+        /// <summary>
         /// User-provided description of the source.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The encryption details of the source data stored by the service.
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.EncryptionArgs>? Encryption { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

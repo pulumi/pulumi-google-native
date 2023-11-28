@@ -6886,19 +6886,21 @@ func (in *enterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPoli
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType string
 
 const (
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeUnknown                   = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("UNKNOWN")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCloudPubsub               = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("CLOUD_PUBSUB")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeGoops                     = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("GOOPS")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcSync                  = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_SYNC")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCron                      = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("CRON")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeApi                       = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("API")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeManifoldTrigger           = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("MANIFOLD_TRIGGER")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeDatalayerDataChange       = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("DATALAYER_DATA_CHANGE")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcChannel               = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_CHANNEL")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCloudPubsubExternal       = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("CLOUD_PUBSUB_EXTERNAL")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcCdcChannel            = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_CDC_CHANNEL")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcPlatformEventsChannel = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_PLATFORM_EVENTS_CHANNEL")
-	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCloudScheduler            = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("CLOUD_SCHEDULER")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeUnknown                     = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("UNKNOWN")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCloudPubsub                 = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("CLOUD_PUBSUB")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeGoops                       = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("GOOPS")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcSync                    = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_SYNC")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCron                        = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("CRON")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeApi                         = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("API")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeManifoldTrigger             = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("MANIFOLD_TRIGGER")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeDatalayerDataChange         = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("DATALAYER_DATA_CHANGE")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcChannel                 = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_CHANNEL")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCloudPubsubExternal         = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("CLOUD_PUBSUB_EXTERNAL")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcCdcChannel              = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_CDC_CHANNEL")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcPlatformEventsChannel   = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("SFDC_PLATFORM_EVENTS_CHANNEL")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCloudScheduler              = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("CLOUD_SCHEDULER")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeIntegrationConnectorTrigger = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("INTEGRATION_CONNECTOR_TRIGGER")
+	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePrivateTrigger              = EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType("PRIVATE_TRIGGER")
 )
 
 func (EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType) ElementType() reflect.Type {
@@ -8710,6 +8712,394 @@ func (in *enterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtr) ToOutput(ctx co
 	}
 }
 
+// The type of assertion to perform.
+type GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy string
+
+const (
+	// Unspecified Assertion strategy
+	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertionStrategyUnspecified = GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERTION_STRATEGY_UNSPECIFIED")
+	// Test a successful execution
+	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertSuccessfulExecution = GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_SUCCESSFUL_EXECUTION")
+	// Test a failed execution
+	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertFailedExecution = GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_FAILED_EXECUTION")
+	// Test that the task was never executed
+	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertNoExecution = GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_NO_EXECUTION")
+	// Test the parameter selected is equal to the expected value
+	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertEquals = GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_EQUALS")
+	// Test the parameter selected is not equal to the expected value
+	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertNotEquals = GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_NOT_EQUALS")
+	// Test the parameter selected contains the configured value
+	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertContains = GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_CONTAINS")
+	// Test a specific condition
+	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertCondition = GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERT_CONDITION")
+)
+
+func (GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy)(nil)).Elem()
+}
+
+func (e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput {
+	return pulumi.ToOutput(e).(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput {
+	return e.ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput {
+	return GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy(e).ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutputWithContext(ctx).ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput {
+	return o.ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) *GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy {
+		return &v
+	}).(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput) Elem() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput {
+	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy
+		return ret
+	}).(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyInput is an input type that accepts GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyArgs and GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput values.
+// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyInput` via:
+//
+//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyArgs{...}
+type GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput
+	ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput
+}
+
+var googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrType = reflect.TypeOf((**GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy)(nil)).Elem()
+
+type GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput
+	ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput
+}
+
+type googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtr string
+
+func GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtr(v string) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrInput {
+	return (*googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtr)(&v)
+}
+
+func (*googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtr) ElementType() reflect.Type {
+	return googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrType
+}
+
+func (in *googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtr) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput)
+}
+
+func (in *googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtr) ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput)
+}
+
+func (in *googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy]{
+		OutputState: in.ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
+type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity string
+
+const (
+	// Unspecified
+	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityCloudLoggingSeverityUnspecified = GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("CLOUD_LOGGING_SEVERITY_UNSPECIFIED")
+	// If Severity selected is `DEFAULT`, then all the Integration Execution States will be sent to Cloud Logging.
+	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityDefault = GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("DEFAULT")
+	// If Severity selected is `INFO`, then only the following Integration Execution States (`IN_PROCESS`, `ON_HOLD`, `SUCCEEDED` and `SUSPENDED`) will be sent to Cloud Logging.
+	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInfo = GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("INFO")
+	// If Severity selected is `ERROR`, then only the following Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud Logging.
+	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityError = GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("ERROR")
+	// If Severity selected is `WARNING`, then only the following Integration Execution States (`RETRY_ON_HOLD`) will be sent to Cloud Logging.
+	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityWarning = GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("WARNING")
+)
+
+func (GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity)(nil)).Elem()
+}
+
+func (e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput {
+	return pulumi.ToOutput(e).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
+	return e.ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
+	return GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity(e).ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutputWithContext(ctx).ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
+	return o.ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) *GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity {
+		return &v
+	}).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput) Elem() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput {
+	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity
+		return ret
+	}).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInput is an input type that accepts GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityArgs and GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput values.
+// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInput` via:
+//
+//	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityArgs{...}
+type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput
+	ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput
+}
+
+var googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrType = reflect.TypeOf((**GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity)(nil)).Elem()
+
+type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput
+	ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput
+}
+
+type googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr string
+
+func GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr(v string) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrInput {
+	return (*googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr)(&v)
+}
+
+func (*googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr) ElementType() reflect.Type {
+	return googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrType
+}
+
+func (in *googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput)
+}
+
+func (in *googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput)
+}
+
+func (in *googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity]{
+		OutputState: in.ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Credential type associated with auth config.
 type GoogleCloudIntegrationsV1alphaCredentialCredentialType string
 
@@ -9893,6 +10283,197 @@ func (in *googleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtr) 
 func (in *googleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType] {
 	return pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType]{
 		OutputState: in.ToGoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Mockstrategy defines how the particular task should be mocked during test execution
+type GoogleCloudIntegrationsV1alphaMockConfigMockStrategy string
+
+const (
+	// This should never be used to annotate a field
+	GoogleCloudIntegrationsV1alphaMockConfigMockStrategyMockStrategyUnspecified = GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("MOCK_STRATEGY_UNSPECIFIED")
+	// Execute actual task
+	GoogleCloudIntegrationsV1alphaMockConfigMockStrategyNoMockStrategy = GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("NO_MOCK_STRATEGY")
+	// Don't execute actual task, instead use the values specified by user for output of the task
+	GoogleCloudIntegrationsV1alphaMockConfigMockStrategySpecificMockStrategy = GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("SPECIFIC_MOCK_STRATEGY")
+	// Don't execute actual task, instead return task failure
+	GoogleCloudIntegrationsV1alphaMockConfigMockStrategyFailureMockStrategy = GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("FAILURE_MOCK_STRATEGY")
+	// Don't execute actual task, instead mark it as successful
+	GoogleCloudIntegrationsV1alphaMockConfigMockStrategySkipMockStrategy = GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("SKIP_MOCK_STRATEGY")
+)
+
+func (GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaMockConfigMockStrategy)(nil)).Elem()
+}
+
+func (e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput {
+	return pulumi.ToOutput(e).(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
+	return e.ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
+	return GoogleCloudIntegrationsV1alphaMockConfigMockStrategy(e).ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutputWithContext(ctx).ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaMockConfigMockStrategy)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
+	return o.ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) *GoogleCloudIntegrationsV1alphaMockConfigMockStrategy {
+		return &v
+	}).(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaMockConfigMockStrategy] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaMockConfigMockStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaMockConfigMockStrategy)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaMockConfigMockStrategy] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaMockConfigMockStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput) Elem() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput {
+	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) GoogleCloudIntegrationsV1alphaMockConfigMockStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIntegrationsV1alphaMockConfigMockStrategy
+		return ret
+	}).(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudIntegrationsV1alphaMockConfigMockStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudIntegrationsV1alphaMockConfigMockStrategyInput is an input type that accepts GoogleCloudIntegrationsV1alphaMockConfigMockStrategyArgs and GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput values.
+// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaMockConfigMockStrategyInput` via:
+//
+//	GoogleCloudIntegrationsV1alphaMockConfigMockStrategyArgs{...}
+type GoogleCloudIntegrationsV1alphaMockConfigMockStrategyInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput
+	ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput
+}
+
+var googleCloudIntegrationsV1alphaMockConfigMockStrategyPtrType = reflect.TypeOf((**GoogleCloudIntegrationsV1alphaMockConfigMockStrategy)(nil)).Elem()
+
+type GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput
+	ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput
+}
+
+type googleCloudIntegrationsV1alphaMockConfigMockStrategyPtr string
+
+func GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtr(v string) GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrInput {
+	return (*googleCloudIntegrationsV1alphaMockConfigMockStrategyPtr)(&v)
+}
+
+func (*googleCloudIntegrationsV1alphaMockConfigMockStrategyPtr) ElementType() reflect.Type {
+	return googleCloudIntegrationsV1alphaMockConfigMockStrategyPtrType
+}
+
+func (in *googleCloudIntegrationsV1alphaMockConfigMockStrategyPtr) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput)
+}
+
+func (in *googleCloudIntegrationsV1alphaMockConfigMockStrategyPtr) ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput)
+}
+
+func (in *googleCloudIntegrationsV1alphaMockConfigMockStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaMockConfigMockStrategy] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaMockConfigMockStrategy]{
+		OutputState: in.ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -12019,6 +12600,10 @@ const (
 	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeSfdcCdcChannel = GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType("SFDC_CDC_CHANNEL")
 	// Trigger by Cloud Scheduler job.
 	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeCloudScheduler = GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType("CLOUD_SCHEDULER")
+	// Trigger by Connector Event
+	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeIntegrationConnectorTrigger = GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType("INTEGRATION_CONNECTOR_TRIGGER")
+	// Trigger for private workflow
+	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePrivateTrigger = GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType("PRIVATE_TRIGGER")
 )
 
 func (GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType) ElementType() reflect.Type {
@@ -12204,6 +12789,8 @@ const (
 	TemplatesVersionDatabasePersistencePolicyDatabasePersistencePolicyUnspecified = TemplatesVersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED")
 	// Disables persistence for all execution data.
 	TemplatesVersionDatabasePersistencePolicyDatabasePersistenceDisabled = TemplatesVersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_DISABLED")
+	// Asynchronously persist all execution data.
+	TemplatesVersionDatabasePersistencePolicyDatabasePersistenceAsync = TemplatesVersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_ASYNC")
 )
 
 func (TemplatesVersionDatabasePersistencePolicy) ElementType() reflect.Type {
@@ -12392,6 +12979,193 @@ const (
 	TemplatesVersionStatusSnapshot = TemplatesVersionStatus("SNAPSHOT")
 )
 
+// Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index..
+type TestCaseDatabasePersistencePolicy string
+
+const (
+	// Enables persistence for all execution data.
+	TestCaseDatabasePersistencePolicyDatabasePersistencePolicyUnspecified = TestCaseDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED")
+	// Disables persistence for all execution data.
+	TestCaseDatabasePersistencePolicyDatabasePersistenceDisabled = TestCaseDatabasePersistencePolicy("DATABASE_PERSISTENCE_DISABLED")
+	// Asynchronously persist all execution data.
+	TestCaseDatabasePersistencePolicyDatabasePersistenceAsync = TestCaseDatabasePersistencePolicy("DATABASE_PERSISTENCE_ASYNC")
+)
+
+func (TestCaseDatabasePersistencePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestCaseDatabasePersistencePolicy)(nil)).Elem()
+}
+
+func (e TestCaseDatabasePersistencePolicy) ToTestCaseDatabasePersistencePolicyOutput() TestCaseDatabasePersistencePolicyOutput {
+	return pulumi.ToOutput(e).(TestCaseDatabasePersistencePolicyOutput)
+}
+
+func (e TestCaseDatabasePersistencePolicy) ToTestCaseDatabasePersistencePolicyOutputWithContext(ctx context.Context) TestCaseDatabasePersistencePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TestCaseDatabasePersistencePolicyOutput)
+}
+
+func (e TestCaseDatabasePersistencePolicy) ToTestCaseDatabasePersistencePolicyPtrOutput() TestCaseDatabasePersistencePolicyPtrOutput {
+	return e.ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(context.Background())
+}
+
+func (e TestCaseDatabasePersistencePolicy) ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(ctx context.Context) TestCaseDatabasePersistencePolicyPtrOutput {
+	return TestCaseDatabasePersistencePolicy(e).ToTestCaseDatabasePersistencePolicyOutputWithContext(ctx).ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(ctx)
+}
+
+func (e TestCaseDatabasePersistencePolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TestCaseDatabasePersistencePolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TestCaseDatabasePersistencePolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TestCaseDatabasePersistencePolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TestCaseDatabasePersistencePolicyOutput struct{ *pulumi.OutputState }
+
+func (TestCaseDatabasePersistencePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestCaseDatabasePersistencePolicy)(nil)).Elem()
+}
+
+func (o TestCaseDatabasePersistencePolicyOutput) ToTestCaseDatabasePersistencePolicyOutput() TestCaseDatabasePersistencePolicyOutput {
+	return o
+}
+
+func (o TestCaseDatabasePersistencePolicyOutput) ToTestCaseDatabasePersistencePolicyOutputWithContext(ctx context.Context) TestCaseDatabasePersistencePolicyOutput {
+	return o
+}
+
+func (o TestCaseDatabasePersistencePolicyOutput) ToTestCaseDatabasePersistencePolicyPtrOutput() TestCaseDatabasePersistencePolicyPtrOutput {
+	return o.ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TestCaseDatabasePersistencePolicyOutput) ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(ctx context.Context) TestCaseDatabasePersistencePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestCaseDatabasePersistencePolicy) *TestCaseDatabasePersistencePolicy {
+		return &v
+	}).(TestCaseDatabasePersistencePolicyPtrOutput)
+}
+
+func (o TestCaseDatabasePersistencePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[TestCaseDatabasePersistencePolicy] {
+	return pulumix.Output[TestCaseDatabasePersistencePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TestCaseDatabasePersistencePolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TestCaseDatabasePersistencePolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TestCaseDatabasePersistencePolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TestCaseDatabasePersistencePolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TestCaseDatabasePersistencePolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TestCaseDatabasePersistencePolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TestCaseDatabasePersistencePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (TestCaseDatabasePersistencePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TestCaseDatabasePersistencePolicy)(nil)).Elem()
+}
+
+func (o TestCaseDatabasePersistencePolicyPtrOutput) ToTestCaseDatabasePersistencePolicyPtrOutput() TestCaseDatabasePersistencePolicyPtrOutput {
+	return o
+}
+
+func (o TestCaseDatabasePersistencePolicyPtrOutput) ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(ctx context.Context) TestCaseDatabasePersistencePolicyPtrOutput {
+	return o
+}
+
+func (o TestCaseDatabasePersistencePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TestCaseDatabasePersistencePolicy] {
+	return pulumix.Output[*TestCaseDatabasePersistencePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TestCaseDatabasePersistencePolicyPtrOutput) Elem() TestCaseDatabasePersistencePolicyOutput {
+	return o.ApplyT(func(v *TestCaseDatabasePersistencePolicy) TestCaseDatabasePersistencePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TestCaseDatabasePersistencePolicy
+		return ret
+	}).(TestCaseDatabasePersistencePolicyOutput)
+}
+
+func (o TestCaseDatabasePersistencePolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TestCaseDatabasePersistencePolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TestCaseDatabasePersistencePolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TestCaseDatabasePersistencePolicyInput is an input type that accepts TestCaseDatabasePersistencePolicyArgs and TestCaseDatabasePersistencePolicyOutput values.
+// You can construct a concrete instance of `TestCaseDatabasePersistencePolicyInput` via:
+//
+//	TestCaseDatabasePersistencePolicyArgs{...}
+type TestCaseDatabasePersistencePolicyInput interface {
+	pulumi.Input
+
+	ToTestCaseDatabasePersistencePolicyOutput() TestCaseDatabasePersistencePolicyOutput
+	ToTestCaseDatabasePersistencePolicyOutputWithContext(context.Context) TestCaseDatabasePersistencePolicyOutput
+}
+
+var testCaseDatabasePersistencePolicyPtrType = reflect.TypeOf((**TestCaseDatabasePersistencePolicy)(nil)).Elem()
+
+type TestCaseDatabasePersistencePolicyPtrInput interface {
+	pulumi.Input
+
+	ToTestCaseDatabasePersistencePolicyPtrOutput() TestCaseDatabasePersistencePolicyPtrOutput
+	ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(context.Context) TestCaseDatabasePersistencePolicyPtrOutput
+}
+
+type testCaseDatabasePersistencePolicyPtr string
+
+func TestCaseDatabasePersistencePolicyPtr(v string) TestCaseDatabasePersistencePolicyPtrInput {
+	return (*testCaseDatabasePersistencePolicyPtr)(&v)
+}
+
+func (*testCaseDatabasePersistencePolicyPtr) ElementType() reflect.Type {
+	return testCaseDatabasePersistencePolicyPtrType
+}
+
+func (in *testCaseDatabasePersistencePolicyPtr) ToTestCaseDatabasePersistencePolicyPtrOutput() TestCaseDatabasePersistencePolicyPtrOutput {
+	return pulumi.ToOutput(in).(TestCaseDatabasePersistencePolicyPtrOutput)
+}
+
+func (in *testCaseDatabasePersistencePolicyPtr) ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(ctx context.Context) TestCaseDatabasePersistencePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TestCaseDatabasePersistencePolicyPtrOutput)
+}
+
+func (in *testCaseDatabasePersistencePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*TestCaseDatabasePersistencePolicy] {
+	return pulumix.Output[*TestCaseDatabasePersistencePolicy]{
+		OutputState: in.ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 type VersionDatabasePersistencePolicy string
 
@@ -12400,6 +13174,8 @@ const (
 	VersionDatabasePersistencePolicyDatabasePersistencePolicyUnspecified = VersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED")
 	// Disables persistence for all execution data.
 	VersionDatabasePersistencePolicyDatabasePersistenceDisabled = VersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_DISABLED")
+	// Asynchronously persist all execution data.
+	VersionDatabasePersistencePolicyDatabasePersistenceAsync = VersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_ASYNC")
 )
 
 func (VersionDatabasePersistencePolicy) ElementType() reflect.Type {
@@ -12590,6 +13366,8 @@ const (
 	VersionOriginPiperV3 = VersionOrigin("PIPER_V3")
 	// Workflow is being created via Standalone IP Provisioning
 	VersionOriginApplicationIpProvisioning = VersionOrigin("APPLICATION_IP_PROVISIONING")
+	// Workflow is being created via Test Case.
+	VersionOriginTestCase = VersionOrigin("TEST_CASE")
 )
 
 func (VersionOrigin) ElementType() reflect.Type {
@@ -12860,6 +13638,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyPtrInput)(nil)).Elem(), EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy("PRIVACY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeInput)(nil)).Elem(), EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType("SANITIZE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtrInput)(nil)).Elem(), EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType("SANITIZE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERTION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy("ASSERTION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("CLOUD_LOGGING_SEVERITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity("CLOUD_LOGGING_SEVERITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCredentialCredentialTypeInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCredentialCredentialType("CREDENTIAL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCredentialCredentialTypePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCredentialCredentialType("CREDENTIAL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy("RETRY_STRATEGY_UNSPECIFIED"))
@@ -12872,6 +13654,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntegrationParameterDataType("INTEGRATION_PARAMETER_DATA_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType("IN_OUT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType("IN_OUT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaMockConfigMockStrategyInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("MOCK_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaMockConfigMockStrategy("MOCK_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType("REQUEST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType("REQUEST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType("REQUEST_TYPE_UNSPECIFIED"))
@@ -12898,6 +13682,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType("TRIGGER_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplatesVersionDatabasePersistencePolicyInput)(nil)).Elem(), TemplatesVersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplatesVersionDatabasePersistencePolicyPtrInput)(nil)).Elem(), TemplatesVersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TestCaseDatabasePersistencePolicyInput)(nil)).Elem(), TestCaseDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TestCaseDatabasePersistencePolicyPtrInput)(nil)).Elem(), TestCaseDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionDatabasePersistencePolicyInput)(nil)).Elem(), VersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionDatabasePersistencePolicyPtrInput)(nil)).Elem(), VersionDatabasePersistencePolicy("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionOriginInput)(nil)).Elem(), VersionOrigin("UNSPECIFIED"))
@@ -12994,6 +13780,10 @@ func init() {
 	pulumi.RegisterOutputType(EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCredentialCredentialTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCredentialCredentialTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyOutput{})
@@ -13006,6 +13796,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeOutput{})
@@ -13032,6 +13824,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtrOutput{})
 	pulumi.RegisterOutputType(TemplatesVersionDatabasePersistencePolicyOutput{})
 	pulumi.RegisterOutputType(TemplatesVersionDatabasePersistencePolicyPtrOutput{})
+	pulumi.RegisterOutputType(TestCaseDatabasePersistencePolicyOutput{})
+	pulumi.RegisterOutputType(TestCaseDatabasePersistencePolicyPtrOutput{})
 	pulumi.RegisterOutputType(VersionDatabasePersistencePolicyOutput{})
 	pulumi.RegisterOutputType(VersionDatabasePersistencePolicyPtrOutput{})
 	pulumi.RegisterOutputType(VersionOriginOutput{})

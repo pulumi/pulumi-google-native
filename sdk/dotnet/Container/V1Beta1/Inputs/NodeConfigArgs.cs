@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
+        /// Optional. Enable confidential storage on Hyperdisk. boot_disk_kms_key is required when enable_confidential_storage is true. This is only available for private preview.
+        /// </summary>
+        [Input("enableConfidentialStorage")]
+        public Input<bool>? EnableConfidentialStorage { get; set; }
+
+        /// <summary>
         /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         /// </summary>
         [Input("ephemeralStorageConfig")]
@@ -86,6 +92,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// </summary>
         [Input("gvnic")]
         public Input<Inputs.VirtualNICArgs>? Gvnic { get; set; }
+
+        /// <summary>
+        /// HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts.
+        /// </summary>
+        [Input("hostMaintenancePolicy")]
+        public Input<Inputs.HostMaintenancePolicyArgs>? HostMaintenancePolicy { get; set; }
 
         /// <summary>
         /// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
@@ -178,7 +190,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more inforamtion about preemptible VM instances.
+        /// Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances.
         /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
@@ -202,6 +214,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         }
 
         /// <summary>
+        /// A map of resource manager tag keys and values to be attached to the nodes.
+        /// </summary>
+        [Input("resourceManagerTags")]
+        public Input<Inputs.ResourceManagerTagsArgs>? ResourceManagerTags { get; set; }
+
+        /// <summary>
         /// Sandbox configuration for this node.
         /// </summary>
         [Input("sandboxConfig")]
@@ -218,6 +236,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
+        /// Parameters for node pools to be backed by shared sole tenant node groups.
+        /// </summary>
+        [Input("soleTenantConfig")]
+        public Input<Inputs.SoleTenantConfigArgs>? SoleTenantConfig { get; set; }
 
         /// <summary>
         /// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.

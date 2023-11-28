@@ -66,6 +66,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly defaultObjectAcl!: pulumi.Output<outputs.storage.v1.ObjectAccessControlResponse[]>;
     /**
+     * When set to true, object retention is enabled for this bucket.
+     */
+    public readonly enableObjectRetention!: pulumi.Output<boolean | undefined>;
+    /**
      * Encryption configuration for a bucket.
      */
     public readonly encryption!: pulumi.Output<outputs.storage.v1.BucketEncryptionResponse>;
@@ -110,6 +114,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The bucket's object retention config.
+     */
+    public readonly objectRetention!: pulumi.Output<outputs.storage.v1.BucketObjectRetentionResponse>;
+    /**
      * The owner of the bucket. This is always the project team's owner group.
      */
     public readonly owner!: pulumi.Output<outputs.storage.v1.BucketOwnerResponse>;
@@ -149,6 +157,10 @@ export class Bucket extends pulumi.CustomResource {
      * The URI of this bucket.
      */
     public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+     */
+    public readonly softDeletePolicy!: pulumi.Output<outputs.storage.v1.BucketSoftDeletePolicyResponse>;
     /**
      * The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
      */
@@ -192,6 +204,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["customPlacementConfig"] = args ? args.customPlacementConfig : undefined;
             resourceInputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
             resourceInputs["defaultObjectAcl"] = args ? args.defaultObjectAcl : undefined;
+            resourceInputs["enableObjectRetention"] = args ? args.enableObjectRetention : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["iamConfiguration"] = args ? args.iamConfiguration : undefined;
@@ -204,6 +217,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["logging"] = args ? args.logging : undefined;
             resourceInputs["metageneration"] = args ? args.metageneration : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["objectRetention"] = args ? args.objectRetention : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
             resourceInputs["predefinedDefaultObjectAcl"] = args ? args.predefinedDefaultObjectAcl : undefined;
@@ -214,6 +228,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["rpo"] = args ? args.rpo : undefined;
             resourceInputs["satisfiesPZS"] = args ? args.satisfiesPZS : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
+            resourceInputs["softDeletePolicy"] = args ? args.softDeletePolicy : undefined;
             resourceInputs["storageClass"] = args ? args.storageClass : undefined;
             resourceInputs["timeCreated"] = args ? args.timeCreated : undefined;
             resourceInputs["updated"] = args ? args.updated : undefined;
@@ -228,6 +243,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["customPlacementConfig"] = undefined /*out*/;
             resourceInputs["defaultEventBasedHold"] = undefined /*out*/;
             resourceInputs["defaultObjectAcl"] = undefined /*out*/;
+            resourceInputs["enableObjectRetention"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["iamConfiguration"] = undefined /*out*/;
@@ -239,6 +255,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["logging"] = undefined /*out*/;
             resourceInputs["metageneration"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["objectRetention"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["predefinedAcl"] = undefined /*out*/;
             resourceInputs["predefinedDefaultObjectAcl"] = undefined /*out*/;
@@ -249,6 +266,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["rpo"] = undefined /*out*/;
             resourceInputs["satisfiesPZS"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["softDeletePolicy"] = undefined /*out*/;
             resourceInputs["storageClass"] = undefined /*out*/;
             resourceInputs["timeCreated"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
@@ -295,6 +313,10 @@ export interface BucketArgs {
      * Default access controls to apply to new objects when no ACL is provided.
      */
     defaultObjectAcl?: pulumi.Input<pulumi.Input<inputs.storage.v1.ObjectAccessControlArgs>[]>;
+    /**
+     * When set to true, object retention is enabled for this bucket.
+     */
+    enableObjectRetention?: pulumi.Input<boolean>;
     /**
      * Encryption configuration for a bucket.
      */
@@ -344,6 +366,10 @@ export interface BucketArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * The bucket's object retention config.
+     */
+    objectRetention?: pulumi.Input<inputs.storage.v1.BucketObjectRetentionArgs>;
+    /**
      * The owner of the bucket. This is always the project team's owner group.
      */
     owner?: pulumi.Input<inputs.storage.v1.BucketOwnerArgs>;
@@ -383,6 +409,10 @@ export interface BucketArgs {
      * The URI of this bucket.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+     */
+    softDeletePolicy?: pulumi.Input<inputs.storage.v1.BucketSoftDeletePolicyArgs>;
     /**
      * The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
      */

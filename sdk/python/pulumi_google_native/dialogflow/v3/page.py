@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['PageArgs', 'Page']
@@ -19,9 +20,11 @@ class PageArgs:
                  agent_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  flow_id: pulumi.Input[str],
+                 advanced_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']] = None,
                  entry_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3FulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['GoogleCloudDialogflowCxV3FormArgs']] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -31,23 +34,29 @@ class PageArgs:
         """
         The set of arguments for constructing a Page resource.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the flow.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
         :param pulumi.Input['GoogleCloudDialogflowCxV3FulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param pulumi.Input['GoogleCloudDialogflowCxV3FormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs'] knowledge_connector_settings: Optional. Knowledge connector configuration.
         :param pulumi.Input[str] language_code: The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TransitionRouteArgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "flow_id", flow_id)
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if entry_fulfillment is not None:
             pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
             pulumi.set(__self__, "event_handlers", event_handlers)
         if form is not None:
             pulumi.set(__self__, "form", form)
+        if knowledge_connector_settings is not None:
+            pulumi.set(__self__, "knowledge_connector_settings", knowledge_connector_settings)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if location is not None:
@@ -92,6 +101,18 @@ class PageArgs:
         pulumi.set(self, "flow_id", value)
 
     @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]:
+        """
+        Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @advanced_settings.setter
+    def advanced_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]):
+        pulumi.set(self, "advanced_settings", value)
+
+    @property
     @pulumi.getter(name="entryFulfillment")
     def entry_fulfillment(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3FulfillmentArgs']]:
         """
@@ -126,6 +147,18 @@ class PageArgs:
     @form.setter
     def form(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3FormArgs']]):
         pulumi.set(self, "form", value)
+
+    @property
+    @pulumi.getter(name="knowledgeConnectorSettings")
+    def knowledge_connector_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs']]:
+        """
+        Optional. Knowledge connector configuration.
+        """
+        return pulumi.get(self, "knowledge_connector_settings")
+
+    @knowledge_connector_settings.setter
+    def knowledge_connector_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs']]):
+        pulumi.set(self, "knowledge_connector_settings", value)
 
     @property
     @pulumi.getter(name="languageCode")
@@ -173,7 +206,7 @@ class PageArgs:
     @pulumi.getter(name="transitionRouteGroups")
     def transition_route_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         """
         return pulumi.get(self, "transition_route_groups")
 
@@ -199,12 +232,14 @@ class Page(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3FulfillmentArgs']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EventHandlerArgs']]]]] = None,
                  flow_id: Optional[pulumi.Input[str]] = None,
                  form: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3FormArgs']]] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -217,13 +252,15 @@ class Page(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the flow.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3FulfillmentArgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EventHandlerArgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3FormArgs']] form: The form associated with the page, used for collecting parameters relevant to the page.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs']] knowledge_connector_settings: Optional. Knowledge connector configuration.
         :param pulumi.Input[str] language_code: The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         """
         ...
@@ -250,12 +287,14 @@ class Page(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3FulfillmentArgs']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EventHandlerArgs']]]]] = None,
                  flow_id: Optional[pulumi.Input[str]] = None,
                  form: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3FormArgs']]] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -271,6 +310,7 @@ class Page(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PageArgs.__new__(PageArgs)
 
+            __props__.__dict__["advanced_settings"] = advanced_settings
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
@@ -283,6 +323,7 @@ class Page(pulumi.CustomResource):
                 raise TypeError("Missing required property 'flow_id'")
             __props__.__dict__["flow_id"] = flow_id
             __props__.__dict__["form"] = form
+            __props__.__dict__["knowledge_connector_settings"] = knowledge_connector_settings
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -313,12 +354,14 @@ class Page(pulumi.CustomResource):
 
         __props__ = PageArgs.__new__(PageArgs)
 
+        __props__.__dict__["advanced_settings"] = None
         __props__.__dict__["agent_id"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["entry_fulfillment"] = None
         __props__.__dict__["event_handlers"] = None
         __props__.__dict__["flow_id"] = None
         __props__.__dict__["form"] = None
+        __props__.__dict__["knowledge_connector_settings"] = None
         __props__.__dict__["language_code"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -326,6 +369,14 @@ class Page(pulumi.CustomResource):
         __props__.__dict__["transition_route_groups"] = None
         __props__.__dict__["transition_routes"] = None
         return Page(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse']:
+        """
+        Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
 
     @property
     @pulumi.getter(name="agentId")
@@ -370,6 +421,14 @@ class Page(pulumi.CustomResource):
         return pulumi.get(self, "form")
 
     @property
+    @pulumi.getter(name="knowledgeConnectorSettings")
+    def knowledge_connector_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse']:
+        """
+        Optional. Knowledge connector configuration.
+        """
+        return pulumi.get(self, "knowledge_connector_settings")
+
+    @property
     @pulumi.getter(name="languageCode")
     def language_code(self) -> pulumi.Output[Optional[str]]:
         """
@@ -399,7 +458,7 @@ class Page(pulumi.CustomResource):
     @pulumi.getter(name="transitionRouteGroups")
     def transition_route_groups(self) -> pulumi.Output[Sequence[str]]:
         """
-        Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         """
         return pulumi.get(self, "transition_route_groups")
 

@@ -76,6 +76,10 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+     */
+    public readonly externalDatasetReference!: pulumi.Output<outputs.bigquery.v2.ExternalDatasetReferenceResponse>;
+    /**
      * [Optional] A descriptive name for the dataset.
      */
     public readonly friendlyName!: pulumi.Output<string>;
@@ -138,6 +142,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
             resourceInputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["externalDatasetReference"] = args ? args.externalDatasetReference : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -165,6 +170,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultTableExpirationMs"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["externalDatasetReference"] = undefined /*out*/;
             resourceInputs["friendlyName"] = undefined /*out*/;
             resourceInputs["isCaseInsensitive"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -210,6 +216,10 @@ export interface DatasetArgs {
      * [Optional] A user-friendly description of the dataset.
      */
     description?: pulumi.Input<string>;
+    /**
+     * [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+     */
+    externalDatasetReference?: pulumi.Input<inputs.bigquery.v2.ExternalDatasetReferenceArgs>;
     /**
      * [Optional] A descriptive name for the dataset.
      */

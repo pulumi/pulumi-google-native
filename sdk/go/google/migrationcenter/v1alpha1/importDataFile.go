@@ -20,7 +20,7 @@ type ImportDataFile struct {
 
 	// The timestamp when the file was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// User-friendly display name. Maximum length is 63 characters.
+	// Optional. User-friendly display name. Maximum length is 256 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The payload format.
 	Format pulumi.StringOutput `pulumi:"format"`
@@ -95,7 +95,7 @@ func (ImportDataFileState) ElementType() reflect.Type {
 }
 
 type importDataFileArgs struct {
-	// User-friendly display name. Maximum length is 63 characters.
+	// Optional. User-friendly display name. Maximum length is 256 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The payload format.
 	Format ImportDataFileFormat `pulumi:"format"`
@@ -112,7 +112,7 @@ type importDataFileArgs struct {
 
 // The set of arguments for constructing a ImportDataFile resource.
 type ImportDataFileArgs struct {
-	// User-friendly display name. Maximum length is 63 characters.
+	// Optional. User-friendly display name. Maximum length is 256 characters.
 	DisplayName pulumi.StringPtrInput
 	// The payload format.
 	Format ImportDataFileFormatInput
@@ -181,7 +181,7 @@ func (o ImportDataFileOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImportDataFile) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// User-friendly display name. Maximum length is 63 characters.
+// Optional. User-friendly display name. Maximum length is 256 characters.
 func (o ImportDataFileOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImportDataFile) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

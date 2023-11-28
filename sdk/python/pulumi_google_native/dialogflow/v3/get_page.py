@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetPageResult:
-    def __init__(__self__, display_name=None, entry_fulfillment=None, event_handlers=None, form=None, name=None, transition_route_groups=None, transition_routes=None):
+    def __init__(__self__, advanced_settings=None, display_name=None, entry_fulfillment=None, event_handlers=None, form=None, knowledge_connector_settings=None, name=None, transition_route_groups=None, transition_routes=None):
+        if advanced_settings and not isinstance(advanced_settings, dict):
+            raise TypeError("Expected argument 'advanced_settings' to be a dict")
+        pulumi.set(__self__, "advanced_settings", advanced_settings)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -32,6 +35,9 @@ class GetPageResult:
         if form and not isinstance(form, dict):
             raise TypeError("Expected argument 'form' to be a dict")
         pulumi.set(__self__, "form", form)
+        if knowledge_connector_settings and not isinstance(knowledge_connector_settings, dict):
+            raise TypeError("Expected argument 'knowledge_connector_settings' to be a dict")
+        pulumi.set(__self__, "knowledge_connector_settings", knowledge_connector_settings)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -41,6 +47,14 @@ class GetPageResult:
         if transition_routes and not isinstance(transition_routes, list):
             raise TypeError("Expected argument 'transition_routes' to be a list")
         pulumi.set(__self__, "transition_routes", transition_routes)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse':
+        """
+        Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
 
     @property
     @pulumi.getter(name="displayName")
@@ -75,6 +89,14 @@ class GetPageResult:
         return pulumi.get(self, "form")
 
     @property
+    @pulumi.getter(name="knowledgeConnectorSettings")
+    def knowledge_connector_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse':
+        """
+        Optional. Knowledge connector configuration.
+        """
+        return pulumi.get(self, "knowledge_connector_settings")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -86,7 +108,7 @@ class GetPageResult:
     @pulumi.getter(name="transitionRouteGroups")
     def transition_route_groups(self) -> Sequence[str]:
         """
-        Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         """
         return pulumi.get(self, "transition_route_groups")
 
@@ -105,10 +127,12 @@ class AwaitableGetPageResult(GetPageResult):
         if False:
             yield self
         return GetPageResult(
+            advanced_settings=self.advanced_settings,
             display_name=self.display_name,
             entry_fulfillment=self.entry_fulfillment,
             event_handlers=self.event_handlers,
             form=self.form,
+            knowledge_connector_settings=self.knowledge_connector_settings,
             name=self.name,
             transition_route_groups=self.transition_route_groups,
             transition_routes=self.transition_routes)
@@ -135,10 +159,12 @@ def get_page(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3:getPage', __args__, opts=opts, typ=GetPageResult).value
 
     return AwaitableGetPageResult(
+        advanced_settings=pulumi.get(__ret__, 'advanced_settings'),
         display_name=pulumi.get(__ret__, 'display_name'),
         entry_fulfillment=pulumi.get(__ret__, 'entry_fulfillment'),
         event_handlers=pulumi.get(__ret__, 'event_handlers'),
         form=pulumi.get(__ret__, 'form'),
+        knowledge_connector_settings=pulumi.get(__ret__, 'knowledge_connector_settings'),
         name=pulumi.get(__ret__, 'name'),
         transition_route_groups=pulumi.get(__ret__, 'transition_route_groups'),
         transition_routes=pulumi.get(__ret__, 'transition_routes'))

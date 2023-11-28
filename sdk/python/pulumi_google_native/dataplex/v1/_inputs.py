@@ -19,6 +19,9 @@ __all__ = [
     'GoogleCloudDataplexV1ContentSqlScriptArgs',
     'GoogleCloudDataplexV1DataAccessSpecArgs',
     'GoogleCloudDataplexV1DataAttributeBindingPathArgs',
+    'GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs',
+    'GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs',
+    'GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs',
     'GoogleCloudDataplexV1DataProfileSpecArgs',
     'GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs',
     'GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs',
@@ -29,6 +32,8 @@ __all__ = [
     'GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs',
     'GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs',
     'GoogleCloudDataplexV1DataQualityRuleArgs',
+    'GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs',
+    'GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs',
     'GoogleCloudDataplexV1DataQualitySpecArgs',
     'GoogleCloudDataplexV1DataScanExecutionSpecArgs',
     'GoogleCloudDataplexV1DataSourceArgs',
@@ -447,19 +452,139 @@ class GoogleCloudDataplexV1DataAttributeBindingPathArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs:
+    def __init__(__self__, *,
+                 results_table: Optional[pulumi.Input[str]] = None):
+        """
+        The configuration of BigQuery export post scan action.
+        :param pulumi.Input[str] results_table: Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        if results_table is not None:
+            pulumi.set(__self__, "results_table", results_table)
+
+    @property
+    @pulumi.getter(name="resultsTable")
+    def results_table(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        return pulumi.get(self, "results_table")
+
+    @results_table.setter
+    def results_table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "results_table", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs:
+    def __init__(__self__, *,
+                 bigquery_export: Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs']] = None):
+        """
+        The configuration of post scan actions of DataProfileScan job.
+        :param pulumi.Input['GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs'] bigquery_export: Optional. If set, results will be exported to the provided BigQuery table.
+        """
+        if bigquery_export is not None:
+            pulumi.set(__self__, "bigquery_export", bigquery_export)
+
+    @property
+    @pulumi.getter(name="bigqueryExport")
+    def bigquery_export(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs']]:
+        """
+        Optional. If set, results will be exported to the provided BigQuery table.
+        """
+        return pulumi.get(self, "bigquery_export")
+
+    @bigquery_export.setter
+    def bigquery_export(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs']]):
+        pulumi.set(self, "bigquery_export", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs:
+    def __init__(__self__, *,
+                 field_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The specification for fields to include or exclude in data profile scan.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] field_names: Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+        if field_names is not None:
+            pulumi.set(__self__, "field_names", field_names)
+
+    @property
+    @pulumi.getter(name="fieldNames")
+    def field_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+        return pulumi.get(self, "field_names")
+
+    @field_names.setter
+    def field_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "field_names", value)
+
+
+@pulumi.input_type
 class GoogleCloudDataplexV1DataProfileSpecArgs:
     def __init__(__self__, *,
+                 exclude_fields: Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs']] = None,
+                 include_fields: Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs']] = None,
+                 post_scan_actions: Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs']] = None,
                  row_filter: Optional[pulumi.Input[str]] = None,
                  sampling_percent: Optional[pulumi.Input[float]] = None):
         """
         DataProfileScan related setting.
+        :param pulumi.Input['GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs'] exclude_fields: Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+        :param pulumi.Input['GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs'] include_fields: Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+        :param pulumi.Input['GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs'] post_scan_actions: Optional. Actions to take upon job completion..
         :param pulumi.Input[str] row_filter: Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param pulumi.Input[float] sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
+        if exclude_fields is not None:
+            pulumi.set(__self__, "exclude_fields", exclude_fields)
+        if include_fields is not None:
+            pulumi.set(__self__, "include_fields", include_fields)
+        if post_scan_actions is not None:
+            pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         if row_filter is not None:
             pulumi.set(__self__, "row_filter", row_filter)
         if sampling_percent is not None:
             pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="excludeFields")
+    def exclude_fields(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs']]:
+        """
+        Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+        """
+        return pulumi.get(self, "exclude_fields")
+
+    @exclude_fields.setter
+    def exclude_fields(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs']]):
+        pulumi.set(self, "exclude_fields", value)
+
+    @property
+    @pulumi.getter(name="includeFields")
+    def include_fields(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs']]:
+        """
+        Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+        """
+        return pulumi.get(self, "include_fields")
+
+    @include_fields.setter
+    def include_fields(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs']]):
+        pulumi.set(self, "include_fields", value)
+
+    @property
+    @pulumi.getter(name="postScanActions")
+    def post_scan_actions(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs']]:
+        """
+        Optional. Actions to take upon job completion..
+        """
+        return pulumi.get(self, "post_scan_actions")
+
+    @post_scan_actions.setter
+    def post_scan_actions(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs']]):
+        pulumi.set(self, "post_scan_actions", value)
 
     @property
     @pulumi.getter(name="rowFilter")
@@ -573,7 +698,7 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs:
                  regex: Optional[pulumi.Input[str]] = None):
         """
         Evaluates whether each column value matches a specified regex.
-        :param pulumi.Input[str] regex: A regular expression the column value is expected to match.
+        :param pulumi.Input[str] regex: Optional. A regular expression the column value is expected to match.
         """
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
@@ -582,7 +707,7 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs:
     @pulumi.getter
     def regex(self) -> Optional[pulumi.Input[str]]:
         """
-        A regular expression the column value is expected to match.
+        Optional. A regular expression the column value is expected to match.
         """
         return pulumi.get(self, "regex")
 
@@ -597,7 +722,7 @@ class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs:
                  sql_expression: Optional[pulumi.Input[str]] = None):
         """
         Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
-        :param pulumi.Input[str] sql_expression: The SQL expression.
+        :param pulumi.Input[str] sql_expression: Optional. The SQL expression.
         """
         if sql_expression is not None:
             pulumi.set(__self__, "sql_expression", sql_expression)
@@ -606,7 +731,7 @@ class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs:
     @pulumi.getter(name="sqlExpression")
     def sql_expression(self) -> Optional[pulumi.Input[str]]:
         """
-        The SQL expression.
+        Optional. The SQL expression.
         """
         return pulumi.get(self, "sql_expression")
 
@@ -621,7 +746,7 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs:
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Evaluates whether each column value is contained by a specified set.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Expected values for the column value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Optional. Expected values for the column value.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -630,7 +755,7 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs:
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Expected values for the column value.
+        Optional. Expected values for the column value.
         """
         return pulumi.get(self, "values")
 
@@ -649,11 +774,11 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs:
                  strict_min_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Evaluates whether the column aggregate statistic lies between a specified range.
-        :param pulumi.Input[str] max_value: The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
-        :param pulumi.Input[str] min_value: The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
-        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic'] statistic: The aggregate metric to evaluate.
-        :param pulumi.Input[bool] strict_max_enabled: Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
-        :param pulumi.Input[bool] strict_min_enabled: Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+        :param pulumi.Input[str] max_value: Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        :param pulumi.Input[str] min_value: Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic'] statistic: Optional. The aggregate metric to evaluate.
+        :param pulumi.Input[bool] strict_max_enabled: Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+        :param pulumi.Input[bool] strict_min_enabled: Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
         """
         if max_value is not None:
             pulumi.set(__self__, "max_value", max_value)
@@ -670,7 +795,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs:
     @pulumi.getter(name="maxValue")
     def max_value(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
         """
         return pulumi.get(self, "max_value")
 
@@ -682,7 +807,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs:
     @pulumi.getter(name="minValue")
     def min_value(self) -> Optional[pulumi.Input[str]]:
         """
-        The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
         """
         return pulumi.get(self, "min_value")
 
@@ -694,7 +819,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs:
     @pulumi.getter
     def statistic(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic']]:
         """
-        The aggregate metric to evaluate.
+        Optional. The aggregate metric to evaluate.
         """
         return pulumi.get(self, "statistic")
 
@@ -706,7 +831,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs:
     @pulumi.getter(name="strictMaxEnabled")
     def strict_max_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+        Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
         """
         return pulumi.get(self, "strict_max_enabled")
 
@@ -718,7 +843,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs:
     @pulumi.getter(name="strictMinEnabled")
     def strict_min_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+        Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
         """
         return pulumi.get(self, "strict_min_enabled")
 
@@ -733,7 +858,7 @@ class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs:
                  sql_expression: Optional[pulumi.Input[str]] = None):
         """
         Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
-        :param pulumi.Input[str] sql_expression: The SQL expression.
+        :param pulumi.Input[str] sql_expression: Optional. The SQL expression.
         """
         if sql_expression is not None:
             pulumi.set(__self__, "sql_expression", sql_expression)
@@ -742,7 +867,7 @@ class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs:
     @pulumi.getter(name="sqlExpression")
     def sql_expression(self) -> Optional[pulumi.Input[str]]:
         """
-        The SQL expression.
+        Optional. The SQL expression.
         """
         return pulumi.get(self, "sql_expression")
 
@@ -765,7 +890,9 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
     def __init__(__self__, *,
                  dimension: pulumi.Input[str],
                  column: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  ignore_null: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  non_null_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs']] = None,
                  range_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs']] = None,
                  regex_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs']] = None,
@@ -779,22 +906,28 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
         A rule captures data quality intent about a data source.
         :param pulumi.Input[str] dimension: The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
         :param pulumi.Input[str] column: Optional. The unnested column which this rule is evaluated against.
-        :param pulumi.Input[bool] ignore_null: Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
-        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs'] non_null_expectation: ColumnMap rule which evaluates whether each column value is null.
-        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs'] range_expectation: ColumnMap rule which evaluates whether each column value lies between a specified range.
-        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs'] regex_expectation: ColumnMap rule which evaluates whether each column value matches a specified regex.
-        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs'] row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
-        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs'] set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
-        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs'] statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
-        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs'] table_condition_expectation: Table rule which evaluates whether the provided expression is true.
-        :param pulumi.Input[float] threshold: Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
-        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs'] uniqueness_expectation: ColumnAggregate rule which evaluates whether the column has duplicates.
+        :param pulumi.Input[str] description: Optional. Description of the rule. The maximum length is 1,024 characters.
+        :param pulumi.Input[bool] ignore_null: Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+        :param pulumi.Input[str] name: Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs'] non_null_expectation: Row-level rule which evaluates whether each column value is null.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs'] range_expectation: Row-level rule which evaluates whether each column value lies between a specified range.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs'] regex_expectation: Row-level rule which evaluates whether each column value matches a specified regex.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs'] row_condition_expectation: Row-level rule which evaluates whether each row in a table passes the specified condition.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs'] set_expectation: Row-level rule which evaluates whether each column value is contained by a specified set.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs'] statistic_range_expectation: Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs'] table_condition_expectation: Aggregate rule which evaluates whether the provided expression is true for a table.
+        :param pulumi.Input[float] threshold: Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs'] uniqueness_expectation: Row-level rule which evaluates whether each column value is unique.
         """
         pulumi.set(__self__, "dimension", dimension)
         if column is not None:
             pulumi.set(__self__, "column", column)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if ignore_null is not None:
             pulumi.set(__self__, "ignore_null", ignore_null)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if non_null_expectation is not None:
             pulumi.set(__self__, "non_null_expectation", non_null_expectation)
         if range_expectation is not None:
@@ -839,10 +972,22 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
         pulumi.set(self, "column", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Description of the rule. The maximum length is 1,024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="ignoreNull")
     def ignore_null(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+        Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
         """
         return pulumi.get(self, "ignore_null")
 
@@ -851,10 +996,22 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
         pulumi.set(self, "ignore_null", value)
 
     @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="nonNullExpectation")
     def non_null_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs']]:
         """
-        ColumnMap rule which evaluates whether each column value is null.
+        Row-level rule which evaluates whether each column value is null.
         """
         return pulumi.get(self, "non_null_expectation")
 
@@ -866,7 +1023,7 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
     @pulumi.getter(name="rangeExpectation")
     def range_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs']]:
         """
-        ColumnMap rule which evaluates whether each column value lies between a specified range.
+        Row-level rule which evaluates whether each column value lies between a specified range.
         """
         return pulumi.get(self, "range_expectation")
 
@@ -878,7 +1035,7 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
     @pulumi.getter(name="regexExpectation")
     def regex_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs']]:
         """
-        ColumnMap rule which evaluates whether each column value matches a specified regex.
+        Row-level rule which evaluates whether each column value matches a specified regex.
         """
         return pulumi.get(self, "regex_expectation")
 
@@ -890,7 +1047,7 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
     @pulumi.getter(name="rowConditionExpectation")
     def row_condition_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs']]:
         """
-        Table rule which evaluates whether each row passes the specified condition.
+        Row-level rule which evaluates whether each row in a table passes the specified condition.
         """
         return pulumi.get(self, "row_condition_expectation")
 
@@ -902,7 +1059,7 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
     @pulumi.getter(name="setExpectation")
     def set_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs']]:
         """
-        ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        Row-level rule which evaluates whether each column value is contained by a specified set.
         """
         return pulumi.get(self, "set_expectation")
 
@@ -914,7 +1071,7 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
     @pulumi.getter(name="statisticRangeExpectation")
     def statistic_range_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs']]:
         """
-        ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         """
         return pulumi.get(self, "statistic_range_expectation")
 
@@ -926,7 +1083,7 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
     @pulumi.getter(name="tableConditionExpectation")
     def table_condition_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs']]:
         """
-        Table rule which evaluates whether the provided expression is true.
+        Aggregate rule which evaluates whether the provided expression is true for a table.
         """
         return pulumi.get(self, "table_condition_expectation")
 
@@ -938,7 +1095,7 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[float]]:
         """
-        Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+        Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
         """
         return pulumi.get(self, "threshold")
 
@@ -950,7 +1107,7 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
     @pulumi.getter(name="uniquenessExpectation")
     def uniqueness_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs']]:
         """
-        ColumnAggregate rule which evaluates whether the column has duplicates.
+        Row-level rule which evaluates whether each column value is unique.
         """
         return pulumi.get(self, "uniqueness_expectation")
 
@@ -960,23 +1117,98 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs:
+    def __init__(__self__, *,
+                 results_table: Optional[pulumi.Input[str]] = None):
+        """
+        The configuration of BigQuery export post scan action.
+        :param pulumi.Input[str] results_table: Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        if results_table is not None:
+            pulumi.set(__self__, "results_table", results_table)
+
+    @property
+    @pulumi.getter(name="resultsTable")
+    def results_table(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        return pulumi.get(self, "results_table")
+
+    @results_table.setter
+    def results_table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "results_table", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs:
+    def __init__(__self__, *,
+                 bigquery_export: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs']] = None):
+        """
+        The configuration of post scan actions of DataQualityScan.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs'] bigquery_export: Optional. If set, results will be exported to the provided BigQuery table.
+        """
+        if bigquery_export is not None:
+            pulumi.set(__self__, "bigquery_export", bigquery_export)
+
+    @property
+    @pulumi.getter(name="bigqueryExport")
+    def bigquery_export(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs']]:
+        """
+        Optional. If set, results will be exported to the provided BigQuery table.
+        """
+        return pulumi.get(self, "bigquery_export")
+
+    @bigquery_export.setter
+    def bigquery_export(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs']]):
+        pulumi.set(self, "bigquery_export", value)
+
+
+@pulumi.input_type
 class GoogleCloudDataplexV1DataQualitySpecArgs:
     def __init__(__self__, *,
+                 rules: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]],
+                 post_scan_actions: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs']] = None,
                  row_filter: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]] = None,
                  sampling_percent: Optional[pulumi.Input[float]] = None):
         """
         DataQualityScan related setting.
-        :param pulumi.Input[str] row_filter: Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]] rules: The list of rules to evaluate against a data source. At least one rule is required.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs'] post_scan_actions: Optional. Actions to take upon job completion.
+        :param pulumi.Input[str] row_filter: Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param pulumi.Input[float] sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
+        pulumi.set(__self__, "rules", rules)
+        if post_scan_actions is not None:
+            pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         if row_filter is not None:
             pulumi.set(__self__, "row_filter", row_filter)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
         if sampling_percent is not None:
             pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]:
+        """
+        The list of rules to evaluate against a data source. At least one rule is required.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="postScanActions")
+    def post_scan_actions(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs']]:
+        """
+        Optional. Actions to take upon job completion.
+        """
+        return pulumi.get(self, "post_scan_actions")
+
+    @post_scan_actions.setter
+    def post_scan_actions(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs']]):
+        pulumi.set(self, "post_scan_actions", value)
 
     @property
     @pulumi.getter(name="rowFilter")
@@ -989,18 +1221,6 @@ class GoogleCloudDataplexV1DataQualitySpecArgs:
     @row_filter.setter
     def row_filter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "row_filter", value)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]]:
-        """
-        The list of rules to evaluate against a data source. At least one rule is required.
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
 
     @property
     @pulumi.getter(name="samplingPercent")

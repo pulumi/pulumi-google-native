@@ -11,6 +11,195 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Method used to make Relay available
+type AdvancedDatapathObservabilityConfigRelayMode string
+
+const (
+	// Default value. This shouldn't be used.
+	AdvancedDatapathObservabilityConfigRelayModeRelayModeUnspecified = AdvancedDatapathObservabilityConfigRelayMode("RELAY_MODE_UNSPECIFIED")
+	// disabled
+	AdvancedDatapathObservabilityConfigRelayModeDisabled = AdvancedDatapathObservabilityConfigRelayMode("DISABLED")
+	// exposed via internal load balancer
+	AdvancedDatapathObservabilityConfigRelayModeInternalVpcLb = AdvancedDatapathObservabilityConfigRelayMode("INTERNAL_VPC_LB")
+	// exposed via external load balancer
+	AdvancedDatapathObservabilityConfigRelayModeExternalLb = AdvancedDatapathObservabilityConfigRelayMode("EXTERNAL_LB")
+)
+
+func (AdvancedDatapathObservabilityConfigRelayMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedDatapathObservabilityConfigRelayMode)(nil)).Elem()
+}
+
+func (e AdvancedDatapathObservabilityConfigRelayMode) ToAdvancedDatapathObservabilityConfigRelayModeOutput() AdvancedDatapathObservabilityConfigRelayModeOutput {
+	return pulumi.ToOutput(e).(AdvancedDatapathObservabilityConfigRelayModeOutput)
+}
+
+func (e AdvancedDatapathObservabilityConfigRelayMode) ToAdvancedDatapathObservabilityConfigRelayModeOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigRelayModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AdvancedDatapathObservabilityConfigRelayModeOutput)
+}
+
+func (e AdvancedDatapathObservabilityConfigRelayMode) ToAdvancedDatapathObservabilityConfigRelayModePtrOutput() AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return e.ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(context.Background())
+}
+
+func (e AdvancedDatapathObservabilityConfigRelayMode) ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return AdvancedDatapathObservabilityConfigRelayMode(e).ToAdvancedDatapathObservabilityConfigRelayModeOutputWithContext(ctx).ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(ctx)
+}
+
+func (e AdvancedDatapathObservabilityConfigRelayMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdvancedDatapathObservabilityConfigRelayMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdvancedDatapathObservabilityConfigRelayMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AdvancedDatapathObservabilityConfigRelayMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AdvancedDatapathObservabilityConfigRelayModeOutput struct{ *pulumi.OutputState }
+
+func (AdvancedDatapathObservabilityConfigRelayModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedDatapathObservabilityConfigRelayMode)(nil)).Elem()
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModeOutput) ToAdvancedDatapathObservabilityConfigRelayModeOutput() AdvancedDatapathObservabilityConfigRelayModeOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModeOutput) ToAdvancedDatapathObservabilityConfigRelayModeOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigRelayModeOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModeOutput) ToAdvancedDatapathObservabilityConfigRelayModePtrOutput() AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return o.ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModeOutput) ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedDatapathObservabilityConfigRelayMode) *AdvancedDatapathObservabilityConfigRelayMode {
+		return &v
+	}).(AdvancedDatapathObservabilityConfigRelayModePtrOutput)
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModeOutput) ToOutput(ctx context.Context) pulumix.Output[AdvancedDatapathObservabilityConfigRelayMode] {
+	return pulumix.Output[AdvancedDatapathObservabilityConfigRelayMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdvancedDatapathObservabilityConfigRelayMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdvancedDatapathObservabilityConfigRelayMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AdvancedDatapathObservabilityConfigRelayModePtrOutput struct{ *pulumi.OutputState }
+
+func (AdvancedDatapathObservabilityConfigRelayModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedDatapathObservabilityConfigRelayMode)(nil)).Elem()
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModePtrOutput) ToAdvancedDatapathObservabilityConfigRelayModePtrOutput() AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModePtrOutput) ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdvancedDatapathObservabilityConfigRelayMode] {
+	return pulumix.Output[*AdvancedDatapathObservabilityConfigRelayMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModePtrOutput) Elem() AdvancedDatapathObservabilityConfigRelayModeOutput {
+	return o.ApplyT(func(v *AdvancedDatapathObservabilityConfigRelayMode) AdvancedDatapathObservabilityConfigRelayMode {
+		if v != nil {
+			return *v
+		}
+		var ret AdvancedDatapathObservabilityConfigRelayMode
+		return ret
+	}).(AdvancedDatapathObservabilityConfigRelayModeOutput)
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedDatapathObservabilityConfigRelayModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AdvancedDatapathObservabilityConfigRelayMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AdvancedDatapathObservabilityConfigRelayModeInput is an input type that accepts AdvancedDatapathObservabilityConfigRelayModeArgs and AdvancedDatapathObservabilityConfigRelayModeOutput values.
+// You can construct a concrete instance of `AdvancedDatapathObservabilityConfigRelayModeInput` via:
+//
+//	AdvancedDatapathObservabilityConfigRelayModeArgs{...}
+type AdvancedDatapathObservabilityConfigRelayModeInput interface {
+	pulumi.Input
+
+	ToAdvancedDatapathObservabilityConfigRelayModeOutput() AdvancedDatapathObservabilityConfigRelayModeOutput
+	ToAdvancedDatapathObservabilityConfigRelayModeOutputWithContext(context.Context) AdvancedDatapathObservabilityConfigRelayModeOutput
+}
+
+var advancedDatapathObservabilityConfigRelayModePtrType = reflect.TypeOf((**AdvancedDatapathObservabilityConfigRelayMode)(nil)).Elem()
+
+type AdvancedDatapathObservabilityConfigRelayModePtrInput interface {
+	pulumi.Input
+
+	ToAdvancedDatapathObservabilityConfigRelayModePtrOutput() AdvancedDatapathObservabilityConfigRelayModePtrOutput
+	ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(context.Context) AdvancedDatapathObservabilityConfigRelayModePtrOutput
+}
+
+type advancedDatapathObservabilityConfigRelayModePtr string
+
+func AdvancedDatapathObservabilityConfigRelayModePtr(v string) AdvancedDatapathObservabilityConfigRelayModePtrInput {
+	return (*advancedDatapathObservabilityConfigRelayModePtr)(&v)
+}
+
+func (*advancedDatapathObservabilityConfigRelayModePtr) ElementType() reflect.Type {
+	return advancedDatapathObservabilityConfigRelayModePtrType
+}
+
+func (in *advancedDatapathObservabilityConfigRelayModePtr) ToAdvancedDatapathObservabilityConfigRelayModePtrOutput() AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return pulumi.ToOutput(in).(AdvancedDatapathObservabilityConfigRelayModePtrOutput)
+}
+
+func (in *advancedDatapathObservabilityConfigRelayModePtr) ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AdvancedDatapathObservabilityConfigRelayModePtrOutput)
+}
+
+func (in *advancedDatapathObservabilityConfigRelayModePtr) ToOutput(ctx context.Context) pulumix.Output[*AdvancedDatapathObservabilityConfigRelayMode] {
+	return pulumix.Output[*AdvancedDatapathObservabilityConfigRelayMode]{
+		OutputState: in.ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 type BinaryAuthorizationEvaluationMode string
 
@@ -572,6 +761,191 @@ func (in *clusterAutoscalingAutoscalingProfilePtr) ToOutput(ctx context.Context)
 	}
 }
 
+// Specifies the total network bandwidth tier for NodePools in the cluster.
+type ClusterNetworkPerformanceConfigTotalEgressBandwidthTier string
+
+const (
+	// Default value
+	ClusterNetworkPerformanceConfigTotalEgressBandwidthTierTierUnspecified = ClusterNetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED")
+	// Higher bandwidth, actual values based on VM size.
+	ClusterNetworkPerformanceConfigTotalEgressBandwidthTierTier1 = ClusterNetworkPerformanceConfigTotalEgressBandwidthTier("TIER_1")
+)
+
+func (ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworkPerformanceConfigTotalEgressBandwidthTier)(nil)).Elem()
+}
+
+func (e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return pulumi.ToOutput(e).(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput)
+}
+
+func (e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput)
+}
+
+func (e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return e.ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return ClusterNetworkPerformanceConfigTotalEgressBandwidthTier(e).ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutputWithContext(ctx).ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx)
+}
+
+func (e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworkPerformanceConfigTotalEgressBandwidthTier)(nil)).Elem()
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) *ClusterNetworkPerformanceConfigTotalEgressBandwidthTier {
+		return &v
+	}).(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNetworkPerformanceConfigTotalEgressBandwidthTier] {
+	return pulumix.Output[ClusterNetworkPerformanceConfigTotalEgressBandwidthTier]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworkPerformanceConfigTotalEgressBandwidthTier)(nil)).Elem()
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkPerformanceConfigTotalEgressBandwidthTier] {
+	return pulumix.Output[*ClusterNetworkPerformanceConfigTotalEgressBandwidthTier]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) Elem() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return o.ApplyT(func(v *ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) ClusterNetworkPerformanceConfigTotalEgressBandwidthTier {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNetworkPerformanceConfigTotalEgressBandwidthTier
+		return ret
+	}).(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput)
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterNetworkPerformanceConfigTotalEgressBandwidthTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClusterNetworkPerformanceConfigTotalEgressBandwidthTierInput is an input type that accepts ClusterNetworkPerformanceConfigTotalEgressBandwidthTierArgs and ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput values.
+// You can construct a concrete instance of `ClusterNetworkPerformanceConfigTotalEgressBandwidthTierInput` via:
+//
+//	ClusterNetworkPerformanceConfigTotalEgressBandwidthTierArgs{...}
+type ClusterNetworkPerformanceConfigTotalEgressBandwidthTierInput interface {
+	pulumi.Input
+
+	ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput
+	ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutputWithContext(context.Context) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput
+}
+
+var clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrType = reflect.TypeOf((**ClusterNetworkPerformanceConfigTotalEgressBandwidthTier)(nil)).Elem()
+
+type ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrInput interface {
+	pulumi.Input
+
+	ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput
+	ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(context.Context) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput
+}
+
+type clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr string
+
+func ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr(v string) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrInput {
+	return (*clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr)(&v)
+}
+
+func (*clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr) ElementType() reflect.Type {
+	return clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrType
+}
+
+func (in *clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return pulumi.ToOutput(in).(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+func (in *clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+func (in *clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkPerformanceConfigTotalEgressBandwidthTier] {
+	return pulumix.Output[*ClusterNetworkPerformanceConfigTotalEgressBandwidthTier]{
+		OutputState: in.ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The desired datapath provider for the cluster.
 type ClusterUpdateDesiredDatapathProvider string
 
@@ -620,6 +994,8 @@ const (
 	DNSConfigClusterDnsPlatformDefault = DNSConfigClusterDns("PLATFORM_DEFAULT")
 	// Use CloudDNS for DNS resolution.
 	DNSConfigClusterDnsCloudDns = DNSConfigClusterDns("CLOUD_DNS")
+	// Use KubeDNS for DNS resolution.
+	DNSConfigClusterDnsKubeDns = DNSConfigClusterDns("KUBE_DNS")
 )
 
 func (DNSConfigClusterDns) ElementType() reflect.Type {
@@ -1414,6 +1790,195 @@ func (o FilterEventTypeItemArrayOutput) Index(i pulumi.IntInput) FilterEventType
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterEventTypeItem {
 		return vs[0].([]FilterEventTypeItem)[vs[1].(int)]
 	}).(FilterEventTypeItemOutput)
+}
+
+// Mode for how the GPU driver is installed.
+type GPUDriverInstallationConfigGpuDriverVersion string
+
+const (
+	// Default value is to not install any GPU driver.
+	GPUDriverInstallationConfigGpuDriverVersionGpuDriverVersionUnspecified = GPUDriverInstallationConfigGpuDriverVersion("GPU_DRIVER_VERSION_UNSPECIFIED")
+	// Disable GPU driver auto installation and needs manual installation
+	GPUDriverInstallationConfigGpuDriverVersionInstallationDisabled = GPUDriverInstallationConfigGpuDriverVersion("INSTALLATION_DISABLED")
+	// "Default" GPU driver in COS and Ubuntu.
+	GPUDriverInstallationConfigGpuDriverVersionDefault = GPUDriverInstallationConfigGpuDriverVersion("DEFAULT")
+	// "Latest" GPU driver in COS.
+	GPUDriverInstallationConfigGpuDriverVersionLatest = GPUDriverInstallationConfigGpuDriverVersion("LATEST")
+)
+
+func (GPUDriverInstallationConfigGpuDriverVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUDriverInstallationConfigGpuDriverVersion)(nil)).Elem()
+}
+
+func (e GPUDriverInstallationConfigGpuDriverVersion) ToGPUDriverInstallationConfigGpuDriverVersionOutput() GPUDriverInstallationConfigGpuDriverVersionOutput {
+	return pulumi.ToOutput(e).(GPUDriverInstallationConfigGpuDriverVersionOutput)
+}
+
+func (e GPUDriverInstallationConfigGpuDriverVersion) ToGPUDriverInstallationConfigGpuDriverVersionOutputWithContext(ctx context.Context) GPUDriverInstallationConfigGpuDriverVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GPUDriverInstallationConfigGpuDriverVersionOutput)
+}
+
+func (e GPUDriverInstallationConfigGpuDriverVersion) ToGPUDriverInstallationConfigGpuDriverVersionPtrOutput() GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return e.ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(context.Background())
+}
+
+func (e GPUDriverInstallationConfigGpuDriverVersion) ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(ctx context.Context) GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return GPUDriverInstallationConfigGpuDriverVersion(e).ToGPUDriverInstallationConfigGpuDriverVersionOutputWithContext(ctx).ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(ctx)
+}
+
+func (e GPUDriverInstallationConfigGpuDriverVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GPUDriverInstallationConfigGpuDriverVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GPUDriverInstallationConfigGpuDriverVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GPUDriverInstallationConfigGpuDriverVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GPUDriverInstallationConfigGpuDriverVersionOutput struct{ *pulumi.OutputState }
+
+func (GPUDriverInstallationConfigGpuDriverVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUDriverInstallationConfigGpuDriverVersion)(nil)).Elem()
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionOutput) ToGPUDriverInstallationConfigGpuDriverVersionOutput() GPUDriverInstallationConfigGpuDriverVersionOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionOutput) ToGPUDriverInstallationConfigGpuDriverVersionOutputWithContext(ctx context.Context) GPUDriverInstallationConfigGpuDriverVersionOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionOutput) ToGPUDriverInstallationConfigGpuDriverVersionPtrOutput() GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return o.ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(context.Background())
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionOutput) ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(ctx context.Context) GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GPUDriverInstallationConfigGpuDriverVersion) *GPUDriverInstallationConfigGpuDriverVersion {
+		return &v
+	}).(GPUDriverInstallationConfigGpuDriverVersionPtrOutput)
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GPUDriverInstallationConfigGpuDriverVersion] {
+	return pulumix.Output[GPUDriverInstallationConfigGpuDriverVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GPUDriverInstallationConfigGpuDriverVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GPUDriverInstallationConfigGpuDriverVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GPUDriverInstallationConfigGpuDriverVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (GPUDriverInstallationConfigGpuDriverVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GPUDriverInstallationConfigGpuDriverVersion)(nil)).Elem()
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionPtrOutput) ToGPUDriverInstallationConfigGpuDriverVersionPtrOutput() GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionPtrOutput) ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(ctx context.Context) GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GPUDriverInstallationConfigGpuDriverVersion] {
+	return pulumix.Output[*GPUDriverInstallationConfigGpuDriverVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionPtrOutput) Elem() GPUDriverInstallationConfigGpuDriverVersionOutput {
+	return o.ApplyT(func(v *GPUDriverInstallationConfigGpuDriverVersion) GPUDriverInstallationConfigGpuDriverVersion {
+		if v != nil {
+			return *v
+		}
+		var ret GPUDriverInstallationConfigGpuDriverVersion
+		return ret
+	}).(GPUDriverInstallationConfigGpuDriverVersionOutput)
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GPUDriverInstallationConfigGpuDriverVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GPUDriverInstallationConfigGpuDriverVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GPUDriverInstallationConfigGpuDriverVersionInput is an input type that accepts GPUDriverInstallationConfigGpuDriverVersionArgs and GPUDriverInstallationConfigGpuDriverVersionOutput values.
+// You can construct a concrete instance of `GPUDriverInstallationConfigGpuDriverVersionInput` via:
+//
+//	GPUDriverInstallationConfigGpuDriverVersionArgs{...}
+type GPUDriverInstallationConfigGpuDriverVersionInput interface {
+	pulumi.Input
+
+	ToGPUDriverInstallationConfigGpuDriverVersionOutput() GPUDriverInstallationConfigGpuDriverVersionOutput
+	ToGPUDriverInstallationConfigGpuDriverVersionOutputWithContext(context.Context) GPUDriverInstallationConfigGpuDriverVersionOutput
+}
+
+var gpudriverInstallationConfigGpuDriverVersionPtrType = reflect.TypeOf((**GPUDriverInstallationConfigGpuDriverVersion)(nil)).Elem()
+
+type GPUDriverInstallationConfigGpuDriverVersionPtrInput interface {
+	pulumi.Input
+
+	ToGPUDriverInstallationConfigGpuDriverVersionPtrOutput() GPUDriverInstallationConfigGpuDriverVersionPtrOutput
+	ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(context.Context) GPUDriverInstallationConfigGpuDriverVersionPtrOutput
+}
+
+type gpudriverInstallationConfigGpuDriverVersionPtr string
+
+func GPUDriverInstallationConfigGpuDriverVersionPtr(v string) GPUDriverInstallationConfigGpuDriverVersionPtrInput {
+	return (*gpudriverInstallationConfigGpuDriverVersionPtr)(&v)
+}
+
+func (*gpudriverInstallationConfigGpuDriverVersionPtr) ElementType() reflect.Type {
+	return gpudriverInstallationConfigGpuDriverVersionPtrType
+}
+
+func (in *gpudriverInstallationConfigGpuDriverVersionPtr) ToGPUDriverInstallationConfigGpuDriverVersionPtrOutput() GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return pulumi.ToOutput(in).(GPUDriverInstallationConfigGpuDriverVersionPtrOutput)
+}
+
+func (in *gpudriverInstallationConfigGpuDriverVersionPtr) ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(ctx context.Context) GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GPUDriverInstallationConfigGpuDriverVersionPtrOutput)
+}
+
+func (in *gpudriverInstallationConfigGpuDriverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*GPUDriverInstallationConfigGpuDriverVersion] {
+	return pulumix.Output[*GPUDriverInstallationConfigGpuDriverVersion]{
+		OutputState: in.ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of GPU sharing strategy to enable on the GPU node.
@@ -2987,6 +3552,18 @@ const (
 	MonitoringComponentConfigEnableComponentsItemScheduler = MonitoringComponentConfigEnableComponentsItem("SCHEDULER")
 	// kube-controller-manager
 	MonitoringComponentConfigEnableComponentsItemControllerManager = MonitoringComponentConfigEnableComponentsItem("CONTROLLER_MANAGER")
+	// Storage
+	MonitoringComponentConfigEnableComponentsItemStorage = MonitoringComponentConfigEnableComponentsItem("STORAGE")
+	// Horizontal Pod Autoscaling
+	MonitoringComponentConfigEnableComponentsItemHpa = MonitoringComponentConfigEnableComponentsItem("HPA")
+	// Pod
+	MonitoringComponentConfigEnableComponentsItemPod = MonitoringComponentConfigEnableComponentsItem("POD")
+	// DaemonSet
+	MonitoringComponentConfigEnableComponentsItemDaemonset = MonitoringComponentConfigEnableComponentsItem("DAEMONSET")
+	// Deployment
+	MonitoringComponentConfigEnableComponentsItemDeployment = MonitoringComponentConfigEnableComponentsItem("DEPLOYMENT")
+	// Statefulset
+	MonitoringComponentConfigEnableComponentsItemStatefulset = MonitoringComponentConfigEnableComponentsItem("STATEFULSET")
 )
 
 func (MonitoringComponentConfigEnableComponentsItem) ElementType() reflect.Type {
@@ -3964,6 +4541,193 @@ func (in *networkPolicyProviderPtr) ToNetworkPolicyProviderPtrOutputWithContext(
 func (in *networkPolicyProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPolicyProvider] {
 	return pulumix.Output[*NetworkPolicyProvider]{
 		OutputState: in.ToNetworkPolicyProviderPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Operator for NodeAffinity.
+type NodeAffinityOperator string
+
+const (
+	// Invalid or unspecified affinity operator.
+	NodeAffinityOperatorOperatorUnspecified = NodeAffinityOperator("OPERATOR_UNSPECIFIED")
+	// Affinity operator.
+	NodeAffinityOperatorIn = NodeAffinityOperator("IN")
+	// Anti-affinity operator.
+	NodeAffinityOperatorNotIn = NodeAffinityOperator("NOT_IN")
+)
+
+func (NodeAffinityOperator) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeAffinityOperator)(nil)).Elem()
+}
+
+func (e NodeAffinityOperator) ToNodeAffinityOperatorOutput() NodeAffinityOperatorOutput {
+	return pulumi.ToOutput(e).(NodeAffinityOperatorOutput)
+}
+
+func (e NodeAffinityOperator) ToNodeAffinityOperatorOutputWithContext(ctx context.Context) NodeAffinityOperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NodeAffinityOperatorOutput)
+}
+
+func (e NodeAffinityOperator) ToNodeAffinityOperatorPtrOutput() NodeAffinityOperatorPtrOutput {
+	return e.ToNodeAffinityOperatorPtrOutputWithContext(context.Background())
+}
+
+func (e NodeAffinityOperator) ToNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) NodeAffinityOperatorPtrOutput {
+	return NodeAffinityOperator(e).ToNodeAffinityOperatorOutputWithContext(ctx).ToNodeAffinityOperatorPtrOutputWithContext(ctx)
+}
+
+func (e NodeAffinityOperator) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodeAffinityOperator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodeAffinityOperator) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NodeAffinityOperator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NodeAffinityOperatorOutput struct{ *pulumi.OutputState }
+
+func (NodeAffinityOperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeAffinityOperator)(nil)).Elem()
+}
+
+func (o NodeAffinityOperatorOutput) ToNodeAffinityOperatorOutput() NodeAffinityOperatorOutput {
+	return o
+}
+
+func (o NodeAffinityOperatorOutput) ToNodeAffinityOperatorOutputWithContext(ctx context.Context) NodeAffinityOperatorOutput {
+	return o
+}
+
+func (o NodeAffinityOperatorOutput) ToNodeAffinityOperatorPtrOutput() NodeAffinityOperatorPtrOutput {
+	return o.ToNodeAffinityOperatorPtrOutputWithContext(context.Background())
+}
+
+func (o NodeAffinityOperatorOutput) ToNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) NodeAffinityOperatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeAffinityOperator) *NodeAffinityOperator {
+		return &v
+	}).(NodeAffinityOperatorPtrOutput)
+}
+
+func (o NodeAffinityOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[NodeAffinityOperator] {
+	return pulumix.Output[NodeAffinityOperator]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NodeAffinityOperatorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NodeAffinityOperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeAffinityOperator) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NodeAffinityOperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodeAffinityOperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeAffinityOperator) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodeAffinityOperatorPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeAffinityOperatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeAffinityOperator)(nil)).Elem()
+}
+
+func (o NodeAffinityOperatorPtrOutput) ToNodeAffinityOperatorPtrOutput() NodeAffinityOperatorPtrOutput {
+	return o
+}
+
+func (o NodeAffinityOperatorPtrOutput) ToNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) NodeAffinityOperatorPtrOutput {
+	return o
+}
+
+func (o NodeAffinityOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeAffinityOperator] {
+	return pulumix.Output[*NodeAffinityOperator]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NodeAffinityOperatorPtrOutput) Elem() NodeAffinityOperatorOutput {
+	return o.ApplyT(func(v *NodeAffinityOperator) NodeAffinityOperator {
+		if v != nil {
+			return *v
+		}
+		var ret NodeAffinityOperator
+		return ret
+	}).(NodeAffinityOperatorOutput)
+}
+
+func (o NodeAffinityOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodeAffinityOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NodeAffinityOperator) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NodeAffinityOperatorInput is an input type that accepts NodeAffinityOperatorArgs and NodeAffinityOperatorOutput values.
+// You can construct a concrete instance of `NodeAffinityOperatorInput` via:
+//
+//	NodeAffinityOperatorArgs{...}
+type NodeAffinityOperatorInput interface {
+	pulumi.Input
+
+	ToNodeAffinityOperatorOutput() NodeAffinityOperatorOutput
+	ToNodeAffinityOperatorOutputWithContext(context.Context) NodeAffinityOperatorOutput
+}
+
+var nodeAffinityOperatorPtrType = reflect.TypeOf((**NodeAffinityOperator)(nil)).Elem()
+
+type NodeAffinityOperatorPtrInput interface {
+	pulumi.Input
+
+	ToNodeAffinityOperatorPtrOutput() NodeAffinityOperatorPtrOutput
+	ToNodeAffinityOperatorPtrOutputWithContext(context.Context) NodeAffinityOperatorPtrOutput
+}
+
+type nodeAffinityOperatorPtr string
+
+func NodeAffinityOperatorPtr(v string) NodeAffinityOperatorPtrInput {
+	return (*nodeAffinityOperatorPtr)(&v)
+}
+
+func (*nodeAffinityOperatorPtr) ElementType() reflect.Type {
+	return nodeAffinityOperatorPtrType
+}
+
+func (in *nodeAffinityOperatorPtr) ToNodeAffinityOperatorPtrOutput() NodeAffinityOperatorPtrOutput {
+	return pulumi.ToOutput(in).(NodeAffinityOperatorPtrOutput)
+}
+
+func (in *nodeAffinityOperatorPtr) ToNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) NodeAffinityOperatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NodeAffinityOperatorPtrOutput)
+}
+
+func (in *nodeAffinityOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeAffinityOperator] {
+	return pulumix.Output[*NodeAffinityOperator]{
+		OutputState: in.ToNodeAffinityOperatorPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -5091,6 +5855,380 @@ func (in *sandboxConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Sa
 	}
 }
 
+// Sets which mode to use for Security Posture features.
+type SecurityPostureConfigMode string
+
+const (
+	// Default value not specified.
+	SecurityPostureConfigModeModeUnspecified = SecurityPostureConfigMode("MODE_UNSPECIFIED")
+	// Disables Security Posture features on the cluster.
+	SecurityPostureConfigModeDisabled = SecurityPostureConfigMode("DISABLED")
+	// Applies Security Posture features on the cluster.
+	SecurityPostureConfigModeBasic = SecurityPostureConfigMode("BASIC")
+)
+
+func (SecurityPostureConfigMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfigMode)(nil)).Elem()
+}
+
+func (e SecurityPostureConfigMode) ToSecurityPostureConfigModeOutput() SecurityPostureConfigModeOutput {
+	return pulumi.ToOutput(e).(SecurityPostureConfigModeOutput)
+}
+
+func (e SecurityPostureConfigMode) ToSecurityPostureConfigModeOutputWithContext(ctx context.Context) SecurityPostureConfigModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPostureConfigModeOutput)
+}
+
+func (e SecurityPostureConfigMode) ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput {
+	return e.ToSecurityPostureConfigModePtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPostureConfigMode) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
+	return SecurityPostureConfigMode(e).ToSecurityPostureConfigModeOutputWithContext(ctx).ToSecurityPostureConfigModePtrOutputWithContext(ctx)
+}
+
+func (e SecurityPostureConfigMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPostureConfigMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPostureConfigMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPostureConfigMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPostureConfigModeOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfigMode)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigModeOutput) ToSecurityPostureConfigModeOutput() SecurityPostureConfigModeOutput {
+	return o
+}
+
+func (o SecurityPostureConfigModeOutput) ToSecurityPostureConfigModeOutputWithContext(ctx context.Context) SecurityPostureConfigModeOutput {
+	return o
+}
+
+func (o SecurityPostureConfigModeOutput) ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput {
+	return o.ToSecurityPostureConfigModePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigModeOutput) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPostureConfigMode) *SecurityPostureConfigMode {
+		return &v
+	}).(SecurityPostureConfigModePtrOutput)
+}
+
+func (o SecurityPostureConfigModeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPostureConfigMode] {
+	return pulumix.Output[SecurityPostureConfigMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPostureConfigModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPostureConfigMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPostureConfigModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPostureConfigMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPostureConfigModePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPostureConfigMode)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigMode] {
+	return pulumix.Output[*SecurityPostureConfigMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPostureConfigModePtrOutput) Elem() SecurityPostureConfigModeOutput {
+	return o.ApplyT(func(v *SecurityPostureConfigMode) SecurityPostureConfigMode {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPostureConfigMode
+		return ret
+	}).(SecurityPostureConfigModeOutput)
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPostureConfigMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPostureConfigModeInput is an input type that accepts SecurityPostureConfigModeArgs and SecurityPostureConfigModeOutput values.
+// You can construct a concrete instance of `SecurityPostureConfigModeInput` via:
+//
+//	SecurityPostureConfigModeArgs{...}
+type SecurityPostureConfigModeInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigModeOutput() SecurityPostureConfigModeOutput
+	ToSecurityPostureConfigModeOutputWithContext(context.Context) SecurityPostureConfigModeOutput
+}
+
+var securityPostureConfigModePtrType = reflect.TypeOf((**SecurityPostureConfigMode)(nil)).Elem()
+
+type SecurityPostureConfigModePtrInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput
+	ToSecurityPostureConfigModePtrOutputWithContext(context.Context) SecurityPostureConfigModePtrOutput
+}
+
+type securityPostureConfigModePtr string
+
+func SecurityPostureConfigModePtr(v string) SecurityPostureConfigModePtrInput {
+	return (*securityPostureConfigModePtr)(&v)
+}
+
+func (*securityPostureConfigModePtr) ElementType() reflect.Type {
+	return securityPostureConfigModePtrType
+}
+
+func (in *securityPostureConfigModePtr) ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput {
+	return pulumi.ToOutput(in).(SecurityPostureConfigModePtrOutput)
+}
+
+func (in *securityPostureConfigModePtr) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPostureConfigModePtrOutput)
+}
+
+func (in *securityPostureConfigModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigMode] {
+	return pulumix.Output[*SecurityPostureConfigMode]{
+		OutputState: in.ToSecurityPostureConfigModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Sets which mode to use for vulnerability scanning.
+type SecurityPostureConfigVulnerabilityMode string
+
+const (
+	// Default value not specified.
+	SecurityPostureConfigVulnerabilityModeVulnerabilityModeUnspecified = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_MODE_UNSPECIFIED")
+	// Disables vulnerability scanning on the cluster.
+	SecurityPostureConfigVulnerabilityModeVulnerabilityDisabled = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_DISABLED")
+	// Applies basic vulnerability scanning on the cluster.
+	SecurityPostureConfigVulnerabilityModeVulnerabilityBasic = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_BASIC")
+)
+
+func (SecurityPostureConfigVulnerabilityMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfigVulnerabilityMode)(nil)).Elem()
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToSecurityPostureConfigVulnerabilityModeOutput() SecurityPostureConfigVulnerabilityModeOutput {
+	return pulumi.ToOutput(e).(SecurityPostureConfigVulnerabilityModeOutput)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToSecurityPostureConfigVulnerabilityModeOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPostureConfigVulnerabilityModeOutput)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return e.ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
+	return SecurityPostureConfigVulnerabilityMode(e).ToSecurityPostureConfigVulnerabilityModeOutputWithContext(ctx).ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPostureConfigVulnerabilityModeOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigVulnerabilityModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfigVulnerabilityMode)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToSecurityPostureConfigVulnerabilityModeOutput() SecurityPostureConfigVulnerabilityModeOutput {
+	return o
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToSecurityPostureConfigVulnerabilityModeOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModeOutput {
+	return o
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o.ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPostureConfigVulnerabilityMode) *SecurityPostureConfigVulnerabilityMode {
+		return &v
+	}).(SecurityPostureConfigVulnerabilityModePtrOutput)
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPostureConfigVulnerabilityMode] {
+	return pulumix.Output[SecurityPostureConfigVulnerabilityMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPostureConfigVulnerabilityMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPostureConfigVulnerabilityMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPostureConfigVulnerabilityModePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigVulnerabilityModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPostureConfigVulnerabilityMode)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigVulnerabilityMode] {
+	return pulumix.Output[*SecurityPostureConfigVulnerabilityMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) Elem() SecurityPostureConfigVulnerabilityModeOutput {
+	return o.ApplyT(func(v *SecurityPostureConfigVulnerabilityMode) SecurityPostureConfigVulnerabilityMode {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPostureConfigVulnerabilityMode
+		return ret
+	}).(SecurityPostureConfigVulnerabilityModeOutput)
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPostureConfigVulnerabilityMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPostureConfigVulnerabilityModeInput is an input type that accepts SecurityPostureConfigVulnerabilityModeArgs and SecurityPostureConfigVulnerabilityModeOutput values.
+// You can construct a concrete instance of `SecurityPostureConfigVulnerabilityModeInput` via:
+//
+//	SecurityPostureConfigVulnerabilityModeArgs{...}
+type SecurityPostureConfigVulnerabilityModeInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigVulnerabilityModeOutput() SecurityPostureConfigVulnerabilityModeOutput
+	ToSecurityPostureConfigVulnerabilityModeOutputWithContext(context.Context) SecurityPostureConfigVulnerabilityModeOutput
+}
+
+var securityPostureConfigVulnerabilityModePtrType = reflect.TypeOf((**SecurityPostureConfigVulnerabilityMode)(nil)).Elem()
+
+type SecurityPostureConfigVulnerabilityModePtrInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput
+	ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(context.Context) SecurityPostureConfigVulnerabilityModePtrOutput
+}
+
+type securityPostureConfigVulnerabilityModePtr string
+
+func SecurityPostureConfigVulnerabilityModePtr(v string) SecurityPostureConfigVulnerabilityModePtrInput {
+	return (*securityPostureConfigVulnerabilityModePtr)(&v)
+}
+
+func (*securityPostureConfigVulnerabilityModePtr) ElementType() reflect.Type {
+	return securityPostureConfigVulnerabilityModePtrType
+}
+
+func (in *securityPostureConfigVulnerabilityModePtr) ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return pulumi.ToOutput(in).(SecurityPostureConfigVulnerabilityModePtrOutput)
+}
+
+func (in *securityPostureConfigVulnerabilityModePtr) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPostureConfigVulnerabilityModePtrOutput)
+}
+
+func (in *securityPostureConfigVulnerabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigVulnerabilityMode] {
+	return pulumix.Output[*SecurityPostureConfigVulnerabilityMode]{
+		OutputState: in.ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Canonical code of the condition.
 type StatusConditionCanonicalCode string
 
@@ -6063,12 +7201,16 @@ func (in *workloadMetadataConfigModePtr) ToOutput(ctx context.Context) pulumix.O
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedDatapathObservabilityConfigRelayModeInput)(nil)).Elem(), AdvancedDatapathObservabilityConfigRelayMode("RELAY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedDatapathObservabilityConfigRelayModePtrInput)(nil)).Elem(), AdvancedDatapathObservabilityConfigRelayMode("RELAY_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationEvaluationModeInput)(nil)).Elem(), BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationEvaluationModePtrInput)(nil)).Elem(), BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigLoadBalancerTypeInput)(nil)).Elem(), CloudRunConfigLoadBalancerType("LOAD_BALANCER_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigLoadBalancerTypePtrInput)(nil)).Elem(), CloudRunConfigLoadBalancerType("LOAD_BALANCER_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingAutoscalingProfileInput)(nil)).Elem(), ClusterAutoscalingAutoscalingProfile("PROFILE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingAutoscalingProfilePtrInput)(nil)).Elem(), ClusterAutoscalingAutoscalingProfile("PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPerformanceConfigTotalEgressBandwidthTierInput)(nil)).Elem(), ClusterNetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrInput)(nil)).Elem(), ClusterNetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigClusterDnsInput)(nil)).Elem(), DNSConfigClusterDns("PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigClusterDnsPtrInput)(nil)).Elem(), DNSConfigClusterDns("PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigClusterDnsScopeInput)(nil)).Elem(), DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED"))
@@ -6078,6 +7220,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemInput)(nil)).Elem(), FilterEventTypeItem("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemPtrInput)(nil)).Elem(), FilterEventTypeItem("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemArrayInput)(nil)).Elem(), FilterEventTypeItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GPUDriverInstallationConfigGpuDriverVersionInput)(nil)).Elem(), GPUDriverInstallationConfigGpuDriverVersion("GPU_DRIVER_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GPUDriverInstallationConfigGpuDriverVersionPtrInput)(nil)).Elem(), GPUDriverInstallationConfigGpuDriverVersion("GPU_DRIVER_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyPtrInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigChannelInput)(nil)).Elem(), GatewayAPIConfigChannel("CHANNEL_UNSPECIFIED"))
@@ -6106,6 +7250,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTierPtrInput)(nil)).Elem(), NetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyProviderInput)(nil)).Elem(), NetworkPolicyProvider("PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyProviderPtrInput)(nil)).Elem(), NetworkPolicyProvider("PROVIDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeAffinityOperatorInput)(nil)).Elem(), NodeAffinityOperator("OPERATOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeAffinityOperatorPtrInput)(nil)).Elem(), NodeAffinityOperator("OPERATOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingLocationPolicyInput)(nil)).Elem(), NodePoolAutoscalingLocationPolicy("LOCATION_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingLocationPolicyPtrInput)(nil)).Elem(), NodePoolAutoscalingLocationPolicy("LOCATION_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
@@ -6118,6 +7264,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypePtrInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigTypeInput)(nil)).Elem(), SandboxConfigType("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigTypePtrInput)(nil)).Elem(), SandboxConfigType("UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigModeInput)(nil)).Elem(), SecurityPostureConfigMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigModePtrInput)(nil)).Elem(), SecurityPostureConfigMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigVulnerabilityModeInput)(nil)).Elem(), SecurityPostureConfigVulnerabilityMode("VULNERABILITY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigVulnerabilityModePtrInput)(nil)).Elem(), SecurityPostureConfigVulnerabilityMode("VULNERABILITY_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCanonicalCodeInput)(nil)).Elem(), StatusConditionCanonicalCode("OK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCanonicalCodePtrInput)(nil)).Elem(), StatusConditionCanonicalCode("OK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCodeInput)(nil)).Elem(), StatusConditionCode("UNKNOWN"))
@@ -6128,12 +7278,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WindowsNodeConfigOsVersionPtrInput)(nil)).Elem(), WindowsNodeConfigOsVersion("OS_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigModeInput)(nil)).Elem(), WorkloadMetadataConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigModePtrInput)(nil)).Elem(), WorkloadMetadataConfigMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(AdvancedDatapathObservabilityConfigRelayModeOutput{})
+	pulumi.RegisterOutputType(AdvancedDatapathObservabilityConfigRelayModePtrOutput{})
 	pulumi.RegisterOutputType(BinaryAuthorizationEvaluationModeOutput{})
 	pulumi.RegisterOutputType(BinaryAuthorizationEvaluationModePtrOutput{})
 	pulumi.RegisterOutputType(CloudRunConfigLoadBalancerTypeOutput{})
 	pulumi.RegisterOutputType(CloudRunConfigLoadBalancerTypePtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingAutoscalingProfileOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingAutoscalingProfilePtrOutput{})
+	pulumi.RegisterOutputType(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput{})
+	pulumi.RegisterOutputType(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput{})
 	pulumi.RegisterOutputType(DNSConfigClusterDnsOutput{})
 	pulumi.RegisterOutputType(DNSConfigClusterDnsPtrOutput{})
 	pulumi.RegisterOutputType(DNSConfigClusterDnsScopeOutput{})
@@ -6143,6 +7297,8 @@ func init() {
 	pulumi.RegisterOutputType(FilterEventTypeItemOutput{})
 	pulumi.RegisterOutputType(FilterEventTypeItemPtrOutput{})
 	pulumi.RegisterOutputType(FilterEventTypeItemArrayOutput{})
+	pulumi.RegisterOutputType(GPUDriverInstallationConfigGpuDriverVersionOutput{})
+	pulumi.RegisterOutputType(GPUDriverInstallationConfigGpuDriverVersionPtrOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyPtrOutput{})
 	pulumi.RegisterOutputType(GatewayAPIConfigChannelOutput{})
@@ -6171,6 +7327,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyProviderOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyProviderPtrOutput{})
+	pulumi.RegisterOutputType(NodeAffinityOperatorOutput{})
+	pulumi.RegisterOutputType(NodeAffinityOperatorPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingLocationPolicyOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingLocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectOutput{})
@@ -6183,6 +7341,10 @@ func init() {
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypePtrOutput{})
 	pulumi.RegisterOutputType(SandboxConfigTypeOutput{})
 	pulumi.RegisterOutputType(SandboxConfigTypePtrOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigModeOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigModePtrOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigVulnerabilityModeOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigVulnerabilityModePtrOutput{})
 	pulumi.RegisterOutputType(StatusConditionCanonicalCodeOutput{})
 	pulumi.RegisterOutputType(StatusConditionCanonicalCodePtrOutput{})
 	pulumi.RegisterOutputType(StatusConditionCodeOutput{})

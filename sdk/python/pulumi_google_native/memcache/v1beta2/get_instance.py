@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, authorized_network=None, create_time=None, discovery_endpoint=None, display_name=None, instance_messages=None, labels=None, maintenance_policy=None, maintenance_schedule=None, memcache_full_version=None, memcache_nodes=None, memcache_version=None, name=None, node_config=None, node_count=None, parameters=None, state=None, update_available=None, update_time=None, zones=None):
+    def __init__(__self__, authorized_network=None, create_time=None, discovery_endpoint=None, display_name=None, instance_messages=None, labels=None, maintenance_policy=None, maintenance_schedule=None, memcache_full_version=None, memcache_nodes=None, memcache_version=None, name=None, node_config=None, node_count=None, parameters=None, reserved_ip_range_id=None, state=None, update_available=None, update_time=None, zones=None):
         if authorized_network and not isinstance(authorized_network, str):
             raise TypeError("Expected argument 'authorized_network' to be a str")
         pulumi.set(__self__, "authorized_network", authorized_network)
@@ -65,6 +65,9 @@ class GetInstanceResult:
         if parameters and not isinstance(parameters, dict):
             raise TypeError("Expected argument 'parameters' to be a dict")
         pulumi.set(__self__, "parameters", parameters)
+        if reserved_ip_range_id and not isinstance(reserved_ip_range_id, list):
+            raise TypeError("Expected argument 'reserved_ip_range_id' to be a list")
+        pulumi.set(__self__, "reserved_ip_range_id", reserved_ip_range_id)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -199,6 +202,14 @@ class GetInstanceResult:
         return pulumi.get(self, "parameters")
 
     @property
+    @pulumi.getter(name="reservedIpRangeId")
+    def reserved_ip_range_id(self) -> Sequence[str]:
+        """
+        Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+        """
+        return pulumi.get(self, "reserved_ip_range_id")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -252,6 +263,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             node_config=self.node_config,
             node_count=self.node_count,
             parameters=self.parameters,
+            reserved_ip_range_id=self.reserved_ip_range_id,
             state=self.state,
             update_available=self.update_available,
             update_time=self.update_time,
@@ -288,6 +300,7 @@ def get_instance(instance_id: Optional[str] = None,
         node_config=pulumi.get(__ret__, 'node_config'),
         node_count=pulumi.get(__ret__, 'node_count'),
         parameters=pulumi.get(__ret__, 'parameters'),
+        reserved_ip_range_id=pulumi.get(__ret__, 'reserved_ip_range_id'),
         state=pulumi.get(__ret__, 'state'),
         update_available=pulumi.get(__ret__, 'update_available'),
         update_time=pulumi.get(__ret__, 'update_time'),

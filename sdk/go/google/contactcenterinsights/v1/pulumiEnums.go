@@ -204,7 +204,7 @@ type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSumma
 const (
 	// Unspecified summarization model.
 	GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelSummarizationModelUnspecified = GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel("SUMMARIZATION_MODEL_UNSPECIFIED")
-	// The Insights baseline model.
+	// The CCAI baseline model.
 	GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelBaselineModel = GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel("BASELINE_MODEL")
 )
 
@@ -757,6 +757,193 @@ func (in *googleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtr) ToOutpu
 	}
 }
 
+// Type of the model.
+type IssueModelModelType string
+
+const (
+	// Unspecified model type.
+	IssueModelModelTypeModelTypeUnspecified = IssueModelModelType("MODEL_TYPE_UNSPECIFIED")
+	// Type V1.
+	IssueModelModelTypeTypeV1 = IssueModelModelType("TYPE_V1")
+	// Type V2.
+	IssueModelModelTypeTypeV2 = IssueModelModelType("TYPE_V2")
+)
+
+func (IssueModelModelType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IssueModelModelType)(nil)).Elem()
+}
+
+func (e IssueModelModelType) ToIssueModelModelTypeOutput() IssueModelModelTypeOutput {
+	return pulumi.ToOutput(e).(IssueModelModelTypeOutput)
+}
+
+func (e IssueModelModelType) ToIssueModelModelTypeOutputWithContext(ctx context.Context) IssueModelModelTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IssueModelModelTypeOutput)
+}
+
+func (e IssueModelModelType) ToIssueModelModelTypePtrOutput() IssueModelModelTypePtrOutput {
+	return e.ToIssueModelModelTypePtrOutputWithContext(context.Background())
+}
+
+func (e IssueModelModelType) ToIssueModelModelTypePtrOutputWithContext(ctx context.Context) IssueModelModelTypePtrOutput {
+	return IssueModelModelType(e).ToIssueModelModelTypeOutputWithContext(ctx).ToIssueModelModelTypePtrOutputWithContext(ctx)
+}
+
+func (e IssueModelModelType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IssueModelModelType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IssueModelModelType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IssueModelModelType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IssueModelModelTypeOutput struct{ *pulumi.OutputState }
+
+func (IssueModelModelTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IssueModelModelType)(nil)).Elem()
+}
+
+func (o IssueModelModelTypeOutput) ToIssueModelModelTypeOutput() IssueModelModelTypeOutput {
+	return o
+}
+
+func (o IssueModelModelTypeOutput) ToIssueModelModelTypeOutputWithContext(ctx context.Context) IssueModelModelTypeOutput {
+	return o
+}
+
+func (o IssueModelModelTypeOutput) ToIssueModelModelTypePtrOutput() IssueModelModelTypePtrOutput {
+	return o.ToIssueModelModelTypePtrOutputWithContext(context.Background())
+}
+
+func (o IssueModelModelTypeOutput) ToIssueModelModelTypePtrOutputWithContext(ctx context.Context) IssueModelModelTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IssueModelModelType) *IssueModelModelType {
+		return &v
+	}).(IssueModelModelTypePtrOutput)
+}
+
+func (o IssueModelModelTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IssueModelModelType] {
+	return pulumix.Output[IssueModelModelType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IssueModelModelTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IssueModelModelTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IssueModelModelType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IssueModelModelTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IssueModelModelTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IssueModelModelType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IssueModelModelTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IssueModelModelTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IssueModelModelType)(nil)).Elem()
+}
+
+func (o IssueModelModelTypePtrOutput) ToIssueModelModelTypePtrOutput() IssueModelModelTypePtrOutput {
+	return o
+}
+
+func (o IssueModelModelTypePtrOutput) ToIssueModelModelTypePtrOutputWithContext(ctx context.Context) IssueModelModelTypePtrOutput {
+	return o
+}
+
+func (o IssueModelModelTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IssueModelModelType] {
+	return pulumix.Output[*IssueModelModelType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IssueModelModelTypePtrOutput) Elem() IssueModelModelTypeOutput {
+	return o.ApplyT(func(v *IssueModelModelType) IssueModelModelType {
+		if v != nil {
+			return *v
+		}
+		var ret IssueModelModelType
+		return ret
+	}).(IssueModelModelTypeOutput)
+}
+
+func (o IssueModelModelTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IssueModelModelTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IssueModelModelType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IssueModelModelTypeInput is an input type that accepts IssueModelModelTypeArgs and IssueModelModelTypeOutput values.
+// You can construct a concrete instance of `IssueModelModelTypeInput` via:
+//
+//	IssueModelModelTypeArgs{...}
+type IssueModelModelTypeInput interface {
+	pulumi.Input
+
+	ToIssueModelModelTypeOutput() IssueModelModelTypeOutput
+	ToIssueModelModelTypeOutputWithContext(context.Context) IssueModelModelTypeOutput
+}
+
+var issueModelModelTypePtrType = reflect.TypeOf((**IssueModelModelType)(nil)).Elem()
+
+type IssueModelModelTypePtrInput interface {
+	pulumi.Input
+
+	ToIssueModelModelTypePtrOutput() IssueModelModelTypePtrOutput
+	ToIssueModelModelTypePtrOutputWithContext(context.Context) IssueModelModelTypePtrOutput
+}
+
+type issueModelModelTypePtr string
+
+func IssueModelModelTypePtr(v string) IssueModelModelTypePtrInput {
+	return (*issueModelModelTypePtr)(&v)
+}
+
+func (*issueModelModelTypePtr) ElementType() reflect.Type {
+	return issueModelModelTypePtrType
+}
+
+func (in *issueModelModelTypePtr) ToIssueModelModelTypePtrOutput() IssueModelModelTypePtrOutput {
+	return pulumi.ToOutput(in).(IssueModelModelTypePtrOutput)
+}
+
+func (in *issueModelModelTypePtr) ToIssueModelModelTypePtrOutputWithContext(ctx context.Context) IssueModelModelTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IssueModelModelTypePtrOutput)
+}
+
+func (in *issueModelModelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IssueModelModelType] {
+	return pulumix.Output[*IssueModelModelType]{
+		OutputState: in.ToIssueModelModelTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript.
 type PhraseMatcherRoleMatch string
 
@@ -1144,6 +1331,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium("MEDIUM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType("PHRASE_MATCH_RULE_GROUP_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType("PHRASE_MATCH_RULE_GROUP_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IssueModelModelTypeInput)(nil)).Elem(), IssueModelModelType("MODEL_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IssueModelModelTypePtrInput)(nil)).Elem(), IssueModelModelType("MODEL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PhraseMatcherRoleMatchInput)(nil)).Elem(), PhraseMatcherRoleMatch("ROLE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PhraseMatcherRoleMatchPtrInput)(nil)).Elem(), PhraseMatcherRoleMatch("ROLE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PhraseMatcherTypeInput)(nil)).Elem(), PhraseMatcherType("PHRASE_MATCHER_TYPE_UNSPECIFIED"))
@@ -1156,6 +1345,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput{})
+	pulumi.RegisterOutputType(IssueModelModelTypeOutput{})
+	pulumi.RegisterOutputType(IssueModelModelTypePtrOutput{})
 	pulumi.RegisterOutputType(PhraseMatcherRoleMatchOutput{})
 	pulumi.RegisterOutputType(PhraseMatcherRoleMatchPtrOutput{})
 	pulumi.RegisterOutputType(PhraseMatcherTypeOutput{})

@@ -6,12 +6,23 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'BinaryAuthorizationConfigEvaluationMode',
+    'ConfigManagementPolicyControllerMonitoringBackendsItem',
     'FeatureSpecProvisionGoogleCa',
     'FleetObservabilityRoutingConfigMode',
     'MembershipSpecCertificateManagement',
     'MultiClusterIngressFeatureSpecBilling',
+    'NamespaceActuationFeatureSpecActuationMode',
     'OnPremClusterClusterType',
+    'PolicyControllerHubConfigInstallSpec',
+    'PolicyControllerMonitoringConfigBackendsItem',
+    'PolicyControllerTemplateLibraryConfigInstallation',
     'RolePredefinedRole',
+    'SecurityPostureConfigMode',
+    'SecurityPostureConfigVulnerabilityMode',
+    'ServiceMeshMembershipSpecControlPlane',
+    'ServiceMeshMembershipSpecDefaultChannel',
+    'ServiceMeshMembershipSpecManagement',
 ]
 
 
@@ -37,6 +48,39 @@ class AuditLogConfigLogType(str, Enum):
     """
 
 
+class BinaryAuthorizationConfigEvaluationMode(str, Enum):
+    """
+    Optional. Mode of operation for binauthz policy evaluation.
+    """
+    EVALUATION_MODE_UNSPECIFIED = "EVALUATION_MODE_UNSPECIFIED"
+    """
+    Default value
+    """
+    DISABLED = "DISABLED"
+    """
+    Disable BinaryAuthorization
+    """
+    POLICY_BINDINGS = "POLICY_BINDINGS"
+    """
+    Use Binary Authorization with the policies specified in policy_bindings.
+    """
+
+
+class ConfigManagementPolicyControllerMonitoringBackendsItem(str, Enum):
+    MONITORING_BACKEND_UNSPECIFIED = "MONITORING_BACKEND_UNSPECIFIED"
+    """
+    Backend cannot be determined
+    """
+    PROMETHEUS = "PROMETHEUS"
+    """
+    Prometheus backend for monitoring
+    """
+    CLOUD_MONITORING = "CLOUD_MONITORING"
+    """
+    Stackdriver/Cloud Monitoring backend for monitoring
+    """
+
+
 class FeatureSpecProvisionGoogleCa(str, Enum):
     """
     Immutable. Specifies CA configuration.
@@ -52,6 +96,14 @@ class FeatureSpecProvisionGoogleCa(str, Enum):
     ENABLED = "ENABLED"
     """
     Use default Google managed CA.
+    """
+    ENABLED_WITH_MANAGED_CA = "ENABLED_WITH_MANAGED_CA"
+    """
+    Workload certificate feature is enabled, and the entire certificate provisioning process is managed by Google with managed CAS which is more secure than the default CA.
+    """
+    ENABLED_WITH_DEFAULT_CA = "ENABLED_WITH_DEFAULT_CA"
+    """
+    Workload certificate feature is enabled, and the entire certificate provisioning process is using the default CA which is free.
     """
 
 
@@ -109,6 +161,24 @@ class MultiClusterIngressFeatureSpecBilling(str, Enum):
     """
 
 
+class NamespaceActuationFeatureSpecActuationMode(str, Enum):
+    """
+    actuation_mode controls the behavior of the controller
+    """
+    ACTUATION_MODE_UNSPECIFIED = "ACTUATION_MODE_UNSPECIFIED"
+    """
+    ACTUATION_MODE_UNSPECIFIED is similar to CREATE_AND_DELETE_IF_CREATED in the default controller behavior.
+    """
+    ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED = "ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED"
+    """
+    ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED has the controller create cluster namespaces for each fleet namespace and it deletes only the ones it created, which are identified by a label.
+    """
+    ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS = "ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS"
+    """
+    ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS has the controller only apply labels to cluster namespaces to signal fleet namespace enablement. It doesn't create or delete cluster namespaces.
+    """
+
+
 class OnPremClusterClusterType(str, Enum):
     """
     Immutable. The on prem cluster's type.
@@ -135,6 +205,65 @@ class OnPremClusterClusterType(str, Enum):
     """
 
 
+class PolicyControllerHubConfigInstallSpec(str, Enum):
+    """
+    The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
+    """
+    INSTALL_SPEC_UNSPECIFIED = "INSTALL_SPEC_UNSPECIFIED"
+    """
+    Spec is unknown.
+    """
+    INSTALL_SPEC_NOT_INSTALLED = "INSTALL_SPEC_NOT_INSTALLED"
+    """
+    Request to uninstall Policy Controller.
+    """
+    INSTALL_SPEC_ENABLED = "INSTALL_SPEC_ENABLED"
+    """
+    Request to install and enable Policy Controller.
+    """
+    INSTALL_SPEC_SUSPENDED = "INSTALL_SPEC_SUSPENDED"
+    """
+    Request to suspend Policy Controller i.e. its webhooks. If Policy Controller is not installed, it will be installed but suspended.
+    """
+    INSTALL_SPEC_DETACHED = "INSTALL_SPEC_DETACHED"
+    """
+    Request to stop all reconciliation actions by PoCo Hub controller. This is a breakglass mechanism to stop PoCo Hub from affecting cluster resources.
+    """
+
+
+class PolicyControllerMonitoringConfigBackendsItem(str, Enum):
+    MONITORING_BACKEND_UNSPECIFIED = "MONITORING_BACKEND_UNSPECIFIED"
+    """
+    Backend cannot be determined
+    """
+    PROMETHEUS = "PROMETHEUS"
+    """
+    Prometheus backend for monitoring
+    """
+    CLOUD_MONITORING = "CLOUD_MONITORING"
+    """
+    Stackdriver/Cloud Monitoring backend for monitoring
+    """
+
+
+class PolicyControllerTemplateLibraryConfigInstallation(str, Enum):
+    """
+    Configures the manner in which the template library is installed on the cluster.
+    """
+    INSTALLATION_UNSPECIFIED = "INSTALLATION_UNSPECIFIED"
+    """
+    No installation strategy has been specified.
+    """
+    NOT_INSTALLED = "NOT_INSTALLED"
+    """
+    Do not install the template library.
+    """
+    ALL = "ALL"
+    """
+    Install the entire template library.
+    """
+
+
 class RolePredefinedRole(str, Enum):
     """
     predefined_role is the Kubernetes default role to use
@@ -154,4 +283,106 @@ class RolePredefinedRole(str, Enum):
     VIEW = "VIEW"
     """
     VIEW can only read resources
+    """
+    ANTHOS_SUPPORT = "ANTHOS_SUPPORT"
+    """
+    ANTHOS_SUPPORT gives Google Support read-only access to a number of cluster resources.
+    """
+
+
+class SecurityPostureConfigMode(str, Enum):
+    """
+    Sets which mode to use for Security Posture features.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Default value not specified.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disables Security Posture features on the cluster.
+    """
+    BASIC = "BASIC"
+    """
+    Applies Security Posture features on the cluster.
+    """
+
+
+class SecurityPostureConfigVulnerabilityMode(str, Enum):
+    """
+    Sets which mode to use for vulnerability scanning.
+    """
+    VULNERABILITY_MODE_UNSPECIFIED = "VULNERABILITY_MODE_UNSPECIFIED"
+    """
+    Default value not specified.
+    """
+    VULNERABILITY_DISABLED = "VULNERABILITY_DISABLED"
+    """
+    Disables vulnerability scanning on the cluster.
+    """
+    VULNERABILITY_BASIC = "VULNERABILITY_BASIC"
+    """
+    Applies basic vulnerability scanning on the cluster.
+    """
+    VULNERABILITY_ENTERPRISE = "VULNERABILITY_ENTERPRISE"
+    """
+    Applies the Security Posture's vulnerability on cluster Enterprise level features.
+    """
+
+
+class ServiceMeshMembershipSpecControlPlane(str, Enum):
+    """
+    Deprecated: use `management` instead Enables automatic control plane management.
+    """
+    CONTROL_PLANE_MANAGEMENT_UNSPECIFIED = "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED"
+    """
+    Unspecified
+    """
+    AUTOMATIC = "AUTOMATIC"
+    """
+    Google should provision a control plane revision and make it available in the cluster. Google will enroll this revision in a release channel and keep it up to date. The control plane revision may be a managed service, or a managed install.
+    """
+    MANUAL = "MANUAL"
+    """
+    User will manually configure the control plane (e.g. via CLI, or via the ControlPlaneRevision KRM API)
+    """
+
+
+class ServiceMeshMembershipSpecDefaultChannel(str, Enum):
+    """
+    Determines which release channel to use for default injection and service mesh APIs.
+    """
+    CHANNEL_UNSPECIFIED = "CHANNEL_UNSPECIFIED"
+    """
+    Unspecified
+    """
+    RAPID = "RAPID"
+    """
+    RAPID channel is offered on an early access basis for customers who want to test new releases.
+    """
+    REGULAR = "REGULAR"
+    """
+    REGULAR channel is intended for production users who want to take advantage of new features.
+    """
+    STABLE = "STABLE"
+    """
+    STABLE channel includes versions that are known to be stable and reliable in production.
+    """
+
+
+class ServiceMeshMembershipSpecManagement(str, Enum):
+    """
+    Enables automatic Service Mesh management.
+    """
+    MANAGEMENT_UNSPECIFIED = "MANAGEMENT_UNSPECIFIED"
+    """
+    Unspecified
+    """
+    MANAGEMENT_AUTOMATIC = "MANAGEMENT_AUTOMATIC"
+    """
+    Google should manage my Service Mesh for the cluster.
+    """
+    MANAGEMENT_MANUAL = "MANAGEMENT_MANUAL"
+    """
+    User will manually configure their service mesh components.
     """

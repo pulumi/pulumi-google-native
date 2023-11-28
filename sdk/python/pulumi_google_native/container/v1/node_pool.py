@@ -19,6 +19,7 @@ class NodePoolInitArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
+                 best_effort_provisioning: Optional[pulumi.Input['BestEffortProvisioningArgs']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class NodePoolInitArgs:
                  parent: Optional[pulumi.Input[str]] = None,
                  placement_policy: Optional[pulumi.Input['PlacementPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 queued_provisioning: Optional[pulumi.Input['QueuedProvisioningArgs']] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -39,6 +41,7 @@ class NodePoolInitArgs:
         The set of arguments for constructing a NodePool resource.
         :param pulumi.Input[str] cluster_id: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+        :param pulumi.Input['BestEffortProvisioningArgs'] best_effort_provisioning: Enable best effort provisioning for nodes
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input['NodeConfigArgs'] config: The node configuration of the pool.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
@@ -51,6 +54,7 @@ class NodePoolInitArgs:
         :param pulumi.Input[str] parent: The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input['PlacementPolicyArgs'] placement_policy: Specifies the node placement policy.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
+        :param pulumi.Input['QueuedProvisioningArgs'] queued_provisioning: Specifies the configuration of queued provisioning.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         :param pulumi.Input[str] zone: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
@@ -61,6 +65,8 @@ class NodePoolInitArgs:
         pulumi.set(__self__, "cluster_id", cluster_id)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if best_effort_provisioning is not None:
+            pulumi.set(__self__, "best_effort_provisioning", best_effort_provisioning)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
         if config is not None:
@@ -90,6 +96,8 @@ class NodePoolInitArgs:
             pulumi.log.warn("""project is deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if queued_provisioning is not None:
+            pulumi.set(__self__, "queued_provisioning", queued_provisioning)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -126,6 +134,18 @@ class NodePoolInitArgs:
     @autoscaling.setter
     def autoscaling(self, value: Optional[pulumi.Input['NodePoolAutoscalingArgs']]):
         pulumi.set(self, "autoscaling", value)
+
+    @property
+    @pulumi.getter(name="bestEffortProvisioning")
+    def best_effort_provisioning(self) -> Optional[pulumi.Input['BestEffortProvisioningArgs']]:
+        """
+        Enable best effort provisioning for nodes
+        """
+        return pulumi.get(self, "best_effort_provisioning")
+
+    @best_effort_provisioning.setter
+    def best_effort_provisioning(self, value: Optional[pulumi.Input['BestEffortProvisioningArgs']]):
+        pulumi.set(self, "best_effort_provisioning", value)
 
     @property
     @pulumi.getter
@@ -284,6 +304,18 @@ class NodePoolInitArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="queuedProvisioning")
+    def queued_provisioning(self) -> Optional[pulumi.Input['QueuedProvisioningArgs']]:
+        """
+        Specifies the configuration of queued provisioning.
+        """
+        return pulumi.get(self, "queued_provisioning")
+
+    @queued_provisioning.setter
+    def queued_provisioning(self, value: Optional[pulumi.Input['QueuedProvisioningArgs']]):
+        pulumi.set(self, "queued_provisioning", value)
+
+    @property
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional[pulumi.Input['UpgradeSettingsArgs']]:
         """
@@ -329,6 +361,7 @@ class NodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
+                 best_effort_provisioning: Optional[pulumi.Input[pulumi.InputType['BestEffortProvisioningArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
@@ -343,6 +376,7 @@ class NodePool(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[str]] = None,
                  placement_policy: Optional[pulumi.Input[pulumi.InputType['PlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 queued_provisioning: Optional[pulumi.Input[pulumi.InputType['QueuedProvisioningArgs']]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -353,6 +387,7 @@ class NodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+        :param pulumi.Input[pulumi.InputType['BestEffortProvisioningArgs']] best_effort_provisioning: Enable best effort provisioning for nodes
         :param pulumi.Input[str] cluster_id: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] config: The node configuration of the pool.
@@ -366,6 +401,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] parent: The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input[pulumi.InputType['PlacementPolicyArgs']] placement_policy: Specifies the node placement policy.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
+        :param pulumi.Input[pulumi.InputType['QueuedProvisioningArgs']] queued_provisioning: Specifies the configuration of queued provisioning.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         :param pulumi.Input[str] zone: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
@@ -395,6 +431,7 @@ class NodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
+                 best_effort_provisioning: Optional[pulumi.Input[pulumi.InputType['BestEffortProvisioningArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
@@ -409,6 +446,7 @@ class NodePool(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[str]] = None,
                  placement_policy: Optional[pulumi.Input[pulumi.InputType['PlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 queued_provisioning: Optional[pulumi.Input[pulumi.InputType['QueuedProvisioningArgs']]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -422,6 +460,7 @@ class NodePool(pulumi.CustomResource):
             __props__ = NodePoolInitArgs.__new__(NodePoolInitArgs)
 
             __props__.__dict__["autoscaling"] = autoscaling
+            __props__.__dict__["best_effort_provisioning"] = best_effort_provisioning
             if cluster_id is not None and not opts.urn:
                 warnings.warn("""Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
                 pulumi.log.warn("""cluster_id is deprecated: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""")
@@ -444,6 +483,7 @@ class NodePool(pulumi.CustomResource):
                 warnings.warn("""Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
                 pulumi.log.warn("""project is deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["project"] = project
+            __props__.__dict__["queued_provisioning"] = queued_provisioning
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
             if zone is not None and not opts.urn:
@@ -481,6 +521,7 @@ class NodePool(pulumi.CustomResource):
         __props__ = NodePoolInitArgs.__new__(NodePoolInitArgs)
 
         __props__.__dict__["autoscaling"] = None
+        __props__.__dict__["best_effort_provisioning"] = None
         __props__.__dict__["cluster_id"] = None
         __props__.__dict__["conditions"] = None
         __props__.__dict__["config"] = None
@@ -496,6 +537,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["placement_policy"] = None
         __props__.__dict__["pod_ipv4_cidr_size"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["queued_provisioning"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_message"] = None
@@ -511,6 +553,14 @@ class NodePool(pulumi.CustomResource):
         Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         """
         return pulumi.get(self, "autoscaling")
+
+    @property
+    @pulumi.getter(name="bestEffortProvisioning")
+    def best_effort_provisioning(self) -> pulumi.Output['outputs.BestEffortProvisioningResponse']:
+        """
+        Enable best effort provisioning for nodes
+        """
+        return pulumi.get(self, "best_effort_provisioning")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -622,6 +672,14 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="queuedProvisioning")
+    def queued_provisioning(self) -> pulumi.Output['outputs.QueuedProvisioningResponse']:
+        """
+        Specifies the configuration of queued provisioning.
+        """
+        return pulumi.get(self, "queued_provisioning")
 
     @property
     @pulumi.getter(name="selfLink")

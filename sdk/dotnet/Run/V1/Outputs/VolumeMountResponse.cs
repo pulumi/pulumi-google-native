@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Only true is accepted for Secret Volumes. Defaults to true for Secrets Volumes.
+        /// Sets the mount to be read-only or read-write. Not used by Cloud Run.
         /// </summary>
         public readonly bool ReadOnly;
         /// <summary>

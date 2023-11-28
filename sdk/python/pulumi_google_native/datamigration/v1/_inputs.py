@@ -13,33 +13,57 @@ from ._enums import *
 __all__ = [
     'AlloyDbConnectionProfileArgs',
     'AlloyDbSettingsArgs',
+    'ApplyHashArgs',
+    'AssignSpecificValueArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
     'CloudSqlConnectionProfileArgs',
     'CloudSqlSettingsArgs',
+    'ConditionalColumnSetValueArgs',
     'ConversionWorkspaceInfoArgs',
+    'ConvertRowIdToColumnArgs',
+    'DataCacheConfigArgs',
     'DatabaseEngineInfoArgs',
     'DatabaseTypeArgs',
+    'DoubleComparisonFilterArgs',
     'DumpFlagsArgs',
     'DumpFlagArgs',
+    'EmptyArgs',
     'EncryptionConfigArgs',
+    'EntityMoveArgs',
     'ExprArgs',
+    'FilterTableColumnsArgs',
     'ForwardSshTunnelConnectivityArgs',
+    'IntComparisonFilterArgs',
     'MachineConfigArgs',
+    'MappingRuleFilterArgs',
+    'MultiColumnDatatypeChangeArgs',
+    'MultiEntityRenameArgs',
     'MySqlConnectionProfileArgs',
     'OracleConnectionProfileArgs',
+    'PerformanceConfigArgs',
     'PostgreSqlConnectionProfileArgs',
     'PrimaryInstanceSettingsArgs',
     'PrivateConnectivityArgs',
     'PrivateServiceConnectConnectivityArgs',
     'ReverseSshConnectivityArgs',
+    'RoundToScaleArgs',
+    'SetTablePrimaryKeyArgs',
+    'SingleColumnChangeArgs',
+    'SingleEntityRenameArgs',
+    'SinglePackageChangeArgs',
+    'SourceNumericFilterArgs',
+    'SourceSqlChangeArgs',
+    'SourceTextFilterArgs',
     'SqlAclEntryArgs',
     'SqlIpConfigArgs',
     'SslConfigArgs',
     'StaticIpConnectivityArgs',
     'StaticServiceIpConnectivityArgs',
     'UserPasswordArgs',
+    'ValueListFilterArgs',
+    'ValueTransformationArgs',
     'VpcPeeringConfigArgs',
     'VpcPeeringConnectivityArgs',
 ]
@@ -88,6 +112,7 @@ class AlloyDbSettingsArgs:
     def __init__(__self__, *,
                  initial_user: pulumi.Input['UserPasswordArgs'],
                  vpc_network: pulumi.Input[str],
+                 database_version: Optional[pulumi.Input['AlloyDbSettingsDatabaseVersion']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  primary_instance_settings: Optional[pulumi.Input['PrimaryInstanceSettingsArgs']] = None):
@@ -95,11 +120,14 @@ class AlloyDbSettingsArgs:
         Settings for creating an AlloyDB cluster.
         :param pulumi.Input['UserPasswordArgs'] initial_user: Input only. Initial user to setup during cluster creation. Required.
         :param pulumi.Input[str] vpc_network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        :param pulumi.Input['AlloyDbSettingsDatabaseVersion'] database_version: Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
         """
         pulumi.set(__self__, "initial_user", initial_user)
         pulumi.set(__self__, "vpc_network", vpc_network)
+        if database_version is not None:
+            pulumi.set(__self__, "database_version", database_version)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if labels is not None:
@@ -130,6 +158,18 @@ class AlloyDbSettingsArgs:
     @vpc_network.setter
     def vpc_network(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_network", value)
+
+    @property
+    @pulumi.getter(name="databaseVersion")
+    def database_version(self) -> Optional[pulumi.Input['AlloyDbSettingsDatabaseVersion']]:
+        """
+        Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+        """
+        return pulumi.get(self, "database_version")
+
+    @database_version.setter
+    def database_version(self, value: Optional[pulumi.Input['AlloyDbSettingsDatabaseVersion']]):
+        pulumi.set(self, "database_version", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -163,6 +203,53 @@ class AlloyDbSettingsArgs:
     @primary_instance_settings.setter
     def primary_instance_settings(self, value: Optional[pulumi.Input['PrimaryInstanceSettingsArgs']]):
         pulumi.set(self, "primary_instance_settings", value)
+
+
+@pulumi.input_type
+class ApplyHashArgs:
+    def __init__(__self__, *,
+                 uuid_from_bytes: Optional[pulumi.Input['EmptyArgs']] = None):
+        """
+        Apply a hash function on the value.
+        :param pulumi.Input['EmptyArgs'] uuid_from_bytes: Optional. Generate UUID from the data's byte array
+        """
+        if uuid_from_bytes is not None:
+            pulumi.set(__self__, "uuid_from_bytes", uuid_from_bytes)
+
+    @property
+    @pulumi.getter(name="uuidFromBytes")
+    def uuid_from_bytes(self) -> Optional[pulumi.Input['EmptyArgs']]:
+        """
+        Optional. Generate UUID from the data's byte array
+        """
+        return pulumi.get(self, "uuid_from_bytes")
+
+    @uuid_from_bytes.setter
+    def uuid_from_bytes(self, value: Optional[pulumi.Input['EmptyArgs']]):
+        pulumi.set(self, "uuid_from_bytes", value)
+
+
+@pulumi.input_type
+class AssignSpecificValueArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[str]):
+        """
+        Set to a specific value (value is converted to fit the target data type)
+        :param pulumi.Input[str] value: Specific value to be assigned
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Specific value to be assigned
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -333,10 +420,12 @@ class CloudSqlSettingsArgs:
                  availability_type: Optional[pulumi.Input['CloudSqlSettingsAvailabilityType']] = None,
                  cmek_key_name: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 data_cache_config: Optional[pulumi.Input['DataCacheConfigArgs']] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
                  data_disk_type: Optional[pulumi.Input['CloudSqlSettingsDataDiskType']] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  database_version: Optional[pulumi.Input['CloudSqlSettingsDatabaseVersion']] = None,
+                 edition: Optional[pulumi.Input['CloudSqlSettingsEdition']] = None,
                  ip_config: Optional[pulumi.Input['SqlIpConfigArgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  secondary_zone: Optional[pulumi.Input[str]] = None,
@@ -352,10 +441,12 @@ class CloudSqlSettingsArgs:
         :param pulumi.Input['CloudSqlSettingsAvailabilityType'] availability_type: Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
         :param pulumi.Input[str] cmek_key_name: The KMS key name used for the csql instance.
         :param pulumi.Input[str] collation: The Cloud SQL default instance level collation.
+        :param pulumi.Input['DataCacheConfigArgs'] data_cache_config: Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
         :param pulumi.Input[str] data_disk_size_gb: The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         :param pulumi.Input['CloudSqlSettingsDataDiskType'] data_disk_type: The type of storage: `PD_SSD` (default) or `PD_HDD`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input['CloudSqlSettingsDatabaseVersion'] database_version: The database engine type and version.
+        :param pulumi.Input['CloudSqlSettingsEdition'] edition: Optional. The edition of the given Cloud SQL instance.
         :param pulumi.Input['SqlIpConfigArgs'] ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         :param pulumi.Input[str] root_password: Input only. Initial root password.
         :param pulumi.Input[str] secondary_zone: Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
@@ -375,6 +466,8 @@ class CloudSqlSettingsArgs:
             pulumi.set(__self__, "cmek_key_name", cmek_key_name)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
+        if data_cache_config is not None:
+            pulumi.set(__self__, "data_cache_config", data_cache_config)
         if data_disk_size_gb is not None:
             pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
         if data_disk_type is not None:
@@ -383,6 +476,8 @@ class CloudSqlSettingsArgs:
             pulumi.set(__self__, "database_flags", database_flags)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
         if root_password is not None:
@@ -461,6 +556,18 @@ class CloudSqlSettingsArgs:
         pulumi.set(self, "collation", value)
 
     @property
+    @pulumi.getter(name="dataCacheConfig")
+    def data_cache_config(self) -> Optional[pulumi.Input['DataCacheConfigArgs']]:
+        """
+        Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+        """
+        return pulumi.get(self, "data_cache_config")
+
+    @data_cache_config.setter
+    def data_cache_config(self, value: Optional[pulumi.Input['DataCacheConfigArgs']]):
+        pulumi.set(self, "data_cache_config", value)
+
+    @property
     @pulumi.getter(name="dataDiskSizeGb")
     def data_disk_size_gb(self) -> Optional[pulumi.Input[str]]:
         """
@@ -507,6 +614,18 @@ class CloudSqlSettingsArgs:
     @database_version.setter
     def database_version(self, value: Optional[pulumi.Input['CloudSqlSettingsDatabaseVersion']]):
         pulumi.set(self, "database_version", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input['CloudSqlSettingsEdition']]:
+        """
+        Optional. The edition of the given Cloud SQL instance.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input['CloudSqlSettingsEdition']]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter(name="ipConfig")
@@ -606,6 +725,77 @@ class CloudSqlSettingsArgs:
 
 
 @pulumi.input_type
+class ConditionalColumnSetValueArgs:
+    def __init__(__self__, *,
+                 value_transformation: pulumi.Input['ValueTransformationArgs'],
+                 custom_features: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 source_numeric_filter: Optional[pulumi.Input['SourceNumericFilterArgs']] = None,
+                 source_text_filter: Optional[pulumi.Input['SourceTextFilterArgs']] = None):
+        """
+        Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
+        :param pulumi.Input['ValueTransformationArgs'] value_transformation: Description of data transformation during migration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_features: Optional. Custom engine specific features.
+        :param pulumi.Input['SourceNumericFilterArgs'] source_numeric_filter: Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+        :param pulumi.Input['SourceTextFilterArgs'] source_text_filter: Optional. Optional filter on source column length. Used for text based data types like varchar.
+        """
+        pulumi.set(__self__, "value_transformation", value_transformation)
+        if custom_features is not None:
+            pulumi.set(__self__, "custom_features", custom_features)
+        if source_numeric_filter is not None:
+            pulumi.set(__self__, "source_numeric_filter", source_numeric_filter)
+        if source_text_filter is not None:
+            pulumi.set(__self__, "source_text_filter", source_text_filter)
+
+    @property
+    @pulumi.getter(name="valueTransformation")
+    def value_transformation(self) -> pulumi.Input['ValueTransformationArgs']:
+        """
+        Description of data transformation during migration.
+        """
+        return pulumi.get(self, "value_transformation")
+
+    @value_transformation.setter
+    def value_transformation(self, value: pulumi.Input['ValueTransformationArgs']):
+        pulumi.set(self, "value_transformation", value)
+
+    @property
+    @pulumi.getter(name="customFeatures")
+    def custom_features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Custom engine specific features.
+        """
+        return pulumi.get(self, "custom_features")
+
+    @custom_features.setter
+    def custom_features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_features", value)
+
+    @property
+    @pulumi.getter(name="sourceNumericFilter")
+    def source_numeric_filter(self) -> Optional[pulumi.Input['SourceNumericFilterArgs']]:
+        """
+        Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+        """
+        return pulumi.get(self, "source_numeric_filter")
+
+    @source_numeric_filter.setter
+    def source_numeric_filter(self, value: Optional[pulumi.Input['SourceNumericFilterArgs']]):
+        pulumi.set(self, "source_numeric_filter", value)
+
+    @property
+    @pulumi.getter(name="sourceTextFilter")
+    def source_text_filter(self) -> Optional[pulumi.Input['SourceTextFilterArgs']]:
+        """
+        Optional. Optional filter on source column length. Used for text based data types like varchar.
+        """
+        return pulumi.get(self, "source_text_filter")
+
+    @source_text_filter.setter
+    def source_text_filter(self, value: Optional[pulumi.Input['SourceTextFilterArgs']]):
+        pulumi.set(self, "source_text_filter", value)
+
+
+@pulumi.input_type
 class ConversionWorkspaceInfoArgs:
     def __init__(__self__, *,
                  commit_id: Optional[pulumi.Input[str]] = None,
@@ -646,6 +836,53 @@ class ConversionWorkspaceInfoArgs:
 
 
 @pulumi.input_type
+class ConvertRowIdToColumnArgs:
+    def __init__(__self__, *,
+                 only_if_no_primary_key: pulumi.Input[bool]):
+        """
+        Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter field, which is whether or not to work on tables which already have a primary key defined.
+        :param pulumi.Input[bool] only_if_no_primary_key: Only work on tables without primary key defined
+        """
+        pulumi.set(__self__, "only_if_no_primary_key", only_if_no_primary_key)
+
+    @property
+    @pulumi.getter(name="onlyIfNoPrimaryKey")
+    def only_if_no_primary_key(self) -> pulumi.Input[bool]:
+        """
+        Only work on tables without primary key defined
+        """
+        return pulumi.get(self, "only_if_no_primary_key")
+
+    @only_if_no_primary_key.setter
+    def only_if_no_primary_key(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "only_if_no_primary_key", value)
+
+
+@pulumi.input_type
+class DataCacheConfigArgs:
+    def __init__(__self__, *,
+                 data_cache_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+        :param pulumi.Input[bool] data_cache_enabled: Optional. Whether data cache is enabled for the instance.
+        """
+        if data_cache_enabled is not None:
+            pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
+
+    @property
+    @pulumi.getter(name="dataCacheEnabled")
+    def data_cache_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether data cache is enabled for the instance.
+        """
+        return pulumi.get(self, "data_cache_enabled")
+
+    @data_cache_enabled.setter
+    def data_cache_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "data_cache_enabled", value)
+
+
+@pulumi.input_type
 class DatabaseEngineInfoArgs:
     def __init__(__self__, *,
                  engine: pulumi.Input['DatabaseEngineInfoEngine'],
@@ -653,7 +890,7 @@ class DatabaseEngineInfoArgs:
         """
         The type and version of a source or destination database.
         :param pulumi.Input['DatabaseEngineInfoEngine'] engine: Engine type.
-        :param pulumi.Input[str] version: Engine named version, for example 12.c.1.
+        :param pulumi.Input[str] version: Engine version, for example "12.c.1".
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "version", version)
@@ -674,7 +911,7 @@ class DatabaseEngineInfoArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Engine named version, for example 12.c.1.
+        Engine version, for example "12.c.1".
         """
         return pulumi.get(self, "version")
 
@@ -721,6 +958,44 @@ class DatabaseTypeArgs:
     @provider.setter
     def provider(self, value: Optional[pulumi.Input['DatabaseTypeProvider']]):
         pulumi.set(self, "provider", value)
+
+
+@pulumi.input_type
+class DoubleComparisonFilterArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[float],
+                 value_comparison: pulumi.Input['DoubleComparisonFilterValueComparison']):
+        """
+        Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
+        :param pulumi.Input[float] value: Double compare value to be used
+        :param pulumi.Input['DoubleComparisonFilterValueComparison'] value_comparison: Relation between source value and compare value
+        """
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_comparison", value_comparison)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[float]:
+        """
+        Double compare value to be used
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[float]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueComparison")
+    def value_comparison(self) -> pulumi.Input['DoubleComparisonFilterValueComparison']:
+        """
+        Relation between source value and compare value
+        """
+        return pulumi.get(self, "value_comparison")
+
+    @value_comparison.setter
+    def value_comparison(self, value: pulumi.Input['DoubleComparisonFilterValueComparison']):
+        pulumi.set(self, "value_comparison", value)
 
 
 @pulumi.input_type
@@ -788,6 +1063,15 @@ class DumpFlagArgs:
 
 
 @pulumi.input_type
+class EmptyArgs:
+    def __init__(__self__):
+        """
+        A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+        """
+        pass
+
+
+@pulumi.input_type
 class EncryptionConfigArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
@@ -809,6 +1093,29 @@ class EncryptionConfigArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class EntityMoveArgs:
+    def __init__(__self__, *,
+                 new_schema: pulumi.Input[str]):
+        """
+        Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+        :param pulumi.Input[str] new_schema: The new schema
+        """
+        pulumi.set(__self__, "new_schema", new_schema)
+
+    @property
+    @pulumi.getter(name="newSchema")
+    def new_schema(self) -> pulumi.Input[str]:
+        """
+        The new schema
+        """
+        return pulumi.get(self, "new_schema")
+
+    @new_schema.setter
+    def new_schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "new_schema", value)
 
 
 @pulumi.input_type
@@ -881,6 +1188,46 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class FilterTableColumnsArgs:
+    def __init__(__self__, *,
+                 exclude_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of the two lists can be specified for the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_columns: Optional. List of columns to be excluded for a particular table.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_columns: Optional. List of columns to be included for a particular table.
+        """
+        if exclude_columns is not None:
+            pulumi.set(__self__, "exclude_columns", exclude_columns)
+        if include_columns is not None:
+            pulumi.set(__self__, "include_columns", include_columns)
+
+    @property
+    @pulumi.getter(name="excludeColumns")
+    def exclude_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. List of columns to be excluded for a particular table.
+        """
+        return pulumi.get(self, "exclude_columns")
+
+    @exclude_columns.setter
+    def exclude_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_columns", value)
+
+    @property
+    @pulumi.getter(name="includeColumns")
+    def include_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. List of columns to be included for a particular table.
+        """
+        return pulumi.get(self, "include_columns")
+
+    @include_columns.setter
+    def include_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_columns", value)
 
 
 @pulumi.input_type
@@ -970,6 +1317,44 @@ class ForwardSshTunnelConnectivityArgs:
 
 
 @pulumi.input_type
+class IntComparisonFilterArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[str],
+                 value_comparison: pulumi.Input['IntComparisonFilterValueComparison']):
+        """
+        Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
+        :param pulumi.Input[str] value: Integer compare value to be used
+        :param pulumi.Input['IntComparisonFilterValueComparison'] value_comparison: Relation between source value and compare value
+        """
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_comparison", value_comparison)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Integer compare value to be used
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueComparison")
+    def value_comparison(self) -> pulumi.Input['IntComparisonFilterValueComparison']:
+        """
+        Relation between source value and compare value
+        """
+        return pulumi.get(self, "value_comparison")
+
+    @value_comparison.setter
+    def value_comparison(self, value: pulumi.Input['IntComparisonFilterValueComparison']):
+        pulumi.set(self, "value_comparison", value)
+
+
+@pulumi.input_type
 class MachineConfigArgs:
     def __init__(__self__, *,
                  cpu_count: Optional[pulumi.Input[int]] = None):
@@ -991,6 +1376,284 @@ class MachineConfigArgs:
     @cpu_count.setter
     def cpu_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_count", value)
+
+
+@pulumi.input_type
+class MappingRuleFilterArgs:
+    def __init__(__self__, *,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 entity_name_contains: Optional[pulumi.Input[str]] = None,
+                 entity_name_prefix: Optional[pulumi.Input[str]] = None,
+                 entity_name_suffix: Optional[pulumi.Input[str]] = None,
+                 parent_entity: Optional[pulumi.Input[str]] = None):
+        """
+        A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] entities: Optional. The rule should be applied to specific entities defined by their fully qualified names.
+        :param pulumi.Input[str] entity_name_contains: Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+        :param pulumi.Input[str] entity_name_prefix: Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+        :param pulumi.Input[str] entity_name_suffix: Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+        :param pulumi.Input[str] parent_entity: Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
+        """
+        if entities is not None:
+            pulumi.set(__self__, "entities", entities)
+        if entity_name_contains is not None:
+            pulumi.set(__self__, "entity_name_contains", entity_name_contains)
+        if entity_name_prefix is not None:
+            pulumi.set(__self__, "entity_name_prefix", entity_name_prefix)
+        if entity_name_suffix is not None:
+            pulumi.set(__self__, "entity_name_suffix", entity_name_suffix)
+        if parent_entity is not None:
+            pulumi.set(__self__, "parent_entity", parent_entity)
+
+    @property
+    @pulumi.getter
+    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The rule should be applied to specific entities defined by their fully qualified names.
+        """
+        return pulumi.get(self, "entities")
+
+    @entities.setter
+    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "entities", value)
+
+    @property
+    @pulumi.getter(name="entityNameContains")
+    def entity_name_contains(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+        """
+        return pulumi.get(self, "entity_name_contains")
+
+    @entity_name_contains.setter
+    def entity_name_contains(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_name_contains", value)
+
+    @property
+    @pulumi.getter(name="entityNamePrefix")
+    def entity_name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+        """
+        return pulumi.get(self, "entity_name_prefix")
+
+    @entity_name_prefix.setter
+    def entity_name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_name_prefix", value)
+
+    @property
+    @pulumi.getter(name="entityNameSuffix")
+    def entity_name_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+        """
+        return pulumi.get(self, "entity_name_suffix")
+
+    @entity_name_suffix.setter
+    def entity_name_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_name_suffix", value)
+
+    @property
+    @pulumi.getter(name="parentEntity")
+    def parent_entity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
+        """
+        return pulumi.get(self, "parent_entity")
+
+    @parent_entity.setter
+    def parent_entity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_entity", value)
+
+
+@pulumi.input_type
+class MultiColumnDatatypeChangeArgs:
+    def __init__(__self__, *,
+                 new_data_type: pulumi.Input[str],
+                 source_data_type_filter: pulumi.Input[str],
+                 custom_features: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 override_fractional_seconds_precision: Optional[pulumi.Input[int]] = None,
+                 override_length: Optional[pulumi.Input[str]] = None,
+                 override_precision: Optional[pulumi.Input[int]] = None,
+                 override_scale: Optional[pulumi.Input[int]] = None,
+                 source_numeric_filter: Optional[pulumi.Input['SourceNumericFilterArgs']] = None,
+                 source_text_filter: Optional[pulumi.Input['SourceTextFilterArgs']] = None):
+        """
+        Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
+        :param pulumi.Input[str] new_data_type: New data type.
+        :param pulumi.Input[str] source_data_type_filter: Filter on source data type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_features: Optional. Custom engine specific features.
+        :param pulumi.Input[int] override_fractional_seconds_precision: Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+        :param pulumi.Input[str] override_length: Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+        :param pulumi.Input[int] override_precision: Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+        :param pulumi.Input[int] override_scale: Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+        :param pulumi.Input['SourceNumericFilterArgs'] source_numeric_filter: Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+        :param pulumi.Input['SourceTextFilterArgs'] source_text_filter: Optional. Filter for text-based data types like varchar.
+        """
+        pulumi.set(__self__, "new_data_type", new_data_type)
+        pulumi.set(__self__, "source_data_type_filter", source_data_type_filter)
+        if custom_features is not None:
+            pulumi.set(__self__, "custom_features", custom_features)
+        if override_fractional_seconds_precision is not None:
+            pulumi.set(__self__, "override_fractional_seconds_precision", override_fractional_seconds_precision)
+        if override_length is not None:
+            pulumi.set(__self__, "override_length", override_length)
+        if override_precision is not None:
+            pulumi.set(__self__, "override_precision", override_precision)
+        if override_scale is not None:
+            pulumi.set(__self__, "override_scale", override_scale)
+        if source_numeric_filter is not None:
+            pulumi.set(__self__, "source_numeric_filter", source_numeric_filter)
+        if source_text_filter is not None:
+            pulumi.set(__self__, "source_text_filter", source_text_filter)
+
+    @property
+    @pulumi.getter(name="newDataType")
+    def new_data_type(self) -> pulumi.Input[str]:
+        """
+        New data type.
+        """
+        return pulumi.get(self, "new_data_type")
+
+    @new_data_type.setter
+    def new_data_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "new_data_type", value)
+
+    @property
+    @pulumi.getter(name="sourceDataTypeFilter")
+    def source_data_type_filter(self) -> pulumi.Input[str]:
+        """
+        Filter on source data type.
+        """
+        return pulumi.get(self, "source_data_type_filter")
+
+    @source_data_type_filter.setter
+    def source_data_type_filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_data_type_filter", value)
+
+    @property
+    @pulumi.getter(name="customFeatures")
+    def custom_features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Custom engine specific features.
+        """
+        return pulumi.get(self, "custom_features")
+
+    @custom_features.setter
+    def custom_features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_features", value)
+
+    @property
+    @pulumi.getter(name="overrideFractionalSecondsPrecision")
+    def override_fractional_seconds_precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+        """
+        return pulumi.get(self, "override_fractional_seconds_precision")
+
+    @override_fractional_seconds_precision.setter
+    def override_fractional_seconds_precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "override_fractional_seconds_precision", value)
+
+    @property
+    @pulumi.getter(name="overrideLength")
+    def override_length(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+        """
+        return pulumi.get(self, "override_length")
+
+    @override_length.setter
+    def override_length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "override_length", value)
+
+    @property
+    @pulumi.getter(name="overridePrecision")
+    def override_precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+        """
+        return pulumi.get(self, "override_precision")
+
+    @override_precision.setter
+    def override_precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "override_precision", value)
+
+    @property
+    @pulumi.getter(name="overrideScale")
+    def override_scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+        """
+        return pulumi.get(self, "override_scale")
+
+    @override_scale.setter
+    def override_scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "override_scale", value)
+
+    @property
+    @pulumi.getter(name="sourceNumericFilter")
+    def source_numeric_filter(self) -> Optional[pulumi.Input['SourceNumericFilterArgs']]:
+        """
+        Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+        """
+        return pulumi.get(self, "source_numeric_filter")
+
+    @source_numeric_filter.setter
+    def source_numeric_filter(self, value: Optional[pulumi.Input['SourceNumericFilterArgs']]):
+        pulumi.set(self, "source_numeric_filter", value)
+
+    @property
+    @pulumi.getter(name="sourceTextFilter")
+    def source_text_filter(self) -> Optional[pulumi.Input['SourceTextFilterArgs']]:
+        """
+        Optional. Filter for text-based data types like varchar.
+        """
+        return pulumi.get(self, "source_text_filter")
+
+    @source_text_filter.setter
+    def source_text_filter(self, value: Optional[pulumi.Input['SourceTextFilterArgs']]):
+        pulumi.set(self, "source_text_filter", value)
+
+
+@pulumi.input_type
+class MultiEntityRenameArgs:
+    def __init__(__self__, *,
+                 new_name_pattern: Optional[pulumi.Input[str]] = None,
+                 source_name_transformation: Optional[pulumi.Input['MultiEntityRenameSourceNameTransformation']] = None):
+        """
+        Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+        :param pulumi.Input[str] new_name_pattern: Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+        :param pulumi.Input['MultiEntityRenameSourceNameTransformation'] source_name_transformation: Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+        """
+        if new_name_pattern is not None:
+            pulumi.set(__self__, "new_name_pattern", new_name_pattern)
+        if source_name_transformation is not None:
+            pulumi.set(__self__, "source_name_transformation", source_name_transformation)
+
+    @property
+    @pulumi.getter(name="newNamePattern")
+    def new_name_pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+        """
+        return pulumi.get(self, "new_name_pattern")
+
+    @new_name_pattern.setter
+    def new_name_pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "new_name_pattern", value)
+
+    @property
+    @pulumi.getter(name="sourceNameTransformation")
+    def source_name_transformation(self) -> Optional[pulumi.Input['MultiEntityRenameSourceNameTransformation']]:
+        """
+        Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+        """
+        return pulumi.get(self, "source_name_transformation")
+
+    @source_name_transformation.setter
+    def source_name_transformation(self, value: Optional[pulumi.Input['MultiEntityRenameSourceNameTransformation']]):
+        pulumi.set(self, "source_name_transformation", value)
 
 
 @pulumi.input_type
@@ -1103,6 +1766,7 @@ class OracleConnectionProfileArgs:
                  username: pulumi.Input[str],
                  forward_ssh_connectivity: Optional[pulumi.Input['ForwardSshTunnelConnectivityArgs']] = None,
                  private_connectivity: Optional[pulumi.Input['PrivateConnectivityArgs']] = None,
+                 ssl: Optional[pulumi.Input['SslConfigArgs']] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']] = None):
         """
         Specifies connection parameters required specifically for Oracle databases.
@@ -1113,6 +1777,7 @@ class OracleConnectionProfileArgs:
         :param pulumi.Input[str] username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         :param pulumi.Input['ForwardSshTunnelConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
         :param pulumi.Input['PrivateConnectivityArgs'] private_connectivity: Private connectivity.
+        :param pulumi.Input['SslConfigArgs'] ssl: SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
         :param pulumi.Input['StaticServiceIpConnectivityArgs'] static_service_ip_connectivity: Static Service IP connectivity.
         """
         pulumi.set(__self__, "database_service", database_service)
@@ -1124,6 +1789,8 @@ class OracleConnectionProfileArgs:
             pulumi.set(__self__, "forward_ssh_connectivity", forward_ssh_connectivity)
         if private_connectivity is not None:
             pulumi.set(__self__, "private_connectivity", private_connectivity)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
         if static_service_ip_connectivity is not None:
             pulumi.set(__self__, "static_service_ip_connectivity", static_service_ip_connectivity)
 
@@ -1212,6 +1879,18 @@ class OracleConnectionProfileArgs:
         pulumi.set(self, "private_connectivity", value)
 
     @property
+    @pulumi.getter
+    def ssl(self) -> Optional[pulumi.Input['SslConfigArgs']]:
+        """
+        SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
+        """
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: Optional[pulumi.Input['SslConfigArgs']]):
+        pulumi.set(self, "ssl", value)
+
+    @property
     @pulumi.getter(name="staticServiceIpConnectivity")
     def static_service_ip_connectivity(self) -> Optional[pulumi.Input['StaticServiceIpConnectivityArgs']]:
         """
@@ -1225,12 +1904,37 @@ class OracleConnectionProfileArgs:
 
 
 @pulumi.input_type
+class PerformanceConfigArgs:
+    def __init__(__self__, *,
+                 dump_parallel_level: Optional[pulumi.Input['PerformanceConfigDumpParallelLevel']] = None):
+        """
+        Performance configuration definition.
+        :param pulumi.Input['PerformanceConfigDumpParallelLevel'] dump_parallel_level: Initial dump parallelism level.
+        """
+        if dump_parallel_level is not None:
+            pulumi.set(__self__, "dump_parallel_level", dump_parallel_level)
+
+    @property
+    @pulumi.getter(name="dumpParallelLevel")
+    def dump_parallel_level(self) -> Optional[pulumi.Input['PerformanceConfigDumpParallelLevel']]:
+        """
+        Initial dump parallelism level.
+        """
+        return pulumi.get(self, "dump_parallel_level")
+
+    @dump_parallel_level.setter
+    def dump_parallel_level(self, value: Optional[pulumi.Input['PerformanceConfigDumpParallelLevel']]):
+        pulumi.set(self, "dump_parallel_level", value)
+
+
+@pulumi.input_type
 class PostgreSqlConnectionProfileArgs:
     def __init__(__self__, *,
                  host: pulumi.Input[str],
                  password: pulumi.Input[str],
                  port: pulumi.Input[int],
                  username: pulumi.Input[str],
+                 alloydb_cluster_id: Optional[pulumi.Input[str]] = None,
                  cloud_sql_id: Optional[pulumi.Input[str]] = None,
                  private_service_connect_connectivity: Optional[pulumi.Input['PrivateServiceConnectConnectivityArgs']] = None,
                  ssl: Optional[pulumi.Input['SslConfigArgs']] = None,
@@ -1241,6 +1945,7 @@ class PostgreSqlConnectionProfileArgs:
         :param pulumi.Input[str] password: Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         :param pulumi.Input[int] port: The network port of the source PostgreSQL database.
         :param pulumi.Input[str] username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        :param pulumi.Input[str] alloydb_cluster_id: Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
         :param pulumi.Input[str] cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         :param pulumi.Input['PrivateServiceConnectConnectivityArgs'] private_service_connect_connectivity: Private service connect connectivity.
         :param pulumi.Input['SslConfigArgs'] ssl: SSL configuration for the destination to connect to the source database.
@@ -1250,6 +1955,8 @@ class PostgreSqlConnectionProfileArgs:
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "username", username)
+        if alloydb_cluster_id is not None:
+            pulumi.set(__self__, "alloydb_cluster_id", alloydb_cluster_id)
         if cloud_sql_id is not None:
             pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
         if private_service_connect_connectivity is not None:
@@ -1306,6 +2013,18 @@ class PostgreSqlConnectionProfileArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="alloydbClusterId")
+    def alloydb_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+        """
+        return pulumi.get(self, "alloydb_cluster_id")
+
+    @alloydb_cluster_id.setter
+    def alloydb_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alloydb_cluster_id", value)
 
     @property
     @pulumi.getter(name="cloudSqlId")
@@ -1455,7 +2174,7 @@ class PrivateServiceConnectConnectivityArgs:
     def __init__(__self__, *,
                  service_attachment: pulumi.Input[str]):
         """
-        Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+        [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
         :param pulumi.Input[str] service_attachment: A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
         """
         pulumi.set(__self__, "service_attachment", service_attachment)
@@ -1541,6 +2260,529 @@ class ReverseSshConnectivityArgs:
     @vpc.setter
     def vpc(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc", value)
+
+
+@pulumi.input_type
+class RoundToScaleArgs:
+    def __init__(__self__, *,
+                 scale: pulumi.Input[int]):
+        """
+        This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value = 0.
+        :param pulumi.Input[int] scale: Scale value to be used
+        """
+        pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> pulumi.Input[int]:
+        """
+        Scale value to be used
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: pulumi.Input[int]):
+        pulumi.set(self, "scale", value)
+
+
+@pulumi.input_type
+class SetTablePrimaryKeyArgs:
+    def __init__(__self__, *,
+                 primary_key_columns: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 primary_key: Optional[pulumi.Input[str]] = None):
+        """
+        Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_key_columns: List of column names for the primary key
+        :param pulumi.Input[str] primary_key: Optional. Name for the primary key
+        """
+        pulumi.set(__self__, "primary_key_columns", primary_key_columns)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter(name="primaryKeyColumns")
+    def primary_key_columns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of column names for the primary key
+        """
+        return pulumi.get(self, "primary_key_columns")
+
+    @primary_key_columns.setter
+    def primary_key_columns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "primary_key_columns", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Name for the primary key
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_key", value)
+
+
+@pulumi.input_type
+class SingleColumnChangeArgs:
+    def __init__(__self__, *,
+                 array: Optional[pulumi.Input[bool]] = None,
+                 array_length: Optional[pulumi.Input[int]] = None,
+                 auto_generated: Optional[pulumi.Input[bool]] = None,
+                 charset: Optional[pulumi.Input[str]] = None,
+                 collation: Optional[pulumi.Input[str]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 custom_features: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 fractional_seconds_precision: Optional[pulumi.Input[int]] = None,
+                 length: Optional[pulumi.Input[str]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 precision: Optional[pulumi.Input[int]] = None,
+                 scale: Optional[pulumi.Input[int]] = None,
+                 set_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 udt: Optional[pulumi.Input[bool]] = None):
+        """
+        Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a field is not specified than the destination column's configuration will be the same as the one in the source column..
+        :param pulumi.Input[bool] array: Optional. Is the column of array type.
+        :param pulumi.Input[int] array_length: Optional. The length of the array, only relevant if the column type is an array.
+        :param pulumi.Input[bool] auto_generated: Optional. Is the column auto-generated/identity.
+        :param pulumi.Input[str] charset: Optional. Charset override - instead of table level charset.
+        :param pulumi.Input[str] collation: Optional. Collation override - instead of table level collation.
+        :param pulumi.Input[str] comment: Optional. Comment associated with the column.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_features: Optional. Custom engine specific features.
+        :param pulumi.Input[str] data_type: Optional. Column data type name.
+        :param pulumi.Input[int] fractional_seconds_precision: Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+        :param pulumi.Input[str] length: Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+        :param pulumi.Input[bool] nullable: Optional. Is the column nullable.
+        :param pulumi.Input[int] precision: Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+        :param pulumi.Input[int] scale: Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] set_values: Optional. Specifies the list of values allowed in the column.
+        :param pulumi.Input[bool] udt: Optional. Is the column a UDT (User-defined Type).
+        """
+        if array is not None:
+            pulumi.set(__self__, "array", array)
+        if array_length is not None:
+            pulumi.set(__self__, "array_length", array_length)
+        if auto_generated is not None:
+            pulumi.set(__self__, "auto_generated", auto_generated)
+        if charset is not None:
+            pulumi.set(__self__, "charset", charset)
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if custom_features is not None:
+            pulumi.set(__self__, "custom_features", custom_features)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if fractional_seconds_precision is not None:
+            pulumi.set(__self__, "fractional_seconds_precision", fractional_seconds_precision)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+        if set_values is not None:
+            pulumi.set(__self__, "set_values", set_values)
+        if udt is not None:
+            pulumi.set(__self__, "udt", udt)
+
+    @property
+    @pulumi.getter
+    def array(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Is the column of array type.
+        """
+        return pulumi.get(self, "array")
+
+    @array.setter
+    def array(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "array", value)
+
+    @property
+    @pulumi.getter(name="arrayLength")
+    def array_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The length of the array, only relevant if the column type is an array.
+        """
+        return pulumi.get(self, "array_length")
+
+    @array_length.setter
+    def array_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "array_length", value)
+
+    @property
+    @pulumi.getter(name="autoGenerated")
+    def auto_generated(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Is the column auto-generated/identity.
+        """
+        return pulumi.get(self, "auto_generated")
+
+    @auto_generated.setter
+    def auto_generated(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_generated", value)
+
+    @property
+    @pulumi.getter
+    def charset(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Charset override - instead of table level charset.
+        """
+        return pulumi.get(self, "charset")
+
+    @charset.setter
+    def charset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "charset", value)
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Collation override - instead of table level collation.
+        """
+        return pulumi.get(self, "collation")
+
+    @collation.setter
+    def collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Comment associated with the column.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="customFeatures")
+    def custom_features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Custom engine specific features.
+        """
+        return pulumi.get(self, "custom_features")
+
+    @custom_features.setter
+    def custom_features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_features", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Column data type name.
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter(name="fractionalSecondsPrecision")
+    def fractional_seconds_precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+        """
+        return pulumi.get(self, "fractional_seconds_precision")
+
+    @fractional_seconds_precision.setter
+    def fractional_seconds_precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "fractional_seconds_precision", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Is the column nullable.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
+
+    @property
+    @pulumi.getter(name="setValues")
+    def set_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Specifies the list of values allowed in the column.
+        """
+        return pulumi.get(self, "set_values")
+
+    @set_values.setter
+    def set_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "set_values", value)
+
+    @property
+    @pulumi.getter
+    def udt(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Is the column a UDT (User-defined Type).
+        """
+        return pulumi.get(self, "udt")
+
+    @udt.setter
+    def udt(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "udt", value)
+
+
+@pulumi.input_type
+class SingleEntityRenameArgs:
+    def __init__(__self__, *,
+                 new_name: pulumi.Input[str]):
+        """
+        Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+        :param pulumi.Input[str] new_name: The new name of the destination entity
+        """
+        pulumi.set(__self__, "new_name", new_name)
+
+    @property
+    @pulumi.getter(name="newName")
+    def new_name(self) -> pulumi.Input[str]:
+        """
+        The new name of the destination entity
+        """
+        return pulumi.get(self, "new_name")
+
+    @new_name.setter
+    def new_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "new_name", value)
+
+
+@pulumi.input_type
+class SinglePackageChangeArgs:
+    def __init__(__self__, *,
+                 package_body: Optional[pulumi.Input[str]] = None,
+                 package_description: Optional[pulumi.Input[str]] = None):
+        """
+        Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package
+        :param pulumi.Input[str] package_body: Optional. Sql code for package body
+        :param pulumi.Input[str] package_description: Optional. Sql code for package description
+        """
+        if package_body is not None:
+            pulumi.set(__self__, "package_body", package_body)
+        if package_description is not None:
+            pulumi.set(__self__, "package_description", package_description)
+
+    @property
+    @pulumi.getter(name="packageBody")
+    def package_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Sql code for package body
+        """
+        return pulumi.get(self, "package_body")
+
+    @package_body.setter
+    def package_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_body", value)
+
+    @property
+    @pulumi.getter(name="packageDescription")
+    def package_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Sql code for package description
+        """
+        return pulumi.get(self, "package_description")
+
+    @package_description.setter
+    def package_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_description", value)
+
+
+@pulumi.input_type
+class SourceNumericFilterArgs:
+    def __init__(__self__, *,
+                 numeric_filter_option: pulumi.Input['SourceNumericFilterNumericFilterOption'],
+                 source_max_precision_filter: Optional[pulumi.Input[int]] = None,
+                 source_max_scale_filter: Optional[pulumi.Input[int]] = None,
+                 source_min_precision_filter: Optional[pulumi.Input[int]] = None,
+                 source_min_scale_filter: Optional[pulumi.Input[int]] = None):
+        """
+        Filter for fixed point number data types such as NUMERIC/NUMBER
+        :param pulumi.Input['SourceNumericFilterNumericFilterOption'] numeric_filter_option: Enum to set the option defining the datatypes numeric filter has to be applied to
+        :param pulumi.Input[int] source_max_precision_filter: Optional. The filter will match columns with precision smaller than or equal to this number.
+        :param pulumi.Input[int] source_max_scale_filter: Optional. The filter will match columns with scale smaller than or equal to this number.
+        :param pulumi.Input[int] source_min_precision_filter: Optional. The filter will match columns with precision greater than or equal to this number.
+        :param pulumi.Input[int] source_min_scale_filter: Optional. The filter will match columns with scale greater than or equal to this number.
+        """
+        pulumi.set(__self__, "numeric_filter_option", numeric_filter_option)
+        if source_max_precision_filter is not None:
+            pulumi.set(__self__, "source_max_precision_filter", source_max_precision_filter)
+        if source_max_scale_filter is not None:
+            pulumi.set(__self__, "source_max_scale_filter", source_max_scale_filter)
+        if source_min_precision_filter is not None:
+            pulumi.set(__self__, "source_min_precision_filter", source_min_precision_filter)
+        if source_min_scale_filter is not None:
+            pulumi.set(__self__, "source_min_scale_filter", source_min_scale_filter)
+
+    @property
+    @pulumi.getter(name="numericFilterOption")
+    def numeric_filter_option(self) -> pulumi.Input['SourceNumericFilterNumericFilterOption']:
+        """
+        Enum to set the option defining the datatypes numeric filter has to be applied to
+        """
+        return pulumi.get(self, "numeric_filter_option")
+
+    @numeric_filter_option.setter
+    def numeric_filter_option(self, value: pulumi.Input['SourceNumericFilterNumericFilterOption']):
+        pulumi.set(self, "numeric_filter_option", value)
+
+    @property
+    @pulumi.getter(name="sourceMaxPrecisionFilter")
+    def source_max_precision_filter(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The filter will match columns with precision smaller than or equal to this number.
+        """
+        return pulumi.get(self, "source_max_precision_filter")
+
+    @source_max_precision_filter.setter
+    def source_max_precision_filter(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "source_max_precision_filter", value)
+
+    @property
+    @pulumi.getter(name="sourceMaxScaleFilter")
+    def source_max_scale_filter(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The filter will match columns with scale smaller than or equal to this number.
+        """
+        return pulumi.get(self, "source_max_scale_filter")
+
+    @source_max_scale_filter.setter
+    def source_max_scale_filter(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "source_max_scale_filter", value)
+
+    @property
+    @pulumi.getter(name="sourceMinPrecisionFilter")
+    def source_min_precision_filter(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The filter will match columns with precision greater than or equal to this number.
+        """
+        return pulumi.get(self, "source_min_precision_filter")
+
+    @source_min_precision_filter.setter
+    def source_min_precision_filter(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "source_min_precision_filter", value)
+
+    @property
+    @pulumi.getter(name="sourceMinScaleFilter")
+    def source_min_scale_filter(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The filter will match columns with scale greater than or equal to this number.
+        """
+        return pulumi.get(self, "source_min_scale_filter")
+
+    @source_min_scale_filter.setter
+    def source_min_scale_filter(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "source_min_scale_filter", value)
+
+
+@pulumi.input_type
+class SourceSqlChangeArgs:
+    def __init__(__self__, *,
+                 sql_code: pulumi.Input[str]):
+        """
+        Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
+        :param pulumi.Input[str] sql_code: Sql code for source (stored procedure, function, trigger or view)
+        """
+        pulumi.set(__self__, "sql_code", sql_code)
+
+    @property
+    @pulumi.getter(name="sqlCode")
+    def sql_code(self) -> pulumi.Input[str]:
+        """
+        Sql code for source (stored procedure, function, trigger or view)
+        """
+        return pulumi.get(self, "sql_code")
+
+    @sql_code.setter
+    def sql_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sql_code", value)
+
+
+@pulumi.input_type
+class SourceTextFilterArgs:
+    def __init__(__self__, *,
+                 source_max_length_filter: Optional[pulumi.Input[str]] = None,
+                 source_min_length_filter: Optional[pulumi.Input[str]] = None):
+        """
+        Filter for text-based data types like varchar.
+        :param pulumi.Input[str] source_max_length_filter: Optional. The filter will match columns with length smaller than or equal to this number.
+        :param pulumi.Input[str] source_min_length_filter: Optional. The filter will match columns with length greater than or equal to this number.
+        """
+        if source_max_length_filter is not None:
+            pulumi.set(__self__, "source_max_length_filter", source_max_length_filter)
+        if source_min_length_filter is not None:
+            pulumi.set(__self__, "source_min_length_filter", source_min_length_filter)
+
+    @property
+    @pulumi.getter(name="sourceMaxLengthFilter")
+    def source_max_length_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The filter will match columns with length smaller than or equal to this number.
+        """
+        return pulumi.get(self, "source_max_length_filter")
+
+    @source_max_length_filter.setter
+    def source_max_length_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_max_length_filter", value)
+
+    @property
+    @pulumi.getter(name="sourceMinLengthFilter")
+    def source_min_length_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The filter will match columns with length greater than or equal to this number.
+        """
+        return pulumi.get(self, "source_min_length_filter")
+
+    @source_min_length_filter.setter
+    def source_min_length_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_min_length_filter", value)
 
 
 @pulumi.input_type
@@ -1814,6 +3056,227 @@ class UserPasswordArgs:
     @user.setter
     def user(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user", value)
+
+
+@pulumi.input_type
+class ValueListFilterArgs:
+    def __init__(__self__, *,
+                 ignore_case: pulumi.Input[bool],
+                 value_present_list: pulumi.Input['ValueListFilterValuePresentList'],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        A list of values to filter by in ConditionalColumnSetValue
+        :param pulumi.Input[bool] ignore_case: Whether to ignore case when filtering by values. Defaults to false
+        :param pulumi.Input['ValueListFilterValuePresentList'] value_present_list: Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The list to be used to filter by
+        """
+        pulumi.set(__self__, "ignore_case", ignore_case)
+        pulumi.set(__self__, "value_present_list", value_present_list)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="ignoreCase")
+    def ignore_case(self) -> pulumi.Input[bool]:
+        """
+        Whether to ignore case when filtering by values. Defaults to false
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @ignore_case.setter
+    def ignore_case(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "ignore_case", value)
+
+    @property
+    @pulumi.getter(name="valuePresentList")
+    def value_present_list(self) -> pulumi.Input['ValueListFilterValuePresentList']:
+        """
+        Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+        """
+        return pulumi.get(self, "value_present_list")
+
+    @value_present_list.setter
+    def value_present_list(self, value: pulumi.Input['ValueListFilterValuePresentList']):
+        pulumi.set(self, "value_present_list", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list to be used to filter by
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class ValueTransformationArgs:
+    def __init__(__self__, *,
+                 apply_hash: Optional[pulumi.Input['ApplyHashArgs']] = None,
+                 assign_max_value: Optional[pulumi.Input['EmptyArgs']] = None,
+                 assign_min_value: Optional[pulumi.Input['EmptyArgs']] = None,
+                 assign_null: Optional[pulumi.Input['EmptyArgs']] = None,
+                 assign_specific_value: Optional[pulumi.Input['AssignSpecificValueArgs']] = None,
+                 double_comparison: Optional[pulumi.Input['DoubleComparisonFilterArgs']] = None,
+                 int_comparison: Optional[pulumi.Input['IntComparisonFilterArgs']] = None,
+                 is_null: Optional[pulumi.Input['EmptyArgs']] = None,
+                 round_scale: Optional[pulumi.Input['RoundToScaleArgs']] = None,
+                 value_list: Optional[pulumi.Input['ValueListFilterArgs']] = None):
+        """
+        Description of data transformation during migration as part of the ConditionalColumnSetValue.
+        :param pulumi.Input['ApplyHashArgs'] apply_hash: Optional. Applies a hash function on the data
+        :param pulumi.Input['EmptyArgs'] assign_max_value: Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+        :param pulumi.Input['EmptyArgs'] assign_min_value: Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+        :param pulumi.Input['EmptyArgs'] assign_null: Optional. Set to null
+        :param pulumi.Input['AssignSpecificValueArgs'] assign_specific_value: Optional. Set to a specific value (value is converted to fit the target data type)
+        :param pulumi.Input['DoubleComparisonFilterArgs'] double_comparison: Optional. Filter on relation between source value and compare value of type double.
+        :param pulumi.Input['IntComparisonFilterArgs'] int_comparison: Optional. Filter on relation between source value and compare value of type integer.
+        :param pulumi.Input['EmptyArgs'] is_null: Optional. Value is null
+        :param pulumi.Input['RoundToScaleArgs'] round_scale: Optional. Allows the data to change scale
+        :param pulumi.Input['ValueListFilterArgs'] value_list: Optional. Value is found in the specified list.
+        """
+        if apply_hash is not None:
+            pulumi.set(__self__, "apply_hash", apply_hash)
+        if assign_max_value is not None:
+            pulumi.set(__self__, "assign_max_value", assign_max_value)
+        if assign_min_value is not None:
+            pulumi.set(__self__, "assign_min_value", assign_min_value)
+        if assign_null is not None:
+            pulumi.set(__self__, "assign_null", assign_null)
+        if assign_specific_value is not None:
+            pulumi.set(__self__, "assign_specific_value", assign_specific_value)
+        if double_comparison is not None:
+            pulumi.set(__self__, "double_comparison", double_comparison)
+        if int_comparison is not None:
+            pulumi.set(__self__, "int_comparison", int_comparison)
+        if is_null is not None:
+            pulumi.set(__self__, "is_null", is_null)
+        if round_scale is not None:
+            pulumi.set(__self__, "round_scale", round_scale)
+        if value_list is not None:
+            pulumi.set(__self__, "value_list", value_list)
+
+    @property
+    @pulumi.getter(name="applyHash")
+    def apply_hash(self) -> Optional[pulumi.Input['ApplyHashArgs']]:
+        """
+        Optional. Applies a hash function on the data
+        """
+        return pulumi.get(self, "apply_hash")
+
+    @apply_hash.setter
+    def apply_hash(self, value: Optional[pulumi.Input['ApplyHashArgs']]):
+        pulumi.set(self, "apply_hash", value)
+
+    @property
+    @pulumi.getter(name="assignMaxValue")
+    def assign_max_value(self) -> Optional[pulumi.Input['EmptyArgs']]:
+        """
+        Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+        """
+        return pulumi.get(self, "assign_max_value")
+
+    @assign_max_value.setter
+    def assign_max_value(self, value: Optional[pulumi.Input['EmptyArgs']]):
+        pulumi.set(self, "assign_max_value", value)
+
+    @property
+    @pulumi.getter(name="assignMinValue")
+    def assign_min_value(self) -> Optional[pulumi.Input['EmptyArgs']]:
+        """
+        Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+        """
+        return pulumi.get(self, "assign_min_value")
+
+    @assign_min_value.setter
+    def assign_min_value(self, value: Optional[pulumi.Input['EmptyArgs']]):
+        pulumi.set(self, "assign_min_value", value)
+
+    @property
+    @pulumi.getter(name="assignNull")
+    def assign_null(self) -> Optional[pulumi.Input['EmptyArgs']]:
+        """
+        Optional. Set to null
+        """
+        return pulumi.get(self, "assign_null")
+
+    @assign_null.setter
+    def assign_null(self, value: Optional[pulumi.Input['EmptyArgs']]):
+        pulumi.set(self, "assign_null", value)
+
+    @property
+    @pulumi.getter(name="assignSpecificValue")
+    def assign_specific_value(self) -> Optional[pulumi.Input['AssignSpecificValueArgs']]:
+        """
+        Optional. Set to a specific value (value is converted to fit the target data type)
+        """
+        return pulumi.get(self, "assign_specific_value")
+
+    @assign_specific_value.setter
+    def assign_specific_value(self, value: Optional[pulumi.Input['AssignSpecificValueArgs']]):
+        pulumi.set(self, "assign_specific_value", value)
+
+    @property
+    @pulumi.getter(name="doubleComparison")
+    def double_comparison(self) -> Optional[pulumi.Input['DoubleComparisonFilterArgs']]:
+        """
+        Optional. Filter on relation between source value and compare value of type double.
+        """
+        return pulumi.get(self, "double_comparison")
+
+    @double_comparison.setter
+    def double_comparison(self, value: Optional[pulumi.Input['DoubleComparisonFilterArgs']]):
+        pulumi.set(self, "double_comparison", value)
+
+    @property
+    @pulumi.getter(name="intComparison")
+    def int_comparison(self) -> Optional[pulumi.Input['IntComparisonFilterArgs']]:
+        """
+        Optional. Filter on relation between source value and compare value of type integer.
+        """
+        return pulumi.get(self, "int_comparison")
+
+    @int_comparison.setter
+    def int_comparison(self, value: Optional[pulumi.Input['IntComparisonFilterArgs']]):
+        pulumi.set(self, "int_comparison", value)
+
+    @property
+    @pulumi.getter(name="isNull")
+    def is_null(self) -> Optional[pulumi.Input['EmptyArgs']]:
+        """
+        Optional. Value is null
+        """
+        return pulumi.get(self, "is_null")
+
+    @is_null.setter
+    def is_null(self, value: Optional[pulumi.Input['EmptyArgs']]):
+        pulumi.set(self, "is_null", value)
+
+    @property
+    @pulumi.getter(name="roundScale")
+    def round_scale(self) -> Optional[pulumi.Input['RoundToScaleArgs']]:
+        """
+        Optional. Allows the data to change scale
+        """
+        return pulumi.get(self, "round_scale")
+
+    @round_scale.setter
+    def round_scale(self, value: Optional[pulumi.Input['RoundToScaleArgs']]):
+        pulumi.set(self, "round_scale", value)
+
+    @property
+    @pulumi.getter(name="valueList")
+    def value_list(self) -> Optional[pulumi.Input['ValueListFilterArgs']]:
+        """
+        Optional. Value is found in the specified list.
+        """
+        return pulumi.get(self, "value_list")
+
+    @value_list.setter
+    def value_list(self, value: Optional[pulumi.Input['ValueListFilterArgs']]):
+        pulumi.set(self, "value_list", value)
 
 
 @pulumi.input_type

@@ -28,12 +28,15 @@ __all__ = [
     'BucketLoggingArgs',
     'BucketObjectCustomerEncryptionArgs',
     'BucketObjectOwnerArgs',
+    'BucketObjectRetentionArgs',
     'BucketOwnerArgs',
     'BucketRetentionPolicyArgs',
+    'BucketSoftDeletePolicyArgs',
     'BucketVersioningArgs',
     'BucketWebsiteArgs',
     'DefaultObjectAccessControlProjectTeamArgs',
     'ExprArgs',
+    'ManagedFolderIamPolicyBindingsItemArgs',
     'ObjectAccessControlProjectTeamArgs',
     'ObjectAccessControlArgs',
     'ObjectIamPolicyBindingsItemArgs',
@@ -289,14 +292,22 @@ class BucketAccessControlArgs:
 class BucketAutoclassArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 terminal_storage_class: Optional[pulumi.Input[str]] = None,
+                 terminal_storage_class_update_time: Optional[pulumi.Input[str]] = None,
                  toggle_time: Optional[pulumi.Input[str]] = None):
         """
         The bucket's Autoclass configuration.
         :param pulumi.Input[bool] enabled: Whether or not Autoclass is enabled on this bucket
+        :param pulumi.Input[str] terminal_storage_class: The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+        :param pulumi.Input[str] terminal_storage_class_update_time: A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
         :param pulumi.Input[str] toggle_time: A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if terminal_storage_class is not None:
+            pulumi.set(__self__, "terminal_storage_class", terminal_storage_class)
+        if terminal_storage_class_update_time is not None:
+            pulumi.set(__self__, "terminal_storage_class_update_time", terminal_storage_class_update_time)
         if toggle_time is not None:
             pulumi.set(__self__, "toggle_time", toggle_time)
 
@@ -311,6 +322,30 @@ class BucketAutoclassArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="terminalStorageClass")
+    def terminal_storage_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+        """
+        return pulumi.get(self, "terminal_storage_class")
+
+    @terminal_storage_class.setter
+    def terminal_storage_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "terminal_storage_class", value)
+
+    @property
+    @pulumi.getter(name="terminalStorageClassUpdateTime")
+    def terminal_storage_class_update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
+        """
+        return pulumi.get(self, "terminal_storage_class_update_time")
+
+    @terminal_storage_class_update_time.setter
+    def terminal_storage_class_update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "terminal_storage_class_update_time", value)
 
     @property
     @pulumi.getter(name="toggleTime")
@@ -1121,6 +1156,46 @@ class BucketObjectOwnerArgs:
 
 
 @pulumi.input_type
+class BucketObjectRetentionArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 retain_until_time: Optional[pulumi.Input[str]] = None):
+        """
+        A collection of object level retention parameters.
+        :param pulumi.Input[str] mode: The bucket's object retention mode, can only be Unlocked or Locked.
+        :param pulumi.Input[str] retain_until_time: A time in RFC 3339 format until which object retention protects this object.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if retain_until_time is not None:
+            pulumi.set(__self__, "retain_until_time", retain_until_time)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bucket's object retention mode, can only be Unlocked or Locked.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="retainUntilTime")
+    def retain_until_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        A time in RFC 3339 format until which object retention protects this object.
+        """
+        return pulumi.get(self, "retain_until_time")
+
+    @retain_until_time.setter
+    def retain_until_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retain_until_time", value)
+
+
+@pulumi.input_type
 class BucketOwnerArgs:
     def __init__(__self__, *,
                  entity: Optional[pulumi.Input[str]] = None,
@@ -1214,6 +1289,46 @@ class BucketRetentionPolicyArgs:
     @retention_period.setter
     def retention_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "retention_period", value)
+
+
+@pulumi.input_type
+class BucketSoftDeletePolicyArgs:
+    def __init__(__self__, *,
+                 effective_time: Optional[pulumi.Input[str]] = None,
+                 retention_duration_seconds: Optional[pulumi.Input[str]] = None):
+        """
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+        :param pulumi.Input[str] effective_time: Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+        :param pulumi.Input[str] retention_duration_seconds: The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
+        """
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+        if retention_duration_seconds is not None:
+            pulumi.set(__self__, "retention_duration_seconds", retention_duration_seconds)
+
+    @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @property
+    @pulumi.getter(name="retentionDurationSeconds")
+    def retention_duration_seconds(self) -> Optional[pulumi.Input[str]]:
+        """
+        The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
+        """
+        return pulumi.get(self, "retention_duration_seconds")
+
+    @retention_duration_seconds.setter
+    def retention_duration_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention_duration_seconds", value)
 
 
 @pulumi.input_type
@@ -1390,6 +1505,99 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class ManagedFolderIamPolicyBindingsItemArgs:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['ExprArgs']] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+               - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+               - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+               - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+               - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+               - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+               - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+               - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+               - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+               - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+        :param pulumi.Input[str] role: The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+               The new IAM roles are:  
+               - roles/storage.admin — Full control of Google Cloud Storage resources.  
+               - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+               - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+               - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+               - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+               - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+               - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+               - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+               - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['ExprArgs']]:
+        """
+        The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['ExprArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+        - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+        - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+        - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+        - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+        - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+        - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+        - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+        - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+        - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+        The new IAM roles are:  
+        - roles/storage.admin — Full control of Google Cloud Storage resources.  
+        - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+        - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+        - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+        - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+        - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+        - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+        - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+        - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
 
 
 @pulumi.input_type

@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("vmFamily")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.AllocationAggregateReservationVmFamily>? VmFamily { get; set; }
 
+        /// <summary>
+        /// The workload type of the instances that will target this reservation.
+        /// </summary>
+        [Input("workloadType")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AllocationAggregateReservationWorkloadType>? WorkloadType { get; set; }
+
         public AllocationAggregateReservationArgs()
         {
         }

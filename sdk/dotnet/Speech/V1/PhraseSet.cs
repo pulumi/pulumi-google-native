@@ -16,10 +16,40 @@ namespace Pulumi.GoogleNative.Speech.V1
     public partial class PhraseSet : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
         /// </summary>
         [Output("boost")]
         public Output<double> Boost { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this resource was requested for deletion. This field is not used.
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// User-settable, human-readable name for the PhraseSet. Must be 63 characters or less. This field is not used.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this resource will be purged. This field is not used.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
         /// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -50,6 +80,24 @@ namespace Pulumi.GoogleNative.Speech.V1
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not this PhraseSet is in the process of being updated. This field is not used.
+        /// </summary>
+        [Output("reconciling")]
+        public Output<bool> Reconciling { get; private set; } = null!;
+
+        /// <summary>
+        /// The CustomClass lifecycle state. This field is not used.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// System-assigned unique identifier for the PhraseSet. This field is not used.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
 
 
         /// <summary>

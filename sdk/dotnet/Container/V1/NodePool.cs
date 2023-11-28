@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Container.V1
         [Output("autoscaling")]
         public Output<Outputs.NodePoolAutoscalingResponse> Autoscaling { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable best effort provisioning for nodes
+        /// </summary>
+        [Output("bestEffortProvisioning")]
+        public Output<Outputs.BestEffortProvisioningResponse> BestEffortProvisioning { get; private set; } = null!;
+
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
@@ -101,6 +107,12 @@ namespace Pulumi.GoogleNative.Container.V1
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the configuration of queued provisioning.
+        /// </summary>
+        [Output("queuedProvisioning")]
+        public Output<Outputs.QueuedProvisioningResponse> QueuedProvisioning { get; private set; } = null!;
 
         /// <summary>
         /// [Output only] Server-defined URL for the resource.
@@ -196,6 +208,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
         /// <summary>
+        /// Enable best effort provisioning for nodes
+        /// </summary>
+        [Input("bestEffortProvisioning")]
+        public Input<Inputs.BestEffortProvisioningArgs>? BestEffortProvisioning { get; set; }
+
+        /// <summary>
         /// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         /// </summary>
         [Input("clusterId", required: true)]
@@ -287,6 +305,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Specifies the configuration of queued provisioning.
+        /// </summary>
+        [Input("queuedProvisioning")]
+        public Input<Inputs.QueuedProvisioningArgs>? QueuedProvisioning { get; set; }
 
         /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.

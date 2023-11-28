@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
     public sealed class LogsPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+        /// </summary>
+        [Input("cloudLoggingOption")]
+        public Input<Inputs.CloudLoggingOptionArgs>? CloudLoggingOption { get; set; }
+
+        /// <summary>
         /// Where logs should be saved.
         /// </summary>
         [Input("destination")]

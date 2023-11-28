@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public static AcceleratorConfigType NvidiaTeslaA100 { get; } = new AcceleratorConfigType("NVIDIA_TESLA_A100");
         /// <summary>
+        /// Accelerator type is Nvidia Tesla L4.
+        /// </summary>
+        public static AcceleratorConfigType NvidiaL4 { get; } = new AcceleratorConfigType("NVIDIA_L4");
+        /// <summary>
         /// Accelerator type is NVIDIA Tesla T4 Virtual Workstations.
         /// </summary>
         public static AcceleratorConfigType NvidiaTeslaT4Vws { get; } = new AcceleratorConfigType("NVIDIA_TESLA_T4_VWS");
@@ -494,9 +498,13 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public static RuntimeAcceleratorConfigType NvidiaTeslaT4 { get; } = new RuntimeAcceleratorConfigType("NVIDIA_TESLA_T4");
         /// <summary>
-        /// Accelerator type is Nvidia Tesla A100.
+        /// Accelerator type is Nvidia Tesla A100 - 40GB.
         /// </summary>
         public static RuntimeAcceleratorConfigType NvidiaTeslaA100 { get; } = new RuntimeAcceleratorConfigType("NVIDIA_TESLA_A100");
+        /// <summary>
+        /// Accelerator type is Nvidia L4.
+        /// </summary>
+        public static RuntimeAcceleratorConfigType NvidiaL4 { get; } = new RuntimeAcceleratorConfigType("NVIDIA_L4");
         /// <summary>
         /// (Coming soon) Accelerator type is TPU V2.
         /// </summary>

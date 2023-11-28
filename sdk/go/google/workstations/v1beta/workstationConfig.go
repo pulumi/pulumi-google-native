@@ -17,47 +17,53 @@ import (
 type WorkstationConfig struct {
 	pulumi.CustomResourceState
 
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Status conditions describing the current resource state.
 	Conditions StatusResponseArrayOutput `pulumi:"conditions"`
-	// Container that will be run for each workstation using this configuration when that workstation is started.
+	// Optional. Container that runs upon startup for each workstation using this workstation configuration.
 	Container ContainerResponseOutput `pulumi:"container"`
-	// Time when this resource was created.
+	// Time when this workstation configuration was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+	// Whether this resource is degraded, in which case it may require user action to restore full functionality. See also the conditions field.
 	Degraded pulumi.BoolOutput `pulumi:"degraded"`
-	// Time when this resource was soft-deleted.
+	// Time when this workstation configuration was soft-deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// Human-readable name for this resource.
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	DisableTcpConnections pulumi.BoolOutput `pulumi:"disableTcpConnections"`
+	// Optional. Human-readable name for this workstation configuration.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+	// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
 	EnableAuditAgent pulumi.BoolOutput `pulumi:"enableAuditAgent"`
-	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
+	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
 	EncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"encryptionKey"`
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Ephemeral directories which won't persist across workstation sessions.
+	EphemeralDirectories EphemeralDirectoryResponseArrayOutput `pulumi:"ephemeralDirectories"`
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Runtime host for the workstation.
+	// Optional. Runtime host for the workstation.
 	Host HostResponseOutput `pulumi:"host"`
-	// How long to wait before automatically stopping an instance that hasn't received any user traffic. A value of 0 indicates that this instance should never time out due to idleness. Defaults to 20 minutes.
+	// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
 	IdleTimeout pulumi.StringOutput `pulumi:"idleTimeout"`
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation configuration and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Full name of this resource.
+	// Identifier. Full name of this workstation configuration.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Directories to persist across workstation sessions.
+	// Optional. Directories to persist across workstation sessions.
 	PersistentDirectories PersistentDirectoryResponseArrayOutput `pulumi:"persistentDirectories"`
 	Project               pulumi.StringOutput                    `pulumi:"project"`
-	// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+	// Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
 	ReadinessChecks ReadinessCheckResponseArrayOutput `pulumi:"readinessChecks"`
-	// Indicates whether this resource is currently being updated to match its intended state.
+	// Indicates whether this workstation configuration is currently being updated to match its intended state.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+	// Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+	ReplicaZones pulumi.StringArrayOutput `pulumi:"replicaZones"`
+	// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend that workstations be shut down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.
 	RunningTimeout pulumi.StringOutput `pulumi:"runningTimeout"`
-	// A system-assigned unique identified for this resource.
+	// A system-assigned unique identifier for this workstation configuration.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// Time when this resource was most recently updated.
+	// Time when this workstation configuration was most recently updated.
 	UpdateTime           pulumi.StringOutput `pulumi:"updateTime"`
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
 	// Required. ID to use for the workstation configuration.
@@ -117,33 +123,39 @@ func (WorkstationConfigState) ElementType() reflect.Type {
 }
 
 type workstationConfigArgs struct {
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Container that will be run for each workstation using this configuration when that workstation is started.
+	// Optional. Container that runs upon startup for each workstation using this workstation configuration.
 	Container *Container `pulumi:"container"`
-	// Human-readable name for this resource.
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	DisableTcpConnections *bool `pulumi:"disableTcpConnections"`
+	// Optional. Human-readable name for this workstation configuration.
 	DisplayName *string `pulumi:"displayName"`
-	// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+	// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
 	EnableAuditAgent *bool `pulumi:"enableAuditAgent"`
-	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
+	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
 	EncryptionKey *CustomerEncryptionKey `pulumi:"encryptionKey"`
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Ephemeral directories which won't persist across workstation sessions.
+	EphemeralDirectories []EphemeralDirectory `pulumi:"ephemeralDirectories"`
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
-	// Runtime host for the workstation.
+	// Optional. Runtime host for the workstation.
 	Host *Host `pulumi:"host"`
-	// How long to wait before automatically stopping an instance that hasn't received any user traffic. A value of 0 indicates that this instance should never time out due to idleness. Defaults to 20 minutes.
+	// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
 	IdleTimeout *string `pulumi:"idleTimeout"`
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation configuration and that are also propagated to the underlying Compute Engine resources.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Full name of this resource.
+	// Identifier. Full name of this workstation configuration.
 	Name *string `pulumi:"name"`
-	// Directories to persist across workstation sessions.
+	// Optional. Directories to persist across workstation sessions.
 	PersistentDirectories []PersistentDirectory `pulumi:"persistentDirectories"`
 	Project               *string               `pulumi:"project"`
-	// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+	// Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
 	ReadinessChecks []ReadinessCheck `pulumi:"readinessChecks"`
-	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+	// Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+	ReplicaZones []string `pulumi:"replicaZones"`
+	// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend that workstations be shut down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.
 	RunningTimeout       *string `pulumi:"runningTimeout"`
 	WorkstationClusterId string  `pulumi:"workstationClusterId"`
 	// Required. ID to use for the workstation configuration.
@@ -152,33 +164,39 @@ type workstationConfigArgs struct {
 
 // The set of arguments for constructing a WorkstationConfig resource.
 type WorkstationConfigArgs struct {
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations pulumi.StringMapInput
-	// Container that will be run for each workstation using this configuration when that workstation is started.
+	// Optional. Container that runs upon startup for each workstation using this workstation configuration.
 	Container ContainerPtrInput
-	// Human-readable name for this resource.
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	DisableTcpConnections pulumi.BoolPtrInput
+	// Optional. Human-readable name for this workstation configuration.
 	DisplayName pulumi.StringPtrInput
-	// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+	// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
 	EnableAuditAgent pulumi.BoolPtrInput
-	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
+	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
 	EncryptionKey CustomerEncryptionKeyPtrInput
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Ephemeral directories which won't persist across workstation sessions.
+	EphemeralDirectories EphemeralDirectoryArrayInput
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
-	// Runtime host for the workstation.
+	// Optional. Runtime host for the workstation.
 	Host HostPtrInput
-	// How long to wait before automatically stopping an instance that hasn't received any user traffic. A value of 0 indicates that this instance should never time out due to idleness. Defaults to 20 minutes.
+	// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
 	IdleTimeout pulumi.StringPtrInput
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation configuration and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Full name of this resource.
+	// Identifier. Full name of this workstation configuration.
 	Name pulumi.StringPtrInput
-	// Directories to persist across workstation sessions.
+	// Optional. Directories to persist across workstation sessions.
 	PersistentDirectories PersistentDirectoryArrayInput
 	Project               pulumi.StringPtrInput
-	// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+	// Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
 	ReadinessChecks ReadinessCheckArrayInput
-	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+	// Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+	ReplicaZones pulumi.StringArrayInput
+	// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend that workstations be shut down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.
 	RunningTimeout       pulumi.StringPtrInput
 	WorkstationClusterId pulumi.StringInput
 	// Required. ID to use for the workstation configuration.
@@ -234,7 +252,7 @@ func (o WorkstationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*W
 	}
 }
 
-// Client-specified annotations.
+// Optional. Client-specified annotations.
 func (o WorkstationConfigOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -244,57 +262,67 @@ func (o WorkstationConfigOutput) Conditions() StatusResponseArrayOutput {
 	return o.ApplyT(func(v *WorkstationConfig) StatusResponseArrayOutput { return v.Conditions }).(StatusResponseArrayOutput)
 }
 
-// Container that will be run for each workstation using this configuration when that workstation is started.
+// Optional. Container that runs upon startup for each workstation using this workstation configuration.
 func (o WorkstationConfigOutput) Container() ContainerResponseOutput {
 	return o.ApplyT(func(v *WorkstationConfig) ContainerResponseOutput { return v.Container }).(ContainerResponseOutput)
 }
 
-// Time when this resource was created.
+// Time when this workstation configuration was created.
 func (o WorkstationConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+// Whether this resource is degraded, in which case it may require user action to restore full functionality. See also the conditions field.
 func (o WorkstationConfigOutput) Degraded() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.Degraded }).(pulumi.BoolOutput)
 }
 
-// Time when this resource was soft-deleted.
+// Time when this workstation configuration was soft-deleted.
 func (o WorkstationConfigOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// Human-readable name for this resource.
+// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+func (o WorkstationConfigOutput) DisableTcpConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.DisableTcpConnections }).(pulumi.BoolOutput)
+}
+
+// Optional. Human-readable name for this workstation configuration.
 func (o WorkstationConfigOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
 func (o WorkstationConfigOutput) EnableAuditAgent() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.EnableAuditAgent }).(pulumi.BoolOutput)
 }
 
-// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
+// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
 func (o WorkstationConfigOutput) EncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v *WorkstationConfig) CustomerEncryptionKeyResponseOutput { return v.EncryptionKey }).(CustomerEncryptionKeyResponseOutput)
 }
 
-// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+// Optional. Ephemeral directories which won't persist across workstation sessions.
+func (o WorkstationConfigOutput) EphemeralDirectories() EphemeralDirectoryResponseArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfig) EphemeralDirectoryResponseArrayOutput { return v.EphemeralDirectories }).(EphemeralDirectoryResponseArrayOutput)
+}
+
+// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 func (o WorkstationConfigOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Runtime host for the workstation.
+// Optional. Runtime host for the workstation.
 func (o WorkstationConfigOutput) Host() HostResponseOutput {
 	return o.ApplyT(func(v *WorkstationConfig) HostResponseOutput { return v.Host }).(HostResponseOutput)
 }
 
-// How long to wait before automatically stopping an instance that hasn't received any user traffic. A value of 0 indicates that this instance should never time out due to idleness. Defaults to 20 minutes.
+// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
 func (o WorkstationConfigOutput) IdleTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.IdleTimeout }).(pulumi.StringOutput)
 }
 
-// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation configuration and that are also propagated to the underlying Compute Engine resources.
 func (o WorkstationConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -303,12 +331,12 @@ func (o WorkstationConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Full name of this resource.
+// Identifier. Full name of this workstation configuration.
 func (o WorkstationConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Directories to persist across workstation sessions.
+// Optional. Directories to persist across workstation sessions.
 func (o WorkstationConfigOutput) PersistentDirectories() PersistentDirectoryResponseArrayOutput {
 	return o.ApplyT(func(v *WorkstationConfig) PersistentDirectoryResponseArrayOutput { return v.PersistentDirectories }).(PersistentDirectoryResponseArrayOutput)
 }
@@ -317,27 +345,32 @@ func (o WorkstationConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+// Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
 func (o WorkstationConfigOutput) ReadinessChecks() ReadinessCheckResponseArrayOutput {
 	return o.ApplyT(func(v *WorkstationConfig) ReadinessCheckResponseArrayOutput { return v.ReadinessChecks }).(ReadinessCheckResponseArrayOutput)
 }
 
-// Indicates whether this resource is currently being updated to match its intended state.
+// Indicates whether this workstation configuration is currently being updated to match its intended state.
 func (o WorkstationConfigOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+// Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+func (o WorkstationConfigOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringArrayOutput { return v.ReplicaZones }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend that workstations be shut down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.
 func (o WorkstationConfigOutput) RunningTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.RunningTimeout }).(pulumi.StringOutput)
 }
 
-// A system-assigned unique identified for this resource.
+// A system-assigned unique identifier for this workstation configuration.
 func (o WorkstationConfigOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// Time when this resource was most recently updated.
+// Time when this workstation configuration was most recently updated.
 func (o WorkstationConfigOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

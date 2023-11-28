@@ -51,6 +51,14 @@ export class Node extends pulumi.CustomResource {
      */
     public /*out*/ readonly apiVersion!: pulumi.Output<string>;
     /**
+     * Optional. Whether Autocheckpoint is enabled.
+     */
+    public readonly autocheckpointEnabled!: pulumi.Output<boolean>;
+    /**
+     * Optional. Boot disk configuration.
+     */
+    public readonly bootDiskConfig!: pulumi.Output<outputs.tpu.v2alpha1.BootDiskConfigResponse>;
+    /**
      * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
      */
     public readonly cidrBlock!: pulumi.Output<string>;
@@ -157,6 +165,8 @@ export class Node extends pulumi.CustomResource {
             }
             resourceInputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
             resourceInputs["acceleratorType"] = args ? args.acceleratorType : undefined;
+            resourceInputs["autocheckpointEnabled"] = args ? args.autocheckpointEnabled : undefined;
+            resourceInputs["bootDiskConfig"] = args ? args.bootDiskConfig : undefined;
             resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -186,6 +196,8 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["acceleratorConfig"] = undefined /*out*/;
             resourceInputs["acceleratorType"] = undefined /*out*/;
             resourceInputs["apiVersion"] = undefined /*out*/;
+            resourceInputs["autocheckpointEnabled"] = undefined /*out*/;
+            resourceInputs["bootDiskConfig"] = undefined /*out*/;
             resourceInputs["cidrBlock"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataDisks"] = undefined /*out*/;
@@ -230,6 +242,14 @@ export interface NodeArgs {
      * The type of hardware accelerators associated with this node.
      */
     acceleratorType?: pulumi.Input<string>;
+    /**
+     * Optional. Whether Autocheckpoint is enabled.
+     */
+    autocheckpointEnabled?: pulumi.Input<boolean>;
+    /**
+     * Optional. Boot disk configuration.
+     */
+    bootDiskConfig?: pulumi.Input<inputs.tpu.v2alpha1.BootDiskConfigArgs>;
     /**
      * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
      */

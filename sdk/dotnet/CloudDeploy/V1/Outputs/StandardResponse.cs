@@ -17,13 +17,28 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class StandardResponse
     {
         /// <summary>
+        /// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        /// </summary>
+        public readonly Outputs.PostdeployResponse Postdeploy;
+        /// <summary>
+        /// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+        /// </summary>
+        public readonly Outputs.PredeployResponse Predeploy;
+        /// <summary>
         /// Whether to verify a deployment.
         /// </summary>
         public readonly bool Verify;
 
         [OutputConstructor]
-        private StandardResponse(bool verify)
+        private StandardResponse(
+            Outputs.PostdeployResponse postdeploy,
+
+            Outputs.PredeployResponse predeploy,
+
+            bool verify)
         {
+            Postdeploy = postdeploy;
+            Predeploy = predeploy;
             Verify = verify;
         }
     }

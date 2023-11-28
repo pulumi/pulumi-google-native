@@ -29,6 +29,7 @@ class UptimeCheckConfigArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input['ResourceGroupArgs']] = None,
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
+                 synthetic_monitor: Optional[pulumi.Input['SyntheticMonitorTargetArgs']] = None,
                  tcp_check: Optional[pulumi.Input['TcpCheckArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -41,10 +42,11 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InternalCheckerArgs']]] internal_checkers: The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig.
         :param pulumi.Input[bool] is_internal: If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.
         :param pulumi.Input['MonitoredResourceArgs'] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service cloud_run_revision
-        :param pulumi.Input[str] name: A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+        :param pulumi.Input[str] name: Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         :param pulumi.Input[str] period: How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
         :param pulumi.Input['ResourceGroupArgs'] resource_group: The group resource associated with the configuration.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
+        :param pulumi.Input['SyntheticMonitorTargetArgs'] synthetic_monitor: Specifies a Synthetic Monitor to invoke.
         :param pulumi.Input['TcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -73,6 +75,8 @@ class UptimeCheckConfigArgs:
             pulumi.set(__self__, "resource_group", resource_group)
         if selected_regions is not None:
             pulumi.set(__self__, "selected_regions", selected_regions)
+        if synthetic_monitor is not None:
+            pulumi.set(__self__, "synthetic_monitor", synthetic_monitor)
         if tcp_check is not None:
             pulumi.set(__self__, "tcp_check", tcp_check)
         if timeout is not None:
@@ -168,7 +172,7 @@ class UptimeCheckConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+        Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         """
         return pulumi.get(self, "name")
 
@@ -220,6 +224,18 @@ class UptimeCheckConfigArgs:
     @selected_regions.setter
     def selected_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]]):
         pulumi.set(self, "selected_regions", value)
+
+    @property
+    @pulumi.getter(name="syntheticMonitor")
+    def synthetic_monitor(self) -> Optional[pulumi.Input['SyntheticMonitorTargetArgs']]:
+        """
+        Specifies a Synthetic Monitor to invoke.
+        """
+        return pulumi.get(self, "synthetic_monitor")
+
+    @synthetic_monitor.setter
+    def synthetic_monitor(self, value: Optional[pulumi.Input['SyntheticMonitorTargetArgs']]):
+        pulumi.set(self, "synthetic_monitor", value)
 
     @property
     @pulumi.getter(name="tcpCheck")
@@ -275,6 +291,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input[pulumi.InputType['ResourceGroupArgs']]] = None,
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
+                 synthetic_monitor: Optional[pulumi.Input[pulumi.InputType['SyntheticMonitorTargetArgs']]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['TcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -291,10 +308,11 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InternalCheckerArgs']]]] internal_checkers: The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig.
         :param pulumi.Input[bool] is_internal: If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.
         :param pulumi.Input[pulumi.InputType['MonitoredResourceArgs']] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service cloud_run_revision
-        :param pulumi.Input[str] name: A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+        :param pulumi.Input[str] name: Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         :param pulumi.Input[str] period: How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
         :param pulumi.Input[pulumi.InputType['ResourceGroupArgs']] resource_group: The group resource associated with the configuration.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
+        :param pulumi.Input[pulumi.InputType['SyntheticMonitorTargetArgs']] synthetic_monitor: Specifies a Synthetic Monitor to invoke.
         :param pulumi.Input[pulumi.InputType['TcpCheckArgs']] tcp_check: Contains information needed to make a TCP check.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -335,6 +353,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input[pulumi.InputType['ResourceGroupArgs']]] = None,
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
+                 synthetic_monitor: Optional[pulumi.Input[pulumi.InputType['SyntheticMonitorTargetArgs']]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['TcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -359,6 +378,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["resource_group"] = resource_group
             __props__.__dict__["selected_regions"] = selected_regions
+            __props__.__dict__["synthetic_monitor"] = synthetic_monitor
             __props__.__dict__["tcp_check"] = tcp_check
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["user_labels"] = user_labels
@@ -398,6 +418,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["resource_group"] = None
         __props__.__dict__["selected_regions"] = None
+        __props__.__dict__["synthetic_monitor"] = None
         __props__.__dict__["tcp_check"] = None
         __props__.__dict__["timeout"] = None
         __props__.__dict__["user_labels"] = None
@@ -463,7 +484,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+        Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         """
         return pulumi.get(self, "name")
 
@@ -495,6 +516,14 @@ class UptimeCheckConfig(pulumi.CustomResource):
         The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
         """
         return pulumi.get(self, "selected_regions")
+
+    @property
+    @pulumi.getter(name="syntheticMonitor")
+    def synthetic_monitor(self) -> pulumi.Output['outputs.SyntheticMonitorTargetResponse']:
+        """
+        Specifies a Synthetic Monitor to invoke.
+        """
+        return pulumi.get(self, "synthetic_monitor")
 
     @property
     @pulumi.getter(name="tcpCheck")

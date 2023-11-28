@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetQueuedResourceResult:
-    def __init__(__self__, best_effort=None, guaranteed=None, name=None, queueing_policy=None, reservation_name=None, state=None, tpu=None):
+    def __init__(__self__, best_effort=None, create_time=None, guaranteed=None, name=None, queueing_policy=None, reservation_name=None, spot=None, state=None, tpu=None):
         if best_effort and not isinstance(best_effort, dict):
             raise TypeError("Expected argument 'best_effort' to be a dict")
         pulumi.set(__self__, "best_effort", best_effort)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if guaranteed and not isinstance(guaranteed, dict):
             raise TypeError("Expected argument 'guaranteed' to be a dict")
         pulumi.set(__self__, "guaranteed", guaranteed)
@@ -35,6 +38,9 @@ class GetQueuedResourceResult:
         if reservation_name and not isinstance(reservation_name, str):
             raise TypeError("Expected argument 'reservation_name' to be a str")
         pulumi.set(__self__, "reservation_name", reservation_name)
+        if spot and not isinstance(spot, dict):
+            raise TypeError("Expected argument 'spot' to be a dict")
+        pulumi.set(__self__, "spot", spot)
         if state and not isinstance(state, dict):
             raise TypeError("Expected argument 'state' to be a dict")
         pulumi.set(__self__, "state", state)
@@ -51,10 +57,18 @@ class GetQueuedResourceResult:
         return pulumi.get(self, "best_effort")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the QueuedResource was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter
     def guaranteed(self) -> 'outputs.GuaranteedResponse':
         """
-        The Guaranteed tier
+        The Guaranteed tier.
         """
         return pulumi.get(self, "guaranteed")
 
@@ -84,6 +98,14 @@ class GetQueuedResourceResult:
 
     @property
     @pulumi.getter
+    def spot(self) -> 'outputs.SpotResponse':
+        """
+        Optional. The Spot tier.
+        """
+        return pulumi.get(self, "spot")
+
+    @property
+    @pulumi.getter
     def state(self) -> 'outputs.QueuedResourceStateResponse':
         """
         State of the QueuedResource request.
@@ -106,10 +128,12 @@ class AwaitableGetQueuedResourceResult(GetQueuedResourceResult):
             yield self
         return GetQueuedResourceResult(
             best_effort=self.best_effort,
+            create_time=self.create_time,
             guaranteed=self.guaranteed,
             name=self.name,
             queueing_policy=self.queueing_policy,
             reservation_name=self.reservation_name,
+            spot=self.spot,
             state=self.state,
             tpu=self.tpu)
 
@@ -130,10 +154,12 @@ def get_queued_resource(location: Optional[str] = None,
 
     return AwaitableGetQueuedResourceResult(
         best_effort=pulumi.get(__ret__, 'best_effort'),
+        create_time=pulumi.get(__ret__, 'create_time'),
         guaranteed=pulumi.get(__ret__, 'guaranteed'),
         name=pulumi.get(__ret__, 'name'),
         queueing_policy=pulumi.get(__ret__, 'queueing_policy'),
         reservation_name=pulumi.get(__ret__, 'reservation_name'),
+        spot=pulumi.get(__ret__, 'spot'),
         state=pulumi.get(__ret__, 'state'),
         tpu=pulumi.get(__ret__, 'tpu'))
 

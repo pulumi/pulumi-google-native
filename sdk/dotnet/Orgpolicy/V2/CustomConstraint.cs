@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public Output<string> ActionType { get; private set; } = null!;
 
         /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         /// </summary>
         [Output("condition")]
         public Output<string> Condition { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public Input<Pulumi.GoogleNative.Orgpolicy.V2.CustomConstraintActionType>? ActionType { get; set; }
 
         /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }

@@ -12,18 +12,63 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AptRepositoryResponse',
     'BindingResponse',
     'DockerRepositoryConfigResponse',
     'DockerRepositoryResponse',
     'ExprResponse',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse',
     'MavenRepositoryConfigResponse',
     'MavenRepositoryResponse',
     'NpmRepositoryResponse',
     'PythonRepositoryResponse',
     'RemoteRepositoryConfigResponse',
+    'UpstreamCredentialsResponse',
     'UpstreamPolicyResponse',
+    'UsernamePasswordCredentialsResponse',
     'VirtualRepositoryConfigResponse',
+    'YumRepositoryResponse',
 ]
+
+@pulumi.output_type
+class AptRepositoryResponse(dict):
+    """
+    Configuration for an Apt remote repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AptRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AptRepositoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AptRepositoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse'):
+        """
+        Configuration for an Apt remote repository.
+        :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse' public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
+        """
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse':
+        """
+        One of the publicly available Apt repositories supported by Artifact Registry.
+        """
+        return pulumi.get(self, "public_repository")
+
 
 @pulumi.output_type
 class BindingResponse(dict):
@@ -203,6 +248,110 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse(dict):
+    """
+    Publicly available Apt repositories constructed from a common repository base and a custom repository path.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repositoryBase":
+            suggest = "repository_base"
+        elif key == "repositoryPath":
+            suggest = "repository_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repository_base: str,
+                 repository_path: str):
+        """
+        Publicly available Apt repositories constructed from a common repository base and a custom repository path.
+        :param str repository_base: A common public repository base for Apt.
+        :param str repository_path: A custom field to define a path to a specific repository from the base.
+        """
+        pulumi.set(__self__, "repository_base", repository_base)
+        pulumi.set(__self__, "repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> str:
+        """
+        A common public repository base for Apt.
+        """
+        return pulumi.get(self, "repository_base")
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> str:
+        """
+        A custom field to define a path to a specific repository from the base.
+        """
+        return pulumi.get(self, "repository_path")
+
+
+@pulumi.output_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse(dict):
+    """
+    Publicly available Yum repositories constructed from a common repository base and a custom repository path.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repositoryBase":
+            suggest = "repository_base"
+        elif key == "repositoryPath":
+            suggest = "repository_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repository_base: str,
+                 repository_path: str):
+        """
+        Publicly available Yum repositories constructed from a common repository base and a custom repository path.
+        :param str repository_base: A common public repository base for Yum.
+        :param str repository_path: A custom field to define a path to a specific repository from the base.
+        """
+        pulumi.set(__self__, "repository_base", repository_base)
+        pulumi.set(__self__, "repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> str:
+        """
+        A common public repository base for Yum.
+        """
+        return pulumi.get(self, "repository_base")
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> str:
+        """
+        A custom field to define a path to a specific repository from the base.
+        """
+        return pulumi.get(self, "repository_path")
+
+
+@pulumi.output_type
 class MavenRepositoryConfigResponse(dict):
     """
     MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
@@ -379,7 +528,9 @@ class RemoteRepositoryConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dockerRepository":
+        if key == "aptRepository":
+            suggest = "apt_repository"
+        elif key == "dockerRepository":
             suggest = "docker_repository"
         elif key == "mavenRepository":
             suggest = "maven_repository"
@@ -387,6 +538,10 @@ class RemoteRepositoryConfigResponse(dict):
             suggest = "npm_repository"
         elif key == "pythonRepository":
             suggest = "python_repository"
+        elif key == "upstreamCredentials":
+            suggest = "upstream_credentials"
+        elif key == "yumRepository":
+            suggest = "yum_repository"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RemoteRepositoryConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -400,24 +555,41 @@ class RemoteRepositoryConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 apt_repository: 'outputs.AptRepositoryResponse',
                  description: str,
                  docker_repository: 'outputs.DockerRepositoryResponse',
                  maven_repository: 'outputs.MavenRepositoryResponse',
                  npm_repository: 'outputs.NpmRepositoryResponse',
-                 python_repository: 'outputs.PythonRepositoryResponse'):
+                 python_repository: 'outputs.PythonRepositoryResponse',
+                 upstream_credentials: 'outputs.UpstreamCredentialsResponse',
+                 yum_repository: 'outputs.YumRepositoryResponse'):
         """
         Remote repository configuration.
+        :param 'AptRepositoryResponse' apt_repository: Specific settings for an Apt remote repository.
         :param str description: The description of the remote source.
         :param 'DockerRepositoryResponse' docker_repository: Specific settings for a Docker remote repository.
         :param 'MavenRepositoryResponse' maven_repository: Specific settings for a Maven remote repository.
         :param 'NpmRepositoryResponse' npm_repository: Specific settings for an Npm remote repository.
         :param 'PythonRepositoryResponse' python_repository: Specific settings for a Python remote repository.
+        :param 'UpstreamCredentialsResponse' upstream_credentials: Optional. The credentials used to access the remote repository.
+        :param 'YumRepositoryResponse' yum_repository: Specific settings for a Yum remote repository.
         """
+        pulumi.set(__self__, "apt_repository", apt_repository)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "docker_repository", docker_repository)
         pulumi.set(__self__, "maven_repository", maven_repository)
         pulumi.set(__self__, "npm_repository", npm_repository)
         pulumi.set(__self__, "python_repository", python_repository)
+        pulumi.set(__self__, "upstream_credentials", upstream_credentials)
+        pulumi.set(__self__, "yum_repository", yum_repository)
+
+    @property
+    @pulumi.getter(name="aptRepository")
+    def apt_repository(self) -> 'outputs.AptRepositoryResponse':
+        """
+        Specific settings for an Apt remote repository.
+        """
+        return pulumi.get(self, "apt_repository")
 
     @property
     @pulumi.getter
@@ -459,6 +631,61 @@ class RemoteRepositoryConfigResponse(dict):
         """
         return pulumi.get(self, "python_repository")
 
+    @property
+    @pulumi.getter(name="upstreamCredentials")
+    def upstream_credentials(self) -> 'outputs.UpstreamCredentialsResponse':
+        """
+        Optional. The credentials used to access the remote repository.
+        """
+        return pulumi.get(self, "upstream_credentials")
+
+    @property
+    @pulumi.getter(name="yumRepository")
+    def yum_repository(self) -> 'outputs.YumRepositoryResponse':
+        """
+        Specific settings for a Yum remote repository.
+        """
+        return pulumi.get(self, "yum_repository")
+
+
+@pulumi.output_type
+class UpstreamCredentialsResponse(dict):
+    """
+    The credentials to access the remote repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usernamePasswordCredentials":
+            suggest = "username_password_credentials"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpstreamCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpstreamCredentialsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpstreamCredentialsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 username_password_credentials: 'outputs.UsernamePasswordCredentialsResponse'):
+        """
+        The credentials to access the remote repository.
+        :param 'UsernamePasswordCredentialsResponse' username_password_credentials: Use username and password to access the remote repository.
+        """
+        pulumi.set(__self__, "username_password_credentials", username_password_credentials)
+
+    @property
+    @pulumi.getter(name="usernamePasswordCredentials")
+    def username_password_credentials(self) -> 'outputs.UsernamePasswordCredentialsResponse':
+        """
+        Use username and password to access the remote repository.
+        """
+        return pulumi.get(self, "username_password_credentials")
+
 
 @pulumi.output_type
 class UpstreamPolicyResponse(dict):
@@ -471,7 +698,7 @@ class UpstreamPolicyResponse(dict):
         """
         Artifact policy configuration for the repository contents.
         :param int priority: Entries with a greater priority value take precedence in the pull order.
-        :param str repository: A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        :param str repository: A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         """
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "repository", repository)
@@ -488,9 +715,59 @@ class UpstreamPolicyResponse(dict):
     @pulumi.getter
     def repository(self) -> str:
         """
-        A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         """
         return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
+class UsernamePasswordCredentialsResponse(dict):
+    """
+    Username and password credentials.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UsernamePasswordCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UsernamePasswordCredentialsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UsernamePasswordCredentialsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_secret_version: str,
+                 username: str):
+        """
+        Username and password credentials.
+        :param str password_secret_version: The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+        :param str username: The username to access the remote repository.
+        """
+        pulumi.set(__self__, "password_secret_version", password_secret_version)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> str:
+        """
+        The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username to access the remote repository.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -530,5 +807,44 @@ class VirtualRepositoryConfigResponse(dict):
         Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
         """
         return pulumi.get(self, "upstream_policies")
+
+
+@pulumi.output_type
+class YumRepositoryResponse(dict):
+    """
+    Configuration for a Yum remote repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in YumRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        YumRepositoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        YumRepositoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse'):
+        """
+        Configuration for a Yum remote repository.
+        :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse' public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
+        """
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse':
+        """
+        One of the publicly available Yum repositories supported by Artifact Registry.
+        """
+        return pulumi.get(self, "public_repository")
 
 

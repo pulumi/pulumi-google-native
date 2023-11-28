@@ -12,6 +12,7 @@ from ._enums import *
 
 __all__ = [
     'AdBreakArgs',
+    'Aes128EncryptionArgs',
     'AnimationEndArgs',
     'AnimationFadeArgs',
     'AnimationStaticArgs',
@@ -20,32 +21,43 @@ __all__ = [
     'AudioStreamArgs',
     'AudioArgs',
     'BwdifConfigArgs',
+    'ClearkeyArgs',
     'ColorArgs',
     'CropArgs',
+    'DashConfigArgs',
     'DeblockArgs',
     'DeinterlaceArgs',
     'DenoiseArgs',
+    'DrmSystemsArgs',
     'EditAtomArgs',
     'ElementaryStreamArgs',
+    'EncryptionArgs',
+    'FairplayArgs',
+    'Fmp4ConfigArgs',
     'H264CodecSettingsArgs',
     'H265CodecSettingsArgs',
     'ImageArgs',
     'InputArgs',
     'JobConfigArgs',
     'ManifestArgs',
+    'MpegCommonEncryptionArgs',
     'MuxStreamArgs',
     'NormalizedCoordinateArgs',
     'OutputArgs',
     'OverlayArgs',
     'PadArgs',
+    'PlayreadyArgs',
     'PreprocessingConfigArgs',
     'PubsubDestinationArgs',
+    'SampleAesEncryptionArgs',
+    'SecretManagerSourceArgs',
     'SegmentSettingsArgs',
     'SpriteSheetArgs',
     'TextMappingArgs',
     'TextStreamArgs',
     'VideoStreamArgs',
     'Vp9CodecSettingsArgs',
+    'WidevineArgs',
     'YadifConfigArgs',
 ]
 
@@ -74,11 +86,20 @@ class AdBreakArgs:
 
 
 @pulumi.input_type
+class Aes128EncryptionArgs:
+    def __init__(__self__):
+        """
+        Configuration for AES-128 encryption.
+        """
+        pass
+
+
+@pulumi.input_type
 class AnimationEndArgs:
     def __init__(__self__, *,
                  start_time_offset: Optional[pulumi.Input[str]] = None):
         """
-        End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
+        End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
         :param pulumi.Input[str] start_time_offset: The time to end overlay object, in seconds. Default: 0
         """
         if start_time_offset is not None:
@@ -274,10 +295,10 @@ class AudioMappingArgs:
                  output_channel: pulumi.Input[int],
                  gain_db: Optional[pulumi.Input[float]] = None):
         """
-        The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
-        :param pulumi.Input[str] atom_key: The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+        The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
+        :param pulumi.Input[str] atom_key: The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
         :param pulumi.Input[int] input_channel: The zero-based index of the channel in the input audio stream.
-        :param pulumi.Input[str] input_key: The `Input.key` that identifies the input file.
+        :param pulumi.Input[str] input_key: The Input.key that identifies the input file.
         :param pulumi.Input[int] input_track: The zero-based index of the track in the input file.
         :param pulumi.Input[int] output_channel: The zero-based index of the channel in the output audio stream.
         :param pulumi.Input[float] gain_db: Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
@@ -294,7 +315,7 @@ class AudioMappingArgs:
     @pulumi.getter(name="atomKey")
     def atom_key(self) -> pulumi.Input[str]:
         """
-        The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+        The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
         """
         return pulumi.get(self, "atom_key")
 
@@ -318,7 +339,7 @@ class AudioMappingArgs:
     @pulumi.getter(name="inputKey")
     def input_key(self) -> pulumi.Input[str]:
         """
-        The `Input.key` that identifies the input file.
+        The Input.key that identifies the input file.
         """
         return pulumi.get(self, "input_key")
 
@@ -382,7 +403,7 @@ class AudioStreamArgs:
         :param pulumi.Input[str] codec: The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
         :param pulumi.Input[str] display_name: The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
         :param pulumi.Input[str] language_code: The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
-        :param pulumi.Input[Sequence[pulumi.Input['AudioMappingArgs']]] mapping: The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+        :param pulumi.Input[Sequence[pulumi.Input['AudioMappingArgs']]] mapping: The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
         :param pulumi.Input[int] sample_rate_hertz: The audio sample rate in Hertz. The default is 48000 Hertz.
         """
         pulumi.set(__self__, "bitrate_bps", bitrate_bps)
@@ -477,7 +498,7 @@ class AudioStreamArgs:
     @pulumi.getter
     def mapping(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AudioMappingArgs']]]]:
         """
-        The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+        The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
         """
         return pulumi.get(self, "mapping")
 
@@ -611,6 +632,15 @@ class BwdifConfigArgs:
 
 
 @pulumi.input_type
+class ClearkeyArgs:
+    def __init__(__self__):
+        """
+        Clearkey configuration.
+        """
+        pass
+
+
+@pulumi.input_type
 class ColorArgs:
     def __init__(__self__, *,
                  brightness: Optional[pulumi.Input[float]] = None,
@@ -739,6 +769,30 @@ class CropArgs:
 
 
 @pulumi.input_type
+class DashConfigArgs:
+    def __init__(__self__, *,
+                 segment_reference_scheme: Optional[pulumi.Input['DashConfigSegmentReferenceScheme']] = None):
+        """
+        `DASH` manifest configuration.
+        :param pulumi.Input['DashConfigSegmentReferenceScheme'] segment_reference_scheme: The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+        """
+        if segment_reference_scheme is not None:
+            pulumi.set(__self__, "segment_reference_scheme", segment_reference_scheme)
+
+    @property
+    @pulumi.getter(name="segmentReferenceScheme")
+    def segment_reference_scheme(self) -> Optional[pulumi.Input['DashConfigSegmentReferenceScheme']]:
+        """
+        The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+        """
+        return pulumi.get(self, "segment_reference_scheme")
+
+    @segment_reference_scheme.setter
+    def segment_reference_scheme(self, value: Optional[pulumi.Input['DashConfigSegmentReferenceScheme']]):
+        pulumi.set(self, "segment_reference_scheme", value)
+
+
+@pulumi.input_type
 class DeblockArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -859,6 +913,78 @@ class DenoiseArgs:
 
 
 @pulumi.input_type
+class DrmSystemsArgs:
+    def __init__(__self__, *,
+                 clearkey: Optional[pulumi.Input['ClearkeyArgs']] = None,
+                 fairplay: Optional[pulumi.Input['FairplayArgs']] = None,
+                 playready: Optional[pulumi.Input['PlayreadyArgs']] = None,
+                 widevine: Optional[pulumi.Input['WidevineArgs']] = None):
+        """
+        Defines configuration for DRM systems in use.
+        :param pulumi.Input['ClearkeyArgs'] clearkey: Clearkey configuration.
+        :param pulumi.Input['FairplayArgs'] fairplay: Fairplay configuration.
+        :param pulumi.Input['PlayreadyArgs'] playready: Playready configuration.
+        :param pulumi.Input['WidevineArgs'] widevine: Widevine configuration.
+        """
+        if clearkey is not None:
+            pulumi.set(__self__, "clearkey", clearkey)
+        if fairplay is not None:
+            pulumi.set(__self__, "fairplay", fairplay)
+        if playready is not None:
+            pulumi.set(__self__, "playready", playready)
+        if widevine is not None:
+            pulumi.set(__self__, "widevine", widevine)
+
+    @property
+    @pulumi.getter
+    def clearkey(self) -> Optional[pulumi.Input['ClearkeyArgs']]:
+        """
+        Clearkey configuration.
+        """
+        return pulumi.get(self, "clearkey")
+
+    @clearkey.setter
+    def clearkey(self, value: Optional[pulumi.Input['ClearkeyArgs']]):
+        pulumi.set(self, "clearkey", value)
+
+    @property
+    @pulumi.getter
+    def fairplay(self) -> Optional[pulumi.Input['FairplayArgs']]:
+        """
+        Fairplay configuration.
+        """
+        return pulumi.get(self, "fairplay")
+
+    @fairplay.setter
+    def fairplay(self, value: Optional[pulumi.Input['FairplayArgs']]):
+        pulumi.set(self, "fairplay", value)
+
+    @property
+    @pulumi.getter
+    def playready(self) -> Optional[pulumi.Input['PlayreadyArgs']]:
+        """
+        Playready configuration.
+        """
+        return pulumi.get(self, "playready")
+
+    @playready.setter
+    def playready(self, value: Optional[pulumi.Input['PlayreadyArgs']]):
+        pulumi.set(self, "playready", value)
+
+    @property
+    @pulumi.getter
+    def widevine(self) -> Optional[pulumi.Input['WidevineArgs']]:
+        """
+        Widevine configuration.
+        """
+        return pulumi.get(self, "widevine")
+
+    @widevine.setter
+    def widevine(self, value: Optional[pulumi.Input['WidevineArgs']]):
+        pulumi.set(self, "widevine", value)
+
+
+@pulumi.input_type
 class EditAtomArgs:
     def __init__(__self__, *,
                  end_time_offset: Optional[pulumi.Input[str]] = None,
@@ -868,7 +994,7 @@ class EditAtomArgs:
         """
         Edit atom.
         :param pulumi.Input[str] end_time_offset: End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] inputs: List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] inputs: List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
         :param pulumi.Input[str] key: A unique key for this atom. Must be specified when using advanced mapping.
         :param pulumi.Input[str] start_time_offset: Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
         """
@@ -897,7 +1023,7 @@ class EditAtomArgs:
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+        List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
         """
         return pulumi.get(self, "inputs")
 
@@ -1003,6 +1129,141 @@ class ElementaryStreamArgs:
 
 
 @pulumi.input_type
+class EncryptionArgs:
+    def __init__(__self__, *,
+                 drm_systems: pulumi.Input['DrmSystemsArgs'],
+                 id: pulumi.Input[str],
+                 aes128: Optional[pulumi.Input['Aes128EncryptionArgs']] = None,
+                 mpeg_cenc: Optional[pulumi.Input['MpegCommonEncryptionArgs']] = None,
+                 sample_aes: Optional[pulumi.Input['SampleAesEncryptionArgs']] = None,
+                 secret_manager_key_source: Optional[pulumi.Input['SecretManagerSourceArgs']] = None):
+        """
+        Encryption settings.
+        :param pulumi.Input['DrmSystemsArgs'] drm_systems: DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+        :param pulumi.Input[str] id: Identifier for this set of encryption options.
+        :param pulumi.Input['Aes128EncryptionArgs'] aes128: Configuration for AES-128 encryption.
+        :param pulumi.Input['MpegCommonEncryptionArgs'] mpeg_cenc: Configuration for MPEG Common Encryption (MPEG-CENC).
+        :param pulumi.Input['SampleAesEncryptionArgs'] sample_aes: Configuration for SAMPLE-AES encryption.
+        :param pulumi.Input['SecretManagerSourceArgs'] secret_manager_key_source: Keys are stored in Google Secret Manager.
+        """
+        pulumi.set(__self__, "drm_systems", drm_systems)
+        pulumi.set(__self__, "id", id)
+        if aes128 is not None:
+            pulumi.set(__self__, "aes128", aes128)
+        if mpeg_cenc is not None:
+            pulumi.set(__self__, "mpeg_cenc", mpeg_cenc)
+        if sample_aes is not None:
+            pulumi.set(__self__, "sample_aes", sample_aes)
+        if secret_manager_key_source is not None:
+            pulumi.set(__self__, "secret_manager_key_source", secret_manager_key_source)
+
+    @property
+    @pulumi.getter(name="drmSystems")
+    def drm_systems(self) -> pulumi.Input['DrmSystemsArgs']:
+        """
+        DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+        """
+        return pulumi.get(self, "drm_systems")
+
+    @drm_systems.setter
+    def drm_systems(self, value: pulumi.Input['DrmSystemsArgs']):
+        pulumi.set(self, "drm_systems", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Identifier for this set of encryption options.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def aes128(self) -> Optional[pulumi.Input['Aes128EncryptionArgs']]:
+        """
+        Configuration for AES-128 encryption.
+        """
+        return pulumi.get(self, "aes128")
+
+    @aes128.setter
+    def aes128(self, value: Optional[pulumi.Input['Aes128EncryptionArgs']]):
+        pulumi.set(self, "aes128", value)
+
+    @property
+    @pulumi.getter(name="mpegCenc")
+    def mpeg_cenc(self) -> Optional[pulumi.Input['MpegCommonEncryptionArgs']]:
+        """
+        Configuration for MPEG Common Encryption (MPEG-CENC).
+        """
+        return pulumi.get(self, "mpeg_cenc")
+
+    @mpeg_cenc.setter
+    def mpeg_cenc(self, value: Optional[pulumi.Input['MpegCommonEncryptionArgs']]):
+        pulumi.set(self, "mpeg_cenc", value)
+
+    @property
+    @pulumi.getter(name="sampleAes")
+    def sample_aes(self) -> Optional[pulumi.Input['SampleAesEncryptionArgs']]:
+        """
+        Configuration for SAMPLE-AES encryption.
+        """
+        return pulumi.get(self, "sample_aes")
+
+    @sample_aes.setter
+    def sample_aes(self, value: Optional[pulumi.Input['SampleAesEncryptionArgs']]):
+        pulumi.set(self, "sample_aes", value)
+
+    @property
+    @pulumi.getter(name="secretManagerKeySource")
+    def secret_manager_key_source(self) -> Optional[pulumi.Input['SecretManagerSourceArgs']]:
+        """
+        Keys are stored in Google Secret Manager.
+        """
+        return pulumi.get(self, "secret_manager_key_source")
+
+    @secret_manager_key_source.setter
+    def secret_manager_key_source(self, value: Optional[pulumi.Input['SecretManagerSourceArgs']]):
+        pulumi.set(self, "secret_manager_key_source", value)
+
+
+@pulumi.input_type
+class FairplayArgs:
+    def __init__(__self__):
+        """
+        Fairplay configuration.
+        """
+        pass
+
+
+@pulumi.input_type
+class Fmp4ConfigArgs:
+    def __init__(__self__, *,
+                 codec_tag: Optional[pulumi.Input[str]] = None):
+        """
+        `fmp4` container configuration.
+        :param pulumi.Input[str] codec_tag: Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
+        """
+        if codec_tag is not None:
+            pulumi.set(__self__, "codec_tag", codec_tag)
+
+    @property
+    @pulumi.getter(name="codecTag")
+    def codec_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
+        """
+        return pulumi.get(self, "codec_tag")
+
+    @codec_tag.setter
+    def codec_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "codec_tag", value)
+
+
+@pulumi.input_type
 class H264CodecSettingsArgs:
     def __init__(__self__, *,
                  bitrate_bps: pulumi.Input[int],
@@ -1031,10 +1292,10 @@ class H264CodecSettingsArgs:
         :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
         :param pulumi.Input[bool] allow_open_gop: Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
         :param pulumi.Input[float] aq_strength: Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
-        :param pulumi.Input[int] b_frame_count: The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+        :param pulumi.Input[int] b_frame_count: The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
         :param pulumi.Input[bool] b_pyramid: Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
         :param pulumi.Input[int] crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
-        :param pulumi.Input[bool] enable_two_pass: Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+        :param pulumi.Input[bool] enable_two_pass: Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
         :param pulumi.Input[str] entropy_coder: The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
         :param pulumi.Input[str] gop_duration: Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         :param pulumi.Input[int] gop_frame_count: Select the GOP size based on the specified frame count. Must be greater than zero.
@@ -1042,10 +1303,10 @@ class H264CodecSettingsArgs:
         :param pulumi.Input[str] pixel_format: Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
         :param pulumi.Input[str] preset: Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
         :param pulumi.Input[str] profile: Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
-        :param pulumi.Input[str] rate_control_mode: Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        :param pulumi.Input[str] rate_control_mode: Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
         :param pulumi.Input[str] tune: Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
-        :param pulumi.Input[int] vbv_fullness_bits: Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
-        :param pulumi.Input[int] vbv_size_bits: Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+        :param pulumi.Input[int] vbv_fullness_bits: Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
+        :param pulumi.Input[int] vbv_size_bits: Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.
         :param pulumi.Input[int] width_pixels: The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
         """
         pulumi.set(__self__, "bitrate_bps", bitrate_bps)
@@ -1139,7 +1400,7 @@ class H264CodecSettingsArgs:
     @pulumi.getter(name="bFrameCount")
     def b_frame_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+        The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
         """
         return pulumi.get(self, "b_frame_count")
 
@@ -1175,7 +1436,7 @@ class H264CodecSettingsArgs:
     @pulumi.getter(name="enableTwoPass")
     def enable_two_pass(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+        Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
         """
         return pulumi.get(self, "enable_two_pass")
 
@@ -1271,7 +1532,7 @@ class H264CodecSettingsArgs:
     @pulumi.getter(name="rateControlMode")
     def rate_control_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
         """
         return pulumi.get(self, "rate_control_mode")
 
@@ -1295,7 +1556,7 @@ class H264CodecSettingsArgs:
     @pulumi.getter(name="vbvFullnessBits")
     def vbv_fullness_bits(self) -> Optional[pulumi.Input[int]]:
         """
-        Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+        Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
         """
         return pulumi.get(self, "vbv_fullness_bits")
 
@@ -1307,7 +1568,7 @@ class H264CodecSettingsArgs:
     @pulumi.getter(name="vbvSizeBits")
     def vbv_size_bits(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+        Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.
         """
         return pulumi.get(self, "vbv_size_bits")
 
@@ -1356,19 +1617,19 @@ class H265CodecSettingsArgs:
         :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
         :param pulumi.Input[bool] allow_open_gop: Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
         :param pulumi.Input[float] aq_strength: Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
-        :param pulumi.Input[int] b_frame_count: The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+        :param pulumi.Input[int] b_frame_count: The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
         :param pulumi.Input[bool] b_pyramid: Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
         :param pulumi.Input[int] crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
-        :param pulumi.Input[bool] enable_two_pass: Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+        :param pulumi.Input[bool] enable_two_pass: Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
         :param pulumi.Input[str] gop_duration: Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         :param pulumi.Input[int] gop_frame_count: Select the GOP size based on the specified frame count. Must be greater than zero.
         :param pulumi.Input[int] height_pixels: The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
         :param pulumi.Input[str] pixel_format: Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
         :param pulumi.Input[str] preset: Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
         :param pulumi.Input[str] profile: Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
-        :param pulumi.Input[str] rate_control_mode: Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        :param pulumi.Input[str] rate_control_mode: Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
         :param pulumi.Input[str] tune: Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
-        :param pulumi.Input[int] vbv_fullness_bits: Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+        :param pulumi.Input[int] vbv_fullness_bits: Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
         :param pulumi.Input[int] vbv_size_bits: Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
         :param pulumi.Input[int] width_pixels: The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
         """
@@ -1461,7 +1722,7 @@ class H265CodecSettingsArgs:
     @pulumi.getter(name="bFrameCount")
     def b_frame_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+        The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
         """
         return pulumi.get(self, "b_frame_count")
 
@@ -1497,7 +1758,7 @@ class H265CodecSettingsArgs:
     @pulumi.getter(name="enableTwoPass")
     def enable_two_pass(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+        Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
         """
         return pulumi.get(self, "enable_two_pass")
 
@@ -1581,7 +1842,7 @@ class H265CodecSettingsArgs:
     @pulumi.getter(name="rateControlMode")
     def rate_control_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
         """
         return pulumi.get(self, "rate_control_mode")
 
@@ -1605,7 +1866,7 @@ class H265CodecSettingsArgs:
     @pulumi.getter(name="vbvFullnessBits")
     def vbv_fullness_bits(self) -> Optional[pulumi.Input[int]]:
         """
-        Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+        Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
         """
         return pulumi.get(self, "vbv_fullness_bits")
 
@@ -1703,7 +1964,7 @@ class InputArgs:
         Input asset.
         :param pulumi.Input[str] key: A unique key for this input. Must be specified when using advanced mapping and edit lists.
         :param pulumi.Input['PreprocessingConfigArgs'] preprocessing_config: Preprocessing configurations.
-        :param pulumi.Input[str] uri: URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+        :param pulumi.Input[str] uri: URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1740,7 +2001,7 @@ class InputArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+        URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         return pulumi.get(self, "uri")
 
@@ -1755,6 +2016,7 @@ class JobConfigArgs:
                  ad_breaks: Optional[pulumi.Input[Sequence[pulumi.Input['AdBreakArgs']]]] = None,
                  edit_list: Optional[pulumi.Input[Sequence[pulumi.Input['EditAtomArgs']]]] = None,
                  elementary_streams: Optional[pulumi.Input[Sequence[pulumi.Input['ElementaryStreamArgs']]]] = None,
+                 encryptions: Optional[pulumi.Input[Sequence[pulumi.Input['EncryptionArgs']]]] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input['InputArgs']]]] = None,
                  manifests: Optional[pulumi.Input[Sequence[pulumi.Input['ManifestArgs']]]] = None,
                  mux_streams: Optional[pulumi.Input[Sequence[pulumi.Input['MuxStreamArgs']]]] = None,
@@ -1765,8 +2027,9 @@ class JobConfigArgs:
         """
         Job configuration
         :param pulumi.Input[Sequence[pulumi.Input['AdBreakArgs']]] ad_breaks: List of ad breaks. Specifies where to insert ad break tags in the output manifests.
-        :param pulumi.Input[Sequence[pulumi.Input['EditAtomArgs']]] edit_list: List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+        :param pulumi.Input[Sequence[pulumi.Input['EditAtomArgs']]] edit_list: List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
         :param pulumi.Input[Sequence[pulumi.Input['ElementaryStreamArgs']]] elementary_streams: List of elementary streams.
+        :param pulumi.Input[Sequence[pulumi.Input['EncryptionArgs']]] encryptions: List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
         :param pulumi.Input[Sequence[pulumi.Input['InputArgs']]] inputs: List of input assets stored in Cloud Storage.
         :param pulumi.Input[Sequence[pulumi.Input['ManifestArgs']]] manifests: List of output manifests.
         :param pulumi.Input[Sequence[pulumi.Input['MuxStreamArgs']]] mux_streams: List of multiplexing settings for output streams.
@@ -1781,6 +2044,8 @@ class JobConfigArgs:
             pulumi.set(__self__, "edit_list", edit_list)
         if elementary_streams is not None:
             pulumi.set(__self__, "elementary_streams", elementary_streams)
+        if encryptions is not None:
+            pulumi.set(__self__, "encryptions", encryptions)
         if inputs is not None:
             pulumi.set(__self__, "inputs", inputs)
         if manifests is not None:
@@ -1812,7 +2077,7 @@ class JobConfigArgs:
     @pulumi.getter(name="editList")
     def edit_list(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EditAtomArgs']]]]:
         """
-        List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+        List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
         """
         return pulumi.get(self, "edit_list")
 
@@ -1831,6 +2096,18 @@ class JobConfigArgs:
     @elementary_streams.setter
     def elementary_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElementaryStreamArgs']]]]):
         pulumi.set(self, "elementary_streams", value)
+
+    @property
+    @pulumi.getter
+    def encryptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EncryptionArgs']]]]:
+        """
+        List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+        """
+        return pulumi.get(self, "encryptions")
+
+    @encryptions.setter
+    def encryptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EncryptionArgs']]]]):
+        pulumi.set(self, "encryptions", value)
 
     @property
     @pulumi.getter
@@ -1922,15 +2199,19 @@ class ManifestArgs:
     def __init__(__self__, *,
                  mux_streams: pulumi.Input[Sequence[pulumi.Input[str]]],
                  type: pulumi.Input['ManifestType'],
+                 dash: Optional[pulumi.Input['DashConfigArgs']] = None,
                  file_name: Optional[pulumi.Input[str]] = None):
         """
         Manifest configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mux_streams: List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mux_streams: List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
         :param pulumi.Input['ManifestType'] type: Type of the manifest.
-        :param pulumi.Input[str] file_name: The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+        :param pulumi.Input['DashConfigArgs'] dash: `DASH` manifest configuration.
+        :param pulumi.Input[str] file_name: The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
         """
         pulumi.set(__self__, "mux_streams", mux_streams)
         pulumi.set(__self__, "type", type)
+        if dash is not None:
+            pulumi.set(__self__, "dash", dash)
         if file_name is not None:
             pulumi.set(__self__, "file_name", file_name)
 
@@ -1938,7 +2219,7 @@ class ManifestArgs:
     @pulumi.getter(name="muxStreams")
     def mux_streams(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+        List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
         """
         return pulumi.get(self, "mux_streams")
 
@@ -1959,10 +2240,22 @@ class ManifestArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter
+    def dash(self) -> Optional[pulumi.Input['DashConfigArgs']]:
+        """
+        `DASH` manifest configuration.
+        """
+        return pulumi.get(self, "dash")
+
+    @dash.setter
+    def dash(self, value: Optional[pulumi.Input['DashConfigArgs']]):
+        pulumi.set(self, "dash", value)
+
+    @property
     @pulumi.getter(name="fileName")
     def file_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+        The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
         """
         return pulumi.get(self, "file_name")
 
@@ -1972,27 +2265,58 @@ class ManifestArgs:
 
 
 @pulumi.input_type
+class MpegCommonEncryptionArgs:
+    def __init__(__self__, *,
+                 scheme: pulumi.Input[str]):
+        """
+        Configuration for MPEG Common Encryption (MPEG-CENC).
+        :param pulumi.Input[str] scheme: Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
+        """
+        pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> pulumi.Input[str]:
+        """
+        Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scheme", value)
+
+
+@pulumi.input_type
 class MuxStreamArgs:
     def __init__(__self__, *,
                  container: Optional[pulumi.Input[str]] = None,
                  elementary_streams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 encryption_id: Optional[pulumi.Input[str]] = None,
                  file_name: Optional[pulumi.Input[str]] = None,
+                 fmp4: Optional[pulumi.Input['Fmp4ConfigArgs']] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  segment_settings: Optional[pulumi.Input['SegmentSettingsArgs']] = None):
         """
         Multiplexing settings for output stream.
         :param pulumi.Input[str] container: The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elementary_streams: List of `ElementaryStream.key`s multiplexed in this stream.
-        :param pulumi.Input[str] file_name: The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
-        :param pulumi.Input[str] key: A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elementary_streams: List of ElementaryStream.key values multiplexed in this stream.
+        :param pulumi.Input[str] encryption_id: Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
+        :param pulumi.Input[str] file_name: The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
+        :param pulumi.Input['Fmp4ConfigArgs'] fmp4: Optional. `fmp4` container configuration.
+        :param pulumi.Input[str] key: A unique key for this multiplexed stream.
         :param pulumi.Input['SegmentSettingsArgs'] segment_settings: Segment settings for `ts`, `fmp4` and `vtt`.
         """
         if container is not None:
             pulumi.set(__self__, "container", container)
         if elementary_streams is not None:
             pulumi.set(__self__, "elementary_streams", elementary_streams)
+        if encryption_id is not None:
+            pulumi.set(__self__, "encryption_id", encryption_id)
         if file_name is not None:
             pulumi.set(__self__, "file_name", file_name)
+        if fmp4 is not None:
+            pulumi.set(__self__, "fmp4", fmp4)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if segment_settings is not None:
@@ -2014,7 +2338,7 @@ class MuxStreamArgs:
     @pulumi.getter(name="elementaryStreams")
     def elementary_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of `ElementaryStream.key`s multiplexed in this stream.
+        List of ElementaryStream.key values multiplexed in this stream.
         """
         return pulumi.get(self, "elementary_streams")
 
@@ -2023,10 +2347,22 @@ class MuxStreamArgs:
         pulumi.set(self, "elementary_streams", value)
 
     @property
+    @pulumi.getter(name="encryptionId")
+    def encryption_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
+        """
+        return pulumi.get(self, "encryption_id")
+
+    @encryption_id.setter
+    def encryption_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_id", value)
+
+    @property
     @pulumi.getter(name="fileName")
     def file_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
+        The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
         """
         return pulumi.get(self, "file_name")
 
@@ -2036,9 +2372,21 @@ class MuxStreamArgs:
 
     @property
     @pulumi.getter
+    def fmp4(self) -> Optional[pulumi.Input['Fmp4ConfigArgs']]:
+        """
+        Optional. `fmp4` container configuration.
+        """
+        return pulumi.get(self, "fmp4")
+
+    @fmp4.setter
+    def fmp4(self, value: Optional[pulumi.Input['Fmp4ConfigArgs']]):
+        pulumi.set(self, "fmp4", value)
+
+    @property
+    @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
+        A unique key for this multiplexed stream.
         """
         return pulumi.get(self, "key")
 
@@ -2105,7 +2453,7 @@ class OutputArgs:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         Location of output file(s) in a Cloud Storage bucket.
-        :param pulumi.Input[str] uri: URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+        :param pulumi.Input[str] uri: URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
@@ -2114,7 +2462,7 @@ class OutputArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+        URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         return pulumi.get(self, "uri")
 
@@ -2130,7 +2478,7 @@ class OverlayArgs:
                  image: Optional[pulumi.Input['ImageArgs']] = None):
         """
         Overlay configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['AnimationArgs']]] animations: List of Animations. The list should be chronological, without any time overlap.
+        :param pulumi.Input[Sequence[pulumi.Input['AnimationArgs']]] animations: List of animations. The list should be chronological, without any time overlap.
         :param pulumi.Input['ImageArgs'] image: Image overlay.
         """
         if animations is not None:
@@ -2142,7 +2490,7 @@ class OverlayArgs:
     @pulumi.getter
     def animations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AnimationArgs']]]]:
         """
-        List of Animations. The list should be chronological, without any time overlap.
+        List of animations. The list should be chronological, without any time overlap.
         """
         return pulumi.get(self, "animations")
 
@@ -2233,6 +2581,15 @@ class PadArgs:
     @top_pixels.setter
     def top_pixels(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "top_pixels", value)
+
+
+@pulumi.input_type
+class PlayreadyArgs:
+    def __init__(__self__):
+        """
+        Playready configuration.
+        """
+        pass
 
 
 @pulumi.input_type
@@ -2377,6 +2734,38 @@ class PubsubDestinationArgs:
     @topic.setter
     def topic(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "topic", value)
+
+
+@pulumi.input_type
+class SampleAesEncryptionArgs:
+    def __init__(__self__):
+        """
+        Configuration for SAMPLE-AES encryption.
+        """
+        pass
+
+
+@pulumi.input_type
+class SecretManagerSourceArgs:
+    def __init__(__self__, *,
+                 secret_version: pulumi.Input[str]):
+        """
+        Configuration for secrets stored in Google Secret Manager.
+        :param pulumi.Input[str] secret_version: The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
+        """
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> pulumi.Input[str]:
+        """
+        The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
+        """
+        return pulumi.get(self, "secret_version")
+
+    @secret_version.setter
+    def secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_version", value)
 
 
 @pulumi.input_type
@@ -2606,9 +2995,9 @@ class TextMappingArgs:
                  input_key: pulumi.Input[str],
                  input_track: pulumi.Input[int]):
         """
-        The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
-        :param pulumi.Input[str] atom_key: The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
-        :param pulumi.Input[str] input_key: The `Input.key` that identifies the input file.
+        The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
+        :param pulumi.Input[str] atom_key: The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
+        :param pulumi.Input[str] input_key: The Input.key that identifies the input file.
         :param pulumi.Input[int] input_track: The zero-based index of the track in the input file.
         """
         pulumi.set(__self__, "atom_key", atom_key)
@@ -2619,7 +3008,7 @@ class TextMappingArgs:
     @pulumi.getter(name="atomKey")
     def atom_key(self) -> pulumi.Input[str]:
         """
-        The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+        The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
         """
         return pulumi.get(self, "atom_key")
 
@@ -2631,7 +3020,7 @@ class TextMappingArgs:
     @pulumi.getter(name="inputKey")
     def input_key(self) -> pulumi.Input[str]:
         """
-        The `Input.key` that identifies the input file.
+        The Input.key that identifies the input file.
         """
         return pulumi.get(self, "input_key")
 
@@ -2664,7 +3053,7 @@ class TextStreamArgs:
         :param pulumi.Input[str] codec: The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
         :param pulumi.Input[str] display_name: The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
         :param pulumi.Input[str] language_code: The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
-        :param pulumi.Input[Sequence[pulumi.Input['TextMappingArgs']]] mapping: The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+        :param pulumi.Input[Sequence[pulumi.Input['TextMappingArgs']]] mapping: The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
         """
         if codec is not None:
             pulumi.set(__self__, "codec", codec)
@@ -2715,7 +3104,7 @@ class TextStreamArgs:
     @pulumi.getter
     def mapping(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TextMappingArgs']]]]:
         """
-        The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+        The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
         """
         return pulumi.get(self, "mapping")
 
@@ -2803,7 +3192,7 @@ class Vp9CodecSettingsArgs:
         :param pulumi.Input[int] height_pixels: The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
         :param pulumi.Input[str] pixel_format: Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
         :param pulumi.Input[str] profile: Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
-        :param pulumi.Input[str] rate_control_mode: Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+        :param pulumi.Input[str] rate_control_mode: Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
         :param pulumi.Input[int] width_pixels: The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
         """
         pulumi.set(__self__, "bitrate_bps", bitrate_bps)
@@ -2925,7 +3314,7 @@ class Vp9CodecSettingsArgs:
     @pulumi.getter(name="rateControlMode")
     def rate_control_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+        Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
         """
         return pulumi.get(self, "rate_control_mode")
 
@@ -2944,6 +3333,15 @@ class Vp9CodecSettingsArgs:
     @width_pixels.setter
     def width_pixels(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "width_pixels", value)
+
+
+@pulumi.input_type
+class WidevineArgs:
+    def __init__(__self__):
+        """
+        Widevine configuration.
+        """
+        pass
 
 
 @pulumi.input_type

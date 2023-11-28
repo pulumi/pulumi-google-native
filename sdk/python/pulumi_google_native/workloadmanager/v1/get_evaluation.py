@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetEvaluationResult:
-    def __init__(__self__, create_time=None, description=None, labels=None, name=None, resource_filter=None, resource_status=None, rule_names=None, rule_versions=None, schedule=None, update_time=None):
+    def __init__(__self__, create_time=None, custom_rules_bucket=None, description=None, labels=None, name=None, resource_filter=None, resource_status=None, rule_names=None, rule_versions=None, schedule=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if custom_rules_bucket and not isinstance(custom_rules_bucket, str):
+            raise TypeError("Expected argument 'custom_rules_bucket' to be a str")
+        pulumi.set(__self__, "custom_rules_bucket", custom_rules_bucket)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -58,6 +61,14 @@ class GetEvaluationResult:
         [Output only] Create time stamp
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customRulesBucket")
+    def custom_rules_bucket(self) -> str:
+        """
+        The Cloud Storage bucket name for custom rules.
+        """
+        return pulumi.get(self, "custom_rules_bucket")
 
     @property
     @pulumi.getter
@@ -119,7 +130,7 @@ class GetEvaluationResult:
     @pulumi.getter
     def schedule(self) -> str:
         """
-        crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         """
         return pulumi.get(self, "schedule")
 
@@ -139,6 +150,7 @@ class AwaitableGetEvaluationResult(GetEvaluationResult):
             yield self
         return GetEvaluationResult(
             create_time=self.create_time,
+            custom_rules_bucket=self.custom_rules_bucket,
             description=self.description,
             labels=self.labels,
             name=self.name,
@@ -166,6 +178,7 @@ def get_evaluation(evaluation_id: Optional[str] = None,
 
     return AwaitableGetEvaluationResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        custom_rules_bucket=pulumi.get(__ret__, 'custom_rules_bucket'),
         description=pulumi.get(__ret__, 'description'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

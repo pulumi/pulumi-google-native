@@ -17,8 +17,8 @@ __all__ = ['KeyArgs', 'Key']
 @pulumi.input_type
 class KeyArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  android_settings: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  ios_settings: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -28,19 +28,18 @@ class KeyArgs:
                  web_settings: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs']] = None):
         """
         The set of arguments for constructing a Key resource.
-        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
-        :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
-        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs'] testing_options: Options for user acceptance testing.
-        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs'] waf_settings: Settings for WAF
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
+        :param pulumi.Input[str] name: Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs'] testing_options: Optional. Options for user acceptance testing.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs'] waf_settings: Optional. Settings for WAF
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
+        pulumi.set(__self__, "display_name", display_name)
         if android_settings is not None:
             pulumi.set(__self__, "android_settings", android_settings)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if ios_settings is not None:
             pulumi.set(__self__, "ios_settings", ios_settings)
         if labels is not None:
@@ -57,6 +56,18 @@ class KeyArgs:
             pulumi.set(__self__, "web_settings", web_settings)
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Human-readable display name of this key. Modifiable by user.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
     @pulumi.getter(name="androidSettings")
     def android_settings(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']]:
         """
@@ -67,18 +78,6 @@ class KeyArgs:
     @android_settings.setter
     def android_settings(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']]):
         pulumi.set(self, "android_settings", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable display name of this key. Modifiable by user.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="iosSettings")
@@ -96,7 +95,7 @@ class KeyArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        See Creating and managing labels.
+        Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
         """
         return pulumi.get(self, "labels")
 
@@ -108,7 +107,7 @@ class KeyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name for the Key in the format "projects/{project}/keys/{key}".
+        Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
         """
         return pulumi.get(self, "name")
 
@@ -129,7 +128,7 @@ class KeyArgs:
     @pulumi.getter(name="testingOptions")
     def testing_options(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs']]:
         """
-        Options for user acceptance testing.
+        Optional. Options for user acceptance testing.
         """
         return pulumi.get(self, "testing_options")
 
@@ -141,7 +140,7 @@ class KeyArgs:
     @pulumi.getter(name="wafSettings")
     def waf_settings(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs']]:
         """
-        Settings for WAF
+        Optional. Settings for WAF
         """
         return pulumi.get(self, "waf_settings")
 
@@ -185,17 +184,17 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']] ios_settings: Settings for keys that can be used by iOS apps.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
-        :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs']] testing_options: Options for user acceptance testing.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs']] waf_settings: Settings for WAF
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
+        :param pulumi.Input[str] name: Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs']] testing_options: Optional. Options for user acceptance testing.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs']] waf_settings: Optional. Settings for WAF
         :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs']] web_settings: Settings for keys that can be used by websites.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[KeyArgs] = None,
+                 args: KeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new reCAPTCHA Enterprise key.
@@ -234,6 +233,8 @@ class Key(pulumi.CustomResource):
             __props__ = KeyArgs.__new__(KeyArgs)
 
             __props__.__dict__["android_settings"] = android_settings
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["ios_settings"] = ios_settings
             __props__.__dict__["labels"] = labels
@@ -315,7 +316,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        See Creating and managing labels.
+        Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
         """
         return pulumi.get(self, "labels")
 
@@ -323,7 +324,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name for the Key in the format "projects/{project}/keys/{key}".
+        Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
         """
         return pulumi.get(self, "name")
 
@@ -336,7 +337,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="testingOptions")
     def testing_options(self) -> pulumi.Output['outputs.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse']:
         """
-        Options for user acceptance testing.
+        Optional. Options for user acceptance testing.
         """
         return pulumi.get(self, "testing_options")
 
@@ -344,7 +345,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="wafSettings")
     def waf_settings(self) -> pulumi.Output['outputs.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse']:
         """
-        Settings for WAF
+        Optional. Settings for WAF
         """
         return pulumi.get(self, "waf_settings")
 

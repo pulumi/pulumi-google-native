@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Gets a category on the portal.
+ * Gets an API category.
  */
 export function getApicategory(args: GetApicategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetApicategoryResult> {
 
@@ -28,11 +28,11 @@ export interface GetApicategoryArgs {
 
 export interface GetApicategoryResult {
     /**
-     * Details of category.
+     * The API category resource.
      */
-    readonly data: outputs.apigee.v1.GoogleCloudApigeeV1ApiCategoryDataResponse;
+    readonly data: outputs.apigee.v1.GoogleCloudApigeeV1ApiCategoryResponse;
     /**
-     * ID that can be used to find errors in the log files.
+     * Unique error code for the request, if any.
      */
     readonly errorCode: string;
     /**
@@ -40,7 +40,7 @@ export interface GetApicategoryResult {
      */
     readonly message: string;
     /**
-     * ID that can be used to find request details in the log files.
+     * Unique ID of the request.
      */
     readonly requestId: string;
     /**
@@ -49,7 +49,7 @@ export interface GetApicategoryResult {
     readonly status: string;
 }
 /**
- * Gets a category on the portal.
+ * Gets an API category.
  */
 export function getApicategoryOutput(args: GetApicategoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApicategoryResult> {
     return pulumi.output(args).apply((a: any) => getApicategory(a, opts))

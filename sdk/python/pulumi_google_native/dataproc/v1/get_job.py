@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, done=None, driver_control_files_uri=None, driver_output_resource_uri=None, driver_scheduling_config=None, hadoop_job=None, hive_job=None, job_uuid=None, labels=None, pig_job=None, placement=None, presto_job=None, pyspark_job=None, reference=None, scheduling=None, spark_job=None, spark_r_job=None, spark_sql_job=None, status=None, status_history=None, trino_job=None, yarn_applications=None):
+    def __init__(__self__, done=None, driver_control_files_uri=None, driver_output_resource_uri=None, driver_scheduling_config=None, flink_job=None, hadoop_job=None, hive_job=None, job_uuid=None, labels=None, pig_job=None, placement=None, presto_job=None, pyspark_job=None, reference=None, scheduling=None, spark_job=None, spark_r_job=None, spark_sql_job=None, status=None, status_history=None, trino_job=None, yarn_applications=None):
         if done and not isinstance(done, bool):
             raise TypeError("Expected argument 'done' to be a bool")
         pulumi.set(__self__, "done", done)
@@ -32,6 +32,9 @@ class GetJobResult:
         if driver_scheduling_config and not isinstance(driver_scheduling_config, dict):
             raise TypeError("Expected argument 'driver_scheduling_config' to be a dict")
         pulumi.set(__self__, "driver_scheduling_config", driver_scheduling_config)
+        if flink_job and not isinstance(flink_job, dict):
+            raise TypeError("Expected argument 'flink_job' to be a dict")
+        pulumi.set(__self__, "flink_job", flink_job)
         if hadoop_job and not isinstance(hadoop_job, dict):
             raise TypeError("Expected argument 'hadoop_job' to be a dict")
         pulumi.set(__self__, "hadoop_job", hadoop_job)
@@ -96,7 +99,7 @@ class GetJobResult:
     @pulumi.getter(name="driverControlFilesUri")
     def driver_control_files_uri(self) -> str:
         """
-        If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+        If present, the location of miscellaneous control files which can be used as part of job setup and handling. If not present, control files might be placed in the same location as driver_output_uri.
         """
         return pulumi.get(self, "driver_control_files_uri")
 
@@ -115,6 +118,14 @@ class GetJobResult:
         Optional. Driver scheduling configuration.
         """
         return pulumi.get(self, "driver_scheduling_config")
+
+    @property
+    @pulumi.getter(name="flinkJob")
+    def flink_job(self) -> 'outputs.FlinkJobResponse':
+        """
+        Optional. Job is a Flink job.
+        """
+        return pulumi.get(self, "flink_job")
 
     @property
     @pulumi.getter(name="hadoopJob")
@@ -136,7 +147,7 @@ class GetJobResult:
     @pulumi.getter(name="jobUuid")
     def job_uuid(self) -> str:
         """
-        A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
+        A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that might be reused over time.
         """
         return pulumi.get(self, "job_uuid")
 
@@ -144,7 +155,7 @@ class GetJobResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         """
         return pulumi.get(self, "labels")
 
@@ -224,7 +235,7 @@ class GetJobResult:
     @pulumi.getter
     def status(self) -> 'outputs.JobStatusResponse':
         """
-        The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
+        The job status. Additional application-specific status information might be contained in the type_job and yarn_applications fields.
         """
         return pulumi.get(self, "status")
 
@@ -248,7 +259,7 @@ class GetJobResult:
     @pulumi.getter(name="yarnApplications")
     def yarn_applications(self) -> Sequence['outputs.YarnApplicationResponse']:
         """
-        The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+        The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release.
         """
         return pulumi.get(self, "yarn_applications")
 
@@ -263,6 +274,7 @@ class AwaitableGetJobResult(GetJobResult):
             driver_control_files_uri=self.driver_control_files_uri,
             driver_output_resource_uri=self.driver_output_resource_uri,
             driver_scheduling_config=self.driver_scheduling_config,
+            flink_job=self.flink_job,
             hadoop_job=self.hadoop_job,
             hive_job=self.hive_job,
             job_uuid=self.job_uuid,
@@ -301,6 +313,7 @@ def get_job(job_id: Optional[str] = None,
         driver_control_files_uri=pulumi.get(__ret__, 'driver_control_files_uri'),
         driver_output_resource_uri=pulumi.get(__ret__, 'driver_output_resource_uri'),
         driver_scheduling_config=pulumi.get(__ret__, 'driver_scheduling_config'),
+        flink_job=pulumi.get(__ret__, 'flink_job'),
         hadoop_job=pulumi.get(__ret__, 'hadoop_job'),
         hive_job=pulumi.get(__ret__, 'hive_job'),
         job_uuid=pulumi.get(__ret__, 'job_uuid'),

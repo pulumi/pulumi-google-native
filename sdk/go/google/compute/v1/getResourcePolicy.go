@@ -33,6 +33,8 @@ type LookupResourcePolicyResult struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	Description       string `pulumi:"description"`
+	// Resource policy for disk consistency groups.
+	DiskConsistencyGroupPolicy ResourcePolicyDiskConsistencyGroupPolicyResponse `pulumi:"diskConsistencyGroupPolicy"`
 	// Resource policy for instances for placement configuration.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyResponse `pulumi:"groupPlacementPolicy"`
 	// Resource policy for scheduling instance operations.
@@ -102,6 +104,13 @@ func (o LookupResourcePolicyResultOutput) CreationTimestamp() pulumi.StringOutpu
 
 func (o LookupResourcePolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourcePolicyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Resource policy for disk consistency groups.
+func (o LookupResourcePolicyResultOutput) DiskConsistencyGroupPolicy() ResourcePolicyDiskConsistencyGroupPolicyResponseOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) ResourcePolicyDiskConsistencyGroupPolicyResponse {
+		return v.DiskConsistencyGroupPolicy
+	}).(ResourcePolicyDiskConsistencyGroupPolicyResponseOutput)
 }
 
 // Resource policy for instances for placement configuration.

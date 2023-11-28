@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetGroupResult:
-    def __init__(__self__, create_time=None, description=None, display_name=None, name=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, display_name=None, migration_target_type=None, name=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -28,6 +28,9 @@ class GetGroupResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if migration_target_type and not isinstance(migration_target_type, str):
+            raise TypeError("Expected argument 'migration_target_type' to be a str")
+        pulumi.set(__self__, "migration_target_type", migration_target_type)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -60,6 +63,14 @@ class GetGroupResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="migrationTargetType")
+    def migration_target_type(self) -> str:
+        """
+        Immutable. The target type of this group.
+        """
+        return pulumi.get(self, "migration_target_type")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -85,6 +96,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             create_time=self.create_time,
             description=self.description,
             display_name=self.display_name,
+            migration_target_type=self.migration_target_type,
             name=self.name,
             update_time=self.update_time)
 
@@ -107,6 +119,7 @@ def get_group(group_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        migration_target_type=pulumi.get(__ret__, 'migration_target_type'),
         name=pulumi.get(__ret__, 'name'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

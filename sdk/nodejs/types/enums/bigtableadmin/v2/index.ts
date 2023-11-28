@@ -2,6 +2,21 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AppProfilePriority = {
+    /**
+     * Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.
+     */
+    PriorityUnspecified: "PRIORITY_UNSPECIFIED",
+    PriorityLow: "PRIORITY_LOW",
+    PriorityMedium: "PRIORITY_MEDIUM",
+    PriorityHigh: "PRIORITY_HIGH",
+} as const;
+
+/**
+ * This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+ */
+export type AppProfilePriority = (typeof AppProfilePriority)[keyof typeof AppProfilePriority];
+
 export const AuditLogConfigLogType = {
     /**
      * Default case. Should never be this.
@@ -65,6 +80,21 @@ export const InstanceType = {
  * The type of the instance. Defaults to `PRODUCTION`.
  */
 export type InstanceType = (typeof InstanceType)[keyof typeof InstanceType];
+
+export const StandardIsolationPriority = {
+    /**
+     * Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.
+     */
+    PriorityUnspecified: "PRIORITY_UNSPECIFIED",
+    PriorityLow: "PRIORITY_LOW",
+    PriorityMedium: "PRIORITY_MEDIUM",
+    PriorityHigh: "PRIORITY_HIGH",
+} as const;
+
+/**
+ * The priority of requests sent using this app profile.
+ */
+export type StandardIsolationPriority = (typeof StandardIsolationPriority)[keyof typeof StandardIsolationPriority];
 
 export const TableGranularity = {
     /**

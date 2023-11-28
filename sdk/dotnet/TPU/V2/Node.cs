@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.TPU.V2
         public Output<Outputs.AcceleratorConfigResponse> AcceleratorConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The type of hardware accelerators associated with this node.
+        /// Optional. The type of hardware accelerators associated with this node.
         /// </summary>
         [Output("acceleratorType")]
         public Output<string> AcceleratorType { get; private set; } = null!;
@@ -86,6 +86,12 @@ namespace Pulumi.GoogleNative.TPU.V2
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the Node belongs to a Multislice group.
+        /// </summary>
+        [Output("multisliceNode")]
+        public Output<bool> MultisliceNode { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The name of the TPU.
         /// </summary>
         [Output("name")]
@@ -111,6 +117,12 @@ namespace Pulumi.GoogleNative.TPU.V2
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The qualified name of the QueuedResource that requested this Node.
+        /// </summary>
+        [Output("queuedResource")]
+        public Output<string> QueuedResource { get; private set; } = null!;
 
         /// <summary>
         /// The runtime version running in the Node.
@@ -211,10 +223,10 @@ namespace Pulumi.GoogleNative.TPU.V2
         public Input<Inputs.AcceleratorConfigArgs>? AcceleratorConfig { get; set; }
 
         /// <summary>
-        /// The type of hardware accelerators associated with this node.
+        /// Optional. The type of hardware accelerators associated with this node.
         /// </summary>
-        [Input("acceleratorType", required: true)]
-        public Input<string> AcceleratorType { get; set; } = null!;
+        [Input("acceleratorType")]
+        public Input<string>? AcceleratorType { get; set; }
 
         /// <summary>
         /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.

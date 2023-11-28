@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Page")]
     public partial class Page : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        [Output("advancedSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse> AdvancedSettings { get; private set; } = null!;
+
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
 
@@ -46,6 +52,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<Outputs.GoogleCloudDialogflowCxV3beta1FormResponse> Form { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Knowledge connector configuration.
+        /// </summary>
+        [Output("knowledgeConnectorSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse> KnowledgeConnectorSettings { get; private set; } = null!;
+
+        /// <summary>
         /// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         /// </summary>
         [Output("languageCode")]
@@ -64,7 +76,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         [Output("transitionRouteGroups")]
         public Output<ImmutableArray<string>> TransitionRouteGroups { get; private set; } = null!;
@@ -127,6 +139,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
     public sealed class PageArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
@@ -164,6 +182,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1FormArgs>? Form { get; set; }
 
         /// <summary>
+        /// Optional. Knowledge connector configuration.
+        /// </summary>
+        [Input("knowledgeConnectorSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsArgs>? KnowledgeConnectorSettings { get; set; }
+
+        /// <summary>
         /// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         /// </summary>
         [Input("languageCode")]
@@ -185,7 +209,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         private InputList<string>? _transitionRouteGroups;
 
         /// <summary>
-        /// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         public InputList<string> TransitionRouteGroups
         {

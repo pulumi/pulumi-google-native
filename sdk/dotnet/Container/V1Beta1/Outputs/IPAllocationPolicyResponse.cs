@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly bool CreateSubnetwork;
         /// <summary>
+        /// [Output only] The utilization of the cluster default IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+        /// </summary>
+        public readonly double DefaultPodIpv4RangeUtilization;
+        /// <summary>
         /// The ipv6 access type (internal or external) when create_subnetwork is true
         /// </summary>
         public readonly string Ipv6AccessType;
@@ -111,6 +115,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             bool createSubnetwork,
 
+            double defaultPodIpv4RangeUtilization,
+
             string ipv6AccessType,
 
             string nodeIpv4Cidr,
@@ -145,6 +151,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
             CreateSubnetwork = createSubnetwork;
+            DefaultPodIpv4RangeUtilization = defaultPodIpv4RangeUtilization;
             Ipv6AccessType = ipv6AccessType;
             NodeIpv4Cidr = nodeIpv4Cidr;
             NodeIpv4CidrBlock = nodeIpv4CidrBlock;

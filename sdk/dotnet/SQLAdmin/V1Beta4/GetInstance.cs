@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly Outputs.DiskEncryptionStatusResponse DiskEncryptionStatus;
         /// <summary>
+        /// The dns name of the instance.
+        /// </summary>
+        public readonly string DnsName;
+        /// <summary>
         /// This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
         /// </summary>
         public readonly string Etag;
@@ -146,9 +150,17 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly Outputs.SqlOutOfDiskReportResponse OutOfDiskReport;
         /// <summary>
+        /// DEPRECATED: please use write_endpoint instead.
+        /// </summary>
+        public readonly string PrimaryDnsName;
+        /// <summary>
         /// The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
         /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The link to service attachment of PSC instance.
+        /// </summary>
+        public readonly string PscServiceAttachmentLink;
         /// <summary>
         /// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
         /// </summary>
@@ -194,6 +206,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly Outputs.SettingsResponse Settings;
         /// <summary>
+        /// The SQL network architecture for the instance.
+        /// </summary>
+        public readonly string SqlNetworkArchitecture;
+        /// <summary>
         /// The current serving state of the Cloud SQL instance.
         /// </summary>
         public readonly string State;
@@ -201,6 +217,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// If the instance state is SUSPENDED, the reason for the suspension.
         /// </summary>
         public readonly ImmutableArray<string> SuspensionReason;
+        /// <summary>
+        /// The dns name of the primary instance in a replication group.
+        /// </summary>
+        public readonly string WriteEndpoint;
 
         [OutputConstructor]
         private GetInstanceResult(
@@ -221,6 +241,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
             Outputs.DiskEncryptionConfigurationResponse diskEncryptionConfiguration,
 
             Outputs.DiskEncryptionStatusResponse diskEncryptionStatus,
+
+            string dnsName,
 
             string etag,
 
@@ -248,7 +270,11 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
             Outputs.SqlOutOfDiskReportResponse outOfDiskReport,
 
+            string primaryDnsName,
+
             string project,
+
+            string pscServiceAttachmentLink,
 
             string region,
 
@@ -272,9 +298,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
             Outputs.SettingsResponse settings,
 
+            string sqlNetworkArchitecture,
+
             string state,
 
-            ImmutableArray<string> suspensionReason)
+            ImmutableArray<string> suspensionReason,
+
+            string writeEndpoint)
         {
             AvailableMaintenanceVersions = availableMaintenanceVersions;
             BackendType = backendType;
@@ -285,6 +315,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
             DatabaseVersion = databaseVersion;
             DiskEncryptionConfiguration = diskEncryptionConfiguration;
             DiskEncryptionStatus = diskEncryptionStatus;
+            DnsName = dnsName;
             Etag = etag;
             FailoverReplica = failoverReplica;
             GceZone = gceZone;
@@ -298,7 +329,9 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
             Name = name;
             OnPremisesConfiguration = onPremisesConfiguration;
             OutOfDiskReport = outOfDiskReport;
+            PrimaryDnsName = primaryDnsName;
             Project = project;
+            PscServiceAttachmentLink = pscServiceAttachmentLink;
             Region = region;
             ReplicaConfiguration = replicaConfiguration;
             ReplicaNames = replicaNames;
@@ -310,8 +343,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
             ServerCaCert = serverCaCert;
             ServiceAccountEmailAddress = serviceAccountEmailAddress;
             Settings = settings;
+            SqlNetworkArchitecture = sqlNetworkArchitecture;
             State = state;
             SuspensionReason = suspensionReason;
+            WriteEndpoint = writeEndpoint;
         }
     }
 }

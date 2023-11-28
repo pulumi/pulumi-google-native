@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string Etag;
         /// <summary>
+        /// If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
+        /// </summary>
+        public readonly object JobCreationReason;
+        /// <summary>
         /// [Optional] Reference describing the unique-per-user name of the job.
         /// </summary>
         public readonly Outputs.JobReferenceResponse JobReference;
@@ -102,6 +106,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string etag,
 
+            object jobCreationReason,
+
             Outputs.JobReferenceResponse jobReference,
 
             string kind,
@@ -116,6 +122,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         {
             Configuration = configuration;
             Etag = etag;
+            JobCreationReason = jobCreationReason;
             JobReference = jobReference;
             Kind = kind;
             SelfLink = selfLink;

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
     public sealed class DestinationResponse
     {
         /// <summary>
-        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+        /// The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         /// </summary>
         public readonly string CloudFunction;
         /// <summary>
@@ -28,6 +28,14 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
         /// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         /// </summary>
         public readonly Outputs.GKEResponse Gke;
+        /// <summary>
+        /// An HTTP endpoint destination described by an URI.
+        /// </summary>
+        public readonly Outputs.HttpEndpointResponse HttpEndpoint;
+        /// <summary>
+        /// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+        /// </summary>
+        public readonly Outputs.NetworkConfigResponse NetworkConfig;
         /// <summary>
         /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         /// </summary>
@@ -41,11 +49,17 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
 
             Outputs.GKEResponse gke,
 
+            Outputs.HttpEndpointResponse httpEndpoint,
+
+            Outputs.NetworkConfigResponse networkConfig,
+
             string workflow)
         {
             CloudFunction = cloudFunction;
             CloudRun = cloudRun;
             Gke = gke;
+            HttpEndpoint = httpEndpoint;
+            NetworkConfig = networkConfig;
             Workflow = workflow;
         }
     }

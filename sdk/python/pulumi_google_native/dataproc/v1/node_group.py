@@ -24,6 +24,7 @@ class NodeGroupInitArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  node_group_config: Optional[pulumi.Input['InstanceGroupConfigArgs']] = None,
                  node_group_id: Optional[pulumi.Input[str]] = None,
+                 parent_operation_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
@@ -33,6 +34,7 @@ class NodeGroupInitArgs:
         :param pulumi.Input[str] name: The Node group resource name (https://aip.dev/122).
         :param pulumi.Input['InstanceGroupConfigArgs'] node_group_config: Optional. The node group instance group configuration.
         :param pulumi.Input[str] node_group_id: Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+        :param pulumi.Input[str] parent_operation_id: Optional. operation id of the parent operation sending the create request
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -46,6 +48,8 @@ class NodeGroupInitArgs:
             pulumi.set(__self__, "node_group_config", node_group_config)
         if node_group_id is not None:
             pulumi.set(__self__, "node_group_id", node_group_id)
+        if parent_operation_id is not None:
+            pulumi.set(__self__, "parent_operation_id", parent_operation_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -130,6 +134,18 @@ class NodeGroupInitArgs:
         pulumi.set(self, "node_group_id", value)
 
     @property
+    @pulumi.getter(name="parentOperationId")
+    def parent_operation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. operation id of the parent operation sending the create request
+        """
+        return pulumi.get(self, "parent_operation_id")
+
+    @parent_operation_id.setter
+    def parent_operation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_operation_id", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -161,6 +177,7 @@ class NodeGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_group_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupConfigArgs']]] = None,
                  node_group_id: Optional[pulumi.Input[str]] = None,
+                 parent_operation_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -178,6 +195,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Node group resource name (https://aip.dev/122).
         :param pulumi.Input[pulumi.InputType['InstanceGroupConfigArgs']] node_group_config: Optional. The node group instance group configuration.
         :param pulumi.Input[str] node_group_id: Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+        :param pulumi.Input[str] parent_operation_id: Optional. operation id of the parent operation sending the create request
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupRolesItem']]] roles: Node group roles.
         """
@@ -213,6 +231,7 @@ class NodeGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_group_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupConfigArgs']]] = None,
                  node_group_id: Optional[pulumi.Input[str]] = None,
+                 parent_operation_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -233,6 +252,7 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["node_group_config"] = node_group_config
             __props__.__dict__["node_group_id"] = node_group_id
+            __props__.__dict__["parent_operation_id"] = parent_operation_id
             __props__.__dict__["project"] = project
             if region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'region_id'")
@@ -270,6 +290,7 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["node_group_config"] = None
         __props__.__dict__["node_group_id"] = None
+        __props__.__dict__["parent_operation_id"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["region_id"] = None
         __props__.__dict__["request_id"] = None
@@ -312,6 +333,14 @@ class NodeGroup(pulumi.CustomResource):
         Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
         """
         return pulumi.get(self, "node_group_id")
+
+    @property
+    @pulumi.getter(name="parentOperationId")
+    def parent_operation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. operation id of the parent operation sending the create request
+        """
+        return pulumi.get(self, "parent_operation_id")
 
     @property
     @pulumi.getter

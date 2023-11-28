@@ -23,13 +23,13 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the resource.
+        /// Optional. The description of the group.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// User-friendly display name.
+        /// Optional. User-friendly display name.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -122,13 +122,13 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the resource.
+        /// Optional. The description of the group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// User-friendly display name.
+        /// Optional. User-friendly display name.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

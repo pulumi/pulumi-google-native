@@ -17,13 +17,35 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
     public sealed class ClusterResourceRestoreScopeResponse
     {
         /// <summary>
-        /// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
+        /// Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
+        /// </summary>
+        public readonly bool AllGroupKinds;
+        /// <summary>
+        /// Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GroupKindResponse> ExcludedGroupKinds;
+        /// <summary>
+        /// Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
+        /// </summary>
+        public readonly bool NoGroupKinds;
+        /// <summary>
+        /// Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
         /// </summary>
         public readonly ImmutableArray<Outputs.GroupKindResponse> SelectedGroupKinds;
 
         [OutputConstructor]
-        private ClusterResourceRestoreScopeResponse(ImmutableArray<Outputs.GroupKindResponse> selectedGroupKinds)
+        private ClusterResourceRestoreScopeResponse(
+            bool allGroupKinds,
+
+            ImmutableArray<Outputs.GroupKindResponse> excludedGroupKinds,
+
+            bool noGroupKinds,
+
+            ImmutableArray<Outputs.GroupKindResponse> selectedGroupKinds)
         {
+            AllGroupKinds = allGroupKinds;
+            ExcludedGroupKinds = excludedGroupKinds;
+            NoGroupKinds = noGroupKinds;
             SelectedGroupKinds = selectedGroupKinds;
         }
     }

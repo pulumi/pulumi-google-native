@@ -82,6 +82,46 @@ export const HttpRequestHttpMethod = {
  */
 export type HttpRequestHttpMethod = (typeof HttpRequestHttpMethod)[keyof typeof HttpRequestHttpMethod];
 
+export const HttpTargetHttpMethod = {
+    /**
+     * HTTP method unspecified
+     */
+    HttpMethodUnspecified: "HTTP_METHOD_UNSPECIFIED",
+    /**
+     * HTTP POST
+     */
+    Post: "POST",
+    /**
+     * HTTP GET
+     */
+    Get: "GET",
+    /**
+     * HTTP HEAD
+     */
+    Head: "HEAD",
+    /**
+     * HTTP PUT
+     */
+    Put: "PUT",
+    /**
+     * HTTP DELETE
+     */
+    Delete: "DELETE",
+    /**
+     * HTTP PATCH
+     */
+    Patch: "PATCH",
+    /**
+     * HTTP OPTIONS
+     */
+    Options: "OPTIONS",
+} as const;
+
+/**
+ * The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+ */
+export type HttpTargetHttpMethod = (typeof HttpTargetHttpMethod)[keyof typeof HttpTargetHttpMethod];
+
 export const TaskResponseView = {
     /**
      * Unspecified. Defaults to BASIC.
@@ -101,3 +141,43 @@ export const TaskResponseView = {
  * The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
  */
 export type TaskResponseView = (typeof TaskResponseView)[keyof typeof TaskResponseView];
+
+export const UriOverrideScheme = {
+    /**
+     * Scheme unspecified. Defaults to HTTPS.
+     */
+    SchemeUnspecified: "SCHEME_UNSPECIFIED",
+    /**
+     * Convert the scheme to HTTP, e.g., https://www.google.ca will change to http://www.google.ca.
+     */
+    Http: "HTTP",
+    /**
+     * Convert the scheme to HTTPS, e.g., http://www.google.ca will change to https://www.google.ca.
+     */
+    Https: "HTTPS",
+} as const;
+
+/**
+ * Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+ */
+export type UriOverrideScheme = (typeof UriOverrideScheme)[keyof typeof UriOverrideScheme];
+
+export const UriOverrideUriOverrideEnforceMode = {
+    /**
+     * UriOverrideEnforceMode Unspecified. Defaults to ALWAYS.
+     */
+    UriOverrideEnforceModeUnspecified: "URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED",
+    /**
+     * In the IF_NOT_EXISTS mode, queue-level configuration is only applied where task-level configuration does not exist.
+     */
+    IfNotExists: "IF_NOT_EXISTS",
+    /**
+     * In the ALWAYS mode, queue-level configuration overrides all task-level configuration
+     */
+    Always: "ALWAYS",
+} as const;
+
+/**
+ * URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+ */
+export type UriOverrideUriOverrideEnforceMode = (typeof UriOverrideUriOverrideEnforceMode)[keyof typeof UriOverrideUriOverrideEnforceMode];

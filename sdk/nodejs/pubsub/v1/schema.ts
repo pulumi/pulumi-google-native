@@ -55,7 +55,7 @@ export class Schema extends pulumi.CustomResource {
      */
     public /*out*/ readonly revisionId!: pulumi.Output<string>;
     /**
-     * The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+     * The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
      */
     public readonly schemaId!: pulumi.Output<string | undefined>;
     /**
@@ -111,7 +111,7 @@ export interface SchemaArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+     * The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
      */
     schemaId?: pulumi.Input<string>;
     /**

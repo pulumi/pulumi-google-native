@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1FormParameterResponse
     {
         /// <summary>
+        /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse AdvancedSettings;
+        /// <summary>
         /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         /// </summary>
         public readonly object DefaultValue;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDialogflowCxV3beta1FormParameterResponse(
+            Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse advancedSettings,
+
             object defaultValue,
 
             string displayName,
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
             bool required)
         {
+            AdvancedSettings = advancedSettings;
             DefaultValue = defaultValue;
             DisplayName = displayName;
             EntityType = entityType;

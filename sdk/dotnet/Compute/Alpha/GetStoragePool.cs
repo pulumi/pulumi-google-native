@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetStoragePoolResult
     {
         /// <summary>
+        /// Provisioning type of the byte capacity of the pool.
+        /// </summary>
+        public readonly string CapacityProvisioningType;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -88,9 +92,17 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+        /// </summary>
+        public readonly string PerformanceProvisioningType;
+        /// <summary>
         /// Provsioned IOPS of the storage pool.
         /// </summary>
         public readonly string ProvisionedIops;
+        /// <summary>
+        /// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        /// </summary>
+        public readonly string ProvisionedThroughput;
         /// <summary>
         /// Status information for the storage pool resource.
         /// </summary>
@@ -112,9 +124,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Type of the storage pool
+        /// Status information for the storage pool resource.
         /// </summary>
-        public readonly string Type;
+        public readonly Outputs.StoragePoolResourceStatusResponse Status;
+        /// <summary>
+        /// Type of the storage pool.
+        /// </summary>
+        public readonly string StoragePoolType;
         /// <summary>
         /// URL of the zone where the storage pool resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
@@ -122,6 +138,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetStoragePoolResult(
+            string capacityProvisioningType,
+
             string creationTimestamp,
 
             string description,
@@ -134,7 +152,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string name,
 
+            string performanceProvisioningType,
+
             string provisionedIops,
+
+            string provisionedThroughput,
 
             Outputs.StoragePoolResourceStatusResponse resourceStatus,
 
@@ -146,23 +168,29 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string state,
 
-            string type,
+            Outputs.StoragePoolResourceStatusResponse status,
+
+            string storagePoolType,
 
             string zone)
         {
+            CapacityProvisioningType = capacityProvisioningType;
             CreationTimestamp = creationTimestamp;
             Description = description;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;
             Name = name;
+            PerformanceProvisioningType = performanceProvisioningType;
             ProvisionedIops = provisionedIops;
+            ProvisionedThroughput = provisionedThroughput;
             ResourceStatus = resourceStatus;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             SizeGb = sizeGb;
             State = state;
-            Type = type;
+            Status = status;
+            StoragePoolType = storagePoolType;
             Zone = zone;
         }
     }

@@ -721,7 +721,7 @@
       }
     }
   },
-  "revision": "20230508",
+  "revision": "20231113",
   "rootUrl": "https://tpu.googleapis.com/",
   "schemas": {
     "AcceleratorConfig": {
@@ -767,7 +767,7 @@
           "type": "string"
         },
         "type": {
-          "description": "the accelerator type.",
+          "description": "The accelerator type.",
           "type": "string"
         }
       },
@@ -1110,7 +1110,7 @@
           "description": "The AccleratorConfig for the TPU Node."
         },
         "acceleratorType": {
-          "description": "Required. The type of hardware accelerators associated with this node.",
+          "description": "Optional. The type of hardware accelerators associated with this node.",
           "type": "string"
         },
         "apiVersion": {
@@ -1196,6 +1196,11 @@
           "description": "Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script",
           "type": "object"
         },
+        "multisliceNode": {
+          "description": "Output only. Whether the Node belongs to a Multislice group.",
+          "readOnly": true,
+          "type": "boolean"
+        },
         "name": {
           "description": "Output only. Immutable. The name of the TPU.",
           "readOnly": true,
@@ -1212,6 +1217,11 @@
           },
           "readOnly": true,
           "type": "array"
+        },
+        "queuedResource": {
+          "description": "Output only. The qualified name of the QueuedResource that requested this Node.",
+          "readOnly": true,
+          "type": "string"
         },
         "runtimeVersion": {
           "description": "Required. The runtime version running in the Node.",
@@ -1255,7 +1265,7 @@
             "TPU node is restarting.",
             "TPU node is undergoing reimaging.",
             "TPU node is being deleted.",
-            "TPU node is being repaired and may be unusable. Details can be found in the `help_description` field.",
+            "TPU node is being repaired and may be unusable. Details can be found in the 'help_description' field.",
             "TPU node is stopped.",
             "TPU node is currently stopping.",
             "TPU node is currently starting.",
@@ -1315,7 +1325,7 @@
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object"
         }
       },

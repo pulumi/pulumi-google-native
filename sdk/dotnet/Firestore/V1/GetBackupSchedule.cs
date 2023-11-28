@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+        /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         /// </summary>
         public readonly string Retention;
         /// <summary>

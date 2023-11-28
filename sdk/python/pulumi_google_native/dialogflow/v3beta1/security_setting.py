@@ -28,6 +28,7 @@ class SecuritySettingArgs:
                  purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]] = None,
                  redaction_scope: Optional[pulumi.Input['SecuritySettingRedactionScope']] = None,
                  redaction_strategy: Optional[pulumi.Input['SecuritySettingRedactionStrategy']] = None,
+                 retention_strategy: Optional[pulumi.Input['SecuritySettingRetentionStrategy']] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a SecuritySetting resource.
@@ -40,6 +41,7 @@ class SecuritySettingArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
         :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         :param pulumi.Input['SecuritySettingRedactionStrategy'] redaction_strategy: Strategy that defines how we do redaction.
+        :param pulumi.Input['SecuritySettingRetentionStrategy'] retention_strategy: Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
         :param pulumi.Input[int] retention_window_days: Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -63,6 +65,8 @@ class SecuritySettingArgs:
             pulumi.set(__self__, "redaction_scope", redaction_scope)
         if redaction_strategy is not None:
             pulumi.set(__self__, "redaction_strategy", redaction_strategy)
+        if retention_strategy is not None:
+            pulumi.set(__self__, "retention_strategy", retention_strategy)
         if retention_window_days is not None:
             pulumi.set(__self__, "retention_window_days", retention_window_days)
 
@@ -193,6 +197,18 @@ class SecuritySettingArgs:
         pulumi.set(self, "redaction_strategy", value)
 
     @property
+    @pulumi.getter(name="retentionStrategy")
+    def retention_strategy(self) -> Optional[pulumi.Input['SecuritySettingRetentionStrategy']]:
+        """
+        Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+        """
+        return pulumi.get(self, "retention_strategy")
+
+    @retention_strategy.setter
+    def retention_strategy(self, value: Optional[pulumi.Input['SecuritySettingRetentionStrategy']]):
+        pulumi.set(self, "retention_strategy", value)
+
+    @property
     @pulumi.getter(name="retentionWindowDays")
     def retention_window_days(self) -> Optional[pulumi.Input[int]]:
         """
@@ -221,6 +237,7 @@ class SecuritySetting(pulumi.CustomResource):
                  purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]] = None,
                  redaction_scope: Optional[pulumi.Input['SecuritySettingRedactionScope']] = None,
                  redaction_strategy: Optional[pulumi.Input['SecuritySettingRedactionStrategy']] = None,
+                 retention_strategy: Optional[pulumi.Input['SecuritySettingRetentionStrategy']] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -237,6 +254,7 @@ class SecuritySetting(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
         :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         :param pulumi.Input['SecuritySettingRedactionStrategy'] redaction_strategy: Strategy that defines how we do redaction.
+        :param pulumi.Input['SecuritySettingRetentionStrategy'] retention_strategy: Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
         :param pulumi.Input[int] retention_window_days: Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
         """
         ...
@@ -274,6 +292,7 @@ class SecuritySetting(pulumi.CustomResource):
                  purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]] = None,
                  redaction_scope: Optional[pulumi.Input['SecuritySettingRedactionScope']] = None,
                  redaction_strategy: Optional[pulumi.Input['SecuritySettingRedactionStrategy']] = None,
+                 retention_strategy: Optional[pulumi.Input['SecuritySettingRetentionStrategy']] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -297,6 +316,7 @@ class SecuritySetting(pulumi.CustomResource):
             __props__.__dict__["purge_data_types"] = purge_data_types
             __props__.__dict__["redaction_scope"] = redaction_scope
             __props__.__dict__["redaction_strategy"] = redaction_strategy
+            __props__.__dict__["retention_strategy"] = retention_strategy
             __props__.__dict__["retention_window_days"] = retention_window_days
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -333,6 +353,7 @@ class SecuritySetting(pulumi.CustomResource):
         __props__.__dict__["purge_data_types"] = None
         __props__.__dict__["redaction_scope"] = None
         __props__.__dict__["redaction_strategy"] = None
+        __props__.__dict__["retention_strategy"] = None
         __props__.__dict__["retention_window_days"] = None
         return SecuritySetting(resource_name, opts=opts, __props__=__props__)
 
@@ -417,6 +438,14 @@ class SecuritySetting(pulumi.CustomResource):
         Strategy that defines how we do redaction.
         """
         return pulumi.get(self, "redaction_strategy")
+
+    @property
+    @pulumi.getter(name="retentionStrategy")
+    def retention_strategy(self) -> pulumi.Output[str]:
+        """
+        Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+        """
+        return pulumi.get(self, "retention_strategy")
 
     @property
     @pulumi.getter(name="retentionWindowDays")

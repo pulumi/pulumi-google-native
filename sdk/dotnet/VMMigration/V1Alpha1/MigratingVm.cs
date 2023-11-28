@@ -23,6 +23,18 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Output<Outputs.AwsSourceVmDetailsResponse> AwsSourceVmDetails { get; private set; } = null!;
 
         /// <summary>
+        /// Details of the VM from an Azure source.
+        /// </summary>
+        [Output("azureSourceVmDetails")]
+        public Output<Outputs.AzureSourceVmDetailsResponse> AzureSourceVmDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Details of the target Persistent Disks in Compute Engine.
+        /// </summary>
+        [Output("computeEngineDisksTargetDefaults")]
+        public Output<Outputs.ComputeEngineDisksTargetDefaultsResponse> ComputeEngineDisksTargetDefaults { get; private set; } = null!;
+
+        /// <summary>
         /// Details of the target VM in Compute Engine.
         /// </summary>
         [Output("computeEngineTargetDefaults")]
@@ -169,6 +181,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Details of the VM from a Vmware source.
+        /// </summary>
+        [Output("vmwareSourceVmDetails")]
+        public Output<Outputs.VmwareSourceVmDetailsResponse> VmwareSourceVmDetails { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a MigratingVm resource with the given unique name, arguments, and options.
@@ -221,6 +239,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
     public sealed class MigratingVmArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Details of the target Persistent Disks in Compute Engine.
+        /// </summary>
+        [Input("computeEngineDisksTargetDefaults")]
+        public Input<Inputs.ComputeEngineDisksTargetDefaultsArgs>? ComputeEngineDisksTargetDefaults { get; set; }
+
         /// <summary>
         /// Details of the target VM in Compute Engine.
         /// </summary>

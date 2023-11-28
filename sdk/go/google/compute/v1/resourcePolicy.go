@@ -20,6 +20,8 @@ type ResourcePolicy struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	Description       pulumi.StringOutput `pulumi:"description"`
+	// Resource policy for disk consistency groups.
+	DiskConsistencyGroupPolicy ResourcePolicyDiskConsistencyGroupPolicyResponseOutput `pulumi:"diskConsistencyGroupPolicy"`
 	// Resource policy for instances for placement configuration.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyResponseOutput `pulumi:"groupPlacementPolicy"`
 	// Resource policy for scheduling instance operations.
@@ -91,6 +93,8 @@ func (ResourcePolicyState) ElementType() reflect.Type {
 
 type resourcePolicyArgs struct {
 	Description *string `pulumi:"description"`
+	// Resource policy for disk consistency groups.
+	DiskConsistencyGroupPolicy *ResourcePolicyDiskConsistencyGroupPolicy `pulumi:"diskConsistencyGroupPolicy"`
 	// Resource policy for instances for placement configuration.
 	GroupPlacementPolicy *ResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicy"`
 	// Resource policy for scheduling instance operations.
@@ -108,6 +112,8 @@ type resourcePolicyArgs struct {
 // The set of arguments for constructing a ResourcePolicy resource.
 type ResourcePolicyArgs struct {
 	Description pulumi.StringPtrInput
+	// Resource policy for disk consistency groups.
+	DiskConsistencyGroupPolicy ResourcePolicyDiskConsistencyGroupPolicyPtrInput
 	// Resource policy for instances for placement configuration.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrInput
 	// Resource policy for scheduling instance operations.
@@ -178,6 +184,13 @@ func (o ResourcePolicyOutput) CreationTimestamp() pulumi.StringOutput {
 
 func (o ResourcePolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourcePolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Resource policy for disk consistency groups.
+func (o ResourcePolicyOutput) DiskConsistencyGroupPolicy() ResourcePolicyDiskConsistencyGroupPolicyResponseOutput {
+	return o.ApplyT(func(v *ResourcePolicy) ResourcePolicyDiskConsistencyGroupPolicyResponseOutput {
+		return v.DiskConsistencyGroupPolicy
+	}).(ResourcePolicyDiskConsistencyGroupPolicyResponseOutput)
 }
 
 // Resource policy for instances for placement configuration.

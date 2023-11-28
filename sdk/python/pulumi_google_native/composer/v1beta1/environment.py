@@ -22,13 +22,15 @@ class EnvironmentArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['EnvironmentState']] = None):
+                 state: Optional[pulumi.Input['EnvironmentState']] = None,
+                 storage_config: Optional[pulumi.Input['StorageConfigArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62} * Values must conform to regexp: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] name: The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input['EnvironmentState'] state: The current state of the environment.
+        :param pulumi.Input['StorageConfigArgs'] storage_config: Optional. Storage configuration for this environment.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -42,6 +44,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if storage_config is not None:
+            pulumi.set(__self__, "storage_config", storage_config)
 
     @property
     @pulumi.getter
@@ -109,6 +113,18 @@ class EnvironmentArgs:
     def state(self, value: Optional[pulumi.Input['EnvironmentState']]):
         pulumi.set(self, "state", value)
 
+    @property
+    @pulumi.getter(name="storageConfig")
+    def storage_config(self) -> Optional[pulumi.Input['StorageConfigArgs']]:
+        """
+        Optional. Storage configuration for this environment.
+        """
+        return pulumi.get(self, "storage_config")
+
+    @storage_config.setter
+    def storage_config(self, value: Optional[pulumi.Input['StorageConfigArgs']]):
+        pulumi.set(self, "storage_config", value)
+
 
 class Environment(pulumi.CustomResource):
     @overload
@@ -121,6 +137,7 @@ class Environment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['EnvironmentState']] = None,
+                 storage_config: Optional[pulumi.Input[pulumi.InputType['StorageConfigArgs']]] = None,
                  __props__=None):
         """
         Create a new environment.
@@ -131,6 +148,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62} * Values must conform to regexp: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] name: The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input['EnvironmentState'] state: The current state of the environment.
+        :param pulumi.Input[pulumi.InputType['StorageConfigArgs']] storage_config: Optional. Storage configuration for this environment.
         """
         ...
     @overload
@@ -162,6 +180,7 @@ class Environment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['EnvironmentState']] = None,
+                 storage_config: Optional[pulumi.Input[pulumi.InputType['StorageConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -177,7 +196,9 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
+            __props__.__dict__["storage_config"] = storage_config
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["uuid"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
@@ -210,7 +231,9 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["storage_config"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["uuid"] = None
         return Environment(resource_name, opts=opts, __props__=__props__)
@@ -258,12 +281,28 @@ class Environment(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
         The current state of the environment.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="storageConfig")
+    def storage_config(self) -> pulumi.Output['outputs.StorageConfigResponse']:
+        """
+        Optional. Storage configuration for this environment.
+        """
+        return pulumi.get(self, "storage_config")
 
     @property
     @pulumi.getter(name="updateTime")

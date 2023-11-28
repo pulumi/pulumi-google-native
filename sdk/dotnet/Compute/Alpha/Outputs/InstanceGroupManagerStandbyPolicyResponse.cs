@@ -14,11 +14,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class InstanceGroupManagerStandbyPolicyResponse
     {
         public readonly int InitialDelaySec;
+        /// <summary>
+        /// Defines behaviour of using instances from standby pool to resize MIG.
+        /// </summary>
+        public readonly string Mode;
 
         [OutputConstructor]
-        private InstanceGroupManagerStandbyPolicyResponse(int initialDelaySec)
+        private InstanceGroupManagerStandbyPolicyResponse(
+            int initialDelaySec,
+
+            string mode)
         {
             InitialDelaySec = initialDelaySec;
+            Mode = mode;
         }
     }
 }

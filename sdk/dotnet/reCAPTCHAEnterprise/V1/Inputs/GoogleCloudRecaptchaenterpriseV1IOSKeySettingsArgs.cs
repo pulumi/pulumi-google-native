@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     public sealed class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to true, allowed_bundle_ids are not enforced.
+        /// Optional. If set to true, allowed_bundle_ids are not enforced.
         /// </summary>
         [Input("allowAllBundleIds")]
         public Input<bool>? AllowAllBundleIds { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         private InputList<string>? _allowedBundleIds;
 
         /// <summary>
-        /// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
+        /// Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         /// </summary>
         public InputList<string> AllowedBundleIds
         {
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         }
 
         /// <summary>
-        /// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+        /// Optional. Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
         /// </summary>
         [Input("appleDeveloperId")]
         public Input<Inputs.GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs>? AppleDeveloperId { get; set; }

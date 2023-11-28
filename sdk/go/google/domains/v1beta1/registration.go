@@ -46,7 +46,9 @@ type Registration struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Set of options for the `contact_settings.privacy` field that this `Registration` supports.
 	SupportedPrivacy pulumi.StringArrayOutput `pulumi:"supportedPrivacy"`
-	// The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+	// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+	//
+	// Deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
 	TransferFailureReason pulumi.StringOutput `pulumi:"transferFailureReason"`
 }
 
@@ -272,7 +274,9 @@ func (o RegistrationOutput) SupportedPrivacy() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringArrayOutput { return v.SupportedPrivacy }).(pulumi.StringArrayOutput)
 }
 
-// The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+//
+// Deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
 func (o RegistrationOutput) TransferFailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.TransferFailureReason }).(pulumi.StringOutput)
 }

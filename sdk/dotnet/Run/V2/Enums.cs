@@ -168,7 +168,7 @@ namespace Pulumi.GoogleNative.Run.V2
     }
 
     /// <summary>
-    /// Traffic VPC egress settings.
+    /// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
     /// </summary>
     [EnumType]
     public readonly struct GoogleCloudRunV2VpcAccessEgress : IEquatable<GoogleCloudRunV2VpcAccessEgress>

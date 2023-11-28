@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeGroupResult:
-    def __init__(__self__, autoscaling_policy=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, location_hint=None, maintenance_policy=None, maintenance_window=None, name=None, node_template=None, self_link=None, share_settings=None, size=None, status=None, zone=None):
+    def __init__(__self__, autoscaling_policy=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, location_hint=None, maintenance_interval=None, maintenance_policy=None, maintenance_window=None, name=None, node_template=None, self_link=None, share_settings=None, size=None, status=None, zone=None):
         if autoscaling_policy and not isinstance(autoscaling_policy, dict):
             raise TypeError("Expected argument 'autoscaling_policy' to be a dict")
         pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
@@ -38,6 +38,9 @@ class GetNodeGroupResult:
         if location_hint and not isinstance(location_hint, str):
             raise TypeError("Expected argument 'location_hint' to be a str")
         pulumi.set(__self__, "location_hint", location_hint)
+        if maintenance_interval and not isinstance(maintenance_interval, str):
+            raise TypeError("Expected argument 'maintenance_interval' to be a str")
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if maintenance_policy and not isinstance(maintenance_policy, str):
             raise TypeError("Expected argument 'maintenance_policy' to be a str")
         pulumi.set(__self__, "maintenance_policy", maintenance_policy)
@@ -110,6 +113,14 @@ class GetNodeGroupResult:
         An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
         """
         return pulumi.get(self, "location_hint")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> str:
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+        """
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="maintenancePolicy")
@@ -190,6 +201,7 @@ class AwaitableGetNodeGroupResult(GetNodeGroupResult):
             fingerprint=self.fingerprint,
             kind=self.kind,
             location_hint=self.location_hint,
+            maintenance_interval=self.maintenance_interval,
             maintenance_policy=self.maintenance_policy,
             maintenance_window=self.maintenance_window,
             name=self.name,
@@ -222,6 +234,7 @@ def get_node_group(node_group: Optional[str] = None,
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         kind=pulumi.get(__ret__, 'kind'),
         location_hint=pulumi.get(__ret__, 'location_hint'),
+        maintenance_interval=pulumi.get(__ret__, 'maintenance_interval'),
         maintenance_policy=pulumi.get(__ret__, 'maintenance_policy'),
         maintenance_window=pulumi.get(__ret__, 'maintenance_window'),
         name=pulumi.get(__ret__, 'name'),

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     public sealed class ScorecardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
+        /// </summary>
+        [Input("blankView")]
+        public Input<Inputs.EmptyArgs>? BlankView { get; set; }
+
+        /// <summary>
         /// Will cause the scorecard to show a gauge chart.
         /// </summary>
         [Input("gaugeView")]

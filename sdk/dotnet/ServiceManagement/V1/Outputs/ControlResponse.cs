@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
         /// </summary>
         public readonly string Environment;
+        /// <summary>
+        /// Defines policies applying to the API methods of the service.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.MethodPolicyResponse> MethodPolicies;
 
         [OutputConstructor]
-        private ControlResponse(string environment)
+        private ControlResponse(
+            string environment,
+
+            ImmutableArray<Outputs.MethodPolicyResponse> methodPolicies)
         {
             Environment = environment;
+            MethodPolicies = methodPolicies;
         }
     }
 }

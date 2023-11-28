@@ -196,6 +196,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         }
 
         /// <summary>
+        /// A map of resource manager tag keys and values to be attached to the nodes.
+        /// </summary>
+        [Input("resourceManagerTags")]
+        public Input<Inputs.ResourceManagerTagsArgs>? ResourceManagerTags { get; set; }
+
+        /// <summary>
         /// Sandbox configuration for this node.
         /// </summary>
         [Input("sandboxConfig")]
@@ -212,6 +218,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
+        /// Parameters for node pools to be backed by shared sole tenant node groups.
+        /// </summary>
+        [Input("soleTenantConfig")]
+        public Input<Inputs.SoleTenantConfigArgs>? SoleTenantConfig { get; set; }
 
         /// <summary>
         /// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.

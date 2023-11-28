@@ -750,6 +750,8 @@ func (o ConsumerArrayOutput) Index(i pulumi.IntInput) ConsumerOutput {
 
 // Contains information of the customer's network configurations.
 type ConsumerResponse struct {
+	// The location of the endpoint URI. Format: projects/{project}/locations/{location}.
+	EndpointLocation string `pulumi:"endpointLocation"`
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri string `pulumi:"endpointUri"`
 	// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
@@ -775,6 +777,11 @@ func (o ConsumerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Con
 	return pulumix.Output[ConsumerResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// The location of the endpoint URI. Format: projects/{project}/locations/{location}.
+func (o ConsumerResponseOutput) EndpointLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerResponse) string { return v.EndpointLocation }).(pulumi.StringOutput)
 }
 
 // The URI of the endpoint used to access the metastore service.
@@ -811,6 +818,202 @@ func (o ConsumerResponseArrayOutput) Index(i pulumi.IntInput) ConsumerResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsumerResponse {
 		return vs[0].([]ConsumerResponse)[vs[1].(int)]
 	}).(ConsumerResponseOutput)
+}
+
+// Specifies how metastore metadata should be integrated with the Data Catalog service.
+type DataCatalogConfig struct {
+	// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DataCatalogConfigInput is an input type that accepts DataCatalogConfigArgs and DataCatalogConfigOutput values.
+// You can construct a concrete instance of `DataCatalogConfigInput` via:
+//
+//	DataCatalogConfigArgs{...}
+type DataCatalogConfigInput interface {
+	pulumi.Input
+
+	ToDataCatalogConfigOutput() DataCatalogConfigOutput
+	ToDataCatalogConfigOutputWithContext(context.Context) DataCatalogConfigOutput
+}
+
+// Specifies how metastore metadata should be integrated with the Data Catalog service.
+type DataCatalogConfigArgs struct {
+	// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DataCatalogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCatalogConfig)(nil)).Elem()
+}
+
+func (i DataCatalogConfigArgs) ToDataCatalogConfigOutput() DataCatalogConfigOutput {
+	return i.ToDataCatalogConfigOutputWithContext(context.Background())
+}
+
+func (i DataCatalogConfigArgs) ToDataCatalogConfigOutputWithContext(ctx context.Context) DataCatalogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogConfigOutput)
+}
+
+func (i DataCatalogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DataCatalogConfig] {
+	return pulumix.Output[DataCatalogConfig]{
+		OutputState: i.ToDataCatalogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DataCatalogConfigArgs) ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput {
+	return i.ToDataCatalogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataCatalogConfigArgs) ToDataCatalogConfigPtrOutputWithContext(ctx context.Context) DataCatalogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogConfigOutput).ToDataCatalogConfigPtrOutputWithContext(ctx)
+}
+
+// DataCatalogConfigPtrInput is an input type that accepts DataCatalogConfigArgs, DataCatalogConfigPtr and DataCatalogConfigPtrOutput values.
+// You can construct a concrete instance of `DataCatalogConfigPtrInput` via:
+//
+//	        DataCatalogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataCatalogConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput
+	ToDataCatalogConfigPtrOutputWithContext(context.Context) DataCatalogConfigPtrOutput
+}
+
+type dataCatalogConfigPtrType DataCatalogConfigArgs
+
+func DataCatalogConfigPtr(v *DataCatalogConfigArgs) DataCatalogConfigPtrInput {
+	return (*dataCatalogConfigPtrType)(v)
+}
+
+func (*dataCatalogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataCatalogConfig)(nil)).Elem()
+}
+
+func (i *dataCatalogConfigPtrType) ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput {
+	return i.ToDataCatalogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataCatalogConfigPtrType) ToDataCatalogConfigPtrOutputWithContext(ctx context.Context) DataCatalogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogConfigPtrOutput)
+}
+
+func (i *dataCatalogConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataCatalogConfig] {
+	return pulumix.Output[*DataCatalogConfig]{
+		OutputState: i.ToDataCatalogConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Specifies how metastore metadata should be integrated with the Data Catalog service.
+type DataCatalogConfigOutput struct{ *pulumi.OutputState }
+
+func (DataCatalogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCatalogConfig)(nil)).Elem()
+}
+
+func (o DataCatalogConfigOutput) ToDataCatalogConfigOutput() DataCatalogConfigOutput {
+	return o
+}
+
+func (o DataCatalogConfigOutput) ToDataCatalogConfigOutputWithContext(ctx context.Context) DataCatalogConfigOutput {
+	return o
+}
+
+func (o DataCatalogConfigOutput) ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput {
+	return o.ToDataCatalogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataCatalogConfigOutput) ToDataCatalogConfigPtrOutputWithContext(ctx context.Context) DataCatalogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataCatalogConfig) *DataCatalogConfig {
+		return &v
+	}).(DataCatalogConfigPtrOutput)
+}
+
+func (o DataCatalogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DataCatalogConfig] {
+	return pulumix.Output[DataCatalogConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+func (o DataCatalogConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataCatalogConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DataCatalogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataCatalogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataCatalogConfig)(nil)).Elem()
+}
+
+func (o DataCatalogConfigPtrOutput) ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput {
+	return o
+}
+
+func (o DataCatalogConfigPtrOutput) ToDataCatalogConfigPtrOutputWithContext(ctx context.Context) DataCatalogConfigPtrOutput {
+	return o
+}
+
+func (o DataCatalogConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataCatalogConfig] {
+	return pulumix.Output[*DataCatalogConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DataCatalogConfigPtrOutput) Elem() DataCatalogConfigOutput {
+	return o.ApplyT(func(v *DataCatalogConfig) DataCatalogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataCatalogConfig
+		return ret
+	}).(DataCatalogConfigOutput)
+}
+
+// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+func (o DataCatalogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataCatalogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies how metastore metadata should be integrated with the Data Catalog service.
+type DataCatalogConfigResponse struct {
+	// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Specifies how metastore metadata should be integrated with the Data Catalog service.
+type DataCatalogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DataCatalogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCatalogConfigResponse)(nil)).Elem()
+}
+
+func (o DataCatalogConfigResponseOutput) ToDataCatalogConfigResponseOutput() DataCatalogConfigResponseOutput {
+	return o
+}
+
+func (o DataCatalogConfigResponseOutput) ToDataCatalogConfigResponseOutputWithContext(ctx context.Context) DataCatalogConfigResponseOutput {
+	return o
+}
+
+func (o DataCatalogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataCatalogConfigResponse] {
+	return pulumix.Output[DataCatalogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+func (o DataCatalogConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DataCatalogConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // A specification of the location of and metadata about a database dump from a relational database management system.
@@ -1563,6 +1766,8 @@ type HiveMetastoreConfig struct {
 	AuxiliaryVersions map[string]string `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+	EndpointProtocol *HiveMetastoreConfigEndpointProtocol `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 	KerberosConfig *KerberosConfig `pulumi:"kerberosConfig"`
 	// Immutable. The Hive metastore schema version.
@@ -1586,6 +1791,8 @@ type HiveMetastoreConfigArgs struct {
 	AuxiliaryVersions pulumi.StringMapInput `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+	EndpointProtocol HiveMetastoreConfigEndpointProtocolPtrInput `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 	KerberosConfig KerberosConfigPtrInput `pulumi:"kerberosConfig"`
 	// Immutable. The Hive metastore schema version.
@@ -1698,6 +1905,11 @@ func (o HiveMetastoreConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+func (o HiveMetastoreConfigOutput) EndpointProtocol() HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return o.ApplyT(func(v HiveMetastoreConfig) *HiveMetastoreConfigEndpointProtocol { return v.EndpointProtocol }).(HiveMetastoreConfigEndpointProtocolPtrOutput)
+}
+
 // Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 func (o HiveMetastoreConfigOutput) KerberosConfig() KerberosConfigPtrOutput {
 	return o.ApplyT(func(v HiveMetastoreConfig) *KerberosConfig { return v.KerberosConfig }).(KerberosConfigPtrOutput)
@@ -1758,6 +1970,16 @@ func (o HiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+func (o HiveMetastoreConfigPtrOutput) EndpointProtocol() HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return o.ApplyT(func(v *HiveMetastoreConfig) *HiveMetastoreConfigEndpointProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointProtocol
+	}).(HiveMetastoreConfigEndpointProtocolPtrOutput)
+}
+
 // Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 func (o HiveMetastoreConfigPtrOutput) KerberosConfig() KerberosConfigPtrOutput {
 	return o.ApplyT(func(v *HiveMetastoreConfig) *KerberosConfig {
@@ -1784,6 +2006,8 @@ type HiveMetastoreConfigResponse struct {
 	AuxiliaryVersions map[string]string `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+	EndpointProtocol string `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 	KerberosConfig KerberosConfigResponse `pulumi:"kerberosConfig"`
 	// Immutable. The Hive metastore schema version.
@@ -1819,6 +2043,11 @@ func (o HiveMetastoreConfigResponseOutput) AuxiliaryVersions() pulumi.StringMapO
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 func (o HiveMetastoreConfigResponseOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveMetastoreConfigResponse) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
+}
+
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+func (o HiveMetastoreConfigResponseOutput) EndpointProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveMetastoreConfigResponse) string { return v.EndpointProtocol }).(pulumi.StringOutput)
 }
 
 // Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
@@ -2387,6 +2616,202 @@ func (o MetadataExportResponseArrayOutput) Index(i pulumi.IntInput) MetadataExpo
 	}).(MetadataExportResponseOutput)
 }
 
+// Specifies how metastore metadata should be integrated with external services.
+type MetadataIntegration struct {
+	// Optional. The integration config for the Data Catalog service.
+	DataCatalogConfig *DataCatalogConfig `pulumi:"dataCatalogConfig"`
+}
+
+// MetadataIntegrationInput is an input type that accepts MetadataIntegrationArgs and MetadataIntegrationOutput values.
+// You can construct a concrete instance of `MetadataIntegrationInput` via:
+//
+//	MetadataIntegrationArgs{...}
+type MetadataIntegrationInput interface {
+	pulumi.Input
+
+	ToMetadataIntegrationOutput() MetadataIntegrationOutput
+	ToMetadataIntegrationOutputWithContext(context.Context) MetadataIntegrationOutput
+}
+
+// Specifies how metastore metadata should be integrated with external services.
+type MetadataIntegrationArgs struct {
+	// Optional. The integration config for the Data Catalog service.
+	DataCatalogConfig DataCatalogConfigPtrInput `pulumi:"dataCatalogConfig"`
+}
+
+func (MetadataIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataIntegration)(nil)).Elem()
+}
+
+func (i MetadataIntegrationArgs) ToMetadataIntegrationOutput() MetadataIntegrationOutput {
+	return i.ToMetadataIntegrationOutputWithContext(context.Background())
+}
+
+func (i MetadataIntegrationArgs) ToMetadataIntegrationOutputWithContext(ctx context.Context) MetadataIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataIntegrationOutput)
+}
+
+func (i MetadataIntegrationArgs) ToOutput(ctx context.Context) pulumix.Output[MetadataIntegration] {
+	return pulumix.Output[MetadataIntegration]{
+		OutputState: i.ToMetadataIntegrationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i MetadataIntegrationArgs) ToMetadataIntegrationPtrOutput() MetadataIntegrationPtrOutput {
+	return i.ToMetadataIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i MetadataIntegrationArgs) ToMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetadataIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataIntegrationOutput).ToMetadataIntegrationPtrOutputWithContext(ctx)
+}
+
+// MetadataIntegrationPtrInput is an input type that accepts MetadataIntegrationArgs, MetadataIntegrationPtr and MetadataIntegrationPtrOutput values.
+// You can construct a concrete instance of `MetadataIntegrationPtrInput` via:
+//
+//	        MetadataIntegrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetadataIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToMetadataIntegrationPtrOutput() MetadataIntegrationPtrOutput
+	ToMetadataIntegrationPtrOutputWithContext(context.Context) MetadataIntegrationPtrOutput
+}
+
+type metadataIntegrationPtrType MetadataIntegrationArgs
+
+func MetadataIntegrationPtr(v *MetadataIntegrationArgs) MetadataIntegrationPtrInput {
+	return (*metadataIntegrationPtrType)(v)
+}
+
+func (*metadataIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataIntegration)(nil)).Elem()
+}
+
+func (i *metadataIntegrationPtrType) ToMetadataIntegrationPtrOutput() MetadataIntegrationPtrOutput {
+	return i.ToMetadataIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *metadataIntegrationPtrType) ToMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetadataIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataIntegrationPtrOutput)
+}
+
+func (i *metadataIntegrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetadataIntegration] {
+	return pulumix.Output[*MetadataIntegration]{
+		OutputState: i.ToMetadataIntegrationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Specifies how metastore metadata should be integrated with external services.
+type MetadataIntegrationOutput struct{ *pulumi.OutputState }
+
+func (MetadataIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataIntegration)(nil)).Elem()
+}
+
+func (o MetadataIntegrationOutput) ToMetadataIntegrationOutput() MetadataIntegrationOutput {
+	return o
+}
+
+func (o MetadataIntegrationOutput) ToMetadataIntegrationOutputWithContext(ctx context.Context) MetadataIntegrationOutput {
+	return o
+}
+
+func (o MetadataIntegrationOutput) ToMetadataIntegrationPtrOutput() MetadataIntegrationPtrOutput {
+	return o.ToMetadataIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataIntegrationOutput) ToMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetadataIntegrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataIntegration) *MetadataIntegration {
+		return &v
+	}).(MetadataIntegrationPtrOutput)
+}
+
+func (o MetadataIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataIntegration] {
+	return pulumix.Output[MetadataIntegration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The integration config for the Data Catalog service.
+func (o MetadataIntegrationOutput) DataCatalogConfig() DataCatalogConfigPtrOutput {
+	return o.ApplyT(func(v MetadataIntegration) *DataCatalogConfig { return v.DataCatalogConfig }).(DataCatalogConfigPtrOutput)
+}
+
+type MetadataIntegrationPtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataIntegration)(nil)).Elem()
+}
+
+func (o MetadataIntegrationPtrOutput) ToMetadataIntegrationPtrOutput() MetadataIntegrationPtrOutput {
+	return o
+}
+
+func (o MetadataIntegrationPtrOutput) ToMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetadataIntegrationPtrOutput {
+	return o
+}
+
+func (o MetadataIntegrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataIntegration] {
+	return pulumix.Output[*MetadataIntegration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MetadataIntegrationPtrOutput) Elem() MetadataIntegrationOutput {
+	return o.ApplyT(func(v *MetadataIntegration) MetadataIntegration {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataIntegration
+		return ret
+	}).(MetadataIntegrationOutput)
+}
+
+// Optional. The integration config for the Data Catalog service.
+func (o MetadataIntegrationPtrOutput) DataCatalogConfig() DataCatalogConfigPtrOutput {
+	return o.ApplyT(func(v *MetadataIntegration) *DataCatalogConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataCatalogConfig
+	}).(DataCatalogConfigPtrOutput)
+}
+
+// Specifies how metastore metadata should be integrated with external services.
+type MetadataIntegrationResponse struct {
+	// Optional. The integration config for the Data Catalog service.
+	DataCatalogConfig DataCatalogConfigResponse `pulumi:"dataCatalogConfig"`
+}
+
+// Specifies how metastore metadata should be integrated with external services.
+type MetadataIntegrationResponseOutput struct{ *pulumi.OutputState }
+
+func (MetadataIntegrationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataIntegrationResponse)(nil)).Elem()
+}
+
+func (o MetadataIntegrationResponseOutput) ToMetadataIntegrationResponseOutput() MetadataIntegrationResponseOutput {
+	return o
+}
+
+func (o MetadataIntegrationResponseOutput) ToMetadataIntegrationResponseOutputWithContext(ctx context.Context) MetadataIntegrationResponseOutput {
+	return o
+}
+
+func (o MetadataIntegrationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataIntegrationResponse] {
+	return pulumix.Output[MetadataIntegrationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The integration config for the Data Catalog service.
+func (o MetadataIntegrationResponseOutput) DataCatalogConfig() DataCatalogConfigResponseOutput {
+	return o.ApplyT(func(v MetadataIntegrationResponse) DataCatalogConfigResponse { return v.DataCatalogConfig }).(DataCatalogConfigResponseOutput)
+}
+
 // The metadata management activities of the metastore service.
 type MetadataManagementActivityResponse struct {
 	// The latest metadata exports of the metastore service.
@@ -2626,6 +3051,8 @@ func (o NetworkConfigResponseOutput) Consumers() ConsumerResponseArrayOutput {
 type RestoreResponse struct {
 	// The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
 	Backup string `pulumi:"backup"`
+	// Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
+	BackupLocation string `pulumi:"backupLocation"`
 	// The restore details containing the revision of the service to be restored to, in format of JSON.
 	Details string `pulumi:"details"`
 	// The time when the restore ended.
@@ -2662,6 +3089,11 @@ func (o RestoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Rest
 // The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
 func (o RestoreResponseOutput) Backup() pulumi.StringOutput {
 	return o.ApplyT(func(v RestoreResponse) string { return v.Backup }).(pulumi.StringOutput)
+}
+
+// Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
+func (o RestoreResponseOutput) BackupLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreResponse) string { return v.BackupLocation }).(pulumi.StringOutput)
 }
 
 // The restore details containing the revision of the service to be restored to, in format of JSON.
@@ -3151,6 +3583,8 @@ type ServiceResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
+	// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+	MetadataIntegration MetadataIntegrationResponse `pulumi:"metadataIntegration"`
 	// The metadata management activities of the metastore service.
 	MetadataManagementActivity MetadataManagementActivityResponse `pulumi:"metadataManagementActivity"`
 	// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
@@ -3238,6 +3672,11 @@ func (o ServiceResponseOutput) Labels() pulumi.StringMapOutput {
 // The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 func (o ServiceResponseOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
 	return o.ApplyT(func(v ServiceResponse) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
+}
+
+// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+func (o ServiceResponseOutput) MetadataIntegration() MetadataIntegrationResponseOutput {
+	return o.ApplyT(func(v ServiceResponse) MetadataIntegrationResponse { return v.MetadataIntegration }).(MetadataIntegrationResponseOutput)
 }
 
 // The metadata management activities of the metastore service.
@@ -3510,6 +3949,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerInput)(nil)).Elem(), ConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerArrayInput)(nil)).Elem(), ConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigInput)(nil)).Elem(), DataCatalogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigPtrInput)(nil)).Elem(), DataCatalogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpInput)(nil)).Elem(), DatabaseDumpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpPtrInput)(nil)).Elem(), DatabaseDumpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
@@ -3522,6 +3963,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigPtrInput)(nil)).Elem(), KerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationInput)(nil)).Elem(), MetadataIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationPtrInput)(nil)).Elem(), MetadataIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigInput)(nil)).Elem(), ScalingConfigArgs{})
@@ -3546,6 +3989,9 @@ func init() {
 	pulumi.RegisterOutputType(ConsumerArrayOutput{})
 	pulumi.RegisterOutputType(ConsumerResponseOutput{})
 	pulumi.RegisterOutputType(ConsumerResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataCatalogConfigOutput{})
+	pulumi.RegisterOutputType(DataCatalogConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataCatalogConfigResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpResponseOutput{})
@@ -3566,6 +4012,9 @@ func init() {
 	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
 	pulumi.RegisterOutputType(MetadataExportResponseOutput{})
 	pulumi.RegisterOutputType(MetadataExportResponseArrayOutput{})
+	pulumi.RegisterOutputType(MetadataIntegrationOutput{})
+	pulumi.RegisterOutputType(MetadataIntegrationPtrOutput{})
+	pulumi.RegisterOutputType(MetadataIntegrationResponseOutput{})
 	pulumi.RegisterOutputType(MetadataManagementActivityResponseOutput{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})

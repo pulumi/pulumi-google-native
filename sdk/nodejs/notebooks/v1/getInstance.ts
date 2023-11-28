@@ -80,6 +80,10 @@ export interface GetInstanceResult {
      */
     readonly installGpuDriver: boolean;
     /**
+     * Checks how feasible a migration from UmN to WbI is.
+     */
+    readonly instanceMigrationEligibility: outputs.notebooks.v1.InstanceMigrationEligibilityResponse;
+    /**
      * Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
      */
     readonly instanceOwners: string[];
@@ -96,9 +100,13 @@ export interface GetInstanceResult {
      */
     readonly machineType: string;
     /**
-     * Custom metadata to apply to this instance.
+     * Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
      */
     readonly metadata: {[key: string]: string};
+    /**
+     * Bool indicating whether this notebook has been migrated to a Workbench Instance
+     */
+    readonly migrated: boolean;
     /**
      * The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
      */
@@ -116,7 +124,7 @@ export interface GetInstanceResult {
      */
     readonly noProxyAccess: boolean;
     /**
-     * If true, no public IP will be assigned to this instance.
+     * If true, no external IP will be assigned to this instance.
      */
     readonly noPublicIp: boolean;
     /**

@@ -72,6 +72,10 @@ export class Function extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
      * Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
      */
     public readonly serviceConfig!: pulumi.Output<outputs.cloudfunctions.v2.ServiceConfigResponse>;
@@ -87,6 +91,10 @@ export class Function extends pulumi.CustomResource {
      * The last update timestamp of a Cloud Function.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * The deployed url for the function.
+     */
+    public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -110,9 +118,11 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceConfig"] = args ? args.serviceConfig : undefined;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessages"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         } else {
             resourceInputs["buildConfig"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -124,10 +134,12 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["serviceConfig"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessages"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project"] };

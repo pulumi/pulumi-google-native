@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// User specified descriptive string for this RestorePlan.
+        /// Optional. User specified descriptive string for this RestorePlan.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// A set of custom labels supplied by user.
+        /// Optional. A set of custom labels supplied by user.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -95,6 +95,14 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// Configuration of Restores created via this RestorePlan.
         /// </summary>
         public readonly Outputs.RestoreConfigResponse RestoreConfig;
+        /// <summary>
+        /// State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation.
+        /// </summary>
+        public readonly string State;
+        /// <summary>
+        /// Human-readable description of why RestorePlan is in the current `state`
+        /// </summary>
+        public readonly string StateReason;
         /// <summary>
         /// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
@@ -122,6 +130,10 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
 
             Outputs.RestoreConfigResponse restoreConfig,
 
+            string state,
+
+            string stateReason,
+
             string uid,
 
             string updateTime)
@@ -134,6 +146,8 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
             Labels = labels;
             Name = name;
             RestoreConfig = restoreConfig;
+            State = state;
+            StateReason = stateReason;
             Uid = uid;
             UpdateTime = updateTime;
         }

@@ -32,6 +32,10 @@ export interface GetEvaluationResult {
      */
     readonly createTime: string;
     /**
+     * The Cloud Storage bucket name for custom rules.
+     */
+    readonly customRulesBucket: string;
+    /**
      * Description of the Evaluation
      */
     readonly description: string;
@@ -60,7 +64,7 @@ export interface GetEvaluationResult {
      */
     readonly ruleVersions: string[];
     /**
-     * crontab format schedule for scheduled evaluation, example: 0 *&#47;3 * * *
+     * crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 *&#47;1 * * *", "0 *&#47;6 * * *", "0 *&#47;12 * * *", "0 0 *&#47;1 * *", "0 0 *&#47;7 * *",
      */
     readonly schedule: string;
     /**

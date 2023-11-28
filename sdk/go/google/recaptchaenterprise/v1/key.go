@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
@@ -24,14 +25,14 @@ type Key struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput `pulumi:"iosSettings"`
-	// See Creating and managing labels.
+	// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name for the Key in the format "projects/{project}/keys/{key}".
+	// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Options for user acceptance testing.
+	// Optional. Options for user acceptance testing.
 	TestingOptions GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput `pulumi:"testingOptions"`
-	// Settings for WAF
+	// Optional. Settings for WAF
 	WafSettings GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
 	WebSettings GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput `pulumi:"webSettings"`
@@ -41,9 +42,12 @@ type Key struct {
 func NewKey(ctx *pulumi.Context,
 	name string, args *KeyArgs, opts ...pulumi.ResourceOption) (*Key, error) {
 	if args == nil {
-		args = &KeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
 	})
@@ -84,17 +88,17 @@ type keyArgs struct {
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings `pulumi:"androidSettings"`
 	// Human-readable display name of this key. Modifiable by user.
-	DisplayName *string `pulumi:"displayName"`
+	DisplayName string `pulumi:"displayName"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings *GoogleCloudRecaptchaenterpriseV1IOSKeySettings `pulumi:"iosSettings"`
-	// See Creating and managing labels.
+	// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name for the Key in the format "projects/{project}/keys/{key}".
+	// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Options for user acceptance testing.
+	// Optional. Options for user acceptance testing.
 	TestingOptions *GoogleCloudRecaptchaenterpriseV1TestingOptions `pulumi:"testingOptions"`
-	// Settings for WAF
+	// Optional. Settings for WAF
 	WafSettings *GoogleCloudRecaptchaenterpriseV1WafSettings `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
 	WebSettings *GoogleCloudRecaptchaenterpriseV1WebKeySettings `pulumi:"webSettings"`
@@ -105,17 +109,17 @@ type KeyArgs struct {
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrInput
 	// Human-readable display name of this key. Modifiable by user.
-	DisplayName pulumi.StringPtrInput
+	DisplayName pulumi.StringInput
 	// Settings for keys that can be used by iOS apps.
 	IosSettings GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrInput
-	// See Creating and managing labels.
+	// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
 	Labels pulumi.StringMapInput
-	// The resource name for the Key in the format "projects/{project}/keys/{key}".
+	// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Options for user acceptance testing.
+	// Optional. Options for user acceptance testing.
 	TestingOptions GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrInput
-	// Settings for WAF
+	// Optional. Settings for WAF
 	WafSettings GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput
 	// Settings for keys that can be used by websites.
 	WebSettings GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrInput
@@ -192,12 +196,12 @@ func (o KeyOutput) IosSettings() GoogleCloudRecaptchaenterpriseV1IOSKeySettingsR
 	return o.ApplyT(func(v *Key) GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput { return v.IosSettings }).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput)
 }
 
-// See Creating and managing labels.
+// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
 func (o KeyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The resource name for the Key in the format "projects/{project}/keys/{key}".
+// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
 func (o KeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -206,12 +210,12 @@ func (o KeyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Options for user acceptance testing.
+// Optional. Options for user acceptance testing.
 func (o KeyOutput) TestingOptions() GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput {
 	return o.ApplyT(func(v *Key) GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput { return v.TestingOptions }).(GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput)
 }
 
-// Settings for WAF
+// Optional. Settings for WAF
 func (o KeyOutput) WafSettings() GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
 	return o.ApplyT(func(v *Key) GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput { return v.WafSettings }).(GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput)
 }

@@ -80,6 +80,14 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly Outputs.AwsSourceVmDetailsResponse AwsSourceVmDetails;
         /// <summary>
+        /// Details of the VM from an Azure source.
+        /// </summary>
+        public readonly Outputs.AzureSourceVmDetailsResponse AzureSourceVmDetails;
+        /// <summary>
+        /// Details of the target Persistent Disks in Compute Engine.
+        /// </summary>
+        public readonly Outputs.ComputeEngineDisksTargetDefaultsResponse ComputeEngineDisksTargetDefaults;
+        /// <summary>
         /// Details of the target VM in Compute Engine.
         /// </summary>
         public readonly Outputs.ComputeEngineTargetDefaultsResponse ComputeEngineTargetDefaults;
@@ -163,10 +171,18 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// The last time the migrating VM resource was updated.
         /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// Details of the VM from a Vmware source.
+        /// </summary>
+        public readonly Outputs.VmwareSourceVmDetailsResponse VmwareSourceVmDetails;
 
         [OutputConstructor]
         private GetMigratingVmResult(
             Outputs.AwsSourceVmDetailsResponse awsSourceVmDetails,
+
+            Outputs.AzureSourceVmDetailsResponse azureSourceVmDetails,
+
+            Outputs.ComputeEngineDisksTargetDefaultsResponse computeEngineDisksTargetDefaults,
 
             Outputs.ComputeEngineTargetDefaultsResponse computeEngineTargetDefaults,
 
@@ -208,9 +224,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
             Outputs.TargetVMDetailsResponse targetDefaults,
 
-            string updateTime)
+            string updateTime,
+
+            Outputs.VmwareSourceVmDetailsResponse vmwareSourceVmDetails)
         {
             AwsSourceVmDetails = awsSourceVmDetails;
+            AzureSourceVmDetails = azureSourceVmDetails;
+            ComputeEngineDisksTargetDefaults = computeEngineDisksTargetDefaults;
             ComputeEngineTargetDefaults = computeEngineTargetDefaults;
             ComputeEngineVmDefaults = computeEngineVmDefaults;
             CreateTime = createTime;
@@ -232,6 +252,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
             StateTime = stateTime;
             TargetDefaults = targetDefaults;
             UpdateTime = updateTime;
+            VmwareSourceVmDetails = vmwareSourceVmDetails;
         }
     }
 }

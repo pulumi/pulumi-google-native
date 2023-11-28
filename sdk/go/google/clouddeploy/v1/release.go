@@ -14,7 +14,6 @@ import (
 )
 
 // Creates a new Release in a given project and location.
-// Auto-naming is currently not supported for this resource.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type Release struct {
@@ -22,7 +21,7 @@ type Release struct {
 
 	// Indicates whether this is an abandoned release.
 	Abandoned pulumi.BoolOutput `pulumi:"abandoned"`
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// List of artifacts to pass through to Skaffold command.
 	BuildArtifacts BuildArtifactResponseArrayOutput `pulumi:"buildArtifacts"`
@@ -33,14 +32,16 @@ type Release struct {
 	DeliveryPipelineId pulumi.StringOutput `pulumi:"deliveryPipelineId"`
 	// Snapshot of the parent pipeline taken at release creation time.
 	DeliveryPipelineSnapshot DeliveryPipelineResponseOutput `pulumi:"deliveryPipelineSnapshot"`
+	// Optional. The deploy parameters to use for all targets in this release.
+	DeployParameters pulumi.StringMapOutput `pulumi:"deployParameters"`
 	// Description of the `Release`. Max length is 255 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+	// Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Required. ID of the `Release`.
@@ -57,7 +58,7 @@ type Release struct {
 	SkaffoldConfigPath pulumi.StringOutput `pulumi:"skaffoldConfigPath"`
 	// Cloud Storage URI of tar.gz archive containing Skaffold configuration.
 	SkaffoldConfigUri pulumi.StringOutput `pulumi:"skaffoldConfigUri"`
-	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 	SkaffoldVersion pulumi.StringOutput `pulumi:"skaffoldVersion"`
 	// Map from target ID to the target artifacts created during the render operation.
 	TargetArtifacts pulumi.StringMapOutput `pulumi:"targetArtifacts"`
@@ -122,19 +123,21 @@ func (ReleaseState) ElementType() reflect.Type {
 }
 
 type releaseArgs struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations map[string]string `pulumi:"annotations"`
 	// List of artifacts to pass through to Skaffold command.
 	BuildArtifacts     []BuildArtifact `pulumi:"buildArtifacts"`
 	DeliveryPipelineId string          `pulumi:"deliveryPipelineId"`
+	// Optional. The deploy parameters to use for all targets in this release.
+	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Description of the `Release`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+	// Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Required. ID of the `Release`.
@@ -145,25 +148,27 @@ type releaseArgs struct {
 	SkaffoldConfigPath *string `pulumi:"skaffoldConfigPath"`
 	// Cloud Storage URI of tar.gz archive containing Skaffold configuration.
 	SkaffoldConfigUri *string `pulumi:"skaffoldConfigUri"`
-	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 	SkaffoldVersion *string `pulumi:"skaffoldVersion"`
 }
 
 // The set of arguments for constructing a Release resource.
 type ReleaseArgs struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations pulumi.StringMapInput
 	// List of artifacts to pass through to Skaffold command.
 	BuildArtifacts     BuildArtifactArrayInput
 	DeliveryPipelineId pulumi.StringInput
+	// Optional. The deploy parameters to use for all targets in this release.
+	DeployParameters pulumi.StringMapInput
 	// Description of the `Release`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+	// Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Required. ID of the `Release`.
@@ -174,7 +179,7 @@ type ReleaseArgs struct {
 	SkaffoldConfigPath pulumi.StringPtrInput
 	// Cloud Storage URI of tar.gz archive containing Skaffold configuration.
 	SkaffoldConfigUri pulumi.StringPtrInput
-	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 	SkaffoldVersion pulumi.StringPtrInput
 }
 
@@ -232,7 +237,7 @@ func (o ReleaseOutput) Abandoned() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Release) pulumi.BoolOutput { return v.Abandoned }).(pulumi.BoolOutput)
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 func (o ReleaseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -261,6 +266,11 @@ func (o ReleaseOutput) DeliveryPipelineSnapshot() DeliveryPipelineResponseOutput
 	return o.ApplyT(func(v *Release) DeliveryPipelineResponseOutput { return v.DeliveryPipelineSnapshot }).(DeliveryPipelineResponseOutput)
 }
 
+// Optional. The deploy parameters to use for all targets in this release.
+func (o ReleaseOutput) DeployParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.DeployParameters }).(pulumi.StringMapOutput)
+}
+
 // Description of the `Release`. Max length is 255 characters.
 func (o ReleaseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -271,7 +281,7 @@ func (o ReleaseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o ReleaseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -280,7 +290,7 @@ func (o ReleaseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+// Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
 func (o ReleaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -324,7 +334,7 @@ func (o ReleaseOutput) SkaffoldConfigUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.SkaffoldConfigUri }).(pulumi.StringOutput)
 }
 
-// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 func (o ReleaseOutput) SkaffoldVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.SkaffoldVersion }).(pulumi.StringOutput)
 }

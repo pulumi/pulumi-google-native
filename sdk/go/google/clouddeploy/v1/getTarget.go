@@ -30,29 +30,31 @@ type LookupTargetArgs struct {
 }
 
 type LookupTargetResult struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Information specifying an Anthos Cluster.
+	// Optional. Information specifying an Anthos Cluster.
 	AnthosCluster AnthosClusterResponse `pulumi:"anthosCluster"`
 	// Time at which the `Target` was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description string `pulumi:"description"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
 	ExecutionConfigs []ExecutionConfigResponse `pulumi:"executionConfigs"`
-	// Information specifying a GKE Cluster.
+	// Optional. Information specifying a GKE Cluster.
 	Gke GkeClusterResponse `pulumi:"gke"`
-	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// Information specifying a multiTarget.
+	// Optional. Information specifying a multiTarget.
 	MultiTarget MultiTargetResponse `pulumi:"multiTarget"`
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
 	Name string `pulumi:"name"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval bool `pulumi:"requireApproval"`
-	// Information specifying a Cloud Run deployment target.
+	// Optional. Information specifying a Cloud Run deployment target.
 	Run CloudRunLocationResponse `pulumi:"run"`
 	// Resource id of the `Target`.
 	TargetId string `pulumi:"targetId"`
@@ -105,12 +107,12 @@ func (o LookupTargetResultOutput) ToOutput(ctx context.Context) pulumix.Output[L
 	}
 }
 
-// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 func (o LookupTargetResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTargetResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Information specifying an Anthos Cluster.
+// Optional. Information specifying an Anthos Cluster.
 func (o LookupTargetResultOutput) AnthosCluster() AnthosClusterResponseOutput {
 	return o.ApplyT(func(v LookupTargetResult) AnthosClusterResponse { return v.AnthosCluster }).(AnthosClusterResponseOutput)
 }
@@ -118,6 +120,11 @@ func (o LookupTargetResultOutput) AnthosCluster() AnthosClusterResponseOutput {
 // Time at which the `Target` was created.
 func (o LookupTargetResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. The deploy parameters to use for this target.
+func (o LookupTargetResultOutput) DeployParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTargetResult) map[string]string { return v.DeployParameters }).(pulumi.StringMapOutput)
 }
 
 // Optional. Description of the `Target`. Max length is 255 characters.
@@ -135,22 +142,22 @@ func (o LookupTargetResultOutput) ExecutionConfigs() ExecutionConfigResponseArra
 	return o.ApplyT(func(v LookupTargetResult) []ExecutionConfigResponse { return v.ExecutionConfigs }).(ExecutionConfigResponseArrayOutput)
 }
 
-// Information specifying a GKE Cluster.
+// Optional. Information specifying a GKE Cluster.
 func (o LookupTargetResultOutput) Gke() GkeClusterResponseOutput {
 	return o.ApplyT(func(v LookupTargetResult) GkeClusterResponse { return v.Gke }).(GkeClusterResponseOutput)
 }
 
-// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o LookupTargetResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTargetResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Information specifying a multiTarget.
+// Optional. Information specifying a multiTarget.
 func (o LookupTargetResultOutput) MultiTarget() MultiTargetResponseOutput {
 	return o.ApplyT(func(v LookupTargetResult) MultiTargetResponse { return v.MultiTarget }).(MultiTargetResponseOutput)
 }
 
-// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
 func (o LookupTargetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -160,7 +167,7 @@ func (o LookupTargetResultOutput) RequireApproval() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTargetResult) bool { return v.RequireApproval }).(pulumi.BoolOutput)
 }
 
-// Information specifying a Cloud Run deployment target.
+// Optional. Information specifying a Cloud Run deployment target.
 func (o LookupTargetResultOutput) Run() CloudRunLocationResponseOutput {
 	return o.ApplyT(func(v LookupTargetResult) CloudRunLocationResponse { return v.Run }).(CloudRunLocationResponseOutput)
 }

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class BackendServiceIAPArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
+        /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

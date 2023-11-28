@@ -47,6 +47,10 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     public readonly dagTimeout!: pulumi.Output<string>;
     /**
+     * Optional. Encryption settings for the encrypting customer core content.
+     */
+    public readonly encryptionConfig!: pulumi.Output<outputs.dataproc.v1.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse>;
+    /**
      * The Directed Acyclic Graph of Jobs to submit.
      */
     public readonly jobs!: pulumi.Output<outputs.dataproc.v1.OrderedJobResponse[]>;
@@ -95,6 +99,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'placement'");
             }
             resourceInputs["dagTimeout"] = args ? args.dagTimeout : undefined;
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["jobs"] = args ? args.jobs : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -109,6 +114,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dagTimeout"] = undefined /*out*/;
+            resourceInputs["encryptionConfig"] = undefined /*out*/;
             resourceInputs["jobs"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -134,6 +140,10 @@ export interface WorkflowTemplateArgs {
      * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
      */
     dagTimeout?: pulumi.Input<string>;
+    /**
+     * Optional. Encryption settings for the encrypting customer core content.
+     */
+    encryptionConfig?: pulumi.Input<inputs.dataproc.v1.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs>;
     id?: pulumi.Input<string>;
     /**
      * The Directed Acyclic Graph of Jobs to submit.

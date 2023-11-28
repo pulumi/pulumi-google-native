@@ -188,6 +188,10 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         /// The URL scheme of one or more of the supplied URLs is not supported.
         /// </summary>
         public static ScanConfigErrorCode UnsupportedUrlScheme { get; } = new ScanConfigErrorCode("UNSUPPORTED_URL_SCHEME");
+        /// <summary>
+        /// CAI is not able to list assets.
+        /// </summary>
+        public static ScanConfigErrorCode CloudAssetInventoryAssetNotFound { get; } = new ScanConfigErrorCode("CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND");
 
         public static bool operator ==(ScanConfigErrorCode left, ScanConfigErrorCode right) => left.Equals(right);
         public static bool operator !=(ScanConfigErrorCode left, ScanConfigErrorCode right) => !left.Equals(right);

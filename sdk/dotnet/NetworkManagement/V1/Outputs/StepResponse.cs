@@ -73,6 +73,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly Outputs.GKEMasterInfoResponse GkeMaster;
         /// <summary>
+        /// Display information of a Google service
+        /// </summary>
+        public readonly Outputs.GoogleServiceInfoResponse GoogleService;
+        /// <summary>
         /// Display information of a Compute Engine instance.
         /// </summary>
         public readonly Outputs.InstanceInfoResponse Instance;
@@ -139,6 +143,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
             Outputs.GKEMasterInfoResponse gkeMaster,
 
+            Outputs.GoogleServiceInfoResponse googleService,
+
             Outputs.InstanceInfoResponse instance,
 
             Outputs.LoadBalancerInfoResponse loadBalancer,
@@ -171,6 +177,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
             Forward = forward;
             ForwardingRule = forwardingRule;
             GkeMaster = gkeMaster;
+            GoogleService = googleService;
             Instance = instance;
             LoadBalancer = loadBalancer;
             Network = network;

@@ -46,20 +46,29 @@ export class Namespace extends pulumi.CustomResource {
      * When the namespace was deleted.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * Optional. Labels for this Namespace.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+     * Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
      */
-    public readonly namespaceId!: pulumi.Output<string>;
+    public readonly namespaceLabels!: pulumi.Output<{[key: string]: string}>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Scope associated with the namespace
      */
     public readonly scope!: pulumi.Output<string>;
+    public readonly scopeId!: pulumi.Output<string>;
+    /**
+     * Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+     */
+    public readonly scopeNamespaceId!: pulumi.Output<string>;
     /**
      * State of the namespace resource.
      */
@@ -84,17 +93,23 @@ export class Namespace extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.namespaceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'namespaceId'");
-            }
             if ((!args || args.scope === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
+            if ((!args || args.scopeId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'scopeId'");
+            }
+            if ((!args || args.scopeNamespaceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'scopeNamespaceId'");
+            }
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["namespaceLabels"] = args ? args.namespaceLabels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["scopeId"] = args ? args.scopeId : undefined;
+            resourceInputs["scopeNamespaceId"] = args ? args.scopeNamespaceId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -103,17 +118,20 @@ export class Namespace extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["namespaceId"] = undefined /*out*/;
+            resourceInputs["namespaceLabels"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["scope"] = undefined /*out*/;
+            resourceInputs["scopeId"] = undefined /*out*/;
+            resourceInputs["scopeNamespaceId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "namespaceId", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "scopeId", "scopeNamespaceId"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Namespace.__pulumiType, name, resourceInputs, opts);
     }
@@ -123,18 +141,27 @@ export class Namespace extends pulumi.CustomResource {
  * The set of arguments for constructing a Namespace resource.
  */
 export interface NamespaceArgs {
+    /**
+     * Optional. Labels for this Namespace.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+     * Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
      */
-    namespaceId: pulumi.Input<string>;
+    namespaceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     project?: pulumi.Input<string>;
     /**
      * Scope associated with the namespace
      */
     scope: pulumi.Input<string>;
+    scopeId: pulumi.Input<string>;
+    /**
+     * Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+     */
+    scopeNamespaceId: pulumi.Input<string>;
 }

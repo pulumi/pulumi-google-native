@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
+        /// Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
+        /// </summary>
+        public readonly bool AutomapSubstitutions;
+        /// <summary>
         /// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         /// </summary>
         public readonly string Dir;
@@ -89,6 +93,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             ImmutableArray<string> args,
 
+            bool automapSubstitutions,
+
             string dir,
 
             string entrypoint,
@@ -118,6 +124,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             AllowExitCodes = allowExitCodes;
             AllowFailure = allowFailure;
             Args = args;
+            AutomapSubstitutions = automapSubstitutions;
             Dir = dir;
             Entrypoint = entrypoint;
             Env = env;

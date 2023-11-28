@@ -50,6 +50,10 @@ export interface GetConnectivityTestResult {
      */
     readonly name: string;
     /**
+     * The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+     */
+    readonly probingDetails: outputs.networkmanagement.v1.ProbingDetailsResponse;
+    /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
     readonly protocol: string;

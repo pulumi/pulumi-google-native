@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class ResourceStatusResponse
     {
         /// <summary>
+        /// Contains last termination details why the instance was terminated.
+        /// </summary>
+        public readonly Outputs.ResourceStatusLastInstanceTerminationDetailsResponse LastInstanceTerminationDetails;
+        /// <summary>
         /// An opaque ID of the host on which the VM is running.
         /// </summary>
         public readonly string PhysicalHost;
@@ -25,18 +29,32 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ServiceIntegrationStatuses;
+        /// <summary>
+        /// Details about stopping state of instance
+        /// </summary>
+        public readonly Outputs.ResourceStatusShutdownDetailsResponse ShutdownDetails;
+        public readonly Outputs.UpcomingMaintenanceResponse UpcomingMaintenance;
 
         [OutputConstructor]
         private ResourceStatusResponse(
+            Outputs.ResourceStatusLastInstanceTerminationDetailsResponse lastInstanceTerminationDetails,
+
             string physicalHost,
 
             Outputs.ResourceStatusSchedulingResponse scheduling,
 
-            ImmutableDictionary<string, string> serviceIntegrationStatuses)
+            ImmutableDictionary<string, string> serviceIntegrationStatuses,
+
+            Outputs.ResourceStatusShutdownDetailsResponse shutdownDetails,
+
+            Outputs.UpcomingMaintenanceResponse upcomingMaintenance)
         {
+            LastInstanceTerminationDetails = lastInstanceTerminationDetails;
             PhysicalHost = physicalHost;
             Scheduling = scheduling;
             ServiceIntegrationStatuses = serviceIntegrationStatuses;
+            ShutdownDetails = shutdownDetails;
+            UpcomingMaintenance = upcomingMaintenance;
         }
     }
 }

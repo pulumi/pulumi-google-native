@@ -14,6 +14,206 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Configuration for an Apt remote repository.
+type AptRepository struct {
+	// One of the publicly available Apt repositories supported by Artifact Registry.
+	PublicRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository `pulumi:"publicRepository"`
+}
+
+// AptRepositoryInput is an input type that accepts AptRepositoryArgs and AptRepositoryOutput values.
+// You can construct a concrete instance of `AptRepositoryInput` via:
+//
+//	AptRepositoryArgs{...}
+type AptRepositoryInput interface {
+	pulumi.Input
+
+	ToAptRepositoryOutput() AptRepositoryOutput
+	ToAptRepositoryOutputWithContext(context.Context) AptRepositoryOutput
+}
+
+// Configuration for an Apt remote repository.
+type AptRepositoryArgs struct {
+	// One of the publicly available Apt repositories supported by Artifact Registry.
+	PublicRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
+}
+
+func (AptRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AptRepository)(nil)).Elem()
+}
+
+func (i AptRepositoryArgs) ToAptRepositoryOutput() AptRepositoryOutput {
+	return i.ToAptRepositoryOutputWithContext(context.Background())
+}
+
+func (i AptRepositoryArgs) ToAptRepositoryOutputWithContext(ctx context.Context) AptRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AptRepositoryOutput)
+}
+
+func (i AptRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[AptRepository] {
+	return pulumix.Output[AptRepository]{
+		OutputState: i.ToAptRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AptRepositoryArgs) ToAptRepositoryPtrOutput() AptRepositoryPtrOutput {
+	return i.ToAptRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i AptRepositoryArgs) ToAptRepositoryPtrOutputWithContext(ctx context.Context) AptRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AptRepositoryOutput).ToAptRepositoryPtrOutputWithContext(ctx)
+}
+
+// AptRepositoryPtrInput is an input type that accepts AptRepositoryArgs, AptRepositoryPtr and AptRepositoryPtrOutput values.
+// You can construct a concrete instance of `AptRepositoryPtrInput` via:
+//
+//	        AptRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type AptRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToAptRepositoryPtrOutput() AptRepositoryPtrOutput
+	ToAptRepositoryPtrOutputWithContext(context.Context) AptRepositoryPtrOutput
+}
+
+type aptRepositoryPtrType AptRepositoryArgs
+
+func AptRepositoryPtr(v *AptRepositoryArgs) AptRepositoryPtrInput {
+	return (*aptRepositoryPtrType)(v)
+}
+
+func (*aptRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AptRepository)(nil)).Elem()
+}
+
+func (i *aptRepositoryPtrType) ToAptRepositoryPtrOutput() AptRepositoryPtrOutput {
+	return i.ToAptRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *aptRepositoryPtrType) ToAptRepositoryPtrOutputWithContext(ctx context.Context) AptRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AptRepositoryPtrOutput)
+}
+
+func (i *aptRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*AptRepository] {
+	return pulumix.Output[*AptRepository]{
+		OutputState: i.ToAptRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for an Apt remote repository.
+type AptRepositoryOutput struct{ *pulumi.OutputState }
+
+func (AptRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AptRepository)(nil)).Elem()
+}
+
+func (o AptRepositoryOutput) ToAptRepositoryOutput() AptRepositoryOutput {
+	return o
+}
+
+func (o AptRepositoryOutput) ToAptRepositoryOutputWithContext(ctx context.Context) AptRepositoryOutput {
+	return o
+}
+
+func (o AptRepositoryOutput) ToAptRepositoryPtrOutput() AptRepositoryPtrOutput {
+	return o.ToAptRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o AptRepositoryOutput) ToAptRepositoryPtrOutputWithContext(ctx context.Context) AptRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AptRepository) *AptRepository {
+		return &v
+	}).(AptRepositoryPtrOutput)
+}
+
+func (o AptRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[AptRepository] {
+	return pulumix.Output[AptRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+// One of the publicly available Apt repositories supported by Artifact Registry.
+func (o AptRepositoryOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v AptRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
+		return v.PublicRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput)
+}
+
+type AptRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (AptRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AptRepository)(nil)).Elem()
+}
+
+func (o AptRepositoryPtrOutput) ToAptRepositoryPtrOutput() AptRepositoryPtrOutput {
+	return o
+}
+
+func (o AptRepositoryPtrOutput) ToAptRepositoryPtrOutputWithContext(ctx context.Context) AptRepositoryPtrOutput {
+	return o
+}
+
+func (o AptRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AptRepository] {
+	return pulumix.Output[*AptRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AptRepositoryPtrOutput) Elem() AptRepositoryOutput {
+	return o.ApplyT(func(v *AptRepository) AptRepository {
+		if v != nil {
+			return *v
+		}
+		var ret AptRepository
+		return ret
+	}).(AptRepositoryOutput)
+}
+
+// One of the publicly available Apt repositories supported by Artifact Registry.
+func (o AptRepositoryPtrOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v *AptRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput)
+}
+
+// Configuration for an Apt remote repository.
+type AptRepositoryResponse struct {
+	// One of the publicly available Apt repositories supported by Artifact Registry.
+	PublicRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse `pulumi:"publicRepository"`
+}
+
+// Configuration for an Apt remote repository.
+type AptRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (AptRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AptRepositoryResponse)(nil)).Elem()
+}
+
+func (o AptRepositoryResponseOutput) ToAptRepositoryResponseOutput() AptRepositoryResponseOutput {
+	return o
+}
+
+func (o AptRepositoryResponseOutput) ToAptRepositoryResponseOutputWithContext(ctx context.Context) AptRepositoryResponseOutput {
+	return o
+}
+
+func (o AptRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AptRepositoryResponse] {
+	return pulumix.Output[AptRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// One of the publicly available Apt repositories supported by Artifact Registry.
+func (o AptRepositoryResponseOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput {
+	return o.ApplyT(func(v AptRepositoryResponse) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse {
+		return v.PublicRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput)
+}
+
 // Associates `members`, or principals, with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -894,6 +1094,466 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Publicly available Apt repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository struct {
+	// A common public repository base for Apt.
+	RepositoryBase *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase `pulumi:"repositoryBase"`
+	// A custom field to define a path to a specific repository from the base.
+	RepositoryPath *string `pulumi:"repositoryPath"`
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryInput` via:
+//
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{...}
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput
+}
+
+// Publicly available Apt repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs struct {
+	// A common public repository base for Apt.
+	RepositoryBase GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtrInput `pulumi:"repositoryBase"`
+	// A custom field to define a path to a specific repository from the base.
+	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
+}
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput)
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository] {
+	return pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository]{
+		OutputState: i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput).ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtr and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput` via:
+//
+//	        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput
+}
+
+type googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrType GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs
+
+func GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtr(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput {
+	return (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrType)(v)
+}
+
+func (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository)(nil)).Elem()
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput)
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository] {
+	return pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository]{
+		OutputState: i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Publicly available Apt repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return o.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
+		return &v
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput)
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository] {
+	return pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A common public repository base for Apt.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) RepositoryBase() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase {
+		return v.RepositoryBase
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtrOutput)
+}
+
+// A custom field to define a path to a specific repository from the base.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) RepositoryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository) *string {
+		return v.RepositoryPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository] {
+	return pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) Elem() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
+		return ret
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput)
+}
+
+// A common public repository base for Apt.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) RepositoryBase() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryBase
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtrOutput)
+}
+
+// A custom field to define a path to a specific repository from the base.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) RepositoryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Publicly available Apt repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse struct {
+	// A common public repository base for Apt.
+	RepositoryBase string `pulumi:"repositoryBase"`
+	// A custom field to define a path to a specific repository from the base.
+	RepositoryPath string `pulumi:"repositoryPath"`
+}
+
+// Publicly available Apt repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse] {
+	return pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A common public repository base for Apt.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput) RepositoryBase() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse) string {
+		return v.RepositoryBase
+	}).(pulumi.StringOutput)
+}
+
+// A custom field to define a path to a specific repository from the base.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput) RepositoryPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse) string {
+		return v.RepositoryPath
+	}).(pulumi.StringOutput)
+}
+
+// Publicly available Yum repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository struct {
+	// A common public repository base for Yum.
+	RepositoryBase *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase `pulumi:"repositoryBase"`
+	// A custom field to define a path to a specific repository from the base.
+	RepositoryPath *string `pulumi:"repositoryPath"`
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryInput` via:
+//
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{...}
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput
+}
+
+// Publicly available Yum repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs struct {
+	// A common public repository base for Yum.
+	RepositoryBase GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBasePtrInput `pulumi:"repositoryBase"`
+	// A custom field to define a path to a specific repository from the base.
+	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
+}
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput)
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository] {
+	return pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository]{
+		OutputState: i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput).ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtr and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrInput` via:
+//
+//	        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput
+}
+
+type googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrType GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs
+
+func GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtr(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrInput {
+	return (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrType)(v)
+}
+
+func (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository)(nil)).Elem()
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput)
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository] {
+	return pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository]{
+		OutputState: i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Publicly available Yum repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return o.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
+		return &v
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput)
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository] {
+	return pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A common public repository base for Yum.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) RepositoryBase() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBasePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase {
+		return v.RepositoryBase
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBasePtrOutput)
+}
+
+// A custom field to define a path to a specific repository from the base.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) RepositoryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository) *string {
+		return v.RepositoryPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository] {
+	return pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput) Elem() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
+		return ret
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput)
+}
+
+// A common public repository base for Yum.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput) RepositoryBase() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBasePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryBase
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBasePtrOutput)
+}
+
+// A custom field to define a path to a specific repository from the base.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput) RepositoryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Publicly available Yum repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse struct {
+	// A common public repository base for Yum.
+	RepositoryBase string `pulumi:"repositoryBase"`
+	// A custom field to define a path to a specific repository from the base.
+	RepositoryPath string `pulumi:"repositoryPath"`
+}
+
+// Publicly available Yum repositories constructed from a common repository base and a custom repository path.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse] {
+	return pulumix.Output[GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A common public repository base for Yum.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput) RepositoryBase() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse) string {
+		return v.RepositoryBase
+	}).(pulumi.StringOutput)
+}
+
+// A custom field to define a path to a specific repository from the base.
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput) RepositoryPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse) string {
+		return v.RepositoryPath
+	}).(pulumi.StringOutput)
+}
+
 // Configuration for a Maven remote repository.
 type MavenRepository struct {
 	// One of the publicly available Maven repositories supported by Artifact Registry.
@@ -1706,6 +2366,8 @@ func (o PythonRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
 
 // Remote repository configuration.
 type RemoteRepositoryConfig struct {
+	// Specific settings for an Apt remote repository.
+	AptRepository *AptRepository `pulumi:"aptRepository"`
 	// The description of the remote source.
 	Description *string `pulumi:"description"`
 	// Specific settings for a Docker remote repository.
@@ -1716,6 +2378,10 @@ type RemoteRepositoryConfig struct {
 	NpmRepository *NpmRepository `pulumi:"npmRepository"`
 	// Specific settings for a Python remote repository.
 	PythonRepository *PythonRepository `pulumi:"pythonRepository"`
+	// Optional. The credentials used to access the remote repository.
+	UpstreamCredentials *UpstreamCredentials `pulumi:"upstreamCredentials"`
+	// Specific settings for a Yum remote repository.
+	YumRepository *YumRepository `pulumi:"yumRepository"`
 }
 
 // RemoteRepositoryConfigInput is an input type that accepts RemoteRepositoryConfigArgs and RemoteRepositoryConfigOutput values.
@@ -1731,6 +2397,8 @@ type RemoteRepositoryConfigInput interface {
 
 // Remote repository configuration.
 type RemoteRepositoryConfigArgs struct {
+	// Specific settings for an Apt remote repository.
+	AptRepository AptRepositoryPtrInput `pulumi:"aptRepository"`
 	// The description of the remote source.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Specific settings for a Docker remote repository.
@@ -1741,6 +2409,10 @@ type RemoteRepositoryConfigArgs struct {
 	NpmRepository NpmRepositoryPtrInput `pulumi:"npmRepository"`
 	// Specific settings for a Python remote repository.
 	PythonRepository PythonRepositoryPtrInput `pulumi:"pythonRepository"`
+	// Optional. The credentials used to access the remote repository.
+	UpstreamCredentials UpstreamCredentialsPtrInput `pulumi:"upstreamCredentials"`
+	// Specific settings for a Yum remote repository.
+	YumRepository YumRepositoryPtrInput `pulumi:"yumRepository"`
 }
 
 func (RemoteRepositoryConfigArgs) ElementType() reflect.Type {
@@ -1839,6 +2511,11 @@ func (o RemoteRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
+// Specific settings for an Apt remote repository.
+func (o RemoteRepositoryConfigOutput) AptRepository() AptRepositoryPtrOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfig) *AptRepository { return v.AptRepository }).(AptRepositoryPtrOutput)
+}
+
 // The description of the remote source.
 func (o RemoteRepositoryConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RemoteRepositoryConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -1862,6 +2539,16 @@ func (o RemoteRepositoryConfigOutput) NpmRepository() NpmRepositoryPtrOutput {
 // Specific settings for a Python remote repository.
 func (o RemoteRepositoryConfigOutput) PythonRepository() PythonRepositoryPtrOutput {
 	return o.ApplyT(func(v RemoteRepositoryConfig) *PythonRepository { return v.PythonRepository }).(PythonRepositoryPtrOutput)
+}
+
+// Optional. The credentials used to access the remote repository.
+func (o RemoteRepositoryConfigOutput) UpstreamCredentials() UpstreamCredentialsPtrOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfig) *UpstreamCredentials { return v.UpstreamCredentials }).(UpstreamCredentialsPtrOutput)
+}
+
+// Specific settings for a Yum remote repository.
+func (o RemoteRepositoryConfigOutput) YumRepository() YumRepositoryPtrOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfig) *YumRepository { return v.YumRepository }).(YumRepositoryPtrOutput)
 }
 
 type RemoteRepositoryConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1892,6 +2579,16 @@ func (o RemoteRepositoryConfigPtrOutput) Elem() RemoteRepositoryConfigOutput {
 		var ret RemoteRepositoryConfig
 		return ret
 	}).(RemoteRepositoryConfigOutput)
+}
+
+// Specific settings for an Apt remote repository.
+func (o RemoteRepositoryConfigPtrOutput) AptRepository() AptRepositoryPtrOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) *AptRepository {
+		if v == nil {
+			return nil
+		}
+		return v.AptRepository
+	}).(AptRepositoryPtrOutput)
 }
 
 // The description of the remote source.
@@ -1944,8 +2641,30 @@ func (o RemoteRepositoryConfigPtrOutput) PythonRepository() PythonRepositoryPtrO
 	}).(PythonRepositoryPtrOutput)
 }
 
+// Optional. The credentials used to access the remote repository.
+func (o RemoteRepositoryConfigPtrOutput) UpstreamCredentials() UpstreamCredentialsPtrOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) *UpstreamCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.UpstreamCredentials
+	}).(UpstreamCredentialsPtrOutput)
+}
+
+// Specific settings for a Yum remote repository.
+func (o RemoteRepositoryConfigPtrOutput) YumRepository() YumRepositoryPtrOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) *YumRepository {
+		if v == nil {
+			return nil
+		}
+		return v.YumRepository
+	}).(YumRepositoryPtrOutput)
+}
+
 // Remote repository configuration.
 type RemoteRepositoryConfigResponse struct {
+	// Specific settings for an Apt remote repository.
+	AptRepository AptRepositoryResponse `pulumi:"aptRepository"`
 	// The description of the remote source.
 	Description string `pulumi:"description"`
 	// Specific settings for a Docker remote repository.
@@ -1956,6 +2675,10 @@ type RemoteRepositoryConfigResponse struct {
 	NpmRepository NpmRepositoryResponse `pulumi:"npmRepository"`
 	// Specific settings for a Python remote repository.
 	PythonRepository PythonRepositoryResponse `pulumi:"pythonRepository"`
+	// Optional. The credentials used to access the remote repository.
+	UpstreamCredentials UpstreamCredentialsResponse `pulumi:"upstreamCredentials"`
+	// Specific settings for a Yum remote repository.
+	YumRepository YumRepositoryResponse `pulumi:"yumRepository"`
 }
 
 // Remote repository configuration.
@@ -1977,6 +2700,11 @@ func (o RemoteRepositoryConfigResponseOutput) ToOutput(ctx context.Context) pulu
 	return pulumix.Output[RemoteRepositoryConfigResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Specific settings for an Apt remote repository.
+func (o RemoteRepositoryConfigResponseOutput) AptRepository() AptRepositoryResponseOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfigResponse) AptRepositoryResponse { return v.AptRepository }).(AptRepositoryResponseOutput)
 }
 
 // The description of the remote source.
@@ -2004,13 +2732,221 @@ func (o RemoteRepositoryConfigResponseOutput) PythonRepository() PythonRepositor
 	return o.ApplyT(func(v RemoteRepositoryConfigResponse) PythonRepositoryResponse { return v.PythonRepository }).(PythonRepositoryResponseOutput)
 }
 
+// Optional. The credentials used to access the remote repository.
+func (o RemoteRepositoryConfigResponseOutput) UpstreamCredentials() UpstreamCredentialsResponseOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfigResponse) UpstreamCredentialsResponse { return v.UpstreamCredentials }).(UpstreamCredentialsResponseOutput)
+}
+
+// Specific settings for a Yum remote repository.
+func (o RemoteRepositoryConfigResponseOutput) YumRepository() YumRepositoryResponseOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfigResponse) YumRepositoryResponse { return v.YumRepository }).(YumRepositoryResponseOutput)
+}
+
+// The credentials to access the remote repository.
+type UpstreamCredentials struct {
+	// Use username and password to access the remote repository.
+	UsernamePasswordCredentials *UsernamePasswordCredentials `pulumi:"usernamePasswordCredentials"`
+}
+
+// UpstreamCredentialsInput is an input type that accepts UpstreamCredentialsArgs and UpstreamCredentialsOutput values.
+// You can construct a concrete instance of `UpstreamCredentialsInput` via:
+//
+//	UpstreamCredentialsArgs{...}
+type UpstreamCredentialsInput interface {
+	pulumi.Input
+
+	ToUpstreamCredentialsOutput() UpstreamCredentialsOutput
+	ToUpstreamCredentialsOutputWithContext(context.Context) UpstreamCredentialsOutput
+}
+
+// The credentials to access the remote repository.
+type UpstreamCredentialsArgs struct {
+	// Use username and password to access the remote repository.
+	UsernamePasswordCredentials UsernamePasswordCredentialsPtrInput `pulumi:"usernamePasswordCredentials"`
+}
+
+func (UpstreamCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpstreamCredentials)(nil)).Elem()
+}
+
+func (i UpstreamCredentialsArgs) ToUpstreamCredentialsOutput() UpstreamCredentialsOutput {
+	return i.ToUpstreamCredentialsOutputWithContext(context.Background())
+}
+
+func (i UpstreamCredentialsArgs) ToUpstreamCredentialsOutputWithContext(ctx context.Context) UpstreamCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpstreamCredentialsOutput)
+}
+
+func (i UpstreamCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[UpstreamCredentials] {
+	return pulumix.Output[UpstreamCredentials]{
+		OutputState: i.ToUpstreamCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i UpstreamCredentialsArgs) ToUpstreamCredentialsPtrOutput() UpstreamCredentialsPtrOutput {
+	return i.ToUpstreamCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i UpstreamCredentialsArgs) ToUpstreamCredentialsPtrOutputWithContext(ctx context.Context) UpstreamCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpstreamCredentialsOutput).ToUpstreamCredentialsPtrOutputWithContext(ctx)
+}
+
+// UpstreamCredentialsPtrInput is an input type that accepts UpstreamCredentialsArgs, UpstreamCredentialsPtr and UpstreamCredentialsPtrOutput values.
+// You can construct a concrete instance of `UpstreamCredentialsPtrInput` via:
+//
+//	        UpstreamCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type UpstreamCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToUpstreamCredentialsPtrOutput() UpstreamCredentialsPtrOutput
+	ToUpstreamCredentialsPtrOutputWithContext(context.Context) UpstreamCredentialsPtrOutput
+}
+
+type upstreamCredentialsPtrType UpstreamCredentialsArgs
+
+func UpstreamCredentialsPtr(v *UpstreamCredentialsArgs) UpstreamCredentialsPtrInput {
+	return (*upstreamCredentialsPtrType)(v)
+}
+
+func (*upstreamCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpstreamCredentials)(nil)).Elem()
+}
+
+func (i *upstreamCredentialsPtrType) ToUpstreamCredentialsPtrOutput() UpstreamCredentialsPtrOutput {
+	return i.ToUpstreamCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *upstreamCredentialsPtrType) ToUpstreamCredentialsPtrOutputWithContext(ctx context.Context) UpstreamCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpstreamCredentialsPtrOutput)
+}
+
+func (i *upstreamCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*UpstreamCredentials] {
+	return pulumix.Output[*UpstreamCredentials]{
+		OutputState: i.ToUpstreamCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The credentials to access the remote repository.
+type UpstreamCredentialsOutput struct{ *pulumi.OutputState }
+
+func (UpstreamCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpstreamCredentials)(nil)).Elem()
+}
+
+func (o UpstreamCredentialsOutput) ToUpstreamCredentialsOutput() UpstreamCredentialsOutput {
+	return o
+}
+
+func (o UpstreamCredentialsOutput) ToUpstreamCredentialsOutputWithContext(ctx context.Context) UpstreamCredentialsOutput {
+	return o
+}
+
+func (o UpstreamCredentialsOutput) ToUpstreamCredentialsPtrOutput() UpstreamCredentialsPtrOutput {
+	return o.ToUpstreamCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o UpstreamCredentialsOutput) ToUpstreamCredentialsPtrOutputWithContext(ctx context.Context) UpstreamCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpstreamCredentials) *UpstreamCredentials {
+		return &v
+	}).(UpstreamCredentialsPtrOutput)
+}
+
+func (o UpstreamCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[UpstreamCredentials] {
+	return pulumix.Output[UpstreamCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Use username and password to access the remote repository.
+func (o UpstreamCredentialsOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v UpstreamCredentials) *UsernamePasswordCredentials { return v.UsernamePasswordCredentials }).(UsernamePasswordCredentialsPtrOutput)
+}
+
+type UpstreamCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (UpstreamCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpstreamCredentials)(nil)).Elem()
+}
+
+func (o UpstreamCredentialsPtrOutput) ToUpstreamCredentialsPtrOutput() UpstreamCredentialsPtrOutput {
+	return o
+}
+
+func (o UpstreamCredentialsPtrOutput) ToUpstreamCredentialsPtrOutputWithContext(ctx context.Context) UpstreamCredentialsPtrOutput {
+	return o
+}
+
+func (o UpstreamCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpstreamCredentials] {
+	return pulumix.Output[*UpstreamCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o UpstreamCredentialsPtrOutput) Elem() UpstreamCredentialsOutput {
+	return o.ApplyT(func(v *UpstreamCredentials) UpstreamCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret UpstreamCredentials
+		return ret
+	}).(UpstreamCredentialsOutput)
+}
+
+// Use username and password to access the remote repository.
+func (o UpstreamCredentialsPtrOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v *UpstreamCredentials) *UsernamePasswordCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsPtrOutput)
+}
+
+// The credentials to access the remote repository.
+type UpstreamCredentialsResponse struct {
+	// Use username and password to access the remote repository.
+	UsernamePasswordCredentials UsernamePasswordCredentialsResponse `pulumi:"usernamePasswordCredentials"`
+}
+
+// The credentials to access the remote repository.
+type UpstreamCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (UpstreamCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpstreamCredentialsResponse)(nil)).Elem()
+}
+
+func (o UpstreamCredentialsResponseOutput) ToUpstreamCredentialsResponseOutput() UpstreamCredentialsResponseOutput {
+	return o
+}
+
+func (o UpstreamCredentialsResponseOutput) ToUpstreamCredentialsResponseOutputWithContext(ctx context.Context) UpstreamCredentialsResponseOutput {
+	return o
+}
+
+func (o UpstreamCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpstreamCredentialsResponse] {
+	return pulumix.Output[UpstreamCredentialsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Use username and password to access the remote repository.
+func (o UpstreamCredentialsResponseOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsResponseOutput {
+	return o.ApplyT(func(v UpstreamCredentialsResponse) UsernamePasswordCredentialsResponse {
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsResponseOutput)
+}
+
 // Artifact policy configuration for the repository contents.
 type UpstreamPolicy struct {
 	// The user-provided ID of the upstream policy.
 	Id *string `pulumi:"id"`
 	// Entries with a greater priority value take precedence in the pull order.
 	Priority *int `pulumi:"priority"`
-	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Repository *string `pulumi:"repository"`
 }
 
@@ -2031,7 +2967,7 @@ type UpstreamPolicyArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Entries with a greater priority value take precedence in the pull order.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Repository pulumi.StringPtrInput `pulumi:"repository"`
 }
 
@@ -2115,7 +3051,7 @@ func (o UpstreamPolicyOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpstreamPolicy) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 func (o UpstreamPolicyOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpstreamPolicy) *string { return v.Repository }).(pulumi.StringPtrOutput)
 }
@@ -2150,7 +3086,7 @@ func (o UpstreamPolicyArrayOutput) Index(i pulumi.IntInput) UpstreamPolicyOutput
 type UpstreamPolicyResponse struct {
 	// Entries with a greater priority value take precedence in the pull order.
 	Priority int `pulumi:"priority"`
-	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Repository string `pulumi:"repository"`
 }
 
@@ -2180,7 +3116,7 @@ func (o UpstreamPolicyResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v UpstreamPolicyResponse) int { return v.Priority }).(pulumi.IntOutput)
 }
 
-// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 func (o UpstreamPolicyResponseOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v UpstreamPolicyResponse) string { return v.Repository }).(pulumi.StringOutput)
 }
@@ -2209,6 +3145,228 @@ func (o UpstreamPolicyResponseArrayOutput) Index(i pulumi.IntInput) UpstreamPoli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpstreamPolicyResponse {
 		return vs[0].([]UpstreamPolicyResponse)[vs[1].(int)]
 	}).(UpstreamPolicyResponseOutput)
+}
+
+// Username and password credentials.
+type UsernamePasswordCredentials struct {
+	// The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The username to access the remote repository.
+	Username *string `pulumi:"username"`
+}
+
+// UsernamePasswordCredentialsInput is an input type that accepts UsernamePasswordCredentialsArgs and UsernamePasswordCredentialsOutput values.
+// You can construct a concrete instance of `UsernamePasswordCredentialsInput` via:
+//
+//	UsernamePasswordCredentialsArgs{...}
+type UsernamePasswordCredentialsInput interface {
+	pulumi.Input
+
+	ToUsernamePasswordCredentialsOutput() UsernamePasswordCredentialsOutput
+	ToUsernamePasswordCredentialsOutputWithContext(context.Context) UsernamePasswordCredentialsOutput
+}
+
+// Username and password credentials.
+type UsernamePasswordCredentialsArgs struct {
+	// The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The username to access the remote repository.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (UsernamePasswordCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsOutput() UsernamePasswordCredentialsOutput {
+	return i.ToUsernamePasswordCredentialsOutputWithContext(context.Background())
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsOutputWithContext(ctx context.Context) UsernamePasswordCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsernamePasswordCredentialsOutput)
+}
+
+func (i UsernamePasswordCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[UsernamePasswordCredentials] {
+	return pulumix.Output[UsernamePasswordCredentials]{
+		OutputState: i.ToUsernamePasswordCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput {
+	return i.ToUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) UsernamePasswordCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsernamePasswordCredentialsOutput).ToUsernamePasswordCredentialsPtrOutputWithContext(ctx)
+}
+
+// UsernamePasswordCredentialsPtrInput is an input type that accepts UsernamePasswordCredentialsArgs, UsernamePasswordCredentialsPtr and UsernamePasswordCredentialsPtrOutput values.
+// You can construct a concrete instance of `UsernamePasswordCredentialsPtrInput` via:
+//
+//	        UsernamePasswordCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type UsernamePasswordCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput
+	ToUsernamePasswordCredentialsPtrOutputWithContext(context.Context) UsernamePasswordCredentialsPtrOutput
+}
+
+type usernamePasswordCredentialsPtrType UsernamePasswordCredentialsArgs
+
+func UsernamePasswordCredentialsPtr(v *UsernamePasswordCredentialsArgs) UsernamePasswordCredentialsPtrInput {
+	return (*usernamePasswordCredentialsPtrType)(v)
+}
+
+func (*usernamePasswordCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (i *usernamePasswordCredentialsPtrType) ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput {
+	return i.ToUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *usernamePasswordCredentialsPtrType) ToUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) UsernamePasswordCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsernamePasswordCredentialsPtrOutput)
+}
+
+func (i *usernamePasswordCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*UsernamePasswordCredentials] {
+	return pulumix.Output[*UsernamePasswordCredentials]{
+		OutputState: i.ToUsernamePasswordCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Username and password credentials.
+type UsernamePasswordCredentialsOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsOutput() UsernamePasswordCredentialsOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsOutputWithContext(ctx context.Context) UsernamePasswordCredentialsOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput {
+	return o.ToUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UsernamePasswordCredentials) *UsernamePasswordCredentials {
+		return &v
+	}).(UsernamePasswordCredentialsPtrOutput)
+}
+
+func (o UsernamePasswordCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[UsernamePasswordCredentials] {
+	return pulumix.Output[UsernamePasswordCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+func (o UsernamePasswordCredentialsOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentials) *string { return v.PasswordSecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// The username to access the remote repository.
+func (o UsernamePasswordCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type UsernamePasswordCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (o UsernamePasswordCredentialsPtrOutput) ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsPtrOutput) ToUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) UsernamePasswordCredentialsPtrOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UsernamePasswordCredentials] {
+	return pulumix.Output[*UsernamePasswordCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o UsernamePasswordCredentialsPtrOutput) Elem() UsernamePasswordCredentialsOutput {
+	return o.ApplyT(func(v *UsernamePasswordCredentials) UsernamePasswordCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret UsernamePasswordCredentials
+		return ret
+	}).(UsernamePasswordCredentialsOutput)
+}
+
+// The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+func (o UsernamePasswordCredentialsPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UsernamePasswordCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to access the remote repository.
+func (o UsernamePasswordCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UsernamePasswordCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username and password credentials.
+type UsernamePasswordCredentialsResponse struct {
+	// The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+	PasswordSecretVersion string `pulumi:"passwordSecretVersion"`
+	// The username to access the remote repository.
+	Username string `pulumi:"username"`
+}
+
+// Username and password credentials.
+type UsernamePasswordCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordCredentialsResponse)(nil)).Elem()
+}
+
+func (o UsernamePasswordCredentialsResponseOutput) ToUsernamePasswordCredentialsResponseOutput() UsernamePasswordCredentialsResponseOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsResponseOutput) ToUsernamePasswordCredentialsResponseOutputWithContext(ctx context.Context) UsernamePasswordCredentialsResponseOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UsernamePasswordCredentialsResponse] {
+	return pulumix.Output[UsernamePasswordCredentialsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+func (o UsernamePasswordCredentialsResponseOutput) PasswordSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.PasswordSecretVersion }).(pulumi.StringOutput)
+}
+
+// The username to access the remote repository.
+func (o UsernamePasswordCredentialsResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
 // Virtual repository configuration.
@@ -2407,7 +3565,209 @@ func (o VirtualRepositoryConfigResponseOutput) UpstreamPolicies() UpstreamPolicy
 	return o.ApplyT(func(v VirtualRepositoryConfigResponse) []UpstreamPolicyResponse { return v.UpstreamPolicies }).(UpstreamPolicyResponseArrayOutput)
 }
 
+// Configuration for a Yum remote repository.
+type YumRepository struct {
+	// One of the publicly available Yum repositories supported by Artifact Registry.
+	PublicRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository `pulumi:"publicRepository"`
+}
+
+// YumRepositoryInput is an input type that accepts YumRepositoryArgs and YumRepositoryOutput values.
+// You can construct a concrete instance of `YumRepositoryInput` via:
+//
+//	YumRepositoryArgs{...}
+type YumRepositoryInput interface {
+	pulumi.Input
+
+	ToYumRepositoryOutput() YumRepositoryOutput
+	ToYumRepositoryOutputWithContext(context.Context) YumRepositoryOutput
+}
+
+// Configuration for a Yum remote repository.
+type YumRepositoryArgs struct {
+	// One of the publicly available Yum repositories supported by Artifact Registry.
+	PublicRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
+}
+
+func (YumRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*YumRepository)(nil)).Elem()
+}
+
+func (i YumRepositoryArgs) ToYumRepositoryOutput() YumRepositoryOutput {
+	return i.ToYumRepositoryOutputWithContext(context.Background())
+}
+
+func (i YumRepositoryArgs) ToYumRepositoryOutputWithContext(ctx context.Context) YumRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YumRepositoryOutput)
+}
+
+func (i YumRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[YumRepository] {
+	return pulumix.Output[YumRepository]{
+		OutputState: i.ToYumRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i YumRepositoryArgs) ToYumRepositoryPtrOutput() YumRepositoryPtrOutput {
+	return i.ToYumRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i YumRepositoryArgs) ToYumRepositoryPtrOutputWithContext(ctx context.Context) YumRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YumRepositoryOutput).ToYumRepositoryPtrOutputWithContext(ctx)
+}
+
+// YumRepositoryPtrInput is an input type that accepts YumRepositoryArgs, YumRepositoryPtr and YumRepositoryPtrOutput values.
+// You can construct a concrete instance of `YumRepositoryPtrInput` via:
+//
+//	        YumRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type YumRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToYumRepositoryPtrOutput() YumRepositoryPtrOutput
+	ToYumRepositoryPtrOutputWithContext(context.Context) YumRepositoryPtrOutput
+}
+
+type yumRepositoryPtrType YumRepositoryArgs
+
+func YumRepositoryPtr(v *YumRepositoryArgs) YumRepositoryPtrInput {
+	return (*yumRepositoryPtrType)(v)
+}
+
+func (*yumRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**YumRepository)(nil)).Elem()
+}
+
+func (i *yumRepositoryPtrType) ToYumRepositoryPtrOutput() YumRepositoryPtrOutput {
+	return i.ToYumRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *yumRepositoryPtrType) ToYumRepositoryPtrOutputWithContext(ctx context.Context) YumRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YumRepositoryPtrOutput)
+}
+
+func (i *yumRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*YumRepository] {
+	return pulumix.Output[*YumRepository]{
+		OutputState: i.ToYumRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for a Yum remote repository.
+type YumRepositoryOutput struct{ *pulumi.OutputState }
+
+func (YumRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*YumRepository)(nil)).Elem()
+}
+
+func (o YumRepositoryOutput) ToYumRepositoryOutput() YumRepositoryOutput {
+	return o
+}
+
+func (o YumRepositoryOutput) ToYumRepositoryOutputWithContext(ctx context.Context) YumRepositoryOutput {
+	return o
+}
+
+func (o YumRepositoryOutput) ToYumRepositoryPtrOutput() YumRepositoryPtrOutput {
+	return o.ToYumRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o YumRepositoryOutput) ToYumRepositoryPtrOutputWithContext(ctx context.Context) YumRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YumRepository) *YumRepository {
+		return &v
+	}).(YumRepositoryPtrOutput)
+}
+
+func (o YumRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[YumRepository] {
+	return pulumix.Output[YumRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+// One of the publicly available Yum repositories supported by Artifact Registry.
+func (o YumRepositoryOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v YumRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
+		return v.PublicRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput)
+}
+
+type YumRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (YumRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**YumRepository)(nil)).Elem()
+}
+
+func (o YumRepositoryPtrOutput) ToYumRepositoryPtrOutput() YumRepositoryPtrOutput {
+	return o
+}
+
+func (o YumRepositoryPtrOutput) ToYumRepositoryPtrOutputWithContext(ctx context.Context) YumRepositoryPtrOutput {
+	return o
+}
+
+func (o YumRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*YumRepository] {
+	return pulumix.Output[*YumRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o YumRepositoryPtrOutput) Elem() YumRepositoryOutput {
+	return o.ApplyT(func(v *YumRepository) YumRepository {
+		if v != nil {
+			return *v
+		}
+		var ret YumRepository
+		return ret
+	}).(YumRepositoryOutput)
+}
+
+// One of the publicly available Yum repositories supported by Artifact Registry.
+func (o YumRepositoryPtrOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v *YumRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput)
+}
+
+// Configuration for a Yum remote repository.
+type YumRepositoryResponse struct {
+	// One of the publicly available Yum repositories supported by Artifact Registry.
+	PublicRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse `pulumi:"publicRepository"`
+}
+
+// Configuration for a Yum remote repository.
+type YumRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (YumRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*YumRepositoryResponse)(nil)).Elem()
+}
+
+func (o YumRepositoryResponseOutput) ToYumRepositoryResponseOutput() YumRepositoryResponseOutput {
+	return o
+}
+
+func (o YumRepositoryResponseOutput) ToYumRepositoryResponseOutputWithContext(ctx context.Context) YumRepositoryResponseOutput {
+	return o
+}
+
+func (o YumRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[YumRepositoryResponse] {
+	return pulumix.Output[YumRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// One of the publicly available Yum repositories supported by Artifact Registry.
+func (o YumRepositoryResponseOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput {
+	return o.ApplyT(func(v YumRepositoryResponse) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse {
+		return v.PublicRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AptRepositoryInput)(nil)).Elem(), AptRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AptRepositoryPtrInput)(nil)).Elem(), AptRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryInput)(nil)).Elem(), DockerRepositoryArgs{})
@@ -2416,6 +3776,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryConfigPtrInput)(nil)).Elem(), DockerRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryInput)(nil)).Elem(), MavenRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryPtrInput)(nil)).Elem(), MavenRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigInput)(nil)).Elem(), MavenRepositoryConfigArgs{})
@@ -2426,10 +3790,19 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PythonRepositoryPtrInput)(nil)).Elem(), PythonRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RemoteRepositoryConfigInput)(nil)).Elem(), RemoteRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RemoteRepositoryConfigPtrInput)(nil)).Elem(), RemoteRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpstreamCredentialsInput)(nil)).Elem(), UpstreamCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpstreamCredentialsPtrInput)(nil)).Elem(), UpstreamCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpstreamPolicyInput)(nil)).Elem(), UpstreamPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpstreamPolicyArrayInput)(nil)).Elem(), UpstreamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UsernamePasswordCredentialsInput)(nil)).Elem(), UsernamePasswordCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UsernamePasswordCredentialsPtrInput)(nil)).Elem(), UsernamePasswordCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualRepositoryConfigInput)(nil)).Elem(), VirtualRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualRepositoryConfigPtrInput)(nil)).Elem(), VirtualRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YumRepositoryInput)(nil)).Elem(), YumRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YumRepositoryPtrInput)(nil)).Elem(), YumRepositoryArgs{})
+	pulumi.RegisterOutputType(AptRepositoryOutput{})
+	pulumi.RegisterOutputType(AptRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(AptRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -2443,6 +3816,12 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(MavenRepositoryOutput{})
 	pulumi.RegisterOutputType(MavenRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(MavenRepositoryConfigOutput{})
@@ -2458,11 +3837,20 @@ func init() {
 	pulumi.RegisterOutputType(RemoteRepositoryConfigOutput{})
 	pulumi.RegisterOutputType(RemoteRepositoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(RemoteRepositoryConfigResponseOutput{})
+	pulumi.RegisterOutputType(UpstreamCredentialsOutput{})
+	pulumi.RegisterOutputType(UpstreamCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(UpstreamCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(UpstreamPolicyOutput{})
 	pulumi.RegisterOutputType(UpstreamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(UpstreamPolicyResponseOutput{})
 	pulumi.RegisterOutputType(UpstreamPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordCredentialsOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(VirtualRepositoryConfigOutput{})
 	pulumi.RegisterOutputType(VirtualRepositoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(VirtualRepositoryConfigResponseOutput{})
+	pulumi.RegisterOutputType(YumRepositoryOutput{})
+	pulumi.RegisterOutputType(YumRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(YumRepositoryResponseOutput{})
 }

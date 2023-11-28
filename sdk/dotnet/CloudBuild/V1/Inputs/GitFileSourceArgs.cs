@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public Input<Pulumi.GoogleNative.CloudBuild.V1.GitFileSourceRepoType>? RepoType { get; set; }
 
         /// <summary>
-        /// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        /// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     public sealed class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The SQL expression.
+        /// Optional. The SQL expression.
         /// </summary>
         [Input("sqlExpression")]
         public Input<string>? SqlExpression { get; set; }

@@ -89,6 +89,9 @@ export class Certificate extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.productId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
@@ -144,7 +147,7 @@ export interface CertificateArgs {
     /**
      * Name of the certificate
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     productId: pulumi.Input<string>;
     project?: pulumi.Input<string>;

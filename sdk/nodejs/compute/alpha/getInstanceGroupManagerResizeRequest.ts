@@ -54,6 +54,14 @@ export interface GetInstanceGroupManagerResizeRequestResult {
      */
     readonly queuingPolicy: outputs.compute.alpha.QueuingPolicyResponse;
     /**
+     * Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+     */
+    readonly requestedRunDuration: outputs.compute.alpha.DurationResponse;
+    /**
+     * The number of instances to be created by this resize request. The group's target size will be increased by this number.
+     */
+    readonly resizeBy: number;
+    /**
      * The URL for this resize request. The server defines this URL.
      */
     readonly selfLink: string;
@@ -66,7 +74,7 @@ export interface GetInstanceGroupManagerResizeRequestResult {
      */
     readonly state: string;
     /**
-     * [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+     * [Output only] Status of the request.
      */
     readonly status: outputs.compute.alpha.InstanceGroupManagerResizeRequestStatusResponse;
     /**

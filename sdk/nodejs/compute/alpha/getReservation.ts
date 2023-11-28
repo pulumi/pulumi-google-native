@@ -40,6 +40,14 @@ export interface GetReservationResult {
      */
     readonly creationTimestamp: string;
     /**
+     * Duration time relative to reservation creation when GCE will automatically delete this resource.
+     */
+    readonly deleteAfterDuration: outputs.compute.alpha.DurationResponse;
+    /**
+     * Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+     */
+    readonly deleteAtTime: string;
+    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description: string;

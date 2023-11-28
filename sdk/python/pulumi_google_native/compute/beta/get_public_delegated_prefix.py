@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetPublicDelegatedPrefixResult:
-    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, ip_cidr_range=None, is_live_migration=None, kind=None, name=None, parent_prefix=None, public_delegated_sub_prefixs=None, region=None, self_link=None, status=None):
+    def __init__(__self__, byoip_api_version=None, creation_timestamp=None, description=None, fingerprint=None, ip_cidr_range=None, is_live_migration=None, kind=None, name=None, parent_prefix=None, public_delegated_sub_prefixs=None, region=None, self_link=None, status=None):
+        if byoip_api_version and not isinstance(byoip_api_version, str):
+            raise TypeError("Expected argument 'byoip_api_version' to be a str")
+        pulumi.set(__self__, "byoip_api_version", byoip_api_version)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -58,6 +61,14 @@ class GetPublicDelegatedPrefixResult:
         pulumi.set(__self__, "status", status)
 
     @property
+    @pulumi.getter(name="byoipApiVersion")
+    def byoip_api_version(self) -> str:
+        """
+        The version of BYOIP API.
+        """
+        return pulumi.get(self, "byoip_api_version")
+
+    @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
@@ -85,7 +96,7 @@ class GetPublicDelegatedPrefixResult:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> str:
         """
-        The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        The IP address range, in CIDR format, represented by this public delegated prefix.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -160,6 +171,7 @@ class AwaitableGetPublicDelegatedPrefixResult(GetPublicDelegatedPrefixResult):
         if False:
             yield self
         return GetPublicDelegatedPrefixResult(
+            byoip_api_version=self.byoip_api_version,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
@@ -189,6 +201,7 @@ def get_public_delegated_prefix(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getPublicDelegatedPrefix', __args__, opts=opts, typ=GetPublicDelegatedPrefixResult).value
 
     return AwaitableGetPublicDelegatedPrefixResult(
+        byoip_api_version=pulumi.get(__ret__, 'byoip_api_version'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),

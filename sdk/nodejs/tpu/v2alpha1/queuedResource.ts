@@ -43,7 +43,11 @@ export class QueuedResource extends pulumi.CustomResource {
      */
     public readonly bestEffort!: pulumi.Output<outputs.tpu.v2alpha1.BestEffortResponse>;
     /**
-     * The Guaranteed tier
+     * The time when the QueuedResource was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The Guaranteed tier.
      */
     public readonly guaranteed!: pulumi.Output<outputs.tpu.v2alpha1.GuaranteedResponse>;
     public readonly location!: pulumi.Output<string>;
@@ -68,6 +72,10 @@ export class QueuedResource extends pulumi.CustomResource {
      * Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
      */
     public readonly reservationName!: pulumi.Output<string>;
+    /**
+     * Optional. The Spot tier.
+     */
+    public readonly spot!: pulumi.Output<outputs.tpu.v2alpha1.SpotResponse>;
     /**
      * State of the QueuedResource request.
      */
@@ -96,11 +104,14 @@ export class QueuedResource extends pulumi.CustomResource {
             resourceInputs["queueingPolicy"] = args ? args.queueingPolicy : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["reservationName"] = args ? args.reservationName : undefined;
+            resourceInputs["spot"] = args ? args.spot : undefined;
             resourceInputs["tpu"] = args ? args.tpu : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["bestEffort"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["guaranteed"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -109,6 +120,7 @@ export class QueuedResource extends pulumi.CustomResource {
             resourceInputs["queueingPolicy"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["reservationName"] = undefined /*out*/;
+            resourceInputs["spot"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["tpu"] = undefined /*out*/;
         }
@@ -128,7 +140,7 @@ export interface QueuedResourceArgs {
      */
     bestEffort?: pulumi.Input<inputs.tpu.v2alpha1.BestEffortArgs>;
     /**
-     * The Guaranteed tier
+     * The Guaranteed tier.
      */
     guaranteed?: pulumi.Input<inputs.tpu.v2alpha1.GuaranteedArgs>;
     location?: pulumi.Input<string>;
@@ -149,6 +161,10 @@ export interface QueuedResourceArgs {
      * Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
      */
     reservationName?: pulumi.Input<string>;
+    /**
+     * Optional. The Spot tier.
+     */
+    spot?: pulumi.Input<inputs.tpu.v2alpha1.SpotArgs>;
     /**
      * Defines a TPU resource.
      */

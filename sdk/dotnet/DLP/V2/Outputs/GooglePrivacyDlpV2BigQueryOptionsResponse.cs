@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2BigQueryOptionsResponse
     {
         /// <summary>
-        /// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+        /// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2FieldIdResponse> ExcludedFields;
         /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2FieldIdResponse> IdentifyingFields;
         /// <summary>
-        /// Limit scanning only to these fields.
+        /// Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2FieldIdResponse> IncludedFields;
         /// <summary>

@@ -17,15 +17,15 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
     public sealed class SchemaSettingsResponse
     {
         /// <summary>
-        /// The encoding of messages validated against `schema`.
+        /// Optional. The encoding of messages validated against `schema`.
         /// </summary>
         public readonly string Encoding;
         /// <summary>
-        /// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        /// Optional. The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
         /// </summary>
         public readonly string FirstRevisionId;
         /// <summary>
-        /// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+        /// Optional. The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
         /// </summary>
         public readonly string LastRevisionId;
         /// <summary>

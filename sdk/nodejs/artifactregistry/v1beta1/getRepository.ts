@@ -33,7 +33,7 @@ export interface GetRepositoryResult {
      */
     readonly description: string;
     /**
-     * The format of packages that are stored in the repository.
+     * Optional. The format of packages that are stored in the repository.
      */
     readonly format: string;
     /**
@@ -45,7 +45,7 @@ export interface GetRepositoryResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+     * The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
      */
     readonly name: string;
     /**

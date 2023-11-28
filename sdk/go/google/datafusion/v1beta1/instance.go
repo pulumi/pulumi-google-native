@@ -61,6 +61,8 @@ type Instance struct {
 	Options pulumi.StringMapOutput `pulumi:"options"`
 	// P4 service account for the customer project.
 	P4ServiceAccount pulumi.StringOutput `pulumi:"p4ServiceAccount"`
+	// Optional. Current patch revision of the Data Fusion.
+	PatchRevision pulumi.StringOutput `pulumi:"patchRevision"`
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance pulumi.BoolOutput   `pulumi:"privateInstance"`
 	Project         pulumi.StringOutput `pulumi:"project"`
@@ -84,6 +86,8 @@ type Instance struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Current version of Data Fusion.
 	Version pulumi.StringOutput `pulumi:"version"`
+	// Endpoint on which the Data Fusion UI is accessible to third-party users.
+	WorkforceIdentityServiceEndpoint pulumi.StringOutput `pulumi:"workforceIdentityServiceEndpoint"`
 	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -167,6 +171,8 @@ type instanceArgs struct {
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options map[string]string `pulumi:"options"`
+	// Optional. Current patch revision of the Data Fusion.
+	PatchRevision *string `pulumi:"patchRevision"`
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance *bool   `pulumi:"privateInstance"`
 	Project         *string `pulumi:"project"`
@@ -207,6 +213,8 @@ type InstanceArgs struct {
 	NetworkConfig NetworkConfigPtrInput
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options pulumi.StringMapInput
+	// Optional. Current patch revision of the Data Fusion.
+	PatchRevision pulumi.StringPtrInput
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance pulumi.BoolPtrInput
 	Project         pulumi.StringPtrInput
@@ -376,6 +384,11 @@ func (o InstanceOutput) P4ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.P4ServiceAccount }).(pulumi.StringOutput)
 }
 
+// Optional. Current patch revision of the Data Fusion.
+func (o InstanceOutput) PatchRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PatchRevision }).(pulumi.StringOutput)
+}
+
 // Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 func (o InstanceOutput) PrivateInstance() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.PrivateInstance }).(pulumi.BoolOutput)
@@ -430,6 +443,11 @@ func (o InstanceOutput) UpdateTime() pulumi.StringOutput {
 // Current version of Data Fusion.
 func (o InstanceOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// Endpoint on which the Data Fusion UI is accessible to third-party users.
+func (o InstanceOutput) WorkforceIdentityServiceEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.WorkforceIdentityServiceEndpoint }).(pulumi.StringOutput)
 }
 
 // Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.

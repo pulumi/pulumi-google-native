@@ -236,6 +236,14 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
         /// Trigger for update document action.
         /// </summary>
         public static GoogleCloudContentwarehouseV1RuleTriggerType OnUpdate { get; } = new GoogleCloudContentwarehouseV1RuleTriggerType("ON_UPDATE");
+        /// <summary>
+        /// Trigger for create link action.
+        /// </summary>
+        public static GoogleCloudContentwarehouseV1RuleTriggerType OnCreateLink { get; } = new GoogleCloudContentwarehouseV1RuleTriggerType("ON_CREATE_LINK");
+        /// <summary>
+        /// Trigger for delete link action.
+        /// </summary>
+        public static GoogleCloudContentwarehouseV1RuleTriggerType OnDeleteLink { get; } = new GoogleCloudContentwarehouseV1RuleTriggerType("ON_DELETE_LINK");
 
         public static bool operator ==(GoogleCloudContentwarehouseV1RuleTriggerType left, GoogleCloudContentwarehouseV1RuleTriggerType right) => left.Equals(right);
         public static bool operator !=(GoogleCloudContentwarehouseV1RuleTriggerType left, GoogleCloudContentwarehouseV1RuleTriggerType right) => !left.Equals(right);

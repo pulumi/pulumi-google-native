@@ -18,7 +18,7 @@ export const SchemaSettingsEncoding = {
 } as const;
 
 /**
- * The encoding of messages validated against `schema`.
+ * Optional. The encoding of messages validated against `schema`.
  */
 export type SchemaSettingsEncoding = (typeof SchemaSettingsEncoding)[keyof typeof SchemaSettingsEncoding];
 

@@ -19,6 +19,7 @@ class WorkstationClusterArgs:
                  workstation_cluster_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input['DomainConfigArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -30,20 +31,23 @@ class WorkstationClusterArgs:
         """
         The set of arguments for constructing a WorkstationCluster resource.
         :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the workstation cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
-        :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
-        :param pulumi.Input[str] name: Full name of this resource.
-        :param pulumi.Input[str] network: Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
-        :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Configuration for private cluster.
-        :param pulumi.Input[str] subnetwork: Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
+        :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation cluster.
+        :param pulumi.Input['DomainConfigArgs'] domain_config: Optional. Configuration options for a custom domain.
+        :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
+        :param pulumi.Input[str] name: Identifier. Full name of this workstation cluster.
+        :param pulumi.Input[str] network: Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
+        :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Optional. Configuration for private workstation cluster.
+        :param pulumi.Input[str] subnetwork: Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
         """
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if domain_config is not None:
+            pulumi.set(__self__, "domain_config", domain_config)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if labels is not None:
@@ -77,7 +81,7 @@ class WorkstationClusterArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Client-specified annotations.
+        Optional. Client-specified annotations.
         """
         return pulumi.get(self, "annotations")
 
@@ -89,7 +93,7 @@ class WorkstationClusterArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Human-readable name for this resource.
+        Optional. Human-readable name for this workstation cluster.
         """
         return pulumi.get(self, "display_name")
 
@@ -98,10 +102,22 @@ class WorkstationClusterArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="domainConfig")
+    def domain_config(self) -> Optional[pulumi.Input['DomainConfigArgs']]:
+        """
+        Optional. Configuration options for a custom domain.
+        """
+        return pulumi.get(self, "domain_config")
+
+    @domain_config.setter
+    def domain_config(self, value: Optional[pulumi.Input['DomainConfigArgs']]):
+        pulumi.set(self, "domain_config", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -113,7 +129,7 @@ class WorkstationClusterArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
         """
         return pulumi.get(self, "labels")
 
@@ -134,7 +150,7 @@ class WorkstationClusterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Full name of this resource.
+        Identifier. Full name of this workstation cluster.
         """
         return pulumi.get(self, "name")
 
@@ -146,7 +162,7 @@ class WorkstationClusterArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+        Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
         """
         return pulumi.get(self, "network")
 
@@ -158,7 +174,7 @@ class WorkstationClusterArgs:
     @pulumi.getter(name="privateClusterConfig")
     def private_cluster_config(self) -> Optional[pulumi.Input['PrivateClusterConfigArgs']]:
         """
-        Configuration for private cluster.
+        Optional. Configuration for private workstation cluster.
         """
         return pulumi.get(self, "private_cluster_config")
 
@@ -179,7 +195,7 @@ class WorkstationClusterArgs:
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+        Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -195,6 +211,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input[pulumi.InputType['DomainConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -210,14 +227,15 @@ class WorkstationCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
-        :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
-        :param pulumi.Input[str] name: Full name of this resource.
-        :param pulumi.Input[str] network: Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
-        :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Configuration for private cluster.
-        :param pulumi.Input[str] subnetwork: Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
+        :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation cluster.
+        :param pulumi.Input[pulumi.InputType['DomainConfigArgs']] domain_config: Optional. Configuration options for a custom domain.
+        :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
+        :param pulumi.Input[str] name: Identifier. Full name of this workstation cluster.
+        :param pulumi.Input[str] network: Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
+        :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Optional. Configuration for private workstation cluster.
+        :param pulumi.Input[str] subnetwork: Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
         :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the workstation cluster.
         """
         ...
@@ -246,6 +264,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input[pulumi.InputType['DomainConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -266,6 +285,7 @@ class WorkstationCluster(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["domain_config"] = domain_config
             __props__.__dict__["etag"] = etag
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -316,6 +336,7 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["degraded"] = None
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["domain_config"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
@@ -334,7 +355,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Client-specified annotations.
+        Optional. Client-specified annotations.
         """
         return pulumi.get(self, "annotations")
 
@@ -342,7 +363,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def conditions(self) -> pulumi.Output[Sequence['outputs.StatusResponse']]:
         """
-        Status conditions describing the current resource state.
+        Status conditions describing the workstation cluster's current state.
         """
         return pulumi.get(self, "conditions")
 
@@ -350,7 +371,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter(name="controlPlaneIp")
     def control_plane_ip(self) -> pulumi.Output[str]:
         """
-        The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
         """
         return pulumi.get(self, "control_plane_ip")
 
@@ -358,7 +379,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time when this resource was created.
+        Time when this workstation cluster was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -366,7 +387,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def degraded(self) -> pulumi.Output[bool]:
         """
-        Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+        Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
         """
         return pulumi.get(self, "degraded")
 
@@ -374,7 +395,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> pulumi.Output[str]:
         """
-        Time when this resource was soft-deleted.
+        Time when this workstation cluster was soft-deleted.
         """
         return pulumi.get(self, "delete_time")
 
@@ -382,15 +403,23 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Human-readable name for this resource.
+        Optional. Human-readable name for this workstation cluster.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="domainConfig")
+    def domain_config(self) -> pulumi.Output['outputs.DomainConfigResponse']:
+        """
+        Optional. Configuration options for a custom domain.
+        """
+        return pulumi.get(self, "domain_config")
 
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -398,7 +427,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
         """
         return pulumi.get(self, "labels")
 
@@ -411,7 +440,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Full name of this resource.
+        Identifier. Full name of this workstation cluster.
         """
         return pulumi.get(self, "name")
 
@@ -419,7 +448,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
-        Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+        Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
         """
         return pulumi.get(self, "network")
 
@@ -427,7 +456,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter(name="privateClusterConfig")
     def private_cluster_config(self) -> pulumi.Output['outputs.PrivateClusterConfigResponse']:
         """
-        Configuration for private cluster.
+        Optional. Configuration for private workstation cluster.
         """
         return pulumi.get(self, "private_cluster_config")
 
@@ -440,7 +469,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Indicates whether this resource is currently being updated to match its intended state.
+        Indicates whether this workstation cluster is currently being updated to match its intended state.
         """
         return pulumi.get(self, "reconciling")
 
@@ -448,7 +477,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def subnetwork(self) -> pulumi.Output[str]:
         """
-        Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+        Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -456,7 +485,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        A system-assigned unique identified for this resource.
+        A system-assigned unique identifier for this workstation cluster.
         """
         return pulumi.get(self, "uid")
 
@@ -464,7 +493,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time when this resource was most recently updated.
+        Time when this workstation cluster was most recently updated.
         """
         return pulumi.get(self, "update_time")
 

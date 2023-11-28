@@ -32,7 +32,7 @@ export interface GetRolloutArgs {
 
 export interface GetRolloutResult {
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     readonly annotations: {[key: string]: string};
     /**
@@ -44,7 +44,7 @@ export interface GetRolloutResult {
      */
     readonly approveTime: string;
     /**
-     * Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+     * Name of the `ControllerRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
      */
     readonly controllerRollout: string;
     /**
@@ -84,7 +84,7 @@ export interface GetRolloutResult {
      */
     readonly failureReason: string;
     /**
-     * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     readonly labels: {[key: string]: string};
     /**
@@ -92,13 +92,21 @@ export interface GetRolloutResult {
      */
     readonly metadata: outputs.clouddeploy.v1.MetadataResponse;
     /**
-     * Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+     * Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
      */
     readonly name: string;
     /**
      * The phases that represent the workflows of this `Rollout`.
      */
     readonly phases: outputs.clouddeploy.v1.PhaseResponse[];
+    /**
+     * Name of the `Rollout` that is rolled back by this `Rollout`. Empty if this `Rollout` wasn't created as a rollback.
+     */
+    readonly rollbackOfRollout: string;
+    /**
+     * Names of `Rollouts` that rolled back this `Rollout`.
+     */
+    readonly rolledBackByRollouts: string[];
     /**
      * Current state of the `Rollout`.
      */

@@ -34,7 +34,7 @@ class ClusterArgs:
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
         :param pulumi.Input[str] name: The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
-        :param pulumi.Input[int] serve_nodes: The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        :param pulumi.Input[int] serve_nodes: The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -147,7 +147,7 @@ class ClusterArgs:
     @pulumi.getter(name="serveNodes")
     def serve_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         """
         return pulumi.get(self, "serve_nodes")
 
@@ -182,7 +182,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
         :param pulumi.Input[str] name: The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
-        :param pulumi.Input[int] serve_nodes: The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        :param pulumi.Input[int] serve_nodes: The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         """
         ...
     @overload
@@ -338,7 +338,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="serveNodes")
     def serve_nodes(self) -> pulumi.Output[int]:
         """
-        The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         """
         return pulumi.get(self, "serve_nodes")
 

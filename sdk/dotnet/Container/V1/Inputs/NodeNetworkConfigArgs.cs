@@ -15,6 +15,30 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// </summary>
     public sealed class NodeNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalNodeNetworkConfigs")]
+        private InputList<Inputs.AdditionalNodeNetworkConfigArgs>? _additionalNodeNetworkConfigs;
+
+        /// <summary>
+        /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+        /// </summary>
+        public InputList<Inputs.AdditionalNodeNetworkConfigArgs> AdditionalNodeNetworkConfigs
+        {
+            get => _additionalNodeNetworkConfigs ?? (_additionalNodeNetworkConfigs = new InputList<Inputs.AdditionalNodeNetworkConfigArgs>());
+            set => _additionalNodeNetworkConfigs = value;
+        }
+
+        [Input("additionalPodNetworkConfigs")]
+        private InputList<Inputs.AdditionalPodNetworkConfigArgs>? _additionalPodNetworkConfigs;
+
+        /// <summary>
+        /// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+        /// </summary>
+        public InputList<Inputs.AdditionalPodNetworkConfigArgs> AdditionalPodNetworkConfigs
+        {
+            get => _additionalPodNetworkConfigs ?? (_additionalPodNetworkConfigs = new InputList<Inputs.AdditionalPodNetworkConfigArgs>());
+            set => _additionalPodNetworkConfigs = value;
+        }
+
         /// <summary>
         /// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         /// </summary>

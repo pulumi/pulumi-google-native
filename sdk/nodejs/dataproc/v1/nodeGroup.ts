@@ -57,6 +57,10 @@ export class NodeGroup extends pulumi.CustomResource {
      * Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
      */
     public readonly nodeGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * Optional. operation id of the parent operation sending the create request
+     */
+    public readonly parentOperationId!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string>;
     public readonly regionId!: pulumi.Output<string>;
     /**
@@ -93,6 +97,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeGroupConfig"] = args ? args.nodeGroupConfig : undefined;
             resourceInputs["nodeGroupId"] = args ? args.nodeGroupId : undefined;
+            resourceInputs["parentOperationId"] = args ? args.parentOperationId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["regionId"] = args ? args.regionId : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
@@ -103,6 +108,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeGroupConfig"] = undefined /*out*/;
             resourceInputs["nodeGroupId"] = undefined /*out*/;
+            resourceInputs["parentOperationId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -136,6 +142,10 @@ export interface NodeGroupArgs {
      * Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
      */
     nodeGroupId?: pulumi.Input<string>;
+    /**
+     * Optional. operation id of the parent operation sending the create request
+     */
+    parentOperationId?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     regionId: pulumi.Input<string>;
     /**

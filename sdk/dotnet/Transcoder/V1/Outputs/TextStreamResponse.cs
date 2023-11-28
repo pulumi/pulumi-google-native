@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly string LanguageCode;
         /// <summary>
-        /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+        /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
         /// </summary>
         public readonly ImmutableArray<Outputs.TextMappingResponse> Mapping;
 

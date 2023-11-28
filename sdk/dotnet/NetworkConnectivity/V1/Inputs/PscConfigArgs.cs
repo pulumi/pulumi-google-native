@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Inputs
     public sealed class PscConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Max number of PSC connections for this policy.
+        /// Optional. Max number of PSC connections for this policy.
         /// </summary>
         [Input("limit")]
         public Input<string>? Limit { get; set; }

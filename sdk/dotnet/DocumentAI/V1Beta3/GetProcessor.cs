@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
         /// </summary>
         public readonly string KmsKeyName;
         /// <summary>
@@ -87,6 +87,10 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
         /// Immutable. The http endpoint that can be called to invoke processing.
         /// </summary>
         public readonly string ProcessEndpoint;
+        /// <summary>
+        /// The processor version aliases.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse> ProcessorVersionAliases;
         /// <summary>
         /// The state of the processor.
         /// </summary>
@@ -110,6 +114,8 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
 
             string processEndpoint,
 
+            ImmutableArray<Outputs.GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse> processorVersionAliases,
+
             string state,
 
             string type)
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
             KmsKeyName = kmsKeyName;
             Name = name;
             ProcessEndpoint = processEndpoint;
+            ProcessorVersionAliases = processorVersionAliases;
             State = state;
             Type = type;
         }

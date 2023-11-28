@@ -139,6 +139,51 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     }
 
     /// <summary>
+    /// The type of the connected data store.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType : IEquatable<GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not specified. This value indicates that the data store type is not specified, so it will not be used during search.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType DataStoreTypeUnspecified { get; } = new GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType("DATA_STORE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A data store that contains public web content.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType PublicWeb { get; } = new GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType("PUBLIC_WEB");
+        /// <summary>
+        /// A data store that contains unstructured private data.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType Unstructured { get; } = new GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType("UNSTRUCTURED");
+        /// <summary>
+        /// A data store that contains structured data (for example FAQ).
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType Structured { get; } = new GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType("STRUCTURED");
+
+        public static bool operator ==(GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType left, GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType left, GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Count-based metric type. Only one of type or count_type is specified in each Metric.
     /// </summary>
     [EnumType]
@@ -417,6 +462,51 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3NluSettingsModelType other && Equals(other);
         public bool Equals(GoogleCloudDialogflowCxV3NluSettingsModelType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Response type.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowCxV3ResponseMessageResponseType : IEquatable<GoogleCloudDialogflowCxV3ResponseMessageResponseType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowCxV3ResponseMessageResponseType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not specified.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3ResponseMessageResponseType ResponseTypeUnspecified { get; } = new GoogleCloudDialogflowCxV3ResponseMessageResponseType("RESPONSE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The response is from an entry prompt in the page.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3ResponseMessageResponseType EntryPrompt { get; } = new GoogleCloudDialogflowCxV3ResponseMessageResponseType("ENTRY_PROMPT");
+        /// <summary>
+        /// The response is from form-filling prompt in the page.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3ResponseMessageResponseType ParameterPrompt { get; } = new GoogleCloudDialogflowCxV3ResponseMessageResponseType("PARAMETER_PROMPT");
+        /// <summary>
+        /// The response is from a transition route or an event handler in the page or flow or transition route group.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3ResponseMessageResponseType HandlerPrompt { get; } = new GoogleCloudDialogflowCxV3ResponseMessageResponseType("HANDLER_PROMPT");
+
+        public static bool operator ==(GoogleCloudDialogflowCxV3ResponseMessageResponseType left, GoogleCloudDialogflowCxV3ResponseMessageResponseType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowCxV3ResponseMessageResponseType left, GoogleCloudDialogflowCxV3ResponseMessageResponseType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowCxV3ResponseMessageResponseType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3ResponseMessageResponseType other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowCxV3ResponseMessageResponseType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -713,6 +803,43 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SecuritySettingRedactionStrategy other && Equals(other);
         public bool Equals(SecuritySettingRedactionStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecuritySettingRetentionStrategy : IEquatable<SecuritySettingRetentionStrategy>
+    {
+        private readonly string _value;
+
+        private SecuritySettingRetentionStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Retains the persisted data with Dialogflow's internal default 365d TTLs.
+        /// </summary>
+        public static SecuritySettingRetentionStrategy RetentionStrategyUnspecified { get; } = new SecuritySettingRetentionStrategy("RETENTION_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// Removes data when the conversation ends. If there is no Conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
+        /// </summary>
+        public static SecuritySettingRetentionStrategy RemoveAfterConversation { get; } = new SecuritySettingRetentionStrategy("REMOVE_AFTER_CONVERSATION");
+
+        public static bool operator ==(SecuritySettingRetentionStrategy left, SecuritySettingRetentionStrategy right) => left.Equals(right);
+        public static bool operator !=(SecuritySettingRetentionStrategy left, SecuritySettingRetentionStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(SecuritySettingRetentionStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecuritySettingRetentionStrategy other && Equals(other);
+        public bool Equals(SecuritySettingRetentionStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

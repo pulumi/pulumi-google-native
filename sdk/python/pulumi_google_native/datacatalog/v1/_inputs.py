@@ -27,10 +27,12 @@ __all__ = [
     'GoogleCloudDatacatalogV1DatabaseTableSpecArgs',
     'GoogleCloudDatacatalogV1DataplexFilesetSpecArgs',
     'GoogleCloudDatacatalogV1DataplexSpecArgs',
+    'GoogleCloudDatacatalogV1DatasetSpecArgs',
     'GoogleCloudDatacatalogV1EntryOverviewArgs',
     'GoogleCloudDatacatalogV1FilesetSpecArgs',
     'GoogleCloudDatacatalogV1GcsFilesetSpecArgs',
     'GoogleCloudDatacatalogV1LookerSystemSpecArgs',
+    'GoogleCloudDatacatalogV1ModelSpecArgs',
     'GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs',
     'GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs',
     'GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs',
@@ -45,6 +47,9 @@ __all__ = [
     'GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs',
     'GoogleCloudDatacatalogV1SystemTimestampsArgs',
     'GoogleCloudDatacatalogV1UsageSignalArgs',
+    'GoogleCloudDatacatalogV1VertexDatasetSpecArgs',
+    'GoogleCloudDatacatalogV1VertexModelSourceInfoArgs',
+    'GoogleCloudDatacatalogV1VertexModelSpecArgs',
 ]
 
 @pulumi.input_type
@@ -815,6 +820,30 @@ class GoogleCloudDatacatalogV1DataplexSpecArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1DatasetSpecArgs:
+    def __init__(__self__, *,
+                 vertex_dataset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexDatasetSpecArgs']] = None):
+        """
+        Specification that applies to a dataset. Valid only for entries with the `DATASET` type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1VertexDatasetSpecArgs'] vertex_dataset_spec: Vertex AI Dataset specific fields
+        """
+        if vertex_dataset_spec is not None:
+            pulumi.set(__self__, "vertex_dataset_spec", vertex_dataset_spec)
+
+    @property
+    @pulumi.getter(name="vertexDatasetSpec")
+    def vertex_dataset_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexDatasetSpecArgs']]:
+        """
+        Vertex AI Dataset specific fields
+        """
+        return pulumi.get(self, "vertex_dataset_spec")
+
+    @vertex_dataset_spec.setter
+    def vertex_dataset_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexDatasetSpecArgs']]):
+        pulumi.set(self, "vertex_dataset_spec", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1EntryOverviewArgs:
     def __init__(__self__, *,
                  overview: Optional[pulumi.Input[str]] = None):
@@ -987,6 +1016,30 @@ class GoogleCloudDatacatalogV1LookerSystemSpecArgs:
     @parent_view_id.setter
     def parent_view_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent_view_id", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1ModelSpecArgs:
+    def __init__(__self__, *,
+                 vertex_model_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexModelSpecArgs']] = None):
+        """
+        Specification that applies to a model. Valid only for entries with the `MODEL` type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1VertexModelSpecArgs'] vertex_model_spec: Specification for vertex model resources.
+        """
+        if vertex_model_spec is not None:
+            pulumi.set(__self__, "vertex_model_spec", vertex_model_spec)
+
+    @property
+    @pulumi.getter(name="vertexModelSpec")
+    def vertex_model_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexModelSpecArgs']]:
+        """
+        Specification for vertex model resources.
+        """
+        return pulumi.get(self, "vertex_model_spec")
+
+    @vertex_model_spec.setter
+    def vertex_model_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexModelSpecArgs']]):
+        pulumi.set(self, "vertex_model_spec", value)
 
 
 @pulumi.input_type
@@ -1550,5 +1603,173 @@ class GoogleCloudDatacatalogV1UsageSignalArgs:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1VertexDatasetSpecArgs:
+    def __init__(__self__, *,
+                 data_item_count: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexDatasetSpecDataType']] = None):
+        """
+        Specification for vertex dataset resources.
+        :param pulumi.Input[str] data_item_count: The number of DataItems in this Dataset. Only apply for non-structured Dataset.
+        :param pulumi.Input['GoogleCloudDatacatalogV1VertexDatasetSpecDataType'] data_type: Type of the dataset.
+        """
+        if data_item_count is not None:
+            pulumi.set(__self__, "data_item_count", data_item_count)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+
+    @property
+    @pulumi.getter(name="dataItemCount")
+    def data_item_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of DataItems in this Dataset. Only apply for non-structured Dataset.
+        """
+        return pulumi.get(self, "data_item_count")
+
+    @data_item_count.setter
+    def data_item_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_item_count", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexDatasetSpecDataType']]:
+        """
+        Type of the dataset.
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexDatasetSpecDataType']]):
+        pulumi.set(self, "data_type", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1VertexModelSourceInfoArgs:
+    def __init__(__self__, *,
+                 copy: Optional[pulumi.Input[bool]] = None,
+                 source_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType']] = None):
+        """
+        Detail description of the source information of a Vertex model.
+        :param pulumi.Input[bool] copy: If this Model is copy of another Model. If true then source_type pertains to the original.
+        :param pulumi.Input['GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType'] source_type: Type of the model source.
+        """
+        if copy is not None:
+            pulumi.set(__self__, "copy", copy)
+        if source_type is not None:
+            pulumi.set(__self__, "source_type", source_type)
+
+    @property
+    @pulumi.getter
+    def copy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this Model is copy of another Model. If true then source_type pertains to the original.
+        """
+        return pulumi.get(self, "copy")
+
+    @copy.setter
+    def copy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "copy", value)
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType']]:
+        """
+        Type of the model source.
+        """
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType']]):
+        pulumi.set(self, "source_type", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1VertexModelSpecArgs:
+    def __init__(__self__, *,
+                 container_image_uri: Optional[pulumi.Input[str]] = None,
+                 version_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 version_description: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
+                 vertex_model_source_info: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexModelSourceInfoArgs']] = None):
+        """
+        Specification for vertex model resources.
+        :param pulumi.Input[str] container_image_uri: URI of the Docker image to be used as the custom container for serving predictions.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_aliases: User provided version aliases so that a model version can be referenced via alias
+        :param pulumi.Input[str] version_description: The description of this version.
+        :param pulumi.Input[str] version_id: The version ID of the model.
+        :param pulumi.Input['GoogleCloudDatacatalogV1VertexModelSourceInfoArgs'] vertex_model_source_info: Source of a Vertex model.
+        """
+        if container_image_uri is not None:
+            pulumi.set(__self__, "container_image_uri", container_image_uri)
+        if version_aliases is not None:
+            pulumi.set(__self__, "version_aliases", version_aliases)
+        if version_description is not None:
+            pulumi.set(__self__, "version_description", version_description)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
+        if vertex_model_source_info is not None:
+            pulumi.set(__self__, "vertex_model_source_info", vertex_model_source_info)
+
+    @property
+    @pulumi.getter(name="containerImageUri")
+    def container_image_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI of the Docker image to be used as the custom container for serving predictions.
+        """
+        return pulumi.get(self, "container_image_uri")
+
+    @container_image_uri.setter
+    def container_image_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_image_uri", value)
+
+    @property
+    @pulumi.getter(name="versionAliases")
+    def version_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        User provided version aliases so that a model version can be referenced via alias
+        """
+        return pulumi.get(self, "version_aliases")
+
+    @version_aliases.setter
+    def version_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "version_aliases", value)
+
+    @property
+    @pulumi.getter(name="versionDescription")
+    def version_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of this version.
+        """
+        return pulumi.get(self, "version_description")
+
+    @version_description.setter
+    def version_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_description", value)
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version ID of the model.
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_id", value)
+
+    @property
+    @pulumi.getter(name="vertexModelSourceInfo")
+    def vertex_model_source_info(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexModelSourceInfoArgs']]:
+        """
+        Source of a Vertex model.
+        """
+        return pulumi.get(self, "vertex_model_source_info")
+
+    @vertex_model_source_info.setter
+    def vertex_model_source_info(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1VertexModelSourceInfoArgs']]):
+        pulumi.set(self, "vertex_model_source_info", value)
 
 

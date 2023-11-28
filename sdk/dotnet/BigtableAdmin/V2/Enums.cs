@@ -8,6 +8,42 @@ using Pulumi;
 namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
+    /// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+    /// </summary>
+    [EnumType]
+    public readonly struct AppProfilePriority : IEquatable<AppProfilePriority>
+    {
+        private readonly string _value;
+
+        private AppProfilePriority(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.
+        /// </summary>
+        public static AppProfilePriority PriorityUnspecified { get; } = new AppProfilePriority("PRIORITY_UNSPECIFIED");
+        public static AppProfilePriority PriorityLow { get; } = new AppProfilePriority("PRIORITY_LOW");
+        public static AppProfilePriority PriorityMedium { get; } = new AppProfilePriority("PRIORITY_MEDIUM");
+        public static AppProfilePriority PriorityHigh { get; } = new AppProfilePriority("PRIORITY_HIGH");
+
+        public static bool operator ==(AppProfilePriority left, AppProfilePriority right) => left.Equals(right);
+        public static bool operator !=(AppProfilePriority left, AppProfilePriority right) => !left.Equals(right);
+
+        public static explicit operator string(AppProfilePriority value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AppProfilePriority other && Equals(other);
+        public bool Equals(AppProfilePriority other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The log type that this config enables.
     /// </summary>
     [EnumType]
@@ -127,6 +163,42 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InstanceType other && Equals(other);
         public bool Equals(InstanceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The priority of requests sent using this app profile.
+    /// </summary>
+    [EnumType]
+    public readonly struct StandardIsolationPriority : IEquatable<StandardIsolationPriority>
+    {
+        private readonly string _value;
+
+        private StandardIsolationPriority(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.
+        /// </summary>
+        public static StandardIsolationPriority PriorityUnspecified { get; } = new StandardIsolationPriority("PRIORITY_UNSPECIFIED");
+        public static StandardIsolationPriority PriorityLow { get; } = new StandardIsolationPriority("PRIORITY_LOW");
+        public static StandardIsolationPriority PriorityMedium { get; } = new StandardIsolationPriority("PRIORITY_MEDIUM");
+        public static StandardIsolationPriority PriorityHigh { get; } = new StandardIsolationPriority("PRIORITY_HIGH");
+
+        public static bool operator ==(StandardIsolationPriority left, StandardIsolationPriority right) => left.Equals(right);
+        public static bool operator !=(StandardIsolationPriority left, StandardIsolationPriority right) => !left.Equals(right);
+
+        public static explicit operator string(StandardIsolationPriority value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is StandardIsolationPriority other && Equals(other);
+        public bool Equals(StandardIsolationPriority other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.VPCAccess.V1Beta1
         /// </summary>
         public readonly int MaxInstances;
         /// <summary>
-        /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
+        /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
         /// </summary>
         public readonly int MaxThroughput;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.VPCAccess.V1Beta1
         /// </summary>
         public readonly int MinInstances;
         /// <summary>
-        /// Minimum throughput of the connector in Mbps. Default and min is 200.
+        /// Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
         /// </summary>
         public readonly int MinThroughput;
         /// <summary>

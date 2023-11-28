@@ -83,6 +83,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
+     * Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+     */
+    public readonly instanceEncryptionKey!: pulumi.Output<outputs.compute.v1.CustomerEncryptionKeyResponse>;
+    /**
      * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
      */
     public readonly keyRevocationActionType!: pulumi.Output<string>;
@@ -224,6 +228,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["displayDevice"] = args ? args.displayDevice : undefined;
             resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["instanceEncryptionKey"] = args ? args.instanceEncryptionKey : undefined;
             resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineType"] = args ? args.machineType : undefined;
@@ -274,6 +279,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["guestAccelerators"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
+            resourceInputs["instanceEncryptionKey"] = undefined /*out*/;
             resourceInputs["keyRevocationActionType"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -353,6 +359,10 @@ export interface InstanceArgs {
      * Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
      */
     hostname?: pulumi.Input<string>;
+    /**
+     * Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+     */
+    instanceEncryptionKey?: pulumi.Input<inputs.compute.v1.CustomerEncryptionKeyArgs>;
     /**
      * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
      */

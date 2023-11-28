@@ -16,23 +16,27 @@ __all__ = ['ScopeArgs', 'Scope']
 class ScopeArgs:
     def __init__(__self__, *,
                  scope_id: pulumi.Input[str],
-                 all_memberships: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Scope resource.
         :param pulumi.Input[str] scope_id: Required. Client chosen ID for the Scope. `scope_id` must be a ????
-        :param pulumi.Input[bool] all_memberships: If true, all Memberships in the Fleet bind to this Scope.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this Scope.
         :param pulumi.Input[str] name: The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] namespace_labels: Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
         """
         pulumi.set(__self__, "scope_id", scope_id)
-        if all_memberships is not None:
-            pulumi.set(__self__, "all_memberships", all_memberships)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if namespace_labels is not None:
+            pulumi.set(__self__, "namespace_labels", namespace_labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -49,16 +53,16 @@ class ScopeArgs:
         pulumi.set(self, "scope_id", value)
 
     @property
-    @pulumi.getter(name="allMemberships")
-    def all_memberships(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        If true, all Memberships in the Fleet bind to this Scope.
+        Optional. Labels for this Scope.
         """
-        return pulumi.get(self, "all_memberships")
+        return pulumi.get(self, "labels")
 
-    @all_memberships.setter
-    def all_memberships(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "all_memberships", value)
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -82,6 +86,18 @@ class ScopeArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+        """
+        return pulumi.get(self, "namespace_labels")
+
+    @namespace_labels.setter
+    def namespace_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "namespace_labels", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -96,9 +112,10 @@ class Scope(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_memberships: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -108,8 +125,9 @@ class Scope(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] all_memberships: If true, all Memberships in the Fleet bind to this Scope.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this Scope.
         :param pulumi.Input[str] name: The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] namespace_labels: Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
         :param pulumi.Input[str] scope_id: Required. Client chosen ID for the Scope. `scope_id` must be a ????
         """
         ...
@@ -137,9 +155,10 @@ class Scope(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_memberships: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -151,9 +170,10 @@ class Scope(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ScopeArgs.__new__(ScopeArgs)
 
-            __props__.__dict__["all_memberships"] = all_memberships
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            __props__.__dict__["namespace_labels"] = namespace_labels
             __props__.__dict__["project"] = project
             if scope_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scope_id'")
@@ -187,25 +207,18 @@ class Scope(pulumi.CustomResource):
 
         __props__ = ScopeArgs.__new__(ScopeArgs)
 
-        __props__.__dict__["all_memberships"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delete_time"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["namespace_labels"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["scope_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return Scope(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="allMemberships")
-    def all_memberships(self) -> pulumi.Output[bool]:
-        """
-        If true, all Memberships in the Fleet bind to this Scope.
-        """
-        return pulumi.get(self, "all_memberships")
 
     @property
     @pulumi.getter(name="createTime")
@@ -225,6 +238,14 @@ class Scope(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Labels for this Scope.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
 
@@ -235,6 +256,14 @@ class Scope(pulumi.CustomResource):
         The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+        """
+        return pulumi.get(self, "namespace_labels")
 
     @property
     @pulumi.getter

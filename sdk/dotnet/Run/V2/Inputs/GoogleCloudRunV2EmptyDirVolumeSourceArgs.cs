@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
 {
 
     /// <summary>
-    /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+    /// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
     /// </summary>
     public sealed class GoogleCloudRunV2EmptyDirVolumeSourceArgs : global::Pulumi.ResourceArgs
     {
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<Pulumi.GoogleNative.Run.V2.GoogleCloudRunV2EmptyDirVolumeSourceMedium>? Medium { get; set; }
 
         /// <summary>
-        /// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        /// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
         /// </summary>
         [Input("sizeLimit")]
         public Input<string>? SizeLimit { get; set; }

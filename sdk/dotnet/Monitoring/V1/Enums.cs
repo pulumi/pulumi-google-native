@@ -239,6 +239,51 @@ namespace Pulumi.GoogleNative.Monitoring.V1
     }
 
     /// <summary>
+    /// Required. The sort order is applied to the values of the breakdown column.
+    /// </summary>
+    [EnumType]
+    public readonly struct BreakdownSortOrder : IEquatable<BreakdownSortOrder>
+    {
+        private readonly string _value;
+
+        private BreakdownSortOrder(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified sort order. This option is invalid when sorting is required.
+        /// </summary>
+        public static BreakdownSortOrder SortOrderUnspecified { get; } = new BreakdownSortOrder("SORT_ORDER_UNSPECIFIED");
+        /// <summary>
+        /// No sorting is applied.
+        /// </summary>
+        public static BreakdownSortOrder SortOrderNone { get; } = new BreakdownSortOrder("SORT_ORDER_NONE");
+        /// <summary>
+        /// The lowest-valued entries are selected first.
+        /// </summary>
+        public static BreakdownSortOrder SortOrderAscending { get; } = new BreakdownSortOrder("SORT_ORDER_ASCENDING");
+        /// <summary>
+        /// The highest-valued entries are selected first.
+        /// </summary>
+        public static BreakdownSortOrder SortOrderDescending { get; } = new BreakdownSortOrder("SORT_ORDER_DESCENDING");
+
+        public static bool operator ==(BreakdownSortOrder left, BreakdownSortOrder right) => left.Equals(right);
+        public static bool operator !=(BreakdownSortOrder left, BreakdownSortOrder right) => !left.Equals(right);
+
+        public static explicit operator string(BreakdownSortOrder value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BreakdownSortOrder other && Equals(other);
+        public bool Equals(BreakdownSortOrder other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The chart mode.
     /// </summary>
     [EnumType]
@@ -427,6 +472,51 @@ namespace Pulumi.GoogleNative.Monitoring.V1
     }
 
     /// <summary>
+    /// The sort order applied to the sort column.
+    /// </summary>
+    [EnumType]
+    public readonly struct DimensionSortOrder : IEquatable<DimensionSortOrder>
+    {
+        private readonly string _value;
+
+        private DimensionSortOrder(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified sort order. This option is invalid when sorting is required.
+        /// </summary>
+        public static DimensionSortOrder SortOrderUnspecified { get; } = new DimensionSortOrder("SORT_ORDER_UNSPECIFIED");
+        /// <summary>
+        /// No sorting is applied.
+        /// </summary>
+        public static DimensionSortOrder SortOrderNone { get; } = new DimensionSortOrder("SORT_ORDER_NONE");
+        /// <summary>
+        /// The lowest-valued entries are selected first.
+        /// </summary>
+        public static DimensionSortOrder SortOrderAscending { get; } = new DimensionSortOrder("SORT_ORDER_ASCENDING");
+        /// <summary>
+        /// The highest-valued entries are selected first.
+        /// </summary>
+        public static DimensionSortOrder SortOrderDescending { get; } = new DimensionSortOrder("SORT_ORDER_DESCENDING");
+
+        public static bool operator ==(DimensionSortOrder left, DimensionSortOrder right) => left.Equals(right);
+        public static bool operator !=(DimensionSortOrder left, DimensionSortOrder right) => !left.Equals(right);
+
+        public static explicit operator string(DimensionSortOrder value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DimensionSortOrder other && Equals(other);
+        public bool Equals(DimensionSortOrder other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// How to use the ranking to select time series that pass through the filter.
     /// </summary>
     [EnumType]
@@ -513,6 +603,47 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is PickTimeSeriesFilterRankingMethod other && Equals(other);
         public bool Equals(PickTimeSeriesFilterRankingMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Indicates the visualization type for the PieChart.
+    /// </summary>
+    [EnumType]
+    public readonly struct PieChartChartType : IEquatable<PieChartChartType>
+    {
+        private readonly string _value;
+
+        private PieChartChartType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The zero value. No type specified. Do not use.
+        /// </summary>
+        public static PieChartChartType PieChartTypeUnspecified { get; } = new PieChartChartType("PIE_CHART_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A Pie type PieChart.
+        /// </summary>
+        public static PieChartChartType Pie { get; } = new PieChartChartType("PIE");
+        /// <summary>
+        /// Similar to PIE, but the DONUT type PieChart has a hole in the middle.
+        /// </summary>
+        public static PieChartChartType Donut { get; } = new PieChartChartType("DONUT");
+
+        public static bool operator ==(PieChartChartType left, PieChartChartType right) => left.Equals(right);
+        public static bool operator !=(PieChartChartType left, PieChartChartType right) => !left.Equals(right);
+
+        public static explicit operator string(PieChartChartType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PieChartChartType other && Equals(other);
+        public bool Equals(PieChartChartType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -632,6 +763,283 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is TextFormat other && Equals(other);
         public bool Equals(TextFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Font sizes for both the title and content. The title will still be larger relative to the content.
+    /// </summary>
+    [EnumType]
+    public readonly struct TextStyleFontSize : IEquatable<TextStyleFontSize>
+    {
+        private readonly string _value;
+
+        private TextStyleFontSize(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No font size specified, will default to FS_LARGE
+        /// </summary>
+        public static TextStyleFontSize FontSizeUnspecified { get; } = new TextStyleFontSize("FONT_SIZE_UNSPECIFIED");
+        /// <summary>
+        /// Extra small font size
+        /// </summary>
+        public static TextStyleFontSize FsExtraSmall { get; } = new TextStyleFontSize("FS_EXTRA_SMALL");
+        /// <summary>
+        /// Small font size
+        /// </summary>
+        public static TextStyleFontSize FsSmall { get; } = new TextStyleFontSize("FS_SMALL");
+        /// <summary>
+        /// Medium font size
+        /// </summary>
+        public static TextStyleFontSize FsMedium { get; } = new TextStyleFontSize("FS_MEDIUM");
+        /// <summary>
+        /// Large font size
+        /// </summary>
+        public static TextStyleFontSize FsLarge { get; } = new TextStyleFontSize("FS_LARGE");
+        /// <summary>
+        /// Extra large font size
+        /// </summary>
+        public static TextStyleFontSize FsExtraLarge { get; } = new TextStyleFontSize("FS_EXTRA_LARGE");
+
+        public static bool operator ==(TextStyleFontSize left, TextStyleFontSize right) => left.Equals(right);
+        public static bool operator !=(TextStyleFontSize left, TextStyleFontSize right) => !left.Equals(right);
+
+        public static explicit operator string(TextStyleFontSize value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TextStyleFontSize other && Equals(other);
+        public bool Equals(TextStyleFontSize other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The horizontal alignment of both the title and content
+    /// </summary>
+    [EnumType]
+    public readonly struct TextStyleHorizontalAlignment : IEquatable<TextStyleHorizontalAlignment>
+    {
+        private readonly string _value;
+
+        private TextStyleHorizontalAlignment(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No horizontal alignment specified, will default to H_LEFT
+        /// </summary>
+        public static TextStyleHorizontalAlignment HorizontalAlignmentUnspecified { get; } = new TextStyleHorizontalAlignment("HORIZONTAL_ALIGNMENT_UNSPECIFIED");
+        /// <summary>
+        /// Left-align
+        /// </summary>
+        public static TextStyleHorizontalAlignment HLeft { get; } = new TextStyleHorizontalAlignment("H_LEFT");
+        /// <summary>
+        /// Center-align
+        /// </summary>
+        public static TextStyleHorizontalAlignment HCenter { get; } = new TextStyleHorizontalAlignment("H_CENTER");
+        /// <summary>
+        /// Right-align
+        /// </summary>
+        public static TextStyleHorizontalAlignment HRight { get; } = new TextStyleHorizontalAlignment("H_RIGHT");
+
+        public static bool operator ==(TextStyleHorizontalAlignment left, TextStyleHorizontalAlignment right) => left.Equals(right);
+        public static bool operator !=(TextStyleHorizontalAlignment left, TextStyleHorizontalAlignment right) => !left.Equals(right);
+
+        public static explicit operator string(TextStyleHorizontalAlignment value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TextStyleHorizontalAlignment other && Equals(other);
+        public bool Equals(TextStyleHorizontalAlignment other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The amount of padding around the widget
+    /// </summary>
+    [EnumType]
+    public readonly struct TextStylePadding : IEquatable<TextStylePadding>
+    {
+        private readonly string _value;
+
+        private TextStylePadding(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No padding size specified, will default to P_EXTRA_SMALL
+        /// </summary>
+        public static TextStylePadding PaddingSizeUnspecified { get; } = new TextStylePadding("PADDING_SIZE_UNSPECIFIED");
+        /// <summary>
+        /// Extra small padding
+        /// </summary>
+        public static TextStylePadding PExtraSmall { get; } = new TextStylePadding("P_EXTRA_SMALL");
+        /// <summary>
+        /// Small padding
+        /// </summary>
+        public static TextStylePadding PSmall { get; } = new TextStylePadding("P_SMALL");
+        /// <summary>
+        /// Medium padding
+        /// </summary>
+        public static TextStylePadding PMedium { get; } = new TextStylePadding("P_MEDIUM");
+        /// <summary>
+        /// Large padding
+        /// </summary>
+        public static TextStylePadding PLarge { get; } = new TextStylePadding("P_LARGE");
+        /// <summary>
+        /// Extra large padding
+        /// </summary>
+        public static TextStylePadding PExtraLarge { get; } = new TextStylePadding("P_EXTRA_LARGE");
+
+        public static bool operator ==(TextStylePadding left, TextStylePadding right) => left.Equals(right);
+        public static bool operator !=(TextStylePadding left, TextStylePadding right) => !left.Equals(right);
+
+        public static explicit operator string(TextStylePadding value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TextStylePadding other && Equals(other);
+        public bool Equals(TextStylePadding other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The pointer location for this widget (also sometimes called a "tail")
+    /// </summary>
+    [EnumType]
+    public readonly struct TextStylePointerLocation : IEquatable<TextStylePointerLocation>
+    {
+        private readonly string _value;
+
+        private TextStylePointerLocation(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No visual pointer
+        /// </summary>
+        public static TextStylePointerLocation PointerLocationUnspecified { get; } = new TextStylePointerLocation("POINTER_LOCATION_UNSPECIFIED");
+        /// <summary>
+        /// Placed in the middle of the top of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlTop { get; } = new TextStylePointerLocation("PL_TOP");
+        /// <summary>
+        /// Placed in the middle of the right side of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlRight { get; } = new TextStylePointerLocation("PL_RIGHT");
+        /// <summary>
+        /// Placed in the middle of the bottom of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlBottom { get; } = new TextStylePointerLocation("PL_BOTTOM");
+        /// <summary>
+        /// Placed in the middle of the left side of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlLeft { get; } = new TextStylePointerLocation("PL_LEFT");
+        /// <summary>
+        /// Placed on the left side of the top of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlTopLeft { get; } = new TextStylePointerLocation("PL_TOP_LEFT");
+        /// <summary>
+        /// Placed on the right side of the top of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlTopRight { get; } = new TextStylePointerLocation("PL_TOP_RIGHT");
+        /// <summary>
+        /// Placed on the top of the right side of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlRightTop { get; } = new TextStylePointerLocation("PL_RIGHT_TOP");
+        /// <summary>
+        /// Placed on the bottom of the right side of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlRightBottom { get; } = new TextStylePointerLocation("PL_RIGHT_BOTTOM");
+        /// <summary>
+        /// Placed on the right side of the bottom of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlBottomRight { get; } = new TextStylePointerLocation("PL_BOTTOM_RIGHT");
+        /// <summary>
+        /// Placed on the left side of the bottom of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlBottomLeft { get; } = new TextStylePointerLocation("PL_BOTTOM_LEFT");
+        /// <summary>
+        /// Placed on the bottom of the left side of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlLeftBottom { get; } = new TextStylePointerLocation("PL_LEFT_BOTTOM");
+        /// <summary>
+        /// Placed on the top of the left side of the widget
+        /// </summary>
+        public static TextStylePointerLocation PlLeftTop { get; } = new TextStylePointerLocation("PL_LEFT_TOP");
+
+        public static bool operator ==(TextStylePointerLocation left, TextStylePointerLocation right) => left.Equals(right);
+        public static bool operator !=(TextStylePointerLocation left, TextStylePointerLocation right) => !left.Equals(right);
+
+        public static explicit operator string(TextStylePointerLocation value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TextStylePointerLocation other && Equals(other);
+        public bool Equals(TextStylePointerLocation other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The vertical alignment of both the title and content
+    /// </summary>
+    [EnumType]
+    public readonly struct TextStyleVerticalAlignment : IEquatable<TextStyleVerticalAlignment>
+    {
+        private readonly string _value;
+
+        private TextStyleVerticalAlignment(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No vertical alignment specified, will default to V_TOP
+        /// </summary>
+        public static TextStyleVerticalAlignment VerticalAlignmentUnspecified { get; } = new TextStyleVerticalAlignment("VERTICAL_ALIGNMENT_UNSPECIFIED");
+        /// <summary>
+        /// Top-align
+        /// </summary>
+        public static TextStyleVerticalAlignment VTop { get; } = new TextStyleVerticalAlignment("V_TOP");
+        /// <summary>
+        /// Center-align
+        /// </summary>
+        public static TextStyleVerticalAlignment VCenter { get; } = new TextStyleVerticalAlignment("V_CENTER");
+        /// <summary>
+        /// Bottom-align
+        /// </summary>
+        public static TextStyleVerticalAlignment VBottom { get; } = new TextStyleVerticalAlignment("V_BOTTOM");
+
+        public static bool operator ==(TextStyleVerticalAlignment left, TextStyleVerticalAlignment right) => left.Equals(right);
+        public static bool operator !=(TextStyleVerticalAlignment left, TextStyleVerticalAlignment right) => !left.Equals(right);
+
+        public static explicit operator string(TextStyleVerticalAlignment value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TextStyleVerticalAlignment other && Equals(other);
+        public bool Equals(TextStyleVerticalAlignment other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

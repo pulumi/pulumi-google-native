@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Datamigration.V1
 {
     /// <summary>
+    /// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct AlloyDbSettingsDatabaseVersion : IEquatable<AlloyDbSettingsDatabaseVersion>
+    {
+        private readonly string _value;
+
+        private AlloyDbSettingsDatabaseVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This is an unknown database version.
+        /// </summary>
+        public static AlloyDbSettingsDatabaseVersion DatabaseVersionUnspecified { get; } = new AlloyDbSettingsDatabaseVersion("DATABASE_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// The database version is Postgres 14.
+        /// </summary>
+        public static AlloyDbSettingsDatabaseVersion Postgres14 { get; } = new AlloyDbSettingsDatabaseVersion("POSTGRES_14");
+        /// <summary>
+        /// The database version is Postgres 15.
+        /// </summary>
+        public static AlloyDbSettingsDatabaseVersion Postgres15 { get; } = new AlloyDbSettingsDatabaseVersion("POSTGRES_15");
+
+        public static bool operator ==(AlloyDbSettingsDatabaseVersion left, AlloyDbSettingsDatabaseVersion right) => left.Equals(right);
+        public static bool operator !=(AlloyDbSettingsDatabaseVersion left, AlloyDbSettingsDatabaseVersion right) => !left.Equals(right);
+
+        public static explicit operator string(AlloyDbSettingsDatabaseVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AlloyDbSettingsDatabaseVersion other && Equals(other);
+        public bool Equals(AlloyDbSettingsDatabaseVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The log type that this config enables.
     /// </summary>
     [EnumType]
@@ -201,6 +242,46 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static CloudSqlSettingsDatabaseVersion Mysql57 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_5_7");
         /// <summary>
+        /// MySQL 8.0.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql80 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 18.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8018 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_18");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 26.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8026 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_26");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 27.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8027 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_27");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 28.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8028 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_28");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 30.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8030 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_30");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 31.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8031 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_31");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 32.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8032 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_32");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 33.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8033 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_33");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 34.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8034 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_34");
+        /// <summary>
         /// PostgreSQL 9.6.
         /// </summary>
         public static CloudSqlSettingsDatabaseVersion Postgres96 { get; } = new CloudSqlSettingsDatabaseVersion("POSTGRES_9_6");
@@ -213,10 +294,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static CloudSqlSettingsDatabaseVersion Postgres10 { get; } = new CloudSqlSettingsDatabaseVersion("POSTGRES_10");
         /// <summary>
-        /// MySQL 8.0.
-        /// </summary>
-        public static CloudSqlSettingsDatabaseVersion Mysql80 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0");
-        /// <summary>
         /// PostgreSQL 12.
         /// </summary>
         public static CloudSqlSettingsDatabaseVersion Postgres12 { get; } = new CloudSqlSettingsDatabaseVersion("POSTGRES_12");
@@ -228,6 +305,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// PostgreSQL 14.
         /// </summary>
         public static CloudSqlSettingsDatabaseVersion Postgres14 { get; } = new CloudSqlSettingsDatabaseVersion("POSTGRES_14");
+        /// <summary>
+        /// PostgreSQL 15.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Postgres15 { get; } = new CloudSqlSettingsDatabaseVersion("POSTGRES_15");
 
         public static bool operator ==(CloudSqlSettingsDatabaseVersion left, CloudSqlSettingsDatabaseVersion right) => left.Equals(right);
         public static bool operator !=(CloudSqlSettingsDatabaseVersion left, CloudSqlSettingsDatabaseVersion right) => !left.Equals(right);
@@ -237,6 +318,47 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is CloudSqlSettingsDatabaseVersion other && Equals(other);
         public bool Equals(CloudSqlSettingsDatabaseVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The edition of the given Cloud SQL instance.
+    /// </summary>
+    [EnumType]
+    public readonly struct CloudSqlSettingsEdition : IEquatable<CloudSqlSettingsEdition>
+    {
+        private readonly string _value;
+
+        private CloudSqlSettingsEdition(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The instance did not specify the edition.
+        /// </summary>
+        public static CloudSqlSettingsEdition EditionUnspecified { get; } = new CloudSqlSettingsEdition("EDITION_UNSPECIFIED");
+        /// <summary>
+        /// The instance is an enterprise edition.
+        /// </summary>
+        public static CloudSqlSettingsEdition Enterprise { get; } = new CloudSqlSettingsEdition("ENTERPRISE");
+        /// <summary>
+        /// The instance is an enterprise plus edition.
+        /// </summary>
+        public static CloudSqlSettingsEdition EnterprisePlus { get; } = new CloudSqlSettingsEdition("ENTERPRISE_PLUS");
+
+        public static bool operator ==(CloudSqlSettingsEdition left, CloudSqlSettingsEdition right) => left.Equals(right);
+        public static bool operator !=(CloudSqlSettingsEdition left, CloudSqlSettingsEdition right) => !left.Equals(right);
+
+        public static explicit operator string(CloudSqlSettingsEdition value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CloudSqlSettingsEdition other && Equals(other);
+        public bool Equals(CloudSqlSettingsEdition other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -494,6 +616,242 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     }
 
     /// <summary>
+    /// Required. Relation between source value and compare value
+    /// </summary>
+    [EnumType]
+    public readonly struct DoubleComparisonFilterValueComparison : IEquatable<DoubleComparisonFilterValueComparison>
+    {
+        private readonly string _value;
+
+        private DoubleComparisonFilterValueComparison(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value comparison unspecified.
+        /// </summary>
+        public static DoubleComparisonFilterValueComparison ValueComparisonUnspecified { get; } = new DoubleComparisonFilterValueComparison("VALUE_COMPARISON_UNSPECIFIED");
+        /// <summary>
+        /// Value is smaller than the Compare value.
+        /// </summary>
+        public static DoubleComparisonFilterValueComparison ValueComparisonIfValueSmallerThan { get; } = new DoubleComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_SMALLER_THAN");
+        /// <summary>
+        /// Value is smaller or equal than the Compare value.
+        /// </summary>
+        public static DoubleComparisonFilterValueComparison ValueComparisonIfValueSmallerEqualThan { get; } = new DoubleComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN");
+        /// <summary>
+        /// Value is larger than the Compare value.
+        /// </summary>
+        public static DoubleComparisonFilterValueComparison ValueComparisonIfValueLargerThan { get; } = new DoubleComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_LARGER_THAN");
+        /// <summary>
+        /// Value is larger or equal than the Compare value.
+        /// </summary>
+        public static DoubleComparisonFilterValueComparison ValueComparisonIfValueLargerEqualThan { get; } = new DoubleComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN");
+
+        public static bool operator ==(DoubleComparisonFilterValueComparison left, DoubleComparisonFilterValueComparison right) => left.Equals(right);
+        public static bool operator !=(DoubleComparisonFilterValueComparison left, DoubleComparisonFilterValueComparison right) => !left.Equals(right);
+
+        public static explicit operator string(DoubleComparisonFilterValueComparison value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DoubleComparisonFilterValueComparison other && Equals(other);
+        public bool Equals(DoubleComparisonFilterValueComparison other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Relation between source value and compare value
+    /// </summary>
+    [EnumType]
+    public readonly struct IntComparisonFilterValueComparison : IEquatable<IntComparisonFilterValueComparison>
+    {
+        private readonly string _value;
+
+        private IntComparisonFilterValueComparison(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value comparison unspecified.
+        /// </summary>
+        public static IntComparisonFilterValueComparison ValueComparisonUnspecified { get; } = new IntComparisonFilterValueComparison("VALUE_COMPARISON_UNSPECIFIED");
+        /// <summary>
+        /// Value is smaller than the Compare value.
+        /// </summary>
+        public static IntComparisonFilterValueComparison ValueComparisonIfValueSmallerThan { get; } = new IntComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_SMALLER_THAN");
+        /// <summary>
+        /// Value is smaller or equal than the Compare value.
+        /// </summary>
+        public static IntComparisonFilterValueComparison ValueComparisonIfValueSmallerEqualThan { get; } = new IntComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN");
+        /// <summary>
+        /// Value is larger than the Compare value.
+        /// </summary>
+        public static IntComparisonFilterValueComparison ValueComparisonIfValueLargerThan { get; } = new IntComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_LARGER_THAN");
+        /// <summary>
+        /// Value is larger or equal than the Compare value.
+        /// </summary>
+        public static IntComparisonFilterValueComparison ValueComparisonIfValueLargerEqualThan { get; } = new IntComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN");
+
+        public static bool operator ==(IntComparisonFilterValueComparison left, IntComparisonFilterValueComparison right) => left.Equals(right);
+        public static bool operator !=(IntComparisonFilterValueComparison left, IntComparisonFilterValueComparison right) => !left.Equals(right);
+
+        public static explicit operator string(IntComparisonFilterValueComparison value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is IntComparisonFilterValueComparison other && Equals(other);
+        public bool Equals(IntComparisonFilterValueComparison other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. The rule scope
+    /// </summary>
+    [EnumType]
+    public readonly struct MappingRuleRuleScope : IEquatable<MappingRuleRuleScope>
+    {
+        private readonly string _value;
+
+        private MappingRuleRuleScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified database entity type.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeUnspecified { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Schema.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeSchema { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_SCHEMA");
+        /// <summary>
+        /// Table.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeTable { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_TABLE");
+        /// <summary>
+        /// Column.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeColumn { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_COLUMN");
+        /// <summary>
+        /// Constraint.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeConstraint { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_CONSTRAINT");
+        /// <summary>
+        /// Index.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeIndex { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_INDEX");
+        /// <summary>
+        /// Trigger.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeTrigger { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_TRIGGER");
+        /// <summary>
+        /// View.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeView { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_VIEW");
+        /// <summary>
+        /// Sequence.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeSequence { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_SEQUENCE");
+        /// <summary>
+        /// Stored Procedure.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeStoredProcedure { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_STORED_PROCEDURE");
+        /// <summary>
+        /// Function.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeFunction { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_FUNCTION");
+        /// <summary>
+        /// Synonym.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeSynonym { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_SYNONYM");
+        /// <summary>
+        /// Package.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeDatabasePackage { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_DATABASE_PACKAGE");
+        /// <summary>
+        /// UDT.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeUdt { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_UDT");
+        /// <summary>
+        /// Materialized View.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeMaterializedView { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW");
+        /// <summary>
+        /// Database.
+        /// </summary>
+        public static MappingRuleRuleScope DatabaseEntityTypeDatabase { get; } = new MappingRuleRuleScope("DATABASE_ENTITY_TYPE_DATABASE");
+
+        public static bool operator ==(MappingRuleRuleScope left, MappingRuleRuleScope right) => left.Equals(right);
+        public static bool operator !=(MappingRuleRuleScope left, MappingRuleRuleScope right) => !left.Equals(right);
+
+        public static explicit operator string(MappingRuleRuleScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MappingRuleRuleScope other && Equals(other);
+        public bool Equals(MappingRuleRuleScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The mapping rule state
+    /// </summary>
+    [EnumType]
+    public readonly struct MappingRuleState : IEquatable<MappingRuleState>
+    {
+        private readonly string _value;
+
+        private MappingRuleState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The state of the mapping rule is unknown.
+        /// </summary>
+        public static MappingRuleState StateUnspecified { get; } = new MappingRuleState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// The rule is enabled.
+        /// </summary>
+        public static MappingRuleState Enabled { get; } = new MappingRuleState("ENABLED");
+        /// <summary>
+        /// The rule is disabled.
+        /// </summary>
+        public static MappingRuleState Disabled { get; } = new MappingRuleState("DISABLED");
+        /// <summary>
+        /// The rule is logically deleted.
+        /// </summary>
+        public static MappingRuleState Deleted { get; } = new MappingRuleState("DELETED");
+
+        public static bool operator ==(MappingRuleState left, MappingRuleState right) => left.Equals(right);
+        public static bool operator !=(MappingRuleState left, MappingRuleState right) => !left.Equals(right);
+
+        public static explicit operator string(MappingRuleState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MappingRuleState other && Equals(other);
+        public bool Equals(MappingRuleState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The current migration job state.
     /// </summary>
     [EnumType]
@@ -620,6 +978,186 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is MigrationJobType other && Equals(other);
         public bool Equals(MigrationJobType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+    /// </summary>
+    [EnumType]
+    public readonly struct MultiEntityRenameSourceNameTransformation : IEquatable<MultiEntityRenameSourceNameTransformation>
+    {
+        private readonly string _value;
+
+        private MultiEntityRenameSourceNameTransformation(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Entity name transformation unspecified.
+        /// </summary>
+        public static MultiEntityRenameSourceNameTransformation EntityNameTransformationUnspecified { get; } = new MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_UNSPECIFIED");
+        /// <summary>
+        /// No transformation.
+        /// </summary>
+        public static MultiEntityRenameSourceNameTransformation EntityNameTransformationNoTransformation { get; } = new MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_NO_TRANSFORMATION");
+        /// <summary>
+        /// Transform to lower case.
+        /// </summary>
+        public static MultiEntityRenameSourceNameTransformation EntityNameTransformationLowerCase { get; } = new MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_LOWER_CASE");
+        /// <summary>
+        /// Transform to upper case.
+        /// </summary>
+        public static MultiEntityRenameSourceNameTransformation EntityNameTransformationUpperCase { get; } = new MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_UPPER_CASE");
+        /// <summary>
+        /// Transform to capitalized case.
+        /// </summary>
+        public static MultiEntityRenameSourceNameTransformation EntityNameTransformationCapitalizedCase { get; } = new MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE");
+
+        public static bool operator ==(MultiEntityRenameSourceNameTransformation left, MultiEntityRenameSourceNameTransformation right) => left.Equals(right);
+        public static bool operator !=(MultiEntityRenameSourceNameTransformation left, MultiEntityRenameSourceNameTransformation right) => !left.Equals(right);
+
+        public static explicit operator string(MultiEntityRenameSourceNameTransformation value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MultiEntityRenameSourceNameTransformation other && Equals(other);
+        public bool Equals(MultiEntityRenameSourceNameTransformation other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Initial dump parallelism level.
+    /// </summary>
+    [EnumType]
+    public readonly struct PerformanceConfigDumpParallelLevel : IEquatable<PerformanceConfigDumpParallelLevel>
+    {
+        private readonly string _value;
+
+        private PerformanceConfigDumpParallelLevel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown dump parallel level. Will be defaulted to OPTIMAL.
+        /// </summary>
+        public static PerformanceConfigDumpParallelLevel DumpParallelLevelUnspecified { get; } = new PerformanceConfigDumpParallelLevel("DUMP_PARALLEL_LEVEL_UNSPECIFIED");
+        /// <summary>
+        /// Minimal parallel level.
+        /// </summary>
+        public static PerformanceConfigDumpParallelLevel Min { get; } = new PerformanceConfigDumpParallelLevel("MIN");
+        /// <summary>
+        /// Optimal parallel level.
+        /// </summary>
+        public static PerformanceConfigDumpParallelLevel Optimal { get; } = new PerformanceConfigDumpParallelLevel("OPTIMAL");
+        /// <summary>
+        /// Maximum parallel level.
+        /// </summary>
+        public static PerformanceConfigDumpParallelLevel Max { get; } = new PerformanceConfigDumpParallelLevel("MAX");
+
+        public static bool operator ==(PerformanceConfigDumpParallelLevel left, PerformanceConfigDumpParallelLevel right) => left.Equals(right);
+        public static bool operator !=(PerformanceConfigDumpParallelLevel left, PerformanceConfigDumpParallelLevel right) => !left.Equals(right);
+
+        public static explicit operator string(PerformanceConfigDumpParallelLevel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PerformanceConfigDumpParallelLevel other && Equals(other);
+        public bool Equals(PerformanceConfigDumpParallelLevel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Enum to set the option defining the datatypes numeric filter has to be applied to
+    /// </summary>
+    [EnumType]
+    public readonly struct SourceNumericFilterNumericFilterOption : IEquatable<SourceNumericFilterNumericFilterOption>
+    {
+        private readonly string _value;
+
+        private SourceNumericFilterNumericFilterOption(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Numeric filter option unspecified
+        /// </summary>
+        public static SourceNumericFilterNumericFilterOption NumericFilterOptionUnspecified { get; } = new SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_UNSPECIFIED");
+        /// <summary>
+        /// Numeric filter option that matches all numeric columns.
+        /// </summary>
+        public static SourceNumericFilterNumericFilterOption NumericFilterOptionAll { get; } = new SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_ALL");
+        /// <summary>
+        /// Numeric filter option that matches columns having numeric datatypes with specified precision and scale within the limited range of filter.
+        /// </summary>
+        public static SourceNumericFilterNumericFilterOption NumericFilterOptionLimit { get; } = new SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_LIMIT");
+        /// <summary>
+        /// Numeric filter option that matches only the numeric columns with no precision and scale specified.
+        /// </summary>
+        public static SourceNumericFilterNumericFilterOption NumericFilterOptionLimitless { get; } = new SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_LIMITLESS");
+
+        public static bool operator ==(SourceNumericFilterNumericFilterOption left, SourceNumericFilterNumericFilterOption right) => left.Equals(right);
+        public static bool operator !=(SourceNumericFilterNumericFilterOption left, SourceNumericFilterNumericFilterOption right) => !left.Equals(right);
+
+        public static explicit operator string(SourceNumericFilterNumericFilterOption value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SourceNumericFilterNumericFilterOption other && Equals(other);
+        public bool Equals(SourceNumericFilterNumericFilterOption other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+    /// </summary>
+    [EnumType]
+    public readonly struct ValueListFilterValuePresentList : IEquatable<ValueListFilterValuePresentList>
+    {
+        private readonly string _value;
+
+        private ValueListFilterValuePresentList(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value present in list unspecified
+        /// </summary>
+        public static ValueListFilterValuePresentList ValuePresentInListUnspecified { get; } = new ValueListFilterValuePresentList("VALUE_PRESENT_IN_LIST_UNSPECIFIED");
+        /// <summary>
+        /// If the source value is in the supplied list at value_list
+        /// </summary>
+        public static ValueListFilterValuePresentList ValuePresentInListIfValueList { get; } = new ValueListFilterValuePresentList("VALUE_PRESENT_IN_LIST_IF_VALUE_LIST");
+        /// <summary>
+        /// If the source value is not in the supplied list at value_list
+        /// </summary>
+        public static ValueListFilterValuePresentList ValuePresentInListIfValueNotList { get; } = new ValueListFilterValuePresentList("VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST");
+
+        public static bool operator ==(ValueListFilterValuePresentList left, ValueListFilterValuePresentList right) => left.Equals(right);
+        public static bool operator !=(ValueListFilterValuePresentList left, ValueListFilterValuePresentList right) => !left.Equals(right);
+
+        public static explicit operator string(ValueListFilterValuePresentList value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ValueListFilterValuePresentList other && Equals(other);
+        public bool Equals(ValueListFilterValuePresentList other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

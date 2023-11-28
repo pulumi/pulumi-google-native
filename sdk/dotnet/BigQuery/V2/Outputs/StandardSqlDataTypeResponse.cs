@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.StandardSqlDataTypeResponse ArrayElementType;
         /// <summary>
+        /// The type of the range's elements, if type_kind = "RANGE".
+        /// </summary>
+        public readonly Outputs.StandardSqlDataTypeResponse RangeElementType;
+        /// <summary>
         /// The fields of this struct, in order, if type_kind = "STRUCT".
         /// </summary>
         public readonly Outputs.StandardSqlStructTypeResponse StructType;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private StandardSqlDataTypeResponse(
             Outputs.StandardSqlDataTypeResponse arrayElementType,
 
+            Outputs.StandardSqlDataTypeResponse rangeElementType,
+
             Outputs.StandardSqlStructTypeResponse structType,
 
             string typeKind)
         {
             ArrayElementType = arrayElementType;
+            RangeElementType = rangeElementType;
             StructType = structType;
             TypeKind = typeKind;
         }

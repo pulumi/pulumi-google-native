@@ -17,33 +17,35 @@ import (
 type Workstation struct {
 	pulumi.CustomResourceState
 
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Time when this resource was created.
+	// Time when this workstation was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Time when this resource was soft-deleted.
+	// Time when this workstation was soft-deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// Human-readable name for this resource.
+	// Optional. Human-readable name for this workstation.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Environment variables passed to the workstation container's entrypoint.
+	// Optional. Environment variables passed to the workstation container's entrypoint.
 	Env pulumi.StringMapOutput `pulumi:"env"`
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`.
 	Host pulumi.StringOutput `pulumi:"host"`
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Full name of this resource.
+	// Identifier. Full name of this workstation.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Indicates whether this resource is currently being updated to match its intended state.
+	// Indicates whether this workstation is currently being updated to match its intended state.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
+	// Time when this workstation was most recently successfully started, regardless of the workstation's initial state.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// Current state of the workstation.
 	State pulumi.StringOutput `pulumi:"state"`
-	// A system-assigned unique identified for this resource.
+	// A system-assigned unique identifier for this workstation.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// Time when this resource was most recently updated.
+	// Time when this workstation was most recently updated.
 	UpdateTime           pulumi.StringOutput `pulumi:"updateTime"`
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
 	WorkstationConfigId  pulumi.StringOutput `pulumi:"workstationConfigId"`
@@ -108,18 +110,18 @@ func (WorkstationState) ElementType() reflect.Type {
 }
 
 type workstationArgs struct {
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Human-readable name for this resource.
+	// Optional. Human-readable name for this workstation.
 	DisplayName *string `pulumi:"displayName"`
-	// Environment variables passed to the workstation container's entrypoint.
+	// Optional. Environment variables passed to the workstation container's entrypoint.
 	Env map[string]string `pulumi:"env"`
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Full name of this resource.
+	// Identifier. Full name of this workstation.
 	Name                 *string `pulumi:"name"`
 	Project              *string `pulumi:"project"`
 	WorkstationClusterId string  `pulumi:"workstationClusterId"`
@@ -130,18 +132,18 @@ type workstationArgs struct {
 
 // The set of arguments for constructing a Workstation resource.
 type WorkstationArgs struct {
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations pulumi.StringMapInput
-	// Human-readable name for this resource.
+	// Optional. Human-readable name for this workstation.
 	DisplayName pulumi.StringPtrInput
-	// Environment variables passed to the workstation container's entrypoint.
+	// Optional. Environment variables passed to the workstation container's entrypoint.
 	Env pulumi.StringMapInput
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Full name of this resource.
+	// Identifier. Full name of this workstation.
 	Name                 pulumi.StringPtrInput
 	Project              pulumi.StringPtrInput
 	WorkstationClusterId pulumi.StringInput
@@ -199,32 +201,32 @@ func (o WorkstationOutput) ToOutput(ctx context.Context) pulumix.Output[*Worksta
 	}
 }
 
-// Client-specified annotations.
+// Optional. Client-specified annotations.
 func (o WorkstationOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Time when this resource was created.
+// Time when this workstation was created.
 func (o WorkstationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Time when this resource was soft-deleted.
+// Time when this workstation was soft-deleted.
 func (o WorkstationOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// Human-readable name for this resource.
+// Optional. Human-readable name for this workstation.
 func (o WorkstationOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Environment variables passed to the workstation container's entrypoint.
+// Optional. Environment variables passed to the workstation container's entrypoint.
 func (o WorkstationOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.Env }).(pulumi.StringMapOutput)
 }
 
-// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 func (o WorkstationOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -234,7 +236,7 @@ func (o WorkstationOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
 func (o WorkstationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -243,7 +245,7 @@ func (o WorkstationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Full name of this resource.
+// Identifier. Full name of this workstation.
 func (o WorkstationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -252,9 +254,14 @@ func (o WorkstationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Indicates whether this resource is currently being updated to match its intended state.
+// Indicates whether this workstation is currently being updated to match its intended state.
 func (o WorkstationOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Time when this workstation was most recently successfully started, regardless of the workstation's initial state.
+func (o WorkstationOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
 }
 
 // Current state of the workstation.
@@ -262,12 +269,12 @@ func (o WorkstationOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// A system-assigned unique identified for this resource.
+// A system-assigned unique identifier for this workstation.
 func (o WorkstationOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// Time when this resource was most recently updated.
+// Time when this workstation was most recently updated.
 func (o WorkstationOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

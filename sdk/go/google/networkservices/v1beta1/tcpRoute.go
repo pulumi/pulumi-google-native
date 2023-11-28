@@ -35,7 +35,7 @@ type TcpRoute struct {
 	Rules TcpRouteRouteRuleResponseArrayOutput `pulumi:"rules"`
 	// Server-defined URL of this resource
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+	// Required. Short name of the TcpRoute resource to be created.
 	TcpRouteId pulumi.StringOutput `pulumi:"tcpRouteId"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -107,7 +107,7 @@ type tcpRouteArgs struct {
 	Project *string `pulumi:"project"`
 	// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
 	Rules []TcpRouteRouteRule `pulumi:"rules"`
-	// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+	// Required. Short name of the TcpRoute resource to be created.
 	TcpRouteId string `pulumi:"tcpRouteId"`
 }
 
@@ -127,7 +127,7 @@ type TcpRouteArgs struct {
 	Project pulumi.StringPtrInput
 	// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
 	Rules TcpRouteRouteRuleArrayInput
-	// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+	// Required. Short name of the TcpRoute resource to be created.
 	TcpRouteId pulumi.StringInput
 }
 
@@ -228,7 +228,7 @@ func (o TcpRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+// Required. Short name of the TcpRoute resource to be created.
 func (o TcpRouteOutput) TcpRouteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.TcpRouteId }).(pulumi.StringOutput)
 }

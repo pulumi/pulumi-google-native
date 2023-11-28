@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Retail.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRetailV2ConditionTimeRangeResponse> ActiveTimeRange;
         /// <summary>
+        /// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
+        /// </summary>
+        public readonly ImmutableArray<string> PageCategories;
+        /// <summary>
         /// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRetailV2ConditionQueryTermResponse> QueryTerms;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Retail.V2.Outputs
         private GoogleCloudRetailV2ConditionResponse(
             ImmutableArray<Outputs.GoogleCloudRetailV2ConditionTimeRangeResponse> activeTimeRange,
 
+            ImmutableArray<string> pageCategories,
+
             ImmutableArray<Outputs.GoogleCloudRetailV2ConditionQueryTermResponse> queryTerms)
         {
             ActiveTimeRange = activeTimeRange;
+            PageCategories = pageCategories;
             QueryTerms = queryTerms;
         }
     }

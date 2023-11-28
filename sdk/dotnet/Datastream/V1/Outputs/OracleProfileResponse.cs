@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// Optional. SSL configuration for the Oracle connection.
+        /// </summary>
+        public readonly Outputs.OracleSslConfigResponse OracleSslConfig;
+        /// <summary>
         /// Password for the Oracle connection.
         /// </summary>
         public readonly string Password;
@@ -49,6 +53,8 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
             string hostname,
 
+            Outputs.OracleSslConfigResponse oracleSslConfig,
+
             string password,
 
             int port,
@@ -58,6 +64,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
             ConnectionAttributes = connectionAttributes;
             DatabaseService = databaseService;
             Hostname = hostname;
+            OracleSslConfig = oracleSslConfig;
             Password = password;
             Port = port;
             Username = username;

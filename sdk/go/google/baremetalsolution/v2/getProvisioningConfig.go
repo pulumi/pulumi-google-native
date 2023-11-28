@@ -48,6 +48,8 @@ type LookupProvisioningConfigResult struct {
 	Name string `pulumi:"name"`
 	// Networks to be created.
 	Networks []NetworkConfigResponse `pulumi:"networks"`
+	// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+	Pod string `pulumi:"pod"`
 	// State of ProvisioningConfig.
 	State string `pulumi:"state"`
 	// Optional status messages associated with the FAILED state.
@@ -145,6 +147,11 @@ func (o LookupProvisioningConfigResultOutput) Name() pulumi.StringOutput {
 // Networks to be created.
 func (o LookupProvisioningConfigResultOutput) Networks() NetworkConfigResponseArrayOutput {
 	return o.ApplyT(func(v LookupProvisioningConfigResult) []NetworkConfigResponse { return v.Networks }).(NetworkConfigResponseArrayOutput)
+}
+
+// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+func (o LookupProvisioningConfigResultOutput) Pod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProvisioningConfigResult) string { return v.Pod }).(pulumi.StringOutput)
 }
 
 // State of ProvisioningConfig.

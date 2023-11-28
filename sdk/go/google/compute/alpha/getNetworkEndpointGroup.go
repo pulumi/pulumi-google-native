@@ -34,6 +34,8 @@ type LookupNetworkEndpointGroupResult struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
 	AppEngine NetworkEndpointGroupAppEngineResponse `pulumi:"appEngine"`
+	// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+	ClientPortMappingMode string `pulumi:"clientPortMappingMode"`
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudFunction NetworkEndpointGroupCloudFunctionResponse `pulumi:"cloudFunction"`
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
@@ -128,6 +130,11 @@ func (o LookupNetworkEndpointGroupResultOutput) Annotations() pulumi.StringMapOu
 // Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
 func (o LookupNetworkEndpointGroupResultOutput) AppEngine() NetworkEndpointGroupAppEngineResponseOutput {
 	return o.ApplyT(func(v LookupNetworkEndpointGroupResult) NetworkEndpointGroupAppEngineResponse { return v.AppEngine }).(NetworkEndpointGroupAppEngineResponseOutput)
+}
+
+// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+func (o LookupNetworkEndpointGroupResultOutput) ClientPortMappingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkEndpointGroupResult) string { return v.ClientPortMappingMode }).(pulumi.StringOutput)
 }
 
 // Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.

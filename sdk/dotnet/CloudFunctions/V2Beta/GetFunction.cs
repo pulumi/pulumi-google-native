@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
+        /// <summary>
         /// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
         /// </summary>
         public readonly Outputs.ServiceConfigResponse ServiceConfig;
@@ -107,6 +111,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         /// The last update timestamp of a Cloud Function.
         /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// The deployed url for the function.
+        /// </summary>
+        public readonly string Url;
 
         [OutputConstructor]
         private GetFunctionResult(
@@ -124,13 +132,17 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
 
             string name,
 
+            bool satisfiesPzs,
+
             Outputs.ServiceConfigResponse serviceConfig,
 
             string state,
 
             ImmutableArray<Outputs.GoogleCloudFunctionsV2betaStateMessageResponse> stateMessages,
 
-            string updateTime)
+            string updateTime,
+
+            string url)
         {
             BuildConfig = buildConfig;
             Description = description;
@@ -139,10 +151,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
             KmsKeyName = kmsKeyName;
             Labels = labels;
             Name = name;
+            SatisfiesPzs = satisfiesPzs;
             ServiceConfig = serviceConfig;
             State = state;
             StateMessages = stateMessages;
             UpdateTime = updateTime;
+            Url = url;
         }
     }
 }

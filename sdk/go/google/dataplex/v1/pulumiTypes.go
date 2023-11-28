@@ -2036,6 +2036,83 @@ func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput) Index(
 	}).(GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput)
 }
 
+// The result of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse struct {
+	// Additional information about the BigQuery exporting.
+	Message string `pulumi:"message"`
+	// Execution state for the BigQuery exporting.
+	State string `pulumi:"state"`
+}
+
+// The result of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput) ToGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput() GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput) ToGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Additional information about the BigQuery exporting.
+func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+// Execution state for the BigQuery exporting.
+func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse) string {
+		return v.State
+	}).(pulumi.StringOutput)
+}
+
+// The result of post scan actions of DataProfileScan job.
+type GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse struct {
+	// The result of BigQuery export post scan action.
+	BigqueryExportResult GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse `pulumi:"bigqueryExportResult"`
+}
+
+// The result of post scan actions of DataProfileScan job.
+type GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput) ToGoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput() GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput) ToGoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The result of BigQuery export post scan action.
+func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput) BigqueryExportResult() GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse) GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse {
+		return v.BigqueryExportResult
+	}).(GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput)
+}
+
 // The profile information for a double type field.
 type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse struct {
 	// Average of non-null values in the scanned data. NaN, if the field has a NaN.
@@ -2114,7 +2191,7 @@ type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldIn
 	Max string `pulumi:"max"`
 	// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
 	Min string `pulumi:"min"`
-	// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+	// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of approximate quartile values for the scanned data, occurring in order Q1, median, Q3.
 	Quartiles []string `pulumi:"quartiles"`
 	// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
 	StandardDeviation float64 `pulumi:"standardDeviation"`
@@ -2162,7 +2239,7 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFiel
 	}).(pulumi.StringOutput)
 }
 
-// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of approximate quartile values for the scanned data, occurring in order Q1, median, Q3.
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) Quartiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse) []string {
 		return v.Quartiles
@@ -2188,7 +2265,7 @@ type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse struc
 	NullRatio float64 `pulumi:"nullRatio"`
 	// String type field information.
 	StringProfile GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse `pulumi:"stringProfile"`
-	// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+	// The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
 	TopNValues []GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse `pulumi:"topNValues"`
 }
 
@@ -2248,7 +2325,7 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOut
 	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput)
 }
 
-// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+// The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) TopNValues() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse) []GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse {
 		return v.TopNValues
@@ -2311,6 +2388,8 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringField
 type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse struct {
 	// Count of the corresponding value in the scanned data.
 	Count string `pulumi:"count"`
+	// Ratio of the corresponding value in the field against the total number of rows in the scanned data.
+	Ratio float64 `pulumi:"ratio"`
 	// String value of a top N non-null value.
 	Value string `pulumi:"value"`
 }
@@ -2341,6 +2420,13 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueRe
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse) string {
 		return v.Count
 	}).(pulumi.StringOutput)
+}
+
+// Ratio of the corresponding value in the field against the total number of rows in the scanned data.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput) Ratio() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse) float64 {
+		return v.Ratio
+	}).(pulumi.Float64Output)
 }
 
 // String value of a top N non-null value.
@@ -2493,6 +2579,8 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileResponseOutput) Fields() Go
 
 // DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific profile result.
 type GoogleCloudDataplexV1DataProfileResultResponse struct {
+	// The result of post scan actions.
+	PostScanActionsResult GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse `pulumi:"postScanActionsResult"`
 	// The profile information per field.
 	Profile GoogleCloudDataplexV1DataProfileResultProfileResponse `pulumi:"profile"`
 	// The count of rows scanned.
@@ -2522,6 +2610,13 @@ func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ToOutput(ctx conte
 	}
 }
 
+// The result of post scan actions.
+func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) PostScanActionsResult() GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultResponse) GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse {
+		return v.PostScanActionsResult
+	}).(GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput)
+}
+
 // The profile information per field.
 func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) Profile() GoogleCloudDataplexV1DataProfileResultProfileResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultResponse) GoogleCloudDataplexV1DataProfileResultProfileResponse {
@@ -2543,6 +2638,12 @@ func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ScannedData() Goog
 
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpec struct {
+	// Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+	ExcludeFields *GoogleCloudDataplexV1DataProfileSpecSelectedFields `pulumi:"excludeFields"`
+	// Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+	IncludeFields *GoogleCloudDataplexV1DataProfileSpecSelectedFields `pulumi:"includeFields"`
+	// Optional. Actions to take upon job completion..
+	PostScanActions *GoogleCloudDataplexV1DataProfileSpecPostScanActions `pulumi:"postScanActions"`
 	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter *string `pulumi:"rowFilter"`
 	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
@@ -2562,6 +2663,12 @@ type GoogleCloudDataplexV1DataProfileSpecInput interface {
 
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpecArgs struct {
+	// Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+	ExcludeFields GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrInput `pulumi:"excludeFields"`
+	// Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+	IncludeFields GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrInput `pulumi:"includeFields"`
+	// Optional. Actions to take upon job completion..
+	PostScanActions GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrInput `pulumi:"postScanActions"`
 	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter pulumi.StringPtrInput `pulumi:"rowFilter"`
 	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
@@ -2664,6 +2771,27 @@ func (o GoogleCloudDataplexV1DataProfileSpecOutput) ToOutput(ctx context.Context
 	}
 }
 
+// Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+func (o GoogleCloudDataplexV1DataProfileSpecOutput) ExcludeFields() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpec) *GoogleCloudDataplexV1DataProfileSpecSelectedFields {
+		return v.ExcludeFields
+	}).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput)
+}
+
+// Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+func (o GoogleCloudDataplexV1DataProfileSpecOutput) IncludeFields() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpec) *GoogleCloudDataplexV1DataProfileSpecSelectedFields {
+		return v.IncludeFields
+	}).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput)
+}
+
+// Optional. Actions to take upon job completion..
+func (o GoogleCloudDataplexV1DataProfileSpecOutput) PostScanActions() GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpec) *GoogleCloudDataplexV1DataProfileSpecPostScanActions {
+		return v.PostScanActions
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput)
+}
+
 // Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 func (o GoogleCloudDataplexV1DataProfileSpecOutput) RowFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpec) *string { return v.RowFilter }).(pulumi.StringPtrOutput)
@@ -2704,6 +2832,36 @@ func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) Elem() GoogleCloudDataple
 	}).(GoogleCloudDataplexV1DataProfileSpecOutput)
 }
 
+// Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) ExcludeFields() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpec) *GoogleCloudDataplexV1DataProfileSpecSelectedFields {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeFields
+	}).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput)
+}
+
+// Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) IncludeFields() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpec) *GoogleCloudDataplexV1DataProfileSpecSelectedFields {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeFields
+	}).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput)
+}
+
+// Optional. Actions to take upon job completion..
+func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) PostScanActions() GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpec) *GoogleCloudDataplexV1DataProfileSpecPostScanActions {
+		if v == nil {
+			return nil
+		}
+		return v.PostScanActions
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput)
+}
+
 // Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) RowFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpec) *string {
@@ -2724,8 +2882,414 @@ func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) SamplingPercent() pulumi.
 	}).(pulumi.Float64PtrOutput)
 }
 
+// The configuration of post scan actions of DataProfileScan job.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActions struct {
+	// Optional. If set, results will be exported to the provided BigQuery table.
+	BigqueryExport *GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport `pulumi:"bigqueryExport"`
+}
+
+// GoogleCloudDataplexV1DataProfileSpecPostScanActionsInput is an input type that accepts GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs and GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataProfileSpecPostScanActionsInput` via:
+//
+//	GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs{...}
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput
+	ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsOutputWithContext(context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput
+}
+
+// The configuration of post scan actions of DataProfileScan job.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs struct {
+	// Optional. If set, results will be exported to the provided BigQuery table.
+	BigqueryExport GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrInput `pulumi:"bigqueryExport"`
+}
+
+func (GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActions)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput)
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActions] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActions]{
+		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput).ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrInput is an input type that accepts GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs, GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtr and GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput
+	ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput
+}
+
+type googleCloudDataplexV1DataProfileSpecPostScanActionsPtrType GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs
+
+func GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtr(v *GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrInput {
+	return (*googleCloudDataplexV1DataProfileSpecPostScanActionsPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataProfileSpecPostScanActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataProfileSpecPostScanActions)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsPtrType) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsPtrType) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput)
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActions] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActions]{
+		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The configuration of post scan actions of DataProfileScan job.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActions)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataProfileSpecPostScanActions) *GoogleCloudDataplexV1DataProfileSpecPostScanActions {
+		return &v
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput)
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActions] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If set, results will be exported to the provided BigQuery table.
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) BigqueryExport() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecPostScanActions) *GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
+		return v.BigqueryExport
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataProfileSpecPostScanActions)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActions] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) Elem() GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpecPostScanActions) GoogleCloudDataplexV1DataProfileSpecPostScanActions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataProfileSpecPostScanActions
+		return ret
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput)
+}
+
+// Optional. If set, results will be exported to the provided BigQuery table.
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) BigqueryExport() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpecPostScanActions) *GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
+		if v == nil {
+			return nil
+		}
+		return v.BigqueryExport
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput)
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport struct {
+	// Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable *string `pulumi:"resultsTable"`
+}
+
+// GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportInput is an input type that accepts GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs and GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportInput` via:
+//
+//	GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs{...}
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput
+	ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutputWithContext(context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs struct {
+	// Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable pulumi.StringPtrInput `pulumi:"resultsTable"`
+}
+
+func (GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput)
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport]{
+		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput).ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrInput is an input type that accepts GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs, GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtr and GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput
+	ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput
+}
+
+type googleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrType GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs
+
+func GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtr(v *GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrInput {
+	return (*googleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrType) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrType) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput)
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport]{
+		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport) *GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
+		return &v
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput)
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput) ResultsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport) *string {
+		return v.ResultsTable
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput) Elem() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport
+		return ret
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput)
+}
+
+// Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput) ResultsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResultsTable
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse struct {
+	// Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable string `pulumi:"resultsTable"`
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput) ResultsTable() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse) string {
+		return v.ResultsTable
+	}).(pulumi.StringOutput)
+}
+
+// The configuration of post scan actions of DataProfileScan job.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse struct {
+	// Optional. If set, results will be exported to the provided BigQuery table.
+	BigqueryExport GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse `pulumi:"bigqueryExport"`
+}
+
+// The configuration of post scan actions of DataProfileScan job.
+type GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If set, results will be exported to the provided BigQuery table.
+func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput) BigqueryExport() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse {
+		return v.BigqueryExport
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput)
+}
+
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpecResponse struct {
+	// Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+	ExcludeFields GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse `pulumi:"excludeFields"`
+	// Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+	IncludeFields GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse `pulumi:"includeFields"`
+	// Optional. Actions to take upon job completion..
+	PostScanActions GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse `pulumi:"postScanActions"`
 	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter string `pulumi:"rowFilter"`
 	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
@@ -2753,6 +3317,27 @@ func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToOutput(ctx context
 	}
 }
 
+// Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ExcludeFields() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecResponse) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse {
+		return v.ExcludeFields
+	}).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput)
+}
+
+// Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) IncludeFields() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecResponse) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse {
+		return v.IncludeFields
+	}).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput)
+}
+
+// Optional. Actions to take upon job completion..
+func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) PostScanActions() GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecResponse) GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse {
+		return v.PostScanActions
+	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput)
+}
+
 // Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) RowFilter() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecResponse) string { return v.RowFilter }).(pulumi.StringOutput)
@@ -2763,8 +3348,238 @@ func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) SamplingPercent() pu
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecResponse) float64 { return v.SamplingPercent }).(pulumi.Float64Output)
 }
 
+// The specification for fields to include or exclude in data profile scan.
+type GoogleCloudDataplexV1DataProfileSpecSelectedFields struct {
+	// Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+	FieldNames []string `pulumi:"fieldNames"`
+}
+
+// GoogleCloudDataplexV1DataProfileSpecSelectedFieldsInput is an input type that accepts GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs and GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataProfileSpecSelectedFieldsInput` via:
+//
+//	GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs{...}
+type GoogleCloudDataplexV1DataProfileSpecSelectedFieldsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput
+	ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutputWithContext(context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput
+}
+
+// The specification for fields to include or exclude in data profile scan.
+type GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs struct {
+	// Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+	FieldNames pulumi.StringArrayInput `pulumi:"fieldNames"`
+}
+
+func (GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecSelectedFields)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput)
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFields] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFields]{
+		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput).ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrInput is an input type that accepts GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs, GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtr and GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput
+	ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput
+}
+
+type googleCloudDataplexV1DataProfileSpecSelectedFieldsPtrType GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs
+
+func GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtr(v *GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrInput {
+	return (*googleCloudDataplexV1DataProfileSpecSelectedFieldsPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataProfileSpecSelectedFieldsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataProfileSpecSelectedFields)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecSelectedFieldsPtrType) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecSelectedFieldsPtrType) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput)
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecSelectedFieldsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecSelectedFields] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecSelectedFields]{
+		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The specification for fields to include or exclude in data profile scan.
+type GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecSelectedFields)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataProfileSpecSelectedFields) *GoogleCloudDataplexV1DataProfileSpecSelectedFields {
+		return &v
+	}).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput)
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFields] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFields]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) FieldNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecSelectedFields) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataProfileSpecSelectedFields)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecSelectedFields] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecSelectedFields]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) Elem() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpecSelectedFields) GoogleCloudDataplexV1DataProfileSpecSelectedFields {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataProfileSpecSelectedFields
+		return ret
+	}).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput)
+}
+
+// Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) FieldNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpecSelectedFields) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The specification for fields to include or exclude in data profile scan.
+type GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse struct {
+	// Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+	FieldNames []string `pulumi:"fieldNames"`
+}
+
+// The specification for fields to include or exclude in data profile scan.
+type GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput) FieldNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
+}
+
+// A dimension captures data quality intent about a defined subset of the rules specified.
+type GoogleCloudDataplexV1DataQualityDimensionResponse struct {
+	// The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+	Name string `pulumi:"name"`
+}
+
+// A dimension captures data quality intent about a defined subset of the rules specified.
+type GoogleCloudDataplexV1DataQualityDimensionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityDimensionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityDimensionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityDimensionResponseOutput) ToGoogleCloudDataplexV1DataQualityDimensionResponseOutput() GoogleCloudDataplexV1DataQualityDimensionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityDimensionResponseOutput) ToGoogleCloudDataplexV1DataQualityDimensionResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityDimensionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityDimensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityDimensionResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualityDimensionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+func (o GoogleCloudDataplexV1DataQualityDimensionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityDimensionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
 // DataQualityDimensionResult provides a more detailed, per-dimension view of the results.
 type GoogleCloudDataplexV1DataQualityDimensionResultResponse struct {
+	// The dimension config specified in the DataQualitySpec, as is.
+	Dimension GoogleCloudDataplexV1DataQualityDimensionResponse `pulumi:"dimension"`
 	// Whether the dimension passed or failed.
 	Passed bool `pulumi:"passed"`
 }
@@ -2788,6 +3603,13 @@ func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) ToOutput(
 	return pulumix.Output[GoogleCloudDataplexV1DataQualityDimensionResultResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// The dimension config specified in the DataQualitySpec, as is.
+func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) Dimension() GoogleCloudDataplexV1DataQualityDimensionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityDimensionResultResponse) GoogleCloudDataplexV1DataQualityDimensionResponse {
+		return v.Dimension
+	}).(GoogleCloudDataplexV1DataQualityDimensionResponseOutput)
 }
 
 // Whether the dimension passed or failed.
@@ -2821,12 +3643,91 @@ func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput) Inde
 	}).(GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput)
 }
 
+// The result of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse struct {
+	// Additional information about the BigQuery exporting.
+	Message string `pulumi:"message"`
+	// Execution state for the BigQuery exporting.
+	State string `pulumi:"state"`
+}
+
+// The result of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput) ToGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput() GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput) ToGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Additional information about the BigQuery exporting.
+func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+// Execution state for the BigQuery exporting.
+func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse) string {
+		return v.State
+	}).(pulumi.StringOutput)
+}
+
+// The result of post scan actions of DataQualityScan job.
+type GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse struct {
+	// The result of BigQuery export post scan action.
+	BigqueryExportResult GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse `pulumi:"bigqueryExportResult"`
+}
+
+// The result of post scan actions of DataQualityScan job.
+type GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput) ToGoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput() GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput) ToGoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The result of BigQuery export post scan action.
+func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput) BigqueryExportResult() GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse) GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse {
+		return v.BigqueryExportResult
+	}).(GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput)
+}
+
 // The output of a DataQualityScan.
 type GoogleCloudDataplexV1DataQualityResultResponse struct {
-	// A list of results at the dimension level.
+	// A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
 	Dimensions []GoogleCloudDataplexV1DataQualityDimensionResultResponse `pulumi:"dimensions"`
 	// Overall data quality result -- true if all rules passed.
 	Passed bool `pulumi:"passed"`
+	// The result of post scan actions.
+	PostScanActionsResult GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse `pulumi:"postScanActionsResult"`
 	// The count of rows processed.
 	RowCount string `pulumi:"rowCount"`
 	// A list of all the rules in a job, and their results.
@@ -2856,7 +3757,7 @@ func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ToOutput(ctx conte
 	}
 }
 
-// A list of results at the dimension level.
+// A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
 func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) Dimensions() GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) []GoogleCloudDataplexV1DataQualityDimensionResultResponse {
 		return v.Dimensions
@@ -2866,6 +3767,13 @@ func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) Dimensions() Googl
 // Overall data quality result -- true if all rules passed.
 func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) Passed() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) bool { return v.Passed }).(pulumi.BoolOutput)
+}
+
+// The result of post scan actions.
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) PostScanActionsResult() GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse {
+		return v.PostScanActionsResult
+	}).(GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput)
 }
 
 // The count of rows processed.
@@ -2891,27 +3799,31 @@ func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ScannedData() Goog
 type GoogleCloudDataplexV1DataQualityRule struct {
 	// Optional. The unnested column which this rule is evaluated against.
 	Column *string `pulumi:"column"`
+	// Optional. Description of the rule. The maximum length is 1,024 characters.
+	Description *string `pulumi:"description"`
 	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
 	Dimension string `pulumi:"dimension"`
-	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
 	IgnoreNull *bool `pulumi:"ignoreNull"`
-	// ColumnMap rule which evaluates whether each column value is null.
+	// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+	Name *string `pulumi:"name"`
+	// Row-level rule which evaluates whether each column value is null.
 	NonNullExpectation *GoogleCloudDataplexV1DataQualityRuleNonNullExpectation `pulumi:"nonNullExpectation"`
-	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	// Row-level rule which evaluates whether each column value lies between a specified range.
 	RangeExpectation *GoogleCloudDataplexV1DataQualityRuleRangeExpectation `pulumi:"rangeExpectation"`
-	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	// Row-level rule which evaluates whether each column value matches a specified regex.
 	RegexExpectation *GoogleCloudDataplexV1DataQualityRuleRegexExpectation `pulumi:"regexExpectation"`
-	// Table rule which evaluates whether each row passes the specified condition.
+	// Row-level rule which evaluates whether each row in a table passes the specified condition.
 	RowConditionExpectation *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation `pulumi:"rowConditionExpectation"`
-	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	// Row-level rule which evaluates whether each column value is contained by a specified set.
 	SetExpectation *GoogleCloudDataplexV1DataQualityRuleSetExpectation `pulumi:"setExpectation"`
-	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	StatisticRangeExpectation *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation `pulumi:"statisticRangeExpectation"`
-	// Table rule which evaluates whether the provided expression is true.
+	// Aggregate rule which evaluates whether the provided expression is true for a table.
 	TableConditionExpectation *GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation `pulumi:"tableConditionExpectation"`
-	// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+	// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
 	Threshold *float64 `pulumi:"threshold"`
-	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	// Row-level rule which evaluates whether each column value is unique.
 	UniquenessExpectation *GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation `pulumi:"uniquenessExpectation"`
 }
 
@@ -2930,27 +3842,31 @@ type GoogleCloudDataplexV1DataQualityRuleInput interface {
 type GoogleCloudDataplexV1DataQualityRuleArgs struct {
 	// Optional. The unnested column which this rule is evaluated against.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// Optional. Description of the rule. The maximum length is 1,024 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
 	Dimension pulumi.StringInput `pulumi:"dimension"`
-	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
 	IgnoreNull pulumi.BoolPtrInput `pulumi:"ignoreNull"`
-	// ColumnMap rule which evaluates whether each column value is null.
+	// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Row-level rule which evaluates whether each column value is null.
 	NonNullExpectation GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrInput `pulumi:"nonNullExpectation"`
-	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	// Row-level rule which evaluates whether each column value lies between a specified range.
 	RangeExpectation GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrInput `pulumi:"rangeExpectation"`
-	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	// Row-level rule which evaluates whether each column value matches a specified regex.
 	RegexExpectation GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrInput `pulumi:"regexExpectation"`
-	// Table rule which evaluates whether each row passes the specified condition.
+	// Row-level rule which evaluates whether each row in a table passes the specified condition.
 	RowConditionExpectation GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrInput `pulumi:"rowConditionExpectation"`
-	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	// Row-level rule which evaluates whether each column value is contained by a specified set.
 	SetExpectation GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrInput `pulumi:"setExpectation"`
-	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	StatisticRangeExpectation GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrInput `pulumi:"statisticRangeExpectation"`
-	// Table rule which evaluates whether the provided expression is true.
+	// Aggregate rule which evaluates whether the provided expression is true for a table.
 	TableConditionExpectation GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrInput `pulumi:"tableConditionExpectation"`
-	// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+	// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
 	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
-	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	// Row-level rule which evaluates whether each column value is unique.
 	UniquenessExpectation GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrInput `pulumi:"uniquenessExpectation"`
 }
 
@@ -3029,71 +3945,81 @@ func (o GoogleCloudDataplexV1DataQualityRuleOutput) Column() pulumi.StringPtrOut
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *string { return v.Column }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Description of the rule. The maximum length is 1,024 characters.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) Dimension() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) string { return v.Dimension }).(pulumi.StringOutput)
 }
 
-// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) IgnoreNull() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *bool { return v.IgnoreNull }).(pulumi.BoolPtrOutput)
 }
 
-// ColumnMap rule which evaluates whether each column value is null.
+// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Row-level rule which evaluates whether each column value is null.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) NonNullExpectation() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleNonNullExpectation {
 		return v.NonNullExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput)
 }
 
-// ColumnMap rule which evaluates whether each column value lies between a specified range.
+// Row-level rule which evaluates whether each column value lies between a specified range.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) RangeExpectation() GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
 		return v.RangeExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput)
 }
 
-// ColumnMap rule which evaluates whether each column value matches a specified regex.
+// Row-level rule which evaluates whether each column value matches a specified regex.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) RegexExpectation() GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
 		return v.RegexExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput)
 }
 
-// Table rule which evaluates whether each row passes the specified condition.
+// Row-level rule which evaluates whether each row in a table passes the specified condition.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) RowConditionExpectation() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation {
 		return v.RowConditionExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput)
 }
 
-// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+// Row-level rule which evaluates whether each column value is contained by a specified set.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) SetExpectation() GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleSetExpectation {
 		return v.SetExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput)
 }
 
-// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) StatisticRangeExpectation() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
 		return v.StatisticRangeExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput)
 }
 
-// Table rule which evaluates whether the provided expression is true.
+// Aggregate rule which evaluates whether the provided expression is true for a table.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) TableConditionExpectation() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation {
 		return v.TableConditionExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput)
 }
 
-// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
 
-// ColumnAggregate rule which evaluates whether the column has duplicates.
+// Row-level rule which evaluates whether each column value is unique.
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) UniquenessExpectation() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation {
 		return v.UniquenessExpectation
@@ -3572,7 +4498,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) Stri
 
 // Evaluates whether each column value matches a specified regex.
 type GoogleCloudDataplexV1DataQualityRuleRegexExpectation struct {
-	// A regular expression the column value is expected to match.
+	// Optional. A regular expression the column value is expected to match.
 	Regex *string `pulumi:"regex"`
 }
 
@@ -3589,7 +4515,7 @@ type GoogleCloudDataplexV1DataQualityRuleRegexExpectationInput interface {
 
 // Evaluates whether each column value matches a specified regex.
 type GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs struct {
-	// A regular expression the column value is expected to match.
+	// Optional. A regular expression the column value is expected to match.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -3689,7 +4615,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) ToOutput(ctx
 	}
 }
 
-// A regular expression the column value is expected to match.
+// Optional. A regular expression the column value is expected to match.
 func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRegexExpectation) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
@@ -3724,7 +4650,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) Elem() Go
 	}).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput)
 }
 
-// A regular expression the column value is expected to match.
+// Optional. A regular expression the column value is expected to match.
 func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRegexExpectation) *string {
 		if v == nil {
@@ -3736,7 +4662,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) Regex() p
 
 // Evaluates whether each column value matches a specified regex.
 type GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse struct {
-	// A regular expression the column value is expected to match.
+	// Optional. A regular expression the column value is expected to match.
 	Regex string `pulumi:"regex"`
 }
 
@@ -3761,7 +4687,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) ToOu
 	}
 }
 
-// A regular expression the column value is expected to match.
+// Optional. A regular expression the column value is expected to match.
 func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) Regex() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse) string { return v.Regex }).(pulumi.StringOutput)
 }
@@ -3770,27 +4696,31 @@ func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) Rege
 type GoogleCloudDataplexV1DataQualityRuleResponse struct {
 	// Optional. The unnested column which this rule is evaluated against.
 	Column string `pulumi:"column"`
+	// Optional. Description of the rule. The maximum length is 1,024 characters.
+	Description string `pulumi:"description"`
 	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
 	Dimension string `pulumi:"dimension"`
-	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
 	IgnoreNull bool `pulumi:"ignoreNull"`
-	// ColumnMap rule which evaluates whether each column value is null.
+	// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+	Name string `pulumi:"name"`
+	// Row-level rule which evaluates whether each column value is null.
 	NonNullExpectation GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse `pulumi:"nonNullExpectation"`
-	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	// Row-level rule which evaluates whether each column value lies between a specified range.
 	RangeExpectation GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse `pulumi:"rangeExpectation"`
-	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	// Row-level rule which evaluates whether each column value matches a specified regex.
 	RegexExpectation GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse `pulumi:"regexExpectation"`
-	// Table rule which evaluates whether each row passes the specified condition.
+	// Row-level rule which evaluates whether each row in a table passes the specified condition.
 	RowConditionExpectation GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse `pulumi:"rowConditionExpectation"`
-	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	// Row-level rule which evaluates whether each column value is contained by a specified set.
 	SetExpectation GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse `pulumi:"setExpectation"`
-	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	StatisticRangeExpectation GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse `pulumi:"statisticRangeExpectation"`
-	// Table rule which evaluates whether the provided expression is true.
+	// Aggregate rule which evaluates whether the provided expression is true for a table.
 	TableConditionExpectation GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse `pulumi:"tableConditionExpectation"`
-	// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+	// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
 	Threshold float64 `pulumi:"threshold"`
-	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	// Row-level rule which evaluates whether each column value is unique.
 	UniquenessExpectation GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse `pulumi:"uniquenessExpectation"`
 }
 
@@ -3820,71 +4750,81 @@ func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) Column() pulumi.Stri
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) string { return v.Column }).(pulumi.StringOutput)
 }
 
+// Optional. Description of the rule. The maximum length is 1,024 characters.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
 // The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) Dimension() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) string { return v.Dimension }).(pulumi.StringOutput)
 }
 
-// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) IgnoreNull() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) bool { return v.IgnoreNull }).(pulumi.BoolOutput)
 }
 
-// ColumnMap rule which evaluates whether each column value is null.
+// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Row-level rule which evaluates whether each column value is null.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) NonNullExpectation() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse {
 		return v.NonNullExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput)
 }
 
-// ColumnMap rule which evaluates whether each column value lies between a specified range.
+// Row-level rule which evaluates whether each column value lies between a specified range.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) RangeExpectation() GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse {
 		return v.RangeExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput)
 }
 
-// ColumnMap rule which evaluates whether each column value matches a specified regex.
+// Row-level rule which evaluates whether each column value matches a specified regex.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) RegexExpectation() GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse {
 		return v.RegexExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput)
 }
 
-// Table rule which evaluates whether each row passes the specified condition.
+// Row-level rule which evaluates whether each row in a table passes the specified condition.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) RowConditionExpectation() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse {
 		return v.RowConditionExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput)
 }
 
-// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+// Row-level rule which evaluates whether each column value is contained by a specified set.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) SetExpectation() GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse {
 		return v.SetExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput)
 }
 
-// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) StatisticRangeExpectation() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse {
 		return v.StatisticRangeExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput)
 }
 
-// Table rule which evaluates whether the provided expression is true.
+// Aggregate rule which evaluates whether the provided expression is true for a table.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) TableConditionExpectation() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse {
 		return v.TableConditionExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput)
 }
 
-// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
-// ColumnAggregate rule which evaluates whether the column has duplicates.
+// Row-level rule which evaluates whether each column value is unique.
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) UniquenessExpectation() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse {
 		return v.UniquenessExpectation
@@ -3919,17 +4859,17 @@ func (o GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput) Index(i pulumi.
 
 // DataQualityRuleResult provides a more detailed, per-rule view of the results.
 type GoogleCloudDataplexV1DataQualityRuleResultResponse struct {
-	// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
+	// The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
 	EvaluatedCount string `pulumi:"evaluatedCount"`
-	// The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+	// The query to find rows that did not pass this rule.This field is only valid for row-level type rules.
 	FailingRowsQuery string `pulumi:"failingRowsQuery"`
 	// The number of rows with null values in the specified column.
 	NullCount string `pulumi:"nullCount"`
-	// The ratio of passed_count / evaluated_count. This field is only valid for ColumnMap type rules.
+	// The ratio of passed_count / evaluated_count.This field is only valid for row-level type rules.
 	PassRatio float64 `pulumi:"passRatio"`
 	// Whether the rule passed or failed.
 	Passed bool `pulumi:"passed"`
-	// The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+	// The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.
 	PassedCount string `pulumi:"passedCount"`
 	// The rule specified in the DataQualitySpec, as is.
 	Rule GoogleCloudDataplexV1DataQualityRuleResponse `pulumi:"rule"`
@@ -3956,12 +4896,12 @@ func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) ToOutput(ctx c
 	}
 }
 
-// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
+// The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
 func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) EvaluatedCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) string { return v.EvaluatedCount }).(pulumi.StringOutput)
 }
 
-// The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+// The query to find rows that did not pass this rule.This field is only valid for row-level type rules.
 func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) FailingRowsQuery() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) string { return v.FailingRowsQuery }).(pulumi.StringOutput)
 }
@@ -3971,7 +4911,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) NullCount() pu
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) string { return v.NullCount }).(pulumi.StringOutput)
 }
 
-// The ratio of passed_count / evaluated_count. This field is only valid for ColumnMap type rules.
+// The ratio of passed_count / evaluated_count.This field is only valid for row-level type rules.
 func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) PassRatio() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) float64 { return v.PassRatio }).(pulumi.Float64Output)
 }
@@ -3981,7 +4921,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) Passed() pulum
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) bool { return v.Passed }).(pulumi.BoolOutput)
 }
 
-// The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+// The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.
 func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) PassedCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) string { return v.PassedCount }).(pulumi.StringOutput)
 }
@@ -4021,7 +4961,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput) Index(i p
 
 // Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
 type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation struct {
-	// The SQL expression.
+	// Optional. The SQL expression.
 	SqlExpression *string `pulumi:"sqlExpression"`
 }
 
@@ -4038,7 +4978,7 @@ type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationInput interface 
 
 // Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
 type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs struct {
-	// The SQL expression.
+	// Optional. The SQL expression.
 	SqlExpression pulumi.StringPtrInput `pulumi:"sqlExpression"`
 }
 
@@ -4138,7 +5078,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) ToOut
 	}
 }
 
-// The SQL expression.
+// Optional. The SQL expression.
 func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) SqlExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation) *string { return v.SqlExpression }).(pulumi.StringPtrOutput)
 }
@@ -4173,7 +5113,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) El
 	}).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput)
 }
 
-// The SQL expression.
+// Optional. The SQL expression.
 func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) SqlExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation) *string {
 		if v == nil {
@@ -4185,7 +5125,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) Sq
 
 // Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
 type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse struct {
-	// The SQL expression.
+	// Optional. The SQL expression.
 	SqlExpression string `pulumi:"sqlExpression"`
 }
 
@@ -4210,7 +5150,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutpu
 	}
 }
 
-// The SQL expression.
+// Optional. The SQL expression.
 func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput) SqlExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse) string {
 		return v.SqlExpression
@@ -4219,7 +5159,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutpu
 
 // Evaluates whether each column value is contained by a specified set.
 type GoogleCloudDataplexV1DataQualityRuleSetExpectation struct {
-	// Expected values for the column value.
+	// Optional. Expected values for the column value.
 	Values []string `pulumi:"values"`
 }
 
@@ -4236,7 +5176,7 @@ type GoogleCloudDataplexV1DataQualityRuleSetExpectationInput interface {
 
 // Evaluates whether each column value is contained by a specified set.
 type GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs struct {
-	// Expected values for the column value.
+	// Optional. Expected values for the column value.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -4336,7 +5276,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) ToOutput(ctx c
 	}
 }
 
-// Expected values for the column value.
+// Optional. Expected values for the column value.
 func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleSetExpectation) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -4371,7 +5311,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) Elem() Goog
 	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput)
 }
 
-// Expected values for the column value.
+// Optional. Expected values for the column value.
 func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleSetExpectation) []string {
 		if v == nil {
@@ -4383,7 +5323,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) Values() pu
 
 // Evaluates whether each column value is contained by a specified set.
 type GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse struct {
-	// Expected values for the column value.
+	// Optional. Expected values for the column value.
 	Values []string `pulumi:"values"`
 }
 
@@ -4408,22 +5348,22 @@ func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) ToOutp
 	}
 }
 
-// Expected values for the column value.
+// Optional. Expected values for the column value.
 func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // Evaluates whether the column aggregate statistic lies between a specified range.
 type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation struct {
-	// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	// Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 	MaxValue *string `pulumi:"maxValue"`
-	// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	// Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 	MinValue *string `pulumi:"minValue"`
-	// The aggregate metric to evaluate.
+	// Optional. The aggregate metric to evaluate.
 	Statistic *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic `pulumi:"statistic"`
-	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+	// Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
 	StrictMaxEnabled *bool `pulumi:"strictMaxEnabled"`
-	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+	// Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
 	StrictMinEnabled *bool `pulumi:"strictMinEnabled"`
 }
 
@@ -4440,15 +5380,15 @@ type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationInput interfac
 
 // Evaluates whether the column aggregate statistic lies between a specified range.
 type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs struct {
-	// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	// Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
-	// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	// Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 	MinValue pulumi.StringPtrInput `pulumi:"minValue"`
-	// The aggregate metric to evaluate.
+	// Optional. The aggregate metric to evaluate.
 	Statistic GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrInput `pulumi:"statistic"`
-	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+	// Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
 	StrictMaxEnabled pulumi.BoolPtrInput `pulumi:"strictMaxEnabled"`
-	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+	// Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
 	StrictMinEnabled pulumi.BoolPtrInput `pulumi:"strictMinEnabled"`
 }
 
@@ -4548,29 +5488,29 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) ToO
 	}
 }
 
-// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+// Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) MaxValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
 }
 
-// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+// Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) MinValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *string { return v.MinValue }).(pulumi.StringPtrOutput)
 }
 
-// The aggregate metric to evaluate.
+// Optional. The aggregate metric to evaluate.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) Statistic() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
 		return v.Statistic
 	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput)
 }
 
-// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+// Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *bool { return v.StrictMaxEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+// Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *bool { return v.StrictMinEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -4605,7 +5545,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) 
 	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput)
 }
 
-// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+// Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) MaxValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *string {
 		if v == nil {
@@ -4615,7 +5555,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+// Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) MinValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *string {
 		if v == nil {
@@ -4625,7 +5565,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The aggregate metric to evaluate.
+// Optional. The aggregate metric to evaluate.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) Statistic() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
 		if v == nil {
@@ -4635,7 +5575,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) 
 	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput)
 }
 
-// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+// Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *bool {
 		if v == nil {
@@ -4645,7 +5585,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+// Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *bool {
 		if v == nil {
@@ -4657,15 +5597,15 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) 
 
 // Evaluates whether the column aggregate statistic lies between a specified range.
 type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse struct {
-	// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	// Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 	MaxValue string `pulumi:"maxValue"`
-	// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	// Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 	MinValue string `pulumi:"minValue"`
-	// The aggregate metric to evaluate.
+	// Optional. The aggregate metric to evaluate.
 	Statistic string `pulumi:"statistic"`
-	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+	// Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
 	StrictMaxEnabled bool `pulumi:"strictMaxEnabled"`
-	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+	// Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
 	StrictMinEnabled bool `pulumi:"strictMinEnabled"`
 }
 
@@ -4690,35 +5630,35 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOut
 	}
 }
 
-// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+// Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) MaxValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) string {
 		return v.MaxValue
 	}).(pulumi.StringOutput)
 }
 
-// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+// Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) MinValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) string {
 		return v.MinValue
 	}).(pulumi.StringOutput)
 }
 
-// The aggregate metric to evaluate.
+// Optional. The aggregate metric to evaluate.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) Statistic() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) string {
 		return v.Statistic
 	}).(pulumi.StringOutput)
 }
 
-// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+// Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) StrictMaxEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) bool {
 		return v.StrictMaxEnabled
 	}).(pulumi.BoolOutput)
 }
 
-// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+// Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) StrictMinEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) bool {
 		return v.StrictMinEnabled
@@ -4727,7 +5667,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOut
 
 // Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
 type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation struct {
-	// The SQL expression.
+	// Optional. The SQL expression.
 	SqlExpression *string `pulumi:"sqlExpression"`
 }
 
@@ -4744,7 +5684,7 @@ type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationInput interfac
 
 // Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
 type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs struct {
-	// The SQL expression.
+	// Optional. The SQL expression.
 	SqlExpression pulumi.StringPtrInput `pulumi:"sqlExpression"`
 }
 
@@ -4844,7 +5784,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) ToO
 	}
 }
 
-// The SQL expression.
+// Optional. The SQL expression.
 func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) SqlExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation) *string { return v.SqlExpression }).(pulumi.StringPtrOutput)
 }
@@ -4879,7 +5819,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) 
 	}).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput)
 }
 
-// The SQL expression.
+// Optional. The SQL expression.
 func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) SqlExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation) *string {
 		if v == nil {
@@ -4891,7 +5831,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) 
 
 // Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
 type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse struct {
-	// The SQL expression.
+	// Optional. The SQL expression.
 	SqlExpression string `pulumi:"sqlExpression"`
 }
 
@@ -4916,7 +5856,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOut
 	}
 }
 
-// The SQL expression.
+// Optional. The SQL expression.
 func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput) SqlExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse) string {
 		return v.SqlExpression
@@ -5095,6 +6035,8 @@ func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput)
 
 // DataQualityScan related setting.
 type GoogleCloudDataplexV1DataQualitySpec struct {
+	// Optional. Actions to take upon job completion.
+	PostScanActions *GoogleCloudDataplexV1DataQualitySpecPostScanActions `pulumi:"postScanActions"`
 	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter *string `pulumi:"rowFilter"`
 	// The list of rules to evaluate against a data source. At least one rule is required.
@@ -5116,6 +6058,8 @@ type GoogleCloudDataplexV1DataQualitySpecInput interface {
 
 // DataQualityScan related setting.
 type GoogleCloudDataplexV1DataQualitySpecArgs struct {
+	// Optional. Actions to take upon job completion.
+	PostScanActions GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrInput `pulumi:"postScanActions"`
 	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter pulumi.StringPtrInput `pulumi:"rowFilter"`
 	// The list of rules to evaluate against a data source. At least one rule is required.
@@ -5220,6 +6164,13 @@ func (o GoogleCloudDataplexV1DataQualitySpecOutput) ToOutput(ctx context.Context
 	}
 }
 
+// Optional. Actions to take upon job completion.
+func (o GoogleCloudDataplexV1DataQualitySpecOutput) PostScanActions() GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpec) *GoogleCloudDataplexV1DataQualitySpecPostScanActions {
+		return v.PostScanActions
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput)
+}
+
 // Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 func (o GoogleCloudDataplexV1DataQualitySpecOutput) RowFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpec) *string { return v.RowFilter }).(pulumi.StringPtrOutput)
@@ -5265,6 +6216,16 @@ func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) Elem() GoogleCloudDataple
 	}).(GoogleCloudDataplexV1DataQualitySpecOutput)
 }
 
+// Optional. Actions to take upon job completion.
+func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) PostScanActions() GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpec) *GoogleCloudDataplexV1DataQualitySpecPostScanActions {
+		if v == nil {
+			return nil
+		}
+		return v.PostScanActions
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput)
+}
+
 // Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) RowFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpec) *string {
@@ -5295,8 +6256,410 @@ func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) SamplingPercent() pulumi.
 	}).(pulumi.Float64PtrOutput)
 }
 
+// The configuration of post scan actions of DataQualityScan.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActions struct {
+	// Optional. If set, results will be exported to the provided BigQuery table.
+	BigqueryExport *GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport `pulumi:"bigqueryExport"`
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs and GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsInput` via:
+//
+//	GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs{...}
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput
+}
+
+// The configuration of post scan actions of DataQualityScan.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs struct {
+	// Optional. If set, results will be exported to the provided BigQuery table.
+	BigqueryExport GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrInput `pulumi:"bigqueryExport"`
+}
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActions)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActions] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActions]{
+		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput).ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs, GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtr and GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput
+}
+
+type googleCloudDataplexV1DataQualitySpecPostScanActionsPtrType GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs
+
+func GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtr(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrInput {
+	return (*googleCloudDataplexV1DataQualitySpecPostScanActionsPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualitySpecPostScanActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActions)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput)
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActions] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActions]{
+		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The configuration of post scan actions of DataQualityScan.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActions)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualitySpecPostScanActions) *GoogleCloudDataplexV1DataQualitySpecPostScanActions {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput)
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActions] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If set, results will be exported to the provided BigQuery table.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) BigqueryExport() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActions) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport {
+		return v.BigqueryExport
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActions)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActions] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActions) GoogleCloudDataplexV1DataQualitySpecPostScanActions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualitySpecPostScanActions
+		return ret
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput)
+}
+
+// Optional. If set, results will be exported to the provided BigQuery table.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) BigqueryExport() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActions) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport {
+		if v == nil {
+			return nil
+		}
+		return v.BigqueryExport
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput)
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport struct {
+	// Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable *string `pulumi:"resultsTable"`
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs and GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportInput` via:
+//
+//	GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs{...}
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs struct {
+	// Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable pulumi.StringPtrInput `pulumi:"resultsTable"`
+}
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]{
+		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput).ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs, GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtr and GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput
+}
+
+type googleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrType GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs
+
+func GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtr(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrInput {
+	return (*googleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput)
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]{
+		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput)
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput) ResultsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport) *string {
+		return v.ResultsTable
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport
+		return ret
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput)
+}
+
+// Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput) ResultsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResultsTable
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse struct {
+	// Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable string `pulumi:"resultsTable"`
+}
+
+// The configuration of BigQuery export post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput) ResultsTable() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse) string {
+		return v.ResultsTable
+	}).(pulumi.StringOutput)
+}
+
+// The configuration of post scan actions of DataQualityScan.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse struct {
+	// Optional. If set, results will be exported to the provided BigQuery table.
+	BigqueryExport GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse `pulumi:"bigqueryExport"`
+}
+
+// The configuration of post scan actions of DataQualityScan.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If set, results will be exported to the provided BigQuery table.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) BigqueryExport() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse {
+		return v.BigqueryExport
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput)
+}
+
 // DataQualityScan related setting.
 type GoogleCloudDataplexV1DataQualitySpecResponse struct {
+	// Optional. Actions to take upon job completion.
+	PostScanActions GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse `pulumi:"postScanActions"`
 	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter string `pulumi:"rowFilter"`
 	// The list of rules to evaluate against a data source. At least one rule is required.
@@ -5324,6 +6687,13 @@ func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) ToOutput(ctx context
 	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. Actions to take upon job completion.
+func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) PostScanActions() GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecResponse) GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse {
+		return v.PostScanActions
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput)
 }
 
 // Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
@@ -6638,6 +8008,10 @@ func (o GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput) Active() pu
 type GoogleCloudDataplexV1JobResponse struct {
 	// The time when the job ended.
 	EndTime string `pulumi:"endTime"`
+	// Spec related to how a task is executed.
+	ExecutionSpec GoogleCloudDataplexV1TaskExecutionSpecResponse `pulumi:"executionSpec"`
+	// User-defined labels for the task.
+	Labels map[string]string `pulumi:"labels"`
 	// Additional information about the current state.
 	Message string `pulumi:"message"`
 	// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
@@ -6652,6 +8026,8 @@ type GoogleCloudDataplexV1JobResponse struct {
 	StartTime string `pulumi:"startTime"`
 	// Execution state for the job.
 	State string `pulumi:"state"`
+	// Job execution trigger.
+	Trigger string `pulumi:"trigger"`
 	// System generated globally unique ID for the job.
 	Uid string `pulumi:"uid"`
 }
@@ -6680,6 +8056,18 @@ func (o GoogleCloudDataplexV1JobResponseOutput) ToOutput(ctx context.Context) pu
 // The time when the job ended.
 func (o GoogleCloudDataplexV1JobResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Spec related to how a task is executed.
+func (o GoogleCloudDataplexV1JobResponseOutput) ExecutionSpec() GoogleCloudDataplexV1TaskExecutionSpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) GoogleCloudDataplexV1TaskExecutionSpecResponse {
+		return v.ExecutionSpec
+	}).(GoogleCloudDataplexV1TaskExecutionSpecResponseOutput)
+}
+
+// User-defined labels for the task.
+func (o GoogleCloudDataplexV1JobResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Additional information about the current state.
@@ -6715,6 +8103,11 @@ func (o GoogleCloudDataplexV1JobResponseOutput) StartTime() pulumi.StringOutput 
 // Execution state for the job.
 func (o GoogleCloudDataplexV1JobResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Job execution trigger.
+func (o GoogleCloudDataplexV1JobResponseOutput) Trigger() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.Trigger }).(pulumi.StringOutput)
 }
 
 // System generated globally unique ID for the job.
@@ -13262,6 +14655,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataAttributeBindingPathArrayInput)(nil)).Elem(), GoogleCloudDataplexV1DataAttributeBindingPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActionsInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecSelectedFieldsInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleArrayInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleNonNullExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs{})
@@ -13282,6 +14681,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionSpecInput)(nil)).Elem(), GoogleCloudDataplexV1DataScanExecutionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionSpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataScanExecutionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataSourceInput)(nil)).Elem(), GoogleCloudDataplexV1DataSourceArgs{})
@@ -13371,6 +14774,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput{})
@@ -13383,9 +14788,21 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityDimensionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleArrayOutput{})
@@ -13419,6 +14836,12 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataScanExecutionSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput{})

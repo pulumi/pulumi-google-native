@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Pulumi.GoogleNative.Compute.Beta.AttachedDiskMode>? Mode { get; set; }
 
         /// <summary>
+        /// For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api.
+        /// </summary>
+        [Input("savedState")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.AttachedDiskSavedState>? SavedState { get; set; }
+
+        /// <summary>
         /// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
         /// </summary>
         [Input("source")]

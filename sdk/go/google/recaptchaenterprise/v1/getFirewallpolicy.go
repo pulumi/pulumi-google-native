@@ -29,15 +29,15 @@ type LookupFirewallpolicyArgs struct {
 }
 
 type LookupFirewallpolicyResult struct {
-	// The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as AllowAction, BlockAction or SubstituteAction. Zero or more non-terminal actions such as SetHeader might be specified. A single policy can contain up to 16 actions.
+	// Optional. The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be specified. A single policy can contain up to 16 actions.
 	Actions []GoogleCloudRecaptchaenterpriseV1FirewallActionResponse `pulumi:"actions"`
-	// A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
+	// Optional. A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
 	Condition string `pulumi:"condition"`
-	// A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
+	// Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
 	Description string `pulumi:"description"`
-	// The resource name for the FirewallPolicy in the format "projects/{project}/firewallpolicies/{firewallpolicy}".
+	// Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
 	Name string `pulumi:"name"`
-	// The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
+	// Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
 	Path string `pulumi:"path"`
 }
 
@@ -83,29 +83,29 @@ func (o LookupFirewallpolicyResultOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as AllowAction, BlockAction or SubstituteAction. Zero or more non-terminal actions such as SetHeader might be specified. A single policy can contain up to 16 actions.
+// Optional. The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be specified. A single policy can contain up to 16 actions.
 func (o LookupFirewallpolicyResultOutput) Actions() GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput {
 	return o.ApplyT(func(v LookupFirewallpolicyResult) []GoogleCloudRecaptchaenterpriseV1FirewallActionResponse {
 		return v.Actions
 	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput)
 }
 
-// A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
+// Optional. A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
 func (o LookupFirewallpolicyResultOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallpolicyResult) string { return v.Condition }).(pulumi.StringOutput)
 }
 
-// A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
+// Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
 func (o LookupFirewallpolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallpolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The resource name for the FirewallPolicy in the format "projects/{project}/firewallpolicies/{firewallpolicy}".
+// Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
 func (o LookupFirewallpolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallpolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
+// Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
 func (o LookupFirewallpolicyResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallpolicyResult) string { return v.Path }).(pulumi.StringOutput)
 }

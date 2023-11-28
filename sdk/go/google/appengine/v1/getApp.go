@@ -24,7 +24,8 @@ func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupAppArgs struct {
-	AppId string `pulumi:"appId"`
+	AppId            string  `pulumi:"appId"`
+	IncludeExtraData *string `pulumi:"includeExtraData"`
 }
 
 type LookupAppResult struct {
@@ -45,8 +46,10 @@ type LookupAppResult struct {
 	// The feature specific settings to be used in the application.
 	FeatureSettings FeatureSettingsResponse `pulumi:"featureSettings"`
 	// The Google Container Registry domain used for storing managed build docker images for this application.
-	GcrDomain string                     `pulumi:"gcrDomain"`
-	Iap       IdentityAwareProxyResponse `pulumi:"iap"`
+	GcrDomain string `pulumi:"gcrDomain"`
+	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+	GeneratedCustomerMetadata map[string]string          `pulumi:"generatedCustomerMetadata"`
+	Iap                       IdentityAwareProxyResponse `pulumi:"iap"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location string `pulumi:"location"`
 	// Full path to the Application resource in the API. Example: apps/myapp.
@@ -71,7 +74,8 @@ func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulu
 }
 
 type LookupAppOutputArgs struct {
-	AppId pulumi.StringInput `pulumi:"appId"`
+	AppId            pulumi.StringInput    `pulumi:"appId"`
+	IncludeExtraData pulumi.StringPtrInput `pulumi:"includeExtraData"`
 }
 
 func (LookupAppOutputArgs) ElementType() reflect.Type {
@@ -141,6 +145,11 @@ func (o LookupAppResultOutput) FeatureSettings() FeatureSettingsResponseOutput {
 // The Google Container Registry domain used for storing managed build docker images for this application.
 func (o LookupAppResultOutput) GcrDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.GcrDomain }).(pulumi.StringOutput)
+}
+
+// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+func (o LookupAppResultOutput) GeneratedCustomerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppResult) map[string]string { return v.GeneratedCustomerMetadata }).(pulumi.StringMapOutput)
 }
 
 func (o LookupAppResultOutput) Iap() IdentityAwareProxyResponseOutput {

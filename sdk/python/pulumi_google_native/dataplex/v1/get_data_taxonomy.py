@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetDataTaxonomyResult:
-    def __init__(__self__, attribute_count=None, create_time=None, description=None, display_name=None, etag=None, labels=None, name=None, uid=None, update_time=None):
+    def __init__(__self__, attribute_count=None, class_count=None, create_time=None, description=None, display_name=None, etag=None, labels=None, name=None, uid=None, update_time=None):
         if attribute_count and not isinstance(attribute_count, int):
             raise TypeError("Expected argument 'attribute_count' to be a int")
         pulumi.set(__self__, "attribute_count", attribute_count)
+        if class_count and not isinstance(class_count, int):
+            raise TypeError("Expected argument 'class_count' to be a int")
+        pulumi.set(__self__, "class_count", class_count)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -54,6 +57,14 @@ class GetDataTaxonomyResult:
         The number of attributes in the DataTaxonomy.
         """
         return pulumi.get(self, "attribute_count")
+
+    @property
+    @pulumi.getter(name="classCount")
+    def class_count(self) -> int:
+        """
+        The number of classes in the DataTaxonomy.
+        """
+        return pulumi.get(self, "class_count")
 
     @property
     @pulumi.getter(name="createTime")
@@ -127,6 +138,7 @@ class AwaitableGetDataTaxonomyResult(GetDataTaxonomyResult):
             yield self
         return GetDataTaxonomyResult(
             attribute_count=self.attribute_count,
+            class_count=self.class_count,
             create_time=self.create_time,
             description=self.description,
             display_name=self.display_name,
@@ -153,6 +165,7 @@ def get_data_taxonomy(data_taxonomy_id: Optional[str] = None,
 
     return AwaitableGetDataTaxonomyResult(
         attribute_count=pulumi.get(__ret__, 'attribute_count'),
+        class_count=pulumi.get(__ret__, 'class_count'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),

@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         [Input("agent", required: true)]
         public Input<string> Agent { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. The Dialogflow assist configuration for human agent.
+        /// </summary>
+        [Input("humanAgentSideConfig")]
+        public Input<Inputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs>? HumanAgentSideConfig { get; set; }
+
         public GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs()
         {
         }

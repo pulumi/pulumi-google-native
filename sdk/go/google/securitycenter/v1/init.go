@@ -21,26 +21,26 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:securitycenter/v1:CustomModule":
-		r = &CustomModule{}
 	case "google-native:securitycenter/v1:FolderBigQueryExport":
 		r = &FolderBigQueryExport{}
-	case "google-native:securitycenter/v1:FolderCustomModule":
-		r = &FolderCustomModule{}
 	case "google-native:securitycenter/v1:FolderNotificationConfig":
 		r = &FolderNotificationConfig{}
+	case "google-native:securitycenter/v1:FolderSecurityHealthAnalyticsSettingCustomModule":
+		r = &FolderSecurityHealthAnalyticsSettingCustomModule{}
 	case "google-native:securitycenter/v1:MuteConfig":
 		r = &MuteConfig{}
 	case "google-native:securitycenter/v1:NotificationConfig":
 		r = &NotificationConfig{}
 	case "google-native:securitycenter/v1:OrganizationBigQueryExport":
 		r = &OrganizationBigQueryExport{}
-	case "google-native:securitycenter/v1:OrganizationCustomModule":
-		r = &OrganizationCustomModule{}
+	case "google-native:securitycenter/v1:OrganizationEventThreatDetectionSettingCustomModule":
+		r = &OrganizationEventThreatDetectionSettingCustomModule{}
 	case "google-native:securitycenter/v1:OrganizationMuteConfig":
 		r = &OrganizationMuteConfig{}
 	case "google-native:securitycenter/v1:OrganizationNotificationConfig":
 		r = &OrganizationNotificationConfig{}
+	case "google-native:securitycenter/v1:OrganizationSecurityHealthAnalyticsSettingCustomModule":
+		r = &OrganizationSecurityHealthAnalyticsSettingCustomModule{}
 	case "google-native:securitycenter/v1:OrganizationSourceIamBinding":
 		r = &OrganizationSourceIamBinding{}
 	case "google-native:securitycenter/v1:OrganizationSourceIamMember":
@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationSourceIamPolicy{}
 	case "google-native:securitycenter/v1:ProjectBigQueryExport":
 		r = &ProjectBigQueryExport{}
+	case "google-native:securitycenter/v1:ProjectSecurityHealthAnalyticsSettingCustomModule":
+		r = &ProjectSecurityHealthAnalyticsSettingCustomModule{}
 	case "google-native:securitycenter/v1:Source":
 		r = &Source{}
 	default:

@@ -24,10 +24,11 @@ func LookupVersion(ctx *pulumi.Context, args *LookupVersionArgs, opts ...pulumi.
 }
 
 type LookupVersionArgs struct {
-	AppId     string  `pulumi:"appId"`
-	ServiceId string  `pulumi:"serviceId"`
-	VersionId string  `pulumi:"versionId"`
-	View      *string `pulumi:"view"`
+	AppId            string  `pulumi:"appId"`
+	IncludeExtraData *string `pulumi:"includeExtraData"`
+	ServiceId        string  `pulumi:"serviceId"`
+	VersionId        string  `pulumi:"versionId"`
+	View             *string `pulumi:"view"`
 }
 
 type LookupVersionResult struct {
@@ -65,9 +66,11 @@ type LookupVersionResult struct {
 	ErrorHandlers []ErrorHandlerResponse `pulumi:"errorHandlers"`
 	// Settings for App Engine flexible runtimes.
 	FlexibleRuntimeSettings FlexibleRuntimeSettingsResponse `pulumi:"flexibleRuntimeSettings"`
+	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+	GeneratedCustomerMetadata map[string]string `pulumi:"generatedCustomerMetadata"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 	Handlers []UrlMapResponse `pulumi:"handlers"`
-	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
 	HealthCheck HealthCheckResponse `pulumi:"healthCheck"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices []string `pulumi:"inboundServices"`
@@ -75,7 +78,7 @@ type LookupVersionResult struct {
 	InstanceClass string `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
 	Libraries []LibraryResponse `pulumi:"libraries"`
-	// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+	// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
 	LivenessCheck LivenessCheckResponse `pulumi:"livenessCheck"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling ManualScalingResponse `pulumi:"manualScaling"`
@@ -85,7 +88,7 @@ type LookupVersionResult struct {
 	Network NetworkResponse `pulumi:"network"`
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
 	NobuildFilesRegex string `pulumi:"nobuildFilesRegex"`
-	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
 	ReadinessCheck ReadinessCheckResponse `pulumi:"readinessCheck"`
 	// Machine resources for this version. Only applicable in the App Engine flexible environment.
 	Resources ResourcesResponse `pulumi:"resources"`
@@ -129,10 +132,11 @@ func LookupVersionOutput(ctx *pulumi.Context, args LookupVersionOutputArgs, opts
 }
 
 type LookupVersionOutputArgs struct {
-	AppId     pulumi.StringInput    `pulumi:"appId"`
-	ServiceId pulumi.StringInput    `pulumi:"serviceId"`
-	VersionId pulumi.StringInput    `pulumi:"versionId"`
-	View      pulumi.StringPtrInput `pulumi:"view"`
+	AppId            pulumi.StringInput    `pulumi:"appId"`
+	IncludeExtraData pulumi.StringPtrInput `pulumi:"includeExtraData"`
+	ServiceId        pulumi.StringInput    `pulumi:"serviceId"`
+	VersionId        pulumi.StringInput    `pulumi:"versionId"`
+	View             pulumi.StringPtrInput `pulumi:"view"`
 }
 
 func (LookupVersionOutputArgs) ElementType() reflect.Type {
@@ -244,12 +248,17 @@ func (o LookupVersionResultOutput) FlexibleRuntimeSettings() FlexibleRuntimeSett
 	return o.ApplyT(func(v LookupVersionResult) FlexibleRuntimeSettingsResponse { return v.FlexibleRuntimeSettings }).(FlexibleRuntimeSettingsResponseOutput)
 }
 
+// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+func (o LookupVersionResultOutput) GeneratedCustomerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVersionResult) map[string]string { return v.GeneratedCustomerMetadata }).(pulumi.StringMapOutput)
+}
+
 // An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 func (o LookupVersionResultOutput) Handlers() UrlMapResponseArrayOutput {
 	return o.ApplyT(func(v LookupVersionResult) []UrlMapResponse { return v.Handlers }).(UrlMapResponseArrayOutput)
 }
 
-// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
 func (o LookupVersionResultOutput) HealthCheck() HealthCheckResponseOutput {
 	return o.ApplyT(func(v LookupVersionResult) HealthCheckResponse { return v.HealthCheck }).(HealthCheckResponseOutput)
 }
@@ -269,7 +278,7 @@ func (o LookupVersionResultOutput) Libraries() LibraryResponseArrayOutput {
 	return o.ApplyT(func(v LookupVersionResult) []LibraryResponse { return v.Libraries }).(LibraryResponseArrayOutput)
 }
 
-// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
 func (o LookupVersionResultOutput) LivenessCheck() LivenessCheckResponseOutput {
 	return o.ApplyT(func(v LookupVersionResult) LivenessCheckResponse { return v.LivenessCheck }).(LivenessCheckResponseOutput)
 }
@@ -294,7 +303,7 @@ func (o LookupVersionResultOutput) NobuildFilesRegex() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVersionResult) string { return v.NobuildFilesRegex }).(pulumi.StringOutput)
 }
 
-// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
 func (o LookupVersionResultOutput) ReadinessCheck() ReadinessCheckResponseOutput {
 	return o.ApplyT(func(v LookupVersionResult) ReadinessCheckResponse { return v.ReadinessCheck }).(ReadinessCheckResponseOutput)
 }

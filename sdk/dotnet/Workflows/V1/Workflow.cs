@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Output<string> CallLogLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp for when the workflow was created.
+        /// The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Output<string> CryptoKeyName { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        /// Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Output<string> RevisionCreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+        /// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.
         /// </summary>
         [Output("revisionId")]
         public Output<string> RevisionId { get; private set; } = null!;
@@ -94,10 +94,16 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Output<Outputs.StateErrorResponse> StateError { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp for when the workflow was last updated.
+        /// The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// </summary>
+        [Output("userEnvVars")]
+        public Output<ImmutableDictionary<string, string>> UserEnvVars { get; private set; } = null!;
 
         /// <summary>
         /// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
@@ -169,7 +175,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Input<string>? CryptoKeyName { get; set; }
 
         /// <summary>
-        /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        /// Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -178,7 +184,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -190,7 +196,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -209,6 +215,18 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }
+
+        [Input("userEnvVars")]
+        private InputMap<string>? _userEnvVars;
+
+        /// <summary>
+        /// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// </summary>
+        public InputMap<string> UserEnvVars
+        {
+            get => _userEnvVars ?? (_userEnvVars = new InputMap<string>());
+            set => _userEnvVars = value;
+        }
 
         /// <summary>
         /// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.

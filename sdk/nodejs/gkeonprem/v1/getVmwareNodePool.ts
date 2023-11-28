@@ -16,6 +16,7 @@ export function getVmwareNodePool(args: GetVmwareNodePoolArgs, opts?: pulumi.Inv
     return pulumi.runtime.invoke("google-native:gkeonprem/v1:getVmwareNodePool", {
         "location": args.location,
         "project": args.project,
+        "view": args.view,
         "vmwareClusterId": args.vmwareClusterId,
         "vmwareNodePoolId": args.vmwareNodePoolId,
     }, opts);
@@ -24,6 +25,7 @@ export function getVmwareNodePool(args: GetVmwareNodePoolArgs, opts?: pulumi.Inv
 export interface GetVmwareNodePoolArgs {
     location: string;
     project?: string;
+    view?: string;
     vmwareClusterId: string;
     vmwareNodePoolId: string;
 }
@@ -96,6 +98,7 @@ export function getVmwareNodePoolOutput(args: GetVmwareNodePoolOutputArgs, opts?
 export interface GetVmwareNodePoolOutputArgs {
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
     vmwareClusterId: pulumi.Input<string>;
     vmwareNodePoolId: pulumi.Input<string>;
 }

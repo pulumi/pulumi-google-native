@@ -75,6 +75,26 @@ export const InstanceGroupConfigPreemptibility = {
  */
 export type InstanceGroupConfigPreemptibility = (typeof InstanceGroupConfigPreemptibility)[keyof typeof InstanceGroupConfigPreemptibility];
 
+export const JupyterConfigKernel = {
+    /**
+     * The kernel is unknown.
+     */
+    KernelUnspecified: "KERNEL_UNSPECIFIED",
+    /**
+     * Python kernel.
+     */
+    Python: "PYTHON",
+    /**
+     * Scala kernel.
+     */
+    Scala: "SCALA",
+} as const;
+
+/**
+ * Optional. Kernel
+ */
+export type JupyterConfigKernel = (typeof JupyterConfigKernel)[keyof typeof JupyterConfigKernel];
+
 export const MetricMetricSource = {
     /**
      * Required unspecified metric source.
@@ -108,6 +128,10 @@ export const MetricMetricSource = {
      * hivemetastore metric source
      */
     Hivemetastore: "HIVEMETASTORE",
+    /**
+     * flink metric source
+     */
+    Flink: "FLINK",
 } as const;
 
 /**

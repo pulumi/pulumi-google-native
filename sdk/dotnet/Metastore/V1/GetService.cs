@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.Metastore.V1
         /// </summary>
         public readonly Outputs.MaintenanceWindowResponse MaintenanceWindow;
         /// <summary>
+        /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// </summary>
+        public readonly Outputs.MetadataIntegrationResponse MetadataIntegration;
+        /// <summary>
         /// The metadata management activities of the metastore service.
         /// </summary>
         public readonly Outputs.MetadataManagementActivityResponse MetadataManagementActivity;
@@ -166,6 +170,8 @@ namespace Pulumi.GoogleNative.Metastore.V1
 
             Outputs.MaintenanceWindowResponse maintenanceWindow,
 
+            Outputs.MetadataIntegrationResponse metadataIntegration,
+
             Outputs.MetadataManagementActivityResponse metadataManagementActivity,
 
             string name,
@@ -200,6 +206,7 @@ namespace Pulumi.GoogleNative.Metastore.V1
             HiveMetastoreConfig = hiveMetastoreConfig;
             Labels = labels;
             MaintenanceWindow = maintenanceWindow;
+            MetadataIntegration = metadataIntegration;
             MetadataManagementActivity = metadataManagementActivity;
             Name = name;
             Network = network;

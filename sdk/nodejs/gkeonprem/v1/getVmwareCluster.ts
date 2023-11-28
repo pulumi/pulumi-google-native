@@ -74,6 +74,10 @@ export interface GetVmwareClusterResult {
      */
     readonly description: string;
     /**
+     * Disable bundled ingress.
+     */
+    readonly disableBundledIngress: boolean;
+    /**
      * Enable control plane V2. Default to false.
      */
     readonly enableControlPlaneV2: boolean;
@@ -106,7 +110,7 @@ export interface GetVmwareClusterResult {
      */
     readonly networkConfig: outputs.gkeonprem.v1.VmwareNetworkConfigResponse;
     /**
-     * The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+     * The Anthos clusters on the VMware version for your user cluster.
      */
     readonly onPremVersion: string;
     /**
@@ -134,11 +138,15 @@ export interface GetVmwareClusterResult {
      */
     readonly updateTime: string;
     /**
+     * Specifies upgrade policy for the cluster.
+     */
+    readonly upgradePolicy: outputs.gkeonprem.v1.VmwareClusterUpgradePolicyResponse;
+    /**
      * ValidationCheck represents the result of the preflight check job.
      */
     readonly validationCheck: outputs.gkeonprem.v1.ValidationCheckResponse;
     /**
-     * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+     * VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
      */
     readonly vcenter: outputs.gkeonprem.v1.VmwareVCenterConfigResponse;
     /**

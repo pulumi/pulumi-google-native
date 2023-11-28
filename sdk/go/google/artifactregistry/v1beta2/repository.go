@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
@@ -20,7 +21,7 @@ type Repository struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The format of packages that are stored in the repository.
+	// Optional. The format of packages that are stored in the repository.
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
@@ -29,11 +30,11 @@ type Repository struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigResponseOutput `pulumi:"mavenConfig"`
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The repository id to use for this repository.
-	RepositoryId pulumi.StringPtrOutput `pulumi:"repositoryId"`
+	// Required. The repository id to use for this repository.
+	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
 	// If set, the repository satisfies physical zone separation.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
@@ -46,12 +47,16 @@ type Repository struct {
 func NewRepository(ctx *pulumi.Context,
 	name string, args *RepositoryArgs, opts ...pulumi.ResourceOption) (*Repository, error) {
 	if args == nil {
-		args = &RepositoryArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.RepositoryId == nil {
+		return nil, errors.New("invalid value for required argument 'RepositoryId'")
+	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"location",
 		"project",
+		"repositoryId",
 	})
 	opts = append(opts, replaceOnChanges)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -89,7 +94,7 @@ func (RepositoryState) ElementType() reflect.Type {
 type repositoryArgs struct {
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
-	// The format of packages that are stored in the repository.
+	// Optional. The format of packages that are stored in the repository.
 	Format *RepositoryFormat `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -98,18 +103,18 @@ type repositoryArgs struct {
 	Location *string           `pulumi:"location"`
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig *MavenRepositoryConfig `pulumi:"mavenConfig"`
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// The repository id to use for this repository.
-	RepositoryId *string `pulumi:"repositoryId"`
+	// Required. The repository id to use for this repository.
+	RepositoryId string `pulumi:"repositoryId"`
 }
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
-	// The format of packages that are stored in the repository.
+	// Optional. The format of packages that are stored in the repository.
 	Format RepositoryFormatPtrInput
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName pulumi.StringPtrInput
@@ -118,11 +123,11 @@ type RepositoryArgs struct {
 	Location pulumi.StringPtrInput
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigPtrInput
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// The repository id to use for this repository.
-	RepositoryId pulumi.StringPtrInput
+	// Required. The repository id to use for this repository.
+	RepositoryId pulumi.StringInput
 }
 
 func (RepositoryArgs) ElementType() reflect.Type {
@@ -184,7 +189,7 @@ func (o RepositoryOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The format of packages that are stored in the repository.
+// Optional. The format of packages that are stored in the repository.
 func (o RepositoryOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }
@@ -208,7 +213,7 @@ func (o RepositoryOutput) MavenConfig() MavenRepositoryConfigResponseOutput {
 	return o.ApplyT(func(v *Repository) MavenRepositoryConfigResponseOutput { return v.MavenConfig }).(MavenRepositoryConfigResponseOutput)
 }
 
-// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -217,9 +222,9 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The repository id to use for this repository.
-func (o RepositoryOutput) RepositoryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.RepositoryId }).(pulumi.StringPtrOutput)
+// Required. The repository id to use for this repository.
+func (o RepositoryOutput) RepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
 }
 
 // If set, the repository satisfies physical zone separation.

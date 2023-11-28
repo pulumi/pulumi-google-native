@@ -19,16 +19,25 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionResult:
-    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, destination_configs=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, log_config=None, name=None, node_config=None, service_account=None, service_directory=None, ssl_config=None, status=None, subscription_type=None, suspended=None, update_time=None):
+    def __init__(__self__, auth_config=None, config_variables=None, connection_revision=None, connector_version=None, connector_version_infra_config=None, connector_version_launch_stage=None, create_time=None, description=None, destination_configs=None, envoy_image_location=None, eventing_config=None, eventing_enablement_type=None, eventing_runtime_data=None, image_location=None, is_trusted_tester=None, labels=None, lock_config=None, log_config=None, name=None, node_config=None, service_account=None, service_directory=None, ssl_config=None, status=None, subscription_type=None, suspended=None, update_time=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
         if config_variables and not isinstance(config_variables, list):
             raise TypeError("Expected argument 'config_variables' to be a list")
         pulumi.set(__self__, "config_variables", config_variables)
+        if connection_revision and not isinstance(connection_revision, str):
+            raise TypeError("Expected argument 'connection_revision' to be a str")
+        pulumi.set(__self__, "connection_revision", connection_revision)
         if connector_version and not isinstance(connector_version, str):
             raise TypeError("Expected argument 'connector_version' to be a str")
         pulumi.set(__self__, "connector_version", connector_version)
+        if connector_version_infra_config and not isinstance(connector_version_infra_config, dict):
+            raise TypeError("Expected argument 'connector_version_infra_config' to be a dict")
+        pulumi.set(__self__, "connector_version_infra_config", connector_version_infra_config)
+        if connector_version_launch_stage and not isinstance(connector_version_launch_stage, str):
+            raise TypeError("Expected argument 'connector_version_launch_stage' to be a str")
+        pulumi.set(__self__, "connector_version_launch_stage", connector_version_launch_stage)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -41,9 +50,21 @@ class GetConnectionResult:
         if envoy_image_location and not isinstance(envoy_image_location, str):
             raise TypeError("Expected argument 'envoy_image_location' to be a str")
         pulumi.set(__self__, "envoy_image_location", envoy_image_location)
+        if eventing_config and not isinstance(eventing_config, dict):
+            raise TypeError("Expected argument 'eventing_config' to be a dict")
+        pulumi.set(__self__, "eventing_config", eventing_config)
+        if eventing_enablement_type and not isinstance(eventing_enablement_type, str):
+            raise TypeError("Expected argument 'eventing_enablement_type' to be a str")
+        pulumi.set(__self__, "eventing_enablement_type", eventing_enablement_type)
+        if eventing_runtime_data and not isinstance(eventing_runtime_data, dict):
+            raise TypeError("Expected argument 'eventing_runtime_data' to be a dict")
+        pulumi.set(__self__, "eventing_runtime_data", eventing_runtime_data)
         if image_location and not isinstance(image_location, str):
             raise TypeError("Expected argument 'image_location' to be a str")
         pulumi.set(__self__, "image_location", image_location)
+        if is_trusted_tester and not isinstance(is_trusted_tester, bool):
+            raise TypeError("Expected argument 'is_trusted_tester' to be a bool")
+        pulumi.set(__self__, "is_trusted_tester", is_trusted_tester)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -98,12 +119,36 @@ class GetConnectionResult:
         return pulumi.get(self, "config_variables")
 
     @property
+    @pulumi.getter(name="connectionRevision")
+    def connection_revision(self) -> str:
+        """
+        Connection revision. This field is only updated when the connection is created or updated by User.
+        """
+        return pulumi.get(self, "connection_revision")
+
+    @property
     @pulumi.getter(name="connectorVersion")
     def connector_version(self) -> str:
         """
         Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         """
         return pulumi.get(self, "connector_version")
+
+    @property
+    @pulumi.getter(name="connectorVersionInfraConfig")
+    def connector_version_infra_config(self) -> 'outputs.ConnectorVersionInfraConfigResponse':
+        """
+        Infra configs supported by Connector Version.
+        """
+        return pulumi.get(self, "connector_version_infra_config")
+
+    @property
+    @pulumi.getter(name="connectorVersionLaunchStage")
+    def connector_version_launch_stage(self) -> str:
+        """
+        Flag to mark the version indicating the launch stage.
+        """
+        return pulumi.get(self, "connector_version_launch_stage")
 
     @property
     @pulumi.getter(name="createTime")
@@ -138,12 +183,44 @@ class GetConnectionResult:
         return pulumi.get(self, "envoy_image_location")
 
     @property
+    @pulumi.getter(name="eventingConfig")
+    def eventing_config(self) -> 'outputs.EventingConfigResponse':
+        """
+        Optional. Eventing config of a connection
+        """
+        return pulumi.get(self, "eventing_config")
+
+    @property
+    @pulumi.getter(name="eventingEnablementType")
+    def eventing_enablement_type(self) -> str:
+        """
+        Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+        """
+        return pulumi.get(self, "eventing_enablement_type")
+
+    @property
+    @pulumi.getter(name="eventingRuntimeData")
+    def eventing_runtime_data(self) -> 'outputs.EventingRuntimeDataResponse':
+        """
+        Eventing Runtime Data.
+        """
+        return pulumi.get(self, "eventing_runtime_data")
+
+    @property
     @pulumi.getter(name="imageLocation")
     def image_location(self) -> str:
         """
         GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
         """
         return pulumi.get(self, "image_location")
+
+    @property
+    @pulumi.getter(name="isTrustedTester")
+    def is_trusted_tester(self) -> bool:
+        """
+        Is trusted tester program enabled for the project.
+        """
+        return pulumi.get(self, "is_trusted_tester")
 
     @property
     @pulumi.getter
@@ -189,7 +266,7 @@ class GetConnectionResult:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
         """
-        Optional. Service account needed for runtime plane to access GCP resources.
+        Optional. Service account needed for runtime plane to access Google Cloud resources.
         """
         return pulumi.get(self, "service_account")
 
@@ -250,12 +327,19 @@ class AwaitableGetConnectionResult(GetConnectionResult):
         return GetConnectionResult(
             auth_config=self.auth_config,
             config_variables=self.config_variables,
+            connection_revision=self.connection_revision,
             connector_version=self.connector_version,
+            connector_version_infra_config=self.connector_version_infra_config,
+            connector_version_launch_stage=self.connector_version_launch_stage,
             create_time=self.create_time,
             description=self.description,
             destination_configs=self.destination_configs,
             envoy_image_location=self.envoy_image_location,
+            eventing_config=self.eventing_config,
+            eventing_enablement_type=self.eventing_enablement_type,
+            eventing_runtime_data=self.eventing_runtime_data,
             image_location=self.image_location,
+            is_trusted_tester=self.is_trusted_tester,
             labels=self.labels,
             lock_config=self.lock_config,
             log_config=self.log_config,
@@ -289,12 +373,19 @@ def get_connection(connection_id: Optional[str] = None,
     return AwaitableGetConnectionResult(
         auth_config=pulumi.get(__ret__, 'auth_config'),
         config_variables=pulumi.get(__ret__, 'config_variables'),
+        connection_revision=pulumi.get(__ret__, 'connection_revision'),
         connector_version=pulumi.get(__ret__, 'connector_version'),
+        connector_version_infra_config=pulumi.get(__ret__, 'connector_version_infra_config'),
+        connector_version_launch_stage=pulumi.get(__ret__, 'connector_version_launch_stage'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         destination_configs=pulumi.get(__ret__, 'destination_configs'),
         envoy_image_location=pulumi.get(__ret__, 'envoy_image_location'),
+        eventing_config=pulumi.get(__ret__, 'eventing_config'),
+        eventing_enablement_type=pulumi.get(__ret__, 'eventing_enablement_type'),
+        eventing_runtime_data=pulumi.get(__ret__, 'eventing_runtime_data'),
         image_location=pulumi.get(__ret__, 'image_location'),
+        is_trusted_tester=pulumi.get(__ret__, 'is_trusted_tester'),
         labels=pulumi.get(__ret__, 'labels'),
         lock_config=pulumi.get(__ret__, 'lock_config'),
         log_config=pulumi.get(__ret__, 'log_config'),

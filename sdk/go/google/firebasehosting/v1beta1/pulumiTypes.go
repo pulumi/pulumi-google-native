@@ -131,6 +131,112 @@ func (o CertHttpChallengeResponseOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v CertHttpChallengeResponse) string { return v.Token }).(pulumi.StringOutput)
 }
 
+// A set of ACME challenges you can use to allow Hosting to create an SSL certificate for your domain name before directing traffic to Hosting servers. Use either the DNS or HTTP challenge; it's not necessary to provide both.
+type CertVerificationResponse struct {
+	// A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name.
+	Dns DnsUpdatesResponse `pulumi:"dns"`
+	// A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name.
+	Http HttpUpdateResponse `pulumi:"http"`
+}
+
+// A set of ACME challenges you can use to allow Hosting to create an SSL certificate for your domain name before directing traffic to Hosting servers. Use either the DNS or HTTP challenge; it's not necessary to provide both.
+type CertVerificationResponseOutput struct{ *pulumi.OutputState }
+
+func (CertVerificationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertVerificationResponse)(nil)).Elem()
+}
+
+func (o CertVerificationResponseOutput) ToCertVerificationResponseOutput() CertVerificationResponseOutput {
+	return o
+}
+
+func (o CertVerificationResponseOutput) ToCertVerificationResponseOutputWithContext(ctx context.Context) CertVerificationResponseOutput {
+	return o
+}
+
+func (o CertVerificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertVerificationResponse] {
+	return pulumix.Output[CertVerificationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name.
+func (o CertVerificationResponseOutput) Dns() DnsUpdatesResponseOutput {
+	return o.ApplyT(func(v CertVerificationResponse) DnsUpdatesResponse { return v.Dns }).(DnsUpdatesResponseOutput)
+}
+
+// A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name.
+func (o CertVerificationResponseOutput) Http() HttpUpdateResponseOutput {
+	return o.ApplyT(func(v CertVerificationResponse) HttpUpdateResponse { return v.Http }).(HttpUpdateResponseOutput)
+}
+
+// An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one.
+type CertificateResponse struct {
+	// The certificate's creation time. For `TEMPORARY` certs this is the time Hosting first generated challenges for your domain name. For all other cert types, it's the time the actual cert was created.
+	CreateTime string `pulumi:"createTime"`
+	// The certificate's expiration time. After this time, the cert can no longer be used to provide secure communication between Hosting and your site's visitors.
+	ExpireTime string `pulumi:"expireTime"`
+	// A set of errors Hosting encountered when attempting to create a cert for your domain name. Resolve these issues to ensure Hosting is able to provide secure communication with your site's visitors.
+	Issues []StatusResponse `pulumi:"issues"`
+	// The state of the certificate. Only the `CERT_ACTIVE` and `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the state is `PROPAGATING` and Hosting had an active cert for the domain name before, that formerly-active cert provides SSL coverage for the domain name until the current cert propagates.
+	State string `pulumi:"state"`
+	// The certificate's type.
+	Type string `pulumi:"type"`
+	// A set of ACME challenges you can add to your DNS records or existing, non-Hosting hosting provider to allow Hosting to create an SSL certificate for your domain name before you point traffic toward hosting. You can use thse challenges as part of a zero downtime transition from your old provider to Hosting.
+	Verification CertVerificationResponse `pulumi:"verification"`
+}
+
+// An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one.
+type CertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateResponse)(nil)).Elem()
+}
+
+func (o CertificateResponseOutput) ToCertificateResponseOutput() CertificateResponseOutput {
+	return o
+}
+
+func (o CertificateResponseOutput) ToCertificateResponseOutputWithContext(ctx context.Context) CertificateResponseOutput {
+	return o
+}
+
+func (o CertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateResponse] {
+	return pulumix.Output[CertificateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The certificate's creation time. For `TEMPORARY` certs this is the time Hosting first generated challenges for your domain name. For all other cert types, it's the time the actual cert was created.
+func (o CertificateResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The certificate's expiration time. After this time, the cert can no longer be used to provide secure communication between Hosting and your site's visitors.
+func (o CertificateResponseOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// A set of errors Hosting encountered when attempting to create a cert for your domain name. Resolve these issues to ensure Hosting is able to provide secure communication with your site's visitors.
+func (o CertificateResponseOutput) Issues() StatusResponseArrayOutput {
+	return o.ApplyT(func(v CertificateResponse) []StatusResponse { return v.Issues }).(StatusResponseArrayOutput)
+}
+
+// The state of the certificate. Only the `CERT_ACTIVE` and `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the state is `PROPAGATING` and Hosting had an active cert for the domain name before, that formerly-active cert provides SSL coverage for the domain name until the current cert propagates.
+func (o CertificateResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The certificate's type.
+func (o CertificateResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A set of ACME challenges you can add to your DNS records or existing, non-Hosting hosting provider to allow Hosting to create an SSL certificate for your domain name before you point traffic toward hosting. You can use thse challenges as part of a zero downtime transition from your old provider to Hosting.
+func (o CertificateResponseOutput) Verification() CertVerificationResponseOutput {
+	return o.ApplyT(func(v CertificateResponse) CertVerificationResponse { return v.Verification }).(CertVerificationResponseOutput)
+}
+
 // A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
 type CloudRunRewrite struct {
 	// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
@@ -377,6 +483,203 @@ func (o CloudRunRewriteResponseOutput) ServiceId() pulumi.StringOutput {
 // Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
 func (o CloudRunRewriteResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunRewriteResponse) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+// DNS records are resource records that define how systems and services should behave when handling requests for a domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain name (such as your Hosting site files).
+type DnsRecordResponse struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName string `pulumi:"domainName"`
+	// The data of the record. The meaning of the value depends on record type: - A and AAAA: IP addresses for the domain name. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings associated with the domain name. Hosting uses TXT records to determine which Firebase projects have permission to act on the domain name's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata string `pulumi:"rdata"`
+	// An enum that indicates the a required action for this record.
+	RequiredAction string `pulumi:"requiredAction"`
+	// The record's type, which determines what data the record contains.
+	Type string `pulumi:"type"`
+}
+
+// DNS records are resource records that define how systems and services should behave when handling requests for a domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain name (such as your Hosting site files).
+type DnsRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (DnsRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsRecordResponse)(nil)).Elem()
+}
+
+func (o DnsRecordResponseOutput) ToDnsRecordResponseOutput() DnsRecordResponseOutput {
+	return o
+}
+
+func (o DnsRecordResponseOutput) ToDnsRecordResponseOutputWithContext(ctx context.Context) DnsRecordResponseOutput {
+	return o
+}
+
+func (o DnsRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsRecordResponse] {
+	return pulumix.Output[DnsRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The domain name the record pertains to, e.g. `foo.bar.com.`.
+func (o DnsRecordResponseOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsRecordResponse) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The data of the record. The meaning of the value depends on record type: - A and AAAA: IP addresses for the domain name. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings associated with the domain name. Hosting uses TXT records to determine which Firebase projects have permission to act on the domain name's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+func (o DnsRecordResponseOutput) Rdata() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsRecordResponse) string { return v.Rdata }).(pulumi.StringOutput)
+}
+
+// An enum that indicates the a required action for this record.
+func (o DnsRecordResponseOutput) RequiredAction() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsRecordResponse) string { return v.RequiredAction }).(pulumi.StringOutput)
+}
+
+// The record's type, which determines what data the record contains.
+func (o DnsRecordResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsRecordResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DnsRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DnsRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DnsRecordResponse)(nil)).Elem()
+}
+
+func (o DnsRecordResponseArrayOutput) ToDnsRecordResponseArrayOutput() DnsRecordResponseArrayOutput {
+	return o
+}
+
+func (o DnsRecordResponseArrayOutput) ToDnsRecordResponseArrayOutputWithContext(ctx context.Context) DnsRecordResponseArrayOutput {
+	return o
+}
+
+func (o DnsRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DnsRecordResponse] {
+	return pulumix.Output[[]DnsRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DnsRecordResponseArrayOutput) Index(i pulumi.IntInput) DnsRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsRecordResponse {
+		return vs[0].([]DnsRecordResponse)[vs[1].(int)]
+	}).(DnsRecordResponseOutput)
+}
+
+// A set of DNS records relevant to the setup and maintenance of a custom domain in Firebase Hosting.
+type DnsRecordSetResponse struct {
+	// An error Hosting services encountered when querying your domain name's DNS records. Note: Hosting ignores `NXDOMAIN` errors, as those generally just mean that a domain name hasn't been set up yet.
+	CheckError StatusResponse `pulumi:"checkError"`
+	// The domain name the record set pertains to.
+	DomainName string `pulumi:"domainName"`
+	// Records on the domain.
+	Records []DnsRecordResponse `pulumi:"records"`
+}
+
+// A set of DNS records relevant to the setup and maintenance of a custom domain in Firebase Hosting.
+type DnsRecordSetResponseOutput struct{ *pulumi.OutputState }
+
+func (DnsRecordSetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsRecordSetResponse)(nil)).Elem()
+}
+
+func (o DnsRecordSetResponseOutput) ToDnsRecordSetResponseOutput() DnsRecordSetResponseOutput {
+	return o
+}
+
+func (o DnsRecordSetResponseOutput) ToDnsRecordSetResponseOutputWithContext(ctx context.Context) DnsRecordSetResponseOutput {
+	return o
+}
+
+func (o DnsRecordSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsRecordSetResponse] {
+	return pulumix.Output[DnsRecordSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An error Hosting services encountered when querying your domain name's DNS records. Note: Hosting ignores `NXDOMAIN` errors, as those generally just mean that a domain name hasn't been set up yet.
+func (o DnsRecordSetResponseOutput) CheckError() StatusResponseOutput {
+	return o.ApplyT(func(v DnsRecordSetResponse) StatusResponse { return v.CheckError }).(StatusResponseOutput)
+}
+
+// The domain name the record set pertains to.
+func (o DnsRecordSetResponseOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsRecordSetResponse) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Records on the domain.
+func (o DnsRecordSetResponseOutput) Records() DnsRecordResponseArrayOutput {
+	return o.ApplyT(func(v DnsRecordSetResponse) []DnsRecordResponse { return v.Records }).(DnsRecordResponseArrayOutput)
+}
+
+type DnsRecordSetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DnsRecordSetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DnsRecordSetResponse)(nil)).Elem()
+}
+
+func (o DnsRecordSetResponseArrayOutput) ToDnsRecordSetResponseArrayOutput() DnsRecordSetResponseArrayOutput {
+	return o
+}
+
+func (o DnsRecordSetResponseArrayOutput) ToDnsRecordSetResponseArrayOutputWithContext(ctx context.Context) DnsRecordSetResponseArrayOutput {
+	return o
+}
+
+func (o DnsRecordSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DnsRecordSetResponse] {
+	return pulumix.Output[[]DnsRecordSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DnsRecordSetResponseArrayOutput) Index(i pulumi.IntInput) DnsRecordSetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsRecordSetResponse {
+		return vs[0].([]DnsRecordSetResponse)[vs[1].(int)]
+	}).(DnsRecordSetResponseOutput)
+}
+
+// A set of DNS record updates that you should make to allow Hosting to serve secure content in response to requests against your domain name. These updates present the current state of your domain name's DNS records when Hosting last queried them, and the desired set of records that Hosting needs to see before your custom domain can be fully active.
+type DnsUpdatesResponse struct {
+	// The last time Hosting checked your custom domain's DNS records.
+	CheckTime string `pulumi:"checkTime"`
+	// The set of DNS records Hosting needs to serve secure content on the domain.
+	Desired []DnsRecordSetResponse `pulumi:"desired"`
+	// The set of DNS records Hosting discovered when inspecting a domain.
+	Discovered []DnsRecordSetResponse `pulumi:"discovered"`
+}
+
+// A set of DNS record updates that you should make to allow Hosting to serve secure content in response to requests against your domain name. These updates present the current state of your domain name's DNS records when Hosting last queried them, and the desired set of records that Hosting needs to see before your custom domain can be fully active.
+type DnsUpdatesResponseOutput struct{ *pulumi.OutputState }
+
+func (DnsUpdatesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsUpdatesResponse)(nil)).Elem()
+}
+
+func (o DnsUpdatesResponseOutput) ToDnsUpdatesResponseOutput() DnsUpdatesResponseOutput {
+	return o
+}
+
+func (o DnsUpdatesResponseOutput) ToDnsUpdatesResponseOutputWithContext(ctx context.Context) DnsUpdatesResponseOutput {
+	return o
+}
+
+func (o DnsUpdatesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsUpdatesResponse] {
+	return pulumix.Output[DnsUpdatesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The last time Hosting checked your custom domain's DNS records.
+func (o DnsUpdatesResponseOutput) CheckTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsUpdatesResponse) string { return v.CheckTime }).(pulumi.StringOutput)
+}
+
+// The set of DNS records Hosting needs to serve secure content on the domain.
+func (o DnsUpdatesResponseOutput) Desired() DnsRecordSetResponseArrayOutput {
+	return o.ApplyT(func(v DnsUpdatesResponse) []DnsRecordSetResponse { return v.Desired }).(DnsRecordSetResponseArrayOutput)
+}
+
+// The set of DNS records Hosting discovered when inspecting a domain.
+func (o DnsUpdatesResponseOutput) Discovered() DnsRecordSetResponseArrayOutput {
+	return o.ApplyT(func(v DnsUpdatesResponse) []DnsRecordSetResponse { return v.Discovered }).(DnsRecordSetResponseArrayOutput)
 }
 
 // The current certificate provisioning status information for a domain.
@@ -894,6 +1197,66 @@ func (o HeaderResponseArrayOutput) Index(i pulumi.IntInput) HeaderResponseOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HeaderResponse {
 		return vs[0].([]HeaderResponse)[vs[1].(int)]
 	}).(HeaderResponseOutput)
+}
+
+// A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain.
+type HttpUpdateResponse struct {
+	// An error encountered during the last contents check. If null, the check completed successfully.
+	CheckError StatusResponse `pulumi:"checkError"`
+	// A text string to serve at the path.
+	Desired string `pulumi:"desired"`
+	// Whether Hosting was able to find the required file contents on the specified path during its last check.
+	Discovered string `pulumi:"discovered"`
+	// The last time Hosting systems checked for the file contents.
+	LastCheckTime string `pulumi:"lastCheckTime"`
+	// The path to the file.
+	Path string `pulumi:"path"`
+}
+
+// A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain.
+type HttpUpdateResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpUpdateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpUpdateResponse)(nil)).Elem()
+}
+
+func (o HttpUpdateResponseOutput) ToHttpUpdateResponseOutput() HttpUpdateResponseOutput {
+	return o
+}
+
+func (o HttpUpdateResponseOutput) ToHttpUpdateResponseOutputWithContext(ctx context.Context) HttpUpdateResponseOutput {
+	return o
+}
+
+func (o HttpUpdateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpUpdateResponse] {
+	return pulumix.Output[HttpUpdateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An error encountered during the last contents check. If null, the check completed successfully.
+func (o HttpUpdateResponseOutput) CheckError() StatusResponseOutput {
+	return o.ApplyT(func(v HttpUpdateResponse) StatusResponse { return v.CheckError }).(StatusResponseOutput)
+}
+
+// A text string to serve at the path.
+func (o HttpUpdateResponseOutput) Desired() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpUpdateResponse) string { return v.Desired }).(pulumi.StringOutput)
+}
+
+// Whether Hosting was able to find the required file contents on the specified path during its last check.
+func (o HttpUpdateResponseOutput) Discovered() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpUpdateResponse) string { return v.Discovered }).(pulumi.StringOutput)
+}
+
+// The last time Hosting systems checked for the file contents.
+func (o HttpUpdateResponseOutput) LastCheckTime() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpUpdateResponse) string { return v.LastCheckTime }).(pulumi.StringOutput)
+}
+
+// The path to the file.
+func (o HttpUpdateResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpUpdateResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // If provided, i18n rewrites are enabled.
@@ -2019,6 +2382,78 @@ func (o ServingConfigResponseOutput) TrailingSlashBehavior() pulumi.StringOutput
 	return o.ApplyT(func(v ServingConfigResponse) string { return v.TrailingSlashBehavior }).(pulumi.StringOutput)
 }
 
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
+	return pulumix.Output[StatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutput() StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutputWithContext(ctx context.Context) StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatusResponse] {
+	return pulumix.Output[[]StatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StatusResponseArrayOutput) Index(i pulumi.IntInput) StatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusResponse {
+		return vs[0].([]StatusResponse)[vs[1].(int)]
+	}).(StatusResponseOutput)
+}
+
 // A `Version` is a configuration and a collection of static files which determine how a site is displayed.
 type VersionResponse struct {
 	// The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
@@ -2146,9 +2581,16 @@ func init() {
 	pulumi.RegisterOutputType(ActingUserResponseOutput{})
 	pulumi.RegisterOutputType(CertDnsChallengeResponseOutput{})
 	pulumi.RegisterOutputType(CertHttpChallengeResponseOutput{})
+	pulumi.RegisterOutputType(CertVerificationResponseOutput{})
+	pulumi.RegisterOutputType(CertificateResponseOutput{})
 	pulumi.RegisterOutputType(CloudRunRewriteOutput{})
 	pulumi.RegisterOutputType(CloudRunRewritePtrOutput{})
 	pulumi.RegisterOutputType(CloudRunRewriteResponseOutput{})
+	pulumi.RegisterOutputType(DnsRecordResponseOutput{})
+	pulumi.RegisterOutputType(DnsRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(DnsRecordSetResponseOutput{})
+	pulumi.RegisterOutputType(DnsRecordSetResponseArrayOutput{})
+	pulumi.RegisterOutputType(DnsUpdatesResponseOutput{})
 	pulumi.RegisterOutputType(DomainProvisioningResponseOutput{})
 	pulumi.RegisterOutputType(DomainRedirectOutput{})
 	pulumi.RegisterOutputType(DomainRedirectPtrOutput{})
@@ -2157,6 +2599,7 @@ func init() {
 	pulumi.RegisterOutputType(HeaderArrayOutput{})
 	pulumi.RegisterOutputType(HeaderResponseOutput{})
 	pulumi.RegisterOutputType(HeaderResponseArrayOutput{})
+	pulumi.RegisterOutputType(HttpUpdateResponseOutput{})
 	pulumi.RegisterOutputType(I18nConfigOutput{})
 	pulumi.RegisterOutputType(I18nConfigPtrOutput{})
 	pulumi.RegisterOutputType(I18nConfigResponseOutput{})
@@ -2172,5 +2615,7 @@ func init() {
 	pulumi.RegisterOutputType(ServingConfigOutput{})
 	pulumi.RegisterOutputType(ServingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServingConfigResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(VersionResponseOutput{})
 }

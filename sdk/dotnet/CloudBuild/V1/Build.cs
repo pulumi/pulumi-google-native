@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> LogUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        /// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         /// </summary>
         [Output("logsBucket")]
         public Output<string> LogsBucket { get; private set; } = null!;
@@ -271,7 +271,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        /// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         /// </summary>
         [Input("logsBucket")]
         public Input<string>? LogsBucket { get; set; }

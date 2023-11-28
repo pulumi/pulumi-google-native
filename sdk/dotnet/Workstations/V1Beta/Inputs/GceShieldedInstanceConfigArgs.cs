@@ -16,19 +16,19 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
     public sealed class GceShieldedInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the instance has integrity monitoring enabled.
+        /// Optional. Whether the instance has integrity monitoring enabled.
         /// </summary>
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }
 
         /// <summary>
-        /// Whether the instance has Secure Boot enabled.
+        /// Optional. Whether the instance has Secure Boot enabled.
         /// </summary>
         [Input("enableSecureBoot")]
         public Input<bool>? EnableSecureBoot { get; set; }
 
         /// <summary>
-        /// Whether the instance has the vTPM enabled.
+        /// Optional. Whether the instance has the vTPM enabled.
         /// </summary>
         [Input("enableVtpm")]
         public Input<bool>? EnableVtpm { get; set; }

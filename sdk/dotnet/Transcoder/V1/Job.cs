@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1
     public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+        /// </summary>
+        [Output("batchModePriority")]
+        public Output<int> BatchModePriority { get; private set; } = null!;
+
+        /// <summary>
         /// The configuration for this job.
         /// </summary>
         [Output("config")]
@@ -34,7 +40,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`.
+        /// An error object that describes the reason for the failure. This property is always present when ProcessingState is `FAILED`.
         /// </summary>
         [Output("error")]
         public Output<Outputs.StatusResponse> Error { get; private set; } = null!;
@@ -65,6 +71,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+        /// </summary>
+        [Output("optimization")]
+        public Output<string> Optimization { get; private set; } = null!;
 
         /// <summary>
         /// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -150,6 +162,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1
     public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+        /// </summary>
+        [Input("batchModePriority")]
+        public Input<int>? BatchModePriority { get; set; }
+
+        /// <summary>
         /// The configuration for this job.
         /// </summary>
         [Input("config")]
@@ -187,6 +205,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+        /// </summary>
+        [Input("optimization")]
+        public Input<Pulumi.GoogleNative.Transcoder.V1.JobOptimization>? Optimization { get; set; }
 
         /// <summary>
         /// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).

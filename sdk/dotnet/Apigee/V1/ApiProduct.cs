@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<Outputs.GoogleCloudApigeeV1GraphQLOperationGroupResponse> GraphqlOperationGroup { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+        /// </summary>
+        [Output("grpcOperationGroup")]
+        public Output<Outputs.GoogleCloudApigeeV1GrpcOperationGroupResponse> GrpcOperationGroup { get; private set; } = null!;
+
+        /// <summary>
         /// Response only. Modified time of this environment as milliseconds since epoch.
         /// </summary>
         [Output("lastModifiedAt")]
@@ -234,6 +240,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Input("graphqlOperationGroup")]
         public Input<Inputs.GoogleCloudApigeeV1GraphQLOperationGroupArgs>? GraphqlOperationGroup { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+        /// </summary>
+        [Input("grpcOperationGroup")]
+        public Input<Inputs.GoogleCloudApigeeV1GrpcOperationGroupArgs>? GrpcOperationGroup { get; set; }
 
         /// <summary>
         /// Response only. Modified time of this environment as milliseconds since epoch.

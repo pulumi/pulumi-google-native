@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         private InputList<Inputs.TextMappingArgs>? _mapping;
 
         /// <summary>
-        /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+        /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
         /// </summary>
         public InputList<Inputs.TextMappingArgs> Mapping
         {

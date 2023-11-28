@@ -238,6 +238,8 @@ func (o AlloyDbConnectionProfileResponseOutput) Settings() AlloyDbSettingsRespon
 
 // Settings for creating an AlloyDB cluster.
 type AlloyDbSettings struct {
+	// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+	DatabaseVersion *AlloyDbSettingsDatabaseVersion `pulumi:"databaseVersion"`
 	// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Input only. Initial user to setup during cluster creation. Required.
@@ -262,6 +264,8 @@ type AlloyDbSettingsInput interface {
 
 // Settings for creating an AlloyDB cluster.
 type AlloyDbSettingsArgs struct {
+	// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+	DatabaseVersion AlloyDbSettingsDatabaseVersionPtrInput `pulumi:"databaseVersion"`
 	// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Input only. Initial user to setup during cluster creation. Required.
@@ -369,6 +373,11 @@ func (o AlloyDbSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[Allo
 	}
 }
 
+// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+func (o AlloyDbSettingsOutput) DatabaseVersion() AlloyDbSettingsDatabaseVersionPtrOutput {
+	return o.ApplyT(func(v AlloyDbSettings) *AlloyDbSettingsDatabaseVersion { return v.DatabaseVersion }).(AlloyDbSettingsDatabaseVersionPtrOutput)
+}
+
 // Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
 func (o AlloyDbSettingsOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v AlloyDbSettings) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
@@ -423,6 +432,16 @@ func (o AlloyDbSettingsPtrOutput) Elem() AlloyDbSettingsOutput {
 	}).(AlloyDbSettingsOutput)
 }
 
+// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+func (o AlloyDbSettingsPtrOutput) DatabaseVersion() AlloyDbSettingsDatabaseVersionPtrOutput {
+	return o.ApplyT(func(v *AlloyDbSettings) *AlloyDbSettingsDatabaseVersion {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseVersion
+	}).(AlloyDbSettingsDatabaseVersionPtrOutput)
+}
+
 // Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
 func (o AlloyDbSettingsPtrOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v *AlloyDbSettings) *EncryptionConfig {
@@ -474,6 +493,8 @@ func (o AlloyDbSettingsPtrOutput) VpcNetwork() pulumi.StringPtrOutput {
 
 // Settings for creating an AlloyDB cluster.
 type AlloyDbSettingsResponse struct {
+	// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+	DatabaseVersion string `pulumi:"databaseVersion"`
 	// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// Input only. Initial user to setup during cluster creation. Required.
@@ -506,6 +527,11 @@ func (o AlloyDbSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+func (o AlloyDbSettingsResponseOutput) DatabaseVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v AlloyDbSettingsResponse) string { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
 // Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
 func (o AlloyDbSettingsResponseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
 	return o.ApplyT(func(v AlloyDbSettingsResponse) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
@@ -528,6 +554,398 @@ func (o AlloyDbSettingsResponseOutput) PrimaryInstanceSettings() PrimaryInstance
 // The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
 func (o AlloyDbSettingsResponseOutput) VpcNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v AlloyDbSettingsResponse) string { return v.VpcNetwork }).(pulumi.StringOutput)
+}
+
+// Apply a hash function on the value.
+type ApplyHash struct {
+	// Optional. Generate UUID from the data's byte array
+	UuidFromBytes *Empty `pulumi:"uuidFromBytes"`
+}
+
+// ApplyHashInput is an input type that accepts ApplyHashArgs and ApplyHashOutput values.
+// You can construct a concrete instance of `ApplyHashInput` via:
+//
+//	ApplyHashArgs{...}
+type ApplyHashInput interface {
+	pulumi.Input
+
+	ToApplyHashOutput() ApplyHashOutput
+	ToApplyHashOutputWithContext(context.Context) ApplyHashOutput
+}
+
+// Apply a hash function on the value.
+type ApplyHashArgs struct {
+	// Optional. Generate UUID from the data's byte array
+	UuidFromBytes EmptyPtrInput `pulumi:"uuidFromBytes"`
+}
+
+func (ApplyHashArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplyHash)(nil)).Elem()
+}
+
+func (i ApplyHashArgs) ToApplyHashOutput() ApplyHashOutput {
+	return i.ToApplyHashOutputWithContext(context.Background())
+}
+
+func (i ApplyHashArgs) ToApplyHashOutputWithContext(ctx context.Context) ApplyHashOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplyHashOutput)
+}
+
+func (i ApplyHashArgs) ToOutput(ctx context.Context) pulumix.Output[ApplyHash] {
+	return pulumix.Output[ApplyHash]{
+		OutputState: i.ToApplyHashOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplyHashArgs) ToApplyHashPtrOutput() ApplyHashPtrOutput {
+	return i.ToApplyHashPtrOutputWithContext(context.Background())
+}
+
+func (i ApplyHashArgs) ToApplyHashPtrOutputWithContext(ctx context.Context) ApplyHashPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplyHashOutput).ToApplyHashPtrOutputWithContext(ctx)
+}
+
+// ApplyHashPtrInput is an input type that accepts ApplyHashArgs, ApplyHashPtr and ApplyHashPtrOutput values.
+// You can construct a concrete instance of `ApplyHashPtrInput` via:
+//
+//	        ApplyHashArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplyHashPtrInput interface {
+	pulumi.Input
+
+	ToApplyHashPtrOutput() ApplyHashPtrOutput
+	ToApplyHashPtrOutputWithContext(context.Context) ApplyHashPtrOutput
+}
+
+type applyHashPtrType ApplyHashArgs
+
+func ApplyHashPtr(v *ApplyHashArgs) ApplyHashPtrInput {
+	return (*applyHashPtrType)(v)
+}
+
+func (*applyHashPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplyHash)(nil)).Elem()
+}
+
+func (i *applyHashPtrType) ToApplyHashPtrOutput() ApplyHashPtrOutput {
+	return i.ToApplyHashPtrOutputWithContext(context.Background())
+}
+
+func (i *applyHashPtrType) ToApplyHashPtrOutputWithContext(ctx context.Context) ApplyHashPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplyHashPtrOutput)
+}
+
+func (i *applyHashPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplyHash] {
+	return pulumix.Output[*ApplyHash]{
+		OutputState: i.ToApplyHashPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Apply a hash function on the value.
+type ApplyHashOutput struct{ *pulumi.OutputState }
+
+func (ApplyHashOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplyHash)(nil)).Elem()
+}
+
+func (o ApplyHashOutput) ToApplyHashOutput() ApplyHashOutput {
+	return o
+}
+
+func (o ApplyHashOutput) ToApplyHashOutputWithContext(ctx context.Context) ApplyHashOutput {
+	return o
+}
+
+func (o ApplyHashOutput) ToApplyHashPtrOutput() ApplyHashPtrOutput {
+	return o.ToApplyHashPtrOutputWithContext(context.Background())
+}
+
+func (o ApplyHashOutput) ToApplyHashPtrOutputWithContext(ctx context.Context) ApplyHashPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplyHash) *ApplyHash {
+		return &v
+	}).(ApplyHashPtrOutput)
+}
+
+func (o ApplyHashOutput) ToOutput(ctx context.Context) pulumix.Output[ApplyHash] {
+	return pulumix.Output[ApplyHash]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Generate UUID from the data's byte array
+func (o ApplyHashOutput) UuidFromBytes() EmptyPtrOutput {
+	return o.ApplyT(func(v ApplyHash) *Empty { return v.UuidFromBytes }).(EmptyPtrOutput)
+}
+
+type ApplyHashPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplyHashPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplyHash)(nil)).Elem()
+}
+
+func (o ApplyHashPtrOutput) ToApplyHashPtrOutput() ApplyHashPtrOutput {
+	return o
+}
+
+func (o ApplyHashPtrOutput) ToApplyHashPtrOutputWithContext(ctx context.Context) ApplyHashPtrOutput {
+	return o
+}
+
+func (o ApplyHashPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplyHash] {
+	return pulumix.Output[*ApplyHash]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplyHashPtrOutput) Elem() ApplyHashOutput {
+	return o.ApplyT(func(v *ApplyHash) ApplyHash {
+		if v != nil {
+			return *v
+		}
+		var ret ApplyHash
+		return ret
+	}).(ApplyHashOutput)
+}
+
+// Optional. Generate UUID from the data's byte array
+func (o ApplyHashPtrOutput) UuidFromBytes() EmptyPtrOutput {
+	return o.ApplyT(func(v *ApplyHash) *Empty {
+		if v == nil {
+			return nil
+		}
+		return v.UuidFromBytes
+	}).(EmptyPtrOutput)
+}
+
+// Apply a hash function on the value.
+type ApplyHashResponse struct {
+	// Optional. Generate UUID from the data's byte array
+	UuidFromBytes EmptyResponse `pulumi:"uuidFromBytes"`
+}
+
+// Apply a hash function on the value.
+type ApplyHashResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplyHashResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplyHashResponse)(nil)).Elem()
+}
+
+func (o ApplyHashResponseOutput) ToApplyHashResponseOutput() ApplyHashResponseOutput {
+	return o
+}
+
+func (o ApplyHashResponseOutput) ToApplyHashResponseOutputWithContext(ctx context.Context) ApplyHashResponseOutput {
+	return o
+}
+
+func (o ApplyHashResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplyHashResponse] {
+	return pulumix.Output[ApplyHashResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Generate UUID from the data's byte array
+func (o ApplyHashResponseOutput) UuidFromBytes() EmptyResponseOutput {
+	return o.ApplyT(func(v ApplyHashResponse) EmptyResponse { return v.UuidFromBytes }).(EmptyResponseOutput)
+}
+
+// Set to a specific value (value is converted to fit the target data type)
+type AssignSpecificValue struct {
+	// Specific value to be assigned
+	Value string `pulumi:"value"`
+}
+
+// AssignSpecificValueInput is an input type that accepts AssignSpecificValueArgs and AssignSpecificValueOutput values.
+// You can construct a concrete instance of `AssignSpecificValueInput` via:
+//
+//	AssignSpecificValueArgs{...}
+type AssignSpecificValueInput interface {
+	pulumi.Input
+
+	ToAssignSpecificValueOutput() AssignSpecificValueOutput
+	ToAssignSpecificValueOutputWithContext(context.Context) AssignSpecificValueOutput
+}
+
+// Set to a specific value (value is converted to fit the target data type)
+type AssignSpecificValueArgs struct {
+	// Specific value to be assigned
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AssignSpecificValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignSpecificValue)(nil)).Elem()
+}
+
+func (i AssignSpecificValueArgs) ToAssignSpecificValueOutput() AssignSpecificValueOutput {
+	return i.ToAssignSpecificValueOutputWithContext(context.Background())
+}
+
+func (i AssignSpecificValueArgs) ToAssignSpecificValueOutputWithContext(ctx context.Context) AssignSpecificValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignSpecificValueOutput)
+}
+
+func (i AssignSpecificValueArgs) ToOutput(ctx context.Context) pulumix.Output[AssignSpecificValue] {
+	return pulumix.Output[AssignSpecificValue]{
+		OutputState: i.ToAssignSpecificValueOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AssignSpecificValueArgs) ToAssignSpecificValuePtrOutput() AssignSpecificValuePtrOutput {
+	return i.ToAssignSpecificValuePtrOutputWithContext(context.Background())
+}
+
+func (i AssignSpecificValueArgs) ToAssignSpecificValuePtrOutputWithContext(ctx context.Context) AssignSpecificValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignSpecificValueOutput).ToAssignSpecificValuePtrOutputWithContext(ctx)
+}
+
+// AssignSpecificValuePtrInput is an input type that accepts AssignSpecificValueArgs, AssignSpecificValuePtr and AssignSpecificValuePtrOutput values.
+// You can construct a concrete instance of `AssignSpecificValuePtrInput` via:
+//
+//	        AssignSpecificValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssignSpecificValuePtrInput interface {
+	pulumi.Input
+
+	ToAssignSpecificValuePtrOutput() AssignSpecificValuePtrOutput
+	ToAssignSpecificValuePtrOutputWithContext(context.Context) AssignSpecificValuePtrOutput
+}
+
+type assignSpecificValuePtrType AssignSpecificValueArgs
+
+func AssignSpecificValuePtr(v *AssignSpecificValueArgs) AssignSpecificValuePtrInput {
+	return (*assignSpecificValuePtrType)(v)
+}
+
+func (*assignSpecificValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignSpecificValue)(nil)).Elem()
+}
+
+func (i *assignSpecificValuePtrType) ToAssignSpecificValuePtrOutput() AssignSpecificValuePtrOutput {
+	return i.ToAssignSpecificValuePtrOutputWithContext(context.Background())
+}
+
+func (i *assignSpecificValuePtrType) ToAssignSpecificValuePtrOutputWithContext(ctx context.Context) AssignSpecificValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignSpecificValuePtrOutput)
+}
+
+func (i *assignSpecificValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*AssignSpecificValue] {
+	return pulumix.Output[*AssignSpecificValue]{
+		OutputState: i.ToAssignSpecificValuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Set to a specific value (value is converted to fit the target data type)
+type AssignSpecificValueOutput struct{ *pulumi.OutputState }
+
+func (AssignSpecificValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignSpecificValue)(nil)).Elem()
+}
+
+func (o AssignSpecificValueOutput) ToAssignSpecificValueOutput() AssignSpecificValueOutput {
+	return o
+}
+
+func (o AssignSpecificValueOutput) ToAssignSpecificValueOutputWithContext(ctx context.Context) AssignSpecificValueOutput {
+	return o
+}
+
+func (o AssignSpecificValueOutput) ToAssignSpecificValuePtrOutput() AssignSpecificValuePtrOutput {
+	return o.ToAssignSpecificValuePtrOutputWithContext(context.Background())
+}
+
+func (o AssignSpecificValueOutput) ToAssignSpecificValuePtrOutputWithContext(ctx context.Context) AssignSpecificValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssignSpecificValue) *AssignSpecificValue {
+		return &v
+	}).(AssignSpecificValuePtrOutput)
+}
+
+func (o AssignSpecificValueOutput) ToOutput(ctx context.Context) pulumix.Output[AssignSpecificValue] {
+	return pulumix.Output[AssignSpecificValue]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specific value to be assigned
+func (o AssignSpecificValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignSpecificValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AssignSpecificValuePtrOutput struct{ *pulumi.OutputState }
+
+func (AssignSpecificValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignSpecificValue)(nil)).Elem()
+}
+
+func (o AssignSpecificValuePtrOutput) ToAssignSpecificValuePtrOutput() AssignSpecificValuePtrOutput {
+	return o
+}
+
+func (o AssignSpecificValuePtrOutput) ToAssignSpecificValuePtrOutputWithContext(ctx context.Context) AssignSpecificValuePtrOutput {
+	return o
+}
+
+func (o AssignSpecificValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignSpecificValue] {
+	return pulumix.Output[*AssignSpecificValue]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AssignSpecificValuePtrOutput) Elem() AssignSpecificValueOutput {
+	return o.ApplyT(func(v *AssignSpecificValue) AssignSpecificValue {
+		if v != nil {
+			return *v
+		}
+		var ret AssignSpecificValue
+		return ret
+	}).(AssignSpecificValueOutput)
+}
+
+// Specific value to be assigned
+func (o AssignSpecificValuePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignSpecificValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set to a specific value (value is converted to fit the target data type)
+type AssignSpecificValueResponse struct {
+	// Specific value to be assigned
+	Value string `pulumi:"value"`
+}
+
+// Set to a specific value (value is converted to fit the target data type)
+type AssignSpecificValueResponseOutput struct{ *pulumi.OutputState }
+
+func (AssignSpecificValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignSpecificValueResponse)(nil)).Elem()
+}
+
+func (o AssignSpecificValueResponseOutput) ToAssignSpecificValueResponseOutput() AssignSpecificValueResponseOutput {
+	return o
+}
+
+func (o AssignSpecificValueResponseOutput) ToAssignSpecificValueResponseOutputWithContext(ctx context.Context) AssignSpecificValueResponseOutput {
+	return o
+}
+
+func (o AssignSpecificValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignSpecificValueResponse] {
+	return pulumix.Output[AssignSpecificValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specific value to be assigned
+func (o AssignSpecificValueResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignSpecificValueResponse) string { return v.Value }).(pulumi.StringOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
@@ -1376,6 +1794,8 @@ type CloudSqlSettings struct {
 	CmekKeyName *string `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
 	Collation *string `pulumi:"collation"`
+	// Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+	DataCacheConfig *DataCacheConfig `pulumi:"dataCacheConfig"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 	DataDiskSizeGb *string `pulumi:"dataDiskSizeGb"`
 	// The type of storage: `PD_SSD` (default) or `PD_HDD`.
@@ -1384,6 +1804,8 @@ type CloudSqlSettings struct {
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
 	// The database engine type and version.
 	DatabaseVersion *CloudSqlSettingsDatabaseVersion `pulumi:"databaseVersion"`
+	// Optional. The edition of the given Cloud SQL instance.
+	Edition *CloudSqlSettingsEdition `pulumi:"edition"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfig *SqlIpConfig `pulumi:"ipConfig"`
 	// Input only. Initial root password.
@@ -1425,6 +1847,8 @@ type CloudSqlSettingsArgs struct {
 	CmekKeyName pulumi.StringPtrInput `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+	DataCacheConfig DataCacheConfigPtrInput `pulumi:"dataCacheConfig"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 	DataDiskSizeGb pulumi.StringPtrInput `pulumi:"dataDiskSizeGb"`
 	// The type of storage: `PD_SSD` (default) or `PD_HDD`.
@@ -1433,6 +1857,8 @@ type CloudSqlSettingsArgs struct {
 	DatabaseFlags pulumi.StringMapInput `pulumi:"databaseFlags"`
 	// The database engine type and version.
 	DatabaseVersion CloudSqlSettingsDatabaseVersionPtrInput `pulumi:"databaseVersion"`
+	// Optional. The edition of the given Cloud SQL instance.
+	Edition CloudSqlSettingsEditionPtrInput `pulumi:"edition"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfig SqlIpConfigPtrInput `pulumi:"ipConfig"`
 	// Input only. Initial root password.
@@ -1572,6 +1998,11 @@ func (o CloudSqlSettingsOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+func (o CloudSqlSettingsOutput) DataCacheConfig() DataCacheConfigPtrOutput {
+	return o.ApplyT(func(v CloudSqlSettings) *DataCacheConfig { return v.DataCacheConfig }).(DataCacheConfigPtrOutput)
+}
+
 // The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 func (o CloudSqlSettingsOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *string { return v.DataDiskSizeGb }).(pulumi.StringPtrOutput)
@@ -1590,6 +2021,11 @@ func (o CloudSqlSettingsOutput) DatabaseFlags() pulumi.StringMapOutput {
 // The database engine type and version.
 func (o CloudSqlSettingsOutput) DatabaseVersion() CloudSqlSettingsDatabaseVersionPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *CloudSqlSettingsDatabaseVersion { return v.DatabaseVersion }).(CloudSqlSettingsDatabaseVersionPtrOutput)
+}
+
+// Optional. The edition of the given Cloud SQL instance.
+func (o CloudSqlSettingsOutput) Edition() CloudSqlSettingsEditionPtrOutput {
+	return o.ApplyT(func(v CloudSqlSettings) *CloudSqlSettingsEdition { return v.Edition }).(CloudSqlSettingsEditionPtrOutput)
 }
 
 // The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
@@ -1712,6 +2148,16 @@ func (o CloudSqlSettingsPtrOutput) Collation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+func (o CloudSqlSettingsPtrOutput) DataCacheConfig() DataCacheConfigPtrOutput {
+	return o.ApplyT(func(v *CloudSqlSettings) *DataCacheConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataCacheConfig
+	}).(DataCacheConfigPtrOutput)
+}
+
 // The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 func (o CloudSqlSettingsPtrOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudSqlSettings) *string {
@@ -1750,6 +2196,16 @@ func (o CloudSqlSettingsPtrOutput) DatabaseVersion() CloudSqlSettingsDatabaseVer
 		}
 		return v.DatabaseVersion
 	}).(CloudSqlSettingsDatabaseVersionPtrOutput)
+}
+
+// Optional. The edition of the given Cloud SQL instance.
+func (o CloudSqlSettingsPtrOutput) Edition() CloudSqlSettingsEditionPtrOutput {
+	return o.ApplyT(func(v *CloudSqlSettings) *CloudSqlSettingsEdition {
+		if v == nil {
+			return nil
+		}
+		return v.Edition
+	}).(CloudSqlSettingsEditionPtrOutput)
 }
 
 // The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
@@ -1844,6 +2300,8 @@ type CloudSqlSettingsResponse struct {
 	CmekKeyName string `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
 	Collation string `pulumi:"collation"`
+	// Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+	DataCacheConfig DataCacheConfigResponse `pulumi:"dataCacheConfig"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 	DataDiskSizeGb string `pulumi:"dataDiskSizeGb"`
 	// The type of storage: `PD_SSD` (default) or `PD_HDD`.
@@ -1852,6 +2310,8 @@ type CloudSqlSettingsResponse struct {
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
 	// The database engine type and version.
 	DatabaseVersion string `pulumi:"databaseVersion"`
+	// Optional. The edition of the given Cloud SQL instance.
+	Edition string `pulumi:"edition"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfig SqlIpConfigResponse `pulumi:"ipConfig"`
 	// Input only. Initial root password.
@@ -1918,6 +2378,11 @@ func (o CloudSqlSettingsResponseOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.Collation }).(pulumi.StringOutput)
 }
 
+// Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+func (o CloudSqlSettingsResponseOutput) DataCacheConfig() DataCacheConfigResponseOutput {
+	return o.ApplyT(func(v CloudSqlSettingsResponse) DataCacheConfigResponse { return v.DataCacheConfig }).(DataCacheConfigResponseOutput)
+}
+
 // The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 func (o CloudSqlSettingsResponseOutput) DataDiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.DataDiskSizeGb }).(pulumi.StringOutput)
@@ -1936,6 +2401,11 @@ func (o CloudSqlSettingsResponseOutput) DatabaseFlags() pulumi.StringMapOutput {
 // The database engine type and version.
 func (o CloudSqlSettingsResponseOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+// Optional. The edition of the given Cloud SQL instance.
+func (o CloudSqlSettingsResponseOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.Edition }).(pulumi.StringOutput)
 }
 
 // The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
@@ -1981,6 +2451,280 @@ func (o CloudSqlSettingsResponseOutput) UserLabels() pulumi.StringMapOutput {
 // The Google Cloud Platform zone where your Cloud SQL database instance is located.
 func (o CloudSqlSettingsResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+// Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
+type ConditionalColumnSetValue struct {
+	// Optional. Custom engine specific features.
+	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+	SourceNumericFilter *SourceNumericFilter `pulumi:"sourceNumericFilter"`
+	// Optional. Optional filter on source column length. Used for text based data types like varchar.
+	SourceTextFilter *SourceTextFilter `pulumi:"sourceTextFilter"`
+	// Description of data transformation during migration.
+	ValueTransformation ValueTransformation `pulumi:"valueTransformation"`
+}
+
+// ConditionalColumnSetValueInput is an input type that accepts ConditionalColumnSetValueArgs and ConditionalColumnSetValueOutput values.
+// You can construct a concrete instance of `ConditionalColumnSetValueInput` via:
+//
+//	ConditionalColumnSetValueArgs{...}
+type ConditionalColumnSetValueInput interface {
+	pulumi.Input
+
+	ToConditionalColumnSetValueOutput() ConditionalColumnSetValueOutput
+	ToConditionalColumnSetValueOutputWithContext(context.Context) ConditionalColumnSetValueOutput
+}
+
+// Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
+type ConditionalColumnSetValueArgs struct {
+	// Optional. Custom engine specific features.
+	CustomFeatures pulumi.StringMapInput `pulumi:"customFeatures"`
+	// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+	SourceNumericFilter SourceNumericFilterPtrInput `pulumi:"sourceNumericFilter"`
+	// Optional. Optional filter on source column length. Used for text based data types like varchar.
+	SourceTextFilter SourceTextFilterPtrInput `pulumi:"sourceTextFilter"`
+	// Description of data transformation during migration.
+	ValueTransformation ValueTransformationInput `pulumi:"valueTransformation"`
+}
+
+func (ConditionalColumnSetValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalColumnSetValue)(nil)).Elem()
+}
+
+func (i ConditionalColumnSetValueArgs) ToConditionalColumnSetValueOutput() ConditionalColumnSetValueOutput {
+	return i.ToConditionalColumnSetValueOutputWithContext(context.Background())
+}
+
+func (i ConditionalColumnSetValueArgs) ToConditionalColumnSetValueOutputWithContext(ctx context.Context) ConditionalColumnSetValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalColumnSetValueOutput)
+}
+
+func (i ConditionalColumnSetValueArgs) ToOutput(ctx context.Context) pulumix.Output[ConditionalColumnSetValue] {
+	return pulumix.Output[ConditionalColumnSetValue]{
+		OutputState: i.ToConditionalColumnSetValueOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConditionalColumnSetValueArgs) ToConditionalColumnSetValuePtrOutput() ConditionalColumnSetValuePtrOutput {
+	return i.ToConditionalColumnSetValuePtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalColumnSetValueArgs) ToConditionalColumnSetValuePtrOutputWithContext(ctx context.Context) ConditionalColumnSetValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalColumnSetValueOutput).ToConditionalColumnSetValuePtrOutputWithContext(ctx)
+}
+
+// ConditionalColumnSetValuePtrInput is an input type that accepts ConditionalColumnSetValueArgs, ConditionalColumnSetValuePtr and ConditionalColumnSetValuePtrOutput values.
+// You can construct a concrete instance of `ConditionalColumnSetValuePtrInput` via:
+//
+//	        ConditionalColumnSetValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConditionalColumnSetValuePtrInput interface {
+	pulumi.Input
+
+	ToConditionalColumnSetValuePtrOutput() ConditionalColumnSetValuePtrOutput
+	ToConditionalColumnSetValuePtrOutputWithContext(context.Context) ConditionalColumnSetValuePtrOutput
+}
+
+type conditionalColumnSetValuePtrType ConditionalColumnSetValueArgs
+
+func ConditionalColumnSetValuePtr(v *ConditionalColumnSetValueArgs) ConditionalColumnSetValuePtrInput {
+	return (*conditionalColumnSetValuePtrType)(v)
+}
+
+func (*conditionalColumnSetValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalColumnSetValue)(nil)).Elem()
+}
+
+func (i *conditionalColumnSetValuePtrType) ToConditionalColumnSetValuePtrOutput() ConditionalColumnSetValuePtrOutput {
+	return i.ToConditionalColumnSetValuePtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalColumnSetValuePtrType) ToConditionalColumnSetValuePtrOutputWithContext(ctx context.Context) ConditionalColumnSetValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalColumnSetValuePtrOutput)
+}
+
+func (i *conditionalColumnSetValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConditionalColumnSetValue] {
+	return pulumix.Output[*ConditionalColumnSetValue]{
+		OutputState: i.ToConditionalColumnSetValuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
+type ConditionalColumnSetValueOutput struct{ *pulumi.OutputState }
+
+func (ConditionalColumnSetValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalColumnSetValue)(nil)).Elem()
+}
+
+func (o ConditionalColumnSetValueOutput) ToConditionalColumnSetValueOutput() ConditionalColumnSetValueOutput {
+	return o
+}
+
+func (o ConditionalColumnSetValueOutput) ToConditionalColumnSetValueOutputWithContext(ctx context.Context) ConditionalColumnSetValueOutput {
+	return o
+}
+
+func (o ConditionalColumnSetValueOutput) ToConditionalColumnSetValuePtrOutput() ConditionalColumnSetValuePtrOutput {
+	return o.ToConditionalColumnSetValuePtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalColumnSetValueOutput) ToConditionalColumnSetValuePtrOutputWithContext(ctx context.Context) ConditionalColumnSetValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalColumnSetValue) *ConditionalColumnSetValue {
+		return &v
+	}).(ConditionalColumnSetValuePtrOutput)
+}
+
+func (o ConditionalColumnSetValueOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionalColumnSetValue] {
+	return pulumix.Output[ConditionalColumnSetValue]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Custom engine specific features.
+func (o ConditionalColumnSetValueOutput) CustomFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValue) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+}
+
+// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+func (o ConditionalColumnSetValueOutput) SourceNumericFilter() SourceNumericFilterPtrOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValue) *SourceNumericFilter { return v.SourceNumericFilter }).(SourceNumericFilterPtrOutput)
+}
+
+// Optional. Optional filter on source column length. Used for text based data types like varchar.
+func (o ConditionalColumnSetValueOutput) SourceTextFilter() SourceTextFilterPtrOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValue) *SourceTextFilter { return v.SourceTextFilter }).(SourceTextFilterPtrOutput)
+}
+
+// Description of data transformation during migration.
+func (o ConditionalColumnSetValueOutput) ValueTransformation() ValueTransformationOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValue) ValueTransformation { return v.ValueTransformation }).(ValueTransformationOutput)
+}
+
+type ConditionalColumnSetValuePtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalColumnSetValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalColumnSetValue)(nil)).Elem()
+}
+
+func (o ConditionalColumnSetValuePtrOutput) ToConditionalColumnSetValuePtrOutput() ConditionalColumnSetValuePtrOutput {
+	return o
+}
+
+func (o ConditionalColumnSetValuePtrOutput) ToConditionalColumnSetValuePtrOutputWithContext(ctx context.Context) ConditionalColumnSetValuePtrOutput {
+	return o
+}
+
+func (o ConditionalColumnSetValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionalColumnSetValue] {
+	return pulumix.Output[*ConditionalColumnSetValue]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConditionalColumnSetValuePtrOutput) Elem() ConditionalColumnSetValueOutput {
+	return o.ApplyT(func(v *ConditionalColumnSetValue) ConditionalColumnSetValue {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalColumnSetValue
+		return ret
+	}).(ConditionalColumnSetValueOutput)
+}
+
+// Optional. Custom engine specific features.
+func (o ConditionalColumnSetValuePtrOutput) CustomFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConditionalColumnSetValue) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFeatures
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+func (o ConditionalColumnSetValuePtrOutput) SourceNumericFilter() SourceNumericFilterPtrOutput {
+	return o.ApplyT(func(v *ConditionalColumnSetValue) *SourceNumericFilter {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNumericFilter
+	}).(SourceNumericFilterPtrOutput)
+}
+
+// Optional. Optional filter on source column length. Used for text based data types like varchar.
+func (o ConditionalColumnSetValuePtrOutput) SourceTextFilter() SourceTextFilterPtrOutput {
+	return o.ApplyT(func(v *ConditionalColumnSetValue) *SourceTextFilter {
+		if v == nil {
+			return nil
+		}
+		return v.SourceTextFilter
+	}).(SourceTextFilterPtrOutput)
+}
+
+// Description of data transformation during migration.
+func (o ConditionalColumnSetValuePtrOutput) ValueTransformation() ValueTransformationPtrOutput {
+	return o.ApplyT(func(v *ConditionalColumnSetValue) *ValueTransformation {
+		if v == nil {
+			return nil
+		}
+		return &v.ValueTransformation
+	}).(ValueTransformationPtrOutput)
+}
+
+// Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
+type ConditionalColumnSetValueResponse struct {
+	// Optional. Custom engine specific features.
+	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+	SourceNumericFilter SourceNumericFilterResponse `pulumi:"sourceNumericFilter"`
+	// Optional. Optional filter on source column length. Used for text based data types like varchar.
+	SourceTextFilter SourceTextFilterResponse `pulumi:"sourceTextFilter"`
+	// Description of data transformation during migration.
+	ValueTransformation ValueTransformationResponse `pulumi:"valueTransformation"`
+}
+
+// Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
+type ConditionalColumnSetValueResponseOutput struct{ *pulumi.OutputState }
+
+func (ConditionalColumnSetValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalColumnSetValueResponse)(nil)).Elem()
+}
+
+func (o ConditionalColumnSetValueResponseOutput) ToConditionalColumnSetValueResponseOutput() ConditionalColumnSetValueResponseOutput {
+	return o
+}
+
+func (o ConditionalColumnSetValueResponseOutput) ToConditionalColumnSetValueResponseOutputWithContext(ctx context.Context) ConditionalColumnSetValueResponseOutput {
+	return o
+}
+
+func (o ConditionalColumnSetValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionalColumnSetValueResponse] {
+	return pulumix.Output[ConditionalColumnSetValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Custom engine specific features.
+func (o ConditionalColumnSetValueResponseOutput) CustomFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValueResponse) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+}
+
+// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+func (o ConditionalColumnSetValueResponseOutput) SourceNumericFilter() SourceNumericFilterResponseOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValueResponse) SourceNumericFilterResponse { return v.SourceNumericFilter }).(SourceNumericFilterResponseOutput)
+}
+
+// Optional. Optional filter on source column length. Used for text based data types like varchar.
+func (o ConditionalColumnSetValueResponseOutput) SourceTextFilter() SourceTextFilterResponseOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValueResponse) SourceTextFilterResponse { return v.SourceTextFilter }).(SourceTextFilterResponseOutput)
+}
+
+// Description of data transformation during migration.
+func (o ConditionalColumnSetValueResponseOutput) ValueTransformation() ValueTransformationResponseOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValueResponse) ValueTransformationResponse { return v.ValueTransformation }).(ValueTransformationResponseOutput)
 }
 
 // A conversion workspace's version.
@@ -2205,11 +2949,403 @@ func (o ConversionWorkspaceInfoResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConversionWorkspaceInfoResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter field, which is whether or not to work on tables which already have a primary key defined.
+type ConvertRowIdToColumn struct {
+	// Only work on tables without primary key defined
+	OnlyIfNoPrimaryKey bool `pulumi:"onlyIfNoPrimaryKey"`
+}
+
+// ConvertRowIdToColumnInput is an input type that accepts ConvertRowIdToColumnArgs and ConvertRowIdToColumnOutput values.
+// You can construct a concrete instance of `ConvertRowIdToColumnInput` via:
+//
+//	ConvertRowIdToColumnArgs{...}
+type ConvertRowIdToColumnInput interface {
+	pulumi.Input
+
+	ToConvertRowIdToColumnOutput() ConvertRowIdToColumnOutput
+	ToConvertRowIdToColumnOutputWithContext(context.Context) ConvertRowIdToColumnOutput
+}
+
+// Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter field, which is whether or not to work on tables which already have a primary key defined.
+type ConvertRowIdToColumnArgs struct {
+	// Only work on tables without primary key defined
+	OnlyIfNoPrimaryKey pulumi.BoolInput `pulumi:"onlyIfNoPrimaryKey"`
+}
+
+func (ConvertRowIdToColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConvertRowIdToColumn)(nil)).Elem()
+}
+
+func (i ConvertRowIdToColumnArgs) ToConvertRowIdToColumnOutput() ConvertRowIdToColumnOutput {
+	return i.ToConvertRowIdToColumnOutputWithContext(context.Background())
+}
+
+func (i ConvertRowIdToColumnArgs) ToConvertRowIdToColumnOutputWithContext(ctx context.Context) ConvertRowIdToColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConvertRowIdToColumnOutput)
+}
+
+func (i ConvertRowIdToColumnArgs) ToOutput(ctx context.Context) pulumix.Output[ConvertRowIdToColumn] {
+	return pulumix.Output[ConvertRowIdToColumn]{
+		OutputState: i.ToConvertRowIdToColumnOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConvertRowIdToColumnArgs) ToConvertRowIdToColumnPtrOutput() ConvertRowIdToColumnPtrOutput {
+	return i.ToConvertRowIdToColumnPtrOutputWithContext(context.Background())
+}
+
+func (i ConvertRowIdToColumnArgs) ToConvertRowIdToColumnPtrOutputWithContext(ctx context.Context) ConvertRowIdToColumnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConvertRowIdToColumnOutput).ToConvertRowIdToColumnPtrOutputWithContext(ctx)
+}
+
+// ConvertRowIdToColumnPtrInput is an input type that accepts ConvertRowIdToColumnArgs, ConvertRowIdToColumnPtr and ConvertRowIdToColumnPtrOutput values.
+// You can construct a concrete instance of `ConvertRowIdToColumnPtrInput` via:
+//
+//	        ConvertRowIdToColumnArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConvertRowIdToColumnPtrInput interface {
+	pulumi.Input
+
+	ToConvertRowIdToColumnPtrOutput() ConvertRowIdToColumnPtrOutput
+	ToConvertRowIdToColumnPtrOutputWithContext(context.Context) ConvertRowIdToColumnPtrOutput
+}
+
+type convertRowIdToColumnPtrType ConvertRowIdToColumnArgs
+
+func ConvertRowIdToColumnPtr(v *ConvertRowIdToColumnArgs) ConvertRowIdToColumnPtrInput {
+	return (*convertRowIdToColumnPtrType)(v)
+}
+
+func (*convertRowIdToColumnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConvertRowIdToColumn)(nil)).Elem()
+}
+
+func (i *convertRowIdToColumnPtrType) ToConvertRowIdToColumnPtrOutput() ConvertRowIdToColumnPtrOutput {
+	return i.ToConvertRowIdToColumnPtrOutputWithContext(context.Background())
+}
+
+func (i *convertRowIdToColumnPtrType) ToConvertRowIdToColumnPtrOutputWithContext(ctx context.Context) ConvertRowIdToColumnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConvertRowIdToColumnPtrOutput)
+}
+
+func (i *convertRowIdToColumnPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConvertRowIdToColumn] {
+	return pulumix.Output[*ConvertRowIdToColumn]{
+		OutputState: i.ToConvertRowIdToColumnPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter field, which is whether or not to work on tables which already have a primary key defined.
+type ConvertRowIdToColumnOutput struct{ *pulumi.OutputState }
+
+func (ConvertRowIdToColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConvertRowIdToColumn)(nil)).Elem()
+}
+
+func (o ConvertRowIdToColumnOutput) ToConvertRowIdToColumnOutput() ConvertRowIdToColumnOutput {
+	return o
+}
+
+func (o ConvertRowIdToColumnOutput) ToConvertRowIdToColumnOutputWithContext(ctx context.Context) ConvertRowIdToColumnOutput {
+	return o
+}
+
+func (o ConvertRowIdToColumnOutput) ToConvertRowIdToColumnPtrOutput() ConvertRowIdToColumnPtrOutput {
+	return o.ToConvertRowIdToColumnPtrOutputWithContext(context.Background())
+}
+
+func (o ConvertRowIdToColumnOutput) ToConvertRowIdToColumnPtrOutputWithContext(ctx context.Context) ConvertRowIdToColumnPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConvertRowIdToColumn) *ConvertRowIdToColumn {
+		return &v
+	}).(ConvertRowIdToColumnPtrOutput)
+}
+
+func (o ConvertRowIdToColumnOutput) ToOutput(ctx context.Context) pulumix.Output[ConvertRowIdToColumn] {
+	return pulumix.Output[ConvertRowIdToColumn]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Only work on tables without primary key defined
+func (o ConvertRowIdToColumnOutput) OnlyIfNoPrimaryKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConvertRowIdToColumn) bool { return v.OnlyIfNoPrimaryKey }).(pulumi.BoolOutput)
+}
+
+type ConvertRowIdToColumnPtrOutput struct{ *pulumi.OutputState }
+
+func (ConvertRowIdToColumnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConvertRowIdToColumn)(nil)).Elem()
+}
+
+func (o ConvertRowIdToColumnPtrOutput) ToConvertRowIdToColumnPtrOutput() ConvertRowIdToColumnPtrOutput {
+	return o
+}
+
+func (o ConvertRowIdToColumnPtrOutput) ToConvertRowIdToColumnPtrOutputWithContext(ctx context.Context) ConvertRowIdToColumnPtrOutput {
+	return o
+}
+
+func (o ConvertRowIdToColumnPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConvertRowIdToColumn] {
+	return pulumix.Output[*ConvertRowIdToColumn]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConvertRowIdToColumnPtrOutput) Elem() ConvertRowIdToColumnOutput {
+	return o.ApplyT(func(v *ConvertRowIdToColumn) ConvertRowIdToColumn {
+		if v != nil {
+			return *v
+		}
+		var ret ConvertRowIdToColumn
+		return ret
+	}).(ConvertRowIdToColumnOutput)
+}
+
+// Only work on tables without primary key defined
+func (o ConvertRowIdToColumnPtrOutput) OnlyIfNoPrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConvertRowIdToColumn) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.OnlyIfNoPrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter field, which is whether or not to work on tables which already have a primary key defined.
+type ConvertRowIdToColumnResponse struct {
+	// Only work on tables without primary key defined
+	OnlyIfNoPrimaryKey bool `pulumi:"onlyIfNoPrimaryKey"`
+}
+
+// Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter field, which is whether or not to work on tables which already have a primary key defined.
+type ConvertRowIdToColumnResponseOutput struct{ *pulumi.OutputState }
+
+func (ConvertRowIdToColumnResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConvertRowIdToColumnResponse)(nil)).Elem()
+}
+
+func (o ConvertRowIdToColumnResponseOutput) ToConvertRowIdToColumnResponseOutput() ConvertRowIdToColumnResponseOutput {
+	return o
+}
+
+func (o ConvertRowIdToColumnResponseOutput) ToConvertRowIdToColumnResponseOutputWithContext(ctx context.Context) ConvertRowIdToColumnResponseOutput {
+	return o
+}
+
+func (o ConvertRowIdToColumnResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConvertRowIdToColumnResponse] {
+	return pulumix.Output[ConvertRowIdToColumnResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Only work on tables without primary key defined
+func (o ConvertRowIdToColumnResponseOutput) OnlyIfNoPrimaryKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConvertRowIdToColumnResponse) bool { return v.OnlyIfNoPrimaryKey }).(pulumi.BoolOutput)
+}
+
+// Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+type DataCacheConfig struct {
+	// Optional. Whether data cache is enabled for the instance.
+	DataCacheEnabled *bool `pulumi:"dataCacheEnabled"`
+}
+
+// DataCacheConfigInput is an input type that accepts DataCacheConfigArgs and DataCacheConfigOutput values.
+// You can construct a concrete instance of `DataCacheConfigInput` via:
+//
+//	DataCacheConfigArgs{...}
+type DataCacheConfigInput interface {
+	pulumi.Input
+
+	ToDataCacheConfigOutput() DataCacheConfigOutput
+	ToDataCacheConfigOutputWithContext(context.Context) DataCacheConfigOutput
+}
+
+// Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+type DataCacheConfigArgs struct {
+	// Optional. Whether data cache is enabled for the instance.
+	DataCacheEnabled pulumi.BoolPtrInput `pulumi:"dataCacheEnabled"`
+}
+
+func (DataCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCacheConfig)(nil)).Elem()
+}
+
+func (i DataCacheConfigArgs) ToDataCacheConfigOutput() DataCacheConfigOutput {
+	return i.ToDataCacheConfigOutputWithContext(context.Background())
+}
+
+func (i DataCacheConfigArgs) ToDataCacheConfigOutputWithContext(ctx context.Context) DataCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCacheConfigOutput)
+}
+
+func (i DataCacheConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DataCacheConfig] {
+	return pulumix.Output[DataCacheConfig]{
+		OutputState: i.ToDataCacheConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DataCacheConfigArgs) ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput {
+	return i.ToDataCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataCacheConfigArgs) ToDataCacheConfigPtrOutputWithContext(ctx context.Context) DataCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCacheConfigOutput).ToDataCacheConfigPtrOutputWithContext(ctx)
+}
+
+// DataCacheConfigPtrInput is an input type that accepts DataCacheConfigArgs, DataCacheConfigPtr and DataCacheConfigPtrOutput values.
+// You can construct a concrete instance of `DataCacheConfigPtrInput` via:
+//
+//	        DataCacheConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataCacheConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput
+	ToDataCacheConfigPtrOutputWithContext(context.Context) DataCacheConfigPtrOutput
+}
+
+type dataCacheConfigPtrType DataCacheConfigArgs
+
+func DataCacheConfigPtr(v *DataCacheConfigArgs) DataCacheConfigPtrInput {
+	return (*dataCacheConfigPtrType)(v)
+}
+
+func (*dataCacheConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataCacheConfig)(nil)).Elem()
+}
+
+func (i *dataCacheConfigPtrType) ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput {
+	return i.ToDataCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataCacheConfigPtrType) ToDataCacheConfigPtrOutputWithContext(ctx context.Context) DataCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCacheConfigPtrOutput)
+}
+
+func (i *dataCacheConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataCacheConfig] {
+	return pulumix.Output[*DataCacheConfig]{
+		OutputState: i.ToDataCacheConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+type DataCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (DataCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCacheConfig)(nil)).Elem()
+}
+
+func (o DataCacheConfigOutput) ToDataCacheConfigOutput() DataCacheConfigOutput {
+	return o
+}
+
+func (o DataCacheConfigOutput) ToDataCacheConfigOutputWithContext(ctx context.Context) DataCacheConfigOutput {
+	return o
+}
+
+func (o DataCacheConfigOutput) ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput {
+	return o.ToDataCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataCacheConfigOutput) ToDataCacheConfigPtrOutputWithContext(ctx context.Context) DataCacheConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataCacheConfig) *DataCacheConfig {
+		return &v
+	}).(DataCacheConfigPtrOutput)
+}
+
+func (o DataCacheConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DataCacheConfig] {
+	return pulumix.Output[DataCacheConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Whether data cache is enabled for the instance.
+func (o DataCacheConfigOutput) DataCacheEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataCacheConfig) *bool { return v.DataCacheEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DataCacheConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataCacheConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataCacheConfig)(nil)).Elem()
+}
+
+func (o DataCacheConfigPtrOutput) ToDataCacheConfigPtrOutput() DataCacheConfigPtrOutput {
+	return o
+}
+
+func (o DataCacheConfigPtrOutput) ToDataCacheConfigPtrOutputWithContext(ctx context.Context) DataCacheConfigPtrOutput {
+	return o
+}
+
+func (o DataCacheConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataCacheConfig] {
+	return pulumix.Output[*DataCacheConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DataCacheConfigPtrOutput) Elem() DataCacheConfigOutput {
+	return o.ApplyT(func(v *DataCacheConfig) DataCacheConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataCacheConfig
+		return ret
+	}).(DataCacheConfigOutput)
+}
+
+// Optional. Whether data cache is enabled for the instance.
+func (o DataCacheConfigPtrOutput) DataCacheEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataCacheConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DataCacheEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+type DataCacheConfigResponse struct {
+	// Optional. Whether data cache is enabled for the instance.
+	DataCacheEnabled bool `pulumi:"dataCacheEnabled"`
+}
+
+// Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+type DataCacheConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DataCacheConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCacheConfigResponse)(nil)).Elem()
+}
+
+func (o DataCacheConfigResponseOutput) ToDataCacheConfigResponseOutput() DataCacheConfigResponseOutput {
+	return o
+}
+
+func (o DataCacheConfigResponseOutput) ToDataCacheConfigResponseOutputWithContext(ctx context.Context) DataCacheConfigResponseOutput {
+	return o
+}
+
+func (o DataCacheConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataCacheConfigResponse] {
+	return pulumix.Output[DataCacheConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Whether data cache is enabled for the instance.
+func (o DataCacheConfigResponseOutput) DataCacheEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DataCacheConfigResponse) bool { return v.DataCacheEnabled }).(pulumi.BoolOutput)
+}
+
 // The type and version of a source or destination database.
 type DatabaseEngineInfo struct {
 	// Engine type.
 	Engine DatabaseEngineInfoEngine `pulumi:"engine"`
-	// Engine named version, for example 12.c.1.
+	// Engine version, for example "12.c.1".
 	Version string `pulumi:"version"`
 }
 
@@ -2228,7 +3364,7 @@ type DatabaseEngineInfoInput interface {
 type DatabaseEngineInfoArgs struct {
 	// Engine type.
 	Engine DatabaseEngineInfoEngineInput `pulumi:"engine"`
-	// Engine named version, for example 12.c.1.
+	// Engine version, for example "12.c.1".
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -2276,7 +3412,7 @@ func (o DatabaseEngineInfoOutput) Engine() DatabaseEngineInfoEngineOutput {
 	return o.ApplyT(func(v DatabaseEngineInfo) DatabaseEngineInfoEngine { return v.Engine }).(DatabaseEngineInfoEngineOutput)
 }
 
-// Engine named version, for example 12.c.1.
+// Engine version, for example "12.c.1".
 func (o DatabaseEngineInfoOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEngineInfo) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -2285,7 +3421,7 @@ func (o DatabaseEngineInfoOutput) Version() pulumi.StringOutput {
 type DatabaseEngineInfoResponse struct {
 	// Engine type.
 	Engine string `pulumi:"engine"`
-	// Engine named version, for example 12.c.1.
+	// Engine version, for example "12.c.1".
 	Version string `pulumi:"version"`
 }
 
@@ -2315,7 +3451,7 @@ func (o DatabaseEngineInfoResponseOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEngineInfoResponse) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Engine named version, for example 12.c.1.
+// Engine version, for example "12.c.1".
 func (o DatabaseEngineInfoResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEngineInfoResponse) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -2540,6 +3676,228 @@ func (o DatabaseTypeResponseOutput) Engine() pulumi.StringOutput {
 // The database provider.
 func (o DatabaseTypeResponseOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseTypeResponse) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
+type DoubleComparisonFilter struct {
+	// Double compare value to be used
+	Value float64 `pulumi:"value"`
+	// Relation between source value and compare value
+	ValueComparison DoubleComparisonFilterValueComparison `pulumi:"valueComparison"`
+}
+
+// DoubleComparisonFilterInput is an input type that accepts DoubleComparisonFilterArgs and DoubleComparisonFilterOutput values.
+// You can construct a concrete instance of `DoubleComparisonFilterInput` via:
+//
+//	DoubleComparisonFilterArgs{...}
+type DoubleComparisonFilterInput interface {
+	pulumi.Input
+
+	ToDoubleComparisonFilterOutput() DoubleComparisonFilterOutput
+	ToDoubleComparisonFilterOutputWithContext(context.Context) DoubleComparisonFilterOutput
+}
+
+// Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
+type DoubleComparisonFilterArgs struct {
+	// Double compare value to be used
+	Value pulumi.Float64Input `pulumi:"value"`
+	// Relation between source value and compare value
+	ValueComparison DoubleComparisonFilterValueComparisonInput `pulumi:"valueComparison"`
+}
+
+func (DoubleComparisonFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DoubleComparisonFilter)(nil)).Elem()
+}
+
+func (i DoubleComparisonFilterArgs) ToDoubleComparisonFilterOutput() DoubleComparisonFilterOutput {
+	return i.ToDoubleComparisonFilterOutputWithContext(context.Background())
+}
+
+func (i DoubleComparisonFilterArgs) ToDoubleComparisonFilterOutputWithContext(ctx context.Context) DoubleComparisonFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DoubleComparisonFilterOutput)
+}
+
+func (i DoubleComparisonFilterArgs) ToOutput(ctx context.Context) pulumix.Output[DoubleComparisonFilter] {
+	return pulumix.Output[DoubleComparisonFilter]{
+		OutputState: i.ToDoubleComparisonFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DoubleComparisonFilterArgs) ToDoubleComparisonFilterPtrOutput() DoubleComparisonFilterPtrOutput {
+	return i.ToDoubleComparisonFilterPtrOutputWithContext(context.Background())
+}
+
+func (i DoubleComparisonFilterArgs) ToDoubleComparisonFilterPtrOutputWithContext(ctx context.Context) DoubleComparisonFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DoubleComparisonFilterOutput).ToDoubleComparisonFilterPtrOutputWithContext(ctx)
+}
+
+// DoubleComparisonFilterPtrInput is an input type that accepts DoubleComparisonFilterArgs, DoubleComparisonFilterPtr and DoubleComparisonFilterPtrOutput values.
+// You can construct a concrete instance of `DoubleComparisonFilterPtrInput` via:
+//
+//	        DoubleComparisonFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type DoubleComparisonFilterPtrInput interface {
+	pulumi.Input
+
+	ToDoubleComparisonFilterPtrOutput() DoubleComparisonFilterPtrOutput
+	ToDoubleComparisonFilterPtrOutputWithContext(context.Context) DoubleComparisonFilterPtrOutput
+}
+
+type doubleComparisonFilterPtrType DoubleComparisonFilterArgs
+
+func DoubleComparisonFilterPtr(v *DoubleComparisonFilterArgs) DoubleComparisonFilterPtrInput {
+	return (*doubleComparisonFilterPtrType)(v)
+}
+
+func (*doubleComparisonFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DoubleComparisonFilter)(nil)).Elem()
+}
+
+func (i *doubleComparisonFilterPtrType) ToDoubleComparisonFilterPtrOutput() DoubleComparisonFilterPtrOutput {
+	return i.ToDoubleComparisonFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *doubleComparisonFilterPtrType) ToDoubleComparisonFilterPtrOutputWithContext(ctx context.Context) DoubleComparisonFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DoubleComparisonFilterPtrOutput)
+}
+
+func (i *doubleComparisonFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*DoubleComparisonFilter] {
+	return pulumix.Output[*DoubleComparisonFilter]{
+		OutputState: i.ToDoubleComparisonFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
+type DoubleComparisonFilterOutput struct{ *pulumi.OutputState }
+
+func (DoubleComparisonFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DoubleComparisonFilter)(nil)).Elem()
+}
+
+func (o DoubleComparisonFilterOutput) ToDoubleComparisonFilterOutput() DoubleComparisonFilterOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterOutput) ToDoubleComparisonFilterOutputWithContext(ctx context.Context) DoubleComparisonFilterOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterOutput) ToDoubleComparisonFilterPtrOutput() DoubleComparisonFilterPtrOutput {
+	return o.ToDoubleComparisonFilterPtrOutputWithContext(context.Background())
+}
+
+func (o DoubleComparisonFilterOutput) ToDoubleComparisonFilterPtrOutputWithContext(ctx context.Context) DoubleComparisonFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DoubleComparisonFilter) *DoubleComparisonFilter {
+		return &v
+	}).(DoubleComparisonFilterPtrOutput)
+}
+
+func (o DoubleComparisonFilterOutput) ToOutput(ctx context.Context) pulumix.Output[DoubleComparisonFilter] {
+	return pulumix.Output[DoubleComparisonFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Double compare value to be used
+func (o DoubleComparisonFilterOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DoubleComparisonFilter) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+// Relation between source value and compare value
+func (o DoubleComparisonFilterOutput) ValueComparison() DoubleComparisonFilterValueComparisonOutput {
+	return o.ApplyT(func(v DoubleComparisonFilter) DoubleComparisonFilterValueComparison { return v.ValueComparison }).(DoubleComparisonFilterValueComparisonOutput)
+}
+
+type DoubleComparisonFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (DoubleComparisonFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DoubleComparisonFilter)(nil)).Elem()
+}
+
+func (o DoubleComparisonFilterPtrOutput) ToDoubleComparisonFilterPtrOutput() DoubleComparisonFilterPtrOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterPtrOutput) ToDoubleComparisonFilterPtrOutputWithContext(ctx context.Context) DoubleComparisonFilterPtrOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DoubleComparisonFilter] {
+	return pulumix.Output[*DoubleComparisonFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DoubleComparisonFilterPtrOutput) Elem() DoubleComparisonFilterOutput {
+	return o.ApplyT(func(v *DoubleComparisonFilter) DoubleComparisonFilter {
+		if v != nil {
+			return *v
+		}
+		var ret DoubleComparisonFilter
+		return ret
+	}).(DoubleComparisonFilterOutput)
+}
+
+// Double compare value to be used
+func (o DoubleComparisonFilterPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DoubleComparisonFilter) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Relation between source value and compare value
+func (o DoubleComparisonFilterPtrOutput) ValueComparison() DoubleComparisonFilterValueComparisonPtrOutput {
+	return o.ApplyT(func(v *DoubleComparisonFilter) *DoubleComparisonFilterValueComparison {
+		if v == nil {
+			return nil
+		}
+		return &v.ValueComparison
+	}).(DoubleComparisonFilterValueComparisonPtrOutput)
+}
+
+// Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
+type DoubleComparisonFilterResponse struct {
+	// Double compare value to be used
+	Value float64 `pulumi:"value"`
+	// Relation between source value and compare value
+	ValueComparison string `pulumi:"valueComparison"`
+}
+
+// Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
+type DoubleComparisonFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (DoubleComparisonFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DoubleComparisonFilterResponse)(nil)).Elem()
+}
+
+func (o DoubleComparisonFilterResponseOutput) ToDoubleComparisonFilterResponseOutput() DoubleComparisonFilterResponseOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterResponseOutput) ToDoubleComparisonFilterResponseOutputWithContext(ctx context.Context) DoubleComparisonFilterResponseOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DoubleComparisonFilterResponse] {
+	return pulumix.Output[DoubleComparisonFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Double compare value to be used
+func (o DoubleComparisonFilterResponseOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DoubleComparisonFilterResponse) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+// Relation between source value and compare value
+func (o DoubleComparisonFilterResponseOutput) ValueComparison() pulumi.StringOutput {
+	return o.ApplyT(func(v DoubleComparisonFilterResponse) string { return v.ValueComparison }).(pulumi.StringOutput)
 }
 
 // Dump flag definition.
@@ -2936,6 +4294,176 @@ func (o DumpFlagsResponseOutput) DumpFlags() DumpFlagResponseArrayOutput {
 	return o.ApplyT(func(v DumpFlagsResponse) []DumpFlagResponse { return v.DumpFlags }).(DumpFlagResponseArrayOutput)
 }
 
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+type Empty struct {
+}
+
+// EmptyInput is an input type that accepts EmptyArgs and EmptyOutput values.
+// You can construct a concrete instance of `EmptyInput` via:
+//
+//	EmptyArgs{...}
+type EmptyInput interface {
+	pulumi.Input
+
+	ToEmptyOutput() EmptyOutput
+	ToEmptyOutputWithContext(context.Context) EmptyOutput
+}
+
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+type EmptyArgs struct {
+}
+
+func (EmptyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Empty)(nil)).Elem()
+}
+
+func (i EmptyArgs) ToEmptyOutput() EmptyOutput {
+	return i.ToEmptyOutputWithContext(context.Background())
+}
+
+func (i EmptyArgs) ToEmptyOutputWithContext(ctx context.Context) EmptyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmptyOutput)
+}
+
+func (i EmptyArgs) ToOutput(ctx context.Context) pulumix.Output[Empty] {
+	return pulumix.Output[Empty]{
+		OutputState: i.ToEmptyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EmptyArgs) ToEmptyPtrOutput() EmptyPtrOutput {
+	return i.ToEmptyPtrOutputWithContext(context.Background())
+}
+
+func (i EmptyArgs) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmptyOutput).ToEmptyPtrOutputWithContext(ctx)
+}
+
+// EmptyPtrInput is an input type that accepts EmptyArgs, EmptyPtr and EmptyPtrOutput values.
+// You can construct a concrete instance of `EmptyPtrInput` via:
+//
+//	        EmptyArgs{...}
+//
+//	or:
+//
+//	        nil
+type EmptyPtrInput interface {
+	pulumi.Input
+
+	ToEmptyPtrOutput() EmptyPtrOutput
+	ToEmptyPtrOutputWithContext(context.Context) EmptyPtrOutput
+}
+
+type emptyPtrType EmptyArgs
+
+func EmptyPtr(v *EmptyArgs) EmptyPtrInput {
+	return (*emptyPtrType)(v)
+}
+
+func (*emptyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Empty)(nil)).Elem()
+}
+
+func (i *emptyPtrType) ToEmptyPtrOutput() EmptyPtrOutput {
+	return i.ToEmptyPtrOutputWithContext(context.Background())
+}
+
+func (i *emptyPtrType) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmptyPtrOutput)
+}
+
+func (i *emptyPtrType) ToOutput(ctx context.Context) pulumix.Output[*Empty] {
+	return pulumix.Output[*Empty]{
+		OutputState: i.ToEmptyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+type EmptyOutput struct{ *pulumi.OutputState }
+
+func (EmptyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Empty)(nil)).Elem()
+}
+
+func (o EmptyOutput) ToEmptyOutput() EmptyOutput {
+	return o
+}
+
+func (o EmptyOutput) ToEmptyOutputWithContext(ctx context.Context) EmptyOutput {
+	return o
+}
+
+func (o EmptyOutput) ToEmptyPtrOutput() EmptyPtrOutput {
+	return o.ToEmptyPtrOutputWithContext(context.Background())
+}
+
+func (o EmptyOutput) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Empty) *Empty {
+		return &v
+	}).(EmptyPtrOutput)
+}
+
+func (o EmptyOutput) ToOutput(ctx context.Context) pulumix.Output[Empty] {
+	return pulumix.Output[Empty]{
+		OutputState: o.OutputState,
+	}
+}
+
+type EmptyPtrOutput struct{ *pulumi.OutputState }
+
+func (EmptyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Empty)(nil)).Elem()
+}
+
+func (o EmptyPtrOutput) ToEmptyPtrOutput() EmptyPtrOutput {
+	return o
+}
+
+func (o EmptyPtrOutput) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPtrOutput {
+	return o
+}
+
+func (o EmptyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Empty] {
+	return pulumix.Output[*Empty]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EmptyPtrOutput) Elem() EmptyOutput {
+	return o.ApplyT(func(v *Empty) Empty {
+		if v != nil {
+			return *v
+		}
+		var ret Empty
+		return ret
+	}).(EmptyOutput)
+}
+
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+type EmptyResponse struct {
+}
+
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+type EmptyResponseOutput struct{ *pulumi.OutputState }
+
+func (EmptyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmptyResponse)(nil)).Elem()
+}
+
+func (o EmptyResponseOutput) ToEmptyResponseOutput() EmptyResponseOutput {
+	return o
+}
+
+func (o EmptyResponseOutput) ToEmptyResponseOutputWithContext(ctx context.Context) EmptyResponseOutput {
+	return o
+}
+
+func (o EmptyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmptyResponse] {
+	return pulumix.Output[EmptyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
 type EncryptionConfig struct {
 	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
@@ -3130,6 +4658,202 @@ func (o EncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 // The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
 func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type EntityMove struct {
+	// The new schema
+	NewSchema string `pulumi:"newSchema"`
+}
+
+// EntityMoveInput is an input type that accepts EntityMoveArgs and EntityMoveOutput values.
+// You can construct a concrete instance of `EntityMoveInput` via:
+//
+//	EntityMoveArgs{...}
+type EntityMoveInput interface {
+	pulumi.Input
+
+	ToEntityMoveOutput() EntityMoveOutput
+	ToEntityMoveOutputWithContext(context.Context) EntityMoveOutput
+}
+
+// Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type EntityMoveArgs struct {
+	// The new schema
+	NewSchema pulumi.StringInput `pulumi:"newSchema"`
+}
+
+func (EntityMoveArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityMove)(nil)).Elem()
+}
+
+func (i EntityMoveArgs) ToEntityMoveOutput() EntityMoveOutput {
+	return i.ToEntityMoveOutputWithContext(context.Background())
+}
+
+func (i EntityMoveArgs) ToEntityMoveOutputWithContext(ctx context.Context) EntityMoveOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityMoveOutput)
+}
+
+func (i EntityMoveArgs) ToOutput(ctx context.Context) pulumix.Output[EntityMove] {
+	return pulumix.Output[EntityMove]{
+		OutputState: i.ToEntityMoveOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EntityMoveArgs) ToEntityMovePtrOutput() EntityMovePtrOutput {
+	return i.ToEntityMovePtrOutputWithContext(context.Background())
+}
+
+func (i EntityMoveArgs) ToEntityMovePtrOutputWithContext(ctx context.Context) EntityMovePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityMoveOutput).ToEntityMovePtrOutputWithContext(ctx)
+}
+
+// EntityMovePtrInput is an input type that accepts EntityMoveArgs, EntityMovePtr and EntityMovePtrOutput values.
+// You can construct a concrete instance of `EntityMovePtrInput` via:
+//
+//	        EntityMoveArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityMovePtrInput interface {
+	pulumi.Input
+
+	ToEntityMovePtrOutput() EntityMovePtrOutput
+	ToEntityMovePtrOutputWithContext(context.Context) EntityMovePtrOutput
+}
+
+type entityMovePtrType EntityMoveArgs
+
+func EntityMovePtr(v *EntityMoveArgs) EntityMovePtrInput {
+	return (*entityMovePtrType)(v)
+}
+
+func (*entityMovePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityMove)(nil)).Elem()
+}
+
+func (i *entityMovePtrType) ToEntityMovePtrOutput() EntityMovePtrOutput {
+	return i.ToEntityMovePtrOutputWithContext(context.Background())
+}
+
+func (i *entityMovePtrType) ToEntityMovePtrOutputWithContext(ctx context.Context) EntityMovePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityMovePtrOutput)
+}
+
+func (i *entityMovePtrType) ToOutput(ctx context.Context) pulumix.Output[*EntityMove] {
+	return pulumix.Output[*EntityMove]{
+		OutputState: i.ToEntityMovePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type EntityMoveOutput struct{ *pulumi.OutputState }
+
+func (EntityMoveOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityMove)(nil)).Elem()
+}
+
+func (o EntityMoveOutput) ToEntityMoveOutput() EntityMoveOutput {
+	return o
+}
+
+func (o EntityMoveOutput) ToEntityMoveOutputWithContext(ctx context.Context) EntityMoveOutput {
+	return o
+}
+
+func (o EntityMoveOutput) ToEntityMovePtrOutput() EntityMovePtrOutput {
+	return o.ToEntityMovePtrOutputWithContext(context.Background())
+}
+
+func (o EntityMoveOutput) ToEntityMovePtrOutputWithContext(ctx context.Context) EntityMovePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityMove) *EntityMove {
+		return &v
+	}).(EntityMovePtrOutput)
+}
+
+func (o EntityMoveOutput) ToOutput(ctx context.Context) pulumix.Output[EntityMove] {
+	return pulumix.Output[EntityMove]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The new schema
+func (o EntityMoveOutput) NewSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityMove) string { return v.NewSchema }).(pulumi.StringOutput)
+}
+
+type EntityMovePtrOutput struct{ *pulumi.OutputState }
+
+func (EntityMovePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityMove)(nil)).Elem()
+}
+
+func (o EntityMovePtrOutput) ToEntityMovePtrOutput() EntityMovePtrOutput {
+	return o
+}
+
+func (o EntityMovePtrOutput) ToEntityMovePtrOutputWithContext(ctx context.Context) EntityMovePtrOutput {
+	return o
+}
+
+func (o EntityMovePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityMove] {
+	return pulumix.Output[*EntityMove]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EntityMovePtrOutput) Elem() EntityMoveOutput {
+	return o.ApplyT(func(v *EntityMove) EntityMove {
+		if v != nil {
+			return *v
+		}
+		var ret EntityMove
+		return ret
+	}).(EntityMoveOutput)
+}
+
+// The new schema
+func (o EntityMovePtrOutput) NewSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityMove) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NewSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type EntityMoveResponse struct {
+	// The new schema
+	NewSchema string `pulumi:"newSchema"`
+}
+
+// Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type EntityMoveResponseOutput struct{ *pulumi.OutputState }
+
+func (EntityMoveResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityMoveResponse)(nil)).Elem()
+}
+
+func (o EntityMoveResponseOutput) ToEntityMoveResponseOutput() EntityMoveResponseOutput {
+	return o
+}
+
+func (o EntityMoveResponseOutput) ToEntityMoveResponseOutputWithContext(ctx context.Context) EntityMoveResponseOutput {
+	return o
+}
+
+func (o EntityMoveResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EntityMoveResponse] {
+	return pulumix.Output[EntityMoveResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The new schema
+func (o EntityMoveResponseOutput) NewSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityMoveResponse) string { return v.NewSchema }).(pulumi.StringOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -3404,6 +5128,228 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of the two lists can be specified for the rule.
+type FilterTableColumns struct {
+	// Optional. List of columns to be excluded for a particular table.
+	ExcludeColumns []string `pulumi:"excludeColumns"`
+	// Optional. List of columns to be included for a particular table.
+	IncludeColumns []string `pulumi:"includeColumns"`
+}
+
+// FilterTableColumnsInput is an input type that accepts FilterTableColumnsArgs and FilterTableColumnsOutput values.
+// You can construct a concrete instance of `FilterTableColumnsInput` via:
+//
+//	FilterTableColumnsArgs{...}
+type FilterTableColumnsInput interface {
+	pulumi.Input
+
+	ToFilterTableColumnsOutput() FilterTableColumnsOutput
+	ToFilterTableColumnsOutputWithContext(context.Context) FilterTableColumnsOutput
+}
+
+// Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of the two lists can be specified for the rule.
+type FilterTableColumnsArgs struct {
+	// Optional. List of columns to be excluded for a particular table.
+	ExcludeColumns pulumi.StringArrayInput `pulumi:"excludeColumns"`
+	// Optional. List of columns to be included for a particular table.
+	IncludeColumns pulumi.StringArrayInput `pulumi:"includeColumns"`
+}
+
+func (FilterTableColumnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterTableColumns)(nil)).Elem()
+}
+
+func (i FilterTableColumnsArgs) ToFilterTableColumnsOutput() FilterTableColumnsOutput {
+	return i.ToFilterTableColumnsOutputWithContext(context.Background())
+}
+
+func (i FilterTableColumnsArgs) ToFilterTableColumnsOutputWithContext(ctx context.Context) FilterTableColumnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterTableColumnsOutput)
+}
+
+func (i FilterTableColumnsArgs) ToOutput(ctx context.Context) pulumix.Output[FilterTableColumns] {
+	return pulumix.Output[FilterTableColumns]{
+		OutputState: i.ToFilterTableColumnsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i FilterTableColumnsArgs) ToFilterTableColumnsPtrOutput() FilterTableColumnsPtrOutput {
+	return i.ToFilterTableColumnsPtrOutputWithContext(context.Background())
+}
+
+func (i FilterTableColumnsArgs) ToFilterTableColumnsPtrOutputWithContext(ctx context.Context) FilterTableColumnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterTableColumnsOutput).ToFilterTableColumnsPtrOutputWithContext(ctx)
+}
+
+// FilterTableColumnsPtrInput is an input type that accepts FilterTableColumnsArgs, FilterTableColumnsPtr and FilterTableColumnsPtrOutput values.
+// You can construct a concrete instance of `FilterTableColumnsPtrInput` via:
+//
+//	        FilterTableColumnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FilterTableColumnsPtrInput interface {
+	pulumi.Input
+
+	ToFilterTableColumnsPtrOutput() FilterTableColumnsPtrOutput
+	ToFilterTableColumnsPtrOutputWithContext(context.Context) FilterTableColumnsPtrOutput
+}
+
+type filterTableColumnsPtrType FilterTableColumnsArgs
+
+func FilterTableColumnsPtr(v *FilterTableColumnsArgs) FilterTableColumnsPtrInput {
+	return (*filterTableColumnsPtrType)(v)
+}
+
+func (*filterTableColumnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FilterTableColumns)(nil)).Elem()
+}
+
+func (i *filterTableColumnsPtrType) ToFilterTableColumnsPtrOutput() FilterTableColumnsPtrOutput {
+	return i.ToFilterTableColumnsPtrOutputWithContext(context.Background())
+}
+
+func (i *filterTableColumnsPtrType) ToFilterTableColumnsPtrOutputWithContext(ctx context.Context) FilterTableColumnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterTableColumnsPtrOutput)
+}
+
+func (i *filterTableColumnsPtrType) ToOutput(ctx context.Context) pulumix.Output[*FilterTableColumns] {
+	return pulumix.Output[*FilterTableColumns]{
+		OutputState: i.ToFilterTableColumnsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of the two lists can be specified for the rule.
+type FilterTableColumnsOutput struct{ *pulumi.OutputState }
+
+func (FilterTableColumnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterTableColumns)(nil)).Elem()
+}
+
+func (o FilterTableColumnsOutput) ToFilterTableColumnsOutput() FilterTableColumnsOutput {
+	return o
+}
+
+func (o FilterTableColumnsOutput) ToFilterTableColumnsOutputWithContext(ctx context.Context) FilterTableColumnsOutput {
+	return o
+}
+
+func (o FilterTableColumnsOutput) ToFilterTableColumnsPtrOutput() FilterTableColumnsPtrOutput {
+	return o.ToFilterTableColumnsPtrOutputWithContext(context.Background())
+}
+
+func (o FilterTableColumnsOutput) ToFilterTableColumnsPtrOutputWithContext(ctx context.Context) FilterTableColumnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FilterTableColumns) *FilterTableColumns {
+		return &v
+	}).(FilterTableColumnsPtrOutput)
+}
+
+func (o FilterTableColumnsOutput) ToOutput(ctx context.Context) pulumix.Output[FilterTableColumns] {
+	return pulumix.Output[FilterTableColumns]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. List of columns to be excluded for a particular table.
+func (o FilterTableColumnsOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FilterTableColumns) []string { return v.ExcludeColumns }).(pulumi.StringArrayOutput)
+}
+
+// Optional. List of columns to be included for a particular table.
+func (o FilterTableColumnsOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FilterTableColumns) []string { return v.IncludeColumns }).(pulumi.StringArrayOutput)
+}
+
+type FilterTableColumnsPtrOutput struct{ *pulumi.OutputState }
+
+func (FilterTableColumnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FilterTableColumns)(nil)).Elem()
+}
+
+func (o FilterTableColumnsPtrOutput) ToFilterTableColumnsPtrOutput() FilterTableColumnsPtrOutput {
+	return o
+}
+
+func (o FilterTableColumnsPtrOutput) ToFilterTableColumnsPtrOutputWithContext(ctx context.Context) FilterTableColumnsPtrOutput {
+	return o
+}
+
+func (o FilterTableColumnsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FilterTableColumns] {
+	return pulumix.Output[*FilterTableColumns]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o FilterTableColumnsPtrOutput) Elem() FilterTableColumnsOutput {
+	return o.ApplyT(func(v *FilterTableColumns) FilterTableColumns {
+		if v != nil {
+			return *v
+		}
+		var ret FilterTableColumns
+		return ret
+	}).(FilterTableColumnsOutput)
+}
+
+// Optional. List of columns to be excluded for a particular table.
+func (o FilterTableColumnsPtrOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FilterTableColumns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. List of columns to be included for a particular table.
+func (o FilterTableColumnsPtrOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FilterTableColumns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of the two lists can be specified for the rule.
+type FilterTableColumnsResponse struct {
+	// Optional. List of columns to be excluded for a particular table.
+	ExcludeColumns []string `pulumi:"excludeColumns"`
+	// Optional. List of columns to be included for a particular table.
+	IncludeColumns []string `pulumi:"includeColumns"`
+}
+
+// Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of the two lists can be specified for the rule.
+type FilterTableColumnsResponseOutput struct{ *pulumi.OutputState }
+
+func (FilterTableColumnsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterTableColumnsResponse)(nil)).Elem()
+}
+
+func (o FilterTableColumnsResponseOutput) ToFilterTableColumnsResponseOutput() FilterTableColumnsResponseOutput {
+	return o
+}
+
+func (o FilterTableColumnsResponseOutput) ToFilterTableColumnsResponseOutputWithContext(ctx context.Context) FilterTableColumnsResponseOutput {
+	return o
+}
+
+func (o FilterTableColumnsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilterTableColumnsResponse] {
+	return pulumix.Output[FilterTableColumnsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. List of columns to be excluded for a particular table.
+func (o FilterTableColumnsResponseOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FilterTableColumnsResponse) []string { return v.ExcludeColumns }).(pulumi.StringArrayOutput)
+}
+
+// Optional. List of columns to be included for a particular table.
+func (o FilterTableColumnsResponseOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FilterTableColumnsResponse) []string { return v.IncludeColumns }).(pulumi.StringArrayOutput)
 }
 
 // Forward SSH Tunnel connectivity.
@@ -3706,6 +5652,228 @@ func (o ForwardSshTunnelConnectivityResponseOutput) Username() pulumi.StringOutp
 	return o.ApplyT(func(v ForwardSshTunnelConnectivityResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
+type IntComparisonFilter struct {
+	// Integer compare value to be used
+	Value string `pulumi:"value"`
+	// Relation between source value and compare value
+	ValueComparison IntComparisonFilterValueComparison `pulumi:"valueComparison"`
+}
+
+// IntComparisonFilterInput is an input type that accepts IntComparisonFilterArgs and IntComparisonFilterOutput values.
+// You can construct a concrete instance of `IntComparisonFilterInput` via:
+//
+//	IntComparisonFilterArgs{...}
+type IntComparisonFilterInput interface {
+	pulumi.Input
+
+	ToIntComparisonFilterOutput() IntComparisonFilterOutput
+	ToIntComparisonFilterOutputWithContext(context.Context) IntComparisonFilterOutput
+}
+
+// Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
+type IntComparisonFilterArgs struct {
+	// Integer compare value to be used
+	Value pulumi.StringInput `pulumi:"value"`
+	// Relation between source value and compare value
+	ValueComparison IntComparisonFilterValueComparisonInput `pulumi:"valueComparison"`
+}
+
+func (IntComparisonFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntComparisonFilter)(nil)).Elem()
+}
+
+func (i IntComparisonFilterArgs) ToIntComparisonFilterOutput() IntComparisonFilterOutput {
+	return i.ToIntComparisonFilterOutputWithContext(context.Background())
+}
+
+func (i IntComparisonFilterArgs) ToIntComparisonFilterOutputWithContext(ctx context.Context) IntComparisonFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntComparisonFilterOutput)
+}
+
+func (i IntComparisonFilterArgs) ToOutput(ctx context.Context) pulumix.Output[IntComparisonFilter] {
+	return pulumix.Output[IntComparisonFilter]{
+		OutputState: i.ToIntComparisonFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i IntComparisonFilterArgs) ToIntComparisonFilterPtrOutput() IntComparisonFilterPtrOutput {
+	return i.ToIntComparisonFilterPtrOutputWithContext(context.Background())
+}
+
+func (i IntComparisonFilterArgs) ToIntComparisonFilterPtrOutputWithContext(ctx context.Context) IntComparisonFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntComparisonFilterOutput).ToIntComparisonFilterPtrOutputWithContext(ctx)
+}
+
+// IntComparisonFilterPtrInput is an input type that accepts IntComparisonFilterArgs, IntComparisonFilterPtr and IntComparisonFilterPtrOutput values.
+// You can construct a concrete instance of `IntComparisonFilterPtrInput` via:
+//
+//	        IntComparisonFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntComparisonFilterPtrInput interface {
+	pulumi.Input
+
+	ToIntComparisonFilterPtrOutput() IntComparisonFilterPtrOutput
+	ToIntComparisonFilterPtrOutputWithContext(context.Context) IntComparisonFilterPtrOutput
+}
+
+type intComparisonFilterPtrType IntComparisonFilterArgs
+
+func IntComparisonFilterPtr(v *IntComparisonFilterArgs) IntComparisonFilterPtrInput {
+	return (*intComparisonFilterPtrType)(v)
+}
+
+func (*intComparisonFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntComparisonFilter)(nil)).Elem()
+}
+
+func (i *intComparisonFilterPtrType) ToIntComparisonFilterPtrOutput() IntComparisonFilterPtrOutput {
+	return i.ToIntComparisonFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *intComparisonFilterPtrType) ToIntComparisonFilterPtrOutputWithContext(ctx context.Context) IntComparisonFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntComparisonFilterPtrOutput)
+}
+
+func (i *intComparisonFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*IntComparisonFilter] {
+	return pulumix.Output[*IntComparisonFilter]{
+		OutputState: i.ToIntComparisonFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
+type IntComparisonFilterOutput struct{ *pulumi.OutputState }
+
+func (IntComparisonFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntComparisonFilter)(nil)).Elem()
+}
+
+func (o IntComparisonFilterOutput) ToIntComparisonFilterOutput() IntComparisonFilterOutput {
+	return o
+}
+
+func (o IntComparisonFilterOutput) ToIntComparisonFilterOutputWithContext(ctx context.Context) IntComparisonFilterOutput {
+	return o
+}
+
+func (o IntComparisonFilterOutput) ToIntComparisonFilterPtrOutput() IntComparisonFilterPtrOutput {
+	return o.ToIntComparisonFilterPtrOutputWithContext(context.Background())
+}
+
+func (o IntComparisonFilterOutput) ToIntComparisonFilterPtrOutputWithContext(ctx context.Context) IntComparisonFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntComparisonFilter) *IntComparisonFilter {
+		return &v
+	}).(IntComparisonFilterPtrOutput)
+}
+
+func (o IntComparisonFilterOutput) ToOutput(ctx context.Context) pulumix.Output[IntComparisonFilter] {
+	return pulumix.Output[IntComparisonFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Integer compare value to be used
+func (o IntComparisonFilterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IntComparisonFilter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Relation between source value and compare value
+func (o IntComparisonFilterOutput) ValueComparison() IntComparisonFilterValueComparisonOutput {
+	return o.ApplyT(func(v IntComparisonFilter) IntComparisonFilterValueComparison { return v.ValueComparison }).(IntComparisonFilterValueComparisonOutput)
+}
+
+type IntComparisonFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (IntComparisonFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntComparisonFilter)(nil)).Elem()
+}
+
+func (o IntComparisonFilterPtrOutput) ToIntComparisonFilterPtrOutput() IntComparisonFilterPtrOutput {
+	return o
+}
+
+func (o IntComparisonFilterPtrOutput) ToIntComparisonFilterPtrOutputWithContext(ctx context.Context) IntComparisonFilterPtrOutput {
+	return o
+}
+
+func (o IntComparisonFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntComparisonFilter] {
+	return pulumix.Output[*IntComparisonFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IntComparisonFilterPtrOutput) Elem() IntComparisonFilterOutput {
+	return o.ApplyT(func(v *IntComparisonFilter) IntComparisonFilter {
+		if v != nil {
+			return *v
+		}
+		var ret IntComparisonFilter
+		return ret
+	}).(IntComparisonFilterOutput)
+}
+
+// Integer compare value to be used
+func (o IntComparisonFilterPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntComparisonFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relation between source value and compare value
+func (o IntComparisonFilterPtrOutput) ValueComparison() IntComparisonFilterValueComparisonPtrOutput {
+	return o.ApplyT(func(v *IntComparisonFilter) *IntComparisonFilterValueComparison {
+		if v == nil {
+			return nil
+		}
+		return &v.ValueComparison
+	}).(IntComparisonFilterValueComparisonPtrOutput)
+}
+
+// Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
+type IntComparisonFilterResponse struct {
+	// Integer compare value to be used
+	Value string `pulumi:"value"`
+	// Relation between source value and compare value
+	ValueComparison string `pulumi:"valueComparison"`
+}
+
+// Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
+type IntComparisonFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (IntComparisonFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntComparisonFilterResponse)(nil)).Elem()
+}
+
+func (o IntComparisonFilterResponseOutput) ToIntComparisonFilterResponseOutput() IntComparisonFilterResponseOutput {
+	return o
+}
+
+func (o IntComparisonFilterResponseOutput) ToIntComparisonFilterResponseOutputWithContext(ctx context.Context) IntComparisonFilterResponseOutput {
+	return o
+}
+
+func (o IntComparisonFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntComparisonFilterResponse] {
+	return pulumix.Output[IntComparisonFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Integer compare value to be used
+func (o IntComparisonFilterResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IntComparisonFilterResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Relation between source value and compare value
+func (o IntComparisonFilterResponseOutput) ValueComparison() pulumi.StringOutput {
+	return o.ApplyT(func(v IntComparisonFilterResponse) string { return v.ValueComparison }).(pulumi.StringOutput)
+}
+
 // MachineConfig describes the configuration of a machine.
 type MachineConfig struct {
 	// The number of CPU's in the VM instance.
@@ -3900,6 +6068,797 @@ func (o MachineConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 // The number of CPU's in the VM instance.
 func (o MachineConfigResponseOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v MachineConfigResponse) int { return v.CpuCount }).(pulumi.IntOutput)
+}
+
+// A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
+type MappingRuleFilter struct {
+	// Optional. The rule should be applied to specific entities defined by their fully qualified names.
+	Entities []string `pulumi:"entities"`
+	// Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+	EntityNameContains *string `pulumi:"entityNameContains"`
+	// Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+	EntityNamePrefix *string `pulumi:"entityNamePrefix"`
+	// Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+	EntityNameSuffix *string `pulumi:"entityNameSuffix"`
+	// Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
+	ParentEntity *string `pulumi:"parentEntity"`
+}
+
+// MappingRuleFilterInput is an input type that accepts MappingRuleFilterArgs and MappingRuleFilterOutput values.
+// You can construct a concrete instance of `MappingRuleFilterInput` via:
+//
+//	MappingRuleFilterArgs{...}
+type MappingRuleFilterInput interface {
+	pulumi.Input
+
+	ToMappingRuleFilterOutput() MappingRuleFilterOutput
+	ToMappingRuleFilterOutputWithContext(context.Context) MappingRuleFilterOutput
+}
+
+// A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
+type MappingRuleFilterArgs struct {
+	// Optional. The rule should be applied to specific entities defined by their fully qualified names.
+	Entities pulumi.StringArrayInput `pulumi:"entities"`
+	// Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+	EntityNameContains pulumi.StringPtrInput `pulumi:"entityNameContains"`
+	// Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+	EntityNamePrefix pulumi.StringPtrInput `pulumi:"entityNamePrefix"`
+	// Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+	EntityNameSuffix pulumi.StringPtrInput `pulumi:"entityNameSuffix"`
+	// Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
+	ParentEntity pulumi.StringPtrInput `pulumi:"parentEntity"`
+}
+
+func (MappingRuleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MappingRuleFilter)(nil)).Elem()
+}
+
+func (i MappingRuleFilterArgs) ToMappingRuleFilterOutput() MappingRuleFilterOutput {
+	return i.ToMappingRuleFilterOutputWithContext(context.Background())
+}
+
+func (i MappingRuleFilterArgs) ToMappingRuleFilterOutputWithContext(ctx context.Context) MappingRuleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MappingRuleFilterOutput)
+}
+
+func (i MappingRuleFilterArgs) ToOutput(ctx context.Context) pulumix.Output[MappingRuleFilter] {
+	return pulumix.Output[MappingRuleFilter]{
+		OutputState: i.ToMappingRuleFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
+type MappingRuleFilterOutput struct{ *pulumi.OutputState }
+
+func (MappingRuleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MappingRuleFilter)(nil)).Elem()
+}
+
+func (o MappingRuleFilterOutput) ToMappingRuleFilterOutput() MappingRuleFilterOutput {
+	return o
+}
+
+func (o MappingRuleFilterOutput) ToMappingRuleFilterOutputWithContext(ctx context.Context) MappingRuleFilterOutput {
+	return o
+}
+
+func (o MappingRuleFilterOutput) ToOutput(ctx context.Context) pulumix.Output[MappingRuleFilter] {
+	return pulumix.Output[MappingRuleFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The rule should be applied to specific entities defined by their fully qualified names.
+func (o MappingRuleFilterOutput) Entities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MappingRuleFilter) []string { return v.Entities }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+func (o MappingRuleFilterOutput) EntityNameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MappingRuleFilter) *string { return v.EntityNameContains }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+func (o MappingRuleFilterOutput) EntityNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MappingRuleFilter) *string { return v.EntityNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+func (o MappingRuleFilterOutput) EntityNameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MappingRuleFilter) *string { return v.EntityNameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
+func (o MappingRuleFilterOutput) ParentEntity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MappingRuleFilter) *string { return v.ParentEntity }).(pulumi.StringPtrOutput)
+}
+
+// A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
+type MappingRuleFilterResponse struct {
+	// Optional. The rule should be applied to specific entities defined by their fully qualified names.
+	Entities []string `pulumi:"entities"`
+	// Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+	EntityNameContains string `pulumi:"entityNameContains"`
+	// Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+	EntityNamePrefix string `pulumi:"entityNamePrefix"`
+	// Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+	EntityNameSuffix string `pulumi:"entityNameSuffix"`
+	// Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
+	ParentEntity string `pulumi:"parentEntity"`
+}
+
+// A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
+type MappingRuleFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (MappingRuleFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MappingRuleFilterResponse)(nil)).Elem()
+}
+
+func (o MappingRuleFilterResponseOutput) ToMappingRuleFilterResponseOutput() MappingRuleFilterResponseOutput {
+	return o
+}
+
+func (o MappingRuleFilterResponseOutput) ToMappingRuleFilterResponseOutputWithContext(ctx context.Context) MappingRuleFilterResponseOutput {
+	return o
+}
+
+func (o MappingRuleFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MappingRuleFilterResponse] {
+	return pulumix.Output[MappingRuleFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The rule should be applied to specific entities defined by their fully qualified names.
+func (o MappingRuleFilterResponseOutput) Entities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MappingRuleFilterResponse) []string { return v.Entities }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+func (o MappingRuleFilterResponseOutput) EntityNameContains() pulumi.StringOutput {
+	return o.ApplyT(func(v MappingRuleFilterResponse) string { return v.EntityNameContains }).(pulumi.StringOutput)
+}
+
+// Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+func (o MappingRuleFilterResponseOutput) EntityNamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v MappingRuleFilterResponse) string { return v.EntityNamePrefix }).(pulumi.StringOutput)
+}
+
+// Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+func (o MappingRuleFilterResponseOutput) EntityNameSuffix() pulumi.StringOutput {
+	return o.ApplyT(func(v MappingRuleFilterResponse) string { return v.EntityNameSuffix }).(pulumi.StringOutput)
+}
+
+// Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
+func (o MappingRuleFilterResponseOutput) ParentEntity() pulumi.StringOutput {
+	return o.ApplyT(func(v MappingRuleFilterResponse) string { return v.ParentEntity }).(pulumi.StringOutput)
+}
+
+// Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
+type MultiColumnDatatypeChange struct {
+	// Optional. Custom engine specific features.
+	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	// New data type.
+	NewDataType string `pulumi:"newDataType"`
+	// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+	OverrideFractionalSecondsPrecision *int `pulumi:"overrideFractionalSecondsPrecision"`
+	// Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+	OverrideLength *string `pulumi:"overrideLength"`
+	// Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+	OverridePrecision *int `pulumi:"overridePrecision"`
+	// Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+	OverrideScale *int `pulumi:"overrideScale"`
+	// Filter on source data type.
+	SourceDataTypeFilter string `pulumi:"sourceDataTypeFilter"`
+	// Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+	SourceNumericFilter *SourceNumericFilter `pulumi:"sourceNumericFilter"`
+	// Optional. Filter for text-based data types like varchar.
+	SourceTextFilter *SourceTextFilter `pulumi:"sourceTextFilter"`
+}
+
+// MultiColumnDatatypeChangeInput is an input type that accepts MultiColumnDatatypeChangeArgs and MultiColumnDatatypeChangeOutput values.
+// You can construct a concrete instance of `MultiColumnDatatypeChangeInput` via:
+//
+//	MultiColumnDatatypeChangeArgs{...}
+type MultiColumnDatatypeChangeInput interface {
+	pulumi.Input
+
+	ToMultiColumnDatatypeChangeOutput() MultiColumnDatatypeChangeOutput
+	ToMultiColumnDatatypeChangeOutputWithContext(context.Context) MultiColumnDatatypeChangeOutput
+}
+
+// Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
+type MultiColumnDatatypeChangeArgs struct {
+	// Optional. Custom engine specific features.
+	CustomFeatures pulumi.StringMapInput `pulumi:"customFeatures"`
+	// New data type.
+	NewDataType pulumi.StringInput `pulumi:"newDataType"`
+	// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+	OverrideFractionalSecondsPrecision pulumi.IntPtrInput `pulumi:"overrideFractionalSecondsPrecision"`
+	// Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+	OverrideLength pulumi.StringPtrInput `pulumi:"overrideLength"`
+	// Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+	OverridePrecision pulumi.IntPtrInput `pulumi:"overridePrecision"`
+	// Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+	OverrideScale pulumi.IntPtrInput `pulumi:"overrideScale"`
+	// Filter on source data type.
+	SourceDataTypeFilter pulumi.StringInput `pulumi:"sourceDataTypeFilter"`
+	// Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+	SourceNumericFilter SourceNumericFilterPtrInput `pulumi:"sourceNumericFilter"`
+	// Optional. Filter for text-based data types like varchar.
+	SourceTextFilter SourceTextFilterPtrInput `pulumi:"sourceTextFilter"`
+}
+
+func (MultiColumnDatatypeChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiColumnDatatypeChange)(nil)).Elem()
+}
+
+func (i MultiColumnDatatypeChangeArgs) ToMultiColumnDatatypeChangeOutput() MultiColumnDatatypeChangeOutput {
+	return i.ToMultiColumnDatatypeChangeOutputWithContext(context.Background())
+}
+
+func (i MultiColumnDatatypeChangeArgs) ToMultiColumnDatatypeChangeOutputWithContext(ctx context.Context) MultiColumnDatatypeChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiColumnDatatypeChangeOutput)
+}
+
+func (i MultiColumnDatatypeChangeArgs) ToOutput(ctx context.Context) pulumix.Output[MultiColumnDatatypeChange] {
+	return pulumix.Output[MultiColumnDatatypeChange]{
+		OutputState: i.ToMultiColumnDatatypeChangeOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i MultiColumnDatatypeChangeArgs) ToMultiColumnDatatypeChangePtrOutput() MultiColumnDatatypeChangePtrOutput {
+	return i.ToMultiColumnDatatypeChangePtrOutputWithContext(context.Background())
+}
+
+func (i MultiColumnDatatypeChangeArgs) ToMultiColumnDatatypeChangePtrOutputWithContext(ctx context.Context) MultiColumnDatatypeChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiColumnDatatypeChangeOutput).ToMultiColumnDatatypeChangePtrOutputWithContext(ctx)
+}
+
+// MultiColumnDatatypeChangePtrInput is an input type that accepts MultiColumnDatatypeChangeArgs, MultiColumnDatatypeChangePtr and MultiColumnDatatypeChangePtrOutput values.
+// You can construct a concrete instance of `MultiColumnDatatypeChangePtrInput` via:
+//
+//	        MultiColumnDatatypeChangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultiColumnDatatypeChangePtrInput interface {
+	pulumi.Input
+
+	ToMultiColumnDatatypeChangePtrOutput() MultiColumnDatatypeChangePtrOutput
+	ToMultiColumnDatatypeChangePtrOutputWithContext(context.Context) MultiColumnDatatypeChangePtrOutput
+}
+
+type multiColumnDatatypeChangePtrType MultiColumnDatatypeChangeArgs
+
+func MultiColumnDatatypeChangePtr(v *MultiColumnDatatypeChangeArgs) MultiColumnDatatypeChangePtrInput {
+	return (*multiColumnDatatypeChangePtrType)(v)
+}
+
+func (*multiColumnDatatypeChangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiColumnDatatypeChange)(nil)).Elem()
+}
+
+func (i *multiColumnDatatypeChangePtrType) ToMultiColumnDatatypeChangePtrOutput() MultiColumnDatatypeChangePtrOutput {
+	return i.ToMultiColumnDatatypeChangePtrOutputWithContext(context.Background())
+}
+
+func (i *multiColumnDatatypeChangePtrType) ToMultiColumnDatatypeChangePtrOutputWithContext(ctx context.Context) MultiColumnDatatypeChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiColumnDatatypeChangePtrOutput)
+}
+
+func (i *multiColumnDatatypeChangePtrType) ToOutput(ctx context.Context) pulumix.Output[*MultiColumnDatatypeChange] {
+	return pulumix.Output[*MultiColumnDatatypeChange]{
+		OutputState: i.ToMultiColumnDatatypeChangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
+type MultiColumnDatatypeChangeOutput struct{ *pulumi.OutputState }
+
+func (MultiColumnDatatypeChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiColumnDatatypeChange)(nil)).Elem()
+}
+
+func (o MultiColumnDatatypeChangeOutput) ToMultiColumnDatatypeChangeOutput() MultiColumnDatatypeChangeOutput {
+	return o
+}
+
+func (o MultiColumnDatatypeChangeOutput) ToMultiColumnDatatypeChangeOutputWithContext(ctx context.Context) MultiColumnDatatypeChangeOutput {
+	return o
+}
+
+func (o MultiColumnDatatypeChangeOutput) ToMultiColumnDatatypeChangePtrOutput() MultiColumnDatatypeChangePtrOutput {
+	return o.ToMultiColumnDatatypeChangePtrOutputWithContext(context.Background())
+}
+
+func (o MultiColumnDatatypeChangeOutput) ToMultiColumnDatatypeChangePtrOutputWithContext(ctx context.Context) MultiColumnDatatypeChangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiColumnDatatypeChange) *MultiColumnDatatypeChange {
+		return &v
+	}).(MultiColumnDatatypeChangePtrOutput)
+}
+
+func (o MultiColumnDatatypeChangeOutput) ToOutput(ctx context.Context) pulumix.Output[MultiColumnDatatypeChange] {
+	return pulumix.Output[MultiColumnDatatypeChange]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Custom engine specific features.
+func (o MultiColumnDatatypeChangeOutput) CustomFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+}
+
+// New data type.
+func (o MultiColumnDatatypeChangeOutput) NewDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) string { return v.NewDataType }).(pulumi.StringOutput)
+}
+
+// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+func (o MultiColumnDatatypeChangeOutput) OverrideFractionalSecondsPrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) *int { return v.OverrideFractionalSecondsPrecision }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+func (o MultiColumnDatatypeChangeOutput) OverrideLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) *string { return v.OverrideLength }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+func (o MultiColumnDatatypeChangeOutput) OverridePrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) *int { return v.OverridePrecision }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+func (o MultiColumnDatatypeChangeOutput) OverrideScale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) *int { return v.OverrideScale }).(pulumi.IntPtrOutput)
+}
+
+// Filter on source data type.
+func (o MultiColumnDatatypeChangeOutput) SourceDataTypeFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) string { return v.SourceDataTypeFilter }).(pulumi.StringOutput)
+}
+
+// Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+func (o MultiColumnDatatypeChangeOutput) SourceNumericFilter() SourceNumericFilterPtrOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) *SourceNumericFilter { return v.SourceNumericFilter }).(SourceNumericFilterPtrOutput)
+}
+
+// Optional. Filter for text-based data types like varchar.
+func (o MultiColumnDatatypeChangeOutput) SourceTextFilter() SourceTextFilterPtrOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) *SourceTextFilter { return v.SourceTextFilter }).(SourceTextFilterPtrOutput)
+}
+
+type MultiColumnDatatypeChangePtrOutput struct{ *pulumi.OutputState }
+
+func (MultiColumnDatatypeChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiColumnDatatypeChange)(nil)).Elem()
+}
+
+func (o MultiColumnDatatypeChangePtrOutput) ToMultiColumnDatatypeChangePtrOutput() MultiColumnDatatypeChangePtrOutput {
+	return o
+}
+
+func (o MultiColumnDatatypeChangePtrOutput) ToMultiColumnDatatypeChangePtrOutputWithContext(ctx context.Context) MultiColumnDatatypeChangePtrOutput {
+	return o
+}
+
+func (o MultiColumnDatatypeChangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiColumnDatatypeChange] {
+	return pulumix.Output[*MultiColumnDatatypeChange]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MultiColumnDatatypeChangePtrOutput) Elem() MultiColumnDatatypeChangeOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) MultiColumnDatatypeChange {
+		if v != nil {
+			return *v
+		}
+		var ret MultiColumnDatatypeChange
+		return ret
+	}).(MultiColumnDatatypeChangeOutput)
+}
+
+// Optional. Custom engine specific features.
+func (o MultiColumnDatatypeChangePtrOutput) CustomFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFeatures
+	}).(pulumi.StringMapOutput)
+}
+
+// New data type.
+func (o MultiColumnDatatypeChangePtrOutput) NewDataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NewDataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+func (o MultiColumnDatatypeChangePtrOutput) OverrideFractionalSecondsPrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideFractionalSecondsPrecision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+func (o MultiColumnDatatypeChangePtrOutput) OverrideLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideLength
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+func (o MultiColumnDatatypeChangePtrOutput) OverridePrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OverridePrecision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+func (o MultiColumnDatatypeChangePtrOutput) OverrideScale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideScale
+	}).(pulumi.IntPtrOutput)
+}
+
+// Filter on source data type.
+func (o MultiColumnDatatypeChangePtrOutput) SourceDataTypeFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceDataTypeFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+func (o MultiColumnDatatypeChangePtrOutput) SourceNumericFilter() SourceNumericFilterPtrOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) *SourceNumericFilter {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNumericFilter
+	}).(SourceNumericFilterPtrOutput)
+}
+
+// Optional. Filter for text-based data types like varchar.
+func (o MultiColumnDatatypeChangePtrOutput) SourceTextFilter() SourceTextFilterPtrOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) *SourceTextFilter {
+		if v == nil {
+			return nil
+		}
+		return v.SourceTextFilter
+	}).(SourceTextFilterPtrOutput)
+}
+
+// Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
+type MultiColumnDatatypeChangeResponse struct {
+	// Optional. Custom engine specific features.
+	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	// New data type.
+	NewDataType string `pulumi:"newDataType"`
+	// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+	OverrideFractionalSecondsPrecision int `pulumi:"overrideFractionalSecondsPrecision"`
+	// Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+	OverrideLength string `pulumi:"overrideLength"`
+	// Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+	OverridePrecision int `pulumi:"overridePrecision"`
+	// Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+	OverrideScale int `pulumi:"overrideScale"`
+	// Filter on source data type.
+	SourceDataTypeFilter string `pulumi:"sourceDataTypeFilter"`
+	// Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+	SourceNumericFilter SourceNumericFilterResponse `pulumi:"sourceNumericFilter"`
+	// Optional. Filter for text-based data types like varchar.
+	SourceTextFilter SourceTextFilterResponse `pulumi:"sourceTextFilter"`
+}
+
+// Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
+type MultiColumnDatatypeChangeResponseOutput struct{ *pulumi.OutputState }
+
+func (MultiColumnDatatypeChangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiColumnDatatypeChangeResponse)(nil)).Elem()
+}
+
+func (o MultiColumnDatatypeChangeResponseOutput) ToMultiColumnDatatypeChangeResponseOutput() MultiColumnDatatypeChangeResponseOutput {
+	return o
+}
+
+func (o MultiColumnDatatypeChangeResponseOutput) ToMultiColumnDatatypeChangeResponseOutputWithContext(ctx context.Context) MultiColumnDatatypeChangeResponseOutput {
+	return o
+}
+
+func (o MultiColumnDatatypeChangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MultiColumnDatatypeChangeResponse] {
+	return pulumix.Output[MultiColumnDatatypeChangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Custom engine specific features.
+func (o MultiColumnDatatypeChangeResponseOutput) CustomFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+}
+
+// New data type.
+func (o MultiColumnDatatypeChangeResponseOutput) NewDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) string { return v.NewDataType }).(pulumi.StringOutput)
+}
+
+// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+func (o MultiColumnDatatypeChangeResponseOutput) OverrideFractionalSecondsPrecision() pulumi.IntOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) int { return v.OverrideFractionalSecondsPrecision }).(pulumi.IntOutput)
+}
+
+// Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+func (o MultiColumnDatatypeChangeResponseOutput) OverrideLength() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) string { return v.OverrideLength }).(pulumi.StringOutput)
+}
+
+// Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+func (o MultiColumnDatatypeChangeResponseOutput) OverridePrecision() pulumi.IntOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) int { return v.OverridePrecision }).(pulumi.IntOutput)
+}
+
+// Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+func (o MultiColumnDatatypeChangeResponseOutput) OverrideScale() pulumi.IntOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) int { return v.OverrideScale }).(pulumi.IntOutput)
+}
+
+// Filter on source data type.
+func (o MultiColumnDatatypeChangeResponseOutput) SourceDataTypeFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) string { return v.SourceDataTypeFilter }).(pulumi.StringOutput)
+}
+
+// Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+func (o MultiColumnDatatypeChangeResponseOutput) SourceNumericFilter() SourceNumericFilterResponseOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) SourceNumericFilterResponse { return v.SourceNumericFilter }).(SourceNumericFilterResponseOutput)
+}
+
+// Optional. Filter for text-based data types like varchar.
+func (o MultiColumnDatatypeChangeResponseOutput) SourceTextFilter() SourceTextFilterResponseOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) SourceTextFilterResponse { return v.SourceTextFilter }).(SourceTextFilterResponseOutput)
+}
+
+// Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type MultiEntityRename struct {
+	// Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+	NewNamePattern *string `pulumi:"newNamePattern"`
+	// Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+	SourceNameTransformation *MultiEntityRenameSourceNameTransformation `pulumi:"sourceNameTransformation"`
+}
+
+// MultiEntityRenameInput is an input type that accepts MultiEntityRenameArgs and MultiEntityRenameOutput values.
+// You can construct a concrete instance of `MultiEntityRenameInput` via:
+//
+//	MultiEntityRenameArgs{...}
+type MultiEntityRenameInput interface {
+	pulumi.Input
+
+	ToMultiEntityRenameOutput() MultiEntityRenameOutput
+	ToMultiEntityRenameOutputWithContext(context.Context) MultiEntityRenameOutput
+}
+
+// Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type MultiEntityRenameArgs struct {
+	// Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+	NewNamePattern pulumi.StringPtrInput `pulumi:"newNamePattern"`
+	// Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+	SourceNameTransformation MultiEntityRenameSourceNameTransformationPtrInput `pulumi:"sourceNameTransformation"`
+}
+
+func (MultiEntityRenameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiEntityRename)(nil)).Elem()
+}
+
+func (i MultiEntityRenameArgs) ToMultiEntityRenameOutput() MultiEntityRenameOutput {
+	return i.ToMultiEntityRenameOutputWithContext(context.Background())
+}
+
+func (i MultiEntityRenameArgs) ToMultiEntityRenameOutputWithContext(ctx context.Context) MultiEntityRenameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiEntityRenameOutput)
+}
+
+func (i MultiEntityRenameArgs) ToOutput(ctx context.Context) pulumix.Output[MultiEntityRename] {
+	return pulumix.Output[MultiEntityRename]{
+		OutputState: i.ToMultiEntityRenameOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i MultiEntityRenameArgs) ToMultiEntityRenamePtrOutput() MultiEntityRenamePtrOutput {
+	return i.ToMultiEntityRenamePtrOutputWithContext(context.Background())
+}
+
+func (i MultiEntityRenameArgs) ToMultiEntityRenamePtrOutputWithContext(ctx context.Context) MultiEntityRenamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiEntityRenameOutput).ToMultiEntityRenamePtrOutputWithContext(ctx)
+}
+
+// MultiEntityRenamePtrInput is an input type that accepts MultiEntityRenameArgs, MultiEntityRenamePtr and MultiEntityRenamePtrOutput values.
+// You can construct a concrete instance of `MultiEntityRenamePtrInput` via:
+//
+//	        MultiEntityRenameArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultiEntityRenamePtrInput interface {
+	pulumi.Input
+
+	ToMultiEntityRenamePtrOutput() MultiEntityRenamePtrOutput
+	ToMultiEntityRenamePtrOutputWithContext(context.Context) MultiEntityRenamePtrOutput
+}
+
+type multiEntityRenamePtrType MultiEntityRenameArgs
+
+func MultiEntityRenamePtr(v *MultiEntityRenameArgs) MultiEntityRenamePtrInput {
+	return (*multiEntityRenamePtrType)(v)
+}
+
+func (*multiEntityRenamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiEntityRename)(nil)).Elem()
+}
+
+func (i *multiEntityRenamePtrType) ToMultiEntityRenamePtrOutput() MultiEntityRenamePtrOutput {
+	return i.ToMultiEntityRenamePtrOutputWithContext(context.Background())
+}
+
+func (i *multiEntityRenamePtrType) ToMultiEntityRenamePtrOutputWithContext(ctx context.Context) MultiEntityRenamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiEntityRenamePtrOutput)
+}
+
+func (i *multiEntityRenamePtrType) ToOutput(ctx context.Context) pulumix.Output[*MultiEntityRename] {
+	return pulumix.Output[*MultiEntityRename]{
+		OutputState: i.ToMultiEntityRenamePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type MultiEntityRenameOutput struct{ *pulumi.OutputState }
+
+func (MultiEntityRenameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiEntityRename)(nil)).Elem()
+}
+
+func (o MultiEntityRenameOutput) ToMultiEntityRenameOutput() MultiEntityRenameOutput {
+	return o
+}
+
+func (o MultiEntityRenameOutput) ToMultiEntityRenameOutputWithContext(ctx context.Context) MultiEntityRenameOutput {
+	return o
+}
+
+func (o MultiEntityRenameOutput) ToMultiEntityRenamePtrOutput() MultiEntityRenamePtrOutput {
+	return o.ToMultiEntityRenamePtrOutputWithContext(context.Background())
+}
+
+func (o MultiEntityRenameOutput) ToMultiEntityRenamePtrOutputWithContext(ctx context.Context) MultiEntityRenamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiEntityRename) *MultiEntityRename {
+		return &v
+	}).(MultiEntityRenamePtrOutput)
+}
+
+func (o MultiEntityRenameOutput) ToOutput(ctx context.Context) pulumix.Output[MultiEntityRename] {
+	return pulumix.Output[MultiEntityRename]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+func (o MultiEntityRenameOutput) NewNamePattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiEntityRename) *string { return v.NewNamePattern }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+func (o MultiEntityRenameOutput) SourceNameTransformation() MultiEntityRenameSourceNameTransformationPtrOutput {
+	return o.ApplyT(func(v MultiEntityRename) *MultiEntityRenameSourceNameTransformation {
+		return v.SourceNameTransformation
+	}).(MultiEntityRenameSourceNameTransformationPtrOutput)
+}
+
+type MultiEntityRenamePtrOutput struct{ *pulumi.OutputState }
+
+func (MultiEntityRenamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiEntityRename)(nil)).Elem()
+}
+
+func (o MultiEntityRenamePtrOutput) ToMultiEntityRenamePtrOutput() MultiEntityRenamePtrOutput {
+	return o
+}
+
+func (o MultiEntityRenamePtrOutput) ToMultiEntityRenamePtrOutputWithContext(ctx context.Context) MultiEntityRenamePtrOutput {
+	return o
+}
+
+func (o MultiEntityRenamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiEntityRename] {
+	return pulumix.Output[*MultiEntityRename]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MultiEntityRenamePtrOutput) Elem() MultiEntityRenameOutput {
+	return o.ApplyT(func(v *MultiEntityRename) MultiEntityRename {
+		if v != nil {
+			return *v
+		}
+		var ret MultiEntityRename
+		return ret
+	}).(MultiEntityRenameOutput)
+}
+
+// Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+func (o MultiEntityRenamePtrOutput) NewNamePattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiEntityRename) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NewNamePattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+func (o MultiEntityRenamePtrOutput) SourceNameTransformation() MultiEntityRenameSourceNameTransformationPtrOutput {
+	return o.ApplyT(func(v *MultiEntityRename) *MultiEntityRenameSourceNameTransformation {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNameTransformation
+	}).(MultiEntityRenameSourceNameTransformationPtrOutput)
+}
+
+// Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type MultiEntityRenameResponse struct {
+	// Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+	NewNamePattern string `pulumi:"newNamePattern"`
+	// Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+	SourceNameTransformation string `pulumi:"sourceNameTransformation"`
+}
+
+// Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+type MultiEntityRenameResponseOutput struct{ *pulumi.OutputState }
+
+func (MultiEntityRenameResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiEntityRenameResponse)(nil)).Elem()
+}
+
+func (o MultiEntityRenameResponseOutput) ToMultiEntityRenameResponseOutput() MultiEntityRenameResponseOutput {
+	return o
+}
+
+func (o MultiEntityRenameResponseOutput) ToMultiEntityRenameResponseOutputWithContext(ctx context.Context) MultiEntityRenameResponseOutput {
+	return o
+}
+
+func (o MultiEntityRenameResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MultiEntityRenameResponse] {
+	return pulumix.Output[MultiEntityRenameResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+func (o MultiEntityRenameResponseOutput) NewNamePattern() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiEntityRenameResponse) string { return v.NewNamePattern }).(pulumi.StringOutput)
+}
+
+// Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+func (o MultiEntityRenameResponseOutput) SourceNameTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiEntityRenameResponse) string { return v.SourceNameTransformation }).(pulumi.StringOutput)
 }
 
 // Specifies connection parameters required specifically for MySQL databases.
@@ -4249,6 +7208,8 @@ type OracleConnectionProfile struct {
 	Port int `pulumi:"port"`
 	// Private connectivity.
 	PrivateConnectivity *PrivateConnectivity `pulumi:"privateConnectivity"`
+	// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
+	Ssl *SslConfig `pulumi:"ssl"`
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity *StaticServiceIpConnectivity `pulumi:"staticServiceIpConnectivity"`
 	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
@@ -4280,6 +7241,8 @@ type OracleConnectionProfileArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// Private connectivity.
 	PrivateConnectivity PrivateConnectivityPtrInput `pulumi:"privateConnectivity"`
+	// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
+	Ssl SslConfigPtrInput `pulumi:"ssl"`
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity StaticServiceIpConnectivityPtrInput `pulumi:"staticServiceIpConnectivity"`
 	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
@@ -4412,6 +7375,11 @@ func (o OracleConnectionProfileOutput) PrivateConnectivity() PrivateConnectivity
 	return o.ApplyT(func(v OracleConnectionProfile) *PrivateConnectivity { return v.PrivateConnectivity }).(PrivateConnectivityPtrOutput)
 }
 
+// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
+func (o OracleConnectionProfileOutput) Ssl() SslConfigPtrOutput {
+	return o.ApplyT(func(v OracleConnectionProfile) *SslConfig { return v.Ssl }).(SslConfigPtrOutput)
+}
+
 // Static Service IP connectivity.
 func (o OracleConnectionProfileOutput) StaticServiceIpConnectivity() StaticServiceIpConnectivityPtrOutput {
 	return o.ApplyT(func(v OracleConnectionProfile) *StaticServiceIpConnectivity { return v.StaticServiceIpConnectivity }).(StaticServiceIpConnectivityPtrOutput)
@@ -4512,6 +7480,16 @@ func (o OracleConnectionProfilePtrOutput) PrivateConnectivity() PrivateConnectiv
 	}).(PrivateConnectivityPtrOutput)
 }
 
+// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
+func (o OracleConnectionProfilePtrOutput) Ssl() SslConfigPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) *SslConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(SslConfigPtrOutput)
+}
+
 // Static Service IP connectivity.
 func (o OracleConnectionProfilePtrOutput) StaticServiceIpConnectivity() StaticServiceIpConnectivityPtrOutput {
 	return o.ApplyT(func(v *OracleConnectionProfile) *StaticServiceIpConnectivity {
@@ -4548,6 +7526,8 @@ type OracleConnectionProfileResponse struct {
 	Port int `pulumi:"port"`
 	// Private connectivity.
 	PrivateConnectivity PrivateConnectivityResponse `pulumi:"privateConnectivity"`
+	// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
+	Ssl SslConfigResponse `pulumi:"ssl"`
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity StaticServiceIpConnectivityResponse `pulumi:"staticServiceIpConnectivity"`
 	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
@@ -4612,6 +7592,11 @@ func (o OracleConnectionProfileResponseOutput) PrivateConnectivity() PrivateConn
 	return o.ApplyT(func(v OracleConnectionProfileResponse) PrivateConnectivityResponse { return v.PrivateConnectivity }).(PrivateConnectivityResponseOutput)
 }
 
+// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
+func (o OracleConnectionProfileResponseOutput) Ssl() SslConfigResponseOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) SslConfigResponse { return v.Ssl }).(SslConfigResponseOutput)
+}
+
 // Static Service IP connectivity.
 func (o OracleConnectionProfileResponseOutput) StaticServiceIpConnectivity() StaticServiceIpConnectivityResponseOutput {
 	return o.ApplyT(func(v OracleConnectionProfileResponse) StaticServiceIpConnectivityResponse {
@@ -4624,8 +7609,206 @@ func (o OracleConnectionProfileResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleConnectionProfileResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Performance configuration definition.
+type PerformanceConfig struct {
+	// Initial dump parallelism level.
+	DumpParallelLevel *PerformanceConfigDumpParallelLevel `pulumi:"dumpParallelLevel"`
+}
+
+// PerformanceConfigInput is an input type that accepts PerformanceConfigArgs and PerformanceConfigOutput values.
+// You can construct a concrete instance of `PerformanceConfigInput` via:
+//
+//	PerformanceConfigArgs{...}
+type PerformanceConfigInput interface {
+	pulumi.Input
+
+	ToPerformanceConfigOutput() PerformanceConfigOutput
+	ToPerformanceConfigOutputWithContext(context.Context) PerformanceConfigOutput
+}
+
+// Performance configuration definition.
+type PerformanceConfigArgs struct {
+	// Initial dump parallelism level.
+	DumpParallelLevel PerformanceConfigDumpParallelLevelPtrInput `pulumi:"dumpParallelLevel"`
+}
+
+func (PerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceConfig)(nil)).Elem()
+}
+
+func (i PerformanceConfigArgs) ToPerformanceConfigOutput() PerformanceConfigOutput {
+	return i.ToPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i PerformanceConfigArgs) ToPerformanceConfigOutputWithContext(ctx context.Context) PerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerformanceConfigOutput)
+}
+
+func (i PerformanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PerformanceConfig] {
+	return pulumix.Output[PerformanceConfig]{
+		OutputState: i.ToPerformanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PerformanceConfigArgs) ToPerformanceConfigPtrOutput() PerformanceConfigPtrOutput {
+	return i.ToPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PerformanceConfigArgs) ToPerformanceConfigPtrOutputWithContext(ctx context.Context) PerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerformanceConfigOutput).ToPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// PerformanceConfigPtrInput is an input type that accepts PerformanceConfigArgs, PerformanceConfigPtr and PerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `PerformanceConfigPtrInput` via:
+//
+//	        PerformanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToPerformanceConfigPtrOutput() PerformanceConfigPtrOutput
+	ToPerformanceConfigPtrOutputWithContext(context.Context) PerformanceConfigPtrOutput
+}
+
+type performanceConfigPtrType PerformanceConfigArgs
+
+func PerformanceConfigPtr(v *PerformanceConfigArgs) PerformanceConfigPtrInput {
+	return (*performanceConfigPtrType)(v)
+}
+
+func (*performanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerformanceConfig)(nil)).Elem()
+}
+
+func (i *performanceConfigPtrType) ToPerformanceConfigPtrOutput() PerformanceConfigPtrOutput {
+	return i.ToPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *performanceConfigPtrType) ToPerformanceConfigPtrOutputWithContext(ctx context.Context) PerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerformanceConfigPtrOutput)
+}
+
+func (i *performanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PerformanceConfig] {
+	return pulumix.Output[*PerformanceConfig]{
+		OutputState: i.ToPerformanceConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Performance configuration definition.
+type PerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (PerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceConfig)(nil)).Elem()
+}
+
+func (o PerformanceConfigOutput) ToPerformanceConfigOutput() PerformanceConfigOutput {
+	return o
+}
+
+func (o PerformanceConfigOutput) ToPerformanceConfigOutputWithContext(ctx context.Context) PerformanceConfigOutput {
+	return o
+}
+
+func (o PerformanceConfigOutput) ToPerformanceConfigPtrOutput() PerformanceConfigPtrOutput {
+	return o.ToPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PerformanceConfigOutput) ToPerformanceConfigPtrOutputWithContext(ctx context.Context) PerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PerformanceConfig) *PerformanceConfig {
+		return &v
+	}).(PerformanceConfigPtrOutput)
+}
+
+func (o PerformanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PerformanceConfig] {
+	return pulumix.Output[PerformanceConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Initial dump parallelism level.
+func (o PerformanceConfigOutput) DumpParallelLevel() PerformanceConfigDumpParallelLevelPtrOutput {
+	return o.ApplyT(func(v PerformanceConfig) *PerformanceConfigDumpParallelLevel { return v.DumpParallelLevel }).(PerformanceConfigDumpParallelLevelPtrOutput)
+}
+
+type PerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerformanceConfig)(nil)).Elem()
+}
+
+func (o PerformanceConfigPtrOutput) ToPerformanceConfigPtrOutput() PerformanceConfigPtrOutput {
+	return o
+}
+
+func (o PerformanceConfigPtrOutput) ToPerformanceConfigPtrOutputWithContext(ctx context.Context) PerformanceConfigPtrOutput {
+	return o
+}
+
+func (o PerformanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PerformanceConfig] {
+	return pulumix.Output[*PerformanceConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PerformanceConfigPtrOutput) Elem() PerformanceConfigOutput {
+	return o.ApplyT(func(v *PerformanceConfig) PerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PerformanceConfig
+		return ret
+	}).(PerformanceConfigOutput)
+}
+
+// Initial dump parallelism level.
+func (o PerformanceConfigPtrOutput) DumpParallelLevel() PerformanceConfigDumpParallelLevelPtrOutput {
+	return o.ApplyT(func(v *PerformanceConfig) *PerformanceConfigDumpParallelLevel {
+		if v == nil {
+			return nil
+		}
+		return v.DumpParallelLevel
+	}).(PerformanceConfigDumpParallelLevelPtrOutput)
+}
+
+// Performance configuration definition.
+type PerformanceConfigResponse struct {
+	// Initial dump parallelism level.
+	DumpParallelLevel string `pulumi:"dumpParallelLevel"`
+}
+
+// Performance configuration definition.
+type PerformanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PerformanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceConfigResponse)(nil)).Elem()
+}
+
+func (o PerformanceConfigResponseOutput) ToPerformanceConfigResponseOutput() PerformanceConfigResponseOutput {
+	return o
+}
+
+func (o PerformanceConfigResponseOutput) ToPerformanceConfigResponseOutputWithContext(ctx context.Context) PerformanceConfigResponseOutput {
+	return o
+}
+
+func (o PerformanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PerformanceConfigResponse] {
+	return pulumix.Output[PerformanceConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Initial dump parallelism level.
+func (o PerformanceConfigResponseOutput) DumpParallelLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v PerformanceConfigResponse) string { return v.DumpParallelLevel }).(pulumi.StringOutput)
+}
+
 // Specifies connection parameters required specifically for PostgreSQL databases.
 type PostgreSqlConnectionProfile struct {
+	// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+	AlloydbClusterId *string `pulumi:"alloydbClusterId"`
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId *string `pulumi:"cloudSqlId"`
 	// The IP or hostname of the source PostgreSQL database.
@@ -4657,6 +7840,8 @@ type PostgreSqlConnectionProfileInput interface {
 
 // Specifies connection parameters required specifically for PostgreSQL databases.
 type PostgreSqlConnectionProfileArgs struct {
+	// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+	AlloydbClusterId pulumi.StringPtrInput `pulumi:"alloydbClusterId"`
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId pulumi.StringPtrInput `pulumi:"cloudSqlId"`
 	// The IP or hostname of the source PostgreSQL database.
@@ -4771,6 +7956,11 @@ func (o PostgreSqlConnectionProfileOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
+// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+func (o PostgreSqlConnectionProfileOutput) AlloydbClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionProfile) *string { return v.AlloydbClusterId }).(pulumi.StringPtrOutput)
+}
+
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 func (o PostgreSqlConnectionProfileOutput) CloudSqlId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionProfile) *string { return v.CloudSqlId }).(pulumi.StringPtrOutput)
@@ -4841,6 +8031,16 @@ func (o PostgreSqlConnectionProfilePtrOutput) Elem() PostgreSqlConnectionProfile
 		var ret PostgreSqlConnectionProfile
 		return ret
 	}).(PostgreSqlConnectionProfileOutput)
+}
+
+// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+func (o PostgreSqlConnectionProfilePtrOutput) AlloydbClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlloydbClusterId
+	}).(pulumi.StringPtrOutput)
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -4925,6 +8125,8 @@ func (o PostgreSqlConnectionProfilePtrOutput) Username() pulumi.StringPtrOutput 
 
 // Specifies connection parameters required specifically for PostgreSQL databases.
 type PostgreSqlConnectionProfileResponse struct {
+	// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+	AlloydbClusterId string `pulumi:"alloydbClusterId"`
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId string `pulumi:"cloudSqlId"`
 	// The IP or hostname of the source PostgreSQL database.
@@ -4966,6 +8168,11 @@ func (o PostgreSqlConnectionProfileResponseOutput) ToOutput(ctx context.Context)
 	return pulumix.Output[PostgreSqlConnectionProfileResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+func (o PostgreSqlConnectionProfileResponseOutput) AlloydbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) string { return v.AlloydbClusterId }).(pulumi.StringOutput)
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -5492,7 +8699,7 @@ func (o PrivateConnectivityResponseOutput) PrivateConnection() pulumi.StringOutp
 	return o.ApplyT(func(v PrivateConnectivityResponse) string { return v.PrivateConnection }).(pulumi.StringOutput)
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+// [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivity struct {
 	// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
 	ServiceAttachment string `pulumi:"serviceAttachment"`
@@ -5509,7 +8716,7 @@ type PrivateServiceConnectConnectivityInput interface {
 	ToPrivateServiceConnectConnectivityOutputWithContext(context.Context) PrivateServiceConnectConnectivityOutput
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+// [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivityArgs struct {
 	// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
 	ServiceAttachment pulumi.StringInput `pulumi:"serviceAttachment"`
@@ -5580,7 +8787,7 @@ func (i *privateServiceConnectConnectivityPtrType) ToOutput(ctx context.Context)
 	}
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+// [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivityOutput struct{ *pulumi.OutputState }
 
 func (PrivateServiceConnectConnectivityOutput) ElementType() reflect.Type {
@@ -5656,13 +8863,13 @@ func (o PrivateServiceConnectConnectivityPtrOutput) ServiceAttachment() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+// [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivityResponse struct {
 	// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
 	ServiceAttachment string `pulumi:"serviceAttachment"`
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+// [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivityResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateServiceConnectConnectivityResponseOutput) ElementType() reflect.Type {
@@ -5960,6 +9167,2120 @@ func (o ReverseSshConnectivityResponseOutput) VmPort() pulumi.IntOutput {
 // The name of the VPC to peer with the Cloud SQL private network.
 func (o ReverseSshConnectivityResponseOutput) Vpc() pulumi.StringOutput {
 	return o.ApplyT(func(v ReverseSshConnectivityResponse) string { return v.Vpc }).(pulumi.StringOutput)
+}
+
+// This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value = 0.
+type RoundToScale struct {
+	// Scale value to be used
+	Scale int `pulumi:"scale"`
+}
+
+// RoundToScaleInput is an input type that accepts RoundToScaleArgs and RoundToScaleOutput values.
+// You can construct a concrete instance of `RoundToScaleInput` via:
+//
+//	RoundToScaleArgs{...}
+type RoundToScaleInput interface {
+	pulumi.Input
+
+	ToRoundToScaleOutput() RoundToScaleOutput
+	ToRoundToScaleOutputWithContext(context.Context) RoundToScaleOutput
+}
+
+// This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value = 0.
+type RoundToScaleArgs struct {
+	// Scale value to be used
+	Scale pulumi.IntInput `pulumi:"scale"`
+}
+
+func (RoundToScaleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoundToScale)(nil)).Elem()
+}
+
+func (i RoundToScaleArgs) ToRoundToScaleOutput() RoundToScaleOutput {
+	return i.ToRoundToScaleOutputWithContext(context.Background())
+}
+
+func (i RoundToScaleArgs) ToRoundToScaleOutputWithContext(ctx context.Context) RoundToScaleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoundToScaleOutput)
+}
+
+func (i RoundToScaleArgs) ToOutput(ctx context.Context) pulumix.Output[RoundToScale] {
+	return pulumix.Output[RoundToScale]{
+		OutputState: i.ToRoundToScaleOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RoundToScaleArgs) ToRoundToScalePtrOutput() RoundToScalePtrOutput {
+	return i.ToRoundToScalePtrOutputWithContext(context.Background())
+}
+
+func (i RoundToScaleArgs) ToRoundToScalePtrOutputWithContext(ctx context.Context) RoundToScalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoundToScaleOutput).ToRoundToScalePtrOutputWithContext(ctx)
+}
+
+// RoundToScalePtrInput is an input type that accepts RoundToScaleArgs, RoundToScalePtr and RoundToScalePtrOutput values.
+// You can construct a concrete instance of `RoundToScalePtrInput` via:
+//
+//	        RoundToScaleArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoundToScalePtrInput interface {
+	pulumi.Input
+
+	ToRoundToScalePtrOutput() RoundToScalePtrOutput
+	ToRoundToScalePtrOutputWithContext(context.Context) RoundToScalePtrOutput
+}
+
+type roundToScalePtrType RoundToScaleArgs
+
+func RoundToScalePtr(v *RoundToScaleArgs) RoundToScalePtrInput {
+	return (*roundToScalePtrType)(v)
+}
+
+func (*roundToScalePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoundToScale)(nil)).Elem()
+}
+
+func (i *roundToScalePtrType) ToRoundToScalePtrOutput() RoundToScalePtrOutput {
+	return i.ToRoundToScalePtrOutputWithContext(context.Background())
+}
+
+func (i *roundToScalePtrType) ToRoundToScalePtrOutputWithContext(ctx context.Context) RoundToScalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoundToScalePtrOutput)
+}
+
+func (i *roundToScalePtrType) ToOutput(ctx context.Context) pulumix.Output[*RoundToScale] {
+	return pulumix.Output[*RoundToScale]{
+		OutputState: i.ToRoundToScalePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value = 0.
+type RoundToScaleOutput struct{ *pulumi.OutputState }
+
+func (RoundToScaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoundToScale)(nil)).Elem()
+}
+
+func (o RoundToScaleOutput) ToRoundToScaleOutput() RoundToScaleOutput {
+	return o
+}
+
+func (o RoundToScaleOutput) ToRoundToScaleOutputWithContext(ctx context.Context) RoundToScaleOutput {
+	return o
+}
+
+func (o RoundToScaleOutput) ToRoundToScalePtrOutput() RoundToScalePtrOutput {
+	return o.ToRoundToScalePtrOutputWithContext(context.Background())
+}
+
+func (o RoundToScaleOutput) ToRoundToScalePtrOutputWithContext(ctx context.Context) RoundToScalePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoundToScale) *RoundToScale {
+		return &v
+	}).(RoundToScalePtrOutput)
+}
+
+func (o RoundToScaleOutput) ToOutput(ctx context.Context) pulumix.Output[RoundToScale] {
+	return pulumix.Output[RoundToScale]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Scale value to be used
+func (o RoundToScaleOutput) Scale() pulumi.IntOutput {
+	return o.ApplyT(func(v RoundToScale) int { return v.Scale }).(pulumi.IntOutput)
+}
+
+type RoundToScalePtrOutput struct{ *pulumi.OutputState }
+
+func (RoundToScalePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoundToScale)(nil)).Elem()
+}
+
+func (o RoundToScalePtrOutput) ToRoundToScalePtrOutput() RoundToScalePtrOutput {
+	return o
+}
+
+func (o RoundToScalePtrOutput) ToRoundToScalePtrOutputWithContext(ctx context.Context) RoundToScalePtrOutput {
+	return o
+}
+
+func (o RoundToScalePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoundToScale] {
+	return pulumix.Output[*RoundToScale]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RoundToScalePtrOutput) Elem() RoundToScaleOutput {
+	return o.ApplyT(func(v *RoundToScale) RoundToScale {
+		if v != nil {
+			return *v
+		}
+		var ret RoundToScale
+		return ret
+	}).(RoundToScaleOutput)
+}
+
+// Scale value to be used
+func (o RoundToScalePtrOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RoundToScale) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Scale
+	}).(pulumi.IntPtrOutput)
+}
+
+// This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value = 0.
+type RoundToScaleResponse struct {
+	// Scale value to be used
+	Scale int `pulumi:"scale"`
+}
+
+// This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value = 0.
+type RoundToScaleResponseOutput struct{ *pulumi.OutputState }
+
+func (RoundToScaleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoundToScaleResponse)(nil)).Elem()
+}
+
+func (o RoundToScaleResponseOutput) ToRoundToScaleResponseOutput() RoundToScaleResponseOutput {
+	return o
+}
+
+func (o RoundToScaleResponseOutput) ToRoundToScaleResponseOutputWithContext(ctx context.Context) RoundToScaleResponseOutput {
+	return o
+}
+
+func (o RoundToScaleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoundToScaleResponse] {
+	return pulumix.Output[RoundToScaleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Scale value to be used
+func (o RoundToScaleResponseOutput) Scale() pulumi.IntOutput {
+	return o.ApplyT(func(v RoundToScaleResponse) int { return v.Scale }).(pulumi.IntOutput)
+}
+
+// Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table.
+type SetTablePrimaryKey struct {
+	// Optional. Name for the primary key
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// List of column names for the primary key
+	PrimaryKeyColumns []string `pulumi:"primaryKeyColumns"`
+}
+
+// SetTablePrimaryKeyInput is an input type that accepts SetTablePrimaryKeyArgs and SetTablePrimaryKeyOutput values.
+// You can construct a concrete instance of `SetTablePrimaryKeyInput` via:
+//
+//	SetTablePrimaryKeyArgs{...}
+type SetTablePrimaryKeyInput interface {
+	pulumi.Input
+
+	ToSetTablePrimaryKeyOutput() SetTablePrimaryKeyOutput
+	ToSetTablePrimaryKeyOutputWithContext(context.Context) SetTablePrimaryKeyOutput
+}
+
+// Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table.
+type SetTablePrimaryKeyArgs struct {
+	// Optional. Name for the primary key
+	PrimaryKey pulumi.StringPtrInput `pulumi:"primaryKey"`
+	// List of column names for the primary key
+	PrimaryKeyColumns pulumi.StringArrayInput `pulumi:"primaryKeyColumns"`
+}
+
+func (SetTablePrimaryKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetTablePrimaryKey)(nil)).Elem()
+}
+
+func (i SetTablePrimaryKeyArgs) ToSetTablePrimaryKeyOutput() SetTablePrimaryKeyOutput {
+	return i.ToSetTablePrimaryKeyOutputWithContext(context.Background())
+}
+
+func (i SetTablePrimaryKeyArgs) ToSetTablePrimaryKeyOutputWithContext(ctx context.Context) SetTablePrimaryKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetTablePrimaryKeyOutput)
+}
+
+func (i SetTablePrimaryKeyArgs) ToOutput(ctx context.Context) pulumix.Output[SetTablePrimaryKey] {
+	return pulumix.Output[SetTablePrimaryKey]{
+		OutputState: i.ToSetTablePrimaryKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SetTablePrimaryKeyArgs) ToSetTablePrimaryKeyPtrOutput() SetTablePrimaryKeyPtrOutput {
+	return i.ToSetTablePrimaryKeyPtrOutputWithContext(context.Background())
+}
+
+func (i SetTablePrimaryKeyArgs) ToSetTablePrimaryKeyPtrOutputWithContext(ctx context.Context) SetTablePrimaryKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetTablePrimaryKeyOutput).ToSetTablePrimaryKeyPtrOutputWithContext(ctx)
+}
+
+// SetTablePrimaryKeyPtrInput is an input type that accepts SetTablePrimaryKeyArgs, SetTablePrimaryKeyPtr and SetTablePrimaryKeyPtrOutput values.
+// You can construct a concrete instance of `SetTablePrimaryKeyPtrInput` via:
+//
+//	        SetTablePrimaryKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SetTablePrimaryKeyPtrInput interface {
+	pulumi.Input
+
+	ToSetTablePrimaryKeyPtrOutput() SetTablePrimaryKeyPtrOutput
+	ToSetTablePrimaryKeyPtrOutputWithContext(context.Context) SetTablePrimaryKeyPtrOutput
+}
+
+type setTablePrimaryKeyPtrType SetTablePrimaryKeyArgs
+
+func SetTablePrimaryKeyPtr(v *SetTablePrimaryKeyArgs) SetTablePrimaryKeyPtrInput {
+	return (*setTablePrimaryKeyPtrType)(v)
+}
+
+func (*setTablePrimaryKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SetTablePrimaryKey)(nil)).Elem()
+}
+
+func (i *setTablePrimaryKeyPtrType) ToSetTablePrimaryKeyPtrOutput() SetTablePrimaryKeyPtrOutput {
+	return i.ToSetTablePrimaryKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *setTablePrimaryKeyPtrType) ToSetTablePrimaryKeyPtrOutputWithContext(ctx context.Context) SetTablePrimaryKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetTablePrimaryKeyPtrOutput)
+}
+
+func (i *setTablePrimaryKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*SetTablePrimaryKey] {
+	return pulumix.Output[*SetTablePrimaryKey]{
+		OutputState: i.ToSetTablePrimaryKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table.
+type SetTablePrimaryKeyOutput struct{ *pulumi.OutputState }
+
+func (SetTablePrimaryKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetTablePrimaryKey)(nil)).Elem()
+}
+
+func (o SetTablePrimaryKeyOutput) ToSetTablePrimaryKeyOutput() SetTablePrimaryKeyOutput {
+	return o
+}
+
+func (o SetTablePrimaryKeyOutput) ToSetTablePrimaryKeyOutputWithContext(ctx context.Context) SetTablePrimaryKeyOutput {
+	return o
+}
+
+func (o SetTablePrimaryKeyOutput) ToSetTablePrimaryKeyPtrOutput() SetTablePrimaryKeyPtrOutput {
+	return o.ToSetTablePrimaryKeyPtrOutputWithContext(context.Background())
+}
+
+func (o SetTablePrimaryKeyOutput) ToSetTablePrimaryKeyPtrOutputWithContext(ctx context.Context) SetTablePrimaryKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SetTablePrimaryKey) *SetTablePrimaryKey {
+		return &v
+	}).(SetTablePrimaryKeyPtrOutput)
+}
+
+func (o SetTablePrimaryKeyOutput) ToOutput(ctx context.Context) pulumix.Output[SetTablePrimaryKey] {
+	return pulumix.Output[SetTablePrimaryKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Name for the primary key
+func (o SetTablePrimaryKeyOutput) PrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SetTablePrimaryKey) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
+}
+
+// List of column names for the primary key
+func (o SetTablePrimaryKeyOutput) PrimaryKeyColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SetTablePrimaryKey) []string { return v.PrimaryKeyColumns }).(pulumi.StringArrayOutput)
+}
+
+type SetTablePrimaryKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (SetTablePrimaryKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SetTablePrimaryKey)(nil)).Elem()
+}
+
+func (o SetTablePrimaryKeyPtrOutput) ToSetTablePrimaryKeyPtrOutput() SetTablePrimaryKeyPtrOutput {
+	return o
+}
+
+func (o SetTablePrimaryKeyPtrOutput) ToSetTablePrimaryKeyPtrOutputWithContext(ctx context.Context) SetTablePrimaryKeyPtrOutput {
+	return o
+}
+
+func (o SetTablePrimaryKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SetTablePrimaryKey] {
+	return pulumix.Output[*SetTablePrimaryKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SetTablePrimaryKeyPtrOutput) Elem() SetTablePrimaryKeyOutput {
+	return o.ApplyT(func(v *SetTablePrimaryKey) SetTablePrimaryKey {
+		if v != nil {
+			return *v
+		}
+		var ret SetTablePrimaryKey
+		return ret
+	}).(SetTablePrimaryKeyOutput)
+}
+
+// Optional. Name for the primary key
+func (o SetTablePrimaryKeyPtrOutput) PrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SetTablePrimaryKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of column names for the primary key
+func (o SetTablePrimaryKeyPtrOutput) PrimaryKeyColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SetTablePrimaryKey) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryKeyColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table.
+type SetTablePrimaryKeyResponse struct {
+	// Optional. Name for the primary key
+	PrimaryKey string `pulumi:"primaryKey"`
+	// List of column names for the primary key
+	PrimaryKeyColumns []string `pulumi:"primaryKeyColumns"`
+}
+
+// Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table.
+type SetTablePrimaryKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (SetTablePrimaryKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetTablePrimaryKeyResponse)(nil)).Elem()
+}
+
+func (o SetTablePrimaryKeyResponseOutput) ToSetTablePrimaryKeyResponseOutput() SetTablePrimaryKeyResponseOutput {
+	return o
+}
+
+func (o SetTablePrimaryKeyResponseOutput) ToSetTablePrimaryKeyResponseOutputWithContext(ctx context.Context) SetTablePrimaryKeyResponseOutput {
+	return o
+}
+
+func (o SetTablePrimaryKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SetTablePrimaryKeyResponse] {
+	return pulumix.Output[SetTablePrimaryKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Name for the primary key
+func (o SetTablePrimaryKeyResponseOutput) PrimaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SetTablePrimaryKeyResponse) string { return v.PrimaryKey }).(pulumi.StringOutput)
+}
+
+// List of column names for the primary key
+func (o SetTablePrimaryKeyResponseOutput) PrimaryKeyColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SetTablePrimaryKeyResponse) []string { return v.PrimaryKeyColumns }).(pulumi.StringArrayOutput)
+}
+
+// Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a field is not specified than the destination column's configuration will be the same as the one in the source column..
+type SingleColumnChange struct {
+	// Optional. Is the column of array type.
+	Array *bool `pulumi:"array"`
+	// Optional. The length of the array, only relevant if the column type is an array.
+	ArrayLength *int `pulumi:"arrayLength"`
+	// Optional. Is the column auto-generated/identity.
+	AutoGenerated *bool `pulumi:"autoGenerated"`
+	// Optional. Charset override - instead of table level charset.
+	Charset *string `pulumi:"charset"`
+	// Optional. Collation override - instead of table level collation.
+	Collation *string `pulumi:"collation"`
+	// Optional. Comment associated with the column.
+	Comment *string `pulumi:"comment"`
+	// Optional. Custom engine specific features.
+	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	// Optional. Column data type name.
+	DataType *string `pulumi:"dataType"`
+	// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+	FractionalSecondsPrecision *int `pulumi:"fractionalSecondsPrecision"`
+	// Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+	Length *string `pulumi:"length"`
+	// Optional. Is the column nullable.
+	Nullable *bool `pulumi:"nullable"`
+	// Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+	Precision *int `pulumi:"precision"`
+	// Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+	Scale *int `pulumi:"scale"`
+	// Optional. Specifies the list of values allowed in the column.
+	SetValues []string `pulumi:"setValues"`
+	// Optional. Is the column a UDT (User-defined Type).
+	Udt *bool `pulumi:"udt"`
+}
+
+// SingleColumnChangeInput is an input type that accepts SingleColumnChangeArgs and SingleColumnChangeOutput values.
+// You can construct a concrete instance of `SingleColumnChangeInput` via:
+//
+//	SingleColumnChangeArgs{...}
+type SingleColumnChangeInput interface {
+	pulumi.Input
+
+	ToSingleColumnChangeOutput() SingleColumnChangeOutput
+	ToSingleColumnChangeOutputWithContext(context.Context) SingleColumnChangeOutput
+}
+
+// Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a field is not specified than the destination column's configuration will be the same as the one in the source column..
+type SingleColumnChangeArgs struct {
+	// Optional. Is the column of array type.
+	Array pulumi.BoolPtrInput `pulumi:"array"`
+	// Optional. The length of the array, only relevant if the column type is an array.
+	ArrayLength pulumi.IntPtrInput `pulumi:"arrayLength"`
+	// Optional. Is the column auto-generated/identity.
+	AutoGenerated pulumi.BoolPtrInput `pulumi:"autoGenerated"`
+	// Optional. Charset override - instead of table level charset.
+	Charset pulumi.StringPtrInput `pulumi:"charset"`
+	// Optional. Collation override - instead of table level collation.
+	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Optional. Comment associated with the column.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Optional. Custom engine specific features.
+	CustomFeatures pulumi.StringMapInput `pulumi:"customFeatures"`
+	// Optional. Column data type name.
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+	FractionalSecondsPrecision pulumi.IntPtrInput `pulumi:"fractionalSecondsPrecision"`
+	// Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+	Length pulumi.StringPtrInput `pulumi:"length"`
+	// Optional. Is the column nullable.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+	// Optional. Specifies the list of values allowed in the column.
+	SetValues pulumi.StringArrayInput `pulumi:"setValues"`
+	// Optional. Is the column a UDT (User-defined Type).
+	Udt pulumi.BoolPtrInput `pulumi:"udt"`
+}
+
+func (SingleColumnChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleColumnChange)(nil)).Elem()
+}
+
+func (i SingleColumnChangeArgs) ToSingleColumnChangeOutput() SingleColumnChangeOutput {
+	return i.ToSingleColumnChangeOutputWithContext(context.Background())
+}
+
+func (i SingleColumnChangeArgs) ToSingleColumnChangeOutputWithContext(ctx context.Context) SingleColumnChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleColumnChangeOutput)
+}
+
+func (i SingleColumnChangeArgs) ToOutput(ctx context.Context) pulumix.Output[SingleColumnChange] {
+	return pulumix.Output[SingleColumnChange]{
+		OutputState: i.ToSingleColumnChangeOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SingleColumnChangeArgs) ToSingleColumnChangePtrOutput() SingleColumnChangePtrOutput {
+	return i.ToSingleColumnChangePtrOutputWithContext(context.Background())
+}
+
+func (i SingleColumnChangeArgs) ToSingleColumnChangePtrOutputWithContext(ctx context.Context) SingleColumnChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleColumnChangeOutput).ToSingleColumnChangePtrOutputWithContext(ctx)
+}
+
+// SingleColumnChangePtrInput is an input type that accepts SingleColumnChangeArgs, SingleColumnChangePtr and SingleColumnChangePtrOutput values.
+// You can construct a concrete instance of `SingleColumnChangePtrInput` via:
+//
+//	        SingleColumnChangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SingleColumnChangePtrInput interface {
+	pulumi.Input
+
+	ToSingleColumnChangePtrOutput() SingleColumnChangePtrOutput
+	ToSingleColumnChangePtrOutputWithContext(context.Context) SingleColumnChangePtrOutput
+}
+
+type singleColumnChangePtrType SingleColumnChangeArgs
+
+func SingleColumnChangePtr(v *SingleColumnChangeArgs) SingleColumnChangePtrInput {
+	return (*singleColumnChangePtrType)(v)
+}
+
+func (*singleColumnChangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleColumnChange)(nil)).Elem()
+}
+
+func (i *singleColumnChangePtrType) ToSingleColumnChangePtrOutput() SingleColumnChangePtrOutput {
+	return i.ToSingleColumnChangePtrOutputWithContext(context.Background())
+}
+
+func (i *singleColumnChangePtrType) ToSingleColumnChangePtrOutputWithContext(ctx context.Context) SingleColumnChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleColumnChangePtrOutput)
+}
+
+func (i *singleColumnChangePtrType) ToOutput(ctx context.Context) pulumix.Output[*SingleColumnChange] {
+	return pulumix.Output[*SingleColumnChange]{
+		OutputState: i.ToSingleColumnChangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a field is not specified than the destination column's configuration will be the same as the one in the source column..
+type SingleColumnChangeOutput struct{ *pulumi.OutputState }
+
+func (SingleColumnChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleColumnChange)(nil)).Elem()
+}
+
+func (o SingleColumnChangeOutput) ToSingleColumnChangeOutput() SingleColumnChangeOutput {
+	return o
+}
+
+func (o SingleColumnChangeOutput) ToSingleColumnChangeOutputWithContext(ctx context.Context) SingleColumnChangeOutput {
+	return o
+}
+
+func (o SingleColumnChangeOutput) ToSingleColumnChangePtrOutput() SingleColumnChangePtrOutput {
+	return o.ToSingleColumnChangePtrOutputWithContext(context.Background())
+}
+
+func (o SingleColumnChangeOutput) ToSingleColumnChangePtrOutputWithContext(ctx context.Context) SingleColumnChangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingleColumnChange) *SingleColumnChange {
+		return &v
+	}).(SingleColumnChangePtrOutput)
+}
+
+func (o SingleColumnChangeOutput) ToOutput(ctx context.Context) pulumix.Output[SingleColumnChange] {
+	return pulumix.Output[SingleColumnChange]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Is the column of array type.
+func (o SingleColumnChangeOutput) Array() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *bool { return v.Array }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The length of the array, only relevant if the column type is an array.
+func (o SingleColumnChangeOutput) ArrayLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *int { return v.ArrayLength }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Is the column auto-generated/identity.
+func (o SingleColumnChangeOutput) AutoGenerated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *bool { return v.AutoGenerated }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Charset override - instead of table level charset.
+func (o SingleColumnChangeOutput) Charset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *string { return v.Charset }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Collation override - instead of table level collation.
+func (o SingleColumnChangeOutput) Collation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *string { return v.Collation }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Comment associated with the column.
+func (o SingleColumnChangeOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Custom engine specific features.
+func (o SingleColumnChangeOutput) CustomFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SingleColumnChange) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+}
+
+// Optional. Column data type name.
+func (o SingleColumnChangeOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+func (o SingleColumnChangeOutput) FractionalSecondsPrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *int { return v.FractionalSecondsPrecision }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+func (o SingleColumnChangeOutput) Length() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *string { return v.Length }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Is the column nullable.
+func (o SingleColumnChangeOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+func (o SingleColumnChangeOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *int { return v.Precision }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+func (o SingleColumnChangeOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *int { return v.Scale }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the list of values allowed in the column.
+func (o SingleColumnChangeOutput) SetValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SingleColumnChange) []string { return v.SetValues }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Is the column a UDT (User-defined Type).
+func (o SingleColumnChangeOutput) Udt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SingleColumnChange) *bool { return v.Udt }).(pulumi.BoolPtrOutput)
+}
+
+type SingleColumnChangePtrOutput struct{ *pulumi.OutputState }
+
+func (SingleColumnChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleColumnChange)(nil)).Elem()
+}
+
+func (o SingleColumnChangePtrOutput) ToSingleColumnChangePtrOutput() SingleColumnChangePtrOutput {
+	return o
+}
+
+func (o SingleColumnChangePtrOutput) ToSingleColumnChangePtrOutputWithContext(ctx context.Context) SingleColumnChangePtrOutput {
+	return o
+}
+
+func (o SingleColumnChangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SingleColumnChange] {
+	return pulumix.Output[*SingleColumnChange]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SingleColumnChangePtrOutput) Elem() SingleColumnChangeOutput {
+	return o.ApplyT(func(v *SingleColumnChange) SingleColumnChange {
+		if v != nil {
+			return *v
+		}
+		var ret SingleColumnChange
+		return ret
+	}).(SingleColumnChangeOutput)
+}
+
+// Optional. Is the column of array type.
+func (o SingleColumnChangePtrOutput) Array() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Array
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The length of the array, only relevant if the column type is an array.
+func (o SingleColumnChangePtrOutput) ArrayLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ArrayLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Is the column auto-generated/identity.
+func (o SingleColumnChangePtrOutput) AutoGenerated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoGenerated
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Charset override - instead of table level charset.
+func (o SingleColumnChangePtrOutput) Charset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Charset
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Collation override - instead of table level collation.
+func (o SingleColumnChangePtrOutput) Collation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Collation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Comment associated with the column.
+func (o SingleColumnChangePtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Custom engine specific features.
+func (o SingleColumnChangePtrOutput) CustomFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SingleColumnChange) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFeatures
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Column data type name.
+func (o SingleColumnChangePtrOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+func (o SingleColumnChangePtrOutput) FractionalSecondsPrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FractionalSecondsPrecision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+func (o SingleColumnChangePtrOutput) Length() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Length
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Is the column nullable.
+func (o SingleColumnChangePtrOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+func (o SingleColumnChangePtrOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Precision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+func (o SingleColumnChangePtrOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the list of values allowed in the column.
+func (o SingleColumnChangePtrOutput) SetValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SingleColumnChange) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SetValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Is the column a UDT (User-defined Type).
+func (o SingleColumnChangePtrOutput) Udt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SingleColumnChange) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Udt
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a field is not specified than the destination column's configuration will be the same as the one in the source column..
+type SingleColumnChangeResponse struct {
+	// Optional. Is the column of array type.
+	Array bool `pulumi:"array"`
+	// Optional. The length of the array, only relevant if the column type is an array.
+	ArrayLength int `pulumi:"arrayLength"`
+	// Optional. Is the column auto-generated/identity.
+	AutoGenerated bool `pulumi:"autoGenerated"`
+	// Optional. Charset override - instead of table level charset.
+	Charset string `pulumi:"charset"`
+	// Optional. Collation override - instead of table level collation.
+	Collation string `pulumi:"collation"`
+	// Optional. Comment associated with the column.
+	Comment string `pulumi:"comment"`
+	// Optional. Custom engine specific features.
+	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	// Optional. Column data type name.
+	DataType string `pulumi:"dataType"`
+	// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+	FractionalSecondsPrecision int `pulumi:"fractionalSecondsPrecision"`
+	// Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+	Length string `pulumi:"length"`
+	// Optional. Is the column nullable.
+	Nullable bool `pulumi:"nullable"`
+	// Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+	Precision int `pulumi:"precision"`
+	// Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+	Scale int `pulumi:"scale"`
+	// Optional. Specifies the list of values allowed in the column.
+	SetValues []string `pulumi:"setValues"`
+	// Optional. Is the column a UDT (User-defined Type).
+	Udt bool `pulumi:"udt"`
+}
+
+// Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a field is not specified than the destination column's configuration will be the same as the one in the source column..
+type SingleColumnChangeResponseOutput struct{ *pulumi.OutputState }
+
+func (SingleColumnChangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleColumnChangeResponse)(nil)).Elem()
+}
+
+func (o SingleColumnChangeResponseOutput) ToSingleColumnChangeResponseOutput() SingleColumnChangeResponseOutput {
+	return o
+}
+
+func (o SingleColumnChangeResponseOutput) ToSingleColumnChangeResponseOutputWithContext(ctx context.Context) SingleColumnChangeResponseOutput {
+	return o
+}
+
+func (o SingleColumnChangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SingleColumnChangeResponse] {
+	return pulumix.Output[SingleColumnChangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Is the column of array type.
+func (o SingleColumnChangeResponseOutput) Array() pulumi.BoolOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) bool { return v.Array }).(pulumi.BoolOutput)
+}
+
+// Optional. The length of the array, only relevant if the column type is an array.
+func (o SingleColumnChangeResponseOutput) ArrayLength() pulumi.IntOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) int { return v.ArrayLength }).(pulumi.IntOutput)
+}
+
+// Optional. Is the column auto-generated/identity.
+func (o SingleColumnChangeResponseOutput) AutoGenerated() pulumi.BoolOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) bool { return v.AutoGenerated }).(pulumi.BoolOutput)
+}
+
+// Optional. Charset override - instead of table level charset.
+func (o SingleColumnChangeResponseOutput) Charset() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) string { return v.Charset }).(pulumi.StringOutput)
+}
+
+// Optional. Collation override - instead of table level collation.
+func (o SingleColumnChangeResponseOutput) Collation() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) string { return v.Collation }).(pulumi.StringOutput)
+}
+
+// Optional. Comment associated with the column.
+func (o SingleColumnChangeResponseOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// Optional. Custom engine specific features.
+func (o SingleColumnChangeResponseOutput) CustomFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+}
+
+// Optional. Column data type name.
+func (o SingleColumnChangeResponseOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+func (o SingleColumnChangeResponseOutput) FractionalSecondsPrecision() pulumi.IntOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) int { return v.FractionalSecondsPrecision }).(pulumi.IntOutput)
+}
+
+// Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+func (o SingleColumnChangeResponseOutput) Length() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) string { return v.Length }).(pulumi.StringOutput)
+}
+
+// Optional. Is the column nullable.
+func (o SingleColumnChangeResponseOutput) Nullable() pulumi.BoolOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) bool { return v.Nullable }).(pulumi.BoolOutput)
+}
+
+// Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+func (o SingleColumnChangeResponseOutput) Precision() pulumi.IntOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) int { return v.Precision }).(pulumi.IntOutput)
+}
+
+// Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+func (o SingleColumnChangeResponseOutput) Scale() pulumi.IntOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) int { return v.Scale }).(pulumi.IntOutput)
+}
+
+// Optional. Specifies the list of values allowed in the column.
+func (o SingleColumnChangeResponseOutput) SetValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) []string { return v.SetValues }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Is the column a UDT (User-defined Type).
+func (o SingleColumnChangeResponseOutput) Udt() pulumi.BoolOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) bool { return v.Udt }).(pulumi.BoolOutput)
+}
+
+// Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+type SingleEntityRename struct {
+	// The new name of the destination entity
+	NewName string `pulumi:"newName"`
+}
+
+// SingleEntityRenameInput is an input type that accepts SingleEntityRenameArgs and SingleEntityRenameOutput values.
+// You can construct a concrete instance of `SingleEntityRenameInput` via:
+//
+//	SingleEntityRenameArgs{...}
+type SingleEntityRenameInput interface {
+	pulumi.Input
+
+	ToSingleEntityRenameOutput() SingleEntityRenameOutput
+	ToSingleEntityRenameOutputWithContext(context.Context) SingleEntityRenameOutput
+}
+
+// Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+type SingleEntityRenameArgs struct {
+	// The new name of the destination entity
+	NewName pulumi.StringInput `pulumi:"newName"`
+}
+
+func (SingleEntityRenameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleEntityRename)(nil)).Elem()
+}
+
+func (i SingleEntityRenameArgs) ToSingleEntityRenameOutput() SingleEntityRenameOutput {
+	return i.ToSingleEntityRenameOutputWithContext(context.Background())
+}
+
+func (i SingleEntityRenameArgs) ToSingleEntityRenameOutputWithContext(ctx context.Context) SingleEntityRenameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleEntityRenameOutput)
+}
+
+func (i SingleEntityRenameArgs) ToOutput(ctx context.Context) pulumix.Output[SingleEntityRename] {
+	return pulumix.Output[SingleEntityRename]{
+		OutputState: i.ToSingleEntityRenameOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SingleEntityRenameArgs) ToSingleEntityRenamePtrOutput() SingleEntityRenamePtrOutput {
+	return i.ToSingleEntityRenamePtrOutputWithContext(context.Background())
+}
+
+func (i SingleEntityRenameArgs) ToSingleEntityRenamePtrOutputWithContext(ctx context.Context) SingleEntityRenamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleEntityRenameOutput).ToSingleEntityRenamePtrOutputWithContext(ctx)
+}
+
+// SingleEntityRenamePtrInput is an input type that accepts SingleEntityRenameArgs, SingleEntityRenamePtr and SingleEntityRenamePtrOutput values.
+// You can construct a concrete instance of `SingleEntityRenamePtrInput` via:
+//
+//	        SingleEntityRenameArgs{...}
+//
+//	or:
+//
+//	        nil
+type SingleEntityRenamePtrInput interface {
+	pulumi.Input
+
+	ToSingleEntityRenamePtrOutput() SingleEntityRenamePtrOutput
+	ToSingleEntityRenamePtrOutputWithContext(context.Context) SingleEntityRenamePtrOutput
+}
+
+type singleEntityRenamePtrType SingleEntityRenameArgs
+
+func SingleEntityRenamePtr(v *SingleEntityRenameArgs) SingleEntityRenamePtrInput {
+	return (*singleEntityRenamePtrType)(v)
+}
+
+func (*singleEntityRenamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleEntityRename)(nil)).Elem()
+}
+
+func (i *singleEntityRenamePtrType) ToSingleEntityRenamePtrOutput() SingleEntityRenamePtrOutput {
+	return i.ToSingleEntityRenamePtrOutputWithContext(context.Background())
+}
+
+func (i *singleEntityRenamePtrType) ToSingleEntityRenamePtrOutputWithContext(ctx context.Context) SingleEntityRenamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleEntityRenamePtrOutput)
+}
+
+func (i *singleEntityRenamePtrType) ToOutput(ctx context.Context) pulumix.Output[*SingleEntityRename] {
+	return pulumix.Output[*SingleEntityRename]{
+		OutputState: i.ToSingleEntityRenamePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+type SingleEntityRenameOutput struct{ *pulumi.OutputState }
+
+func (SingleEntityRenameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleEntityRename)(nil)).Elem()
+}
+
+func (o SingleEntityRenameOutput) ToSingleEntityRenameOutput() SingleEntityRenameOutput {
+	return o
+}
+
+func (o SingleEntityRenameOutput) ToSingleEntityRenameOutputWithContext(ctx context.Context) SingleEntityRenameOutput {
+	return o
+}
+
+func (o SingleEntityRenameOutput) ToSingleEntityRenamePtrOutput() SingleEntityRenamePtrOutput {
+	return o.ToSingleEntityRenamePtrOutputWithContext(context.Background())
+}
+
+func (o SingleEntityRenameOutput) ToSingleEntityRenamePtrOutputWithContext(ctx context.Context) SingleEntityRenamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingleEntityRename) *SingleEntityRename {
+		return &v
+	}).(SingleEntityRenamePtrOutput)
+}
+
+func (o SingleEntityRenameOutput) ToOutput(ctx context.Context) pulumix.Output[SingleEntityRename] {
+	return pulumix.Output[SingleEntityRename]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The new name of the destination entity
+func (o SingleEntityRenameOutput) NewName() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleEntityRename) string { return v.NewName }).(pulumi.StringOutput)
+}
+
+type SingleEntityRenamePtrOutput struct{ *pulumi.OutputState }
+
+func (SingleEntityRenamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleEntityRename)(nil)).Elem()
+}
+
+func (o SingleEntityRenamePtrOutput) ToSingleEntityRenamePtrOutput() SingleEntityRenamePtrOutput {
+	return o
+}
+
+func (o SingleEntityRenamePtrOutput) ToSingleEntityRenamePtrOutputWithContext(ctx context.Context) SingleEntityRenamePtrOutput {
+	return o
+}
+
+func (o SingleEntityRenamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SingleEntityRename] {
+	return pulumix.Output[*SingleEntityRename]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SingleEntityRenamePtrOutput) Elem() SingleEntityRenameOutput {
+	return o.ApplyT(func(v *SingleEntityRename) SingleEntityRename {
+		if v != nil {
+			return *v
+		}
+		var ret SingleEntityRename
+		return ret
+	}).(SingleEntityRenameOutput)
+}
+
+// The new name of the destination entity
+func (o SingleEntityRenamePtrOutput) NewName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleEntityRename) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NewName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+type SingleEntityRenameResponse struct {
+	// The new name of the destination entity
+	NewName string `pulumi:"newName"`
+}
+
+// Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+type SingleEntityRenameResponseOutput struct{ *pulumi.OutputState }
+
+func (SingleEntityRenameResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleEntityRenameResponse)(nil)).Elem()
+}
+
+func (o SingleEntityRenameResponseOutput) ToSingleEntityRenameResponseOutput() SingleEntityRenameResponseOutput {
+	return o
+}
+
+func (o SingleEntityRenameResponseOutput) ToSingleEntityRenameResponseOutputWithContext(ctx context.Context) SingleEntityRenameResponseOutput {
+	return o
+}
+
+func (o SingleEntityRenameResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SingleEntityRenameResponse] {
+	return pulumix.Output[SingleEntityRenameResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The new name of the destination entity
+func (o SingleEntityRenameResponseOutput) NewName() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleEntityRenameResponse) string { return v.NewName }).(pulumi.StringOutput)
+}
+
+// Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package
+type SinglePackageChange struct {
+	// Optional. Sql code for package body
+	PackageBody *string `pulumi:"packageBody"`
+	// Optional. Sql code for package description
+	PackageDescription *string `pulumi:"packageDescription"`
+}
+
+// SinglePackageChangeInput is an input type that accepts SinglePackageChangeArgs and SinglePackageChangeOutput values.
+// You can construct a concrete instance of `SinglePackageChangeInput` via:
+//
+//	SinglePackageChangeArgs{...}
+type SinglePackageChangeInput interface {
+	pulumi.Input
+
+	ToSinglePackageChangeOutput() SinglePackageChangeOutput
+	ToSinglePackageChangeOutputWithContext(context.Context) SinglePackageChangeOutput
+}
+
+// Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package
+type SinglePackageChangeArgs struct {
+	// Optional. Sql code for package body
+	PackageBody pulumi.StringPtrInput `pulumi:"packageBody"`
+	// Optional. Sql code for package description
+	PackageDescription pulumi.StringPtrInput `pulumi:"packageDescription"`
+}
+
+func (SinglePackageChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SinglePackageChange)(nil)).Elem()
+}
+
+func (i SinglePackageChangeArgs) ToSinglePackageChangeOutput() SinglePackageChangeOutput {
+	return i.ToSinglePackageChangeOutputWithContext(context.Background())
+}
+
+func (i SinglePackageChangeArgs) ToSinglePackageChangeOutputWithContext(ctx context.Context) SinglePackageChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SinglePackageChangeOutput)
+}
+
+func (i SinglePackageChangeArgs) ToOutput(ctx context.Context) pulumix.Output[SinglePackageChange] {
+	return pulumix.Output[SinglePackageChange]{
+		OutputState: i.ToSinglePackageChangeOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SinglePackageChangeArgs) ToSinglePackageChangePtrOutput() SinglePackageChangePtrOutput {
+	return i.ToSinglePackageChangePtrOutputWithContext(context.Background())
+}
+
+func (i SinglePackageChangeArgs) ToSinglePackageChangePtrOutputWithContext(ctx context.Context) SinglePackageChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SinglePackageChangeOutput).ToSinglePackageChangePtrOutputWithContext(ctx)
+}
+
+// SinglePackageChangePtrInput is an input type that accepts SinglePackageChangeArgs, SinglePackageChangePtr and SinglePackageChangePtrOutput values.
+// You can construct a concrete instance of `SinglePackageChangePtrInput` via:
+//
+//	        SinglePackageChangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SinglePackageChangePtrInput interface {
+	pulumi.Input
+
+	ToSinglePackageChangePtrOutput() SinglePackageChangePtrOutput
+	ToSinglePackageChangePtrOutputWithContext(context.Context) SinglePackageChangePtrOutput
+}
+
+type singlePackageChangePtrType SinglePackageChangeArgs
+
+func SinglePackageChangePtr(v *SinglePackageChangeArgs) SinglePackageChangePtrInput {
+	return (*singlePackageChangePtrType)(v)
+}
+
+func (*singlePackageChangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SinglePackageChange)(nil)).Elem()
+}
+
+func (i *singlePackageChangePtrType) ToSinglePackageChangePtrOutput() SinglePackageChangePtrOutput {
+	return i.ToSinglePackageChangePtrOutputWithContext(context.Background())
+}
+
+func (i *singlePackageChangePtrType) ToSinglePackageChangePtrOutputWithContext(ctx context.Context) SinglePackageChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SinglePackageChangePtrOutput)
+}
+
+func (i *singlePackageChangePtrType) ToOutput(ctx context.Context) pulumix.Output[*SinglePackageChange] {
+	return pulumix.Output[*SinglePackageChange]{
+		OutputState: i.ToSinglePackageChangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package
+type SinglePackageChangeOutput struct{ *pulumi.OutputState }
+
+func (SinglePackageChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SinglePackageChange)(nil)).Elem()
+}
+
+func (o SinglePackageChangeOutput) ToSinglePackageChangeOutput() SinglePackageChangeOutput {
+	return o
+}
+
+func (o SinglePackageChangeOutput) ToSinglePackageChangeOutputWithContext(ctx context.Context) SinglePackageChangeOutput {
+	return o
+}
+
+func (o SinglePackageChangeOutput) ToSinglePackageChangePtrOutput() SinglePackageChangePtrOutput {
+	return o.ToSinglePackageChangePtrOutputWithContext(context.Background())
+}
+
+func (o SinglePackageChangeOutput) ToSinglePackageChangePtrOutputWithContext(ctx context.Context) SinglePackageChangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SinglePackageChange) *SinglePackageChange {
+		return &v
+	}).(SinglePackageChangePtrOutput)
+}
+
+func (o SinglePackageChangeOutput) ToOutput(ctx context.Context) pulumix.Output[SinglePackageChange] {
+	return pulumix.Output[SinglePackageChange]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Sql code for package body
+func (o SinglePackageChangeOutput) PackageBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SinglePackageChange) *string { return v.PackageBody }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Sql code for package description
+func (o SinglePackageChangeOutput) PackageDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SinglePackageChange) *string { return v.PackageDescription }).(pulumi.StringPtrOutput)
+}
+
+type SinglePackageChangePtrOutput struct{ *pulumi.OutputState }
+
+func (SinglePackageChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SinglePackageChange)(nil)).Elem()
+}
+
+func (o SinglePackageChangePtrOutput) ToSinglePackageChangePtrOutput() SinglePackageChangePtrOutput {
+	return o
+}
+
+func (o SinglePackageChangePtrOutput) ToSinglePackageChangePtrOutputWithContext(ctx context.Context) SinglePackageChangePtrOutput {
+	return o
+}
+
+func (o SinglePackageChangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SinglePackageChange] {
+	return pulumix.Output[*SinglePackageChange]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SinglePackageChangePtrOutput) Elem() SinglePackageChangeOutput {
+	return o.ApplyT(func(v *SinglePackageChange) SinglePackageChange {
+		if v != nil {
+			return *v
+		}
+		var ret SinglePackageChange
+		return ret
+	}).(SinglePackageChangeOutput)
+}
+
+// Optional. Sql code for package body
+func (o SinglePackageChangePtrOutput) PackageBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SinglePackageChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Sql code for package description
+func (o SinglePackageChangePtrOutput) PackageDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SinglePackageChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package
+type SinglePackageChangeResponse struct {
+	// Optional. Sql code for package body
+	PackageBody string `pulumi:"packageBody"`
+	// Optional. Sql code for package description
+	PackageDescription string `pulumi:"packageDescription"`
+}
+
+// Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package
+type SinglePackageChangeResponseOutput struct{ *pulumi.OutputState }
+
+func (SinglePackageChangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SinglePackageChangeResponse)(nil)).Elem()
+}
+
+func (o SinglePackageChangeResponseOutput) ToSinglePackageChangeResponseOutput() SinglePackageChangeResponseOutput {
+	return o
+}
+
+func (o SinglePackageChangeResponseOutput) ToSinglePackageChangeResponseOutputWithContext(ctx context.Context) SinglePackageChangeResponseOutput {
+	return o
+}
+
+func (o SinglePackageChangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SinglePackageChangeResponse] {
+	return pulumix.Output[SinglePackageChangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Sql code for package body
+func (o SinglePackageChangeResponseOutput) PackageBody() pulumi.StringOutput {
+	return o.ApplyT(func(v SinglePackageChangeResponse) string { return v.PackageBody }).(pulumi.StringOutput)
+}
+
+// Optional. Sql code for package description
+func (o SinglePackageChangeResponseOutput) PackageDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v SinglePackageChangeResponse) string { return v.PackageDescription }).(pulumi.StringOutput)
+}
+
+// Filter for fixed point number data types such as NUMERIC/NUMBER
+type SourceNumericFilter struct {
+	// Enum to set the option defining the datatypes numeric filter has to be applied to
+	NumericFilterOption SourceNumericFilterNumericFilterOption `pulumi:"numericFilterOption"`
+	// Optional. The filter will match columns with precision smaller than or equal to this number.
+	SourceMaxPrecisionFilter *int `pulumi:"sourceMaxPrecisionFilter"`
+	// Optional. The filter will match columns with scale smaller than or equal to this number.
+	SourceMaxScaleFilter *int `pulumi:"sourceMaxScaleFilter"`
+	// Optional. The filter will match columns with precision greater than or equal to this number.
+	SourceMinPrecisionFilter *int `pulumi:"sourceMinPrecisionFilter"`
+	// Optional. The filter will match columns with scale greater than or equal to this number.
+	SourceMinScaleFilter *int `pulumi:"sourceMinScaleFilter"`
+}
+
+// SourceNumericFilterInput is an input type that accepts SourceNumericFilterArgs and SourceNumericFilterOutput values.
+// You can construct a concrete instance of `SourceNumericFilterInput` via:
+//
+//	SourceNumericFilterArgs{...}
+type SourceNumericFilterInput interface {
+	pulumi.Input
+
+	ToSourceNumericFilterOutput() SourceNumericFilterOutput
+	ToSourceNumericFilterOutputWithContext(context.Context) SourceNumericFilterOutput
+}
+
+// Filter for fixed point number data types such as NUMERIC/NUMBER
+type SourceNumericFilterArgs struct {
+	// Enum to set the option defining the datatypes numeric filter has to be applied to
+	NumericFilterOption SourceNumericFilterNumericFilterOptionInput `pulumi:"numericFilterOption"`
+	// Optional. The filter will match columns with precision smaller than or equal to this number.
+	SourceMaxPrecisionFilter pulumi.IntPtrInput `pulumi:"sourceMaxPrecisionFilter"`
+	// Optional. The filter will match columns with scale smaller than or equal to this number.
+	SourceMaxScaleFilter pulumi.IntPtrInput `pulumi:"sourceMaxScaleFilter"`
+	// Optional. The filter will match columns with precision greater than or equal to this number.
+	SourceMinPrecisionFilter pulumi.IntPtrInput `pulumi:"sourceMinPrecisionFilter"`
+	// Optional. The filter will match columns with scale greater than or equal to this number.
+	SourceMinScaleFilter pulumi.IntPtrInput `pulumi:"sourceMinScaleFilter"`
+}
+
+func (SourceNumericFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceNumericFilter)(nil)).Elem()
+}
+
+func (i SourceNumericFilterArgs) ToSourceNumericFilterOutput() SourceNumericFilterOutput {
+	return i.ToSourceNumericFilterOutputWithContext(context.Background())
+}
+
+func (i SourceNumericFilterArgs) ToSourceNumericFilterOutputWithContext(ctx context.Context) SourceNumericFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceNumericFilterOutput)
+}
+
+func (i SourceNumericFilterArgs) ToOutput(ctx context.Context) pulumix.Output[SourceNumericFilter] {
+	return pulumix.Output[SourceNumericFilter]{
+		OutputState: i.ToSourceNumericFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SourceNumericFilterArgs) ToSourceNumericFilterPtrOutput() SourceNumericFilterPtrOutput {
+	return i.ToSourceNumericFilterPtrOutputWithContext(context.Background())
+}
+
+func (i SourceNumericFilterArgs) ToSourceNumericFilterPtrOutputWithContext(ctx context.Context) SourceNumericFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceNumericFilterOutput).ToSourceNumericFilterPtrOutputWithContext(ctx)
+}
+
+// SourceNumericFilterPtrInput is an input type that accepts SourceNumericFilterArgs, SourceNumericFilterPtr and SourceNumericFilterPtrOutput values.
+// You can construct a concrete instance of `SourceNumericFilterPtrInput` via:
+//
+//	        SourceNumericFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceNumericFilterPtrInput interface {
+	pulumi.Input
+
+	ToSourceNumericFilterPtrOutput() SourceNumericFilterPtrOutput
+	ToSourceNumericFilterPtrOutputWithContext(context.Context) SourceNumericFilterPtrOutput
+}
+
+type sourceNumericFilterPtrType SourceNumericFilterArgs
+
+func SourceNumericFilterPtr(v *SourceNumericFilterArgs) SourceNumericFilterPtrInput {
+	return (*sourceNumericFilterPtrType)(v)
+}
+
+func (*sourceNumericFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceNumericFilter)(nil)).Elem()
+}
+
+func (i *sourceNumericFilterPtrType) ToSourceNumericFilterPtrOutput() SourceNumericFilterPtrOutput {
+	return i.ToSourceNumericFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceNumericFilterPtrType) ToSourceNumericFilterPtrOutputWithContext(ctx context.Context) SourceNumericFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceNumericFilterPtrOutput)
+}
+
+func (i *sourceNumericFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceNumericFilter] {
+	return pulumix.Output[*SourceNumericFilter]{
+		OutputState: i.ToSourceNumericFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Filter for fixed point number data types such as NUMERIC/NUMBER
+type SourceNumericFilterOutput struct{ *pulumi.OutputState }
+
+func (SourceNumericFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceNumericFilter)(nil)).Elem()
+}
+
+func (o SourceNumericFilterOutput) ToSourceNumericFilterOutput() SourceNumericFilterOutput {
+	return o
+}
+
+func (o SourceNumericFilterOutput) ToSourceNumericFilterOutputWithContext(ctx context.Context) SourceNumericFilterOutput {
+	return o
+}
+
+func (o SourceNumericFilterOutput) ToSourceNumericFilterPtrOutput() SourceNumericFilterPtrOutput {
+	return o.ToSourceNumericFilterPtrOutputWithContext(context.Background())
+}
+
+func (o SourceNumericFilterOutput) ToSourceNumericFilterPtrOutputWithContext(ctx context.Context) SourceNumericFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceNumericFilter) *SourceNumericFilter {
+		return &v
+	}).(SourceNumericFilterPtrOutput)
+}
+
+func (o SourceNumericFilterOutput) ToOutput(ctx context.Context) pulumix.Output[SourceNumericFilter] {
+	return pulumix.Output[SourceNumericFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enum to set the option defining the datatypes numeric filter has to be applied to
+func (o SourceNumericFilterOutput) NumericFilterOption() SourceNumericFilterNumericFilterOptionOutput {
+	return o.ApplyT(func(v SourceNumericFilter) SourceNumericFilterNumericFilterOption { return v.NumericFilterOption }).(SourceNumericFilterNumericFilterOptionOutput)
+}
+
+// Optional. The filter will match columns with precision smaller than or equal to this number.
+func (o SourceNumericFilterOutput) SourceMaxPrecisionFilter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SourceNumericFilter) *int { return v.SourceMaxPrecisionFilter }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The filter will match columns with scale smaller than or equal to this number.
+func (o SourceNumericFilterOutput) SourceMaxScaleFilter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SourceNumericFilter) *int { return v.SourceMaxScaleFilter }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The filter will match columns with precision greater than or equal to this number.
+func (o SourceNumericFilterOutput) SourceMinPrecisionFilter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SourceNumericFilter) *int { return v.SourceMinPrecisionFilter }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The filter will match columns with scale greater than or equal to this number.
+func (o SourceNumericFilterOutput) SourceMinScaleFilter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SourceNumericFilter) *int { return v.SourceMinScaleFilter }).(pulumi.IntPtrOutput)
+}
+
+type SourceNumericFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceNumericFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceNumericFilter)(nil)).Elem()
+}
+
+func (o SourceNumericFilterPtrOutput) ToSourceNumericFilterPtrOutput() SourceNumericFilterPtrOutput {
+	return o
+}
+
+func (o SourceNumericFilterPtrOutput) ToSourceNumericFilterPtrOutputWithContext(ctx context.Context) SourceNumericFilterPtrOutput {
+	return o
+}
+
+func (o SourceNumericFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceNumericFilter] {
+	return pulumix.Output[*SourceNumericFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SourceNumericFilterPtrOutput) Elem() SourceNumericFilterOutput {
+	return o.ApplyT(func(v *SourceNumericFilter) SourceNumericFilter {
+		if v != nil {
+			return *v
+		}
+		var ret SourceNumericFilter
+		return ret
+	}).(SourceNumericFilterOutput)
+}
+
+// Enum to set the option defining the datatypes numeric filter has to be applied to
+func (o SourceNumericFilterPtrOutput) NumericFilterOption() SourceNumericFilterNumericFilterOptionPtrOutput {
+	return o.ApplyT(func(v *SourceNumericFilter) *SourceNumericFilterNumericFilterOption {
+		if v == nil {
+			return nil
+		}
+		return &v.NumericFilterOption
+	}).(SourceNumericFilterNumericFilterOptionPtrOutput)
+}
+
+// Optional. The filter will match columns with precision smaller than or equal to this number.
+func (o SourceNumericFilterPtrOutput) SourceMaxPrecisionFilter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SourceNumericFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMaxPrecisionFilter
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The filter will match columns with scale smaller than or equal to this number.
+func (o SourceNumericFilterPtrOutput) SourceMaxScaleFilter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SourceNumericFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMaxScaleFilter
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The filter will match columns with precision greater than or equal to this number.
+func (o SourceNumericFilterPtrOutput) SourceMinPrecisionFilter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SourceNumericFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMinPrecisionFilter
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The filter will match columns with scale greater than or equal to this number.
+func (o SourceNumericFilterPtrOutput) SourceMinScaleFilter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SourceNumericFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMinScaleFilter
+	}).(pulumi.IntPtrOutput)
+}
+
+// Filter for fixed point number data types such as NUMERIC/NUMBER
+type SourceNumericFilterResponse struct {
+	// Enum to set the option defining the datatypes numeric filter has to be applied to
+	NumericFilterOption string `pulumi:"numericFilterOption"`
+	// Optional. The filter will match columns with precision smaller than or equal to this number.
+	SourceMaxPrecisionFilter int `pulumi:"sourceMaxPrecisionFilter"`
+	// Optional. The filter will match columns with scale smaller than or equal to this number.
+	SourceMaxScaleFilter int `pulumi:"sourceMaxScaleFilter"`
+	// Optional. The filter will match columns with precision greater than or equal to this number.
+	SourceMinPrecisionFilter int `pulumi:"sourceMinPrecisionFilter"`
+	// Optional. The filter will match columns with scale greater than or equal to this number.
+	SourceMinScaleFilter int `pulumi:"sourceMinScaleFilter"`
+}
+
+// Filter for fixed point number data types such as NUMERIC/NUMBER
+type SourceNumericFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceNumericFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceNumericFilterResponse)(nil)).Elem()
+}
+
+func (o SourceNumericFilterResponseOutput) ToSourceNumericFilterResponseOutput() SourceNumericFilterResponseOutput {
+	return o
+}
+
+func (o SourceNumericFilterResponseOutput) ToSourceNumericFilterResponseOutputWithContext(ctx context.Context) SourceNumericFilterResponseOutput {
+	return o
+}
+
+func (o SourceNumericFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceNumericFilterResponse] {
+	return pulumix.Output[SourceNumericFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enum to set the option defining the datatypes numeric filter has to be applied to
+func (o SourceNumericFilterResponseOutput) NumericFilterOption() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceNumericFilterResponse) string { return v.NumericFilterOption }).(pulumi.StringOutput)
+}
+
+// Optional. The filter will match columns with precision smaller than or equal to this number.
+func (o SourceNumericFilterResponseOutput) SourceMaxPrecisionFilter() pulumi.IntOutput {
+	return o.ApplyT(func(v SourceNumericFilterResponse) int { return v.SourceMaxPrecisionFilter }).(pulumi.IntOutput)
+}
+
+// Optional. The filter will match columns with scale smaller than or equal to this number.
+func (o SourceNumericFilterResponseOutput) SourceMaxScaleFilter() pulumi.IntOutput {
+	return o.ApplyT(func(v SourceNumericFilterResponse) int { return v.SourceMaxScaleFilter }).(pulumi.IntOutput)
+}
+
+// Optional. The filter will match columns with precision greater than or equal to this number.
+func (o SourceNumericFilterResponseOutput) SourceMinPrecisionFilter() pulumi.IntOutput {
+	return o.ApplyT(func(v SourceNumericFilterResponse) int { return v.SourceMinPrecisionFilter }).(pulumi.IntOutput)
+}
+
+// Optional. The filter will match columns with scale greater than or equal to this number.
+func (o SourceNumericFilterResponseOutput) SourceMinScaleFilter() pulumi.IntOutput {
+	return o.ApplyT(func(v SourceNumericFilterResponse) int { return v.SourceMinScaleFilter }).(pulumi.IntOutput)
+}
+
+// Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
+type SourceSqlChange struct {
+	// Sql code for source (stored procedure, function, trigger or view)
+	SqlCode string `pulumi:"sqlCode"`
+}
+
+// SourceSqlChangeInput is an input type that accepts SourceSqlChangeArgs and SourceSqlChangeOutput values.
+// You can construct a concrete instance of `SourceSqlChangeInput` via:
+//
+//	SourceSqlChangeArgs{...}
+type SourceSqlChangeInput interface {
+	pulumi.Input
+
+	ToSourceSqlChangeOutput() SourceSqlChangeOutput
+	ToSourceSqlChangeOutputWithContext(context.Context) SourceSqlChangeOutput
+}
+
+// Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
+type SourceSqlChangeArgs struct {
+	// Sql code for source (stored procedure, function, trigger or view)
+	SqlCode pulumi.StringInput `pulumi:"sqlCode"`
+}
+
+func (SourceSqlChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceSqlChange)(nil)).Elem()
+}
+
+func (i SourceSqlChangeArgs) ToSourceSqlChangeOutput() SourceSqlChangeOutput {
+	return i.ToSourceSqlChangeOutputWithContext(context.Background())
+}
+
+func (i SourceSqlChangeArgs) ToSourceSqlChangeOutputWithContext(ctx context.Context) SourceSqlChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceSqlChangeOutput)
+}
+
+func (i SourceSqlChangeArgs) ToOutput(ctx context.Context) pulumix.Output[SourceSqlChange] {
+	return pulumix.Output[SourceSqlChange]{
+		OutputState: i.ToSourceSqlChangeOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SourceSqlChangeArgs) ToSourceSqlChangePtrOutput() SourceSqlChangePtrOutput {
+	return i.ToSourceSqlChangePtrOutputWithContext(context.Background())
+}
+
+func (i SourceSqlChangeArgs) ToSourceSqlChangePtrOutputWithContext(ctx context.Context) SourceSqlChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceSqlChangeOutput).ToSourceSqlChangePtrOutputWithContext(ctx)
+}
+
+// SourceSqlChangePtrInput is an input type that accepts SourceSqlChangeArgs, SourceSqlChangePtr and SourceSqlChangePtrOutput values.
+// You can construct a concrete instance of `SourceSqlChangePtrInput` via:
+//
+//	        SourceSqlChangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceSqlChangePtrInput interface {
+	pulumi.Input
+
+	ToSourceSqlChangePtrOutput() SourceSqlChangePtrOutput
+	ToSourceSqlChangePtrOutputWithContext(context.Context) SourceSqlChangePtrOutput
+}
+
+type sourceSqlChangePtrType SourceSqlChangeArgs
+
+func SourceSqlChangePtr(v *SourceSqlChangeArgs) SourceSqlChangePtrInput {
+	return (*sourceSqlChangePtrType)(v)
+}
+
+func (*sourceSqlChangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceSqlChange)(nil)).Elem()
+}
+
+func (i *sourceSqlChangePtrType) ToSourceSqlChangePtrOutput() SourceSqlChangePtrOutput {
+	return i.ToSourceSqlChangePtrOutputWithContext(context.Background())
+}
+
+func (i *sourceSqlChangePtrType) ToSourceSqlChangePtrOutputWithContext(ctx context.Context) SourceSqlChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceSqlChangePtrOutput)
+}
+
+func (i *sourceSqlChangePtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceSqlChange] {
+	return pulumix.Output[*SourceSqlChange]{
+		OutputState: i.ToSourceSqlChangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
+type SourceSqlChangeOutput struct{ *pulumi.OutputState }
+
+func (SourceSqlChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceSqlChange)(nil)).Elem()
+}
+
+func (o SourceSqlChangeOutput) ToSourceSqlChangeOutput() SourceSqlChangeOutput {
+	return o
+}
+
+func (o SourceSqlChangeOutput) ToSourceSqlChangeOutputWithContext(ctx context.Context) SourceSqlChangeOutput {
+	return o
+}
+
+func (o SourceSqlChangeOutput) ToSourceSqlChangePtrOutput() SourceSqlChangePtrOutput {
+	return o.ToSourceSqlChangePtrOutputWithContext(context.Background())
+}
+
+func (o SourceSqlChangeOutput) ToSourceSqlChangePtrOutputWithContext(ctx context.Context) SourceSqlChangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceSqlChange) *SourceSqlChange {
+		return &v
+	}).(SourceSqlChangePtrOutput)
+}
+
+func (o SourceSqlChangeOutput) ToOutput(ctx context.Context) pulumix.Output[SourceSqlChange] {
+	return pulumix.Output[SourceSqlChange]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Sql code for source (stored procedure, function, trigger or view)
+func (o SourceSqlChangeOutput) SqlCode() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceSqlChange) string { return v.SqlCode }).(pulumi.StringOutput)
+}
+
+type SourceSqlChangePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceSqlChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceSqlChange)(nil)).Elem()
+}
+
+func (o SourceSqlChangePtrOutput) ToSourceSqlChangePtrOutput() SourceSqlChangePtrOutput {
+	return o
+}
+
+func (o SourceSqlChangePtrOutput) ToSourceSqlChangePtrOutputWithContext(ctx context.Context) SourceSqlChangePtrOutput {
+	return o
+}
+
+func (o SourceSqlChangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceSqlChange] {
+	return pulumix.Output[*SourceSqlChange]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SourceSqlChangePtrOutput) Elem() SourceSqlChangeOutput {
+	return o.ApplyT(func(v *SourceSqlChange) SourceSqlChange {
+		if v != nil {
+			return *v
+		}
+		var ret SourceSqlChange
+		return ret
+	}).(SourceSqlChangeOutput)
+}
+
+// Sql code for source (stored procedure, function, trigger or view)
+func (o SourceSqlChangePtrOutput) SqlCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceSqlChange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
+type SourceSqlChangeResponse struct {
+	// Sql code for source (stored procedure, function, trigger or view)
+	SqlCode string `pulumi:"sqlCode"`
+}
+
+// Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
+type SourceSqlChangeResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceSqlChangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceSqlChangeResponse)(nil)).Elem()
+}
+
+func (o SourceSqlChangeResponseOutput) ToSourceSqlChangeResponseOutput() SourceSqlChangeResponseOutput {
+	return o
+}
+
+func (o SourceSqlChangeResponseOutput) ToSourceSqlChangeResponseOutputWithContext(ctx context.Context) SourceSqlChangeResponseOutput {
+	return o
+}
+
+func (o SourceSqlChangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceSqlChangeResponse] {
+	return pulumix.Output[SourceSqlChangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Sql code for source (stored procedure, function, trigger or view)
+func (o SourceSqlChangeResponseOutput) SqlCode() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceSqlChangeResponse) string { return v.SqlCode }).(pulumi.StringOutput)
+}
+
+// Filter for text-based data types like varchar.
+type SourceTextFilter struct {
+	// Optional. The filter will match columns with length smaller than or equal to this number.
+	SourceMaxLengthFilter *string `pulumi:"sourceMaxLengthFilter"`
+	// Optional. The filter will match columns with length greater than or equal to this number.
+	SourceMinLengthFilter *string `pulumi:"sourceMinLengthFilter"`
+}
+
+// SourceTextFilterInput is an input type that accepts SourceTextFilterArgs and SourceTextFilterOutput values.
+// You can construct a concrete instance of `SourceTextFilterInput` via:
+//
+//	SourceTextFilterArgs{...}
+type SourceTextFilterInput interface {
+	pulumi.Input
+
+	ToSourceTextFilterOutput() SourceTextFilterOutput
+	ToSourceTextFilterOutputWithContext(context.Context) SourceTextFilterOutput
+}
+
+// Filter for text-based data types like varchar.
+type SourceTextFilterArgs struct {
+	// Optional. The filter will match columns with length smaller than or equal to this number.
+	SourceMaxLengthFilter pulumi.StringPtrInput `pulumi:"sourceMaxLengthFilter"`
+	// Optional. The filter will match columns with length greater than or equal to this number.
+	SourceMinLengthFilter pulumi.StringPtrInput `pulumi:"sourceMinLengthFilter"`
+}
+
+func (SourceTextFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTextFilter)(nil)).Elem()
+}
+
+func (i SourceTextFilterArgs) ToSourceTextFilterOutput() SourceTextFilterOutput {
+	return i.ToSourceTextFilterOutputWithContext(context.Background())
+}
+
+func (i SourceTextFilterArgs) ToSourceTextFilterOutputWithContext(ctx context.Context) SourceTextFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTextFilterOutput)
+}
+
+func (i SourceTextFilterArgs) ToOutput(ctx context.Context) pulumix.Output[SourceTextFilter] {
+	return pulumix.Output[SourceTextFilter]{
+		OutputState: i.ToSourceTextFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SourceTextFilterArgs) ToSourceTextFilterPtrOutput() SourceTextFilterPtrOutput {
+	return i.ToSourceTextFilterPtrOutputWithContext(context.Background())
+}
+
+func (i SourceTextFilterArgs) ToSourceTextFilterPtrOutputWithContext(ctx context.Context) SourceTextFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTextFilterOutput).ToSourceTextFilterPtrOutputWithContext(ctx)
+}
+
+// SourceTextFilterPtrInput is an input type that accepts SourceTextFilterArgs, SourceTextFilterPtr and SourceTextFilterPtrOutput values.
+// You can construct a concrete instance of `SourceTextFilterPtrInput` via:
+//
+//	        SourceTextFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceTextFilterPtrInput interface {
+	pulumi.Input
+
+	ToSourceTextFilterPtrOutput() SourceTextFilterPtrOutput
+	ToSourceTextFilterPtrOutputWithContext(context.Context) SourceTextFilterPtrOutput
+}
+
+type sourceTextFilterPtrType SourceTextFilterArgs
+
+func SourceTextFilterPtr(v *SourceTextFilterArgs) SourceTextFilterPtrInput {
+	return (*sourceTextFilterPtrType)(v)
+}
+
+func (*sourceTextFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTextFilter)(nil)).Elem()
+}
+
+func (i *sourceTextFilterPtrType) ToSourceTextFilterPtrOutput() SourceTextFilterPtrOutput {
+	return i.ToSourceTextFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceTextFilterPtrType) ToSourceTextFilterPtrOutputWithContext(ctx context.Context) SourceTextFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTextFilterPtrOutput)
+}
+
+func (i *sourceTextFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceTextFilter] {
+	return pulumix.Output[*SourceTextFilter]{
+		OutputState: i.ToSourceTextFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Filter for text-based data types like varchar.
+type SourceTextFilterOutput struct{ *pulumi.OutputState }
+
+func (SourceTextFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTextFilter)(nil)).Elem()
+}
+
+func (o SourceTextFilterOutput) ToSourceTextFilterOutput() SourceTextFilterOutput {
+	return o
+}
+
+func (o SourceTextFilterOutput) ToSourceTextFilterOutputWithContext(ctx context.Context) SourceTextFilterOutput {
+	return o
+}
+
+func (o SourceTextFilterOutput) ToSourceTextFilterPtrOutput() SourceTextFilterPtrOutput {
+	return o.ToSourceTextFilterPtrOutputWithContext(context.Background())
+}
+
+func (o SourceTextFilterOutput) ToSourceTextFilterPtrOutputWithContext(ctx context.Context) SourceTextFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceTextFilter) *SourceTextFilter {
+		return &v
+	}).(SourceTextFilterPtrOutput)
+}
+
+func (o SourceTextFilterOutput) ToOutput(ctx context.Context) pulumix.Output[SourceTextFilter] {
+	return pulumix.Output[SourceTextFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The filter will match columns with length smaller than or equal to this number.
+func (o SourceTextFilterOutput) SourceMaxLengthFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceTextFilter) *string { return v.SourceMaxLengthFilter }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The filter will match columns with length greater than or equal to this number.
+func (o SourceTextFilterOutput) SourceMinLengthFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceTextFilter) *string { return v.SourceMinLengthFilter }).(pulumi.StringPtrOutput)
+}
+
+type SourceTextFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceTextFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTextFilter)(nil)).Elem()
+}
+
+func (o SourceTextFilterPtrOutput) ToSourceTextFilterPtrOutput() SourceTextFilterPtrOutput {
+	return o
+}
+
+func (o SourceTextFilterPtrOutput) ToSourceTextFilterPtrOutputWithContext(ctx context.Context) SourceTextFilterPtrOutput {
+	return o
+}
+
+func (o SourceTextFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceTextFilter] {
+	return pulumix.Output[*SourceTextFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SourceTextFilterPtrOutput) Elem() SourceTextFilterOutput {
+	return o.ApplyT(func(v *SourceTextFilter) SourceTextFilter {
+		if v != nil {
+			return *v
+		}
+		var ret SourceTextFilter
+		return ret
+	}).(SourceTextFilterOutput)
+}
+
+// Optional. The filter will match columns with length smaller than or equal to this number.
+func (o SourceTextFilterPtrOutput) SourceMaxLengthFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceTextFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMaxLengthFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The filter will match columns with length greater than or equal to this number.
+func (o SourceTextFilterPtrOutput) SourceMinLengthFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceTextFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMinLengthFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter for text-based data types like varchar.
+type SourceTextFilterResponse struct {
+	// Optional. The filter will match columns with length smaller than or equal to this number.
+	SourceMaxLengthFilter string `pulumi:"sourceMaxLengthFilter"`
+	// Optional. The filter will match columns with length greater than or equal to this number.
+	SourceMinLengthFilter string `pulumi:"sourceMinLengthFilter"`
+}
+
+// Filter for text-based data types like varchar.
+type SourceTextFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceTextFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTextFilterResponse)(nil)).Elem()
+}
+
+func (o SourceTextFilterResponseOutput) ToSourceTextFilterResponseOutput() SourceTextFilterResponseOutput {
+	return o
+}
+
+func (o SourceTextFilterResponseOutput) ToSourceTextFilterResponseOutputWithContext(ctx context.Context) SourceTextFilterResponseOutput {
+	return o
+}
+
+func (o SourceTextFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceTextFilterResponse] {
+	return pulumix.Output[SourceTextFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The filter will match columns with length smaller than or equal to this number.
+func (o SourceTextFilterResponseOutput) SourceMaxLengthFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceTextFilterResponse) string { return v.SourceMaxLengthFilter }).(pulumi.StringOutput)
+}
+
+// Optional. The filter will match columns with length greater than or equal to this number.
+func (o SourceTextFilterResponseOutput) SourceMinLengthFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceTextFilterResponse) string { return v.SourceMinLengthFilter }).(pulumi.StringOutput)
 }
 
 // An entry for an Access Control list.
@@ -7362,6 +12683,684 @@ func (o UserPasswordResponseOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPasswordResponse) string { return v.User }).(pulumi.StringOutput)
 }
 
+// A list of values to filter by in ConditionalColumnSetValue
+type ValueListFilter struct {
+	// Whether to ignore case when filtering by values. Defaults to false
+	IgnoreCase bool `pulumi:"ignoreCase"`
+	// Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+	ValuePresentList ValueListFilterValuePresentList `pulumi:"valuePresentList"`
+	// The list to be used to filter by
+	Values []string `pulumi:"values"`
+}
+
+// ValueListFilterInput is an input type that accepts ValueListFilterArgs and ValueListFilterOutput values.
+// You can construct a concrete instance of `ValueListFilterInput` via:
+//
+//	ValueListFilterArgs{...}
+type ValueListFilterInput interface {
+	pulumi.Input
+
+	ToValueListFilterOutput() ValueListFilterOutput
+	ToValueListFilterOutputWithContext(context.Context) ValueListFilterOutput
+}
+
+// A list of values to filter by in ConditionalColumnSetValue
+type ValueListFilterArgs struct {
+	// Whether to ignore case when filtering by values. Defaults to false
+	IgnoreCase pulumi.BoolInput `pulumi:"ignoreCase"`
+	// Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+	ValuePresentList ValueListFilterValuePresentListInput `pulumi:"valuePresentList"`
+	// The list to be used to filter by
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ValueListFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueListFilter)(nil)).Elem()
+}
+
+func (i ValueListFilterArgs) ToValueListFilterOutput() ValueListFilterOutput {
+	return i.ToValueListFilterOutputWithContext(context.Background())
+}
+
+func (i ValueListFilterArgs) ToValueListFilterOutputWithContext(ctx context.Context) ValueListFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueListFilterOutput)
+}
+
+func (i ValueListFilterArgs) ToOutput(ctx context.Context) pulumix.Output[ValueListFilter] {
+	return pulumix.Output[ValueListFilter]{
+		OutputState: i.ToValueListFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ValueListFilterArgs) ToValueListFilterPtrOutput() ValueListFilterPtrOutput {
+	return i.ToValueListFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ValueListFilterArgs) ToValueListFilterPtrOutputWithContext(ctx context.Context) ValueListFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueListFilterOutput).ToValueListFilterPtrOutputWithContext(ctx)
+}
+
+// ValueListFilterPtrInput is an input type that accepts ValueListFilterArgs, ValueListFilterPtr and ValueListFilterPtrOutput values.
+// You can construct a concrete instance of `ValueListFilterPtrInput` via:
+//
+//	        ValueListFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ValueListFilterPtrInput interface {
+	pulumi.Input
+
+	ToValueListFilterPtrOutput() ValueListFilterPtrOutput
+	ToValueListFilterPtrOutputWithContext(context.Context) ValueListFilterPtrOutput
+}
+
+type valueListFilterPtrType ValueListFilterArgs
+
+func ValueListFilterPtr(v *ValueListFilterArgs) ValueListFilterPtrInput {
+	return (*valueListFilterPtrType)(v)
+}
+
+func (*valueListFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValueListFilter)(nil)).Elem()
+}
+
+func (i *valueListFilterPtrType) ToValueListFilterPtrOutput() ValueListFilterPtrOutput {
+	return i.ToValueListFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *valueListFilterPtrType) ToValueListFilterPtrOutputWithContext(ctx context.Context) ValueListFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueListFilterPtrOutput)
+}
+
+func (i *valueListFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ValueListFilter] {
+	return pulumix.Output[*ValueListFilter]{
+		OutputState: i.ToValueListFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A list of values to filter by in ConditionalColumnSetValue
+type ValueListFilterOutput struct{ *pulumi.OutputState }
+
+func (ValueListFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueListFilter)(nil)).Elem()
+}
+
+func (o ValueListFilterOutput) ToValueListFilterOutput() ValueListFilterOutput {
+	return o
+}
+
+func (o ValueListFilterOutput) ToValueListFilterOutputWithContext(ctx context.Context) ValueListFilterOutput {
+	return o
+}
+
+func (o ValueListFilterOutput) ToValueListFilterPtrOutput() ValueListFilterPtrOutput {
+	return o.ToValueListFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ValueListFilterOutput) ToValueListFilterPtrOutputWithContext(ctx context.Context) ValueListFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValueListFilter) *ValueListFilter {
+		return &v
+	}).(ValueListFilterPtrOutput)
+}
+
+func (o ValueListFilterOutput) ToOutput(ctx context.Context) pulumix.Output[ValueListFilter] {
+	return pulumix.Output[ValueListFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether to ignore case when filtering by values. Defaults to false
+func (o ValueListFilterOutput) IgnoreCase() pulumi.BoolOutput {
+	return o.ApplyT(func(v ValueListFilter) bool { return v.IgnoreCase }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+func (o ValueListFilterOutput) ValuePresentList() ValueListFilterValuePresentListOutput {
+	return o.ApplyT(func(v ValueListFilter) ValueListFilterValuePresentList { return v.ValuePresentList }).(ValueListFilterValuePresentListOutput)
+}
+
+// The list to be used to filter by
+func (o ValueListFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValueListFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ValueListFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ValueListFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValueListFilter)(nil)).Elem()
+}
+
+func (o ValueListFilterPtrOutput) ToValueListFilterPtrOutput() ValueListFilterPtrOutput {
+	return o
+}
+
+func (o ValueListFilterPtrOutput) ToValueListFilterPtrOutputWithContext(ctx context.Context) ValueListFilterPtrOutput {
+	return o
+}
+
+func (o ValueListFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ValueListFilter] {
+	return pulumix.Output[*ValueListFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ValueListFilterPtrOutput) Elem() ValueListFilterOutput {
+	return o.ApplyT(func(v *ValueListFilter) ValueListFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ValueListFilter
+		return ret
+	}).(ValueListFilterOutput)
+}
+
+// Whether to ignore case when filtering by values. Defaults to false
+func (o ValueListFilterPtrOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ValueListFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IgnoreCase
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+func (o ValueListFilterPtrOutput) ValuePresentList() ValueListFilterValuePresentListPtrOutput {
+	return o.ApplyT(func(v *ValueListFilter) *ValueListFilterValuePresentList {
+		if v == nil {
+			return nil
+		}
+		return &v.ValuePresentList
+	}).(ValueListFilterValuePresentListPtrOutput)
+}
+
+// The list to be used to filter by
+func (o ValueListFilterPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ValueListFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of values to filter by in ConditionalColumnSetValue
+type ValueListFilterResponse struct {
+	// Whether to ignore case when filtering by values. Defaults to false
+	IgnoreCase bool `pulumi:"ignoreCase"`
+	// Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+	ValuePresentList string `pulumi:"valuePresentList"`
+	// The list to be used to filter by
+	Values []string `pulumi:"values"`
+}
+
+// A list of values to filter by in ConditionalColumnSetValue
+type ValueListFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (ValueListFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueListFilterResponse)(nil)).Elem()
+}
+
+func (o ValueListFilterResponseOutput) ToValueListFilterResponseOutput() ValueListFilterResponseOutput {
+	return o
+}
+
+func (o ValueListFilterResponseOutput) ToValueListFilterResponseOutputWithContext(ctx context.Context) ValueListFilterResponseOutput {
+	return o
+}
+
+func (o ValueListFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValueListFilterResponse] {
+	return pulumix.Output[ValueListFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether to ignore case when filtering by values. Defaults to false
+func (o ValueListFilterResponseOutput) IgnoreCase() pulumi.BoolOutput {
+	return o.ApplyT(func(v ValueListFilterResponse) bool { return v.IgnoreCase }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+func (o ValueListFilterResponseOutput) ValuePresentList() pulumi.StringOutput {
+	return o.ApplyT(func(v ValueListFilterResponse) string { return v.ValuePresentList }).(pulumi.StringOutput)
+}
+
+// The list to be used to filter by
+func (o ValueListFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValueListFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+// Description of data transformation during migration as part of the ConditionalColumnSetValue.
+type ValueTransformation struct {
+	// Optional. Applies a hash function on the data
+	ApplyHash *ApplyHash `pulumi:"applyHash"`
+	// Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+	AssignMaxValue *Empty `pulumi:"assignMaxValue"`
+	// Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+	AssignMinValue *Empty `pulumi:"assignMinValue"`
+	// Optional. Set to null
+	AssignNull *Empty `pulumi:"assignNull"`
+	// Optional. Set to a specific value (value is converted to fit the target data type)
+	AssignSpecificValue *AssignSpecificValue `pulumi:"assignSpecificValue"`
+	// Optional. Filter on relation between source value and compare value of type double.
+	DoubleComparison *DoubleComparisonFilter `pulumi:"doubleComparison"`
+	// Optional. Filter on relation between source value and compare value of type integer.
+	IntComparison *IntComparisonFilter `pulumi:"intComparison"`
+	// Optional. Value is null
+	IsNull *Empty `pulumi:"isNull"`
+	// Optional. Allows the data to change scale
+	RoundScale *RoundToScale `pulumi:"roundScale"`
+	// Optional. Value is found in the specified list.
+	ValueList *ValueListFilter `pulumi:"valueList"`
+}
+
+// ValueTransformationInput is an input type that accepts ValueTransformationArgs and ValueTransformationOutput values.
+// You can construct a concrete instance of `ValueTransformationInput` via:
+//
+//	ValueTransformationArgs{...}
+type ValueTransformationInput interface {
+	pulumi.Input
+
+	ToValueTransformationOutput() ValueTransformationOutput
+	ToValueTransformationOutputWithContext(context.Context) ValueTransformationOutput
+}
+
+// Description of data transformation during migration as part of the ConditionalColumnSetValue.
+type ValueTransformationArgs struct {
+	// Optional. Applies a hash function on the data
+	ApplyHash ApplyHashPtrInput `pulumi:"applyHash"`
+	// Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+	AssignMaxValue EmptyPtrInput `pulumi:"assignMaxValue"`
+	// Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+	AssignMinValue EmptyPtrInput `pulumi:"assignMinValue"`
+	// Optional. Set to null
+	AssignNull EmptyPtrInput `pulumi:"assignNull"`
+	// Optional. Set to a specific value (value is converted to fit the target data type)
+	AssignSpecificValue AssignSpecificValuePtrInput `pulumi:"assignSpecificValue"`
+	// Optional. Filter on relation between source value and compare value of type double.
+	DoubleComparison DoubleComparisonFilterPtrInput `pulumi:"doubleComparison"`
+	// Optional. Filter on relation between source value and compare value of type integer.
+	IntComparison IntComparisonFilterPtrInput `pulumi:"intComparison"`
+	// Optional. Value is null
+	IsNull EmptyPtrInput `pulumi:"isNull"`
+	// Optional. Allows the data to change scale
+	RoundScale RoundToScalePtrInput `pulumi:"roundScale"`
+	// Optional. Value is found in the specified list.
+	ValueList ValueListFilterPtrInput `pulumi:"valueList"`
+}
+
+func (ValueTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueTransformation)(nil)).Elem()
+}
+
+func (i ValueTransformationArgs) ToValueTransformationOutput() ValueTransformationOutput {
+	return i.ToValueTransformationOutputWithContext(context.Background())
+}
+
+func (i ValueTransformationArgs) ToValueTransformationOutputWithContext(ctx context.Context) ValueTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueTransformationOutput)
+}
+
+func (i ValueTransformationArgs) ToOutput(ctx context.Context) pulumix.Output[ValueTransformation] {
+	return pulumix.Output[ValueTransformation]{
+		OutputState: i.ToValueTransformationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ValueTransformationArgs) ToValueTransformationPtrOutput() ValueTransformationPtrOutput {
+	return i.ToValueTransformationPtrOutputWithContext(context.Background())
+}
+
+func (i ValueTransformationArgs) ToValueTransformationPtrOutputWithContext(ctx context.Context) ValueTransformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueTransformationOutput).ToValueTransformationPtrOutputWithContext(ctx)
+}
+
+// ValueTransformationPtrInput is an input type that accepts ValueTransformationArgs, ValueTransformationPtr and ValueTransformationPtrOutput values.
+// You can construct a concrete instance of `ValueTransformationPtrInput` via:
+//
+//	        ValueTransformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ValueTransformationPtrInput interface {
+	pulumi.Input
+
+	ToValueTransformationPtrOutput() ValueTransformationPtrOutput
+	ToValueTransformationPtrOutputWithContext(context.Context) ValueTransformationPtrOutput
+}
+
+type valueTransformationPtrType ValueTransformationArgs
+
+func ValueTransformationPtr(v *ValueTransformationArgs) ValueTransformationPtrInput {
+	return (*valueTransformationPtrType)(v)
+}
+
+func (*valueTransformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValueTransformation)(nil)).Elem()
+}
+
+func (i *valueTransformationPtrType) ToValueTransformationPtrOutput() ValueTransformationPtrOutput {
+	return i.ToValueTransformationPtrOutputWithContext(context.Background())
+}
+
+func (i *valueTransformationPtrType) ToValueTransformationPtrOutputWithContext(ctx context.Context) ValueTransformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueTransformationPtrOutput)
+}
+
+func (i *valueTransformationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ValueTransformation] {
+	return pulumix.Output[*ValueTransformation]{
+		OutputState: i.ToValueTransformationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Description of data transformation during migration as part of the ConditionalColumnSetValue.
+type ValueTransformationOutput struct{ *pulumi.OutputState }
+
+func (ValueTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueTransformation)(nil)).Elem()
+}
+
+func (o ValueTransformationOutput) ToValueTransformationOutput() ValueTransformationOutput {
+	return o
+}
+
+func (o ValueTransformationOutput) ToValueTransformationOutputWithContext(ctx context.Context) ValueTransformationOutput {
+	return o
+}
+
+func (o ValueTransformationOutput) ToValueTransformationPtrOutput() ValueTransformationPtrOutput {
+	return o.ToValueTransformationPtrOutputWithContext(context.Background())
+}
+
+func (o ValueTransformationOutput) ToValueTransformationPtrOutputWithContext(ctx context.Context) ValueTransformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValueTransformation) *ValueTransformation {
+		return &v
+	}).(ValueTransformationPtrOutput)
+}
+
+func (o ValueTransformationOutput) ToOutput(ctx context.Context) pulumix.Output[ValueTransformation] {
+	return pulumix.Output[ValueTransformation]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Applies a hash function on the data
+func (o ValueTransformationOutput) ApplyHash() ApplyHashPtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *ApplyHash { return v.ApplyHash }).(ApplyHashPtrOutput)
+}
+
+// Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+func (o ValueTransformationOutput) AssignMaxValue() EmptyPtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *Empty { return v.AssignMaxValue }).(EmptyPtrOutput)
+}
+
+// Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+func (o ValueTransformationOutput) AssignMinValue() EmptyPtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *Empty { return v.AssignMinValue }).(EmptyPtrOutput)
+}
+
+// Optional. Set to null
+func (o ValueTransformationOutput) AssignNull() EmptyPtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *Empty { return v.AssignNull }).(EmptyPtrOutput)
+}
+
+// Optional. Set to a specific value (value is converted to fit the target data type)
+func (o ValueTransformationOutput) AssignSpecificValue() AssignSpecificValuePtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *AssignSpecificValue { return v.AssignSpecificValue }).(AssignSpecificValuePtrOutput)
+}
+
+// Optional. Filter on relation between source value and compare value of type double.
+func (o ValueTransformationOutput) DoubleComparison() DoubleComparisonFilterPtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *DoubleComparisonFilter { return v.DoubleComparison }).(DoubleComparisonFilterPtrOutput)
+}
+
+// Optional. Filter on relation between source value and compare value of type integer.
+func (o ValueTransformationOutput) IntComparison() IntComparisonFilterPtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *IntComparisonFilter { return v.IntComparison }).(IntComparisonFilterPtrOutput)
+}
+
+// Optional. Value is null
+func (o ValueTransformationOutput) IsNull() EmptyPtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *Empty { return v.IsNull }).(EmptyPtrOutput)
+}
+
+// Optional. Allows the data to change scale
+func (o ValueTransformationOutput) RoundScale() RoundToScalePtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *RoundToScale { return v.RoundScale }).(RoundToScalePtrOutput)
+}
+
+// Optional. Value is found in the specified list.
+func (o ValueTransformationOutput) ValueList() ValueListFilterPtrOutput {
+	return o.ApplyT(func(v ValueTransformation) *ValueListFilter { return v.ValueList }).(ValueListFilterPtrOutput)
+}
+
+type ValueTransformationPtrOutput struct{ *pulumi.OutputState }
+
+func (ValueTransformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValueTransformation)(nil)).Elem()
+}
+
+func (o ValueTransformationPtrOutput) ToValueTransformationPtrOutput() ValueTransformationPtrOutput {
+	return o
+}
+
+func (o ValueTransformationPtrOutput) ToValueTransformationPtrOutputWithContext(ctx context.Context) ValueTransformationPtrOutput {
+	return o
+}
+
+func (o ValueTransformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ValueTransformation] {
+	return pulumix.Output[*ValueTransformation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ValueTransformationPtrOutput) Elem() ValueTransformationOutput {
+	return o.ApplyT(func(v *ValueTransformation) ValueTransformation {
+		if v != nil {
+			return *v
+		}
+		var ret ValueTransformation
+		return ret
+	}).(ValueTransformationOutput)
+}
+
+// Optional. Applies a hash function on the data
+func (o ValueTransformationPtrOutput) ApplyHash() ApplyHashPtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *ApplyHash {
+		if v == nil {
+			return nil
+		}
+		return v.ApplyHash
+	}).(ApplyHashPtrOutput)
+}
+
+// Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+func (o ValueTransformationPtrOutput) AssignMaxValue() EmptyPtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *Empty {
+		if v == nil {
+			return nil
+		}
+		return v.AssignMaxValue
+	}).(EmptyPtrOutput)
+}
+
+// Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+func (o ValueTransformationPtrOutput) AssignMinValue() EmptyPtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *Empty {
+		if v == nil {
+			return nil
+		}
+		return v.AssignMinValue
+	}).(EmptyPtrOutput)
+}
+
+// Optional. Set to null
+func (o ValueTransformationPtrOutput) AssignNull() EmptyPtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *Empty {
+		if v == nil {
+			return nil
+		}
+		return v.AssignNull
+	}).(EmptyPtrOutput)
+}
+
+// Optional. Set to a specific value (value is converted to fit the target data type)
+func (o ValueTransformationPtrOutput) AssignSpecificValue() AssignSpecificValuePtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *AssignSpecificValue {
+		if v == nil {
+			return nil
+		}
+		return v.AssignSpecificValue
+	}).(AssignSpecificValuePtrOutput)
+}
+
+// Optional. Filter on relation between source value and compare value of type double.
+func (o ValueTransformationPtrOutput) DoubleComparison() DoubleComparisonFilterPtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *DoubleComparisonFilter {
+		if v == nil {
+			return nil
+		}
+		return v.DoubleComparison
+	}).(DoubleComparisonFilterPtrOutput)
+}
+
+// Optional. Filter on relation between source value and compare value of type integer.
+func (o ValueTransformationPtrOutput) IntComparison() IntComparisonFilterPtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *IntComparisonFilter {
+		if v == nil {
+			return nil
+		}
+		return v.IntComparison
+	}).(IntComparisonFilterPtrOutput)
+}
+
+// Optional. Value is null
+func (o ValueTransformationPtrOutput) IsNull() EmptyPtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *Empty {
+		if v == nil {
+			return nil
+		}
+		return v.IsNull
+	}).(EmptyPtrOutput)
+}
+
+// Optional. Allows the data to change scale
+func (o ValueTransformationPtrOutput) RoundScale() RoundToScalePtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *RoundToScale {
+		if v == nil {
+			return nil
+		}
+		return v.RoundScale
+	}).(RoundToScalePtrOutput)
+}
+
+// Optional. Value is found in the specified list.
+func (o ValueTransformationPtrOutput) ValueList() ValueListFilterPtrOutput {
+	return o.ApplyT(func(v *ValueTransformation) *ValueListFilter {
+		if v == nil {
+			return nil
+		}
+		return v.ValueList
+	}).(ValueListFilterPtrOutput)
+}
+
+// Description of data transformation during migration as part of the ConditionalColumnSetValue.
+type ValueTransformationResponse struct {
+	// Optional. Applies a hash function on the data
+	ApplyHash ApplyHashResponse `pulumi:"applyHash"`
+	// Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+	AssignMaxValue EmptyResponse `pulumi:"assignMaxValue"`
+	// Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+	AssignMinValue EmptyResponse `pulumi:"assignMinValue"`
+	// Optional. Set to null
+	AssignNull EmptyResponse `pulumi:"assignNull"`
+	// Optional. Set to a specific value (value is converted to fit the target data type)
+	AssignSpecificValue AssignSpecificValueResponse `pulumi:"assignSpecificValue"`
+	// Optional. Filter on relation between source value and compare value of type double.
+	DoubleComparison DoubleComparisonFilterResponse `pulumi:"doubleComparison"`
+	// Optional. Filter on relation between source value and compare value of type integer.
+	IntComparison IntComparisonFilterResponse `pulumi:"intComparison"`
+	// Optional. Value is null
+	IsNull EmptyResponse `pulumi:"isNull"`
+	// Optional. Allows the data to change scale
+	RoundScale RoundToScaleResponse `pulumi:"roundScale"`
+	// Optional. Value is found in the specified list.
+	ValueList ValueListFilterResponse `pulumi:"valueList"`
+}
+
+// Description of data transformation during migration as part of the ConditionalColumnSetValue.
+type ValueTransformationResponseOutput struct{ *pulumi.OutputState }
+
+func (ValueTransformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueTransformationResponse)(nil)).Elem()
+}
+
+func (o ValueTransformationResponseOutput) ToValueTransformationResponseOutput() ValueTransformationResponseOutput {
+	return o
+}
+
+func (o ValueTransformationResponseOutput) ToValueTransformationResponseOutputWithContext(ctx context.Context) ValueTransformationResponseOutput {
+	return o
+}
+
+func (o ValueTransformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValueTransformationResponse] {
+	return pulumix.Output[ValueTransformationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Applies a hash function on the data
+func (o ValueTransformationResponseOutput) ApplyHash() ApplyHashResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) ApplyHashResponse { return v.ApplyHash }).(ApplyHashResponseOutput)
+}
+
+// Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+func (o ValueTransformationResponseOutput) AssignMaxValue() EmptyResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) EmptyResponse { return v.AssignMaxValue }).(EmptyResponseOutput)
+}
+
+// Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+func (o ValueTransformationResponseOutput) AssignMinValue() EmptyResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) EmptyResponse { return v.AssignMinValue }).(EmptyResponseOutput)
+}
+
+// Optional. Set to null
+func (o ValueTransformationResponseOutput) AssignNull() EmptyResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) EmptyResponse { return v.AssignNull }).(EmptyResponseOutput)
+}
+
+// Optional. Set to a specific value (value is converted to fit the target data type)
+func (o ValueTransformationResponseOutput) AssignSpecificValue() AssignSpecificValueResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) AssignSpecificValueResponse { return v.AssignSpecificValue }).(AssignSpecificValueResponseOutput)
+}
+
+// Optional. Filter on relation between source value and compare value of type double.
+func (o ValueTransformationResponseOutput) DoubleComparison() DoubleComparisonFilterResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) DoubleComparisonFilterResponse { return v.DoubleComparison }).(DoubleComparisonFilterResponseOutput)
+}
+
+// Optional. Filter on relation between source value and compare value of type integer.
+func (o ValueTransformationResponseOutput) IntComparison() IntComparisonFilterResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) IntComparisonFilterResponse { return v.IntComparison }).(IntComparisonFilterResponseOutput)
+}
+
+// Optional. Value is null
+func (o ValueTransformationResponseOutput) IsNull() EmptyResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) EmptyResponse { return v.IsNull }).(EmptyResponseOutput)
+}
+
+// Optional. Allows the data to change scale
+func (o ValueTransformationResponseOutput) RoundScale() RoundToScaleResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) RoundToScaleResponse { return v.RoundScale }).(RoundToScaleResponseOutput)
+}
+
+// Optional. Value is found in the specified list.
+func (o ValueTransformationResponseOutput) ValueList() ValueListFilterResponseOutput {
+	return o.ApplyT(func(v ValueTransformationResponse) ValueListFilterResponse { return v.ValueList }).(ValueListFilterResponseOutput)
+}
+
 // The VPC peering configuration is used to create VPC peering with the consumer's VPC.
 type VpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
@@ -7785,6 +13784,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlloyDbConnectionProfilePtrInput)(nil)).Elem(), AlloyDbConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlloyDbSettingsInput)(nil)).Elem(), AlloyDbSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlloyDbSettingsPtrInput)(nil)).Elem(), AlloyDbSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplyHashInput)(nil)).Elem(), ApplyHashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplyHashPtrInput)(nil)).Elem(), ApplyHashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssignSpecificValueInput)(nil)).Elem(), AssignSpecificValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssignSpecificValuePtrInput)(nil)).Elem(), AssignSpecificValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
@@ -7795,27 +13798,50 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlConnectionProfilePtrInput)(nil)).Elem(), CloudSqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsInput)(nil)).Elem(), CloudSqlSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsPtrInput)(nil)).Elem(), CloudSqlSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalColumnSetValueInput)(nil)).Elem(), ConditionalColumnSetValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalColumnSetValuePtrInput)(nil)).Elem(), ConditionalColumnSetValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversionWorkspaceInfoInput)(nil)).Elem(), ConversionWorkspaceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversionWorkspaceInfoPtrInput)(nil)).Elem(), ConversionWorkspaceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConvertRowIdToColumnInput)(nil)).Elem(), ConvertRowIdToColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConvertRowIdToColumnPtrInput)(nil)).Elem(), ConvertRowIdToColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCacheConfigInput)(nil)).Elem(), DataCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCacheConfigPtrInput)(nil)).Elem(), DataCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEngineInfoInput)(nil)).Elem(), DatabaseEngineInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeInput)(nil)).Elem(), DatabaseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypePtrInput)(nil)).Elem(), DatabaseTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DoubleComparisonFilterInput)(nil)).Elem(), DoubleComparisonFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DoubleComparisonFilterPtrInput)(nil)).Elem(), DoubleComparisonFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagInput)(nil)).Elem(), DumpFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagArrayInput)(nil)).Elem(), DumpFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagsInput)(nil)).Elem(), DumpFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagsPtrInput)(nil)).Elem(), DumpFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmptyInput)(nil)).Elem(), EmptyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmptyPtrInput)(nil)).Elem(), EmptyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityMoveInput)(nil)).Elem(), EntityMoveArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityMovePtrInput)(nil)).Elem(), EntityMoveArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterTableColumnsInput)(nil)).Elem(), FilterTableColumnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterTableColumnsPtrInput)(nil)).Elem(), FilterTableColumnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardSshTunnelConnectivityInput)(nil)).Elem(), ForwardSshTunnelConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardSshTunnelConnectivityPtrInput)(nil)).Elem(), ForwardSshTunnelConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntComparisonFilterInput)(nil)).Elem(), IntComparisonFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntComparisonFilterPtrInput)(nil)).Elem(), IntComparisonFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigInput)(nil)).Elem(), MachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigPtrInput)(nil)).Elem(), MachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MappingRuleFilterInput)(nil)).Elem(), MappingRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiColumnDatatypeChangeInput)(nil)).Elem(), MultiColumnDatatypeChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiColumnDatatypeChangePtrInput)(nil)).Elem(), MultiColumnDatatypeChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiEntityRenameInput)(nil)).Elem(), MultiEntityRenameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiEntityRenamePtrInput)(nil)).Elem(), MultiEntityRenameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfileInput)(nil)).Elem(), MySqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfilePtrInput)(nil)).Elem(), MySqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleConnectionProfileInput)(nil)).Elem(), OracleConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleConnectionProfilePtrInput)(nil)).Elem(), OracleConnectionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceConfigInput)(nil)).Elem(), PerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceConfigPtrInput)(nil)).Elem(), PerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfileInput)(nil)).Elem(), PostgreSqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfilePtrInput)(nil)).Elem(), PostgreSqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrimaryInstanceSettingsInput)(nil)).Elem(), PrimaryInstanceSettingsArgs{})
@@ -7826,6 +13852,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateServiceConnectConnectivityPtrInput)(nil)).Elem(), PrivateServiceConnectConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityInput)(nil)).Elem(), ReverseSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityPtrInput)(nil)).Elem(), ReverseSshConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoundToScaleInput)(nil)).Elem(), RoundToScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoundToScalePtrInput)(nil)).Elem(), RoundToScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SetTablePrimaryKeyInput)(nil)).Elem(), SetTablePrimaryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SetTablePrimaryKeyPtrInput)(nil)).Elem(), SetTablePrimaryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleColumnChangeInput)(nil)).Elem(), SingleColumnChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleColumnChangePtrInput)(nil)).Elem(), SingleColumnChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleEntityRenameInput)(nil)).Elem(), SingleEntityRenameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleEntityRenamePtrInput)(nil)).Elem(), SingleEntityRenameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SinglePackageChangeInput)(nil)).Elem(), SinglePackageChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SinglePackageChangePtrInput)(nil)).Elem(), SinglePackageChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceNumericFilterInput)(nil)).Elem(), SourceNumericFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceNumericFilterPtrInput)(nil)).Elem(), SourceNumericFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceSqlChangeInput)(nil)).Elem(), SourceSqlChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceSqlChangePtrInput)(nil)).Elem(), SourceSqlChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceTextFilterInput)(nil)).Elem(), SourceTextFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceTextFilterPtrInput)(nil)).Elem(), SourceTextFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlAclEntryInput)(nil)).Elem(), SqlAclEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlAclEntryArrayInput)(nil)).Elem(), SqlAclEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlIpConfigInput)(nil)).Elem(), SqlIpConfigArgs{})
@@ -7838,6 +13880,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityPtrInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordInput)(nil)).Elem(), UserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPtrInput)(nil)).Elem(), UserPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValueListFilterInput)(nil)).Elem(), ValueListFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValueListFilterPtrInput)(nil)).Elem(), ValueListFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValueTransformationInput)(nil)).Elem(), ValueTransformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValueTransformationPtrInput)(nil)).Elem(), ValueTransformationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigInput)(nil)).Elem(), VpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigPtrInput)(nil)).Elem(), VpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConnectivityInput)(nil)).Elem(), VpcPeeringConnectivityArgs{})
@@ -7848,6 +13894,12 @@ func init() {
 	pulumi.RegisterOutputType(AlloyDbSettingsOutput{})
 	pulumi.RegisterOutputType(AlloyDbSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AlloyDbSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ApplyHashOutput{})
+	pulumi.RegisterOutputType(ApplyHashPtrOutput{})
+	pulumi.RegisterOutputType(ApplyHashResponseOutput{})
+	pulumi.RegisterOutputType(AssignSpecificValueOutput{})
+	pulumi.RegisterOutputType(AssignSpecificValuePtrOutput{})
+	pulumi.RegisterOutputType(AssignSpecificValueResponseOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -7866,14 +13918,26 @@ func init() {
 	pulumi.RegisterOutputType(CloudSqlSettingsOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ConditionalColumnSetValueOutput{})
+	pulumi.RegisterOutputType(ConditionalColumnSetValuePtrOutput{})
+	pulumi.RegisterOutputType(ConditionalColumnSetValueResponseOutput{})
 	pulumi.RegisterOutputType(ConversionWorkspaceInfoOutput{})
 	pulumi.RegisterOutputType(ConversionWorkspaceInfoPtrOutput{})
 	pulumi.RegisterOutputType(ConversionWorkspaceInfoResponseOutput{})
+	pulumi.RegisterOutputType(ConvertRowIdToColumnOutput{})
+	pulumi.RegisterOutputType(ConvertRowIdToColumnPtrOutput{})
+	pulumi.RegisterOutputType(ConvertRowIdToColumnResponseOutput{})
+	pulumi.RegisterOutputType(DataCacheConfigOutput{})
+	pulumi.RegisterOutputType(DataCacheConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataCacheConfigResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseEngineInfoOutput{})
 	pulumi.RegisterOutputType(DatabaseEngineInfoResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeOutput{})
 	pulumi.RegisterOutputType(DatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeResponseOutput{})
+	pulumi.RegisterOutputType(DoubleComparisonFilterOutput{})
+	pulumi.RegisterOutputType(DoubleComparisonFilterPtrOutput{})
+	pulumi.RegisterOutputType(DoubleComparisonFilterResponseOutput{})
 	pulumi.RegisterOutputType(DumpFlagOutput{})
 	pulumi.RegisterOutputType(DumpFlagArrayOutput{})
 	pulumi.RegisterOutputType(DumpFlagResponseOutput{})
@@ -7881,24 +13945,47 @@ func init() {
 	pulumi.RegisterOutputType(DumpFlagsOutput{})
 	pulumi.RegisterOutputType(DumpFlagsPtrOutput{})
 	pulumi.RegisterOutputType(DumpFlagsResponseOutput{})
+	pulumi.RegisterOutputType(EmptyOutput{})
+	pulumi.RegisterOutputType(EmptyPtrOutput{})
+	pulumi.RegisterOutputType(EmptyResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
+	pulumi.RegisterOutputType(EntityMoveOutput{})
+	pulumi.RegisterOutputType(EntityMovePtrOutput{})
+	pulumi.RegisterOutputType(EntityMoveResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FilterTableColumnsOutput{})
+	pulumi.RegisterOutputType(FilterTableColumnsPtrOutput{})
+	pulumi.RegisterOutputType(FilterTableColumnsResponseOutput{})
 	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityOutput{})
 	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityResponseOutput{})
+	pulumi.RegisterOutputType(IntComparisonFilterOutput{})
+	pulumi.RegisterOutputType(IntComparisonFilterPtrOutput{})
+	pulumi.RegisterOutputType(IntComparisonFilterResponseOutput{})
 	pulumi.RegisterOutputType(MachineConfigOutput{})
 	pulumi.RegisterOutputType(MachineConfigPtrOutput{})
 	pulumi.RegisterOutputType(MachineConfigResponseOutput{})
+	pulumi.RegisterOutputType(MappingRuleFilterOutput{})
+	pulumi.RegisterOutputType(MappingRuleFilterResponseOutput{})
+	pulumi.RegisterOutputType(MultiColumnDatatypeChangeOutput{})
+	pulumi.RegisterOutputType(MultiColumnDatatypeChangePtrOutput{})
+	pulumi.RegisterOutputType(MultiColumnDatatypeChangeResponseOutput{})
+	pulumi.RegisterOutputType(MultiEntityRenameOutput{})
+	pulumi.RegisterOutputType(MultiEntityRenamePtrOutput{})
+	pulumi.RegisterOutputType(MultiEntityRenameResponseOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfileOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfileResponseOutput{})
 	pulumi.RegisterOutputType(OracleConnectionProfileOutput{})
 	pulumi.RegisterOutputType(OracleConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(OracleConnectionProfileResponseOutput{})
+	pulumi.RegisterOutputType(PerformanceConfigOutput{})
+	pulumi.RegisterOutputType(PerformanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(PerformanceConfigResponseOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfileOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfileResponseOutput{})
@@ -7914,6 +14001,30 @@ func init() {
 	pulumi.RegisterOutputType(ReverseSshConnectivityOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityResponseOutput{})
+	pulumi.RegisterOutputType(RoundToScaleOutput{})
+	pulumi.RegisterOutputType(RoundToScalePtrOutput{})
+	pulumi.RegisterOutputType(RoundToScaleResponseOutput{})
+	pulumi.RegisterOutputType(SetTablePrimaryKeyOutput{})
+	pulumi.RegisterOutputType(SetTablePrimaryKeyPtrOutput{})
+	pulumi.RegisterOutputType(SetTablePrimaryKeyResponseOutput{})
+	pulumi.RegisterOutputType(SingleColumnChangeOutput{})
+	pulumi.RegisterOutputType(SingleColumnChangePtrOutput{})
+	pulumi.RegisterOutputType(SingleColumnChangeResponseOutput{})
+	pulumi.RegisterOutputType(SingleEntityRenameOutput{})
+	pulumi.RegisterOutputType(SingleEntityRenamePtrOutput{})
+	pulumi.RegisterOutputType(SingleEntityRenameResponseOutput{})
+	pulumi.RegisterOutputType(SinglePackageChangeOutput{})
+	pulumi.RegisterOutputType(SinglePackageChangePtrOutput{})
+	pulumi.RegisterOutputType(SinglePackageChangeResponseOutput{})
+	pulumi.RegisterOutputType(SourceNumericFilterOutput{})
+	pulumi.RegisterOutputType(SourceNumericFilterPtrOutput{})
+	pulumi.RegisterOutputType(SourceNumericFilterResponseOutput{})
+	pulumi.RegisterOutputType(SourceSqlChangeOutput{})
+	pulumi.RegisterOutputType(SourceSqlChangePtrOutput{})
+	pulumi.RegisterOutputType(SourceSqlChangeResponseOutput{})
+	pulumi.RegisterOutputType(SourceTextFilterOutput{})
+	pulumi.RegisterOutputType(SourceTextFilterPtrOutput{})
+	pulumi.RegisterOutputType(SourceTextFilterResponseOutput{})
 	pulumi.RegisterOutputType(SqlAclEntryOutput{})
 	pulumi.RegisterOutputType(SqlAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(SqlAclEntryResponseOutput{})
@@ -7934,6 +14045,12 @@ func init() {
 	pulumi.RegisterOutputType(UserPasswordOutput{})
 	pulumi.RegisterOutputType(UserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(UserPasswordResponseOutput{})
+	pulumi.RegisterOutputType(ValueListFilterOutput{})
+	pulumi.RegisterOutputType(ValueListFilterPtrOutput{})
+	pulumi.RegisterOutputType(ValueListFilterResponseOutput{})
+	pulumi.RegisterOutputType(ValueTransformationOutput{})
+	pulumi.RegisterOutputType(ValueTransformationPtrOutput{})
+	pulumi.RegisterOutputType(ValueTransformationResponseOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConfigOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConfigPtrOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConfigResponseOutput{})

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         private InputList<string>? _namespaces;
 
         /// <summary>
-        /// A list of Kubernetes Namespaces
+        /// Optional. A list of Kubernetes Namespaces
         /// </summary>
         public InputList<string> Namespaces
         {

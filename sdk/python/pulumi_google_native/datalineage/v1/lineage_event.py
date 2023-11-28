@@ -18,23 +18,24 @@ class LineageEventArgs:
     def __init__(__self__, *,
                  process_id: pulumi.Input[str],
                  run_id: pulumi.Input[str],
+                 start_time: pulumi.Input[str],
                  end_time: Optional[pulumi.Input[str]] = None,
                  links: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogLineageV1EventLinkArgs']]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LineageEvent resource.
+        :param pulumi.Input[str] start_time: The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
         :param pulumi.Input[str] end_time: Optional. The end of the transformation which resulted in this lineage event. For streaming scenarios, it should be the end of the period from which the lineage is being reported.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogLineageV1EventLinkArgs']]] links: Optional. List of source-target pairs. Can't contain more than 100 tuples.
         :param pulumi.Input[str] name: Immutable. The resource name of the lineage event. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. Can be specified or auto-assigned. {lineage_event} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
         :param pulumi.Input[str] request_id: A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
-        :param pulumi.Input[str] start_time: Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
         """
         pulumi.set(__self__, "process_id", process_id)
         pulumi.set(__self__, "run_id", run_id)
+        pulumi.set(__self__, "start_time", start_time)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
         if links is not None:
@@ -47,8 +48,6 @@ class LineageEventArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="processId")
@@ -67,6 +66,18 @@ class LineageEventArgs:
     @run_id.setter
     def run_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "run_id", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[str]:
+        """
+        The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_time", value)
 
     @property
     @pulumi.getter(name="endTime")
@@ -134,18 +145,6 @@ class LineageEventArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
-
 
 class LineageEvent(pulumi.CustomResource):
     @overload
@@ -171,7 +170,7 @@ class LineageEvent(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogLineageV1EventLinkArgs']]]] links: Optional. List of source-target pairs. Can't contain more than 100 tuples.
         :param pulumi.Input[str] name: Immutable. The resource name of the lineage event. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. Can be specified or auto-assigned. {lineage_event} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
         :param pulumi.Input[str] request_id: A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
-        :param pulumi.Input[str] start_time: Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+        :param pulumi.Input[str] start_time: The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
         """
         ...
     @overload
@@ -227,6 +226,8 @@ class LineageEvent(pulumi.CustomResource):
             if run_id is None and not opts.urn:
                 raise TypeError("Missing required property 'run_id'")
             __props__.__dict__["run_id"] = run_id
+            if start_time is None and not opts.urn:
+                raise TypeError("Missing required property 'start_time'")
             __props__.__dict__["start_time"] = start_time
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "process_id", "project", "run_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -319,7 +320,7 @@ class LineageEvent(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[str]:
         """
-        Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+        The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
         """
         return pulumi.get(self, "start_time")
 

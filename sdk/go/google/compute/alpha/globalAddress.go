@@ -24,7 +24,7 @@ type GlobalAddress struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+	// The IP version that will be used by this address. Valid options are IPV4 or IPV6.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 	Ipv6EndpointType pulumi.StringOutput `pulumi:"ipv6EndpointType"`
@@ -111,7 +111,7 @@ type globalAddressArgs struct {
 	AddressType *GlobalAddressAddressType `pulumi:"addressType"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description *string `pulumi:"description"`
-	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+	// The IP version that will be used by this address. Valid options are IPV4 or IPV6.
 	IpVersion *GlobalAddressIpVersion `pulumi:"ipVersion"`
 	// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 	Ipv6EndpointType *GlobalAddressIpv6EndpointType `pulumi:"ipv6EndpointType"`
@@ -142,7 +142,7 @@ type GlobalAddressArgs struct {
 	AddressType GlobalAddressAddressTypePtrInput
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringPtrInput
-	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+	// The IP version that will be used by this address. Valid options are IPV4 or IPV6.
 	IpVersion GlobalAddressIpVersionPtrInput
 	// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 	Ipv6EndpointType GlobalAddressIpv6EndpointTypePtrInput
@@ -234,7 +234,7 @@ func (o GlobalAddressOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+// The IP version that will be used by this address. Valid options are IPV4 or IPV6.
 func (o GlobalAddressOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
 }

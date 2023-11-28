@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly string Count;
         /// <summary>
+        /// Optional. The NVIDIA GPU driver version that should be installed for this type. You can define the specific driver version such as "470.103.01", following the driver version requirements in https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver. Batch will install the specific accelerator driver if qualified.
+        /// </summary>
+        public readonly string DriverVersion;
+        /// <summary>
         /// Deprecated: please use instances[0].install_gpu_drivers instead.
         /// </summary>
         public readonly bool InstallGpuDrivers;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         private AcceleratorResponse(
             string count,
 
+            string driverVersion,
+
             bool installGpuDrivers,
 
             string type)
         {
             Count = count;
+            DriverVersion = driverVersion;
             InstallGpuDrivers = installGpuDrivers;
             Type = type;
         }

@@ -200,6 +200,191 @@ func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Required. Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+type FilterProtocolVersion string
+
+const (
+	// Default value.
+	FilterProtocolVersionProtocolVersionUnspecified = FilterProtocolVersion("PROTOCOL_VERSION_UNSPECIFIED")
+	// The PBR is for IPv4 internet protocol traffic.
+	FilterProtocolVersionIpv4 = FilterProtocolVersion("IPV4")
+)
+
+func (FilterProtocolVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterProtocolVersion)(nil)).Elem()
+}
+
+func (e FilterProtocolVersion) ToFilterProtocolVersionOutput() FilterProtocolVersionOutput {
+	return pulumi.ToOutput(e).(FilterProtocolVersionOutput)
+}
+
+func (e FilterProtocolVersion) ToFilterProtocolVersionOutputWithContext(ctx context.Context) FilterProtocolVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FilterProtocolVersionOutput)
+}
+
+func (e FilterProtocolVersion) ToFilterProtocolVersionPtrOutput() FilterProtocolVersionPtrOutput {
+	return e.ToFilterProtocolVersionPtrOutputWithContext(context.Background())
+}
+
+func (e FilterProtocolVersion) ToFilterProtocolVersionPtrOutputWithContext(ctx context.Context) FilterProtocolVersionPtrOutput {
+	return FilterProtocolVersion(e).ToFilterProtocolVersionOutputWithContext(ctx).ToFilterProtocolVersionPtrOutputWithContext(ctx)
+}
+
+func (e FilterProtocolVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FilterProtocolVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FilterProtocolVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FilterProtocolVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FilterProtocolVersionOutput struct{ *pulumi.OutputState }
+
+func (FilterProtocolVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterProtocolVersion)(nil)).Elem()
+}
+
+func (o FilterProtocolVersionOutput) ToFilterProtocolVersionOutput() FilterProtocolVersionOutput {
+	return o
+}
+
+func (o FilterProtocolVersionOutput) ToFilterProtocolVersionOutputWithContext(ctx context.Context) FilterProtocolVersionOutput {
+	return o
+}
+
+func (o FilterProtocolVersionOutput) ToFilterProtocolVersionPtrOutput() FilterProtocolVersionPtrOutput {
+	return o.ToFilterProtocolVersionPtrOutputWithContext(context.Background())
+}
+
+func (o FilterProtocolVersionOutput) ToFilterProtocolVersionPtrOutputWithContext(ctx context.Context) FilterProtocolVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FilterProtocolVersion) *FilterProtocolVersion {
+		return &v
+	}).(FilterProtocolVersionPtrOutput)
+}
+
+func (o FilterProtocolVersionOutput) ToOutput(ctx context.Context) pulumix.Output[FilterProtocolVersion] {
+	return pulumix.Output[FilterProtocolVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o FilterProtocolVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FilterProtocolVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FilterProtocolVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FilterProtocolVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FilterProtocolVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FilterProtocolVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FilterProtocolVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (FilterProtocolVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FilterProtocolVersion)(nil)).Elem()
+}
+
+func (o FilterProtocolVersionPtrOutput) ToFilterProtocolVersionPtrOutput() FilterProtocolVersionPtrOutput {
+	return o
+}
+
+func (o FilterProtocolVersionPtrOutput) ToFilterProtocolVersionPtrOutputWithContext(ctx context.Context) FilterProtocolVersionPtrOutput {
+	return o
+}
+
+func (o FilterProtocolVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FilterProtocolVersion] {
+	return pulumix.Output[*FilterProtocolVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o FilterProtocolVersionPtrOutput) Elem() FilterProtocolVersionOutput {
+	return o.ApplyT(func(v *FilterProtocolVersion) FilterProtocolVersion {
+		if v != nil {
+			return *v
+		}
+		var ret FilterProtocolVersion
+		return ret
+	}).(FilterProtocolVersionOutput)
+}
+
+func (o FilterProtocolVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FilterProtocolVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FilterProtocolVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FilterProtocolVersionInput is an input type that accepts FilterProtocolVersionArgs and FilterProtocolVersionOutput values.
+// You can construct a concrete instance of `FilterProtocolVersionInput` via:
+//
+//	FilterProtocolVersionArgs{...}
+type FilterProtocolVersionInput interface {
+	pulumi.Input
+
+	ToFilterProtocolVersionOutput() FilterProtocolVersionOutput
+	ToFilterProtocolVersionOutputWithContext(context.Context) FilterProtocolVersionOutput
+}
+
+var filterProtocolVersionPtrType = reflect.TypeOf((**FilterProtocolVersion)(nil)).Elem()
+
+type FilterProtocolVersionPtrInput interface {
+	pulumi.Input
+
+	ToFilterProtocolVersionPtrOutput() FilterProtocolVersionPtrOutput
+	ToFilterProtocolVersionPtrOutputWithContext(context.Context) FilterProtocolVersionPtrOutput
+}
+
+type filterProtocolVersionPtr string
+
+func FilterProtocolVersionPtr(v string) FilterProtocolVersionPtrInput {
+	return (*filterProtocolVersionPtr)(&v)
+}
+
+func (*filterProtocolVersionPtr) ElementType() reflect.Type {
+	return filterProtocolVersionPtrType
+}
+
+func (in *filterProtocolVersionPtr) ToFilterProtocolVersionPtrOutput() FilterProtocolVersionPtrOutput {
+	return pulumi.ToOutput(in).(FilterProtocolVersionPtrOutput)
+}
+
+func (in *filterProtocolVersionPtr) ToFilterProtocolVersionPtrOutputWithContext(ctx context.Context) FilterProtocolVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FilterProtocolVersionPtrOutput)
+}
+
+func (in *filterProtocolVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*FilterProtocolVersion] {
+	return pulumix.Output[*FilterProtocolVersion]{
+		OutputState: in.ToFilterProtocolVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InternalRangeOverlapsItem string
 
 const (
@@ -207,6 +392,8 @@ const (
 	InternalRangeOverlapsItemOverlapUnspecified = InternalRangeOverlapsItem("OVERLAP_UNSPECIFIED")
 	// Allow creation of static routes more specific that the current internal range.
 	InternalRangeOverlapsItemOverlapRouteRange = InternalRangeOverlapsItem("OVERLAP_ROUTE_RANGE")
+	// Allow creation of internal ranges that overlap with existing subnets.
+	InternalRangeOverlapsItemOverlapExistingSubnetRange = InternalRangeOverlapsItem("OVERLAP_EXISTING_SUBNET_RANGE")
 )
 
 func (InternalRangeOverlapsItem) ElementType() reflect.Type {
@@ -817,9 +1004,196 @@ func (in *internalRangeUsagePtr) ToOutput(ctx context.Context) pulumix.Output[*I
 	}
 }
 
+// Optional. Other routes that will be referenced to determine the next hop of the packet.
+type PolicyBasedRouteNextHopOtherRoutes string
+
+const (
+	// Default value.
+	PolicyBasedRouteNextHopOtherRoutesOtherRoutesUnspecified = PolicyBasedRouteNextHopOtherRoutes("OTHER_ROUTES_UNSPECIFIED")
+	// Use the routes from the default routing tables (system-generated routes, custom routes, peering route) to determine the next hop. This will effectively exclude matching packets being applied on other PBRs with a lower priority.
+	PolicyBasedRouteNextHopOtherRoutesDefaultRouting = PolicyBasedRouteNextHopOtherRoutes("DEFAULT_ROUTING")
+)
+
+func (PolicyBasedRouteNextHopOtherRoutes) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteNextHopOtherRoutes)(nil)).Elem()
+}
+
+func (e PolicyBasedRouteNextHopOtherRoutes) ToPolicyBasedRouteNextHopOtherRoutesOutput() PolicyBasedRouteNextHopOtherRoutesOutput {
+	return pulumi.ToOutput(e).(PolicyBasedRouteNextHopOtherRoutesOutput)
+}
+
+func (e PolicyBasedRouteNextHopOtherRoutes) ToPolicyBasedRouteNextHopOtherRoutesOutputWithContext(ctx context.Context) PolicyBasedRouteNextHopOtherRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PolicyBasedRouteNextHopOtherRoutesOutput)
+}
+
+func (e PolicyBasedRouteNextHopOtherRoutes) ToPolicyBasedRouteNextHopOtherRoutesPtrOutput() PolicyBasedRouteNextHopOtherRoutesPtrOutput {
+	return e.ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(context.Background())
+}
+
+func (e PolicyBasedRouteNextHopOtherRoutes) ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(ctx context.Context) PolicyBasedRouteNextHopOtherRoutesPtrOutput {
+	return PolicyBasedRouteNextHopOtherRoutes(e).ToPolicyBasedRouteNextHopOtherRoutesOutputWithContext(ctx).ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(ctx)
+}
+
+func (e PolicyBasedRouteNextHopOtherRoutes) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyBasedRouteNextHopOtherRoutes) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyBasedRouteNextHopOtherRoutes) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PolicyBasedRouteNextHopOtherRoutes) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PolicyBasedRouteNextHopOtherRoutesOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteNextHopOtherRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteNextHopOtherRoutes)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToPolicyBasedRouteNextHopOtherRoutesOutput() PolicyBasedRouteNextHopOtherRoutesOutput {
+	return o
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToPolicyBasedRouteNextHopOtherRoutesOutputWithContext(ctx context.Context) PolicyBasedRouteNextHopOtherRoutesOutput {
+	return o
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToPolicyBasedRouteNextHopOtherRoutesPtrOutput() PolicyBasedRouteNextHopOtherRoutesPtrOutput {
+	return o.ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(ctx context.Context) PolicyBasedRouteNextHopOtherRoutesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyBasedRouteNextHopOtherRoutes) *PolicyBasedRouteNextHopOtherRoutes {
+		return &v
+	}).(PolicyBasedRouteNextHopOtherRoutesPtrOutput)
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyBasedRouteNextHopOtherRoutes] {
+	return pulumix.Output[PolicyBasedRouteNextHopOtherRoutes]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyBasedRouteNextHopOtherRoutes) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyBasedRouteNextHopOtherRoutes) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyBasedRouteNextHopOtherRoutesPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteNextHopOtherRoutesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBasedRouteNextHopOtherRoutes)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) ToPolicyBasedRouteNextHopOtherRoutesPtrOutput() PolicyBasedRouteNextHopOtherRoutesPtrOutput {
+	return o
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(ctx context.Context) PolicyBasedRouteNextHopOtherRoutesPtrOutput {
+	return o
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyBasedRouteNextHopOtherRoutes] {
+	return pulumix.Output[*PolicyBasedRouteNextHopOtherRoutes]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) Elem() PolicyBasedRouteNextHopOtherRoutesOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteNextHopOtherRoutes) PolicyBasedRouteNextHopOtherRoutes {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyBasedRouteNextHopOtherRoutes
+		return ret
+	}).(PolicyBasedRouteNextHopOtherRoutesOutput)
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PolicyBasedRouteNextHopOtherRoutes) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PolicyBasedRouteNextHopOtherRoutesInput is an input type that accepts PolicyBasedRouteNextHopOtherRoutesArgs and PolicyBasedRouteNextHopOtherRoutesOutput values.
+// You can construct a concrete instance of `PolicyBasedRouteNextHopOtherRoutesInput` via:
+//
+//	PolicyBasedRouteNextHopOtherRoutesArgs{...}
+type PolicyBasedRouteNextHopOtherRoutesInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteNextHopOtherRoutesOutput() PolicyBasedRouteNextHopOtherRoutesOutput
+	ToPolicyBasedRouteNextHopOtherRoutesOutputWithContext(context.Context) PolicyBasedRouteNextHopOtherRoutesOutput
+}
+
+var policyBasedRouteNextHopOtherRoutesPtrType = reflect.TypeOf((**PolicyBasedRouteNextHopOtherRoutes)(nil)).Elem()
+
+type PolicyBasedRouteNextHopOtherRoutesPtrInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteNextHopOtherRoutesPtrOutput() PolicyBasedRouteNextHopOtherRoutesPtrOutput
+	ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(context.Context) PolicyBasedRouteNextHopOtherRoutesPtrOutput
+}
+
+type policyBasedRouteNextHopOtherRoutesPtr string
+
+func PolicyBasedRouteNextHopOtherRoutesPtr(v string) PolicyBasedRouteNextHopOtherRoutesPtrInput {
+	return (*policyBasedRouteNextHopOtherRoutesPtr)(&v)
+}
+
+func (*policyBasedRouteNextHopOtherRoutesPtr) ElementType() reflect.Type {
+	return policyBasedRouteNextHopOtherRoutesPtrType
+}
+
+func (in *policyBasedRouteNextHopOtherRoutesPtr) ToPolicyBasedRouteNextHopOtherRoutesPtrOutput() PolicyBasedRouteNextHopOtherRoutesPtrOutput {
+	return pulumi.ToOutput(in).(PolicyBasedRouteNextHopOtherRoutesPtrOutput)
+}
+
+func (in *policyBasedRouteNextHopOtherRoutesPtr) ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(ctx context.Context) PolicyBasedRouteNextHopOtherRoutesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PolicyBasedRouteNextHopOtherRoutesPtrOutput)
+}
+
+func (in *policyBasedRouteNextHopOtherRoutesPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyBasedRouteNextHopOtherRoutes] {
+	return pulumix.Output[*PolicyBasedRouteNextHopOtherRoutes]{
+		OutputState: in.ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterProtocolVersionInput)(nil)).Elem(), FilterProtocolVersion("PROTOCOL_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterProtocolVersionPtrInput)(nil)).Elem(), FilterProtocolVersion("PROTOCOL_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeOverlapsItemInput)(nil)).Elem(), InternalRangeOverlapsItem("OVERLAP_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeOverlapsItemPtrInput)(nil)).Elem(), InternalRangeOverlapsItem("OVERLAP_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeOverlapsItemArrayInput)(nil)).Elem(), InternalRangeOverlapsItemArray{})
@@ -827,8 +1201,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangePeeringPtrInput)(nil)).Elem(), InternalRangePeering("PEERING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeUsageInput)(nil)).Elem(), InternalRangeUsage("USAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeUsagePtrInput)(nil)).Elem(), InternalRangeUsage("USAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteNextHopOtherRoutesInput)(nil)).Elem(), PolicyBasedRouteNextHopOtherRoutes("OTHER_ROUTES_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteNextHopOtherRoutesPtrInput)(nil)).Elem(), PolicyBasedRouteNextHopOtherRoutes("OTHER_ROUTES_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(FilterProtocolVersionOutput{})
+	pulumi.RegisterOutputType(FilterProtocolVersionPtrOutput{})
 	pulumi.RegisterOutputType(InternalRangeOverlapsItemOutput{})
 	pulumi.RegisterOutputType(InternalRangeOverlapsItemPtrOutput{})
 	pulumi.RegisterOutputType(InternalRangeOverlapsItemArrayOutput{})
@@ -836,4 +1214,6 @@ func init() {
 	pulumi.RegisterOutputType(InternalRangePeeringPtrOutput{})
 	pulumi.RegisterOutputType(InternalRangeUsageOutput{})
 	pulumi.RegisterOutputType(InternalRangeUsagePtrOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteNextHopOtherRoutesOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteNextHopOtherRoutesPtrOutput{})
 }

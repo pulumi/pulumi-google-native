@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
     public sealed class ScorecardResponse
     {
         /// <summary>
+        /// Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
+        /// </summary>
+        public readonly Outputs.EmptyResponse BlankView;
+        /// <summary>
         /// Will cause the scorecard to show a gauge chart.
         /// </summary>
         public readonly Outputs.GaugeViewResponse GaugeView;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
         [OutputConstructor]
         private ScorecardResponse(
+            Outputs.EmptyResponse blankView,
+
             Outputs.GaugeViewResponse gaugeView,
 
             Outputs.SparkChartViewResponse sparkChartView,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.TimeSeriesQueryResponse timeSeriesQuery)
         {
+            BlankView = blankView;
             GaugeView = gaugeView;
             SparkChartView = sparkChartView;
             Thresholds = thresholds;

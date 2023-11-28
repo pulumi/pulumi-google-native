@@ -32,10 +32,14 @@ type LookupSourceArgs struct {
 type LookupSourceResult struct {
 	// AWS type source details.
 	Aws AwsSourceDetailsResponse `pulumi:"aws"`
+	// Azure type source details.
+	Azure AzureSourceDetailsResponse `pulumi:"azure"`
 	// The create time timestamp.
 	CreateTime string `pulumi:"createTime"`
 	// User-provided description of the source.
 	Description string `pulumi:"description"`
+	// Optional. Immutable. The encryption details of the source data stored by the service.
+	Encryption EncryptionResponse `pulumi:"encryption"`
 	// The labels of the source.
 	Labels map[string]string `pulumi:"labels"`
 	// The Source name.
@@ -94,6 +98,11 @@ func (o LookupSourceResultOutput) Aws() AwsSourceDetailsResponseOutput {
 	return o.ApplyT(func(v LookupSourceResult) AwsSourceDetailsResponse { return v.Aws }).(AwsSourceDetailsResponseOutput)
 }
 
+// Azure type source details.
+func (o LookupSourceResultOutput) Azure() AzureSourceDetailsResponseOutput {
+	return o.ApplyT(func(v LookupSourceResult) AzureSourceDetailsResponse { return v.Azure }).(AzureSourceDetailsResponseOutput)
+}
+
 // The create time timestamp.
 func (o LookupSourceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -102,6 +111,11 @@ func (o LookupSourceResultOutput) CreateTime() pulumi.StringOutput {
 // User-provided description of the source.
 func (o LookupSourceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Immutable. The encryption details of the source data stored by the service.
+func (o LookupSourceResultOutput) Encryption() EncryptionResponseOutput {
+	return o.ApplyT(func(v LookupSourceResult) EncryptionResponse { return v.Encryption }).(EncryptionResponseOutput)
 }
 
 // The labels of the source.

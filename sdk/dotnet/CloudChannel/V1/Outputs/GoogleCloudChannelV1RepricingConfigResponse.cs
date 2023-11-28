@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudChannelV1RepricingAdjustmentResponse Adjustment;
         /// <summary>
-        /// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+        /// Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
         /// </summary>
         public readonly Outputs.GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse ChannelPartnerGranularity;
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleTypeDateResponse EffectiveInvoiceMonth;
         /// <summary>
-        /// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+        /// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
         /// </summary>
         public readonly Outputs.GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse EntitlementGranularity;
         /// <summary>

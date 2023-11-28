@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetAgentResult:
-    def __init__(__self__, advanced_settings=None, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, locked=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, text_to_speech_settings=None, time_zone=None):
+    def __init__(__self__, advanced_settings=None, answer_feedback_settings=None, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, gen_app_builder_settings=None, git_integration_settings=None, locked=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, text_to_speech_settings=None, time_zone=None):
         if advanced_settings and not isinstance(advanced_settings, dict):
             raise TypeError("Expected argument 'advanced_settings' to be a dict")
         pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if answer_feedback_settings and not isinstance(answer_feedback_settings, dict):
+            raise TypeError("Expected argument 'answer_feedback_settings' to be a dict")
+        pulumi.set(__self__, "answer_feedback_settings", answer_feedback_settings)
         if avatar_uri and not isinstance(avatar_uri, str):
             raise TypeError("Expected argument 'avatar_uri' to be a str")
         pulumi.set(__self__, "avatar_uri", avatar_uri)
@@ -41,6 +44,12 @@ class GetAgentResult:
         if enable_stackdriver_logging and not isinstance(enable_stackdriver_logging, bool):
             raise TypeError("Expected argument 'enable_stackdriver_logging' to be a bool")
         pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+        if gen_app_builder_settings and not isinstance(gen_app_builder_settings, dict):
+            raise TypeError("Expected argument 'gen_app_builder_settings' to be a dict")
+        pulumi.set(__self__, "gen_app_builder_settings", gen_app_builder_settings)
+        if git_integration_settings and not isinstance(git_integration_settings, dict):
+            raise TypeError("Expected argument 'git_integration_settings' to be a dict")
+        pulumi.set(__self__, "git_integration_settings", git_integration_settings)
         if locked and not isinstance(locked, bool):
             raise TypeError("Expected argument 'locked' to be a bool")
         pulumi.set(__self__, "locked", locked)
@@ -73,6 +82,14 @@ class GetAgentResult:
         Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
         """
         return pulumi.get(self, "advanced_settings")
+
+    @property
+    @pulumi.getter(name="answerFeedbackSettings")
+    def answer_feedback_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse':
+        """
+        Optional. Answer feedback collection settings.
+        """
+        return pulumi.get(self, "answer_feedback_settings")
 
     @property
     @pulumi.getter(name="avatarUri")
@@ -121,6 +138,22 @@ class GetAgentResult:
         Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
+
+    @property
+    @pulumi.getter(name="genAppBuilderSettings")
+    def gen_app_builder_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse':
+        """
+        Gen App Builder-related agent-level settings.
+        """
+        return pulumi.get(self, "gen_app_builder_settings")
+
+    @property
+    @pulumi.getter(name="gitIntegrationSettings")
+    def git_integration_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse':
+        """
+        Git integration settings for this agent.
+        """
+        return pulumi.get(self, "git_integration_settings")
 
     @property
     @pulumi.getter
@@ -194,12 +227,15 @@ class AwaitableGetAgentResult(GetAgentResult):
             yield self
         return GetAgentResult(
             advanced_settings=self.advanced_settings,
+            answer_feedback_settings=self.answer_feedback_settings,
             avatar_uri=self.avatar_uri,
             default_language_code=self.default_language_code,
             description=self.description,
             display_name=self.display_name,
             enable_spell_correction=self.enable_spell_correction,
             enable_stackdriver_logging=self.enable_stackdriver_logging,
+            gen_app_builder_settings=self.gen_app_builder_settings,
+            git_integration_settings=self.git_integration_settings,
             locked=self.locked,
             name=self.name,
             security_settings=self.security_settings,
@@ -226,12 +262,15 @@ def get_agent(agent_id: Optional[str] = None,
 
     return AwaitableGetAgentResult(
         advanced_settings=pulumi.get(__ret__, 'advanced_settings'),
+        answer_feedback_settings=pulumi.get(__ret__, 'answer_feedback_settings'),
         avatar_uri=pulumi.get(__ret__, 'avatar_uri'),
         default_language_code=pulumi.get(__ret__, 'default_language_code'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         enable_spell_correction=pulumi.get(__ret__, 'enable_spell_correction'),
         enable_stackdriver_logging=pulumi.get(__ret__, 'enable_stackdriver_logging'),
+        gen_app_builder_settings=pulumi.get(__ret__, 'gen_app_builder_settings'),
+        git_integration_settings=pulumi.get(__ret__, 'git_integration_settings'),
         locked=pulumi.get(__ret__, 'locked'),
         name=pulumi.get(__ret__, 'name'),
         security_settings=pulumi.get(__ret__, 'security_settings'),

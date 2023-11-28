@@ -15,9 +15,12 @@ if typing.TYPE_CHECKING:
     v1alpha2 = __v1alpha2
     import pulumi_google_native.cloudbuild.v1beta1 as __v1beta1
     v1beta1 = __v1beta1
+    import pulumi_google_native.cloudbuild.v2 as __v2
+    v2 = __v2
 else:
     v1 = _utilities.lazy_import('pulumi_google_native.cloudbuild.v1')
     v1alpha1 = _utilities.lazy_import('pulumi_google_native.cloudbuild.v1alpha1')
     v1alpha2 = _utilities.lazy_import('pulumi_google_native.cloudbuild.v1alpha2')
     v1beta1 = _utilities.lazy_import('pulumi_google_native.cloudbuild.v1beta1')
+    v2 = _utilities.lazy_import('pulumi_google_native.cloudbuild.v2')
 

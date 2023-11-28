@@ -72,11 +72,15 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. The name of the group that this spoke is associated with.
+        /// </summary>
+        public readonly string Group;
+        /// <summary>
         /// Immutable. The name of the hub that this spoke is attached to.
         /// </summary>
         public readonly string Hub;
         /// <summary>
-        /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -88,6 +92,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly Outputs.LinkedRouterApplianceInstancesResponse LinkedRouterApplianceInstances;
         /// <summary>
+        /// Optional. VPC network that is associated with the spoke.
+        /// </summary>
+        public readonly Outputs.LinkedVpcNetworkResponse LinkedVpcNetwork;
+        /// <summary>
         /// VPN tunnels that are associated with the spoke.
         /// </summary>
         public readonly Outputs.LinkedVpnTunnelsResponse LinkedVpnTunnels;
@@ -96,11 +104,19 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.StateReasonResponse> Reasons;
+        /// <summary>
+        /// The type of resource associated with the spoke.
+        /// </summary>
+        public readonly string SpokeType;
+        /// <summary>
         /// The current lifecycle state of this spoke.
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        /// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
         /// </summary>
         public readonly string UniqueId;
         /// <summary>
@@ -114,6 +130,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 
             string description,
 
+            string group,
+
             string hub,
 
             ImmutableDictionary<string, string> labels,
@@ -122,9 +140,15 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 
             Outputs.LinkedRouterApplianceInstancesResponse linkedRouterApplianceInstances,
 
+            Outputs.LinkedVpcNetworkResponse linkedVpcNetwork,
+
             Outputs.LinkedVpnTunnelsResponse linkedVpnTunnels,
 
             string name,
+
+            ImmutableArray<Outputs.StateReasonResponse> reasons,
+
+            string spokeType,
 
             string state,
 
@@ -134,12 +158,16 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         {
             CreateTime = createTime;
             Description = description;
+            Group = group;
             Hub = hub;
             Labels = labels;
             LinkedInterconnectAttachments = linkedInterconnectAttachments;
             LinkedRouterApplianceInstances = linkedRouterApplianceInstances;
+            LinkedVpcNetwork = linkedVpcNetwork;
             LinkedVpnTunnels = linkedVpnTunnels;
             Name = name;
+            Reasons = reasons;
+            SpokeType = spokeType;
             State = state;
             UniqueId = uniqueId;
             UpdateTime = updateTime;

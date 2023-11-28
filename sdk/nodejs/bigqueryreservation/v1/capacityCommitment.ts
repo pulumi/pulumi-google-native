@@ -62,6 +62,10 @@ export class CapacityCommitment extends pulumi.CustomResource {
      * For FAILED commitment plan, provides the reason of failure.
      */
     public /*out*/ readonly failureStatus!: pulumi.Output<outputs.bigqueryreservation.v1.StatusResponse>;
+    /**
+     * If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.
+     */
+    public /*out*/ readonly isFlatRate!: pulumi.Output<boolean>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
@@ -112,6 +116,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
             resourceInputs["commitmentEndTime"] = undefined /*out*/;
             resourceInputs["commitmentStartTime"] = undefined /*out*/;
             resourceInputs["failureStatus"] = undefined /*out*/;
+            resourceInputs["isFlatRate"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
@@ -121,6 +126,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
             resourceInputs["edition"] = undefined /*out*/;
             resourceInputs["enforceSingleAdminProjectPerOrg"] = undefined /*out*/;
             resourceInputs["failureStatus"] = undefined /*out*/;
+            resourceInputs["isFlatRate"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["multiRegionAuxiliary"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

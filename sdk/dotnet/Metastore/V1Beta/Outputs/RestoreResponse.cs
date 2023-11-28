@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
         /// </summary>
         public readonly string Backup;
         /// <summary>
+        /// Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
+        /// </summary>
+        public readonly string BackupLocation;
+        /// <summary>
         /// The restore details containing the revision of the service to be restored to, in format of JSON.
         /// </summary>
         public readonly string Details;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
         private RestoreResponse(
             string backup,
 
+            string backupLocation,
+
             string details,
 
             string endTime,
@@ -56,6 +62,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
             string type)
         {
             Backup = backup;
+            BackupLocation = backupLocation;
             Details = details;
             EndTime = endTime;
             StartTime = startTime;

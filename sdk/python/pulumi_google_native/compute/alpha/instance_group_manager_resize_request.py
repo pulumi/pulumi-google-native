@@ -23,6 +23,8 @@ class InstanceGroupManagerResizeRequestArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  queuing_policy: Optional[pulumi.Input['QueuingPolicyArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 requested_run_duration: Optional[pulumi.Input['DurationArgs']] = None,
+                 resize_by: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstanceGroupManagerResizeRequest resource.
@@ -31,6 +33,8 @@ class InstanceGroupManagerResizeRequestArgs:
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input['QueuingPolicyArgs'] queuing_policy: When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input['DurationArgs'] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         """
         pulumi.set(__self__, "instance_group_manager", instance_group_manager)
         if count is not None:
@@ -45,6 +49,10 @@ class InstanceGroupManagerResizeRequestArgs:
             pulumi.set(__self__, "queuing_policy", queuing_policy)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if requested_run_duration is not None:
+            pulumi.set(__self__, "requested_run_duration", requested_run_duration)
+        if resize_by is not None:
+            pulumi.set(__self__, "resize_by", resize_by)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -127,6 +135,30 @@ class InstanceGroupManagerResizeRequestArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="requestedRunDuration")
+    def requested_run_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
+        """
+        Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        """
+        return pulumi.get(self, "requested_run_duration")
+
+    @requested_run_duration.setter
+    def requested_run_duration(self, value: Optional[pulumi.Input['DurationArgs']]):
+        pulumi.set(self, "requested_run_duration", value)
+
+    @property
+    @pulumi.getter(name="resizeBy")
+    def resize_by(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of instances to be created by this resize request. The group's target size will be increased by this number.
+        """
+        return pulumi.get(self, "resize_by")
+
+    @resize_by.setter
+    def resize_by(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "resize_by", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "zone")
@@ -148,6 +180,8 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  queuing_policy: Optional[pulumi.Input[pulumi.InputType['QueuingPolicyArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 requested_run_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 resize_by: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -160,6 +194,8 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[pulumi.InputType['QueuingPolicyArgs']] queuing_policy: When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[pulumi.InputType['DurationArgs']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         """
         ...
     @overload
@@ -192,6 +228,8 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  queuing_policy: Optional[pulumi.Input[pulumi.InputType['QueuingPolicyArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 requested_run_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 resize_by: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -211,6 +249,8 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["queuing_policy"] = queuing_policy
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["requested_run_duration"] = requested_run_duration
+            __props__.__dict__["resize_by"] = resize_by
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
@@ -251,6 +291,8 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["queuing_policy"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["requested_run_duration"] = None
+        __props__.__dict__["resize_by"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["state"] = None
@@ -325,6 +367,22 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
         return pulumi.get(self, "request_id")
 
     @property
+    @pulumi.getter(name="requestedRunDuration")
+    def requested_run_duration(self) -> pulumi.Output['outputs.DurationResponse']:
+        """
+        Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        """
+        return pulumi.get(self, "requested_run_duration")
+
+    @property
+    @pulumi.getter(name="resizeBy")
+    def resize_by(self) -> pulumi.Output[int]:
+        """
+        The number of instances to be created by this resize request. The group's target size will be increased by this number.
+        """
+        return pulumi.get(self, "resize_by")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
@@ -352,7 +410,7 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output['outputs.InstanceGroupManagerResizeRequestStatusResponse']:
         """
-        [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+        [Output only] Status of the request.
         """
         return pulumi.get(self, "status")
 

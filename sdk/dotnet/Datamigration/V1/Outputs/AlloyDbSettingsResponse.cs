@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
     public sealed class AlloyDbSettingsResponse
     {
         /// <summary>
+        /// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+        /// </summary>
+        public readonly string DatabaseVersion;
+        /// <summary>
         /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
         /// </summary>
         public readonly Outputs.EncryptionConfigResponse EncryptionConfig;
@@ -36,6 +40,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
         [OutputConstructor]
         private AlloyDbSettingsResponse(
+            string databaseVersion,
+
             Outputs.EncryptionConfigResponse encryptionConfig,
 
             Outputs.UserPasswordResponse initialUser,
@@ -46,6 +52,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             string vpcNetwork)
         {
+            DatabaseVersion = databaseVersion;
             EncryptionConfig = encryptionConfig;
             InitialUser = initialUser;
             Labels = labels;

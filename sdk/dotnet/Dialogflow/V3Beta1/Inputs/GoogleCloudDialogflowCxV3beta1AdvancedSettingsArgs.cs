@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1GcsDestinationArgs>? AudioExportGcsDestination { get; set; }
 
         /// <summary>
+        /// Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level.
+        /// </summary>
+        [Input("dtmfSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsArgs>? DtmfSettings { get; set; }
+
+        /// <summary>
         /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
         /// </summary>
         [Input("loggingSettings")]

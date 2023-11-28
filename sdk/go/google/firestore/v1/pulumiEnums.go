@@ -574,6 +574,193 @@ func (in *databaseDeleteProtectionStatePtr) ToOutput(ctx context.Context) pulumi
 	}
 }
 
+// Whether to enable the PITR feature on this database.
+type DatabasePointInTimeRecoveryEnablement string
+
+const (
+	// Not used.
+	DatabasePointInTimeRecoveryEnablementPointInTimeRecoveryEnablementUnspecified = DatabasePointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED")
+	// Reads are supported on selected versions of the data from within the past 7 days: * Reads against any timestamp within the past hour * Reads against 1-minute snapshots beyond 1 hour and within 7 days `version_retention_period` and `earliest_version_time` can be used to determine the supported versions.
+	DatabasePointInTimeRecoveryEnablementPointInTimeRecoveryEnabled = DatabasePointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLED")
+	// Reads are supported on any version of the data from within the past 1 hour.
+	DatabasePointInTimeRecoveryEnablementPointInTimeRecoveryDisabled = DatabasePointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_DISABLED")
+)
+
+func (DatabasePointInTimeRecoveryEnablement) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePointInTimeRecoveryEnablement)(nil)).Elem()
+}
+
+func (e DatabasePointInTimeRecoveryEnablement) ToDatabasePointInTimeRecoveryEnablementOutput() DatabasePointInTimeRecoveryEnablementOutput {
+	return pulumi.ToOutput(e).(DatabasePointInTimeRecoveryEnablementOutput)
+}
+
+func (e DatabasePointInTimeRecoveryEnablement) ToDatabasePointInTimeRecoveryEnablementOutputWithContext(ctx context.Context) DatabasePointInTimeRecoveryEnablementOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatabasePointInTimeRecoveryEnablementOutput)
+}
+
+func (e DatabasePointInTimeRecoveryEnablement) ToDatabasePointInTimeRecoveryEnablementPtrOutput() DatabasePointInTimeRecoveryEnablementPtrOutput {
+	return e.ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(context.Background())
+}
+
+func (e DatabasePointInTimeRecoveryEnablement) ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(ctx context.Context) DatabasePointInTimeRecoveryEnablementPtrOutput {
+	return DatabasePointInTimeRecoveryEnablement(e).ToDatabasePointInTimeRecoveryEnablementOutputWithContext(ctx).ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(ctx)
+}
+
+func (e DatabasePointInTimeRecoveryEnablement) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabasePointInTimeRecoveryEnablement) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabasePointInTimeRecoveryEnablement) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatabasePointInTimeRecoveryEnablement) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatabasePointInTimeRecoveryEnablementOutput struct{ *pulumi.OutputState }
+
+func (DatabasePointInTimeRecoveryEnablementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePointInTimeRecoveryEnablement)(nil)).Elem()
+}
+
+func (o DatabasePointInTimeRecoveryEnablementOutput) ToDatabasePointInTimeRecoveryEnablementOutput() DatabasePointInTimeRecoveryEnablementOutput {
+	return o
+}
+
+func (o DatabasePointInTimeRecoveryEnablementOutput) ToDatabasePointInTimeRecoveryEnablementOutputWithContext(ctx context.Context) DatabasePointInTimeRecoveryEnablementOutput {
+	return o
+}
+
+func (o DatabasePointInTimeRecoveryEnablementOutput) ToDatabasePointInTimeRecoveryEnablementPtrOutput() DatabasePointInTimeRecoveryEnablementPtrOutput {
+	return o.ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(context.Background())
+}
+
+func (o DatabasePointInTimeRecoveryEnablementOutput) ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(ctx context.Context) DatabasePointInTimeRecoveryEnablementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabasePointInTimeRecoveryEnablement) *DatabasePointInTimeRecoveryEnablement {
+		return &v
+	}).(DatabasePointInTimeRecoveryEnablementPtrOutput)
+}
+
+func (o DatabasePointInTimeRecoveryEnablementOutput) ToOutput(ctx context.Context) pulumix.Output[DatabasePointInTimeRecoveryEnablement] {
+	return pulumix.Output[DatabasePointInTimeRecoveryEnablement]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DatabasePointInTimeRecoveryEnablementOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatabasePointInTimeRecoveryEnablementOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabasePointInTimeRecoveryEnablement) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatabasePointInTimeRecoveryEnablementOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabasePointInTimeRecoveryEnablementOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabasePointInTimeRecoveryEnablement) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabasePointInTimeRecoveryEnablementPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabasePointInTimeRecoveryEnablementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePointInTimeRecoveryEnablement)(nil)).Elem()
+}
+
+func (o DatabasePointInTimeRecoveryEnablementPtrOutput) ToDatabasePointInTimeRecoveryEnablementPtrOutput() DatabasePointInTimeRecoveryEnablementPtrOutput {
+	return o
+}
+
+func (o DatabasePointInTimeRecoveryEnablementPtrOutput) ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(ctx context.Context) DatabasePointInTimeRecoveryEnablementPtrOutput {
+	return o
+}
+
+func (o DatabasePointInTimeRecoveryEnablementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabasePointInTimeRecoveryEnablement] {
+	return pulumix.Output[*DatabasePointInTimeRecoveryEnablement]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DatabasePointInTimeRecoveryEnablementPtrOutput) Elem() DatabasePointInTimeRecoveryEnablementOutput {
+	return o.ApplyT(func(v *DatabasePointInTimeRecoveryEnablement) DatabasePointInTimeRecoveryEnablement {
+		if v != nil {
+			return *v
+		}
+		var ret DatabasePointInTimeRecoveryEnablement
+		return ret
+	}).(DatabasePointInTimeRecoveryEnablementOutput)
+}
+
+func (o DatabasePointInTimeRecoveryEnablementPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabasePointInTimeRecoveryEnablementPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatabasePointInTimeRecoveryEnablement) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatabasePointInTimeRecoveryEnablementInput is an input type that accepts DatabasePointInTimeRecoveryEnablementArgs and DatabasePointInTimeRecoveryEnablementOutput values.
+// You can construct a concrete instance of `DatabasePointInTimeRecoveryEnablementInput` via:
+//
+//	DatabasePointInTimeRecoveryEnablementArgs{...}
+type DatabasePointInTimeRecoveryEnablementInput interface {
+	pulumi.Input
+
+	ToDatabasePointInTimeRecoveryEnablementOutput() DatabasePointInTimeRecoveryEnablementOutput
+	ToDatabasePointInTimeRecoveryEnablementOutputWithContext(context.Context) DatabasePointInTimeRecoveryEnablementOutput
+}
+
+var databasePointInTimeRecoveryEnablementPtrType = reflect.TypeOf((**DatabasePointInTimeRecoveryEnablement)(nil)).Elem()
+
+type DatabasePointInTimeRecoveryEnablementPtrInput interface {
+	pulumi.Input
+
+	ToDatabasePointInTimeRecoveryEnablementPtrOutput() DatabasePointInTimeRecoveryEnablementPtrOutput
+	ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(context.Context) DatabasePointInTimeRecoveryEnablementPtrOutput
+}
+
+type databasePointInTimeRecoveryEnablementPtr string
+
+func DatabasePointInTimeRecoveryEnablementPtr(v string) DatabasePointInTimeRecoveryEnablementPtrInput {
+	return (*databasePointInTimeRecoveryEnablementPtr)(&v)
+}
+
+func (*databasePointInTimeRecoveryEnablementPtr) ElementType() reflect.Type {
+	return databasePointInTimeRecoveryEnablementPtrType
+}
+
+func (in *databasePointInTimeRecoveryEnablementPtr) ToDatabasePointInTimeRecoveryEnablementPtrOutput() DatabasePointInTimeRecoveryEnablementPtrOutput {
+	return pulumi.ToOutput(in).(DatabasePointInTimeRecoveryEnablementPtrOutput)
+}
+
+func (in *databasePointInTimeRecoveryEnablementPtr) ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(ctx context.Context) DatabasePointInTimeRecoveryEnablementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatabasePointInTimeRecoveryEnablementPtrOutput)
+}
+
+func (in *databasePointInTimeRecoveryEnablementPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabasePointInTimeRecoveryEnablement] {
+	return pulumix.Output[*DatabasePointInTimeRecoveryEnablement]{
+		OutputState: in.ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 type DatabaseType string
 
@@ -1334,7 +1521,7 @@ func (in *googleFirestoreAdminV1WeeklyRecurrenceDayPtr) ToOutput(ctx context.Con
 type IndexApiScope string
 
 const (
-	// The index can be used by both Firestore Native and Firestore in Datastore Mode query API. This is the default.
+	// The index can only be used by the Firestore Native query API. This is the default.
 	IndexApiScopeAnyApi = IndexApiScope("ANY_API")
 	// The index can only be used by the Firestore in Datastore Mode query API.
 	IndexApiScopeDatastoreModeApi = IndexApiScope("DATASTORE_MODE_API")
@@ -1711,6 +1898,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConcurrencyModePtrInput)(nil)).Elem(), DatabaseConcurrencyMode("CONCURRENCY_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDeleteProtectionStateInput)(nil)).Elem(), DatabaseDeleteProtectionState("DELETE_PROTECTION_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDeleteProtectionStatePtrInput)(nil)).Elem(), DatabaseDeleteProtectionState("DELETE_PROTECTION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePointInTimeRecoveryEnablementInput)(nil)).Elem(), DatabasePointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePointInTimeRecoveryEnablementPtrInput)(nil)).Elem(), DatabasePointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeInput)(nil)).Elem(), DatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypePtrInput)(nil)).Elem(), DatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldArrayConfigInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArrayConfig("ARRAY_CONFIG_UNSPECIFIED"))
@@ -1729,6 +1918,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseConcurrencyModePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDeleteProtectionStateOutput{})
 	pulumi.RegisterOutputType(DatabaseDeleteProtectionStatePtrOutput{})
+	pulumi.RegisterOutputType(DatabasePointInTimeRecoveryEnablementOutput{})
+	pulumi.RegisterOutputType(DatabasePointInTimeRecoveryEnablementPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeOutput{})
 	pulumi.RegisterOutputType(DatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldArrayConfigOutput{})

@@ -64,9 +64,29 @@ namespace Pulumi.GoogleNative.Speech.V1
     public sealed class GetCustomClassResult
     {
         /// <summary>
+        /// Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Annotations;
+        /// <summary>
         /// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
         /// </summary>
         public readonly string CustomClassId;
+        /// <summary>
+        /// The time at which this resource was requested for deletion. This field is not used.
+        /// </summary>
+        public readonly string DeleteTime;
+        /// <summary>
+        /// User-settable, human-readable name for the CustomClass. Must be 63 characters or less. This field is not used.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
+        /// The time at which this resource will be purged. This field is not used.
+        /// </summary>
+        public readonly string ExpireTime;
         /// <summary>
         /// A collection of class items.
         /// </summary>
@@ -83,10 +103,32 @@ namespace Pulumi.GoogleNative.Speech.V1
         /// The resource name of the custom class.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Whether or not this CustomClass is in the process of being updated. This field is not used.
+        /// </summary>
+        public readonly bool Reconciling;
+        /// <summary>
+        /// The CustomClass lifecycle state. This field is not used.
+        /// </summary>
+        public readonly string State;
+        /// <summary>
+        /// System-assigned unique identifier for the CustomClass. This field is not used.
+        /// </summary>
+        public readonly string Uid;
 
         [OutputConstructor]
         private GetCustomClassResult(
+            ImmutableDictionary<string, string> annotations,
+
             string customClassId,
+
+            string deleteTime,
+
+            string displayName,
+
+            string etag,
+
+            string expireTime,
 
             ImmutableArray<Outputs.ClassItemResponse> items,
 
@@ -94,13 +136,27 @@ namespace Pulumi.GoogleNative.Speech.V1
 
             string kmsKeyVersionName,
 
-            string name)
+            string name,
+
+            bool reconciling,
+
+            string state,
+
+            string uid)
         {
+            Annotations = annotations;
             CustomClassId = customClassId;
+            DeleteTime = deleteTime;
+            DisplayName = displayName;
+            Etag = etag;
+            ExpireTime = expireTime;
             Items = items;
             KmsKeyName = kmsKeyName;
             KmsKeyVersionName = kmsKeyVersionName;
             Name = name;
+            Reconciling = reconciling;
+            State = state;
+            Uid = uid;
         }
     }
 }

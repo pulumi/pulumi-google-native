@@ -46,7 +46,7 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The format of packages that are stored in the repository.
+     * Optional. The format of packages that are stored in the repository.
      */
     public readonly format!: pulumi.Output<string>;
     /**
@@ -63,14 +63,14 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly mavenConfig!: pulumi.Output<outputs.artifactregistry.v1beta2.MavenRepositoryConfigResponse>;
     /**
-     * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+     * The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * The repository id to use for this repository.
+     * Required. The repository id to use for this repository.
      */
-    public readonly repositoryId!: pulumi.Output<string | undefined>;
+    public readonly repositoryId!: pulumi.Output<string>;
     /**
      * If set, the repository satisfies physical zone separation.
      */
@@ -91,10 +91,13 @@ export class Repository extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: RepositoryArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: RepositoryArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.repositoryId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'repositoryId'");
+            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -124,7 +127,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "repositoryId"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Repository.__pulumiType, name, resourceInputs, opts);
     }
@@ -139,7 +142,7 @@ export interface RepositoryArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The format of packages that are stored in the repository.
+     * Optional. The format of packages that are stored in the repository.
      */
     format?: pulumi.Input<enums.artifactregistry.v1beta2.RepositoryFormat>;
     /**
@@ -156,12 +159,12 @@ export interface RepositoryArgs {
      */
     mavenConfig?: pulumi.Input<inputs.artifactregistry.v1beta2.MavenRepositoryConfigArgs>;
     /**
-     * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+     * The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The repository id to use for this repository.
+     * Required. The repository id to use for this repository.
      */
-    repositoryId?: pulumi.Input<string>;
+    repositoryId: pulumi.Input<string>;
 }

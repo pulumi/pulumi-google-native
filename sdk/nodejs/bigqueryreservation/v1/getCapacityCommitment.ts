@@ -44,6 +44,10 @@ export interface GetCapacityCommitmentResult {
      */
     readonly failureStatus: outputs.bigqueryreservation.v1.StatusResponse;
     /**
+     * If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.
+     */
+    readonly isFlatRate: boolean;
+    /**
      * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
      */
     readonly multiRegionAuxiliary: boolean;

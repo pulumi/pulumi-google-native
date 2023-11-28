@@ -29,6 +29,7 @@ __all__ = [
     'EnvironmentConfigArgs',
     'ExecutionConfigArgs',
     'ExprArgs',
+    'FlinkJobArgs',
     'GceClusterConfigArgs',
     'GkeClusterConfigArgs',
     'GkeNodeConfigArgs',
@@ -36,14 +37,18 @@ __all__ = [
     'GkeNodePoolAutoscalingConfigArgs',
     'GkeNodePoolConfigArgs',
     'GkeNodePoolTargetArgs',
+    'GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs',
     'HadoopJobArgs',
     'HiveJobArgs',
     'IdentityConfigArgs',
+    'InstanceFlexibilityPolicyArgs',
     'InstanceGroupAutoscalingPolicyConfigArgs',
     'InstanceGroupConfigArgs',
+    'InstanceSelectionArgs',
     'JobPlacementArgs',
     'JobReferenceArgs',
     'JobSchedulingArgs',
+    'JupyterConfigArgs',
     'KerberosConfigArgs',
     'KubernetesClusterConfigArgs',
     'KubernetesSoftwareConfigArgs',
@@ -61,10 +66,12 @@ __all__ = [
     'PeripheralsConfigArgs',
     'PigJobArgs',
     'PrestoJobArgs',
+    'PyPiRepositoryConfigArgs',
     'PySparkBatchArgs',
     'PySparkJobArgs',
     'QueryListArgs',
     'RegexValidationArgs',
+    'RepositoryConfigArgs',
     'ReservationAffinityArgs',
     'RuntimeConfigArgs',
     'SecurityConfigArgs',
@@ -78,6 +85,7 @@ __all__ = [
     'SparkSqlBatchArgs',
     'SparkSqlJobArgs',
     'SparkStandaloneAutoscalingConfigArgs',
+    'StartupConfigArgs',
     'TemplateParameterArgs',
     'TrinoJobArgs',
     'ValueValidationArgs',
@@ -909,7 +917,7 @@ class EncryptionConfigArgs:
         """
         Encryption settings for the cluster.
         :param pulumi.Input[str] gce_pd_kms_key_name: Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-        :param pulumi.Input[str] kms_key: Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+        :param pulumi.Input[str] kms_key: Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
         """
         if gce_pd_kms_key_name is not None:
             pulumi.set(__self__, "gce_pd_kms_key_name", gce_pd_kms_key_name)
@@ -932,7 +940,7 @@ class EncryptionConfigArgs:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+        Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
         """
         return pulumi.get(self, "kms_key")
 
@@ -1018,14 +1026,14 @@ class ExecutionConfigArgs:
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         Execution configuration for a workload.
-        :param pulumi.Input[str] idle_ttl: Optional. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceed, whichever occurs first.
+        :param pulumi.Input[str] idle_ttl: Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
         :param pulumi.Input[str] kms_key: Optional. The Cloud KMS key to use for encryption.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: Optional. Tags used for network traffic control.
         :param pulumi.Input[str] network_uri: Optional. Network URI to connect workload to.
         :param pulumi.Input[str] service_account: Optional. Service account that used to execute workload.
         :param pulumi.Input[str] staging_bucket: Optional. A Cloud Storage bucket used to stage workload dependencies, config files, and store workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running, and then create and manage project-level, per-location staging and temporary buckets. This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         :param pulumi.Input[str] subnetwork_uri: Optional. Subnetwork URI to connect workload to.
-        :param pulumi.Input[str] ttl: Optional. The duration after which the workload will be terminated. When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without exiting). If ttl is not specified for an interactive session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
+        :param pulumi.Input[str] ttl: Optional. The duration after which the workload will be terminated, specified as the JSON representation for Duration (https://protobuf.dev/programming-guides/proto3/#json). When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or run forever without exiting). If ttl is not specified for an interactive session, it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours. Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
         """
         if idle_ttl is not None:
             pulumi.set(__self__, "idle_ttl", idle_ttl)
@@ -1048,7 +1056,7 @@ class ExecutionConfigArgs:
     @pulumi.getter(name="idleTtl")
     def idle_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceed, whichever occurs first.
+        Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
         """
         return pulumi.get(self, "idle_ttl")
 
@@ -1132,7 +1140,7 @@ class ExecutionConfigArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The duration after which the workload will be terminated. When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without exiting). If ttl is not specified for an interactive session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
+        Optional. The duration after which the workload will be terminated, specified as the JSON representation for Duration (https://protobuf.dev/programming-guides/proto3/#json). When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or run forever without exiting). If ttl is not specified for an interactive session, it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours. Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
         """
         return pulumi.get(self, "ttl")
 
@@ -1214,6 +1222,126 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class FlinkJobArgs:
+    def __init__(__self__, *,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
+                 main_class: Optional[pulumi.Input[str]] = None,
+                 main_jar_file_uri: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 savepoint_uri: Optional[pulumi.Input[str]] = None):
+        """
+        A Dataproc job for running Apache Flink applications on YARN.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks.
+        :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
+        :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris.
+        :param pulumi.Input[str] main_jar_file_uri: The HCFS URI of the jar file that contains the main class.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
+        :param pulumi.Input[str] savepoint_uri: Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
+        if main_class is not None:
+            pulumi.set(__self__, "main_class", main_class)
+        if main_jar_file_uri is not None:
+            pulumi.set(__self__, "main_jar_file_uri", main_jar_file_uri)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if savepoint_uri is not None:
+            pulumi.set(__self__, "savepoint_uri", savepoint_uri)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @jar_file_uris.setter
+    def jar_file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "jar_file_uris", value)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['LoggingConfigArgs']]:
+        """
+        Optional. The runtime log config for job execution.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['LoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
+
+    @property
+    @pulumi.getter(name="mainClass")
+    def main_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris.
+        """
+        return pulumi.get(self, "main_class")
+
+    @main_class.setter
+    def main_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "main_class", value)
+
+    @property
+    @pulumi.getter(name="mainJarFileUri")
+    def main_jar_file_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HCFS URI of the jar file that contains the main class.
+        """
+        return pulumi.get(self, "main_jar_file_uri")
+
+    @main_jar_file_uri.setter
+    def main_jar_file_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "main_jar_file_uri", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="savepointUri")
+    def savepoint_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
+        """
+        return pulumi.get(self, "savepoint_uri")
+
+    @savepoint_uri.setter
+    def savepoint_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "savepoint_uri", value)
+
+
+@pulumi.input_type
 class GceClusterConfigArgs:
     def __init__(__self__, *,
                  confidential_instance_config: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']] = None,
@@ -1233,7 +1361,7 @@ class GceClusterConfigArgs:
         Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
         :param pulumi.Input['ConfidentialInstanceConfigArgs'] confidential_instance_config: Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
         :param pulumi.Input[bool] internal_ip_only: Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network_uri: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default projects/[project_id]/global/networks/default default
         :param pulumi.Input['NodeGroupAffinityArgs'] node_group_affinity: Optional. Node Group Affinity for sole-tenant clusters.
         :param pulumi.Input['GceClusterConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: Optional. The type of IPv6 access for a cluster.
@@ -1300,7 +1428,7 @@ class GceClusterConfigArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         """
         return pulumi.get(self, "metadata")
 
@@ -1818,6 +1946,30 @@ class GkeNodePoolTargetArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key: Optional[pulumi.Input[str]] = None):
+        """
+        Encryption settings for the encrypting customer core content. NEXT ID: 2
+        :param pulumi.Input[str] kms_key: Optional. The Cloud KMS key name to use for encrypting customer core content.
+        """
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Cloud KMS key name to use for encrypting customer core content.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
+
+
+@pulumi.input_type
 class HadoopJobArgs:
     def __init__(__self__, *,
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1831,13 +1983,13 @@ class HadoopJobArgs:
         """
         A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
         :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
         :param pulumi.Input[str] main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
         """
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
@@ -1872,7 +2024,7 @@ class HadoopJobArgs:
     @pulumi.getter
     def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
         """
         return pulumi.get(self, "args")
 
@@ -1944,7 +2096,7 @@ class HadoopJobArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+        Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -1966,7 +2118,7 @@ class HiveJobArgs:
         A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
         :param pulumi.Input[bool] continue_on_failure: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains Hive queries.
         :param pulumi.Input['QueryListArgs'] query_list: A list of queries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] script_variables: Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
@@ -2012,7 +2164,7 @@ class HiveJobArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+        Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -2081,6 +2233,30 @@ class IdentityConfigArgs:
 
 
 @pulumi.input_type
+class InstanceFlexibilityPolicyArgs:
+    def __init__(__self__, *,
+                 instance_selection_list: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSelectionArgs']]]] = None):
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSelectionArgs']]] instance_selection_list: Optional. List of instance selection options that the group will use when creating new VMs.
+        """
+        if instance_selection_list is not None:
+            pulumi.set(__self__, "instance_selection_list", instance_selection_list)
+
+    @property
+    @pulumi.getter(name="instanceSelectionList")
+    def instance_selection_list(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSelectionArgs']]]]:
+        """
+        Optional. List of instance selection options that the group will use when creating new VMs.
+        """
+        return pulumi.get(self, "instance_selection_list")
+
+    @instance_selection_list.setter
+    def instance_selection_list(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSelectionArgs']]]]):
+        pulumi.set(self, "instance_selection_list", value)
+
+
+@pulumi.input_type
 class InstanceGroupAutoscalingPolicyConfigArgs:
     def __init__(__self__, *,
                  max_instances: pulumi.Input[int],
@@ -2141,19 +2317,25 @@ class InstanceGroupConfigArgs:
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  disk_config: Optional[pulumi.Input['DiskConfigArgs']] = None,
                  image_uri: Optional[pulumi.Input[str]] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input['InstanceFlexibilityPolicyArgs']] = None,
                  machine_type_uri: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 min_num_instances: Optional[pulumi.Input[int]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None,
-                 preemptibility: Optional[pulumi.Input['InstanceGroupConfigPreemptibility']] = None):
+                 preemptibility: Optional[pulumi.Input['InstanceGroupConfigPreemptibility']] = None,
+                 startup_config: Optional[pulumi.Input['StartupConfigArgs']] = None):
         """
         The config settings for Compute Engine resources in an instance group, such as a master or worker group.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
         :param pulumi.Input['DiskConfigArgs'] disk_config: Optional. Disk option config settings.
         :param pulumi.Input[str] image_uri: Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
+        :param pulumi.Input['InstanceFlexibilityPolicyArgs'] instance_flexibility_policy: Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
         :param pulumi.Input[str] machine_type_uri: Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
         :param pulumi.Input[str] min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        :param pulumi.Input[int] min_num_instances: Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
         :param pulumi.Input[int] num_instances: Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
         :param pulumi.Input['InstanceGroupConfigPreemptibility'] preemptibility: Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
+        :param pulumi.Input['StartupConfigArgs'] startup_config: Optional. Configuration to handle the startup of instances during cluster create and update process.
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -2161,14 +2343,20 @@ class InstanceGroupConfigArgs:
             pulumi.set(__self__, "disk_config", disk_config)
         if image_uri is not None:
             pulumi.set(__self__, "image_uri", image_uri)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if machine_type_uri is not None:
             pulumi.set(__self__, "machine_type_uri", machine_type_uri)
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if min_num_instances is not None:
+            pulumi.set(__self__, "min_num_instances", min_num_instances)
         if num_instances is not None:
             pulumi.set(__self__, "num_instances", num_instances)
         if preemptibility is not None:
             pulumi.set(__self__, "preemptibility", preemptibility)
+        if startup_config is not None:
+            pulumi.set(__self__, "startup_config", startup_config)
 
     @property
     @pulumi.getter
@@ -2207,6 +2395,18 @@ class InstanceGroupConfigArgs:
         pulumi.set(self, "image_uri", value)
 
     @property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional[pulumi.Input['InstanceFlexibilityPolicyArgs']]:
+        """
+        Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @instance_flexibility_policy.setter
+    def instance_flexibility_policy(self, value: Optional[pulumi.Input['InstanceFlexibilityPolicyArgs']]):
+        pulumi.set(self, "instance_flexibility_policy", value)
+
+    @property
     @pulumi.getter(name="machineTypeUri")
     def machine_type_uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2231,6 +2431,18 @@ class InstanceGroupConfigArgs:
         pulumi.set(self, "min_cpu_platform", value)
 
     @property
+    @pulumi.getter(name="minNumInstances")
+    def min_num_instances(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
+        """
+        return pulumi.get(self, "min_num_instances")
+
+    @min_num_instances.setter
+    def min_num_instances(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_num_instances", value)
+
+    @property
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2253,6 +2465,58 @@ class InstanceGroupConfigArgs:
     @preemptibility.setter
     def preemptibility(self, value: Optional[pulumi.Input['InstanceGroupConfigPreemptibility']]):
         pulumi.set(self, "preemptibility", value)
+
+    @property
+    @pulumi.getter(name="startupConfig")
+    def startup_config(self) -> Optional[pulumi.Input['StartupConfigArgs']]:
+        """
+        Optional. Configuration to handle the startup of instances during cluster create and update process.
+        """
+        return pulumi.get(self, "startup_config")
+
+    @startup_config.setter
+    def startup_config(self, value: Optional[pulumi.Input['StartupConfigArgs']]):
+        pulumi.set(self, "startup_config", value)
+
+
+@pulumi.input_type
+class InstanceSelectionArgs:
+    def __init__(__self__, *,
+                 machine_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rank: Optional[pulumi.Input[int]] = None):
+        """
+        Defines machines types and a rank to which the machines types belong.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] machine_types: Optional. Full machine-type names, e.g. "n1-standard-16".
+        :param pulumi.Input[int] rank: Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Full machine-type names, e.g. "n1-standard-16".
+        """
+        return pulumi.get(self, "machine_types")
+
+    @machine_types.setter
+    def machine_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "machine_types", value)
+
+    @property
+    @pulumi.getter
+    def rank(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+    @rank.setter
+    def rank(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rank", value)
 
 
 @pulumi.input_type
@@ -2341,8 +2605,8 @@ class JobSchedulingArgs:
                  max_failures_total: Optional[pulumi.Input[int]] = None):
         """
         Job scheduling options.
-        :param pulumi.Input[int] max_failures_per_hour: Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
-        :param pulumi.Input[int] max_failures_total: Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+        :param pulumi.Input[int] max_failures_per_hour: Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+        :param pulumi.Input[int] max_failures_total: Optional. Maximum total number of times a driver can be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         """
         if max_failures_per_hour is not None:
             pulumi.set(__self__, "max_failures_per_hour", max_failures_per_hour)
@@ -2353,7 +2617,7 @@ class JobSchedulingArgs:
     @pulumi.getter(name="maxFailuresPerHour")
     def max_failures_per_hour(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+        Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         """
         return pulumi.get(self, "max_failures_per_hour")
 
@@ -2365,13 +2629,53 @@ class JobSchedulingArgs:
     @pulumi.getter(name="maxFailuresTotal")
     def max_failures_total(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+        Optional. Maximum total number of times a driver can be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         """
         return pulumi.get(self, "max_failures_total")
 
     @max_failures_total.setter
     def max_failures_total(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_failures_total", value)
+
+
+@pulumi.input_type
+class JupyterConfigArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 kernel: Optional[pulumi.Input['JupyterConfigKernel']] = None):
+        """
+        Jupyter configuration for an interactive session.
+        :param pulumi.Input[str] display_name: Optional. Display name, shown in the Jupyter kernelspec card.
+        :param pulumi.Input['JupyterConfigKernel'] kernel: Optional. Kernel
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if kernel is not None:
+            pulumi.set(__self__, "kernel", kernel)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Display name, shown in the Jupyter kernelspec card.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def kernel(self) -> Optional[pulumi.Input['JupyterConfigKernel']]:
+        """
+        Optional. Kernel
+        """
+        return pulumi.get(self, "kernel")
+
+    @kernel.setter
+    def kernel(self, value: Optional[pulumi.Input['JupyterConfigKernel']]):
+        pulumi.set(self, "kernel", value)
 
 
 @pulumi.input_type
@@ -2779,7 +3083,7 @@ class LoggingConfigArgs:
                  driver_log_levels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The runtime logging config of the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] driver_log_levels: The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] driver_log_levels: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
         """
         if driver_log_levels is not None:
             pulumi.set(__self__, "driver_log_levels", driver_log_levels)
@@ -2788,7 +3092,7 @@ class LoggingConfigArgs:
     @pulumi.getter(name="driverLogLevels")
     def driver_log_levels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
+        The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
         """
         return pulumi.get(self, "driver_log_levels")
 
@@ -3090,6 +3394,7 @@ class NodeInitializationActionArgs:
 class OrderedJobArgs:
     def __init__(__self__, *,
                  step_id: pulumi.Input[str],
+                 flink_job: Optional[pulumi.Input['FlinkJobArgs']] = None,
                  hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
                  hive_job: Optional[pulumi.Input['HiveJobArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -3105,6 +3410,7 @@ class OrderedJobArgs:
         """
         A job executed by the workflow.
         :param pulumi.Input[str] step_id: The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        :param pulumi.Input['FlinkJobArgs'] flink_job: Optional. Job is a Flink job.
         :param pulumi.Input['HadoopJobArgs'] hadoop_job: Optional. Job is a Hadoop job.
         :param pulumi.Input['HiveJobArgs'] hive_job: Optional. Job is a Hive job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \\p{Ll}\\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \\p{Ll}\\p{Lo}\\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
@@ -3119,6 +3425,8 @@ class OrderedJobArgs:
         :param pulumi.Input['TrinoJobArgs'] trino_job: Optional. Job is a Trino job.
         """
         pulumi.set(__self__, "step_id", step_id)
+        if flink_job is not None:
+            pulumi.set(__self__, "flink_job", flink_job)
         if hadoop_job is not None:
             pulumi.set(__self__, "hadoop_job", hadoop_job)
         if hive_job is not None:
@@ -3155,6 +3463,18 @@ class OrderedJobArgs:
     @step_id.setter
     def step_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "step_id", value)
+
+    @property
+    @pulumi.getter(name="flinkJob")
+    def flink_job(self) -> Optional[pulumi.Input['FlinkJobArgs']]:
+        """
+        Optional. Job is a Flink job.
+        """
+        return pulumi.get(self, "flink_job")
+
+    @flink_job.setter
+    def flink_job(self, value: Optional[pulumi.Input['FlinkJobArgs']]):
+        pulumi.set(self, "flink_job", value)
 
     @property
     @pulumi.getter(name="hadoopJob")
@@ -3396,7 +3716,7 @@ class PigJobArgs:
         :param pulumi.Input[bool] continue_on_failure: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains the Pig queries.
         :param pulumi.Input['QueryListArgs'] query_list: A list of queries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] script_variables: Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
@@ -3456,7 +3776,7 @@ class PigJobArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+        Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -3622,6 +3942,30 @@ class PrestoJobArgs:
 
 
 @pulumi.input_type
+class PyPiRepositoryConfigArgs:
+    def __init__(__self__, *,
+                 pypi_repository: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for PyPi repository
+        :param pulumi.Input[str] pypi_repository: Optional. PyPi repository address
+        """
+        if pypi_repository is not None:
+            pulumi.set(__self__, "pypi_repository", pypi_repository)
+
+    @property
+    @pulumi.getter(name="pypiRepository")
+    def pypi_repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. PyPi repository address
+        """
+        return pulumi.get(self, "pypi_repository")
+
+    @pypi_repository.setter
+    def pypi_repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pypi_repository", value)
+
+
+@pulumi.input_type
 class PySparkBatchArgs:
     def __init__(__self__, *,
                  main_python_file_uri: pulumi.Input[str],
@@ -3743,7 +4087,7 @@ class PySparkJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] python_file_uris: Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
         pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
@@ -3838,7 +4182,7 @@ class PySparkJobArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -3906,6 +4250,30 @@ class RegexValidationArgs:
 
 
 @pulumi.input_type
+class RepositoryConfigArgs:
+    def __init__(__self__, *,
+                 pypi_repository_config: Optional[pulumi.Input['PyPiRepositoryConfigArgs']] = None):
+        """
+        Configuration for dependency repositories
+        :param pulumi.Input['PyPiRepositoryConfigArgs'] pypi_repository_config: Optional. Configuration for PyPi repository.
+        """
+        if pypi_repository_config is not None:
+            pulumi.set(__self__, "pypi_repository_config", pypi_repository_config)
+
+    @property
+    @pulumi.getter(name="pypiRepositoryConfig")
+    def pypi_repository_config(self) -> Optional[pulumi.Input['PyPiRepositoryConfigArgs']]:
+        """
+        Optional. Configuration for PyPi repository.
+        """
+        return pulumi.get(self, "pypi_repository_config")
+
+    @pypi_repository_config.setter
+    def pypi_repository_config(self, value: Optional[pulumi.Input['PyPiRepositoryConfigArgs']]):
+        pulumi.set(self, "pypi_repository_config", value)
+
+
+@pulumi.input_type
 class ReservationAffinityArgs:
     def __init__(__self__, *,
                  consume_reservation_type: Optional[pulumi.Input['ReservationAffinityConsumeReservationType']] = None,
@@ -3966,17 +4334,21 @@ class RuntimeConfigArgs:
     def __init__(__self__, *,
                  container_image: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 repository_config: Optional[pulumi.Input['RepositoryConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Runtime configuration for a workload.
         :param pulumi.Input[str] container_image: Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, which are used to configure workload execution.
+        :param pulumi.Input['RepositoryConfigArgs'] repository_config: Optional. Dependency repository configuration.
         :param pulumi.Input[str] version: Optional. Version of the batch runtime.
         """
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if repository_config is not None:
+            pulumi.set(__self__, "repository_config", repository_config)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -4003,6 +4375,18 @@ class RuntimeConfigArgs:
     @properties.setter
     def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="repositoryConfig")
+    def repository_config(self) -> Optional[pulumi.Input['RepositoryConfigArgs']]:
+        """
+        Optional. Dependency repository configuration.
+        """
+        return pulumi.get(self, "repository_config")
+
+    @repository_config.setter
+    def repository_config(self, value: Optional[pulumi.Input['RepositoryConfigArgs']]):
+        pulumi.set(self, "repository_config", value)
 
     @property
     @pulumi.getter
@@ -4315,9 +4699,9 @@ class SparkJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
-        :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+        :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
         :param pulumi.Input[str] main_jar_file_uri: The HCFS URI of the jar file that contains the main class.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
@@ -4400,7 +4784,7 @@ class SparkJobArgs:
     @pulumi.getter(name="mainClass")
     def main_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+        The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
         """
         return pulumi.get(self, "main_class")
 
@@ -4424,7 +4808,7 @@ class SparkJobArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -4520,7 +4904,7 @@ class SparkRJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
         if archive_uris is not None:
@@ -4598,7 +4982,7 @@ class SparkRJobArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -4675,7 +5059,7 @@ class SparkSqlJobArgs:
         A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains SQL queries.
         :param pulumi.Input['QueryListArgs'] query_list: A list of queries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] script_variables: Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
@@ -4721,7 +5105,7 @@ class SparkSqlJobArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+        Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
         """
         return pulumi.get(self, "properties")
 
@@ -4772,6 +5156,7 @@ class SparkStandaloneAutoscalingConfigArgs:
                  graceful_decommission_timeout: pulumi.Input[str],
                  scale_down_factor: pulumi.Input[float],
                  scale_up_factor: pulumi.Input[float],
+                 remove_only_idle_workers: Optional[pulumi.Input[bool]] = None,
                  scale_down_min_worker_fraction: Optional[pulumi.Input[float]] = None,
                  scale_up_min_worker_fraction: Optional[pulumi.Input[float]] = None):
         """
@@ -4779,12 +5164,15 @@ class SparkStandaloneAutoscalingConfigArgs:
         :param pulumi.Input[str] graceful_decommission_timeout: Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
         :param pulumi.Input[float] scale_down_factor: Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
         :param pulumi.Input[float] scale_up_factor: Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+        :param pulumi.Input[bool] remove_only_idle_workers: Optional. Remove only idle workers when scaling down cluster
         :param pulumi.Input[float] scale_down_min_worker_fraction: Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
         :param pulumi.Input[float] scale_up_min_worker_fraction: Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
         """
         pulumi.set(__self__, "graceful_decommission_timeout", graceful_decommission_timeout)
         pulumi.set(__self__, "scale_down_factor", scale_down_factor)
         pulumi.set(__self__, "scale_up_factor", scale_up_factor)
+        if remove_only_idle_workers is not None:
+            pulumi.set(__self__, "remove_only_idle_workers", remove_only_idle_workers)
         if scale_down_min_worker_fraction is not None:
             pulumi.set(__self__, "scale_down_min_worker_fraction", scale_down_min_worker_fraction)
         if scale_up_min_worker_fraction is not None:
@@ -4827,6 +5215,18 @@ class SparkStandaloneAutoscalingConfigArgs:
         pulumi.set(self, "scale_up_factor", value)
 
     @property
+    @pulumi.getter(name="removeOnlyIdleWorkers")
+    def remove_only_idle_workers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Remove only idle workers when scaling down cluster
+        """
+        return pulumi.get(self, "remove_only_idle_workers")
+
+    @remove_only_idle_workers.setter
+    def remove_only_idle_workers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_only_idle_workers", value)
+
+    @property
     @pulumi.getter(name="scaleDownMinWorkerFraction")
     def scale_down_min_worker_fraction(self) -> Optional[pulumi.Input[float]]:
         """
@@ -4849,6 +5249,30 @@ class SparkStandaloneAutoscalingConfigArgs:
     @scale_up_min_worker_fraction.setter
     def scale_up_min_worker_fraction(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "scale_up_min_worker_fraction", value)
+
+
+@pulumi.input_type
+class StartupConfigArgs:
+    def __init__(__self__, *,
+                 required_registration_fraction: Optional[pulumi.Input[float]] = None):
+        """
+        Configuration to handle the startup of instances during cluster create and update process.
+        :param pulumi.Input[float] required_registration_fraction: Optional. The config setting to enable cluster creation/ updation to be successful only after required_registration_fraction of instances are up and running. This configuration is applicable to only secondary workers for now. The cluster will fail if required_registration_fraction of instances are not available. This will include instance creation, agent registration, and service registration (if enabled).
+        """
+        if required_registration_fraction is not None:
+            pulumi.set(__self__, "required_registration_fraction", required_registration_fraction)
+
+    @property
+    @pulumi.getter(name="requiredRegistrationFraction")
+    def required_registration_fraction(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. The config setting to enable cluster creation/ updation to be successful only after required_registration_fraction of instances are up and running. This configuration is applicable to only secondary workers for now. The cluster will fail if required_registration_fraction of instances are not available. This will include instance creation, agent registration, and service registration (if enabled).
+        """
+        return pulumi.get(self, "required_registration_fraction")
+
+    @required_registration_fraction.setter
+    def required_registration_fraction(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "required_registration_fraction", value)
 
 
 @pulumi.input_type

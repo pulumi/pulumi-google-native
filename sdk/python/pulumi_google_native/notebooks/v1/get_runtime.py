@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRuntimeResult:
-    def __init__(__self__, access_config=None, create_time=None, health_state=None, labels=None, metrics=None, name=None, software_config=None, state=None, update_time=None, virtual_machine=None):
+    def __init__(__self__, access_config=None, create_time=None, health_state=None, labels=None, metrics=None, migrated=None, name=None, runtime_migration_eligibility=None, software_config=None, state=None, update_time=None, virtual_machine=None):
         if access_config and not isinstance(access_config, dict):
             raise TypeError("Expected argument 'access_config' to be a dict")
         pulumi.set(__self__, "access_config", access_config)
@@ -35,9 +35,15 @@ class GetRuntimeResult:
         if metrics and not isinstance(metrics, dict):
             raise TypeError("Expected argument 'metrics' to be a dict")
         pulumi.set(__self__, "metrics", metrics)
+        if migrated and not isinstance(migrated, bool):
+            raise TypeError("Expected argument 'migrated' to be a bool")
+        pulumi.set(__self__, "migrated", migrated)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if runtime_migration_eligibility and not isinstance(runtime_migration_eligibility, dict):
+            raise TypeError("Expected argument 'runtime_migration_eligibility' to be a dict")
+        pulumi.set(__self__, "runtime_migration_eligibility", runtime_migration_eligibility)
         if software_config and not isinstance(software_config, dict):
             raise TypeError("Expected argument 'software_config' to be a dict")
         pulumi.set(__self__, "software_config", software_config)
@@ -93,11 +99,27 @@ class GetRuntimeResult:
 
     @property
     @pulumi.getter
+    def migrated(self) -> bool:
+        """
+        Bool indicating whether this notebook has been migrated to a Workbench Instance
+        """
+        return pulumi.get(self, "migrated")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="runtimeMigrationEligibility")
+    def runtime_migration_eligibility(self) -> 'outputs.RuntimeMigrationEligibilityResponse':
+        """
+        Checks how feasible a migration from GmN to WbI is.
+        """
+        return pulumi.get(self, "runtime_migration_eligibility")
 
     @property
     @pulumi.getter(name="softwareConfig")
@@ -143,7 +165,9 @@ class AwaitableGetRuntimeResult(GetRuntimeResult):
             health_state=self.health_state,
             labels=self.labels,
             metrics=self.metrics,
+            migrated=self.migrated,
             name=self.name,
+            runtime_migration_eligibility=self.runtime_migration_eligibility,
             software_config=self.software_config,
             state=self.state,
             update_time=self.update_time,
@@ -170,7 +194,9 @@ def get_runtime(location: Optional[str] = None,
         health_state=pulumi.get(__ret__, 'health_state'),
         labels=pulumi.get(__ret__, 'labels'),
         metrics=pulumi.get(__ret__, 'metrics'),
+        migrated=pulumi.get(__ret__, 'migrated'),
         name=pulumi.get(__ret__, 'name'),
+        runtime_migration_eligibility=pulumi.get(__ret__, 'runtime_migration_eligibility'),
         software_config=pulumi.get(__ret__, 'software_config'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'),

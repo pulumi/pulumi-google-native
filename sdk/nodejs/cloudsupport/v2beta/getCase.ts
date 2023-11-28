@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Retrieve the specified case.
+ * Retrieve a case. EXAMPLES: cURL: ``` shell case="projects/some-project/cases/16033687" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case"  ``` Python: ``` python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute())  ```
  */
 export function getCase(args: GetCaseArgs, opts?: pulumi.InvokeOptions): Promise<GetCaseResult> {
 
@@ -93,7 +93,7 @@ export interface GetCaseResult {
     readonly updateTime: string;
 }
 /**
- * Retrieve the specified case.
+ * Retrieve a case. EXAMPLES: cURL: ``` shell case="projects/some-project/cases/16033687" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case"  ``` Python: ``` python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute())  ```
  */
 export function getCaseOutput(args: GetCaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaseResult> {
     return pulumi.output(args).apply((a: any) => getCase(a, opts))

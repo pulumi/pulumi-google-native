@@ -18,11 +18,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string IpRange;
         /// <summary>
-        /// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+        /// IP version of this interface.
+        /// </summary>
+        public readonly string IpVersion;
+        /// <summary>
+        /// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
         /// </summary>
         public readonly string LinkedInterconnectAttachment;
         /// <summary>
-        /// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+        /// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
         /// </summary>
         public readonly string LinkedVpnTunnel;
         /// <summary>
@@ -50,6 +54,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private RouterInterfaceResponse(
             string ipRange,
 
+            string ipVersion,
+
             string linkedInterconnectAttachment,
 
             string linkedVpnTunnel,
@@ -65,6 +71,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             string subnetwork)
         {
             IpRange = ipRange;
+            IpVersion = ipVersion;
             LinkedInterconnectAttachment = linkedInterconnectAttachment;
             LinkedVpnTunnel = linkedVpnTunnel;
             ManagementType = managementType;

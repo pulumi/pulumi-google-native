@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         public readonly string CallLogLevel;
         /// <summary>
-        /// The timestamp for when the workflow was created.
+        /// The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -82,15 +82,15 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         public readonly string CryptoKeyName;
         /// <summary>
-        /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        /// Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         public readonly string RevisionCreateTime;
         /// <summary>
-        /// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+        /// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.
         /// </summary>
         public readonly string RevisionId;
         /// <summary>
@@ -118,9 +118,13 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         public readonly Outputs.StateErrorResponse StateError;
         /// <summary>
-        /// The timestamp for when the workflow was last updated.
+        /// The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> UserEnvVars;
 
         [OutputConstructor]
         private GetWorkflowResult(
@@ -148,7 +152,9 @@ namespace Pulumi.GoogleNative.Workflows.V1
 
             Outputs.StateErrorResponse stateError,
 
-            string updateTime)
+            string updateTime,
+
+            ImmutableDictionary<string, string> userEnvVars)
         {
             CallLogLevel = callLogLevel;
             CreateTime = createTime;
@@ -163,6 +169,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
             State = state;
             StateError = stateError;
             UpdateTime = updateTime;
+            UserEnvVars = userEnvVars;
         }
     }
 }

@@ -16,10 +16,16 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
+	// Reservation for aggregated resources, providing shape flexibility.
+	AggregateReservation AllocationAggregateReservationResponseOutput `pulumi:"aggregateReservation"`
 	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 	Commitment pulumi.StringOutput `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	DeleteAfterDuration DurationResponseOutput `pulumi:"deleteAfterDuration"`
+	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	DeleteAtTime pulumi.StringOutput `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Type of the resource. Always compute#reservations for reservations.
@@ -93,6 +99,12 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
+	// Reservation for aggregated resources, providing shape flexibility.
+	AggregateReservation *AllocationAggregateReservation `pulumi:"aggregateReservation"`
+	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	DeleteAfterDuration *Duration `pulumi:"deleteAfterDuration"`
+	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	DeleteAtTime *string `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -114,6 +126,12 @@ type reservationArgs struct {
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
+	// Reservation for aggregated resources, providing shape flexibility.
+	AggregateReservation AllocationAggregateReservationPtrInput
+	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	DeleteAfterDuration DurationPtrInput
+	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	DeleteAtTime pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -182,6 +200,11 @@ func (o ReservationOutput) ToOutput(ctx context.Context) pulumix.Output[*Reserva
 	}
 }
 
+// Reservation for aggregated resources, providing shape flexibility.
+func (o ReservationOutput) AggregateReservation() AllocationAggregateReservationResponseOutput {
+	return o.ApplyT(func(v *Reservation) AllocationAggregateReservationResponseOutput { return v.AggregateReservation }).(AllocationAggregateReservationResponseOutput)
+}
+
 // Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 func (o ReservationOutput) Commitment() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Commitment }).(pulumi.StringOutput)
@@ -190,6 +213,16 @@ func (o ReservationOutput) Commitment() pulumi.StringOutput {
 // Creation timestamp in RFC3339 text format.
 func (o ReservationOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Duration time relative to reservation creation when GCE will automatically delete this resource.
+func (o ReservationOutput) DeleteAfterDuration() DurationResponseOutput {
+	return o.ApplyT(func(v *Reservation) DurationResponseOutput { return v.DeleteAfterDuration }).(DurationResponseOutput)
+}
+
+// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+func (o ReservationOutput) DeleteAtTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.DeleteAtTime }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource. Provide this property when you create the resource.

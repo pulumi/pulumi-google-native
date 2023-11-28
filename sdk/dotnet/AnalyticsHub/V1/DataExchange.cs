@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Configurable data sharing environment option for a data exchange.
+        /// </summary>
+        [Output("sharingEnvironmentConfig")]
+        public Output<Outputs.SharingEnvironmentConfigResponse> SharingEnvironmentConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DataExchange resource with the given unique name, arguments, and options.
@@ -162,6 +168,12 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional. Configurable data sharing environment option for a data exchange.
+        /// </summary>
+        [Input("sharingEnvironmentConfig")]
+        public Input<Inputs.SharingEnvironmentConfigArgs>? SharingEnvironmentConfig { get; set; }
 
         public DataExchangeArgs()
         {

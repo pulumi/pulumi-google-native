@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
         public Input<Inputs.GoogleRpcStatusArgs>? Error { get; set; }
 
         /// <summary>
-        /// An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
         /// </summary>
         [Input("mimeType")]
         public Input<string>? MimeType { get; set; }

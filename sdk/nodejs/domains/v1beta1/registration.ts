@@ -93,7 +93,9 @@ export class Registration extends pulumi.CustomResource {
      */
     public /*out*/ readonly supportedPrivacy!: pulumi.Output<string[]>;
     /**
-     * The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+     * Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+     *
+     * @deprecated Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
      */
     public /*out*/ readonly transferFailureReason!: pulumi.Output<string>;
 

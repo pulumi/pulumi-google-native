@@ -20,6 +20,21 @@ export type BackendBucket = import("./backendBucket").BackendBucket;
 export const BackendBucket: typeof import("./backendBucket").BackendBucket = null as any;
 utilities.lazyLoad(exports, ["BackendBucket"], () => require("./backendBucket"));
 
+export { BackendBucketIamBindingArgs } from "./backendBucketIamBinding";
+export type BackendBucketIamBinding = import("./backendBucketIamBinding").BackendBucketIamBinding;
+export const BackendBucketIamBinding: typeof import("./backendBucketIamBinding").BackendBucketIamBinding = null as any;
+utilities.lazyLoad(exports, ["BackendBucketIamBinding"], () => require("./backendBucketIamBinding"));
+
+export { BackendBucketIamMemberArgs } from "./backendBucketIamMember";
+export type BackendBucketIamMember = import("./backendBucketIamMember").BackendBucketIamMember;
+export const BackendBucketIamMember: typeof import("./backendBucketIamMember").BackendBucketIamMember = null as any;
+utilities.lazyLoad(exports, ["BackendBucketIamMember"], () => require("./backendBucketIamMember"));
+
+export { BackendBucketIamPolicyArgs } from "./backendBucketIamPolicy";
+export type BackendBucketIamPolicy = import("./backendBucketIamPolicy").BackendBucketIamPolicy;
+export const BackendBucketIamPolicy: typeof import("./backendBucketIamPolicy").BackendBucketIamPolicy = null as any;
+utilities.lazyLoad(exports, ["BackendBucketIamPolicy"], () => require("./backendBucketIamPolicy"));
+
 export { BackendServiceArgs } from "./backendService";
 export type BackendService = import("./backendService").BackendService;
 export const BackendService: typeof import("./backendService").BackendService = null as any;
@@ -109,6 +124,11 @@ export { GetBackendBucketArgs, GetBackendBucketResult, GetBackendBucketOutputArg
 export const getBackendBucket: typeof import("./getBackendBucket").getBackendBucket = null as any;
 export const getBackendBucketOutput: typeof import("./getBackendBucket").getBackendBucketOutput = null as any;
 utilities.lazyLoad(exports, ["getBackendBucket","getBackendBucketOutput"], () => require("./getBackendBucket"));
+
+export { GetBackendBucketIamPolicyArgs, GetBackendBucketIamPolicyResult, GetBackendBucketIamPolicyOutputArgs } from "./getBackendBucketIamPolicy";
+export const getBackendBucketIamPolicy: typeof import("./getBackendBucketIamPolicy").getBackendBucketIamPolicy = null as any;
+export const getBackendBucketIamPolicyOutput: typeof import("./getBackendBucketIamPolicy").getBackendBucketIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getBackendBucketIamPolicy","getBackendBucketIamPolicyOutput"], () => require("./getBackendBucketIamPolicy"));
 
 export { GetBackendServiceArgs, GetBackendServiceResult, GetBackendServiceOutputArgs } from "./getBackendService";
 export const getBackendService: typeof import("./getBackendService").getBackendService = null as any;
@@ -1159,6 +1179,12 @@ const _module = {
                 return new Autoscaler(name, <any>undefined, { urn })
             case "google-native:compute/v1:BackendBucket":
                 return new BackendBucket(name, <any>undefined, { urn })
+            case "google-native:compute/v1:BackendBucketIamBinding":
+                return new BackendBucketIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:BackendBucketIamMember":
+                return new BackendBucketIamMember(name, <any>undefined, { urn })
+            case "google-native:compute/v1:BackendBucketIamPolicy":
+                return new BackendBucketIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:BackendService":
                 return new BackendService(name, <any>undefined, { urn })
             case "google-native:compute/v1:BackendServiceIamBinding":

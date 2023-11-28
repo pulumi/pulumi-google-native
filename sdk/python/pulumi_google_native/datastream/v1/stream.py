@@ -325,6 +325,7 @@ class Stream(pulumi.CustomResource):
             __props__.__dict__["stream_id"] = stream_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["errors"] = None
+            __props__.__dict__["last_recovery_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "stream_id"])
@@ -360,6 +361,7 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["errors"] = None
         __props__.__dict__["force"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["last_recovery_time"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -441,6 +443,14 @@ class Stream(pulumi.CustomResource):
         Labels.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastRecoveryTime")
+    def last_recovery_time(self) -> pulumi.Output[str]:
+        """
+        If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+        """
+        return pulumi.get(self, "last_recovery_time")
 
     @property
     @pulumi.getter

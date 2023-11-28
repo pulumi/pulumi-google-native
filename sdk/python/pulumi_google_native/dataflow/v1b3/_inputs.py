@@ -16,6 +16,7 @@ __all__ = [
     'BigTableIODetailsArgs',
     'ComponentSourceArgs',
     'ComponentTransformArgs',
+    'DataSamplingConfigArgs',
     'DatastoreIODetailsArgs',
     'DebugOptionsArgs',
     'DiskArgs',
@@ -323,6 +324,30 @@ class ComponentTransformArgs:
 
 
 @pulumi.input_type
+class DataSamplingConfigArgs:
+    def __init__(__self__, *,
+                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input['DataSamplingConfigBehaviorsItem']]]] = None):
+        """
+        Configuration options for sampling elements.
+        :param pulumi.Input[Sequence[pulumi.Input['DataSamplingConfigBehaviorsItem']]] behaviors: List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+        """
+        if behaviors is not None:
+            pulumi.set(__self__, "behaviors", behaviors)
+
+    @property
+    @pulumi.getter
+    def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataSamplingConfigBehaviorsItem']]]]:
+        """
+        List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+        """
+        return pulumi.get(self, "behaviors")
+
+    @behaviors.setter
+    def behaviors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataSamplingConfigBehaviorsItem']]]]):
+        pulumi.set(self, "behaviors", value)
+
+
+@pulumi.input_type
 class DatastoreIODetailsArgs:
     def __init__(__self__, *,
                  namespace: Optional[pulumi.Input[str]] = None,
@@ -365,13 +390,29 @@ class DatastoreIODetailsArgs:
 @pulumi.input_type
 class DebugOptionsArgs:
     def __init__(__self__, *,
+                 data_sampling: Optional[pulumi.Input['DataSamplingConfigArgs']] = None,
                  enable_hot_key_logging: Optional[pulumi.Input[bool]] = None):
         """
         Describes any options that have an effect on the debugging of pipelines.
+        :param pulumi.Input['DataSamplingConfigArgs'] data_sampling: Configuration options for sampling elements from a running pipeline.
         :param pulumi.Input[bool] enable_hot_key_logging: When true, enables the logging of the literal hot key to the user's Cloud Logging.
         """
+        if data_sampling is not None:
+            pulumi.set(__self__, "data_sampling", data_sampling)
         if enable_hot_key_logging is not None:
             pulumi.set(__self__, "enable_hot_key_logging", enable_hot_key_logging)
+
+    @property
+    @pulumi.getter(name="dataSampling")
+    def data_sampling(self) -> Optional[pulumi.Input['DataSamplingConfigArgs']]:
+        """
+        Configuration options for sampling elements from a running pipeline.
+        """
+        return pulumi.get(self, "data_sampling")
+
+    @data_sampling.setter
+    def data_sampling(self, value: Optional[pulumi.Input['DataSamplingConfigArgs']]):
+        pulumi.set(self, "data_sampling", value)
 
     @property
     @pulumi.getter(name="enableHotKeyLogging")
@@ -1442,6 +1483,7 @@ class RuntimeEnvironmentArgs:
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  additional_user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bypass_temp_dir_validation: Optional[pulumi.Input[bool]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input['RuntimeEnvironmentIpConfiguration']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -1460,6 +1502,7 @@ class RuntimeEnvironmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: Optional. Additional experiment flags for the job, specified with the `--experiments` option.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_user_labels: Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
         :param pulumi.Input[bool] bypass_temp_dir_validation: Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+        :param pulumi.Input[int] disk_size_gb: Optional. The disk size, in gigabytes, to use on each remote Compute Engine worker instance.
         :param pulumi.Input[bool] enable_streaming_engine: Optional. Whether to enable Streaming Engine for the job.
         :param pulumi.Input['RuntimeEnvironmentIpConfiguration'] ip_configuration: Optional. Configuration for VM IPs.
         :param pulumi.Input[str] kms_key_name: Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
@@ -1480,6 +1523,8 @@ class RuntimeEnvironmentArgs:
             pulumi.set(__self__, "additional_user_labels", additional_user_labels)
         if bypass_temp_dir_validation is not None:
             pulumi.set(__self__, "bypass_temp_dir_validation", bypass_temp_dir_validation)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if enable_streaming_engine is not None:
             pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
         if ip_configuration is not None:
@@ -1562,6 +1607,18 @@ class RuntimeEnvironmentArgs:
     @bypass_temp_dir_validation.setter
     def bypass_temp_dir_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "bypass_temp_dir_validation", value)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The disk size, in gigabytes, to use on each remote Compute Engine worker instance.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_size_gb", value)
 
     @property
     @pulumi.getter(name="enableStreamingEngine")

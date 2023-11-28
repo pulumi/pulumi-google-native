@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
         /// </summary>
         public readonly double Confidence;
         /// <summary>
-        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
         /// </summary>
         public readonly string LanguageCode;
 

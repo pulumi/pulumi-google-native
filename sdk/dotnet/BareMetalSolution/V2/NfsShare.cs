@@ -42,6 +42,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [Output("nfsShareId")]
         public Output<string> NfsShareId { get; private set; } = null!;
 
+        /// <summary>
+        /// Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
+        /// </summary>
+        [Output("pod")]
+        public Output<string> Pod { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -151,6 +157,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
+        /// </summary>
+        [Input("pod")]
+        public Input<string>? Pod { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Dimensions;
         /// <summary>
+        /// Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        /// </summary>
+        public readonly double FutureLimit;
+        /// <summary>
         /// Current effective quota limit. The limit's unit depends on the quota type or metric.
         /// </summary>
         public readonly double Limit;
@@ -32,21 +36,31 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// The Compute Engine quota metric name.
         /// </summary>
         public readonly string MetricName;
+        /// <summary>
+        /// Rollout status of the future quota limit.
+        /// </summary>
+        public readonly string RolloutStatus;
 
         [OutputConstructor]
         private QuotaExceededInfoResponse(
             ImmutableDictionary<string, string> dimensions,
 
+            double futureLimit,
+
             double limit,
 
             string limitName,
 
-            string metricName)
+            string metricName,
+
+            string rolloutStatus)
         {
             Dimensions = dimensions;
+            FutureLimit = futureLimit;
             Limit = limit;
             LimitName = limitName;
             MetricName = metricName;
+            RolloutStatus = rolloutStatus;
         }
     }
 }

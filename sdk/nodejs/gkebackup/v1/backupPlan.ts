@@ -39,7 +39,7 @@ export class BackupPlan extends pulumi.CustomResource {
     }
 
     /**
-     * Defines the configuration of Backups created via this BackupPlan.
+     * Optional. Defines the configuration of Backups created via this BackupPlan.
      */
     public readonly backupConfig!: pulumi.Output<outputs.gkebackup.v1.BackupConfigResponse>;
     /**
@@ -47,7 +47,7 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly backupPlanId!: pulumi.Output<string>;
     /**
-     * Defines a schedule for automatic Backup creation via this BackupPlan.
+     * Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
      */
     public readonly backupSchedule!: pulumi.Output<outputs.gkebackup.v1.ScheduleResponse>;
     /**
@@ -59,11 +59,11 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+     * Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
      */
     public readonly deactivated!: pulumi.Output<boolean>;
     /**
-     * User specified descriptive string for this BackupPlan.
+     * Optional. User specified descriptive string for this BackupPlan.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -71,7 +71,7 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * A set of custom labels supplied by user.
+     * Optional. A set of custom labels supplied by user.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
@@ -85,9 +85,17 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly protectedPodCount!: pulumi.Output<number>;
     /**
-     * RetentionPolicy governs lifecycle of Backups created under this plan.
+     * Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
      */
     public readonly retentionPolicy!: pulumi.Output<outputs.gkebackup.v1.RetentionPolicyResponse>;
+    /**
+     * State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Human-readable description of why BackupPlan is in the current `state`
+     */
+    public /*out*/ readonly stateReason!: pulumi.Output<string>;
     /**
      * Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
      */
@@ -128,6 +136,8 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["protectedPodCount"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateReason"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
@@ -145,6 +155,8 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["protectedPodCount"] = undefined /*out*/;
             resourceInputs["retentionPolicy"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateReason"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -160,7 +172,7 @@ export class BackupPlan extends pulumi.CustomResource {
  */
 export interface BackupPlanArgs {
     /**
-     * Defines the configuration of Backups created via this BackupPlan.
+     * Optional. Defines the configuration of Backups created via this BackupPlan.
      */
     backupConfig?: pulumi.Input<inputs.gkebackup.v1.BackupConfigArgs>;
     /**
@@ -168,7 +180,7 @@ export interface BackupPlanArgs {
      */
     backupPlanId: pulumi.Input<string>;
     /**
-     * Defines a schedule for automatic Backup creation via this BackupPlan.
+     * Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
      */
     backupSchedule?: pulumi.Input<inputs.gkebackup.v1.ScheduleArgs>;
     /**
@@ -176,21 +188,21 @@ export interface BackupPlanArgs {
      */
     cluster: pulumi.Input<string>;
     /**
-     * This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+     * Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
      */
     deactivated?: pulumi.Input<boolean>;
     /**
-     * User specified descriptive string for this BackupPlan.
+     * Optional. User specified descriptive string for this BackupPlan.
      */
     description?: pulumi.Input<string>;
     /**
-     * A set of custom labels supplied by user.
+     * Optional. A set of custom labels supplied by user.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * RetentionPolicy governs lifecycle of Backups created under this plan.
+     * Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
      */
     retentionPolicy?: pulumi.Input<inputs.gkebackup.v1.RetentionPolicyArgs>;
 }

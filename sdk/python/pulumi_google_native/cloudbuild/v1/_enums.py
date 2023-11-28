@@ -17,6 +17,7 @@ __all__ = [
     'NetworkConfigEgressOption',
     'PubsubConfigState',
     'PullRequestFilterCommentControl',
+    'StorageSourceSourceFetcher',
     'TriggerEventType',
     'TriggerIncludeBuildLogs',
     'WebhookConfigState',
@@ -33,13 +34,13 @@ class BuildOptionsDefaultLogsBucketBehavior(str, Enum):
     """
     REGIONAL_USER_OWNED_BUCKET = "REGIONAL_USER_OWNED_BUCKET"
     """
-    Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to GCS buckets in the build project.
+    Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to Cloud Storage buckets in the build project.
     """
 
 
 class BuildOptionsLogStreamingOption(str, Enum):
     """
-    Option to define build log streaming behavior to Google Cloud Storage.
+    Option to define build log streaming behavior to Cloud Storage.
     """
     STREAM_DEFAULT = "STREAM_DEFAULT"
     """
@@ -47,11 +48,11 @@ class BuildOptionsLogStreamingOption(str, Enum):
     """
     STREAM_ON = "STREAM_ON"
     """
-    Build logs should be streamed to Google Cloud Storage.
+    Build logs should be streamed to Cloud Storage.
     """
     STREAM_OFF = "STREAM_OFF"
     """
-    Build logs should not be streamed to Google Cloud Storage; they will be written when the build is completed.
+    Build logs should not be streamed to Cloud Storage; they will be written when the build is completed.
     """
 
 
@@ -108,6 +109,10 @@ class BuildOptionsMachineType(str, Enum):
     E2_HIGHCPU32 = "E2_HIGHCPU_32"
     """
     Highcpu e2 machine with 32 CPUs.
+    """
+    E2_MEDIUM = "E2_MEDIUM"
+    """
+    E2 machine with 1 CPU.
     """
 
 
@@ -269,6 +274,24 @@ class PullRequestFilterCommentControl(str, Enum):
     COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY = "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
     """
     Enforce that repository owners or collaborators must comment on external contributors' Pull Requests before builds are triggered.
+    """
+
+
+class StorageSourceSourceFetcher(str, Enum):
+    """
+    Optional. Option to specify the tool to fetch the source file for the build.
+    """
+    SOURCE_FETCHER_UNSPECIFIED = "SOURCE_FETCHER_UNSPECIFIED"
+    """
+    Unspecified defaults to GSUTIL.
+    """
+    GSUTIL = "GSUTIL"
+    """
+    Use the "gsutil" tool to download the source file.
+    """
+    GCS_FETCHER = "GCS_FETCHER"
+    """
+    Use the Cloud Storage Fetcher tool to download the source file.
     """
 
 

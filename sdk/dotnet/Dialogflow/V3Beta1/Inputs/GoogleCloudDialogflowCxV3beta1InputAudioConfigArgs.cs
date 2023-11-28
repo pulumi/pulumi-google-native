@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding> AudioEncoding { get; set; } = null!;
 
         /// <summary>
+        /// Configuration of barge-in behavior during the streaming of input audio.
+        /// </summary>
+        [Input("bargeInConfig")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1BargeInConfigArgs>? BargeInConfig { get; set; }
+
+        /// <summary>
         /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
         /// </summary>
         [Input("enableWordInfo")]

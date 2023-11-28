@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         private InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs>? _excludedFields;
 
         /// <summary>
-        /// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+        /// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs> ExcludedFields
         {
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         private InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs>? _includedFields;
 
         /// <summary>
-        /// Limit scanning only to these fields.
+        /// Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs> IncludedFields
         {

@@ -72,7 +72,7 @@ export class TcpRoute extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+     * Required. Short name of the TcpRoute resource to be created.
      */
     public readonly tcpRouteId!: pulumi.Output<string>;
     /**
@@ -161,7 +161,7 @@ export interface TcpRouteArgs {
      */
     rules: pulumi.Input<pulumi.Input<inputs.networkservices.v1beta1.TcpRouteRouteRuleArgs>[]>;
     /**
-     * Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+     * Required. Short name of the TcpRoute resource to be created.
      */
     tcpRouteId: pulumi.Input<string>;
 }

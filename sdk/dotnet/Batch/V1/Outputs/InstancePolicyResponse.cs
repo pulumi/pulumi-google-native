@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly Outputs.DiskResponse BootDisk;
         /// <summary>
-        /// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
+        /// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.
         /// </summary>
         public readonly ImmutableArray<Outputs.AttachedDiskResponse> Disks;
         /// <summary>
@@ -33,13 +33,17 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
+        /// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
         /// </summary>
         public readonly string MinCpuPlatform;
         /// <summary>
         /// The provisioning model.
         /// </summary>
         public readonly string ProvisioningModel;
+        /// <summary>
+        /// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
+        /// </summary>
+        public readonly string Reservation;
 
         [OutputConstructor]
         private InstancePolicyResponse(
@@ -53,7 +57,9 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 
             string minCpuPlatform,
 
-            string provisioningModel)
+            string provisioningModel,
+
+            string reservation)
         {
             Accelerators = accelerators;
             BootDisk = bootDisk;
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
             MachineType = machineType;
             MinCpuPlatform = minCpuPlatform;
             ProvisioningModel = provisioningModel;
+            Reservation = reservation;
         }
     }
 }

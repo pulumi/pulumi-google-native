@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceConnectionPolicyResult:
-    def __init__(__self__, create_time=None, description=None, infrastructure=None, labels=None, name=None, network=None, psc_config=None, psc_connections=None, service_class=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, etag=None, infrastructure=None, labels=None, name=None, network=None, psc_config=None, psc_connections=None, service_class=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if infrastructure and not isinstance(infrastructure, str):
             raise TypeError("Expected argument 'infrastructure' to be a str")
         pulumi.set(__self__, "infrastructure", infrastructure)
@@ -66,6 +69,14 @@ class GetServiceConnectionPolicyResult:
         A description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
@@ -140,6 +151,7 @@ class AwaitableGetServiceConnectionPolicyResult(GetServiceConnectionPolicyResult
         return GetServiceConnectionPolicyResult(
             create_time=self.create_time,
             description=self.description,
+            etag=self.etag,
             infrastructure=self.infrastructure,
             labels=self.labels,
             name=self.name,
@@ -167,6 +179,7 @@ def get_service_connection_policy(location: Optional[str] = None,
     return AwaitableGetServiceConnectionPolicyResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
         infrastructure=pulumi.get(__ret__, 'infrastructure'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

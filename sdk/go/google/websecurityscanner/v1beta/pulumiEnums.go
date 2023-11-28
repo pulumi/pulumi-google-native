@@ -99,6 +99,8 @@ const (
 	ScanConfigErrorCodeUnsupportedFindingType = ScanConfigErrorCode("UNSUPPORTED_FINDING_TYPE")
 	// The URL scheme of one or more of the supplied URLs is not supported.
 	ScanConfigErrorCodeUnsupportedUrlScheme = ScanConfigErrorCode("UNSUPPORTED_URL_SCHEME")
+	// CAI is not able to list assets.
+	ScanConfigErrorCodeCloudAssetInventoryAssetNotFound = ScanConfigErrorCode("CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND")
 )
 
 func (ScanConfigErrorCode) ElementType() reflect.Type {

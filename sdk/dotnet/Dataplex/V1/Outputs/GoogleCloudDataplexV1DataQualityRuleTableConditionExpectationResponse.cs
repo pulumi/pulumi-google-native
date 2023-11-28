@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse
     {
         /// <summary>
-        /// The SQL expression.
+        /// Optional. The SQL expression.
         /// </summary>
         public readonly string SqlExpression;
 

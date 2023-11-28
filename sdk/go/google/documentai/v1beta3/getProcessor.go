@@ -36,12 +36,14 @@ type LookupProcessorResult struct {
 	DefaultProcessorVersion string `pulumi:"defaultProcessorVersion"`
 	// The display name of the processor.
 	DisplayName string `pulumi:"displayName"`
-	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+	// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
 	Name string `pulumi:"name"`
 	// Immutable. The http endpoint that can be called to invoke processing.
 	ProcessEndpoint string `pulumi:"processEndpoint"`
+	// The processor version aliases.
+	ProcessorVersionAliases []GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse `pulumi:"processorVersionAliases"`
 	// The state of the processor.
 	State string `pulumi:"state"`
 	// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
@@ -106,7 +108,7 @@ func (o LookupProcessorResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProcessorResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
 func (o LookupProcessorResultOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProcessorResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -119,6 +121,13 @@ func (o LookupProcessorResultOutput) Name() pulumi.StringOutput {
 // Immutable. The http endpoint that can be called to invoke processing.
 func (o LookupProcessorResultOutput) ProcessEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProcessorResult) string { return v.ProcessEndpoint }).(pulumi.StringOutput)
+}
+
+// The processor version aliases.
+func (o LookupProcessorResultOutput) ProcessorVersionAliases() GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseArrayOutput {
+	return o.ApplyT(func(v LookupProcessorResult) []GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse {
+		return v.ProcessorVersionAliases
+	}).(GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseArrayOutput)
 }
 
 // The state of the processor.

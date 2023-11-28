@@ -198,6 +198,251 @@ func (in *autoscalingSettingsAlgorithmPtr) ToOutput(ctx context.Context) pulumix
 	}
 }
 
+type DataSamplingConfigBehaviorsItem string
+
+const (
+	// If given, has no effect on sampling behavior. Used as an unknown or unset sentinel value.
+	DataSamplingConfigBehaviorsItemDataSamplingBehaviorUnspecified = DataSamplingConfigBehaviorsItem("DATA_SAMPLING_BEHAVIOR_UNSPECIFIED")
+	// When given, disables element sampling. Has same behavior as not setting the behavior.
+	DataSamplingConfigBehaviorsItemDisabled = DataSamplingConfigBehaviorsItem("DISABLED")
+	// When given, enables sampling in-flight from all PCollections.
+	DataSamplingConfigBehaviorsItemAlwaysOn = DataSamplingConfigBehaviorsItem("ALWAYS_ON")
+	// When given, enables sampling input elements when a user-defined DoFn causes an exception.
+	DataSamplingConfigBehaviorsItemExceptions = DataSamplingConfigBehaviorsItem("EXCEPTIONS")
+)
+
+func (DataSamplingConfigBehaviorsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSamplingConfigBehaviorsItem)(nil)).Elem()
+}
+
+func (e DataSamplingConfigBehaviorsItem) ToDataSamplingConfigBehaviorsItemOutput() DataSamplingConfigBehaviorsItemOutput {
+	return pulumi.ToOutput(e).(DataSamplingConfigBehaviorsItemOutput)
+}
+
+func (e DataSamplingConfigBehaviorsItem) ToDataSamplingConfigBehaviorsItemOutputWithContext(ctx context.Context) DataSamplingConfigBehaviorsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataSamplingConfigBehaviorsItemOutput)
+}
+
+func (e DataSamplingConfigBehaviorsItem) ToDataSamplingConfigBehaviorsItemPtrOutput() DataSamplingConfigBehaviorsItemPtrOutput {
+	return e.ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(context.Background())
+}
+
+func (e DataSamplingConfigBehaviorsItem) ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(ctx context.Context) DataSamplingConfigBehaviorsItemPtrOutput {
+	return DataSamplingConfigBehaviorsItem(e).ToDataSamplingConfigBehaviorsItemOutputWithContext(ctx).ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(ctx)
+}
+
+func (e DataSamplingConfigBehaviorsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataSamplingConfigBehaviorsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataSamplingConfigBehaviorsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DataSamplingConfigBehaviorsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DataSamplingConfigBehaviorsItemOutput struct{ *pulumi.OutputState }
+
+func (DataSamplingConfigBehaviorsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSamplingConfigBehaviorsItem)(nil)).Elem()
+}
+
+func (o DataSamplingConfigBehaviorsItemOutput) ToDataSamplingConfigBehaviorsItemOutput() DataSamplingConfigBehaviorsItemOutput {
+	return o
+}
+
+func (o DataSamplingConfigBehaviorsItemOutput) ToDataSamplingConfigBehaviorsItemOutputWithContext(ctx context.Context) DataSamplingConfigBehaviorsItemOutput {
+	return o
+}
+
+func (o DataSamplingConfigBehaviorsItemOutput) ToDataSamplingConfigBehaviorsItemPtrOutput() DataSamplingConfigBehaviorsItemPtrOutput {
+	return o.ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(context.Background())
+}
+
+func (o DataSamplingConfigBehaviorsItemOutput) ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(ctx context.Context) DataSamplingConfigBehaviorsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataSamplingConfigBehaviorsItem) *DataSamplingConfigBehaviorsItem {
+		return &v
+	}).(DataSamplingConfigBehaviorsItemPtrOutput)
+}
+
+func (o DataSamplingConfigBehaviorsItemOutput) ToOutput(ctx context.Context) pulumix.Output[DataSamplingConfigBehaviorsItem] {
+	return pulumix.Output[DataSamplingConfigBehaviorsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DataSamplingConfigBehaviorsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataSamplingConfigBehaviorsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataSamplingConfigBehaviorsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataSamplingConfigBehaviorsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataSamplingConfigBehaviorsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataSamplingConfigBehaviorsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataSamplingConfigBehaviorsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (DataSamplingConfigBehaviorsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSamplingConfigBehaviorsItem)(nil)).Elem()
+}
+
+func (o DataSamplingConfigBehaviorsItemPtrOutput) ToDataSamplingConfigBehaviorsItemPtrOutput() DataSamplingConfigBehaviorsItemPtrOutput {
+	return o
+}
+
+func (o DataSamplingConfigBehaviorsItemPtrOutput) ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(ctx context.Context) DataSamplingConfigBehaviorsItemPtrOutput {
+	return o
+}
+
+func (o DataSamplingConfigBehaviorsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataSamplingConfigBehaviorsItem] {
+	return pulumix.Output[*DataSamplingConfigBehaviorsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DataSamplingConfigBehaviorsItemPtrOutput) Elem() DataSamplingConfigBehaviorsItemOutput {
+	return o.ApplyT(func(v *DataSamplingConfigBehaviorsItem) DataSamplingConfigBehaviorsItem {
+		if v != nil {
+			return *v
+		}
+		var ret DataSamplingConfigBehaviorsItem
+		return ret
+	}).(DataSamplingConfigBehaviorsItemOutput)
+}
+
+func (o DataSamplingConfigBehaviorsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataSamplingConfigBehaviorsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataSamplingConfigBehaviorsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataSamplingConfigBehaviorsItemInput is an input type that accepts DataSamplingConfigBehaviorsItemArgs and DataSamplingConfigBehaviorsItemOutput values.
+// You can construct a concrete instance of `DataSamplingConfigBehaviorsItemInput` via:
+//
+//	DataSamplingConfigBehaviorsItemArgs{...}
+type DataSamplingConfigBehaviorsItemInput interface {
+	pulumi.Input
+
+	ToDataSamplingConfigBehaviorsItemOutput() DataSamplingConfigBehaviorsItemOutput
+	ToDataSamplingConfigBehaviorsItemOutputWithContext(context.Context) DataSamplingConfigBehaviorsItemOutput
+}
+
+var dataSamplingConfigBehaviorsItemPtrType = reflect.TypeOf((**DataSamplingConfigBehaviorsItem)(nil)).Elem()
+
+type DataSamplingConfigBehaviorsItemPtrInput interface {
+	pulumi.Input
+
+	ToDataSamplingConfigBehaviorsItemPtrOutput() DataSamplingConfigBehaviorsItemPtrOutput
+	ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(context.Context) DataSamplingConfigBehaviorsItemPtrOutput
+}
+
+type dataSamplingConfigBehaviorsItemPtr string
+
+func DataSamplingConfigBehaviorsItemPtr(v string) DataSamplingConfigBehaviorsItemPtrInput {
+	return (*dataSamplingConfigBehaviorsItemPtr)(&v)
+}
+
+func (*dataSamplingConfigBehaviorsItemPtr) ElementType() reflect.Type {
+	return dataSamplingConfigBehaviorsItemPtrType
+}
+
+func (in *dataSamplingConfigBehaviorsItemPtr) ToDataSamplingConfigBehaviorsItemPtrOutput() DataSamplingConfigBehaviorsItemPtrOutput {
+	return pulumi.ToOutput(in).(DataSamplingConfigBehaviorsItemPtrOutput)
+}
+
+func (in *dataSamplingConfigBehaviorsItemPtr) ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(ctx context.Context) DataSamplingConfigBehaviorsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataSamplingConfigBehaviorsItemPtrOutput)
+}
+
+func (in *dataSamplingConfigBehaviorsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DataSamplingConfigBehaviorsItem] {
+	return pulumix.Output[*DataSamplingConfigBehaviorsItem]{
+		OutputState: in.ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// DataSamplingConfigBehaviorsItemArrayInput is an input type that accepts DataSamplingConfigBehaviorsItemArray and DataSamplingConfigBehaviorsItemArrayOutput values.
+// You can construct a concrete instance of `DataSamplingConfigBehaviorsItemArrayInput` via:
+//
+//	DataSamplingConfigBehaviorsItemArray{ DataSamplingConfigBehaviorsItemArgs{...} }
+type DataSamplingConfigBehaviorsItemArrayInput interface {
+	pulumi.Input
+
+	ToDataSamplingConfigBehaviorsItemArrayOutput() DataSamplingConfigBehaviorsItemArrayOutput
+	ToDataSamplingConfigBehaviorsItemArrayOutputWithContext(context.Context) DataSamplingConfigBehaviorsItemArrayOutput
+}
+
+type DataSamplingConfigBehaviorsItemArray []DataSamplingConfigBehaviorsItem
+
+func (DataSamplingConfigBehaviorsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataSamplingConfigBehaviorsItem)(nil)).Elem()
+}
+
+func (i DataSamplingConfigBehaviorsItemArray) ToDataSamplingConfigBehaviorsItemArrayOutput() DataSamplingConfigBehaviorsItemArrayOutput {
+	return i.ToDataSamplingConfigBehaviorsItemArrayOutputWithContext(context.Background())
+}
+
+func (i DataSamplingConfigBehaviorsItemArray) ToDataSamplingConfigBehaviorsItemArrayOutputWithContext(ctx context.Context) DataSamplingConfigBehaviorsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSamplingConfigBehaviorsItemArrayOutput)
+}
+
+func (i DataSamplingConfigBehaviorsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]DataSamplingConfigBehaviorsItem] {
+	return pulumix.Output[[]DataSamplingConfigBehaviorsItem]{
+		OutputState: i.ToDataSamplingConfigBehaviorsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type DataSamplingConfigBehaviorsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DataSamplingConfigBehaviorsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataSamplingConfigBehaviorsItem)(nil)).Elem()
+}
+
+func (o DataSamplingConfigBehaviorsItemArrayOutput) ToDataSamplingConfigBehaviorsItemArrayOutput() DataSamplingConfigBehaviorsItemArrayOutput {
+	return o
+}
+
+func (o DataSamplingConfigBehaviorsItemArrayOutput) ToDataSamplingConfigBehaviorsItemArrayOutputWithContext(ctx context.Context) DataSamplingConfigBehaviorsItemArrayOutput {
+	return o
+}
+
+func (o DataSamplingConfigBehaviorsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataSamplingConfigBehaviorsItem] {
+	return pulumix.Output[[]DataSamplingConfigBehaviorsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DataSamplingConfigBehaviorsItemArrayOutput) Index(i pulumi.IntInput) DataSamplingConfigBehaviorsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataSamplingConfigBehaviorsItem {
+		return vs[0].([]DataSamplingConfigBehaviorsItem)[vs[1].(int)]
+	}).(DataSamplingConfigBehaviorsItemOutput)
+}
+
 // Which Flexible Resource Scheduling mode to run in.
 type EnvironmentFlexResourceSchedulingGoal string
 
@@ -998,7 +1243,7 @@ func (in *jobCurrentStatePtr) ToOutput(ctx context.Context) pulumix.Output[*JobC
 	}
 }
 
-// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+// The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
 type JobRequestedState string
 
 const (
@@ -2537,6 +2782,9 @@ func (in *workerPoolTeardownPolicyPtr) ToOutput(ctx context.Context) pulumix.Out
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingSettingsAlgorithmInput)(nil)).Elem(), AutoscalingSettingsAlgorithm("AUTOSCALING_ALGORITHM_UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingSettingsAlgorithmPtrInput)(nil)).Elem(), AutoscalingSettingsAlgorithm("AUTOSCALING_ALGORITHM_UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DataSamplingConfigBehaviorsItemInput)(nil)).Elem(), DataSamplingConfigBehaviorsItem("DATA_SAMPLING_BEHAVIOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DataSamplingConfigBehaviorsItemPtrInput)(nil)).Elem(), DataSamplingConfigBehaviorsItem("DATA_SAMPLING_BEHAVIOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DataSamplingConfigBehaviorsItemArrayInput)(nil)).Elem(), DataSamplingConfigBehaviorsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFlexResourceSchedulingGoalInput)(nil)).Elem(), EnvironmentFlexResourceSchedulingGoal("FLEXRS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFlexResourceSchedulingGoalPtrInput)(nil)).Elem(), EnvironmentFlexResourceSchedulingGoal("FLEXRS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateExecutionStageStateInput)(nil)).Elem(), ExecutionStageStateExecutionStageState("JOB_STATE_UNKNOWN"))
@@ -2563,6 +2811,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTeardownPolicyPtrInput)(nil)).Elem(), WorkerPoolTeardownPolicy("TEARDOWN_POLICY_UNKNOWN"))
 	pulumi.RegisterOutputType(AutoscalingSettingsAlgorithmOutput{})
 	pulumi.RegisterOutputType(AutoscalingSettingsAlgorithmPtrOutput{})
+	pulumi.RegisterOutputType(DataSamplingConfigBehaviorsItemOutput{})
+	pulumi.RegisterOutputType(DataSamplingConfigBehaviorsItemPtrOutput{})
+	pulumi.RegisterOutputType(DataSamplingConfigBehaviorsItemArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentFlexResourceSchedulingGoalOutput{})
 	pulumi.RegisterOutputType(EnvironmentFlexResourceSchedulingGoalPtrOutput{})
 	pulumi.RegisterOutputType(ExecutionStageStateExecutionStageStateOutput{})

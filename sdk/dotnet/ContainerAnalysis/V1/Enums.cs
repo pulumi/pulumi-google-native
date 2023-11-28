@@ -1083,6 +1083,47 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
     }
 
     /// <summary>
+    /// The progress of the SBOM generation.
+    /// </summary>
+    [EnumType]
+    public readonly struct SBOMStatusSbomState : IEquatable<SBOMStatusSbomState>
+    {
+        private readonly string _value;
+
+        private SBOMStatusSbomState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default unknown state.
+        /// </summary>
+        public static SBOMStatusSbomState SbomStateUnspecified { get; } = new SBOMStatusSbomState("SBOM_STATE_UNSPECIFIED");
+        /// <summary>
+        /// SBOM scanning is pending.
+        /// </summary>
+        public static SBOMStatusSbomState Pending { get; } = new SBOMStatusSbomState("PENDING");
+        /// <summary>
+        /// SBOM scanning has completed.
+        /// </summary>
+        public static SBOMStatusSbomState Complete { get; } = new SBOMStatusSbomState("COMPLETE");
+
+        public static bool operator ==(SBOMStatusSbomState left, SBOMStatusSbomState right) => left.Equals(right);
+        public static bool operator !=(SBOMStatusSbomState left, SBOMStatusSbomState right) => !left.Equals(right);
+
+        public static explicit operator string(SBOMStatusSbomState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SBOMStatusSbomState other && Equals(other);
+        public bool Equals(SBOMStatusSbomState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
     /// </summary>
     [EnumType]

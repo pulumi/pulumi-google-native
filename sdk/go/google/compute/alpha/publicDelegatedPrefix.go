@@ -17,18 +17,24 @@ import (
 type PublicDelegatedPrefix struct {
 	pulumi.CustomResourceState
 
+	// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+	AllocatablePrefixLength pulumi.IntOutput `pulumi:"allocatablePrefixLength"`
+	// The version of BYOIP API.
+	ByoipApiVersion pulumi.StringOutput `pulumi:"byoipApiVersion"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolOutput `pulumi:"isLiveMigration"`
 	// Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
 	Kind pulumi.StringOutput `pulumi:"kind"`
+	// The public delegated prefix mode for IPv6 only.
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
@@ -95,12 +101,16 @@ func (PublicDelegatedPrefixState) ElementType() reflect.Type {
 }
 
 type publicDelegatedPrefixArgs struct {
+	// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+	AllocatablePrefixLength *int `pulumi:"allocatablePrefixLength"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
+	// The public delegated prefix mode for IPv6 only.
+	Mode *PublicDelegatedPrefixMode `pulumi:"mode"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
@@ -115,12 +125,16 @@ type publicDelegatedPrefixArgs struct {
 
 // The set of arguments for constructing a PublicDelegatedPrefix resource.
 type PublicDelegatedPrefixArgs struct {
+	// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+	AllocatablePrefixLength pulumi.IntPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringPtrInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
+	// The public delegated prefix mode for IPv6 only.
+	Mode PublicDelegatedPrefixModePtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
@@ -182,6 +196,16 @@ func (o PublicDelegatedPrefixOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+func (o PublicDelegatedPrefixOutput) AllocatablePrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.IntOutput { return v.AllocatablePrefixLength }).(pulumi.IntOutput)
+}
+
+// The version of BYOIP API.
+func (o PublicDelegatedPrefixOutput) ByoipApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.ByoipApiVersion }).(pulumi.StringOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o PublicDelegatedPrefixOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -197,7 +221,7 @@ func (o PublicDelegatedPrefixOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+// The IP address range, in CIDR format, represented by this public delegated prefix.
 func (o PublicDelegatedPrefixOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
 }
@@ -210,6 +234,11 @@ func (o PublicDelegatedPrefixOutput) IsLiveMigration() pulumi.BoolOutput {
 // Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
 func (o PublicDelegatedPrefixOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The public delegated prefix mode for IPv6 only.
+func (o PublicDelegatedPrefixOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

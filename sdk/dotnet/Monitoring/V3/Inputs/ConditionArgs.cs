@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public Input<Inputs.MonitoringQueryLanguageConditionArgs>? ConditionMonitoringQueryLanguage { get; set; }
 
         /// <summary>
+        /// A condition that uses the Prometheus query language to define alerts.
+        /// </summary>
+        [Input("conditionPrometheusQueryLanguage")]
+        public Input<Inputs.PrometheusQueryLanguageConditionArgs>? ConditionPrometheusQueryLanguage { get; set; }
+
+        /// <summary>
         /// A condition that compares a time series against a threshold.
         /// </summary>
         [Input("conditionThreshold")]

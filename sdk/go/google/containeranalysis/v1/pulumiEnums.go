@@ -5254,6 +5254,193 @@ func (in *remediationRemediationTypePtr) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
+// The progress of the SBOM generation.
+type SBOMStatusSbomState string
+
+const (
+	// Default unknown state.
+	SBOMStatusSbomStateSbomStateUnspecified = SBOMStatusSbomState("SBOM_STATE_UNSPECIFIED")
+	// SBOM scanning is pending.
+	SBOMStatusSbomStatePending = SBOMStatusSbomState("PENDING")
+	// SBOM scanning has completed.
+	SBOMStatusSbomStateComplete = SBOMStatusSbomState("COMPLETE")
+)
+
+func (SBOMStatusSbomState) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMStatusSbomState)(nil)).Elem()
+}
+
+func (e SBOMStatusSbomState) ToSBOMStatusSbomStateOutput() SBOMStatusSbomStateOutput {
+	return pulumi.ToOutput(e).(SBOMStatusSbomStateOutput)
+}
+
+func (e SBOMStatusSbomState) ToSBOMStatusSbomStateOutputWithContext(ctx context.Context) SBOMStatusSbomStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SBOMStatusSbomStateOutput)
+}
+
+func (e SBOMStatusSbomState) ToSBOMStatusSbomStatePtrOutput() SBOMStatusSbomStatePtrOutput {
+	return e.ToSBOMStatusSbomStatePtrOutputWithContext(context.Background())
+}
+
+func (e SBOMStatusSbomState) ToSBOMStatusSbomStatePtrOutputWithContext(ctx context.Context) SBOMStatusSbomStatePtrOutput {
+	return SBOMStatusSbomState(e).ToSBOMStatusSbomStateOutputWithContext(ctx).ToSBOMStatusSbomStatePtrOutputWithContext(ctx)
+}
+
+func (e SBOMStatusSbomState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SBOMStatusSbomState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SBOMStatusSbomState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SBOMStatusSbomState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SBOMStatusSbomStateOutput struct{ *pulumi.OutputState }
+
+func (SBOMStatusSbomStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMStatusSbomState)(nil)).Elem()
+}
+
+func (o SBOMStatusSbomStateOutput) ToSBOMStatusSbomStateOutput() SBOMStatusSbomStateOutput {
+	return o
+}
+
+func (o SBOMStatusSbomStateOutput) ToSBOMStatusSbomStateOutputWithContext(ctx context.Context) SBOMStatusSbomStateOutput {
+	return o
+}
+
+func (o SBOMStatusSbomStateOutput) ToSBOMStatusSbomStatePtrOutput() SBOMStatusSbomStatePtrOutput {
+	return o.ToSBOMStatusSbomStatePtrOutputWithContext(context.Background())
+}
+
+func (o SBOMStatusSbomStateOutput) ToSBOMStatusSbomStatePtrOutputWithContext(ctx context.Context) SBOMStatusSbomStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SBOMStatusSbomState) *SBOMStatusSbomState {
+		return &v
+	}).(SBOMStatusSbomStatePtrOutput)
+}
+
+func (o SBOMStatusSbomStateOutput) ToOutput(ctx context.Context) pulumix.Output[SBOMStatusSbomState] {
+	return pulumix.Output[SBOMStatusSbomState]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SBOMStatusSbomStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SBOMStatusSbomStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SBOMStatusSbomState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SBOMStatusSbomStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SBOMStatusSbomStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SBOMStatusSbomState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SBOMStatusSbomStatePtrOutput struct{ *pulumi.OutputState }
+
+func (SBOMStatusSbomStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SBOMStatusSbomState)(nil)).Elem()
+}
+
+func (o SBOMStatusSbomStatePtrOutput) ToSBOMStatusSbomStatePtrOutput() SBOMStatusSbomStatePtrOutput {
+	return o
+}
+
+func (o SBOMStatusSbomStatePtrOutput) ToSBOMStatusSbomStatePtrOutputWithContext(ctx context.Context) SBOMStatusSbomStatePtrOutput {
+	return o
+}
+
+func (o SBOMStatusSbomStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SBOMStatusSbomState] {
+	return pulumix.Output[*SBOMStatusSbomState]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SBOMStatusSbomStatePtrOutput) Elem() SBOMStatusSbomStateOutput {
+	return o.ApplyT(func(v *SBOMStatusSbomState) SBOMStatusSbomState {
+		if v != nil {
+			return *v
+		}
+		var ret SBOMStatusSbomState
+		return ret
+	}).(SBOMStatusSbomStateOutput)
+}
+
+func (o SBOMStatusSbomStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SBOMStatusSbomStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SBOMStatusSbomState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SBOMStatusSbomStateInput is an input type that accepts SBOMStatusSbomStateArgs and SBOMStatusSbomStateOutput values.
+// You can construct a concrete instance of `SBOMStatusSbomStateInput` via:
+//
+//	SBOMStatusSbomStateArgs{...}
+type SBOMStatusSbomStateInput interface {
+	pulumi.Input
+
+	ToSBOMStatusSbomStateOutput() SBOMStatusSbomStateOutput
+	ToSBOMStatusSbomStateOutputWithContext(context.Context) SBOMStatusSbomStateOutput
+}
+
+var sbomstatusSbomStatePtrType = reflect.TypeOf((**SBOMStatusSbomState)(nil)).Elem()
+
+type SBOMStatusSbomStatePtrInput interface {
+	pulumi.Input
+
+	ToSBOMStatusSbomStatePtrOutput() SBOMStatusSbomStatePtrOutput
+	ToSBOMStatusSbomStatePtrOutputWithContext(context.Context) SBOMStatusSbomStatePtrOutput
+}
+
+type sbomstatusSbomStatePtr string
+
+func SBOMStatusSbomStatePtr(v string) SBOMStatusSbomStatePtrInput {
+	return (*sbomstatusSbomStatePtr)(&v)
+}
+
+func (*sbomstatusSbomStatePtr) ElementType() reflect.Type {
+	return sbomstatusSbomStatePtrType
+}
+
+func (in *sbomstatusSbomStatePtr) ToSBOMStatusSbomStatePtrOutput() SBOMStatusSbomStatePtrOutput {
+	return pulumi.ToOutput(in).(SBOMStatusSbomStatePtrOutput)
+}
+
+func (in *sbomstatusSbomStatePtr) ToSBOMStatusSbomStatePtrOutputWithContext(ctx context.Context) SBOMStatusSbomStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SBOMStatusSbomStatePtrOutput)
+}
+
+func (in *sbomstatusSbomStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SBOMStatusSbomState] {
+	return pulumix.Output[*SBOMStatusSbomState]{
+		OutputState: in.ToSBOMStatusSbomStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
 type VersionKind string
 
@@ -6261,6 +6448,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteArchitecturePtrInput)(nil)).Elem(), PackageNoteArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RemediationRemediationTypeInput)(nil)).Elem(), RemediationRemediationType("REMEDIATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RemediationRemediationTypePtrInput)(nil)).Elem(), RemediationRemediationType("REMEDIATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SBOMStatusSbomStateInput)(nil)).Elem(), SBOMStatusSbomState("SBOM_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SBOMStatusSbomStatePtrInput)(nil)).Elem(), SBOMStatusSbomState("SBOM_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindPtrInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VexAssessmentStateInput)(nil)).Elem(), VexAssessmentState("STATE_UNSPECIFIED"))
@@ -6327,6 +6516,8 @@ func init() {
 	pulumi.RegisterOutputType(PackageNoteArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(RemediationRemediationTypeOutput{})
 	pulumi.RegisterOutputType(RemediationRemediationTypePtrOutput{})
+	pulumi.RegisterOutputType(SBOMStatusSbomStateOutput{})
+	pulumi.RegisterOutputType(SBOMStatusSbomStatePtrOutput{})
 	pulumi.RegisterOutputType(VersionKindOutput{})
 	pulumi.RegisterOutputType(VersionKindPtrOutput{})
 	pulumi.RegisterOutputType(VexAssessmentStateOutput{})

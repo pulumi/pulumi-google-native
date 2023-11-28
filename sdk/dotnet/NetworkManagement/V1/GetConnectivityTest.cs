@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+        /// </summary>
+        public readonly Outputs.ProbingDetailsResponse ProbingDetails;
+        /// <summary>
         /// IP Protocol of the test. When not provided, "TCP" is assumed.
         /// </summary>
         public readonly string Protocol;
@@ -116,6 +120,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
 
             string name,
 
+            Outputs.ProbingDetailsResponse probingDetails,
+
             string protocol,
 
             Outputs.ReachabilityDetailsResponse reachabilityDetails,
@@ -132,6 +138,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
             DisplayName = displayName;
             Labels = labels;
             Name = name;
+            ProbingDetails = probingDetails;
             Protocol = protocol;
             ReachabilityDetails = reachabilityDetails;
             RelatedProjects = relatedProjects;

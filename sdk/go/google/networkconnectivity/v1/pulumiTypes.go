@@ -774,6 +774,8 @@ type ConsumerPscConfigResponse struct {
 	Network string `pulumi:"network"`
 	// The consumer project where PSC connections are allowed to be created in.
 	Project string `pulumi:"project"`
+	// Overall state of PSC Connections management for this consumer psc config.
+	State string `pulumi:"state"`
 }
 
 // Allow the producer to specify which consumers can connect to it.
@@ -812,6 +814,11 @@ func (o ConsumerPscConfigResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ConsumerPscConfigResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Overall state of PSC Connections management for this consumer psc config.
+func (o ConsumerPscConfigResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConfigResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
 type ConsumerPscConfigResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (ConsumerPscConfigResponseArrayOutput) ElementType() reflect.Type {
@@ -842,6 +849,8 @@ func (o ConsumerPscConfigResponseArrayOutput) Index(i pulumi.IntInput) ConsumerP
 type ConsumerPscConnectionResponse struct {
 	// The most recent error during operating this connection.
 	Error GoogleRpcStatusResponse `pulumi:"error"`
+	// The error info for the latest error during operating this connection.
+	ErrorInfo GoogleRpcErrorInfoResponse `pulumi:"errorInfo"`
 	// The error type indicates whether the error is consumer facing, producer facing or system internal.
 	ErrorType string `pulumi:"errorType"`
 	// The URI of the consumer forwarding rule created. Example: projects/{projectNumOrId}/regions/us-east1/networks/{resourceId}.
@@ -886,6 +895,11 @@ func (o ConsumerPscConnectionResponseOutput) ToOutput(ctx context.Context) pulum
 // The most recent error during operating this connection.
 func (o ConsumerPscConnectionResponseOutput) Error() GoogleRpcStatusResponseOutput {
 	return o.ApplyT(func(v ConsumerPscConnectionResponse) GoogleRpcStatusResponse { return v.Error }).(GoogleRpcStatusResponseOutput)
+}
+
+// The error info for the latest error during operating this connection.
+func (o ConsumerPscConnectionResponseOutput) ErrorInfo() GoogleRpcErrorInfoResponseOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) GoogleRpcErrorInfoResponse { return v.ErrorInfo }).(GoogleRpcErrorInfoResponseOutput)
 }
 
 // The error type indicates whether the error is consumer facing, producer facing or system internal.
@@ -1233,6 +1247,199 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Filter matches L4 traffic.
+type Filter struct {
+	// Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	DestRange *string `pulumi:"destRange"`
+	// Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+	IpProtocol *string `pulumi:"ipProtocol"`
+	// Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+	ProtocolVersion FilterProtocolVersion `pulumi:"protocolVersion"`
+	// Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	SrcRange *string `pulumi:"srcRange"`
+}
+
+// FilterInput is an input type that accepts FilterArgs and FilterOutput values.
+// You can construct a concrete instance of `FilterInput` via:
+//
+//	FilterArgs{...}
+type FilterInput interface {
+	pulumi.Input
+
+	ToFilterOutput() FilterOutput
+	ToFilterOutputWithContext(context.Context) FilterOutput
+}
+
+// Filter matches L4 traffic.
+type FilterArgs struct {
+	// Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	DestRange pulumi.StringPtrInput `pulumi:"destRange"`
+	// Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	// Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+	ProtocolVersion FilterProtocolVersionInput `pulumi:"protocolVersion"`
+	// Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	SrcRange pulumi.StringPtrInput `pulumi:"srcRange"`
+}
+
+func (FilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Filter)(nil)).Elem()
+}
+
+func (i FilterArgs) ToFilterOutput() FilterOutput {
+	return i.ToFilterOutputWithContext(context.Background())
+}
+
+func (i FilterArgs) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterOutput)
+}
+
+func (i FilterArgs) ToOutput(ctx context.Context) pulumix.Output[Filter] {
+	return pulumix.Output[Filter]{
+		OutputState: i.ToFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Filter matches L4 traffic.
+type FilterOutput struct{ *pulumi.OutputState }
+
+func (FilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Filter)(nil)).Elem()
+}
+
+func (o FilterOutput) ToFilterOutput() FilterOutput {
+	return o
+}
+
+func (o FilterOutput) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
+	return o
+}
+
+func (o FilterOutput) ToOutput(ctx context.Context) pulumix.Output[Filter] {
+	return pulumix.Output[Filter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+func (o FilterOutput) DestRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Filter) *string { return v.DestRange }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+func (o FilterOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Filter) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+func (o FilterOutput) ProtocolVersion() FilterProtocolVersionOutput {
+	return o.ApplyT(func(v Filter) FilterProtocolVersion { return v.ProtocolVersion }).(FilterProtocolVersionOutput)
+}
+
+// Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+func (o FilterOutput) SrcRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Filter) *string { return v.SrcRange }).(pulumi.StringPtrOutput)
+}
+
+// Filter matches L4 traffic.
+type FilterResponse struct {
+	// Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	DestRange string `pulumi:"destRange"`
+	// Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+	IpProtocol string `pulumi:"ipProtocol"`
+	// Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+	ProtocolVersion string `pulumi:"protocolVersion"`
+	// Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	SrcRange string `pulumi:"srcRange"`
+}
+
+// Filter matches L4 traffic.
+type FilterResponseOutput struct{ *pulumi.OutputState }
+
+func (FilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterResponse)(nil)).Elem()
+}
+
+func (o FilterResponseOutput) ToFilterResponseOutput() FilterResponseOutput {
+	return o
+}
+
+func (o FilterResponseOutput) ToFilterResponseOutputWithContext(ctx context.Context) FilterResponseOutput {
+	return o
+}
+
+func (o FilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilterResponse] {
+	return pulumix.Output[FilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+func (o FilterResponseOutput) DestRange() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterResponse) string { return v.DestRange }).(pulumi.StringOutput)
+}
+
+// Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+func (o FilterResponseOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterResponse) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+func (o FilterResponseOutput) ProtocolVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterResponse) string { return v.ProtocolVersion }).(pulumi.StringOutput)
+}
+
+// Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+func (o FilterResponseOutput) SrcRange() pulumi.StringOutput {
+	return o.ApplyT(func(v FilterResponse) string { return v.SrcRange }).(pulumi.StringOutput)
+}
+
+// Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+type GoogleRpcErrorInfoResponse struct {
+	// The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+	Domain string `pulumi:"domain"`
+	// Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+	Reason string `pulumi:"reason"`
+}
+
+// Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+type GoogleRpcErrorInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleRpcErrorInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleRpcErrorInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleRpcErrorInfoResponseOutput) ToGoogleRpcErrorInfoResponseOutput() GoogleRpcErrorInfoResponseOutput {
+	return o
+}
+
+func (o GoogleRpcErrorInfoResponseOutput) ToGoogleRpcErrorInfoResponseOutputWithContext(ctx context.Context) GoogleRpcErrorInfoResponseOutput {
+	return o
+}
+
+func (o GoogleRpcErrorInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleRpcErrorInfoResponse] {
+	return pulumix.Output[GoogleRpcErrorInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+func (o GoogleRpcErrorInfoResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleRpcErrorInfoResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+func (o GoogleRpcErrorInfoResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleRpcErrorInfoResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+func (o GoogleRpcErrorInfoResponseOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleRpcErrorInfoResponse) string { return v.Reason }).(pulumi.StringOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type GoogleRpcStatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -1277,6 +1484,202 @@ func (o GoogleRpcStatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o GoogleRpcStatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleRpcStatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// InterconnectAttachment that this route applies to.
+type InterconnectAttachment struct {
+	// Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+	Region *string `pulumi:"region"`
+}
+
+// InterconnectAttachmentInput is an input type that accepts InterconnectAttachmentArgs and InterconnectAttachmentOutput values.
+// You can construct a concrete instance of `InterconnectAttachmentInput` via:
+//
+//	InterconnectAttachmentArgs{...}
+type InterconnectAttachmentInput interface {
+	pulumi.Input
+
+	ToInterconnectAttachmentOutput() InterconnectAttachmentOutput
+	ToInterconnectAttachmentOutputWithContext(context.Context) InterconnectAttachmentOutput
+}
+
+// InterconnectAttachment that this route applies to.
+type InterconnectAttachmentArgs struct {
+	// Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (InterconnectAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachment)(nil)).Elem()
+}
+
+func (i InterconnectAttachmentArgs) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {
+	return i.ToInterconnectAttachmentOutputWithContext(context.Background())
+}
+
+func (i InterconnectAttachmentArgs) ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentOutput)
+}
+
+func (i InterconnectAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[InterconnectAttachment] {
+	return pulumix.Output[InterconnectAttachment]{
+		OutputState: i.ToInterconnectAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InterconnectAttachmentArgs) ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput {
+	return i.ToInterconnectAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i InterconnectAttachmentArgs) ToInterconnectAttachmentPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentOutput).ToInterconnectAttachmentPtrOutputWithContext(ctx)
+}
+
+// InterconnectAttachmentPtrInput is an input type that accepts InterconnectAttachmentArgs, InterconnectAttachmentPtr and InterconnectAttachmentPtrOutput values.
+// You can construct a concrete instance of `InterconnectAttachmentPtrInput` via:
+//
+//	        InterconnectAttachmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type InterconnectAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput
+	ToInterconnectAttachmentPtrOutputWithContext(context.Context) InterconnectAttachmentPtrOutput
+}
+
+type interconnectAttachmentPtrType InterconnectAttachmentArgs
+
+func InterconnectAttachmentPtr(v *InterconnectAttachmentArgs) InterconnectAttachmentPtrInput {
+	return (*interconnectAttachmentPtrType)(v)
+}
+
+func (*interconnectAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterconnectAttachment)(nil)).Elem()
+}
+
+func (i *interconnectAttachmentPtrType) ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput {
+	return i.ToInterconnectAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *interconnectAttachmentPtrType) ToInterconnectAttachmentPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPtrOutput)
+}
+
+func (i *interconnectAttachmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachment] {
+	return pulumix.Output[*InterconnectAttachment]{
+		OutputState: i.ToInterconnectAttachmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// InterconnectAttachment that this route applies to.
+type InterconnectAttachmentOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachment)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {
+	return o
+}
+
+func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput {
+	return o
+}
+
+func (o InterconnectAttachmentOutput) ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput {
+	return o.ToInterconnectAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o InterconnectAttachmentOutput) ToInterconnectAttachmentPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterconnectAttachment) *InterconnectAttachment {
+		return &v
+	}).(InterconnectAttachmentPtrOutput)
+}
+
+func (o InterconnectAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectAttachment] {
+	return pulumix.Output[InterconnectAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+func (o InterconnectAttachmentOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectAttachment) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type InterconnectAttachmentPtrOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterconnectAttachment)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentPtrOutput) ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput {
+	return o
+}
+
+func (o InterconnectAttachmentPtrOutput) ToInterconnectAttachmentPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPtrOutput {
+	return o
+}
+
+func (o InterconnectAttachmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachment] {
+	return pulumix.Output[*InterconnectAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InterconnectAttachmentPtrOutput) Elem() InterconnectAttachmentOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) InterconnectAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret InterconnectAttachment
+		return ret
+	}).(InterconnectAttachmentOutput)
+}
+
+// Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+func (o InterconnectAttachmentPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// InterconnectAttachment that this route applies to.
+type InterconnectAttachmentResponse struct {
+	// Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+	Region string `pulumi:"region"`
+}
+
+// InterconnectAttachment that this route applies to.
+type InterconnectAttachmentResponseOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentResponseOutput) ToInterconnectAttachmentResponseOutput() InterconnectAttachmentResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentResponseOutput) ToInterconnectAttachmentResponseOutputWithContext(ctx context.Context) InterconnectAttachmentResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectAttachmentResponse] {
+	return pulumix.Output[InterconnectAttachmentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+func (o InterconnectAttachmentResponseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectAttachmentResponse) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
@@ -1737,6 +2140,228 @@ func (o LinkedRouterApplianceInstancesResponseOutput) VpcNetwork() pulumi.String
 	return o.ApplyT(func(v LinkedRouterApplianceInstancesResponse) string { return v.VpcNetwork }).(pulumi.StringOutput)
 }
 
+// An existing VPC network.
+type LinkedVpcNetwork struct {
+	// Optional. IP ranges encompassing the subnets to be excluded from peering.
+	ExcludeExportRanges []string `pulumi:"excludeExportRanges"`
+	// The URI of the VPC network resource.
+	Uri string `pulumi:"uri"`
+}
+
+// LinkedVpcNetworkInput is an input type that accepts LinkedVpcNetworkArgs and LinkedVpcNetworkOutput values.
+// You can construct a concrete instance of `LinkedVpcNetworkInput` via:
+//
+//	LinkedVpcNetworkArgs{...}
+type LinkedVpcNetworkInput interface {
+	pulumi.Input
+
+	ToLinkedVpcNetworkOutput() LinkedVpcNetworkOutput
+	ToLinkedVpcNetworkOutputWithContext(context.Context) LinkedVpcNetworkOutput
+}
+
+// An existing VPC network.
+type LinkedVpcNetworkArgs struct {
+	// Optional. IP ranges encompassing the subnets to be excluded from peering.
+	ExcludeExportRanges pulumi.StringArrayInput `pulumi:"excludeExportRanges"`
+	// The URI of the VPC network resource.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (LinkedVpcNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedVpcNetwork)(nil)).Elem()
+}
+
+func (i LinkedVpcNetworkArgs) ToLinkedVpcNetworkOutput() LinkedVpcNetworkOutput {
+	return i.ToLinkedVpcNetworkOutputWithContext(context.Background())
+}
+
+func (i LinkedVpcNetworkArgs) ToLinkedVpcNetworkOutputWithContext(ctx context.Context) LinkedVpcNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedVpcNetworkOutput)
+}
+
+func (i LinkedVpcNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedVpcNetwork] {
+	return pulumix.Output[LinkedVpcNetwork]{
+		OutputState: i.ToLinkedVpcNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i LinkedVpcNetworkArgs) ToLinkedVpcNetworkPtrOutput() LinkedVpcNetworkPtrOutput {
+	return i.ToLinkedVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i LinkedVpcNetworkArgs) ToLinkedVpcNetworkPtrOutputWithContext(ctx context.Context) LinkedVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedVpcNetworkOutput).ToLinkedVpcNetworkPtrOutputWithContext(ctx)
+}
+
+// LinkedVpcNetworkPtrInput is an input type that accepts LinkedVpcNetworkArgs, LinkedVpcNetworkPtr and LinkedVpcNetworkPtrOutput values.
+// You can construct a concrete instance of `LinkedVpcNetworkPtrInput` via:
+//
+//	        LinkedVpcNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type LinkedVpcNetworkPtrInput interface {
+	pulumi.Input
+
+	ToLinkedVpcNetworkPtrOutput() LinkedVpcNetworkPtrOutput
+	ToLinkedVpcNetworkPtrOutputWithContext(context.Context) LinkedVpcNetworkPtrOutput
+}
+
+type linkedVpcNetworkPtrType LinkedVpcNetworkArgs
+
+func LinkedVpcNetworkPtr(v *LinkedVpcNetworkArgs) LinkedVpcNetworkPtrInput {
+	return (*linkedVpcNetworkPtrType)(v)
+}
+
+func (*linkedVpcNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedVpcNetwork)(nil)).Elem()
+}
+
+func (i *linkedVpcNetworkPtrType) ToLinkedVpcNetworkPtrOutput() LinkedVpcNetworkPtrOutput {
+	return i.ToLinkedVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *linkedVpcNetworkPtrType) ToLinkedVpcNetworkPtrOutputWithContext(ctx context.Context) LinkedVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedVpcNetworkPtrOutput)
+}
+
+func (i *linkedVpcNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*LinkedVpcNetwork] {
+	return pulumix.Output[*LinkedVpcNetwork]{
+		OutputState: i.ToLinkedVpcNetworkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// An existing VPC network.
+type LinkedVpcNetworkOutput struct{ *pulumi.OutputState }
+
+func (LinkedVpcNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedVpcNetwork)(nil)).Elem()
+}
+
+func (o LinkedVpcNetworkOutput) ToLinkedVpcNetworkOutput() LinkedVpcNetworkOutput {
+	return o
+}
+
+func (o LinkedVpcNetworkOutput) ToLinkedVpcNetworkOutputWithContext(ctx context.Context) LinkedVpcNetworkOutput {
+	return o
+}
+
+func (o LinkedVpcNetworkOutput) ToLinkedVpcNetworkPtrOutput() LinkedVpcNetworkPtrOutput {
+	return o.ToLinkedVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o LinkedVpcNetworkOutput) ToLinkedVpcNetworkPtrOutputWithContext(ctx context.Context) LinkedVpcNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkedVpcNetwork) *LinkedVpcNetwork {
+		return &v
+	}).(LinkedVpcNetworkPtrOutput)
+}
+
+func (o LinkedVpcNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedVpcNetwork] {
+	return pulumix.Output[LinkedVpcNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. IP ranges encompassing the subnets to be excluded from peering.
+func (o LinkedVpcNetworkOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LinkedVpcNetwork) []string { return v.ExcludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// The URI of the VPC network resource.
+func (o LinkedVpcNetworkOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedVpcNetwork) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type LinkedVpcNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (LinkedVpcNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedVpcNetwork)(nil)).Elem()
+}
+
+func (o LinkedVpcNetworkPtrOutput) ToLinkedVpcNetworkPtrOutput() LinkedVpcNetworkPtrOutput {
+	return o
+}
+
+func (o LinkedVpcNetworkPtrOutput) ToLinkedVpcNetworkPtrOutputWithContext(ctx context.Context) LinkedVpcNetworkPtrOutput {
+	return o
+}
+
+func (o LinkedVpcNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedVpcNetwork] {
+	return pulumix.Output[*LinkedVpcNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o LinkedVpcNetworkPtrOutput) Elem() LinkedVpcNetworkOutput {
+	return o.ApplyT(func(v *LinkedVpcNetwork) LinkedVpcNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret LinkedVpcNetwork
+		return ret
+	}).(LinkedVpcNetworkOutput)
+}
+
+// Optional. IP ranges encompassing the subnets to be excluded from peering.
+func (o LinkedVpcNetworkPtrOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LinkedVpcNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// The URI of the VPC network resource.
+func (o LinkedVpcNetworkPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// An existing VPC network.
+type LinkedVpcNetworkResponse struct {
+	// Optional. IP ranges encompassing the subnets to be excluded from peering.
+	ExcludeExportRanges []string `pulumi:"excludeExportRanges"`
+	// The URI of the VPC network resource.
+	Uri string `pulumi:"uri"`
+}
+
+// An existing VPC network.
+type LinkedVpcNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (LinkedVpcNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedVpcNetworkResponse)(nil)).Elem()
+}
+
+func (o LinkedVpcNetworkResponseOutput) ToLinkedVpcNetworkResponseOutput() LinkedVpcNetworkResponseOutput {
+	return o
+}
+
+func (o LinkedVpcNetworkResponseOutput) ToLinkedVpcNetworkResponseOutputWithContext(ctx context.Context) LinkedVpcNetworkResponseOutput {
+	return o
+}
+
+func (o LinkedVpcNetworkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedVpcNetworkResponse] {
+	return pulumix.Output[LinkedVpcNetworkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. IP ranges encompassing the subnets to be excluded from peering.
+func (o LinkedVpcNetworkResponseOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LinkedVpcNetworkResponse) []string { return v.ExcludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// The URI of the VPC network resource.
+func (o LinkedVpcNetworkResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedVpcNetworkResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 // A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
 type LinkedVpnTunnels struct {
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
@@ -2150,7 +2775,7 @@ func (o ProducerPscConfigResponseArrayOutput) Index(i pulumi.IntInput) ProducerP
 
 // Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
 type PscConfig struct {
-	// Max number of PSC connections for this policy.
+	// Optional. Max number of PSC connections for this policy.
 	Limit *string `pulumi:"limit"`
 	// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
 	Subnetworks []string `pulumi:"subnetworks"`
@@ -2169,7 +2794,7 @@ type PscConfigInput interface {
 
 // Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
 type PscConfigArgs struct {
-	// Max number of PSC connections for this policy.
+	// Optional. Max number of PSC connections for this policy.
 	Limit pulumi.StringPtrInput `pulumi:"limit"`
 	// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
 	Subnetworks pulumi.StringArrayInput `pulumi:"subnetworks"`
@@ -2271,7 +2896,7 @@ func (o PscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfig]
 	}
 }
 
-// Max number of PSC connections for this policy.
+// Optional. Max number of PSC connections for this policy.
 func (o PscConfigOutput) Limit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PscConfig) *string { return v.Limit }).(pulumi.StringPtrOutput)
 }
@@ -2311,7 +2936,7 @@ func (o PscConfigPtrOutput) Elem() PscConfigOutput {
 	}).(PscConfigOutput)
 }
 
-// Max number of PSC connections for this policy.
+// Optional. Max number of PSC connections for this policy.
 func (o PscConfigPtrOutput) Limit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PscConfig) *string {
 		if v == nil {
@@ -2333,7 +2958,7 @@ func (o PscConfigPtrOutput) Subnetworks() pulumi.StringArrayOutput {
 
 // Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
 type PscConfigResponse struct {
-	// Max number of PSC connections for this policy.
+	// Optional. Max number of PSC connections for this policy.
 	Limit string `pulumi:"limit"`
 	// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
 	Subnetworks []string `pulumi:"subnetworks"`
@@ -2360,7 +2985,7 @@ func (o PscConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Ps
 	}
 }
 
-// Max number of PSC connections for this policy.
+// Optional. Max number of PSC connections for this policy.
 func (o PscConfigResponseOutput) Limit() pulumi.StringOutput {
 	return o.ApplyT(func(v PscConfigResponse) string { return v.Limit }).(pulumi.StringOutput)
 }
@@ -2380,6 +3005,8 @@ type PscConnectionResponse struct {
 	ConsumerTargetProject string `pulumi:"consumerTargetProject"`
 	// The most recent error during operating this connection.
 	Error GoogleRpcStatusResponse `pulumi:"error"`
+	// The error info for the latest error during operating this connection.
+	ErrorInfo GoogleRpcErrorInfoResponse `pulumi:"errorInfo"`
 	// The error type indicates whether the error is consumer facing, producer facing or system internal.
 	ErrorType string `pulumi:"errorType"`
 	// The last Compute Engine operation to setup PSC connection.
@@ -2429,6 +3056,11 @@ func (o PscConnectionResponseOutput) ConsumerTargetProject() pulumi.StringOutput
 // The most recent error during operating this connection.
 func (o PscConnectionResponseOutput) Error() GoogleRpcStatusResponseOutput {
 	return o.ApplyT(func(v PscConnectionResponse) GoogleRpcStatusResponse { return v.Error }).(GoogleRpcStatusResponseOutput)
+}
+
+// The error info for the latest error during operating this connection.
+func (o PscConnectionResponseOutput) ErrorInfo() GoogleRpcErrorInfoResponseOutput {
+	return o.ApplyT(func(v PscConnectionResponse) GoogleRpcErrorInfoResponse { return v.ErrorInfo }).(GoogleRpcErrorInfoResponseOutput)
 }
 
 // The error type indicates whether the error is consumer facing, producer facing or system internal.
@@ -2864,6 +3496,587 @@ func (o RoutingVPCResponseArrayOutput) Index(i pulumi.IntInput) RoutingVPCRespon
 	}).(RoutingVPCResponseOutput)
 }
 
+// The number of spokes that are in a particular state and associated with a given hub.
+type SpokeStateCountResponse struct {
+	// The total number of spokes that are in this state and associated with a given hub.
+	Count string `pulumi:"count"`
+	// The state of the spokes.
+	State string `pulumi:"state"`
+}
+
+// The number of spokes that are in a particular state and associated with a given hub.
+type SpokeStateCountResponseOutput struct{ *pulumi.OutputState }
+
+func (SpokeStateCountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeStateCountResponse)(nil)).Elem()
+}
+
+func (o SpokeStateCountResponseOutput) ToSpokeStateCountResponseOutput() SpokeStateCountResponseOutput {
+	return o
+}
+
+func (o SpokeStateCountResponseOutput) ToSpokeStateCountResponseOutputWithContext(ctx context.Context) SpokeStateCountResponseOutput {
+	return o
+}
+
+func (o SpokeStateCountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeStateCountResponse] {
+	return pulumix.Output[SpokeStateCountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The total number of spokes that are in this state and associated with a given hub.
+func (o SpokeStateCountResponseOutput) Count() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeStateCountResponse) string { return v.Count }).(pulumi.StringOutput)
+}
+
+// The state of the spokes.
+func (o SpokeStateCountResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeStateCountResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type SpokeStateCountResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SpokeStateCountResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpokeStateCountResponse)(nil)).Elem()
+}
+
+func (o SpokeStateCountResponseArrayOutput) ToSpokeStateCountResponseArrayOutput() SpokeStateCountResponseArrayOutput {
+	return o
+}
+
+func (o SpokeStateCountResponseArrayOutput) ToSpokeStateCountResponseArrayOutputWithContext(ctx context.Context) SpokeStateCountResponseArrayOutput {
+	return o
+}
+
+func (o SpokeStateCountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpokeStateCountResponse] {
+	return pulumix.Output[[]SpokeStateCountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SpokeStateCountResponseArrayOutput) Index(i pulumi.IntInput) SpokeStateCountResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpokeStateCountResponse {
+		return vs[0].([]SpokeStateCountResponse)[vs[1].(int)]
+	}).(SpokeStateCountResponseOutput)
+}
+
+// The number of spokes in the hub that are inactive for this reason.
+type SpokeStateReasonCountResponse struct {
+	// The total number of spokes that are inactive for a particular reason and associated with a given hub.
+	Count string `pulumi:"count"`
+	// The reason that a spoke is inactive.
+	StateReasonCode string `pulumi:"stateReasonCode"`
+}
+
+// The number of spokes in the hub that are inactive for this reason.
+type SpokeStateReasonCountResponseOutput struct{ *pulumi.OutputState }
+
+func (SpokeStateReasonCountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeStateReasonCountResponse)(nil)).Elem()
+}
+
+func (o SpokeStateReasonCountResponseOutput) ToSpokeStateReasonCountResponseOutput() SpokeStateReasonCountResponseOutput {
+	return o
+}
+
+func (o SpokeStateReasonCountResponseOutput) ToSpokeStateReasonCountResponseOutputWithContext(ctx context.Context) SpokeStateReasonCountResponseOutput {
+	return o
+}
+
+func (o SpokeStateReasonCountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeStateReasonCountResponse] {
+	return pulumix.Output[SpokeStateReasonCountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The total number of spokes that are inactive for a particular reason and associated with a given hub.
+func (o SpokeStateReasonCountResponseOutput) Count() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeStateReasonCountResponse) string { return v.Count }).(pulumi.StringOutput)
+}
+
+// The reason that a spoke is inactive.
+func (o SpokeStateReasonCountResponseOutput) StateReasonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeStateReasonCountResponse) string { return v.StateReasonCode }).(pulumi.StringOutput)
+}
+
+type SpokeStateReasonCountResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SpokeStateReasonCountResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpokeStateReasonCountResponse)(nil)).Elem()
+}
+
+func (o SpokeStateReasonCountResponseArrayOutput) ToSpokeStateReasonCountResponseArrayOutput() SpokeStateReasonCountResponseArrayOutput {
+	return o
+}
+
+func (o SpokeStateReasonCountResponseArrayOutput) ToSpokeStateReasonCountResponseArrayOutputWithContext(ctx context.Context) SpokeStateReasonCountResponseArrayOutput {
+	return o
+}
+
+func (o SpokeStateReasonCountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpokeStateReasonCountResponse] {
+	return pulumix.Output[[]SpokeStateReasonCountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SpokeStateReasonCountResponseArrayOutput) Index(i pulumi.IntInput) SpokeStateReasonCountResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpokeStateReasonCountResponse {
+		return vs[0].([]SpokeStateReasonCountResponse)[vs[1].(int)]
+	}).(SpokeStateReasonCountResponseOutput)
+}
+
+// Summarizes information about the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
+type SpokeSummaryResponse struct {
+	// Counts the number of spokes that are in each state and associated with a given hub.
+	SpokeStateCounts []SpokeStateCountResponse `pulumi:"spokeStateCounts"`
+	// Counts the number of spokes that are inactive for each possible reason and associated with a given hub.
+	SpokeStateReasonCounts []SpokeStateReasonCountResponse `pulumi:"spokeStateReasonCounts"`
+	// Counts the number of spokes of each type that are associated with a specific hub.
+	SpokeTypeCounts []SpokeTypeCountResponse `pulumi:"spokeTypeCounts"`
+}
+
+// Summarizes information about the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
+type SpokeSummaryResponseOutput struct{ *pulumi.OutputState }
+
+func (SpokeSummaryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeSummaryResponse)(nil)).Elem()
+}
+
+func (o SpokeSummaryResponseOutput) ToSpokeSummaryResponseOutput() SpokeSummaryResponseOutput {
+	return o
+}
+
+func (o SpokeSummaryResponseOutput) ToSpokeSummaryResponseOutputWithContext(ctx context.Context) SpokeSummaryResponseOutput {
+	return o
+}
+
+func (o SpokeSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeSummaryResponse] {
+	return pulumix.Output[SpokeSummaryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Counts the number of spokes that are in each state and associated with a given hub.
+func (o SpokeSummaryResponseOutput) SpokeStateCounts() SpokeStateCountResponseArrayOutput {
+	return o.ApplyT(func(v SpokeSummaryResponse) []SpokeStateCountResponse { return v.SpokeStateCounts }).(SpokeStateCountResponseArrayOutput)
+}
+
+// Counts the number of spokes that are inactive for each possible reason and associated with a given hub.
+func (o SpokeSummaryResponseOutput) SpokeStateReasonCounts() SpokeStateReasonCountResponseArrayOutput {
+	return o.ApplyT(func(v SpokeSummaryResponse) []SpokeStateReasonCountResponse { return v.SpokeStateReasonCounts }).(SpokeStateReasonCountResponseArrayOutput)
+}
+
+// Counts the number of spokes of each type that are associated with a specific hub.
+func (o SpokeSummaryResponseOutput) SpokeTypeCounts() SpokeTypeCountResponseArrayOutput {
+	return o.ApplyT(func(v SpokeSummaryResponse) []SpokeTypeCountResponse { return v.SpokeTypeCounts }).(SpokeTypeCountResponseArrayOutput)
+}
+
+// The number of spokes of a given type that are associated with a specific hub. The type indicates what kind of resource is associated with the spoke.
+type SpokeTypeCountResponse struct {
+	// The total number of spokes of this type that are associated with the hub.
+	Count string `pulumi:"count"`
+	// The type of the spokes.
+	SpokeType string `pulumi:"spokeType"`
+}
+
+// The number of spokes of a given type that are associated with a specific hub. The type indicates what kind of resource is associated with the spoke.
+type SpokeTypeCountResponseOutput struct{ *pulumi.OutputState }
+
+func (SpokeTypeCountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeTypeCountResponse)(nil)).Elem()
+}
+
+func (o SpokeTypeCountResponseOutput) ToSpokeTypeCountResponseOutput() SpokeTypeCountResponseOutput {
+	return o
+}
+
+func (o SpokeTypeCountResponseOutput) ToSpokeTypeCountResponseOutputWithContext(ctx context.Context) SpokeTypeCountResponseOutput {
+	return o
+}
+
+func (o SpokeTypeCountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeTypeCountResponse] {
+	return pulumix.Output[SpokeTypeCountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The total number of spokes of this type that are associated with the hub.
+func (o SpokeTypeCountResponseOutput) Count() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeTypeCountResponse) string { return v.Count }).(pulumi.StringOutput)
+}
+
+// The type of the spokes.
+func (o SpokeTypeCountResponseOutput) SpokeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeTypeCountResponse) string { return v.SpokeType }).(pulumi.StringOutput)
+}
+
+type SpokeTypeCountResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SpokeTypeCountResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpokeTypeCountResponse)(nil)).Elem()
+}
+
+func (o SpokeTypeCountResponseArrayOutput) ToSpokeTypeCountResponseArrayOutput() SpokeTypeCountResponseArrayOutput {
+	return o
+}
+
+func (o SpokeTypeCountResponseArrayOutput) ToSpokeTypeCountResponseArrayOutputWithContext(ctx context.Context) SpokeTypeCountResponseArrayOutput {
+	return o
+}
+
+func (o SpokeTypeCountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpokeTypeCountResponse] {
+	return pulumix.Output[[]SpokeTypeCountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SpokeTypeCountResponseArrayOutput) Index(i pulumi.IntInput) SpokeTypeCountResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpokeTypeCountResponse {
+		return vs[0].([]SpokeTypeCountResponse)[vs[1].(int)]
+	}).(SpokeTypeCountResponseOutput)
+}
+
+// The reason a spoke is inactive.
+type StateReasonResponse struct {
+	// The code associated with this reason.
+	Code string `pulumi:"code"`
+	// Human-readable details about this reason.
+	Message string `pulumi:"message"`
+	// Additional information provided by the user in the RejectSpoke call.
+	UserDetails string `pulumi:"userDetails"`
+}
+
+// The reason a spoke is inactive.
+type StateReasonResponseOutput struct{ *pulumi.OutputState }
+
+func (StateReasonResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StateReasonResponse)(nil)).Elem()
+}
+
+func (o StateReasonResponseOutput) ToStateReasonResponseOutput() StateReasonResponseOutput {
+	return o
+}
+
+func (o StateReasonResponseOutput) ToStateReasonResponseOutputWithContext(ctx context.Context) StateReasonResponseOutput {
+	return o
+}
+
+func (o StateReasonResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StateReasonResponse] {
+	return pulumix.Output[StateReasonResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The code associated with this reason.
+func (o StateReasonResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v StateReasonResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Human-readable details about this reason.
+func (o StateReasonResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StateReasonResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Additional information provided by the user in the RejectSpoke call.
+func (o StateReasonResponseOutput) UserDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v StateReasonResponse) string { return v.UserDetails }).(pulumi.StringOutput)
+}
+
+type StateReasonResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StateReasonResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StateReasonResponse)(nil)).Elem()
+}
+
+func (o StateReasonResponseArrayOutput) ToStateReasonResponseArrayOutput() StateReasonResponseArrayOutput {
+	return o
+}
+
+func (o StateReasonResponseArrayOutput) ToStateReasonResponseArrayOutputWithContext(ctx context.Context) StateReasonResponseArrayOutput {
+	return o
+}
+
+func (o StateReasonResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StateReasonResponse] {
+	return pulumix.Output[[]StateReasonResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StateReasonResponseArrayOutput) Index(i pulumi.IntInput) StateReasonResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StateReasonResponse {
+		return vs[0].([]StateReasonResponse)[vs[1].(int)]
+	}).(StateReasonResponseOutput)
+}
+
+// VM instances to which this policy-based route applies to.
+type VirtualMachine struct {
+	// Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+	Tags []string `pulumi:"tags"`
+}
+
+// VirtualMachineInput is an input type that accepts VirtualMachineArgs and VirtualMachineOutput values.
+// You can construct a concrete instance of `VirtualMachineInput` via:
+//
+//	VirtualMachineArgs{...}
+type VirtualMachineInput interface {
+	pulumi.Input
+
+	ToVirtualMachineOutput() VirtualMachineOutput
+	ToVirtualMachineOutputWithContext(context.Context) VirtualMachineOutput
+}
+
+// VM instances to which this policy-based route applies to.
+type VirtualMachineArgs struct {
+	// Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (VirtualMachineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine)(nil)).Elem()
+}
+
+func (i VirtualMachineArgs) ToVirtualMachineOutput() VirtualMachineOutput {
+	return i.ToVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineArgs) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOutput)
+}
+
+func (i VirtualMachineArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachine] {
+	return pulumix.Output[VirtualMachine]{
+		OutputState: i.ToVirtualMachineOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VirtualMachineArgs) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return i.ToVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineArgs) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOutput).ToVirtualMachinePtrOutputWithContext(ctx)
+}
+
+// VirtualMachinePtrInput is an input type that accepts VirtualMachineArgs, VirtualMachinePtr and VirtualMachinePtrOutput values.
+// You can construct a concrete instance of `VirtualMachinePtrInput` via:
+//
+//	        VirtualMachineArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachinePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePtrOutput() VirtualMachinePtrOutput
+	ToVirtualMachinePtrOutputWithContext(context.Context) VirtualMachinePtrOutput
+}
+
+type virtualMachinePtrType VirtualMachineArgs
+
+func VirtualMachinePtr(v *VirtualMachineArgs) VirtualMachinePtrInput {
+	return (*virtualMachinePtrType)(v)
+}
+
+func (*virtualMachinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine)(nil)).Elem()
+}
+
+func (i *virtualMachinePtrType) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return i.ToVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachinePtrType) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePtrOutput)
+}
+
+func (i *virtualMachinePtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachine] {
+	return pulumix.Output[*VirtualMachine]{
+		OutputState: i.ToVirtualMachinePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VM instances to which this policy-based route applies to.
+type VirtualMachineOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine)(nil)).Elem()
+}
+
+func (o VirtualMachineOutput) ToVirtualMachineOutput() VirtualMachineOutput {
+	return o
+}
+
+func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
+	return o
+}
+
+func (o VirtualMachineOutput) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return o.ToVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineOutput) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachine) *VirtualMachine {
+		return &v
+	}).(VirtualMachinePtrOutput)
+}
+
+func (o VirtualMachineOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachine] {
+	return pulumix.Output[VirtualMachine]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+func (o VirtualMachineOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachine) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type VirtualMachinePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine)(nil)).Elem()
+}
+
+func (o VirtualMachinePtrOutput) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return o
+}
+
+func (o VirtualMachinePtrOutput) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return o
+}
+
+func (o VirtualMachinePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachine] {
+	return pulumix.Output[*VirtualMachine]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualMachinePtrOutput) Elem() VirtualMachineOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachine {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachine
+		return ret
+	}).(VirtualMachineOutput)
+}
+
+// Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+func (o VirtualMachinePtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachine) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// VM instances to which this policy-based route applies to.
+type VirtualMachineResponse struct {
+	// Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+	Tags []string `pulumi:"tags"`
+}
+
+// VM instances to which this policy-based route applies to.
+type VirtualMachineResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineResponseOutput) ToVirtualMachineResponseOutput() VirtualMachineResponseOutput {
+	return o
+}
+
+func (o VirtualMachineResponseOutput) ToVirtualMachineResponseOutputWithContext(ctx context.Context) VirtualMachineResponseOutput {
+	return o
+}
+
+func (o VirtualMachineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineResponse] {
+	return pulumix.Output[VirtualMachineResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+func (o VirtualMachineResponseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Informational warning message.
+type WarningsResponse struct {
+	// A warning code, if applicable.
+	Code string `pulumi:"code"`
+	// Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+	Data map[string]string `pulumi:"data"`
+	// A human-readable description of the warning code.
+	WarningMessage string `pulumi:"warningMessage"`
+}
+
+// Informational warning message.
+type WarningsResponseOutput struct{ *pulumi.OutputState }
+
+func (WarningsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarningsResponse)(nil)).Elem()
+}
+
+func (o WarningsResponseOutput) ToWarningsResponseOutput() WarningsResponseOutput {
+	return o
+}
+
+func (o WarningsResponseOutput) ToWarningsResponseOutputWithContext(ctx context.Context) WarningsResponseOutput {
+	return o
+}
+
+func (o WarningsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WarningsResponse] {
+	return pulumix.Output[WarningsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A warning code, if applicable.
+func (o WarningsResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v WarningsResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+func (o WarningsResponseOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WarningsResponse) map[string]string { return v.Data }).(pulumi.StringMapOutput)
+}
+
+// A human-readable description of the warning code.
+func (o WarningsResponseOutput) WarningMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v WarningsResponse) string { return v.WarningMessage }).(pulumi.StringOutput)
+}
+
+type WarningsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (WarningsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WarningsResponse)(nil)).Elem()
+}
+
+func (o WarningsResponseArrayOutput) ToWarningsResponseArrayOutput() WarningsResponseArrayOutput {
+	return o
+}
+
+func (o WarningsResponseArrayOutput) ToWarningsResponseArrayOutputWithContext(ctx context.Context) WarningsResponseArrayOutput {
+	return o
+}
+
+func (o WarningsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WarningsResponse] {
+	return pulumix.Output[[]WarningsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o WarningsResponseArrayOutput) Index(i pulumi.IntInput) WarningsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WarningsResponse {
+		return vs[0].([]WarningsResponse)[vs[1].(int)]
+	}).(WarningsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -2875,10 +4088,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerPscConfigArrayInput)(nil)).Elem(), ConsumerPscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FilterInput)(nil)).Elem(), FilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentInput)(nil)).Elem(), InterconnectAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPtrInput)(nil)).Elem(), InterconnectAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedInterconnectAttachmentsInput)(nil)).Elem(), LinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedInterconnectAttachmentsPtrInput)(nil)).Elem(), LinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedRouterApplianceInstancesInput)(nil)).Elem(), LinkedRouterApplianceInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedRouterApplianceInstancesPtrInput)(nil)).Elem(), LinkedRouterApplianceInstancesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpcNetworkInput)(nil)).Elem(), LinkedVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpcNetworkPtrInput)(nil)).Elem(), LinkedVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpnTunnelsInput)(nil)).Elem(), LinkedVpnTunnelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpnTunnelsPtrInput)(nil)).Elem(), LinkedVpnTunnelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProducerPscConfigInput)(nil)).Elem(), ProducerPscConfigArgs{})
@@ -2889,6 +4107,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterApplianceInstanceArrayInput)(nil)).Elem(), RouterApplianceInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingVPCInput)(nil)).Elem(), RoutingVPCArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingVPCArrayInput)(nil)).Elem(), RoutingVPCArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineInput)(nil)).Elem(), VirtualMachineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePtrInput)(nil)).Elem(), VirtualMachineArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2910,13 +4130,22 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FilterOutput{})
+	pulumi.RegisterOutputType(FilterResponseOutput{})
+	pulumi.RegisterOutputType(GoogleRpcErrorInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentResponseOutput{})
 	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsOutput{})
 	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsPtrOutput{})
 	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsResponseOutput{})
 	pulumi.RegisterOutputType(LinkedRouterApplianceInstancesOutput{})
 	pulumi.RegisterOutputType(LinkedRouterApplianceInstancesPtrOutput{})
 	pulumi.RegisterOutputType(LinkedRouterApplianceInstancesResponseOutput{})
+	pulumi.RegisterOutputType(LinkedVpcNetworkOutput{})
+	pulumi.RegisterOutputType(LinkedVpcNetworkPtrOutput{})
+	pulumi.RegisterOutputType(LinkedVpcNetworkResponseOutput{})
 	pulumi.RegisterOutputType(LinkedVpnTunnelsOutput{})
 	pulumi.RegisterOutputType(LinkedVpnTunnelsPtrOutput{})
 	pulumi.RegisterOutputType(LinkedVpnTunnelsResponseOutput{})
@@ -2937,4 +4166,18 @@ func init() {
 	pulumi.RegisterOutputType(RoutingVPCArrayOutput{})
 	pulumi.RegisterOutputType(RoutingVPCResponseOutput{})
 	pulumi.RegisterOutputType(RoutingVPCResponseArrayOutput{})
+	pulumi.RegisterOutputType(SpokeStateCountResponseOutput{})
+	pulumi.RegisterOutputType(SpokeStateCountResponseArrayOutput{})
+	pulumi.RegisterOutputType(SpokeStateReasonCountResponseOutput{})
+	pulumi.RegisterOutputType(SpokeStateReasonCountResponseArrayOutput{})
+	pulumi.RegisterOutputType(SpokeSummaryResponseOutput{})
+	pulumi.RegisterOutputType(SpokeTypeCountResponseOutput{})
+	pulumi.RegisterOutputType(SpokeTypeCountResponseArrayOutput{})
+	pulumi.RegisterOutputType(StateReasonResponseOutput{})
+	pulumi.RegisterOutputType(StateReasonResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResponseOutput{})
+	pulumi.RegisterOutputType(WarningsResponseOutput{})
+	pulumi.RegisterOutputType(WarningsResponseArrayOutput{})
 }

@@ -42,7 +42,7 @@ class GetTransitionRouteGroupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+        The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         """
         return pulumi.get(self, "name")
 

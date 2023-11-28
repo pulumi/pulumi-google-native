@@ -38,6 +38,10 @@ export interface GetBareMetalAdminClusterResult {
      */
     readonly bareMetalVersion: string;
     /**
+     * Binary Authorization related configurations.
+     */
+    readonly binaryAuthorization: outputs.gkeonprem.v1.BinaryAuthorizationResponse;
+    /**
      * Cluster operations configuration.
      */
     readonly clusterOperations: outputs.gkeonprem.v1.BareMetalAdminClusterOperationsConfigResponse;

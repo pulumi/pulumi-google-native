@@ -338,6 +338,47 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     }
 
     /// <summary>
+    /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+    /// </summary>
+    [EnumType]
+    public readonly struct EgressFromSourceRestriction : IEquatable<EgressFromSourceRestriction>
+    {
+        private readonly string _value;
+
+        private EgressFromSourceRestriction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Enforcement preference unspecified, will not enforce traffic restrictions based on `sources` in EgressFrom.
+        /// </summary>
+        public static EgressFromSourceRestriction SourceRestrictionUnspecified { get; } = new EgressFromSourceRestriction("SOURCE_RESTRICTION_UNSPECIFIED");
+        /// <summary>
+        /// Enforcement preference enabled, traffic restrictions will be enforced based on `sources` in EgressFrom.
+        /// </summary>
+        public static EgressFromSourceRestriction SourceRestrictionEnabled { get; } = new EgressFromSourceRestriction("SOURCE_RESTRICTION_ENABLED");
+        /// <summary>
+        /// Enforcement preference disabled, will not enforce traffic restrictions based on `sources` in EgressFrom.
+        /// </summary>
+        public static EgressFromSourceRestriction SourceRestrictionDisabled { get; } = new EgressFromSourceRestriction("SOURCE_RESTRICTION_DISABLED");
+
+        public static bool operator ==(EgressFromSourceRestriction left, EgressFromSourceRestriction right) => left.Equals(right);
+        public static bool operator !=(EgressFromSourceRestriction left, EgressFromSourceRestriction right) => !left.Equals(right);
+
+        public static explicit operator string(EgressFromSourceRestriction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EgressFromSourceRestriction other && Equals(other);
+        public bool Equals(EgressFromSourceRestriction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
     /// </summary>
     [EnumType]

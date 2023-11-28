@@ -46,6 +46,8 @@ type LookupStreamResult struct {
 	Errors []ErrorResponse `pulumi:"errors"`
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
+	// If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+	LastRecoveryTime string `pulumi:"lastRecoveryTime"`
 	// The stream's name.
 	Name string `pulumi:"name"`
 	// Source connection profile configuration.
@@ -137,6 +139,11 @@ func (o LookupStreamResultOutput) Errors() ErrorResponseArrayOutput {
 // Labels.
 func (o LookupStreamResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupStreamResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+func (o LookupStreamResultOutput) LastRecoveryTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamResult) string { return v.LastRecoveryTime }).(pulumi.StringOutput)
 }
 
 // The stream's name.

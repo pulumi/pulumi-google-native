@@ -23,6 +23,7 @@ class EntryArgs:
                  cloud_bigtable_system_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']] = None,
                  data_source_connection_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] = None,
                  database_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] = None,
+                 dataset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatasetSpecArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fileset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1FilesetSpecArgs']] = None,
@@ -32,6 +33,7 @@ class EntryArgs:
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  looker_system_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1LookerSystemSpecArgs']] = None,
+                 model_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1ModelSpecArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routine_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgs']] = None,
                  schema: Optional[pulumi.Input['GoogleCloudDatacatalogV1SchemaArgs']] = None,
@@ -49,6 +51,7 @@ class EntryArgs:
         :param pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs'] cloud_bigtable_system_spec: Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
         :param pulumi.Input['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs'] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs'] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1DatasetSpecArgs'] dataset_spec: Specification that applies to a dataset.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input['GoogleCloudDatacatalogV1FilesetSpecArgs'] fileset_spec: Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
@@ -57,12 +60,13 @@ class EntryArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to custom entries. Synced entries have unmodifiable labels that come from the source system.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
         :param pulumi.Input['GoogleCloudDatacatalogV1LookerSystemSpecArgs'] looker_system_spec: Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+        :param pulumi.Input['GoogleCloudDatacatalogV1ModelSpecArgs'] model_spec: Model specification.
         :param pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgs'] routine_spec: Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1SchemaArgs'] schema: Schema of the entry. An entry might not have any schema attached to it.
         :param pulumi.Input['GoogleCloudDatacatalogV1ServiceSpecArgs'] service_spec: Specification that applies to a Service resource.
         :param pulumi.Input['GoogleCloudDatacatalogV1SystemTimestampsArgs'] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         :param pulumi.Input['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs'] sql_database_system_spec: Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
-        :param pulumi.Input['EntryType'] type: The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        :param pulumi.Input['EntryType'] type: The type of the entry. For details, see [`EntryType`](#entrytype).
         :param pulumi.Input['GoogleCloudDatacatalogV1UsageSignalArgs'] usage_signal: Resource usage statistics.
         :param pulumi.Input[str] user_specified_system: Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
@@ -77,6 +81,8 @@ class EntryArgs:
             pulumi.set(__self__, "data_source_connection_spec", data_source_connection_spec)
         if database_table_spec is not None:
             pulumi.set(__self__, "database_table_spec", database_table_spec)
+        if dataset_spec is not None:
+            pulumi.set(__self__, "dataset_spec", dataset_spec)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -95,6 +101,8 @@ class EntryArgs:
             pulumi.set(__self__, "location", location)
         if looker_system_spec is not None:
             pulumi.set(__self__, "looker_system_spec", looker_system_spec)
+        if model_spec is not None:
+            pulumi.set(__self__, "model_spec", model_spec)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if routine_spec is not None:
@@ -184,6 +192,18 @@ class EntryArgs:
     @database_table_spec.setter
     def database_table_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]):
         pulumi.set(self, "database_table_spec", value)
+
+    @property
+    @pulumi.getter(name="datasetSpec")
+    def dataset_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DatasetSpecArgs']]:
+        """
+        Specification that applies to a dataset.
+        """
+        return pulumi.get(self, "dataset_spec")
+
+    @dataset_spec.setter
+    def dataset_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatasetSpecArgs']]):
+        pulumi.set(self, "dataset_spec", value)
 
     @property
     @pulumi.getter
@@ -291,6 +311,18 @@ class EntryArgs:
         pulumi.set(self, "looker_system_spec", value)
 
     @property
+    @pulumi.getter(name="modelSpec")
+    def model_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1ModelSpecArgs']]:
+        """
+        Model specification.
+        """
+        return pulumi.get(self, "model_spec")
+
+    @model_spec.setter
+    def model_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1ModelSpecArgs']]):
+        pulumi.set(self, "model_spec", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -363,7 +395,7 @@ class EntryArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['EntryType']]:
         """
-        The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        The type of the entry. For details, see [`EntryType`](#entrytype).
         """
         return pulumi.get(self, "type")
 
@@ -417,6 +449,7 @@ class Entry(pulumi.CustomResource):
                  cloud_bigtable_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']]] = None,
                  data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
                  database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
+                 dataset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatasetSpecArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
@@ -428,6 +461,7 @@ class Entry(pulumi.CustomResource):
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  looker_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1LookerSystemSpecArgs']]] = None,
+                 model_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ModelSpecArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']]] = None,
@@ -449,6 +483,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']] cloud_bigtable_system_spec: Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatasetSpecArgs']] dataset_spec: Specification that applies to a dataset.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] entry_id: Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
@@ -458,12 +493,13 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to custom entries. Synced entries have unmodifiable labels that come from the source system.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1LookerSystemSpecArgs']] looker_system_spec: Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ModelSpecArgs']] model_spec: Model specification.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']] routine_spec: Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']] schema: Schema of the entry. An entry might not have any schema attached to it.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ServiceSpecArgs']] service_spec: Specification that applies to a Service resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs']] sql_database_system_spec: Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
-        :param pulumi.Input['EntryType'] type: The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        :param pulumi.Input['EntryType'] type: The type of the entry. For details, see [`EntryType`](#entrytype).
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1UsageSignalArgs']] usage_signal: Resource usage statistics.
         :param pulumi.Input[str] user_specified_system: Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
@@ -497,6 +533,7 @@ class Entry(pulumi.CustomResource):
                  cloud_bigtable_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']]] = None,
                  data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
                  database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
+                 dataset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatasetSpecArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
@@ -508,6 +545,7 @@ class Entry(pulumi.CustomResource):
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  looker_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1LookerSystemSpecArgs']]] = None,
+                 model_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ModelSpecArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']]] = None,
@@ -531,6 +569,7 @@ class Entry(pulumi.CustomResource):
             __props__.__dict__["cloud_bigtable_system_spec"] = cloud_bigtable_system_spec
             __props__.__dict__["data_source_connection_spec"] = data_source_connection_spec
             __props__.__dict__["database_table_spec"] = database_table_spec
+            __props__.__dict__["dataset_spec"] = dataset_spec
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if entry_group_id is None and not opts.urn:
@@ -546,6 +585,7 @@ class Entry(pulumi.CustomResource):
             __props__.__dict__["linked_resource"] = linked_resource
             __props__.__dict__["location"] = location
             __props__.__dict__["looker_system_spec"] = looker_system_spec
+            __props__.__dict__["model_spec"] = model_spec
             __props__.__dict__["project"] = project
             __props__.__dict__["routine_spec"] = routine_spec
             __props__.__dict__["schema"] = schema
@@ -593,6 +633,7 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["data_source"] = None
         __props__.__dict__["data_source_connection_spec"] = None
         __props__.__dict__["database_table_spec"] = None
+        __props__.__dict__["dataset_spec"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["entry_group_id"] = None
@@ -605,6 +646,7 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["linked_resource"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["looker_system_spec"] = None
+        __props__.__dict__["model_spec"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["personal_details"] = None
         __props__.__dict__["project"] = None
@@ -674,6 +716,14 @@ class Entry(pulumi.CustomResource):
         Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
         """
         return pulumi.get(self, "database_table_spec")
+
+    @property
+    @pulumi.getter(name="datasetSpec")
+    def dataset_spec(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1DatasetSpecResponse']:
+        """
+        Specification that applies to a dataset.
+        """
+        return pulumi.get(self, "dataset_spec")
 
     @property
     @pulumi.getter
@@ -766,6 +816,14 @@ class Entry(pulumi.CustomResource):
         return pulumi.get(self, "looker_system_spec")
 
     @property
+    @pulumi.getter(name="modelSpec")
+    def model_spec(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1ModelSpecResponse']:
+        """
+        Model specification.
+        """
+        return pulumi.get(self, "model_spec")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -830,7 +888,7 @@ class Entry(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        The type of the entry. For details, see [`EntryType`](#entrytype).
         """
         return pulumi.get(self, "type")
 

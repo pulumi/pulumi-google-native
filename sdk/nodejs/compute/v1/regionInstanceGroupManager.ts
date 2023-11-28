@@ -70,6 +70,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
     /**
+     * The repair policy for this managed instance group.
+     */
+    public readonly instanceLifecyclePolicy!: pulumi.Output<outputs.compute.v1.InstanceGroupManagerInstanceLifecyclePolicyResponse>;
+    /**
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
      */
     public readonly instanceTemplate!: pulumi.Output<string>;
@@ -146,6 +150,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["distributionPolicy"] = args ? args.distributionPolicy : undefined;
+            resourceInputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
             resourceInputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -175,6 +180,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["distributionPolicy"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
+            resourceInputs["instanceLifecyclePolicy"] = undefined /*out*/;
             resourceInputs["instanceTemplate"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["listManagedInstancesResults"] = undefined /*out*/;
@@ -219,6 +225,10 @@ export interface RegionInstanceGroupManagerArgs {
      * Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
      */
     distributionPolicy?: pulumi.Input<inputs.compute.v1.DistributionPolicyArgs>;
+    /**
+     * The repair policy for this managed instance group.
+     */
+    instanceLifecyclePolicy?: pulumi.Input<inputs.compute.v1.InstanceGroupManagerInstanceLifecyclePolicyArgs>;
     /**
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
      */

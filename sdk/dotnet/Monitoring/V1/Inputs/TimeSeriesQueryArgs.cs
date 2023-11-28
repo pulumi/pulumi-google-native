@@ -16,6 +16,18 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     public sealed class TimeSeriesQueryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+        /// </summary>
+        [Input("opsAnalyticsQuery")]
+        public Input<Inputs.OpsAnalyticsQueryArgs>? OpsAnalyticsQuery { get; set; }
+
+        /// <summary>
+        /// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
+        /// </summary>
+        [Input("outputFullDuration")]
+        public Input<bool>? OutputFullDuration { get; set; }
+
+        /// <summary>
         /// A query used to fetch time series with PromQL.
         /// </summary>
         [Input("prometheusQuery")]

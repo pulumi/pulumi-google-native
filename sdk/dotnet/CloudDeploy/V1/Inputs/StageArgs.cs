@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     /// </summary>
     public sealed class StageArgs : global::Pulumi.ResourceArgs
     {
+        [Input("deployParameters")]
+        private InputList<Inputs.DeployParametersArgs>? _deployParameters;
+
+        /// <summary>
+        /// Optional. The deploy parameters to use for the target in this stage.
+        /// </summary>
+        public InputList<Inputs.DeployParametersArgs> DeployParameters
+        {
+            get => _deployParameters ?? (_deployParameters = new InputList<Inputs.DeployParametersArgs>());
+            set => _deployParameters = value;
+        }
+
         [Input("profiles")]
         private InputList<string>? _profiles;
 

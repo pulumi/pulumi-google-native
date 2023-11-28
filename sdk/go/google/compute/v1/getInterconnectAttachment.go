@@ -82,11 +82,11 @@ type LookupInterconnectAttachmentResult struct {
 	Name string `pulumi:"name"`
 	// The current status of whether or not this interconnect attachment is functional, which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 	OperationalStatus string `pulumi:"operationalStatus"`
-	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey string `pulumi:"pairingKey"`
 	// Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerAsn string `pulumi:"partnerAsn"`
-	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+	// Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata InterconnectAttachmentPartnerMetadataResponse `pulumi:"partnerMetadata"`
 	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
 	PrivateInterconnectInfo InterconnectAttachmentPrivateInfoResponse `pulumi:"privateInterconnectInfo"`
@@ -284,7 +284,7 @@ func (o LookupInterconnectAttachmentResultOutput) OperationalStatus() pulumi.Str
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.OperationalStatus }).(pulumi.StringOutput)
 }
 
-// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 func (o LookupInterconnectAttachmentResultOutput) PairingKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.PairingKey }).(pulumi.StringOutput)
 }
@@ -294,7 +294,7 @@ func (o LookupInterconnectAttachmentResultOutput) PartnerAsn() pulumi.StringOutp
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.PartnerAsn }).(pulumi.StringOutput)
 }
 
-// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+// Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 func (o LookupInterconnectAttachmentResultOutput) PartnerMetadata() InterconnectAttachmentPartnerMetadataResponseOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) InterconnectAttachmentPartnerMetadataResponse {
 		return v.PartnerMetadata

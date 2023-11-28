@@ -17,12 +17,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     public partial class Scope : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If true, all Memberships in the Fleet bind to this Scope.
-        /// </summary>
-        [Output("allMemberships")]
-        public Output<bool> AllMemberships { get; private set; } = null!;
-
-        /// <summary>
         /// When the scope was created.
         /// </summary>
         [Output("createTime")]
@@ -34,6 +28,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Labels for this Scope.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -42,6 +42,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+        /// </summary>
+        [Output("namespaceLabels")]
+        public Output<ImmutableDictionary<string, string>> NamespaceLabels { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -121,11 +127,17 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 
     public sealed class ScopeArgs : global::Pulumi.ResourceArgs
     {
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
         /// <summary>
-        /// If true, all Memberships in the Fleet bind to this Scope.
+        /// Optional. Labels for this Scope.
         /// </summary>
-        [Input("allMemberships")]
-        public Input<bool>? AllMemberships { get; set; }
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -135,6 +147,18 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("namespaceLabels")]
+        private InputMap<string>? _namespaceLabels;
+
+        /// <summary>
+        /// Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+        /// </summary>
+        public InputMap<string> NamespaceLabels
+        {
+            get => _namespaceLabels ?? (_namespaceLabels = new InputMap<string>());
+            set => _namespaceLabels = value;
+        }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     }
 
     /// <summary>
-    /// Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+    /// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
     /// </summary>
     [EnumType]
     public readonly struct RestoreConfigClusterResourceConflictPolicy : IEquatable<RestoreConfigClusterResourceConflictPolicy>
@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public static RestoreConfigClusterResourceConflictPolicy UseExistingVersion { get; } = new RestoreConfigClusterResourceConflictPolicy("USE_EXISTING_VERSION");
         /// <summary>
-        /// Delete the existing version before re-creating it from the Backup. Note that this is a dangerous option which could cause unintentional data loss if used inappropriately - for example, deleting a CRD will cause Kubernetes to delete all CRs of that type.
+        /// Delete the existing version before re-creating it from the Backup. This is a dangerous option which could cause unintentional data loss if used inappropriately. For example, deleting a CRD will cause Kubernetes to delete all CRs of that type.
         /// </summary>
         public static RestoreConfigClusterResourceConflictPolicy UseBackupVersion { get; } = new RestoreConfigClusterResourceConflictPolicy("USE_BACKUP_VERSION");
 
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     }
 
     /// <summary>
-    /// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+    /// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
     /// </summary>
     [EnumType]
     public readonly struct RestoreConfigNamespacedResourceRestoreMode : IEquatable<RestoreConfigNamespacedResourceRestoreMode>
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     }
 
     /// <summary>
-    /// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+    /// Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
     /// </summary>
     [EnumType]
     public readonly struct RestoreConfigVolumeDataRestorePolicy : IEquatable<RestoreConfigVolumeDataRestorePolicy>
@@ -152,15 +152,15 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public static RestoreConfigVolumeDataRestorePolicy VolumeDataRestorePolicyUnspecified { get; } = new RestoreConfigVolumeDataRestorePolicy("VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED");
         /// <summary>
-        /// For each PVC to be restored, will create a new underlying volume (and PV) from the corresponding VolumeBackup contained within the Backup.
+        /// For each PVC to be restored, create a new underlying volume and PV from the corresponding VolumeBackup contained within the Backup.
         /// </summary>
         public static RestoreConfigVolumeDataRestorePolicy RestoreVolumeDataFromBackup { get; } = new RestoreConfigVolumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP");
         /// <summary>
-        /// For each PVC to be restored, attempt to reuse the original PV contained in the Backup (with its original underlying volume). Note that option is likely only usable when restoring a workload to its original cluster.
+        /// For each PVC to be restored, attempt to reuse the original PV contained in the Backup (with its original underlying volume). This option is likely only usable when restoring a workload to its original cluster.
         /// </summary>
         public static RestoreConfigVolumeDataRestorePolicy ReuseVolumeHandleFromBackup { get; } = new RestoreConfigVolumeDataRestorePolicy("REUSE_VOLUME_HANDLE_FROM_BACKUP");
         /// <summary>
-        /// For each PVC to be restored, PVCs will be created without any particular action to restore data. In this case, the normal Kubernetes provisioning logic would kick in, and this would likely result in either dynamically provisioning blank PVs or binding to statically provisioned PVs.
+        /// For each PVC to be restored, create PVC without any particular action to restore data. In this case, the normal Kubernetes provisioning logic would kick in, and this would likely result in either dynamically provisioning blank PVs or binding to statically provisioned PVs.
         /// </summary>
         public static RestoreConfigVolumeDataRestorePolicy NoVolumeDataRestoration { get; } = new RestoreConfigVolumeDataRestorePolicy("NO_VOLUME_DATA_RESTORATION");
 
@@ -172,6 +172,63 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RestoreConfigVolumeDataRestorePolicy other && Equals(other);
         public bool Equals(RestoreConfigVolumeDataRestorePolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. op specifies the operation to perform.
+    /// </summary>
+    [EnumType]
+    public readonly struct TransformationRuleActionOp : IEquatable<TransformationRuleActionOp>
+    {
+        private readonly string _value;
+
+        private TransformationRuleActionOp(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified operation
+        /// </summary>
+        public static TransformationRuleActionOp OpUnspecified { get; } = new TransformationRuleActionOp("OP_UNSPECIFIED");
+        /// <summary>
+        /// The "remove" operation removes the value at the target location.
+        /// </summary>
+        public static TransformationRuleActionOp Remove { get; } = new TransformationRuleActionOp("REMOVE");
+        /// <summary>
+        /// The "move" operation removes the value at a specified location and adds it to the target location.
+        /// </summary>
+        public static TransformationRuleActionOp Move { get; } = new TransformationRuleActionOp("MOVE");
+        /// <summary>
+        /// The "copy" operation copies the value at a specified location to the target location.
+        /// </summary>
+        public static TransformationRuleActionOp Copy { get; } = new TransformationRuleActionOp("COPY");
+        /// <summary>
+        /// The "add" operation performs one of the following functions, depending upon what the target location references: 1. If the target location specifies an array index, a new value is inserted into the array at the specified index. 2. If the target location specifies an object member that does not already exist, a new member is added to the object. 3. If the target location specifies an object member that does exist, that member's value is replaced.
+        /// </summary>
+        public static TransformationRuleActionOp Add { get; } = new TransformationRuleActionOp("ADD");
+        /// <summary>
+        /// The "test" operation tests that a value at the target location is equal to a specified value.
+        /// </summary>
+        public static TransformationRuleActionOp Test { get; } = new TransformationRuleActionOp("TEST");
+        /// <summary>
+        /// The "replace" operation replaces the value at the target location with a new value. The operation object MUST contain a "value" member whose content specifies the replacement value.
+        /// </summary>
+        public static TransformationRuleActionOp Replace { get; } = new TransformationRuleActionOp("REPLACE");
+
+        public static bool operator ==(TransformationRuleActionOp left, TransformationRuleActionOp right) => left.Equals(right);
+        public static bool operator !=(TransformationRuleActionOp left, TransformationRuleActionOp right) => !left.Equals(right);
+
+        public static explicit operator string(TransformationRuleActionOp value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TransformationRuleActionOp other && Equals(other);
+        public bool Equals(TransformationRuleActionOp other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -1441,6 +1441,235 @@ func (o PublisherResponseOutput) PrimaryContact() pulumi.StringOutput {
 	return o.ApplyT(func(v PublisherResponse) string { return v.PrimaryContact }).(pulumi.StringOutput)
 }
 
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfig struct {
+	// Optional. If true, enable restricted export.
+	Enabled *bool `pulumi:"enabled"`
+	// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+	RestrictQueryResult *bool `pulumi:"restrictQueryResult"`
+}
+
+// RestrictedExportConfigInput is an input type that accepts RestrictedExportConfigArgs and RestrictedExportConfigOutput values.
+// You can construct a concrete instance of `RestrictedExportConfigInput` via:
+//
+//	RestrictedExportConfigArgs{...}
+type RestrictedExportConfigInput interface {
+	pulumi.Input
+
+	ToRestrictedExportConfigOutput() RestrictedExportConfigOutput
+	ToRestrictedExportConfigOutputWithContext(context.Context) RestrictedExportConfigOutput
+}
+
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfigArgs struct {
+	// Optional. If true, enable restricted export.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+	RestrictQueryResult pulumi.BoolPtrInput `pulumi:"restrictQueryResult"`
+}
+
+func (RestrictedExportConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictedExportConfig)(nil)).Elem()
+}
+
+func (i RestrictedExportConfigArgs) ToRestrictedExportConfigOutput() RestrictedExportConfigOutput {
+	return i.ToRestrictedExportConfigOutputWithContext(context.Background())
+}
+
+func (i RestrictedExportConfigArgs) ToRestrictedExportConfigOutputWithContext(ctx context.Context) RestrictedExportConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictedExportConfigOutput)
+}
+
+func (i RestrictedExportConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RestrictedExportConfig] {
+	return pulumix.Output[RestrictedExportConfig]{
+		OutputState: i.ToRestrictedExportConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestrictedExportConfigArgs) ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput {
+	return i.ToRestrictedExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RestrictedExportConfigArgs) ToRestrictedExportConfigPtrOutputWithContext(ctx context.Context) RestrictedExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictedExportConfigOutput).ToRestrictedExportConfigPtrOutputWithContext(ctx)
+}
+
+// RestrictedExportConfigPtrInput is an input type that accepts RestrictedExportConfigArgs, RestrictedExportConfigPtr and RestrictedExportConfigPtrOutput values.
+// You can construct a concrete instance of `RestrictedExportConfigPtrInput` via:
+//
+//	        RestrictedExportConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestrictedExportConfigPtrInput interface {
+	pulumi.Input
+
+	ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput
+	ToRestrictedExportConfigPtrOutputWithContext(context.Context) RestrictedExportConfigPtrOutput
+}
+
+type restrictedExportConfigPtrType RestrictedExportConfigArgs
+
+func RestrictedExportConfigPtr(v *RestrictedExportConfigArgs) RestrictedExportConfigPtrInput {
+	return (*restrictedExportConfigPtrType)(v)
+}
+
+func (*restrictedExportConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestrictedExportConfig)(nil)).Elem()
+}
+
+func (i *restrictedExportConfigPtrType) ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput {
+	return i.ToRestrictedExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *restrictedExportConfigPtrType) ToRestrictedExportConfigPtrOutputWithContext(ctx context.Context) RestrictedExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictedExportConfigPtrOutput)
+}
+
+func (i *restrictedExportConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestrictedExportConfig] {
+	return pulumix.Output[*RestrictedExportConfig]{
+		OutputState: i.ToRestrictedExportConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfigOutput struct{ *pulumi.OutputState }
+
+func (RestrictedExportConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictedExportConfig)(nil)).Elem()
+}
+
+func (o RestrictedExportConfigOutput) ToRestrictedExportConfigOutput() RestrictedExportConfigOutput {
+	return o
+}
+
+func (o RestrictedExportConfigOutput) ToRestrictedExportConfigOutputWithContext(ctx context.Context) RestrictedExportConfigOutput {
+	return o
+}
+
+func (o RestrictedExportConfigOutput) ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput {
+	return o.ToRestrictedExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RestrictedExportConfigOutput) ToRestrictedExportConfigPtrOutputWithContext(ctx context.Context) RestrictedExportConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestrictedExportConfig) *RestrictedExportConfig {
+		return &v
+	}).(RestrictedExportConfigPtrOutput)
+}
+
+func (o RestrictedExportConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RestrictedExportConfig] {
+	return pulumix.Output[RestrictedExportConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If true, enable restricted export.
+func (o RestrictedExportConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestrictedExportConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+func (o RestrictedExportConfigOutput) RestrictQueryResult() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestrictedExportConfig) *bool { return v.RestrictQueryResult }).(pulumi.BoolPtrOutput)
+}
+
+type RestrictedExportConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RestrictedExportConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestrictedExportConfig)(nil)).Elem()
+}
+
+func (o RestrictedExportConfigPtrOutput) ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput {
+	return o
+}
+
+func (o RestrictedExportConfigPtrOutput) ToRestrictedExportConfigPtrOutputWithContext(ctx context.Context) RestrictedExportConfigPtrOutput {
+	return o
+}
+
+func (o RestrictedExportConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestrictedExportConfig] {
+	return pulumix.Output[*RestrictedExportConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestrictedExportConfigPtrOutput) Elem() RestrictedExportConfigOutput {
+	return o.ApplyT(func(v *RestrictedExportConfig) RestrictedExportConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RestrictedExportConfig
+		return ret
+	}).(RestrictedExportConfigOutput)
+}
+
+// Optional. If true, enable restricted export.
+func (o RestrictedExportConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestrictedExportConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+func (o RestrictedExportConfigPtrOutput) RestrictQueryResult() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestrictedExportConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictQueryResult
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfigResponse struct {
+	// Optional. If true, enable restricted export.
+	Enabled bool `pulumi:"enabled"`
+	// If true, restrict direct table access(read api/tabledata.list) on linked table.
+	RestrictDirectTableAccess bool `pulumi:"restrictDirectTableAccess"`
+	// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+	RestrictQueryResult bool `pulumi:"restrictQueryResult"`
+}
+
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RestrictedExportConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictedExportConfigResponse)(nil)).Elem()
+}
+
+func (o RestrictedExportConfigResponseOutput) ToRestrictedExportConfigResponseOutput() RestrictedExportConfigResponseOutput {
+	return o
+}
+
+func (o RestrictedExportConfigResponseOutput) ToRestrictedExportConfigResponseOutputWithContext(ctx context.Context) RestrictedExportConfigResponseOutput {
+	return o
+}
+
+func (o RestrictedExportConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestrictedExportConfigResponse] {
+	return pulumix.Output[RestrictedExportConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If true, enable restricted export.
+func (o RestrictedExportConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RestrictedExportConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// If true, restrict direct table access(read api/tabledata.list) on linked table.
+func (o RestrictedExportConfigResponseOutput) RestrictDirectTableAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v RestrictedExportConfigResponse) bool { return v.RestrictDirectTableAccess }).(pulumi.BoolOutput)
+}
+
+// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+func (o RestrictedExportConfigResponseOutput) RestrictQueryResult() pulumi.BoolOutput {
+	return o.ApplyT(func(v RestrictedExportConfigResponse) bool { return v.RestrictQueryResult }).(pulumi.BoolOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -1455,6 +1684,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublisherInput)(nil)).Elem(), PublisherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublisherPtrInput)(nil)).Elem(), PublisherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestrictedExportConfigInput)(nil)).Elem(), RestrictedExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestrictedExportConfigPtrInput)(nil)).Elem(), RestrictedExportConfigArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -1478,4 +1709,7 @@ func init() {
 	pulumi.RegisterOutputType(PublisherOutput{})
 	pulumi.RegisterOutputType(PublisherPtrOutput{})
 	pulumi.RegisterOutputType(PublisherResponseOutput{})
+	pulumi.RegisterOutputType(RestrictedExportConfigOutput{})
+	pulumi.RegisterOutputType(RestrictedExportConfigPtrOutput{})
+	pulumi.RegisterOutputType(RestrictedExportConfigResponseOutput{})
 }

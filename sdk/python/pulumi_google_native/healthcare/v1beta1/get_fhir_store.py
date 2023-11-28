@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetFhirStoreResult:
-    def __init__(__self__, complex_data_type_reference_parsing=None, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_update_create=None, labels=None, name=None, notification_config=None, notification_configs=None, search_config=None, stream_configs=None, validation_config=None, version=None):
+    def __init__(__self__, complex_data_type_reference_parsing=None, consent_config=None, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_update_create=None, labels=None, name=None, notification_config=None, notification_configs=None, search_config=None, stream_configs=None, validation_config=None, version=None):
         if complex_data_type_reference_parsing and not isinstance(complex_data_type_reference_parsing, str):
             raise TypeError("Expected argument 'complex_data_type_reference_parsing' to be a str")
         pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
+        if consent_config and not isinstance(consent_config, dict):
+            raise TypeError("Expected argument 'consent_config' to be a dict")
+        pulumi.set(__self__, "consent_config", consent_config)
         if default_search_handling_strict and not isinstance(default_search_handling_strict, bool):
             raise TypeError("Expected argument 'default_search_handling_strict' to be a bool")
         pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
@@ -67,6 +70,14 @@ class GetFhirStoreResult:
         Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
         """
         return pulumi.get(self, "complex_data_type_reference_parsing")
+
+    @property
+    @pulumi.getter(name="consentConfig")
+    def consent_config(self) -> 'outputs.ConsentConfigResponse':
+        """
+        Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+        """
+        return pulumi.get(self, "consent_config")
 
     @property
     @pulumi.getter(name="defaultSearchHandlingStrict")
@@ -175,6 +186,7 @@ class AwaitableGetFhirStoreResult(GetFhirStoreResult):
             yield self
         return GetFhirStoreResult(
             complex_data_type_reference_parsing=self.complex_data_type_reference_parsing,
+            consent_config=self.consent_config,
             default_search_handling_strict=self.default_search_handling_strict,
             disable_referential_integrity=self.disable_referential_integrity,
             disable_resource_versioning=self.disable_resource_versioning,
@@ -207,6 +219,7 @@ def get_fhir_store(dataset_id: Optional[str] = None,
 
     return AwaitableGetFhirStoreResult(
         complex_data_type_reference_parsing=pulumi.get(__ret__, 'complex_data_type_reference_parsing'),
+        consent_config=pulumi.get(__ret__, 'consent_config'),
         default_search_handling_strict=pulumi.get(__ret__, 'default_search_handling_strict'),
         disable_referential_integrity=pulumi.get(__ret__, 'disable_referential_integrity'),
         disable_resource_versioning=pulumi.get(__ret__, 'disable_resource_versioning'),

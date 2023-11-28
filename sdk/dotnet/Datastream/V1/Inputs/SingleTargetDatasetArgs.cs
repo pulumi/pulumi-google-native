@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     public sealed class SingleTargetDatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dataset ID of the target dataset.
+        /// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }

@@ -41,12 +41,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MembershipIamMember{}
 	case "google-native:gkehub/v1alpha:MembershipIamPolicy":
 		r = &MembershipIamPolicy{}
+	case "google-native:gkehub/v1alpha:MembershipRbacRoleBinding":
+		r = &MembershipRbacRoleBinding{}
 	case "google-native:gkehub/v1alpha:Namespace":
 		r = &Namespace{}
-	case "google-native:gkehub/v1alpha:Rbacrolebinding":
-		r = &Rbacrolebinding{}
 	case "google-native:gkehub/v1alpha:Scope":
 		r = &Scope{}
+	case "google-native:gkehub/v1alpha:ScopeIamBinding":
+		r = &ScopeIamBinding{}
+	case "google-native:gkehub/v1alpha:ScopeIamMember":
+		r = &ScopeIamMember{}
+	case "google-native:gkehub/v1alpha:ScopeIamPolicy":
+		r = &ScopeIamPolicy{}
+	case "google-native:gkehub/v1alpha:ScopeRbacRoleBinding":
+		r = &ScopeRbacRoleBinding{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

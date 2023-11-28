@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+// Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
 func LookupAttestor(ctx *pulumi.Context, args *LookupAttestorArgs, opts ...pulumi.InvokeOption) (*LookupAttestorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestorResult

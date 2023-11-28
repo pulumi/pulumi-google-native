@@ -40,6 +40,10 @@ export interface GetTlsRouteResult {
      */
     readonly gateways: string[];
     /**
+     * Optional. Set of label tags associated with the TlsRoute resource.
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*&#47;locations/global/meshes/` The attached Mesh should be of a type SIDECAR
      */
     readonly meshes: string[];

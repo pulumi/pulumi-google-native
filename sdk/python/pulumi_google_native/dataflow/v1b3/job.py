@@ -62,7 +62,7 @@ class JobArgs:
         :param pulumi.Input[str] project: The ID of the Cloud Platform project that the job belongs to.
         :param pulumi.Input[str] replace_job_id: If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
         :param pulumi.Input[str] replaced_by_job_id: If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
-        :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+        :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
         :param pulumi.Input['RuntimeUpdatableParamsArgs'] runtime_updatable_params: This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         :param pulumi.Input[Sequence[pulumi.Input['ExecutionStageStateArgs']]] stage_states: This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
@@ -331,7 +331,7 @@ class JobArgs:
     @pulumi.getter(name="requestedState")
     def requested_state(self) -> Optional[pulumi.Input['JobRequestedState']]:
         """
-        The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+        The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
         """
         return pulumi.get(self, "requested_state")
 
@@ -516,7 +516,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the Cloud Platform project that the job belongs to.
         :param pulumi.Input[str] replace_job_id: If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
         :param pulumi.Input[str] replaced_by_job_id: If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
-        :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+        :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
         :param pulumi.Input[pulumi.InputType['RuntimeUpdatableParamsArgs']] runtime_updatable_params: This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionStageStateArgs']]]] stage_states: This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
@@ -620,6 +620,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["transform_name_mapping"] = transform_name_mapping
             __props__.__dict__["type"] = type
             __props__.__dict__["view"] = view
+            __props__.__dict__["satisfies_pzi"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Job, __self__).__init__(
@@ -661,6 +662,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["replaced_by_job_id"] = None
         __props__.__dict__["requested_state"] = None
         __props__.__dict__["runtime_updatable_params"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["stage_states"] = None
         __props__.__dict__["start_time"] = None
@@ -793,7 +795,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="requestedState")
     def requested_state(self) -> pulumi.Output[str]:
         """
-        The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+        The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
         """
         return pulumi.get(self, "requested_state")
 
@@ -804,6 +806,14 @@ class Job(pulumi.CustomResource):
         This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
         """
         return pulumi.get(self, "runtime_updatable_params")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

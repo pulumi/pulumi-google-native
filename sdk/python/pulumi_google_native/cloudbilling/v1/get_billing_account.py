@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBillingAccountResult:
-    def __init__(__self__, display_name=None, master_billing_account=None, name=None, open=None):
+    def __init__(__self__, display_name=None, master_billing_account=None, name=None, open=None, parent=None):
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -31,6 +31,9 @@ class GetBillingAccountResult:
         if open and not isinstance(open, bool):
             raise TypeError("Expected argument 'open' to be a bool")
         pulumi.set(__self__, "open", open)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
 
     @property
     @pulumi.getter(name="displayName")
@@ -64,6 +67,14 @@ class GetBillingAccountResult:
         """
         return pulumi.get(self, "open")
 
+    @property
+    @pulumi.getter
+    def parent(self) -> str:
+        """
+        The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - organizations/{organization_id}, for example: organizations/12345678 - billingAccounts/{billing_account_id}, for example: `billingAccounts/012345-567890-ABCDEF`
+        """
+        return pulumi.get(self, "parent")
+
 
 class AwaitableGetBillingAccountResult(GetBillingAccountResult):
     # pylint: disable=using-constant-test
@@ -74,7 +85,8 @@ class AwaitableGetBillingAccountResult(GetBillingAccountResult):
             display_name=self.display_name,
             master_billing_account=self.master_billing_account,
             name=self.name,
-            open=self.open)
+            open=self.open,
+            parent=self.parent)
 
 
 def get_billing_account(billing_account_id: Optional[str] = None,
@@ -91,7 +103,8 @@ def get_billing_account(billing_account_id: Optional[str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         master_billing_account=pulumi.get(__ret__, 'master_billing_account'),
         name=pulumi.get(__ret__, 'name'),
-        open=pulumi.get(__ret__, 'open'))
+        open=pulumi.get(__ret__, 'open'),
+        parent=pulumi.get(__ret__, 'parent'))
 
 
 @_utilities.lift_output_func(get_billing_account)

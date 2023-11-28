@@ -16,13 +16,15 @@ import (
 type Job struct {
 	pulumi.CustomResourceState
 
+	// The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+	BatchModePriority pulumi.IntOutput `pulumi:"batchModePriority"`
 	// The configuration for this job.
 	Config JobConfigResponseOutput `pulumi:"config"`
 	// The time the job was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The time the transcoding finished.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`.
+	// An error object that describes the reason for the failure. This property is always present when ProcessingState is `FAILED`.
 	Error StatusResponseOutput `pulumi:"error"`
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	InputUri pulumi.StringOutput `pulumi:"inputUri"`
@@ -33,6 +35,8 @@ type Job struct {
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+	Optimization pulumi.StringOutput `pulumi:"optimization"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	OutputUri pulumi.StringOutput `pulumi:"outputUri"`
 	Project   pulumi.StringOutput `pulumi:"project"`
@@ -91,6 +95,8 @@ func (JobState) ElementType() reflect.Type {
 }
 
 type jobArgs struct {
+	// The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+	BatchModePriority *int `pulumi:"batchModePriority"`
 	// The configuration for this job.
 	Config *JobConfig `pulumi:"config"`
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -102,6 +108,8 @@ type jobArgs struct {
 	Mode *JobMode `pulumi:"mode"`
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name *string `pulumi:"name"`
+	// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+	Optimization *JobOptimization `pulumi:"optimization"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	OutputUri *string `pulumi:"outputUri"`
 	Project   *string `pulumi:"project"`
@@ -113,6 +121,8 @@ type jobArgs struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
+	// The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+	BatchModePriority pulumi.IntPtrInput
 	// The configuration for this job.
 	Config JobConfigPtrInput
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -124,6 +134,8 @@ type JobArgs struct {
 	Mode JobModePtrInput
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name pulumi.StringPtrInput
+	// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+	Optimization JobOptimizationPtrInput
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	OutputUri pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
@@ -182,6 +194,11 @@ func (o JobOutput) ToOutput(ctx context.Context) pulumix.Output[*Job] {
 	}
 }
 
+// The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+func (o JobOutput) BatchModePriority() pulumi.IntOutput {
+	return o.ApplyT(func(v *Job) pulumi.IntOutput { return v.BatchModePriority }).(pulumi.IntOutput)
+}
+
 // The configuration for this job.
 func (o JobOutput) Config() JobConfigResponseOutput {
 	return o.ApplyT(func(v *Job) JobConfigResponseOutput { return v.Config }).(JobConfigResponseOutput)
@@ -197,7 +214,7 @@ func (o JobOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`.
+// An error object that describes the reason for the failure. This property is always present when ProcessingState is `FAILED`.
 func (o JobOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v *Job) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
 }
@@ -224,6 +241,11 @@ func (o JobOutput) Mode() pulumi.StringOutput {
 // The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+func (o JobOutput) Optimization() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Optimization }).(pulumi.StringOutput)
 }
 
 // Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).

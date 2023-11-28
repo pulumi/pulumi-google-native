@@ -32,6 +32,8 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse(dict):
         suggest = None
         if key == "disableDefaultIamRecipients":
             suggest = "disable_default_iam_recipients"
+        elif key == "enableProjectLevelRecipients":
+            suggest = "enable_project_level_recipients"
         elif key == "monitoringNotificationChannels":
             suggest = "monitoring_notification_channels"
         elif key == "pubsubTopic":
@@ -52,17 +54,20 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse(dict):
 
     def __init__(__self__, *,
                  disable_default_iam_recipients: bool,
+                 enable_project_level_recipients: bool,
                  monitoring_notification_channels: Sequence[str],
                  pubsub_topic: str,
                  schema_version: str):
         """
         AllUpdatesRule defines notifications that are sent based on budget spend and thresholds.
         :param bool disable_default_iam_recipients: Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
+        :param bool enable_project_level_recipients: Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
         :param Sequence[str] monitoring_notification_channels: Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details.
         :param str pubsub_topic: Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task for more details on Pub/Sub roles and permissions.
         :param str schema_version: Optional. Required when AllUpdatesRule.pubsub_topic is set. The schema version of the notification sent to AllUpdatesRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
         """
         pulumi.set(__self__, "disable_default_iam_recipients", disable_default_iam_recipients)
+        pulumi.set(__self__, "enable_project_level_recipients", enable_project_level_recipients)
         pulumi.set(__self__, "monitoring_notification_channels", monitoring_notification_channels)
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
         pulumi.set(__self__, "schema_version", schema_version)
@@ -74,6 +79,14 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse(dict):
         Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
         """
         return pulumi.get(self, "disable_default_iam_recipients")
+
+    @property
+    @pulumi.getter(name="enableProjectLevelRecipients")
+    def enable_project_level_recipients(self) -> bool:
+        """
+        Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+        """
+        return pulumi.get(self, "enable_project_level_recipients")
 
     @property
     @pulumi.getter(name="monitoringNotificationChannels")
@@ -220,6 +233,8 @@ class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
             suggest = "credit_types_treatment"
         elif key == "customPeriod":
             suggest = "custom_period"
+        elif key == "resourceAncestors":
+            suggest = "resource_ancestors"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBillingBudgetsV1beta1FilterResponse. Access the value via the '{suggest}' property getter instead.")
@@ -239,6 +254,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
                  custom_period: 'outputs.GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse',
                  labels: Mapping[str, str],
                  projects: Sequence[str],
+                 resource_ancestors: Sequence[str],
                  services: Sequence[str],
                  subaccounts: Sequence[str]):
         """
@@ -249,6 +265,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
         :param 'GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse' custom_period: Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
         :param Mapping[str, str] labels: Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
         :param Sequence[str] projects: Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
+        :param Sequence[str] resource_ancestors: Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
         :param Sequence[str] services: Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
         :param Sequence[str] subaccounts: Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If omitted, the report will include usage from the parent account and all subaccounts, if they exist.
         """
@@ -258,6 +275,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
         pulumi.set(__self__, "custom_period", custom_period)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "projects", projects)
+        pulumi.set(__self__, "resource_ancestors", resource_ancestors)
         pulumi.set(__self__, "services", services)
         pulumi.set(__self__, "subaccounts", subaccounts)
 
@@ -308,6 +326,14 @@ class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
         Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
         """
         return pulumi.get(self, "projects")
+
+    @property
+    @pulumi.getter(name="resourceAncestors")
+    def resource_ancestors(self) -> Sequence[str]:
+        """
+        Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+        """
+        return pulumi.get(self, "resource_ancestors")
 
     @property
     @pulumi.getter

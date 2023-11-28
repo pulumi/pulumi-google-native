@@ -14,7 +14,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Sets the access control policy on a Table resource. Replaces any existing policy.
+// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
 type InstanceClusterBackupIamBinding struct {
 	pulumi.CustomResourceState
 

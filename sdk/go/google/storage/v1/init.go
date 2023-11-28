@@ -37,6 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefaultObjectAccessControl{}
 	case "google-native:storage/v1:HmacKey":
 		r = &HmacKey{}
+	case "google-native:storage/v1:ManagedFolder":
+		r = &ManagedFolder{}
+	case "google-native:storage/v1:ManagedFolderIamBinding":
+		r = &ManagedFolderIamBinding{}
+	case "google-native:storage/v1:ManagedFolderIamMember":
+		r = &ManagedFolderIamMember{}
+	case "google-native:storage/v1:ManagedFolderIamPolicy":
+		r = &ManagedFolderIamPolicy{}
 	case "google-native:storage/v1:Notification":
 		r = &Notification{}
 	case "google-native:storage/v1:ObjectAccessControl":

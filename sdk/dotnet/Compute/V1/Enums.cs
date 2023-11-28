@@ -122,7 +122,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+    /// The IP version that will be used by this address. Valid options are IPV4 or IPV6.
     /// </summary>
     [EnumType]
     public readonly struct AddressIpVersion : IEquatable<AddressIpVersion>
@@ -478,6 +478,43 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api.
+    /// </summary>
+    [EnumType]
+    public readonly struct AttachedDiskSavedState : IEquatable<AttachedDiskSavedState>
+    {
+        private readonly string _value;
+
+        private AttachedDiskSavedState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// *[Default]* Disk state has not been preserved.
+        /// </summary>
+        public static AttachedDiskSavedState DiskSavedStateUnspecified { get; } = new AttachedDiskSavedState("DISK_SAVED_STATE_UNSPECIFIED");
+        /// <summary>
+        /// Disk state has been preserved.
+        /// </summary>
+        public static AttachedDiskSavedState Preserved { get; } = new AttachedDiskSavedState("PRESERVED");
+
+        public static bool operator ==(AttachedDiskSavedState left, AttachedDiskSavedState right) => left.Equals(right);
+        public static bool operator !=(AttachedDiskSavedState left, AttachedDiskSavedState right) => !left.Equals(right);
+
+        public static explicit operator string(AttachedDiskSavedState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AttachedDiskSavedState other && Equals(other);
+        public bool Equals(AttachedDiskSavedState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
     /// </summary>
     [EnumType]
@@ -681,7 +718,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Defines operating mode for this policy.
+    /// Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
     /// </summary>
     [EnumType]
     public readonly struct AutoscalingPolicyMode : IEquatable<AutoscalingPolicyMode>
@@ -1039,7 +1076,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+    /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceLocalityLbPolicy : IEquatable<BackendServiceLocalityLbPolicy>
@@ -1623,6 +1660,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static DistributionPolicyTargetShape Any { get; } = new DistributionPolicyTargetShape("ANY");
         /// <summary>
+        /// The group creates all VM instances within a single zone. The zone is selected based on the present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads with heavy interprocess communication.
+        /// </summary>
+        public static DistributionPolicyTargetShape AnySingleZone { get; } = new DistributionPolicyTargetShape("ANY_SINGLE_ZONE");
+        /// <summary>
         /// The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
         /// </summary>
         public static DistributionPolicyTargetShape Balanced { get; } = new DistributionPolicyTargetShape("BALANCED");
@@ -2093,7 +2134,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+    /// The IP version that will be used by this address. Valid options are IPV4 or IPV6.
     /// </summary>
     [EnumType]
     public readonly struct GlobalAddressIpVersion : IEquatable<GlobalAddressIpVersion>
@@ -2520,7 +2561,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
+    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
     /// </summary>
     [EnumType]
     public readonly struct GuestOsFeatureType : IEquatable<GuestOsFeatureType>
@@ -2538,6 +2579,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public static GuestOsFeatureType SecureBoot { get; } = new GuestOsFeatureType("SECURE_BOOT");
         public static GuestOsFeatureType SevCapable { get; } = new GuestOsFeatureType("SEV_CAPABLE");
         public static GuestOsFeatureType SevLiveMigratable { get; } = new GuestOsFeatureType("SEV_LIVE_MIGRATABLE");
+        public static GuestOsFeatureType SevLiveMigratableV2 { get; } = new GuestOsFeatureType("SEV_LIVE_MIGRATABLE_V2");
         public static GuestOsFeatureType SevSnpCapable { get; } = new GuestOsFeatureType("SEV_SNP_CAPABLE");
         public static GuestOsFeatureType UefiCompatible { get; } = new GuestOsFeatureType("UEFI_COMPATIBLE");
         public static GuestOsFeatureType VirtioScsiMultiqueue { get; } = new GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE");
@@ -2961,6 +3003,37 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair : IEquatable<InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair>
+    {
+        private readonly string _value;
+
+        private InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair No { get; } = new InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO");
+        public static InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair Yes { get; } = new InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("YES");
+
+        public static bool operator ==(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair left, InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair right) => left.Equals(right);
+        public static bool operator !=(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair left, InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair other && Equals(other);
+        public bool Equals(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Pagination behavior of the listManagedInstances API method for this managed instance group.
     /// </summary>
     [EnumType]
@@ -3052,15 +3125,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyMinimalAction None { get; } = new InstanceGroupManagerUpdatePolicyMinimalAction("NONE");
         /// <summary>
-        /// Updates applied in runtime, instances will not be disrupted.
+        /// Do not stop the instance.
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyMinimalAction Refresh { get; } = new InstanceGroupManagerUpdatePolicyMinimalAction("REFRESH");
         /// <summary>
-        /// Old instances will be deleted. New instances will be created from the target template.
+        /// (Default.) Replace the instance according to the replacement method option.
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyMinimalAction Replace { get; } = new InstanceGroupManagerUpdatePolicyMinimalAction("REPLACE");
         /// <summary>
-        /// Every instance will be restarted.
+        /// Stop the instance and start it again.
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyMinimalAction Restart { get; } = new InstanceGroupManagerUpdatePolicyMinimalAction("RESTART");
 
@@ -3080,7 +3153,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+    /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
     /// </summary>
     [EnumType]
     public readonly struct InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction : IEquatable<InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction>
@@ -3097,15 +3170,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction None { get; } = new InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("NONE");
         /// <summary>
-        /// Updates applied in runtime, instances will not be disrupted.
+        /// Do not stop the instance.
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction Refresh { get; } = new InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("REFRESH");
         /// <summary>
-        /// Old instances will be deleted. New instances will be created from the target template.
+        /// (Default.) Replace the instance according to the replacement method option.
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction Replace { get; } = new InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("REPLACE");
         /// <summary>
-        /// Every instance will be restarted.
+        /// Stop the instance and start it again.
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction Restart { get; } = new InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("RESTART");
 
@@ -3162,7 +3235,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+    /// The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
     /// </summary>
     [EnumType]
     public readonly struct InstanceGroupManagerUpdatePolicyType : IEquatable<InstanceGroupManagerUpdatePolicyType>
@@ -3175,11 +3248,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+        /// MIG will apply new configurations to existing VMs only when you selectively target specific or all VMs to be updated.
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyType Opportunistic { get; } = new InstanceGroupManagerUpdatePolicyType("OPPORTUNISTIC");
         /// <summary>
-        /// This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+        /// MIG will automatically apply new configurations to all or a subset of existing VMs and also to new VMs that are added to the group.
         /// </summary>
         public static InstanceGroupManagerUpdatePolicyType Proactive { get; } = new InstanceGroupManagerUpdatePolicyType("PROACTIVE");
 
@@ -3657,6 +3730,36 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InterconnectLinkType other && Equals(other);
         public bool Equals(InterconnectLinkType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct InterconnectRequestedFeaturesItem : IEquatable<InterconnectRequestedFeaturesItem>
+    {
+        private readonly string _value;
+
+        private InterconnectRequestedFeaturesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Media Access Control security (MACsec)
+        /// </summary>
+        public static InterconnectRequestedFeaturesItem IfMacsec { get; } = new InterconnectRequestedFeaturesItem("IF_MACSEC");
+
+        public static bool operator ==(InterconnectRequestedFeaturesItem left, InterconnectRequestedFeaturesItem right) => left.Equals(right);
+        public static bool operator !=(InterconnectRequestedFeaturesItem left, InterconnectRequestedFeaturesItem right) => !left.Equals(right);
+
+        public static explicit operator string(InterconnectRequestedFeaturesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InterconnectRequestedFeaturesItem other && Equals(other);
+        public bool Equals(InterconnectRequestedFeaturesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4256,6 +4359,47 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+    /// </summary>
+    [EnumType]
+    public readonly struct PublicAdvertisedPrefixPdpScope : IEquatable<PublicAdvertisedPrefixPdpScope>
+    {
+        private readonly string _value;
+
+        private PublicAdvertisedPrefixPdpScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The public delegated prefix is global only. The provisioning will take ~4 weeks.
+        /// </summary>
+        public static PublicAdvertisedPrefixPdpScope Global { get; } = new PublicAdvertisedPrefixPdpScope("GLOBAL");
+        /// <summary>
+        /// The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.
+        /// </summary>
+        public static PublicAdvertisedPrefixPdpScope GlobalAndRegional { get; } = new PublicAdvertisedPrefixPdpScope("GLOBAL_AND_REGIONAL");
+        /// <summary>
+        /// The public delegated prefix is regional only. The provisioning will take a few minutes.
+        /// </summary>
+        public static PublicAdvertisedPrefixPdpScope Regional { get; } = new PublicAdvertisedPrefixPdpScope("REGIONAL");
+
+        public static bool operator ==(PublicAdvertisedPrefixPdpScope left, PublicAdvertisedPrefixPdpScope right) => left.Equals(right);
+        public static bool operator !=(PublicAdvertisedPrefixPdpScope left, PublicAdvertisedPrefixPdpScope right) => !left.Equals(right);
+
+        public static explicit operator string(PublicAdvertisedPrefixPdpScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PublicAdvertisedPrefixPdpScope other && Equals(other);
+        public bool Equals(PublicAdvertisedPrefixPdpScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
     /// </summary>
     [EnumType]
@@ -4268,6 +4412,10 @@ namespace Pulumi.GoogleNative.Compute.V1
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The prefix is announced to Internet.
+        /// </summary>
+        public static PublicAdvertisedPrefixStatus AnnouncedToInternet { get; } = new PublicAdvertisedPrefixStatus("ANNOUNCED_TO_INTERNET");
         /// <summary>
         /// RPKI validation is complete.
         /// </summary>
@@ -4288,6 +4436,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// User has configured the PTR.
         /// </summary>
         public static PublicAdvertisedPrefixStatus PtrConfigured { get; } = new PublicAdvertisedPrefixStatus("PTR_CONFIGURED");
+        /// <summary>
+        /// The prefix is currently withdrawn but ready to be announced.
+        /// </summary>
+        public static PublicAdvertisedPrefixStatus ReadyToAnnounce { get; } = new PublicAdvertisedPrefixStatus("READY_TO_ANNOUNCE");
         /// <summary>
         /// Reverse DNS lookup failed.
         /// </summary>
@@ -4400,7 +4552,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+    /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     /// </summary>
     [EnumType]
     public readonly struct RegionBackendServiceLocalityLbPolicy : IEquatable<RegionBackendServiceLocalityLbPolicy>
@@ -4651,9 +4803,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         public static RegionCommitmentType AcceleratorOptimized { get; } = new RegionCommitmentType("ACCELERATOR_OPTIMIZED");
+        public static RegionCommitmentType AcceleratorOptimizedA3 { get; } = new RegionCommitmentType("ACCELERATOR_OPTIMIZED_A3");
         public static RegionCommitmentType ComputeOptimized { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED");
         public static RegionCommitmentType ComputeOptimizedC2d { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C2D");
         public static RegionCommitmentType ComputeOptimizedC3 { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C3");
+        public static RegionCommitmentType ComputeOptimizedC3d { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C3D");
+        public static RegionCommitmentType ComputeOptimizedH3 { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_H3");
         public static RegionCommitmentType GeneralPurpose { get; } = new RegionCommitmentType("GENERAL_PURPOSE");
         public static RegionCommitmentType GeneralPurposeE2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_E2");
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
@@ -5476,6 +5631,51 @@ namespace Pulumi.GoogleNative.Compute.V1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
+    /// </summary>
+    [EnumType]
+    public readonly struct RouterNatAutoNetworkTier : IEquatable<RouterNatAutoNetworkTier>
+    {
+        private readonly string _value;
+
+        private RouterNatAutoNetworkTier(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Public internet quality with fixed bandwidth.
+        /// </summary>
+        public static RouterNatAutoNetworkTier FixedStandard { get; } = new RouterNatAutoNetworkTier("FIXED_STANDARD");
+        /// <summary>
+        /// High quality, Google-grade network tier, support for all networking products.
+        /// </summary>
+        public static RouterNatAutoNetworkTier Premium { get; } = new RouterNatAutoNetworkTier("PREMIUM");
+        /// <summary>
+        /// Public internet quality, only limited support for other networking products.
+        /// </summary>
+        public static RouterNatAutoNetworkTier Standard { get; } = new RouterNatAutoNetworkTier("STANDARD");
+        /// <summary>
+        /// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+        /// </summary>
+        public static RouterNatAutoNetworkTier StandardOverridesFixedStandard { get; } = new RouterNatAutoNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD");
+
+        public static bool operator ==(RouterNatAutoNetworkTier left, RouterNatAutoNetworkTier right) => left.Equals(right);
+        public static bool operator !=(RouterNatAutoNetworkTier left, RouterNatAutoNetworkTier right) => !left.Equals(right);
+
+        public static explicit operator string(RouterNatAutoNetworkTier value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RouterNatAutoNetworkTier other && Equals(other);
+        public bool Equals(RouterNatAutoNetworkTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct RouterNatEndpointTypesItem : IEquatable<RouterNatEndpointTypesItem>
     {
@@ -5486,6 +5686,10 @@ namespace Pulumi.GoogleNative.Compute.V1
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// This is used for regional Application Load Balancers (internal and external) and regional proxy Network Load Balancers (internal and external) endpoints.
+        /// </summary>
+        public static RouterNatEndpointTypesItem EndpointTypeManagedProxyLb { get; } = new RouterNatEndpointTypesItem("ENDPOINT_TYPE_MANAGED_PROXY_LB");
         /// <summary>
         /// This is used for Secure Web Gateway endpoints.
         /// </summary>
@@ -5660,6 +5864,43 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RouterNatSubnetworkToNatSourceIpRangesToNatItem other && Equals(other);
         public bool Equals(RouterNatSubnetworkToNatSourceIpRangesToNatItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
+    /// </summary>
+    [EnumType]
+    public readonly struct RouterNatType : IEquatable<RouterNatType>
+    {
+        private readonly string _value;
+
+        private RouterNatType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// NAT used for private IP translation.
+        /// </summary>
+        public static RouterNatType Private { get; } = new RouterNatType("PRIVATE");
+        /// <summary>
+        /// NAT used for public IP translation. This is the default.
+        /// </summary>
+        public static RouterNatType Public { get; } = new RouterNatType("PUBLIC");
+
+        public static bool operator ==(RouterNatType left, RouterNatType right) => left.Equals(right);
+        public static bool operator !=(RouterNatType left, RouterNatType right) => !left.Equals(right);
+
+        public static explicit operator string(RouterNatType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RouterNatType other && Equals(other);
+        public bool Equals(RouterNatType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -5988,6 +6229,7 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         public static SecurityPolicyAdvancedOptionsConfigJsonParsing Disabled { get; } = new SecurityPolicyAdvancedOptionsConfigJsonParsing("DISABLED");
         public static SecurityPolicyAdvancedOptionsConfigJsonParsing Standard { get; } = new SecurityPolicyAdvancedOptionsConfigJsonParsing("STANDARD");
+        public static SecurityPolicyAdvancedOptionsConfigJsonParsing StandardWithGraphql { get; } = new SecurityPolicyAdvancedOptionsConfigJsonParsing("STANDARD_WITH_GRAPHQL");
 
         public static bool operator ==(SecurityPolicyAdvancedOptionsConfigJsonParsing left, SecurityPolicyAdvancedOptionsConfigJsonParsing right) => left.Equals(right);
         public static bool operator !=(SecurityPolicyAdvancedOptionsConfigJsonParsing left, SecurityPolicyAdvancedOptionsConfigJsonParsing right) => !left.Equals(right);
@@ -6272,6 +6514,39 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SecurityPolicyType other && Equals(other);
         public bool Equals(SecurityPolicyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPolicyUserDefinedFieldBase : IEquatable<SecurityPolicyUserDefinedFieldBase>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyUserDefinedFieldBase(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SecurityPolicyUserDefinedFieldBase Ipv4 { get; } = new SecurityPolicyUserDefinedFieldBase("IPV4");
+        public static SecurityPolicyUserDefinedFieldBase Ipv6 { get; } = new SecurityPolicyUserDefinedFieldBase("IPV6");
+        public static SecurityPolicyUserDefinedFieldBase Tcp { get; } = new SecurityPolicyUserDefinedFieldBase("TCP");
+        public static SecurityPolicyUserDefinedFieldBase Udp { get; } = new SecurityPolicyUserDefinedFieldBase("UDP");
+
+        public static bool operator ==(SecurityPolicyUserDefinedFieldBase left, SecurityPolicyUserDefinedFieldBase right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyUserDefinedFieldBase left, SecurityPolicyUserDefinedFieldBase right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyUserDefinedFieldBase value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyUserDefinedFieldBase other && Equals(other);
+        public bool Equals(SecurityPolicyUserDefinedFieldBase other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -6705,6 +6980,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
+        /// Subnet reserved for Global Envoy-based Load Balancing.
+        /// </summary>
+        public static SubnetworkPurpose GlobalManagedProxy { get; } = new SubnetworkPurpose("GLOBAL_MANAGED_PROXY");
+        /// <summary>
         /// Subnet reserved for Internal HTTP(S) Load Balancing.
         /// </summary>
         public static SubnetworkPurpose InternalHttpsLoadBalancer { get; } = new SubnetworkPurpose("INTERNAL_HTTPS_LOAD_BALANCER");
@@ -6712,6 +6991,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Regular user created or automatically created subnet.
         /// </summary>
         public static SubnetworkPurpose Private { get; } = new SubnetworkPurpose("PRIVATE");
+        /// <summary>
+        /// Subnetwork used as source range for Private NAT Gateways.
+        /// </summary>
+        public static SubnetworkPurpose PrivateNat { get; } = new SubnetworkPurpose("PRIVATE_NAT");
         /// <summary>
         /// Regular user created or automatically created subnet.
         /// </summary>
@@ -6721,7 +7004,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static SubnetworkPurpose PrivateServiceConnect { get; } = new SubnetworkPurpose("PRIVATE_SERVICE_CONNECT");
         /// <summary>
-        /// Subnetwork used for Regional Internal/External HTTP(S) Load Balancing.
+        /// Subnetwork used for Regional Envoy-based Load Balancing.
         /// </summary>
         public static SubnetworkPurpose RegionalManagedProxy { get; } = new SubnetworkPurpose("REGIONAL_MANAGED_PROXY");
 

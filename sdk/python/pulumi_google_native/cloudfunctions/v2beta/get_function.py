@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFunctionResult:
-    def __init__(__self__, build_config=None, description=None, environment=None, event_trigger=None, kms_key_name=None, labels=None, name=None, service_config=None, state=None, state_messages=None, update_time=None):
+    def __init__(__self__, build_config=None, description=None, environment=None, event_trigger=None, kms_key_name=None, labels=None, name=None, satisfies_pzs=None, service_config=None, state=None, state_messages=None, update_time=None, url=None):
         if build_config and not isinstance(build_config, dict):
             raise TypeError("Expected argument 'build_config' to be a dict")
         pulumi.set(__self__, "build_config", build_config)
@@ -41,6 +41,9 @@ class GetFunctionResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if service_config and not isinstance(service_config, dict):
             raise TypeError("Expected argument 'service_config' to be a dict")
         pulumi.set(__self__, "service_config", service_config)
@@ -53,6 +56,9 @@ class GetFunctionResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if url and not isinstance(url, str):
+            raise TypeError("Expected argument 'url' to be a str")
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="buildConfig")
@@ -111,6 +117,14 @@ class GetFunctionResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter(name="serviceConfig")
     def service_config(self) -> 'outputs.ServiceConfigResponse':
         """
@@ -142,6 +156,14 @@ class GetFunctionResult:
         """
         return pulumi.get(self, "update_time")
 
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The deployed url for the function.
+        """
+        return pulumi.get(self, "url")
+
 
 class AwaitableGetFunctionResult(GetFunctionResult):
     # pylint: disable=using-constant-test
@@ -156,10 +178,12 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             kms_key_name=self.kms_key_name,
             labels=self.labels,
             name=self.name,
+            satisfies_pzs=self.satisfies_pzs,
             service_config=self.service_config,
             state=self.state,
             state_messages=self.state_messages,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            url=self.url)
 
 
 def get_function(function_id: Optional[str] = None,
@@ -184,10 +208,12 @@ def get_function(function_id: Optional[str] = None,
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         service_config=pulumi.get(__ret__, 'service_config'),
         state=pulumi.get(__ret__, 'state'),
         state_messages=pulumi.get(__ret__, 'state_messages'),
-        update_time=pulumi.get(__ret__, 'update_time'))
+        update_time=pulumi.get(__ret__, 'update_time'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_function)

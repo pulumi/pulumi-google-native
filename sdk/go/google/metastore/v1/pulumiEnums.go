@@ -572,6 +572,193 @@ func (in *databaseDumpTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Dat
 	}
 }
 
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+type HiveMetastoreConfigEndpointProtocol string
+
+const (
+	// The protocol is not set.
+	HiveMetastoreConfigEndpointProtocolEndpointProtocolUnspecified = HiveMetastoreConfigEndpointProtocol("ENDPOINT_PROTOCOL_UNSPECIFIED")
+	// Use the legacy Apache Thrift protocol for the metastore service endpoint.
+	HiveMetastoreConfigEndpointProtocolThrift = HiveMetastoreConfigEndpointProtocol("THRIFT")
+	// Use the modernized gRPC protocol for the metastore service endpoint.
+	HiveMetastoreConfigEndpointProtocolGrpc = HiveMetastoreConfigEndpointProtocol("GRPC")
+)
+
+func (HiveMetastoreConfigEndpointProtocol) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveMetastoreConfigEndpointProtocol)(nil)).Elem()
+}
+
+func (e HiveMetastoreConfigEndpointProtocol) ToHiveMetastoreConfigEndpointProtocolOutput() HiveMetastoreConfigEndpointProtocolOutput {
+	return pulumi.ToOutput(e).(HiveMetastoreConfigEndpointProtocolOutput)
+}
+
+func (e HiveMetastoreConfigEndpointProtocol) ToHiveMetastoreConfigEndpointProtocolOutputWithContext(ctx context.Context) HiveMetastoreConfigEndpointProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HiveMetastoreConfigEndpointProtocolOutput)
+}
+
+func (e HiveMetastoreConfigEndpointProtocol) ToHiveMetastoreConfigEndpointProtocolPtrOutput() HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return e.ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(context.Background())
+}
+
+func (e HiveMetastoreConfigEndpointProtocol) ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx context.Context) HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return HiveMetastoreConfigEndpointProtocol(e).ToHiveMetastoreConfigEndpointProtocolOutputWithContext(ctx).ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx)
+}
+
+func (e HiveMetastoreConfigEndpointProtocol) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HiveMetastoreConfigEndpointProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HiveMetastoreConfigEndpointProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HiveMetastoreConfigEndpointProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HiveMetastoreConfigEndpointProtocolOutput struct{ *pulumi.OutputState }
+
+func (HiveMetastoreConfigEndpointProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveMetastoreConfigEndpointProtocol)(nil)).Elem()
+}
+
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToHiveMetastoreConfigEndpointProtocolOutput() HiveMetastoreConfigEndpointProtocolOutput {
+	return o
+}
+
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToHiveMetastoreConfigEndpointProtocolOutputWithContext(ctx context.Context) HiveMetastoreConfigEndpointProtocolOutput {
+	return o
+}
+
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToHiveMetastoreConfigEndpointProtocolPtrOutput() HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return o.ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx context.Context) HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveMetastoreConfigEndpointProtocol) *HiveMetastoreConfigEndpointProtocol {
+		return &v
+	}).(HiveMetastoreConfigEndpointProtocolPtrOutput)
+}
+
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[HiveMetastoreConfigEndpointProtocol] {
+	return pulumix.Output[HiveMetastoreConfigEndpointProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HiveMetastoreConfigEndpointProtocol) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HiveMetastoreConfigEndpointProtocol) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HiveMetastoreConfigEndpointProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveMetastoreConfigEndpointProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveMetastoreConfigEndpointProtocol)(nil)).Elem()
+}
+
+func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToHiveMetastoreConfigEndpointProtocolPtrOutput() HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return o
+}
+
+func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx context.Context) HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return o
+}
+
+func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HiveMetastoreConfigEndpointProtocol] {
+	return pulumix.Output[*HiveMetastoreConfigEndpointProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HiveMetastoreConfigEndpointProtocolPtrOutput) Elem() HiveMetastoreConfigEndpointProtocolOutput {
+	return o.ApplyT(func(v *HiveMetastoreConfigEndpointProtocol) HiveMetastoreConfigEndpointProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret HiveMetastoreConfigEndpointProtocol
+		return ret
+	}).(HiveMetastoreConfigEndpointProtocolOutput)
+}
+
+func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HiveMetastoreConfigEndpointProtocol) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HiveMetastoreConfigEndpointProtocolInput is an input type that accepts HiveMetastoreConfigEndpointProtocolArgs and HiveMetastoreConfigEndpointProtocolOutput values.
+// You can construct a concrete instance of `HiveMetastoreConfigEndpointProtocolInput` via:
+//
+//	HiveMetastoreConfigEndpointProtocolArgs{...}
+type HiveMetastoreConfigEndpointProtocolInput interface {
+	pulumi.Input
+
+	ToHiveMetastoreConfigEndpointProtocolOutput() HiveMetastoreConfigEndpointProtocolOutput
+	ToHiveMetastoreConfigEndpointProtocolOutputWithContext(context.Context) HiveMetastoreConfigEndpointProtocolOutput
+}
+
+var hiveMetastoreConfigEndpointProtocolPtrType = reflect.TypeOf((**HiveMetastoreConfigEndpointProtocol)(nil)).Elem()
+
+type HiveMetastoreConfigEndpointProtocolPtrInput interface {
+	pulumi.Input
+
+	ToHiveMetastoreConfigEndpointProtocolPtrOutput() HiveMetastoreConfigEndpointProtocolPtrOutput
+	ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(context.Context) HiveMetastoreConfigEndpointProtocolPtrOutput
+}
+
+type hiveMetastoreConfigEndpointProtocolPtr string
+
+func HiveMetastoreConfigEndpointProtocolPtr(v string) HiveMetastoreConfigEndpointProtocolPtrInput {
+	return (*hiveMetastoreConfigEndpointProtocolPtr)(&v)
+}
+
+func (*hiveMetastoreConfigEndpointProtocolPtr) ElementType() reflect.Type {
+	return hiveMetastoreConfigEndpointProtocolPtrType
+}
+
+func (in *hiveMetastoreConfigEndpointProtocolPtr) ToHiveMetastoreConfigEndpointProtocolPtrOutput() HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return pulumi.ToOutput(in).(HiveMetastoreConfigEndpointProtocolPtrOutput)
+}
+
+func (in *hiveMetastoreConfigEndpointProtocolPtr) ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx context.Context) HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HiveMetastoreConfigEndpointProtocolPtrOutput)
+}
+
+func (in *hiveMetastoreConfigEndpointProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*HiveMetastoreConfigEndpointProtocol] {
+	return pulumix.Output[*HiveMetastoreConfigEndpointProtocol]{
+		OutputState: in.ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The day of week, when the window starts.
 type MaintenanceWindowDayOfWeek string
 
@@ -1717,6 +1904,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpDatabaseTypePtrInput)(nil)).Elem(), DatabaseDumpDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpTypeInput)(nil)).Elem(), DatabaseDumpType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpTypePtrInput)(nil)).Elem(), DatabaseDumpType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigEndpointProtocolInput)(nil)).Elem(), HiveMetastoreConfigEndpointProtocol("ENDPOINT_PROTOCOL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigEndpointProtocolPtrInput)(nil)).Elem(), HiveMetastoreConfigEndpointProtocol("ENDPOINT_PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowDayOfWeekInput)(nil)).Elem(), MaintenanceWindowDayOfWeek("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowDayOfWeekPtrInput)(nil)).Elem(), MaintenanceWindowDayOfWeek("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigInstanceSizeInput)(nil)).Elem(), ScalingConfigInstanceSize("INSTANCE_SIZE_UNSPECIFIED"))
@@ -1735,6 +1924,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseDumpDatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpTypeOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpTypePtrOutput{})
+	pulumi.RegisterOutputType(HiveMetastoreConfigEndpointProtocolOutput{})
+	pulumi.RegisterOutputType(HiveMetastoreConfigEndpointProtocolPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowDayOfWeekOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowDayOfWeekPtrOutput{})
 	pulumi.RegisterOutputType(ScalingConfigInstanceSizeOutput{})

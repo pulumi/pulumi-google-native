@@ -70,6 +70,9 @@ func NewAuthConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.ProductId == nil {
 		return nil, errors.New("invalid value for required argument 'ProductId'")
 	}
@@ -129,7 +132,7 @@ type authConfigArgs struct {
 	// A description of the auth config.
 	Description *string `pulumi:"description"`
 	// The name of the auth config.
-	DisplayName *string `pulumi:"displayName"`
+	DisplayName string `pulumi:"displayName"`
 	// Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
@@ -172,7 +175,7 @@ type AuthConfigArgs struct {
 	// A description of the auth config.
 	Description pulumi.StringPtrInput
 	// The name of the auth config.
-	DisplayName pulumi.StringPtrInput
+	DisplayName pulumi.StringInput
 	// Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
 	EncryptedCredential pulumi.StringPtrInput
 	// User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.

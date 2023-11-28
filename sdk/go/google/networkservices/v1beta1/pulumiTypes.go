@@ -997,11 +997,602 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// A single extension chain wrapper that contains the match conditions and extensions to execute.
+type ExtensionChain struct {
+	// A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains are limited to 1 extension per extension chain.
+	Extensions []ExtensionChainExtension `pulumi:"extensions"`
+	// Conditions under which this chain is invoked for a request.
+	MatchCondition ExtensionChainMatchCondition `pulumi:"matchCondition"`
+	// The name for this extension chain. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+	Name string `pulumi:"name"`
+}
+
+// ExtensionChainInput is an input type that accepts ExtensionChainArgs and ExtensionChainOutput values.
+// You can construct a concrete instance of `ExtensionChainInput` via:
+//
+//	ExtensionChainArgs{...}
+type ExtensionChainInput interface {
+	pulumi.Input
+
+	ToExtensionChainOutput() ExtensionChainOutput
+	ToExtensionChainOutputWithContext(context.Context) ExtensionChainOutput
+}
+
+// A single extension chain wrapper that contains the match conditions and extensions to execute.
+type ExtensionChainArgs struct {
+	// A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains are limited to 1 extension per extension chain.
+	Extensions ExtensionChainExtensionArrayInput `pulumi:"extensions"`
+	// Conditions under which this chain is invoked for a request.
+	MatchCondition ExtensionChainMatchConditionInput `pulumi:"matchCondition"`
+	// The name for this extension chain. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ExtensionChainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChain)(nil)).Elem()
+}
+
+func (i ExtensionChainArgs) ToExtensionChainOutput() ExtensionChainOutput {
+	return i.ToExtensionChainOutputWithContext(context.Background())
+}
+
+func (i ExtensionChainArgs) ToExtensionChainOutputWithContext(ctx context.Context) ExtensionChainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionChainOutput)
+}
+
+func (i ExtensionChainArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionChain] {
+	return pulumix.Output[ExtensionChain]{
+		OutputState: i.ToExtensionChainOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ExtensionChainArrayInput is an input type that accepts ExtensionChainArray and ExtensionChainArrayOutput values.
+// You can construct a concrete instance of `ExtensionChainArrayInput` via:
+//
+//	ExtensionChainArray{ ExtensionChainArgs{...} }
+type ExtensionChainArrayInput interface {
+	pulumi.Input
+
+	ToExtensionChainArrayOutput() ExtensionChainArrayOutput
+	ToExtensionChainArrayOutputWithContext(context.Context) ExtensionChainArrayOutput
+}
+
+type ExtensionChainArray []ExtensionChainInput
+
+func (ExtensionChainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionChain)(nil)).Elem()
+}
+
+func (i ExtensionChainArray) ToExtensionChainArrayOutput() ExtensionChainArrayOutput {
+	return i.ToExtensionChainArrayOutputWithContext(context.Background())
+}
+
+func (i ExtensionChainArray) ToExtensionChainArrayOutputWithContext(ctx context.Context) ExtensionChainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionChainArrayOutput)
+}
+
+func (i ExtensionChainArray) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionChain] {
+	return pulumix.Output[[]ExtensionChain]{
+		OutputState: i.ToExtensionChainArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A single extension chain wrapper that contains the match conditions and extensions to execute.
+type ExtensionChainOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChain)(nil)).Elem()
+}
+
+func (o ExtensionChainOutput) ToExtensionChainOutput() ExtensionChainOutput {
+	return o
+}
+
+func (o ExtensionChainOutput) ToExtensionChainOutputWithContext(ctx context.Context) ExtensionChainOutput {
+	return o
+}
+
+func (o ExtensionChainOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionChain] {
+	return pulumix.Output[ExtensionChain]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains are limited to 1 extension per extension chain.
+func (o ExtensionChainOutput) Extensions() ExtensionChainExtensionArrayOutput {
+	return o.ApplyT(func(v ExtensionChain) []ExtensionChainExtension { return v.Extensions }).(ExtensionChainExtensionArrayOutput)
+}
+
+// Conditions under which this chain is invoked for a request.
+func (o ExtensionChainOutput) MatchCondition() ExtensionChainMatchConditionOutput {
+	return o.ApplyT(func(v ExtensionChain) ExtensionChainMatchCondition { return v.MatchCondition }).(ExtensionChainMatchConditionOutput)
+}
+
+// The name for this extension chain. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+func (o ExtensionChainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ExtensionChainArrayOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionChain)(nil)).Elem()
+}
+
+func (o ExtensionChainArrayOutput) ToExtensionChainArrayOutput() ExtensionChainArrayOutput {
+	return o
+}
+
+func (o ExtensionChainArrayOutput) ToExtensionChainArrayOutputWithContext(ctx context.Context) ExtensionChainArrayOutput {
+	return o
+}
+
+func (o ExtensionChainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionChain] {
+	return pulumix.Output[[]ExtensionChain]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ExtensionChainArrayOutput) Index(i pulumi.IntInput) ExtensionChainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExtensionChain {
+		return vs[0].([]ExtensionChain)[vs[1].(int)]
+	}).(ExtensionChainOutput)
+}
+
+// A single extension in the chain to execute for the matching request.
+type ExtensionChainExtension struct {
+	// The `:authority` header in the gRPC request sent from Envoy to the extension service.
+	Authority string `pulumi:"authority"`
+	// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+	FailOpen *bool `pulumi:"failOpen"`
+	// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
+	ForwardHeaders []string `pulumi:"forwardHeaders"`
+	// The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+	Name string `pulumi:"name"`
+	// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	Service string `pulumi:"service"`
+	// Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
+	SupportedEvents []ExtensionChainExtensionSupportedEventsItem `pulumi:"supportedEvents"`
+	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+	Timeout string `pulumi:"timeout"`
+}
+
+// ExtensionChainExtensionInput is an input type that accepts ExtensionChainExtensionArgs and ExtensionChainExtensionOutput values.
+// You can construct a concrete instance of `ExtensionChainExtensionInput` via:
+//
+//	ExtensionChainExtensionArgs{...}
+type ExtensionChainExtensionInput interface {
+	pulumi.Input
+
+	ToExtensionChainExtensionOutput() ExtensionChainExtensionOutput
+	ToExtensionChainExtensionOutputWithContext(context.Context) ExtensionChainExtensionOutput
+}
+
+// A single extension in the chain to execute for the matching request.
+type ExtensionChainExtensionArgs struct {
+	// The `:authority` header in the gRPC request sent from Envoy to the extension service.
+	Authority pulumi.StringInput `pulumi:"authority"`
+	// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
+	// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
+	ForwardHeaders pulumi.StringArrayInput `pulumi:"forwardHeaders"`
+	// The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	Service pulumi.StringInput `pulumi:"service"`
+	// Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
+	SupportedEvents ExtensionChainExtensionSupportedEventsItemArrayInput `pulumi:"supportedEvents"`
+	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+}
+
+func (ExtensionChainExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChainExtension)(nil)).Elem()
+}
+
+func (i ExtensionChainExtensionArgs) ToExtensionChainExtensionOutput() ExtensionChainExtensionOutput {
+	return i.ToExtensionChainExtensionOutputWithContext(context.Background())
+}
+
+func (i ExtensionChainExtensionArgs) ToExtensionChainExtensionOutputWithContext(ctx context.Context) ExtensionChainExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionChainExtensionOutput)
+}
+
+func (i ExtensionChainExtensionArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionChainExtension] {
+	return pulumix.Output[ExtensionChainExtension]{
+		OutputState: i.ToExtensionChainExtensionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ExtensionChainExtensionArrayInput is an input type that accepts ExtensionChainExtensionArray and ExtensionChainExtensionArrayOutput values.
+// You can construct a concrete instance of `ExtensionChainExtensionArrayInput` via:
+//
+//	ExtensionChainExtensionArray{ ExtensionChainExtensionArgs{...} }
+type ExtensionChainExtensionArrayInput interface {
+	pulumi.Input
+
+	ToExtensionChainExtensionArrayOutput() ExtensionChainExtensionArrayOutput
+	ToExtensionChainExtensionArrayOutputWithContext(context.Context) ExtensionChainExtensionArrayOutput
+}
+
+type ExtensionChainExtensionArray []ExtensionChainExtensionInput
+
+func (ExtensionChainExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionChainExtension)(nil)).Elem()
+}
+
+func (i ExtensionChainExtensionArray) ToExtensionChainExtensionArrayOutput() ExtensionChainExtensionArrayOutput {
+	return i.ToExtensionChainExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i ExtensionChainExtensionArray) ToExtensionChainExtensionArrayOutputWithContext(ctx context.Context) ExtensionChainExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionChainExtensionArrayOutput)
+}
+
+func (i ExtensionChainExtensionArray) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionChainExtension] {
+	return pulumix.Output[[]ExtensionChainExtension]{
+		OutputState: i.ToExtensionChainExtensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A single extension in the chain to execute for the matching request.
+type ExtensionChainExtensionOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChainExtension)(nil)).Elem()
+}
+
+func (o ExtensionChainExtensionOutput) ToExtensionChainExtensionOutput() ExtensionChainExtensionOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionOutput) ToExtensionChainExtensionOutputWithContext(ctx context.Context) ExtensionChainExtensionOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionChainExtension] {
+	return pulumix.Output[ExtensionChainExtension]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The `:authority` header in the gRPC request sent from Envoy to the extension service.
+func (o ExtensionChainExtensionOutput) Authority() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainExtension) string { return v.Authority }).(pulumi.StringOutput)
+}
+
+// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+func (o ExtensionChainExtensionOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExtensionChainExtension) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
+func (o ExtensionChainExtensionOutput) ForwardHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExtensionChainExtension) []string { return v.ForwardHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+func (o ExtensionChainExtensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainExtension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+func (o ExtensionChainExtensionOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainExtension) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
+func (o ExtensionChainExtensionOutput) SupportedEvents() ExtensionChainExtensionSupportedEventsItemArrayOutput {
+	return o.ApplyT(func(v ExtensionChainExtension) []ExtensionChainExtensionSupportedEventsItem { return v.SupportedEvents }).(ExtensionChainExtensionSupportedEventsItemArrayOutput)
+}
+
+// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+func (o ExtensionChainExtensionOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainExtension) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+type ExtensionChainExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionChainExtension)(nil)).Elem()
+}
+
+func (o ExtensionChainExtensionArrayOutput) ToExtensionChainExtensionArrayOutput() ExtensionChainExtensionArrayOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionArrayOutput) ToExtensionChainExtensionArrayOutputWithContext(ctx context.Context) ExtensionChainExtensionArrayOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionChainExtension] {
+	return pulumix.Output[[]ExtensionChainExtension]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ExtensionChainExtensionArrayOutput) Index(i pulumi.IntInput) ExtensionChainExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExtensionChainExtension {
+		return vs[0].([]ExtensionChainExtension)[vs[1].(int)]
+	}).(ExtensionChainExtensionOutput)
+}
+
+// A single extension in the chain to execute for the matching request.
+type ExtensionChainExtensionResponse struct {
+	// The `:authority` header in the gRPC request sent from Envoy to the extension service.
+	Authority string `pulumi:"authority"`
+	// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+	FailOpen bool `pulumi:"failOpen"`
+	// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
+	ForwardHeaders []string `pulumi:"forwardHeaders"`
+	// The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+	Name string `pulumi:"name"`
+	// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	Service string `pulumi:"service"`
+	// Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
+	SupportedEvents []string `pulumi:"supportedEvents"`
+	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+	Timeout string `pulumi:"timeout"`
+}
+
+// A single extension in the chain to execute for the matching request.
+type ExtensionChainExtensionResponseOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainExtensionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChainExtensionResponse)(nil)).Elem()
+}
+
+func (o ExtensionChainExtensionResponseOutput) ToExtensionChainExtensionResponseOutput() ExtensionChainExtensionResponseOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionResponseOutput) ToExtensionChainExtensionResponseOutputWithContext(ctx context.Context) ExtensionChainExtensionResponseOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionChainExtensionResponse] {
+	return pulumix.Output[ExtensionChainExtensionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The `:authority` header in the gRPC request sent from Envoy to the extension service.
+func (o ExtensionChainExtensionResponseOutput) Authority() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainExtensionResponse) string { return v.Authority }).(pulumi.StringOutput)
+}
+
+// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+func (o ExtensionChainExtensionResponseOutput) FailOpen() pulumi.BoolOutput {
+	return o.ApplyT(func(v ExtensionChainExtensionResponse) bool { return v.FailOpen }).(pulumi.BoolOutput)
+}
+
+// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
+func (o ExtensionChainExtensionResponseOutput) ForwardHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExtensionChainExtensionResponse) []string { return v.ForwardHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+func (o ExtensionChainExtensionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainExtensionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+func (o ExtensionChainExtensionResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainExtensionResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
+func (o ExtensionChainExtensionResponseOutput) SupportedEvents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExtensionChainExtensionResponse) []string { return v.SupportedEvents }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+func (o ExtensionChainExtensionResponseOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainExtensionResponse) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+type ExtensionChainExtensionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainExtensionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionChainExtensionResponse)(nil)).Elem()
+}
+
+func (o ExtensionChainExtensionResponseArrayOutput) ToExtensionChainExtensionResponseArrayOutput() ExtensionChainExtensionResponseArrayOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionResponseArrayOutput) ToExtensionChainExtensionResponseArrayOutputWithContext(ctx context.Context) ExtensionChainExtensionResponseArrayOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionChainExtensionResponse] {
+	return pulumix.Output[[]ExtensionChainExtensionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ExtensionChainExtensionResponseArrayOutput) Index(i pulumi.IntInput) ExtensionChainExtensionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExtensionChainExtensionResponse {
+		return vs[0].([]ExtensionChainExtensionResponse)[vs[1].(int)]
+	}).(ExtensionChainExtensionResponseOutput)
+}
+
+// Conditions under which this chain is invoked for a request.
+type ExtensionChainMatchCondition struct {
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	CelExpression string `pulumi:"celExpression"`
+}
+
+// ExtensionChainMatchConditionInput is an input type that accepts ExtensionChainMatchConditionArgs and ExtensionChainMatchConditionOutput values.
+// You can construct a concrete instance of `ExtensionChainMatchConditionInput` via:
+//
+//	ExtensionChainMatchConditionArgs{...}
+type ExtensionChainMatchConditionInput interface {
+	pulumi.Input
+
+	ToExtensionChainMatchConditionOutput() ExtensionChainMatchConditionOutput
+	ToExtensionChainMatchConditionOutputWithContext(context.Context) ExtensionChainMatchConditionOutput
+}
+
+// Conditions under which this chain is invoked for a request.
+type ExtensionChainMatchConditionArgs struct {
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	CelExpression pulumi.StringInput `pulumi:"celExpression"`
+}
+
+func (ExtensionChainMatchConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChainMatchCondition)(nil)).Elem()
+}
+
+func (i ExtensionChainMatchConditionArgs) ToExtensionChainMatchConditionOutput() ExtensionChainMatchConditionOutput {
+	return i.ToExtensionChainMatchConditionOutputWithContext(context.Background())
+}
+
+func (i ExtensionChainMatchConditionArgs) ToExtensionChainMatchConditionOutputWithContext(ctx context.Context) ExtensionChainMatchConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionChainMatchConditionOutput)
+}
+
+func (i ExtensionChainMatchConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionChainMatchCondition] {
+	return pulumix.Output[ExtensionChainMatchCondition]{
+		OutputState: i.ToExtensionChainMatchConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Conditions under which this chain is invoked for a request.
+type ExtensionChainMatchConditionOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainMatchConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChainMatchCondition)(nil)).Elem()
+}
+
+func (o ExtensionChainMatchConditionOutput) ToExtensionChainMatchConditionOutput() ExtensionChainMatchConditionOutput {
+	return o
+}
+
+func (o ExtensionChainMatchConditionOutput) ToExtensionChainMatchConditionOutputWithContext(ctx context.Context) ExtensionChainMatchConditionOutput {
+	return o
+}
+
+func (o ExtensionChainMatchConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionChainMatchCondition] {
+	return pulumix.Output[ExtensionChainMatchCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+func (o ExtensionChainMatchConditionOutput) CelExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainMatchCondition) string { return v.CelExpression }).(pulumi.StringOutput)
+}
+
+// Conditions under which this chain is invoked for a request.
+type ExtensionChainMatchConditionResponse struct {
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	CelExpression string `pulumi:"celExpression"`
+}
+
+// Conditions under which this chain is invoked for a request.
+type ExtensionChainMatchConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainMatchConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChainMatchConditionResponse)(nil)).Elem()
+}
+
+func (o ExtensionChainMatchConditionResponseOutput) ToExtensionChainMatchConditionResponseOutput() ExtensionChainMatchConditionResponseOutput {
+	return o
+}
+
+func (o ExtensionChainMatchConditionResponseOutput) ToExtensionChainMatchConditionResponseOutputWithContext(ctx context.Context) ExtensionChainMatchConditionResponseOutput {
+	return o
+}
+
+func (o ExtensionChainMatchConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionChainMatchConditionResponse] {
+	return pulumix.Output[ExtensionChainMatchConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+func (o ExtensionChainMatchConditionResponseOutput) CelExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainMatchConditionResponse) string { return v.CelExpression }).(pulumi.StringOutput)
+}
+
+// A single extension chain wrapper that contains the match conditions and extensions to execute.
+type ExtensionChainResponse struct {
+	// A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains are limited to 1 extension per extension chain.
+	Extensions []ExtensionChainExtensionResponse `pulumi:"extensions"`
+	// Conditions under which this chain is invoked for a request.
+	MatchCondition ExtensionChainMatchConditionResponse `pulumi:"matchCondition"`
+	// The name for this extension chain. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+	Name string `pulumi:"name"`
+}
+
+// A single extension chain wrapper that contains the match conditions and extensions to execute.
+type ExtensionChainResponseOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChainResponse)(nil)).Elem()
+}
+
+func (o ExtensionChainResponseOutput) ToExtensionChainResponseOutput() ExtensionChainResponseOutput {
+	return o
+}
+
+func (o ExtensionChainResponseOutput) ToExtensionChainResponseOutputWithContext(ctx context.Context) ExtensionChainResponseOutput {
+	return o
+}
+
+func (o ExtensionChainResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionChainResponse] {
+	return pulumix.Output[ExtensionChainResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains are limited to 1 extension per extension chain.
+func (o ExtensionChainResponseOutput) Extensions() ExtensionChainExtensionResponseArrayOutput {
+	return o.ApplyT(func(v ExtensionChainResponse) []ExtensionChainExtensionResponse { return v.Extensions }).(ExtensionChainExtensionResponseArrayOutput)
+}
+
+// Conditions under which this chain is invoked for a request.
+func (o ExtensionChainResponseOutput) MatchCondition() ExtensionChainMatchConditionResponseOutput {
+	return o.ApplyT(func(v ExtensionChainResponse) ExtensionChainMatchConditionResponse { return v.MatchCondition }).(ExtensionChainMatchConditionResponseOutput)
+}
+
+// The name for this extension chain. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+func (o ExtensionChainResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionChainResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ExtensionChainResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionChainResponse)(nil)).Elem()
+}
+
+func (o ExtensionChainResponseArrayOutput) ToExtensionChainResponseArrayOutput() ExtensionChainResponseArrayOutput {
+	return o
+}
+
+func (o ExtensionChainResponseArrayOutput) ToExtensionChainResponseArrayOutputWithContext(ctx context.Context) ExtensionChainResponseArrayOutput {
+	return o
+}
+
+func (o ExtensionChainResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionChainResponse] {
+	return pulumix.Output[[]ExtensionChainResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ExtensionChainResponseArrayOutput) Index(i pulumi.IntInput) ExtensionChainResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExtensionChainResponse {
+		return vs[0].([]ExtensionChainResponse)[vs[1].(int)]
+	}).(ExtensionChainResponseOutput)
+}
+
 // The destination to which traffic will be routed.
 type GrpcRouteDestination struct {
 	// The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService.
 	ServiceName string `pulumi:"serviceName"`
-	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -1020,7 +1611,7 @@ type GrpcRouteDestinationInput interface {
 type GrpcRouteDestinationArgs struct {
 	// The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -1099,7 +1690,7 @@ func (o GrpcRouteDestinationOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GrpcRouteDestination) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o GrpcRouteDestinationOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GrpcRouteDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -1134,7 +1725,7 @@ func (o GrpcRouteDestinationArrayOutput) Index(i pulumi.IntInput) GrpcRouteDesti
 type GrpcRouteDestinationResponse struct {
 	// The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService.
 	ServiceName string `pulumi:"serviceName"`
-	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight int `pulumi:"weight"`
 }
 
@@ -1164,7 +1755,7 @@ func (o GrpcRouteDestinationResponseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GrpcRouteDestinationResponse) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o GrpcRouteDestinationResponseOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v GrpcRouteDestinationResponse) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -2583,6 +3174,8 @@ type GrpcRouteRouteAction struct {
 	FaultInjectionPolicy *GrpcRouteFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
 	// Optional. Specifies the retry policy associated with this route.
 	RetryPolicy *GrpcRouteRetryPolicy `pulumi:"retryPolicy"`
+	// Optional. Specifies cookie-based stateful session affinity.
+	StatefulSessionAffinity *GrpcRouteStatefulSessionAffinityPolicy `pulumi:"statefulSessionAffinity"`
 	// Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
 	Timeout *string `pulumi:"timeout"`
 }
@@ -2606,6 +3199,8 @@ type GrpcRouteRouteActionArgs struct {
 	FaultInjectionPolicy GrpcRouteFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
 	// Optional. Specifies the retry policy associated with this route.
 	RetryPolicy GrpcRouteRetryPolicyPtrInput `pulumi:"retryPolicy"`
+	// Optional. Specifies cookie-based stateful session affinity.
+	StatefulSessionAffinity GrpcRouteStatefulSessionAffinityPolicyPtrInput `pulumi:"statefulSessionAffinity"`
 	// Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 }
@@ -2664,6 +3259,11 @@ func (o GrpcRouteRouteActionOutput) RetryPolicy() GrpcRouteRetryPolicyPtrOutput 
 	return o.ApplyT(func(v GrpcRouteRouteAction) *GrpcRouteRetryPolicy { return v.RetryPolicy }).(GrpcRouteRetryPolicyPtrOutput)
 }
 
+// Optional. Specifies cookie-based stateful session affinity.
+func (o GrpcRouteRouteActionOutput) StatefulSessionAffinity() GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRouteAction) *GrpcRouteStatefulSessionAffinityPolicy { return v.StatefulSessionAffinity }).(GrpcRouteStatefulSessionAffinityPolicyPtrOutput)
+}
+
 // Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
 func (o GrpcRouteRouteActionOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrpcRouteRouteAction) *string { return v.Timeout }).(pulumi.StringPtrOutput)
@@ -2677,6 +3277,8 @@ type GrpcRouteRouteActionResponse struct {
 	FaultInjectionPolicy GrpcRouteFaultInjectionPolicyResponse `pulumi:"faultInjectionPolicy"`
 	// Optional. Specifies the retry policy associated with this route.
 	RetryPolicy GrpcRouteRetryPolicyResponse `pulumi:"retryPolicy"`
+	// Optional. Specifies cookie-based stateful session affinity.
+	StatefulSessionAffinity GrpcRouteStatefulSessionAffinityPolicyResponse `pulumi:"statefulSessionAffinity"`
 	// Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
 	Timeout string `pulumi:"timeout"`
 }
@@ -2717,6 +3319,13 @@ func (o GrpcRouteRouteActionResponseOutput) FaultInjectionPolicy() GrpcRouteFaul
 // Optional. Specifies the retry policy associated with this route.
 func (o GrpcRouteRouteActionResponseOutput) RetryPolicy() GrpcRouteRetryPolicyResponseOutput {
 	return o.ApplyT(func(v GrpcRouteRouteActionResponse) GrpcRouteRetryPolicyResponse { return v.RetryPolicy }).(GrpcRouteRetryPolicyResponseOutput)
+}
+
+// Optional. Specifies cookie-based stateful session affinity.
+func (o GrpcRouteRouteActionResponseOutput) StatefulSessionAffinity() GrpcRouteStatefulSessionAffinityPolicyResponseOutput {
+	return o.ApplyT(func(v GrpcRouteRouteActionResponse) GrpcRouteStatefulSessionAffinityPolicyResponse {
+		return v.StatefulSessionAffinity
+	}).(GrpcRouteStatefulSessionAffinityPolicyResponseOutput)
 }
 
 // Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
@@ -3120,6 +3729,202 @@ func (o GrpcRouteRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) GrpcRout
 	}).(GrpcRouteRouteRuleResponseOutput)
 }
 
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type GrpcRouteStatefulSessionAffinityPolicy struct {
+	// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+	CookieTtl string `pulumi:"cookieTtl"`
+}
+
+// GrpcRouteStatefulSessionAffinityPolicyInput is an input type that accepts GrpcRouteStatefulSessionAffinityPolicyArgs and GrpcRouteStatefulSessionAffinityPolicyOutput values.
+// You can construct a concrete instance of `GrpcRouteStatefulSessionAffinityPolicyInput` via:
+//
+//	GrpcRouteStatefulSessionAffinityPolicyArgs{...}
+type GrpcRouteStatefulSessionAffinityPolicyInput interface {
+	pulumi.Input
+
+	ToGrpcRouteStatefulSessionAffinityPolicyOutput() GrpcRouteStatefulSessionAffinityPolicyOutput
+	ToGrpcRouteStatefulSessionAffinityPolicyOutputWithContext(context.Context) GrpcRouteStatefulSessionAffinityPolicyOutput
+}
+
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type GrpcRouteStatefulSessionAffinityPolicyArgs struct {
+	// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+	CookieTtl pulumi.StringInput `pulumi:"cookieTtl"`
+}
+
+func (GrpcRouteStatefulSessionAffinityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteStatefulSessionAffinityPolicy)(nil)).Elem()
+}
+
+func (i GrpcRouteStatefulSessionAffinityPolicyArgs) ToGrpcRouteStatefulSessionAffinityPolicyOutput() GrpcRouteStatefulSessionAffinityPolicyOutput {
+	return i.ToGrpcRouteStatefulSessionAffinityPolicyOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteStatefulSessionAffinityPolicyArgs) ToGrpcRouteStatefulSessionAffinityPolicyOutputWithContext(ctx context.Context) GrpcRouteStatefulSessionAffinityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteStatefulSessionAffinityPolicyOutput)
+}
+
+func (i GrpcRouteStatefulSessionAffinityPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteStatefulSessionAffinityPolicy] {
+	return pulumix.Output[GrpcRouteStatefulSessionAffinityPolicy]{
+		OutputState: i.ToGrpcRouteStatefulSessionAffinityPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GrpcRouteStatefulSessionAffinityPolicyArgs) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutput() GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
+	return i.ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteStatefulSessionAffinityPolicyArgs) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteStatefulSessionAffinityPolicyOutput).ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx)
+}
+
+// GrpcRouteStatefulSessionAffinityPolicyPtrInput is an input type that accepts GrpcRouteStatefulSessionAffinityPolicyArgs, GrpcRouteStatefulSessionAffinityPolicyPtr and GrpcRouteStatefulSessionAffinityPolicyPtrOutput values.
+// You can construct a concrete instance of `GrpcRouteStatefulSessionAffinityPolicyPtrInput` via:
+//
+//	        GrpcRouteStatefulSessionAffinityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GrpcRouteStatefulSessionAffinityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGrpcRouteStatefulSessionAffinityPolicyPtrOutput() GrpcRouteStatefulSessionAffinityPolicyPtrOutput
+	ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Context) GrpcRouteStatefulSessionAffinityPolicyPtrOutput
+}
+
+type grpcRouteStatefulSessionAffinityPolicyPtrType GrpcRouteStatefulSessionAffinityPolicyArgs
+
+func GrpcRouteStatefulSessionAffinityPolicyPtr(v *GrpcRouteStatefulSessionAffinityPolicyArgs) GrpcRouteStatefulSessionAffinityPolicyPtrInput {
+	return (*grpcRouteStatefulSessionAffinityPolicyPtrType)(v)
+}
+
+func (*grpcRouteStatefulSessionAffinityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteStatefulSessionAffinityPolicy)(nil)).Elem()
+}
+
+func (i *grpcRouteStatefulSessionAffinityPolicyPtrType) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutput() GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
+	return i.ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *grpcRouteStatefulSessionAffinityPolicyPtrType) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteStatefulSessionAffinityPolicyPtrOutput)
+}
+
+func (i *grpcRouteStatefulSessionAffinityPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteStatefulSessionAffinityPolicy] {
+	return pulumix.Output[*GrpcRouteStatefulSessionAffinityPolicy]{
+		OutputState: i.ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type GrpcRouteStatefulSessionAffinityPolicyOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteStatefulSessionAffinityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteStatefulSessionAffinityPolicy)(nil)).Elem()
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyOutput) ToGrpcRouteStatefulSessionAffinityPolicyOutput() GrpcRouteStatefulSessionAffinityPolicyOutput {
+	return o
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyOutput) ToGrpcRouteStatefulSessionAffinityPolicyOutputWithContext(ctx context.Context) GrpcRouteStatefulSessionAffinityPolicyOutput {
+	return o
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyOutput) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutput() GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o.ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyOutput) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteStatefulSessionAffinityPolicy) *GrpcRouteStatefulSessionAffinityPolicy {
+		return &v
+	}).(GrpcRouteStatefulSessionAffinityPolicyPtrOutput)
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteStatefulSessionAffinityPolicy] {
+	return pulumix.Output[GrpcRouteStatefulSessionAffinityPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+func (o GrpcRouteStatefulSessionAffinityPolicyOutput) CookieTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v GrpcRouteStatefulSessionAffinityPolicy) string { return v.CookieTtl }).(pulumi.StringOutput)
+}
+
+type GrpcRouteStatefulSessionAffinityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteStatefulSessionAffinityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteStatefulSessionAffinityPolicy)(nil)).Elem()
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyPtrOutput) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutput() GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyPtrOutput) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteStatefulSessionAffinityPolicy] {
+	return pulumix.Output[*GrpcRouteStatefulSessionAffinityPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyPtrOutput) Elem() GrpcRouteStatefulSessionAffinityPolicyOutput {
+	return o.ApplyT(func(v *GrpcRouteStatefulSessionAffinityPolicy) GrpcRouteStatefulSessionAffinityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GrpcRouteStatefulSessionAffinityPolicy
+		return ret
+	}).(GrpcRouteStatefulSessionAffinityPolicyOutput)
+}
+
+// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+func (o GrpcRouteStatefulSessionAffinityPolicyPtrOutput) CookieTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteStatefulSessionAffinityPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CookieTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type GrpcRouteStatefulSessionAffinityPolicyResponse struct {
+	// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+	CookieTtl string `pulumi:"cookieTtl"`
+}
+
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type GrpcRouteStatefulSessionAffinityPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteStatefulSessionAffinityPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteStatefulSessionAffinityPolicyResponse)(nil)).Elem()
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyResponseOutput) ToGrpcRouteStatefulSessionAffinityPolicyResponseOutput() GrpcRouteStatefulSessionAffinityPolicyResponseOutput {
+	return o
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyResponseOutput) ToGrpcRouteStatefulSessionAffinityPolicyResponseOutputWithContext(ctx context.Context) GrpcRouteStatefulSessionAffinityPolicyResponseOutput {
+	return o
+}
+
+func (o GrpcRouteStatefulSessionAffinityPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteStatefulSessionAffinityPolicyResponse] {
+	return pulumix.Output[GrpcRouteStatefulSessionAffinityPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+func (o GrpcRouteStatefulSessionAffinityPolicyResponseOutput) CookieTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v GrpcRouteStatefulSessionAffinityPolicyResponse) string { return v.CookieTtl }).(pulumi.StringOutput)
+}
+
 // The Specification for allowing client side cross-origin requests.
 type HttpRouteCorsPolicy struct {
 	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
@@ -3502,7 +4307,7 @@ func (o HttpRouteCorsPolicyResponseOutput) MaxAge() pulumi.StringOutput {
 type HttpRouteDestination struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName *string `pulumi:"serviceName"`
-	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -3521,7 +4326,7 @@ type HttpRouteDestinationInput interface {
 type HttpRouteDestinationArgs struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
-	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -3657,7 +4462,7 @@ func (o HttpRouteDestinationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteDestination) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o HttpRouteDestinationOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpRouteDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -3702,7 +4507,7 @@ func (o HttpRouteDestinationPtrOutput) ServiceName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o HttpRouteDestinationPtrOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HttpRouteDestination) *int {
 		if v == nil {
@@ -3742,7 +4547,7 @@ func (o HttpRouteDestinationArrayOutput) Index(i pulumi.IntInput) HttpRouteDesti
 type HttpRouteDestinationResponse struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName string `pulumi:"serviceName"`
-	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight int `pulumi:"weight"`
 }
 
@@ -3772,7 +4577,7 @@ func (o HttpRouteDestinationResponseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteDestinationResponse) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o HttpRouteDestinationResponseOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v HttpRouteDestinationResponse) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -6273,14 +7078,16 @@ type HttpRouteRouteAction struct {
 	FaultInjectionPolicy *HttpRouteFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
 	// If set, the request is directed as configured by this field.
 	Redirect *HttpRouteRedirect `pulumi:"redirect"`
-	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 	RequestHeaderModifier *HttpRouteHeaderModifier `pulumi:"requestHeaderModifier"`
 	// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
 	RequestMirrorPolicy *HttpRouteRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
-	// The specification for modifying the headers of a response prior to sending the response back to the client.
+	// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 	ResponseHeaderModifier *HttpRouteHeaderModifier `pulumi:"responseHeaderModifier"`
 	// Specifies the retry policy associated with this route.
 	RetryPolicy *HttpRouteRetryPolicy `pulumi:"retryPolicy"`
+	// Optional. Specifies cookie-based stateful session affinity.
+	StatefulSessionAffinity *HttpRouteStatefulSessionAffinityPolicy `pulumi:"statefulSessionAffinity"`
 	// Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
 	Timeout *string `pulumi:"timeout"`
 	// The specification for rewrite URL before forwarding requests to the destination.
@@ -6308,14 +7115,16 @@ type HttpRouteRouteActionArgs struct {
 	FaultInjectionPolicy HttpRouteFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
 	// If set, the request is directed as configured by this field.
 	Redirect HttpRouteRedirectPtrInput `pulumi:"redirect"`
-	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 	RequestHeaderModifier HttpRouteHeaderModifierPtrInput `pulumi:"requestHeaderModifier"`
 	// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
 	RequestMirrorPolicy HttpRouteRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
-	// The specification for modifying the headers of a response prior to sending the response back to the client.
+	// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 	ResponseHeaderModifier HttpRouteHeaderModifierPtrInput `pulumi:"responseHeaderModifier"`
 	// Specifies the retry policy associated with this route.
 	RetryPolicy HttpRouteRetryPolicyPtrInput `pulumi:"retryPolicy"`
+	// Optional. Specifies cookie-based stateful session affinity.
+	StatefulSessionAffinity HttpRouteStatefulSessionAffinityPolicyPtrInput `pulumi:"statefulSessionAffinity"`
 	// Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 	// The specification for rewrite URL before forwarding requests to the destination.
@@ -6438,7 +7247,7 @@ func (o HttpRouteRouteActionOutput) Redirect() HttpRouteRedirectPtrOutput {
 	return o.ApplyT(func(v HttpRouteRouteAction) *HttpRouteRedirect { return v.Redirect }).(HttpRouteRedirectPtrOutput)
 }
 
-// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 func (o HttpRouteRouteActionOutput) RequestHeaderModifier() HttpRouteHeaderModifierPtrOutput {
 	return o.ApplyT(func(v HttpRouteRouteAction) *HttpRouteHeaderModifier { return v.RequestHeaderModifier }).(HttpRouteHeaderModifierPtrOutput)
 }
@@ -6448,7 +7257,7 @@ func (o HttpRouteRouteActionOutput) RequestMirrorPolicy() HttpRouteRequestMirror
 	return o.ApplyT(func(v HttpRouteRouteAction) *HttpRouteRequestMirrorPolicy { return v.RequestMirrorPolicy }).(HttpRouteRequestMirrorPolicyPtrOutput)
 }
 
-// The specification for modifying the headers of a response prior to sending the response back to the client.
+// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 func (o HttpRouteRouteActionOutput) ResponseHeaderModifier() HttpRouteHeaderModifierPtrOutput {
 	return o.ApplyT(func(v HttpRouteRouteAction) *HttpRouteHeaderModifier { return v.ResponseHeaderModifier }).(HttpRouteHeaderModifierPtrOutput)
 }
@@ -6456,6 +7265,11 @@ func (o HttpRouteRouteActionOutput) ResponseHeaderModifier() HttpRouteHeaderModi
 // Specifies the retry policy associated with this route.
 func (o HttpRouteRouteActionOutput) RetryPolicy() HttpRouteRetryPolicyPtrOutput {
 	return o.ApplyT(func(v HttpRouteRouteAction) *HttpRouteRetryPolicy { return v.RetryPolicy }).(HttpRouteRetryPolicyPtrOutput)
+}
+
+// Optional. Specifies cookie-based stateful session affinity.
+func (o HttpRouteRouteActionOutput) StatefulSessionAffinity() HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o.ApplyT(func(v HttpRouteRouteAction) *HttpRouteStatefulSessionAffinityPolicy { return v.StatefulSessionAffinity }).(HttpRouteStatefulSessionAffinityPolicyPtrOutput)
 }
 
 // Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
@@ -6538,7 +7352,7 @@ func (o HttpRouteRouteActionPtrOutput) Redirect() HttpRouteRedirectPtrOutput {
 	}).(HttpRouteRedirectPtrOutput)
 }
 
-// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 func (o HttpRouteRouteActionPtrOutput) RequestHeaderModifier() HttpRouteHeaderModifierPtrOutput {
 	return o.ApplyT(func(v *HttpRouteRouteAction) *HttpRouteHeaderModifier {
 		if v == nil {
@@ -6558,7 +7372,7 @@ func (o HttpRouteRouteActionPtrOutput) RequestMirrorPolicy() HttpRouteRequestMir
 	}).(HttpRouteRequestMirrorPolicyPtrOutput)
 }
 
-// The specification for modifying the headers of a response prior to sending the response back to the client.
+// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 func (o HttpRouteRouteActionPtrOutput) ResponseHeaderModifier() HttpRouteHeaderModifierPtrOutput {
 	return o.ApplyT(func(v *HttpRouteRouteAction) *HttpRouteHeaderModifier {
 		if v == nil {
@@ -6576,6 +7390,16 @@ func (o HttpRouteRouteActionPtrOutput) RetryPolicy() HttpRouteRetryPolicyPtrOutp
 		}
 		return v.RetryPolicy
 	}).(HttpRouteRetryPolicyPtrOutput)
+}
+
+// Optional. Specifies cookie-based stateful session affinity.
+func (o HttpRouteRouteActionPtrOutput) StatefulSessionAffinity() HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRouteAction) *HttpRouteStatefulSessionAffinityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.StatefulSessionAffinity
+	}).(HttpRouteStatefulSessionAffinityPolicyPtrOutput)
 }
 
 // Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
@@ -6608,14 +7432,16 @@ type HttpRouteRouteActionResponse struct {
 	FaultInjectionPolicy HttpRouteFaultInjectionPolicyResponse `pulumi:"faultInjectionPolicy"`
 	// If set, the request is directed as configured by this field.
 	Redirect HttpRouteRedirectResponse `pulumi:"redirect"`
-	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 	RequestHeaderModifier HttpRouteHeaderModifierResponse `pulumi:"requestHeaderModifier"`
 	// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
 	RequestMirrorPolicy HttpRouteRequestMirrorPolicyResponse `pulumi:"requestMirrorPolicy"`
-	// The specification for modifying the headers of a response prior to sending the response back to the client.
+	// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 	ResponseHeaderModifier HttpRouteHeaderModifierResponse `pulumi:"responseHeaderModifier"`
 	// Specifies the retry policy associated with this route.
 	RetryPolicy HttpRouteRetryPolicyResponse `pulumi:"retryPolicy"`
+	// Optional. Specifies cookie-based stateful session affinity.
+	StatefulSessionAffinity HttpRouteStatefulSessionAffinityPolicyResponse `pulumi:"statefulSessionAffinity"`
 	// Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
 	Timeout string `pulumi:"timeout"`
 	// The specification for rewrite URL before forwarding requests to the destination.
@@ -6665,7 +7491,7 @@ func (o HttpRouteRouteActionResponseOutput) Redirect() HttpRouteRedirectResponse
 	return o.ApplyT(func(v HttpRouteRouteActionResponse) HttpRouteRedirectResponse { return v.Redirect }).(HttpRouteRedirectResponseOutput)
 }
 
-// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 func (o HttpRouteRouteActionResponseOutput) RequestHeaderModifier() HttpRouteHeaderModifierResponseOutput {
 	return o.ApplyT(func(v HttpRouteRouteActionResponse) HttpRouteHeaderModifierResponse { return v.RequestHeaderModifier }).(HttpRouteHeaderModifierResponseOutput)
 }
@@ -6677,7 +7503,7 @@ func (o HttpRouteRouteActionResponseOutput) RequestMirrorPolicy() HttpRouteReque
 	}).(HttpRouteRequestMirrorPolicyResponseOutput)
 }
 
-// The specification for modifying the headers of a response prior to sending the response back to the client.
+// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
 func (o HttpRouteRouteActionResponseOutput) ResponseHeaderModifier() HttpRouteHeaderModifierResponseOutput {
 	return o.ApplyT(func(v HttpRouteRouteActionResponse) HttpRouteHeaderModifierResponse { return v.ResponseHeaderModifier }).(HttpRouteHeaderModifierResponseOutput)
 }
@@ -6685,6 +7511,13 @@ func (o HttpRouteRouteActionResponseOutput) ResponseHeaderModifier() HttpRouteHe
 // Specifies the retry policy associated with this route.
 func (o HttpRouteRouteActionResponseOutput) RetryPolicy() HttpRouteRetryPolicyResponseOutput {
 	return o.ApplyT(func(v HttpRouteRouteActionResponse) HttpRouteRetryPolicyResponse { return v.RetryPolicy }).(HttpRouteRetryPolicyResponseOutput)
+}
+
+// Optional. Specifies cookie-based stateful session affinity.
+func (o HttpRouteRouteActionResponseOutput) StatefulSessionAffinity() HttpRouteStatefulSessionAffinityPolicyResponseOutput {
+	return o.ApplyT(func(v HttpRouteRouteActionResponse) HttpRouteStatefulSessionAffinityPolicyResponse {
+		return v.StatefulSessionAffinity
+	}).(HttpRouteStatefulSessionAffinityPolicyResponseOutput)
 }
 
 // Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
@@ -7155,6 +7988,202 @@ func (o HttpRouteRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRout
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRouteRuleResponse {
 		return vs[0].([]HttpRouteRouteRuleResponse)[vs[1].(int)]
 	}).(HttpRouteRouteRuleResponseOutput)
+}
+
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type HttpRouteStatefulSessionAffinityPolicy struct {
+	// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+	CookieTtl string `pulumi:"cookieTtl"`
+}
+
+// HttpRouteStatefulSessionAffinityPolicyInput is an input type that accepts HttpRouteStatefulSessionAffinityPolicyArgs and HttpRouteStatefulSessionAffinityPolicyOutput values.
+// You can construct a concrete instance of `HttpRouteStatefulSessionAffinityPolicyInput` via:
+//
+//	HttpRouteStatefulSessionAffinityPolicyArgs{...}
+type HttpRouteStatefulSessionAffinityPolicyInput interface {
+	pulumi.Input
+
+	ToHttpRouteStatefulSessionAffinityPolicyOutput() HttpRouteStatefulSessionAffinityPolicyOutput
+	ToHttpRouteStatefulSessionAffinityPolicyOutputWithContext(context.Context) HttpRouteStatefulSessionAffinityPolicyOutput
+}
+
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type HttpRouteStatefulSessionAffinityPolicyArgs struct {
+	// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+	CookieTtl pulumi.StringInput `pulumi:"cookieTtl"`
+}
+
+func (HttpRouteStatefulSessionAffinityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteStatefulSessionAffinityPolicy)(nil)).Elem()
+}
+
+func (i HttpRouteStatefulSessionAffinityPolicyArgs) ToHttpRouteStatefulSessionAffinityPolicyOutput() HttpRouteStatefulSessionAffinityPolicyOutput {
+	return i.ToHttpRouteStatefulSessionAffinityPolicyOutputWithContext(context.Background())
+}
+
+func (i HttpRouteStatefulSessionAffinityPolicyArgs) ToHttpRouteStatefulSessionAffinityPolicyOutputWithContext(ctx context.Context) HttpRouteStatefulSessionAffinityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteStatefulSessionAffinityPolicyOutput)
+}
+
+func (i HttpRouteStatefulSessionAffinityPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteStatefulSessionAffinityPolicy] {
+	return pulumix.Output[HttpRouteStatefulSessionAffinityPolicy]{
+		OutputState: i.ToHttpRouteStatefulSessionAffinityPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i HttpRouteStatefulSessionAffinityPolicyArgs) ToHttpRouteStatefulSessionAffinityPolicyPtrOutput() HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return i.ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteStatefulSessionAffinityPolicyArgs) ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteStatefulSessionAffinityPolicyOutput).ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx)
+}
+
+// HttpRouteStatefulSessionAffinityPolicyPtrInput is an input type that accepts HttpRouteStatefulSessionAffinityPolicyArgs, HttpRouteStatefulSessionAffinityPolicyPtr and HttpRouteStatefulSessionAffinityPolicyPtrOutput values.
+// You can construct a concrete instance of `HttpRouteStatefulSessionAffinityPolicyPtrInput` via:
+//
+//	        HttpRouteStatefulSessionAffinityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteStatefulSessionAffinityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteStatefulSessionAffinityPolicyPtrOutput() HttpRouteStatefulSessionAffinityPolicyPtrOutput
+	ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Context) HttpRouteStatefulSessionAffinityPolicyPtrOutput
+}
+
+type httpRouteStatefulSessionAffinityPolicyPtrType HttpRouteStatefulSessionAffinityPolicyArgs
+
+func HttpRouteStatefulSessionAffinityPolicyPtr(v *HttpRouteStatefulSessionAffinityPolicyArgs) HttpRouteStatefulSessionAffinityPolicyPtrInput {
+	return (*httpRouteStatefulSessionAffinityPolicyPtrType)(v)
+}
+
+func (*httpRouteStatefulSessionAffinityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteStatefulSessionAffinityPolicy)(nil)).Elem()
+}
+
+func (i *httpRouteStatefulSessionAffinityPolicyPtrType) ToHttpRouteStatefulSessionAffinityPolicyPtrOutput() HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return i.ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteStatefulSessionAffinityPolicyPtrType) ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteStatefulSessionAffinityPolicyPtrOutput)
+}
+
+func (i *httpRouteStatefulSessionAffinityPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteStatefulSessionAffinityPolicy] {
+	return pulumix.Output[*HttpRouteStatefulSessionAffinityPolicy]{
+		OutputState: i.ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type HttpRouteStatefulSessionAffinityPolicyOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteStatefulSessionAffinityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteStatefulSessionAffinityPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyOutput) ToHttpRouteStatefulSessionAffinityPolicyOutput() HttpRouteStatefulSessionAffinityPolicyOutput {
+	return o
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyOutput) ToHttpRouteStatefulSessionAffinityPolicyOutputWithContext(ctx context.Context) HttpRouteStatefulSessionAffinityPolicyOutput {
+	return o
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyOutput) ToHttpRouteStatefulSessionAffinityPolicyPtrOutput() HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o.ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyOutput) ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteStatefulSessionAffinityPolicy) *HttpRouteStatefulSessionAffinityPolicy {
+		return &v
+	}).(HttpRouteStatefulSessionAffinityPolicyPtrOutput)
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteStatefulSessionAffinityPolicy] {
+	return pulumix.Output[HttpRouteStatefulSessionAffinityPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+func (o HttpRouteStatefulSessionAffinityPolicyOutput) CookieTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteStatefulSessionAffinityPolicy) string { return v.CookieTtl }).(pulumi.StringOutput)
+}
+
+type HttpRouteStatefulSessionAffinityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteStatefulSessionAffinityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteStatefulSessionAffinityPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyPtrOutput) ToHttpRouteStatefulSessionAffinityPolicyPtrOutput() HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyPtrOutput) ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) HttpRouteStatefulSessionAffinityPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteStatefulSessionAffinityPolicy] {
+	return pulumix.Output[*HttpRouteStatefulSessionAffinityPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyPtrOutput) Elem() HttpRouteStatefulSessionAffinityPolicyOutput {
+	return o.ApplyT(func(v *HttpRouteStatefulSessionAffinityPolicy) HttpRouteStatefulSessionAffinityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteStatefulSessionAffinityPolicy
+		return ret
+	}).(HttpRouteStatefulSessionAffinityPolicyOutput)
+}
+
+// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+func (o HttpRouteStatefulSessionAffinityPolicyPtrOutput) CookieTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteStatefulSessionAffinityPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CookieTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type HttpRouteStatefulSessionAffinityPolicyResponse struct {
+	// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+	CookieTtl string `pulumi:"cookieTtl"`
+}
+
+// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+type HttpRouteStatefulSessionAffinityPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteStatefulSessionAffinityPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteStatefulSessionAffinityPolicyResponse)(nil)).Elem()
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyResponseOutput) ToHttpRouteStatefulSessionAffinityPolicyResponseOutput() HttpRouteStatefulSessionAffinityPolicyResponseOutput {
+	return o
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyResponseOutput) ToHttpRouteStatefulSessionAffinityPolicyResponseOutputWithContext(ctx context.Context) HttpRouteStatefulSessionAffinityPolicyResponseOutput {
+	return o
+}
+
+func (o HttpRouteStatefulSessionAffinityPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteStatefulSessionAffinityPolicyResponse] {
+	return pulumix.Output[HttpRouteStatefulSessionAffinityPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+func (o HttpRouteStatefulSessionAffinityPolicyResponseOutput) CookieTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteStatefulSessionAffinityPolicyResponse) string { return v.CookieTtl }).(pulumi.StringOutput)
 }
 
 // The specification for modifying the URL of the request, prior to forwarding the request to the destination.
@@ -7801,6 +8830,398 @@ func (o MetadataLabelsResponseArrayOutput) Index(i pulumi.IntInput) MetadataLabe
 	}).(MetadataLabelsResponseOutput)
 }
 
+// Option to specify if an unhealthy IG/NEG should be considered for global load balancing and traffic routing.
+type ServiceLbPolicyAutoCapacityDrain struct {
+	// Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the IG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+	Enable *bool `pulumi:"enable"`
+}
+
+// ServiceLbPolicyAutoCapacityDrainInput is an input type that accepts ServiceLbPolicyAutoCapacityDrainArgs and ServiceLbPolicyAutoCapacityDrainOutput values.
+// You can construct a concrete instance of `ServiceLbPolicyAutoCapacityDrainInput` via:
+//
+//	ServiceLbPolicyAutoCapacityDrainArgs{...}
+type ServiceLbPolicyAutoCapacityDrainInput interface {
+	pulumi.Input
+
+	ToServiceLbPolicyAutoCapacityDrainOutput() ServiceLbPolicyAutoCapacityDrainOutput
+	ToServiceLbPolicyAutoCapacityDrainOutputWithContext(context.Context) ServiceLbPolicyAutoCapacityDrainOutput
+}
+
+// Option to specify if an unhealthy IG/NEG should be considered for global load balancing and traffic routing.
+type ServiceLbPolicyAutoCapacityDrainArgs struct {
+	// Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the IG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+}
+
+func (ServiceLbPolicyAutoCapacityDrainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPolicyAutoCapacityDrain)(nil)).Elem()
+}
+
+func (i ServiceLbPolicyAutoCapacityDrainArgs) ToServiceLbPolicyAutoCapacityDrainOutput() ServiceLbPolicyAutoCapacityDrainOutput {
+	return i.ToServiceLbPolicyAutoCapacityDrainOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPolicyAutoCapacityDrainArgs) ToServiceLbPolicyAutoCapacityDrainOutputWithContext(ctx context.Context) ServiceLbPolicyAutoCapacityDrainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPolicyAutoCapacityDrainOutput)
+}
+
+func (i ServiceLbPolicyAutoCapacityDrainArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceLbPolicyAutoCapacityDrain] {
+	return pulumix.Output[ServiceLbPolicyAutoCapacityDrain]{
+		OutputState: i.ToServiceLbPolicyAutoCapacityDrainOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ServiceLbPolicyAutoCapacityDrainArgs) ToServiceLbPolicyAutoCapacityDrainPtrOutput() ServiceLbPolicyAutoCapacityDrainPtrOutput {
+	return i.ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPolicyAutoCapacityDrainArgs) ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(ctx context.Context) ServiceLbPolicyAutoCapacityDrainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPolicyAutoCapacityDrainOutput).ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(ctx)
+}
+
+// ServiceLbPolicyAutoCapacityDrainPtrInput is an input type that accepts ServiceLbPolicyAutoCapacityDrainArgs, ServiceLbPolicyAutoCapacityDrainPtr and ServiceLbPolicyAutoCapacityDrainPtrOutput values.
+// You can construct a concrete instance of `ServiceLbPolicyAutoCapacityDrainPtrInput` via:
+//
+//	        ServiceLbPolicyAutoCapacityDrainArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceLbPolicyAutoCapacityDrainPtrInput interface {
+	pulumi.Input
+
+	ToServiceLbPolicyAutoCapacityDrainPtrOutput() ServiceLbPolicyAutoCapacityDrainPtrOutput
+	ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(context.Context) ServiceLbPolicyAutoCapacityDrainPtrOutput
+}
+
+type serviceLbPolicyAutoCapacityDrainPtrType ServiceLbPolicyAutoCapacityDrainArgs
+
+func ServiceLbPolicyAutoCapacityDrainPtr(v *ServiceLbPolicyAutoCapacityDrainArgs) ServiceLbPolicyAutoCapacityDrainPtrInput {
+	return (*serviceLbPolicyAutoCapacityDrainPtrType)(v)
+}
+
+func (*serviceLbPolicyAutoCapacityDrainPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPolicyAutoCapacityDrain)(nil)).Elem()
+}
+
+func (i *serviceLbPolicyAutoCapacityDrainPtrType) ToServiceLbPolicyAutoCapacityDrainPtrOutput() ServiceLbPolicyAutoCapacityDrainPtrOutput {
+	return i.ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceLbPolicyAutoCapacityDrainPtrType) ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(ctx context.Context) ServiceLbPolicyAutoCapacityDrainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPolicyAutoCapacityDrainPtrOutput)
+}
+
+func (i *serviceLbPolicyAutoCapacityDrainPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicyAutoCapacityDrain] {
+	return pulumix.Output[*ServiceLbPolicyAutoCapacityDrain]{
+		OutputState: i.ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Option to specify if an unhealthy IG/NEG should be considered for global load balancing and traffic routing.
+type ServiceLbPolicyAutoCapacityDrainOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPolicyAutoCapacityDrainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPolicyAutoCapacityDrain)(nil)).Elem()
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainOutput) ToServiceLbPolicyAutoCapacityDrainOutput() ServiceLbPolicyAutoCapacityDrainOutput {
+	return o
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainOutput) ToServiceLbPolicyAutoCapacityDrainOutputWithContext(ctx context.Context) ServiceLbPolicyAutoCapacityDrainOutput {
+	return o
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainOutput) ToServiceLbPolicyAutoCapacityDrainPtrOutput() ServiceLbPolicyAutoCapacityDrainPtrOutput {
+	return o.ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainOutput) ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(ctx context.Context) ServiceLbPolicyAutoCapacityDrainPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLbPolicyAutoCapacityDrain) *ServiceLbPolicyAutoCapacityDrain {
+		return &v
+	}).(ServiceLbPolicyAutoCapacityDrainPtrOutput)
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLbPolicyAutoCapacityDrain] {
+	return pulumix.Output[ServiceLbPolicyAutoCapacityDrain]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the IG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+func (o ServiceLbPolicyAutoCapacityDrainOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceLbPolicyAutoCapacityDrain) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+type ServiceLbPolicyAutoCapacityDrainPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPolicyAutoCapacityDrainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPolicyAutoCapacityDrain)(nil)).Elem()
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainPtrOutput) ToServiceLbPolicyAutoCapacityDrainPtrOutput() ServiceLbPolicyAutoCapacityDrainPtrOutput {
+	return o
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainPtrOutput) ToServiceLbPolicyAutoCapacityDrainPtrOutputWithContext(ctx context.Context) ServiceLbPolicyAutoCapacityDrainPtrOutput {
+	return o
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicyAutoCapacityDrain] {
+	return pulumix.Output[*ServiceLbPolicyAutoCapacityDrain]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainPtrOutput) Elem() ServiceLbPolicyAutoCapacityDrainOutput {
+	return o.ApplyT(func(v *ServiceLbPolicyAutoCapacityDrain) ServiceLbPolicyAutoCapacityDrain {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLbPolicyAutoCapacityDrain
+		return ret
+	}).(ServiceLbPolicyAutoCapacityDrainOutput)
+}
+
+// Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the IG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+func (o ServiceLbPolicyAutoCapacityDrainPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceLbPolicyAutoCapacityDrain) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Option to specify if an unhealthy IG/NEG should be considered for global load balancing and traffic routing.
+type ServiceLbPolicyAutoCapacityDrainResponse struct {
+	// Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the IG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+	Enable bool `pulumi:"enable"`
+}
+
+// Option to specify if an unhealthy IG/NEG should be considered for global load balancing and traffic routing.
+type ServiceLbPolicyAutoCapacityDrainResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPolicyAutoCapacityDrainResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPolicyAutoCapacityDrainResponse)(nil)).Elem()
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainResponseOutput) ToServiceLbPolicyAutoCapacityDrainResponseOutput() ServiceLbPolicyAutoCapacityDrainResponseOutput {
+	return o
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainResponseOutput) ToServiceLbPolicyAutoCapacityDrainResponseOutputWithContext(ctx context.Context) ServiceLbPolicyAutoCapacityDrainResponseOutput {
+	return o
+}
+
+func (o ServiceLbPolicyAutoCapacityDrainResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLbPolicyAutoCapacityDrainResponse] {
+	return pulumix.Output[ServiceLbPolicyAutoCapacityDrainResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the IG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+func (o ServiceLbPolicyAutoCapacityDrainResponseOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v ServiceLbPolicyAutoCapacityDrainResponse) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+type ServiceLbPolicyFailoverConfig struct {
+	// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+	FailoverHealthThreshold *int `pulumi:"failoverHealthThreshold"`
+}
+
+// ServiceLbPolicyFailoverConfigInput is an input type that accepts ServiceLbPolicyFailoverConfigArgs and ServiceLbPolicyFailoverConfigOutput values.
+// You can construct a concrete instance of `ServiceLbPolicyFailoverConfigInput` via:
+//
+//	ServiceLbPolicyFailoverConfigArgs{...}
+type ServiceLbPolicyFailoverConfigInput interface {
+	pulumi.Input
+
+	ToServiceLbPolicyFailoverConfigOutput() ServiceLbPolicyFailoverConfigOutput
+	ToServiceLbPolicyFailoverConfigOutputWithContext(context.Context) ServiceLbPolicyFailoverConfigOutput
+}
+
+// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+type ServiceLbPolicyFailoverConfigArgs struct {
+	// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+	FailoverHealthThreshold pulumi.IntPtrInput `pulumi:"failoverHealthThreshold"`
+}
+
+func (ServiceLbPolicyFailoverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPolicyFailoverConfig)(nil)).Elem()
+}
+
+func (i ServiceLbPolicyFailoverConfigArgs) ToServiceLbPolicyFailoverConfigOutput() ServiceLbPolicyFailoverConfigOutput {
+	return i.ToServiceLbPolicyFailoverConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPolicyFailoverConfigArgs) ToServiceLbPolicyFailoverConfigOutputWithContext(ctx context.Context) ServiceLbPolicyFailoverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPolicyFailoverConfigOutput)
+}
+
+func (i ServiceLbPolicyFailoverConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceLbPolicyFailoverConfig] {
+	return pulumix.Output[ServiceLbPolicyFailoverConfig]{
+		OutputState: i.ToServiceLbPolicyFailoverConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ServiceLbPolicyFailoverConfigArgs) ToServiceLbPolicyFailoverConfigPtrOutput() ServiceLbPolicyFailoverConfigPtrOutput {
+	return i.ToServiceLbPolicyFailoverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPolicyFailoverConfigArgs) ToServiceLbPolicyFailoverConfigPtrOutputWithContext(ctx context.Context) ServiceLbPolicyFailoverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPolicyFailoverConfigOutput).ToServiceLbPolicyFailoverConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceLbPolicyFailoverConfigPtrInput is an input type that accepts ServiceLbPolicyFailoverConfigArgs, ServiceLbPolicyFailoverConfigPtr and ServiceLbPolicyFailoverConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceLbPolicyFailoverConfigPtrInput` via:
+//
+//	        ServiceLbPolicyFailoverConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceLbPolicyFailoverConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceLbPolicyFailoverConfigPtrOutput() ServiceLbPolicyFailoverConfigPtrOutput
+	ToServiceLbPolicyFailoverConfigPtrOutputWithContext(context.Context) ServiceLbPolicyFailoverConfigPtrOutput
+}
+
+type serviceLbPolicyFailoverConfigPtrType ServiceLbPolicyFailoverConfigArgs
+
+func ServiceLbPolicyFailoverConfigPtr(v *ServiceLbPolicyFailoverConfigArgs) ServiceLbPolicyFailoverConfigPtrInput {
+	return (*serviceLbPolicyFailoverConfigPtrType)(v)
+}
+
+func (*serviceLbPolicyFailoverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPolicyFailoverConfig)(nil)).Elem()
+}
+
+func (i *serviceLbPolicyFailoverConfigPtrType) ToServiceLbPolicyFailoverConfigPtrOutput() ServiceLbPolicyFailoverConfigPtrOutput {
+	return i.ToServiceLbPolicyFailoverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceLbPolicyFailoverConfigPtrType) ToServiceLbPolicyFailoverConfigPtrOutputWithContext(ctx context.Context) ServiceLbPolicyFailoverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPolicyFailoverConfigPtrOutput)
+}
+
+func (i *serviceLbPolicyFailoverConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicyFailoverConfig] {
+	return pulumix.Output[*ServiceLbPolicyFailoverConfig]{
+		OutputState: i.ToServiceLbPolicyFailoverConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+type ServiceLbPolicyFailoverConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPolicyFailoverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPolicyFailoverConfig)(nil)).Elem()
+}
+
+func (o ServiceLbPolicyFailoverConfigOutput) ToServiceLbPolicyFailoverConfigOutput() ServiceLbPolicyFailoverConfigOutput {
+	return o
+}
+
+func (o ServiceLbPolicyFailoverConfigOutput) ToServiceLbPolicyFailoverConfigOutputWithContext(ctx context.Context) ServiceLbPolicyFailoverConfigOutput {
+	return o
+}
+
+func (o ServiceLbPolicyFailoverConfigOutput) ToServiceLbPolicyFailoverConfigPtrOutput() ServiceLbPolicyFailoverConfigPtrOutput {
+	return o.ToServiceLbPolicyFailoverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLbPolicyFailoverConfigOutput) ToServiceLbPolicyFailoverConfigPtrOutputWithContext(ctx context.Context) ServiceLbPolicyFailoverConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLbPolicyFailoverConfig) *ServiceLbPolicyFailoverConfig {
+		return &v
+	}).(ServiceLbPolicyFailoverConfigPtrOutput)
+}
+
+func (o ServiceLbPolicyFailoverConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLbPolicyFailoverConfig] {
+	return pulumix.Output[ServiceLbPolicyFailoverConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+func (o ServiceLbPolicyFailoverConfigOutput) FailoverHealthThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceLbPolicyFailoverConfig) *int { return v.FailoverHealthThreshold }).(pulumi.IntPtrOutput)
+}
+
+type ServiceLbPolicyFailoverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPolicyFailoverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPolicyFailoverConfig)(nil)).Elem()
+}
+
+func (o ServiceLbPolicyFailoverConfigPtrOutput) ToServiceLbPolicyFailoverConfigPtrOutput() ServiceLbPolicyFailoverConfigPtrOutput {
+	return o
+}
+
+func (o ServiceLbPolicyFailoverConfigPtrOutput) ToServiceLbPolicyFailoverConfigPtrOutputWithContext(ctx context.Context) ServiceLbPolicyFailoverConfigPtrOutput {
+	return o
+}
+
+func (o ServiceLbPolicyFailoverConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicyFailoverConfig] {
+	return pulumix.Output[*ServiceLbPolicyFailoverConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceLbPolicyFailoverConfigPtrOutput) Elem() ServiceLbPolicyFailoverConfigOutput {
+	return o.ApplyT(func(v *ServiceLbPolicyFailoverConfig) ServiceLbPolicyFailoverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLbPolicyFailoverConfig
+		return ret
+	}).(ServiceLbPolicyFailoverConfigOutput)
+}
+
+// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+func (o ServiceLbPolicyFailoverConfigPtrOutput) FailoverHealthThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceLbPolicyFailoverConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverHealthThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+type ServiceLbPolicyFailoverConfigResponse struct {
+	// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+	FailoverHealthThreshold int `pulumi:"failoverHealthThreshold"`
+}
+
+// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+type ServiceLbPolicyFailoverConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPolicyFailoverConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPolicyFailoverConfigResponse)(nil)).Elem()
+}
+
+func (o ServiceLbPolicyFailoverConfigResponseOutput) ToServiceLbPolicyFailoverConfigResponseOutput() ServiceLbPolicyFailoverConfigResponseOutput {
+	return o
+}
+
+func (o ServiceLbPolicyFailoverConfigResponseOutput) ToServiceLbPolicyFailoverConfigResponseOutputWithContext(ctx context.Context) ServiceLbPolicyFailoverConfigResponseOutput {
+	return o
+}
+
+func (o ServiceLbPolicyFailoverConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLbPolicyFailoverConfigResponse] {
+	return pulumix.Output[ServiceLbPolicyFailoverConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+func (o ServiceLbPolicyFailoverConfigResponseOutput) FailoverHealthThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceLbPolicyFailoverConfigResponse) int { return v.FailoverHealthThreshold }).(pulumi.IntOutput)
+}
+
 // The specifications for routing traffic and applying associated policies.
 type TcpRouteRouteAction struct {
 	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
@@ -7920,7 +9341,7 @@ func (o TcpRouteRouteActionResponseOutput) OriginalDestination() pulumi.BoolOutp
 type TcpRouteRouteDestination struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName string `pulumi:"serviceName"`
-	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -7939,7 +9360,7 @@ type TcpRouteRouteDestinationInput interface {
 type TcpRouteRouteDestinationArgs struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -8018,7 +9439,7 @@ func (o TcpRouteRouteDestinationOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v TcpRouteRouteDestination) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o TcpRouteRouteDestinationOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TcpRouteRouteDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -8053,7 +9474,7 @@ func (o TcpRouteRouteDestinationArrayOutput) Index(i pulumi.IntInput) TcpRouteRo
 type TcpRouteRouteDestinationResponse struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName string `pulumi:"serviceName"`
-	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight int `pulumi:"weight"`
 }
 
@@ -8083,7 +9504,7 @@ func (o TcpRouteRouteDestinationResponseOutput) ServiceName() pulumi.StringOutpu
 	return o.ApplyT(func(v TcpRouteRouteDestinationResponse) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o TcpRouteRouteDestinationResponseOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v TcpRouteRouteDestinationResponse) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -8613,7 +10034,7 @@ func (o TlsRouteRouteActionResponseOutput) Destinations() TlsRouteRouteDestinati
 type TlsRouteRouteDestination struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName string `pulumi:"serviceName"`
-	// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+	// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -8632,7 +10053,7 @@ type TlsRouteRouteDestinationInput interface {
 type TlsRouteRouteDestinationArgs struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+	// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -8711,7 +10132,7 @@ func (o TlsRouteRouteDestinationOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v TlsRouteRouteDestination) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
 func (o TlsRouteRouteDestinationOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TlsRouteRouteDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -8746,7 +10167,7 @@ func (o TlsRouteRouteDestinationArrayOutput) Index(i pulumi.IntInput) TlsRouteRo
 type TlsRouteRouteDestinationResponse struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName string `pulumi:"serviceName"`
-	// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+	// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
 	Weight int `pulumi:"weight"`
 }
 
@@ -8776,7 +10197,7 @@ func (o TlsRouteRouteDestinationResponseOutput) ServiceName() pulumi.StringOutpu
 	return o.ApplyT(func(v TlsRouteRouteDestinationResponse) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
 func (o TlsRouteRouteDestinationResponseOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v TlsRouteRouteDestinationResponse) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -9409,6 +10830,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherInput)(nil)).Elem(), EndpointMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainInput)(nil)).Elem(), ExtensionChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainArrayInput)(nil)).Elem(), ExtensionChainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainExtensionInput)(nil)).Elem(), ExtensionChainExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainExtensionArrayInput)(nil)).Elem(), ExtensionChainExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainMatchConditionInput)(nil)).Elem(), ExtensionChainMatchConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteDestinationInput)(nil)).Elem(), GrpcRouteDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteDestinationArrayInput)(nil)).Elem(), GrpcRouteDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteFaultInjectionPolicyInput)(nil)).Elem(), GrpcRouteFaultInjectionPolicyArgs{})
@@ -9428,6 +10854,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRouteMatchArrayInput)(nil)).Elem(), GrpcRouteRouteMatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRouteRuleInput)(nil)).Elem(), GrpcRouteRouteRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRouteRuleArrayInput)(nil)).Elem(), GrpcRouteRouteRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteStatefulSessionAffinityPolicyInput)(nil)).Elem(), GrpcRouteStatefulSessionAffinityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteStatefulSessionAffinityPolicyPtrInput)(nil)).Elem(), GrpcRouteStatefulSessionAffinityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteCorsPolicyInput)(nil)).Elem(), HttpRouteCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteCorsPolicyPtrInput)(nil)).Elem(), HttpRouteCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteDestinationInput)(nil)).Elem(), HttpRouteDestinationArgs{})
@@ -9459,12 +10887,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRouteMatchArrayInput)(nil)).Elem(), HttpRouteRouteMatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRouteRuleInput)(nil)).Elem(), HttpRouteRouteRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRouteRuleArrayInput)(nil)).Elem(), HttpRouteRouteRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteStatefulSessionAffinityPolicyInput)(nil)).Elem(), HttpRouteStatefulSessionAffinityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteStatefulSessionAffinityPolicyPtrInput)(nil)).Elem(), HttpRouteStatefulSessionAffinityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteURLRewriteInput)(nil)).Elem(), HttpRouteURLRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteURLRewritePtrInput)(nil)).Elem(), HttpRouteURLRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelMatcherInput)(nil)).Elem(), MetadataLabelMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelMatcherPtrInput)(nil)).Elem(), MetadataLabelMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelsInput)(nil)).Elem(), MetadataLabelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelsArrayInput)(nil)).Elem(), MetadataLabelsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPolicyAutoCapacityDrainInput)(nil)).Elem(), ServiceLbPolicyAutoCapacityDrainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPolicyAutoCapacityDrainPtrInput)(nil)).Elem(), ServiceLbPolicyAutoCapacityDrainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPolicyFailoverConfigInput)(nil)).Elem(), ServiceLbPolicyFailoverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPolicyFailoverConfigPtrInput)(nil)).Elem(), ServiceLbPolicyFailoverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRouteActionInput)(nil)).Elem(), TcpRouteRouteActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRouteDestinationInput)(nil)).Elem(), TcpRouteRouteDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRouteDestinationArrayInput)(nil)).Elem(), TcpRouteRouteDestinationArray{})
@@ -9498,6 +10932,16 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(ExtensionChainOutput{})
+	pulumi.RegisterOutputType(ExtensionChainArrayOutput{})
+	pulumi.RegisterOutputType(ExtensionChainExtensionOutput{})
+	pulumi.RegisterOutputType(ExtensionChainExtensionArrayOutput{})
+	pulumi.RegisterOutputType(ExtensionChainExtensionResponseOutput{})
+	pulumi.RegisterOutputType(ExtensionChainExtensionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ExtensionChainMatchConditionOutput{})
+	pulumi.RegisterOutputType(ExtensionChainMatchConditionResponseOutput{})
+	pulumi.RegisterOutputType(ExtensionChainResponseOutput{})
+	pulumi.RegisterOutputType(ExtensionChainResponseArrayOutput{})
 	pulumi.RegisterOutputType(GrpcRouteDestinationOutput{})
 	pulumi.RegisterOutputType(GrpcRouteDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GrpcRouteDestinationResponseOutput{})
@@ -9531,6 +10975,9 @@ func init() {
 	pulumi.RegisterOutputType(GrpcRouteRouteRuleArrayOutput{})
 	pulumi.RegisterOutputType(GrpcRouteRouteRuleResponseOutput{})
 	pulumi.RegisterOutputType(GrpcRouteRouteRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(GrpcRouteStatefulSessionAffinityPolicyOutput{})
+	pulumi.RegisterOutputType(GrpcRouteStatefulSessionAffinityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(GrpcRouteStatefulSessionAffinityPolicyResponseOutput{})
 	pulumi.RegisterOutputType(HttpRouteCorsPolicyOutput{})
 	pulumi.RegisterOutputType(HttpRouteCorsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteCorsPolicyResponseOutput{})
@@ -9582,6 +11029,9 @@ func init() {
 	pulumi.RegisterOutputType(HttpRouteRouteRuleArrayOutput{})
 	pulumi.RegisterOutputType(HttpRouteRouteRuleResponseOutput{})
 	pulumi.RegisterOutputType(HttpRouteRouteRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteStatefulSessionAffinityPolicyOutput{})
+	pulumi.RegisterOutputType(HttpRouteStatefulSessionAffinityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteStatefulSessionAffinityPolicyResponseOutput{})
 	pulumi.RegisterOutputType(HttpRouteURLRewriteOutput{})
 	pulumi.RegisterOutputType(HttpRouteURLRewritePtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteURLRewriteResponseOutput{})
@@ -9592,6 +11042,12 @@ func init() {
 	pulumi.RegisterOutputType(MetadataLabelsArrayOutput{})
 	pulumi.RegisterOutputType(MetadataLabelsResponseOutput{})
 	pulumi.RegisterOutputType(MetadataLabelsResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceLbPolicyAutoCapacityDrainOutput{})
+	pulumi.RegisterOutputType(ServiceLbPolicyAutoCapacityDrainPtrOutput{})
+	pulumi.RegisterOutputType(ServiceLbPolicyAutoCapacityDrainResponseOutput{})
+	pulumi.RegisterOutputType(ServiceLbPolicyFailoverConfigOutput{})
+	pulumi.RegisterOutputType(ServiceLbPolicyFailoverConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceLbPolicyFailoverConfigResponseOutput{})
 	pulumi.RegisterOutputType(TcpRouteRouteActionOutput{})
 	pulumi.RegisterOutputType(TcpRouteRouteActionResponseOutput{})
 	pulumi.RegisterOutputType(TcpRouteRouteDestinationOutput{})

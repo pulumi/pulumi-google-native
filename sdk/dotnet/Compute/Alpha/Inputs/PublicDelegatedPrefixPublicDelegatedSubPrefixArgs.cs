@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
+        /// </summary>
+        [Input("allocatablePrefixLength")]
+        public Input<int>? AllocatablePrefixLength { get; set; }
+
+        /// <summary>
         /// Name of the project scoping this PublicDelegatedSubPrefix.
         /// </summary>
         [Input("delegateeProject")]
@@ -28,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+        /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
@@ -38,6 +44,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("isAddress")]
         public Input<bool>? IsAddress { get; set; }
+
+        /// <summary>
+        /// The PublicDelegatedSubPrefix mode for IPv6 only.
+        /// </summary>
+        [Input("mode")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.PublicDelegatedPrefixPublicDelegatedSubPrefixMode>? Mode { get; set; }
 
         /// <summary>
         /// The name of the sub public delegated prefix.

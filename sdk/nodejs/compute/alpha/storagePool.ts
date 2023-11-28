@@ -38,6 +38,10 @@ export class StoragePool extends pulumi.CustomResource {
     }
 
     /**
+     * Provisioning type of the byte capacity of the pool.
+     */
+    public readonly capacityProvisioningType!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -61,11 +65,19 @@ export class StoragePool extends pulumi.CustomResource {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+     */
+    public readonly performanceProvisioningType!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Provsioned IOPS of the storage pool.
      */
     public readonly provisionedIops!: pulumi.Output<string>;
+    /**
+     * Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+     */
+    public readonly provisionedThroughput!: pulumi.Output<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
@@ -91,9 +103,13 @@ export class StoragePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Type of the storage pool
+     * Status information for the storage pool resource.
      */
-    public readonly type!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.compute.alpha.StoragePoolResourceStatusResponse>;
+    /**
+     * Type of the storage pool.
+     */
+    public readonly storagePoolType!: pulumi.Output<string>;
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -107,14 +123,17 @@ export class StoragePool extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["capacityProvisioningType"] = args ? args.capacityProvisioningType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["performanceProvisioningType"] = args ? args.performanceProvisioningType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
+            resourceInputs["provisionedThroughput"] = args ? args.provisionedThroughput : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["sizeGb"] = args ? args.sizeGb : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["storagePoolType"] = args ? args.storagePoolType : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -123,22 +142,27 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
+            resourceInputs["capacityProvisioningType"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["performanceProvisioningType"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provisionedIops"] = undefined /*out*/;
+            resourceInputs["provisionedThroughput"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["sizeGb"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["storagePoolType"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -153,6 +177,10 @@ export class StoragePool extends pulumi.CustomResource {
  */
 export interface StoragePoolArgs {
     /**
+     * Provisioning type of the byte capacity of the pool.
+     */
+    capacityProvisioningType?: pulumi.Input<enums.compute.alpha.StoragePoolCapacityProvisioningType>;
+    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -164,11 +192,19 @@ export interface StoragePoolArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+     */
+    performanceProvisioningType?: pulumi.Input<enums.compute.alpha.StoragePoolPerformanceProvisioningType>;
     project?: pulumi.Input<string>;
     /**
      * Provsioned IOPS of the storage pool.
      */
     provisionedIops?: pulumi.Input<string>;
+    /**
+     * Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+     */
+    provisionedThroughput?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
@@ -178,8 +214,8 @@ export interface StoragePoolArgs {
      */
     sizeGb?: pulumi.Input<string>;
     /**
-     * Type of the storage pool
+     * Type of the storage pool.
      */
-    type?: pulumi.Input<enums.compute.alpha.StoragePoolType>;
+    storagePoolType?: pulumi.Input<string>;
     zone?: pulumi.Input<string>;
 }

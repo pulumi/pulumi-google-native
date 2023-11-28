@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly Outputs.CollapsibleGroupResponse CollapsibleGroup;
         /// <summary>
+        /// A widget that displays a list of error groups.
+        /// </summary>
+        public readonly Outputs.ErrorReportingPanelResponse ErrorReportingPanel;
+        /// <summary>
         /// A widget that shows list of incidents.
         /// </summary>
         public readonly Outputs.IncidentListResponse IncidentList;
@@ -36,6 +40,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// A widget that shows a stream of logs.
         /// </summary>
         public readonly Outputs.LogsPanelResponse LogsPanel;
+        /// <summary>
+        /// A widget that displays timeseries data as a pie chart.
+        /// </summary>
+        public readonly Outputs.PieChartResponse PieChart;
         /// <summary>
         /// A scorecard summarizing time series data.
         /// </summary>
@@ -65,9 +73,13 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.CollapsibleGroupResponse collapsibleGroup,
 
+            Outputs.ErrorReportingPanelResponse errorReportingPanel,
+
             Outputs.IncidentListResponse incidentList,
 
             Outputs.LogsPanelResponse logsPanel,
+
+            Outputs.PieChartResponse pieChart,
 
             Outputs.ScorecardResponse scorecard,
 
@@ -82,8 +94,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
             AlertChart = alertChart;
             Blank = blank;
             CollapsibleGroup = collapsibleGroup;
+            ErrorReportingPanel = errorReportingPanel;
             IncidentList = incidentList;
             LogsPanel = logsPanel;
+            PieChart = pieChart;
             Scorecard = scorecard;
             Text = text;
             TimeSeriesTable = timeSeriesTable;

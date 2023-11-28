@@ -25,7 +25,7 @@ class MeshArgs:
         The set of arguments for constructing a Mesh resource.
         :param pulumi.Input[str] mesh_id: Required. Short name of the Mesh resource to be created.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[int] interception_port: Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This will is applicable only for sidecar proxy deployments.
+        :param pulumi.Input[int] interception_port: Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Mesh resource.
         :param pulumi.Input[str] name: Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
         """
@@ -71,7 +71,7 @@ class MeshArgs:
     @pulumi.getter(name="interceptionPort")
     def interception_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This will is applicable only for sidecar proxy deployments.
+        Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
         """
         return pulumi.get(self, "interception_port")
 
@@ -141,7 +141,7 @@ class Mesh(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[int] interception_port: Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This will is applicable only for sidecar proxy deployments.
+        :param pulumi.Input[int] interception_port: Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Mesh resource.
         :param pulumi.Input[str] mesh_id: Required. Short name of the Mesh resource to be created.
         :param pulumi.Input[str] name: Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
@@ -254,7 +254,7 @@ class Mesh(pulumi.CustomResource):
     @pulumi.getter(name="interceptionPort")
     def interception_port(self) -> pulumi.Output[int]:
         """
-        Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This will is applicable only for sidecar proxy deployments.
+        Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
         """
         return pulumi.get(self, "interception_port")
 

@@ -34,6 +34,8 @@ type Function struct {
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
 	ServiceConfig ServiceConfigResponseOutput `pulumi:"serviceConfig"`
 	// State of the function.
@@ -42,6 +44,8 @@ type Function struct {
 	StateMessages GoogleCloudFunctionsV2alphaStateMessageResponseArrayOutput `pulumi:"stateMessages"`
 	// The last update timestamp of a Cloud Function.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The deployed url for the function.
+	Url pulumi.StringOutput `pulumi:"url"`
 }
 
 // NewFunction registers a new resource with the given unique name, arguments, and options.
@@ -232,6 +236,11 @@ func (o FunctionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Reserved for future use.
+func (o FunctionOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Function) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
 // Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
 func (o FunctionOutput) ServiceConfig() ServiceConfigResponseOutput {
 	return o.ApplyT(func(v *Function) ServiceConfigResponseOutput { return v.ServiceConfig }).(ServiceConfigResponseOutput)
@@ -250,6 +259,11 @@ func (o FunctionOutput) StateMessages() GoogleCloudFunctionsV2alphaStateMessageR
 // The last update timestamp of a Cloud Function.
 func (o FunctionOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The deployed url for the function.
+func (o FunctionOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 func init() {

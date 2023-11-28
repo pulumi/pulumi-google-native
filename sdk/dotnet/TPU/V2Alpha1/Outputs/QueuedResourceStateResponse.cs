@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// The initiator of the QueuedResources's current state.
+        /// </summary>
+        public readonly string StateInitiator;
+        /// <summary>
         /// Further data for the suspended state.
         /// </summary>
         public readonly Outputs.SuspendedDataResponse SuspendedData;
@@ -69,6 +73,8 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
 
             string state,
 
+            string stateInitiator,
+
             Outputs.SuspendedDataResponse suspendedData,
 
             Outputs.SuspendingDataResponse suspendingData)
@@ -80,6 +86,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
             FailedData = failedData;
             ProvisioningData = provisioningData;
             State = state;
+            StateInitiator = stateInitiator;
             SuspendedData = suspendedData;
             SuspendingData = suspendingData;
         }

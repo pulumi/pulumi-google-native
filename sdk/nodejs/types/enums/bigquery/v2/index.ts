@@ -3,6 +3,9 @@
 
 
 export const ArgumentArgumentKind = {
+    /**
+     * Default value.
+     */
     ArgumentKindUnspecified: "ARGUMENT_KIND_UNSPECIFIED",
     /**
      * The argument is a variable with fully specified type, which can be a struct or an array, but not a table.
@@ -20,6 +23,9 @@ export const ArgumentArgumentKind = {
 export type ArgumentArgumentKind = (typeof ArgumentArgumentKind)[keyof typeof ArgumentArgumentKind];
 
 export const ArgumentMode = {
+    /**
+     * Default value.
+     */
     ModeUnspecified: "MODE_UNSPECIFIED",
     /**
      * The argument is input-only.
@@ -81,6 +87,22 @@ export const DatasetAccessEntryTargetTypesItem = {
 
 export type DatasetAccessEntryTargetTypesItem = (typeof DatasetAccessEntryTargetTypesItem)[keyof typeof DatasetAccessEntryTargetTypesItem];
 
+export const RoutineDataGovernanceType = {
+    /**
+     * The data governance type is unspecified.
+     */
+    DataGovernanceTypeUnspecified: "DATA_GOVERNANCE_TYPE_UNSPECIFIED",
+    /**
+     * The data governance type is data masking.
+     */
+    DataMasking: "DATA_MASKING",
+} as const;
+
+/**
+ * Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+ */
+export type RoutineDataGovernanceType = (typeof RoutineDataGovernanceType)[keyof typeof RoutineDataGovernanceType];
+
 export const RoutineDeterminismLevel = {
     /**
      * The determinism of the UDF is unspecified.
@@ -102,6 +124,9 @@ export const RoutineDeterminismLevel = {
 export type RoutineDeterminismLevel = (typeof RoutineDeterminismLevel)[keyof typeof RoutineDeterminismLevel];
 
 export const RoutineLanguage = {
+    /**
+     * Default value.
+     */
     LanguageUnspecified: "LANGUAGE_UNSPECIFIED",
     /**
      * SQL language.
@@ -131,6 +156,9 @@ export const RoutineLanguage = {
 export type RoutineLanguage = (typeof RoutineLanguage)[keyof typeof RoutineLanguage];
 
 export const RoutineRoutineType = {
+    /**
+     * Default value.
+     */
     RoutineTypeUnspecified: "ROUTINE_TYPE_UNSPECIFIED",
     /**
      * Non-built-in persistent scalar function.
@@ -154,6 +182,26 @@ export const RoutineRoutineType = {
  * Required. The type of routine.
  */
 export type RoutineRoutineType = (typeof RoutineRoutineType)[keyof typeof RoutineRoutineType];
+
+export const RoutineSecurityMode = {
+    /**
+     * The security mode of the routine is unspecified.
+     */
+    SecurityModeUnspecified: "SECURITY_MODE_UNSPECIFIED",
+    /**
+     * The routine is to be executed with the privileges of the user who defines it.
+     */
+    Definer: "DEFINER",
+    /**
+     * The routine is to be executed with the privileges of the user who invokes it.
+     */
+    Invoker: "INVOKER",
+} as const;
+
+/**
+ * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+ */
+export type RoutineSecurityMode = (typeof RoutineSecurityMode)[keyof typeof RoutineSecurityMode];
 
 export const StandardSqlDataTypeTypeKind = {
     /**
@@ -224,6 +272,10 @@ export const StandardSqlDataTypeTypeKind = {
      * Encoded as a list with fields of type Type.struct_type[i]. List is used because a JSON object cannot have duplicate field names.
      */
     Struct: "STRUCT",
+    /**
+     * Encoded as a pair with types matching range_element_type. Pairs must begin with "[", end with ")", and be separated by ", ".
+     */
+    Range: "RANGE",
 } as const;
 
 /**

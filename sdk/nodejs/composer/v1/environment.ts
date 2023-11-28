@@ -56,9 +56,17 @@ export class Environment extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
      * The current state of the environment.
      */
     public readonly state!: pulumi.Output<string>;
+    /**
+     * Optional. Storage configuration for this environment.
+     */
+    public readonly storageConfig!: pulumi.Output<outputs.composer.v1.StorageConfigResponse>;
     /**
      * The time at which this environment was last modified.
      */
@@ -85,7 +93,9 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["storageConfig"] = args ? args.storageConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         } else {
@@ -95,7 +105,9 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["storageConfig"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         }
@@ -128,4 +140,8 @@ export interface EnvironmentArgs {
      * The current state of the environment.
      */
     state?: pulumi.Input<enums.composer.v1.EnvironmentState>;
+    /**
+     * Optional. Storage configuration for this environment.
+     */
+    storageConfig?: pulumi.Input<inputs.composer.v1.StorageConfigArgs>;
 }

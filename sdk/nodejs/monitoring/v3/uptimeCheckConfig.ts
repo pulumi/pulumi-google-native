@@ -66,7 +66,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly monitoredResource!: pulumi.Output<outputs.monitoring.v3.MonitoredResourceResponse>;
     /**
-     * A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+     * Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -82,6 +82,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
      */
     public readonly selectedRegions!: pulumi.Output<string[]>;
+    /**
+     * Specifies a Synthetic Monitor to invoke.
+     */
+    public readonly syntheticMonitor!: pulumi.Output<outputs.monitoring.v3.SyntheticMonitorTargetResponse>;
     /**
      * Contains information needed to make a TCP check.
      */
@@ -118,6 +122,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["resourceGroup"] = args ? args.resourceGroup : undefined;
             resourceInputs["selectedRegions"] = args ? args.selectedRegions : undefined;
+            resourceInputs["syntheticMonitor"] = args ? args.syntheticMonitor : undefined;
             resourceInputs["tcpCheck"] = args ? args.tcpCheck : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
             resourceInputs["userLabels"] = args ? args.userLabels : undefined;
@@ -134,6 +139,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resourceGroup"] = undefined /*out*/;
             resourceInputs["selectedRegions"] = undefined /*out*/;
+            resourceInputs["syntheticMonitor"] = undefined /*out*/;
             resourceInputs["tcpCheck"] = undefined /*out*/;
             resourceInputs["timeout"] = undefined /*out*/;
             resourceInputs["userLabels"] = undefined /*out*/;
@@ -178,7 +184,7 @@ export interface UptimeCheckConfigArgs {
      */
     monitoredResource?: pulumi.Input<inputs.monitoring.v3.MonitoredResourceArgs>;
     /**
-     * A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+     * Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
      */
     name?: pulumi.Input<string>;
     /**
@@ -194,6 +200,10 @@ export interface UptimeCheckConfigArgs {
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
      */
     selectedRegions?: pulumi.Input<pulumi.Input<enums.monitoring.v3.UptimeCheckConfigSelectedRegionsItem>[]>;
+    /**
+     * Specifies a Synthetic Monitor to invoke.
+     */
+    syntheticMonitor?: pulumi.Input<inputs.monitoring.v3.SyntheticMonitorTargetArgs>;
     /**
      * Contains information needed to make a TCP check.
      */

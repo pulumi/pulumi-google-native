@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly string Profile;
         /// <summary>
-        /// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+        /// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
         /// </summary>
         public readonly string RateControlMode;
         /// <summary>

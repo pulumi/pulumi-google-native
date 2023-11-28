@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly string HttpRoute;
         /// <summary>
+        /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+        /// </summary>
+        public readonly string RouteUpdateWaitTime;
+        /// <summary>
         /// Name of the Kubernetes Service.
         /// </summary>
         public readonly string Service;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
             string httpRoute,
 
+            string routeUpdateWaitTime,
+
             string service)
         {
             Deployment = deployment;
             HttpRoute = httpRoute;
+            RouteUpdateWaitTime = routeUpdateWaitTime;
             Service = service;
         }
     }

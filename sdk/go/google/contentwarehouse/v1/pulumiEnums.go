@@ -789,6 +789,10 @@ const (
 	GoogleCloudContentwarehouseV1RuleTriggerTypeOnCreate = GoogleCloudContentwarehouseV1RuleTriggerType("ON_CREATE")
 	// Trigger for update document action.
 	GoogleCloudContentwarehouseV1RuleTriggerTypeOnUpdate = GoogleCloudContentwarehouseV1RuleTriggerType("ON_UPDATE")
+	// Trigger for create link action.
+	GoogleCloudContentwarehouseV1RuleTriggerTypeOnCreateLink = GoogleCloudContentwarehouseV1RuleTriggerType("ON_CREATE_LINK")
+	// Trigger for delete link action.
+	GoogleCloudContentwarehouseV1RuleTriggerTypeOnDeleteLink = GoogleCloudContentwarehouseV1RuleTriggerType("ON_DELETE_LINK")
 )
 
 func (GoogleCloudContentwarehouseV1RuleTriggerType) ElementType() reflect.Type {

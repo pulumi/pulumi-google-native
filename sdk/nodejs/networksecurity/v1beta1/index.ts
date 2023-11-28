@@ -65,6 +65,16 @@ export type ClientTlsPolicyIamPolicy = import("./clientTlsPolicyIamPolicy").Clie
 export const ClientTlsPolicyIamPolicy: typeof import("./clientTlsPolicyIamPolicy").ClientTlsPolicyIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ClientTlsPolicyIamPolicy"], () => require("./clientTlsPolicyIamPolicy"));
 
+export { FirewallEndpointArgs } from "./firewallEndpoint";
+export type FirewallEndpoint = import("./firewallEndpoint").FirewallEndpoint;
+export const FirewallEndpoint: typeof import("./firewallEndpoint").FirewallEndpoint = null as any;
+utilities.lazyLoad(exports, ["FirewallEndpoint"], () => require("./firewallEndpoint"));
+
+export { FirewallEndpointAssociationArgs } from "./firewallEndpointAssociation";
+export type FirewallEndpointAssociation = import("./firewallEndpointAssociation").FirewallEndpointAssociation;
+export const FirewallEndpointAssociation: typeof import("./firewallEndpointAssociation").FirewallEndpointAssociation = null as any;
+utilities.lazyLoad(exports, ["FirewallEndpointAssociation"], () => require("./firewallEndpointAssociation"));
+
 export { GatewaySecurityPolicyArgs } from "./gatewaySecurityPolicy";
 export type GatewaySecurityPolicy = import("./gatewaySecurityPolicy").GatewaySecurityPolicy;
 export const GatewaySecurityPolicy: typeof import("./gatewaySecurityPolicy").GatewaySecurityPolicy = null as any;
@@ -100,6 +110,16 @@ export const getClientTlsPolicyIamPolicy: typeof import("./getClientTlsPolicyIam
 export const getClientTlsPolicyIamPolicyOutput: typeof import("./getClientTlsPolicyIamPolicy").getClientTlsPolicyIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getClientTlsPolicyIamPolicy","getClientTlsPolicyIamPolicyOutput"], () => require("./getClientTlsPolicyIamPolicy"));
 
+export { GetFirewallEndpointArgs, GetFirewallEndpointResult, GetFirewallEndpointOutputArgs } from "./getFirewallEndpoint";
+export const getFirewallEndpoint: typeof import("./getFirewallEndpoint").getFirewallEndpoint = null as any;
+export const getFirewallEndpointOutput: typeof import("./getFirewallEndpoint").getFirewallEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getFirewallEndpoint","getFirewallEndpointOutput"], () => require("./getFirewallEndpoint"));
+
+export { GetFirewallEndpointAssociationArgs, GetFirewallEndpointAssociationResult, GetFirewallEndpointAssociationOutputArgs } from "./getFirewallEndpointAssociation";
+export const getFirewallEndpointAssociation: typeof import("./getFirewallEndpointAssociation").getFirewallEndpointAssociation = null as any;
+export const getFirewallEndpointAssociationOutput: typeof import("./getFirewallEndpointAssociation").getFirewallEndpointAssociationOutput = null as any;
+utilities.lazyLoad(exports, ["getFirewallEndpointAssociation","getFirewallEndpointAssociationOutput"], () => require("./getFirewallEndpointAssociation"));
+
 export { GetGatewaySecurityPolicyArgs, GetGatewaySecurityPolicyResult, GetGatewaySecurityPolicyOutputArgs } from "./getGatewaySecurityPolicy";
 export const getGatewaySecurityPolicy: typeof import("./getGatewaySecurityPolicy").getGatewaySecurityPolicy = null as any;
 export const getGatewaySecurityPolicyOutput: typeof import("./getGatewaySecurityPolicy").getGatewaySecurityPolicyOutput = null as any;
@@ -114,6 +134,16 @@ export { GetRuleArgs, GetRuleResult, GetRuleOutputArgs } from "./getRule";
 export const getRule: typeof import("./getRule").getRule = null as any;
 export const getRuleOutput: typeof import("./getRule").getRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getRule","getRuleOutput"], () => require("./getRule"));
+
+export { GetSecurityProfileArgs, GetSecurityProfileResult, GetSecurityProfileOutputArgs } from "./getSecurityProfile";
+export const getSecurityProfile: typeof import("./getSecurityProfile").getSecurityProfile = null as any;
+export const getSecurityProfileOutput: typeof import("./getSecurityProfile").getSecurityProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityProfile","getSecurityProfileOutput"], () => require("./getSecurityProfile"));
+
+export { GetSecurityProfileGroupArgs, GetSecurityProfileGroupResult, GetSecurityProfileGroupOutputArgs } from "./getSecurityProfileGroup";
+export const getSecurityProfileGroup: typeof import("./getSecurityProfileGroup").getSecurityProfileGroup = null as any;
+export const getSecurityProfileGroupOutput: typeof import("./getSecurityProfileGroup").getSecurityProfileGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityProfileGroup","getSecurityProfileGroupOutput"], () => require("./getSecurityProfileGroup"));
 
 export { GetServerTlsPolicyArgs, GetServerTlsPolicyResult, GetServerTlsPolicyOutputArgs } from "./getServerTlsPolicy";
 export const getServerTlsPolicy: typeof import("./getServerTlsPolicy").getServerTlsPolicy = null as any;
@@ -144,6 +174,16 @@ export { RuleArgs } from "./rule";
 export type Rule = import("./rule").Rule;
 export const Rule: typeof import("./rule").Rule = null as any;
 utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
+export { SecurityProfileArgs } from "./securityProfile";
+export type SecurityProfile = import("./securityProfile").SecurityProfile;
+export const SecurityProfile: typeof import("./securityProfile").SecurityProfile = null as any;
+utilities.lazyLoad(exports, ["SecurityProfile"], () => require("./securityProfile"));
+
+export { SecurityProfileGroupArgs } from "./securityProfileGroup";
+export type SecurityProfileGroup = import("./securityProfileGroup").SecurityProfileGroup;
+export const SecurityProfileGroup: typeof import("./securityProfileGroup").SecurityProfileGroup = null as any;
+utilities.lazyLoad(exports, ["SecurityProfileGroup"], () => require("./securityProfileGroup"));
 
 export { ServerTlsPolicyArgs } from "./serverTlsPolicy";
 export type ServerTlsPolicy = import("./serverTlsPolicy").ServerTlsPolicy;
@@ -207,12 +247,20 @@ const _module = {
                 return new ClientTlsPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1beta1:ClientTlsPolicyIamPolicy":
                 return new ClientTlsPolicyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1beta1:FirewallEndpoint":
+                return new FirewallEndpoint(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1beta1:FirewallEndpointAssociation":
+                return new FirewallEndpointAssociation(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1beta1:GatewaySecurityPolicy":
                 return new GatewaySecurityPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1beta1:OrganizationAddressGroup":
                 return new OrganizationAddressGroup(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1beta1:Rule":
                 return new Rule(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1beta1:SecurityProfile":
+                return new SecurityProfile(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1beta1:SecurityProfileGroup":
+                return new SecurityProfileGroup(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1beta1:ServerTlsPolicy":
                 return new ServerTlsPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1beta1:ServerTlsPolicyIamBinding":

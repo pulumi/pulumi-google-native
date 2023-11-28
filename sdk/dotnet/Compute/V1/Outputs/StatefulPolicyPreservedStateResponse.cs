@@ -20,11 +20,26 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Disks;
+        /// <summary>
+        /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ExternalIPs;
+        /// <summary>
+        /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> InternalIPs;
 
         [OutputConstructor]
-        private StatefulPolicyPreservedStateResponse(ImmutableDictionary<string, string> disks)
+        private StatefulPolicyPreservedStateResponse(
+            ImmutableDictionary<string, string> disks,
+
+            ImmutableDictionary<string, string> externalIPs,
+
+            ImmutableDictionary<string, string> internalIPs)
         {
             Disks = disks;
+            ExternalIPs = externalIPs;
+            InternalIPs = internalIPs;
         }
     }
 }

@@ -40,11 +40,11 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The description of the resource.
+     * Optional. The description of the group.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * User-friendly display name.
+     * Optional. User-friendly display name.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -118,11 +118,11 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupArgs {
     /**
-     * The description of the resource.
+     * Optional. The description of the group.
      */
     description?: pulumi.Input<string>;
     /**
-     * User-friendly display name.
+     * Optional. User-friendly display name.
      */
     displayName?: pulumi.Input<string>;
     /**

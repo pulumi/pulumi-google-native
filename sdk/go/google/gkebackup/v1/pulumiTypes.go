@@ -414,11 +414,11 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type BackupConfig struct {
 	// If True, include all namespaced resources
 	AllNamespaces *bool `pulumi:"allNamespaces"`
-	// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+	// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
 	EncryptionKey *EncryptionKey `pulumi:"encryptionKey"`
-	// This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
+	// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
 	IncludeSecrets *bool `pulumi:"includeSecrets"`
-	// This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
+	// Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
 	IncludeVolumeData *bool `pulumi:"includeVolumeData"`
 	// If set, include just the resources referenced by the listed ProtectedApplications.
 	SelectedApplications *NamespacedNames `pulumi:"selectedApplications"`
@@ -441,11 +441,11 @@ type BackupConfigInput interface {
 type BackupConfigArgs struct {
 	// If True, include all namespaced resources
 	AllNamespaces pulumi.BoolPtrInput `pulumi:"allNamespaces"`
-	// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+	// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
 	EncryptionKey EncryptionKeyPtrInput `pulumi:"encryptionKey"`
-	// This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
+	// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
 	IncludeSecrets pulumi.BoolPtrInput `pulumi:"includeSecrets"`
-	// This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
+	// Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
 	IncludeVolumeData pulumi.BoolPtrInput `pulumi:"includeVolumeData"`
 	// If set, include just the resources referenced by the listed ProtectedApplications.
 	SelectedApplications NamespacedNamesPtrInput `pulumi:"selectedApplications"`
@@ -554,17 +554,17 @@ func (o BackupConfigOutput) AllNamespaces() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackupConfig) *bool { return v.AllNamespaces }).(pulumi.BoolPtrOutput)
 }
 
-// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
 func (o BackupConfigOutput) EncryptionKey() EncryptionKeyPtrOutput {
 	return o.ApplyT(func(v BackupConfig) *EncryptionKey { return v.EncryptionKey }).(EncryptionKeyPtrOutput)
 }
 
-// This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
+// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
 func (o BackupConfigOutput) IncludeSecrets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackupConfig) *bool { return v.IncludeSecrets }).(pulumi.BoolPtrOutput)
 }
 
-// This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
+// Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
 func (o BackupConfigOutput) IncludeVolumeData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackupConfig) *bool { return v.IncludeVolumeData }).(pulumi.BoolPtrOutput)
 }
@@ -619,7 +619,7 @@ func (o BackupConfigPtrOutput) AllNamespaces() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
 func (o BackupConfigPtrOutput) EncryptionKey() EncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *BackupConfig) *EncryptionKey {
 		if v == nil {
@@ -629,7 +629,7 @@ func (o BackupConfigPtrOutput) EncryptionKey() EncryptionKeyPtrOutput {
 	}).(EncryptionKeyPtrOutput)
 }
 
-// This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
+// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
 func (o BackupConfigPtrOutput) IncludeSecrets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackupConfig) *bool {
 		if v == nil {
@@ -639,7 +639,7 @@ func (o BackupConfigPtrOutput) IncludeSecrets() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
+// Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
 func (o BackupConfigPtrOutput) IncludeVolumeData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackupConfig) *bool {
 		if v == nil {
@@ -673,11 +673,11 @@ func (o BackupConfigPtrOutput) SelectedNamespaces() NamespacesPtrOutput {
 type BackupConfigResponse struct {
 	// If True, include all namespaced resources
 	AllNamespaces bool `pulumi:"allNamespaces"`
-	// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+	// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
 	EncryptionKey EncryptionKeyResponse `pulumi:"encryptionKey"`
-	// This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
+	// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
 	IncludeSecrets bool `pulumi:"includeSecrets"`
-	// This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
+	// Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
 	IncludeVolumeData bool `pulumi:"includeVolumeData"`
 	// If set, include just the resources referenced by the listed ProtectedApplications.
 	SelectedApplications NamespacedNamesResponse `pulumi:"selectedApplications"`
@@ -711,17 +711,17 @@ func (o BackupConfigResponseOutput) AllNamespaces() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackupConfigResponse) bool { return v.AllNamespaces }).(pulumi.BoolOutput)
 }
 
-// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
 func (o BackupConfigResponseOutput) EncryptionKey() EncryptionKeyResponseOutput {
 	return o.ApplyT(func(v BackupConfigResponse) EncryptionKeyResponse { return v.EncryptionKey }).(EncryptionKeyResponseOutput)
 }
 
-// This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
+// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
 func (o BackupConfigResponseOutput) IncludeSecrets() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackupConfigResponse) bool { return v.IncludeSecrets }).(pulumi.BoolOutput)
 }
 
-// This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
+// Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
 func (o BackupConfigResponseOutput) IncludeVolumeData() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackupConfigResponse) bool { return v.IncludeVolumeData }).(pulumi.BoolOutput)
 }
@@ -1012,7 +1012,13 @@ func (o ClusterMetadataResponseOutput) K8sVersion() pulumi.StringOutput {
 
 // Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources automatically excludes these group kinds. - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob - metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - Node - snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some group kinds are driven by restore configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume
 type ClusterResourceRestoreScope struct {
-	// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
+	// Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
+	AllGroupKinds *bool `pulumi:"allGroupKinds"`
+	// Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
+	ExcludedGroupKinds []GroupKind `pulumi:"excludedGroupKinds"`
+	// Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
+	NoGroupKinds *bool `pulumi:"noGroupKinds"`
+	// Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
 	SelectedGroupKinds []GroupKind `pulumi:"selectedGroupKinds"`
 }
 
@@ -1029,7 +1035,13 @@ type ClusterResourceRestoreScopeInput interface {
 
 // Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources automatically excludes these group kinds. - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob - metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - Node - snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some group kinds are driven by restore configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume
 type ClusterResourceRestoreScopeArgs struct {
-	// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
+	// Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
+	AllGroupKinds pulumi.BoolPtrInput `pulumi:"allGroupKinds"`
+	// Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
+	ExcludedGroupKinds GroupKindArrayInput `pulumi:"excludedGroupKinds"`
+	// Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
+	NoGroupKinds pulumi.BoolPtrInput `pulumi:"noGroupKinds"`
+	// Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
 	SelectedGroupKinds GroupKindArrayInput `pulumi:"selectedGroupKinds"`
 }
 
@@ -1129,7 +1141,22 @@ func (o ClusterResourceRestoreScopeOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
+// Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
+func (o ClusterResourceRestoreScopeOutput) AllGroupKinds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterResourceRestoreScope) *bool { return v.AllGroupKinds }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
+func (o ClusterResourceRestoreScopeOutput) ExcludedGroupKinds() GroupKindArrayOutput {
+	return o.ApplyT(func(v ClusterResourceRestoreScope) []GroupKind { return v.ExcludedGroupKinds }).(GroupKindArrayOutput)
+}
+
+// Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
+func (o ClusterResourceRestoreScopeOutput) NoGroupKinds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterResourceRestoreScope) *bool { return v.NoGroupKinds }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
 func (o ClusterResourceRestoreScopeOutput) SelectedGroupKinds() GroupKindArrayOutput {
 	return o.ApplyT(func(v ClusterResourceRestoreScope) []GroupKind { return v.SelectedGroupKinds }).(GroupKindArrayOutput)
 }
@@ -1164,7 +1191,37 @@ func (o ClusterResourceRestoreScopePtrOutput) Elem() ClusterResourceRestoreScope
 	}).(ClusterResourceRestoreScopeOutput)
 }
 
-// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
+// Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
+func (o ClusterResourceRestoreScopePtrOutput) AllGroupKinds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceRestoreScope) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllGroupKinds
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
+func (o ClusterResourceRestoreScopePtrOutput) ExcludedGroupKinds() GroupKindArrayOutput {
+	return o.ApplyT(func(v *ClusterResourceRestoreScope) []GroupKind {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedGroupKinds
+	}).(GroupKindArrayOutput)
+}
+
+// Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
+func (o ClusterResourceRestoreScopePtrOutput) NoGroupKinds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceRestoreScope) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoGroupKinds
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
 func (o ClusterResourceRestoreScopePtrOutput) SelectedGroupKinds() GroupKindArrayOutput {
 	return o.ApplyT(func(v *ClusterResourceRestoreScope) []GroupKind {
 		if v == nil {
@@ -1176,7 +1233,13 @@ func (o ClusterResourceRestoreScopePtrOutput) SelectedGroupKinds() GroupKindArra
 
 // Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources automatically excludes these group kinds. - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob - metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - Node - snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some group kinds are driven by restore configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume
 type ClusterResourceRestoreScopeResponse struct {
-	// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
+	// Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
+	AllGroupKinds bool `pulumi:"allGroupKinds"`
+	// Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
+	ExcludedGroupKinds []GroupKindResponse `pulumi:"excludedGroupKinds"`
+	// Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
+	NoGroupKinds bool `pulumi:"noGroupKinds"`
+	// Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
 	SelectedGroupKinds []GroupKindResponse `pulumi:"selectedGroupKinds"`
 }
 
@@ -1201,14 +1264,29 @@ func (o ClusterResourceRestoreScopeResponseOutput) ToOutput(ctx context.Context)
 	}
 }
 
-// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
+// Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
+func (o ClusterResourceRestoreScopeResponseOutput) AllGroupKinds() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterResourceRestoreScopeResponse) bool { return v.AllGroupKinds }).(pulumi.BoolOutput)
+}
+
+// Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
+func (o ClusterResourceRestoreScopeResponseOutput) ExcludedGroupKinds() GroupKindResponseArrayOutput {
+	return o.ApplyT(func(v ClusterResourceRestoreScopeResponse) []GroupKindResponse { return v.ExcludedGroupKinds }).(GroupKindResponseArrayOutput)
+}
+
+// Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
+func (o ClusterResourceRestoreScopeResponseOutput) NoGroupKinds() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterResourceRestoreScopeResponse) bool { return v.NoGroupKinds }).(pulumi.BoolOutput)
+}
+
+// Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
 func (o ClusterResourceRestoreScopeResponseOutput) SelectedGroupKinds() GroupKindResponseArrayOutput {
 	return o.ApplyT(func(v ClusterResourceRestoreScopeResponse) []GroupKindResponse { return v.SelectedGroupKinds }).(GroupKindResponseArrayOutput)
 }
 
 // Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 type EncryptionKey struct {
-	// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+	// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	GcpKmsEncryptionKey *string `pulumi:"gcpKmsEncryptionKey"`
 }
 
@@ -1225,7 +1303,7 @@ type EncryptionKeyInput interface {
 
 // Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 type EncryptionKeyArgs struct {
-	// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+	// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	GcpKmsEncryptionKey pulumi.StringPtrInput `pulumi:"gcpKmsEncryptionKey"`
 }
 
@@ -1325,7 +1403,7 @@ func (o EncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[Encryp
 	}
 }
 
-// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 func (o EncryptionKeyOutput) GcpKmsEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionKey) *string { return v.GcpKmsEncryptionKey }).(pulumi.StringPtrOutput)
 }
@@ -1360,7 +1438,7 @@ func (o EncryptionKeyPtrOutput) Elem() EncryptionKeyOutput {
 	}).(EncryptionKeyOutput)
 }
 
-// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 func (o EncryptionKeyPtrOutput) GcpKmsEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EncryptionKey) *string {
 		if v == nil {
@@ -1372,7 +1450,7 @@ func (o EncryptionKeyPtrOutput) GcpKmsEncryptionKey() pulumi.StringPtrOutput {
 
 // Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 type EncryptionKeyResponse struct {
-	// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+	// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	GcpKmsEncryptionKey string `pulumi:"gcpKmsEncryptionKey"`
 }
 
@@ -1397,7 +1475,7 @@ func (o EncryptionKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 func (o EncryptionKeyResponseOutput) GcpKmsEncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionKeyResponse) string { return v.GcpKmsEncryptionKey }).(pulumi.StringOutput)
 }
@@ -1678,9 +1756,9 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // This is a direct map to the Kubernetes GroupKind type [GroupKind](https://godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for identifying specific "types" of resources to restore.
 type GroupKind struct {
-	// API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+	// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
 	ResourceGroup *string `pulumi:"resourceGroup"`
-	// Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+	// Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
 	ResourceKind *string `pulumi:"resourceKind"`
 }
 
@@ -1697,9 +1775,9 @@ type GroupKindInput interface {
 
 // This is a direct map to the Kubernetes GroupKind type [GroupKind](https://godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for identifying specific "types" of resources to restore.
 type GroupKindArgs struct {
-	// API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+	// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
 	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
-	// Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+	// Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
 	ResourceKind pulumi.StringPtrInput `pulumi:"resourceKind"`
 }
 
@@ -1773,12 +1851,12 @@ func (o GroupKindOutput) ToOutput(ctx context.Context) pulumix.Output[GroupKind]
 	}
 }
 
-// API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
 func (o GroupKindOutput) ResourceGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupKind) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
 }
 
-// Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+// Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
 func (o GroupKindOutput) ResourceKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupKind) *string { return v.ResourceKind }).(pulumi.StringPtrOutput)
 }
@@ -1811,9 +1889,9 @@ func (o GroupKindArrayOutput) Index(i pulumi.IntInput) GroupKindOutput {
 
 // This is a direct map to the Kubernetes GroupKind type [GroupKind](https://godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for identifying specific "types" of resources to restore.
 type GroupKindResponse struct {
-	// API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+	// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
 	ResourceGroup string `pulumi:"resourceGroup"`
-	// Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+	// Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
 	ResourceKind string `pulumi:"resourceKind"`
 }
 
@@ -1838,12 +1916,12 @@ func (o GroupKindResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Gr
 	}
 }
 
-// API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
 func (o GroupKindResponseOutput) ResourceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupKindResponse) string { return v.ResourceGroup }).(pulumi.StringOutput)
 }
 
-// Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+// Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
 func (o GroupKindResponseOutput) ResourceKind() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupKindResponse) string { return v.ResourceKind }).(pulumi.StringOutput)
 }
@@ -1876,9 +1954,9 @@ func (o GroupKindResponseArrayOutput) Index(i pulumi.IntInput) GroupKindResponse
 
 // A reference to a namespaced resource in Kubernetes.
 type NamespacedName struct {
-	// The name of the Kubernetes resource.
+	// Optional. The name of the Kubernetes resource.
 	Name *string `pulumi:"name"`
-	// The Namespace of the Kubernetes resource.
+	// Optional. The Namespace of the Kubernetes resource.
 	Namespace *string `pulumi:"namespace"`
 }
 
@@ -1895,9 +1973,9 @@ type NamespacedNameInput interface {
 
 // A reference to a namespaced resource in Kubernetes.
 type NamespacedNameArgs struct {
-	// The name of the Kubernetes resource.
+	// Optional. The name of the Kubernetes resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Namespace of the Kubernetes resource.
+	// Optional. The Namespace of the Kubernetes resource.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
@@ -1971,12 +2049,12 @@ func (o NamespacedNameOutput) ToOutput(ctx context.Context) pulumix.Output[Names
 	}
 }
 
-// The name of the Kubernetes resource.
+// Optional. The name of the Kubernetes resource.
 func (o NamespacedNameOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NamespacedName) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The Namespace of the Kubernetes resource.
+// Optional. The Namespace of the Kubernetes resource.
 func (o NamespacedNameOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NamespacedName) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -2009,9 +2087,9 @@ func (o NamespacedNameArrayOutput) Index(i pulumi.IntInput) NamespacedNameOutput
 
 // A reference to a namespaced resource in Kubernetes.
 type NamespacedNameResponse struct {
-	// The name of the Kubernetes resource.
+	// Optional. The name of the Kubernetes resource.
 	Name string `pulumi:"name"`
-	// The Namespace of the Kubernetes resource.
+	// Optional. The Namespace of the Kubernetes resource.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -2036,12 +2114,12 @@ func (o NamespacedNameResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// The name of the Kubernetes resource.
+// Optional. The name of the Kubernetes resource.
 func (o NamespacedNameResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NamespacedNameResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Namespace of the Kubernetes resource.
+// Optional. The Namespace of the Kubernetes resource.
 func (o NamespacedNameResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v NamespacedNameResponse) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -2074,7 +2152,7 @@ func (o NamespacedNameResponseArrayOutput) Index(i pulumi.IntInput) NamespacedNa
 
 // A list of namespaced Kubernetes resources.
 type NamespacedNames struct {
-	// A list of namespaced Kubernetes resources.
+	// Optional. A list of namespaced Kubernetes resources.
 	NamespacedNames []NamespacedName `pulumi:"namespacedNames"`
 }
 
@@ -2091,7 +2169,7 @@ type NamespacedNamesInput interface {
 
 // A list of namespaced Kubernetes resources.
 type NamespacedNamesArgs struct {
-	// A list of namespaced Kubernetes resources.
+	// Optional. A list of namespaced Kubernetes resources.
 	NamespacedNames NamespacedNameArrayInput `pulumi:"namespacedNames"`
 }
 
@@ -2191,7 +2269,7 @@ func (o NamespacedNamesOutput) ToOutput(ctx context.Context) pulumix.Output[Name
 	}
 }
 
-// A list of namespaced Kubernetes resources.
+// Optional. A list of namespaced Kubernetes resources.
 func (o NamespacedNamesOutput) NamespacedNames() NamespacedNameArrayOutput {
 	return o.ApplyT(func(v NamespacedNames) []NamespacedName { return v.NamespacedNames }).(NamespacedNameArrayOutput)
 }
@@ -2226,7 +2304,7 @@ func (o NamespacedNamesPtrOutput) Elem() NamespacedNamesOutput {
 	}).(NamespacedNamesOutput)
 }
 
-// A list of namespaced Kubernetes resources.
+// Optional. A list of namespaced Kubernetes resources.
 func (o NamespacedNamesPtrOutput) NamespacedNames() NamespacedNameArrayOutput {
 	return o.ApplyT(func(v *NamespacedNames) []NamespacedName {
 		if v == nil {
@@ -2238,7 +2316,7 @@ func (o NamespacedNamesPtrOutput) NamespacedNames() NamespacedNameArrayOutput {
 
 // A list of namespaced Kubernetes resources.
 type NamespacedNamesResponse struct {
-	// A list of namespaced Kubernetes resources.
+	// Optional. A list of namespaced Kubernetes resources.
 	NamespacedNames []NamespacedNameResponse `pulumi:"namespacedNames"`
 }
 
@@ -2263,14 +2341,14 @@ func (o NamespacedNamesResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// A list of namespaced Kubernetes resources.
+// Optional. A list of namespaced Kubernetes resources.
 func (o NamespacedNamesResponseOutput) NamespacedNames() NamespacedNameResponseArrayOutput {
 	return o.ApplyT(func(v NamespacedNamesResponse) []NamespacedNameResponse { return v.NamespacedNames }).(NamespacedNameResponseArrayOutput)
 }
 
 // A list of Kubernetes Namespaces
 type Namespaces struct {
-	// A list of Kubernetes Namespaces
+	// Optional. A list of Kubernetes Namespaces
 	Namespaces []string `pulumi:"namespaces"`
 }
 
@@ -2287,7 +2365,7 @@ type NamespacesInput interface {
 
 // A list of Kubernetes Namespaces
 type NamespacesArgs struct {
-	// A list of Kubernetes Namespaces
+	// Optional. A list of Kubernetes Namespaces
 	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
 }
 
@@ -2387,7 +2465,7 @@ func (o NamespacesOutput) ToOutput(ctx context.Context) pulumix.Output[Namespace
 	}
 }
 
-// A list of Kubernetes Namespaces
+// Optional. A list of Kubernetes Namespaces
 func (o NamespacesOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Namespaces) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
 }
@@ -2422,7 +2500,7 @@ func (o NamespacesPtrOutput) Elem() NamespacesOutput {
 	}).(NamespacesOutput)
 }
 
-// A list of Kubernetes Namespaces
+// Optional. A list of Kubernetes Namespaces
 func (o NamespacesPtrOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Namespaces) []string {
 		if v == nil {
@@ -2434,7 +2512,7 @@ func (o NamespacesPtrOutput) Namespaces() pulumi.StringArrayOutput {
 
 // A list of Kubernetes Namespaces
 type NamespacesResponse struct {
-	// A list of Kubernetes Namespaces
+	// Optional. A list of Kubernetes Namespaces
 	Namespaces []string `pulumi:"namespaces"`
 }
 
@@ -2459,28 +2537,282 @@ func (o NamespacesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[N
 	}
 }
 
-// A list of Kubernetes Namespaces
+// Optional. A list of Kubernetes Namespaces
 func (o NamespacesResponseOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NamespacesResponse) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
 }
 
-// Configuration of a restore. Next id: 12
+// ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup.
+type ResourceFilter struct {
+	// Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
+	GroupKinds []GroupKind `pulumi:"groupKinds"`
+	// Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
+	JsonPath *string `pulumi:"jsonPath"`
+	// Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
+	Namespaces []string `pulumi:"namespaces"`
+}
+
+// ResourceFilterInput is an input type that accepts ResourceFilterArgs and ResourceFilterOutput values.
+// You can construct a concrete instance of `ResourceFilterInput` via:
+//
+//	ResourceFilterArgs{...}
+type ResourceFilterInput interface {
+	pulumi.Input
+
+	ToResourceFilterOutput() ResourceFilterOutput
+	ToResourceFilterOutputWithContext(context.Context) ResourceFilterOutput
+}
+
+// ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup.
+type ResourceFilterArgs struct {
+	// Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
+	GroupKinds GroupKindArrayInput `pulumi:"groupKinds"`
+	// Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
+	JsonPath pulumi.StringPtrInput `pulumi:"jsonPath"`
+	// Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+}
+
+func (ResourceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceFilter)(nil)).Elem()
+}
+
+func (i ResourceFilterArgs) ToResourceFilterOutput() ResourceFilterOutput {
+	return i.ToResourceFilterOutputWithContext(context.Background())
+}
+
+func (i ResourceFilterArgs) ToResourceFilterOutputWithContext(ctx context.Context) ResourceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceFilterOutput)
+}
+
+func (i ResourceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceFilter] {
+	return pulumix.Output[ResourceFilter]{
+		OutputState: i.ToResourceFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ResourceFilterArgs) ToResourceFilterPtrOutput() ResourceFilterPtrOutput {
+	return i.ToResourceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceFilterArgs) ToResourceFilterPtrOutputWithContext(ctx context.Context) ResourceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceFilterOutput).ToResourceFilterPtrOutputWithContext(ctx)
+}
+
+// ResourceFilterPtrInput is an input type that accepts ResourceFilterArgs, ResourceFilterPtr and ResourceFilterPtrOutput values.
+// You can construct a concrete instance of `ResourceFilterPtrInput` via:
+//
+//	        ResourceFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceFilterPtrInput interface {
+	pulumi.Input
+
+	ToResourceFilterPtrOutput() ResourceFilterPtrOutput
+	ToResourceFilterPtrOutputWithContext(context.Context) ResourceFilterPtrOutput
+}
+
+type resourceFilterPtrType ResourceFilterArgs
+
+func ResourceFilterPtr(v *ResourceFilterArgs) ResourceFilterPtrInput {
+	return (*resourceFilterPtrType)(v)
+}
+
+func (*resourceFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceFilter)(nil)).Elem()
+}
+
+func (i *resourceFilterPtrType) ToResourceFilterPtrOutput() ResourceFilterPtrOutput {
+	return i.ToResourceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceFilterPtrType) ToResourceFilterPtrOutputWithContext(ctx context.Context) ResourceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceFilterPtrOutput)
+}
+
+func (i *resourceFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceFilter] {
+	return pulumix.Output[*ResourceFilter]{
+		OutputState: i.ToResourceFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup.
+type ResourceFilterOutput struct{ *pulumi.OutputState }
+
+func (ResourceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceFilter)(nil)).Elem()
+}
+
+func (o ResourceFilterOutput) ToResourceFilterOutput() ResourceFilterOutput {
+	return o
+}
+
+func (o ResourceFilterOutput) ToResourceFilterOutputWithContext(ctx context.Context) ResourceFilterOutput {
+	return o
+}
+
+func (o ResourceFilterOutput) ToResourceFilterPtrOutput() ResourceFilterPtrOutput {
+	return o.ToResourceFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceFilterOutput) ToResourceFilterPtrOutputWithContext(ctx context.Context) ResourceFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceFilter) *ResourceFilter {
+		return &v
+	}).(ResourceFilterPtrOutput)
+}
+
+func (o ResourceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceFilter] {
+	return pulumix.Output[ResourceFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
+func (o ResourceFilterOutput) GroupKinds() GroupKindArrayOutput {
+	return o.ApplyT(func(v ResourceFilter) []GroupKind { return v.GroupKinds }).(GroupKindArrayOutput)
+}
+
+// Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
+func (o ResourceFilterOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceFilter) *string { return v.JsonPath }).(pulumi.StringPtrOutput)
+}
+
+// Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
+func (o ResourceFilterOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceFilter) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+type ResourceFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceFilter)(nil)).Elem()
+}
+
+func (o ResourceFilterPtrOutput) ToResourceFilterPtrOutput() ResourceFilterPtrOutput {
+	return o
+}
+
+func (o ResourceFilterPtrOutput) ToResourceFilterPtrOutputWithContext(ctx context.Context) ResourceFilterPtrOutput {
+	return o
+}
+
+func (o ResourceFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceFilter] {
+	return pulumix.Output[*ResourceFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ResourceFilterPtrOutput) Elem() ResourceFilterOutput {
+	return o.ApplyT(func(v *ResourceFilter) ResourceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceFilter
+		return ret
+	}).(ResourceFilterOutput)
+}
+
+// Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
+func (o ResourceFilterPtrOutput) GroupKinds() GroupKindArrayOutput {
+	return o.ApplyT(func(v *ResourceFilter) []GroupKind {
+		if v == nil {
+			return nil
+		}
+		return v.GroupKinds
+	}).(GroupKindArrayOutput)
+}
+
+// Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
+func (o ResourceFilterPtrOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JsonPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
+func (o ResourceFilterPtrOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup.
+type ResourceFilterResponse struct {
+	// Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
+	GroupKinds []GroupKindResponse `pulumi:"groupKinds"`
+	// Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
+	JsonPath string `pulumi:"jsonPath"`
+	// Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
+	Namespaces []string `pulumi:"namespaces"`
+}
+
+// ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup.
+type ResourceFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceFilterResponse)(nil)).Elem()
+}
+
+func (o ResourceFilterResponseOutput) ToResourceFilterResponseOutput() ResourceFilterResponseOutput {
+	return o
+}
+
+func (o ResourceFilterResponseOutput) ToResourceFilterResponseOutputWithContext(ctx context.Context) ResourceFilterResponseOutput {
+	return o
+}
+
+func (o ResourceFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceFilterResponse] {
+	return pulumix.Output[ResourceFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
+func (o ResourceFilterResponseOutput) GroupKinds() GroupKindResponseArrayOutput {
+	return o.ApplyT(func(v ResourceFilterResponse) []GroupKindResponse { return v.GroupKinds }).(GroupKindResponseArrayOutput)
+}
+
+// Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
+func (o ResourceFilterResponseOutput) JsonPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceFilterResponse) string { return v.JsonPath }).(pulumi.StringOutput)
+}
+
+// Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
+func (o ResourceFilterResponseOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceFilterResponse) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// Configuration of a restore. Next id: 13
 type RestoreConfig struct {
 	// Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.
 	AllNamespaces *bool `pulumi:"allNamespaces"`
-	// Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+	// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
 	ClusterResourceConflictPolicy *RestoreConfigClusterResourceConflictPolicy `pulumi:"clusterResourceConflictPolicy"`
-	// Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
+	// Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
 	ClusterResourceRestoreScope *ClusterResourceRestoreScope `pulumi:"clusterResourceRestoreScope"`
-	// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+	// A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored.
+	ExcludedNamespaces *Namespaces `pulumi:"excludedNamespaces"`
+	// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
 	NamespacedResourceRestoreMode *RestoreConfigNamespacedResourceRestoreMode `pulumi:"namespacedResourceRestoreMode"`
+	// Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
+	NoNamespaces *bool `pulumi:"noNamespaces"`
 	// A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored.
 	SelectedApplications *NamespacedNames `pulumi:"selectedApplications"`
 	// A list of selected Namespaces to restore from the Backup. The listed Namespaces and all resources contained in them will be restored.
 	SelectedNamespaces *Namespaces `pulumi:"selectedNamespaces"`
-	// A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
+	// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
 	SubstitutionRules []SubstitutionRule `pulumi:"substitutionRules"`
-	// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+	// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
+	TransformationRules []TransformationRule `pulumi:"transformationRules"`
+	// Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
 	VolumeDataRestorePolicy *RestoreConfigVolumeDataRestorePolicy `pulumi:"volumeDataRestorePolicy"`
 }
 
@@ -2495,23 +2827,29 @@ type RestoreConfigInput interface {
 	ToRestoreConfigOutputWithContext(context.Context) RestoreConfigOutput
 }
 
-// Configuration of a restore. Next id: 12
+// Configuration of a restore. Next id: 13
 type RestoreConfigArgs struct {
 	// Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.
 	AllNamespaces pulumi.BoolPtrInput `pulumi:"allNamespaces"`
-	// Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+	// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
 	ClusterResourceConflictPolicy RestoreConfigClusterResourceConflictPolicyPtrInput `pulumi:"clusterResourceConflictPolicy"`
-	// Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
+	// Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
 	ClusterResourceRestoreScope ClusterResourceRestoreScopePtrInput `pulumi:"clusterResourceRestoreScope"`
-	// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+	// A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored.
+	ExcludedNamespaces NamespacesPtrInput `pulumi:"excludedNamespaces"`
+	// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
 	NamespacedResourceRestoreMode RestoreConfigNamespacedResourceRestoreModePtrInput `pulumi:"namespacedResourceRestoreMode"`
+	// Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
+	NoNamespaces pulumi.BoolPtrInput `pulumi:"noNamespaces"`
 	// A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored.
 	SelectedApplications NamespacedNamesPtrInput `pulumi:"selectedApplications"`
 	// A list of selected Namespaces to restore from the Backup. The listed Namespaces and all resources contained in them will be restored.
 	SelectedNamespaces NamespacesPtrInput `pulumi:"selectedNamespaces"`
-	// A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
+	// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
 	SubstitutionRules SubstitutionRuleArrayInput `pulumi:"substitutionRules"`
-	// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+	// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
+	TransformationRules TransformationRuleArrayInput `pulumi:"transformationRules"`
+	// Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
 	VolumeDataRestorePolicy RestoreConfigVolumeDataRestorePolicyPtrInput `pulumi:"volumeDataRestorePolicy"`
 }
 
@@ -2533,7 +2871,7 @@ func (i RestoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RestoreC
 	}
 }
 
-// Configuration of a restore. Next id: 12
+// Configuration of a restore. Next id: 13
 type RestoreConfigOutput struct{ *pulumi.OutputState }
 
 func (RestoreConfigOutput) ElementType() reflect.Type {
@@ -2559,23 +2897,33 @@ func (o RestoreConfigOutput) AllNamespaces() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RestoreConfig) *bool { return v.AllNamespaces }).(pulumi.BoolPtrOutput)
 }
 
-// Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
 func (o RestoreConfigOutput) ClusterResourceConflictPolicy() RestoreConfigClusterResourceConflictPolicyPtrOutput {
 	return o.ApplyT(func(v RestoreConfig) *RestoreConfigClusterResourceConflictPolicy {
 		return v.ClusterResourceConflictPolicy
 	}).(RestoreConfigClusterResourceConflictPolicyPtrOutput)
 }
 
-// Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
+// Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
 func (o RestoreConfigOutput) ClusterResourceRestoreScope() ClusterResourceRestoreScopePtrOutput {
 	return o.ApplyT(func(v RestoreConfig) *ClusterResourceRestoreScope { return v.ClusterResourceRestoreScope }).(ClusterResourceRestoreScopePtrOutput)
 }
 
-// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+// A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored.
+func (o RestoreConfigOutput) ExcludedNamespaces() NamespacesPtrOutput {
+	return o.ApplyT(func(v RestoreConfig) *Namespaces { return v.ExcludedNamespaces }).(NamespacesPtrOutput)
+}
+
+// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
 func (o RestoreConfigOutput) NamespacedResourceRestoreMode() RestoreConfigNamespacedResourceRestoreModePtrOutput {
 	return o.ApplyT(func(v RestoreConfig) *RestoreConfigNamespacedResourceRestoreMode {
 		return v.NamespacedResourceRestoreMode
 	}).(RestoreConfigNamespacedResourceRestoreModePtrOutput)
+}
+
+// Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
+func (o RestoreConfigOutput) NoNamespaces() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreConfig) *bool { return v.NoNamespaces }).(pulumi.BoolPtrOutput)
 }
 
 // A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored.
@@ -2588,37 +2936,48 @@ func (o RestoreConfigOutput) SelectedNamespaces() NamespacesPtrOutput {
 	return o.ApplyT(func(v RestoreConfig) *Namespaces { return v.SelectedNamespaces }).(NamespacesPtrOutput)
 }
 
-// A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
+// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
 func (o RestoreConfigOutput) SubstitutionRules() SubstitutionRuleArrayOutput {
 	return o.ApplyT(func(v RestoreConfig) []SubstitutionRule { return v.SubstitutionRules }).(SubstitutionRuleArrayOutput)
 }
 
-// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
+func (o RestoreConfigOutput) TransformationRules() TransformationRuleArrayOutput {
+	return o.ApplyT(func(v RestoreConfig) []TransformationRule { return v.TransformationRules }).(TransformationRuleArrayOutput)
+}
+
+// Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
 func (o RestoreConfigOutput) VolumeDataRestorePolicy() RestoreConfigVolumeDataRestorePolicyPtrOutput {
 	return o.ApplyT(func(v RestoreConfig) *RestoreConfigVolumeDataRestorePolicy { return v.VolumeDataRestorePolicy }).(RestoreConfigVolumeDataRestorePolicyPtrOutput)
 }
 
-// Configuration of a restore. Next id: 12
+// Configuration of a restore. Next id: 13
 type RestoreConfigResponse struct {
 	// Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.
 	AllNamespaces bool `pulumi:"allNamespaces"`
-	// Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+	// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
 	ClusterResourceConflictPolicy string `pulumi:"clusterResourceConflictPolicy"`
-	// Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
+	// Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
 	ClusterResourceRestoreScope ClusterResourceRestoreScopeResponse `pulumi:"clusterResourceRestoreScope"`
-	// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+	// A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored.
+	ExcludedNamespaces NamespacesResponse `pulumi:"excludedNamespaces"`
+	// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
 	NamespacedResourceRestoreMode string `pulumi:"namespacedResourceRestoreMode"`
+	// Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
+	NoNamespaces bool `pulumi:"noNamespaces"`
 	// A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored.
 	SelectedApplications NamespacedNamesResponse `pulumi:"selectedApplications"`
 	// A list of selected Namespaces to restore from the Backup. The listed Namespaces and all resources contained in them will be restored.
 	SelectedNamespaces NamespacesResponse `pulumi:"selectedNamespaces"`
-	// A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
+	// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
 	SubstitutionRules []SubstitutionRuleResponse `pulumi:"substitutionRules"`
-	// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+	// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
+	TransformationRules []TransformationRuleResponse `pulumi:"transformationRules"`
+	// Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
 	VolumeDataRestorePolicy string `pulumi:"volumeDataRestorePolicy"`
 }
 
-// Configuration of a restore. Next id: 12
+// Configuration of a restore. Next id: 13
 type RestoreConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (RestoreConfigResponseOutput) ElementType() reflect.Type {
@@ -2644,21 +3003,31 @@ func (o RestoreConfigResponseOutput) AllNamespaces() pulumi.BoolOutput {
 	return o.ApplyT(func(v RestoreConfigResponse) bool { return v.AllNamespaces }).(pulumi.BoolOutput)
 }
 
-// Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
 func (o RestoreConfigResponseOutput) ClusterResourceConflictPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v RestoreConfigResponse) string { return v.ClusterResourceConflictPolicy }).(pulumi.StringOutput)
 }
 
-// Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
+// Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
 func (o RestoreConfigResponseOutput) ClusterResourceRestoreScope() ClusterResourceRestoreScopeResponseOutput {
 	return o.ApplyT(func(v RestoreConfigResponse) ClusterResourceRestoreScopeResponse {
 		return v.ClusterResourceRestoreScope
 	}).(ClusterResourceRestoreScopeResponseOutput)
 }
 
-// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+// A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored.
+func (o RestoreConfigResponseOutput) ExcludedNamespaces() NamespacesResponseOutput {
+	return o.ApplyT(func(v RestoreConfigResponse) NamespacesResponse { return v.ExcludedNamespaces }).(NamespacesResponseOutput)
+}
+
+// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
 func (o RestoreConfigResponseOutput) NamespacedResourceRestoreMode() pulumi.StringOutput {
 	return o.ApplyT(func(v RestoreConfigResponse) string { return v.NamespacedResourceRestoreMode }).(pulumi.StringOutput)
+}
+
+// Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
+func (o RestoreConfigResponseOutput) NoNamespaces() pulumi.BoolOutput {
+	return o.ApplyT(func(v RestoreConfigResponse) bool { return v.NoNamespaces }).(pulumi.BoolOutput)
 }
 
 // A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored.
@@ -2671,23 +3040,28 @@ func (o RestoreConfigResponseOutput) SelectedNamespaces() NamespacesResponseOutp
 	return o.ApplyT(func(v RestoreConfigResponse) NamespacesResponse { return v.SelectedNamespaces }).(NamespacesResponseOutput)
 }
 
-// A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
+// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
 func (o RestoreConfigResponseOutput) SubstitutionRules() SubstitutionRuleResponseArrayOutput {
 	return o.ApplyT(func(v RestoreConfigResponse) []SubstitutionRuleResponse { return v.SubstitutionRules }).(SubstitutionRuleResponseArrayOutput)
 }
 
-// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
+func (o RestoreConfigResponseOutput) TransformationRules() TransformationRuleResponseArrayOutput {
+	return o.ApplyT(func(v RestoreConfigResponse) []TransformationRuleResponse { return v.TransformationRules }).(TransformationRuleResponseArrayOutput)
+}
+
+// Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
 func (o RestoreConfigResponseOutput) VolumeDataRestorePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v RestoreConfigResponse) string { return v.VolumeDataRestorePolicy }).(pulumi.StringOutput)
 }
 
 // RetentionPolicy defines a Backup retention policy for a BackupPlan.
 type RetentionPolicy struct {
-	// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+	// Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 	BackupDeleteLockDays *int `pulumi:"backupDeleteLockDays"`
-	// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
+	// Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion)
 	BackupRetainDays *int `pulumi:"backupRetainDays"`
-	// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
+	// Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
 	Locked *bool `pulumi:"locked"`
 }
 
@@ -2704,11 +3078,11 @@ type RetentionPolicyInput interface {
 
 // RetentionPolicy defines a Backup retention policy for a BackupPlan.
 type RetentionPolicyArgs struct {
-	// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+	// Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 	BackupDeleteLockDays pulumi.IntPtrInput `pulumi:"backupDeleteLockDays"`
-	// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
+	// Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion)
 	BackupRetainDays pulumi.IntPtrInput `pulumi:"backupRetainDays"`
-	// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
+	// Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
 	Locked pulumi.BoolPtrInput `pulumi:"locked"`
 }
 
@@ -2808,17 +3182,17 @@ func (o RetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[Rete
 	}
 }
 
-// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+// Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 func (o RetentionPolicyOutput) BackupDeleteLockDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicy) *int { return v.BackupDeleteLockDays }).(pulumi.IntPtrOutput)
 }
 
-// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
+// Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion)
 func (o RetentionPolicyOutput) BackupRetainDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicy) *int { return v.BackupRetainDays }).(pulumi.IntPtrOutput)
 }
 
-// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
+// Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
 func (o RetentionPolicyOutput) Locked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RetentionPolicy) *bool { return v.Locked }).(pulumi.BoolPtrOutput)
 }
@@ -2853,7 +3227,7 @@ func (o RetentionPolicyPtrOutput) Elem() RetentionPolicyOutput {
 	}).(RetentionPolicyOutput)
 }
 
-// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+// Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 func (o RetentionPolicyPtrOutput) BackupDeleteLockDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RetentionPolicy) *int {
 		if v == nil {
@@ -2863,7 +3237,7 @@ func (o RetentionPolicyPtrOutput) BackupDeleteLockDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
+// Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion)
 func (o RetentionPolicyPtrOutput) BackupRetainDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RetentionPolicy) *int {
 		if v == nil {
@@ -2873,7 +3247,7 @@ func (o RetentionPolicyPtrOutput) BackupRetainDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
+// Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
 func (o RetentionPolicyPtrOutput) Locked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RetentionPolicy) *bool {
 		if v == nil {
@@ -2885,11 +3259,11 @@ func (o RetentionPolicyPtrOutput) Locked() pulumi.BoolPtrOutput {
 
 // RetentionPolicy defines a Backup retention policy for a BackupPlan.
 type RetentionPolicyResponse struct {
-	// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+	// Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 	BackupDeleteLockDays int `pulumi:"backupDeleteLockDays"`
-	// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
+	// Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion)
 	BackupRetainDays int `pulumi:"backupRetainDays"`
-	// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
+	// Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
 	Locked bool `pulumi:"locked"`
 }
 
@@ -2914,26 +3288,26 @@ func (o RetentionPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+// Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 func (o RetentionPolicyResponseOutput) BackupDeleteLockDays() pulumi.IntOutput {
 	return o.ApplyT(func(v RetentionPolicyResponse) int { return v.BackupDeleteLockDays }).(pulumi.IntOutput)
 }
 
-// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
+// Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion)
 func (o RetentionPolicyResponseOutput) BackupRetainDays() pulumi.IntOutput {
 	return o.ApplyT(func(v RetentionPolicyResponse) int { return v.BackupRetainDays }).(pulumi.IntOutput)
 }
 
-// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
+// Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
 func (o RetentionPolicyResponseOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v RetentionPolicyResponse) bool { return v.Locked }).(pulumi.BoolOutput)
 }
 
-// Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
+// Defines scheduling parameters for automatically creating Backups via this BackupPlan.
 type Schedule struct {
-	// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+	// Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 	CronSchedule *string `pulumi:"cronSchedule"`
-	// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+	// Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
 	Paused *bool `pulumi:"paused"`
 }
 
@@ -2948,11 +3322,11 @@ type ScheduleInput interface {
 	ToScheduleOutputWithContext(context.Context) ScheduleOutput
 }
 
-// Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
+// Defines scheduling parameters for automatically creating Backups via this BackupPlan.
 type ScheduleArgs struct {
-	// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+	// Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 	CronSchedule pulumi.StringPtrInput `pulumi:"cronSchedule"`
-	// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+	// Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
 	Paused pulumi.BoolPtrInput `pulumi:"paused"`
 }
 
@@ -3021,7 +3395,7 @@ func (i *schedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*Schedule
 	}
 }
 
-// Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
+// Defines scheduling parameters for automatically creating Backups via this BackupPlan.
 type ScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScheduleOutput) ElementType() reflect.Type {
@@ -3052,12 +3426,12 @@ func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
 	}
 }
 
-// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+// Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 func (o ScheduleOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schedule) *string { return v.CronSchedule }).(pulumi.StringPtrOutput)
 }
 
-// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+// Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
 func (o ScheduleOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Schedule) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
 }
@@ -3092,7 +3466,7 @@ func (o SchedulePtrOutput) Elem() ScheduleOutput {
 	}).(ScheduleOutput)
 }
 
-// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+// Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 func (o SchedulePtrOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schedule) *string {
 		if v == nil {
@@ -3102,7 +3476,7 @@ func (o SchedulePtrOutput) CronSchedule() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+// Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
 func (o SchedulePtrOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Schedule) *bool {
 		if v == nil {
@@ -3112,15 +3486,15 @@ func (o SchedulePtrOutput) Paused() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
+// Defines scheduling parameters for automatically creating Backups via this BackupPlan.
 type ScheduleResponse struct {
-	// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+	// Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 	CronSchedule string `pulumi:"cronSchedule"`
-	// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+	// Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
 	Paused bool `pulumi:"paused"`
 }
 
-// Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
+// Defines scheduling parameters for automatically creating Backups via this BackupPlan.
 type ScheduleResponseOutput struct{ *pulumi.OutputState }
 
 func (ScheduleResponseOutput) ElementType() reflect.Type {
@@ -3141,27 +3515,27 @@ func (o ScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Sch
 	}
 }
 
-// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+// Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 func (o ScheduleResponseOutput) CronSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleResponse) string { return v.CronSchedule }).(pulumi.StringOutput)
 }
 
-// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+// Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
 func (o ScheduleResponseOutput) Paused() pulumi.BoolOutput {
 	return o.ApplyT(func(v ScheduleResponse) bool { return v.Paused }).(pulumi.BoolOutput)
 }
 
 // A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to substitution) and substitution logic.
 type SubstitutionRule struct {
-	// This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
+	// Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
 	NewValue *string `pulumi:"newValue"`
-	// (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
+	// Optional. (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
 	OriginalValuePattern *string `pulumi:"originalValuePattern"`
-	// (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
+	// Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
 	TargetGroupKinds []GroupKind `pulumi:"targetGroupKinds"`
 	// This is a [JSONPath] (https://kubernetes.io/docs/reference/kubectl/jsonpath/) expression that matches specific fields of candidate resources and it operates as both a filtering parameter (resources that are not matched with this expression will not be candidates for substitution) as well as a field identifier (identifies exactly which fields out of the candidate resources will be modified).
 	TargetJsonPath string `pulumi:"targetJsonPath"`
-	// (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
+	// Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
 	TargetNamespaces []string `pulumi:"targetNamespaces"`
 }
 
@@ -3178,15 +3552,15 @@ type SubstitutionRuleInput interface {
 
 // A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to substitution) and substitution logic.
 type SubstitutionRuleArgs struct {
-	// This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
+	// Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
 	NewValue pulumi.StringPtrInput `pulumi:"newValue"`
-	// (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
+	// Optional. (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
 	OriginalValuePattern pulumi.StringPtrInput `pulumi:"originalValuePattern"`
-	// (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
+	// Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
 	TargetGroupKinds GroupKindArrayInput `pulumi:"targetGroupKinds"`
 	// This is a [JSONPath] (https://kubernetes.io/docs/reference/kubectl/jsonpath/) expression that matches specific fields of candidate resources and it operates as both a filtering parameter (resources that are not matched with this expression will not be candidates for substitution) as well as a field identifier (identifies exactly which fields out of the candidate resources will be modified).
 	TargetJsonPath pulumi.StringInput `pulumi:"targetJsonPath"`
-	// (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
+	// Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
 	TargetNamespaces pulumi.StringArrayInput `pulumi:"targetNamespaces"`
 }
 
@@ -3260,17 +3634,17 @@ func (o SubstitutionRuleOutput) ToOutput(ctx context.Context) pulumix.Output[Sub
 	}
 }
 
-// This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
+// Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
 func (o SubstitutionRuleOutput) NewValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubstitutionRule) *string { return v.NewValue }).(pulumi.StringPtrOutput)
 }
 
-// (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
+// Optional. (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
 func (o SubstitutionRuleOutput) OriginalValuePattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubstitutionRule) *string { return v.OriginalValuePattern }).(pulumi.StringPtrOutput)
 }
 
-// (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
+// Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
 func (o SubstitutionRuleOutput) TargetGroupKinds() GroupKindArrayOutput {
 	return o.ApplyT(func(v SubstitutionRule) []GroupKind { return v.TargetGroupKinds }).(GroupKindArrayOutput)
 }
@@ -3280,7 +3654,7 @@ func (o SubstitutionRuleOutput) TargetJsonPath() pulumi.StringOutput {
 	return o.ApplyT(func(v SubstitutionRule) string { return v.TargetJsonPath }).(pulumi.StringOutput)
 }
 
-// (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
+// Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
 func (o SubstitutionRuleOutput) TargetNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SubstitutionRule) []string { return v.TargetNamespaces }).(pulumi.StringArrayOutput)
 }
@@ -3313,15 +3687,15 @@ func (o SubstitutionRuleArrayOutput) Index(i pulumi.IntInput) SubstitutionRuleOu
 
 // A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to substitution) and substitution logic.
 type SubstitutionRuleResponse struct {
-	// This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
+	// Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
 	NewValue string `pulumi:"newValue"`
-	// (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
+	// Optional. (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
 	OriginalValuePattern string `pulumi:"originalValuePattern"`
-	// (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
+	// Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
 	TargetGroupKinds []GroupKindResponse `pulumi:"targetGroupKinds"`
 	// This is a [JSONPath] (https://kubernetes.io/docs/reference/kubectl/jsonpath/) expression that matches specific fields of candidate resources and it operates as both a filtering parameter (resources that are not matched with this expression will not be candidates for substitution) as well as a field identifier (identifies exactly which fields out of the candidate resources will be modified).
 	TargetJsonPath string `pulumi:"targetJsonPath"`
-	// (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
+	// Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
 	TargetNamespaces []string `pulumi:"targetNamespaces"`
 }
 
@@ -3346,17 +3720,17 @@ func (o SubstitutionRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
+// Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
 func (o SubstitutionRuleResponseOutput) NewValue() pulumi.StringOutput {
 	return o.ApplyT(func(v SubstitutionRuleResponse) string { return v.NewValue }).(pulumi.StringOutput)
 }
 
-// (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
+// Optional. (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
 func (o SubstitutionRuleResponseOutput) OriginalValuePattern() pulumi.StringOutput {
 	return o.ApplyT(func(v SubstitutionRuleResponse) string { return v.OriginalValuePattern }).(pulumi.StringOutput)
 }
 
-// (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
+// Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
 func (o SubstitutionRuleResponseOutput) TargetGroupKinds() GroupKindResponseArrayOutput {
 	return o.ApplyT(func(v SubstitutionRuleResponse) []GroupKindResponse { return v.TargetGroupKinds }).(GroupKindResponseArrayOutput)
 }
@@ -3366,7 +3740,7 @@ func (o SubstitutionRuleResponseOutput) TargetJsonPath() pulumi.StringOutput {
 	return o.ApplyT(func(v SubstitutionRuleResponse) string { return v.TargetJsonPath }).(pulumi.StringOutput)
 }
 
-// (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
+// Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
 func (o SubstitutionRuleResponseOutput) TargetNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SubstitutionRuleResponse) []string { return v.TargetNamespaces }).(pulumi.StringArrayOutput)
 }
@@ -3397,6 +3771,450 @@ func (o SubstitutionRuleResponseArrayOutput) Index(i pulumi.IntInput) Substituti
 	}).(SubstitutionRuleResponseOutput)
 }
 
+// A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic.
+type TransformationRule struct {
+	// Optional. The description is a user specified string description of the transformation rule.
+	Description *string `pulumi:"description"`
+	// A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation.
+	FieldActions []TransformationRuleAction `pulumi:"fieldActions"`
+	// Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions.
+	ResourceFilter *ResourceFilter `pulumi:"resourceFilter"`
+}
+
+// TransformationRuleInput is an input type that accepts TransformationRuleArgs and TransformationRuleOutput values.
+// You can construct a concrete instance of `TransformationRuleInput` via:
+//
+//	TransformationRuleArgs{...}
+type TransformationRuleInput interface {
+	pulumi.Input
+
+	ToTransformationRuleOutput() TransformationRuleOutput
+	ToTransformationRuleOutputWithContext(context.Context) TransformationRuleOutput
+}
+
+// A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic.
+type TransformationRuleArgs struct {
+	// Optional. The description is a user specified string description of the transformation rule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation.
+	FieldActions TransformationRuleActionArrayInput `pulumi:"fieldActions"`
+	// Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions.
+	ResourceFilter ResourceFilterPtrInput `pulumi:"resourceFilter"`
+}
+
+func (TransformationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformationRule)(nil)).Elem()
+}
+
+func (i TransformationRuleArgs) ToTransformationRuleOutput() TransformationRuleOutput {
+	return i.ToTransformationRuleOutputWithContext(context.Background())
+}
+
+func (i TransformationRuleArgs) ToTransformationRuleOutputWithContext(ctx context.Context) TransformationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformationRuleOutput)
+}
+
+func (i TransformationRuleArgs) ToOutput(ctx context.Context) pulumix.Output[TransformationRule] {
+	return pulumix.Output[TransformationRule]{
+		OutputState: i.ToTransformationRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// TransformationRuleArrayInput is an input type that accepts TransformationRuleArray and TransformationRuleArrayOutput values.
+// You can construct a concrete instance of `TransformationRuleArrayInput` via:
+//
+//	TransformationRuleArray{ TransformationRuleArgs{...} }
+type TransformationRuleArrayInput interface {
+	pulumi.Input
+
+	ToTransformationRuleArrayOutput() TransformationRuleArrayOutput
+	ToTransformationRuleArrayOutputWithContext(context.Context) TransformationRuleArrayOutput
+}
+
+type TransformationRuleArray []TransformationRuleInput
+
+func (TransformationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformationRule)(nil)).Elem()
+}
+
+func (i TransformationRuleArray) ToTransformationRuleArrayOutput() TransformationRuleArrayOutput {
+	return i.ToTransformationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TransformationRuleArray) ToTransformationRuleArrayOutputWithContext(ctx context.Context) TransformationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformationRuleArrayOutput)
+}
+
+func (i TransformationRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRule] {
+	return pulumix.Output[[]TransformationRule]{
+		OutputState: i.ToTransformationRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic.
+type TransformationRuleOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformationRule)(nil)).Elem()
+}
+
+func (o TransformationRuleOutput) ToTransformationRuleOutput() TransformationRuleOutput {
+	return o
+}
+
+func (o TransformationRuleOutput) ToTransformationRuleOutputWithContext(ctx context.Context) TransformationRuleOutput {
+	return o
+}
+
+func (o TransformationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRule] {
+	return pulumix.Output[TransformationRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The description is a user specified string description of the transformation rule.
+func (o TransformationRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformationRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation.
+func (o TransformationRuleOutput) FieldActions() TransformationRuleActionArrayOutput {
+	return o.ApplyT(func(v TransformationRule) []TransformationRuleAction { return v.FieldActions }).(TransformationRuleActionArrayOutput)
+}
+
+// Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions.
+func (o TransformationRuleOutput) ResourceFilter() ResourceFilterPtrOutput {
+	return o.ApplyT(func(v TransformationRule) *ResourceFilter { return v.ResourceFilter }).(ResourceFilterPtrOutput)
+}
+
+type TransformationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformationRule)(nil)).Elem()
+}
+
+func (o TransformationRuleArrayOutput) ToTransformationRuleArrayOutput() TransformationRuleArrayOutput {
+	return o
+}
+
+func (o TransformationRuleArrayOutput) ToTransformationRuleArrayOutputWithContext(ctx context.Context) TransformationRuleArrayOutput {
+	return o
+}
+
+func (o TransformationRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRule] {
+	return pulumix.Output[[]TransformationRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TransformationRuleArrayOutput) Index(i pulumi.IntInput) TransformationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformationRule {
+		return vs[0].([]TransformationRule)[vs[1].(int)]
+	}).(TransformationRuleOutput)
+}
+
+// TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+type TransformationRuleAction struct {
+	// Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
+	FromPath *string `pulumi:"fromPath"`
+	// op specifies the operation to perform.
+	Op TransformationRuleActionOp `pulumi:"op"`
+	// Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
+	Path *string `pulumi:"path"`
+	// Optional. A string that specifies the desired value in string format to use for transformation.
+	Value *string `pulumi:"value"`
+}
+
+// TransformationRuleActionInput is an input type that accepts TransformationRuleActionArgs and TransformationRuleActionOutput values.
+// You can construct a concrete instance of `TransformationRuleActionInput` via:
+//
+//	TransformationRuleActionArgs{...}
+type TransformationRuleActionInput interface {
+	pulumi.Input
+
+	ToTransformationRuleActionOutput() TransformationRuleActionOutput
+	ToTransformationRuleActionOutputWithContext(context.Context) TransformationRuleActionOutput
+}
+
+// TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+type TransformationRuleActionArgs struct {
+	// Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
+	FromPath pulumi.StringPtrInput `pulumi:"fromPath"`
+	// op specifies the operation to perform.
+	Op TransformationRuleActionOpInput `pulumi:"op"`
+	// Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Optional. A string that specifies the desired value in string format to use for transformation.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (TransformationRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformationRuleAction)(nil)).Elem()
+}
+
+func (i TransformationRuleActionArgs) ToTransformationRuleActionOutput() TransformationRuleActionOutput {
+	return i.ToTransformationRuleActionOutputWithContext(context.Background())
+}
+
+func (i TransformationRuleActionArgs) ToTransformationRuleActionOutputWithContext(ctx context.Context) TransformationRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformationRuleActionOutput)
+}
+
+func (i TransformationRuleActionArgs) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleAction] {
+	return pulumix.Output[TransformationRuleAction]{
+		OutputState: i.ToTransformationRuleActionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// TransformationRuleActionArrayInput is an input type that accepts TransformationRuleActionArray and TransformationRuleActionArrayOutput values.
+// You can construct a concrete instance of `TransformationRuleActionArrayInput` via:
+//
+//	TransformationRuleActionArray{ TransformationRuleActionArgs{...} }
+type TransformationRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToTransformationRuleActionArrayOutput() TransformationRuleActionArrayOutput
+	ToTransformationRuleActionArrayOutputWithContext(context.Context) TransformationRuleActionArrayOutput
+}
+
+type TransformationRuleActionArray []TransformationRuleActionInput
+
+func (TransformationRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformationRuleAction)(nil)).Elem()
+}
+
+func (i TransformationRuleActionArray) ToTransformationRuleActionArrayOutput() TransformationRuleActionArrayOutput {
+	return i.ToTransformationRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i TransformationRuleActionArray) ToTransformationRuleActionArrayOutputWithContext(ctx context.Context) TransformationRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformationRuleActionArrayOutput)
+}
+
+func (i TransformationRuleActionArray) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRuleAction] {
+	return pulumix.Output[[]TransformationRuleAction]{
+		OutputState: i.ToTransformationRuleActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+type TransformationRuleActionOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformationRuleAction)(nil)).Elem()
+}
+
+func (o TransformationRuleActionOutput) ToTransformationRuleActionOutput() TransformationRuleActionOutput {
+	return o
+}
+
+func (o TransformationRuleActionOutput) ToTransformationRuleActionOutputWithContext(ctx context.Context) TransformationRuleActionOutput {
+	return o
+}
+
+func (o TransformationRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleAction] {
+	return pulumix.Output[TransformationRuleAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
+func (o TransformationRuleActionOutput) FromPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformationRuleAction) *string { return v.FromPath }).(pulumi.StringPtrOutput)
+}
+
+// op specifies the operation to perform.
+func (o TransformationRuleActionOutput) Op() TransformationRuleActionOpOutput {
+	return o.ApplyT(func(v TransformationRuleAction) TransformationRuleActionOp { return v.Op }).(TransformationRuleActionOpOutput)
+}
+
+// Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
+func (o TransformationRuleActionOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformationRuleAction) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A string that specifies the desired value in string format to use for transformation.
+func (o TransformationRuleActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformationRuleAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type TransformationRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformationRuleAction)(nil)).Elem()
+}
+
+func (o TransformationRuleActionArrayOutput) ToTransformationRuleActionArrayOutput() TransformationRuleActionArrayOutput {
+	return o
+}
+
+func (o TransformationRuleActionArrayOutput) ToTransformationRuleActionArrayOutputWithContext(ctx context.Context) TransformationRuleActionArrayOutput {
+	return o
+}
+
+func (o TransformationRuleActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRuleAction] {
+	return pulumix.Output[[]TransformationRuleAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TransformationRuleActionArrayOutput) Index(i pulumi.IntInput) TransformationRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformationRuleAction {
+		return vs[0].([]TransformationRuleAction)[vs[1].(int)]
+	}).(TransformationRuleActionOutput)
+}
+
+// TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+type TransformationRuleActionResponse struct {
+	// Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
+	FromPath string `pulumi:"fromPath"`
+	// op specifies the operation to perform.
+	Op string `pulumi:"op"`
+	// Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
+	Path string `pulumi:"path"`
+	// Optional. A string that specifies the desired value in string format to use for transformation.
+	Value string `pulumi:"value"`
+}
+
+// TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+type TransformationRuleActionResponseOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformationRuleActionResponse)(nil)).Elem()
+}
+
+func (o TransformationRuleActionResponseOutput) ToTransformationRuleActionResponseOutput() TransformationRuleActionResponseOutput {
+	return o
+}
+
+func (o TransformationRuleActionResponseOutput) ToTransformationRuleActionResponseOutputWithContext(ctx context.Context) TransformationRuleActionResponseOutput {
+	return o
+}
+
+func (o TransformationRuleActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleActionResponse] {
+	return pulumix.Output[TransformationRuleActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
+func (o TransformationRuleActionResponseOutput) FromPath() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformationRuleActionResponse) string { return v.FromPath }).(pulumi.StringOutput)
+}
+
+// op specifies the operation to perform.
+func (o TransformationRuleActionResponseOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformationRuleActionResponse) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
+func (o TransformationRuleActionResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformationRuleActionResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Optional. A string that specifies the desired value in string format to use for transformation.
+func (o TransformationRuleActionResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformationRuleActionResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformationRuleActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformationRuleActionResponse)(nil)).Elem()
+}
+
+func (o TransformationRuleActionResponseArrayOutput) ToTransformationRuleActionResponseArrayOutput() TransformationRuleActionResponseArrayOutput {
+	return o
+}
+
+func (o TransformationRuleActionResponseArrayOutput) ToTransformationRuleActionResponseArrayOutputWithContext(ctx context.Context) TransformationRuleActionResponseArrayOutput {
+	return o
+}
+
+func (o TransformationRuleActionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRuleActionResponse] {
+	return pulumix.Output[[]TransformationRuleActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TransformationRuleActionResponseArrayOutput) Index(i pulumi.IntInput) TransformationRuleActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformationRuleActionResponse {
+		return vs[0].([]TransformationRuleActionResponse)[vs[1].(int)]
+	}).(TransformationRuleActionResponseOutput)
+}
+
+// A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic.
+type TransformationRuleResponse struct {
+	// Optional. The description is a user specified string description of the transformation rule.
+	Description string `pulumi:"description"`
+	// A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation.
+	FieldActions []TransformationRuleActionResponse `pulumi:"fieldActions"`
+	// Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions.
+	ResourceFilter ResourceFilterResponse `pulumi:"resourceFilter"`
+}
+
+// A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic.
+type TransformationRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformationRuleResponse)(nil)).Elem()
+}
+
+func (o TransformationRuleResponseOutput) ToTransformationRuleResponseOutput() TransformationRuleResponseOutput {
+	return o
+}
+
+func (o TransformationRuleResponseOutput) ToTransformationRuleResponseOutputWithContext(ctx context.Context) TransformationRuleResponseOutput {
+	return o
+}
+
+func (o TransformationRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleResponse] {
+	return pulumix.Output[TransformationRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The description is a user specified string description of the transformation rule.
+func (o TransformationRuleResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformationRuleResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation.
+func (o TransformationRuleResponseOutput) FieldActions() TransformationRuleActionResponseArrayOutput {
+	return o.ApplyT(func(v TransformationRuleResponse) []TransformationRuleActionResponse { return v.FieldActions }).(TransformationRuleActionResponseArrayOutput)
+}
+
+// Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions.
+func (o TransformationRuleResponseOutput) ResourceFilter() ResourceFilterResponseOutput {
+	return o.ApplyT(func(v TransformationRuleResponse) ResourceFilterResponse { return v.ResourceFilter }).(ResourceFilterResponseOutput)
+}
+
+type TransformationRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformationRuleResponse)(nil)).Elem()
+}
+
+func (o TransformationRuleResponseArrayOutput) ToTransformationRuleResponseArrayOutput() TransformationRuleResponseArrayOutput {
+	return o
+}
+
+func (o TransformationRuleResponseArrayOutput) ToTransformationRuleResponseArrayOutputWithContext(ctx context.Context) TransformationRuleResponseArrayOutput {
+	return o
+}
+
+func (o TransformationRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRuleResponse] {
+	return pulumix.Output[[]TransformationRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TransformationRuleResponseArrayOutput) Index(i pulumi.IntInput) TransformationRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformationRuleResponse {
+		return vs[0].([]TransformationRuleResponse)[vs[1].(int)]
+	}).(TransformationRuleResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -3420,6 +4238,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespacedNamesPtrInput)(nil)).Elem(), NamespacedNamesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespacesInput)(nil)).Elem(), NamespacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespacesPtrInput)(nil)).Elem(), NamespacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceFilterInput)(nil)).Elem(), ResourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceFilterPtrInput)(nil)).Elem(), ResourceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreConfigInput)(nil)).Elem(), RestoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetentionPolicyInput)(nil)).Elem(), RetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetentionPolicyPtrInput)(nil)).Elem(), RetentionPolicyArgs{})
@@ -3427,6 +4247,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePtrInput)(nil)).Elem(), ScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubstitutionRuleInput)(nil)).Elem(), SubstitutionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubstitutionRuleArrayInput)(nil)).Elem(), SubstitutionRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformationRuleInput)(nil)).Elem(), TransformationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformationRuleArrayInput)(nil)).Elem(), TransformationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformationRuleActionInput)(nil)).Elem(), TransformationRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformationRuleActionArrayInput)(nil)).Elem(), TransformationRuleActionArray{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3466,6 +4290,9 @@ func init() {
 	pulumi.RegisterOutputType(NamespacesOutput{})
 	pulumi.RegisterOutputType(NamespacesPtrOutput{})
 	pulumi.RegisterOutputType(NamespacesResponseOutput{})
+	pulumi.RegisterOutputType(ResourceFilterOutput{})
+	pulumi.RegisterOutputType(ResourceFilterPtrOutput{})
+	pulumi.RegisterOutputType(ResourceFilterResponseOutput{})
 	pulumi.RegisterOutputType(RestoreConfigOutput{})
 	pulumi.RegisterOutputType(RestoreConfigResponseOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyOutput{})
@@ -3478,4 +4305,12 @@ func init() {
 	pulumi.RegisterOutputType(SubstitutionRuleArrayOutput{})
 	pulumi.RegisterOutputType(SubstitutionRuleResponseOutput{})
 	pulumi.RegisterOutputType(SubstitutionRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(TransformationRuleOutput{})
+	pulumi.RegisterOutputType(TransformationRuleArrayOutput{})
+	pulumi.RegisterOutputType(TransformationRuleActionOutput{})
+	pulumi.RegisterOutputType(TransformationRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(TransformationRuleActionResponseOutput{})
+	pulumi.RegisterOutputType(TransformationRuleActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(TransformationRuleResponseOutput{})
+	pulumi.RegisterOutputType(TransformationRuleResponseArrayOutput{})
 }

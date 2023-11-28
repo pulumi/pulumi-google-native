@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+        /// </summary>
+        [Output("probingDetails")]
+        public Output<Outputs.ProbingDetailsResponse> ProbingDetails { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

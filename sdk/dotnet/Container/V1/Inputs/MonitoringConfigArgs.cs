@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     public sealed class MonitoringConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration of Advanced Datapath Observability features.
+        /// </summary>
+        [Input("advancedDatapathObservabilityConfig")]
+        public Input<Inputs.AdvancedDatapathObservabilityConfigArgs>? AdvancedDatapathObservabilityConfig { get; set; }
+
+        /// <summary>
         /// Monitoring components configuration
         /// </summary>
         [Input("componentConfig")]

@@ -35,8 +35,10 @@ type Stream struct {
 	// Optional. Create the stream without validating it.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// Labels.
-	Labels   pulumi.StringMapOutput `pulumi:"labels"`
-	Location pulumi.StringOutput    `pulumi:"location"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+	LastRecoveryTime pulumi.StringOutput `pulumi:"lastRecoveryTime"`
+	Location         pulumi.StringOutput `pulumi:"location"`
 	// The stream's name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -256,6 +258,11 @@ func (o StreamOutput) Force() pulumi.BoolPtrOutput {
 // Labels.
 func (o StreamOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+func (o StreamOutput) LastRecoveryTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.LastRecoveryTime }).(pulumi.StringOutput)
 }
 
 func (o StreamOutput) Location() pulumi.StringOutput {

@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The Cloud Storage bucket name for custom rules.
+        /// </summary>
+        public readonly string CustomRulesBucket;
+        /// <summary>
         /// Description of the Evaluation
         /// </summary>
         public readonly string Description;
@@ -96,7 +100,7 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
         /// </summary>
         public readonly ImmutableArray<string> RuleVersions;
         /// <summary>
-        /// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        /// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         /// </summary>
         public readonly string Schedule;
         /// <summary>
@@ -107,6 +111,8 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
         [OutputConstructor]
         private GetEvaluationResult(
             string createTime,
+
+            string customRulesBucket,
 
             string description,
 
@@ -127,6 +133,7 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
             string updateTime)
         {
             CreateTime = createTime;
+            CustomRulesBucket = customRulesBucket;
             Description = description;
             Labels = labels;
             Name = name;

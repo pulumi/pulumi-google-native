@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<bool> Done { get; private set; } = null!;
 
         /// <summary>
-        /// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+        /// If present, the location of miscellaneous control files which can be used as part of job setup and handling. If not present, control files might be placed in the same location as driver_output_uri.
         /// </summary>
         [Output("driverControlFilesUri")]
         public Output<string> DriverControlFilesUri { get; private set; } = null!;
@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<Outputs.DriverSchedulingConfigResponse> DriverSchedulingConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Job is a Flink job.
+        /// </summary>
+        [Output("flinkJob")]
+        public Output<Outputs.FlinkJobResponse> FlinkJob { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Job is a Hadoop job.
         /// </summary>
         [Output("hadoopJob")]
@@ -53,13 +59,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<Outputs.HiveJobResponse> HiveJob { get; private set; } = null!;
 
         /// <summary>
-        /// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
+        /// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that might be reused over time.
         /// </summary>
         [Output("jobUuid")]
         public Output<string> JobUuid { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -125,7 +131,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<Outputs.SparkSqlJobResponse> SparkSqlJob { get; private set; } = null!;
 
         /// <summary>
-        /// The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
+        /// The job status. Additional application-specific status information might be contained in the type_job and yarn_applications fields.
         /// </summary>
         [Output("status")]
         public Output<Outputs.JobStatusResponse> Status { get; private set; } = null!;
@@ -143,7 +149,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<Outputs.TrinoJobResponse> TrinoJob { get; private set; } = null!;
 
         /// <summary>
-        /// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+        /// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release.
         /// </summary>
         [Output("yarnApplications")]
         public Output<ImmutableArray<Outputs.YarnApplicationResponse>> YarnApplications { get; private set; } = null!;
@@ -205,6 +211,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Input<Inputs.DriverSchedulingConfigArgs>? DriverSchedulingConfig { get; set; }
 
         /// <summary>
+        /// Optional. Job is a Flink job.
+        /// </summary>
+        [Input("flinkJob")]
+        public Input<Inputs.FlinkJobArgs>? FlinkJob { get; set; }
+
+        /// <summary>
         /// Optional. Job is a Hadoop job.
         /// </summary>
         [Input("hadoopJob")]
@@ -220,7 +232,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         /// </summary>
         public InputMap<string> Labels
         {

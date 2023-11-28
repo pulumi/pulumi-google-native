@@ -27,6 +27,8 @@ __all__ = [
     'FieldMetadataArgs',
     'FieldArgs',
     'GoogleCloudHealthcareV1ConsentPolicyArgs',
+    'GoogleCloudHealthcareV1DicomBigQueryDestinationArgs',
+    'GoogleCloudHealthcareV1DicomStreamConfigArgs',
     'GoogleCloudHealthcareV1FhirBigQueryDestinationArgs',
     'Hl7SchemaConfigArgs',
     'Hl7TypesConfigArgs',
@@ -386,7 +388,7 @@ class DeidentifyConfigArgs:
         :param pulumi.Input['FhirConfigArgs'] fhir: Configures de-id of application/FHIR content.
         :param pulumi.Input['ImageConfigArgs'] image: Configures de-identification of image pixels wherever they are found in the source_dataset.
         :param pulumi.Input['TextConfigArgs'] text: Configures de-identification of text wherever it is found in the source_dataset.
-        :param pulumi.Input[bool] use_regional_data_processing: Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+        :param pulumi.Input[bool] use_regional_data_processing: Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
         """
         if dicom is not None:
             pulumi.set(__self__, "dicom", dicom)
@@ -451,7 +453,7 @@ class DeidentifyConfigArgs:
     @pulumi.getter(name="useRegionalDataProcessing")
     def use_regional_data_processing(self) -> Optional[pulumi.Input[bool]]:
         """
-        Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+        Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
         """
         return pulumi.get(self, "use_regional_data_processing")
 
@@ -654,7 +656,7 @@ class FhirNotificationConfigArgs:
         Contains the configuration for FHIR notifications.
         :param pulumi.Input[str] pubsub_topic: The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
         :param pulumi.Input[bool] send_full_resource: Whether to send full FHIR resource to this Pub/Sub topic.
-        :param pulumi.Input[bool] send_previous_resource_on_delete: Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+        :param pulumi.Input[bool] send_previous_resource_on_delete: Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
         """
         if pubsub_topic is not None:
             pulumi.set(__self__, "pubsub_topic", pubsub_topic)
@@ -691,7 +693,7 @@ class FhirNotificationConfigArgs:
     @pulumi.getter(name="sendPreviousResourceOnDelete")
     def send_previous_resource_on_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+        Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
         """
         return pulumi.get(self, "send_previous_resource_on_delete")
 
@@ -865,6 +867,86 @@ class GoogleCloudHealthcareV1ConsentPolicyArgs:
     @resource_attributes.setter
     def resource_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]]]):
         pulumi.set(self, "resource_attributes", value)
+
+
+@pulumi.input_type
+class GoogleCloudHealthcareV1DicomBigQueryDestinationArgs:
+    def __init__(__self__, *,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 table_uri: Optional[pulumi.Input[str]] = None,
+                 write_disposition: Optional[pulumi.Input['GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition']] = None):
+        """
+        The BigQuery table where the server writes the output.
+        :param pulumi.Input[bool] force: Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
+        :param pulumi.Input[str] table_uri: BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
+        :param pulumi.Input['GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition'] write_disposition: Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+        """
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if table_uri is not None:
+            pulumi.set(__self__, "table_uri", table_uri)
+        if write_disposition is not None:
+            pulumi.set(__self__, "write_disposition", write_disposition)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="tableUri")
+    def table_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
+        """
+        return pulumi.get(self, "table_uri")
+
+    @table_uri.setter
+    def table_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_uri", value)
+
+    @property
+    @pulumi.getter(name="writeDisposition")
+    def write_disposition(self) -> Optional[pulumi.Input['GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition']]:
+        """
+        Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+        """
+        return pulumi.get(self, "write_disposition")
+
+    @write_disposition.setter
+    def write_disposition(self, value: Optional[pulumi.Input['GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition']]):
+        pulumi.set(self, "write_disposition", value)
+
+
+@pulumi.input_type
+class GoogleCloudHealthcareV1DicomStreamConfigArgs:
+    def __init__(__self__, *,
+                 bigquery_destination: Optional[pulumi.Input['GoogleCloudHealthcareV1DicomBigQueryDestinationArgs']] = None):
+        """
+        StreamConfig specifies configuration for a streaming DICOM export.
+        :param pulumi.Input['GoogleCloudHealthcareV1DicomBigQueryDestinationArgs'] bigquery_destination: Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        """
+        if bigquery_destination is not None:
+            pulumi.set(__self__, "bigquery_destination", bigquery_destination)
+
+    @property
+    @pulumi.getter(name="bigqueryDestination")
+    def bigquery_destination(self) -> Optional[pulumi.Input['GoogleCloudHealthcareV1DicomBigQueryDestinationArgs']]:
+        """
+        Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        """
+        return pulumi.get(self, "bigquery_destination")
+
+    @bigquery_destination.setter
+    def bigquery_destination(self, value: Optional[pulumi.Input['GoogleCloudHealthcareV1DicomBigQueryDestinationArgs']]):
+        pulumi.set(self, "bigquery_destination", value)
 
 
 @pulumi.input_type
@@ -1268,13 +1350,17 @@ class KmsWrappedCryptoKeyArgs:
 @pulumi.input_type
 class NotificationConfigArgs:
     def __init__(__self__, *,
-                 pubsub_topic: Optional[pulumi.Input[str]] = None):
+                 pubsub_topic: Optional[pulumi.Input[str]] = None,
+                 send_for_bulk_import: Optional[pulumi.Input[bool]] = None):
         """
         Specifies where to send notifications upon changes to a data store.
         :param pulumi.Input[str] pubsub_topic: The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
+        :param pulumi.Input[bool] send_for_bulk_import: Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
         """
         if pubsub_topic is not None:
             pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        if send_for_bulk_import is not None:
+            pulumi.set(__self__, "send_for_bulk_import", send_for_bulk_import)
 
     @property
     @pulumi.getter(name="pubsubTopic")
@@ -1287,6 +1373,18 @@ class NotificationConfigArgs:
     @pubsub_topic.setter
     def pubsub_topic(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pubsub_topic", value)
+
+    @property
+    @pulumi.getter(name="sendForBulkImport")
+    def send_for_bulk_import(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+        """
+        return pulumi.get(self, "send_for_bulk_import")
+
+    @send_for_bulk_import.setter
+    def send_for_bulk_import(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_for_bulk_import", value)
 
 
 @pulumi.input_type

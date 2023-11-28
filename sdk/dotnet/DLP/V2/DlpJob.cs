@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Output("jobTriggerName")]
         public Output<string> JobTriggerName { get; private set; } = null!;
 
+        /// <summary>
+        /// Time when the job was last modified by the system.
+        /// </summary>
+        [Output("lastModified")]
+        public Output<string> LastModified { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 

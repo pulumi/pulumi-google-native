@@ -25,7 +25,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse ConversationProcessConfig;
         /// <summary>
-        /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+        /// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
+        /// </summary>
+        public readonly bool DisableAgentQueryLogging;
+        /// <summary>
+        /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
         /// </summary>
         public readonly bool EnableEventBasedSuggestion;
         /// <summary>
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 
             Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse conversationProcessConfig,
 
+            bool disableAgentQueryLogging,
+
             bool enableEventBasedSuggestion,
 
             Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse queryConfig,
@@ -57,6 +63,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         {
             ConversationModelConfig = conversationModelConfig;
             ConversationProcessConfig = conversationProcessConfig;
+            DisableAgentQueryLogging = disableAgentQueryLogging;
             EnableEventBasedSuggestion = enableEventBasedSuggestion;
             QueryConfig = queryConfig;
             SuggestionFeature = suggestionFeature;

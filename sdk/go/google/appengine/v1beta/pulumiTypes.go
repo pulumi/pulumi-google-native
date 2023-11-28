@@ -8987,7 +8987,7 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 type VpcAccessConnector struct {
 	// The egress setting for the connector, controlling what traffic is diverted through it.
 	EgressSetting *VpcAccessConnectorEgressSetting `pulumi:"egressSetting"`
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
 	Name *string `pulumi:"name"`
 }
 
@@ -9006,7 +9006,7 @@ type VpcAccessConnectorInput interface {
 type VpcAccessConnectorArgs struct {
 	// The egress setting for the connector, controlling what traffic is diverted through it.
 	EgressSetting VpcAccessConnectorEgressSettingPtrInput `pulumi:"egressSetting"`
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -9111,7 +9111,7 @@ func (o VpcAccessConnectorOutput) EgressSetting() VpcAccessConnectorEgressSettin
 	return o.ApplyT(func(v VpcAccessConnector) *VpcAccessConnectorEgressSetting { return v.EgressSetting }).(VpcAccessConnectorEgressSettingPtrOutput)
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
 func (o VpcAccessConnectorOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpcAccessConnector) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -9156,7 +9156,7 @@ func (o VpcAccessConnectorPtrOutput) EgressSetting() VpcAccessConnectorEgressSet
 	}).(VpcAccessConnectorEgressSettingPtrOutput)
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
 func (o VpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpcAccessConnector) *string {
 		if v == nil {
@@ -9170,7 +9170,7 @@ func (o VpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOutput {
 type VpcAccessConnectorResponse struct {
 	// The egress setting for the connector, controlling what traffic is diverted through it.
 	EgressSetting string `pulumi:"egressSetting"`
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
 	Name string `pulumi:"name"`
 }
 
@@ -9200,7 +9200,7 @@ func (o VpcAccessConnectorResponseOutput) EgressSetting() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcAccessConnectorResponse) string { return v.EgressSetting }).(pulumi.StringOutput)
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
 func (o VpcAccessConnectorResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcAccessConnectorResponse) string { return v.Name }).(pulumi.StringOutput)
 }

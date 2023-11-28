@@ -101,6 +101,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public Output<string> EncryptionState { get; private set; } = null!;
 
         /// <summary>
+        /// Host name of the device.
+        /// </summary>
+        [Output("hostname")]
+        public Output<string> Hostname { get; private set; } = null!;
+
+        /// <summary>
         /// IMEI number of device if GSM device; empty otherwise.
         /// </summary>
         [Output("imei")]
@@ -258,6 +264,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// </summary>
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
+
+        /// <summary>
+        /// Host name of the device.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// Most recent time when device synced with this service.

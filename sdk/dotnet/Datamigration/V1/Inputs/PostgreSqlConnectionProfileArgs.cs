@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
     public sealed class PostgreSqlConnectionProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+        /// </summary>
+        [Input("alloydbClusterId")]
+        public Input<string>? AlloydbClusterId { get; set; }
+
+        /// <summary>
         /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         /// </summary>
         [Input("cloudSqlId")]

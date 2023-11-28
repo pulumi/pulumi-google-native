@@ -110,6 +110,11 @@ export type ForwardingRule = import("./forwardingRule").ForwardingRule;
 export const ForwardingRule: typeof import("./forwardingRule").ForwardingRule = null as any;
 utilities.lazyLoad(exports, ["ForwardingRule"], () => require("./forwardingRule"));
 
+export { FutureReservationArgs } from "./futureReservation";
+export type FutureReservation = import("./futureReservation").FutureReservation;
+export const FutureReservation: typeof import("./futureReservation").FutureReservation = null as any;
+utilities.lazyLoad(exports, ["FutureReservation"], () => require("./futureReservation"));
+
 export { GetAddressArgs, GetAddressResult, GetAddressOutputArgs } from "./getAddress";
 export const getAddress: typeof import("./getAddress").getAddress = null as any;
 export const getAddressOutput: typeof import("./getAddress").getAddressOutput = null as any;
@@ -175,6 +180,11 @@ export const getForwardingRule: typeof import("./getForwardingRule").getForwardi
 export const getForwardingRuleOutput: typeof import("./getForwardingRule").getForwardingRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getForwardingRule","getForwardingRuleOutput"], () => require("./getForwardingRule"));
 
+export { GetFutureReservationArgs, GetFutureReservationResult, GetFutureReservationOutputArgs } from "./getFutureReservation";
+export const getFutureReservation: typeof import("./getFutureReservation").getFutureReservation = null as any;
+export const getFutureReservationOutput: typeof import("./getFutureReservation").getFutureReservationOutput = null as any;
+utilities.lazyLoad(exports, ["getFutureReservation","getFutureReservationOutput"], () => require("./getFutureReservation"));
+
 export { GetGlobalAddressArgs, GetGlobalAddressResult, GetGlobalAddressOutputArgs } from "./getGlobalAddress";
 export const getGlobalAddress: typeof import("./getGlobalAddress").getGlobalAddress = null as any;
 export const getGlobalAddressOutput: typeof import("./getGlobalAddress").getGlobalAddressOutput = null as any;
@@ -234,6 +244,11 @@ export { GetInstanceGroupManagerArgs, GetInstanceGroupManagerResult, GetInstance
 export const getInstanceGroupManager: typeof import("./getInstanceGroupManager").getInstanceGroupManager = null as any;
 export const getInstanceGroupManagerOutput: typeof import("./getInstanceGroupManager").getInstanceGroupManagerOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceGroupManager","getInstanceGroupManagerOutput"], () => require("./getInstanceGroupManager"));
+
+export { GetInstanceGroupManagerResizeRequestArgs, GetInstanceGroupManagerResizeRequestResult, GetInstanceGroupManagerResizeRequestOutputArgs } from "./getInstanceGroupManagerResizeRequest";
+export const getInstanceGroupManagerResizeRequest: typeof import("./getInstanceGroupManagerResizeRequest").getInstanceGroupManagerResizeRequest = null as any;
+export const getInstanceGroupManagerResizeRequestOutput: typeof import("./getInstanceGroupManagerResizeRequest").getInstanceGroupManagerResizeRequestOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceGroupManagerResizeRequest","getInstanceGroupManagerResizeRequestOutput"], () => require("./getInstanceGroupManagerResizeRequest"));
 
 export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
 export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
@@ -679,6 +694,11 @@ export { InstanceGroupManagerArgs } from "./instanceGroupManager";
 export type InstanceGroupManager = import("./instanceGroupManager").InstanceGroupManager;
 export const InstanceGroupManager: typeof import("./instanceGroupManager").InstanceGroupManager = null as any;
 utilities.lazyLoad(exports, ["InstanceGroupManager"], () => require("./instanceGroupManager"));
+
+export { InstanceGroupManagerResizeRequestArgs } from "./instanceGroupManagerResizeRequest";
+export type InstanceGroupManagerResizeRequest = import("./instanceGroupManagerResizeRequest").InstanceGroupManagerResizeRequest;
+export const InstanceGroupManagerResizeRequest: typeof import("./instanceGroupManagerResizeRequest").InstanceGroupManagerResizeRequest = null as any;
+utilities.lazyLoad(exports, ["InstanceGroupManagerResizeRequest"], () => require("./instanceGroupManagerResizeRequest"));
 
 export { InstanceIamBindingArgs } from "./instanceIamBinding";
 export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
@@ -1285,6 +1305,8 @@ const _module = {
                 return new FirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:ForwardingRule":
                 return new ForwardingRule(name, <any>undefined, { urn })
+            case "google-native:compute/beta:FutureReservation":
+                return new FutureReservation(name, <any>undefined, { urn })
             case "google-native:compute/beta:GlobalAddress":
                 return new GlobalAddress(name, <any>undefined, { urn })
             case "google-native:compute/beta:GlobalForwardingRule":
@@ -1313,6 +1335,8 @@ const _module = {
                 return new InstanceGroup(name, <any>undefined, { urn })
             case "google-native:compute/beta:InstanceGroupManager":
                 return new InstanceGroupManager(name, <any>undefined, { urn })
+            case "google-native:compute/beta:InstanceGroupManagerResizeRequest":
+                return new InstanceGroupManagerResizeRequest(name, <any>undefined, { urn })
             case "google-native:compute/beta:InstanceIamBinding":
                 return new InstanceIamBinding(name, <any>undefined, { urn })
             case "google-native:compute/beta:InstanceIamMember":

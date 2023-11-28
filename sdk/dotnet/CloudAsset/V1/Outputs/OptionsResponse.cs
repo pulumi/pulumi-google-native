@@ -33,10 +33,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Outputs
         /// </summary>
         public readonly bool ExpandRoles;
         /// <summary>
-        /// Optional. If true, the response includes deny policy analysis results, and you can see which access tuples are denied. Default is false.
-        /// </summary>
-        public readonly bool IncludeDenyPolicyAnalysis;
-        /// <summary>
         /// Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
         /// </summary>
         public readonly bool OutputGroupEdges;
@@ -55,8 +51,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Outputs
 
             bool expandRoles,
 
-            bool includeDenyPolicyAnalysis,
-
             bool outputGroupEdges,
 
             bool outputResourceEdges)
@@ -65,7 +59,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Outputs
             ExpandGroups = expandGroups;
             ExpandResources = expandResources;
             ExpandRoles = expandRoles;
-            IncludeDenyPolicyAnalysis = includeDenyPolicyAnalysis;
             OutputGroupEdges = outputGroupEdges;
             OutputResourceEdges = outputResourceEdges;
         }

@@ -43,7 +43,7 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly acceleratorConfig!: pulumi.Output<outputs.tpu.v2.AcceleratorConfigResponse>;
     /**
-     * The type of hardware accelerators associated with this node.
+     * Optional. The type of hardware accelerators associated with this node.
      */
     public readonly acceleratorType!: pulumi.Output<string>;
     /**
@@ -84,6 +84,10 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Whether the Node belongs to a Multislice group.
+     */
+    public /*out*/ readonly multisliceNode!: pulumi.Output<boolean>;
+    /**
      * Immutable. The name of the TPU.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -100,6 +104,10 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly nodeId!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The qualified name of the QueuedResource that requested this Node.
+     */
+    public /*out*/ readonly queuedResource!: pulumi.Output<string>;
     /**
      * The runtime version running in the Node.
      */
@@ -140,9 +148,6 @@ export class Node extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.acceleratorType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'acceleratorType'");
-            }
             if ((!args || args.runtimeVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeVersion'");
             }
@@ -166,8 +171,10 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["healthDescription"] = undefined /*out*/;
+            resourceInputs["multisliceNode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["queuedResource"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["symptoms"] = undefined /*out*/;
         } else {
@@ -183,11 +190,13 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["multisliceNode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
             resourceInputs["nodeId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["queuedResource"] = undefined /*out*/;
             resourceInputs["runtimeVersion"] = undefined /*out*/;
             resourceInputs["schedulingConfig"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
@@ -212,9 +221,9 @@ export interface NodeArgs {
      */
     acceleratorConfig?: pulumi.Input<inputs.tpu.v2.AcceleratorConfigArgs>;
     /**
-     * The type of hardware accelerators associated with this node.
+     * Optional. The type of hardware accelerators associated with this node.
      */
-    acceleratorType: pulumi.Input<string>;
+    acceleratorType?: pulumi.Input<string>;
     /**
      * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
      */

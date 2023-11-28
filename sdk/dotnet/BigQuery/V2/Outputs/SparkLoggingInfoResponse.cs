@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// Project ID used for logging
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// Resource type used for logging
         /// </summary>
@@ -24,11 +24,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
         [OutputConstructor]
         private SparkLoggingInfoResponse(
-            string projectId,
+            string project,
 
             string resourceType)
         {
-            ProjectId = projectId;
+            Project = project;
             ResourceType = resourceType;
         }
     }

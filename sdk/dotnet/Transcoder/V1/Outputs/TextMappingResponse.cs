@@ -11,17 +11,17 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 {
 
     /// <summary>
-    /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+    /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
     /// </summary>
     [OutputType]
     public sealed class TextMappingResponse
     {
         /// <summary>
-        /// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+        /// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
         /// </summary>
         public readonly string AtomKey;
         /// <summary>
-        /// The `Input.key` that identifies the input file.
+        /// The Input.key that identifies the input file.
         /// </summary>
         public readonly string InputKey;
         /// <summary>

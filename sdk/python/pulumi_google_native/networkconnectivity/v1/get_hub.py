@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetHubResult:
-    def __init__(__self__, create_time=None, description=None, labels=None, name=None, routing_vpcs=None, state=None, unique_id=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, labels=None, name=None, route_tables=None, routing_vpcs=None, spoke_summary=None, state=None, unique_id=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -32,9 +32,15 @@ class GetHubResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if route_tables and not isinstance(route_tables, list):
+            raise TypeError("Expected argument 'route_tables' to be a list")
+        pulumi.set(__self__, "route_tables", route_tables)
         if routing_vpcs and not isinstance(routing_vpcs, list):
             raise TypeError("Expected argument 'routing_vpcs' to be a list")
         pulumi.set(__self__, "routing_vpcs", routing_vpcs)
+        if spoke_summary and not isinstance(spoke_summary, dict):
+            raise TypeError("Expected argument 'spoke_summary' to be a dict")
+        pulumi.set(__self__, "spoke_summary", spoke_summary)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -65,7 +71,7 @@ class GetHubResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         """
         return pulumi.get(self, "labels")
 
@@ -78,12 +84,28 @@ class GetHubResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="routeTables")
+    def route_tables(self) -> Sequence[str]:
+        """
+        The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub.
+        """
+        return pulumi.get(self, "route_tables")
+
+    @property
     @pulumi.getter(name="routingVpcs")
     def routing_vpcs(self) -> Sequence['outputs.RoutingVPCResponse']:
         """
         The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         return pulumi.get(self, "routing_vpcs")
+
+    @property
+    @pulumi.getter(name="spokeSummary")
+    def spoke_summary(self) -> 'outputs.SpokeSummaryResponse':
+        """
+        A summary of the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
+        """
+        return pulumi.get(self, "spoke_summary")
 
     @property
     @pulumi.getter
@@ -120,7 +142,9 @@ class AwaitableGetHubResult(GetHubResult):
             description=self.description,
             labels=self.labels,
             name=self.name,
+            route_tables=self.route_tables,
             routing_vpcs=self.routing_vpcs,
+            spoke_summary=self.spoke_summary,
             state=self.state,
             unique_id=self.unique_id,
             update_time=self.update_time)
@@ -143,7 +167,9 @@ def get_hub(hub_id: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        route_tables=pulumi.get(__ret__, 'route_tables'),
         routing_vpcs=pulumi.get(__ret__, 'routing_vpcs'),
+        spoke_summary=pulumi.get(__ret__, 'spoke_summary'),
         state=pulumi.get(__ret__, 'state'),
         unique_id=pulumi.get(__ret__, 'unique_id'),
         update_time=pulumi.get(__ret__, 'update_time'))

@@ -55,7 +55,7 @@ class FunctionArgs:
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input['FunctionDockerRegistry'] docker_registry: Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
-        :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input['EventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service.
         :param pulumi.Input['HttpsTriggerArgs'] https_trigger: An HTTPS endpoint type of source that can be triggered via URL.
@@ -65,7 +65,7 @@ class FunctionArgs:
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param pulumi.Input[int] min_instances: A lower bound for the number function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
-        :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        :param pulumi.Input[str] network: Deprecated: use vpc_connector
         :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         :param pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]] secret_environment_variables: Secret environment variables configuration.
         :param pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]] secret_volumes: Secret volumes configuration.
@@ -112,6 +112,9 @@ class FunctionArgs:
             pulumi.set(__self__, "min_instances", min_instances)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            warnings.warn("""Deprecated: use vpc_connector""", DeprecationWarning)
+            pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
         if network is not None:
             pulumi.set(__self__, "network", network)
         if project is not None:
@@ -215,7 +218,7 @@ class FunctionArgs:
     @pulumi.getter(name="entryPoint")
     def entry_point(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         """
         return pulumi.get(self, "entry_point")
 
@@ -344,8 +347,11 @@ class FunctionArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        Deprecated: use vpc_connector
         """
+        warnings.warn("""Deprecated: use vpc_connector""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
+
         return pulumi.get(self, "network")
 
     @network.setter
@@ -541,7 +547,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input['FunctionDockerRegistry'] docker_registry: Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
-        :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input[pulumi.InputType['EventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service.
         :param pulumi.Input[pulumi.InputType['HttpsTriggerArgs']] https_trigger: An HTTPS endpoint type of source that can be triggered via URL.
@@ -551,7 +557,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param pulumi.Input[int] min_instances: A lower bound for the number function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
-        :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        :param pulumi.Input[str] network: Deprecated: use vpc_connector
         :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]] secret_environment_variables: Secret environment variables configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretVolumeArgs']]]] secret_volumes: Secret volumes configuration.
@@ -644,6 +650,9 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["max_instances"] = max_instances
             __props__.__dict__["min_instances"] = min_instances
             __props__.__dict__["name"] = name
+            if network is not None and not opts.urn:
+                warnings.warn("""Deprecated: use vpc_connector""", DeprecationWarning)
+                pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["runtime"] = runtime
@@ -791,7 +800,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="entryPoint")
     def entry_point(self) -> pulumi.Output[str]:
         """
-        The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         """
         return pulumi.get(self, "entry_point")
 
@@ -876,8 +885,11 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
-        The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        Deprecated: use vpc_connector
         """
+        warnings.warn("""Deprecated: use vpc_connector""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
+
         return pulumi.get(self, "network")
 
     @property

@@ -18,6 +18,8 @@ var _ = internal.GetEnvOrDefault
 type Accelerator struct {
 	// The number of accelerators of this type.
 	Count *string `pulumi:"count"`
+	// Optional. The NVIDIA GPU driver version that should be installed for this type. You can define the specific driver version such as "470.103.01", following the driver version requirements in https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver. Batch will install the specific accelerator driver if qualified.
+	DriverVersion *string `pulumi:"driverVersion"`
 	// Deprecated: please use instances[0].install_gpu_drivers instead.
 	//
 	// Deprecated: Deprecated: please use instances[0].install_gpu_drivers instead.
@@ -41,6 +43,8 @@ type AcceleratorInput interface {
 type AcceleratorArgs struct {
 	// The number of accelerators of this type.
 	Count pulumi.StringPtrInput `pulumi:"count"`
+	// Optional. The NVIDIA GPU driver version that should be installed for this type. You can define the specific driver version such as "470.103.01", following the driver version requirements in https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver. Batch will install the specific accelerator driver if qualified.
+	DriverVersion pulumi.StringPtrInput `pulumi:"driverVersion"`
 	// Deprecated: please use instances[0].install_gpu_drivers instead.
 	//
 	// Deprecated: Deprecated: please use instances[0].install_gpu_drivers instead.
@@ -124,6 +128,11 @@ func (o AcceleratorOutput) Count() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Accelerator) *string { return v.Count }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The NVIDIA GPU driver version that should be installed for this type. You can define the specific driver version such as "470.103.01", following the driver version requirements in https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver. Batch will install the specific accelerator driver if qualified.
+func (o AcceleratorOutput) DriverVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Accelerator) *string { return v.DriverVersion }).(pulumi.StringPtrOutput)
+}
+
 // Deprecated: please use instances[0].install_gpu_drivers instead.
 //
 // Deprecated: Deprecated: please use instances[0].install_gpu_drivers instead.
@@ -166,6 +175,8 @@ func (o AcceleratorArrayOutput) Index(i pulumi.IntInput) AcceleratorOutput {
 type AcceleratorResponse struct {
 	// The number of accelerators of this type.
 	Count string `pulumi:"count"`
+	// Optional. The NVIDIA GPU driver version that should be installed for this type. You can define the specific driver version such as "470.103.01", following the driver version requirements in https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver. Batch will install the specific accelerator driver if qualified.
+	DriverVersion string `pulumi:"driverVersion"`
 	// Deprecated: please use instances[0].install_gpu_drivers instead.
 	//
 	// Deprecated: Deprecated: please use instances[0].install_gpu_drivers instead.
@@ -198,6 +209,11 @@ func (o AcceleratorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[
 // The number of accelerators of this type.
 func (o AcceleratorResponseOutput) Count() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorResponse) string { return v.Count }).(pulumi.StringOutput)
+}
+
+// Optional. The NVIDIA GPU driver version that should be installed for this type. You can define the specific driver version such as "470.103.01", following the driver version requirements in https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver. Batch will install the specific accelerator driver if qualified.
+func (o AcceleratorResponseOutput) DriverVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorResponse) string { return v.DriverVersion }).(pulumi.StringOutput)
 }
 
 // Deprecated: please use instances[0].install_gpu_drivers instead.
@@ -442,7 +458,7 @@ type AllocationPolicy struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Location where compute resources should be allocated for the Job.
 	Location *LocationPolicy `pulumi:"location"`
-	// The network policy.
+	// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
 	Network *NetworkPolicy `pulumi:"network"`
 	// The placement policy.
 	Placement *PlacementPolicy `pulumi:"placement"`
@@ -469,7 +485,7 @@ type AllocationPolicyArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Location where compute resources should be allocated for the Job.
 	Location LocationPolicyPtrInput `pulumi:"location"`
-	// The network policy.
+	// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
 	Network NetworkPolicyPtrInput `pulumi:"network"`
 	// The placement policy.
 	Placement PlacementPolicyPtrInput `pulumi:"placement"`
@@ -588,7 +604,7 @@ func (o AllocationPolicyOutput) Location() LocationPolicyPtrOutput {
 	return o.ApplyT(func(v AllocationPolicy) *LocationPolicy { return v.Location }).(LocationPolicyPtrOutput)
 }
 
-// The network policy.
+// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
 func (o AllocationPolicyOutput) Network() NetworkPolicyPtrOutput {
 	return o.ApplyT(func(v AllocationPolicy) *NetworkPolicy { return v.Network }).(NetworkPolicyPtrOutput)
 }
@@ -663,7 +679,7 @@ func (o AllocationPolicyPtrOutput) Location() LocationPolicyPtrOutput {
 	}).(LocationPolicyPtrOutput)
 }
 
-// The network policy.
+// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
 func (o AllocationPolicyPtrOutput) Network() NetworkPolicyPtrOutput {
 	return o.ApplyT(func(v *AllocationPolicy) *NetworkPolicy {
 		if v == nil {
@@ -701,7 +717,7 @@ type AllocationPolicyResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Location where compute resources should be allocated for the Job.
 	Location LocationPolicyResponse `pulumi:"location"`
-	// The network policy.
+	// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
 	Network NetworkPolicyResponse `pulumi:"network"`
 	// The placement policy.
 	Placement PlacementPolicyResponse `pulumi:"placement"`
@@ -745,7 +761,7 @@ func (o AllocationPolicyResponseOutput) Location() LocationPolicyResponseOutput 
 	return o.ApplyT(func(v AllocationPolicyResponse) LocationPolicyResponse { return v.Location }).(LocationPolicyResponseOutput)
 }
 
-// The network policy.
+// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
 func (o AllocationPolicyResponseOutput) Network() NetworkPolicyResponseOutput {
 	return o.ApplyT(func(v AllocationPolicyResponse) NetworkPolicyResponse { return v.Network }).(NetworkPolicyResponseOutput)
 }
@@ -1165,13 +1181,183 @@ func (o BarrierResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BarrierResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Compute resource requirements
+// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+type CloudLoggingOption struct {
+}
+
+// CloudLoggingOptionInput is an input type that accepts CloudLoggingOptionArgs and CloudLoggingOptionOutput values.
+// You can construct a concrete instance of `CloudLoggingOptionInput` via:
+//
+//	CloudLoggingOptionArgs{...}
+type CloudLoggingOptionInput interface {
+	pulumi.Input
+
+	ToCloudLoggingOptionOutput() CloudLoggingOptionOutput
+	ToCloudLoggingOptionOutputWithContext(context.Context) CloudLoggingOptionOutput
+}
+
+// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+type CloudLoggingOptionArgs struct {
+}
+
+func (CloudLoggingOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoggingOption)(nil)).Elem()
+}
+
+func (i CloudLoggingOptionArgs) ToCloudLoggingOptionOutput() CloudLoggingOptionOutput {
+	return i.ToCloudLoggingOptionOutputWithContext(context.Background())
+}
+
+func (i CloudLoggingOptionArgs) ToCloudLoggingOptionOutputWithContext(ctx context.Context) CloudLoggingOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoggingOptionOutput)
+}
+
+func (i CloudLoggingOptionArgs) ToOutput(ctx context.Context) pulumix.Output[CloudLoggingOption] {
+	return pulumix.Output[CloudLoggingOption]{
+		OutputState: i.ToCloudLoggingOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CloudLoggingOptionArgs) ToCloudLoggingOptionPtrOutput() CloudLoggingOptionPtrOutput {
+	return i.ToCloudLoggingOptionPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoggingOptionArgs) ToCloudLoggingOptionPtrOutputWithContext(ctx context.Context) CloudLoggingOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoggingOptionOutput).ToCloudLoggingOptionPtrOutputWithContext(ctx)
+}
+
+// CloudLoggingOptionPtrInput is an input type that accepts CloudLoggingOptionArgs, CloudLoggingOptionPtr and CloudLoggingOptionPtrOutput values.
+// You can construct a concrete instance of `CloudLoggingOptionPtrInput` via:
+//
+//	        CloudLoggingOptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoggingOptionPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoggingOptionPtrOutput() CloudLoggingOptionPtrOutput
+	ToCloudLoggingOptionPtrOutputWithContext(context.Context) CloudLoggingOptionPtrOutput
+}
+
+type cloudLoggingOptionPtrType CloudLoggingOptionArgs
+
+func CloudLoggingOptionPtr(v *CloudLoggingOptionArgs) CloudLoggingOptionPtrInput {
+	return (*cloudLoggingOptionPtrType)(v)
+}
+
+func (*cloudLoggingOptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoggingOption)(nil)).Elem()
+}
+
+func (i *cloudLoggingOptionPtrType) ToCloudLoggingOptionPtrOutput() CloudLoggingOptionPtrOutput {
+	return i.ToCloudLoggingOptionPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoggingOptionPtrType) ToCloudLoggingOptionPtrOutputWithContext(ctx context.Context) CloudLoggingOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoggingOptionPtrOutput)
+}
+
+func (i *cloudLoggingOptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudLoggingOption] {
+	return pulumix.Output[*CloudLoggingOption]{
+		OutputState: i.ToCloudLoggingOptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+type CloudLoggingOptionOutput struct{ *pulumi.OutputState }
+
+func (CloudLoggingOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoggingOption)(nil)).Elem()
+}
+
+func (o CloudLoggingOptionOutput) ToCloudLoggingOptionOutput() CloudLoggingOptionOutput {
+	return o
+}
+
+func (o CloudLoggingOptionOutput) ToCloudLoggingOptionOutputWithContext(ctx context.Context) CloudLoggingOptionOutput {
+	return o
+}
+
+func (o CloudLoggingOptionOutput) ToCloudLoggingOptionPtrOutput() CloudLoggingOptionPtrOutput {
+	return o.ToCloudLoggingOptionPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoggingOptionOutput) ToCloudLoggingOptionPtrOutputWithContext(ctx context.Context) CloudLoggingOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoggingOption) *CloudLoggingOption {
+		return &v
+	}).(CloudLoggingOptionPtrOutput)
+}
+
+func (o CloudLoggingOptionOutput) ToOutput(ctx context.Context) pulumix.Output[CloudLoggingOption] {
+	return pulumix.Output[CloudLoggingOption]{
+		OutputState: o.OutputState,
+	}
+}
+
+type CloudLoggingOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoggingOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoggingOption)(nil)).Elem()
+}
+
+func (o CloudLoggingOptionPtrOutput) ToCloudLoggingOptionPtrOutput() CloudLoggingOptionPtrOutput {
+	return o
+}
+
+func (o CloudLoggingOptionPtrOutput) ToCloudLoggingOptionPtrOutputWithContext(ctx context.Context) CloudLoggingOptionPtrOutput {
+	return o
+}
+
+func (o CloudLoggingOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudLoggingOption] {
+	return pulumix.Output[*CloudLoggingOption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CloudLoggingOptionPtrOutput) Elem() CloudLoggingOptionOutput {
+	return o.ApplyT(func(v *CloudLoggingOption) CloudLoggingOption {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoggingOption
+		return ret
+	}).(CloudLoggingOptionOutput)
+}
+
+// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+type CloudLoggingOptionResponse struct {
+}
+
+// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+type CloudLoggingOptionResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudLoggingOptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoggingOptionResponse)(nil)).Elem()
+}
+
+func (o CloudLoggingOptionResponseOutput) ToCloudLoggingOptionResponseOutput() CloudLoggingOptionResponseOutput {
+	return o
+}
+
+func (o CloudLoggingOptionResponseOutput) ToCloudLoggingOptionResponseOutputWithContext(ctx context.Context) CloudLoggingOptionResponseOutput {
+	return o
+}
+
+func (o CloudLoggingOptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudLoggingOptionResponse] {
+	return pulumix.Output[CloudLoggingOptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Compute resource requirements. ComputeResource defines the amount of resources required for each task. Make sure your tasks have enough resources to successfully run. If you also define the types of resources for a job to use with the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure both fields are compatible with each other.
 type ComputeResource struct {
 	// Extra boot disk size in MiB for each task.
 	BootDiskMib *string `pulumi:"bootDiskMib"`
-	// The milliCPU count.
+	// The milliCPU count. `cpuMilli` defines the amount of CPU resources per task in milliCPU units. For example, `1000` corresponds to 1 vCPU per task. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the CPU resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 2 vCPUs each, you are recommended to set `cpuMilli` no more than `2000`, or you are recommended to run two tasks on the same VM if you set `cpuMilli` to `1000` or less.
 	CpuMilli *string `pulumi:"cpuMilli"`
-	// Memory in MiB.
+	// Memory in MiB. `memoryMib` defines the amount of memory per task in MiB units. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the memory resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 8 GiB each, you are recommended to set `memoryMib` to no more than `8192`, or you are recommended to run two tasks on the same VM if you set `memoryMib` to `4096` or less.
 	MemoryMib *string `pulumi:"memoryMib"`
 }
 
@@ -1186,13 +1372,13 @@ type ComputeResourceInput interface {
 	ToComputeResourceOutputWithContext(context.Context) ComputeResourceOutput
 }
 
-// Compute resource requirements
+// Compute resource requirements. ComputeResource defines the amount of resources required for each task. Make sure your tasks have enough resources to successfully run. If you also define the types of resources for a job to use with the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure both fields are compatible with each other.
 type ComputeResourceArgs struct {
 	// Extra boot disk size in MiB for each task.
 	BootDiskMib pulumi.StringPtrInput `pulumi:"bootDiskMib"`
-	// The milliCPU count.
+	// The milliCPU count. `cpuMilli` defines the amount of CPU resources per task in milliCPU units. For example, `1000` corresponds to 1 vCPU per task. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the CPU resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 2 vCPUs each, you are recommended to set `cpuMilli` no more than `2000`, or you are recommended to run two tasks on the same VM if you set `cpuMilli` to `1000` or less.
 	CpuMilli pulumi.StringPtrInput `pulumi:"cpuMilli"`
-	// Memory in MiB.
+	// Memory in MiB. `memoryMib` defines the amount of memory per task in MiB units. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the memory resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 8 GiB each, you are recommended to set `memoryMib` to no more than `8192`, or you are recommended to run two tasks on the same VM if you set `memoryMib` to `4096` or less.
 	MemoryMib pulumi.StringPtrInput `pulumi:"memoryMib"`
 }
 
@@ -1261,7 +1447,7 @@ func (i *computeResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*C
 	}
 }
 
-// Compute resource requirements
+// Compute resource requirements. ComputeResource defines the amount of resources required for each task. Make sure your tasks have enough resources to successfully run. If you also define the types of resources for a job to use with the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure both fields are compatible with each other.
 type ComputeResourceOutput struct{ *pulumi.OutputState }
 
 func (ComputeResourceOutput) ElementType() reflect.Type {
@@ -1297,12 +1483,12 @@ func (o ComputeResourceOutput) BootDiskMib() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeResource) *string { return v.BootDiskMib }).(pulumi.StringPtrOutput)
 }
 
-// The milliCPU count.
+// The milliCPU count. `cpuMilli` defines the amount of CPU resources per task in milliCPU units. For example, `1000` corresponds to 1 vCPU per task. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the CPU resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 2 vCPUs each, you are recommended to set `cpuMilli` no more than `2000`, or you are recommended to run two tasks on the same VM if you set `cpuMilli` to `1000` or less.
 func (o ComputeResourceOutput) CpuMilli() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeResource) *string { return v.CpuMilli }).(pulumi.StringPtrOutput)
 }
 
-// Memory in MiB.
+// Memory in MiB. `memoryMib` defines the amount of memory per task in MiB units. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the memory resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 8 GiB each, you are recommended to set `memoryMib` to no more than `8192`, or you are recommended to run two tasks on the same VM if you set `memoryMib` to `4096` or less.
 func (o ComputeResourceOutput) MemoryMib() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeResource) *string { return v.MemoryMib }).(pulumi.StringPtrOutput)
 }
@@ -1347,7 +1533,7 @@ func (o ComputeResourcePtrOutput) BootDiskMib() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The milliCPU count.
+// The milliCPU count. `cpuMilli` defines the amount of CPU resources per task in milliCPU units. For example, `1000` corresponds to 1 vCPU per task. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the CPU resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 2 vCPUs each, you are recommended to set `cpuMilli` no more than `2000`, or you are recommended to run two tasks on the same VM if you set `cpuMilli` to `1000` or less.
 func (o ComputeResourcePtrOutput) CpuMilli() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeResource) *string {
 		if v == nil {
@@ -1357,7 +1543,7 @@ func (o ComputeResourcePtrOutput) CpuMilli() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Memory in MiB.
+// Memory in MiB. `memoryMib` defines the amount of memory per task in MiB units. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the memory resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 8 GiB each, you are recommended to set `memoryMib` to no more than `8192`, or you are recommended to run two tasks on the same VM if you set `memoryMib` to `4096` or less.
 func (o ComputeResourcePtrOutput) MemoryMib() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeResource) *string {
 		if v == nil {
@@ -1367,17 +1553,17 @@ func (o ComputeResourcePtrOutput) MemoryMib() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Compute resource requirements
+// Compute resource requirements. ComputeResource defines the amount of resources required for each task. Make sure your tasks have enough resources to successfully run. If you also define the types of resources for a job to use with the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure both fields are compatible with each other.
 type ComputeResourceResponse struct {
 	// Extra boot disk size in MiB for each task.
 	BootDiskMib string `pulumi:"bootDiskMib"`
-	// The milliCPU count.
+	// The milliCPU count. `cpuMilli` defines the amount of CPU resources per task in milliCPU units. For example, `1000` corresponds to 1 vCPU per task. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the CPU resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 2 vCPUs each, you are recommended to set `cpuMilli` no more than `2000`, or you are recommended to run two tasks on the same VM if you set `cpuMilli` to `1000` or less.
 	CpuMilli string `pulumi:"cpuMilli"`
-	// Memory in MiB.
+	// Memory in MiB. `memoryMib` defines the amount of memory per task in MiB units. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the memory resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 8 GiB each, you are recommended to set `memoryMib` to no more than `8192`, or you are recommended to run two tasks on the same VM if you set `memoryMib` to `4096` or less.
 	MemoryMib string `pulumi:"memoryMib"`
 }
 
-// Compute resource requirements
+// Compute resource requirements. ComputeResource defines the amount of resources required for each task. Make sure your tasks have enough resources to successfully run. If you also define the types of resources for a job to use with the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure both fields are compatible with each other.
 type ComputeResourceResponseOutput struct{ *pulumi.OutputState }
 
 func (ComputeResourceResponseOutput) ElementType() reflect.Type {
@@ -1403,12 +1589,12 @@ func (o ComputeResourceResponseOutput) BootDiskMib() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeResourceResponse) string { return v.BootDiskMib }).(pulumi.StringOutput)
 }
 
-// The milliCPU count.
+// The milliCPU count. `cpuMilli` defines the amount of CPU resources per task in milliCPU units. For example, `1000` corresponds to 1 vCPU per task. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the CPU resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 2 vCPUs each, you are recommended to set `cpuMilli` no more than `2000`, or you are recommended to run two tasks on the same VM if you set `cpuMilli` to `1000` or less.
 func (o ComputeResourceResponseOutput) CpuMilli() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeResourceResponse) string { return v.CpuMilli }).(pulumi.StringOutput)
 }
 
-// Memory in MiB.
+// Memory in MiB. `memoryMib` defines the amount of memory per task in MiB units. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the memory resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 8 GiB each, you are recommended to set `memoryMib` to no more than `8192`, or you are recommended to run two tasks on the same VM if you set `memoryMib` to `4096` or less.
 func (o ComputeResourceResponseOutput) MemoryMib() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeResourceResponse) string { return v.MemoryMib }).(pulumi.StringOutput)
 }
@@ -1429,7 +1615,7 @@ type Container struct {
 	Password *string `pulumi:"password"`
 	// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
 	Username *string `pulumi:"username"`
-	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
+	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
 	Volumes []string `pulumi:"volumes"`
 }
 
@@ -1460,7 +1646,7 @@ type ContainerArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
 	Username pulumi.StringPtrInput `pulumi:"username"`
-	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
+	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
 	Volumes pulumi.StringArrayInput `pulumi:"volumes"`
 }
 
@@ -1595,7 +1781,7 @@ func (o ContainerOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
+// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
 func (o ContainerOutput) Volumes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Volumes }).(pulumi.StringArrayOutput)
 }
@@ -1700,7 +1886,7 @@ func (o ContainerPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
+// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
 func (o ContainerPtrOutput) Volumes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Container) []string {
 		if v == nil {
@@ -1726,7 +1912,7 @@ type ContainerResponse struct {
 	Password string `pulumi:"password"`
 	// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
 	Username string `pulumi:"username"`
-	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
+	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
 	Volumes []string `pulumi:"volumes"`
 }
 
@@ -1786,18 +1972,18 @@ func (o ContainerResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
-// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
+// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
 func (o ContainerResponseOutput) Volumes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Volumes }).(pulumi.StringArrayOutput)
 }
 
 // A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
 type Disk struct {
-	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
+	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. This field is ignored for persistent disks as the interface is chosen automatically. See https://cloud.google.com/compute/docs/disks/persistent-disks#choose_an_interface.
 	DiskInterface *string `pulumi:"diskInterface"`
-	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
+	// URL for a VM image to use as the data source for this disk. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * `batch-debian`: use Batch Debian images. * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
 	Image *string `pulumi:"image"`
-	// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
+	// Disk size in GB. **Non-Boot Disk**: If the `type` specifies a persistent disk, this field is ignored if `data_source` is set as `image` or `snapshot`. If the `type` specifies a local SSD, this field should be a multiple of 375 GB, otherwise, the final size will be the next greater multiple of 375 GB. **Boot Disk**: Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the `boot_disk_mib` field in task spec's `compute_resource` are defined, Batch will only honor this field. Also, this field should be no smaller than the source disk's size when the `data_source` is set as `snapshot` or `image`. For example, if you set an image as the `data_source` field and the image's default disk size 30 GB, you can only use this field to make the disk larger or equal to 30 GB.
 	SizeGb *string `pulumi:"sizeGb"`
 	// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
 	Snapshot *string `pulumi:"snapshot"`
@@ -1818,11 +2004,11 @@ type DiskInput interface {
 
 // A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
 type DiskArgs struct {
-	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
+	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. This field is ignored for persistent disks as the interface is chosen automatically. See https://cloud.google.com/compute/docs/disks/persistent-disks#choose_an_interface.
 	DiskInterface pulumi.StringPtrInput `pulumi:"diskInterface"`
-	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
+	// URL for a VM image to use as the data source for this disk. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * `batch-debian`: use Batch Debian images. * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
 	Image pulumi.StringPtrInput `pulumi:"image"`
-	// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
+	// Disk size in GB. **Non-Boot Disk**: If the `type` specifies a persistent disk, this field is ignored if `data_source` is set as `image` or `snapshot`. If the `type` specifies a local SSD, this field should be a multiple of 375 GB, otherwise, the final size will be the next greater multiple of 375 GB. **Boot Disk**: Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the `boot_disk_mib` field in task spec's `compute_resource` are defined, Batch will only honor this field. Also, this field should be no smaller than the source disk's size when the `data_source` is set as `snapshot` or `image`. For example, if you set an image as the `data_source` field and the image's default disk size 30 GB, you can only use this field to make the disk larger or equal to 30 GB.
 	SizeGb pulumi.StringPtrInput `pulumi:"sizeGb"`
 	// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
 	Snapshot pulumi.StringPtrInput `pulumi:"snapshot"`
@@ -1926,17 +2112,17 @@ func (o DiskOutput) ToOutput(ctx context.Context) pulumix.Output[Disk] {
 	}
 }
 
-// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
+// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. This field is ignored for persistent disks as the interface is chosen automatically. See https://cloud.google.com/compute/docs/disks/persistent-disks#choose_an_interface.
 func (o DiskOutput) DiskInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.DiskInterface }).(pulumi.StringPtrOutput)
 }
 
-// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
+// URL for a VM image to use as the data source for this disk. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * `batch-debian`: use Batch Debian images. * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
 func (o DiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
+// Disk size in GB. **Non-Boot Disk**: If the `type` specifies a persistent disk, this field is ignored if `data_source` is set as `image` or `snapshot`. If the `type` specifies a local SSD, this field should be a multiple of 375 GB, otherwise, the final size will be the next greater multiple of 375 GB. **Boot Disk**: Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the `boot_disk_mib` field in task spec's `compute_resource` are defined, Batch will only honor this field. Also, this field should be no smaller than the source disk's size when the `data_source` is set as `snapshot` or `image`. For example, if you set an image as the `data_source` field and the image's default disk size 30 GB, you can only use this field to make the disk larger or equal to 30 GB.
 func (o DiskOutput) SizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.SizeGb }).(pulumi.StringPtrOutput)
 }
@@ -1981,7 +2167,7 @@ func (o DiskPtrOutput) Elem() DiskOutput {
 	}).(DiskOutput)
 }
 
-// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
+// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. This field is ignored for persistent disks as the interface is chosen automatically. See https://cloud.google.com/compute/docs/disks/persistent-disks#choose_an_interface.
 func (o DiskPtrOutput) DiskInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) *string {
 		if v == nil {
@@ -1991,7 +2177,7 @@ func (o DiskPtrOutput) DiskInterface() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
+// URL for a VM image to use as the data source for this disk. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * `batch-debian`: use Batch Debian images. * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
 func (o DiskPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) *string {
 		if v == nil {
@@ -2001,7 +2187,7 @@ func (o DiskPtrOutput) Image() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
+// Disk size in GB. **Non-Boot Disk**: If the `type` specifies a persistent disk, this field is ignored if `data_source` is set as `image` or `snapshot`. If the `type` specifies a local SSD, this field should be a multiple of 375 GB, otherwise, the final size will be the next greater multiple of 375 GB. **Boot Disk**: Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the `boot_disk_mib` field in task spec's `compute_resource` are defined, Batch will only honor this field. Also, this field should be no smaller than the source disk's size when the `data_source` is set as `snapshot` or `image`. For example, if you set an image as the `data_source` field and the image's default disk size 30 GB, you can only use this field to make the disk larger or equal to 30 GB.
 func (o DiskPtrOutput) SizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) *string {
 		if v == nil {
@@ -2033,11 +2219,11 @@ func (o DiskPtrOutput) Type() pulumi.StringPtrOutput {
 
 // A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
 type DiskResponse struct {
-	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
+	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. This field is ignored for persistent disks as the interface is chosen automatically. See https://cloud.google.com/compute/docs/disks/persistent-disks#choose_an_interface.
 	DiskInterface string `pulumi:"diskInterface"`
-	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
+	// URL for a VM image to use as the data source for this disk. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * `batch-debian`: use Batch Debian images. * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
 	Image string `pulumi:"image"`
-	// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
+	// Disk size in GB. **Non-Boot Disk**: If the `type` specifies a persistent disk, this field is ignored if `data_source` is set as `image` or `snapshot`. If the `type` specifies a local SSD, this field should be a multiple of 375 GB, otherwise, the final size will be the next greater multiple of 375 GB. **Boot Disk**: Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the `boot_disk_mib` field in task spec's `compute_resource` are defined, Batch will only honor this field. Also, this field should be no smaller than the source disk's size when the `data_source` is set as `snapshot` or `image`. For example, if you set an image as the `data_source` field and the image's default disk size 30 GB, you can only use this field to make the disk larger or equal to 30 GB.
 	SizeGb string `pulumi:"sizeGb"`
 	// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
 	Snapshot string `pulumi:"snapshot"`
@@ -2066,17 +2252,17 @@ func (o DiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskRes
 	}
 }
 
-// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
+// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. This field is ignored for persistent disks as the interface is chosen automatically. See https://cloud.google.com/compute/docs/disks/persistent-disks#choose_an_interface.
 func (o DiskResponseOutput) DiskInterface() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.DiskInterface }).(pulumi.StringOutput)
 }
 
-// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
+// URL for a VM image to use as the data source for this disk. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * `batch-debian`: use Batch Debian images. * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
 func (o DiskResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
+// Disk size in GB. **Non-Boot Disk**: If the `type` specifies a persistent disk, this field is ignored if `data_source` is set as `image` or `snapshot`. If the `type` specifies a local SSD, this field should be a multiple of 375 GB, otherwise, the final size will be the next greater multiple of 375 GB. **Boot Disk**: Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the `boot_disk_mib` field in task spec's `compute_resource` are defined, Batch will only honor this field. Also, this field should be no smaller than the source disk's size when the `data_source` is set as `snapshot` or `image`. For example, if you set an image as the `data_source` field and the image's default disk size 30 GB, you can only use this field to make the disk larger or equal to 30 GB.
 func (o DiskResponseOutput) SizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.SizeGb }).(pulumi.StringOutput)
 }
@@ -2624,14 +2810,16 @@ type InstancePolicy struct {
 	Accelerators []Accelerator `pulumi:"accelerators"`
 	// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
 	BootDisk *Disk `pulumi:"bootDisk"`
-	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
+	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.
 	Disks []AttachedDisk `pulumi:"disks"`
 	// The Compute Engine machine type.
 	MachineType *string `pulumi:"machineType"`
-	// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
+	// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The provisioning model.
 	ProvisioningModel *InstancePolicyProvisioningModel `pulumi:"provisioningModel"`
+	// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
+	Reservation *string `pulumi:"reservation"`
 }
 
 // InstancePolicyInput is an input type that accepts InstancePolicyArgs and InstancePolicyOutput values.
@@ -2651,14 +2839,16 @@ type InstancePolicyArgs struct {
 	Accelerators AcceleratorArrayInput `pulumi:"accelerators"`
 	// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
 	BootDisk DiskPtrInput `pulumi:"bootDisk"`
-	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
+	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.
 	Disks AttachedDiskArrayInput `pulumi:"disks"`
 	// The Compute Engine machine type.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
+	// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The provisioning model.
 	ProvisioningModel InstancePolicyProvisioningModelPtrInput `pulumi:"provisioningModel"`
+	// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
+	Reservation pulumi.StringPtrInput `pulumi:"reservation"`
 }
 
 func (InstancePolicyArgs) ElementType() reflect.Type {
@@ -2767,7 +2957,7 @@ func (o InstancePolicyOutput) BootDisk() DiskPtrOutput {
 	return o.ApplyT(func(v InstancePolicy) *Disk { return v.BootDisk }).(DiskPtrOutput)
 }
 
-// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
+// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.
 func (o InstancePolicyOutput) Disks() AttachedDiskArrayOutput {
 	return o.ApplyT(func(v InstancePolicy) []AttachedDisk { return v.Disks }).(AttachedDiskArrayOutput)
 }
@@ -2777,7 +2967,7 @@ func (o InstancePolicyOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePolicy) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
+// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
 func (o InstancePolicyOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePolicy) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
@@ -2785,6 +2975,11 @@ func (o InstancePolicyOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 // The provisioning model.
 func (o InstancePolicyOutput) ProvisioningModel() InstancePolicyProvisioningModelPtrOutput {
 	return o.ApplyT(func(v InstancePolicy) *InstancePolicyProvisioningModel { return v.ProvisioningModel }).(InstancePolicyProvisioningModelPtrOutput)
+}
+
+// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
+func (o InstancePolicyOutput) Reservation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePolicy) *string { return v.Reservation }).(pulumi.StringPtrOutput)
 }
 
 type InstancePolicyPtrOutput struct{ *pulumi.OutputState }
@@ -2837,7 +3032,7 @@ func (o InstancePolicyPtrOutput) BootDisk() DiskPtrOutput {
 	}).(DiskPtrOutput)
 }
 
-// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
+// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.
 func (o InstancePolicyPtrOutput) Disks() AttachedDiskArrayOutput {
 	return o.ApplyT(func(v *InstancePolicy) []AttachedDisk {
 		if v == nil {
@@ -2857,7 +3052,7 @@ func (o InstancePolicyPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
+// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
 func (o InstancePolicyPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePolicy) *string {
 		if v == nil {
@@ -2877,9 +3072,19 @@ func (o InstancePolicyPtrOutput) ProvisioningModel() InstancePolicyProvisioningM
 	}).(InstancePolicyProvisioningModelPtrOutput)
 }
 
-// Either an InstancePolicy or an instance template.
+// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
+func (o InstancePolicyPtrOutput) Reservation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Reservation
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstancePolicyOrTemplate lets you define the type of resources to use for this job either with an InstancePolicy or an instance template. If undefined, Batch picks the type of VM to use and doesn't include optional VM resources such as GPUs and extra disks.
 type InstancePolicyOrTemplate struct {
-	// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false.
+	// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false. For Container-Optimized Image cases, Batch will install the accelerator driver following milestones of https://cloud.google.com/container-optimized-os/docs/release-notes. For non Container-Optimized Image cases, following https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.
 	InstallGpuDrivers *bool `pulumi:"installGpuDrivers"`
 	// Name of an instance template used to create VMs. Named the field as 'instance_template' instead of 'template' to avoid c++ keyword conflict.
 	InstanceTemplate *string `pulumi:"instanceTemplate"`
@@ -2898,9 +3103,9 @@ type InstancePolicyOrTemplateInput interface {
 	ToInstancePolicyOrTemplateOutputWithContext(context.Context) InstancePolicyOrTemplateOutput
 }
 
-// Either an InstancePolicy or an instance template.
+// InstancePolicyOrTemplate lets you define the type of resources to use for this job either with an InstancePolicy or an instance template. If undefined, Batch picks the type of VM to use and doesn't include optional VM resources such as GPUs and extra disks.
 type InstancePolicyOrTemplateArgs struct {
-	// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false.
+	// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false. For Container-Optimized Image cases, Batch will install the accelerator driver following milestones of https://cloud.google.com/container-optimized-os/docs/release-notes. For non Container-Optimized Image cases, following https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.
 	InstallGpuDrivers pulumi.BoolPtrInput `pulumi:"installGpuDrivers"`
 	// Name of an instance template used to create VMs. Named the field as 'instance_template' instead of 'template' to avoid c++ keyword conflict.
 	InstanceTemplate pulumi.StringPtrInput `pulumi:"instanceTemplate"`
@@ -2957,7 +3162,7 @@ func (i InstancePolicyOrTemplateArray) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// Either an InstancePolicy or an instance template.
+// InstancePolicyOrTemplate lets you define the type of resources to use for this job either with an InstancePolicy or an instance template. If undefined, Batch picks the type of VM to use and doesn't include optional VM resources such as GPUs and extra disks.
 type InstancePolicyOrTemplateOutput struct{ *pulumi.OutputState }
 
 func (InstancePolicyOrTemplateOutput) ElementType() reflect.Type {
@@ -2978,7 +3183,7 @@ func (o InstancePolicyOrTemplateOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false.
+// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false. For Container-Optimized Image cases, Batch will install the accelerator driver following milestones of https://cloud.google.com/container-optimized-os/docs/release-notes. For non Container-Optimized Image cases, following https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.
 func (o InstancePolicyOrTemplateOutput) InstallGpuDrivers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstancePolicyOrTemplate) *bool { return v.InstallGpuDrivers }).(pulumi.BoolPtrOutput)
 }
@@ -3019,9 +3224,9 @@ func (o InstancePolicyOrTemplateArrayOutput) Index(i pulumi.IntInput) InstancePo
 	}).(InstancePolicyOrTemplateOutput)
 }
 
-// Either an InstancePolicy or an instance template.
+// InstancePolicyOrTemplate lets you define the type of resources to use for this job either with an InstancePolicy or an instance template. If undefined, Batch picks the type of VM to use and doesn't include optional VM resources such as GPUs and extra disks.
 type InstancePolicyOrTemplateResponse struct {
-	// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false.
+	// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false. For Container-Optimized Image cases, Batch will install the accelerator driver following milestones of https://cloud.google.com/container-optimized-os/docs/release-notes. For non Container-Optimized Image cases, following https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.
 	InstallGpuDrivers bool `pulumi:"installGpuDrivers"`
 	// Name of an instance template used to create VMs. Named the field as 'instance_template' instead of 'template' to avoid c++ keyword conflict.
 	InstanceTemplate string `pulumi:"instanceTemplate"`
@@ -3029,7 +3234,7 @@ type InstancePolicyOrTemplateResponse struct {
 	Policy InstancePolicyResponse `pulumi:"policy"`
 }
 
-// Either an InstancePolicy or an instance template.
+// InstancePolicyOrTemplate lets you define the type of resources to use for this job either with an InstancePolicy or an instance template. If undefined, Batch picks the type of VM to use and doesn't include optional VM resources such as GPUs and extra disks.
 type InstancePolicyOrTemplateResponseOutput struct{ *pulumi.OutputState }
 
 func (InstancePolicyOrTemplateResponseOutput) ElementType() reflect.Type {
@@ -3050,7 +3255,7 @@ func (o InstancePolicyOrTemplateResponseOutput) ToOutput(ctx context.Context) pu
 	}
 }
 
-// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false.
+// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false. For Container-Optimized Image cases, Batch will install the accelerator driver following milestones of https://cloud.google.com/container-optimized-os/docs/release-notes. For non Container-Optimized Image cases, following https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.
 func (o InstancePolicyOrTemplateResponseOutput) InstallGpuDrivers() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstancePolicyOrTemplateResponse) bool { return v.InstallGpuDrivers }).(pulumi.BoolOutput)
 }
@@ -3097,14 +3302,16 @@ type InstancePolicyResponse struct {
 	Accelerators []AcceleratorResponse `pulumi:"accelerators"`
 	// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
 	BootDisk DiskResponse `pulumi:"bootDisk"`
-	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
+	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.
 	Disks []AttachedDiskResponse `pulumi:"disks"`
 	// The Compute Engine machine type.
 	MachineType string `pulumi:"machineType"`
-	// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
+	// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
 	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 	// The provisioning model.
 	ProvisioningModel string `pulumi:"provisioningModel"`
+	// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
+	Reservation string `pulumi:"reservation"`
 }
 
 // InstancePolicy describes an instance type and resources attached to each VM created by this InstancePolicy.
@@ -3138,7 +3345,7 @@ func (o InstancePolicyResponseOutput) BootDisk() DiskResponseOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) DiskResponse { return v.BootDisk }).(DiskResponseOutput)
 }
 
-// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
+// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.
 func (o InstancePolicyResponseOutput) Disks() AttachedDiskResponseArrayOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) []AttachedDiskResponse { return v.Disks }).(AttachedDiskResponseArrayOutput)
 }
@@ -3148,7 +3355,7 @@ func (o InstancePolicyResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
+// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
 func (o InstancePolicyResponseOutput) MinCpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
@@ -3158,11 +3365,16 @@ func (o InstancePolicyResponseOutput) ProvisioningModel() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) string { return v.ProvisioningModel }).(pulumi.StringOutput)
 }
 
+// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
+func (o InstancePolicyResponseOutput) Reservation() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePolicyResponse) string { return v.Reservation }).(pulumi.StringOutput)
+}
+
 // Notification configurations.
 type JobNotification struct {
 	// The attribute requirements of messages to be sent to this Pub/Sub topic. Without this field, no message will be sent.
 	Message *Message `pulumi:"message"`
-	// The Pub/Sub topic where notifications like the job state changes will be published. This topic exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
+	// The Pub/Sub topic where notifications like the job state changes will be published. The topic must exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 }
 
@@ -3181,7 +3393,7 @@ type JobNotificationInput interface {
 type JobNotificationArgs struct {
 	// The attribute requirements of messages to be sent to this Pub/Sub topic. Without this field, no message will be sent.
 	Message MessagePtrInput `pulumi:"message"`
-	// The Pub/Sub topic where notifications like the job state changes will be published. This topic exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
+	// The Pub/Sub topic where notifications like the job state changes will be published. The topic must exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
 }
 
@@ -3260,7 +3472,7 @@ func (o JobNotificationOutput) Message() MessagePtrOutput {
 	return o.ApplyT(func(v JobNotification) *Message { return v.Message }).(MessagePtrOutput)
 }
 
-// The Pub/Sub topic where notifications like the job state changes will be published. This topic exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
+// The Pub/Sub topic where notifications like the job state changes will be published. The topic must exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
 func (o JobNotificationOutput) PubsubTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobNotification) *string { return v.PubsubTopic }).(pulumi.StringPtrOutput)
 }
@@ -3295,7 +3507,7 @@ func (o JobNotificationArrayOutput) Index(i pulumi.IntInput) JobNotificationOutp
 type JobNotificationResponse struct {
 	// The attribute requirements of messages to be sent to this Pub/Sub topic. Without this field, no message will be sent.
 	Message MessageResponse `pulumi:"message"`
-	// The Pub/Sub topic where notifications like the job state changes will be published. This topic exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
+	// The Pub/Sub topic where notifications like the job state changes will be published. The topic must exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
 	PubsubTopic string `pulumi:"pubsubTopic"`
 }
 
@@ -3325,7 +3537,7 @@ func (o JobNotificationResponseOutput) Message() MessageResponseOutput {
 	return o.ApplyT(func(v JobNotificationResponse) MessageResponse { return v.Message }).(MessageResponseOutput)
 }
 
-// The Pub/Sub topic where notifications like the job state changes will be published. This topic exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
+// The Pub/Sub topic where notifications like the job state changes will be published. The topic must exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.
 func (o JobNotificationResponseOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v JobNotificationResponse) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
@@ -4017,6 +4229,8 @@ func (o LocationPolicyResponseOutput) AllowedLocations() pulumi.StringArrayOutpu
 
 // LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.
 type LogsPolicy struct {
+	// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+	CloudLoggingOption *CloudLoggingOption `pulumi:"cloudLoggingOption"`
 	// Where logs should be saved.
 	Destination *LogsPolicyDestination `pulumi:"destination"`
 	// The path to which logs are saved when the destination = PATH. This can be a local file path on the VM, or under the mount point of a Persistent Disk or Filestore, or a Cloud Storage path.
@@ -4036,6 +4250,8 @@ type LogsPolicyInput interface {
 
 // LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.
 type LogsPolicyArgs struct {
+	// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+	CloudLoggingOption CloudLoggingOptionPtrInput `pulumi:"cloudLoggingOption"`
 	// Where logs should be saved.
 	Destination LogsPolicyDestinationPtrInput `pulumi:"destination"`
 	// The path to which logs are saved when the destination = PATH. This can be a local file path on the VM, or under the mount point of a Persistent Disk or Filestore, or a Cloud Storage path.
@@ -4138,6 +4354,11 @@ func (o LogsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[LogsPolic
 	}
 }
 
+// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+func (o LogsPolicyOutput) CloudLoggingOption() CloudLoggingOptionPtrOutput {
+	return o.ApplyT(func(v LogsPolicy) *CloudLoggingOption { return v.CloudLoggingOption }).(CloudLoggingOptionPtrOutput)
+}
+
 // Where logs should be saved.
 func (o LogsPolicyOutput) Destination() LogsPolicyDestinationPtrOutput {
 	return o.ApplyT(func(v LogsPolicy) *LogsPolicyDestination { return v.Destination }).(LogsPolicyDestinationPtrOutput)
@@ -4178,6 +4399,16 @@ func (o LogsPolicyPtrOutput) Elem() LogsPolicyOutput {
 	}).(LogsPolicyOutput)
 }
 
+// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+func (o LogsPolicyPtrOutput) CloudLoggingOption() CloudLoggingOptionPtrOutput {
+	return o.ApplyT(func(v *LogsPolicy) *CloudLoggingOption {
+		if v == nil {
+			return nil
+		}
+		return v.CloudLoggingOption
+	}).(CloudLoggingOptionPtrOutput)
+}
+
 // Where logs should be saved.
 func (o LogsPolicyPtrOutput) Destination() LogsPolicyDestinationPtrOutput {
 	return o.ApplyT(func(v *LogsPolicy) *LogsPolicyDestination {
@@ -4200,6 +4431,8 @@ func (o LogsPolicyPtrOutput) LogsPath() pulumi.StringPtrOutput {
 
 // LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.
 type LogsPolicyResponse struct {
+	// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+	CloudLoggingOption CloudLoggingOptionResponse `pulumi:"cloudLoggingOption"`
 	// Where logs should be saved.
 	Destination string `pulumi:"destination"`
 	// The path to which logs are saved when the destination = PATH. This can be a local file path on the VM, or under the mount point of a Persistent Disk or Filestore, or a Cloud Storage path.
@@ -4227,6 +4460,11 @@ func (o LogsPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[L
 	}
 }
 
+// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+func (o LogsPolicyResponseOutput) CloudLoggingOption() CloudLoggingOptionResponseOutput {
+	return o.ApplyT(func(v LogsPolicyResponse) CloudLoggingOptionResponse { return v.CloudLoggingOption }).(CloudLoggingOptionResponseOutput)
+}
+
 // Where logs should be saved.
 func (o LogsPolicyResponseOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v LogsPolicyResponse) string { return v.Destination }).(pulumi.StringOutput)
@@ -4237,7 +4475,7 @@ func (o LogsPolicyResponseOutput) LogsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LogsPolicyResponse) string { return v.LogsPath }).(pulumi.StringOutput)
 }
 
-// Message details. Describe the attribute that a message should have. Without specified message attributes, no message will be sent by default.
+// Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.
 type Message struct {
 	// The new job state.
 	NewJobState *MessageNewJobState `pulumi:"newJobState"`
@@ -4258,7 +4496,7 @@ type MessageInput interface {
 	ToMessageOutputWithContext(context.Context) MessageOutput
 }
 
-// Message details. Describe the attribute that a message should have. Without specified message attributes, no message will be sent by default.
+// Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.
 type MessageArgs struct {
 	// The new job state.
 	NewJobState MessageNewJobStatePtrInput `pulumi:"newJobState"`
@@ -4333,7 +4571,7 @@ func (i *messagePtrType) ToOutput(ctx context.Context) pulumix.Output[*Message] 
 	}
 }
 
-// Message details. Describe the attribute that a message should have. Without specified message attributes, no message will be sent by default.
+// Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.
 type MessageOutput struct{ *pulumi.OutputState }
 
 func (MessageOutput) ElementType() reflect.Type {
@@ -4439,7 +4677,7 @@ func (o MessagePtrOutput) Type() MessageTypePtrOutput {
 	}).(MessageTypePtrOutput)
 }
 
-// Message details. Describe the attribute that a message should have. Without specified message attributes, no message will be sent by default.
+// Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.
 type MessageResponse struct {
 	// The new job state.
 	NewJobState string `pulumi:"newJobState"`
@@ -4449,7 +4687,7 @@ type MessageResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// Message details. Describe the attribute that a message should have. Without specified message attributes, no message will be sent by default.
+// Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.
 type MessageResponseOutput struct{ *pulumi.OutputState }
 
 func (MessageResponseOutput) ElementType() reflect.Type {
@@ -5349,6 +5587,8 @@ type Runnable struct {
 	Barrier *Barrier `pulumi:"barrier"`
 	// Container runnable.
 	Container *Container `pulumi:"container"`
+	// Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used in logs and other outputs to identify the script, making it easier for users to understand the logs. If not provided the index of the runnable will be used for outputs.
+	DisplayName *string `pulumi:"displayName"`
 	// Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
 	Environment *Environment `pulumi:"environment"`
 	// Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
@@ -5382,6 +5622,8 @@ type RunnableArgs struct {
 	Barrier BarrierPtrInput `pulumi:"barrier"`
 	// Container runnable.
 	Container ContainerPtrInput `pulumi:"container"`
+	// Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used in logs and other outputs to identify the script, making it easier for users to understand the logs. If not provided the index of the runnable will be used for outputs.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
 	Environment EnvironmentPtrInput `pulumi:"environment"`
 	// Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
@@ -5484,6 +5726,11 @@ func (o RunnableOutput) Container() ContainerPtrOutput {
 	return o.ApplyT(func(v Runnable) *Container { return v.Container }).(ContainerPtrOutput)
 }
 
+// Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used in logs and other outputs to identify the script, making it easier for users to understand the logs. If not provided the index of the runnable will be used for outputs.
+func (o RunnableOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Runnable) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
 // Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
 func (o RunnableOutput) Environment() EnvironmentPtrOutput {
 	return o.ApplyT(func(v Runnable) *Environment { return v.Environment }).(EnvironmentPtrOutput)
@@ -5545,6 +5792,8 @@ type RunnableResponse struct {
 	Barrier BarrierResponse `pulumi:"barrier"`
 	// Container runnable.
 	Container ContainerResponse `pulumi:"container"`
+	// Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used in logs and other outputs to identify the script, making it easier for users to understand the logs. If not provided the index of the runnable will be used for outputs.
+	DisplayName string `pulumi:"displayName"`
 	// Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
 	Environment EnvironmentResponse `pulumi:"environment"`
 	// Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
@@ -5596,6 +5845,11 @@ func (o RunnableResponseOutput) Barrier() BarrierResponseOutput {
 // Container runnable.
 func (o RunnableResponseOutput) Container() ContainerResponseOutput {
 	return o.ApplyT(func(v RunnableResponse) ContainerResponse { return v.Container }).(ContainerResponseOutput)
+}
+
+// Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used in logs and other outputs to identify the script, making it easier for users to understand the logs. If not provided the index of the runnable will be used for outputs.
+func (o RunnableResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v RunnableResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
@@ -6211,19 +6465,21 @@ func (o TaskExecutionResponseOutput) ExitCode() pulumi.IntOutput {
 	return o.ApplyT(func(v TaskExecutionResponse) int { return v.ExitCode }).(pulumi.IntOutput)
 }
 
-// A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
+// A TaskGroup defines one or more Tasks that all share the same TaskSpec.
 type TaskGroup struct {
-	// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
+	// Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 	Parallelism *string `pulumi:"parallelism"`
 	// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
 	PermissiveSsh *bool `pulumi:"permissiveSsh"`
 	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
 	RequireHostsFile *bool `pulumi:"requireHostsFile"`
+	// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+	SchedulingPolicy *TaskGroupSchedulingPolicy `pulumi:"schedulingPolicy"`
 	// Number of Tasks in the TaskGroup. Default is 1.
 	TaskCount *string `pulumi:"taskCount"`
 	// Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
 	TaskCountPerNode *string `pulumi:"taskCountPerNode"`
-	// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.
+	// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1).
 	TaskEnvironments []Environment `pulumi:"taskEnvironments"`
 	// Tasks in the group share the same task spec.
 	TaskSpec TaskSpec `pulumi:"taskSpec"`
@@ -6240,19 +6496,21 @@ type TaskGroupInput interface {
 	ToTaskGroupOutputWithContext(context.Context) TaskGroupOutput
 }
 
-// A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
+// A TaskGroup defines one or more Tasks that all share the same TaskSpec.
 type TaskGroupArgs struct {
-	// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
+	// Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 	Parallelism pulumi.StringPtrInput `pulumi:"parallelism"`
 	// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
 	PermissiveSsh pulumi.BoolPtrInput `pulumi:"permissiveSsh"`
 	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
 	RequireHostsFile pulumi.BoolPtrInput `pulumi:"requireHostsFile"`
+	// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+	SchedulingPolicy TaskGroupSchedulingPolicyPtrInput `pulumi:"schedulingPolicy"`
 	// Number of Tasks in the TaskGroup. Default is 1.
 	TaskCount pulumi.StringPtrInput `pulumi:"taskCount"`
 	// Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
 	TaskCountPerNode pulumi.StringPtrInput `pulumi:"taskCountPerNode"`
-	// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.
+	// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1).
 	TaskEnvironments EnvironmentArrayInput `pulumi:"taskEnvironments"`
 	// Tasks in the group share the same task spec.
 	TaskSpec TaskSpecInput `pulumi:"taskSpec"`
@@ -6307,7 +6565,7 @@ func (i TaskGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]TaskGroup
 	}
 }
 
-// A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
+// A TaskGroup defines one or more Tasks that all share the same TaskSpec.
 type TaskGroupOutput struct{ *pulumi.OutputState }
 
 func (TaskGroupOutput) ElementType() reflect.Type {
@@ -6328,7 +6586,7 @@ func (o TaskGroupOutput) ToOutput(ctx context.Context) pulumix.Output[TaskGroup]
 	}
 }
 
-// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
+// Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 func (o TaskGroupOutput) Parallelism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskGroup) *string { return v.Parallelism }).(pulumi.StringPtrOutput)
 }
@@ -6343,6 +6601,11 @@ func (o TaskGroupOutput) RequireHostsFile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TaskGroup) *bool { return v.RequireHostsFile }).(pulumi.BoolPtrOutput)
 }
 
+// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+func (o TaskGroupOutput) SchedulingPolicy() TaskGroupSchedulingPolicyPtrOutput {
+	return o.ApplyT(func(v TaskGroup) *TaskGroupSchedulingPolicy { return v.SchedulingPolicy }).(TaskGroupSchedulingPolicyPtrOutput)
+}
+
 // Number of Tasks in the TaskGroup. Default is 1.
 func (o TaskGroupOutput) TaskCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskGroup) *string { return v.TaskCount }).(pulumi.StringPtrOutput)
@@ -6353,7 +6616,7 @@ func (o TaskGroupOutput) TaskCountPerNode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskGroup) *string { return v.TaskCountPerNode }).(pulumi.StringPtrOutput)
 }
 
-// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.
+// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1).
 func (o TaskGroupOutput) TaskEnvironments() EnvironmentArrayOutput {
 	return o.ApplyT(func(v TaskGroup) []Environment { return v.TaskEnvironments }).(EnvironmentArrayOutput)
 }
@@ -6389,27 +6652,29 @@ func (o TaskGroupArrayOutput) Index(i pulumi.IntInput) TaskGroupOutput {
 	}).(TaskGroupOutput)
 }
 
-// A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
+// A TaskGroup defines one or more Tasks that all share the same TaskSpec.
 type TaskGroupResponse struct {
 	// TaskGroup name. The system generates this field based on parent Job name. For example: "projects/123456/locations/us-west1/jobs/job01/taskGroups/group01".
 	Name string `pulumi:"name"`
-	// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
+	// Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 	Parallelism string `pulumi:"parallelism"`
 	// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
 	PermissiveSsh bool `pulumi:"permissiveSsh"`
 	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
 	RequireHostsFile bool `pulumi:"requireHostsFile"`
+	// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+	SchedulingPolicy string `pulumi:"schedulingPolicy"`
 	// Number of Tasks in the TaskGroup. Default is 1.
 	TaskCount string `pulumi:"taskCount"`
 	// Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
 	TaskCountPerNode string `pulumi:"taskCountPerNode"`
-	// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.
+	// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1).
 	TaskEnvironments []EnvironmentResponse `pulumi:"taskEnvironments"`
 	// Tasks in the group share the same task spec.
 	TaskSpec TaskSpecResponse `pulumi:"taskSpec"`
 }
 
-// A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
+// A TaskGroup defines one or more Tasks that all share the same TaskSpec.
 type TaskGroupResponseOutput struct{ *pulumi.OutputState }
 
 func (TaskGroupResponseOutput) ElementType() reflect.Type {
@@ -6435,7 +6700,7 @@ func (o TaskGroupResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskGroupResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
+// Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 func (o TaskGroupResponseOutput) Parallelism() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskGroupResponse) string { return v.Parallelism }).(pulumi.StringOutput)
 }
@@ -6450,6 +6715,11 @@ func (o TaskGroupResponseOutput) RequireHostsFile() pulumi.BoolOutput {
 	return o.ApplyT(func(v TaskGroupResponse) bool { return v.RequireHostsFile }).(pulumi.BoolOutput)
 }
 
+// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+func (o TaskGroupResponseOutput) SchedulingPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskGroupResponse) string { return v.SchedulingPolicy }).(pulumi.StringOutput)
+}
+
 // Number of Tasks in the TaskGroup. Default is 1.
 func (o TaskGroupResponseOutput) TaskCount() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskGroupResponse) string { return v.TaskCount }).(pulumi.StringOutput)
@@ -6460,7 +6730,7 @@ func (o TaskGroupResponseOutput) TaskCountPerNode() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskGroupResponse) string { return v.TaskCountPerNode }).(pulumi.StringOutput)
 }
 
-// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.
+// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1).
 func (o TaskGroupResponseOutput) TaskEnvironments() EnvironmentResponseArrayOutput {
 	return o.ApplyT(func(v TaskGroupResponse) []EnvironmentResponse { return v.TaskEnvironments }).(EnvironmentResponseArrayOutput)
 }
@@ -6974,6 +7244,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskArrayInput)(nil)).Elem(), AttachedDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BarrierInput)(nil)).Elem(), BarrierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BarrierPtrInput)(nil)).Elem(), BarrierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoggingOptionInput)(nil)).Elem(), CloudLoggingOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoggingOptionPtrInput)(nil)).Elem(), CloudLoggingOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeResourceInput)(nil)).Elem(), ComputeResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeResourcePtrInput)(nil)).Elem(), ComputeResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerInput)(nil)).Elem(), ContainerArgs{})
@@ -7037,6 +7309,9 @@ func init() {
 	pulumi.RegisterOutputType(BarrierOutput{})
 	pulumi.RegisterOutputType(BarrierPtrOutput{})
 	pulumi.RegisterOutputType(BarrierResponseOutput{})
+	pulumi.RegisterOutputType(CloudLoggingOptionOutput{})
+	pulumi.RegisterOutputType(CloudLoggingOptionPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoggingOptionResponseOutput{})
 	pulumi.RegisterOutputType(ComputeResourceOutput{})
 	pulumi.RegisterOutputType(ComputeResourcePtrOutput{})
 	pulumi.RegisterOutputType(ComputeResourceResponseOutput{})

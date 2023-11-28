@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
     public sealed class LogsPolicyResponse
     {
         /// <summary>
+        /// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+        /// </summary>
+        public readonly Outputs.CloudLoggingOptionResponse CloudLoggingOption;
+        /// <summary>
         /// Where logs should be saved.
         /// </summary>
         public readonly string Destination;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 
         [OutputConstructor]
         private LogsPolicyResponse(
+            Outputs.CloudLoggingOptionResponse cloudLoggingOption,
+
             string destination,
 
             string logsPath)
         {
+            CloudLoggingOption = cloudLoggingOption;
             Destination = destination;
             LogsPath = logsPath;
         }

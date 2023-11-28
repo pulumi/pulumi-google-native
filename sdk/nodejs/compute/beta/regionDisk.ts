@@ -62,6 +62,10 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.beta.CustomerEncryptionKeyResponse>;
     /**
+     * Whether this disk is using confidential compute mode.
+     */
+    public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
+    /**
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */
     public readonly eraseWindowsVssSignature!: pulumi.Output<boolean>;
@@ -166,7 +170,7 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
      */
     public readonly sizeGb!: pulumi.Output<string>;
     /**
@@ -266,6 +270,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
+            resourceInputs["enableConfidentialCompute"] = args ? args.enableConfidentialCompute : undefined;
             resourceInputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
             resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             resourceInputs["interface"] = args ? args.interface : undefined;
@@ -322,6 +327,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionKey"] = undefined /*out*/;
+            resourceInputs["enableConfidentialCompute"] = undefined /*out*/;
             resourceInputs["eraseWindowsVssSignature"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
             resourceInputs["interface"] = undefined /*out*/;
@@ -398,6 +404,10 @@ export interface RegionDiskArgs {
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
     /**
+     * Whether this disk is using confidential compute mode.
+     */
+    enableConfidentialCompute?: pulumi.Input<boolean>;
+    /**
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */
     eraseWindowsVssSignature?: pulumi.Input<boolean>;
@@ -470,7 +480,7 @@ export interface RegionDiskArgs {
      */
     resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
      */
     sizeGb?: pulumi.Input<string>;
     /**

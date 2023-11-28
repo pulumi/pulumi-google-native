@@ -34,7 +34,9 @@ type ProvisioningConfig struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Networks to be created.
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
-	Project  pulumi.StringOutput              `pulumi:"project"`
+	// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+	Pod     pulumi.StringOutput `pulumi:"pod"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// State of ProvisioningConfig.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Optional status messages associated with the FAILED state.
@@ -108,7 +110,9 @@ type provisioningConfigArgs struct {
 	Location *string `pulumi:"location"`
 	// Networks to be created.
 	Networks []NetworkConfig `pulumi:"networks"`
-	Project  *string         `pulumi:"project"`
+	// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+	Pod     *string `pulumi:"pod"`
+	Project *string `pulumi:"project"`
 	// Optional status messages associated with the FAILED state.
 	StatusMessage *string `pulumi:"statusMessage"`
 	// A generated ticket id to track provisioning request.
@@ -135,7 +139,9 @@ type ProvisioningConfigArgs struct {
 	Location pulumi.StringPtrInput
 	// Networks to be created.
 	Networks NetworkConfigArrayInput
-	Project  pulumi.StringPtrInput
+	// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+	Pod     pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// Optional status messages associated with the FAILED state.
 	StatusMessage pulumi.StringPtrInput
 	// A generated ticket id to track provisioning request.
@@ -232,6 +238,11 @@ func (o ProvisioningConfigOutput) Name() pulumi.StringOutput {
 // Networks to be created.
 func (o ProvisioningConfigOutput) Networks() NetworkConfigResponseArrayOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) NetworkConfigResponseArrayOutput { return v.Networks }).(NetworkConfigResponseArrayOutput)
+}
+
+// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+func (o ProvisioningConfigOutput) Pod() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Pod }).(pulumi.StringOutput)
 }
 
 func (o ProvisioningConfigOutput) Project() pulumi.StringOutput {

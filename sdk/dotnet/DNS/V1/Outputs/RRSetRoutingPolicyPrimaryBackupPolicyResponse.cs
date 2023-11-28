@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.DNS.V1.Outputs
         /// </summary>
         public readonly Outputs.RRSetRoutingPolicyGeoPolicyResponse BackupGeoTargets;
         public readonly string Kind;
+        /// <summary>
+        /// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
+        /// </summary>
         public readonly Outputs.RRSetRoutingPolicyHealthCheckTargetsResponse PrimaryTargets;
         /// <summary>
         /// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.

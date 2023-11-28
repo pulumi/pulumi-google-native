@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, default_rounding_mode=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, max_staleness=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_constraints=None, table_reference=None, time_partitioning=None, type=None, view=None):
+    def __init__(__self__, biglake_configuration=None, clone_definition=None, clustering=None, creation_time=None, default_collation=None, default_rounding_mode=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, max_staleness=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, resource_tags=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_constraints=None, table_reference=None, time_partitioning=None, type=None, view=None):
+        if biglake_configuration and not isinstance(biglake_configuration, dict):
+            raise TypeError("Expected argument 'biglake_configuration' to be a dict")
+        pulumi.set(__self__, "biglake_configuration", biglake_configuration)
         if clone_definition and not isinstance(clone_definition, dict):
             raise TypeError("Expected argument 'clone_definition' to be a dict")
         pulumi.set(__self__, "clone_definition", clone_definition)
@@ -116,6 +119,9 @@ class GetTableResult:
         if require_partition_filter and not isinstance(require_partition_filter, bool):
             raise TypeError("Expected argument 'require_partition_filter' to be a bool")
         pulumi.set(__self__, "require_partition_filter", require_partition_filter)
+        if resource_tags and not isinstance(resource_tags, dict):
+            raise TypeError("Expected argument 'resource_tags' to be a dict")
+        pulumi.set(__self__, "resource_tags", resource_tags)
         if schema and not isinstance(schema, dict):
             raise TypeError("Expected argument 'schema' to be a dict")
         pulumi.set(__self__, "schema", schema)
@@ -143,6 +149,14 @@ class GetTableResult:
         if view and not isinstance(view, dict):
             raise TypeError("Expected argument 'view' to be a dict")
         pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter(name="biglakeConfiguration")
+    def biglake_configuration(self) -> 'outputs.BigLakeConfigurationResponse':
+        """
+        [Optional] Specifies the configuration of a BigLake managed table.
+        """
+        return pulumi.get(self, "biglake_configuration")
 
     @property
     @pulumi.getter(name="cloneDefinition")
@@ -401,6 +415,14 @@ class GetTableResult:
         return pulumi.get(self, "require_partition_filter")
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Mapping[str, str]:
+        """
+        [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @property
     @pulumi.getter
     def schema(self) -> 'outputs.TableSchemaResponse':
         """
@@ -479,6 +501,7 @@ class AwaitableGetTableResult(GetTableResult):
         if False:
             yield self
         return GetTableResult(
+            biglake_configuration=self.biglake_configuration,
             clone_definition=self.clone_definition,
             clustering=self.clustering,
             creation_time=self.creation_time,
@@ -511,6 +534,7 @@ class AwaitableGetTableResult(GetTableResult):
             num_total_physical_bytes=self.num_total_physical_bytes,
             range_partitioning=self.range_partitioning,
             require_partition_filter=self.require_partition_filter,
+            resource_tags=self.resource_tags,
             schema=self.schema,
             self_link=self.self_link,
             snapshot_definition=self.snapshot_definition,
@@ -541,6 +565,7 @@ def get_table(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigquery/v2:getTable', __args__, opts=opts, typ=GetTableResult).value
 
     return AwaitableGetTableResult(
+        biglake_configuration=pulumi.get(__ret__, 'biglake_configuration'),
         clone_definition=pulumi.get(__ret__, 'clone_definition'),
         clustering=pulumi.get(__ret__, 'clustering'),
         creation_time=pulumi.get(__ret__, 'creation_time'),
@@ -573,6 +598,7 @@ def get_table(dataset_id: Optional[str] = None,
         num_total_physical_bytes=pulumi.get(__ret__, 'num_total_physical_bytes'),
         range_partitioning=pulumi.get(__ret__, 'range_partitioning'),
         require_partition_filter=pulumi.get(__ret__, 'require_partition_filter'),
+        resource_tags=pulumi.get(__ret__, 'resource_tags'),
         schema=pulumi.get(__ret__, 'schema'),
         self_link=pulumi.get(__ret__, 'self_link'),
         snapshot_definition=pulumi.get(__ret__, 'snapshot_definition'),

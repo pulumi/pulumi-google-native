@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Metastore.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> ConfigOverrides;
         /// <summary>
+        /// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+        /// </summary>
+        public readonly string EndpointProtocol;
+        /// <summary>
         /// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         /// </summary>
         public readonly Outputs.KerberosConfigResponse KerberosConfig;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.Metastore.V1.Outputs
 
             ImmutableDictionary<string, string> configOverrides,
 
+            string endpointProtocol,
+
             Outputs.KerberosConfigResponse kerberosConfig,
 
             string version)
         {
             AuxiliaryVersions = auxiliaryVersions;
             ConfigOverrides = configOverrides;
+            EndpointProtocol = endpointProtocol;
             KerberosConfig = kerberosConfig;
             Version = version;
         }

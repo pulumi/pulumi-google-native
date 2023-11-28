@@ -36,6 +36,8 @@ type LookupTlsRouteResult struct {
 	Description string `pulumi:"description"`
 	// Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
 	Gateways []string `pulumi:"gateways"`
+	// Optional. Set of label tags associated with the TlsRoute resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
 	Meshes []string `pulumi:"meshes"`
 	// Name of the TlsRoute resource. It matches pattern `projects/*/locations/global/tlsRoutes/tls_route_name>`.
@@ -104,6 +106,11 @@ func (o LookupTlsRouteResultOutput) Description() pulumi.StringOutput {
 // Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
 func (o LookupTlsRouteResultOutput) Gateways() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTlsRouteResult) []string { return v.Gateways }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Set of label tags associated with the TlsRoute resource.
+func (o LookupTlsRouteResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTlsRouteResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR

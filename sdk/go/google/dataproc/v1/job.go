@@ -20,19 +20,21 @@ type Job struct {
 
 	// Indicates whether the job is completed. If the value is false, the job is still in progress. If true, the job is completed, and status.state field will indicate if it was successful, failed, or cancelled.
 	Done pulumi.BoolOutput `pulumi:"done"`
-	// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+	// If present, the location of miscellaneous control files which can be used as part of job setup and handling. If not present, control files might be placed in the same location as driver_output_uri.
 	DriverControlFilesUri pulumi.StringOutput `pulumi:"driverControlFilesUri"`
 	// A URI pointing to the location of the stdout of the job's driver program.
 	DriverOutputResourceUri pulumi.StringOutput `pulumi:"driverOutputResourceUri"`
 	// Optional. Driver scheduling configuration.
 	DriverSchedulingConfig DriverSchedulingConfigResponseOutput `pulumi:"driverSchedulingConfig"`
+	// Optional. Job is a Flink job.
+	FlinkJob FlinkJobResponseOutput `pulumi:"flinkJob"`
 	// Optional. Job is a Hadoop job.
 	HadoopJob HadoopJobResponseOutput `pulumi:"hadoopJob"`
 	// Optional. Job is a Hive job.
 	HiveJob HiveJobResponseOutput `pulumi:"hiveJob"`
-	// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
+	// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that might be reused over time.
 	JobUuid pulumi.StringOutput `pulumi:"jobUuid"`
-	// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+	// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Optional. Job is a Pig job.
 	PigJob PigJobResponseOutput `pulumi:"pigJob"`
@@ -54,13 +56,13 @@ type Job struct {
 	SparkRJob SparkRJobResponseOutput `pulumi:"sparkRJob"`
 	// Optional. Job is a SparkSql job.
 	SparkSqlJob SparkSqlJobResponseOutput `pulumi:"sparkSqlJob"`
-	// The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
+	// The job status. Additional application-specific status information might be contained in the type_job and yarn_applications fields.
 	Status JobStatusResponseOutput `pulumi:"status"`
 	// The previous job status.
 	StatusHistory JobStatusResponseArrayOutput `pulumi:"statusHistory"`
 	// Optional. Job is a Trino job.
 	TrinoJob TrinoJobResponseOutput `pulumi:"trinoJob"`
-	// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+	// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release.
 	YarnApplications YarnApplicationResponseArrayOutput `pulumi:"yarnApplications"`
 }
 
@@ -117,11 +119,13 @@ func (JobState) ElementType() reflect.Type {
 type jobArgs struct {
 	// Optional. Driver scheduling configuration.
 	DriverSchedulingConfig *DriverSchedulingConfig `pulumi:"driverSchedulingConfig"`
+	// Optional. Job is a Flink job.
+	FlinkJob *FlinkJob `pulumi:"flinkJob"`
 	// Optional. Job is a Hadoop job.
 	HadoopJob *HadoopJob `pulumi:"hadoopJob"`
 	// Optional. Job is a Hive job.
 	HiveJob *HiveJob `pulumi:"hiveJob"`
-	// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+	// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Job is a Pig job.
 	PigJob *PigJob `pulumi:"pigJob"`
@@ -153,11 +157,13 @@ type jobArgs struct {
 type JobArgs struct {
 	// Optional. Driver scheduling configuration.
 	DriverSchedulingConfig DriverSchedulingConfigPtrInput
+	// Optional. Job is a Flink job.
+	FlinkJob FlinkJobPtrInput
 	// Optional. Job is a Hadoop job.
 	HadoopJob HadoopJobPtrInput
 	// Optional. Job is a Hive job.
 	HiveJob HiveJobPtrInput
-	// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+	// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
 	Labels pulumi.StringMapInput
 	// Optional. Job is a Pig job.
 	PigJob PigJobPtrInput
@@ -239,7 +245,7 @@ func (o JobOutput) Done() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.Done }).(pulumi.BoolOutput)
 }
 
-// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+// If present, the location of miscellaneous control files which can be used as part of job setup and handling. If not present, control files might be placed in the same location as driver_output_uri.
 func (o JobOutput) DriverControlFilesUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DriverControlFilesUri }).(pulumi.StringOutput)
 }
@@ -254,6 +260,11 @@ func (o JobOutput) DriverSchedulingConfig() DriverSchedulingConfigResponseOutput
 	return o.ApplyT(func(v *Job) DriverSchedulingConfigResponseOutput { return v.DriverSchedulingConfig }).(DriverSchedulingConfigResponseOutput)
 }
 
+// Optional. Job is a Flink job.
+func (o JobOutput) FlinkJob() FlinkJobResponseOutput {
+	return o.ApplyT(func(v *Job) FlinkJobResponseOutput { return v.FlinkJob }).(FlinkJobResponseOutput)
+}
+
 // Optional. Job is a Hadoop job.
 func (o JobOutput) HadoopJob() HadoopJobResponseOutput {
 	return o.ApplyT(func(v *Job) HadoopJobResponseOutput { return v.HadoopJob }).(HadoopJobResponseOutput)
@@ -264,12 +275,12 @@ func (o JobOutput) HiveJob() HiveJobResponseOutput {
 	return o.ApplyT(func(v *Job) HiveJobResponseOutput { return v.HiveJob }).(HiveJobResponseOutput)
 }
 
-// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
+// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that might be reused over time.
 func (o JobOutput) JobUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.JobUuid }).(pulumi.StringOutput)
 }
 
-// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -327,7 +338,7 @@ func (o JobOutput) SparkSqlJob() SparkSqlJobResponseOutput {
 	return o.ApplyT(func(v *Job) SparkSqlJobResponseOutput { return v.SparkSqlJob }).(SparkSqlJobResponseOutput)
 }
 
-// The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
+// The job status. Additional application-specific status information might be contained in the type_job and yarn_applications fields.
 func (o JobOutput) Status() JobStatusResponseOutput {
 	return o.ApplyT(func(v *Job) JobStatusResponseOutput { return v.Status }).(JobStatusResponseOutput)
 }
@@ -342,7 +353,7 @@ func (o JobOutput) TrinoJob() TrinoJobResponseOutput {
 	return o.ApplyT(func(v *Job) TrinoJobResponseOutput { return v.TrinoJob }).(TrinoJobResponseOutput)
 }
 
-// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release.
 func (o JobOutput) YarnApplications() YarnApplicationResponseArrayOutput {
 	return o.ApplyT(func(v *Job) YarnApplicationResponseArrayOutput { return v.YarnApplications }).(YarnApplicationResponseArrayOutput)
 }

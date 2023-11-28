@@ -20,6 +20,8 @@ class NodeInitArgs:
                  runtime_version: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
+                 autocheckpoint_enabled: Optional[pulumi.Input[bool]] = None,
+                 boot_disk_config: Optional[pulumi.Input['BootDiskConfigArgs']] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -40,6 +42,8 @@ class NodeInitArgs:
         :param pulumi.Input[str] runtime_version: The runtime version running in the Node.
         :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
+        :param pulumi.Input[bool] autocheckpoint_enabled: Optional. Whether Autocheckpoint is enabled.
+        :param pulumi.Input['BootDiskConfigArgs'] boot_disk_config: Optional. Boot disk configuration.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] data_disks: The additional data disks for the Node.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
@@ -59,6 +63,10 @@ class NodeInitArgs:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if accelerator_type is not None:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if autocheckpoint_enabled is not None:
+            pulumi.set(__self__, "autocheckpoint_enabled", autocheckpoint_enabled)
+        if boot_disk_config is not None:
+            pulumi.set(__self__, "boot_disk_config", boot_disk_config)
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
         if data_disks is not None:
@@ -125,6 +133,30 @@ class NodeInitArgs:
     @accelerator_type.setter
     def accelerator_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "accelerator_type", value)
+
+    @property
+    @pulumi.getter(name="autocheckpointEnabled")
+    def autocheckpoint_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether Autocheckpoint is enabled.
+        """
+        return pulumi.get(self, "autocheckpoint_enabled")
+
+    @autocheckpoint_enabled.setter
+    def autocheckpoint_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "autocheckpoint_enabled", value)
+
+    @property
+    @pulumi.getter(name="bootDiskConfig")
+    def boot_disk_config(self) -> Optional[pulumi.Input['BootDiskConfigArgs']]:
+        """
+        Optional. Boot disk configuration.
+        """
+        return pulumi.get(self, "boot_disk_config")
+
+    @boot_disk_config.setter
+    def boot_disk_config(self, value: Optional[pulumi.Input['BootDiskConfigArgs']]):
+        pulumi.set(self, "boot_disk_config", value)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -308,6 +340,8 @@ class Node(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
+                 autocheckpoint_enabled: Optional[pulumi.Input[bool]] = None,
+                 boot_disk_config: Optional[pulumi.Input[pulumi.InputType['BootDiskConfigArgs']]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -333,6 +367,8 @@ class Node(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']] accelerator_config: The AccleratorConfig for the TPU Node.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
+        :param pulumi.Input[bool] autocheckpoint_enabled: Optional. Whether Autocheckpoint is enabled.
+        :param pulumi.Input[pulumi.InputType['BootDiskConfigArgs']] boot_disk_config: Optional. Boot disk configuration.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]] data_disks: The additional data disks for the Node.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
@@ -375,6 +411,8 @@ class Node(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
+                 autocheckpoint_enabled: Optional[pulumi.Input[bool]] = None,
+                 boot_disk_config: Optional[pulumi.Input[pulumi.InputType['BootDiskConfigArgs']]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -402,6 +440,8 @@ class Node(pulumi.CustomResource):
 
             __props__.__dict__["accelerator_config"] = accelerator_config
             __props__.__dict__["accelerator_type"] = accelerator_type
+            __props__.__dict__["autocheckpoint_enabled"] = autocheckpoint_enabled
+            __props__.__dict__["boot_disk_config"] = boot_disk_config
             __props__.__dict__["cidr_block"] = cidr_block
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["description"] = description
@@ -456,6 +496,8 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["accelerator_config"] = None
         __props__.__dict__["accelerator_type"] = None
         __props__.__dict__["api_version"] = None
+        __props__.__dict__["autocheckpoint_enabled"] = None
+        __props__.__dict__["boot_disk_config"] = None
         __props__.__dict__["cidr_block"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["data_disks"] = None
@@ -505,6 +547,22 @@ class Node(pulumi.CustomResource):
         The API version that created this Node.
         """
         return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter(name="autocheckpointEnabled")
+    def autocheckpoint_enabled(self) -> pulumi.Output[bool]:
+        """
+        Optional. Whether Autocheckpoint is enabled.
+        """
+        return pulumi.get(self, "autocheckpoint_enabled")
+
+    @property
+    @pulumi.getter(name="bootDiskConfig")
+    def boot_disk_config(self) -> pulumi.Output['outputs.BootDiskConfigResponse']:
+        """
+        Optional. Boot disk configuration.
+        """
+        return pulumi.get(self, "boot_disk_config")
 
     @property
     @pulumi.getter(name="cidrBlock")

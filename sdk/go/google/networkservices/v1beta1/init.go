@@ -41,6 +41,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GrpcRoute{}
 	case "google-native:networkservices/v1beta1:HttpRoute":
 		r = &HttpRoute{}
+	case "google-native:networkservices/v1beta1:LbRouteExtension":
+		r = &LbRouteExtension{}
+	case "google-native:networkservices/v1beta1:LbTrafficExtension":
+		r = &LbTrafficExtension{}
 	case "google-native:networkservices/v1beta1:Mesh":
 		r = &Mesh{}
 	case "google-native:networkservices/v1beta1:MeshIamBinding":
@@ -57,6 +61,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceBindingIamMember{}
 	case "google-native:networkservices/v1beta1:ServiceBindingIamPolicy":
 		r = &ServiceBindingIamPolicy{}
+	case "google-native:networkservices/v1beta1:ServiceLbPolicy":
+		r = &ServiceLbPolicy{}
+	case "google-native:networkservices/v1beta1:ServiceLbPolicyIamBinding":
+		r = &ServiceLbPolicyIamBinding{}
+	case "google-native:networkservices/v1beta1:ServiceLbPolicyIamMember":
+		r = &ServiceLbPolicyIamMember{}
+	case "google-native:networkservices/v1beta1:ServiceLbPolicyIamPolicy":
+		r = &ServiceLbPolicyIamPolicy{}
 	case "google-native:networkservices/v1beta1:TcpRoute":
 		r = &TcpRoute{}
 	case "google-native:networkservices/v1beta1:TlsRoute":

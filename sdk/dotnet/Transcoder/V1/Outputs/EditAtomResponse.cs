@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly string EndTimeOffset;
         /// <summary>
-        /// List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+        /// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
         /// </summary>
         public readonly ImmutableArray<string> Inputs;
         /// <summary>

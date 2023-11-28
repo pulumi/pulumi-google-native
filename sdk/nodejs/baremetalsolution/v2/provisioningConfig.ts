@@ -69,6 +69,10 @@ export class ProvisioningConfig extends pulumi.CustomResource {
      * Networks to be created.
      */
     public readonly networks!: pulumi.Output<outputs.baremetalsolution.v2.NetworkConfigResponse[]>;
+    /**
+     * Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+     */
+    public readonly pod!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * State of ProvisioningConfig.
@@ -112,6 +116,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
             resourceInputs["instances"] = args ? args.instances : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["pod"] = args ? args.pod : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["statusMessage"] = args ? args.statusMessage : undefined;
             resourceInputs["ticketId"] = args ? args.ticketId : undefined;
@@ -130,6 +135,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
+            resourceInputs["pod"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
@@ -175,6 +181,10 @@ export interface ProvisioningConfigArgs {
      * Networks to be created.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.baremetalsolution.v2.NetworkConfigArgs>[]>;
+    /**
+     * Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+     */
+    pod?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Optional status messages associated with the FAILED state.

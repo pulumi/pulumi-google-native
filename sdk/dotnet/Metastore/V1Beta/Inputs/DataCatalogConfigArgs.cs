@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
     public sealed class DataCatalogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        /// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

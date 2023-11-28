@@ -38,9 +38,9 @@ class GetApicategoryResult:
 
     @property
     @pulumi.getter
-    def data(self) -> 'outputs.GoogleCloudApigeeV1ApiCategoryDataResponse':
+    def data(self) -> 'outputs.GoogleCloudApigeeV1ApiCategoryResponse':
         """
-        Details of category.
+        The API category resource.
         """
         return pulumi.get(self, "data")
 
@@ -48,7 +48,7 @@ class GetApicategoryResult:
     @pulumi.getter(name="errorCode")
     def error_code(self) -> str:
         """
-        ID that can be used to find errors in the log files.
+        Unique error code for the request, if any.
         """
         return pulumi.get(self, "error_code")
 
@@ -64,7 +64,7 @@ class GetApicategoryResult:
     @pulumi.getter(name="requestId")
     def request_id(self) -> str:
         """
-        ID that can be used to find request details in the log files.
+        Unique ID of the request.
         """
         return pulumi.get(self, "request_id")
 
@@ -95,7 +95,7 @@ def get_apicategory(apicategory_id: Optional[str] = None,
                     site_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApicategoryResult:
     """
-    Gets a category on the portal.
+    Gets an API category.
     """
     __args__ = dict()
     __args__['apicategoryId'] = apicategory_id
@@ -118,6 +118,6 @@ def get_apicategory_output(apicategory_id: Optional[pulumi.Input[str]] = None,
                            site_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApicategoryResult]:
     """
-    Gets a category on the portal.
+    Gets an API category.
     """
     ...

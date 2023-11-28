@@ -42,7 +42,7 @@ export class Workflow extends pulumi.CustomResource {
      */
     public readonly callLogLevel!: pulumi.Output<string>;
     /**
-     * The timestamp for when the workflow was created.
+     * The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -50,16 +50,16 @@ export class Workflow extends pulumi.CustomResource {
      */
     public readonly cryptoKeyName!: pulumi.Output<string>;
     /**
-     * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+     * Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+     * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -68,7 +68,7 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
     /**
-     * The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+     * The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.
      */
     public /*out*/ readonly revisionId!: pulumi.Output<string>;
     /**
@@ -88,9 +88,13 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateError!: pulumi.Output<outputs.workflows.v1.StateErrorResponse>;
     /**
-     * The timestamp for when the workflow was last updated.
+     * The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     */
+    public readonly userEnvVars!: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
      */
@@ -119,6 +123,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["sourceContents"] = args ? args.sourceContents : undefined;
+            resourceInputs["userEnvVars"] = args ? args.userEnvVars : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
@@ -142,6 +147,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateError"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["userEnvVars"] = undefined /*out*/;
             resourceInputs["workflowId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -164,16 +170,16 @@ export interface WorkflowArgs {
      */
     cryptoKeyName?: pulumi.Input<string>;
     /**
-     * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+     * Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
      */
     description?: pulumi.Input<string>;
     /**
-     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+     * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
@@ -185,6 +191,10 @@ export interface WorkflowArgs {
      * Workflow code to be executed. The size limit is 128KB.
      */
     sourceContents?: pulumi.Input<string>;
+    /**
+     * Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     */
+    userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
      */

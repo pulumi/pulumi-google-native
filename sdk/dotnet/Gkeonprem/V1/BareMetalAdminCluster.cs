@@ -36,6 +36,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         public Output<string> BareMetalVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Binary Authorization related configurations.
+        /// </summary>
+        [Output("binaryAuthorization")]
+        public Output<Outputs.BinaryAuthorizationResponse> BinaryAuthorization { get; private set; } = null!;
+
+        /// <summary>
         /// Cluster operations configuration.
         /// </summary>
         [Output("clusterOperations")]
@@ -271,6 +277,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         [Input("bareMetalVersion")]
         public Input<string>? BareMetalVersion { get; set; }
+
+        /// <summary>
+        /// Binary Authorization related configurations.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.BinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
         /// Cluster operations configuration.

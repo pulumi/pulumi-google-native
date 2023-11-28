@@ -68,7 +68,7 @@ export const AddressIpVersion = {
 } as const;
 
 /**
- * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+ * The IP version that will be used by this address. Valid options are IPV4 or IPV6.
  */
 export type AddressIpVersion = (typeof AddressIpVersion)[keyof typeof AddressIpVersion];
 
@@ -178,16 +178,32 @@ export const AdvancedMachineFeaturesPerformanceMonitoringUnit = {
 export type AdvancedMachineFeaturesPerformanceMonitoringUnit = (typeof AdvancedMachineFeaturesPerformanceMonitoringUnit)[keyof typeof AdvancedMachineFeaturesPerformanceMonitoringUnit];
 
 export const AllocationAggregateReservationVmFamily = {
+    VmFamilyCloudTpuLiteDeviceCt5l: "VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L",
+    VmFamilyCloudTpuLitePodSliceCt5lp: "VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP",
     VmFamilyCloudTpuPodSliceCt4p: "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P",
-    VmFamilyComputeOptimizedC3: "VM_FAMILY_COMPUTE_OPTIMIZED_C3",
-    VmFamilyGeneralPurposeT2d: "VM_FAMILY_GENERAL_PURPOSE_T2D",
-    VmFamilyMemoryOptimizedM3: "VM_FAMILY_MEMORY_OPTIMIZED_M3",
 } as const;
 
 /**
  * The VM family that all instances scheduled against this reservation must belong to.
  */
 export type AllocationAggregateReservationVmFamily = (typeof AllocationAggregateReservationVmFamily)[keyof typeof AllocationAggregateReservationVmFamily];
+
+export const AllocationAggregateReservationWorkloadType = {
+    /**
+     * Reserved resources will be optimized for BATCH workloads, such as ML training.
+     */
+    Batch: "BATCH",
+    /**
+     * Reserved resources will be optimized for SERVING workloads, such as ML inference.
+     */
+    Serving: "SERVING",
+    Unspecified: "UNSPECIFIED",
+} as const;
+
+/**
+ * The workload type of the instances that will target this reservation.
+ */
+export type AllocationAggregateReservationWorkloadType = (typeof AllocationAggregateReservationWorkloadType)[keyof typeof AllocationAggregateReservationWorkloadType];
 
 export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface = {
     Nvdimm: "NVDIMM",
@@ -454,7 +470,7 @@ export const AutoscalingPolicyMode = {
 } as const;
 
 /**
- * Defines operating mode for this policy.
+ * Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
  */
 export type AutoscalingPolicyMode = (typeof AutoscalingPolicyMode)[keyof typeof AutoscalingPolicyMode];
 
@@ -514,6 +530,26 @@ export const BackendBucketCompressionMode = {
  * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
  */
 export type BackendBucketCompressionMode = (typeof BackendBucketCompressionMode)[keyof typeof BackendBucketCompressionMode];
+
+export const BackendPreference = {
+    /**
+     * No preference.
+     */
+    Default: "DEFAULT",
+    /**
+     * If preference is unspecified, we set it to the DEFAULT value
+     */
+    PreferenceUnspecified: "PREFERENCE_UNSPECIFIED",
+    /**
+     * Traffic will be sent to this backend first.
+     */
+    Preferred: "PREFERRED",
+} as const;
+
+/**
+ * This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default 
+ */
+export type BackendPreference = (typeof BackendPreference)[keyof typeof BackendPreference];
 
 export const BackendServiceCdnPolicyCacheMode = {
     /**
@@ -594,7 +630,7 @@ export const BackendServiceIpAddressSelectionPolicy = {
 } as const;
 
 /**
- * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+ * Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
  */
 export type BackendServiceIpAddressSelectionPolicy = (typeof BackendServiceIpAddressSelectionPolicy)[keyof typeof BackendServiceIpAddressSelectionPolicy];
 
@@ -660,7 +696,7 @@ export const BackendServiceLocalityLbPolicy = {
 } as const;
 
 /**
- * The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+ * The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
  */
 export type BackendServiceLocalityLbPolicy = (typeof BackendServiceLocalityLbPolicy)[keyof typeof BackendServiceLocalityLbPolicy];
 
@@ -1028,6 +1064,26 @@ export const DeprecationStatusState = {
  */
 export type DeprecationStatusState = (typeof DeprecationStatusState)[keyof typeof DeprecationStatusState];
 
+export const DiskAccessMode = {
+    /**
+     * The AccessMode means the disk can be attached to multiple instances in RO mode.
+     */
+    ReadOnlyMany: "READ_ONLY_MANY",
+    /**
+     * The AccessMode means the disk can be attached to multiple instances in RW mode.
+     */
+    ReadWriteMany: "READ_WRITE_MANY",
+    /**
+     * The default AccessMode, means the disk can be attached to single instance in RW mode.
+     */
+    ReadWriteSingle: "READ_WRITE_SINGLE",
+} as const;
+
+/**
+ * The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+ */
+export type DiskAccessMode = (typeof DiskAccessMode)[keyof typeof DiskAccessMode];
+
 export const DiskArchitecture = {
     /**
      * Default value indicating Architecture is not set.
@@ -1372,7 +1428,7 @@ export const GlobalAddressIpVersion = {
 } as const;
 
 /**
- * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+ * The IP version that will be used by this address. Valid options are IPV4 or IPV6.
  */
 export type GlobalAddressIpVersion = (typeof GlobalAddressIpVersion)[keyof typeof GlobalAddressIpVersion];
 
@@ -1555,6 +1611,22 @@ export const GlobalForwardingRulePscConnectionStatus = {
 
 export type GlobalForwardingRulePscConnectionStatus = (typeof GlobalForwardingRulePscConnectionStatus)[keyof typeof GlobalForwardingRulePscConnectionStatus];
 
+export const GlobalNetworkEndpointGroupClientPortMappingMode = {
+    /**
+     * For each endpoint there is exactly one client port.
+     */
+    ClientPortPerEndpoint: "CLIENT_PORT_PER_ENDPOINT",
+    /**
+     * NEG should not be used for mapping client port to destination.
+     */
+    PortMappingDisabled: "PORT_MAPPING_DISABLED",
+} as const;
+
+/**
+ * Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+ */
+export type GlobalNetworkEndpointGroupClientPortMappingMode = (typeof GlobalNetworkEndpointGroupClientPortMappingMode)[keyof typeof GlobalNetworkEndpointGroupClientPortMappingMode];
+
 export const GlobalNetworkEndpointGroupNetworkEndpointType = {
     /**
      * The network endpoint is represented by an IP address.
@@ -1564,10 +1636,6 @@ export const GlobalNetworkEndpointGroupNetworkEndpointType = {
      * The network endpoint is represented by IP address and port pair.
      */
     GceVmIpPort: "GCE_VM_IP_PORT",
-    /**
-     * The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
-     */
-    GceVmPrimaryIp: "GCE_VM_PRIMARY_IP",
     /**
      * The network endpoint is represented by fully qualified domain name and port.
      */
@@ -1607,14 +1675,32 @@ export const GlobalNetworkEndpointGroupType = {
  */
 export type GlobalNetworkEndpointGroupType = (typeof GlobalNetworkEndpointGroupType)[keyof typeof GlobalNetworkEndpointGroupType];
 
+export const GlobalPublicDelegatedPrefixMode = {
+    /**
+     * The public delegated prefix is used for further sub-delegation only. Such prefixes cannot set allocatablePrefixLength.
+     */
+    Delegation: "DELEGATION",
+    /**
+     * The public delegated prefix is used for creating forwarding rules only. Such prefixes cannot set publicDelegatedSubPrefixes.
+     */
+    ExternalIpv6ForwardingRuleCreation: "EXTERNAL_IPV6_FORWARDING_RULE_CREATION",
+} as const;
+
+/**
+ * The public delegated prefix mode for IPv6 only.
+ */
+export type GlobalPublicDelegatedPrefixMode = (typeof GlobalPublicDelegatedPrefixMode)[keyof typeof GlobalPublicDelegatedPrefixMode];
+
 export const GuestOsFeatureType = {
     BareMetalLinuxCompatible: "BARE_METAL_LINUX_COMPATIBLE",
     FeatureTypeUnspecified: "FEATURE_TYPE_UNSPECIFIED",
     Gvnic: "GVNIC",
+    Idpf: "IDPF",
     MultiIpSubnet: "MULTI_IP_SUBNET",
     SecureBoot: "SECURE_BOOT",
     SevCapable: "SEV_CAPABLE",
     SevLiveMigratable: "SEV_LIVE_MIGRATABLE",
+    SevLiveMigratableV2: "SEV_LIVE_MIGRATABLE_V2",
     SevSnpCapable: "SEV_SNP_CAPABLE",
     TdxCapable: "TDX_CAPABLE",
     UefiCompatible: "UEFI_COMPATIBLE",
@@ -1623,7 +1709,7 @@ export const GuestOsFeatureType = {
 } as const;
 
 /**
- * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
+ * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
  */
 export type GuestOsFeatureType = (typeof GuestOsFeatureType)[keyof typeof GuestOsFeatureType];
 
@@ -1887,17 +1973,21 @@ export type InstanceGroupManagerFailoverAction = (typeof InstanceGroupManagerFai
 
 export const InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure = {
     /**
-     * If any of the MIG's VMs is not running, or is failing, no repair action will be taken.
+     * MIG deletes a failed or an unhealthy VM. Deleting the VM decreases the target size of the MIG.
+     */
+    Delete: "DELETE",
+    /**
+     * MIG does not repair a failed or an unhealthy VM.
      */
     DoNothing: "DO_NOTHING",
     /**
-     * *[Default]* If any of the MIG's VMs is not running - for example, a VM cannot be created during a scale out or a VM fails – then the group will retry until it creates that VM successfully. For more information about how a MIG manages its VMs, see What is a managed instance."
+     * (Default) MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG.
      */
     Repair: "REPAIR",
 } as const;
 
 /**
- * Defines behaviour for all instance or failures
+ * The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM. 
  */
 export type InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure = (typeof InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure)[keyof typeof InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure];
 
@@ -1927,15 +2017,31 @@ export const InstanceGroupManagerListManagedInstancesResults = {
  */
 export type InstanceGroupManagerListManagedInstancesResults = (typeof InstanceGroupManagerListManagedInstancesResults)[keyof typeof InstanceGroupManagerListManagedInstancesResults];
 
+export const InstanceGroupManagerStandbyPolicyMode = {
+    /**
+     * MIG does not automatically stop/start or suspend/resume VMs.
+     */
+    Manual: "MANUAL",
+    /**
+     * MIG automatically resumes and starts VMs when it scales out, and replenishes the standby pool afterwards.
+     */
+    ScaleOutPool: "SCALE_OUT_POOL",
+} as const;
+
+/**
+ * Defines behaviour of using instances from standby pool to resize MIG.
+ */
+export type InstanceGroupManagerStandbyPolicyMode = (typeof InstanceGroupManagerStandbyPolicyMode)[keyof typeof InstanceGroupManagerStandbyPolicyMode];
+
 export const InstanceGroupManagerTargetSizeUnit = {
+    /**
+     * [Default] TargetSize is the target number of instances.
+     */
+    Instance: "INSTANCE",
     /**
      * TargetSize is the target count of vCPUs of VMs.
      */
     Vcpu: "VCPU",
-    /**
-     * [Default] TargetSize is the target number of VMs.
-     */
-    Vm: "VM",
 } as const;
 
 /**
@@ -1965,15 +2071,15 @@ export const InstanceGroupManagerUpdatePolicyMinimalAction = {
      */
     None: "NONE",
     /**
-     * Updates applied in runtime, instances will not be disrupted.
+     * Do not stop the instance.
      */
     Refresh: "REFRESH",
     /**
-     * Old instances will be deleted. New instances will be created from the target template.
+     * (Default.) Replace the instance according to the replacement method option.
      */
     Replace: "REPLACE",
     /**
-     * Every instance will be restarted.
+     * Stop the instance and start it again.
      */
     Restart: "RESTART",
 } as const;
@@ -1989,21 +2095,21 @@ export const InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction = {
      */
     None: "NONE",
     /**
-     * Updates applied in runtime, instances will not be disrupted.
+     * Do not stop the instance.
      */
     Refresh: "REFRESH",
     /**
-     * Old instances will be deleted. New instances will be created from the target template.
+     * (Default.) Replace the instance according to the replacement method option.
      */
     Replace: "REPLACE",
     /**
-     * Every instance will be restarted.
+     * Stop the instance and start it again.
      */
     Restart: "RESTART",
 } as const;
 
 /**
- * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+ * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
  */
 export type InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction = (typeof InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction)[keyof typeof InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction];
 
@@ -2025,17 +2131,17 @@ export type InstanceGroupManagerUpdatePolicyReplacementMethod = (typeof Instance
 
 export const InstanceGroupManagerUpdatePolicyType = {
     /**
-     * No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+     * MIG will apply new configurations to existing VMs only when you selectively target specific or all VMs to be updated.
      */
     Opportunistic: "OPPORTUNISTIC",
     /**
-     * This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+     * MIG will automatically apply new configurations to all or a subset of existing VMs and also to new VMs that are added to the group.
      */
     Proactive: "PROACTIVE",
 } as const;
 
 /**
- * The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+ * The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
  */
 export type InstanceGroupManagerUpdatePolicyType = (typeof InstanceGroupManagerUpdatePolicyType)[keyof typeof InstanceGroupManagerUpdatePolicyType];
 
@@ -2424,6 +2530,22 @@ export const NetworkAttachmentConnectionPreference = {
 
 export type NetworkAttachmentConnectionPreference = (typeof NetworkAttachmentConnectionPreference)[keyof typeof NetworkAttachmentConnectionPreference];
 
+export const NetworkEndpointGroupClientPortMappingMode = {
+    /**
+     * For each endpoint there is exactly one client port.
+     */
+    ClientPortPerEndpoint: "CLIENT_PORT_PER_ENDPOINT",
+    /**
+     * NEG should not be used for mapping client port to destination.
+     */
+    PortMappingDisabled: "PORT_MAPPING_DISABLED",
+} as const;
+
+/**
+ * Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+ */
+export type NetworkEndpointGroupClientPortMappingMode = (typeof NetworkEndpointGroupClientPortMappingMode)[keyof typeof NetworkEndpointGroupClientPortMappingMode];
+
 export const NetworkEndpointGroupNetworkEndpointType = {
     /**
      * The network endpoint is represented by an IP address.
@@ -2433,10 +2555,6 @@ export const NetworkEndpointGroupNetworkEndpointType = {
      * The network endpoint is represented by IP address and port pair.
      */
     GceVmIpPort: "GCE_VM_IP_PORT",
-    /**
-     * The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
-     */
-    GceVmPrimaryIp: "GCE_VM_PRIMARY_IP",
     /**
      * The network endpoint is represented by fully qualified domain name and port.
      */
@@ -2521,6 +2639,10 @@ export const NetworkInterfaceStackType = {
      * The network interface will be assigned IPv4 address.
      */
     Ipv4Only: "IPV4_ONLY",
+    /**
+     * The network interface will only be assigned IPv6 addresses.
+     */
+    Ipv6Only: "IPV6_ONLY",
 } as const;
 
 /**
@@ -2565,6 +2687,26 @@ export const NetworkPerformanceConfigTotalEgressBandwidthTier = {
 } as const;
 
 export type NetworkPerformanceConfigTotalEgressBandwidthTier = (typeof NetworkPerformanceConfigTotalEgressBandwidthTier)[keyof typeof NetworkPerformanceConfigTotalEgressBandwidthTier];
+
+export const NetworkRoutingConfigBgpBestPathSelectionMode = {
+    Legacy: "LEGACY",
+    Standard: "STANDARD",
+} as const;
+
+/**
+ * The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+ */
+export type NetworkRoutingConfigBgpBestPathSelectionMode = (typeof NetworkRoutingConfigBgpBestPathSelectionMode)[keyof typeof NetworkRoutingConfigBgpBestPathSelectionMode];
+
+export const NetworkRoutingConfigBgpInterRegionCost = {
+    AddCostToMed: "ADD_COST_TO_MED",
+    Default: "DEFAULT",
+} as const;
+
+/**
+ * Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+ */
+export type NetworkRoutingConfigBgpInterRegionCost = (typeof NetworkRoutingConfigBgpInterRegionCost)[keyof typeof NetworkRoutingConfigBgpInterRegionCost];
 
 export const NetworkRoutingConfigRoutingMode = {
     Global: "GLOBAL",
@@ -2765,6 +2907,38 @@ export const PublicAdvertisedPrefixStatus = {
  */
 export type PublicAdvertisedPrefixStatus = (typeof PublicAdvertisedPrefixStatus)[keyof typeof PublicAdvertisedPrefixStatus];
 
+export const PublicDelegatedPrefixMode = {
+    /**
+     * The public delegated prefix is used for further sub-delegation only. Such prefixes cannot set allocatablePrefixLength.
+     */
+    Delegation: "DELEGATION",
+    /**
+     * The public delegated prefix is used for creating forwarding rules only. Such prefixes cannot set publicDelegatedSubPrefixes.
+     */
+    ExternalIpv6ForwardingRuleCreation: "EXTERNAL_IPV6_FORWARDING_RULE_CREATION",
+} as const;
+
+/**
+ * The public delegated prefix mode for IPv6 only.
+ */
+export type PublicDelegatedPrefixMode = (typeof PublicDelegatedPrefixMode)[keyof typeof PublicDelegatedPrefixMode];
+
+export const PublicDelegatedPrefixPublicDelegatedSubPrefixMode = {
+    /**
+     * The public delegated prefix is used for further sub-delegation only. Such prefixes cannot set allocatablePrefixLength.
+     */
+    Delegation: "DELEGATION",
+    /**
+     * The public delegated prefix is used for creating forwarding rules only. Such prefixes cannot set publicDelegatedSubPrefixes.
+     */
+    ExternalIpv6ForwardingRuleCreation: "EXTERNAL_IPV6_FORWARDING_RULE_CREATION",
+} as const;
+
+/**
+ * The PublicDelegatedSubPrefix mode for IPv6 only.
+ */
+export type PublicDelegatedPrefixPublicDelegatedSubPrefixMode = (typeof PublicDelegatedPrefixPublicDelegatedSubPrefixMode)[keyof typeof PublicDelegatedPrefixPublicDelegatedSubPrefixMode];
+
 export const RegionBackendServiceCompressionMode = {
     /**
      * Automatically uses the best compression based on the Accept-Encoding header sent by the client.
@@ -2801,7 +2975,7 @@ export const RegionBackendServiceIpAddressSelectionPolicy = {
 } as const;
 
 /**
- * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+ * Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
  */
 export type RegionBackendServiceIpAddressSelectionPolicy = (typeof RegionBackendServiceIpAddressSelectionPolicy)[keyof typeof RegionBackendServiceIpAddressSelectionPolicy];
 
@@ -2867,7 +3041,7 @@ export const RegionBackendServiceLocalityLbPolicy = {
 } as const;
 
 /**
- * The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+ * The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
  */
 export type RegionBackendServiceLocalityLbPolicy = (typeof RegionBackendServiceLocalityLbPolicy)[keyof typeof RegionBackendServiceLocalityLbPolicy];
 
@@ -2989,10 +3163,12 @@ export type RegionCommitmentPlan = (typeof RegionCommitmentPlan)[keyof typeof Re
 
 export const RegionCommitmentType = {
     AcceleratorOptimized: "ACCELERATOR_OPTIMIZED",
+    AcceleratorOptimizedA3: "ACCELERATOR_OPTIMIZED_A3",
     ComputeOptimized: "COMPUTE_OPTIMIZED",
     ComputeOptimizedC2d: "COMPUTE_OPTIMIZED_C2D",
     ComputeOptimizedC3: "COMPUTE_OPTIMIZED_C3",
     ComputeOptimizedC3d: "COMPUTE_OPTIMIZED_C3D",
+    ComputeOptimizedH3: "COMPUTE_OPTIMIZED_H3",
     GeneralPurpose: "GENERAL_PURPOSE",
     GeneralPurposeE2: "GENERAL_PURPOSE_E2",
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
@@ -3008,6 +3184,26 @@ export const RegionCommitmentType = {
  * The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
  */
 export type RegionCommitmentType = (typeof RegionCommitmentType)[keyof typeof RegionCommitmentType];
+
+export const RegionDiskAccessMode = {
+    /**
+     * The AccessMode means the disk can be attached to multiple instances in RO mode.
+     */
+    ReadOnlyMany: "READ_ONLY_MANY",
+    /**
+     * The AccessMode means the disk can be attached to multiple instances in RW mode.
+     */
+    ReadWriteMany: "READ_WRITE_MANY",
+    /**
+     * The default AccessMode, means the disk can be attached to single instance in RW mode.
+     */
+    ReadWriteSingle: "READ_WRITE_SINGLE",
+} as const;
+
+/**
+ * The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+ */
+export type RegionDiskAccessMode = (typeof RegionDiskAccessMode)[keyof typeof RegionDiskAccessMode];
 
 export const RegionDiskArchitecture = {
     /**
@@ -3126,19 +3322,35 @@ export type RegionInstanceGroupManagerListManagedInstancesResults = (typeof Regi
 
 export const RegionInstanceGroupManagerTargetSizeUnit = {
     /**
+     * [Default] TargetSize is the target number of instances.
+     */
+    Instance: "INSTANCE",
+    /**
      * TargetSize is the target count of vCPUs of VMs.
      */
     Vcpu: "VCPU",
-    /**
-     * [Default] TargetSize is the target number of VMs.
-     */
-    Vm: "VM",
 } as const;
 
 /**
  * The unit of measure for the target size.
  */
 export type RegionInstanceGroupManagerTargetSizeUnit = (typeof RegionInstanceGroupManagerTargetSizeUnit)[keyof typeof RegionInstanceGroupManagerTargetSizeUnit];
+
+export const RegionNetworkEndpointGroupClientPortMappingMode = {
+    /**
+     * For each endpoint there is exactly one client port.
+     */
+    ClientPortPerEndpoint: "CLIENT_PORT_PER_ENDPOINT",
+    /**
+     * NEG should not be used for mapping client port to destination.
+     */
+    PortMappingDisabled: "PORT_MAPPING_DISABLED",
+} as const;
+
+/**
+ * Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+ */
+export type RegionNetworkEndpointGroupClientPortMappingMode = (typeof RegionNetworkEndpointGroupClientPortMappingMode)[keyof typeof RegionNetworkEndpointGroupClientPortMappingMode];
 
 export const RegionNetworkEndpointGroupNetworkEndpointType = {
     /**
@@ -3149,10 +3361,6 @@ export const RegionNetworkEndpointGroupNetworkEndpointType = {
      * The network endpoint is represented by IP address and port pair.
      */
     GceVmIpPort: "GCE_VM_IP_PORT",
-    /**
-     * The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
-     */
-    GceVmPrimaryIp: "GCE_VM_PRIMARY_IP",
     /**
      * The network endpoint is represented by fully qualified domain name and port.
      */
@@ -3220,6 +3428,16 @@ export const RegionSecurityPolicyType = {
  * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
  */
 export type RegionSecurityPolicyType = (typeof RegionSecurityPolicyType)[keyof typeof RegionSecurityPolicyType];
+
+export const RegionSnapshotSnapshotType = {
+    Archive: "ARCHIVE",
+    Standard: "STANDARD",
+} as const;
+
+/**
+ * Indicates the type of the snapshot.
+ */
+export type RegionSnapshotSnapshotType = (typeof RegionSnapshotSnapshotType)[keyof typeof RegionSnapshotSnapshotType];
 
 export const RegionSslCertificateType = {
     /**
@@ -3329,6 +3547,10 @@ export const ReservationAffinityConsumeReservationType = {
      * Prefer to consume from a specific reservation, but still consume any reservation available if the specified reservation is not available or exhausted. Must specify key value fields for specifying the reservations.
      */
     SpecificThenAnyReservation: "SPECIFIC_THEN_ANY_RESERVATION",
+    /**
+     * Prefer to consume from a specific reservation, but still consume from the on-demand pool if the specified reservation is exhausted. Must specify key value fields for specifying the reservations.
+     */
+    SpecificThenNoReservation: "SPECIFIC_THEN_NO_RESERVATION",
     Unspecified: "UNSPECIFIED",
 } as const;
 
@@ -3555,6 +3777,16 @@ export const RouterBgpPeerEnable = {
  */
 export type RouterBgpPeerEnable = (typeof RouterBgpPeerEnable)[keyof typeof RouterBgpPeerEnable];
 
+export const RouterInterfaceIpVersion = {
+    Ipv4: "IPV4",
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * IP version of this interface.
+ */
+export type RouterInterfaceIpVersion = (typeof RouterInterfaceIpVersion)[keyof typeof RouterInterfaceIpVersion];
+
 export const RouterNatAutoNetworkTier = {
     /**
      * Public internet quality with fixed bandwidth.
@@ -3579,13 +3811,13 @@ export const RouterNatAutoNetworkTier = {
 } as const;
 
 /**
- * The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+ * The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
  */
 export type RouterNatAutoNetworkTier = (typeof RouterNatAutoNetworkTier)[keyof typeof RouterNatAutoNetworkTier];
 
 export const RouterNatEndpointTypesItem = {
     /**
-     * This is used for Regional Internal/External HTTP(S) and TCP Proxy load balancer endpoints.
+     * This is used for regional Application Load Balancers (internal and external) and regional proxy Network Load Balancers (internal and external) endpoints.
      */
     EndpointTypeManagedProxyLb: "ENDPOINT_TYPE_MANAGED_PROXY_LB",
     /**
@@ -3853,6 +4085,7 @@ export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVis
 export const SecurityPolicyAdvancedOptionsConfigJsonParsing = {
     Disabled: "DISABLED",
     Standard: "STANDARD",
+    StandardWithGraphql: "STANDARD_WITH_GRAPHQL",
 } as const;
 
 export type SecurityPolicyAdvancedOptionsConfigJsonParsing = (typeof SecurityPolicyAdvancedOptionsConfigJsonParsing)[keyof typeof SecurityPolicyAdvancedOptionsConfigJsonParsing];
@@ -4034,6 +4267,36 @@ export const ServiceAttachmentConnectionPreference = {
  */
 export type ServiceAttachmentConnectionPreference = (typeof ServiceAttachmentConnectionPreference)[keyof typeof ServiceAttachmentConnectionPreference];
 
+export const ServiceAttachmentTunnelingConfigEncapsulationProfile = {
+    /**
+     * Use GENEVE encapsulation protocol and include the SECURITY_V1 set of GENEVE headers.
+     */
+    GeneveSecurityV1: "GENEVE_SECURITY_V1",
+    UnspecifiedEncapsulationProfile: "UNSPECIFIED_ENCAPSULATION_PROFILE",
+} as const;
+
+/**
+ * Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+ */
+export type ServiceAttachmentTunnelingConfigEncapsulationProfile = (typeof ServiceAttachmentTunnelingConfigEncapsulationProfile)[keyof typeof ServiceAttachmentTunnelingConfigEncapsulationProfile];
+
+export const ServiceAttachmentTunnelingConfigRoutingMode = {
+    /**
+     * Traffic sent to this service attachment will be reinjected into the consumer network.
+     */
+    PacketInjection: "PACKET_INJECTION",
+    /**
+     * Response traffic, after de-encapsulation, will be returned to the client.
+     */
+    StandardRouting: "STANDARD_ROUTING",
+    UnspecifiedRoutingMode: "UNSPECIFIED_ROUTING_MODE",
+} as const;
+
+/**
+ * How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+ */
+export type ServiceAttachmentTunnelingConfigRoutingMode = (typeof ServiceAttachmentTunnelingConfigRoutingMode)[keyof typeof ServiceAttachmentTunnelingConfigRoutingMode];
+
 export const ShareSettingsShareType = {
     /**
      * Shared-reservation is open to direct child projects of specific folders.
@@ -4133,15 +4396,39 @@ export const SslPolicyProfile = {
  */
 export type SslPolicyProfile = (typeof SslPolicyProfile)[keyof typeof SslPolicyProfile];
 
-export const StoragePoolType = {
-    Ssd: "SSD",
+export const StoragePoolCapacityProvisioningType = {
+    /**
+     * Advanced provisioning "thinly" allocates the related resource.
+     */
+    Advanced: "ADVANCED",
+    /**
+     * Standard provisioning allocates the related resource for the pool disks' exclusive use.
+     */
+    Standard: "STANDARD",
     Unspecified: "UNSPECIFIED",
 } as const;
 
 /**
- * Type of the storage pool
+ * Provisioning type of the byte capacity of the pool.
  */
-export type StoragePoolType = (typeof StoragePoolType)[keyof typeof StoragePoolType];
+export type StoragePoolCapacityProvisioningType = (typeof StoragePoolCapacityProvisioningType)[keyof typeof StoragePoolCapacityProvisioningType];
+
+export const StoragePoolPerformanceProvisioningType = {
+    /**
+     * Advanced provisioning "thinly" allocates the related resource.
+     */
+    Advanced: "ADVANCED",
+    /**
+     * Standard provisioning allocates the related resource for the pool disks' exclusive use.
+     */
+    Standard: "STANDARD",
+    Unspecified: "UNSPECIFIED",
+} as const;
+
+/**
+ * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+ */
+export type StoragePoolPerformanceProvisioningType = (typeof StoragePoolPerformanceProvisioningType)[keyof typeof StoragePoolPerformanceProvisioningType];
 
 export const SubnetworkAggregationInterval = {
     Interval10Min: "INTERVAL_10_MIN",
@@ -4238,7 +4525,7 @@ export const SubnetworkPurpose = {
      */
     CloudExtension: "CLOUD_EXTENSION",
     /**
-     * Subnet reserved for Global Internal HTTP(S) Load Balancing.
+     * Subnet reserved for Global Envoy-based Load Balancing.
      */
     GlobalManagedProxy: "GLOBAL_MANAGED_PROXY",
     /**
@@ -4262,7 +4549,7 @@ export const SubnetworkPurpose = {
      */
     PrivateServiceConnect: "PRIVATE_SERVICE_CONNECT",
     /**
-     * Subnetwork used for Regional Internal/External HTTP(S) Load Balancing.
+     * Subnetwork used for Regional Envoy-based Load Balancing.
      */
     RegionalManagedProxy: "REGIONAL_MANAGED_PROXY",
 } as const;
@@ -4297,6 +4584,10 @@ export const SubnetworkStackType = {
      * New VMs in this subnet will only be assigned IPv4 addresses.
      */
     Ipv4Only: "IPV4_ONLY",
+    /**
+     * New VMs in this subnet will only be assigned IPv6 addresses.
+     */
+    Ipv6Only: "IPV6_ONLY",
 } as const;
 
 /**

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public Input<Pulumi.GoogleNative.Datamigration.V1.DatabaseEngineInfoEngine> Engine { get; set; } = null!;
 
         /// <summary>
-        /// Engine named version, for example 12.c.1.
+        /// Engine version, for example "12.c.1".
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

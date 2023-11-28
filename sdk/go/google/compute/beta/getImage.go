@@ -41,6 +41,8 @@ type LookupImageResult struct {
 	Description string `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb string `pulumi:"diskSizeGb"`
+	// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family string `pulumi:"family"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
@@ -169,6 +171,11 @@ func (o LookupImageResultOutput) Description() pulumi.StringOutput {
 // Size of the image when restored onto a persistent disk (in GB).
 func (o LookupImageResultOutput) DiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.DiskSizeGb }).(pulumi.StringOutput)
+}
+
+// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+func (o LookupImageResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupImageResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 // The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.

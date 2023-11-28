@@ -25,7 +25,7 @@ class BackupScheduleArgs:
         """
         The set of arguments for constructing a BackupSchedule resource.
         :param pulumi.Input['GoogleFirestoreAdminV1DailyRecurrenceArgs'] daily_recurrence: For a schedule that runs daily at a specified time.
-        :param pulumi.Input[str] retention: At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+        :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         :param pulumi.Input['GoogleFirestoreAdminV1WeeklyRecurrenceArgs'] weekly_recurrence: For a schedule that runs weekly on a specific day and time.
         """
         pulumi.set(__self__, "database_id", database_id)
@@ -72,7 +72,7 @@ class BackupScheduleArgs:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[str]]:
         """
-        At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+        At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         """
         return pulumi.get(self, "retention")
 
@@ -111,7 +111,7 @@ class BackupSchedule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1DailyRecurrenceArgs']] daily_recurrence: For a schedule that runs daily at a specified time.
-        :param pulumi.Input[str] retention: At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+        :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         :param pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1WeeklyRecurrenceArgs']] weekly_recurrence: For a schedule that runs weekly on a specific day and time.
         """
         ...
@@ -235,7 +235,7 @@ class BackupSchedule(pulumi.CustomResource):
     @pulumi.getter
     def retention(self) -> pulumi.Output[str]:
         """
-        At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+        At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         """
         return pulumi.get(self, "retention")
 

@@ -287,7 +287,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="enableDropProtection")
     def enable_drop_protection(self) -> pulumi.Output[bool]:
         """
-        Whether drop protection is enabled for this database. Defaults to false, if not set.
+        Whether drop protection is enabled for this database. Defaults to false, if not set. For more details, please see how to [prevent accidental database deletion](https://cloud.google.com/spanner/docs/prevent-database-deletion).
         """
         return pulumi.get(self, "enable_drop_protection")
 

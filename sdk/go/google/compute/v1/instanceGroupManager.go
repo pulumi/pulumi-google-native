@@ -32,6 +32,8 @@ type InstanceGroupManager struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
+	// The repair policy for this managed instance group.
+	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyResponseOutput `pulumi:"instanceLifecyclePolicy"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate pulumi.StringOutput `pulumi:"instanceTemplate"`
 	// The resource type, which is always compute#instanceGroupManager for managed instance groups.
@@ -117,6 +119,8 @@ type instanceGroupManagerArgs struct {
 	Description *string `pulumi:"description"`
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy *DistributionPolicy `pulumi:"distributionPolicy"`
+	// The repair policy for this managed instance group.
+	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate *string `pulumi:"instanceTemplate"`
 	// Pagination behavior of the listManagedInstances API method for this managed instance group.
@@ -151,6 +155,8 @@ type InstanceGroupManagerArgs struct {
 	Description pulumi.StringPtrInput
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy DistributionPolicyPtrInput
+	// The repair policy for this managed instance group.
+	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate pulumi.StringPtrInput
 	// Pagination behavior of the listManagedInstances API method for this managed instance group.
@@ -266,6 +272,13 @@ func (o InstanceGroupManagerOutput) Fingerprint() pulumi.StringOutput {
 // The URL of the Instance Group resource.
 func (o InstanceGroupManagerOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+// The repair policy for this managed instance group.
+func (o InstanceGroupManagerOutput) InstanceLifecyclePolicy() InstanceGroupManagerInstanceLifecyclePolicyResponseOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerInstanceLifecyclePolicyResponseOutput {
+		return v.InstanceLifecyclePolicy
+	}).(InstanceGroupManagerInstanceLifecyclePolicyResponseOutput)
 }
 
 // The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.

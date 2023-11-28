@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetDataExchangeResult',
@@ -18,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDataExchangeResult:
-    def __init__(__self__, description=None, display_name=None, documentation=None, icon=None, listing_count=None, name=None, primary_contact=None):
+    def __init__(__self__, description=None, display_name=None, documentation=None, icon=None, listing_count=None, name=None, primary_contact=None, sharing_environment_config=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -40,6 +41,9 @@ class GetDataExchangeResult:
         if primary_contact and not isinstance(primary_contact, str):
             raise TypeError("Expected argument 'primary_contact' to be a str")
         pulumi.set(__self__, "primary_contact", primary_contact)
+        if sharing_environment_config and not isinstance(sharing_environment_config, dict):
+            raise TypeError("Expected argument 'sharing_environment_config' to be a dict")
+        pulumi.set(__self__, "sharing_environment_config", sharing_environment_config)
 
     @property
     @pulumi.getter
@@ -97,6 +101,14 @@ class GetDataExchangeResult:
         """
         return pulumi.get(self, "primary_contact")
 
+    @property
+    @pulumi.getter(name="sharingEnvironmentConfig")
+    def sharing_environment_config(self) -> 'outputs.SharingEnvironmentConfigResponse':
+        """
+        Optional. Configurable data sharing environment option for a data exchange.
+        """
+        return pulumi.get(self, "sharing_environment_config")
+
 
 class AwaitableGetDataExchangeResult(GetDataExchangeResult):
     # pylint: disable=using-constant-test
@@ -110,7 +122,8 @@ class AwaitableGetDataExchangeResult(GetDataExchangeResult):
             icon=self.icon,
             listing_count=self.listing_count,
             name=self.name,
-            primary_contact=self.primary_contact)
+            primary_contact=self.primary_contact,
+            sharing_environment_config=self.sharing_environment_config)
 
 
 def get_data_exchange(data_exchange_id: Optional[str] = None,
@@ -134,7 +147,8 @@ def get_data_exchange(data_exchange_id: Optional[str] = None,
         icon=pulumi.get(__ret__, 'icon'),
         listing_count=pulumi.get(__ret__, 'listing_count'),
         name=pulumi.get(__ret__, 'name'),
-        primary_contact=pulumi.get(__ret__, 'primary_contact'))
+        primary_contact=pulumi.get(__ret__, 'primary_contact'),
+        sharing_environment_config=pulumi.get(__ret__, 'sharing_environment_config'))
 
 
 @_utilities.lift_output_func(get_data_exchange)

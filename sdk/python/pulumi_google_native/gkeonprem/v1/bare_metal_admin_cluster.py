@@ -20,6 +20,7 @@ class BareMetalAdminClusterArgs:
                  bare_metal_admin_cluster_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bare_metal_version: Optional[pulumi.Input[str]] = None,
+                 binary_authorization: Optional[pulumi.Input['BinaryAuthorizationArgs']] = None,
                  cluster_operations: Optional[pulumi.Input['BareMetalAdminClusterOperationsConfigArgs']] = None,
                  control_plane: Optional[pulumi.Input['BareMetalAdminControlPlaneConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,7 @@ class BareMetalAdminClusterArgs:
         :param pulumi.Input[str] bare_metal_admin_cluster_id: Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] bare_metal_version: The Anthos clusters on bare metal version for the bare metal admin cluster.
+        :param pulumi.Input['BinaryAuthorizationArgs'] binary_authorization: Binary Authorization related configurations.
         :param pulumi.Input['BareMetalAdminClusterOperationsConfigArgs'] cluster_operations: Cluster operations configuration.
         :param pulumi.Input['BareMetalAdminControlPlaneConfigArgs'] control_plane: Control plane configuration.
         :param pulumi.Input[str] description: A human readable description of this bare metal admin cluster.
@@ -61,6 +63,8 @@ class BareMetalAdminClusterArgs:
             pulumi.set(__self__, "annotations", annotations)
         if bare_metal_version is not None:
             pulumi.set(__self__, "bare_metal_version", bare_metal_version)
+        if binary_authorization is not None:
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_operations is not None:
             pulumi.set(__self__, "cluster_operations", cluster_operations)
         if control_plane is not None:
@@ -129,6 +133,18 @@ class BareMetalAdminClusterArgs:
     @bare_metal_version.setter
     def bare_metal_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bare_metal_version", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> Optional[pulumi.Input['BinaryAuthorizationArgs']]:
+        """
+        Binary Authorization related configurations.
+        """
+        return pulumi.get(self, "binary_authorization")
+
+    @binary_authorization.setter
+    def binary_authorization(self, value: Optional[pulumi.Input['BinaryAuthorizationArgs']]):
+        pulumi.set(self, "binary_authorization", value)
 
     @property
     @pulumi.getter(name="clusterOperations")
@@ -325,6 +341,7 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bare_metal_admin_cluster_id: Optional[pulumi.Input[str]] = None,
                  bare_metal_version: Optional[pulumi.Input[str]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
                  cluster_operations: Optional[pulumi.Input[pulumi.InputType['BareMetalAdminClusterOperationsConfigArgs']]] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['BareMetalAdminControlPlaneConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -352,6 +369,7 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] bare_metal_admin_cluster_id: Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
         :param pulumi.Input[str] bare_metal_version: The Anthos clusters on bare metal version for the bare metal admin cluster.
+        :param pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']] binary_authorization: Binary Authorization related configurations.
         :param pulumi.Input[pulumi.InputType['BareMetalAdminClusterOperationsConfigArgs']] cluster_operations: Cluster operations configuration.
         :param pulumi.Input[pulumi.InputType['BareMetalAdminControlPlaneConfigArgs']] control_plane: Control plane configuration.
         :param pulumi.Input[str] description: A human readable description of this bare metal admin cluster.
@@ -396,6 +414,7 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bare_metal_admin_cluster_id: Optional[pulumi.Input[str]] = None,
                  bare_metal_version: Optional[pulumi.Input[str]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
                  cluster_operations: Optional[pulumi.Input[pulumi.InputType['BareMetalAdminClusterOperationsConfigArgs']]] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['BareMetalAdminControlPlaneConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -426,6 +445,7 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bare_metal_admin_cluster_id'")
             __props__.__dict__["bare_metal_admin_cluster_id"] = bare_metal_admin_cluster_id
             __props__.__dict__["bare_metal_version"] = bare_metal_version
+            __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["cluster_operations"] = cluster_operations
             __props__.__dict__["control_plane"] = control_plane
             __props__.__dict__["description"] = description
@@ -481,6 +501,7 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         __props__.__dict__["annotations"] = None
         __props__.__dict__["bare_metal_admin_cluster_id"] = None
         __props__.__dict__["bare_metal_version"] = None
+        __props__.__dict__["binary_authorization"] = None
         __props__.__dict__["cluster_operations"] = None
         __props__.__dict__["control_plane"] = None
         __props__.__dict__["create_time"] = None
@@ -534,6 +555,14 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         The Anthos clusters on bare metal version for the bare metal admin cluster.
         """
         return pulumi.get(self, "bare_metal_version")
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> pulumi.Output['outputs.BinaryAuthorizationResponse']:
+        """
+        Binary Authorization related configurations.
+        """
+        return pulumi.get(self, "binary_authorization")
 
     @property
     @pulumi.getter(name="clusterOperations")

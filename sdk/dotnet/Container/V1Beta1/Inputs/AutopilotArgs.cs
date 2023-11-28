@@ -16,10 +16,22 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     public sealed class AutopilotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// ConversionStatus shows conversion status.
+        /// </summary>
+        [Input("conversionStatus")]
+        public Input<Inputs.AutopilotConversionStatusArgs>? ConversionStatus { get; set; }
+
+        /// <summary>
         /// Enable Autopilot
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Workload policy configuration for Autopilot.
+        /// </summary>
+        [Input("workloadPolicyConfig")]
+        public Input<Inputs.WorkloadPolicyConfigArgs>? WorkloadPolicyConfig { get; set; }
 
         public AutopilotArgs()
         {

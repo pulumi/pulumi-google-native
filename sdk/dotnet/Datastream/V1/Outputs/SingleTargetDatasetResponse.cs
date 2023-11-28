@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
     public sealed class SingleTargetDatasetResponse
     {
         /// <summary>
-        /// The dataset ID of the target dataset.
+        /// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
         /// </summary>
         public readonly string DatasetId;
 

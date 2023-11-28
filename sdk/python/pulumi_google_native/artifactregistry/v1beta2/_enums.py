@@ -30,7 +30,7 @@ class MavenRepositoryConfigVersionPolicy(str, Enum):
 
 class RepositoryFormat(str, Enum):
     """
-    The format of packages that are stored in the repository.
+    Optional. The format of packages that are stored in the repository.
     """
     FORMAT_UNSPECIFIED = "FORMAT_UNSPECIFIED"
     """

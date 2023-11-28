@@ -638,6 +638,8 @@ type BuildConfig struct {
 	Runtime *string `pulumi:"runtime"`
 	// The location of the function source code.
 	Source *Source `pulumi:"source"`
+	// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+	SourceToken *string `pulumi:"sourceToken"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
 	WorkerPool *string `pulumi:"workerPool"`
 }
@@ -667,6 +669,8 @@ type BuildConfigArgs struct {
 	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
 	// The location of the function source code.
 	Source SourcePtrInput `pulumi:"source"`
+	// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+	SourceToken pulumi.StringPtrInput `pulumi:"sourceToken"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
 	WorkerPool pulumi.StringPtrInput `pulumi:"workerPool"`
 }
@@ -797,6 +801,11 @@ func (o BuildConfigOutput) Source() SourcePtrOutput {
 	return o.ApplyT(func(v BuildConfig) *Source { return v.Source }).(SourcePtrOutput)
 }
 
+// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+func (o BuildConfigOutput) SourceToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildConfig) *string { return v.SourceToken }).(pulumi.StringPtrOutput)
+}
+
 // Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
 func (o BuildConfigOutput) WorkerPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildConfig) *string { return v.WorkerPool }).(pulumi.StringPtrOutput)
@@ -892,6 +901,16 @@ func (o BuildConfigPtrOutput) Source() SourcePtrOutput {
 	}).(SourcePtrOutput)
 }
 
+// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+func (o BuildConfigPtrOutput) SourceToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceToken
+	}).(pulumi.StringPtrOutput)
+}
+
 // Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
 func (o BuildConfigPtrOutput) WorkerPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildConfig) *string {
@@ -920,6 +939,8 @@ type BuildConfigResponse struct {
 	Source SourceResponse `pulumi:"source"`
 	// A permanent fixed identifier for source.
 	SourceProvenance SourceProvenanceResponse `pulumi:"sourceProvenance"`
+	// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+	SourceToken string `pulumi:"sourceToken"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
 	WorkerPool string `pulumi:"workerPool"`
 }
@@ -983,6 +1004,11 @@ func (o BuildConfigResponseOutput) Source() SourceResponseOutput {
 // A permanent fixed identifier for source.
 func (o BuildConfigResponseOutput) SourceProvenance() SourceProvenanceResponseOutput {
 	return o.ApplyT(func(v BuildConfigResponse) SourceProvenanceResponse { return v.SourceProvenance }).(SourceProvenanceResponseOutput)
+}
+
+// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+func (o BuildConfigResponseOutput) SourceToken() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildConfigResponse) string { return v.SourceToken }).(pulumi.StringOutput)
 }
 
 // Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
@@ -1917,8 +1943,6 @@ type RepoSource struct {
 	CommitSha *string `pulumi:"commitSha"`
 	// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
 	Dir *string `pulumi:"dir"`
-	// Only trigger a build if the revision regex does NOT match the revision regex.
-	InvertRegex *bool `pulumi:"invertRegex"`
 	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
 	Project *string `pulumi:"project"`
 	// Name of the Cloud Source Repository.
@@ -1946,8 +1970,6 @@ type RepoSourceArgs struct {
 	CommitSha pulumi.StringPtrInput `pulumi:"commitSha"`
 	// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
-	// Only trigger a build if the revision regex does NOT match the revision regex.
-	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Name of the Cloud Source Repository.
@@ -2067,11 +2089,6 @@ func (o RepoSourceOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepoSource) *string { return v.Dir }).(pulumi.StringPtrOutput)
 }
 
-// Only trigger a build if the revision regex does NOT match the revision regex.
-func (o RepoSourceOutput) InvertRegex() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RepoSource) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
-}
-
 // ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
 func (o RepoSourceOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepoSource) *string { return v.Project }).(pulumi.StringPtrOutput)
@@ -2147,16 +2164,6 @@ func (o RepoSourcePtrOutput) Dir() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only trigger a build if the revision regex does NOT match the revision regex.
-func (o RepoSourcePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RepoSource) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.InvertRegex
-	}).(pulumi.BoolPtrOutput)
-}
-
 // ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
 func (o RepoSourcePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepoSource) *string {
@@ -2195,8 +2202,6 @@ type RepoSourceResponse struct {
 	CommitSha string `pulumi:"commitSha"`
 	// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
 	Dir string `pulumi:"dir"`
-	// Only trigger a build if the revision regex does NOT match the revision regex.
-	InvertRegex bool `pulumi:"invertRegex"`
 	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
 	Project string `pulumi:"project"`
 	// Name of the Cloud Source Repository.
@@ -2239,11 +2244,6 @@ func (o RepoSourceResponseOutput) CommitSha() pulumi.StringOutput {
 // Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
 func (o RepoSourceResponseOutput) Dir() pulumi.StringOutput {
 	return o.ApplyT(func(v RepoSourceResponse) string { return v.Dir }).(pulumi.StringOutput)
-}
-
-// Only trigger a build if the revision regex does NOT match the revision regex.
-func (o RepoSourceResponseOutput) InvertRegex() pulumi.BoolOutput {
-	return o.ApplyT(func(v RepoSourceResponse) bool { return v.InvertRegex }).(pulumi.BoolOutput)
 }
 
 // ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
@@ -3502,6 +3502,8 @@ func (o ServiceConfigResponseOutput) VpcConnectorEgressSettings() pulumi.StringO
 
 // The location of the function source code.
 type Source struct {
+	// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+	GitUri *string `pulumi:"gitUri"`
 	// If provided, get the source from this location in a Cloud Source Repository.
 	RepoSource *RepoSource `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
@@ -3521,6 +3523,8 @@ type SourceInput interface {
 
 // The location of the function source code.
 type SourceArgs struct {
+	// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+	GitUri pulumi.StringPtrInput `pulumi:"gitUri"`
 	// If provided, get the source from this location in a Cloud Source Repository.
 	RepoSource RepoSourcePtrInput `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
@@ -3623,6 +3627,11 @@ func (o SourceOutput) ToOutput(ctx context.Context) pulumix.Output[Source] {
 	}
 }
 
+// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+func (o SourceOutput) GitUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Source) *string { return v.GitUri }).(pulumi.StringPtrOutput)
+}
+
 // If provided, get the source from this location in a Cloud Source Repository.
 func (o SourceOutput) RepoSource() RepoSourcePtrOutput {
 	return o.ApplyT(func(v Source) *RepoSource { return v.RepoSource }).(RepoSourcePtrOutput)
@@ -3663,6 +3672,16 @@ func (o SourcePtrOutput) Elem() SourceOutput {
 	}).(SourceOutput)
 }
 
+// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+func (o SourcePtrOutput) GitUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Source) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GitUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // If provided, get the source from this location in a Cloud Source Repository.
 func (o SourcePtrOutput) RepoSource() RepoSourcePtrOutput {
 	return o.ApplyT(func(v *Source) *RepoSource {
@@ -3685,6 +3704,8 @@ func (o SourcePtrOutput) StorageSource() StorageSourcePtrOutput {
 
 // Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
 type SourceProvenanceResponse struct {
+	// A copy of the build's `source.git_uri`, if exists, with any commits resolved.
+	GitUri string `pulumi:"gitUri"`
 	// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
 	ResolvedRepoSource RepoSourceResponse `pulumi:"resolvedRepoSource"`
 	// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
@@ -3712,6 +3733,11 @@ func (o SourceProvenanceResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// A copy of the build's `source.git_uri`, if exists, with any commits resolved.
+func (o SourceProvenanceResponseOutput) GitUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) string { return v.GitUri }).(pulumi.StringOutput)
+}
+
 // A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
 func (o SourceProvenanceResponseOutput) ResolvedRepoSource() RepoSourceResponseOutput {
 	return o.ApplyT(func(v SourceProvenanceResponse) RepoSourceResponse { return v.ResolvedRepoSource }).(RepoSourceResponseOutput)
@@ -3724,6 +3750,8 @@ func (o SourceProvenanceResponseOutput) ResolvedStorageSource() StorageSourceRes
 
 // The location of the function source code.
 type SourceResponse struct {
+	// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+	GitUri string `pulumi:"gitUri"`
 	// If provided, get the source from this location in a Cloud Source Repository.
 	RepoSource RepoSourceResponse `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
@@ -3749,6 +3777,11 @@ func (o SourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Sourc
 	return pulumix.Output[SourceResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+func (o SourceResponseOutput) GitUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceResponse) string { return v.GitUri }).(pulumi.StringOutput)
 }
 
 // If provided, get the source from this location in a Cloud Source Repository.

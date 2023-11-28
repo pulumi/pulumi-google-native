@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly Outputs.LoggingConfigResponse LoggingConfig;
         /// <summary>
-        /// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+        /// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Properties;
         /// <summary>

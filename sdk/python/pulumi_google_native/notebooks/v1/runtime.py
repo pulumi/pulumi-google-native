@@ -223,7 +223,9 @@ class Runtime(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["health_state"] = None
             __props__.__dict__["metrics"] = None
+            __props__.__dict__["migrated"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["runtime_migration_eligibility"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "runtime_id"])
@@ -256,10 +258,12 @@ class Runtime(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["metrics"] = None
+        __props__.__dict__["migrated"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["runtime_id"] = None
+        __props__.__dict__["runtime_migration_eligibility"] = None
         __props__.__dict__["software_config"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
@@ -313,6 +317,14 @@ class Runtime(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def migrated(self) -> pulumi.Output[bool]:
+        """
+        Bool indicating whether this notebook has been migrated to a Workbench Instance
+        """
+        return pulumi.get(self, "migrated")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
@@ -339,6 +351,14 @@ class Runtime(pulumi.CustomResource):
         Required. User-defined unique ID of this Runtime.
         """
         return pulumi.get(self, "runtime_id")
+
+    @property
+    @pulumi.getter(name="runtimeMigrationEligibility")
+    def runtime_migration_eligibility(self) -> pulumi.Output['outputs.RuntimeMigrationEligibilityResponse']:
+        """
+        Checks how feasible a migration from GmN to WbI is.
+        """
+        return pulumi.get(self, "runtime_migration_eligibility")
 
     @property
     @pulumi.getter(name="softwareConfig")

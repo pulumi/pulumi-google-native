@@ -25,7 +25,7 @@ type Schema struct {
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// Immutable. The revision ID of the schema.
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
-	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
 	SchemaId pulumi.StringPtrOutput `pulumi:"schemaId"`
 	// The type of the schema definition.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -80,7 +80,7 @@ type schemaArgs struct {
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
 	SchemaId *string `pulumi:"schemaId"`
 	// The type of the schema definition.
 	Type *SchemaType `pulumi:"type"`
@@ -93,7 +93,7 @@ type SchemaArgs struct {
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
 	SchemaId pulumi.StringPtrInput
 	// The type of the schema definition.
 	Type SchemaTypePtrInput
@@ -172,7 +172,7 @@ func (o SchemaOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
 }
 
-// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
 func (o SchemaOutput) SchemaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.SchemaId }).(pulumi.StringPtrOutput)
 }

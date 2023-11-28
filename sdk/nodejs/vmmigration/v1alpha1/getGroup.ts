@@ -37,6 +37,10 @@ export interface GetGroupResult {
      */
     readonly displayName: string;
     /**
+     * Immutable. The target type of this group.
+     */
+    readonly migrationTargetType: string;
+    /**
      * The Group name.
      */
     readonly name: string;

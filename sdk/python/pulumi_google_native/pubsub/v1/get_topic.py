@@ -46,7 +46,7 @@ class GetTopicResult:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> str:
         """
-        The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -54,7 +54,7 @@ class GetTopicResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         """
         return pulumi.get(self, "labels")
 
@@ -62,7 +62,7 @@ class GetTopicResult:
     @pulumi.getter(name="messageRetentionDuration")
     def message_retention_duration(self) -> str:
         """
-        Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
+        Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
         """
         return pulumi.get(self, "message_retention_duration")
 
@@ -70,7 +70,7 @@ class GetTopicResult:
     @pulumi.getter(name="messageStoragePolicy")
     def message_storage_policy(self) -> 'outputs.MessageStoragePolicyResponse':
         """
-        Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+        Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         """
         return pulumi.get(self, "message_storage_policy")
 
@@ -86,7 +86,7 @@ class GetTopicResult:
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
-        Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -94,7 +94,7 @@ class GetTopicResult:
     @pulumi.getter(name="schemaSettings")
     def schema_settings(self) -> 'outputs.SchemaSettingsResponse':
         """
-        Settings for validating messages published against a schema.
+        Optional. Settings for validating messages published against a schema.
         """
         return pulumi.get(self, "schema_settings")
 

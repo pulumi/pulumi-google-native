@@ -32,7 +32,7 @@ class BackendBucketArgs:
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
         :param pulumi.Input['BackendBucketCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendBucket.
         :param pulumi.Input['BackendBucketCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the Application Load Balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
         :param pulumi.Input[str] kind: Type of the resource.
@@ -100,7 +100,7 @@ class BackendBucketArgs:
     @pulumi.getter(name="customResponseHeaders")
     def custom_response_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Headers that the HTTP/S load balancer should add to proxied responses.
+        Headers that the Application Load Balancer should add to proxied responses.
         """
         return pulumi.get(self, "custom_response_headers")
 
@@ -202,7 +202,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
         :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendBucket.
         :param pulumi.Input['BackendBucketCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the Application Load Balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
         :param pulumi.Input[str] kind: Type of the resource.
@@ -340,7 +340,7 @@ class BackendBucket(pulumi.CustomResource):
     @pulumi.getter(name="customResponseHeaders")
     def custom_response_headers(self) -> pulumi.Output[Sequence[str]]:
         """
-        Headers that the HTTP/S load balancer should add to proxied responses.
+        Headers that the Application Load Balancer should add to proxied responses.
         """
         return pulumi.get(self, "custom_response_headers")
 

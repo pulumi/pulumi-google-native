@@ -36,6 +36,10 @@ export interface GetServiceConnectionPolicyResult {
      */
     readonly description: string;
     /**
+     * Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    readonly etag: string;
+    /**
      * The type of underlying resources used to create the connection.
      */
     readonly infrastructure: string;

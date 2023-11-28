@@ -10,9 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// The representation of a SQL STRUCT type.
+    /// </summary>
     [OutputType]
     public sealed class StandardSqlStructTypeResponse
     {
+        /// <summary>
+        /// Fields within the struct.
+        /// </summary>
         public readonly ImmutableArray<Outputs.StandardSqlFieldResponse> Fields;
 
         [OutputConstructor]

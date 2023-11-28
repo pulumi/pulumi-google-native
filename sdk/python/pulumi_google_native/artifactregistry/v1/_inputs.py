@@ -11,18 +11,48 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AptRepositoryArgs',
     'BindingArgs',
     'DockerRepositoryConfigArgs',
     'DockerRepositoryArgs',
     'ExprArgs',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs',
     'MavenRepositoryConfigArgs',
     'MavenRepositoryArgs',
     'NpmRepositoryArgs',
     'PythonRepositoryArgs',
     'RemoteRepositoryConfigArgs',
+    'UpstreamCredentialsArgs',
     'UpstreamPolicyArgs',
+    'UsernamePasswordCredentialsArgs',
     'VirtualRepositoryConfigArgs',
+    'YumRepositoryArgs',
 ]
+
+@pulumi.input_type
+class AptRepositoryArgs:
+    def __init__(__self__, *,
+                 public_repository: Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']] = None):
+        """
+        Configuration for an Apt remote repository.
+        :param pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs'] public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]:
+        """
+        One of the publicly available Apt repositories supported by Artifact Registry.
+        """
+        return pulumi.get(self, "public_repository")
+
+    @public_repository.setter
+    def public_repository(self, value: Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]):
+        pulumi.set(self, "public_repository", value)
+
 
 @pulumi.input_type
 class BindingArgs:
@@ -201,6 +231,86 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
+    def __init__(__self__, *,
+                 repository_base: Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase']] = None,
+                 repository_path: Optional[pulumi.Input[str]] = None):
+        """
+        Publicly available Apt repositories constructed from a common repository base and a custom repository path.
+        :param pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase'] repository_base: A common public repository base for Apt.
+        :param pulumi.Input[str] repository_path: A custom field to define a path to a specific repository from the base.
+        """
+        if repository_base is not None:
+            pulumi.set(__self__, "repository_base", repository_base)
+        if repository_path is not None:
+            pulumi.set(__self__, "repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase']]:
+        """
+        A common public repository base for Apt.
+        """
+        return pulumi.get(self, "repository_base")
+
+    @repository_base.setter
+    def repository_base(self, value: Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase']]):
+        pulumi.set(self, "repository_base", value)
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom field to define a path to a specific repository from the base.
+        """
+        return pulumi.get(self, "repository_path")
+
+    @repository_path.setter
+    def repository_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_path", value)
+
+
+@pulumi.input_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
+    def __init__(__self__, *,
+                 repository_base: Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase']] = None,
+                 repository_path: Optional[pulumi.Input[str]] = None):
+        """
+        Publicly available Yum repositories constructed from a common repository base and a custom repository path.
+        :param pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase'] repository_base: A common public repository base for Yum.
+        :param pulumi.Input[str] repository_path: A custom field to define a path to a specific repository from the base.
+        """
+        if repository_base is not None:
+            pulumi.set(__self__, "repository_base", repository_base)
+        if repository_path is not None:
+            pulumi.set(__self__, "repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase']]:
+        """
+        A common public repository base for Yum.
+        """
+        return pulumi.get(self, "repository_base")
+
+    @repository_base.setter
+    def repository_base(self, value: Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase']]):
+        pulumi.set(self, "repository_base", value)
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom field to define a path to a specific repository from the base.
+        """
+        return pulumi.get(self, "repository_path")
+
+    @repository_path.setter
+    def repository_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_path", value)
+
+
+@pulumi.input_type
 class MavenRepositoryConfigArgs:
     def __init__(__self__, *,
                  allow_snapshot_overwrites: Optional[pulumi.Input[bool]] = None,
@@ -315,19 +425,27 @@ class PythonRepositoryArgs:
 @pulumi.input_type
 class RemoteRepositoryConfigArgs:
     def __init__(__self__, *,
+                 apt_repository: Optional[pulumi.Input['AptRepositoryArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_repository: Optional[pulumi.Input['DockerRepositoryArgs']] = None,
                  maven_repository: Optional[pulumi.Input['MavenRepositoryArgs']] = None,
                  npm_repository: Optional[pulumi.Input['NpmRepositoryArgs']] = None,
-                 python_repository: Optional[pulumi.Input['PythonRepositoryArgs']] = None):
+                 python_repository: Optional[pulumi.Input['PythonRepositoryArgs']] = None,
+                 upstream_credentials: Optional[pulumi.Input['UpstreamCredentialsArgs']] = None,
+                 yum_repository: Optional[pulumi.Input['YumRepositoryArgs']] = None):
         """
         Remote repository configuration.
+        :param pulumi.Input['AptRepositoryArgs'] apt_repository: Specific settings for an Apt remote repository.
         :param pulumi.Input[str] description: The description of the remote source.
         :param pulumi.Input['DockerRepositoryArgs'] docker_repository: Specific settings for a Docker remote repository.
         :param pulumi.Input['MavenRepositoryArgs'] maven_repository: Specific settings for a Maven remote repository.
         :param pulumi.Input['NpmRepositoryArgs'] npm_repository: Specific settings for an Npm remote repository.
         :param pulumi.Input['PythonRepositoryArgs'] python_repository: Specific settings for a Python remote repository.
+        :param pulumi.Input['UpstreamCredentialsArgs'] upstream_credentials: Optional. The credentials used to access the remote repository.
+        :param pulumi.Input['YumRepositoryArgs'] yum_repository: Specific settings for a Yum remote repository.
         """
+        if apt_repository is not None:
+            pulumi.set(__self__, "apt_repository", apt_repository)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if docker_repository is not None:
@@ -338,6 +456,22 @@ class RemoteRepositoryConfigArgs:
             pulumi.set(__self__, "npm_repository", npm_repository)
         if python_repository is not None:
             pulumi.set(__self__, "python_repository", python_repository)
+        if upstream_credentials is not None:
+            pulumi.set(__self__, "upstream_credentials", upstream_credentials)
+        if yum_repository is not None:
+            pulumi.set(__self__, "yum_repository", yum_repository)
+
+    @property
+    @pulumi.getter(name="aptRepository")
+    def apt_repository(self) -> Optional[pulumi.Input['AptRepositoryArgs']]:
+        """
+        Specific settings for an Apt remote repository.
+        """
+        return pulumi.get(self, "apt_repository")
+
+    @apt_repository.setter
+    def apt_repository(self, value: Optional[pulumi.Input['AptRepositoryArgs']]):
+        pulumi.set(self, "apt_repository", value)
 
     @property
     @pulumi.getter
@@ -399,6 +533,54 @@ class RemoteRepositoryConfigArgs:
     def python_repository(self, value: Optional[pulumi.Input['PythonRepositoryArgs']]):
         pulumi.set(self, "python_repository", value)
 
+    @property
+    @pulumi.getter(name="upstreamCredentials")
+    def upstream_credentials(self) -> Optional[pulumi.Input['UpstreamCredentialsArgs']]:
+        """
+        Optional. The credentials used to access the remote repository.
+        """
+        return pulumi.get(self, "upstream_credentials")
+
+    @upstream_credentials.setter
+    def upstream_credentials(self, value: Optional[pulumi.Input['UpstreamCredentialsArgs']]):
+        pulumi.set(self, "upstream_credentials", value)
+
+    @property
+    @pulumi.getter(name="yumRepository")
+    def yum_repository(self) -> Optional[pulumi.Input['YumRepositoryArgs']]:
+        """
+        Specific settings for a Yum remote repository.
+        """
+        return pulumi.get(self, "yum_repository")
+
+    @yum_repository.setter
+    def yum_repository(self, value: Optional[pulumi.Input['YumRepositoryArgs']]):
+        pulumi.set(self, "yum_repository", value)
+
+
+@pulumi.input_type
+class UpstreamCredentialsArgs:
+    def __init__(__self__, *,
+                 username_password_credentials: Optional[pulumi.Input['UsernamePasswordCredentialsArgs']] = None):
+        """
+        The credentials to access the remote repository.
+        :param pulumi.Input['UsernamePasswordCredentialsArgs'] username_password_credentials: Use username and password to access the remote repository.
+        """
+        if username_password_credentials is not None:
+            pulumi.set(__self__, "username_password_credentials", username_password_credentials)
+
+    @property
+    @pulumi.getter(name="usernamePasswordCredentials")
+    def username_password_credentials(self) -> Optional[pulumi.Input['UsernamePasswordCredentialsArgs']]:
+        """
+        Use username and password to access the remote repository.
+        """
+        return pulumi.get(self, "username_password_credentials")
+
+    @username_password_credentials.setter
+    def username_password_credentials(self, value: Optional[pulumi.Input['UsernamePasswordCredentialsArgs']]):
+        pulumi.set(self, "username_password_credentials", value)
+
 
 @pulumi.input_type
 class UpstreamPolicyArgs:
@@ -410,7 +592,7 @@ class UpstreamPolicyArgs:
         Artifact policy configuration for the repository contents.
         :param pulumi.Input[str] id: The user-provided ID of the upstream policy.
         :param pulumi.Input[int] priority: Entries with a greater priority value take precedence in the pull order.
-        :param pulumi.Input[str] repository: A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        :param pulumi.Input[str] repository: A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -447,13 +629,53 @@ class UpstreamPolicyArgs:
     @pulumi.getter
     def repository(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         """
         return pulumi.get(self, "repository")
 
     @repository.setter
     def repository(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repository", value)
+
+
+@pulumi.input_type
+class UsernamePasswordCredentialsArgs:
+    def __init__(__self__, *,
+                 password_secret_version: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        Username and password credentials.
+        :param pulumi.Input[str] password_secret_version: The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+        :param pulumi.Input[str] username: The username to access the remote repository.
+        """
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @password_secret_version.setter
+    def password_secret_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password_secret_version", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to access the remote repository.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
@@ -478,5 +700,29 @@ class VirtualRepositoryConfigArgs:
     @upstream_policies.setter
     def upstream_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UpstreamPolicyArgs']]]]):
         pulumi.set(self, "upstream_policies", value)
+
+
+@pulumi.input_type
+class YumRepositoryArgs:
+    def __init__(__self__, *,
+                 public_repository: Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']] = None):
+        """
+        Configuration for a Yum remote repository.
+        :param pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs'] public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]:
+        """
+        One of the publicly available Yum repositories supported by Artifact Registry.
+        """
+        return pulumi.get(self, "public_repository")
+
+    @public_repository.setter
+    def public_repository(self, value: Optional[pulumi.Input['GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]):
+        pulumi.set(self, "public_repository", value)
 
 

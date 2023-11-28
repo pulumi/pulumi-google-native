@@ -28,6 +28,10 @@ export interface GetStoragePoolArgs {
 
 export interface GetStoragePoolResult {
     /**
+     * Provisioning type of the byte capacity of the pool.
+     */
+    readonly capacityProvisioningType: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
@@ -52,9 +56,17 @@ export interface GetStoragePoolResult {
      */
     readonly name: string;
     /**
+     * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+     */
+    readonly performanceProvisioningType: string;
+    /**
      * Provsioned IOPS of the storage pool.
      */
     readonly provisionedIops: string;
+    /**
+     * Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+     */
+    readonly provisionedThroughput: string;
     /**
      * Status information for the storage pool resource.
      */
@@ -76,9 +88,13 @@ export interface GetStoragePoolResult {
      */
     readonly state: string;
     /**
-     * Type of the storage pool
+     * Status information for the storage pool resource.
      */
-    readonly type: string;
+    readonly status: outputs.compute.alpha.StoragePoolResourceStatusResponse;
+    /**
+     * Type of the storage pool.
+     */
+    readonly storagePoolType: string;
     /**
      * URL of the zone where the storage pool resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */

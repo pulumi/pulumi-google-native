@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("view")]
+        public string? View { get; set; }
+
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
 
@@ -49,6 +52,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
 
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -169,6 +175,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
         /// </summary>
         public readonly Outputs.InstanceParamsResponse Params;
+        /// <summary>
+        /// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> PartnerMetadata;
         /// <summary>
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
@@ -322,6 +332,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.InstanceParamsResponse @params,
 
+            ImmutableDictionary<string, string> partnerMetadata,
+
             string postKeyRevocationActionType,
 
             string preservedStateSizeGb,
@@ -400,6 +412,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfig = networkPerformanceConfig;
             Params = @params;
+            PartnerMetadata = partnerMetadata;
             PostKeyRevocationActionType = postKeyRevocationActionType;
             PreservedStateSizeGb = preservedStateSizeGb;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;

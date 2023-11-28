@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 {
 
     /// <summary>
-    /// Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+    /// Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST, ENTITY_EXTRACTION.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse
@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
         /// </summary>
         public readonly string Agent;
+        /// <summary>
+        /// The Dialogflow assist configuration for human agent.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse HumanAgentSideConfig;
 
         [OutputConstructor]
-        private GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse(string agent)
+        private GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse(
+            string agent,
+
+            Outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse humanAgentSideConfig)
         {
             Agent = agent;
+            HumanAgentSideConfig = humanAgentSideConfig;
         }
     }
 }

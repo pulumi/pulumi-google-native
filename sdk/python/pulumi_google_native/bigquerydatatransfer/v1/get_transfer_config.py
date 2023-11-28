@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTransferConfigResult:
-    def __init__(__self__, data_refresh_window_days=None, data_source_id=None, dataset_region=None, destination_dataset_id=None, disabled=None, display_name=None, email_preferences=None, name=None, next_run_time=None, notification_pubsub_topic=None, owner_info=None, params=None, schedule=None, schedule_options=None, state=None, update_time=None, user_id=None):
+    def __init__(__self__, data_refresh_window_days=None, data_source_id=None, dataset_region=None, destination_dataset_id=None, disabled=None, display_name=None, email_preferences=None, encryption_configuration=None, name=None, next_run_time=None, notification_pubsub_topic=None, owner_info=None, params=None, schedule=None, schedule_options=None, state=None, update_time=None, user_id=None):
         if data_refresh_window_days and not isinstance(data_refresh_window_days, int):
             raise TypeError("Expected argument 'data_refresh_window_days' to be a int")
         pulumi.set(__self__, "data_refresh_window_days", data_refresh_window_days)
@@ -41,6 +41,9 @@ class GetTransferConfigResult:
         if email_preferences and not isinstance(email_preferences, dict):
             raise TypeError("Expected argument 'email_preferences' to be a dict")
         pulumi.set(__self__, "email_preferences", email_preferences)
+        if encryption_configuration and not isinstance(encryption_configuration, dict):
+            raise TypeError("Expected argument 'encryption_configuration' to be a dict")
+        pulumi.set(__self__, "encryption_configuration", encryption_configuration)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -129,10 +132,18 @@ class GetTransferConfigResult:
         return pulumi.get(self, "email_preferences")
 
     @property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> 'outputs.EncryptionConfigurationResponse':
+        """
+        The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+        """
+        return pulumi.get(self, "encryption_configuration")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+        The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         """
         return pulumi.get(self, "name")
 
@@ -225,6 +236,7 @@ class AwaitableGetTransferConfigResult(GetTransferConfigResult):
             disabled=self.disabled,
             display_name=self.display_name,
             email_preferences=self.email_preferences,
+            encryption_configuration=self.encryption_configuration,
             name=self.name,
             next_run_time=self.next_run_time,
             notification_pubsub_topic=self.notification_pubsub_topic,
@@ -259,6 +271,7 @@ def get_transfer_config(location: Optional[str] = None,
         disabled=pulumi.get(__ret__, 'disabled'),
         display_name=pulumi.get(__ret__, 'display_name'),
         email_preferences=pulumi.get(__ret__, 'email_preferences'),
+        encryption_configuration=pulumi.get(__ret__, 'encryption_configuration'),
         name=pulumi.get(__ret__, 'name'),
         next_run_time=pulumi.get(__ret__, 'next_run_time'),
         notification_pubsub_topic=pulumi.get(__ret__, 'notification_pubsub_topic'),

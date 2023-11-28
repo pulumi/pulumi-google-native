@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class BuildDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+        /// </summary>
+        [Input("inTotoSlsaProvenanceV1")]
+        public Input<Inputs.InTotoSlsaProvenanceV1Args>? InTotoSlsaProvenanceV1 { get; set; }
+
+        /// <summary>
         /// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         /// </summary>
         [Input("intotoProvenance")]

@@ -39,6 +39,8 @@ type LookupBareMetalClusterResult struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// The Anthos clusters on bare metal version for your user cluster.
 	BareMetalVersion string `pulumi:"bareMetalVersion"`
+	// Binary Authorization related configurations.
+	BinaryAuthorization BinaryAuthorizationResponse `pulumi:"binaryAuthorization"`
 	// Cluster operations configuration.
 	ClusterOperations BareMetalClusterOperationsConfigResponse `pulumi:"clusterOperations"`
 	// Control plane configuration.
@@ -89,6 +91,8 @@ type LookupBareMetalClusterResult struct {
 	Uid string `pulumi:"uid"`
 	// The time when the bare metal user cluster was last updated.
 	UpdateTime string `pulumi:"updateTime"`
+	// The cluster upgrade policy.
+	UpgradePolicy BareMetalClusterUpgradePolicyResponse `pulumi:"upgradePolicy"`
 	// The result of the preflight check.
 	ValidationCheck ValidationCheckResponse `pulumi:"validationCheck"`
 }
@@ -155,6 +159,11 @@ func (o LookupBareMetalClusterResultOutput) Annotations() pulumi.StringMapOutput
 // The Anthos clusters on bare metal version for your user cluster.
 func (o LookupBareMetalClusterResultOutput) BareMetalVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalClusterResult) string { return v.BareMetalVersion }).(pulumi.StringOutput)
+}
+
+// Binary Authorization related configurations.
+func (o LookupBareMetalClusterResultOutput) BinaryAuthorization() BinaryAuthorizationResponseOutput {
+	return o.ApplyT(func(v LookupBareMetalClusterResult) BinaryAuthorizationResponse { return v.BinaryAuthorization }).(BinaryAuthorizationResponseOutput)
 }
 
 // Cluster operations configuration.
@@ -284,6 +293,11 @@ func (o LookupBareMetalClusterResultOutput) Uid() pulumi.StringOutput {
 // The time when the bare metal user cluster was last updated.
 func (o LookupBareMetalClusterResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalClusterResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The cluster upgrade policy.
+func (o LookupBareMetalClusterResultOutput) UpgradePolicy() BareMetalClusterUpgradePolicyResponseOutput {
+	return o.ApplyT(func(v LookupBareMetalClusterResult) BareMetalClusterUpgradePolicyResponse { return v.UpgradePolicy }).(BareMetalClusterUpgradePolicyResponseOutput)
 }
 
 // The result of the preflight check.

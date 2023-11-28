@@ -17,6 +17,7 @@ __all__ = ['VmwareClusterArgs', 'VmwareCluster']
 class VmwareClusterArgs:
     def __init__(__self__, *,
                  admin_cluster_membership: pulumi.Input[str],
+                 on_prem_version: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anti_affinity_groups: Optional[pulumi.Input['VmwareAAGConfigArgs']] = None,
                  authorization: Optional[pulumi.Input['AuthorizationArgs']] = None,
@@ -24,20 +25,23 @@ class VmwareClusterArgs:
                  control_plane_node: Optional[pulumi.Input['VmwareControlPlaneNodeConfigArgs']] = None,
                  dataplane_v2: Optional[pulumi.Input['VmwareDataplaneV2ConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  load_balancer: Optional[pulumi.Input['VmwareLoadBalancerConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['VmwareNetworkConfigArgs']] = None,
-                 on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input['VmwareStorageConfigArgs']] = None,
+                 upgrade_policy: Optional[pulumi.Input['VmwareClusterUpgradePolicyArgs']] = None,
+                 vcenter: Optional[pulumi.Input['VmwareVCenterConfigArgs']] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  vmware_cluster_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VmwareCluster resource.
         :param pulumi.Input[str] admin_cluster_membership: The admin cluster this VMware user cluster belongs to. This is the full resource name of the admin cluster's fleet membership. In the future, references to other resource types might be allowed if admin clusters are modeled as their own resources.
+        :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware user cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input['VmwareAAGConfigArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware user cluster nodes across at least three physical hosts in the datacenter.
         :param pulumi.Input['AuthorizationArgs'] authorization: RBAC policy that will be applied and managed by the Anthos On-Prem API.
@@ -45,17 +49,20 @@ class VmwareClusterArgs:
         :param pulumi.Input['VmwareControlPlaneNodeConfigArgs'] control_plane_node: VMware user cluster control plane nodes must have either 1 or 3 replicas.
         :param pulumi.Input['VmwareDataplaneV2ConfigArgs'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
         :param pulumi.Input[str] description: A human readable description of this VMware user cluster.
+        :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
         :param pulumi.Input['VmwareLoadBalancerConfigArgs'] load_balancer: Load balancer configuration.
         :param pulumi.Input[str] name: Immutable. The VMware user cluster resource name.
         :param pulumi.Input['VmwareNetworkConfigArgs'] network_config: The VMware user cluster network configuration.
-        :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
         :param pulumi.Input['VmwareStorageConfigArgs'] storage: Storage configuration.
+        :param pulumi.Input['VmwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
+        :param pulumi.Input['VmwareVCenterConfigArgs'] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         :param pulumi.Input[str] vmware_cluster_id: User provided identifier that is used as part of the resource name; This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
         """
         pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
+        pulumi.set(__self__, "on_prem_version", on_prem_version)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if anti_affinity_groups is not None:
@@ -70,6 +77,8 @@ class VmwareClusterArgs:
             pulumi.set(__self__, "dataplane_v2", dataplane_v2)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_bundled_ingress is not None:
+            pulumi.set(__self__, "disable_bundled_ingress", disable_bundled_ingress)
         if enable_control_plane_v2 is not None:
             pulumi.set(__self__, "enable_control_plane_v2", enable_control_plane_v2)
         if etag is not None:
@@ -82,12 +91,14 @@ class VmwareClusterArgs:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
-        if on_prem_version is not None:
-            pulumi.set(__self__, "on_prem_version", on_prem_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
+        if upgrade_policy is not None:
+            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
+        if vcenter is not None:
+            pulumi.set(__self__, "vcenter", vcenter)
         if vm_tracking_enabled is not None:
             pulumi.set(__self__, "vm_tracking_enabled", vm_tracking_enabled)
         if vmware_cluster_id is not None:
@@ -104,6 +115,18 @@ class VmwareClusterArgs:
     @admin_cluster_membership.setter
     def admin_cluster_membership(self, value: pulumi.Input[str]):
         pulumi.set(self, "admin_cluster_membership", value)
+
+    @property
+    @pulumi.getter(name="onPremVersion")
+    def on_prem_version(self) -> pulumi.Input[str]:
+        """
+        The Anthos clusters on the VMware version for your user cluster.
+        """
+        return pulumi.get(self, "on_prem_version")
+
+    @on_prem_version.setter
+    def on_prem_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "on_prem_version", value)
 
     @property
     @pulumi.getter
@@ -190,6 +213,18 @@ class VmwareClusterArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="disableBundledIngress")
+    def disable_bundled_ingress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable bundled ingress.
+        """
+        return pulumi.get(self, "disable_bundled_ingress")
+
+    @disable_bundled_ingress.setter
+    def disable_bundled_ingress(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_bundled_ingress", value)
+
+    @property
     @pulumi.getter(name="enableControlPlaneV2")
     def enable_control_plane_v2(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -259,18 +294,6 @@ class VmwareClusterArgs:
         pulumi.set(self, "network_config", value)
 
     @property
-    @pulumi.getter(name="onPremVersion")
-    def on_prem_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
-        """
-        return pulumi.get(self, "on_prem_version")
-
-    @on_prem_version.setter
-    def on_prem_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "on_prem_version", value)
-
-    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -290,6 +313,30 @@ class VmwareClusterArgs:
     @storage.setter
     def storage(self, value: Optional[pulumi.Input['VmwareStorageConfigArgs']]):
         pulumi.set(self, "storage", value)
+
+    @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> Optional[pulumi.Input['VmwareClusterUpgradePolicyArgs']]:
+        """
+        Specifies upgrade policy for the cluster.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @upgrade_policy.setter
+    def upgrade_policy(self, value: Optional[pulumi.Input['VmwareClusterUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_policy", value)
+
+    @property
+    @pulumi.getter
+    def vcenter(self) -> Optional[pulumi.Input['VmwareVCenterConfigArgs']]:
+        """
+        VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
+        """
+        return pulumi.get(self, "vcenter")
+
+    @vcenter.setter
+    def vcenter(self, value: Optional[pulumi.Input['VmwareVCenterConfigArgs']]):
+        pulumi.set(self, "vcenter", value)
 
     @property
     @pulumi.getter(name="vmTrackingEnabled")
@@ -329,6 +376,7 @@ class VmwareCluster(pulumi.CustomResource):
                  control_plane_node: Optional[pulumi.Input[pulumi.InputType['VmwareControlPlaneNodeConfigArgs']]] = None,
                  dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VmwareDataplaneV2ConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  load_balancer: Optional[pulumi.Input[pulumi.InputType['VmwareLoadBalancerConfigArgs']]] = None,
@@ -338,11 +386,13 @@ class VmwareCluster(pulumi.CustomResource):
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[pulumi.InputType['VmwareStorageConfigArgs']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VmwareClusterUpgradePolicyArgs']]] = None,
+                 vcenter: Optional[pulumi.Input[pulumi.InputType['VmwareVCenterConfigArgs']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  vmware_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new VMware cluster in a given project and location.
+        Creates a new VMware user cluster in a given project and location.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -354,13 +404,16 @@ class VmwareCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VmwareControlPlaneNodeConfigArgs']] control_plane_node: VMware user cluster control plane nodes must have either 1 or 3 replicas.
         :param pulumi.Input[pulumi.InputType['VmwareDataplaneV2ConfigArgs']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
         :param pulumi.Input[str] description: A human readable description of this VMware user cluster.
+        :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
         :param pulumi.Input[pulumi.InputType['VmwareLoadBalancerConfigArgs']] load_balancer: Load balancer configuration.
         :param pulumi.Input[str] name: Immutable. The VMware user cluster resource name.
         :param pulumi.Input[pulumi.InputType['VmwareNetworkConfigArgs']] network_config: The VMware user cluster network configuration.
-        :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+        :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
         :param pulumi.Input[pulumi.InputType['VmwareStorageConfigArgs']] storage: Storage configuration.
+        :param pulumi.Input[pulumi.InputType['VmwareClusterUpgradePolicyArgs']] upgrade_policy: Specifies upgrade policy for the cluster.
+        :param pulumi.Input[pulumi.InputType['VmwareVCenterConfigArgs']] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         :param pulumi.Input[str] vmware_cluster_id: User provided identifier that is used as part of the resource name; This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
         """
@@ -371,7 +424,7 @@ class VmwareCluster(pulumi.CustomResource):
                  args: VmwareClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new VMware cluster in a given project and location.
+        Creates a new VMware user cluster in a given project and location.
 
         :param str resource_name: The name of the resource.
         :param VmwareClusterArgs args: The arguments to use to populate this resource's properties.
@@ -396,6 +449,7 @@ class VmwareCluster(pulumi.CustomResource):
                  control_plane_node: Optional[pulumi.Input[pulumi.InputType['VmwareControlPlaneNodeConfigArgs']]] = None,
                  dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VmwareDataplaneV2ConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  load_balancer: Optional[pulumi.Input[pulumi.InputType['VmwareLoadBalancerConfigArgs']]] = None,
@@ -405,6 +459,8 @@ class VmwareCluster(pulumi.CustomResource):
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[pulumi.InputType['VmwareStorageConfigArgs']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VmwareClusterUpgradePolicyArgs']]] = None,
+                 vcenter: Optional[pulumi.Input[pulumi.InputType['VmwareVCenterConfigArgs']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  vmware_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -426,15 +482,20 @@ class VmwareCluster(pulumi.CustomResource):
             __props__.__dict__["control_plane_node"] = control_plane_node
             __props__.__dict__["dataplane_v2"] = dataplane_v2
             __props__.__dict__["description"] = description
+            __props__.__dict__["disable_bundled_ingress"] = disable_bundled_ingress
             __props__.__dict__["enable_control_plane_v2"] = enable_control_plane_v2
             __props__.__dict__["etag"] = etag
             __props__.__dict__["load_balancer"] = load_balancer
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
+            if on_prem_version is None and not opts.urn:
+                raise TypeError("Missing required property 'on_prem_version'")
             __props__.__dict__["on_prem_version"] = on_prem_version
             __props__.__dict__["project"] = project
             __props__.__dict__["storage"] = storage
+            __props__.__dict__["upgrade_policy"] = upgrade_policy
+            __props__.__dict__["vcenter"] = vcenter
             __props__.__dict__["vm_tracking_enabled"] = vm_tracking_enabled
             __props__.__dict__["vmware_cluster_id"] = vmware_cluster_id
             __props__.__dict__["admin_cluster_name"] = None
@@ -449,7 +510,6 @@ class VmwareCluster(pulumi.CustomResource):
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["validation_check"] = None
-            __props__.__dict__["vcenter"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(VmwareCluster, __self__).__init__(
@@ -485,6 +545,7 @@ class VmwareCluster(pulumi.CustomResource):
         __props__.__dict__["dataplane_v2"] = None
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["disable_bundled_ingress"] = None
         __props__.__dict__["enable_control_plane_v2"] = None
         __props__.__dict__["endpoint"] = None
         __props__.__dict__["etag"] = None
@@ -502,6 +563,7 @@ class VmwareCluster(pulumi.CustomResource):
         __props__.__dict__["storage"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["upgrade_policy"] = None
         __props__.__dict__["validation_check"] = None
         __props__.__dict__["vcenter"] = None
         __props__.__dict__["vm_tracking_enabled"] = None
@@ -597,6 +659,14 @@ class VmwareCluster(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="disableBundledIngress")
+    def disable_bundled_ingress(self) -> pulumi.Output[bool]:
+        """
+        Disable bundled ingress.
+        """
+        return pulumi.get(self, "disable_bundled_ingress")
+
+    @property
     @pulumi.getter(name="enableControlPlaneV2")
     def enable_control_plane_v2(self) -> pulumi.Output[bool]:
         """
@@ -669,7 +739,7 @@ class VmwareCluster(pulumi.CustomResource):
     @pulumi.getter(name="onPremVersion")
     def on_prem_version(self) -> pulumi.Output[str]:
         """
-        The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+        The Anthos clusters on the VMware version for your user cluster.
         """
         return pulumi.get(self, "on_prem_version")
 
@@ -727,6 +797,14 @@ class VmwareCluster(pulumi.CustomResource):
         return pulumi.get(self, "update_time")
 
     @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> pulumi.Output['outputs.VmwareClusterUpgradePolicyResponse']:
+        """
+        Specifies upgrade policy for the cluster.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @property
     @pulumi.getter(name="validationCheck")
     def validation_check(self) -> pulumi.Output['outputs.ValidationCheckResponse']:
         """
@@ -738,7 +816,7 @@ class VmwareCluster(pulumi.CustomResource):
     @pulumi.getter
     def vcenter(self) -> pulumi.Output['outputs.VmwareVCenterConfigResponse']:
         """
-        VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+        VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
         """
         return pulumi.get(self, "vcenter")
 

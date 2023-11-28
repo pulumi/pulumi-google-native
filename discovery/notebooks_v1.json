@@ -578,7 +578,7 @@
                   ]
                 },
                 "getInstanceHealth": {
-                  "description": "Check if a notebook instance is healthy.",
+                  "description": "Checks whether a notebook instance is healthy.",
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:getInstanceHealth",
                   "httpMethod": "GET",
                   "id": "notebooks.projects.locations.instances.getInstanceHealth",
@@ -603,7 +603,7 @@
                   ]
                 },
                 "isUpgradeable": {
-                  "description": "Check if a notebook instance is upgradable.",
+                  "description": "Checks whether a notebook instance is upgradable.",
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:isUpgradeable",
                   "httpMethod": "GET",
                   "id": "notebooks.projects.locations.instances.isUpgradeable",
@@ -655,6 +655,16 @@
                     "parent"
                   ],
                   "parameters": {
+                    "filter": {
+                      "description": "Optional. List filter.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "orderBy": {
+                      "description": "Optional. Sort results. Supported values are \"name\", \"name desc\" or \"\" (unsorted).",
+                      "location": "query",
+                      "type": "string"
+                    },
                     "pageSize": {
                       "description": "Maximum return size of the list call.",
                       "format": "int32",
@@ -677,6 +687,34 @@
                   "path": "v1/{+parent}/instances",
                   "response": {
                     "$ref": "ListInstancesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "migrate": {
+                  "description": "Migrates an existing User-Managed Notebook to Workbench Instances.",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:migrate",
+                  "httpMethod": "POST",
+                  "id": "notebooks.projects.locations.instances.migrate",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1/{+name}:migrate",
+                  "request": {
+                    "$ref": "MigrateInstanceRequest"
+                  },
+                  "response": {
+                    "$ref": "Operation"
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
@@ -1446,6 +1484,16 @@
                     "parent"
                   ],
                   "parameters": {
+                    "filter": {
+                      "description": "Optional. List filter.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "orderBy": {
+                      "description": "Optional. Sort results. Supported values are \"name\", \"name desc\" or \"\" (unsorted).",
+                      "location": "query",
+                      "type": "string"
+                    },
                     "pageSize": {
                       "description": "Maximum return size of the list call.",
                       "format": "int32",
@@ -1468,6 +1516,34 @@
                   "path": "v1/{+parent}/runtimes",
                   "response": {
                     "$ref": "ListRuntimesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "migrate": {
+                  "description": "Migrate an existing Runtime to a new Workbench Instance.",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/runtimes/{runtimesId}:migrate",
+                  "httpMethod": "POST",
+                  "id": "notebooks.projects.locations.runtimes.migrate",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1/{+name}:migrate",
+                  "request": {
+                    "$ref": "MigrateRuntimeRequest"
+                  },
+                  "response": {
+                    "$ref": "Operation"
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
@@ -1541,7 +1617,7 @@
                   ]
                 },
                 "reportEvent": {
-                  "description": "Report and process a runtime event.",
+                  "description": "Reports and processes a runtime event.",
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/runtimes/{runtimesId}:reportEvent",
                   "httpMethod": "POST",
                   "id": "notebooks.projects.locations.runtimes.reportEvent",
@@ -1932,11 +2008,11 @@
       }
     }
   },
-  "revision": "20230502",
+  "revision": "20231024",
   "rootUrl": "https://notebooks.googleapis.com/",
   "schemas": {
     "AcceleratorConfig": {
-      "description": "Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.",
+      "description": "Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.",
       "id": "AcceleratorConfig",
       "properties": {
         "coreCount": {
@@ -1954,6 +2030,7 @@
             "NVIDIA_TESLA_P4",
             "NVIDIA_TESLA_T4",
             "NVIDIA_TESLA_A100",
+            "NVIDIA_L4",
             "NVIDIA_TESLA_T4_VWS",
             "NVIDIA_TESLA_P100_VWS",
             "NVIDIA_TESLA_P4_VWS",
@@ -1968,6 +2045,7 @@
             "Accelerator type is Nvidia Tesla P4.",
             "Accelerator type is Nvidia Tesla T4.",
             "Accelerator type is Nvidia Tesla A100.",
+            "Accelerator type is Nvidia Tesla L4.",
             "Accelerator type is NVIDIA Tesla T4 Virtual Workstations.",
             "Accelerator type is NVIDIA Tesla P100 Virtual Workstations.",
             "Accelerator type is NVIDIA Tesla P4 Virtual Workstations.",
@@ -2046,6 +2124,11 @@
         "diagnosticConfig": {
           "$ref": "DiagnosticConfig",
           "description": "Required. Defines flags that are used to run the diagnostic tool"
+        },
+        "timeoutMinutes": {
+          "description": "Optional. Maxmium amount of time in minutes before the operation times out.",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -2057,6 +2140,11 @@
         "diagnosticConfig": {
           "$ref": "DiagnosticConfig",
           "description": "Required. Defines flags that are used to run the diagnostic tool"
+        },
+        "timeoutMinutes": {
+          "description": "Optional. Maxmium amount of time in minutes before the operation times out.",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -2380,6 +2468,7 @@
           "type": "string"
         },
         "scaleTier": {
+          "deprecated": true,
           "description": "Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.",
           "enum": [
             "SCALE_TIER_UNSPECIFIED",
@@ -2587,6 +2676,11 @@
           "description": "Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.",
           "type": "boolean"
         },
+        "instanceMigrationEligibility": {
+          "$ref": "InstanceMigrationEligibility",
+          "description": "Output only. Checks how feasible a migration from UmN to WbI is.",
+          "readOnly": true
+        },
         "instanceOwners": {
           "description": "Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.",
           "items": {
@@ -2613,8 +2707,13 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Custom metadata to apply to this instance.",
+          "description": "Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `\"--metadata=gcs-data-bucket=``BUCKET''\"`.",
           "type": "object"
+        },
+        "migrated": {
+          "description": "Output only. Bool indicating whether this notebook has been migrated to a Workbench Instance",
+          "readOnly": true,
+          "type": "boolean"
         },
         "name": {
           "description": "Output only. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`",
@@ -2644,7 +2743,7 @@
           "type": "boolean"
         },
         "noPublicIp": {
-          "description": "If true, no public IP will be assigned to this instance.",
+          "description": "If true, no external IP will be assigned to this instance.",
           "type": "boolean"
         },
         "noRemoveDataDisk": {
@@ -2754,6 +2853,55 @@
         "notebookUpgradeSchedule": {
           "description": "Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InstanceMigrationEligibility": {
+      "description": "InstanceMigrationEligibility represents the feasibility information of a migration from UmN to WbI.",
+      "id": "InstanceMigrationEligibility",
+      "properties": {
+        "errors": {
+          "description": "Output only. Certain configurations make the UmN ineligible for an automatic migration. A manual migration is required.",
+          "items": {
+            "enum": [
+              "ERROR_UNSPECIFIED",
+              "DATAPROC_HUB"
+            ],
+            "enumDescriptions": [
+              "Default type.",
+              "The UmN uses Dataproc Hub and cannot be migrated."
+            ],
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "warnings": {
+          "description": "Output only. Certain configurations will be defaulted during the migration.",
+          "items": {
+            "enum": [
+              "WARNING_UNSPECIFIED",
+              "UNSUPPORTED_MACHINE_TYPE",
+              "UNSUPPORTED_ACCELERATOR_TYPE",
+              "UNSUPPORTED_OS",
+              "NO_REMOVE_DATA_DISK",
+              "GCS_BACKUP",
+              "POST_STARTUP_SCRIPT"
+            ],
+            "enumDescriptions": [
+              "Default type.",
+              "The UmN uses an machine type that's unsupported in WbI. It will be migrated with the default machine type e2-standard-4. Users can change the machine type after the migration.",
+              "The UmN uses an accelerator type that's unsupported in WbI. It will be migrated without an accelerator. User can attach an accelerator after the migration.",
+              "The UmN uses an operating system that's unsupported in WbI (e.g. Debian 10, Ubuntu). It will be replaced with Debian 11 in WbI.",
+              "This UmN is configured with no_remove_data_disk, which is no longer available in WbI.",
+              "This UmN is configured with the Cloud Storage backup feature, which is no longer available in WbI.",
+              "This UmN is configured with a post startup script. Please optionally provide the `post_startup_script_option` for the migration."
+            ],
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
         }
       },
       "type": "object"
@@ -3090,6 +3238,64 @@
       },
       "type": "object"
     },
+    "MigrateInstanceRequest": {
+      "description": "Request for migrating a User-Managed Notebook to Workbench Instances.",
+      "id": "MigrateInstanceRequest",
+      "properties": {
+        "postStartupScriptOption": {
+          "description": "Optional. Specifies the behavior of post startup script during migration.",
+          "enum": [
+            "POST_STARTUP_SCRIPT_OPTION_UNSPECIFIED",
+            "POST_STARTUP_SCRIPT_OPTION_SKIP",
+            "POST_STARTUP_SCRIPT_OPTION_RERUN"
+          ],
+          "enumDescriptions": [
+            "Post startup script option is not specified. Default is POST_STARTUP_SCRIPT_OPTION_SKIP.",
+            "Not migrate the post startup script to the new Workbench Instance.",
+            "Redownload and rerun the same post startup script as the User-Managed Notebook."
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MigrateRuntimeRequest": {
+      "description": "Request for migrating a Runtime to a Workbench Instance.",
+      "id": "MigrateRuntimeRequest",
+      "properties": {
+        "network": {
+          "description": "Optional. Name of the VPC that the new Instance is in. This is required if the Runtime uses google-managed network. If the Runtime uses customer-owned network, it will reuse the same VPC, and this field must be empty. Format: `projects/{project_id}/global/networks/{network_id}`",
+          "type": "string"
+        },
+        "postStartupScriptOption": {
+          "description": "Optional. Specifies the behavior of post startup script during migration.",
+          "enum": [
+            "POST_STARTUP_SCRIPT_OPTION_UNSPECIFIED",
+            "POST_STARTUP_SCRIPT_OPTION_SKIP",
+            "POST_STARTUP_SCRIPT_OPTION_RERUN"
+          ],
+          "enumDescriptions": [
+            "Post startup script option is not specified. Default is POST_STARTUP_SCRIPT_OPTION_SKIP.",
+            "Not migrate the post startup script to the new Workbench Instance.",
+            "Redownload and rerun the same post startup script as the Google-Managed Notebook."
+          ],
+          "type": "string"
+        },
+        "requestId": {
+          "description": "Optional. Idempotent request UUID.",
+          "type": "string"
+        },
+        "serviceAccount": {
+          "description": "Optional. The service account to be included in the Compute Engine instance of the new Workbench Instance when the Runtime uses \"single user only\" mode for permission. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. When the Runtime uses service account mode for permission, it will reuse the same service account, and this field must be empty.",
+          "type": "string"
+        },
+        "subnet": {
+          "description": "Optional. Name of the subnet that the new Instance is in. This is required if the Runtime uses google-managed network. If the Runtime uses customer-owned network, it will reuse the same subnet, and this field must be empty. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Operation": {
       "description": "This resource represents a long-running operation that is the result of a network API call.",
       "id": "Operation",
@@ -3119,7 +3325,7 @@
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object"
         }
       },
@@ -3167,7 +3373,7 @@
       "type": "object"
     },
     "Policy": {
-      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
       "id": "Policy",
       "properties": {
         "bindings": {
@@ -3384,10 +3590,20 @@
           "description": "Output only. Contains Runtime daemon metrics such as Service status and JupyterLab stats.",
           "readOnly": true
         },
+        "migrated": {
+          "description": "Output only. Bool indicating whether this notebook has been migrated to a Workbench Instance",
+          "readOnly": true,
+          "type": "boolean"
+        },
         "name": {
           "description": "Output only. The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`",
           "readOnly": true,
           "type": "string"
+        },
+        "runtimeMigrationEligibility": {
+          "$ref": "RuntimeMigrationEligibility",
+          "description": "Output only. Checks how feasible a migration from GmN to WbI is.",
+          "readOnly": true
         },
         "softwareConfig": {
           "$ref": "RuntimeSoftwareConfig",
@@ -3434,7 +3650,7 @@
       "type": "object"
     },
     "RuntimeAcceleratorConfig": {
-      "description": "Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`",
+      "description": "Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`",
       "id": "RuntimeAcceleratorConfig",
       "properties": {
         "coreCount": {
@@ -3452,11 +3668,27 @@
             "NVIDIA_TESLA_P4",
             "NVIDIA_TESLA_T4",
             "NVIDIA_TESLA_A100",
+            "NVIDIA_L4",
             "TPU_V2",
             "TPU_V3",
             "NVIDIA_TESLA_T4_VWS",
             "NVIDIA_TESLA_P100_VWS",
             "NVIDIA_TESLA_P4_VWS"
+          ],
+          "enumDeprecated": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
           ],
           "enumDescriptions": [
             "Accelerator type is not specified.",
@@ -3465,7 +3697,8 @@
             "Accelerator type is Nvidia Tesla V100.",
             "Accelerator type is Nvidia Tesla P4.",
             "Accelerator type is Nvidia Tesla T4.",
-            "Accelerator type is Nvidia Tesla A100.",
+            "Accelerator type is Nvidia Tesla A100 - 40GB.",
+            "Accelerator type is Nvidia L4.",
             "(Coming soon) Accelerator type is TPU V2.",
             "(Coming soon) Accelerator type is TPU V3.",
             "Accelerator type is NVIDIA Tesla T4 Virtual Workstations.",
@@ -3533,8 +3766,57 @@
       },
       "type": "object"
     },
+    "RuntimeMigrationEligibility": {
+      "description": "RuntimeMigrationEligibility represents the feasibility information of a migration from GmN to WbI.",
+      "id": "RuntimeMigrationEligibility",
+      "properties": {
+        "errors": {
+          "description": "Output only. Certain configurations make the GmN ineligible for an automatic migration. A manual migration is required.",
+          "items": {
+            "enum": [
+              "ERROR_UNSPECIFIED",
+              "CUSTOM_CONTAINER"
+            ],
+            "enumDescriptions": [
+              "Default type.",
+              "The GmN is configured with custom container(s) and cannot be migrated."
+            ],
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "warnings": {
+          "description": "Output only. Certain configurations will be defaulted during the migration.",
+          "items": {
+            "enum": [
+              "WARNING_UNSPECIFIED",
+              "UNSUPPORTED_ACCELERATOR_TYPE",
+              "UNSUPPORTED_OS",
+              "RESERVED_IP_RANGE",
+              "GOOGLE_MANAGED_NETWORK",
+              "POST_STARTUP_SCRIPT",
+              "SINGLE_USER"
+            ],
+            "enumDescriptions": [
+              "Default type.",
+              "The GmN uses an accelerator type that's unsupported in WbI. It will be migrated without an accelerator. Users can attach an accelerator after the migration.",
+              "The GmN uses an operating system that's unsupported in WbI (e.g. Debian 10). It will be replaced with Debian 11 in WbI.",
+              "This GmN is configured with reserved IP range, which is no longer applicable in WbI.",
+              "This GmN is configured with a Google managed network. Please provide the `network` and `subnet` options for the migration.",
+              "This GmN is configured with a post startup script. Please optionally provide the `post_startup_script_option` for the migration.",
+              "This GmN is configured with single user mode. Please optionally provide the `service_account` option for the migration."
+            ],
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "RuntimeShieldedInstanceConfig": {
-      "description": "A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.",
+      "description": "A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.",
       "id": "RuntimeShieldedInstanceConfig",
       "properties": {
         "enableIntegrityMonitoring": {
@@ -3702,7 +3984,7 @@
       "type": "object"
     },
     "SchedulerAcceleratorConfig": {
-      "description": "Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.",
+      "description": "Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.",
       "id": "SchedulerAcceleratorConfig",
       "properties": {
         "coreCount": {
@@ -3755,7 +4037,7 @@
       "id": "SetInstanceAcceleratorRequest",
       "properties": {
         "coreCount": {
-          "description": "Required. Count of cores of this accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.",
+          "description": "Required. Count of cores of this accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.",
           "format": "int64",
           "type": "string"
         },
@@ -3769,6 +4051,7 @@
             "NVIDIA_TESLA_P4",
             "NVIDIA_TESLA_T4",
             "NVIDIA_TESLA_A100",
+            "NVIDIA_L4",
             "NVIDIA_TESLA_T4_VWS",
             "NVIDIA_TESLA_P100_VWS",
             "NVIDIA_TESLA_P4_VWS",
@@ -3783,6 +4066,7 @@
             "Accelerator type is Nvidia Tesla P4.",
             "Accelerator type is Nvidia Tesla T4.",
             "Accelerator type is Nvidia Tesla A100.",
+            "Accelerator type is Nvidia Tesla L4.",
             "Accelerator type is NVIDIA Tesla T4 Virtual Workstations.",
             "Accelerator type is NVIDIA Tesla P100 Virtual Workstations.",
             "Accelerator type is NVIDIA Tesla P4 Virtual Workstations.",
@@ -3820,7 +4104,7 @@
       "type": "object"
     },
     "ShieldedInstanceConfig": {
-      "description": "A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.",
+      "description": "A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.",
       "id": "ShieldedInstanceConfig",
       "properties": {
         "enableIntegrityMonitoring": {
@@ -4054,6 +4338,7 @@
           "type": "string"
         },
         "targetImage": {
+          "deprecated": true,
           "description": "Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.",
           "type": "string"
         },

@@ -44,6 +44,8 @@ type LookupDataExchangeResult struct {
 	Name string `pulumi:"name"`
 	// Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
 	PrimaryContact string `pulumi:"primaryContact"`
+	// Optional. Configurable data sharing environment option for a data exchange.
+	SharingEnvironmentConfig SharingEnvironmentConfigResponse `pulumi:"sharingEnvironmentConfig"`
 }
 
 func LookupDataExchangeOutput(ctx *pulumi.Context, args LookupDataExchangeOutputArgs, opts ...pulumi.InvokeOption) LookupDataExchangeResultOutput {
@@ -122,6 +124,11 @@ func (o LookupDataExchangeResultOutput) Name() pulumi.StringOutput {
 // Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
 func (o LookupDataExchangeResultOutput) PrimaryContact() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataExchangeResult) string { return v.PrimaryContact }).(pulumi.StringOutput)
+}
+
+// Optional. Configurable data sharing environment option for a data exchange.
+func (o LookupDataExchangeResultOutput) SharingEnvironmentConfig() SharingEnvironmentConfigResponseOutput {
+	return o.ApplyT(func(v LookupDataExchangeResult) SharingEnvironmentConfigResponse { return v.SharingEnvironmentConfig }).(SharingEnvironmentConfigResponseOutput)
 }
 
 func init() {

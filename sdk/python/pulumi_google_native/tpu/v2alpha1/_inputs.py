@@ -14,8 +14,11 @@ __all__ = [
     'AcceleratorConfigArgs',
     'AttachedDiskArgs',
     'BestEffortArgs',
+    'BootDiskConfigArgs',
+    'CustomerEncryptionKeyArgs',
     'GuaranteedArgs',
     'IntervalArgs',
+    'MultiNodeParamsArgs',
     'NetworkConfigArgs',
     'NodeSpecArgs',
     'NodeArgs',
@@ -23,6 +26,7 @@ __all__ = [
     'SchedulingConfigArgs',
     'ServiceAccountArgs',
     'ShieldedInstanceConfigArgs',
+    'SpotArgs',
     'TpuArgs',
 ]
 
@@ -114,6 +118,70 @@ class BestEffortArgs:
 
 
 @pulumi.input_type
+class BootDiskConfigArgs:
+    def __init__(__self__, *,
+                 customer_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None):
+        """
+        Boot disk configurations.
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] customer_encryption_key: Optional. Customer encryption key for boot disk.
+        :param pulumi.Input[bool] enable_confidential_compute: Optional. Whether the boot disk will be created with confidential compute mode.
+        """
+        if customer_encryption_key is not None:
+            pulumi.set(__self__, "customer_encryption_key", customer_encryption_key)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="customerEncryptionKey")
+    def customer_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
+        """
+        Optional. Customer encryption key for boot disk.
+        """
+        return pulumi.get(self, "customer_encryption_key")
+
+    @customer_encryption_key.setter
+    def customer_encryption_key(self, value: Optional[pulumi.Input['CustomerEncryptionKeyArgs']]):
+        pulumi.set(self, "customer_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether the boot disk will be created with confidential compute mode.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @enable_confidential_compute.setter
+    def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_compute", value)
+
+
+@pulumi.input_type
+class CustomerEncryptionKeyArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        Customer's encryption key.
+        :param pulumi.Input[str] kms_key_name: The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1 
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1 
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
 class GuaranteedArgs:
     def __init__(__self__, *,
                  min_duration: Optional[pulumi.Input[str]] = None,
@@ -194,6 +262,45 @@ class IntervalArgs:
 
 
 @pulumi.input_type
+class MultiNodeParamsArgs:
+    def __init__(__self__, *,
+                 node_count: pulumi.Input[int],
+                 node_id_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params.
+        :param pulumi.Input[int] node_count: Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+        :param pulumi.Input[str] node_id_prefix: Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+        """
+        pulumi.set(__self__, "node_count", node_count)
+        if node_id_prefix is not None:
+            pulumi.set(__self__, "node_id_prefix", node_id_prefix)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Input[int]:
+        """
+        Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter(name="nodeIdPrefix")
+    def node_id_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+        """
+        return pulumi.get(self, "node_id_prefix")
+
+    @node_id_prefix.setter
+    def node_id_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_id_prefix", value)
+
+
+@pulumi.input_type
 class NetworkConfigArgs:
     def __init__(__self__, *,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
@@ -270,15 +377,19 @@ class NodeSpecArgs:
     def __init__(__self__, *,
                  node: pulumi.Input['NodeArgs'],
                  parent: pulumi.Input[str],
+                 multi_node_params: Optional[pulumi.Input['MultiNodeParamsArgs']] = None,
                  node_id: Optional[pulumi.Input[str]] = None):
         """
         Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
         :param pulumi.Input['NodeArgs'] node: The node.
         :param pulumi.Input[str] parent: The parent resource name.
+        :param pulumi.Input['MultiNodeParamsArgs'] multi_node_params: Optional. Fields to specify in case of multi-node request.
         :param pulumi.Input[str] node_id: The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
         """
         pulumi.set(__self__, "node", node)
         pulumi.set(__self__, "parent", parent)
+        if multi_node_params is not None:
+            pulumi.set(__self__, "multi_node_params", multi_node_params)
         if node_id is not None:
             pulumi.set(__self__, "node_id", node_id)
 
@@ -307,6 +418,18 @@ class NodeSpecArgs:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter(name="multiNodeParams")
+    def multi_node_params(self) -> Optional[pulumi.Input['MultiNodeParamsArgs']]:
+        """
+        Optional. Fields to specify in case of multi-node request.
+        """
+        return pulumi.get(self, "multi_node_params")
+
+    @multi_node_params.setter
+    def multi_node_params(self, value: Optional[pulumi.Input['MultiNodeParamsArgs']]):
+        pulumi.set(self, "multi_node_params", value)
+
+    @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -325,6 +448,8 @@ class NodeArgs:
                  runtime_version: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
+                 autocheckpoint_enabled: Optional[pulumi.Input[bool]] = None,
+                 boot_disk_config: Optional[pulumi.Input['BootDiskConfigArgs']] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -341,6 +466,8 @@ class NodeArgs:
         :param pulumi.Input[str] runtime_version: The runtime version running in the Node.
         :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
+        :param pulumi.Input[bool] autocheckpoint_enabled: Optional. Whether Autocheckpoint is enabled.
+        :param pulumi.Input['BootDiskConfigArgs'] boot_disk_config: Optional. Boot disk configuration.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] data_disks: The additional data disks for the Node.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
@@ -358,6 +485,10 @@ class NodeArgs:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if accelerator_type is not None:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if autocheckpoint_enabled is not None:
+            pulumi.set(__self__, "autocheckpoint_enabled", autocheckpoint_enabled)
+        if boot_disk_config is not None:
+            pulumi.set(__self__, "boot_disk_config", boot_disk_config)
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
         if data_disks is not None:
@@ -416,6 +547,30 @@ class NodeArgs:
     @accelerator_type.setter
     def accelerator_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "accelerator_type", value)
+
+    @property
+    @pulumi.getter(name="autocheckpointEnabled")
+    def autocheckpoint_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether Autocheckpoint is enabled.
+        """
+        return pulumi.get(self, "autocheckpoint_enabled")
+
+    @autocheckpoint_enabled.setter
+    def autocheckpoint_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "autocheckpoint_enabled", value)
+
+    @property
+    @pulumi.getter(name="bootDiskConfig")
+    def boot_disk_config(self) -> Optional[pulumi.Input['BootDiskConfigArgs']]:
+        """
+        Optional. Boot disk configuration.
+        """
+        return pulumi.get(self, "boot_disk_config")
+
+    @boot_disk_config.setter
+    def boot_disk_config(self, value: Optional[pulumi.Input['BootDiskConfigArgs']]):
+        pulumi.set(self, "boot_disk_config", value)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -740,6 +895,15 @@ class ShieldedInstanceConfigArgs:
     @enable_secure_boot.setter
     def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_secure_boot", value)
+
+
+@pulumi.input_type
+class SpotArgs:
+    def __init__(__self__):
+        """
+        Spot tier definition.
+        """
+        pass
 
 
 @pulumi.input_type

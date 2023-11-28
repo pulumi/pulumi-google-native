@@ -27,6 +27,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Autoscaler{}
 	case "google-native:compute/v1:BackendBucket":
 		r = &BackendBucket{}
+	case "google-native:compute/v1:BackendBucketIamBinding":
+		r = &BackendBucketIamBinding{}
+	case "google-native:compute/v1:BackendBucketIamMember":
+		r = &BackendBucketIamMember{}
+	case "google-native:compute/v1:BackendBucketIamPolicy":
+		r = &BackendBucketIamPolicy{}
 	case "google-native:compute/v1:BackendService":
 		r = &BackendService{}
 	case "google-native:compute/v1:BackendServiceIamBinding":

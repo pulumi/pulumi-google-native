@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
     public sealed class GroupKindResponse
     {
         /// <summary>
-        /// API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        /// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
         /// </summary>
         public readonly string ResourceGroup;
         /// <summary>
-        /// Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+        /// Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
         /// </summary>
         public readonly string ResourceKind;
 

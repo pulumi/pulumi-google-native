@@ -44,7 +44,7 @@ export interface GetLineageEventResult {
      */
     readonly name: string;
     /**
-     * Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+     * The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
      */
     readonly startTime: string;
 }

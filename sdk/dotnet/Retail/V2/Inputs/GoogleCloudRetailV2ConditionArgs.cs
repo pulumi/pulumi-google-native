@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.Retail.V2.Inputs
             set => _activeTimeRange = value;
         }
 
+        [Input("pageCategories")]
+        private InputList<string>? _pageCategories;
+
+        /// <summary>
+        /// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
+        /// </summary>
+        public InputList<string> PageCategories
+        {
+            get => _pageCategories ?? (_pageCategories = new InputList<string>());
+            set => _pageCategories = value;
+        }
+
         [Input("queryTerms")]
         private InputList<Inputs.GoogleCloudRetailV2ConditionQueryTermArgs>? _queryTerms;
 

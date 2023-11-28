@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
 {
 
     /// <summary>
-    /// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
+    /// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
     /// </summary>
     public sealed class DocumentOccurrenceArgs : global::Pulumi.ResourceArgs
     {

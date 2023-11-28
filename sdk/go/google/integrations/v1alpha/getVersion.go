@@ -32,6 +32,8 @@ type LookupVersionArgs struct {
 }
 
 type LookupVersionResult struct {
+	// Optional. Cloud Logging details for the integration version
+	CloudLoggingDetails GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse `pulumi:"cloudLoggingDetails"`
 	// Auto-generated.
 	CreateTime string `pulumi:"createTime"`
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
@@ -121,6 +123,13 @@ func (o LookupVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[
 	return pulumix.Output[LookupVersionResult]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. Cloud Logging details for the integration version
+func (o LookupVersionResultOutput) CloudLoggingDetails() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponseOutput {
+	return o.ApplyT(func(v LookupVersionResult) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse {
+		return v.CloudLoggingDetails
+	}).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponseOutput)
 }
 
 // Auto-generated.

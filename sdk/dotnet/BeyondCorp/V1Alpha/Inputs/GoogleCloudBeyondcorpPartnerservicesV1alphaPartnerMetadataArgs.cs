@@ -11,12 +11,18 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// Metadata associated with Tenant and is provided by the Partner.
+    /// Metadata associated with PartnerTenant and is provided by the Partner.
     /// </summary>
     public sealed class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+        /// </summary>
+        [Input("internalTenantId")]
+        public Input<string>? InternalTenantId { get; set; }
+
+        /// <summary>
+        /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
         /// </summary>
         [Input("partnerTenantId")]
         public Input<string>? PartnerTenantId { get; set; }

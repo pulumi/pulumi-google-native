@@ -36,13 +36,13 @@ type LookupWorkloadResult struct {
 	ComplianceRegime string `pulumi:"complianceRegime"`
 	// Count of active Violations in the Workload.
 	ComplianceStatus GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse `pulumi:"complianceStatus"`
-	// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+	// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
 	CompliantButDisallowedServices []string `pulumi:"compliantButDisallowedServices"`
 	// Immutable. The Workload creation timestamp.
 	CreateTime string `pulumi:"createTime"`
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName string `pulumi:"displayName"`
-	// Optional. Represents the Ekm Provisioning State of the given workload.
+	// Represents the Ekm Provisioning State of the given workload.
 	EkmProvisioningResponse GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse `pulumi:"ekmProvisioningResponse"`
 	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
 	EnableSovereignControls bool `pulumi:"enableSovereignControls"`
@@ -64,6 +64,8 @@ type LookupWorkloadResult struct {
 	PartnerPermissions GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse `pulumi:"partnerPermissions"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent string `pulumi:"provisionedResourcesParent"`
+	// Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
+	ResourceMonitoringEnabled bool `pulumi:"resourceMonitoringEnabled"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse `pulumi:"resourceSettings"`
 	// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
@@ -134,7 +136,7 @@ func (o LookupWorkloadResultOutput) ComplianceStatus() GoogleCloudAssuredworkloa
 	}).(GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput)
 }
 
-// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
 func (o LookupWorkloadResultOutput) CompliantButDisallowedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) []string { return v.CompliantButDisallowedServices }).(pulumi.StringArrayOutput)
 }
@@ -149,7 +151,7 @@ func (o LookupWorkloadResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Optional. Represents the Ekm Provisioning State of the given workload.
+// Represents the Ekm Provisioning State of the given workload.
 func (o LookupWorkloadResultOutput) EkmProvisioningResponse() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse {
 		return v.EkmProvisioningResponse
@@ -205,6 +207,11 @@ func (o LookupWorkloadResultOutput) PartnerPermissions() GoogleCloudAssuredworkl
 // Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 func (o LookupWorkloadResultOutput) ProvisionedResourcesParent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.ProvisionedResourcesParent }).(pulumi.StringOutput)
+}
+
+// Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
+func (o LookupWorkloadResultOutput) ResourceMonitoringEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkloadResult) bool { return v.ResourceMonitoringEnabled }).(pulumi.BoolOutput)
 }
 
 // Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.

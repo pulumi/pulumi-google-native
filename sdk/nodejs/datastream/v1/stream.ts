@@ -74,6 +74,10 @@ export class Stream extends pulumi.CustomResource {
      * Labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+     */
+    public /*out*/ readonly lastRecoveryTime!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The stream's name.
@@ -139,6 +143,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["streamId"] = args ? args.streamId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["lastRecoveryTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
@@ -151,6 +156,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["force"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lastRecoveryTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

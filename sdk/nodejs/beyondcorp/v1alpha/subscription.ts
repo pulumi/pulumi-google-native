@@ -58,9 +58,9 @@ export class Subscription extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * Number of seats in the subscription.
+     * Optional. Number of seats in the subscription.
      */
-    public /*out*/ readonly seatCount!: pulumi.Output<string>;
+    public readonly seatCount!: pulumi.Output<string>;
     /**
      * SKU of subscription.
      */
@@ -101,12 +101,12 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["seatCount"] = args ? args.seatCount : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["autoRenewEnabled"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
-            resourceInputs["seatCount"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
@@ -139,6 +139,10 @@ export interface SubscriptionArgs {
      */
     name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
+    /**
+     * Optional. Number of seats in the subscription.
+     */
+    seatCount?: pulumi.Input<string>;
     /**
      * SKU of subscription.
      */

@@ -11,12 +11,19 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsArgs',
     'GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs',
     'GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs',
+    'GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgs',
+    'GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgs',
+    'GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsArgs',
+    'GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgs',
     'GoogleCloudDialogflowCxV3beta1AudioInputArgs',
+    'GoogleCloudDialogflowCxV3beta1BargeInConfigArgs',
     'GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputArgs',
     'GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs',
     'GoogleCloudDialogflowCxV3beta1ConversationTurnArgs',
+    'GoogleCloudDialogflowCxV3beta1DataStoreConnectionArgs',
     'GoogleCloudDialogflowCxV3beta1DtmfInputArgs',
     'GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs',
     'GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs',
@@ -45,10 +52,12 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs',
     'GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArgs',
     'GoogleCloudDialogflowCxV3beta1IntentArgs',
+    'GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsArgs',
     'GoogleCloudDialogflowCxV3beta1NluSettingsArgs',
     'GoogleCloudDialogflowCxV3beta1PageArgs',
     'GoogleCloudDialogflowCxV3beta1QueryInputArgs',
     'GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs',
+    'GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardArgs',
     'GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffArgs',
     'GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextArgs',
     'GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs',
@@ -74,6 +83,62 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1WebhookArgs',
     'GoogleRpcStatusArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 finish_digit: Optional[pulumi.Input[str]] = None,
+                 max_digits: Optional[pulumi.Input[int]] = None):
+        """
+        Define behaviors for DTMF (dual tone multi frequency).
+        :param pulumi.Input[bool] enabled: If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param pulumi.Input[str] finish_digit: The digit that terminates a DTMF digit sequence.
+        :param pulumi.Input[int] max_digits: Max length of DTMF digits.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if finish_digit is not None:
+            pulumi.set(__self__, "finish_digit", finish_digit)
+        if max_digits is not None:
+            pulumi.set(__self__, "max_digits", max_digits)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="finishDigit")
+    def finish_digit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        return pulumi.get(self, "finish_digit")
+
+    @finish_digit.setter
+    def finish_digit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "finish_digit", value)
+
+    @property
+    @pulumi.getter(name="maxDigits")
+    def max_digits(self) -> Optional[pulumi.Input[int]]:
+        """
+        Max length of DTMF digits.
+        """
+        return pulumi.get(self, "max_digits")
+
+    @max_digits.setter
+    def max_digits(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_digits", value)
+
 
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs:
@@ -119,14 +184,18 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs:
 class GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs:
     def __init__(__self__, *,
                  audio_export_gcs_destination: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1GcsDestinationArgs']] = None,
+                 dtmf_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsArgs']] = None,
                  logging_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs']] = None):
         """
         Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1GcsDestinationArgs'] audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsArgs'] dtmf_settings: Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs'] logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
         """
         if audio_export_gcs_destination is not None:
             pulumi.set(__self__, "audio_export_gcs_destination", audio_export_gcs_destination)
+        if dtmf_settings is not None:
+            pulumi.set(__self__, "dtmf_settings", dtmf_settings)
         if logging_settings is not None:
             pulumi.set(__self__, "logging_settings", logging_settings)
 
@@ -143,6 +212,18 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs:
         pulumi.set(self, "audio_export_gcs_destination", value)
 
     @property
+    @pulumi.getter(name="dtmfSettings")
+    def dtmf_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsArgs']]:
+        """
+        Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level.
+        """
+        return pulumi.get(self, "dtmf_settings")
+
+    @dtmf_settings.setter
+    def dtmf_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsArgs']]):
+        pulumi.set(self, "dtmf_settings", value)
+
+    @property
     @pulumi.getter(name="loggingSettings")
     def logging_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs']]:
         """
@@ -153,6 +234,165 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs:
     @logging_settings.setter
     def logging_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs']]):
         pulumi.set(self, "logging_settings", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgs:
+    def __init__(__self__, *,
+                 enable_answer_feedback: Optional[pulumi.Input[bool]] = None):
+        """
+        Settings for answer feedback collection.
+        :param pulumi.Input[bool] enable_answer_feedback: Optional. If enabled, end users will be able to provide answer feedback to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+        """
+        if enable_answer_feedback is not None:
+            pulumi.set(__self__, "enable_answer_feedback", enable_answer_feedback)
+
+    @property
+    @pulumi.getter(name="enableAnswerFeedback")
+    def enable_answer_feedback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If enabled, end users will be able to provide answer feedback to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+        """
+        return pulumi.get(self, "enable_answer_feedback")
+
+    @enable_answer_feedback.setter
+    def enable_answer_feedback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_answer_feedback", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgs:
+    def __init__(__self__, *,
+                 engine: pulumi.Input[str]):
+        """
+        Settings for Gen App Builder.
+        :param pulumi.Input[str] engine: The full name of the Gen App Builder engine related to this agent if there is one. Format: `projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}`
+        """
+        pulumi.set(__self__, "engine", engine)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> pulumi.Input[str]:
+        """
+        The full name of the Gen App Builder engine related to this agent if there is one. Format: `projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}`
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsArgs:
+    def __init__(__self__, *,
+                 access_token: Optional[pulumi.Input[str]] = None,
+                 branches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 repository_uri: Optional[pulumi.Input[str]] = None,
+                 tracking_branch: Optional[pulumi.Input[str]] = None):
+        """
+        Settings of integration with GitHub.
+        :param pulumi.Input[str] access_token: The access token used to authenticate the access to the GitHub repository.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] branches: A list of branches configured to be used from Dialogflow.
+        :param pulumi.Input[str] display_name: The unique repository display name for the GitHub repository.
+        :param pulumi.Input[str] repository_uri: The GitHub repository URI related to the agent.
+        :param pulumi.Input[str] tracking_branch: The branch of the GitHub repository tracked for this agent.
+        """
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
+        if branches is not None:
+            pulumi.set(__self__, "branches", branches)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if repository_uri is not None:
+            pulumi.set(__self__, "repository_uri", repository_uri)
+        if tracking_branch is not None:
+            pulumi.set(__self__, "tracking_branch", tracking_branch)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access token used to authenticate the access to the GitHub repository.
+        """
+        return pulumi.get(self, "access_token")
+
+    @access_token.setter
+    def access_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_token", value)
+
+    @property
+    @pulumi.getter
+    def branches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of branches configured to be used from Dialogflow.
+        """
+        return pulumi.get(self, "branches")
+
+    @branches.setter
+    def branches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "branches", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique repository display name for the GitHub repository.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="repositoryUri")
+    def repository_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GitHub repository URI related to the agent.
+        """
+        return pulumi.get(self, "repository_uri")
+
+    @repository_uri.setter
+    def repository_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_uri", value)
+
+    @property
+    @pulumi.getter(name="trackingBranch")
+    def tracking_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The branch of the GitHub repository tracked for this agent.
+        """
+        return pulumi.get(self, "tracking_branch")
+
+    @tracking_branch.setter
+    def tracking_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tracking_branch", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgs:
+    def __init__(__self__, *,
+                 github_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsArgs']] = None):
+        """
+        Settings for connecting to Git repository for an agent.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsArgs'] github_settings: GitHub settings.
+        """
+        if github_settings is not None:
+            pulumi.set(__self__, "github_settings", github_settings)
+
+    @property
+    @pulumi.getter(name="githubSettings")
+    def github_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsArgs']]:
+        """
+        GitHub settings.
+        """
+        return pulumi.get(self, "github_settings")
+
+    @github_settings.setter
+    def github_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsArgs']]):
+        pulumi.set(self, "github_settings", value)
 
 
 @pulumi.input_type
@@ -192,6 +432,46 @@ class GoogleCloudDialogflowCxV3beta1AudioInputArgs:
     @audio.setter
     def audio(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "audio", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1BargeInConfigArgs:
+    def __init__(__self__, *,
+                 no_barge_in_duration: Optional[pulumi.Input[str]] = None,
+                 total_duration: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the the start of the input audio. The flow goes like below: --> Time without speech detection | utterance only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+ No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+        :param pulumi.Input[str] no_barge_in_duration: Duration that is not eligible for barge-in at the beginning of the input audio.
+        :param pulumi.Input[str] total_duration: Total duration for the playback at the beginning of the input audio.
+        """
+        if no_barge_in_duration is not None:
+            pulumi.set(__self__, "no_barge_in_duration", no_barge_in_duration)
+        if total_duration is not None:
+            pulumi.set(__self__, "total_duration", total_duration)
+
+    @property
+    @pulumi.getter(name="noBargeInDuration")
+    def no_barge_in_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Duration that is not eligible for barge-in at the beginning of the input audio.
+        """
+        return pulumi.get(self, "no_barge_in_duration")
+
+    @no_barge_in_duration.setter
+    def no_barge_in_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "no_barge_in_duration", value)
+
+    @property
+    @pulumi.getter(name="totalDuration")
+    def total_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Total duration for the playback at the beginning of the input audio.
+        """
+        return pulumi.get(self, "total_duration")
+
+    @total_duration.setter
+    def total_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "total_duration", value)
 
 
 @pulumi.input_type
@@ -407,6 +687,46 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnArgs:
     @virtual_agent_output.setter
     def virtual_agent_output(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs']]):
         pulumi.set(self, "virtual_agent_output", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1DataStoreConnectionArgs:
+    def __init__(__self__, *,
+                 data_store: Optional[pulumi.Input[str]] = None,
+                 data_store_type: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType']] = None):
+        """
+        A data store connection. It represents a data store in Discovery Engine and the type of the contents it contains.
+        :param pulumi.Input[str] data_store: The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType'] data_store_type: The type of the connected data store.
+        """
+        if data_store is not None:
+            pulumi.set(__self__, "data_store", data_store)
+        if data_store_type is not None:
+            pulumi.set(__self__, "data_store_type", data_store_type)
+
+    @property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
+        """
+        return pulumi.get(self, "data_store")
+
+    @data_store.setter
+    def data_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_store", value)
+
+    @property
+    @pulumi.getter(name="dataStoreType")
+    def data_store_type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType']]:
+        """
+        The type of the connected data store.
+        """
+        return pulumi.get(self, "data_store_type")
+
+    @data_store_type.setter
+    def data_store_type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType']]):
+        pulumi.set(self, "data_store_type", value)
 
 
 @pulumi.input_type
@@ -1049,6 +1369,7 @@ class GoogleCloudDialogflowCxV3beta1FormParameterArgs:
                  display_name: pulumi.Input[str],
                  entity_type: pulumi.Input[str],
                  fill_behavior: pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs'],
+                 advanced_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']] = None,
                  default_value: Optional[Any] = None,
                  is_list: Optional[pulumi.Input[bool]] = None,
                  redact: Optional[pulumi.Input[bool]] = None,
@@ -1058,6 +1379,7 @@ class GoogleCloudDialogflowCxV3beta1FormParameterArgs:
         :param pulumi.Input[str] display_name: The human-readable name of the parameter, unique within the form.
         :param pulumi.Input[str] entity_type: The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs'] fill_behavior: Defines fill behavior for the parameter.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
         :param Any default_value: The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         :param pulumi.Input[bool] is_list: Indicates whether the parameter represents a list of values.
         :param pulumi.Input[bool] redact: Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
@@ -1066,6 +1388,8 @@ class GoogleCloudDialogflowCxV3beta1FormParameterArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "fill_behavior", fill_behavior)
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if default_value is not None:
             pulumi.set(__self__, "default_value", default_value)
         if is_list is not None:
@@ -1110,6 +1434,18 @@ class GoogleCloudDialogflowCxV3beta1FormParameterArgs:
     @fill_behavior.setter
     def fill_behavior(self, value: pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs']):
         pulumi.set(self, "fill_behavior", value)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]:
+        """
+        Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @advanced_settings.setter
+    def advanced_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]):
+        pulumi.set(self, "advanced_settings", value)
 
     @property
     @pulumi.getter(name="defaultValue")
@@ -1331,7 +1667,9 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1FulfillmentArgs:
     def __init__(__self__, *,
+                 advanced_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']] = None,
                  conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesArgs']]]] = None,
+                 enable_generative_fallback: Optional[pulumi.Input[bool]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageArgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
                  set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionArgs']]]] = None,
@@ -1339,15 +1677,21 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentArgs:
                  webhook: Optional[pulumi.Input[str]] = None):
         """
         A fulfillment can do one or more of the following actions at the same time: * Generate rich message responses. * Set parameter values. * Call the webhook. Fulfillments can be called at various stages in the Page or Form lifecycle. For example, when a DetectIntentRequest drives a session to enter a new page, the page's entry fulfillment can add a static response to the QueryResult in the returning DetectIntentResponse, call the webhook (for example, to load user data from a database), or both.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the settings exposed at the higher level.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesArgs']]] conditional_cases: Conditional cases for this fulfillment.
+        :param pulumi.Input[bool] enable_generative_fallback: If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageArgs']]] messages: The list of rich message responses to present to the user.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
         :param pulumi.Input[str] tag: The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: `projects//locations//agents//webhooks/`.
         """
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if conditional_cases is not None:
             pulumi.set(__self__, "conditional_cases", conditional_cases)
+        if enable_generative_fallback is not None:
+            pulumi.set(__self__, "enable_generative_fallback", enable_generative_fallback)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if return_partial_responses is not None:
@@ -1360,6 +1704,18 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentArgs:
             pulumi.set(__self__, "webhook", webhook)
 
     @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]:
+        """
+        Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @advanced_settings.setter
+    def advanced_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]):
+        pulumi.set(self, "advanced_settings", value)
+
+    @property
     @pulumi.getter(name="conditionalCases")
     def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesArgs']]]]:
         """
@@ -1370,6 +1726,18 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentArgs:
     @conditional_cases.setter
     def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesArgs']]]]):
         pulumi.set(self, "conditional_cases", value)
+
+    @property
+    @pulumi.getter(name="enableGenerativeFallback")
+    def enable_generative_fallback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        """
+        return pulumi.get(self, "enable_generative_fallback")
+
+    @enable_generative_fallback.setter
+    def enable_generative_fallback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_generative_fallback", value)
 
     @property
     @pulumi.getter
@@ -1459,6 +1827,7 @@ class GoogleCloudDialogflowCxV3beta1GcsDestinationArgs:
 class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
     def __init__(__self__, *,
                  audio_encoding: pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding'],
+                 barge_in_config: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1BargeInConfigArgs']] = None,
                  enable_word_info: Optional[pulumi.Input[bool]] = None,
                  model: Optional[pulumi.Input[str]] = None,
                  model_variant: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant']] = None,
@@ -1468,6 +1837,7 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
         """
         Instructs the speech recognizer on how to process the audio content.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding'] audio_encoding: Audio encoding of the audio content to process.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1BargeInConfigArgs'] barge_in_config: Configuration of barge-in behavior during the streaming of input audio.
         :param pulumi.Input[bool] enable_word_info: Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
         :param pulumi.Input[str] model: Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant'] model_variant: Optional. Which variant of the Speech model to use.
@@ -1476,6 +1846,8 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
         :param pulumi.Input[bool] single_utterance: Optional. If `false` (default), recognition does not cease until the client closes the stream. If `true`, the recognizer will detect a single spoken utterance in input audio. Recognition ceases when it detects the audio's voice has stopped or paused. In this case, once a detected intent is received, the client should close the stream and start a new request with a new stream as needed. Note: This setting is relevant only for streaming methods.
         """
         pulumi.set(__self__, "audio_encoding", audio_encoding)
+        if barge_in_config is not None:
+            pulumi.set(__self__, "barge_in_config", barge_in_config)
         if enable_word_info is not None:
             pulumi.set(__self__, "enable_word_info", enable_word_info)
         if model is not None:
@@ -1500,6 +1872,18 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
     @audio_encoding.setter
     def audio_encoding(self, value: pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding']):
         pulumi.set(self, "audio_encoding", value)
+
+    @property
+    @pulumi.getter(name="bargeInConfig")
+    def barge_in_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1BargeInConfigArgs']]:
+        """
+        Configuration of barge-in behavior during the streaming of input audio.
+        """
+        return pulumi.get(self, "barge_in_config")
+
+    @barge_in_config.setter
+    def barge_in_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1BargeInConfigArgs']]):
+        pulumi.set(self, "barge_in_config", value)
 
     @property
     @pulumi.getter(name="enableWordInfo")
@@ -1881,6 +2265,94 @@ class GoogleCloudDialogflowCxV3beta1IntentArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsArgs:
+    def __init__(__self__, *,
+                 data_store_connections: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1DataStoreConnectionArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 target_flow: Optional[pulumi.Input[str]] = None,
+                 target_page: Optional[pulumi.Input[str]] = None,
+                 trigger_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None):
+        """
+        The Knowledge Connector settings for this page or flow. This includes information such as the attached Knowledge Bases, and the way to execute fulfillment.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1DataStoreConnectionArgs']]] data_store_connections: Optional. List of related data store connections.
+        :param pulumi.Input[bool] enabled: Whether Knowledge Connector is enabled or not.
+        :param pulumi.Input[str] target_flow: The target flow to transition to. Format: `projects//locations//agents//flows/`.
+        :param pulumi.Input[str] target_page: The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'] trigger_fulfillment: The fulfillment to be triggered. When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter `$request.knowledge.answers` (contains up to the 5 highest confidence answers) and `$request.knowledge.questions` (contains the corresponding questions) to construct the fulfillment.
+        """
+        if data_store_connections is not None:
+            pulumi.set(__self__, "data_store_connections", data_store_connections)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if target_flow is not None:
+            pulumi.set(__self__, "target_flow", target_flow)
+        if target_page is not None:
+            pulumi.set(__self__, "target_page", target_page)
+        if trigger_fulfillment is not None:
+            pulumi.set(__self__, "trigger_fulfillment", trigger_fulfillment)
+
+    @property
+    @pulumi.getter(name="dataStoreConnections")
+    def data_store_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1DataStoreConnectionArgs']]]]:
+        """
+        Optional. List of related data store connections.
+        """
+        return pulumi.get(self, "data_store_connections")
+
+    @data_store_connections.setter
+    def data_store_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1DataStoreConnectionArgs']]]]):
+        pulumi.set(self, "data_store_connections", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Knowledge Connector is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="targetFlow")
+    def target_flow(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target flow to transition to. Format: `projects//locations//agents//flows/`.
+        """
+        return pulumi.get(self, "target_flow")
+
+    @target_flow.setter
+    def target_flow(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_flow", value)
+
+    @property
+    @pulumi.getter(name="targetPage")
+    def target_page(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
+        """
+        return pulumi.get(self, "target_page")
+
+    @target_page.setter
+    def target_page(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_page", value)
+
+    @property
+    @pulumi.getter(name="triggerFulfillment")
+    def trigger_fulfillment(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']]:
+        """
+        The fulfillment to be triggered. When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter `$request.knowledge.answers` (contains up to the 5 highest confidence answers) and `$request.knowledge.questions` (contains the corresponding questions) to construct the fulfillment.
+        """
+        return pulumi.get(self, "trigger_fulfillment")
+
+    @trigger_fulfillment.setter
+    def trigger_fulfillment(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']]):
+        pulumi.set(self, "trigger_fulfillment", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1NluSettingsArgs:
     def __init__(__self__, *,
                  classification_threshold: Optional[pulumi.Input[float]] = None,
@@ -1940,29 +2412,37 @@ class GoogleCloudDialogflowCxV3beta1NluSettingsArgs:
 class GoogleCloudDialogflowCxV3beta1PageArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 advanced_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']] = None,
                  entry_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs']] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]] = None):
         """
         A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the flow.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsArgs'] knowledge_connector_settings: Optional. Knowledge connector configuration.
         :param pulumi.Input[str] name: The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if entry_fulfillment is not None:
             pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
             pulumi.set(__self__, "event_handlers", event_handlers)
         if form is not None:
             pulumi.set(__self__, "form", form)
+        if knowledge_connector_settings is not None:
+            pulumi.set(__self__, "knowledge_connector_settings", knowledge_connector_settings)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if transition_route_groups is not None:
@@ -1981,6 +2461,18 @@ class GoogleCloudDialogflowCxV3beta1PageArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]:
+        """
+        Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @advanced_settings.setter
+    def advanced_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]):
+        pulumi.set(self, "advanced_settings", value)
 
     @property
     @pulumi.getter(name="entryFulfillment")
@@ -2019,6 +2511,18 @@ class GoogleCloudDialogflowCxV3beta1PageArgs:
         pulumi.set(self, "form", value)
 
     @property
+    @pulumi.getter(name="knowledgeConnectorSettings")
+    def knowledge_connector_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsArgs']]:
+        """
+        Optional. Knowledge connector configuration.
+        """
+        return pulumi.get(self, "knowledge_connector_settings")
+
+    @knowledge_connector_settings.setter
+    def knowledge_connector_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsArgs']]):
+        pulumi.set(self, "knowledge_connector_settings", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2034,7 +2538,7 @@ class GoogleCloudDialogflowCxV3beta1PageArgs:
     @pulumi.getter(name="transitionRouteGroups")
     def transition_route_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         """
         return pulumi.get(self, "transition_route_groups")
 
@@ -2183,6 +2687,15 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardArgs:
+    def __init__(__self__):
+        """
+        Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card. Otherwise, the info card response is skipped.
+        """
+        pass
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -2321,6 +2834,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
     def __init__(__self__, *,
                  channel: Optional[pulumi.Input[str]] = None,
                  conversation_success: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs']] = None,
+                 knowledge_info_card: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardArgs']] = None,
                  live_agent_handoff: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffArgs']] = None,
                  output_audio_text: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextArgs']] = None,
                  payload: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2331,6 +2845,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
         Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
         :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardArgs'] knowledge_info_card: Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffArgs'] live_agent_handoff: Hands off conversation to a human agent.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] payload: Returns a response containing a custom, platform-specific payload.
@@ -2342,6 +2857,8 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
             pulumi.set(__self__, "channel", channel)
         if conversation_success is not None:
             pulumi.set(__self__, "conversation_success", conversation_success)
+        if knowledge_info_card is not None:
+            pulumi.set(__self__, "knowledge_info_card", knowledge_info_card)
         if live_agent_handoff is not None:
             pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
         if output_audio_text is not None:
@@ -2378,6 +2895,18 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
     @conversation_success.setter
     def conversation_success(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs']]):
         pulumi.set(self, "conversation_success", value)
+
+    @property
+    @pulumi.getter(name="knowledgeInfoCard")
+    def knowledge_info_card(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardArgs']]:
+        """
+        Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
+        """
+        return pulumi.get(self, "knowledge_info_card")
+
+    @knowledge_info_card.setter
+    def knowledge_info_card(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardArgs']]):
+        pulumi.set(self, "knowledge_info_card", value)
 
     @property
     @pulumi.getter(name="liveAgentHandoff")
@@ -2913,7 +3442,7 @@ class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs:
                  synthesize_speech_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Settings related to speech synthesizing.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """
         if synthesize_speech_configs is not None:
             pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
@@ -2922,7 +3451,7 @@ class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs:
     @pulumi.getter(name="synthesizeSpeechConfigs")
     def synthesize_speech_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
+        Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """
         return pulumi.get(self, "synthesize_speech_configs")
 
@@ -2935,6 +3464,7 @@ class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs:
 class GoogleCloudDialogflowCxV3beta1TransitionRouteArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  intent: Optional[pulumi.Input[str]] = None,
                  target_flow: Optional[pulumi.Input[str]] = None,
                  target_page: Optional[pulumi.Input[str]] = None,
@@ -2942,6 +3472,7 @@ class GoogleCloudDialogflowCxV3beta1TransitionRouteArgs:
         """
         A transition route specifies a intent that can be matched and/or a data condition that can be evaluated during a session. When a specified transition is matched, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the transition, it will be called. * If there is a `target_page` associated with the transition, the session will transition into the specified page. * If there is a `target_flow` associated with the transition, the session will transition into the specified flow.
         :param pulumi.Input[str] condition: The condition to evaluate against form parameters or session parameters. See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition). At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
+        :param pulumi.Input[str] description: Optional. The description of the transition route. The maximum length is 500 characters.
         :param pulumi.Input[str] intent: The unique identifier of an Intent. Format: `projects//locations//agents//intents/`. Indicates that the transition can only happen when the given intent is matched. At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
         :param pulumi.Input[str] target_flow: The target flow to transition to. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[str] target_page: The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
@@ -2949,6 +3480,8 @@ class GoogleCloudDialogflowCxV3beta1TransitionRouteArgs:
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if intent is not None:
             pulumi.set(__self__, "intent", intent)
         if target_flow is not None:
@@ -2969,6 +3502,18 @@ class GoogleCloudDialogflowCxV3beta1TransitionRouteArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The description of the transition route. The maximum length is 500 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter

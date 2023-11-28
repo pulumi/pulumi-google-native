@@ -49,6 +49,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<int>? Asn { get; set; }
 
         /// <summary>
+        /// Explicitly specifies a range of valid BGP Identifiers for this Router. It is provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4 BGP session ranges. Other vendors commonly call this "router ID".
+        /// </summary>
+        [Input("identifierRange")]
+        public Input<string>? IdentifierRange { get; set; }
+
+        /// <summary>
         /// The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
         /// </summary>
         [Input("keepaliveInterval")]

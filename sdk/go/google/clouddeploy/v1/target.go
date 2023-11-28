@@ -17,33 +17,35 @@ import (
 type Target struct {
 	pulumi.CustomResourceState
 
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Information specifying an Anthos Cluster.
+	// Optional. Information specifying an Anthos Cluster.
 	AnthosCluster AnthosClusterResponseOutput `pulumi:"anthosCluster"`
 	// Time at which the `Target` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters pulumi.StringMapOutput `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
 	ExecutionConfigs ExecutionConfigResponseArrayOutput `pulumi:"executionConfigs"`
-	// Information specifying a GKE Cluster.
+	// Optional. Information specifying a GKE Cluster.
 	Gke GkeClusterResponseOutput `pulumi:"gke"`
-	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Information specifying a multiTarget.
+	// Optional. Information specifying a multiTarget.
 	MultiTarget MultiTargetResponseOutput `pulumi:"multiTarget"`
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolOutput `pulumi:"requireApproval"`
-	// Information specifying a Cloud Run deployment target.
+	// Optional. Information specifying a Cloud Run deployment target.
 	Run CloudRunLocationResponseOutput `pulumi:"run"`
 	// Required. ID of the `Target`.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
@@ -102,31 +104,33 @@ func (TargetState) ElementType() reflect.Type {
 }
 
 type targetArgs struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Information specifying an Anthos Cluster.
+	// Optional. Information specifying an Anthos Cluster.
 	AnthosCluster *AnthosCluster `pulumi:"anthosCluster"`
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
 	ExecutionConfigs []ExecutionConfig `pulumi:"executionConfigs"`
-	// Information specifying a GKE Cluster.
+	// Optional. Information specifying a GKE Cluster.
 	Gke *GkeCluster `pulumi:"gke"`
-	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Information specifying a multiTarget.
+	// Optional. Information specifying a multiTarget.
 	MultiTarget *MultiTarget `pulumi:"multiTarget"`
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval *bool `pulumi:"requireApproval"`
-	// Information specifying a Cloud Run deployment target.
+	// Optional. Information specifying a Cloud Run deployment target.
 	Run *CloudRunLocation `pulumi:"run"`
 	// Required. ID of the `Target`.
 	TargetId string `pulumi:"targetId"`
@@ -134,31 +138,33 @@ type targetArgs struct {
 
 // The set of arguments for constructing a Target resource.
 type TargetArgs struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations pulumi.StringMapInput
-	// Information specifying an Anthos Cluster.
+	// Optional. Information specifying an Anthos Cluster.
 	AnthosCluster AnthosClusterPtrInput
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
 	ExecutionConfigs ExecutionConfigArrayInput
-	// Information specifying a GKE Cluster.
+	// Optional. Information specifying a GKE Cluster.
 	Gke GkeClusterPtrInput
-	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Information specifying a multiTarget.
+	// Optional. Information specifying a multiTarget.
 	MultiTarget MultiTargetPtrInput
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
-	// Information specifying a Cloud Run deployment target.
+	// Optional. Information specifying a Cloud Run deployment target.
 	Run CloudRunLocationPtrInput
 	// Required. ID of the `Target`.
 	TargetId pulumi.StringInput
@@ -213,12 +219,12 @@ func (o TargetOutput) ToOutput(ctx context.Context) pulumix.Output[*Target] {
 	}
 }
 
-// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 func (o TargetOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Information specifying an Anthos Cluster.
+// Optional. Information specifying an Anthos Cluster.
 func (o TargetOutput) AnthosCluster() AnthosClusterResponseOutput {
 	return o.ApplyT(func(v *Target) AnthosClusterResponseOutput { return v.AnthosCluster }).(AnthosClusterResponseOutput)
 }
@@ -226,6 +232,11 @@ func (o TargetOutput) AnthosCluster() AnthosClusterResponseOutput {
 // Time at which the `Target` was created.
 func (o TargetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. The deploy parameters to use for this target.
+func (o TargetOutput) DeployParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.DeployParameters }).(pulumi.StringMapOutput)
 }
 
 // Optional. Description of the `Target`. Max length is 255 characters.
@@ -243,12 +254,12 @@ func (o TargetOutput) ExecutionConfigs() ExecutionConfigResponseArrayOutput {
 	return o.ApplyT(func(v *Target) ExecutionConfigResponseArrayOutput { return v.ExecutionConfigs }).(ExecutionConfigResponseArrayOutput)
 }
 
-// Information specifying a GKE Cluster.
+// Optional. Information specifying a GKE Cluster.
 func (o TargetOutput) Gke() GkeClusterResponseOutput {
 	return o.ApplyT(func(v *Target) GkeClusterResponseOutput { return v.Gke }).(GkeClusterResponseOutput)
 }
 
-// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o TargetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -257,12 +268,12 @@ func (o TargetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Information specifying a multiTarget.
+// Optional. Information specifying a multiTarget.
 func (o TargetOutput) MultiTarget() MultiTargetResponseOutput {
 	return o.ApplyT(func(v *Target) MultiTargetResponseOutput { return v.MultiTarget }).(MultiTargetResponseOutput)
 }
 
-// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
 func (o TargetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -281,7 +292,7 @@ func (o TargetOutput) RequireApproval() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Target) pulumi.BoolOutput { return v.RequireApproval }).(pulumi.BoolOutput)
 }
 
-// Information specifying a Cloud Run deployment target.
+// Optional. Information specifying a Cloud Run deployment target.
 func (o TargetOutput) Run() CloudRunLocationResponseOutput {
 	return o.ApplyT(func(v *Target) CloudRunLocationResponseOutput { return v.Run }).(CloudRunLocationResponseOutput)
 }

@@ -1694,7 +1694,7 @@ type DeidentifyConfig struct {
 	Image *ImageConfig `pulumi:"image"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text *TextConfig `pulumi:"text"`
-	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 	UseRegionalDataProcessing *bool `pulumi:"useRegionalDataProcessing"`
 }
 
@@ -1719,7 +1719,7 @@ type DeidentifyConfigArgs struct {
 	Image ImageConfigPtrInput `pulumi:"image"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text TextConfigPtrInput `pulumi:"text"`
-	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 	UseRegionalDataProcessing pulumi.BoolPtrInput `pulumi:"useRegionalDataProcessing"`
 }
 
@@ -1839,7 +1839,7 @@ func (o DeidentifyConfigOutput) Text() TextConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *TextConfig { return v.Text }).(TextConfigPtrOutput)
 }
 
-// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 func (o DeidentifyConfigOutput) UseRegionalDataProcessing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *bool { return v.UseRegionalDataProcessing }).(pulumi.BoolPtrOutput)
 }
@@ -1914,7 +1914,7 @@ func (o DeidentifyConfigPtrOutput) Text() TextConfigPtrOutput {
 	}).(TextConfigPtrOutput)
 }
 
-// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 func (o DeidentifyConfigPtrOutput) UseRegionalDataProcessing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeidentifyConfig) *bool {
 		if v == nil {
@@ -1934,7 +1934,7 @@ type DeidentifyConfigResponse struct {
 	Image ImageConfigResponse `pulumi:"image"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text TextConfigResponse `pulumi:"text"`
-	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 	UseRegionalDataProcessing bool `pulumi:"useRegionalDataProcessing"`
 }
 
@@ -1979,7 +1979,7 @@ func (o DeidentifyConfigResponseOutput) Text() TextConfigResponseOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) TextConfigResponse { return v.Text }).(TextConfigResponseOutput)
 }
 
-// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 func (o DeidentifyConfigResponseOutput) UseRegionalDataProcessing() pulumi.BoolOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) bool { return v.UseRegionalDataProcessing }).(pulumi.BoolOutput)
 }
@@ -2760,7 +2760,7 @@ type FhirNotificationConfig struct {
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// Whether to send full FHIR resource to this Pub/Sub topic.
 	SendFullResource *bool `pulumi:"sendFullResource"`
-	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 	SendPreviousResourceOnDelete *bool `pulumi:"sendPreviousResourceOnDelete"`
 }
 
@@ -2781,7 +2781,7 @@ type FhirNotificationConfigArgs struct {
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
 	// Whether to send full FHIR resource to this Pub/Sub topic.
 	SendFullResource pulumi.BoolPtrInput `pulumi:"sendFullResource"`
-	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 	SendPreviousResourceOnDelete pulumi.BoolPtrInput `pulumi:"sendPreviousResourceOnDelete"`
 }
 
@@ -2865,7 +2865,7 @@ func (o FhirNotificationConfigOutput) SendFullResource() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FhirNotificationConfig) *bool { return v.SendFullResource }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 func (o FhirNotificationConfigOutput) SendPreviousResourceOnDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FhirNotificationConfig) *bool { return v.SendPreviousResourceOnDelete }).(pulumi.BoolPtrOutput)
 }
@@ -2902,7 +2902,7 @@ type FhirNotificationConfigResponse struct {
 	PubsubTopic string `pulumi:"pubsubTopic"`
 	// Whether to send full FHIR resource to this Pub/Sub topic.
 	SendFullResource bool `pulumi:"sendFullResource"`
-	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 	SendPreviousResourceOnDelete bool `pulumi:"sendPreviousResourceOnDelete"`
 }
 
@@ -2937,7 +2937,7 @@ func (o FhirNotificationConfigResponseOutput) SendFullResource() pulumi.BoolOutp
 	return o.ApplyT(func(v FhirNotificationConfigResponse) bool { return v.SendFullResource }).(pulumi.BoolOutput)
 }
 
-// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 func (o FhirNotificationConfigResponseOutput) SendPreviousResourceOnDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v FhirNotificationConfigResponse) bool { return v.SendPreviousResourceOnDelete }).(pulumi.BoolOutput)
 }
@@ -3608,6 +3608,442 @@ func (o GoogleCloudHealthcareV1ConsentPolicyResponseArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudHealthcareV1ConsentPolicyResponse {
 		return vs[0].([]GoogleCloudHealthcareV1ConsentPolicyResponse)[vs[1].(int)]
 	}).(GoogleCloudHealthcareV1ConsentPolicyResponseOutput)
+}
+
+// The BigQuery table where the server writes the output.
+type GoogleCloudHealthcareV1DicomBigQueryDestination struct {
+	// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
+	Force *bool `pulumi:"force"`
+	// BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
+	TableUri *string `pulumi:"tableUri"`
+	// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+	WriteDisposition *GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition `pulumi:"writeDisposition"`
+}
+
+// GoogleCloudHealthcareV1DicomBigQueryDestinationInput is an input type that accepts GoogleCloudHealthcareV1DicomBigQueryDestinationArgs and GoogleCloudHealthcareV1DicomBigQueryDestinationOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1DicomBigQueryDestinationInput` via:
+//
+//	GoogleCloudHealthcareV1DicomBigQueryDestinationArgs{...}
+type GoogleCloudHealthcareV1DicomBigQueryDestinationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1DicomBigQueryDestinationOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationOutput
+	ToGoogleCloudHealthcareV1DicomBigQueryDestinationOutputWithContext(context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationOutput
+}
+
+// The BigQuery table where the server writes the output.
+type GoogleCloudHealthcareV1DicomBigQueryDestinationArgs struct {
+	// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
+	Force pulumi.BoolPtrInput `pulumi:"force"`
+	// BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
+	TableUri pulumi.StringPtrInput `pulumi:"tableUri"`
+	// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+	WriteDisposition GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrInput `pulumi:"writeDisposition"`
+}
+
+func (GoogleCloudHealthcareV1DicomBigQueryDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1DicomBigQueryDestination)(nil)).Elem()
+}
+
+func (i GoogleCloudHealthcareV1DicomBigQueryDestinationArgs) ToGoogleCloudHealthcareV1DicomBigQueryDestinationOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationOutput {
+	return i.ToGoogleCloudHealthcareV1DicomBigQueryDestinationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1DicomBigQueryDestinationArgs) ToGoogleCloudHealthcareV1DicomBigQueryDestinationOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1DicomBigQueryDestinationOutput)
+}
+
+func (i GoogleCloudHealthcareV1DicomBigQueryDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestination] {
+	return pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestination]{
+		OutputState: i.ToGoogleCloudHealthcareV1DicomBigQueryDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudHealthcareV1DicomBigQueryDestinationArgs) ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput {
+	return i.ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1DicomBigQueryDestinationArgs) ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1DicomBigQueryDestinationOutput).ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudHealthcareV1DicomBigQueryDestinationPtrInput is an input type that accepts GoogleCloudHealthcareV1DicomBigQueryDestinationArgs, GoogleCloudHealthcareV1DicomBigQueryDestinationPtr and GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1DicomBigQueryDestinationPtrInput` via:
+//
+//	        GoogleCloudHealthcareV1DicomBigQueryDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudHealthcareV1DicomBigQueryDestinationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput
+	ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput
+}
+
+type googleCloudHealthcareV1DicomBigQueryDestinationPtrType GoogleCloudHealthcareV1DicomBigQueryDestinationArgs
+
+func GoogleCloudHealthcareV1DicomBigQueryDestinationPtr(v *GoogleCloudHealthcareV1DicomBigQueryDestinationArgs) GoogleCloudHealthcareV1DicomBigQueryDestinationPtrInput {
+	return (*googleCloudHealthcareV1DicomBigQueryDestinationPtrType)(v)
+}
+
+func (*googleCloudHealthcareV1DicomBigQueryDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudHealthcareV1DicomBigQueryDestination)(nil)).Elem()
+}
+
+func (i *googleCloudHealthcareV1DicomBigQueryDestinationPtrType) ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput {
+	return i.ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudHealthcareV1DicomBigQueryDestinationPtrType) ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput)
+}
+
+func (i *googleCloudHealthcareV1DicomBigQueryDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestination] {
+	return pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestination]{
+		OutputState: i.ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The BigQuery table where the server writes the output.
+type GoogleCloudHealthcareV1DicomBigQueryDestinationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1DicomBigQueryDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1DicomBigQueryDestination)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput {
+	return o.ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudHealthcareV1DicomBigQueryDestination) *GoogleCloudHealthcareV1DicomBigQueryDestination {
+		return &v
+	}).(GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput)
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestination] {
+	return pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1DicomBigQueryDestination) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationOutput) TableUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1DicomBigQueryDestination) *string { return v.TableUri }).(pulumi.StringPtrOutput)
+}
+
+// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationOutput) WriteDisposition() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1DicomBigQueryDestination) *GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition {
+		return v.WriteDisposition
+	}).(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput)
+}
+
+type GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudHealthcareV1DicomBigQueryDestination)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestination] {
+	return pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput) Elem() GoogleCloudHealthcareV1DicomBigQueryDestinationOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1DicomBigQueryDestination) GoogleCloudHealthcareV1DicomBigQueryDestination {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudHealthcareV1DicomBigQueryDestination
+		return ret
+	}).(GoogleCloudHealthcareV1DicomBigQueryDestinationOutput)
+}
+
+// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1DicomBigQueryDestination) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Force
+	}).(pulumi.BoolPtrOutput)
+}
+
+// BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput) TableUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1DicomBigQueryDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TableUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput) WriteDisposition() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1DicomBigQueryDestination) *GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition {
+		if v == nil {
+			return nil
+		}
+		return v.WriteDisposition
+	}).(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput)
+}
+
+// The BigQuery table where the server writes the output.
+type GoogleCloudHealthcareV1DicomBigQueryDestinationResponse struct {
+	// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
+	Force bool `pulumi:"force"`
+	// BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
+	TableUri string `pulumi:"tableUri"`
+	// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+	WriteDisposition string `pulumi:"writeDisposition"`
+}
+
+// The BigQuery table where the server writes the output.
+type GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1DicomBigQueryDestinationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestinationResponse] {
+	return pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestinationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput) Force() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1DicomBigQueryDestinationResponse) bool { return v.Force }).(pulumi.BoolOutput)
+}
+
+// BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput) TableUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1DicomBigQueryDestinationResponse) string { return v.TableUri }).(pulumi.StringOutput)
+}
+
+// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput) WriteDisposition() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1DicomBigQueryDestinationResponse) string { return v.WriteDisposition }).(pulumi.StringOutput)
+}
+
+// StreamConfig specifies configuration for a streaming DICOM export.
+type GoogleCloudHealthcareV1DicomStreamConfig struct {
+	// Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+	BigqueryDestination *GoogleCloudHealthcareV1DicomBigQueryDestination `pulumi:"bigqueryDestination"`
+}
+
+// GoogleCloudHealthcareV1DicomStreamConfigInput is an input type that accepts GoogleCloudHealthcareV1DicomStreamConfigArgs and GoogleCloudHealthcareV1DicomStreamConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1DicomStreamConfigInput` via:
+//
+//	GoogleCloudHealthcareV1DicomStreamConfigArgs{...}
+type GoogleCloudHealthcareV1DicomStreamConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1DicomStreamConfigOutput() GoogleCloudHealthcareV1DicomStreamConfigOutput
+	ToGoogleCloudHealthcareV1DicomStreamConfigOutputWithContext(context.Context) GoogleCloudHealthcareV1DicomStreamConfigOutput
+}
+
+// StreamConfig specifies configuration for a streaming DICOM export.
+type GoogleCloudHealthcareV1DicomStreamConfigArgs struct {
+	// Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+	BigqueryDestination GoogleCloudHealthcareV1DicomBigQueryDestinationPtrInput `pulumi:"bigqueryDestination"`
+}
+
+func (GoogleCloudHealthcareV1DicomStreamConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1DicomStreamConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudHealthcareV1DicomStreamConfigArgs) ToGoogleCloudHealthcareV1DicomStreamConfigOutput() GoogleCloudHealthcareV1DicomStreamConfigOutput {
+	return i.ToGoogleCloudHealthcareV1DicomStreamConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1DicomStreamConfigArgs) ToGoogleCloudHealthcareV1DicomStreamConfigOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomStreamConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1DicomStreamConfigOutput)
+}
+
+func (i GoogleCloudHealthcareV1DicomStreamConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1DicomStreamConfig] {
+	return pulumix.Output[GoogleCloudHealthcareV1DicomStreamConfig]{
+		OutputState: i.ToGoogleCloudHealthcareV1DicomStreamConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GoogleCloudHealthcareV1DicomStreamConfigArrayInput is an input type that accepts GoogleCloudHealthcareV1DicomStreamConfigArray and GoogleCloudHealthcareV1DicomStreamConfigArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1DicomStreamConfigArrayInput` via:
+//
+//	GoogleCloudHealthcareV1DicomStreamConfigArray{ GoogleCloudHealthcareV1DicomStreamConfigArgs{...} }
+type GoogleCloudHealthcareV1DicomStreamConfigArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1DicomStreamConfigArrayOutput() GoogleCloudHealthcareV1DicomStreamConfigArrayOutput
+	ToGoogleCloudHealthcareV1DicomStreamConfigArrayOutputWithContext(context.Context) GoogleCloudHealthcareV1DicomStreamConfigArrayOutput
+}
+
+type GoogleCloudHealthcareV1DicomStreamConfigArray []GoogleCloudHealthcareV1DicomStreamConfigInput
+
+func (GoogleCloudHealthcareV1DicomStreamConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudHealthcareV1DicomStreamConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudHealthcareV1DicomStreamConfigArray) ToGoogleCloudHealthcareV1DicomStreamConfigArrayOutput() GoogleCloudHealthcareV1DicomStreamConfigArrayOutput {
+	return i.ToGoogleCloudHealthcareV1DicomStreamConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1DicomStreamConfigArray) ToGoogleCloudHealthcareV1DicomStreamConfigArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomStreamConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1DicomStreamConfigArrayOutput)
+}
+
+func (i GoogleCloudHealthcareV1DicomStreamConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudHealthcareV1DicomStreamConfig] {
+	return pulumix.Output[[]GoogleCloudHealthcareV1DicomStreamConfig]{
+		OutputState: i.ToGoogleCloudHealthcareV1DicomStreamConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// StreamConfig specifies configuration for a streaming DICOM export.
+type GoogleCloudHealthcareV1DicomStreamConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1DicomStreamConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1DicomStreamConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigOutput) ToGoogleCloudHealthcareV1DicomStreamConfigOutput() GoogleCloudHealthcareV1DicomStreamConfigOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigOutput) ToGoogleCloudHealthcareV1DicomStreamConfigOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomStreamConfigOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1DicomStreamConfig] {
+	return pulumix.Output[GoogleCloudHealthcareV1DicomStreamConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+func (o GoogleCloudHealthcareV1DicomStreamConfigOutput) BigqueryDestination() GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1DicomStreamConfig) *GoogleCloudHealthcareV1DicomBigQueryDestination {
+		return v.BigqueryDestination
+	}).(GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput)
+}
+
+type GoogleCloudHealthcareV1DicomStreamConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1DicomStreamConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudHealthcareV1DicomStreamConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigArrayOutput) ToGoogleCloudHealthcareV1DicomStreamConfigArrayOutput() GoogleCloudHealthcareV1DicomStreamConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigArrayOutput) ToGoogleCloudHealthcareV1DicomStreamConfigArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomStreamConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudHealthcareV1DicomStreamConfig] {
+	return pulumix.Output[[]GoogleCloudHealthcareV1DicomStreamConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudHealthcareV1DicomStreamConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudHealthcareV1DicomStreamConfig {
+		return vs[0].([]GoogleCloudHealthcareV1DicomStreamConfig)[vs[1].(int)]
+	}).(GoogleCloudHealthcareV1DicomStreamConfigOutput)
+}
+
+// StreamConfig specifies configuration for a streaming DICOM export.
+type GoogleCloudHealthcareV1DicomStreamConfigResponse struct {
+	// Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+	BigqueryDestination GoogleCloudHealthcareV1DicomBigQueryDestinationResponse `pulumi:"bigqueryDestination"`
+}
+
+// StreamConfig specifies configuration for a streaming DICOM export.
+type GoogleCloudHealthcareV1DicomStreamConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1DicomStreamConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1DicomStreamConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigResponseOutput) ToGoogleCloudHealthcareV1DicomStreamConfigResponseOutput() GoogleCloudHealthcareV1DicomStreamConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigResponseOutput) ToGoogleCloudHealthcareV1DicomStreamConfigResponseOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomStreamConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1DicomStreamConfigResponse] {
+	return pulumix.Output[GoogleCloudHealthcareV1DicomStreamConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+func (o GoogleCloudHealthcareV1DicomStreamConfigResponseOutput) BigqueryDestination() GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1DicomStreamConfigResponse) GoogleCloudHealthcareV1DicomBigQueryDestinationResponse {
+		return v.BigqueryDestination
+	}).(GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput)
+}
+
+type GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudHealthcareV1DicomStreamConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput) ToGoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput() GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput) ToGoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudHealthcareV1DicomStreamConfigResponse] {
+	return pulumix.Output[[]GoogleCloudHealthcareV1DicomStreamConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudHealthcareV1DicomStreamConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudHealthcareV1DicomStreamConfigResponse {
+		return vs[0].([]GoogleCloudHealthcareV1DicomStreamConfigResponse)[vs[1].(int)]
+	}).(GoogleCloudHealthcareV1DicomStreamConfigResponseOutput)
 }
 
 // The configuration for exporting to BigQuery.
@@ -5473,6 +5909,8 @@ func (o KmsWrappedCryptoKeyResponseOutput) WrappedKey() pulumi.StringOutput {
 type NotificationConfig struct {
 	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
 	PubsubTopic *string `pulumi:"pubsubTopic"`
+	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+	SendForBulkImport *bool `pulumi:"sendForBulkImport"`
 }
 
 // NotificationConfigInput is an input type that accepts NotificationConfigArgs and NotificationConfigOutput values.
@@ -5490,6 +5928,8 @@ type NotificationConfigInput interface {
 type NotificationConfigArgs struct {
 	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
+	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+	SendForBulkImport pulumi.BoolPtrInput `pulumi:"sendForBulkImport"`
 }
 
 func (NotificationConfigArgs) ElementType() reflect.Type {
@@ -5593,6 +6033,11 @@ func (o NotificationConfigOutput) PubsubTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationConfig) *string { return v.PubsubTopic }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+func (o NotificationConfigOutput) SendForBulkImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotificationConfig) *bool { return v.SendForBulkImport }).(pulumi.BoolPtrOutput)
+}
+
 type NotificationConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigPtrOutput) ElementType() reflect.Type {
@@ -5633,10 +6078,22 @@ func (o NotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+func (o NotificationConfigPtrOutput) SendForBulkImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendForBulkImport
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specifies where to send notifications upon changes to a data store.
 type NotificationConfigResponse struct {
 	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
 	PubsubTopic string `pulumi:"pubsubTopic"`
+	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+	SendForBulkImport bool `pulumi:"sendForBulkImport"`
 }
 
 // Specifies where to send notifications upon changes to a data store.
@@ -5663,6 +6120,11 @@ func (o NotificationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.
 // The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
 func (o NotificationConfigResponseOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigResponse) string { return v.PubsubTopic }).(pulumi.StringOutput)
+}
+
+// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+func (o NotificationConfigResponseOutput) SendForBulkImport() pulumi.BoolOutput {
+	return o.ApplyT(func(v NotificationConfigResponse) bool { return v.SendForBulkImport }).(pulumi.BoolOutput)
 }
 
 // The content of a HL7v2 message in a structured format.
@@ -9259,6 +9721,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldMetadataArrayInput)(nil)).Elem(), FieldMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicyInput)(nil)).Elem(), GoogleCloudHealthcareV1ConsentPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicyArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1ConsentPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1DicomBigQueryDestinationInput)(nil)).Elem(), GoogleCloudHealthcareV1DicomBigQueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1DicomBigQueryDestinationPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1DicomBigQueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1DicomStreamConfigInput)(nil)).Elem(), GoogleCloudHealthcareV1DicomStreamConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1DicomStreamConfigArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1DicomStreamConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigInput)(nil)).Elem(), Hl7SchemaConfigArgs{})
@@ -9364,6 +9830,13 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1ConsentPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1ConsentPolicyResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1ConsentPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1DicomBigQueryDestinationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1DicomBigQueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1DicomBigQueryDestinationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1DicomStreamConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1DicomStreamConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1DicomStreamConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationResponseOutput{})

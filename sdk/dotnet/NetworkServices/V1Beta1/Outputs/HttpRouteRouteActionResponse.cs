@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.HttpRouteRedirectResponse Redirect;
         /// <summary>
-        /// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        /// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         /// </summary>
         public readonly Outputs.HttpRouteHeaderModifierResponse RequestHeaderModifier;
         /// <summary>
@@ -41,13 +41,17 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.HttpRouteRequestMirrorPolicyResponse RequestMirrorPolicy;
         /// <summary>
-        /// The specification for modifying the headers of a response prior to sending the response back to the client.
+        /// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         /// </summary>
         public readonly Outputs.HttpRouteHeaderModifierResponse ResponseHeaderModifier;
         /// <summary>
         /// Specifies the retry policy associated with this route.
         /// </summary>
         public readonly Outputs.HttpRouteRetryPolicyResponse RetryPolicy;
+        /// <summary>
+        /// Optional. Specifies cookie-based stateful session affinity.
+        /// </summary>
+        public readonly Outputs.HttpRouteStatefulSessionAffinityPolicyResponse StatefulSessionAffinity;
         /// <summary>
         /// Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
         /// </summary>
@@ -75,6 +79,8 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
 
             Outputs.HttpRouteRetryPolicyResponse retryPolicy,
 
+            Outputs.HttpRouteStatefulSessionAffinityPolicyResponse statefulSessionAffinity,
+
             string timeout,
 
             Outputs.HttpRouteURLRewriteResponse urlRewrite)
@@ -87,6 +93,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
             RequestMirrorPolicy = requestMirrorPolicy;
             ResponseHeaderModifier = responseHeaderModifier;
             RetryPolicy = retryPolicy;
+            StatefulSessionAffinity = statefulSessionAffinity;
             Timeout = timeout;
             UrlRewrite = urlRewrite;
         }

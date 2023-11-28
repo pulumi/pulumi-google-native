@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1.Outputs
     public sealed class GitRemoteSettingsResponse
     {
         /// <summary>
-        /// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        /// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
         /// </summary>
         public readonly string AuthenticationTokenSecretVersion;
         /// <summary>
@@ -25,7 +25,11 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1.Outputs
         /// </summary>
         public readonly string DefaultBranch;
         /// <summary>
-        /// Indicates the status of the Git access token.
+        /// Optional. Authentication fields for remote uris using SSH protocol.
+        /// </summary>
+        public readonly Outputs.SshAuthenticationConfigResponse SshAuthenticationConfig;
+        /// <summary>
+        /// Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
         /// </summary>
         public readonly string TokenStatus;
         /// <summary>
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1.Outputs
 
             string defaultBranch,
 
+            Outputs.SshAuthenticationConfigResponse sshAuthenticationConfig,
+
             string tokenStatus,
 
             string url)
         {
             AuthenticationTokenSecretVersion = authenticationTokenSecretVersion;
             DefaultBranch = defaultBranch;
+            SshAuthenticationConfig = sshAuthenticationConfig;
             TokenStatus = tokenStatus;
             Url = url;
         }

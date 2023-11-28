@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['QueueArgs', 'Queue']
@@ -17,6 +18,7 @@ __all__ = ['QueueArgs', 'Queue']
 class QueueArgs:
     def __init__(__self__, *,
                  app_engine_routing_override: Optional[pulumi.Input['AppEngineRoutingArgs']] = None,
+                 http_target: Optional[pulumi.Input['HttpTargetArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -26,6 +28,7 @@ class QueueArgs:
         """
         The set of arguments for constructing a Queue resource.
         :param pulumi.Input['AppEngineRoutingArgs'] app_engine_routing_override: Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
+        :param pulumi.Input['HttpTargetArgs'] http_target: Modifies HTTP target for HTTP tasks.
         :param pulumi.Input[str] name: Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
         :param pulumi.Input['RateLimitsArgs'] rate_limits: Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts. However they control task attempts in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc). The queue's actual dispatch rate is the result of: * Number of tasks in the queue * User-specified throttling: rate_limits, retry_config, and the queue's state. * System throttling due to `429` (Too Many Requests) or `503` (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic spikes.
         :param pulumi.Input['RetryConfigArgs'] retry_config: Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
@@ -33,6 +36,8 @@ class QueueArgs:
         """
         if app_engine_routing_override is not None:
             pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+        if http_target is not None:
+            pulumi.set(__self__, "http_target", http_target)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -57,6 +62,18 @@ class QueueArgs:
     @app_engine_routing_override.setter
     def app_engine_routing_override(self, value: Optional[pulumi.Input['AppEngineRoutingArgs']]):
         pulumi.set(self, "app_engine_routing_override", value)
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> Optional[pulumi.Input['HttpTargetArgs']]:
+        """
+        Modifies HTTP target for HTTP tasks.
+        """
+        return pulumi.get(self, "http_target")
+
+    @http_target.setter
+    def http_target(self, value: Optional[pulumi.Input['HttpTargetArgs']]):
+        pulumi.set(self, "http_target", value)
 
     @property
     @pulumi.getter
@@ -131,6 +148,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: Optional[pulumi.Input[pulumi.InputType['AppEngineRoutingArgs']]] = None,
+                 http_target: Optional[pulumi.Input[pulumi.InputType['HttpTargetArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -144,6 +162,7 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AppEngineRoutingArgs']] app_engine_routing_override: Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
+        :param pulumi.Input[pulumi.InputType['HttpTargetArgs']] http_target: Modifies HTTP target for HTTP tasks.
         :param pulumi.Input[str] name: Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
         :param pulumi.Input[pulumi.InputType['RateLimitsArgs']] rate_limits: Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts. However they control task attempts in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc). The queue's actual dispatch rate is the result of: * Number of tasks in the queue * User-specified throttling: rate_limits, retry_config, and the queue's state. * System throttling due to `429` (Too Many Requests) or `503` (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic spikes.
         :param pulumi.Input[pulumi.InputType['RetryConfigArgs']] retry_config: Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
@@ -174,6 +193,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: Optional[pulumi.Input[pulumi.InputType['AppEngineRoutingArgs']]] = None,
+                 http_target: Optional[pulumi.Input[pulumi.InputType['HttpTargetArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -190,6 +210,7 @@ class Queue(pulumi.CustomResource):
             __props__ = QueueArgs.__new__(QueueArgs)
 
             __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
+            __props__.__dict__["http_target"] = http_target
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -223,6 +244,7 @@ class Queue(pulumi.CustomResource):
         __props__ = QueueArgs.__new__(QueueArgs)
 
         __props__.__dict__["app_engine_routing_override"] = None
+        __props__.__dict__["http_target"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -240,6 +262,14 @@ class Queue(pulumi.CustomResource):
         Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
         """
         return pulumi.get(self, "app_engine_routing_override")
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> pulumi.Output['outputs.HttpTargetResponse']:
+        """
+        Modifies HTTP target for HTTP tasks.
+        """
+        return pulumi.get(self, "http_target")
 
     @property
     @pulumi.getter

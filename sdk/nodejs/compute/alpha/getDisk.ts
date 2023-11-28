@@ -28,6 +28,10 @@ export interface GetDiskArgs {
 
 export interface GetDiskResult {
     /**
+     * The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+     */
+    readonly accessMode: string;
+    /**
      * The architecture of the disk. Valid values are ARM64 or X86_64.
      */
     readonly architecture: string;
@@ -52,7 +56,7 @@ export interface GetDiskResult {
      */
     readonly diskEncryptionKey: outputs.compute.alpha.CustomerEncryptionKeyResponse;
     /**
-     * Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+     * Whether this disk is using confidential compute mode.
      */
     readonly enableConfidentialCompute: boolean;
     /**
@@ -162,7 +166,7 @@ export interface GetDiskResult {
      */
     readonly selfLinkWithId: string;
     /**
-     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
      */
     readonly sizeGb: string;
     /**

@@ -635,7 +635,9 @@ func (o ArtifactResponseArrayOutput) Index(i pulumi.IntInput) ArtifactResponseOu
 
 // Assessment provides all information that is related to a single vulnerability for this product.
 type Assessment struct {
-	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+	//
+	// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 	Cve *string `pulumi:"cve"`
 	// Contains information about the impact of this vulnerability, this will change with time.
 	Impacts []string `pulumi:"impacts"`
@@ -651,6 +653,8 @@ type Assessment struct {
 	ShortDescription *string `pulumi:"shortDescription"`
 	// Provides the state of this Vulnerability assessment.
 	State *AssessmentState `pulumi:"state"`
+	// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+	VulnerabilityId *string `pulumi:"vulnerabilityId"`
 }
 
 // AssessmentInput is an input type that accepts AssessmentArgs and AssessmentOutput values.
@@ -666,7 +670,9 @@ type AssessmentInput interface {
 
 // Assessment provides all information that is related to a single vulnerability for this product.
 type AssessmentArgs struct {
-	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+	//
+	// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 	Cve pulumi.StringPtrInput `pulumi:"cve"`
 	// Contains information about the impact of this vulnerability, this will change with time.
 	Impacts pulumi.StringArrayInput `pulumi:"impacts"`
@@ -682,6 +688,8 @@ type AssessmentArgs struct {
 	ShortDescription pulumi.StringPtrInput `pulumi:"shortDescription"`
 	// Provides the state of this Vulnerability assessment.
 	State AssessmentStatePtrInput `pulumi:"state"`
+	// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+	VulnerabilityId pulumi.StringPtrInput `pulumi:"vulnerabilityId"`
 }
 
 func (AssessmentArgs) ElementType() reflect.Type {
@@ -780,7 +788,9 @@ func (o AssessmentOutput) ToOutput(ctx context.Context) pulumix.Output[Assessmen
 	}
 }
 
-// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+//
+// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 func (o AssessmentOutput) Cve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Assessment) *string { return v.Cve }).(pulumi.StringPtrOutput)
 }
@@ -820,6 +830,11 @@ func (o AssessmentOutput) State() AssessmentStatePtrOutput {
 	return o.ApplyT(func(v Assessment) *AssessmentState { return v.State }).(AssessmentStatePtrOutput)
 }
 
+// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+func (o AssessmentOutput) VulnerabilityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Assessment) *string { return v.VulnerabilityId }).(pulumi.StringPtrOutput)
+}
+
 type AssessmentPtrOutput struct{ *pulumi.OutputState }
 
 func (AssessmentPtrOutput) ElementType() reflect.Type {
@@ -850,7 +865,9 @@ func (o AssessmentPtrOutput) Elem() AssessmentOutput {
 	}).(AssessmentOutput)
 }
 
-// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+//
+// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 func (o AssessmentPtrOutput) Cve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Assessment) *string {
 		if v == nil {
@@ -930,9 +947,21 @@ func (o AssessmentPtrOutput) State() AssessmentStatePtrOutput {
 	}).(AssessmentStatePtrOutput)
 }
 
+// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+func (o AssessmentPtrOutput) VulnerabilityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Assessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VulnerabilityId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Assessment provides all information that is related to a single vulnerability for this product.
 type AssessmentResponse struct {
-	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+	//
+	// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 	Cve string `pulumi:"cve"`
 	// Contains information about the impact of this vulnerability, this will change with time.
 	Impacts []string `pulumi:"impacts"`
@@ -948,6 +977,8 @@ type AssessmentResponse struct {
 	ShortDescription string `pulumi:"shortDescription"`
 	// Provides the state of this Vulnerability assessment.
 	State string `pulumi:"state"`
+	// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+	VulnerabilityId string `pulumi:"vulnerabilityId"`
 }
 
 // Assessment provides all information that is related to a single vulnerability for this product.
@@ -971,7 +1002,9 @@ func (o AssessmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[A
 	}
 }
 
-// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+//
+// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 func (o AssessmentResponseOutput) Cve() pulumi.StringOutput {
 	return o.ApplyT(func(v AssessmentResponse) string { return v.Cve }).(pulumi.StringOutput)
 }
@@ -1009,6 +1042,11 @@ func (o AssessmentResponseOutput) ShortDescription() pulumi.StringOutput {
 // Provides the state of this Vulnerability assessment.
 func (o AssessmentResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v AssessmentResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+func (o AssessmentResponseOutput) VulnerabilityId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentResponse) string { return v.VulnerabilityId }).(pulumi.StringOutput)
 }
 
 // Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `Authority` for "QA" and one for "build". This note is intended to act strictly as a grouping mechanism for the attached occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an occurrence to a given note. It also provides a single point of lookup to find all attached attestation occurrences, even if they don't all live in the same project.
@@ -1669,6 +1707,476 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+type BuildDefinition struct {
+	BuildType            *string              `pulumi:"buildType"`
+	ExternalParameters   map[string]string    `pulumi:"externalParameters"`
+	InternalParameters   map[string]string    `pulumi:"internalParameters"`
+	ResolvedDependencies []ResourceDescriptor `pulumi:"resolvedDependencies"`
+}
+
+// BuildDefinitionInput is an input type that accepts BuildDefinitionArgs and BuildDefinitionOutput values.
+// You can construct a concrete instance of `BuildDefinitionInput` via:
+//
+//	BuildDefinitionArgs{...}
+type BuildDefinitionInput interface {
+	pulumi.Input
+
+	ToBuildDefinitionOutput() BuildDefinitionOutput
+	ToBuildDefinitionOutputWithContext(context.Context) BuildDefinitionOutput
+}
+
+type BuildDefinitionArgs struct {
+	BuildType            pulumi.StringPtrInput        `pulumi:"buildType"`
+	ExternalParameters   pulumi.StringMapInput        `pulumi:"externalParameters"`
+	InternalParameters   pulumi.StringMapInput        `pulumi:"internalParameters"`
+	ResolvedDependencies ResourceDescriptorArrayInput `pulumi:"resolvedDependencies"`
+}
+
+func (BuildDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildDefinition)(nil)).Elem()
+}
+
+func (i BuildDefinitionArgs) ToBuildDefinitionOutput() BuildDefinitionOutput {
+	return i.ToBuildDefinitionOutputWithContext(context.Background())
+}
+
+func (i BuildDefinitionArgs) ToBuildDefinitionOutputWithContext(ctx context.Context) BuildDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildDefinitionOutput)
+}
+
+func (i BuildDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[BuildDefinition] {
+	return pulumix.Output[BuildDefinition]{
+		OutputState: i.ToBuildDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BuildDefinitionArgs) ToBuildDefinitionPtrOutput() BuildDefinitionPtrOutput {
+	return i.ToBuildDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i BuildDefinitionArgs) ToBuildDefinitionPtrOutputWithContext(ctx context.Context) BuildDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildDefinitionOutput).ToBuildDefinitionPtrOutputWithContext(ctx)
+}
+
+// BuildDefinitionPtrInput is an input type that accepts BuildDefinitionArgs, BuildDefinitionPtr and BuildDefinitionPtrOutput values.
+// You can construct a concrete instance of `BuildDefinitionPtrInput` via:
+//
+//	        BuildDefinitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type BuildDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToBuildDefinitionPtrOutput() BuildDefinitionPtrOutput
+	ToBuildDefinitionPtrOutputWithContext(context.Context) BuildDefinitionPtrOutput
+}
+
+type buildDefinitionPtrType BuildDefinitionArgs
+
+func BuildDefinitionPtr(v *BuildDefinitionArgs) BuildDefinitionPtrInput {
+	return (*buildDefinitionPtrType)(v)
+}
+
+func (*buildDefinitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildDefinition)(nil)).Elem()
+}
+
+func (i *buildDefinitionPtrType) ToBuildDefinitionPtrOutput() BuildDefinitionPtrOutput {
+	return i.ToBuildDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *buildDefinitionPtrType) ToBuildDefinitionPtrOutputWithContext(ctx context.Context) BuildDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildDefinitionPtrOutput)
+}
+
+func (i *buildDefinitionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BuildDefinition] {
+	return pulumix.Output[*BuildDefinition]{
+		OutputState: i.ToBuildDefinitionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type BuildDefinitionOutput struct{ *pulumi.OutputState }
+
+func (BuildDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildDefinition)(nil)).Elem()
+}
+
+func (o BuildDefinitionOutput) ToBuildDefinitionOutput() BuildDefinitionOutput {
+	return o
+}
+
+func (o BuildDefinitionOutput) ToBuildDefinitionOutputWithContext(ctx context.Context) BuildDefinitionOutput {
+	return o
+}
+
+func (o BuildDefinitionOutput) ToBuildDefinitionPtrOutput() BuildDefinitionPtrOutput {
+	return o.ToBuildDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (o BuildDefinitionOutput) ToBuildDefinitionPtrOutputWithContext(ctx context.Context) BuildDefinitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildDefinition) *BuildDefinition {
+		return &v
+	}).(BuildDefinitionPtrOutput)
+}
+
+func (o BuildDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[BuildDefinition] {
+	return pulumix.Output[BuildDefinition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BuildDefinitionOutput) BuildType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildDefinition) *string { return v.BuildType }).(pulumi.StringPtrOutput)
+}
+
+func (o BuildDefinitionOutput) ExternalParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BuildDefinition) map[string]string { return v.ExternalParameters }).(pulumi.StringMapOutput)
+}
+
+func (o BuildDefinitionOutput) InternalParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BuildDefinition) map[string]string { return v.InternalParameters }).(pulumi.StringMapOutput)
+}
+
+func (o BuildDefinitionOutput) ResolvedDependencies() ResourceDescriptorArrayOutput {
+	return o.ApplyT(func(v BuildDefinition) []ResourceDescriptor { return v.ResolvedDependencies }).(ResourceDescriptorArrayOutput)
+}
+
+type BuildDefinitionPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildDefinition)(nil)).Elem()
+}
+
+func (o BuildDefinitionPtrOutput) ToBuildDefinitionPtrOutput() BuildDefinitionPtrOutput {
+	return o
+}
+
+func (o BuildDefinitionPtrOutput) ToBuildDefinitionPtrOutputWithContext(ctx context.Context) BuildDefinitionPtrOutput {
+	return o
+}
+
+func (o BuildDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildDefinition] {
+	return pulumix.Output[*BuildDefinition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BuildDefinitionPtrOutput) Elem() BuildDefinitionOutput {
+	return o.ApplyT(func(v *BuildDefinition) BuildDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret BuildDefinition
+		return ret
+	}).(BuildDefinitionOutput)
+}
+
+func (o BuildDefinitionPtrOutput) BuildType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BuildDefinitionPtrOutput) ExternalParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BuildDefinition) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalParameters
+	}).(pulumi.StringMapOutput)
+}
+
+func (o BuildDefinitionPtrOutput) InternalParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BuildDefinition) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalParameters
+	}).(pulumi.StringMapOutput)
+}
+
+func (o BuildDefinitionPtrOutput) ResolvedDependencies() ResourceDescriptorArrayOutput {
+	return o.ApplyT(func(v *BuildDefinition) []ResourceDescriptor {
+		if v == nil {
+			return nil
+		}
+		return v.ResolvedDependencies
+	}).(ResourceDescriptorArrayOutput)
+}
+
+type BuildDefinitionResponse struct {
+	BuildType            string                       `pulumi:"buildType"`
+	ExternalParameters   map[string]string            `pulumi:"externalParameters"`
+	InternalParameters   map[string]string            `pulumi:"internalParameters"`
+	ResolvedDependencies []ResourceDescriptorResponse `pulumi:"resolvedDependencies"`
+}
+
+type BuildDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildDefinitionResponse)(nil)).Elem()
+}
+
+func (o BuildDefinitionResponseOutput) ToBuildDefinitionResponseOutput() BuildDefinitionResponseOutput {
+	return o
+}
+
+func (o BuildDefinitionResponseOutput) ToBuildDefinitionResponseOutputWithContext(ctx context.Context) BuildDefinitionResponseOutput {
+	return o
+}
+
+func (o BuildDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuildDefinitionResponse] {
+	return pulumix.Output[BuildDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BuildDefinitionResponseOutput) BuildType() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildDefinitionResponse) string { return v.BuildType }).(pulumi.StringOutput)
+}
+
+func (o BuildDefinitionResponseOutput) ExternalParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BuildDefinitionResponse) map[string]string { return v.ExternalParameters }).(pulumi.StringMapOutput)
+}
+
+func (o BuildDefinitionResponseOutput) InternalParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BuildDefinitionResponse) map[string]string { return v.InternalParameters }).(pulumi.StringMapOutput)
+}
+
+func (o BuildDefinitionResponseOutput) ResolvedDependencies() ResourceDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v BuildDefinitionResponse) []ResourceDescriptorResponse { return v.ResolvedDependencies }).(ResourceDescriptorResponseArrayOutput)
+}
+
+type BuildMetadata struct {
+	FinishedOn   *string `pulumi:"finishedOn"`
+	InvocationId *string `pulumi:"invocationId"`
+	StartedOn    *string `pulumi:"startedOn"`
+}
+
+// BuildMetadataInput is an input type that accepts BuildMetadataArgs and BuildMetadataOutput values.
+// You can construct a concrete instance of `BuildMetadataInput` via:
+//
+//	BuildMetadataArgs{...}
+type BuildMetadataInput interface {
+	pulumi.Input
+
+	ToBuildMetadataOutput() BuildMetadataOutput
+	ToBuildMetadataOutputWithContext(context.Context) BuildMetadataOutput
+}
+
+type BuildMetadataArgs struct {
+	FinishedOn   pulumi.StringPtrInput `pulumi:"finishedOn"`
+	InvocationId pulumi.StringPtrInput `pulumi:"invocationId"`
+	StartedOn    pulumi.StringPtrInput `pulumi:"startedOn"`
+}
+
+func (BuildMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildMetadata)(nil)).Elem()
+}
+
+func (i BuildMetadataArgs) ToBuildMetadataOutput() BuildMetadataOutput {
+	return i.ToBuildMetadataOutputWithContext(context.Background())
+}
+
+func (i BuildMetadataArgs) ToBuildMetadataOutputWithContext(ctx context.Context) BuildMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildMetadataOutput)
+}
+
+func (i BuildMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[BuildMetadata] {
+	return pulumix.Output[BuildMetadata]{
+		OutputState: i.ToBuildMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BuildMetadataArgs) ToBuildMetadataPtrOutput() BuildMetadataPtrOutput {
+	return i.ToBuildMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i BuildMetadataArgs) ToBuildMetadataPtrOutputWithContext(ctx context.Context) BuildMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildMetadataOutput).ToBuildMetadataPtrOutputWithContext(ctx)
+}
+
+// BuildMetadataPtrInput is an input type that accepts BuildMetadataArgs, BuildMetadataPtr and BuildMetadataPtrOutput values.
+// You can construct a concrete instance of `BuildMetadataPtrInput` via:
+//
+//	        BuildMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type BuildMetadataPtrInput interface {
+	pulumi.Input
+
+	ToBuildMetadataPtrOutput() BuildMetadataPtrOutput
+	ToBuildMetadataPtrOutputWithContext(context.Context) BuildMetadataPtrOutput
+}
+
+type buildMetadataPtrType BuildMetadataArgs
+
+func BuildMetadataPtr(v *BuildMetadataArgs) BuildMetadataPtrInput {
+	return (*buildMetadataPtrType)(v)
+}
+
+func (*buildMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildMetadata)(nil)).Elem()
+}
+
+func (i *buildMetadataPtrType) ToBuildMetadataPtrOutput() BuildMetadataPtrOutput {
+	return i.ToBuildMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *buildMetadataPtrType) ToBuildMetadataPtrOutputWithContext(ctx context.Context) BuildMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildMetadataPtrOutput)
+}
+
+func (i *buildMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*BuildMetadata] {
+	return pulumix.Output[*BuildMetadata]{
+		OutputState: i.ToBuildMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type BuildMetadataOutput struct{ *pulumi.OutputState }
+
+func (BuildMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildMetadata)(nil)).Elem()
+}
+
+func (o BuildMetadataOutput) ToBuildMetadataOutput() BuildMetadataOutput {
+	return o
+}
+
+func (o BuildMetadataOutput) ToBuildMetadataOutputWithContext(ctx context.Context) BuildMetadataOutput {
+	return o
+}
+
+func (o BuildMetadataOutput) ToBuildMetadataPtrOutput() BuildMetadataPtrOutput {
+	return o.ToBuildMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o BuildMetadataOutput) ToBuildMetadataPtrOutputWithContext(ctx context.Context) BuildMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildMetadata) *BuildMetadata {
+		return &v
+	}).(BuildMetadataPtrOutput)
+}
+
+func (o BuildMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[BuildMetadata] {
+	return pulumix.Output[BuildMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BuildMetadataOutput) FinishedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildMetadata) *string { return v.FinishedOn }).(pulumi.StringPtrOutput)
+}
+
+func (o BuildMetadataOutput) InvocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildMetadata) *string { return v.InvocationId }).(pulumi.StringPtrOutput)
+}
+
+func (o BuildMetadataOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildMetadata) *string { return v.StartedOn }).(pulumi.StringPtrOutput)
+}
+
+type BuildMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildMetadata)(nil)).Elem()
+}
+
+func (o BuildMetadataPtrOutput) ToBuildMetadataPtrOutput() BuildMetadataPtrOutput {
+	return o
+}
+
+func (o BuildMetadataPtrOutput) ToBuildMetadataPtrOutputWithContext(ctx context.Context) BuildMetadataPtrOutput {
+	return o
+}
+
+func (o BuildMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildMetadata] {
+	return pulumix.Output[*BuildMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BuildMetadataPtrOutput) Elem() BuildMetadataOutput {
+	return o.ApplyT(func(v *BuildMetadata) BuildMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret BuildMetadata
+		return ret
+	}).(BuildMetadataOutput)
+}
+
+func (o BuildMetadataPtrOutput) FinishedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FinishedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BuildMetadataPtrOutput) InvocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InvocationId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BuildMetadataPtrOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+type BuildMetadataResponse struct {
+	FinishedOn   string `pulumi:"finishedOn"`
+	InvocationId string `pulumi:"invocationId"`
+	StartedOn    string `pulumi:"startedOn"`
+}
+
+type BuildMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildMetadataResponse)(nil)).Elem()
+}
+
+func (o BuildMetadataResponseOutput) ToBuildMetadataResponseOutput() BuildMetadataResponseOutput {
+	return o
+}
+
+func (o BuildMetadataResponseOutput) ToBuildMetadataResponseOutputWithContext(ctx context.Context) BuildMetadataResponseOutput {
+	return o
+}
+
+func (o BuildMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuildMetadataResponse] {
+	return pulumix.Output[BuildMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BuildMetadataResponseOutput) FinishedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildMetadataResponse) string { return v.FinishedOn }).(pulumi.StringOutput)
+}
+
+func (o BuildMetadataResponseOutput) InvocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildMetadataResponse) string { return v.InvocationId }).(pulumi.StringOutput)
+}
+
+func (o BuildMetadataResponseOutput) StartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildMetadataResponse) string { return v.StartedOn }).(pulumi.StringOutput)
+}
+
 // Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
 type BuildNote struct {
 	// Immutable. Version of the builder which produced this build.
@@ -1867,6 +2375,8 @@ func (o BuildNoteResponseOutput) BuilderVersion() pulumi.StringOutput {
 
 // Details of a build occurrence.
 type BuildOccurrence struct {
+	// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+	InTotoSlsaProvenanceV1 *InTotoSlsaProvenanceV1 `pulumi:"inTotoSlsaProvenanceV1"`
 	// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
 	//
 	// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
@@ -1892,6 +2402,8 @@ type BuildOccurrenceInput interface {
 
 // Details of a build occurrence.
 type BuildOccurrenceArgs struct {
+	// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+	InTotoSlsaProvenanceV1 InTotoSlsaProvenanceV1PtrInput `pulumi:"inTotoSlsaProvenanceV1"`
 	// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
 	//
 	// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
@@ -2000,6 +2512,11 @@ func (o BuildOccurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[Buil
 	}
 }
 
+// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+func (o BuildOccurrenceOutput) InTotoSlsaProvenanceV1() InTotoSlsaProvenanceV1PtrOutput {
+	return o.ApplyT(func(v BuildOccurrence) *InTotoSlsaProvenanceV1 { return v.InTotoSlsaProvenanceV1 }).(InTotoSlsaProvenanceV1PtrOutput)
+}
+
 // Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
 //
 // Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
@@ -2052,6 +2569,16 @@ func (o BuildOccurrencePtrOutput) Elem() BuildOccurrenceOutput {
 	}).(BuildOccurrenceOutput)
 }
 
+// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+func (o BuildOccurrencePtrOutput) InTotoSlsaProvenanceV1() InTotoSlsaProvenanceV1PtrOutput {
+	return o.ApplyT(func(v *BuildOccurrence) *InTotoSlsaProvenanceV1 {
+		if v == nil {
+			return nil
+		}
+		return v.InTotoSlsaProvenanceV1
+	}).(InTotoSlsaProvenanceV1PtrOutput)
+}
+
 // Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
 //
 // Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
@@ -2096,6 +2623,8 @@ func (o BuildOccurrencePtrOutput) ProvenanceBytes() pulumi.StringPtrOutput {
 
 // Details of a build occurrence.
 type BuildOccurrenceResponse struct {
+	// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+	InTotoSlsaProvenanceV1 InTotoSlsaProvenanceV1Response `pulumi:"inTotoSlsaProvenanceV1"`
 	// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
 	//
 	// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
@@ -2127,6 +2656,11 @@ func (o BuildOccurrenceResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	return pulumix.Output[BuildOccurrenceResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+func (o BuildOccurrenceResponseOutput) InTotoSlsaProvenanceV1() InTotoSlsaProvenanceV1ResponseOutput {
+	return o.ApplyT(func(v BuildOccurrenceResponse) InTotoSlsaProvenanceV1Response { return v.InTotoSlsaProvenanceV1 }).(InTotoSlsaProvenanceV1ResponseOutput)
 }
 
 // Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
@@ -7511,6 +8045,8 @@ type DiscoveryOccurrence struct {
 	Cpe *string `pulumi:"cpe"`
 	// The last time this resource was scanned.
 	LastScanTime *string `pulumi:"lastScanTime"`
+	// The status of an SBOM generation.
+	SbomStatus *SBOMStatus `pulumi:"sbomStatus"`
 }
 
 // DiscoveryOccurrenceInput is an input type that accepts DiscoveryOccurrenceArgs and DiscoveryOccurrenceOutput values.
@@ -7539,6 +8075,8 @@ type DiscoveryOccurrenceArgs struct {
 	Cpe pulumi.StringPtrInput `pulumi:"cpe"`
 	// The last time this resource was scanned.
 	LastScanTime pulumi.StringPtrInput `pulumi:"lastScanTime"`
+	// The status of an SBOM generation.
+	SbomStatus SBOMStatusPtrInput `pulumi:"sbomStatus"`
 }
 
 func (DiscoveryOccurrenceArgs) ElementType() reflect.Type {
@@ -7671,6 +8209,11 @@ func (o DiscoveryOccurrenceOutput) LastScanTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiscoveryOccurrence) *string { return v.LastScanTime }).(pulumi.StringPtrOutput)
 }
 
+// The status of an SBOM generation.
+func (o DiscoveryOccurrenceOutput) SbomStatus() SBOMStatusPtrOutput {
+	return o.ApplyT(func(v DiscoveryOccurrence) *SBOMStatus { return v.SbomStatus }).(SBOMStatusPtrOutput)
+}
+
 type DiscoveryOccurrencePtrOutput struct{ *pulumi.OutputState }
 
 func (DiscoveryOccurrencePtrOutput) ElementType() reflect.Type {
@@ -7770,6 +8313,16 @@ func (o DiscoveryOccurrencePtrOutput) LastScanTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The status of an SBOM generation.
+func (o DiscoveryOccurrencePtrOutput) SbomStatus() SBOMStatusPtrOutput {
+	return o.ApplyT(func(v *DiscoveryOccurrence) *SBOMStatus {
+		if v == nil {
+			return nil
+		}
+		return v.SbomStatus
+	}).(SBOMStatusPtrOutput)
+}
+
 // Provides information about the analysis status of a discovered resource.
 type DiscoveryOccurrenceResponse struct {
 	AnalysisCompleted AnalysisCompletedResponse `pulumi:"analysisCompleted"`
@@ -7787,6 +8340,8 @@ type DiscoveryOccurrenceResponse struct {
 	Cpe string `pulumi:"cpe"`
 	// The last time this resource was scanned.
 	LastScanTime string `pulumi:"lastScanTime"`
+	// The status of an SBOM generation.
+	SbomStatus SBOMStatusResponse `pulumi:"sbomStatus"`
 }
 
 // Provides information about the analysis status of a discovered resource.
@@ -7847,6 +8402,11 @@ func (o DiscoveryOccurrenceResponseOutput) Cpe() pulumi.StringOutput {
 // The last time this resource was scanned.
 func (o DiscoveryOccurrenceResponseOutput) LastScanTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DiscoveryOccurrenceResponse) string { return v.LastScanTime }).(pulumi.StringOutput)
+}
+
+// The status of an SBOM generation.
+func (o DiscoveryOccurrenceResponseOutput) SbomStatus() SBOMStatusResponseOutput {
+	return o.ApplyT(func(v DiscoveryOccurrenceResponse) SBOMStatusResponse { return v.SbomStatus }).(SBOMStatusResponseOutput)
 }
 
 // This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
@@ -12185,6 +12745,257 @@ func (o InTotoProvenanceResponseOutput) Recipe() RecipeResponseOutput {
 	return o.ApplyT(func(v InTotoProvenanceResponse) RecipeResponse { return v.Recipe }).(RecipeResponseOutput)
 }
 
+type InTotoSlsaProvenanceV1 struct {
+	Predicate     *SlsaProvenanceV1 `pulumi:"predicate"`
+	PredicateType *string           `pulumi:"predicateType"`
+	Subject       []Subject         `pulumi:"subject"`
+	// InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+	Type *string `pulumi:"type"`
+}
+
+// InTotoSlsaProvenanceV1Input is an input type that accepts InTotoSlsaProvenanceV1Args and InTotoSlsaProvenanceV1Output values.
+// You can construct a concrete instance of `InTotoSlsaProvenanceV1Input` via:
+//
+//	InTotoSlsaProvenanceV1Args{...}
+type InTotoSlsaProvenanceV1Input interface {
+	pulumi.Input
+
+	ToInTotoSlsaProvenanceV1Output() InTotoSlsaProvenanceV1Output
+	ToInTotoSlsaProvenanceV1OutputWithContext(context.Context) InTotoSlsaProvenanceV1Output
+}
+
+type InTotoSlsaProvenanceV1Args struct {
+	Predicate     SlsaProvenanceV1PtrInput `pulumi:"predicate"`
+	PredicateType pulumi.StringPtrInput    `pulumi:"predicateType"`
+	Subject       SubjectArrayInput        `pulumi:"subject"`
+	// InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (InTotoSlsaProvenanceV1Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InTotoSlsaProvenanceV1)(nil)).Elem()
+}
+
+func (i InTotoSlsaProvenanceV1Args) ToInTotoSlsaProvenanceV1Output() InTotoSlsaProvenanceV1Output {
+	return i.ToInTotoSlsaProvenanceV1OutputWithContext(context.Background())
+}
+
+func (i InTotoSlsaProvenanceV1Args) ToInTotoSlsaProvenanceV1OutputWithContext(ctx context.Context) InTotoSlsaProvenanceV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InTotoSlsaProvenanceV1Output)
+}
+
+func (i InTotoSlsaProvenanceV1Args) ToOutput(ctx context.Context) pulumix.Output[InTotoSlsaProvenanceV1] {
+	return pulumix.Output[InTotoSlsaProvenanceV1]{
+		OutputState: i.ToInTotoSlsaProvenanceV1OutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InTotoSlsaProvenanceV1Args) ToInTotoSlsaProvenanceV1PtrOutput() InTotoSlsaProvenanceV1PtrOutput {
+	return i.ToInTotoSlsaProvenanceV1PtrOutputWithContext(context.Background())
+}
+
+func (i InTotoSlsaProvenanceV1Args) ToInTotoSlsaProvenanceV1PtrOutputWithContext(ctx context.Context) InTotoSlsaProvenanceV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InTotoSlsaProvenanceV1Output).ToInTotoSlsaProvenanceV1PtrOutputWithContext(ctx)
+}
+
+// InTotoSlsaProvenanceV1PtrInput is an input type that accepts InTotoSlsaProvenanceV1Args, InTotoSlsaProvenanceV1Ptr and InTotoSlsaProvenanceV1PtrOutput values.
+// You can construct a concrete instance of `InTotoSlsaProvenanceV1PtrInput` via:
+//
+//	        InTotoSlsaProvenanceV1Args{...}
+//
+//	or:
+//
+//	        nil
+type InTotoSlsaProvenanceV1PtrInput interface {
+	pulumi.Input
+
+	ToInTotoSlsaProvenanceV1PtrOutput() InTotoSlsaProvenanceV1PtrOutput
+	ToInTotoSlsaProvenanceV1PtrOutputWithContext(context.Context) InTotoSlsaProvenanceV1PtrOutput
+}
+
+type inTotoSlsaProvenanceV1PtrType InTotoSlsaProvenanceV1Args
+
+func InTotoSlsaProvenanceV1Ptr(v *InTotoSlsaProvenanceV1Args) InTotoSlsaProvenanceV1PtrInput {
+	return (*inTotoSlsaProvenanceV1PtrType)(v)
+}
+
+func (*inTotoSlsaProvenanceV1PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InTotoSlsaProvenanceV1)(nil)).Elem()
+}
+
+func (i *inTotoSlsaProvenanceV1PtrType) ToInTotoSlsaProvenanceV1PtrOutput() InTotoSlsaProvenanceV1PtrOutput {
+	return i.ToInTotoSlsaProvenanceV1PtrOutputWithContext(context.Background())
+}
+
+func (i *inTotoSlsaProvenanceV1PtrType) ToInTotoSlsaProvenanceV1PtrOutputWithContext(ctx context.Context) InTotoSlsaProvenanceV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InTotoSlsaProvenanceV1PtrOutput)
+}
+
+func (i *inTotoSlsaProvenanceV1PtrType) ToOutput(ctx context.Context) pulumix.Output[*InTotoSlsaProvenanceV1] {
+	return pulumix.Output[*InTotoSlsaProvenanceV1]{
+		OutputState: i.ToInTotoSlsaProvenanceV1PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InTotoSlsaProvenanceV1Output struct{ *pulumi.OutputState }
+
+func (InTotoSlsaProvenanceV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InTotoSlsaProvenanceV1)(nil)).Elem()
+}
+
+func (o InTotoSlsaProvenanceV1Output) ToInTotoSlsaProvenanceV1Output() InTotoSlsaProvenanceV1Output {
+	return o
+}
+
+func (o InTotoSlsaProvenanceV1Output) ToInTotoSlsaProvenanceV1OutputWithContext(ctx context.Context) InTotoSlsaProvenanceV1Output {
+	return o
+}
+
+func (o InTotoSlsaProvenanceV1Output) ToInTotoSlsaProvenanceV1PtrOutput() InTotoSlsaProvenanceV1PtrOutput {
+	return o.ToInTotoSlsaProvenanceV1PtrOutputWithContext(context.Background())
+}
+
+func (o InTotoSlsaProvenanceV1Output) ToInTotoSlsaProvenanceV1PtrOutputWithContext(ctx context.Context) InTotoSlsaProvenanceV1PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InTotoSlsaProvenanceV1) *InTotoSlsaProvenanceV1 {
+		return &v
+	}).(InTotoSlsaProvenanceV1PtrOutput)
+}
+
+func (o InTotoSlsaProvenanceV1Output) ToOutput(ctx context.Context) pulumix.Output[InTotoSlsaProvenanceV1] {
+	return pulumix.Output[InTotoSlsaProvenanceV1]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InTotoSlsaProvenanceV1Output) Predicate() SlsaProvenanceV1PtrOutput {
+	return o.ApplyT(func(v InTotoSlsaProvenanceV1) *SlsaProvenanceV1 { return v.Predicate }).(SlsaProvenanceV1PtrOutput)
+}
+
+func (o InTotoSlsaProvenanceV1Output) PredicateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InTotoSlsaProvenanceV1) *string { return v.PredicateType }).(pulumi.StringPtrOutput)
+}
+
+func (o InTotoSlsaProvenanceV1Output) Subject() SubjectArrayOutput {
+	return o.ApplyT(func(v InTotoSlsaProvenanceV1) []Subject { return v.Subject }).(SubjectArrayOutput)
+}
+
+// InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+func (o InTotoSlsaProvenanceV1Output) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InTotoSlsaProvenanceV1) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type InTotoSlsaProvenanceV1PtrOutput struct{ *pulumi.OutputState }
+
+func (InTotoSlsaProvenanceV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InTotoSlsaProvenanceV1)(nil)).Elem()
+}
+
+func (o InTotoSlsaProvenanceV1PtrOutput) ToInTotoSlsaProvenanceV1PtrOutput() InTotoSlsaProvenanceV1PtrOutput {
+	return o
+}
+
+func (o InTotoSlsaProvenanceV1PtrOutput) ToInTotoSlsaProvenanceV1PtrOutputWithContext(ctx context.Context) InTotoSlsaProvenanceV1PtrOutput {
+	return o
+}
+
+func (o InTotoSlsaProvenanceV1PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InTotoSlsaProvenanceV1] {
+	return pulumix.Output[*InTotoSlsaProvenanceV1]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InTotoSlsaProvenanceV1PtrOutput) Elem() InTotoSlsaProvenanceV1Output {
+	return o.ApplyT(func(v *InTotoSlsaProvenanceV1) InTotoSlsaProvenanceV1 {
+		if v != nil {
+			return *v
+		}
+		var ret InTotoSlsaProvenanceV1
+		return ret
+	}).(InTotoSlsaProvenanceV1Output)
+}
+
+func (o InTotoSlsaProvenanceV1PtrOutput) Predicate() SlsaProvenanceV1PtrOutput {
+	return o.ApplyT(func(v *InTotoSlsaProvenanceV1) *SlsaProvenanceV1 {
+		if v == nil {
+			return nil
+		}
+		return v.Predicate
+	}).(SlsaProvenanceV1PtrOutput)
+}
+
+func (o InTotoSlsaProvenanceV1PtrOutput) PredicateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InTotoSlsaProvenanceV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredicateType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InTotoSlsaProvenanceV1PtrOutput) Subject() SubjectArrayOutput {
+	return o.ApplyT(func(v *InTotoSlsaProvenanceV1) []Subject {
+		if v == nil {
+			return nil
+		}
+		return v.Subject
+	}).(SubjectArrayOutput)
+}
+
+// InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+func (o InTotoSlsaProvenanceV1PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InTotoSlsaProvenanceV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type InTotoSlsaProvenanceV1Response struct {
+	Predicate     SlsaProvenanceV1Response `pulumi:"predicate"`
+	PredicateType string                   `pulumi:"predicateType"`
+	Subject       []SubjectResponse        `pulumi:"subject"`
+	// InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+	Type string `pulumi:"type"`
+}
+
+type InTotoSlsaProvenanceV1ResponseOutput struct{ *pulumi.OutputState }
+
+func (InTotoSlsaProvenanceV1ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InTotoSlsaProvenanceV1Response)(nil)).Elem()
+}
+
+func (o InTotoSlsaProvenanceV1ResponseOutput) ToInTotoSlsaProvenanceV1ResponseOutput() InTotoSlsaProvenanceV1ResponseOutput {
+	return o
+}
+
+func (o InTotoSlsaProvenanceV1ResponseOutput) ToInTotoSlsaProvenanceV1ResponseOutputWithContext(ctx context.Context) InTotoSlsaProvenanceV1ResponseOutput {
+	return o
+}
+
+func (o InTotoSlsaProvenanceV1ResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InTotoSlsaProvenanceV1Response] {
+	return pulumix.Output[InTotoSlsaProvenanceV1Response]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InTotoSlsaProvenanceV1ResponseOutput) Predicate() SlsaProvenanceV1ResponseOutput {
+	return o.ApplyT(func(v InTotoSlsaProvenanceV1Response) SlsaProvenanceV1Response { return v.Predicate }).(SlsaProvenanceV1ResponseOutput)
+}
+
+func (o InTotoSlsaProvenanceV1ResponseOutput) PredicateType() pulumi.StringOutput {
+	return o.ApplyT(func(v InTotoSlsaProvenanceV1Response) string { return v.PredicateType }).(pulumi.StringOutput)
+}
+
+func (o InTotoSlsaProvenanceV1ResponseOutput) Subject() SubjectResponseArrayOutput {
+	return o.ApplyT(func(v InTotoSlsaProvenanceV1Response) []SubjectResponse { return v.Subject }).(SubjectResponseArrayOutput)
+}
+
+// InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+func (o InTotoSlsaProvenanceV1ResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InTotoSlsaProvenanceV1Response) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatement struct {
 	// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
@@ -15926,6 +16737,226 @@ func (o ProjectRepoIdResponseOutput) RepoName() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectRepoIdResponse) string { return v.RepoName }).(pulumi.StringOutput)
 }
 
+type ProvenanceBuilder struct {
+	BuilderDependencies []ResourceDescriptor `pulumi:"builderDependencies"`
+	Id                  *string              `pulumi:"id"`
+	Version             map[string]string    `pulumi:"version"`
+}
+
+// ProvenanceBuilderInput is an input type that accepts ProvenanceBuilderArgs and ProvenanceBuilderOutput values.
+// You can construct a concrete instance of `ProvenanceBuilderInput` via:
+//
+//	ProvenanceBuilderArgs{...}
+type ProvenanceBuilderInput interface {
+	pulumi.Input
+
+	ToProvenanceBuilderOutput() ProvenanceBuilderOutput
+	ToProvenanceBuilderOutputWithContext(context.Context) ProvenanceBuilderOutput
+}
+
+type ProvenanceBuilderArgs struct {
+	BuilderDependencies ResourceDescriptorArrayInput `pulumi:"builderDependencies"`
+	Id                  pulumi.StringPtrInput        `pulumi:"id"`
+	Version             pulumi.StringMapInput        `pulumi:"version"`
+}
+
+func (ProvenanceBuilderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvenanceBuilder)(nil)).Elem()
+}
+
+func (i ProvenanceBuilderArgs) ToProvenanceBuilderOutput() ProvenanceBuilderOutput {
+	return i.ToProvenanceBuilderOutputWithContext(context.Background())
+}
+
+func (i ProvenanceBuilderArgs) ToProvenanceBuilderOutputWithContext(ctx context.Context) ProvenanceBuilderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProvenanceBuilderOutput)
+}
+
+func (i ProvenanceBuilderArgs) ToOutput(ctx context.Context) pulumix.Output[ProvenanceBuilder] {
+	return pulumix.Output[ProvenanceBuilder]{
+		OutputState: i.ToProvenanceBuilderOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ProvenanceBuilderArgs) ToProvenanceBuilderPtrOutput() ProvenanceBuilderPtrOutput {
+	return i.ToProvenanceBuilderPtrOutputWithContext(context.Background())
+}
+
+func (i ProvenanceBuilderArgs) ToProvenanceBuilderPtrOutputWithContext(ctx context.Context) ProvenanceBuilderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProvenanceBuilderOutput).ToProvenanceBuilderPtrOutputWithContext(ctx)
+}
+
+// ProvenanceBuilderPtrInput is an input type that accepts ProvenanceBuilderArgs, ProvenanceBuilderPtr and ProvenanceBuilderPtrOutput values.
+// You can construct a concrete instance of `ProvenanceBuilderPtrInput` via:
+//
+//	        ProvenanceBuilderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProvenanceBuilderPtrInput interface {
+	pulumi.Input
+
+	ToProvenanceBuilderPtrOutput() ProvenanceBuilderPtrOutput
+	ToProvenanceBuilderPtrOutputWithContext(context.Context) ProvenanceBuilderPtrOutput
+}
+
+type provenanceBuilderPtrType ProvenanceBuilderArgs
+
+func ProvenanceBuilderPtr(v *ProvenanceBuilderArgs) ProvenanceBuilderPtrInput {
+	return (*provenanceBuilderPtrType)(v)
+}
+
+func (*provenanceBuilderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProvenanceBuilder)(nil)).Elem()
+}
+
+func (i *provenanceBuilderPtrType) ToProvenanceBuilderPtrOutput() ProvenanceBuilderPtrOutput {
+	return i.ToProvenanceBuilderPtrOutputWithContext(context.Background())
+}
+
+func (i *provenanceBuilderPtrType) ToProvenanceBuilderPtrOutputWithContext(ctx context.Context) ProvenanceBuilderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProvenanceBuilderPtrOutput)
+}
+
+func (i *provenanceBuilderPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProvenanceBuilder] {
+	return pulumix.Output[*ProvenanceBuilder]{
+		OutputState: i.ToProvenanceBuilderPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ProvenanceBuilderOutput struct{ *pulumi.OutputState }
+
+func (ProvenanceBuilderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvenanceBuilder)(nil)).Elem()
+}
+
+func (o ProvenanceBuilderOutput) ToProvenanceBuilderOutput() ProvenanceBuilderOutput {
+	return o
+}
+
+func (o ProvenanceBuilderOutput) ToProvenanceBuilderOutputWithContext(ctx context.Context) ProvenanceBuilderOutput {
+	return o
+}
+
+func (o ProvenanceBuilderOutput) ToProvenanceBuilderPtrOutput() ProvenanceBuilderPtrOutput {
+	return o.ToProvenanceBuilderPtrOutputWithContext(context.Background())
+}
+
+func (o ProvenanceBuilderOutput) ToProvenanceBuilderPtrOutputWithContext(ctx context.Context) ProvenanceBuilderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProvenanceBuilder) *ProvenanceBuilder {
+		return &v
+	}).(ProvenanceBuilderPtrOutput)
+}
+
+func (o ProvenanceBuilderOutput) ToOutput(ctx context.Context) pulumix.Output[ProvenanceBuilder] {
+	return pulumix.Output[ProvenanceBuilder]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ProvenanceBuilderOutput) BuilderDependencies() ResourceDescriptorArrayOutput {
+	return o.ApplyT(func(v ProvenanceBuilder) []ResourceDescriptor { return v.BuilderDependencies }).(ResourceDescriptorArrayOutput)
+}
+
+func (o ProvenanceBuilderOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProvenanceBuilder) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ProvenanceBuilderOutput) Version() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProvenanceBuilder) map[string]string { return v.Version }).(pulumi.StringMapOutput)
+}
+
+type ProvenanceBuilderPtrOutput struct{ *pulumi.OutputState }
+
+func (ProvenanceBuilderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProvenanceBuilder)(nil)).Elem()
+}
+
+func (o ProvenanceBuilderPtrOutput) ToProvenanceBuilderPtrOutput() ProvenanceBuilderPtrOutput {
+	return o
+}
+
+func (o ProvenanceBuilderPtrOutput) ToProvenanceBuilderPtrOutputWithContext(ctx context.Context) ProvenanceBuilderPtrOutput {
+	return o
+}
+
+func (o ProvenanceBuilderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProvenanceBuilder] {
+	return pulumix.Output[*ProvenanceBuilder]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ProvenanceBuilderPtrOutput) Elem() ProvenanceBuilderOutput {
+	return o.ApplyT(func(v *ProvenanceBuilder) ProvenanceBuilder {
+		if v != nil {
+			return *v
+		}
+		var ret ProvenanceBuilder
+		return ret
+	}).(ProvenanceBuilderOutput)
+}
+
+func (o ProvenanceBuilderPtrOutput) BuilderDependencies() ResourceDescriptorArrayOutput {
+	return o.ApplyT(func(v *ProvenanceBuilder) []ResourceDescriptor {
+		if v == nil {
+			return nil
+		}
+		return v.BuilderDependencies
+	}).(ResourceDescriptorArrayOutput)
+}
+
+func (o ProvenanceBuilderPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProvenanceBuilder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProvenanceBuilderPtrOutput) Version() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProvenanceBuilder) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringMapOutput)
+}
+
+type ProvenanceBuilderResponse struct {
+	BuilderDependencies []ResourceDescriptorResponse `pulumi:"builderDependencies"`
+	Version             map[string]string            `pulumi:"version"`
+}
+
+type ProvenanceBuilderResponseOutput struct{ *pulumi.OutputState }
+
+func (ProvenanceBuilderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvenanceBuilderResponse)(nil)).Elem()
+}
+
+func (o ProvenanceBuilderResponseOutput) ToProvenanceBuilderResponseOutput() ProvenanceBuilderResponseOutput {
+	return o
+}
+
+func (o ProvenanceBuilderResponseOutput) ToProvenanceBuilderResponseOutputWithContext(ctx context.Context) ProvenanceBuilderResponseOutput {
+	return o
+}
+
+func (o ProvenanceBuilderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProvenanceBuilderResponse] {
+	return pulumix.Output[ProvenanceBuilderResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ProvenanceBuilderResponseOutput) BuilderDependencies() ResourceDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v ProvenanceBuilderResponse) []ResourceDescriptorResponse { return v.BuilderDependencies }).(ResourceDescriptorResponseArrayOutput)
+}
+
+func (o ProvenanceBuilderResponseOutput) Version() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProvenanceBuilderResponse) map[string]string { return v.Version }).(pulumi.StringMapOutput)
+}
+
 // Publisher contains information about the publisher of this Note.
 type Publisher struct {
 	// Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
@@ -17215,6 +18246,469 @@ func (o RepoIdResponseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v RepoIdResponse) string { return v.Uid }).(pulumi.StringOutput)
 }
 
+type ResourceDescriptor struct {
+	Annotations      map[string]string `pulumi:"annotations"`
+	Content          *string           `pulumi:"content"`
+	Digest           map[string]string `pulumi:"digest"`
+	DownloadLocation *string           `pulumi:"downloadLocation"`
+	MediaType        *string           `pulumi:"mediaType"`
+	Name             *string           `pulumi:"name"`
+	Uri              *string           `pulumi:"uri"`
+}
+
+// ResourceDescriptorInput is an input type that accepts ResourceDescriptorArgs and ResourceDescriptorOutput values.
+// You can construct a concrete instance of `ResourceDescriptorInput` via:
+//
+//	ResourceDescriptorArgs{...}
+type ResourceDescriptorInput interface {
+	pulumi.Input
+
+	ToResourceDescriptorOutput() ResourceDescriptorOutput
+	ToResourceDescriptorOutputWithContext(context.Context) ResourceDescriptorOutput
+}
+
+type ResourceDescriptorArgs struct {
+	Annotations      pulumi.StringMapInput `pulumi:"annotations"`
+	Content          pulumi.StringPtrInput `pulumi:"content"`
+	Digest           pulumi.StringMapInput `pulumi:"digest"`
+	DownloadLocation pulumi.StringPtrInput `pulumi:"downloadLocation"`
+	MediaType        pulumi.StringPtrInput `pulumi:"mediaType"`
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	Uri              pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (ResourceDescriptorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDescriptor)(nil)).Elem()
+}
+
+func (i ResourceDescriptorArgs) ToResourceDescriptorOutput() ResourceDescriptorOutput {
+	return i.ToResourceDescriptorOutputWithContext(context.Background())
+}
+
+func (i ResourceDescriptorArgs) ToResourceDescriptorOutputWithContext(ctx context.Context) ResourceDescriptorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDescriptorOutput)
+}
+
+func (i ResourceDescriptorArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceDescriptor] {
+	return pulumix.Output[ResourceDescriptor]{
+		OutputState: i.ToResourceDescriptorOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ResourceDescriptorArrayInput is an input type that accepts ResourceDescriptorArray and ResourceDescriptorArrayOutput values.
+// You can construct a concrete instance of `ResourceDescriptorArrayInput` via:
+//
+//	ResourceDescriptorArray{ ResourceDescriptorArgs{...} }
+type ResourceDescriptorArrayInput interface {
+	pulumi.Input
+
+	ToResourceDescriptorArrayOutput() ResourceDescriptorArrayOutput
+	ToResourceDescriptorArrayOutputWithContext(context.Context) ResourceDescriptorArrayOutput
+}
+
+type ResourceDescriptorArray []ResourceDescriptorInput
+
+func (ResourceDescriptorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceDescriptor)(nil)).Elem()
+}
+
+func (i ResourceDescriptorArray) ToResourceDescriptorArrayOutput() ResourceDescriptorArrayOutput {
+	return i.ToResourceDescriptorArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceDescriptorArray) ToResourceDescriptorArrayOutputWithContext(ctx context.Context) ResourceDescriptorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDescriptorArrayOutput)
+}
+
+func (i ResourceDescriptorArray) ToOutput(ctx context.Context) pulumix.Output[[]ResourceDescriptor] {
+	return pulumix.Output[[]ResourceDescriptor]{
+		OutputState: i.ToResourceDescriptorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ResourceDescriptorOutput struct{ *pulumi.OutputState }
+
+func (ResourceDescriptorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDescriptor)(nil)).Elem()
+}
+
+func (o ResourceDescriptorOutput) ToResourceDescriptorOutput() ResourceDescriptorOutput {
+	return o
+}
+
+func (o ResourceDescriptorOutput) ToResourceDescriptorOutputWithContext(ctx context.Context) ResourceDescriptorOutput {
+	return o
+}
+
+func (o ResourceDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceDescriptor] {
+	return pulumix.Output[ResourceDescriptor]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ResourceDescriptorOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceDescriptor) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceDescriptorOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDescriptor) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceDescriptorOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceDescriptor) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceDescriptorOutput) DownloadLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDescriptor) *string { return v.DownloadLocation }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceDescriptorOutput) MediaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDescriptor) *string { return v.MediaType }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceDescriptorOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDescriptor) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceDescriptorOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDescriptor) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type ResourceDescriptorArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceDescriptorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceDescriptor)(nil)).Elem()
+}
+
+func (o ResourceDescriptorArrayOutput) ToResourceDescriptorArrayOutput() ResourceDescriptorArrayOutput {
+	return o
+}
+
+func (o ResourceDescriptorArrayOutput) ToResourceDescriptorArrayOutputWithContext(ctx context.Context) ResourceDescriptorArrayOutput {
+	return o
+}
+
+func (o ResourceDescriptorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceDescriptor] {
+	return pulumix.Output[[]ResourceDescriptor]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ResourceDescriptorArrayOutput) Index(i pulumi.IntInput) ResourceDescriptorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceDescriptor {
+		return vs[0].([]ResourceDescriptor)[vs[1].(int)]
+	}).(ResourceDescriptorOutput)
+}
+
+type ResourceDescriptorResponse struct {
+	Annotations      map[string]string `pulumi:"annotations"`
+	Content          string            `pulumi:"content"`
+	Digest           map[string]string `pulumi:"digest"`
+	DownloadLocation string            `pulumi:"downloadLocation"`
+	MediaType        string            `pulumi:"mediaType"`
+	Name             string            `pulumi:"name"`
+	Uri              string            `pulumi:"uri"`
+}
+
+type ResourceDescriptorResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceDescriptorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDescriptorResponse)(nil)).Elem()
+}
+
+func (o ResourceDescriptorResponseOutput) ToResourceDescriptorResponseOutput() ResourceDescriptorResponseOutput {
+	return o
+}
+
+func (o ResourceDescriptorResponseOutput) ToResourceDescriptorResponseOutputWithContext(ctx context.Context) ResourceDescriptorResponseOutput {
+	return o
+}
+
+func (o ResourceDescriptorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceDescriptorResponse] {
+	return pulumix.Output[ResourceDescriptorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ResourceDescriptorResponseOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceDescriptorResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceDescriptorResponseOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDescriptorResponse) string { return v.Content }).(pulumi.StringOutput)
+}
+
+func (o ResourceDescriptorResponseOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceDescriptorResponse) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceDescriptorResponseOutput) DownloadLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDescriptorResponse) string { return v.DownloadLocation }).(pulumi.StringOutput)
+}
+
+func (o ResourceDescriptorResponseOutput) MediaType() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDescriptorResponse) string { return v.MediaType }).(pulumi.StringOutput)
+}
+
+func (o ResourceDescriptorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDescriptorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceDescriptorResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDescriptorResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type ResourceDescriptorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceDescriptorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceDescriptorResponse)(nil)).Elem()
+}
+
+func (o ResourceDescriptorResponseArrayOutput) ToResourceDescriptorResponseArrayOutput() ResourceDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o ResourceDescriptorResponseArrayOutput) ToResourceDescriptorResponseArrayOutputWithContext(ctx context.Context) ResourceDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o ResourceDescriptorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceDescriptorResponse] {
+	return pulumix.Output[[]ResourceDescriptorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ResourceDescriptorResponseArrayOutput) Index(i pulumi.IntInput) ResourceDescriptorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceDescriptorResponse {
+		return vs[0].([]ResourceDescriptorResponse)[vs[1].(int)]
+	}).(ResourceDescriptorResponseOutput)
+}
+
+type RunDetails struct {
+	Builder    *ProvenanceBuilder   `pulumi:"builder"`
+	Byproducts []ResourceDescriptor `pulumi:"byproducts"`
+	Metadata   *BuildMetadata       `pulumi:"metadata"`
+}
+
+// RunDetailsInput is an input type that accepts RunDetailsArgs and RunDetailsOutput values.
+// You can construct a concrete instance of `RunDetailsInput` via:
+//
+//	RunDetailsArgs{...}
+type RunDetailsInput interface {
+	pulumi.Input
+
+	ToRunDetailsOutput() RunDetailsOutput
+	ToRunDetailsOutputWithContext(context.Context) RunDetailsOutput
+}
+
+type RunDetailsArgs struct {
+	Builder    ProvenanceBuilderPtrInput    `pulumi:"builder"`
+	Byproducts ResourceDescriptorArrayInput `pulumi:"byproducts"`
+	Metadata   BuildMetadataPtrInput        `pulumi:"metadata"`
+}
+
+func (RunDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunDetails)(nil)).Elem()
+}
+
+func (i RunDetailsArgs) ToRunDetailsOutput() RunDetailsOutput {
+	return i.ToRunDetailsOutputWithContext(context.Background())
+}
+
+func (i RunDetailsArgs) ToRunDetailsOutputWithContext(ctx context.Context) RunDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunDetailsOutput)
+}
+
+func (i RunDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[RunDetails] {
+	return pulumix.Output[RunDetails]{
+		OutputState: i.ToRunDetailsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RunDetailsArgs) ToRunDetailsPtrOutput() RunDetailsPtrOutput {
+	return i.ToRunDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i RunDetailsArgs) ToRunDetailsPtrOutputWithContext(ctx context.Context) RunDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunDetailsOutput).ToRunDetailsPtrOutputWithContext(ctx)
+}
+
+// RunDetailsPtrInput is an input type that accepts RunDetailsArgs, RunDetailsPtr and RunDetailsPtrOutput values.
+// You can construct a concrete instance of `RunDetailsPtrInput` via:
+//
+//	        RunDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RunDetailsPtrInput interface {
+	pulumi.Input
+
+	ToRunDetailsPtrOutput() RunDetailsPtrOutput
+	ToRunDetailsPtrOutputWithContext(context.Context) RunDetailsPtrOutput
+}
+
+type runDetailsPtrType RunDetailsArgs
+
+func RunDetailsPtr(v *RunDetailsArgs) RunDetailsPtrInput {
+	return (*runDetailsPtrType)(v)
+}
+
+func (*runDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunDetails)(nil)).Elem()
+}
+
+func (i *runDetailsPtrType) ToRunDetailsPtrOutput() RunDetailsPtrOutput {
+	return i.ToRunDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *runDetailsPtrType) ToRunDetailsPtrOutputWithContext(ctx context.Context) RunDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunDetailsPtrOutput)
+}
+
+func (i *runDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RunDetails] {
+	return pulumix.Output[*RunDetails]{
+		OutputState: i.ToRunDetailsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RunDetailsOutput struct{ *pulumi.OutputState }
+
+func (RunDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunDetails)(nil)).Elem()
+}
+
+func (o RunDetailsOutput) ToRunDetailsOutput() RunDetailsOutput {
+	return o
+}
+
+func (o RunDetailsOutput) ToRunDetailsOutputWithContext(ctx context.Context) RunDetailsOutput {
+	return o
+}
+
+func (o RunDetailsOutput) ToRunDetailsPtrOutput() RunDetailsPtrOutput {
+	return o.ToRunDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o RunDetailsOutput) ToRunDetailsPtrOutputWithContext(ctx context.Context) RunDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RunDetails) *RunDetails {
+		return &v
+	}).(RunDetailsPtrOutput)
+}
+
+func (o RunDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[RunDetails] {
+	return pulumix.Output[RunDetails]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RunDetailsOutput) Builder() ProvenanceBuilderPtrOutput {
+	return o.ApplyT(func(v RunDetails) *ProvenanceBuilder { return v.Builder }).(ProvenanceBuilderPtrOutput)
+}
+
+func (o RunDetailsOutput) Byproducts() ResourceDescriptorArrayOutput {
+	return o.ApplyT(func(v RunDetails) []ResourceDescriptor { return v.Byproducts }).(ResourceDescriptorArrayOutput)
+}
+
+func (o RunDetailsOutput) Metadata() BuildMetadataPtrOutput {
+	return o.ApplyT(func(v RunDetails) *BuildMetadata { return v.Metadata }).(BuildMetadataPtrOutput)
+}
+
+type RunDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (RunDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunDetails)(nil)).Elem()
+}
+
+func (o RunDetailsPtrOutput) ToRunDetailsPtrOutput() RunDetailsPtrOutput {
+	return o
+}
+
+func (o RunDetailsPtrOutput) ToRunDetailsPtrOutputWithContext(ctx context.Context) RunDetailsPtrOutput {
+	return o
+}
+
+func (o RunDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RunDetails] {
+	return pulumix.Output[*RunDetails]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RunDetailsPtrOutput) Elem() RunDetailsOutput {
+	return o.ApplyT(func(v *RunDetails) RunDetails {
+		if v != nil {
+			return *v
+		}
+		var ret RunDetails
+		return ret
+	}).(RunDetailsOutput)
+}
+
+func (o RunDetailsPtrOutput) Builder() ProvenanceBuilderPtrOutput {
+	return o.ApplyT(func(v *RunDetails) *ProvenanceBuilder {
+		if v == nil {
+			return nil
+		}
+		return v.Builder
+	}).(ProvenanceBuilderPtrOutput)
+}
+
+func (o RunDetailsPtrOutput) Byproducts() ResourceDescriptorArrayOutput {
+	return o.ApplyT(func(v *RunDetails) []ResourceDescriptor {
+		if v == nil {
+			return nil
+		}
+		return v.Byproducts
+	}).(ResourceDescriptorArrayOutput)
+}
+
+func (o RunDetailsPtrOutput) Metadata() BuildMetadataPtrOutput {
+	return o.ApplyT(func(v *RunDetails) *BuildMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(BuildMetadataPtrOutput)
+}
+
+type RunDetailsResponse struct {
+	Builder    ProvenanceBuilderResponse    `pulumi:"builder"`
+	Byproducts []ResourceDescriptorResponse `pulumi:"byproducts"`
+	Metadata   BuildMetadataResponse        `pulumi:"metadata"`
+}
+
+type RunDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (RunDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunDetailsResponse)(nil)).Elem()
+}
+
+func (o RunDetailsResponseOutput) ToRunDetailsResponseOutput() RunDetailsResponseOutput {
+	return o
+}
+
+func (o RunDetailsResponseOutput) ToRunDetailsResponseOutputWithContext(ctx context.Context) RunDetailsResponseOutput {
+	return o
+}
+
+func (o RunDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RunDetailsResponse] {
+	return pulumix.Output[RunDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RunDetailsResponseOutput) Builder() ProvenanceBuilderResponseOutput {
+	return o.ApplyT(func(v RunDetailsResponse) ProvenanceBuilderResponse { return v.Builder }).(ProvenanceBuilderResponseOutput)
+}
+
+func (o RunDetailsResponseOutput) Byproducts() ResourceDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v RunDetailsResponse) []ResourceDescriptorResponse { return v.Byproducts }).(ResourceDescriptorResponseArrayOutput)
+}
+
+func (o RunDetailsResponseOutput) Metadata() BuildMetadataResponseOutput {
+	return o.ApplyT(func(v RunDetailsResponse) BuildMetadataResponse { return v.Metadata }).(BuildMetadataResponseOutput)
+}
+
 // The note representing an SBOM reference.
 type SBOMReferenceNote struct {
 	// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
@@ -17683,6 +19177,228 @@ func (o SBOMReferenceOccurrenceResponseOutput) PayloadType() pulumi.StringOutput
 // The signatures over the payload.
 func (o SBOMReferenceOccurrenceResponseOutput) Signatures() EnvelopeSignatureResponseArrayOutput {
 	return o.ApplyT(func(v SBOMReferenceOccurrenceResponse) []EnvelopeSignatureResponse { return v.Signatures }).(EnvelopeSignatureResponseArrayOutput)
+}
+
+// The status of an SBOM generation.
+type SBOMStatus struct {
+	// If there was an error generating an SBOM, this will indicate what that error was.
+	Error *string `pulumi:"error"`
+	// The progress of the SBOM generation.
+	SbomState *SBOMStatusSbomState `pulumi:"sbomState"`
+}
+
+// SBOMStatusInput is an input type that accepts SBOMStatusArgs and SBOMStatusOutput values.
+// You can construct a concrete instance of `SBOMStatusInput` via:
+//
+//	SBOMStatusArgs{...}
+type SBOMStatusInput interface {
+	pulumi.Input
+
+	ToSBOMStatusOutput() SBOMStatusOutput
+	ToSBOMStatusOutputWithContext(context.Context) SBOMStatusOutput
+}
+
+// The status of an SBOM generation.
+type SBOMStatusArgs struct {
+	// If there was an error generating an SBOM, this will indicate what that error was.
+	Error pulumi.StringPtrInput `pulumi:"error"`
+	// The progress of the SBOM generation.
+	SbomState SBOMStatusSbomStatePtrInput `pulumi:"sbomState"`
+}
+
+func (SBOMStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMStatus)(nil)).Elem()
+}
+
+func (i SBOMStatusArgs) ToSBOMStatusOutput() SBOMStatusOutput {
+	return i.ToSBOMStatusOutputWithContext(context.Background())
+}
+
+func (i SBOMStatusArgs) ToSBOMStatusOutputWithContext(ctx context.Context) SBOMStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SBOMStatusOutput)
+}
+
+func (i SBOMStatusArgs) ToOutput(ctx context.Context) pulumix.Output[SBOMStatus] {
+	return pulumix.Output[SBOMStatus]{
+		OutputState: i.ToSBOMStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SBOMStatusArgs) ToSBOMStatusPtrOutput() SBOMStatusPtrOutput {
+	return i.ToSBOMStatusPtrOutputWithContext(context.Background())
+}
+
+func (i SBOMStatusArgs) ToSBOMStatusPtrOutputWithContext(ctx context.Context) SBOMStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SBOMStatusOutput).ToSBOMStatusPtrOutputWithContext(ctx)
+}
+
+// SBOMStatusPtrInput is an input type that accepts SBOMStatusArgs, SBOMStatusPtr and SBOMStatusPtrOutput values.
+// You can construct a concrete instance of `SBOMStatusPtrInput` via:
+//
+//	        SBOMStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type SBOMStatusPtrInput interface {
+	pulumi.Input
+
+	ToSBOMStatusPtrOutput() SBOMStatusPtrOutput
+	ToSBOMStatusPtrOutputWithContext(context.Context) SBOMStatusPtrOutput
+}
+
+type sbomstatusPtrType SBOMStatusArgs
+
+func SBOMStatusPtr(v *SBOMStatusArgs) SBOMStatusPtrInput {
+	return (*sbomstatusPtrType)(v)
+}
+
+func (*sbomstatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SBOMStatus)(nil)).Elem()
+}
+
+func (i *sbomstatusPtrType) ToSBOMStatusPtrOutput() SBOMStatusPtrOutput {
+	return i.ToSBOMStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *sbomstatusPtrType) ToSBOMStatusPtrOutputWithContext(ctx context.Context) SBOMStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SBOMStatusPtrOutput)
+}
+
+func (i *sbomstatusPtrType) ToOutput(ctx context.Context) pulumix.Output[*SBOMStatus] {
+	return pulumix.Output[*SBOMStatus]{
+		OutputState: i.ToSBOMStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The status of an SBOM generation.
+type SBOMStatusOutput struct{ *pulumi.OutputState }
+
+func (SBOMStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMStatus)(nil)).Elem()
+}
+
+func (o SBOMStatusOutput) ToSBOMStatusOutput() SBOMStatusOutput {
+	return o
+}
+
+func (o SBOMStatusOutput) ToSBOMStatusOutputWithContext(ctx context.Context) SBOMStatusOutput {
+	return o
+}
+
+func (o SBOMStatusOutput) ToSBOMStatusPtrOutput() SBOMStatusPtrOutput {
+	return o.ToSBOMStatusPtrOutputWithContext(context.Background())
+}
+
+func (o SBOMStatusOutput) ToSBOMStatusPtrOutputWithContext(ctx context.Context) SBOMStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SBOMStatus) *SBOMStatus {
+		return &v
+	}).(SBOMStatusPtrOutput)
+}
+
+func (o SBOMStatusOutput) ToOutput(ctx context.Context) pulumix.Output[SBOMStatus] {
+	return pulumix.Output[SBOMStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If there was an error generating an SBOM, this will indicate what that error was.
+func (o SBOMStatusOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SBOMStatus) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+// The progress of the SBOM generation.
+func (o SBOMStatusOutput) SbomState() SBOMStatusSbomStatePtrOutput {
+	return o.ApplyT(func(v SBOMStatus) *SBOMStatusSbomState { return v.SbomState }).(SBOMStatusSbomStatePtrOutput)
+}
+
+type SBOMStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (SBOMStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SBOMStatus)(nil)).Elem()
+}
+
+func (o SBOMStatusPtrOutput) ToSBOMStatusPtrOutput() SBOMStatusPtrOutput {
+	return o
+}
+
+func (o SBOMStatusPtrOutput) ToSBOMStatusPtrOutputWithContext(ctx context.Context) SBOMStatusPtrOutput {
+	return o
+}
+
+func (o SBOMStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SBOMStatus] {
+	return pulumix.Output[*SBOMStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SBOMStatusPtrOutput) Elem() SBOMStatusOutput {
+	return o.ApplyT(func(v *SBOMStatus) SBOMStatus {
+		if v != nil {
+			return *v
+		}
+		var ret SBOMStatus
+		return ret
+	}).(SBOMStatusOutput)
+}
+
+// If there was an error generating an SBOM, this will indicate what that error was.
+func (o SBOMStatusPtrOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SBOMStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Error
+	}).(pulumi.StringPtrOutput)
+}
+
+// The progress of the SBOM generation.
+func (o SBOMStatusPtrOutput) SbomState() SBOMStatusSbomStatePtrOutput {
+	return o.ApplyT(func(v *SBOMStatus) *SBOMStatusSbomState {
+		if v == nil {
+			return nil
+		}
+		return v.SbomState
+	}).(SBOMStatusSbomStatePtrOutput)
+}
+
+// The status of an SBOM generation.
+type SBOMStatusResponse struct {
+	// If there was an error generating an SBOM, this will indicate what that error was.
+	Error string `pulumi:"error"`
+	// The progress of the SBOM generation.
+	SbomState string `pulumi:"sbomState"`
+}
+
+// The status of an SBOM generation.
+type SBOMStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SBOMStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMStatusResponse)(nil)).Elem()
+}
+
+func (o SBOMStatusResponseOutput) ToSBOMStatusResponseOutput() SBOMStatusResponseOutput {
+	return o
+}
+
+func (o SBOMStatusResponseOutput) ToSBOMStatusResponseOutputWithContext(ctx context.Context) SBOMStatusResponseOutput {
+	return o
+}
+
+func (o SBOMStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SBOMStatusResponse] {
+	return pulumix.Output[SBOMStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If there was an error generating an SBOM, this will indicate what that error was.
+func (o SBOMStatusResponseOutput) Error() pulumi.StringOutput {
+	return o.ApplyT(func(v SBOMStatusResponse) string { return v.Error }).(pulumi.StringOutput)
+}
+
+// The progress of the SBOM generation.
+func (o SBOMStatusResponseOutput) SbomState() pulumi.StringOutput {
+	return o.ApplyT(func(v SBOMStatusResponse) string { return v.SbomState }).(pulumi.StringOutput)
 }
 
 // The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
@@ -19420,6 +21136,216 @@ func (o SlsaProvenanceResponseOutput) Metadata() SlsaMetadataResponseOutput {
 // Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
 func (o SlsaProvenanceResponseOutput) Recipe() SlsaRecipeResponseOutput {
 	return o.ApplyT(func(v SlsaProvenanceResponse) SlsaRecipeResponse { return v.Recipe }).(SlsaRecipeResponseOutput)
+}
+
+// Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.
+type SlsaProvenanceV1 struct {
+	BuildDefinition *BuildDefinition `pulumi:"buildDefinition"`
+	RunDetails      *RunDetails      `pulumi:"runDetails"`
+}
+
+// SlsaProvenanceV1Input is an input type that accepts SlsaProvenanceV1Args and SlsaProvenanceV1Output values.
+// You can construct a concrete instance of `SlsaProvenanceV1Input` via:
+//
+//	SlsaProvenanceV1Args{...}
+type SlsaProvenanceV1Input interface {
+	pulumi.Input
+
+	ToSlsaProvenanceV1Output() SlsaProvenanceV1Output
+	ToSlsaProvenanceV1OutputWithContext(context.Context) SlsaProvenanceV1Output
+}
+
+// Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.
+type SlsaProvenanceV1Args struct {
+	BuildDefinition BuildDefinitionPtrInput `pulumi:"buildDefinition"`
+	RunDetails      RunDetailsPtrInput      `pulumi:"runDetails"`
+}
+
+func (SlsaProvenanceV1Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceV1)(nil)).Elem()
+}
+
+func (i SlsaProvenanceV1Args) ToSlsaProvenanceV1Output() SlsaProvenanceV1Output {
+	return i.ToSlsaProvenanceV1OutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceV1Args) ToSlsaProvenanceV1OutputWithContext(ctx context.Context) SlsaProvenanceV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceV1Output)
+}
+
+func (i SlsaProvenanceV1Args) ToOutput(ctx context.Context) pulumix.Output[SlsaProvenanceV1] {
+	return pulumix.Output[SlsaProvenanceV1]{
+		OutputState: i.ToSlsaProvenanceV1OutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SlsaProvenanceV1Args) ToSlsaProvenanceV1PtrOutput() SlsaProvenanceV1PtrOutput {
+	return i.ToSlsaProvenanceV1PtrOutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceV1Args) ToSlsaProvenanceV1PtrOutputWithContext(ctx context.Context) SlsaProvenanceV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceV1Output).ToSlsaProvenanceV1PtrOutputWithContext(ctx)
+}
+
+// SlsaProvenanceV1PtrInput is an input type that accepts SlsaProvenanceV1Args, SlsaProvenanceV1Ptr and SlsaProvenanceV1PtrOutput values.
+// You can construct a concrete instance of `SlsaProvenanceV1PtrInput` via:
+//
+//	        SlsaProvenanceV1Args{...}
+//
+//	or:
+//
+//	        nil
+type SlsaProvenanceV1PtrInput interface {
+	pulumi.Input
+
+	ToSlsaProvenanceV1PtrOutput() SlsaProvenanceV1PtrOutput
+	ToSlsaProvenanceV1PtrOutputWithContext(context.Context) SlsaProvenanceV1PtrOutput
+}
+
+type slsaProvenanceV1PtrType SlsaProvenanceV1Args
+
+func SlsaProvenanceV1Ptr(v *SlsaProvenanceV1Args) SlsaProvenanceV1PtrInput {
+	return (*slsaProvenanceV1PtrType)(v)
+}
+
+func (*slsaProvenanceV1PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenanceV1)(nil)).Elem()
+}
+
+func (i *slsaProvenanceV1PtrType) ToSlsaProvenanceV1PtrOutput() SlsaProvenanceV1PtrOutput {
+	return i.ToSlsaProvenanceV1PtrOutputWithContext(context.Background())
+}
+
+func (i *slsaProvenanceV1PtrType) ToSlsaProvenanceV1PtrOutputWithContext(ctx context.Context) SlsaProvenanceV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceV1PtrOutput)
+}
+
+func (i *slsaProvenanceV1PtrType) ToOutput(ctx context.Context) pulumix.Output[*SlsaProvenanceV1] {
+	return pulumix.Output[*SlsaProvenanceV1]{
+		OutputState: i.ToSlsaProvenanceV1PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.
+type SlsaProvenanceV1Output struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceV1)(nil)).Elem()
+}
+
+func (o SlsaProvenanceV1Output) ToSlsaProvenanceV1Output() SlsaProvenanceV1Output {
+	return o
+}
+
+func (o SlsaProvenanceV1Output) ToSlsaProvenanceV1OutputWithContext(ctx context.Context) SlsaProvenanceV1Output {
+	return o
+}
+
+func (o SlsaProvenanceV1Output) ToSlsaProvenanceV1PtrOutput() SlsaProvenanceV1PtrOutput {
+	return o.ToSlsaProvenanceV1PtrOutputWithContext(context.Background())
+}
+
+func (o SlsaProvenanceV1Output) ToSlsaProvenanceV1PtrOutputWithContext(ctx context.Context) SlsaProvenanceV1PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaProvenanceV1) *SlsaProvenanceV1 {
+		return &v
+	}).(SlsaProvenanceV1PtrOutput)
+}
+
+func (o SlsaProvenanceV1Output) ToOutput(ctx context.Context) pulumix.Output[SlsaProvenanceV1] {
+	return pulumix.Output[SlsaProvenanceV1]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SlsaProvenanceV1Output) BuildDefinition() BuildDefinitionPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceV1) *BuildDefinition { return v.BuildDefinition }).(BuildDefinitionPtrOutput)
+}
+
+func (o SlsaProvenanceV1Output) RunDetails() RunDetailsPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceV1) *RunDetails { return v.RunDetails }).(RunDetailsPtrOutput)
+}
+
+type SlsaProvenanceV1PtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenanceV1)(nil)).Elem()
+}
+
+func (o SlsaProvenanceV1PtrOutput) ToSlsaProvenanceV1PtrOutput() SlsaProvenanceV1PtrOutput {
+	return o
+}
+
+func (o SlsaProvenanceV1PtrOutput) ToSlsaProvenanceV1PtrOutputWithContext(ctx context.Context) SlsaProvenanceV1PtrOutput {
+	return o
+}
+
+func (o SlsaProvenanceV1PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SlsaProvenanceV1] {
+	return pulumix.Output[*SlsaProvenanceV1]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SlsaProvenanceV1PtrOutput) Elem() SlsaProvenanceV1Output {
+	return o.ApplyT(func(v *SlsaProvenanceV1) SlsaProvenanceV1 {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaProvenanceV1
+		return ret
+	}).(SlsaProvenanceV1Output)
+}
+
+func (o SlsaProvenanceV1PtrOutput) BuildDefinition() BuildDefinitionPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceV1) *BuildDefinition {
+		if v == nil {
+			return nil
+		}
+		return v.BuildDefinition
+	}).(BuildDefinitionPtrOutput)
+}
+
+func (o SlsaProvenanceV1PtrOutput) RunDetails() RunDetailsPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceV1) *RunDetails {
+		if v == nil {
+			return nil
+		}
+		return v.RunDetails
+	}).(RunDetailsPtrOutput)
+}
+
+// Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.
+type SlsaProvenanceV1Response struct {
+	BuildDefinition BuildDefinitionResponse `pulumi:"buildDefinition"`
+	RunDetails      RunDetailsResponse      `pulumi:"runDetails"`
+}
+
+// Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.
+type SlsaProvenanceV1ResponseOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceV1ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceV1Response)(nil)).Elem()
+}
+
+func (o SlsaProvenanceV1ResponseOutput) ToSlsaProvenanceV1ResponseOutput() SlsaProvenanceV1ResponseOutput {
+	return o
+}
+
+func (o SlsaProvenanceV1ResponseOutput) ToSlsaProvenanceV1ResponseOutputWithContext(ctx context.Context) SlsaProvenanceV1ResponseOutput {
+	return o
+}
+
+func (o SlsaProvenanceV1ResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SlsaProvenanceV1Response] {
+	return pulumix.Output[SlsaProvenanceV1Response]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SlsaProvenanceV1ResponseOutput) BuildDefinition() BuildDefinitionResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceV1Response) BuildDefinitionResponse { return v.BuildDefinition }).(BuildDefinitionResponseOutput)
+}
+
+func (o SlsaProvenanceV1ResponseOutput) RunDetails() RunDetailsResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceV1Response) RunDetailsResponse { return v.RunDetails }).(RunDetailsResponseOutput)
 }
 
 // See full explanation of fields at slsa.dev/provenance/v0.2.
@@ -22403,7 +24329,9 @@ func (o VersionResponseOutput) Revision() pulumi.StringOutput {
 
 // VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
 type VexAssessment struct {
-	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+	//
+	// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 	Cve *string `pulumi:"cve"`
 	// Contains information about the impact of this vulnerability, this will change with time.
 	Impacts []string `pulumi:"impacts"`
@@ -22417,6 +24345,8 @@ type VexAssessment struct {
 	Remediations []Remediation `pulumi:"remediations"`
 	// Provides the state of this Vulnerability assessment.
 	State *VexAssessmentState `pulumi:"state"`
+	// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+	VulnerabilityId *string `pulumi:"vulnerabilityId"`
 }
 
 // VexAssessmentInput is an input type that accepts VexAssessmentArgs and VexAssessmentOutput values.
@@ -22432,7 +24362,9 @@ type VexAssessmentInput interface {
 
 // VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
 type VexAssessmentArgs struct {
-	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+	//
+	// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 	Cve pulumi.StringPtrInput `pulumi:"cve"`
 	// Contains information about the impact of this vulnerability, this will change with time.
 	Impacts pulumi.StringArrayInput `pulumi:"impacts"`
@@ -22446,6 +24378,8 @@ type VexAssessmentArgs struct {
 	Remediations RemediationArrayInput `pulumi:"remediations"`
 	// Provides the state of this Vulnerability assessment.
 	State VexAssessmentStatePtrInput `pulumi:"state"`
+	// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+	VulnerabilityId pulumi.StringPtrInput `pulumi:"vulnerabilityId"`
 }
 
 func (VexAssessmentArgs) ElementType() reflect.Type {
@@ -22544,7 +24478,9 @@ func (o VexAssessmentOutput) ToOutput(ctx context.Context) pulumix.Output[VexAss
 	}
 }
 
-// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+//
+// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 func (o VexAssessmentOutput) Cve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VexAssessment) *string { return v.Cve }).(pulumi.StringPtrOutput)
 }
@@ -22579,6 +24515,11 @@ func (o VexAssessmentOutput) State() VexAssessmentStatePtrOutput {
 	return o.ApplyT(func(v VexAssessment) *VexAssessmentState { return v.State }).(VexAssessmentStatePtrOutput)
 }
 
+// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+func (o VexAssessmentOutput) VulnerabilityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VexAssessment) *string { return v.VulnerabilityId }).(pulumi.StringPtrOutput)
+}
+
 type VexAssessmentPtrOutput struct{ *pulumi.OutputState }
 
 func (VexAssessmentPtrOutput) ElementType() reflect.Type {
@@ -22609,7 +24550,9 @@ func (o VexAssessmentPtrOutput) Elem() VexAssessmentOutput {
 	}).(VexAssessmentOutput)
 }
 
-// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+//
+// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 func (o VexAssessmentPtrOutput) Cve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VexAssessment) *string {
 		if v == nil {
@@ -22679,9 +24622,21 @@ func (o VexAssessmentPtrOutput) State() VexAssessmentStatePtrOutput {
 	}).(VexAssessmentStatePtrOutput)
 }
 
+// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+func (o VexAssessmentPtrOutput) VulnerabilityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VexAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VulnerabilityId
+	}).(pulumi.StringPtrOutput)
+}
+
 // VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
 type VexAssessmentResponse struct {
-	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+	//
+	// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 	Cve string `pulumi:"cve"`
 	// Contains information about the impact of this vulnerability, this will change with time.
 	Impacts []string `pulumi:"impacts"`
@@ -22695,6 +24650,8 @@ type VexAssessmentResponse struct {
 	Remediations []RemediationResponse `pulumi:"remediations"`
 	// Provides the state of this Vulnerability assessment.
 	State string `pulumi:"state"`
+	// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+	VulnerabilityId string `pulumi:"vulnerabilityId"`
 }
 
 // VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
@@ -22718,7 +24675,9 @@ func (o VexAssessmentResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
+//
+// Deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
 func (o VexAssessmentResponseOutput) Cve() pulumi.StringOutput {
 	return o.ApplyT(func(v VexAssessmentResponse) string { return v.Cve }).(pulumi.StringOutput)
 }
@@ -22751,6 +24710,11 @@ func (o VexAssessmentResponseOutput) Remediations() RemediationResponseArrayOutp
 // Provides the state of this Vulnerability assessment.
 func (o VexAssessmentResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v VexAssessmentResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+func (o VexAssessmentResponseOutput) VulnerabilityId() pulumi.StringOutput {
+	return o.ApplyT(func(v VexAssessmentResponse) string { return v.VulnerabilityId }).(pulumi.StringOutput)
 }
 
 // A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
@@ -23491,6 +25455,8 @@ type VulnerabilityOccurrence struct {
 	Cvssv3 *CVSS `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 	EffectiveSeverity *VulnerabilityOccurrenceEffectiveSeverity `pulumi:"effectiveSeverity"`
+	// Occurrence-specific extra details about the vulnerability.
+	ExtraDetails *string `pulumi:"extraDetails"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue []PackageIssue `pulumi:"packageIssue"`
 	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
@@ -23517,6 +25483,8 @@ type VulnerabilityOccurrenceArgs struct {
 	Cvssv3 CVSSPtrInput `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 	EffectiveSeverity VulnerabilityOccurrenceEffectiveSeverityPtrInput `pulumi:"effectiveSeverity"`
+	// Occurrence-specific extra details about the vulnerability.
+	ExtraDetails pulumi.StringPtrInput `pulumi:"extraDetails"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueArrayInput `pulumi:"packageIssue"`
 	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
@@ -23635,6 +25603,11 @@ func (o VulnerabilityOccurrenceOutput) EffectiveSeverity() VulnerabilityOccurren
 	return o.ApplyT(func(v VulnerabilityOccurrence) *VulnerabilityOccurrenceEffectiveSeverity { return v.EffectiveSeverity }).(VulnerabilityOccurrenceEffectiveSeverityPtrOutput)
 }
 
+// Occurrence-specific extra details about the vulnerability.
+func (o VulnerabilityOccurrenceOutput) ExtraDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VulnerabilityOccurrence) *string { return v.ExtraDetails }).(pulumi.StringPtrOutput)
+}
+
 // The set of affected locations and their fixes (if available) within the associated resource.
 func (o VulnerabilityOccurrenceOutput) PackageIssue() PackageIssueArrayOutput {
 	return o.ApplyT(func(v VulnerabilityOccurrence) []PackageIssue { return v.PackageIssue }).(PackageIssueArrayOutput)
@@ -23709,6 +25682,16 @@ func (o VulnerabilityOccurrencePtrOutput) EffectiveSeverity() VulnerabilityOccur
 	}).(VulnerabilityOccurrenceEffectiveSeverityPtrOutput)
 }
 
+// Occurrence-specific extra details about the vulnerability.
+func (o VulnerabilityOccurrencePtrOutput) ExtraDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraDetails
+	}).(pulumi.StringPtrOutput)
+}
+
 // The set of affected locations and their fixes (if available) within the associated resource.
 func (o VulnerabilityOccurrencePtrOutput) PackageIssue() PackageIssueArrayOutput {
 	return o.ApplyT(func(v *VulnerabilityOccurrence) []PackageIssue {
@@ -23750,6 +25733,8 @@ type VulnerabilityOccurrenceResponse struct {
 	Cvssv3 CVSSResponse `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 	EffectiveSeverity string `pulumi:"effectiveSeverity"`
+	// Occurrence-specific extra details about the vulnerability.
+	ExtraDetails string `pulumi:"extraDetails"`
 	// Whether at least one of the affected packages has a fix available.
 	FixAvailable bool `pulumi:"fixAvailable"`
 	// A detailed description of this vulnerability.
@@ -23811,6 +25796,11 @@ func (o VulnerabilityOccurrenceResponseOutput) Cvssv3() CVSSResponseOutput {
 // The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 func (o VulnerabilityOccurrenceResponseOutput) EffectiveSeverity() pulumi.StringOutput {
 	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) string { return v.EffectiveSeverity }).(pulumi.StringOutput)
+}
+
+// Occurrence-specific extra details about the vulnerability.
+func (o VulnerabilityOccurrenceResponseOutput) ExtraDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) string { return v.ExtraDetails }).(pulumi.StringOutput)
 }
 
 // Whether at least one of the affected packages has a fix available.
@@ -24444,6 +26434,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestationOccurrencePtrInput)(nil)).Elem(), AttestationOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildDefinitionInput)(nil)).Elem(), BuildDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildDefinitionPtrInput)(nil)).Elem(), BuildDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildMetadataInput)(nil)).Elem(), BuildMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildMetadataPtrInput)(nil)).Elem(), BuildMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildNoteInput)(nil)).Elem(), BuildNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildNotePtrInput)(nil)).Elem(), BuildNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildOccurrenceInput)(nil)).Elem(), BuildOccurrenceArgs{})
@@ -24528,6 +26522,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageOccurrencePtrInput)(nil)).Elem(), ImageOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenanceInput)(nil)).Elem(), InTotoProvenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenancePtrInput)(nil)).Elem(), InTotoProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoSlsaProvenanceV1Input)(nil)).Elem(), InTotoSlsaProvenanceV1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoSlsaProvenanceV1PtrInput)(nil)).Elem(), InTotoSlsaProvenanceV1Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementInput)(nil)).Elem(), InTotoStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementPtrInput)(nil)).Elem(), InTotoStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JustificationInput)(nil)).Elem(), JustificationArgs{})
@@ -24558,6 +26554,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProductPtrInput)(nil)).Elem(), ProductArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRepoIdInput)(nil)).Elem(), ProjectRepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRepoIdPtrInput)(nil)).Elem(), ProjectRepoIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProvenanceBuilderInput)(nil)).Elem(), ProvenanceBuilderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProvenanceBuilderPtrInput)(nil)).Elem(), ProvenanceBuilderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublisherInput)(nil)).Elem(), PublisherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublisherPtrInput)(nil)).Elem(), PublisherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecipeInput)(nil)).Elem(), RecipeArgs{})
@@ -24569,10 +26567,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RemediationArrayInput)(nil)).Elem(), RemediationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdInput)(nil)).Elem(), RepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdPtrInput)(nil)).Elem(), RepoIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDescriptorInput)(nil)).Elem(), ResourceDescriptorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDescriptorArrayInput)(nil)).Elem(), ResourceDescriptorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RunDetailsInput)(nil)).Elem(), RunDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RunDetailsPtrInput)(nil)).Elem(), RunDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SBOMReferenceNoteInput)(nil)).Elem(), SBOMReferenceNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SBOMReferenceNotePtrInput)(nil)).Elem(), SBOMReferenceNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SBOMReferenceOccurrenceInput)(nil)).Elem(), SBOMReferenceOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SBOMReferenceOccurrencePtrInput)(nil)).Elem(), SBOMReferenceOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SBOMStatusInput)(nil)).Elem(), SBOMStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SBOMStatusPtrInput)(nil)).Elem(), SBOMStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SbomReferenceIntotoPayloadInput)(nil)).Elem(), SbomReferenceIntotoPayloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SbomReferenceIntotoPayloadPtrInput)(nil)).Elem(), SbomReferenceIntotoPayloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SbomReferenceIntotoPredicateInput)(nil)).Elem(), SbomReferenceIntotoPredicateArgs{})
@@ -24587,6 +26591,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataPtrInput)(nil)).Elem(), SlsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceInput)(nil)).Elem(), SlsaProvenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenancePtrInput)(nil)).Elem(), SlsaProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceV1Input)(nil)).Elem(), SlsaProvenanceV1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceV1PtrInput)(nil)).Elem(), SlsaProvenanceV1Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceZeroTwoInput)(nil)).Elem(), SlsaProvenanceZeroTwoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceZeroTwoPtrInput)(nil)).Elem(), SlsaProvenanceZeroTwoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipeInput)(nil)).Elem(), SlsaRecipeArgs{})
@@ -24645,6 +26651,12 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(BuildDefinitionOutput{})
+	pulumi.RegisterOutputType(BuildDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(BuildDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(BuildMetadataOutput{})
+	pulumi.RegisterOutputType(BuildMetadataPtrOutput{})
+	pulumi.RegisterOutputType(BuildMetadataResponseOutput{})
 	pulumi.RegisterOutputType(BuildNoteOutput{})
 	pulumi.RegisterOutputType(BuildNotePtrOutput{})
 	pulumi.RegisterOutputType(BuildNoteResponseOutput{})
@@ -24780,6 +26792,9 @@ func init() {
 	pulumi.RegisterOutputType(InTotoProvenanceOutput{})
 	pulumi.RegisterOutputType(InTotoProvenancePtrOutput{})
 	pulumi.RegisterOutputType(InTotoProvenanceResponseOutput{})
+	pulumi.RegisterOutputType(InTotoSlsaProvenanceV1Output{})
+	pulumi.RegisterOutputType(InTotoSlsaProvenanceV1PtrOutput{})
+	pulumi.RegisterOutputType(InTotoSlsaProvenanceV1ResponseOutput{})
 	pulumi.RegisterOutputType(InTotoStatementOutput{})
 	pulumi.RegisterOutputType(InTotoStatementPtrOutput{})
 	pulumi.RegisterOutputType(InTotoStatementResponseOutput{})
@@ -24832,6 +26847,9 @@ func init() {
 	pulumi.RegisterOutputType(ProjectRepoIdOutput{})
 	pulumi.RegisterOutputType(ProjectRepoIdPtrOutput{})
 	pulumi.RegisterOutputType(ProjectRepoIdResponseOutput{})
+	pulumi.RegisterOutputType(ProvenanceBuilderOutput{})
+	pulumi.RegisterOutputType(ProvenanceBuilderPtrOutput{})
+	pulumi.RegisterOutputType(ProvenanceBuilderResponseOutput{})
 	pulumi.RegisterOutputType(PublisherOutput{})
 	pulumi.RegisterOutputType(PublisherPtrOutput{})
 	pulumi.RegisterOutputType(PublisherResponseOutput{})
@@ -24850,12 +26868,22 @@ func init() {
 	pulumi.RegisterOutputType(RepoIdOutput{})
 	pulumi.RegisterOutputType(RepoIdPtrOutput{})
 	pulumi.RegisterOutputType(RepoIdResponseOutput{})
+	pulumi.RegisterOutputType(ResourceDescriptorOutput{})
+	pulumi.RegisterOutputType(ResourceDescriptorArrayOutput{})
+	pulumi.RegisterOutputType(ResourceDescriptorResponseOutput{})
+	pulumi.RegisterOutputType(ResourceDescriptorResponseArrayOutput{})
+	pulumi.RegisterOutputType(RunDetailsOutput{})
+	pulumi.RegisterOutputType(RunDetailsPtrOutput{})
+	pulumi.RegisterOutputType(RunDetailsResponseOutput{})
 	pulumi.RegisterOutputType(SBOMReferenceNoteOutput{})
 	pulumi.RegisterOutputType(SBOMReferenceNotePtrOutput{})
 	pulumi.RegisterOutputType(SBOMReferenceNoteResponseOutput{})
 	pulumi.RegisterOutputType(SBOMReferenceOccurrenceOutput{})
 	pulumi.RegisterOutputType(SBOMReferenceOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(SBOMReferenceOccurrenceResponseOutput{})
+	pulumi.RegisterOutputType(SBOMStatusOutput{})
+	pulumi.RegisterOutputType(SBOMStatusPtrOutput{})
+	pulumi.RegisterOutputType(SBOMStatusResponseOutput{})
 	pulumi.RegisterOutputType(SbomReferenceIntotoPayloadOutput{})
 	pulumi.RegisterOutputType(SbomReferenceIntotoPayloadPtrOutput{})
 	pulumi.RegisterOutputType(SbomReferenceIntotoPayloadResponseOutput{})
@@ -24878,6 +26906,9 @@ func init() {
 	pulumi.RegisterOutputType(SlsaProvenanceOutput{})
 	pulumi.RegisterOutputType(SlsaProvenancePtrOutput{})
 	pulumi.RegisterOutputType(SlsaProvenanceResponseOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceV1Output{})
+	pulumi.RegisterOutputType(SlsaProvenanceV1PtrOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceV1ResponseOutput{})
 	pulumi.RegisterOutputType(SlsaProvenanceZeroTwoOutput{})
 	pulumi.RegisterOutputType(SlsaProvenanceZeroTwoPtrOutput{})
 	pulumi.RegisterOutputType(SlsaProvenanceZeroTwoResponseOutput{})

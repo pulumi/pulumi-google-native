@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// </summary>
         public readonly string EncryptionState;
         /// <summary>
+        /// Host name of the device.
+        /// </summary>
+        public readonly string Hostname;
+        /// <summary>
         /// IMEI number of device if GSM device; empty otherwise.
         /// </summary>
         public readonly string Imei;
@@ -202,6 +206,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
 
             string encryptionState,
 
+            string hostname,
+
             string imei,
 
             string kernelVersion,
@@ -247,6 +253,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
             EnabledDeveloperOptions = enabledDeveloperOptions;
             EnabledUsbDebugging = enabledUsbDebugging;
             EncryptionState = encryptionState;
+            Hostname = hostname;
             Imei = imei;
             KernelVersion = kernelVersion;
             LastSyncTime = lastSyncTime;

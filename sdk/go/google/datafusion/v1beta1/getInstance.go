@@ -70,6 +70,8 @@ type LookupInstanceResult struct {
 	Options map[string]string `pulumi:"options"`
 	// P4 service account for the customer project.
 	P4ServiceAccount string `pulumi:"p4ServiceAccount"`
+	// Optional. Current patch revision of the Data Fusion.
+	PatchRevision string `pulumi:"patchRevision"`
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance bool `pulumi:"privateInstance"`
 	// Reserved for future use.
@@ -92,6 +94,8 @@ type LookupInstanceResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// Current version of Data Fusion.
 	Version string `pulumi:"version"`
+	// Endpoint on which the Data Fusion UI is accessible to third-party users.
+	WorkforceIdentityServiceEndpoint string `pulumi:"workforceIdentityServiceEndpoint"`
 	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
 	Zone string `pulumi:"zone"`
 }
@@ -239,6 +243,11 @@ func (o LookupInstanceResultOutput) P4ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.P4ServiceAccount }).(pulumi.StringOutput)
 }
 
+// Optional. Current patch revision of the Data Fusion.
+func (o LookupInstanceResultOutput) PatchRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.PatchRevision }).(pulumi.StringOutput)
+}
+
 // Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 func (o LookupInstanceResultOutput) PrivateInstance() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.PrivateInstance }).(pulumi.BoolOutput)
@@ -289,6 +298,11 @@ func (o LookupInstanceResultOutput) UpdateTime() pulumi.StringOutput {
 // Current version of Data Fusion.
 func (o LookupInstanceResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Endpoint on which the Data Fusion UI is accessible to third-party users.
+func (o LookupInstanceResultOutput) WorkforceIdentityServiceEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.WorkforceIdentityServiceEndpoint }).(pulumi.StringOutput)
 }
 
 // Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.

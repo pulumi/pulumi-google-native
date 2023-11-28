@@ -15,12 +15,14 @@ __all__ = [
     'AuditLogConfigArgs',
     'BindingArgs',
     'ConsumerArgs',
+    'DataCatalogConfigArgs',
     'DatabaseDumpArgs',
     'EncryptionConfigArgs',
     'ExprArgs',
     'HiveMetastoreConfigArgs',
     'KerberosConfigArgs',
     'MaintenanceWindowArgs',
+    'MetadataIntegrationArgs',
     'NetworkConfigArgs',
     'ScalingConfigArgs',
     'SecretArgs',
@@ -185,6 +187,30 @@ class ConsumerArgs:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
+
+
+@pulumi.input_type
+class DataCatalogConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Specifies how metastore metadata should be integrated with the Data Catalog service.
+        :param pulumi.Input[bool] enabled: Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -360,12 +386,14 @@ class HiveMetastoreConfigArgs:
     def __init__(__self__, *,
                  auxiliary_versions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 endpoint_protocol: Optional[pulumi.Input['HiveMetastoreConfigEndpointProtocol']] = None,
                  kerberos_config: Optional[pulumi.Input['KerberosConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
+        :param pulumi.Input['HiveMetastoreConfigEndpointProtocol'] endpoint_protocol: The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
         :param pulumi.Input['KerberosConfigArgs'] kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         :param pulumi.Input[str] version: Immutable. The Hive metastore schema version.
         """
@@ -373,6 +401,8 @@ class HiveMetastoreConfigArgs:
             pulumi.set(__self__, "auxiliary_versions", auxiliary_versions)
         if config_overrides is not None:
             pulumi.set(__self__, "config_overrides", config_overrides)
+        if endpoint_protocol is not None:
+            pulumi.set(__self__, "endpoint_protocol", endpoint_protocol)
         if kerberos_config is not None:
             pulumi.set(__self__, "kerberos_config", kerberos_config)
         if version is not None:
@@ -401,6 +431,18 @@ class HiveMetastoreConfigArgs:
     @config_overrides.setter
     def config_overrides(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "config_overrides", value)
+
+    @property
+    @pulumi.getter(name="endpointProtocol")
+    def endpoint_protocol(self) -> Optional[pulumi.Input['HiveMetastoreConfigEndpointProtocol']]:
+        """
+        The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+        """
+        return pulumi.get(self, "endpoint_protocol")
+
+    @endpoint_protocol.setter
+    def endpoint_protocol(self, value: Optional[pulumi.Input['HiveMetastoreConfigEndpointProtocol']]):
+        pulumi.set(self, "endpoint_protocol", value)
 
     @property
     @pulumi.getter(name="kerberosConfig")
@@ -521,6 +563,30 @@ class MaintenanceWindowArgs:
     @hour_of_day.setter
     def hour_of_day(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "hour_of_day", value)
+
+
+@pulumi.input_type
+class MetadataIntegrationArgs:
+    def __init__(__self__, *,
+                 data_catalog_config: Optional[pulumi.Input['DataCatalogConfigArgs']] = None):
+        """
+        Specifies how metastore metadata should be integrated with external services.
+        :param pulumi.Input['DataCatalogConfigArgs'] data_catalog_config: Optional. The integration config for the Data Catalog service.
+        """
+        if data_catalog_config is not None:
+            pulumi.set(__self__, "data_catalog_config", data_catalog_config)
+
+    @property
+    @pulumi.getter(name="dataCatalogConfig")
+    def data_catalog_config(self) -> Optional[pulumi.Input['DataCatalogConfigArgs']]:
+        """
+        Optional. The integration config for the Data Catalog service.
+        """
+        return pulumi.get(self, "data_catalog_config")
+
+    @data_catalog_config.setter
+    def data_catalog_config(self, value: Optional[pulumi.Input['DataCatalogConfigArgs']]):
+        pulumi.set(self, "data_catalog_config", value)
 
 
 @pulumi.input_type

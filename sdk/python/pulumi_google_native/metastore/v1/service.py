@@ -24,6 +24,7 @@ class ServiceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
+                 metadata_integration: Optional[pulumi.Input['MetadataIntegrationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
@@ -42,6 +43,7 @@ class ServiceArgs:
         :param pulumi.Input['HiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
+        :param pulumi.Input['MetadataIntegrationArgs'] metadata_integration: Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         :param pulumi.Input['NetworkConfigArgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
@@ -65,6 +67,8 @@ class ServiceArgs:
             pulumi.set(__self__, "location", location)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if metadata_integration is not None:
+            pulumi.set(__self__, "metadata_integration", metadata_integration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -166,6 +170,18 @@ class ServiceArgs:
     @maintenance_window.setter
     def maintenance_window(self, value: Optional[pulumi.Input['MaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
+
+    @property
+    @pulumi.getter(name="metadataIntegration")
+    def metadata_integration(self) -> Optional[pulumi.Input['MetadataIntegrationArgs']]:
+        """
+        Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+        """
+        return pulumi.get(self, "metadata_integration")
+
+    @metadata_integration.setter
+    def metadata_integration(self, value: Optional[pulumi.Input['MetadataIntegrationArgs']]):
+        pulumi.set(self, "metadata_integration", value)
 
     @property
     @pulumi.getter
@@ -296,6 +312,7 @@ class Service(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']]] = None,
+                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
@@ -318,6 +335,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
         :param pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
+        :param pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']] metadata_integration: Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
@@ -359,6 +377,7 @@ class Service(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']]] = None,
+                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
@@ -385,6 +404,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["maintenance_window"] = maintenance_window
+            __props__.__dict__["metadata_integration"] = metadata_integration
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["network_config"] = network_config
@@ -439,6 +459,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["maintenance_window"] = None
+        __props__.__dict__["metadata_integration"] = None
         __props__.__dict__["metadata_management_activity"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
@@ -525,6 +546,14 @@ class Service(pulumi.CustomResource):
         The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
         """
         return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="metadataIntegration")
+    def metadata_integration(self) -> pulumi.Output['outputs.MetadataIntegrationResponse']:
+        """
+        Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+        """
+        return pulumi.get(self, "metadata_integration")
 
     @property
     @pulumi.getter(name="metadataManagementActivity")

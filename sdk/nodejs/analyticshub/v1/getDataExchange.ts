@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -52,6 +55,10 @@ export interface GetDataExchangeResult {
      * Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
      */
     readonly primaryContact: string;
+    /**
+     * Optional. Configurable data sharing environment option for a data exchange.
+     */
+    readonly sharingEnvironmentConfig: outputs.analyticshub.v1.SharingEnvironmentConfigResponse;
 }
 /**
  * Gets the details of a data exchange.

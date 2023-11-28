@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetCloneJobResult:
-    def __init__(__self__, compute_engine_target_details=None, compute_engine_vm_details=None, create_time=None, end_time=None, error=None, name=None, state=None, state_time=None, steps=None, target_details=None):
+    def __init__(__self__, compute_engine_disks_target_details=None, compute_engine_target_details=None, compute_engine_vm_details=None, create_time=None, end_time=None, error=None, name=None, state=None, state_time=None, steps=None, target_details=None):
+        if compute_engine_disks_target_details and not isinstance(compute_engine_disks_target_details, dict):
+            raise TypeError("Expected argument 'compute_engine_disks_target_details' to be a dict")
+        pulumi.set(__self__, "compute_engine_disks_target_details", compute_engine_disks_target_details)
         if compute_engine_target_details and not isinstance(compute_engine_target_details, dict):
             raise TypeError("Expected argument 'compute_engine_target_details' to be a dict")
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
@@ -50,6 +53,14 @@ class GetCloneJobResult:
         if target_details and not isinstance(target_details, dict):
             raise TypeError("Expected argument 'target_details' to be a dict")
         pulumi.set(__self__, "target_details", target_details)
+
+    @property
+    @pulumi.getter(name="computeEngineDisksTargetDetails")
+    def compute_engine_disks_target_details(self) -> 'outputs.ComputeEngineDisksTargetDetailsResponse':
+        """
+        Details of the target Persistent Disks in Compute Engine.
+        """
+        return pulumi.get(self, "compute_engine_disks_target_details")
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -144,6 +155,7 @@ class AwaitableGetCloneJobResult(GetCloneJobResult):
         if False:
             yield self
         return GetCloneJobResult(
+            compute_engine_disks_target_details=self.compute_engine_disks_target_details,
             compute_engine_target_details=self.compute_engine_target_details,
             compute_engine_vm_details=self.compute_engine_vm_details,
             create_time=self.create_time,
@@ -175,6 +187,7 @@ def get_clone_job(clone_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1alpha1:getCloneJob', __args__, opts=opts, typ=GetCloneJobResult).value
 
     return AwaitableGetCloneJobResult(
+        compute_engine_disks_target_details=pulumi.get(__ret__, 'compute_engine_disks_target_details'),
         compute_engine_target_details=pulumi.get(__ret__, 'compute_engine_target_details'),
         compute_engine_vm_details=pulumi.get(__ret__, 'compute_engine_vm_details'),
         create_time=pulumi.get(__ret__, 'create_time'),

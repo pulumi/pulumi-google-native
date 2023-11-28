@@ -66,6 +66,10 @@ export class ContactCenter extends pulumi.CustomResource {
      */
     public readonly instanceConfig!: pulumi.Output<outputs.contactcenteraiplatform.v1alpha1.InstanceConfigResponse>;
     /**
+     * Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+     */
+    public readonly kmsKey!: pulumi.Output<string>;
+    /**
      * Labels as key value pairs
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -126,6 +130,7 @@ export class ContactCenter extends pulumi.CustomResource {
             resourceInputs["customerDomainPrefix"] = args ? args.customerDomainPrefix : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["instanceConfig"] = args ? args.instanceConfig : undefined;
+            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -145,6 +150,7 @@ export class ContactCenter extends pulumi.CustomResource {
             resourceInputs["customerDomainPrefix"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["instanceConfig"] = undefined /*out*/;
+            resourceInputs["kmsKey"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -191,6 +197,10 @@ export interface ContactCenterArgs {
      * The configuration of this instance, it is currently immutable once created.
      */
     instanceConfig?: pulumi.Input<inputs.contactcenteraiplatform.v1alpha1.InstanceConfigArgs>;
+    /**
+     * Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+     */
+    kmsKey?: pulumi.Input<string>;
     /**
      * Labels as key value pairs
      */

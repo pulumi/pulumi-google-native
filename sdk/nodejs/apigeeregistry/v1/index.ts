@@ -145,6 +145,21 @@ export type DeploymentArtifact = import("./deploymentArtifact").DeploymentArtifa
 export const DeploymentArtifact: typeof import("./deploymentArtifact").DeploymentArtifact = null as any;
 utilities.lazyLoad(exports, ["DeploymentArtifact"], () => require("./deploymentArtifact"));
 
+export { DocumentIamBindingArgs } from "./documentIamBinding";
+export type DocumentIamBinding = import("./documentIamBinding").DocumentIamBinding;
+export const DocumentIamBinding: typeof import("./documentIamBinding").DocumentIamBinding = null as any;
+utilities.lazyLoad(exports, ["DocumentIamBinding"], () => require("./documentIamBinding"));
+
+export { DocumentIamMemberArgs } from "./documentIamMember";
+export type DocumentIamMember = import("./documentIamMember").DocumentIamMember;
+export const DocumentIamMember: typeof import("./documentIamMember").DocumentIamMember = null as any;
+utilities.lazyLoad(exports, ["DocumentIamMember"], () => require("./documentIamMember"));
+
+export { DocumentIamPolicyArgs } from "./documentIamPolicy";
+export type DocumentIamPolicy = import("./documentIamPolicy").DocumentIamPolicy;
+export const DocumentIamPolicy: typeof import("./documentIamPolicy").DocumentIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DocumentIamPolicy"], () => require("./documentIamPolicy"));
+
 export { GetApiArgs, GetApiResult, GetApiOutputArgs } from "./getApi";
 export const getApi: typeof import("./getApi").getApi = null as any;
 export const getApiOutput: typeof import("./getApi").getApiOutput = null as any;
@@ -204,6 +219,11 @@ export { GetDeploymentArtifactArgs, GetDeploymentArtifactResult, GetDeploymentAr
 export const getDeploymentArtifact: typeof import("./getDeploymentArtifact").getDeploymentArtifact = null as any;
 export const getDeploymentArtifactOutput: typeof import("./getDeploymentArtifact").getDeploymentArtifactOutput = null as any;
 utilities.lazyLoad(exports, ["getDeploymentArtifact","getDeploymentArtifactOutput"], () => require("./getDeploymentArtifact"));
+
+export { GetDocumentIamPolicyArgs, GetDocumentIamPolicyResult, GetDocumentIamPolicyOutputArgs } from "./getDocumentIamPolicy";
+export const getDocumentIamPolicy: typeof import("./getDocumentIamPolicy").getDocumentIamPolicy = null as any;
+export const getDocumentIamPolicyOutput: typeof import("./getDocumentIamPolicy").getDocumentIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDocumentIamPolicy","getDocumentIamPolicyOutput"], () => require("./getDocumentIamPolicy"));
 
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
@@ -346,6 +366,12 @@ const _module = {
                 return new Deployment(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:DeploymentArtifact":
                 return new DeploymentArtifact(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:DocumentIamBinding":
+                return new DocumentIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:DocumentIamMember":
+                return new DocumentIamMember(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:DocumentIamPolicy":
+                return new DocumentIamPolicy(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:InstanceIamBinding":

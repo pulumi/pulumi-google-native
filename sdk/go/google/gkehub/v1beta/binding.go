@@ -22,16 +22,16 @@ type Binding struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// When the membership binding was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
-	Fleet    pulumi.BoolOutput   `pulumi:"fleet"`
-	Location pulumi.StringOutput `pulumi:"location"`
+	// Optional. Labels for this MembershipBinding.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Required. The ID to use for the MembershipBinding.
 	MembershipBindingId pulumi.StringOutput `pulumi:"membershipBindingId"`
 	MembershipId        pulumi.StringOutput `pulumi:"membershipId"`
 	// The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+	// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// State of the membership binding resource.
 	State MembershipBindingLifecycleStateResponseOutput `pulumi:"state"`
@@ -94,23 +94,23 @@ func (BindingState) ElementType() reflect.Type {
 }
 
 type bindingArgs struct {
-	// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
-	Fleet    *bool   `pulumi:"fleet"`
-	Location *string `pulumi:"location"`
+	// Optional. Labels for this MembershipBinding.
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
 	// Required. The ID to use for the MembershipBinding.
 	MembershipBindingId string `pulumi:"membershipBindingId"`
 	MembershipId        string `pulumi:"membershipId"`
 	// The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+	// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
 	Scope *string `pulumi:"scope"`
 }
 
 // The set of arguments for constructing a Binding resource.
 type BindingArgs struct {
-	// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
-	Fleet    pulumi.BoolPtrInput
+	// Optional. Labels for this MembershipBinding.
+	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Required. The ID to use for the MembershipBinding.
 	MembershipBindingId pulumi.StringInput
@@ -118,7 +118,7 @@ type BindingArgs struct {
 	// The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+	// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
 	Scope pulumi.StringPtrInput
 }
 
@@ -181,9 +181,9 @@ func (o BindingOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
-func (o BindingOutput) Fleet() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Binding) pulumi.BoolOutput { return v.Fleet }).(pulumi.BoolOutput)
+// Optional. Labels for this MembershipBinding.
+func (o BindingOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Binding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o BindingOutput) Location() pulumi.StringOutput {
@@ -208,7 +208,7 @@ func (o BindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
 func (o BindingOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
 }

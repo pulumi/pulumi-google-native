@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceGroupManagerResult:
-    def __init__(__self__, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, fingerprint=None, instance_group=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, stateful_policy=None, status=None, target_pools=None, target_size=None, update_policy=None, versions=None, zone=None):
+    def __init__(__self__, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, stateful_policy=None, status=None, target_pools=None, target_size=None, update_policy=None, versions=None, zone=None):
         if auto_healing_policies and not isinstance(auto_healing_policies, list):
             raise TypeError("Expected argument 'auto_healing_policies' to be a list")
         pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
@@ -44,6 +44,9 @@ class GetInstanceGroupManagerResult:
         if instance_group and not isinstance(instance_group, str):
             raise TypeError("Expected argument 'instance_group' to be a str")
         pulumi.set(__self__, "instance_group", instance_group)
+        if instance_lifecycle_policy and not isinstance(instance_lifecycle_policy, dict):
+            raise TypeError("Expected argument 'instance_lifecycle_policy' to be a dict")
+        pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if instance_template and not isinstance(instance_template, str):
             raise TypeError("Expected argument 'instance_template' to be a str")
         pulumi.set(__self__, "instance_template", instance_template)
@@ -150,6 +153,14 @@ class GetInstanceGroupManagerResult:
         The URL of the Instance Group resource.
         """
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> 'outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse':
+        """
+        The repair policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
 
     @property
     @pulumi.getter(name="instanceTemplate")
@@ -278,6 +289,7 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
             distribution_policy=self.distribution_policy,
             fingerprint=self.fingerprint,
             instance_group=self.instance_group,
+            instance_lifecycle_policy=self.instance_lifecycle_policy,
             instance_template=self.instance_template,
             kind=self.kind,
             list_managed_instances_results=self.list_managed_instances_results,
@@ -317,6 +329,7 @@ def get_instance_group_manager(instance_group_manager: Optional[str] = None,
         distribution_policy=pulumi.get(__ret__, 'distribution_policy'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         instance_group=pulumi.get(__ret__, 'instance_group'),
+        instance_lifecycle_policy=pulumi.get(__ret__, 'instance_lifecycle_policy'),
         instance_template=pulumi.get(__ret__, 'instance_template'),
         kind=pulumi.get(__ret__, 'kind'),
         list_managed_instances_results=pulumi.get(__ret__, 'list_managed_instances_results'),

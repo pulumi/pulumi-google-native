@@ -40,7 +40,7 @@ export interface GetRestorePlanResult {
      */
     readonly createTime: string;
     /**
-     * User specified descriptive string for this RestorePlan.
+     * Optional. User specified descriptive string for this RestorePlan.
      */
     readonly description: string;
     /**
@@ -48,7 +48,7 @@ export interface GetRestorePlanResult {
      */
     readonly etag: string;
     /**
-     * A set of custom labels supplied by user.
+     * Optional. A set of custom labels supplied by user.
      */
     readonly labels: {[key: string]: string};
     /**
@@ -59,6 +59,14 @@ export interface GetRestorePlanResult {
      * Configuration of Restores created via this RestorePlan.
      */
     readonly restoreConfig: outputs.gkebackup.v1.RestoreConfigResponse;
+    /**
+     * State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation.
+     */
+    readonly state: string;
+    /**
+     * Human-readable description of why RestorePlan is in the current `state`
+     */
+    readonly stateReason: string;
     /**
      * Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
      */

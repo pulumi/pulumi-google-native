@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Returns information about a `BuildTrigger`. This API is experimental.
+// Returns information about a `BuildTrigger`.
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTriggerResult

@@ -41,6 +41,10 @@ export class NodePool extends pulumi.CustomResource {
      * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
      */
     public readonly autoscaling!: pulumi.Output<outputs.container.v1beta1.NodePoolAutoscalingResponse>;
+    /**
+     * Enable best effort provisioning for nodes
+     */
+    public readonly bestEffortProvisioning!: pulumi.Output<outputs.container.v1beta1.BestEffortProvisioningResponse>;
     public readonly clusterId!: pulumi.Output<string>;
     /**
      * Which conditions caused the current node pool state.
@@ -93,6 +97,10 @@ export class NodePool extends pulumi.CustomResource {
     public /*out*/ readonly podIpv4CidrSize!: pulumi.Output<number>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Specifies the configuration of queued provisioning.
+     */
+    public readonly queuedProvisioning!: pulumi.Output<outputs.container.v1beta1.QueuedProvisioningResponse>;
+    /**
      * [Output only] Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -134,6 +142,7 @@ export class NodePool extends pulumi.CustomResource {
                 throw new Error("Missing required property 'clusterId'");
             }
             resourceInputs["autoscaling"] = args ? args.autoscaling : undefined;
+            resourceInputs["bestEffortProvisioning"] = args ? args.bestEffortProvisioning : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["conditions"] = args ? args.conditions : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
@@ -148,6 +157,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["placementPolicy"] = args ? args.placementPolicy : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["queuedProvisioning"] = args ? args.queuedProvisioning : undefined;
             resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
@@ -159,6 +169,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["updateInfo"] = undefined /*out*/;
         } else {
             resourceInputs["autoscaling"] = undefined /*out*/;
+            resourceInputs["bestEffortProvisioning"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
@@ -174,6 +185,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["placementPolicy"] = undefined /*out*/;
             resourceInputs["podIpv4CidrSize"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["queuedProvisioning"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
@@ -196,6 +208,10 @@ export interface NodePoolArgs {
      * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
      */
     autoscaling?: pulumi.Input<inputs.container.v1beta1.NodePoolAutoscalingArgs>;
+    /**
+     * Enable best effort provisioning for nodes
+     */
+    bestEffortProvisioning?: pulumi.Input<inputs.container.v1beta1.BestEffortProvisioningArgs>;
     /**
      * Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
      *
@@ -253,6 +269,10 @@ export interface NodePoolArgs {
      * @deprecated Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Specifies the configuration of queued provisioning.
+     */
+    queuedProvisioning?: pulumi.Input<inputs.container.v1beta1.QueuedProvisioningArgs>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */

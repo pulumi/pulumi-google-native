@@ -17,6 +17,7 @@ __all__ = ['RepositoryArgs', 'Repository']
 @pulumi.input_type
 class RepositoryArgs:
     def __init__(__self__, *,
+                 repository_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input['RepositoryFormat']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -24,18 +25,18 @@ class RepositoryArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  maven_config: Optional[pulumi.Input['MavenRepositoryConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 repository_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Repository resource.
+        :param pulumi.Input[str] repository_id: Required. The repository id to use for this repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input['RepositoryFormat'] format: The format of packages that are stored in the repository.
+        :param pulumi.Input['RepositoryFormat'] format: Optional. The format of packages that are stored in the repository.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
         :param pulumi.Input['MavenRepositoryConfigArgs'] maven_config: Maven repository config contains repository level configuration for the repositories of maven type.
-        :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-        :param pulumi.Input[str] repository_id: The repository id to use for this repository.
+        :param pulumi.Input[str] name: The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         """
+        pulumi.set(__self__, "repository_id", repository_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if format is not None:
@@ -52,8 +53,18 @@ class RepositoryArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if repository_id is not None:
-            pulumi.set(__self__, "repository_id", repository_id)
+
+    @property
+    @pulumi.getter(name="repositoryId")
+    def repository_id(self) -> pulumi.Input[str]:
+        """
+        Required. The repository id to use for this repository.
+        """
+        return pulumi.get(self, "repository_id")
+
+    @repository_id.setter
+    def repository_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository_id", value)
 
     @property
     @pulumi.getter
@@ -71,7 +82,7 @@ class RepositoryArgs:
     @pulumi.getter
     def format(self) -> Optional[pulumi.Input['RepositoryFormat']]:
         """
-        The format of packages that are stored in the repository.
+        Optional. The format of packages that are stored in the repository.
         """
         return pulumi.get(self, "format")
 
@@ -128,7 +139,7 @@ class RepositoryArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         """
         return pulumi.get(self, "name")
 
@@ -144,18 +155,6 @@ class RepositoryArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="repositoryId")
-    def repository_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The repository id to use for this repository.
-        """
-        return pulumi.get(self, "repository_id")
-
-    @repository_id.setter
-    def repository_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "repository_id", value)
 
 
 class Repository(pulumi.CustomResource):
@@ -179,18 +178,18 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input['RepositoryFormat'] format: The format of packages that are stored in the repository.
+        :param pulumi.Input['RepositoryFormat'] format: Optional. The format of packages that are stored in the repository.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
         :param pulumi.Input[pulumi.InputType['MavenRepositoryConfigArgs']] maven_config: Maven repository config contains repository level configuration for the repositories of maven type.
-        :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-        :param pulumi.Input[str] repository_id: The repository id to use for this repository.
+        :param pulumi.Input[str] name: The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
+        :param pulumi.Input[str] repository_id: Required. The repository id to use for this repository.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[RepositoryArgs] = None,
+                 args: RepositoryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository.
@@ -236,12 +235,14 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["maven_config"] = maven_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if repository_id is None and not opts.urn:
+                raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["size_bytes"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Repository, __self__).__init__(
             'google-native:artifactregistry/v1beta2:Repository',
@@ -300,7 +301,7 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def format(self) -> pulumi.Output[str]:
         """
-        The format of packages that are stored in the repository.
+        Optional. The format of packages that are stored in the repository.
         """
         return pulumi.get(self, "format")
 
@@ -337,7 +338,7 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         """
         return pulumi.get(self, "name")
 
@@ -348,9 +349,9 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repositoryId")
-    def repository_id(self) -> pulumi.Output[Optional[str]]:
+    def repository_id(self) -> pulumi.Output[str]:
         """
-        The repository id to use for this repository.
+        Required. The repository id to use for this repository.
         """
         return pulumi.get(self, "repository_id")
 

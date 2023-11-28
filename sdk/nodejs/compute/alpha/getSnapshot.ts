@@ -58,7 +58,7 @@ export interface GetSnapshotResult {
      */
     readonly downloadBytes: string;
     /**
-     * Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+     * Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
      */
     readonly enableConfidentialCompute: boolean;
     /**
@@ -102,6 +102,10 @@ export interface GetSnapshotResult {
      */
     readonly name: string;
     /**
+     * URL of the region where the snapshot resides. Only applicable for regional snapshots.
+     */
+    readonly region: string;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
@@ -141,6 +145,10 @@ export interface GetSnapshotResult {
      * The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
      */
     readonly sourceInstantSnapshot: string;
+    /**
+     * Customer provided encryption key when creating Snapshot from Instant Snapshot.
+     */
+    readonly sourceInstantSnapshotEncryptionKey: outputs.compute.alpha.CustomerEncryptionKeyResponse;
     /**
      * The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
      */

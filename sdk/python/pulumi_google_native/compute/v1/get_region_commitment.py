@@ -170,7 +170,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter
     def reservations(self) -> Sequence['outputs.ReservationResponse']:
         """
-        List of reservations in this commitment.
+        List of create-on-create reseravtions for this commitment.
         """
         return pulumi.get(self, "reservations")
 

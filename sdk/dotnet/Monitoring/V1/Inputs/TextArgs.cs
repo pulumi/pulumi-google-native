@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         [Input("format")]
         public Input<Pulumi.GoogleNative.Monitoring.V1.TextFormat>? Format { get; set; }
 
+        /// <summary>
+        /// How the text is styled
+        /// </summary>
+        [Input("style")]
+        public Input<Inputs.TextStyleArgs>? Style { get; set; }
+
         public TextArgs()
         {
         }

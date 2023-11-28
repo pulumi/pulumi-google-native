@@ -30,12 +30,20 @@ type LookupRepositoryArgs struct {
 }
 
 type LookupRepositoryResult struct {
+	// Optional. The repository's user-friendly name.
+	DisplayName string `pulumi:"displayName"`
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	GitRemoteSettings GitRemoteSettingsResponse `pulumi:"gitRemoteSettings"`
+	// Optional. Repository user labels.
+	Labels map[string]string `pulumi:"labels"`
 	// The repository's name.
 	Name string `pulumi:"name"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion string `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
+	// Optional. The service account to run workflow invocations under.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+	SetAuthenticatedUserAdmin bool `pulumi:"setAuthenticatedUserAdmin"`
 	// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
 	WorkspaceCompilationOverrides WorkspaceCompilationOverridesResponse `pulumi:"workspaceCompilationOverrides"`
 }
@@ -83,9 +91,19 @@ func (o LookupRepositoryResultOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
+// Optional. The repository's user-friendly name.
+func (o LookupRepositoryResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
 // Optional. If set, configures this repository to be linked to a Git remote.
 func (o LookupRepositoryResultOutput) GitRemoteSettings() GitRemoteSettingsResponseOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) GitRemoteSettingsResponse { return v.GitRemoteSettings }).(GitRemoteSettingsResponseOutput)
+}
+
+// Optional. Repository user labels.
+func (o LookupRepositoryResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The repository's name.
@@ -96,6 +114,16 @@ func (o LookupRepositoryResultOutput) Name() pulumi.StringOutput {
 // Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 func (o LookupRepositoryResultOutput) NpmrcEnvironmentVariablesSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.NpmrcEnvironmentVariablesSecretVersion }).(pulumi.StringOutput)
+}
+
+// Optional. The service account to run workflow invocations under.
+func (o LookupRepositoryResultOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+func (o LookupRepositoryResultOutput) SetAuthenticatedUserAdmin() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) bool { return v.SetAuthenticatedUserAdmin }).(pulumi.BoolOutput)
 }
 
 // Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.

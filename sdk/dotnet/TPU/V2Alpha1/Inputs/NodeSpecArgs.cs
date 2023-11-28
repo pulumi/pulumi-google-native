@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Inputs
     public sealed class NodeSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Fields to specify in case of multi-node request.
+        /// </summary>
+        [Input("multiNodeParams")]
+        public Input<Inputs.MultiNodeParamsArgs>? MultiNodeParams { get; set; }
+
+        /// <summary>
         /// The node.
         /// </summary>
         [Input("node", required: true)]

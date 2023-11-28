@@ -30,8 +30,10 @@ class ClusterArgs:
                  database_encryption: Optional[pulumi.Input['DatabaseEncryptionArgs']] = None,
                  default_max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_k8s_beta_apis: Optional[pulumi.Input['K8sBetaAPIConfigArgs']] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 enterprise_config: Optional[pulumi.Input['EnterpriseConfigArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input['FleetArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['IdentityServiceConfigArgs']] = None,
@@ -62,6 +64,7 @@ class ClusterArgs:
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 parent_product_config: Optional[pulumi.Input['ParentProductConfigArgs']] = None,
                  pod_security_policy_config: Optional[pulumi.Input['PodSecurityPolicyConfigArgs']] = None,
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
@@ -70,6 +73,7 @@ class ClusterArgs:
                  release_channel: Optional[pulumi.Input['ReleaseChannelArgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ResourceUsageExportConfigArgs']] = None,
+                 security_posture_config: Optional[pulumi.Input['SecurityPostureConfigArgs']] = None,
                  shielded_nodes: Optional[pulumi.Input['ShieldedNodesArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input['TpuConfigArgs']] = None,
@@ -93,8 +97,10 @@ class ClusterArgs:
         :param pulumi.Input['DatabaseEncryptionArgs'] database_encryption: Configuration of etcd encryption.
         :param pulumi.Input['MaxPodsConstraintArgs'] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
         :param pulumi.Input[str] description: An optional description of this cluster.
+        :param pulumi.Input['K8sBetaAPIConfigArgs'] enable_k8s_beta_apis: Kubernetes open source beta apis enabled on the cluster. Only beta apis.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
         :param pulumi.Input[bool] enable_tpu: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
+        :param pulumi.Input['EnterpriseConfigArgs'] enterprise_config: GKE Enterprise Configuration.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['FleetArgs'] fleet: Fleet information for the cluster.
         :param pulumi.Input['IdentityServiceConfigArgs'] identity_service_config: Configuration for Identity Service component.
@@ -124,14 +130,16 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration of the cluster.
         :param pulumi.Input[str] parent: The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
+        :param pulumi.Input['ParentProductConfigArgs'] parent_product_config: The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
         :param pulumi.Input['PodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the PodSecurityPolicy feature.
         :param pulumi.Input[bool] private_cluster: If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
-        :param pulumi.Input['ProtectConfigArgs'] protect_config: Enable/Disable Protect API features for the cluster.
+        :param pulumi.Input['ProtectConfigArgs'] protect_config: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         :param pulumi.Input['ReleaseChannelArgs'] release_channel: Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input['ResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
+        :param pulumi.Input['SecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster.
         :param pulumi.Input['ShieldedNodesArgs'] shielded_nodes: Shielded Nodes configuration.
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         :param pulumi.Input['TpuConfigArgs'] tpu_config: Configuration for Cloud TPU support;
@@ -167,6 +175,8 @@ class ClusterArgs:
             pulumi.set(__self__, "default_max_pods_constraint", default_max_pods_constraint)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_k8s_beta_apis is not None:
+            pulumi.set(__self__, "enable_k8s_beta_apis", enable_k8s_beta_apis)
         if enable_kubernetes_alpha is not None:
             pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
         if enable_tpu is not None:
@@ -174,6 +184,8 @@ class ClusterArgs:
             pulumi.log.warn("""enable_tpu is deprecated: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""")
         if enable_tpu is not None:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
+        if enterprise_config is not None:
+            pulumi.set(__self__, "enterprise_config", enterprise_config)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if fleet is not None:
@@ -246,6 +258,8 @@ class ClusterArgs:
             pulumi.set(__self__, "notification_config", notification_config)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if parent_product_config is not None:
+            pulumi.set(__self__, "parent_product_config", parent_product_config)
         if pod_security_policy_config is not None:
             pulumi.set(__self__, "pod_security_policy_config", pod_security_policy_config)
         if private_cluster is not None:
@@ -261,6 +275,9 @@ class ClusterArgs:
         if project is not None:
             pulumi.set(__self__, "project", project)
         if protect_config is not None:
+            warnings.warn("""Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""", DeprecationWarning)
+            pulumi.log.warn("""protect_config is deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""")
+        if protect_config is not None:
             pulumi.set(__self__, "protect_config", protect_config)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
@@ -268,6 +285,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_labels", resource_labels)
         if resource_usage_export_config is not None:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if security_posture_config is not None:
+            pulumi.set(__self__, "security_posture_config", security_posture_config)
         if shielded_nodes is not None:
             pulumi.set(__self__, "shielded_nodes", shielded_nodes)
         if subnetwork is not None:
@@ -445,6 +464,18 @@ class ClusterArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="enableK8sBetaApis")
+    def enable_k8s_beta_apis(self) -> Optional[pulumi.Input['K8sBetaAPIConfigArgs']]:
+        """
+        Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+        """
+        return pulumi.get(self, "enable_k8s_beta_apis")
+
+    @enable_k8s_beta_apis.setter
+    def enable_k8s_beta_apis(self, value: Optional[pulumi.Input['K8sBetaAPIConfigArgs']]):
+        pulumi.set(self, "enable_k8s_beta_apis", value)
+
+    @property
     @pulumi.getter(name="enableKubernetesAlpha")
     def enable_kubernetes_alpha(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -470,6 +501,18 @@ class ClusterArgs:
     @enable_tpu.setter
     def enable_tpu(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_tpu", value)
+
+    @property
+    @pulumi.getter(name="enterpriseConfig")
+    def enterprise_config(self) -> Optional[pulumi.Input['EnterpriseConfigArgs']]:
+        """
+        GKE Enterprise Configuration.
+        """
+        return pulumi.get(self, "enterprise_config")
+
+    @enterprise_config.setter
+    def enterprise_config(self, value: Optional[pulumi.Input['EnterpriseConfigArgs']]):
+        pulumi.set(self, "enterprise_config", value)
 
     @property
     @pulumi.getter
@@ -841,6 +884,18 @@ class ClusterArgs:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter(name="parentProductConfig")
+    def parent_product_config(self) -> Optional[pulumi.Input['ParentProductConfigArgs']]:
+        """
+        The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+        """
+        return pulumi.get(self, "parent_product_config")
+
+    @parent_product_config.setter
+    def parent_product_config(self, value: Optional[pulumi.Input['ParentProductConfigArgs']]):
+        pulumi.set(self, "parent_product_config", value)
+
+    @property
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['PodSecurityPolicyConfigArgs']]:
         """
@@ -898,8 +953,11 @@ class ClusterArgs:
     @pulumi.getter(name="protectConfig")
     def protect_config(self) -> Optional[pulumi.Input['ProtectConfigArgs']]:
         """
-        Enable/Disable Protect API features for the cluster.
+        Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         """
+        warnings.warn("""Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""", DeprecationWarning)
+        pulumi.log.warn("""protect_config is deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""")
+
         return pulumi.get(self, "protect_config")
 
     @protect_config.setter
@@ -941,6 +999,18 @@ class ClusterArgs:
     @resource_usage_export_config.setter
     def resource_usage_export_config(self, value: Optional[pulumi.Input['ResourceUsageExportConfigArgs']]):
         pulumi.set(self, "resource_usage_export_config", value)
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> Optional[pulumi.Input['SecurityPostureConfigArgs']]:
+        """
+        Enable/Disable Security Posture API features for the cluster.
+        """
+        return pulumi.get(self, "security_posture_config")
+
+    @security_posture_config.setter
+    def security_posture_config(self, value: Optional[pulumi.Input['SecurityPostureConfigArgs']]):
+        pulumi.set(self, "security_posture_config", value)
 
     @property
     @pulumi.getter(name="shieldedNodes")
@@ -1060,8 +1130,10 @@ class Cluster(pulumi.CustomResource):
                  database_encryption: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']]] = None,
                  default_max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['K8sBetaAPIConfigArgs']]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 enterprise_config: Optional[pulumi.Input[pulumi.InputType['EnterpriseConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input[pulumi.InputType['FleetArgs']]] = None,
                  identity_service_config: Optional[pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']]] = None,
@@ -1092,6 +1164,7 @@ class Cluster(pulumi.CustomResource):
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 parent_product_config: Optional[pulumi.Input[pulumi.InputType['ParentProductConfigArgs']]] = None,
                  pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyConfigArgs']]] = None,
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
@@ -1100,6 +1173,7 @@ class Cluster(pulumi.CustomResource):
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
+                 security_posture_config: Optional[pulumi.Input[pulumi.InputType['SecurityPostureConfigArgs']]] = None,
                  shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['TpuConfigArgs']]] = None,
@@ -1127,8 +1201,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']] database_encryption: Configuration of etcd encryption.
         :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
         :param pulumi.Input[str] description: An optional description of this cluster.
+        :param pulumi.Input[pulumi.InputType['K8sBetaAPIConfigArgs']] enable_k8s_beta_apis: Kubernetes open source beta apis enabled on the cluster. Only beta apis.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
         :param pulumi.Input[bool] enable_tpu: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
+        :param pulumi.Input[pulumi.InputType['EnterpriseConfigArgs']] enterprise_config: GKE Enterprise Configuration.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['FleetArgs']] fleet: Fleet information for the cluster.
         :param pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']] identity_service_config: Configuration for Identity Service component.
@@ -1158,14 +1234,16 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration of the cluster.
         :param pulumi.Input[str] parent: The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
+        :param pulumi.Input[pulumi.InputType['ParentProductConfigArgs']] parent_product_config: The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the PodSecurityPolicy feature.
         :param pulumi.Input[bool] private_cluster: If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
         :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
-        :param pulumi.Input[pulumi.InputType['ProtectConfigArgs']] protect_config: Enable/Disable Protect API features for the cluster.
+        :param pulumi.Input[pulumi.InputType['ProtectConfigArgs']] protect_config: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         :param pulumi.Input[pulumi.InputType['ReleaseChannelArgs']] release_channel: Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
+        :param pulumi.Input[pulumi.InputType['SecurityPostureConfigArgs']] security_posture_config: Enable/Disable Security Posture API features for the cluster.
         :param pulumi.Input[pulumi.InputType['ShieldedNodesArgs']] shielded_nodes: Shielded Nodes configuration.
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         :param pulumi.Input[pulumi.InputType['TpuConfigArgs']] tpu_config: Configuration for Cloud TPU support;
@@ -1212,8 +1290,10 @@ class Cluster(pulumi.CustomResource):
                  database_encryption: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']]] = None,
                  default_max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['K8sBetaAPIConfigArgs']]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 enterprise_config: Optional[pulumi.Input[pulumi.InputType['EnterpriseConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input[pulumi.InputType['FleetArgs']]] = None,
                  identity_service_config: Optional[pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']]] = None,
@@ -1244,6 +1324,7 @@ class Cluster(pulumi.CustomResource):
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 parent_product_config: Optional[pulumi.Input[pulumi.InputType['ParentProductConfigArgs']]] = None,
                  pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyConfigArgs']]] = None,
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
@@ -1252,6 +1333,7 @@ class Cluster(pulumi.CustomResource):
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
+                 security_posture_config: Optional[pulumi.Input[pulumi.InputType['SecurityPostureConfigArgs']]] = None,
                  shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['TpuConfigArgs']]] = None,
@@ -1282,11 +1364,13 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["database_encryption"] = database_encryption
             __props__.__dict__["default_max_pods_constraint"] = default_max_pods_constraint
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_k8s_beta_apis"] = enable_k8s_beta_apis
             __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
             if enable_tpu is not None and not opts.urn:
                 warnings.warn("""Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""", DeprecationWarning)
                 pulumi.log.warn("""enable_tpu is deprecated: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""")
             __props__.__dict__["enable_tpu"] = enable_tpu
+            __props__.__dict__["enterprise_config"] = enterprise_config
             __props__.__dict__["etag"] = etag
             __props__.__dict__["fleet"] = fleet
             __props__.__dict__["identity_service_config"] = identity_service_config
@@ -1329,6 +1413,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["node_pools"] = node_pools
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["parent_product_config"] = parent_product_config
             __props__.__dict__["pod_security_policy_config"] = pod_security_policy_config
             if private_cluster is not None and not opts.urn:
                 warnings.warn("""If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.""", DeprecationWarning)
@@ -1339,10 +1424,14 @@ class Cluster(pulumi.CustomResource):
                 warnings.warn("""Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
                 pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["project"] = project
+            if protect_config is not None and not opts.urn:
+                warnings.warn("""Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""", DeprecationWarning)
+                pulumi.log.warn("""protect_config is deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""")
             __props__.__dict__["protect_config"] = protect_config
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+            __props__.__dict__["security_posture_config"] = security_posture_config
             __props__.__dict__["shielded_nodes"] = shielded_nodes
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["tpu_config"] = tpu_config
@@ -1408,9 +1497,11 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["database_encryption"] = None
         __props__.__dict__["default_max_pods_constraint"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["enable_k8s_beta_apis"] = None
         __props__.__dict__["enable_kubernetes_alpha"] = None
         __props__.__dict__["enable_tpu"] = None
         __props__.__dict__["endpoint"] = None
+        __props__.__dict__["enterprise_config"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["fleet"] = None
@@ -1443,6 +1534,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["node_pool_defaults"] = None
         __props__.__dict__["node_pools"] = None
         __props__.__dict__["notification_config"] = None
+        __props__.__dict__["parent_product_config"] = None
         __props__.__dict__["pod_security_policy_config"] = None
         __props__.__dict__["private_cluster"] = None
         __props__.__dict__["private_cluster_config"] = None
@@ -1451,6 +1543,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["release_channel"] = None
         __props__.__dict__["resource_labels"] = None
         __props__.__dict__["resource_usage_export_config"] = None
+        __props__.__dict__["security_posture_config"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["services_ipv4_cidr"] = None
         __props__.__dict__["shielded_nodes"] = None
@@ -1606,6 +1699,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="enableK8sBetaApis")
+    def enable_k8s_beta_apis(self) -> pulumi.Output['outputs.K8sBetaAPIConfigResponse']:
+        """
+        Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+        """
+        return pulumi.get(self, "enable_k8s_beta_apis")
+
+    @property
     @pulumi.getter(name="enableKubernetesAlpha")
     def enable_kubernetes_alpha(self) -> pulumi.Output[bool]:
         """
@@ -1631,6 +1732,14 @@ class Cluster(pulumi.CustomResource):
         [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
         """
         return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="enterpriseConfig")
+    def enterprise_config(self) -> pulumi.Output['outputs.EnterpriseConfigResponse']:
+        """
+        GKE Enterprise Configuration.
+        """
+        return pulumi.get(self, "enterprise_config")
 
     @property
     @pulumi.getter
@@ -1898,6 +2007,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "notification_config")
 
     @property
+    @pulumi.getter(name="parentProductConfig")
+    def parent_product_config(self) -> pulumi.Output['outputs.ParentProductConfigResponse']:
+        """
+        The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+        """
+        return pulumi.get(self, "parent_product_config")
+
+    @property
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> pulumi.Output['outputs.PodSecurityPolicyConfigResponse']:
         """
@@ -1933,8 +2050,11 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="protectConfig")
     def protect_config(self) -> pulumi.Output['outputs.ProtectConfigResponse']:
         """
-        Enable/Disable Protect API features for the cluster.
+        Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         """
+        warnings.warn("""Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""", DeprecationWarning)
+        pulumi.log.warn("""protect_config is deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""")
+
         return pulumi.get(self, "protect_config")
 
     @property
@@ -1960,6 +2080,14 @@ class Cluster(pulumi.CustomResource):
         Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
         """
         return pulumi.get(self, "resource_usage_export_config")
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> pulumi.Output['outputs.SecurityPostureConfigResponse']:
+        """
+        Enable/Disable Security Posture API features for the cluster.
+        """
+        return pulumi.get(self, "security_posture_config")
 
     @property
     @pulumi.getter(name="selfLink")

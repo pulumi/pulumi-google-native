@@ -33,6 +33,7 @@ class VersionArgs:
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['ErrorHandlerArgs']]]] = None,
                  flexible_runtime_settings: Optional[pulumi.Input['FlexibleRuntimeSettingsArgs']] = None,
+                 generated_customer_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]]] = None,
                  health_check: Optional[pulumi.Input['HealthCheckArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -71,17 +72,18 @@ class VersionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input['ErrorHandlerArgs']]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['FlexibleRuntimeSettingsArgs'] flexible_runtime_settings: Settings for App Engine flexible runtimes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] generated_customer_metadata: Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
         :param pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input['HealthCheckArgs'] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input['HealthCheckArgs'] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
         :param pulumi.Input[Sequence[pulumi.Input['LibraryArgs']]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input['LivenessCheckArgs'] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        :param pulumi.Input['LivenessCheckArgs'] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
         :param pulumi.Input['ManualScalingArgs'] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
         :param pulumi.Input['NetworkArgs'] network: Extra network settings. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input['ReadinessCheckArgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input['ReadinessCheckArgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         :param pulumi.Input['ResourcesArgs'] resources: Machine resources for this version. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] runtime: Desired runtime. Example: python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
@@ -124,6 +126,8 @@ class VersionArgs:
             pulumi.set(__self__, "error_handlers", error_handlers)
         if flexible_runtime_settings is not None:
             pulumi.set(__self__, "flexible_runtime_settings", flexible_runtime_settings)
+        if generated_customer_metadata is not None:
+            pulumi.set(__self__, "generated_customer_metadata", generated_customer_metadata)
         if handlers is not None:
             pulumi.set(__self__, "handlers", handlers)
         if health_check is not None:
@@ -359,6 +363,18 @@ class VersionArgs:
         pulumi.set(self, "flexible_runtime_settings", value)
 
     @property
+    @pulumi.getter(name="generatedCustomerMetadata")
+    def generated_customer_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+        """
+        return pulumi.get(self, "generated_customer_metadata")
+
+    @generated_customer_metadata.setter
+    def generated_customer_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "generated_customer_metadata", value)
+
+    @property
     @pulumi.getter
     def handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]]]:
         """
@@ -374,7 +390,7 @@ class VersionArgs:
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input['HealthCheckArgs']]:
         """
-        Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
         """
         return pulumi.get(self, "health_check")
 
@@ -434,7 +450,7 @@ class VersionArgs:
     @pulumi.getter(name="livenessCheck")
     def liveness_check(self) -> Optional[pulumi.Input['LivenessCheckArgs']]:
         """
-        Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
         """
         return pulumi.get(self, "liveness_check")
 
@@ -482,7 +498,7 @@ class VersionArgs:
     @pulumi.getter(name="readinessCheck")
     def readiness_check(self) -> Optional[pulumi.Input['ReadinessCheckArgs']]:
         """
-        Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         """
         return pulumi.get(self, "readiness_check")
 
@@ -646,6 +662,7 @@ class Version(pulumi.CustomResource):
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
                  flexible_runtime_settings: Optional[pulumi.Input[pulumi.InputType['FlexibleRuntimeSettingsArgs']]] = None,
+                 generated_customer_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -690,17 +707,18 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['FlexibleRuntimeSettingsArgs']] flexible_runtime_settings: Settings for App Engine flexible runtimes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] generated_customer_metadata: Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[pulumi.InputType['HealthCheckArgs']] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[pulumi.InputType['HealthCheckArgs']] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[pulumi.InputType['LivenessCheckArgs']] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        :param pulumi.Input[pulumi.InputType['LivenessCheckArgs']] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
         :param pulumi.Input[pulumi.InputType['ManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
         :param pulumi.Input[pulumi.InputType['NetworkArgs']] network: Extra network settings. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[pulumi.InputType['ReadinessCheckArgs']] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[pulumi.InputType['ReadinessCheckArgs']] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         :param pulumi.Input[pulumi.InputType['ResourcesArgs']] resources: Machine resources for this version. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] runtime: Desired runtime. Example: python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
@@ -753,6 +771,7 @@ class Version(pulumi.CustomResource):
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
                  flexible_runtime_settings: Optional[pulumi.Input[pulumi.InputType['FlexibleRuntimeSettingsArgs']]] = None,
+                 generated_customer_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -802,6 +821,7 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["env_variables"] = env_variables
             __props__.__dict__["error_handlers"] = error_handlers
             __props__.__dict__["flexible_runtime_settings"] = flexible_runtime_settings
+            __props__.__dict__["generated_customer_metadata"] = generated_customer_metadata
             __props__.__dict__["handlers"] = handlers
             __props__.__dict__["health_check"] = health_check
             __props__.__dict__["id"] = id
@@ -877,6 +897,7 @@ class Version(pulumi.CustomResource):
         __props__.__dict__["env_variables"] = None
         __props__.__dict__["error_handlers"] = None
         __props__.__dict__["flexible_runtime_settings"] = None
+        __props__.__dict__["generated_customer_metadata"] = None
         __props__.__dict__["handlers"] = None
         __props__.__dict__["health_check"] = None
         __props__.__dict__["inbound_services"] = None
@@ -1045,6 +1066,14 @@ class Version(pulumi.CustomResource):
         return pulumi.get(self, "flexible_runtime_settings")
 
     @property
+    @pulumi.getter(name="generatedCustomerMetadata")
+    def generated_customer_metadata(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+        """
+        return pulumi.get(self, "generated_customer_metadata")
+
+    @property
     @pulumi.getter
     def handlers(self) -> pulumi.Output[Sequence['outputs.UrlMapResponse']]:
         """
@@ -1056,7 +1085,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> pulumi.Output['outputs.HealthCheckResponse']:
         """
-        Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
         """
         return pulumi.get(self, "health_check")
 
@@ -1088,7 +1117,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="livenessCheck")
     def liveness_check(self) -> pulumi.Output['outputs.LivenessCheckResponse']:
         """
-        Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
         """
         return pulumi.get(self, "liveness_check")
 
@@ -1128,7 +1157,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="readinessCheck")
     def readiness_check(self) -> pulumi.Output['outputs.ReadinessCheckResponse']:
         """
-        Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         """
         return pulumi.get(self, "readiness_check")
 

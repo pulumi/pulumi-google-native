@@ -1052,12 +1052,14 @@ type Condition struct {
 	IpSubnetworks []string `pulumi:"ipSubnetworks"`
 	// The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user.
 	Members []string `pulumi:"members"`
-	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 	Negate *bool `pulumi:"negate"`
 	// The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
 	Regions []string `pulumi:"regions"`
 	// A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
 	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+	VpcNetworkSources []VpcNetworkSource `pulumi:"vpcNetworkSources"`
 }
 
 // ConditionInput is an input type that accepts ConditionArgs and ConditionOutput values.
@@ -1079,12 +1081,14 @@ type ConditionArgs struct {
 	IpSubnetworks pulumi.StringArrayInput `pulumi:"ipSubnetworks"`
 	// The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 	Negate pulumi.BoolPtrInput `pulumi:"negate"`
 	// The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
 	// A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
 	RequiredAccessLevels pulumi.StringArrayInput `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+	VpcNetworkSources VpcNetworkSourceArrayInput `pulumi:"vpcNetworkSources"`
 }
 
 func (ConditionArgs) ElementType() reflect.Type {
@@ -1172,7 +1176,7 @@ func (o ConditionOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Condition) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 func (o ConditionOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Condition) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
 }
@@ -1185,6 +1189,11 @@ func (o ConditionOutput) Regions() pulumi.StringArrayOutput {
 // A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
 func (o ConditionOutput) RequiredAccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Condition) []string { return v.RequiredAccessLevels }).(pulumi.StringArrayOutput)
+}
+
+// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+func (o ConditionOutput) VpcNetworkSources() VpcNetworkSourceArrayOutput {
+	return o.ApplyT(func(v Condition) []VpcNetworkSource { return v.VpcNetworkSources }).(VpcNetworkSourceArrayOutput)
 }
 
 type ConditionArrayOutput struct{ *pulumi.OutputState }
@@ -1221,12 +1230,14 @@ type ConditionResponse struct {
 	IpSubnetworks []string `pulumi:"ipSubnetworks"`
 	// The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user.
 	Members []string `pulumi:"members"`
-	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 	Negate bool `pulumi:"negate"`
 	// The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
 	Regions []string `pulumi:"regions"`
 	// A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
 	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+	VpcNetworkSources []VpcNetworkSourceResponse `pulumi:"vpcNetworkSources"`
 }
 
 // A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent at a time allowed by the DateTimeRestriction.
@@ -1265,7 +1276,7 @@ func (o ConditionResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 func (o ConditionResponseOutput) Negate() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConditionResponse) bool { return v.Negate }).(pulumi.BoolOutput)
 }
@@ -1278,6 +1289,11 @@ func (o ConditionResponseOutput) Regions() pulumi.StringArrayOutput {
 // A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
 func (o ConditionResponseOutput) RequiredAccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionResponse) []string { return v.RequiredAccessLevels }).(pulumi.StringArrayOutput)
+}
+
+// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+func (o ConditionResponseOutput) VpcNetworkSources() VpcNetworkSourceResponseArrayOutput {
+	return o.ApplyT(func(v ConditionResponse) []VpcNetworkSourceResponse { return v.VpcNetworkSources }).(VpcNetworkSourceResponseArrayOutput)
 }
 
 type ConditionResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1836,6 +1852,10 @@ type EgressFrom struct {
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
 	IdentityType *EgressFromIdentityType `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	SourceRestriction *EgressFromSourceRestriction `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+	Sources []EgressSource `pulumi:"sources"`
 }
 
 // EgressFromInput is an input type that accepts EgressFromArgs and EgressFromOutput values.
@@ -1855,6 +1875,10 @@ type EgressFromArgs struct {
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
 	IdentityType EgressFromIdentityTypePtrInput `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	SourceRestriction EgressFromSourceRestrictionPtrInput `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+	Sources EgressSourceArrayInput `pulumi:"sources"`
 }
 
 func (EgressFromArgs) ElementType() reflect.Type {
@@ -1963,6 +1987,16 @@ func (o EgressFromOutput) IdentityType() EgressFromIdentityTypePtrOutput {
 	return o.ApplyT(func(v EgressFrom) *EgressFromIdentityType { return v.IdentityType }).(EgressFromIdentityTypePtrOutput)
 }
 
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+func (o EgressFromOutput) SourceRestriction() EgressFromSourceRestrictionPtrOutput {
+	return o.ApplyT(func(v EgressFrom) *EgressFromSourceRestriction { return v.SourceRestriction }).(EgressFromSourceRestrictionPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+func (o EgressFromOutput) Sources() EgressSourceArrayOutput {
+	return o.ApplyT(func(v EgressFrom) []EgressSource { return v.Sources }).(EgressSourceArrayOutput)
+}
+
 type EgressFromPtrOutput struct{ *pulumi.OutputState }
 
 func (EgressFromPtrOutput) ElementType() reflect.Type {
@@ -2013,12 +2047,36 @@ func (o EgressFromPtrOutput) IdentityType() EgressFromIdentityTypePtrOutput {
 	}).(EgressFromIdentityTypePtrOutput)
 }
 
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+func (o EgressFromPtrOutput) SourceRestriction() EgressFromSourceRestrictionPtrOutput {
+	return o.ApplyT(func(v *EgressFrom) *EgressFromSourceRestriction {
+		if v == nil {
+			return nil
+		}
+		return v.SourceRestriction
+	}).(EgressFromSourceRestrictionPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+func (o EgressFromPtrOutput) Sources() EgressSourceArrayOutput {
+	return o.ApplyT(func(v *EgressFrom) []EgressSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(EgressSourceArrayOutput)
+}
+
 // Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 type EgressFromResponse struct {
 	// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
 	IdentityType string `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	SourceRestriction string `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+	Sources []EgressSourceResponse `pulumi:"sources"`
 }
 
 // Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
@@ -2050,6 +2108,16 @@ func (o EgressFromResponseOutput) Identities() pulumi.StringArrayOutput {
 // Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
 func (o EgressFromResponseOutput) IdentityType() pulumi.StringOutput {
 	return o.ApplyT(func(v EgressFromResponse) string { return v.IdentityType }).(pulumi.StringOutput)
+}
+
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+func (o EgressFromResponseOutput) SourceRestriction() pulumi.StringOutput {
+	return o.ApplyT(func(v EgressFromResponse) string { return v.SourceRestriction }).(pulumi.StringOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+func (o EgressFromResponseOutput) Sources() EgressSourceResponseArrayOutput {
+	return o.ApplyT(func(v EgressFromResponse) []EgressSourceResponse { return v.Sources }).(EgressSourceResponseArrayOutput)
 }
 
 // Policy for egress from perimeter. EgressPolicies match requests based on `egress_from` and `egress_to` stanzas. For an EgressPolicy to match, both `egress_from` and `egress_to` stanzas must be matched. If an EgressPolicy matches a request, the request is allowed to span the ServicePerimeter boundary. For example, an EgressPolicy can be used to allow VMs on networks within the ServicePerimeter to access a defined set of projects outside the perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket or query against a BigQuery dataset). EgressPolicies are concerned with the *resources* that a request relates as well as the API services and API actions being used. They do not related to the direction of data movement. More detailed documentation for this concept can be found in the descriptions of EgressFrom and EgressTo.
@@ -2248,6 +2316,188 @@ func (o EgressPolicyResponseArrayOutput) Index(i pulumi.IntInput) EgressPolicyRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EgressPolicyResponse {
 		return vs[0].([]EgressPolicyResponse)[vs[1].(int)]
 	}).(EgressPolicyResponseOutput)
+}
+
+// The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+type EgressSource struct {
+	// An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.
+	AccessLevel *string `pulumi:"accessLevel"`
+}
+
+// EgressSourceInput is an input type that accepts EgressSourceArgs and EgressSourceOutput values.
+// You can construct a concrete instance of `EgressSourceInput` via:
+//
+//	EgressSourceArgs{...}
+type EgressSourceInput interface {
+	pulumi.Input
+
+	ToEgressSourceOutput() EgressSourceOutput
+	ToEgressSourceOutputWithContext(context.Context) EgressSourceOutput
+}
+
+// The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+type EgressSourceArgs struct {
+	// An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+}
+
+func (EgressSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EgressSource)(nil)).Elem()
+}
+
+func (i EgressSourceArgs) ToEgressSourceOutput() EgressSourceOutput {
+	return i.ToEgressSourceOutputWithContext(context.Background())
+}
+
+func (i EgressSourceArgs) ToEgressSourceOutputWithContext(ctx context.Context) EgressSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EgressSourceOutput)
+}
+
+func (i EgressSourceArgs) ToOutput(ctx context.Context) pulumix.Output[EgressSource] {
+	return pulumix.Output[EgressSource]{
+		OutputState: i.ToEgressSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EgressSourceArrayInput is an input type that accepts EgressSourceArray and EgressSourceArrayOutput values.
+// You can construct a concrete instance of `EgressSourceArrayInput` via:
+//
+//	EgressSourceArray{ EgressSourceArgs{...} }
+type EgressSourceArrayInput interface {
+	pulumi.Input
+
+	ToEgressSourceArrayOutput() EgressSourceArrayOutput
+	ToEgressSourceArrayOutputWithContext(context.Context) EgressSourceArrayOutput
+}
+
+type EgressSourceArray []EgressSourceInput
+
+func (EgressSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EgressSource)(nil)).Elem()
+}
+
+func (i EgressSourceArray) ToEgressSourceArrayOutput() EgressSourceArrayOutput {
+	return i.ToEgressSourceArrayOutputWithContext(context.Background())
+}
+
+func (i EgressSourceArray) ToEgressSourceArrayOutputWithContext(ctx context.Context) EgressSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EgressSourceArrayOutput)
+}
+
+func (i EgressSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]EgressSource] {
+	return pulumix.Output[[]EgressSource]{
+		OutputState: i.ToEgressSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+type EgressSourceOutput struct{ *pulumi.OutputState }
+
+func (EgressSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EgressSource)(nil)).Elem()
+}
+
+func (o EgressSourceOutput) ToEgressSourceOutput() EgressSourceOutput {
+	return o
+}
+
+func (o EgressSourceOutput) ToEgressSourceOutputWithContext(ctx context.Context) EgressSourceOutput {
+	return o
+}
+
+func (o EgressSourceOutput) ToOutput(ctx context.Context) pulumix.Output[EgressSource] {
+	return pulumix.Output[EgressSource]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.
+func (o EgressSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EgressSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+type EgressSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (EgressSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EgressSource)(nil)).Elem()
+}
+
+func (o EgressSourceArrayOutput) ToEgressSourceArrayOutput() EgressSourceArrayOutput {
+	return o
+}
+
+func (o EgressSourceArrayOutput) ToEgressSourceArrayOutputWithContext(ctx context.Context) EgressSourceArrayOutput {
+	return o
+}
+
+func (o EgressSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EgressSource] {
+	return pulumix.Output[[]EgressSource]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EgressSourceArrayOutput) Index(i pulumi.IntInput) EgressSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EgressSource {
+		return vs[0].([]EgressSource)[vs[1].(int)]
+	}).(EgressSourceOutput)
+}
+
+// The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+type EgressSourceResponse struct {
+	// An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.
+	AccessLevel string `pulumi:"accessLevel"`
+}
+
+// The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+type EgressSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (EgressSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EgressSourceResponse)(nil)).Elem()
+}
+
+func (o EgressSourceResponseOutput) ToEgressSourceResponseOutput() EgressSourceResponseOutput {
+	return o
+}
+
+func (o EgressSourceResponseOutput) ToEgressSourceResponseOutputWithContext(ctx context.Context) EgressSourceResponseOutput {
+	return o
+}
+
+func (o EgressSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EgressSourceResponse] {
+	return pulumix.Output[EgressSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.
+func (o EgressSourceResponseOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v EgressSourceResponse) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+type EgressSourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EgressSourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EgressSourceResponse)(nil)).Elem()
+}
+
+func (o EgressSourceResponseArrayOutput) ToEgressSourceResponseArrayOutput() EgressSourceResponseArrayOutput {
+	return o
+}
+
+func (o EgressSourceResponseArrayOutput) ToEgressSourceResponseArrayOutputWithContext(ctx context.Context) EgressSourceResponseArrayOutput {
+	return o
+}
+
+func (o EgressSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EgressSourceResponse] {
+	return pulumix.Output[[]EgressSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EgressSourceResponseArrayOutput) Index(i pulumi.IntInput) EgressSourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EgressSourceResponse {
+		return vs[0].([]EgressSourceResponse)[vs[1].(int)]
+	}).(EgressSourceResponseOutput)
 }
 
 // Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
@@ -4598,6 +4848,410 @@ func (o VpcAccessibleServicesResponseOutput) EnableRestriction() pulumi.BoolOutp
 	return o.ApplyT(func(v VpcAccessibleServicesResponse) bool { return v.EnableRestriction }).(pulumi.BoolOutput)
 }
 
+// The originating network source in Google Cloud.
+type VpcNetworkSource struct {
+	// Sub-segment ranges of a VPC network.
+	VpcSubnetwork *VpcSubNetwork `pulumi:"vpcSubnetwork"`
+}
+
+// VpcNetworkSourceInput is an input type that accepts VpcNetworkSourceArgs and VpcNetworkSourceOutput values.
+// You can construct a concrete instance of `VpcNetworkSourceInput` via:
+//
+//	VpcNetworkSourceArgs{...}
+type VpcNetworkSourceInput interface {
+	pulumi.Input
+
+	ToVpcNetworkSourceOutput() VpcNetworkSourceOutput
+	ToVpcNetworkSourceOutputWithContext(context.Context) VpcNetworkSourceOutput
+}
+
+// The originating network source in Google Cloud.
+type VpcNetworkSourceArgs struct {
+	// Sub-segment ranges of a VPC network.
+	VpcSubnetwork VpcSubNetworkPtrInput `pulumi:"vpcSubnetwork"`
+}
+
+func (VpcNetworkSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNetworkSource)(nil)).Elem()
+}
+
+func (i VpcNetworkSourceArgs) ToVpcNetworkSourceOutput() VpcNetworkSourceOutput {
+	return i.ToVpcNetworkSourceOutputWithContext(context.Background())
+}
+
+func (i VpcNetworkSourceArgs) ToVpcNetworkSourceOutputWithContext(ctx context.Context) VpcNetworkSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNetworkSourceOutput)
+}
+
+func (i VpcNetworkSourceArgs) ToOutput(ctx context.Context) pulumix.Output[VpcNetworkSource] {
+	return pulumix.Output[VpcNetworkSource]{
+		OutputState: i.ToVpcNetworkSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VpcNetworkSourceArrayInput is an input type that accepts VpcNetworkSourceArray and VpcNetworkSourceArrayOutput values.
+// You can construct a concrete instance of `VpcNetworkSourceArrayInput` via:
+//
+//	VpcNetworkSourceArray{ VpcNetworkSourceArgs{...} }
+type VpcNetworkSourceArrayInput interface {
+	pulumi.Input
+
+	ToVpcNetworkSourceArrayOutput() VpcNetworkSourceArrayOutput
+	ToVpcNetworkSourceArrayOutputWithContext(context.Context) VpcNetworkSourceArrayOutput
+}
+
+type VpcNetworkSourceArray []VpcNetworkSourceInput
+
+func (VpcNetworkSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcNetworkSource)(nil)).Elem()
+}
+
+func (i VpcNetworkSourceArray) ToVpcNetworkSourceArrayOutput() VpcNetworkSourceArrayOutput {
+	return i.ToVpcNetworkSourceArrayOutputWithContext(context.Background())
+}
+
+func (i VpcNetworkSourceArray) ToVpcNetworkSourceArrayOutputWithContext(ctx context.Context) VpcNetworkSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNetworkSourceArrayOutput)
+}
+
+func (i VpcNetworkSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]VpcNetworkSource] {
+	return pulumix.Output[[]VpcNetworkSource]{
+		OutputState: i.ToVpcNetworkSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The originating network source in Google Cloud.
+type VpcNetworkSourceOutput struct{ *pulumi.OutputState }
+
+func (VpcNetworkSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNetworkSource)(nil)).Elem()
+}
+
+func (o VpcNetworkSourceOutput) ToVpcNetworkSourceOutput() VpcNetworkSourceOutput {
+	return o
+}
+
+func (o VpcNetworkSourceOutput) ToVpcNetworkSourceOutputWithContext(ctx context.Context) VpcNetworkSourceOutput {
+	return o
+}
+
+func (o VpcNetworkSourceOutput) ToOutput(ctx context.Context) pulumix.Output[VpcNetworkSource] {
+	return pulumix.Output[VpcNetworkSource]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Sub-segment ranges of a VPC network.
+func (o VpcNetworkSourceOutput) VpcSubnetwork() VpcSubNetworkPtrOutput {
+	return o.ApplyT(func(v VpcNetworkSource) *VpcSubNetwork { return v.VpcSubnetwork }).(VpcSubNetworkPtrOutput)
+}
+
+type VpcNetworkSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcNetworkSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcNetworkSource)(nil)).Elem()
+}
+
+func (o VpcNetworkSourceArrayOutput) ToVpcNetworkSourceArrayOutput() VpcNetworkSourceArrayOutput {
+	return o
+}
+
+func (o VpcNetworkSourceArrayOutput) ToVpcNetworkSourceArrayOutputWithContext(ctx context.Context) VpcNetworkSourceArrayOutput {
+	return o
+}
+
+func (o VpcNetworkSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VpcNetworkSource] {
+	return pulumix.Output[[]VpcNetworkSource]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VpcNetworkSourceArrayOutput) Index(i pulumi.IntInput) VpcNetworkSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcNetworkSource {
+		return vs[0].([]VpcNetworkSource)[vs[1].(int)]
+	}).(VpcNetworkSourceOutput)
+}
+
+// The originating network source in Google Cloud.
+type VpcNetworkSourceResponse struct {
+	// Sub-segment ranges of a VPC network.
+	VpcSubnetwork VpcSubNetworkResponse `pulumi:"vpcSubnetwork"`
+}
+
+// The originating network source in Google Cloud.
+type VpcNetworkSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (VpcNetworkSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNetworkSourceResponse)(nil)).Elem()
+}
+
+func (o VpcNetworkSourceResponseOutput) ToVpcNetworkSourceResponseOutput() VpcNetworkSourceResponseOutput {
+	return o
+}
+
+func (o VpcNetworkSourceResponseOutput) ToVpcNetworkSourceResponseOutputWithContext(ctx context.Context) VpcNetworkSourceResponseOutput {
+	return o
+}
+
+func (o VpcNetworkSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VpcNetworkSourceResponse] {
+	return pulumix.Output[VpcNetworkSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Sub-segment ranges of a VPC network.
+func (o VpcNetworkSourceResponseOutput) VpcSubnetwork() VpcSubNetworkResponseOutput {
+	return o.ApplyT(func(v VpcNetworkSourceResponse) VpcSubNetworkResponse { return v.VpcSubnetwork }).(VpcSubNetworkResponseOutput)
+}
+
+type VpcNetworkSourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcNetworkSourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcNetworkSourceResponse)(nil)).Elem()
+}
+
+func (o VpcNetworkSourceResponseArrayOutput) ToVpcNetworkSourceResponseArrayOutput() VpcNetworkSourceResponseArrayOutput {
+	return o
+}
+
+func (o VpcNetworkSourceResponseArrayOutput) ToVpcNetworkSourceResponseArrayOutputWithContext(ctx context.Context) VpcNetworkSourceResponseArrayOutput {
+	return o
+}
+
+func (o VpcNetworkSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VpcNetworkSourceResponse] {
+	return pulumix.Output[[]VpcNetworkSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VpcNetworkSourceResponseArrayOutput) Index(i pulumi.IntInput) VpcNetworkSourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcNetworkSourceResponse {
+		return vs[0].([]VpcNetworkSourceResponse)[vs[1].(int)]
+	}).(VpcNetworkSourceResponseOutput)
+}
+
+// Sub-segment ranges inside of a VPC Network.
+type VpcSubNetwork struct {
+	// Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1`
+	Network string `pulumi:"network"`
+	// CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+	VpcIpSubnetworks []string `pulumi:"vpcIpSubnetworks"`
+}
+
+// VpcSubNetworkInput is an input type that accepts VpcSubNetworkArgs and VpcSubNetworkOutput values.
+// You can construct a concrete instance of `VpcSubNetworkInput` via:
+//
+//	VpcSubNetworkArgs{...}
+type VpcSubNetworkInput interface {
+	pulumi.Input
+
+	ToVpcSubNetworkOutput() VpcSubNetworkOutput
+	ToVpcSubNetworkOutputWithContext(context.Context) VpcSubNetworkOutput
+}
+
+// Sub-segment ranges inside of a VPC Network.
+type VpcSubNetworkArgs struct {
+	// Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1`
+	Network pulumi.StringInput `pulumi:"network"`
+	// CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+	VpcIpSubnetworks pulumi.StringArrayInput `pulumi:"vpcIpSubnetworks"`
+}
+
+func (VpcSubNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubNetwork)(nil)).Elem()
+}
+
+func (i VpcSubNetworkArgs) ToVpcSubNetworkOutput() VpcSubNetworkOutput {
+	return i.ToVpcSubNetworkOutputWithContext(context.Background())
+}
+
+func (i VpcSubNetworkArgs) ToVpcSubNetworkOutputWithContext(ctx context.Context) VpcSubNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubNetworkOutput)
+}
+
+func (i VpcSubNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[VpcSubNetwork] {
+	return pulumix.Output[VpcSubNetwork]{
+		OutputState: i.ToVpcSubNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VpcSubNetworkArgs) ToVpcSubNetworkPtrOutput() VpcSubNetworkPtrOutput {
+	return i.ToVpcSubNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i VpcSubNetworkArgs) ToVpcSubNetworkPtrOutputWithContext(ctx context.Context) VpcSubNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubNetworkOutput).ToVpcSubNetworkPtrOutputWithContext(ctx)
+}
+
+// VpcSubNetworkPtrInput is an input type that accepts VpcSubNetworkArgs, VpcSubNetworkPtr and VpcSubNetworkPtrOutput values.
+// You can construct a concrete instance of `VpcSubNetworkPtrInput` via:
+//
+//	        VpcSubNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpcSubNetworkPtrInput interface {
+	pulumi.Input
+
+	ToVpcSubNetworkPtrOutput() VpcSubNetworkPtrOutput
+	ToVpcSubNetworkPtrOutputWithContext(context.Context) VpcSubNetworkPtrOutput
+}
+
+type vpcSubNetworkPtrType VpcSubNetworkArgs
+
+func VpcSubNetworkPtr(v *VpcSubNetworkArgs) VpcSubNetworkPtrInput {
+	return (*vpcSubNetworkPtrType)(v)
+}
+
+func (*vpcSubNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcSubNetwork)(nil)).Elem()
+}
+
+func (i *vpcSubNetworkPtrType) ToVpcSubNetworkPtrOutput() VpcSubNetworkPtrOutput {
+	return i.ToVpcSubNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcSubNetworkPtrType) ToVpcSubNetworkPtrOutputWithContext(ctx context.Context) VpcSubNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubNetworkPtrOutput)
+}
+
+func (i *vpcSubNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*VpcSubNetwork] {
+	return pulumix.Output[*VpcSubNetwork]{
+		OutputState: i.ToVpcSubNetworkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Sub-segment ranges inside of a VPC Network.
+type VpcSubNetworkOutput struct{ *pulumi.OutputState }
+
+func (VpcSubNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubNetwork)(nil)).Elem()
+}
+
+func (o VpcSubNetworkOutput) ToVpcSubNetworkOutput() VpcSubNetworkOutput {
+	return o
+}
+
+func (o VpcSubNetworkOutput) ToVpcSubNetworkOutputWithContext(ctx context.Context) VpcSubNetworkOutput {
+	return o
+}
+
+func (o VpcSubNetworkOutput) ToVpcSubNetworkPtrOutput() VpcSubNetworkPtrOutput {
+	return o.ToVpcSubNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o VpcSubNetworkOutput) ToVpcSubNetworkPtrOutputWithContext(ctx context.Context) VpcSubNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcSubNetwork) *VpcSubNetwork {
+		return &v
+	}).(VpcSubNetworkPtrOutput)
+}
+
+func (o VpcSubNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[VpcSubNetwork] {
+	return pulumix.Output[VpcSubNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1`
+func (o VpcSubNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcSubNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+func (o VpcSubNetworkOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpcSubNetwork) []string { return v.VpcIpSubnetworks }).(pulumi.StringArrayOutput)
+}
+
+type VpcSubNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (VpcSubNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcSubNetwork)(nil)).Elem()
+}
+
+func (o VpcSubNetworkPtrOutput) ToVpcSubNetworkPtrOutput() VpcSubNetworkPtrOutput {
+	return o
+}
+
+func (o VpcSubNetworkPtrOutput) ToVpcSubNetworkPtrOutputWithContext(ctx context.Context) VpcSubNetworkPtrOutput {
+	return o
+}
+
+func (o VpcSubNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcSubNetwork] {
+	return pulumix.Output[*VpcSubNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VpcSubNetworkPtrOutput) Elem() VpcSubNetworkOutput {
+	return o.ApplyT(func(v *VpcSubNetwork) VpcSubNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret VpcSubNetwork
+		return ret
+	}).(VpcSubNetworkOutput)
+}
+
+// Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1`
+func (o VpcSubNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcSubNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+func (o VpcSubNetworkPtrOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpcSubNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcIpSubnetworks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Sub-segment ranges inside of a VPC Network.
+type VpcSubNetworkResponse struct {
+	// Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1`
+	Network string `pulumi:"network"`
+	// CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+	VpcIpSubnetworks []string `pulumi:"vpcIpSubnetworks"`
+}
+
+// Sub-segment ranges inside of a VPC Network.
+type VpcSubNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (VpcSubNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubNetworkResponse)(nil)).Elem()
+}
+
+func (o VpcSubNetworkResponseOutput) ToVpcSubNetworkResponseOutput() VpcSubNetworkResponseOutput {
+	return o
+}
+
+func (o VpcSubNetworkResponseOutput) ToVpcSubNetworkResponseOutputWithContext(ctx context.Context) VpcSubNetworkResponseOutput {
+	return o
+}
+
+func (o VpcSubNetworkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VpcSubNetworkResponse] {
+	return pulumix.Output[VpcSubNetworkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1`
+func (o VpcSubNetworkResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcSubNetworkResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+func (o VpcSubNetworkResponseOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpcSubNetworkResponse) []string { return v.VpcIpSubnetworks }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiOperationInput)(nil)).Elem(), ApiOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiOperationArrayInput)(nil)).Elem(), ApiOperationArray{})
@@ -4619,6 +5273,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromPtrInput)(nil)).Elem(), EgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressPolicyInput)(nil)).Elem(), EgressPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressPolicyArrayInput)(nil)).Elem(), EgressPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EgressSourceInput)(nil)).Elem(), EgressSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EgressSourceArrayInput)(nil)).Elem(), EgressSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressToInput)(nil)).Elem(), EgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressToPtrInput)(nil)).Elem(), EgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
@@ -4639,6 +5295,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterConfigPtrInput)(nil)).Elem(), ServicePerimeterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessibleServicesInput)(nil)).Elem(), VpcAccessibleServicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessibleServicesPtrInput)(nil)).Elem(), VpcAccessibleServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNetworkSourceInput)(nil)).Elem(), VpcNetworkSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNetworkSourceArrayInput)(nil)).Elem(), VpcNetworkSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubNetworkInput)(nil)).Elem(), VpcSubNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubNetworkPtrInput)(nil)).Elem(), VpcSubNetworkArgs{})
 	pulumi.RegisterOutputType(ApiOperationOutput{})
 	pulumi.RegisterOutputType(ApiOperationArrayOutput{})
 	pulumi.RegisterOutputType(ApiOperationResponseOutput{})
@@ -4675,6 +5335,10 @@ func init() {
 	pulumi.RegisterOutputType(EgressPolicyArrayOutput{})
 	pulumi.RegisterOutputType(EgressPolicyResponseOutput{})
 	pulumi.RegisterOutputType(EgressPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(EgressSourceOutput{})
+	pulumi.RegisterOutputType(EgressSourceArrayOutput{})
+	pulumi.RegisterOutputType(EgressSourceResponseOutput{})
+	pulumi.RegisterOutputType(EgressSourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(EgressToOutput{})
 	pulumi.RegisterOutputType(EgressToPtrOutput{})
 	pulumi.RegisterOutputType(EgressToResponseOutput{})
@@ -4709,4 +5373,11 @@ func init() {
 	pulumi.RegisterOutputType(VpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(VpcAccessibleServicesPtrOutput{})
 	pulumi.RegisterOutputType(VpcAccessibleServicesResponseOutput{})
+	pulumi.RegisterOutputType(VpcNetworkSourceOutput{})
+	pulumi.RegisterOutputType(VpcNetworkSourceArrayOutput{})
+	pulumi.RegisterOutputType(VpcNetworkSourceResponseOutput{})
+	pulumi.RegisterOutputType(VpcNetworkSourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(VpcSubNetworkOutput{})
+	pulumi.RegisterOutputType(VpcSubNetworkPtrOutput{})
+	pulumi.RegisterOutputType(VpcSubNetworkResponseOutput{})
 }

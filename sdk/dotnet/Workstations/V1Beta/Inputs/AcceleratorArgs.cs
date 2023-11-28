@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
     public sealed class AcceleratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of accelerator cards exposed to the instance.
+        /// Optional. Number of accelerator cards exposed to the instance.
         /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
 
         /// <summary>
-        /// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        /// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

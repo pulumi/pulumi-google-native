@@ -12,8 +12,10 @@ __all__ = [
     'InstanceBackendType',
     'InstanceDatabaseVersion',
     'InstanceInstanceType',
+    'InstanceSqlNetworkArchitecture',
     'InstanceState',
     'InstanceSuspensionReasonItem',
+    'IpConfigurationSslMode',
     'IpMappingType',
     'MaintenanceWindowUpdateTrack',
     'PasswordValidationPolicyComplexity',
@@ -21,6 +23,7 @@ __all__ = [
     'SettingsAvailabilityType',
     'SettingsConnectorEnforcement',
     'SettingsDataDiskType',
+    'SettingsEdition',
     'SettingsPricingPlan',
     'SettingsReplicationType',
     'SqlOutOfDiskReportSqlOutOfDiskState',
@@ -283,6 +286,22 @@ class InstanceDatabaseVersion(str, Enum):
     """
     The database version is SQL Server 2019 Web.
     """
+    SQLSERVER2022_STANDARD = "SQLSERVER_2022_STANDARD"
+    """
+    The database version is SQL Server 2022 Standard.
+    """
+    SQLSERVER2022_ENTERPRISE = "SQLSERVER_2022_ENTERPRISE"
+    """
+    The database version is SQL Server 2022 Enterprise.
+    """
+    SQLSERVER2022_EXPRESS = "SQLSERVER_2022_EXPRESS"
+    """
+    The database version is SQL Server 2022 Express.
+    """
+    SQLSERVER2022_WEB = "SQLSERVER_2022_WEB"
+    """
+    The database version is SQL Server 2022 Web.
+    """
 
 
 class InstanceInstanceType(str, Enum):
@@ -304,6 +323,21 @@ class InstanceInstanceType(str, Enum):
     READ_REPLICA_INSTANCE = "READ_REPLICA_INSTANCE"
     """
     A Cloud SQL instance acting as a read-replica.
+    """
+
+
+class InstanceSqlNetworkArchitecture(str, Enum):
+    """
+    The SQL network architecture for the instance.
+    """
+    SQL_NETWORK_ARCHITECTURE_UNSPECIFIED = "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"
+    NEW_NETWORK_ARCHITECTURE = "NEW_NETWORK_ARCHITECTURE"
+    """
+    Instance is a Tenancy Unit (TU) instance.
+    """
+    OLD_NETWORK_ARCHITECTURE = "OLD_NETWORK_ARCHITECTURE"
+    """
+    Instance is an Umbrella instance.
     """
 
 
@@ -368,6 +402,28 @@ class InstanceSuspensionReasonItem(str, Enum):
     """
 
 
+class IpConfigurationSslMode(str, Enum):
+    """
+    Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+    """
+    SSL_MODE_UNSPECIFIED = "SSL_MODE_UNSPECIFIED"
+    """
+    The SSL mode is unknown.
+    """
+    ALLOW_UNENCRYPTED_AND_ENCRYPTED = "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
+    """
+    Allow non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. When this value is used, the legacy `require_ssl` flag must be false or cleared to avoid the conflict between values of two flags.
+    """
+    ENCRYPTED_ONLY = "ENCRYPTED_ONLY"
+    """
+    Only allow connections encrypted with SSL/TLS. When this value is used, the legacy `require_ssl` flag must be false or cleared to avoid the conflict between values of two flags.
+    """
+    TRUSTED_CLIENT_CERTIFICATE_REQUIRED = "TRUSTED_CLIENT_CERTIFICATE_REQUIRED"
+    """
+    Only allow connections encrypted with SSL/TLS and with valid client certificates. When this value is used, the legacy `require_ssl` flag must be true or cleared to avoid the conflict between values of two flags.
+    """
+
+
 class IpMappingType(str, Enum):
     """
     The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
@@ -409,6 +465,10 @@ class MaintenanceWindowUpdateTrack(str, Enum):
     STABLE = "stable"
     """
     For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable).
+    """
+    WEEK5 = "week5"
+    """
+    For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable) to be at least 5 weeks after the notification.
     """
 
 
@@ -506,6 +566,24 @@ class SettingsDataDiskType(str, Enum):
     """
 
 
+class SettingsEdition(str, Enum):
+    """
+    Optional. The edition of the instance.
+    """
+    EDITION_UNSPECIFIED = "EDITION_UNSPECIFIED"
+    """
+    The instance did not specify the edition.
+    """
+    ENTERPRISE = "ENTERPRISE"
+    """
+    The instance is an enterprise edition.
+    """
+    ENTERPRISE_PLUS = "ENTERPRISE_PLUS"
+    """
+    The instance is an Enterprise Plus edition.
+    """
+
+
 class SettingsPricingPlan(str, Enum):
     """
     The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
@@ -597,4 +675,16 @@ class UserType(str, Enum):
     CLOUD_IAM_SERVICE_ACCOUNT = "CLOUD_IAM_SERVICE_ACCOUNT"
     """
     Cloud IAM service account.
+    """
+    CLOUD_IAM_GROUP = "CLOUD_IAM_GROUP"
+    """
+    Cloud IAM Group non-login user.
+    """
+    CLOUD_IAM_GROUP_USER = "CLOUD_IAM_GROUP_USER"
+    """
+    Cloud IAM Group login user.
+    """
+    CLOUD_IAM_GROUP_SERVICE_ACCOUNT = "CLOUD_IAM_GROUP_SERVICE_ACCOUNT"
+    """
+    Cloud IAM Group service account.
     """

@@ -88,12 +88,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public Input<bool>? SnapshotsEnabled { get; set; }
 
         /// <summary>
-        /// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-        /// </summary>
-        [Input("storageAggregatePool")]
-        public Input<string>? StorageAggregatePool { get; set; }
-
-        /// <summary>
         /// The type of this Volume.
         /// </summary>
         [Input("type")]

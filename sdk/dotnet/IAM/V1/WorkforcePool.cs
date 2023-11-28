@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.IAM.V1
     public partial class WorkforcePool : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        /// </summary>
+        [Output("accessRestrictions")]
+        public Output<Outputs.AccessRestrictionsResponse> AccessRestrictions { get; private set; } = null!;
+
+        /// <summary>
         /// A user-specified description of the pool. Cannot exceed 256 characters.
         /// </summary>
         [Output("description")]
@@ -33,6 +39,12 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Time after which the workforce pool will be permanently purged and cannot be recovered.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -116,6 +128,12 @@ namespace Pulumi.GoogleNative.IAM.V1
 
     public sealed class WorkforcePoolArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        /// </summary>
+        [Input("accessRestrictions")]
+        public Input<Inputs.AccessRestrictionsArgs>? AccessRestrictions { get; set; }
+
         /// <summary>
         /// A user-specified description of the pool. Cannot exceed 256 characters.
         /// </summary>

@@ -12,7 +12,7 @@
   "baseUrl": "https://containeranalysis.googleapis.com/",
   "batchPath": "batch",
   "canonicalName": "Container Analysis",
-  "description": "An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.",
+  "description": "This API is a prerequisite for leveraging Artifact Analysis scanning capabilities in both Artifact Registry and with Advanced Vulnerability Insights (runtime scanning) in GKE. In addition, the Container Analysis API is an implementation of the Grafeas API, which enables storing, querying, and retrieval of critical metadata about all of your software artifacts.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/container-analysis/api/reference/rest/",
   "fullyEncodeReservedExpansion": true,
@@ -754,6 +754,34 @@
         },
         "resources": {
           "methods": {
+            "exportSBOM": {
+              "description": "Generates an SBOM and other dependency information for the given resource.",
+              "flatPath": "v1beta1/projects/{projectsId}/resources/{resourcesId}:exportSBOM",
+              "httpMethod": "POST",
+              "id": "containeranalysis.projects.resources.exportSBOM",
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.",
+                  "location": "path",
+                  "pattern": "^projects/[^/]+/resources/.*$",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "path": "v1beta1/{+name}:exportSBOM",
+              "request": {
+                "$ref": "ExportSBOMRequest"
+              },
+              "response": {
+                "$ref": "ExportSBOMResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
             "generatePackagesSummary": {
               "description": "Gets a summary of the packages within a given resource.",
               "flatPath": "v1beta1/projects/{projectsId}/resources/{resourcesId}:generatePackagesSummary",
@@ -787,7 +815,7 @@
       }
     }
   },
-  "revision": "20230505",
+  "revision": "20231103",
   "rootUrl": "https://containeranalysis.googleapis.com/",
   "schemas": {
     "AliasContext": {
@@ -880,7 +908,8 @@
       "id": "Assessment",
       "properties": {
         "cve": {
-          "description": "Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.",
+          "deprecated": true,
+          "description": "Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.",
           "type": "string"
         },
         "impacts": {
@@ -932,6 +961,10 @@
             "This product contains a fix for this vulnerability.",
             "It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation."
           ],
+          "type": "string"
+        },
+        "vulnerabilityId": {
+          "description": "The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.",
           "type": "string"
         }
       },
@@ -1070,6 +1103,52 @@
       },
       "type": "object"
     },
+    "BuildDefinition": {
+      "id": "BuildDefinition",
+      "properties": {
+        "buildType": {
+          "type": "string"
+        },
+        "externalParameters": {
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          },
+          "type": "object"
+        },
+        "internalParameters": {
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          },
+          "type": "object"
+        },
+        "resolvedDependencies": {
+          "items": {
+            "$ref": "ResourceDescriptor"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "BuildMetadata": {
+      "id": "BuildMetadata",
+      "properties": {
+        "finishedOn": {
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "invocationId": {
+          "type": "string"
+        },
+        "startedOn": {
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "BuildProvenance": {
       "description": "Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.",
       "id": "BuildProvenance",
@@ -1176,7 +1255,7 @@
       "type": "object"
     },
     "BuildStep": {
-      "description": "A step in the build pipeline. Next ID: 20",
+      "description": "A step in the build pipeline. Next ID: 21",
       "id": "BuildStep",
       "properties": {
         "allowExitCodes": {
@@ -1197,6 +1276,10 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "automapSubstitutions": {
+          "description": "Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.",
+          "type": "boolean"
         },
         "dir": {
           "description": "Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.",
@@ -1910,7 +1993,7 @@
           "type": "string"
         },
         "logsBucket": {
-          "description": "Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.",
+          "description": "Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.",
           "type": "string"
         },
         "name": {
@@ -2115,6 +2198,10 @@
       "description": "Optional arguments to enable specific features of builds.",
       "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions",
       "properties": {
+        "automapSubstitutions": {
+          "description": "Option to include built-in and custom substitutions as env variables for all build steps.",
+          "type": "boolean"
+        },
         "defaultLogsBucketBehavior": {
           "description": "Optional. Option to specify how default logs buckets are setup.",
           "enum": [
@@ -2123,7 +2210,7 @@
           ],
           "enumDescriptions": [
             "Unspecified.",
-            "Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to GCS buckets in the build project."
+            "Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to Cloud Storage buckets in the build project."
           ],
           "type": "string"
         },
@@ -2144,7 +2231,7 @@
           "type": "array"
         },
         "logStreamingOption": {
-          "description": "Option to define build log streaming behavior to Google Cloud Storage.",
+          "description": "Option to define build log streaming behavior to Cloud Storage.",
           "enum": [
             "STREAM_DEFAULT",
             "STREAM_ON",
@@ -2152,8 +2239,8 @@
           ],
           "enumDescriptions": [
             "Service may automatically determine build log streaming behavior.",
-            "Build logs should be streamed to Google Cloud Storage.",
-            "Build logs should not be streamed to Google Cloud Storage; they will be written when the build is completed."
+            "Build logs should be streamed to Cloud Storage.",
+            "Build logs should not be streamed to Cloud Storage; they will be written when the build is completed."
           ],
           "type": "string"
         },
@@ -2166,6 +2253,14 @@
             "STACKDRIVER_ONLY",
             "CLOUD_LOGGING_ONLY",
             "NONE"
+          ],
+          "enumDeprecated": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
           ],
           "enumDescriptions": [
             "The service determines the logging mode. The default is `LEGACY`. Do not rely on the default logging behavior as it may change in the future.",
@@ -2184,14 +2279,16 @@
             "N1_HIGHCPU_8",
             "N1_HIGHCPU_32",
             "E2_HIGHCPU_8",
-            "E2_HIGHCPU_32"
+            "E2_HIGHCPU_32",
+            "E2_MEDIUM"
           ],
           "enumDescriptions": [
             "Standard machine type.",
             "Highcpu machine with 8 CPUs.",
             "Highcpu machine with 32 CPUs.",
             "Highcpu e2 machine with 8 CPUs.",
-            "Highcpu e2 machine with 32 CPUs."
+            "Highcpu e2 machine with 32 CPUs.",
+            "E2 machine with 1 CPU."
           ],
           "type": "string"
         },
@@ -2257,6 +2354,7 @@
           "type": "array"
         },
         "workerPool": {
+          "deprecated": true,
           "description": "This field deprecated; please use `pool.name` instead.",
           "type": "string"
         }
@@ -2296,6 +2394,10 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "automapSubstitutions": {
+          "description": "Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.",
+          "type": "boolean"
         },
         "dir": {
           "description": "Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.",
@@ -2445,6 +2547,25 @@
       },
       "type": "object"
     },
+    "ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository": {
+      "description": "Location of the source in a 2nd-gen Google Cloud Build repository resource.",
+      "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository",
+      "properties": {
+        "dir": {
+          "description": "Directory, relative to the source root, in which to run the build.",
+          "type": "string"
+        },
+        "repository": {
+          "description": "Required. Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.",
+          "type": "string"
+        },
+        "revision": {
+          "description": "The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes": {
       "description": "Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.",
       "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes",
@@ -2587,7 +2708,7 @@
           "type": "array"
         },
         "buildStepOutputs": {
-          "description": "List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.",
+          "description": "List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.",
           "items": {
             "format": "byte",
             "type": "string"
@@ -2689,6 +2810,10 @@
       "description": "Location of the source in a supported storage service.",
       "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1Source",
       "properties": {
+        "connectedRepository": {
+          "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository",
+          "description": "Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource."
+        },
         "gitSource": {
           "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource",
           "description": "If provided, get the source from this Git repository."
@@ -2699,11 +2824,11 @@
         },
         "storageSource": {
           "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource",
-          "description": "If provided, get the source from this location in Google Cloud Storage."
+          "description": "If provided, get the source from this location in Cloud Storage."
         },
         "storageSourceManifest": {
           "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest",
-          "description": "If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher)."
+          "description": "If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher)."
         }
       },
       "type": "object"
@@ -2719,6 +2844,16 @@
           "description": "Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.",
           "readOnly": true,
           "type": "object"
+        },
+        "resolvedConnectedRepository": {
+          "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository",
+          "description": "Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.",
+          "readOnly": true
+        },
+        "resolvedGitSource": {
+          "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource",
+          "description": "Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved.",
+          "readOnly": true
         },
         "resolvedRepoSource": {
           "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource",
@@ -2736,40 +2871,54 @@
       "type": "object"
     },
     "ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource": {
-      "description": "Location of the source in an archive file in Google Cloud Storage.",
+      "description": "Location of the source in an archive file in Cloud Storage.",
       "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource",
       "properties": {
         "bucket": {
-          "description": "Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).",
+          "description": "Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).",
           "type": "string"
         },
         "generation": {
-          "description": "Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.",
+          "description": "Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.",
           "format": "int64",
           "type": "string"
         },
         "object": {
-          "description": "Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.",
+          "description": "Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.",
+          "type": "string"
+        },
+        "sourceFetcher": {
+          "description": "Optional. Option to specify the tool to fetch the source file for the build.",
+          "enum": [
+            "SOURCE_FETCHER_UNSPECIFIED",
+            "GSUTIL",
+            "GCS_FETCHER"
+          ],
+          "enumDescriptions": [
+            "Unspecified defaults to GSUTIL.",
+            "Use the \"gsutil\" tool to download the source file.",
+            "Use the Cloud Storage Fetcher tool to download the source file."
+          ],
           "type": "string"
         }
       },
       "type": "object"
     },
     "ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest": {
-      "description": "Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).",
+      "description": "Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).",
       "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest",
       "properties": {
         "bucket": {
-          "description": "Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).",
+          "description": "Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).",
           "type": "string"
         },
         "generation": {
-          "description": "Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.",
+          "description": "Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.",
           "format": "int64",
           "type": "string"
         },
         "object": {
-          "description": "Google Cloud Storage object containing the source manifest. This object must be a JSON file.",
+          "description": "Cloud Storage object containing the source manifest. This object must be a JSON file.",
           "type": "string"
         }
       },
@@ -3101,6 +3250,15 @@
           "description": "The last time continuous analysis was done for this resource. Deprecated, do not use.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "lastScanTime": {
+          "description": "The last time this resource was scanned.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "sbomStatus": {
+          "$ref": "SBOMStatus",
+          "description": "The status of an SBOM generation."
         }
       },
       "type": "object"
@@ -3192,7 +3350,7 @@
       "type": "object"
     },
     "DocumentNote": {
-      "description": "DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/",
+      "description": "DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/",
       "id": "DocumentNote",
       "properties": {
         "dataLicence": {
@@ -3207,7 +3365,7 @@
       "type": "object"
     },
     "DocumentOccurrence": {
-      "description": "DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/",
+      "description": "DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/",
       "id": "DocumentOccurrence",
       "properties": {
         "createTime": {
@@ -3304,6 +3462,23 @@
             "type": "string"
           },
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "ExportSBOMRequest": {
+      "description": "The request to a call of ExportSBOM",
+      "id": "ExportSBOMRequest",
+      "properties": {},
+      "type": "object"
+    },
+    "ExportSBOMResponse": {
+      "description": "The response from a call to ExportSBOM",
+      "id": "ExportSBOMResponse",
+      "properties": {
+        "discoveryOccurrenceId": {
+          "description": "The name of the discovery occurrence in the form \"projects/{project_id}/occurrences/{OCCURRENCE_ID} It can be used to track the progression of the SBOM export.",
+          "type": "string"
         }
       },
       "type": "object"
@@ -3662,6 +3837,9 @@
       "description": "Details of a build occurrence.",
       "id": "GrafeasV1beta1BuildDetails",
       "properties": {
+        "inTotoSlsaProvenanceV1": {
+          "$ref": "InTotoSlsaProvenanceV1"
+        },
         "provenance": {
           "$ref": "BuildProvenance",
           "description": "Required. The actual provenance for the build."
@@ -3809,6 +3987,10 @@
           ],
           "type": "string"
         },
+        "extraDetails": {
+          "description": "Occurrence-specific extra details about the vulnerability.",
+          "type": "string"
+        },
         "longDescription": {
           "description": "Output only. A detailed description of this vulnerability.",
           "type": "string"
@@ -3939,6 +4121,28 @@
           "description": "This field contains a value that indicates the minimum number of keys that need to be used to sign the step's in-toto link.",
           "format": "int64",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InTotoSlsaProvenanceV1": {
+      "id": "InTotoSlsaProvenanceV1",
+      "properties": {
+        "_type": {
+          "description": "InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement",
+          "type": "string"
+        },
+        "predicate": {
+          "$ref": "SlsaProvenanceV1"
+        },
+        "predicateType": {
+          "type": "string"
+        },
+        "subject": {
+          "items": {
+            "$ref": "Subject"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -4795,7 +4999,7 @@
       "type": "object"
     },
     "Policy": {
-      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
       "id": "Policy",
       "properties": {
         "bindings": {
@@ -4848,6 +5052,27 @@
         "repoName": {
           "description": "The name of the repo. Leave empty for the default repo.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ProvenanceBuilder": {
+      "id": "ProvenanceBuilder",
+      "properties": {
+        "builderDependencies": {
+          "items": {
+            "$ref": "ResourceDescriptor"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -5161,15 +5386,69 @@
       "properties": {
         "contentHash": {
           "$ref": "Hash",
+          "deprecated": true,
           "description": "Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest."
         },
         "name": {
+          "deprecated": true,
           "description": "Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - \"Debian\".",
           "type": "string"
         },
         "uri": {
           "description": "Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ResourceDescriptor": {
+      "id": "ResourceDescriptor",
+      "properties": {
+        "annotations": {
+          "additionalProperties": {
+            "type": "any"
+          },
+          "type": "object"
+        },
+        "content": {
+          "format": "byte",
+          "type": "string"
+        },
+        "digest": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "downloadLocation": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "RunDetails": {
+      "id": "RunDetails",
+      "properties": {
+        "builder": {
+          "$ref": "ProvenanceBuilder"
+        },
+        "byproducts": {
+          "items": {
+            "$ref": "ResourceDescriptor"
+          },
+          "type": "array"
+        },
+        "metadata": {
+          "$ref": "BuildMetadata"
         }
       },
       "type": "object"
@@ -5207,6 +5486,31 @@
             "$ref": "EnvelopeSignature"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SBOMStatus": {
+      "description": "The status of an SBOM generation.",
+      "id": "SBOMStatus",
+      "properties": {
+        "error": {
+          "description": "If there was an error generating an SBOM, this will indicate what that error was.",
+          "type": "string"
+        },
+        "sbomState": {
+          "description": "The progress of the SBOM generation.",
+          "enum": [
+            "SBOM_STATE_UNSPECIFIED",
+            "PENDING",
+            "COMPLETE"
+          ],
+          "enumDescriptions": [
+            "Default unknown state.",
+            "SBOM scanning is pending.",
+            "SBOM scanning has completed."
+          ],
+          "type": "string"
         }
       },
       "type": "object"
@@ -5309,6 +5613,19 @@
         "publicKeyValue": {
           "description": "This field contains the actual public key.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SlsaProvenanceV1": {
+      "description": "Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.",
+      "id": "SlsaProvenanceV1",
+      "properties": {
+        "buildDefinition": {
+          "$ref": "BuildDefinition"
+        },
+        "runDetails": {
+          "$ref": "RunDetails"
         }
       },
       "type": "object"
@@ -5503,7 +5820,8 @@
       "id": "VexAssessment",
       "properties": {
         "cve": {
-          "description": "Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.",
+          "deprecated": true,
+          "description": "Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.",
           "type": "string"
         },
         "impacts": {
@@ -5551,6 +5869,10 @@
             "This product contains a fix for this vulnerability.",
             "It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation."
           ],
+          "type": "string"
+        },
+        "vulnerabilityId": {
+          "description": "The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.",
           "type": "string"
         }
       },

@@ -16,16 +16,22 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1.Inputs
     public sealed class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Allow partner to view violation alerts.
+        /// </summary>
+        [Input("assuredWorkloadsMonitoring")]
+        public Input<bool>? AssuredWorkloadsMonitoring { get; set; }
+
+        /// <summary>
         /// Allow the partner to view inspectability logs and monitoring violations.
         /// </summary>
         [Input("dataLogsViewer")]
         public Input<bool>? DataLogsViewer { get; set; }
 
         /// <summary>
-        /// Allow partner to monitor folder and remediate violations
+        /// Optional. Allow partner to view access approval logs.
         /// </summary>
-        [Input("remediateFolderViolations")]
-        public Input<bool>? RemediateFolderViolations { get; set; }
+        [Input("serviceAccessApprover")]
+        public Input<bool>? ServiceAccessApprover { get; set; }
 
         public GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs()
         {

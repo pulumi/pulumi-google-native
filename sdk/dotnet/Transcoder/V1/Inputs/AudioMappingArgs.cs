@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
 {
 
     /// <summary>
-    /// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+    /// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
     /// </summary>
     public sealed class AudioMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+        /// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
         /// </summary>
         [Input("atomKey", required: true)]
         public Input<string> AtomKey { get; set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<int> InputChannel { get; set; } = null!;
 
         /// <summary>
-        /// The `Input.key` that identifies the input file.
+        /// The Input.key that identifies the input file.
         /// </summary>
         [Input("inputKey", required: true)]
         public Input<string> InputKey { get; set; } = null!;

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetReleaseResult:
-    def __init__(__self__, abandoned=None, annotations=None, build_artifacts=None, condition=None, create_time=None, delivery_pipeline_snapshot=None, description=None, etag=None, labels=None, name=None, render_end_time=None, render_start_time=None, render_state=None, skaffold_config_path=None, skaffold_config_uri=None, skaffold_version=None, target_artifacts=None, target_renders=None, target_snapshots=None, uid=None):
+    def __init__(__self__, abandoned=None, annotations=None, build_artifacts=None, condition=None, create_time=None, delivery_pipeline_snapshot=None, deploy_parameters=None, description=None, etag=None, labels=None, name=None, render_end_time=None, render_start_time=None, render_state=None, skaffold_config_path=None, skaffold_config_uri=None, skaffold_version=None, target_artifacts=None, target_renders=None, target_snapshots=None, uid=None):
         if abandoned and not isinstance(abandoned, bool):
             raise TypeError("Expected argument 'abandoned' to be a bool")
         pulumi.set(__self__, "abandoned", abandoned)
@@ -38,6 +38,9 @@ class GetReleaseResult:
         if delivery_pipeline_snapshot and not isinstance(delivery_pipeline_snapshot, dict):
             raise TypeError("Expected argument 'delivery_pipeline_snapshot' to be a dict")
         pulumi.set(__self__, "delivery_pipeline_snapshot", delivery_pipeline_snapshot)
+        if deploy_parameters and not isinstance(deploy_parameters, dict):
+            raise TypeError("Expected argument 'deploy_parameters' to be a dict")
+        pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -93,7 +96,7 @@ class GetReleaseResult:
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         """
         return pulumi.get(self, "annotations")
 
@@ -130,6 +133,14 @@ class GetReleaseResult:
         return pulumi.get(self, "delivery_pipeline_snapshot")
 
     @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> Mapping[str, str]:
+        """
+        Optional. The deploy parameters to use for all targets in this release.
+        """
+        return pulumi.get(self, "deploy_parameters")
+
+    @property
     @pulumi.getter
     def description(self) -> str:
         """
@@ -149,7 +160,7 @@ class GetReleaseResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -157,7 +168,7 @@ class GetReleaseResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+        Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
         """
         return pulumi.get(self, "name")
 
@@ -205,7 +216,7 @@ class GetReleaseResult:
     @pulumi.getter(name="skaffoldVersion")
     def skaffold_version(self) -> str:
         """
-        The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+        The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
         """
         return pulumi.get(self, "skaffold_version")
 
@@ -254,6 +265,7 @@ class AwaitableGetReleaseResult(GetReleaseResult):
             condition=self.condition,
             create_time=self.create_time,
             delivery_pipeline_snapshot=self.delivery_pipeline_snapshot,
+            deploy_parameters=self.deploy_parameters,
             description=self.description,
             etag=self.etag,
             labels=self.labels,
@@ -293,6 +305,7 @@ def get_release(delivery_pipeline_id: Optional[str] = None,
         condition=pulumi.get(__ret__, 'condition'),
         create_time=pulumi.get(__ret__, 'create_time'),
         delivery_pipeline_snapshot=pulumi.get(__ret__, 'delivery_pipeline_snapshot'),
+        deploy_parameters=pulumi.get(__ret__, 'deploy_parameters'),
         description=pulumi.get(__ret__, 'description'),
         etag=pulumi.get(__ret__, 'etag'),
         labels=pulumi.get(__ret__, 'labels'),

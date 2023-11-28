@@ -262,6 +262,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             if workforce_pool_provider_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workforce_pool_provider_id'")
             __props__.__dict__["workforce_pool_provider_id"] = workforce_pool_provider_id
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "workforce_pool_id", "workforce_pool_provider_id"])
@@ -293,6 +294,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["disabled"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["expire_time"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["oidc"] = None
@@ -341,6 +343,14 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         A user-specified display name for the provider. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        Time after which the workload pool provider will be permanently purged and cannot be recovered.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter

@@ -17,13 +17,17 @@ import (
 type Flow struct {
 	pulumi.CustomResourceState
 
-	AgentId pulumi.StringOutput `pulumi:"agentId"`
+	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput `pulumi:"advancedSettings"`
+	AgentId          pulumi.StringOutput                                     `pulumi:"agentId"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The human-readable name of the flow.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput `pulumi:"eventHandlers"`
+	// Optional. Knowledge connector configuration.
+	KnowledgeConnectorSettings GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponseOutput `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
 	Location     pulumi.StringOutput    `pulumi:"location"`
@@ -32,7 +36,7 @@ type Flow struct {
 	// NLU related settings of the flow.
 	NluSettings GoogleCloudDialogflowCxV3NluSettingsResponseOutput `pulumi:"nluSettings"`
 	Project     pulumi.StringOutput                                `pulumi:"project"`
-	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 	TransitionRouteGroups pulumi.StringArrayOutput `pulumi:"transitionRouteGroups"`
 	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
 	TransitionRoutes GoogleCloudDialogflowCxV3TransitionRouteResponseArrayOutput `pulumi:"transitionRoutes"`
@@ -90,13 +94,17 @@ func (FlowState) ElementType() reflect.Type {
 }
 
 type flowArgs struct {
-	AgentId string `pulumi:"agentId"`
+	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings *GoogleCloudDialogflowCxV3AdvancedSettings `pulumi:"advancedSettings"`
+	AgentId          string                                     `pulumi:"agentId"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the flow.
 	DisplayName string `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers []GoogleCloudDialogflowCxV3EventHandler `pulumi:"eventHandlers"`
+	// Optional. Knowledge connector configuration.
+	KnowledgeConnectorSettings *GoogleCloudDialogflowCxV3KnowledgeConnectorSettings `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     *string `pulumi:"location"`
@@ -105,7 +113,7 @@ type flowArgs struct {
 	// NLU related settings of the flow.
 	NluSettings *GoogleCloudDialogflowCxV3NluSettings `pulumi:"nluSettings"`
 	Project     *string                               `pulumi:"project"`
-	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
 	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
 	TransitionRoutes []GoogleCloudDialogflowCxV3TransitionRoute `pulumi:"transitionRoutes"`
@@ -113,13 +121,17 @@ type flowArgs struct {
 
 // The set of arguments for constructing a Flow resource.
 type FlowArgs struct {
-	AgentId pulumi.StringInput
+	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput
+	AgentId          pulumi.StringInput
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the flow.
 	DisplayName pulumi.StringInput
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3EventHandlerArrayInput
+	// Optional. Knowledge connector configuration.
+	KnowledgeConnectorSettings GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsPtrInput
 	// The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringPtrInput
@@ -128,7 +140,7 @@ type FlowArgs struct {
 	// NLU related settings of the flow.
 	NluSettings GoogleCloudDialogflowCxV3NluSettingsPtrInput
 	Project     pulumi.StringPtrInput
-	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 	TransitionRouteGroups pulumi.StringArrayInput
 	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
 	TransitionRoutes GoogleCloudDialogflowCxV3TransitionRouteArrayInput
@@ -183,6 +195,11 @@ func (o FlowOutput) ToOutput(ctx context.Context) pulumix.Output[*Flow] {
 	}
 }
 
+// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+func (o FlowOutput) AdvancedSettings() GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
+	return o.ApplyT(func(v *Flow) GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput { return v.AdvancedSettings }).(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput)
+}
+
 func (o FlowOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }
@@ -200,6 +217,13 @@ func (o FlowOutput) DisplayName() pulumi.StringOutput {
 // A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 func (o FlowOutput) EventHandlers() GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput {
 	return o.ApplyT(func(v *Flow) GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput { return v.EventHandlers }).(GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput)
+}
+
+// Optional. Knowledge connector configuration.
+func (o FlowOutput) KnowledgeConnectorSettings() GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponseOutput {
+	return o.ApplyT(func(v *Flow) GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponseOutput {
+		return v.KnowledgeConnectorSettings
+	}).(GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponseOutput)
 }
 
 // The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
@@ -225,7 +249,7 @@ func (o FlowOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 func (o FlowOutput) TransitionRouteGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Flow) pulumi.StringArrayOutput { return v.TransitionRouteGroups }).(pulumi.StringArrayOutput)
 }

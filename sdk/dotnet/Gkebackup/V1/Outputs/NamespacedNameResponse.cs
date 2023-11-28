@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
     public sealed class NamespacedNameResponse
     {
         /// <summary>
-        /// The name of the Kubernetes resource.
+        /// Optional. The name of the Kubernetes resource.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The Namespace of the Kubernetes resource.
+        /// Optional. The Namespace of the Kubernetes resource.
         /// </summary>
         public readonly string Namespace;
 

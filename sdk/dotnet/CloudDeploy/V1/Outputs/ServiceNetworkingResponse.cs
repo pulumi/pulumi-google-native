@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly string Deployment;
         /// <summary>
+        /// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+        /// </summary>
+        public readonly bool DisablePodOverprovisioning;
+        /// <summary>
         /// Name of the Kubernetes Service.
         /// </summary>
         public readonly string Service;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         private ServiceNetworkingResponse(
             string deployment,
 
+            bool disablePodOverprovisioning,
+
             string service)
         {
             Deployment = deployment;
+            DisablePodOverprovisioning = disablePodOverprovisioning;
             Service = service;
         }
     }

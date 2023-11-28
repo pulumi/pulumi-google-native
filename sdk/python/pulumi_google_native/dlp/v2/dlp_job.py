@@ -179,6 +179,7 @@ class DlpJob(pulumi.CustomResource):
             __props__.__dict__["errors"] = None
             __props__.__dict__["inspect_details"] = None
             __props__.__dict__["job_trigger_name"] = None
+            __props__.__dict__["last_modified"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["risk_details"] = None
             __props__.__dict__["start_time"] = None
@@ -214,6 +215,7 @@ class DlpJob(pulumi.CustomResource):
         __props__.__dict__["errors"] = None
         __props__.__dict__["inspect_details"] = None
         __props__.__dict__["job_trigger_name"] = None
+        __props__.__dict__["last_modified"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -270,6 +272,14 @@ class DlpJob(pulumi.CustomResource):
         If created by a job trigger, the resource name of the trigger that instantiated the job.
         """
         return pulumi.get(self, "job_trigger_name")
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> pulumi.Output[str]:
+        """
+        Time when the job was last modified by the system.
+        """
+        return pulumi.get(self, "last_modified")
 
     @property
     @pulumi.getter

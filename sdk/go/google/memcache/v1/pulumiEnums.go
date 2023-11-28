@@ -19,6 +19,8 @@ const (
 	InstanceMemcacheVersionMemcacheVersionUnspecified = InstanceMemcacheVersion("MEMCACHE_VERSION_UNSPECIFIED")
 	// Memcached 1.5 version.
 	InstanceMemcacheVersionMemcache15 = InstanceMemcacheVersion("MEMCACHE_1_5")
+	// Memcached 1.6.15 version.
+	InstanceMemcacheVersionMemcache1615 = InstanceMemcacheVersion("MEMCACHE_1_6_15")
 )
 
 func (InstanceMemcacheVersion) ElementType() reflect.Type {

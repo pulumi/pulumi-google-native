@@ -22,12 +22,14 @@ __all__ = [
     'GoogleCloudRunV2GRPCActionArgs',
     'GoogleCloudRunV2HTTPGetActionArgs',
     'GoogleCloudRunV2HTTPHeaderArgs',
+    'GoogleCloudRunV2NetworkInterfaceArgs',
     'GoogleCloudRunV2ProbeArgs',
     'GoogleCloudRunV2ResourceRequirementsArgs',
     'GoogleCloudRunV2RevisionScalingArgs',
     'GoogleCloudRunV2RevisionTemplateArgs',
     'GoogleCloudRunV2SecretKeySelectorArgs',
     'GoogleCloudRunV2SecretVolumeSourceArgs',
+    'GoogleCloudRunV2ServiceScalingArgs',
     'GoogleCloudRunV2TCPSocketActionArgs',
     'GoogleCloudRunV2TaskTemplateArgs',
     'GoogleCloudRunV2TrafficTargetArgs',
@@ -161,11 +163,11 @@ class GoogleCloudRunV2ContainerArgs:
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
-        A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+        A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
         :param pulumi.Input[str] image: Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_on: Container names which must start before this container.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_on: Names of the containers that must start before this container.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]] env: List of environment variables to set in the container.
         :param pulumi.Input['GoogleCloudRunV2ProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails.
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL (RFC 1123).
@@ -239,7 +241,7 @@ class GoogleCloudRunV2ContainerArgs:
     @pulumi.getter(name="dependsOn")
     def depends_on(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Container names which must start before this container.
+        Names of the containers that must start before this container.
         """
         return pulumi.get(self, "depends_on")
 
@@ -350,9 +352,9 @@ class GoogleCloudRunV2EmptyDirVolumeSourceArgs:
                  medium: Optional[pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceMedium']] = None,
                  size_limit: Optional[pulumi.Input[str]] = None):
         """
-        Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
         :param pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceMedium'] medium: The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
-        :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -375,7 +377,7 @@ class GoogleCloudRunV2EmptyDirVolumeSourceArgs:
     @pulumi.getter(name="sizeLimit")
     def size_limit(self) -> Optional[pulumi.Input[str]]:
         """
-        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
         """
         return pulumi.get(self, "size_limit")
 
@@ -416,7 +418,7 @@ class GoogleCloudRunV2EnvVarArgs:
                  value_source: Optional[pulumi.Input['GoogleCloudRunV2EnvVarSourceArgs']] = None):
         """
         EnvVar represents an environment variable present in a Container.
-        :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        :param pulumi.Input[str] name: Name of the environment variable. Must not exceed 32768 characters.
         :param pulumi.Input[str] value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes.
         :param pulumi.Input['GoogleCloudRunV2EnvVarSourceArgs'] value_source: Source for the environment variable's value.
         """
@@ -430,7 +432,7 @@ class GoogleCloudRunV2EnvVarArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        Name of the environment variable. Must not exceed 32768 characters.
         """
         return pulumi.get(self, "name")
 
@@ -558,7 +560,7 @@ class GoogleCloudRunV2GRPCActionArgs:
         """
         GRPCAction describes an action involving a GRPC port.
         :param pulumi.Input[int] port: Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
-        :param pulumi.Input[str] service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        :param pulumi.Input[str] service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
         """
         if port is not None:
             pulumi.set(__self__, "port", port)
@@ -581,7 +583,7 @@ class GoogleCloudRunV2GRPCActionArgs:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
-        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
         """
         return pulumi.get(self, "service")
 
@@ -683,6 +685,62 @@ class GoogleCloudRunV2HTTPHeaderArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudRunV2NetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 network: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Direct VPC egress settings.
+        :param pulumi.Input[str] network: The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+        :param pulumi.Input[str] subnetwork: The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags applied to this Cloud Run resource.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Network tags applied to this Cloud Run resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -1212,6 +1270,30 @@ class GoogleCloudRunV2SecretVolumeSourceArgs:
 
 
 @pulumi.input_type
+class GoogleCloudRunV2ServiceScalingArgs:
+    def __init__(__self__, *,
+                 min_instance_count: Optional[pulumi.Input[int]] = None):
+        """
+        Scaling settings applied at the service level rather than at the revision level.
+        :param pulumi.Input[int] min_instance_count: total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+        """
+        if min_instance_count is not None:
+            pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+        """
+        return pulumi.get(self, "min_instance_count")
+
+    @min_instance_count.setter
+    def min_instance_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_instance_count", value)
+
+
+@pulumi.input_type
 class GoogleCloudRunV2TCPSocketActionArgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None):
@@ -1611,22 +1693,26 @@ class GoogleCloudRunV2VolumeArgs:
 class GoogleCloudRunV2VpcAccessArgs:
     def __init__(__self__, *,
                  connector: Optional[pulumi.Input[str]] = None,
-                 egress: Optional[pulumi.Input['GoogleCloudRunV2VpcAccessEgress']] = None):
+                 egress: Optional[pulumi.Input['GoogleCloudRunV2VpcAccessEgress']] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2NetworkInterfaceArgs']]]] = None):
         """
-        VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
-        :param pulumi.Input[str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
-        :param pulumi.Input['GoogleCloudRunV2VpcAccessEgress'] egress: Traffic VPC egress settings.
+        VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        :param pulumi.Input[str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
+        :param pulumi.Input['GoogleCloudRunV2VpcAccessEgress'] egress: Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2NetworkInterfaceArgs']]] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
 
     @property
     @pulumi.getter
     def connector(self) -> Optional[pulumi.Input[str]]:
         """
-        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
         """
         return pulumi.get(self, "connector")
 
@@ -1638,13 +1724,25 @@ class GoogleCloudRunV2VpcAccessArgs:
     @pulumi.getter
     def egress(self) -> Optional[pulumi.Input['GoogleCloudRunV2VpcAccessEgress']]:
         """
-        Traffic VPC egress settings.
+        Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
         """
         return pulumi.get(self, "egress")
 
     @egress.setter
     def egress(self, value: Optional[pulumi.Input['GoogleCloudRunV2VpcAccessEgress']]):
         pulumi.set(self, "egress", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2NetworkInterfaceArgs']]]]:
+        """
+        Direct VPC egress settings. Currently only single network interface is supported.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2NetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
 
 
 @pulumi.input_type

@@ -32,6 +32,10 @@ export interface GetFlowArgs {
 
 export interface GetFlowResult {
     /**
+     * Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     */
+    readonly advancedSettings: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3AdvancedSettingsResponse;
+    /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
     readonly description: string;
@@ -44,6 +48,10 @@ export interface GetFlowResult {
      */
     readonly eventHandlers: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandlerResponse[];
     /**
+     * Optional. Knowledge connector configuration.
+     */
+    readonly knowledgeConnectorSettings: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse;
+    /**
      * The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
      */
     readonly name: string;
@@ -52,7 +60,7 @@ export interface GetFlowResult {
      */
     readonly nluSettings: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3NluSettingsResponse;
     /**
-     * A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+     * A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
      */
     readonly transitionRouteGroups: string[];
     /**

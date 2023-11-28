@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { AutomationArgs } from "./automation";
+export type Automation = import("./automation").Automation;
+export const Automation: typeof import("./automation").Automation = null as any;
+utilities.lazyLoad(exports, ["Automation"], () => require("./automation"));
+
 export { DeliveryPipelineArgs } from "./deliveryPipeline";
 export type DeliveryPipeline = import("./deliveryPipeline").DeliveryPipeline;
 export const DeliveryPipeline: typeof import("./deliveryPipeline").DeliveryPipeline = null as any;
@@ -24,6 +29,11 @@ export { DeliveryPipelineIamPolicyArgs } from "./deliveryPipelineIamPolicy";
 export type DeliveryPipelineIamPolicy = import("./deliveryPipelineIamPolicy").DeliveryPipelineIamPolicy;
 export const DeliveryPipelineIamPolicy: typeof import("./deliveryPipelineIamPolicy").DeliveryPipelineIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DeliveryPipelineIamPolicy"], () => require("./deliveryPipelineIamPolicy"));
+
+export { GetAutomationArgs, GetAutomationResult, GetAutomationOutputArgs } from "./getAutomation";
+export const getAutomation: typeof import("./getAutomation").getAutomation = null as any;
+export const getAutomationOutput: typeof import("./getAutomation").getAutomationOutput = null as any;
+utilities.lazyLoad(exports, ["getAutomation","getAutomationOutput"], () => require("./getAutomation"));
 
 export { GetDeliveryPipelineArgs, GetDeliveryPipelineResult, GetDeliveryPipelineOutputArgs } from "./getDeliveryPipeline";
 export const getDeliveryPipeline: typeof import("./getDeliveryPipeline").getDeliveryPipeline = null as any;
@@ -93,6 +103,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:clouddeploy/v1:Automation":
+                return new Automation(name, <any>undefined, { urn })
             case "google-native:clouddeploy/v1:DeliveryPipeline":
                 return new DeliveryPipeline(name, <any>undefined, { urn })
             case "google-native:clouddeploy/v1:DeliveryPipelineIamBinding":

@@ -41,6 +41,8 @@ type LookupConnectivityTestResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
 	Name string `pulumi:"name"`
+	// The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+	ProbingDetails ProbingDetailsResponse `pulumi:"probingDetails"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol string `pulumi:"protocol"`
 	// The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
@@ -123,6 +125,11 @@ func (o LookupConnectivityTestResultOutput) Labels() pulumi.StringMapOutput {
 // Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
 func (o LookupConnectivityTestResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectivityTestResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+func (o LookupConnectivityTestResultOutput) ProbingDetails() ProbingDetailsResponseOutput {
+	return o.ApplyT(func(v LookupConnectivityTestResult) ProbingDetailsResponse { return v.ProbingDetails }).(ProbingDetailsResponseOutput)
 }
 
 // IP Protocol of the test. When not provided, "TCP" is assumed.

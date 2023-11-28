@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public readonly string ComplexDataTypeReferenceParsing;
         /// <summary>
+        /// Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+        /// </summary>
+        public readonly Outputs.ConsentConfigResponse ConsentConfig;
+        /// <summary>
         /// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         /// </summary>
         public readonly bool DefaultSearchHandlingStrict;
@@ -126,6 +130,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         private GetFhirStoreResult(
             string complexDataTypeReferenceParsing,
 
+            Outputs.ConsentConfigResponse consentConfig,
+
             bool defaultSearchHandlingStrict,
 
             bool disableReferentialIntegrity,
@@ -151,6 +157,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             string version)
         {
             ComplexDataTypeReferenceParsing = complexDataTypeReferenceParsing;
+            ConsentConfig = consentConfig;
             DefaultSearchHandlingStrict = defaultSearchHandlingStrict;
             DisableReferentialIntegrity = disableReferentialIntegrity;
             DisableResourceVersioning = disableResourceVersioning;

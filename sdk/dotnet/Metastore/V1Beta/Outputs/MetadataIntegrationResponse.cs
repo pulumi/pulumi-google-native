@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
     public sealed class MetadataIntegrationResponse
     {
         /// <summary>
-        /// The integration config for the Data Catalog service.
+        /// Optional. The integration config for the Data Catalog service.
         /// </summary>
         public readonly Outputs.DataCatalogConfigResponse DataCatalogConfig;
         /// <summary>

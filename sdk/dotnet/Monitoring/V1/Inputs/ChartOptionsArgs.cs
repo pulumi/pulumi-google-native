@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     public sealed class ChartOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
+        /// </summary>
+        [Input("displayHorizontal")]
+        public Input<bool>? DisplayHorizontal { get; set; }
+
+        /// <summary>
         /// The chart mode.
         /// </summary>
         [Input("mode")]

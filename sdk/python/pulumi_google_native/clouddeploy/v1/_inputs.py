@@ -11,9 +11,12 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AdvanceRolloutRuleArgs',
     'AnthosClusterArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
+    'AutomationResourceSelectorArgs',
+    'AutomationRuleArgs',
     'BindingArgs',
     'BuildArtifactArgs',
     'CanaryDeploymentArgs',
@@ -22,6 +25,7 @@ __all__ = [
     'CloudRunLocationArgs',
     'CustomCanaryDeploymentArgs',
     'DefaultPoolArgs',
+    'DeployParametersArgs',
     'ExecutionConfigArgs',
     'ExprArgs',
     'GatewayServiceMeshArgs',
@@ -29,14 +33,77 @@ __all__ = [
     'KubernetesConfigArgs',
     'MultiTargetArgs',
     'PhaseConfigArgs',
+    'PostdeployArgs',
+    'PredeployArgs',
     'PrivatePoolArgs',
+    'PromoteReleaseRuleArgs',
+    'RepairModeArgs',
+    'RepairRolloutRuleArgs',
+    'RetryArgs',
+    'RollbackArgs',
     'RuntimeConfigArgs',
     'SerialPipelineArgs',
     'ServiceNetworkingArgs',
     'StageArgs',
     'StandardArgs',
     'StrategyArgs',
+    'TargetAttributeArgs',
 ]
+
+@pulumi.input_type
+class AdvanceRolloutRuleArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 source_phases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 wait: Optional[pulumi.Input[str]] = None):
+        """
+        The `AdvanceRollout` automation rule will automatically advance a successful Rollout to the next phase.
+        :param pulumi.Input[str] id: ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_phases: Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        :param pulumi.Input[str] wait: Optional. How long to wait after a rollout is finished.
+        """
+        pulumi.set(__self__, "id", id)
+        if source_phases is not None:
+            pulumi.set(__self__, "source_phases", source_phases)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="sourcePhases")
+    def source_phases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        return pulumi.get(self, "source_phases")
+
+    @source_phases.setter
+    def source_phases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_phases", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. How long to wait after a rollout is finished.
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wait", value)
+
 
 @pulumi.input_type
 class AnthosClusterArgs:
@@ -143,6 +210,86 @@ class AuditLogConfigArgs:
 
 
 @pulumi.input_type
+class AutomationResourceSelectorArgs:
+    def __init__(__self__, *,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAttributeArgs']]]] = None):
+        """
+        AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input['TargetAttributeArgs']]] targets: Contains attributes about a target.
+        """
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
+
+    @property
+    @pulumi.getter
+    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetAttributeArgs']]]]:
+        """
+        Contains attributes about a target.
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAttributeArgs']]]]):
+        pulumi.set(self, "targets", value)
+
+
+@pulumi.input_type
+class AutomationRuleArgs:
+    def __init__(__self__, *,
+                 advance_rollout_rule: Optional[pulumi.Input['AdvanceRolloutRuleArgs']] = None,
+                 promote_release_rule: Optional[pulumi.Input['PromoteReleaseRuleArgs']] = None,
+                 repair_rollout_rule: Optional[pulumi.Input['RepairRolloutRuleArgs']] = None):
+        """
+        `AutomationRule` defines the automation activities.
+        :param pulumi.Input['AdvanceRolloutRuleArgs'] advance_rollout_rule: Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+        :param pulumi.Input['PromoteReleaseRuleArgs'] promote_release_rule: Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+        :param pulumi.Input['RepairRolloutRuleArgs'] repair_rollout_rule: Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
+        """
+        if advance_rollout_rule is not None:
+            pulumi.set(__self__, "advance_rollout_rule", advance_rollout_rule)
+        if promote_release_rule is not None:
+            pulumi.set(__self__, "promote_release_rule", promote_release_rule)
+        if repair_rollout_rule is not None:
+            pulumi.set(__self__, "repair_rollout_rule", repair_rollout_rule)
+
+    @property
+    @pulumi.getter(name="advanceRolloutRule")
+    def advance_rollout_rule(self) -> Optional[pulumi.Input['AdvanceRolloutRuleArgs']]:
+        """
+        Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+        """
+        return pulumi.get(self, "advance_rollout_rule")
+
+    @advance_rollout_rule.setter
+    def advance_rollout_rule(self, value: Optional[pulumi.Input['AdvanceRolloutRuleArgs']]):
+        pulumi.set(self, "advance_rollout_rule", value)
+
+    @property
+    @pulumi.getter(name="promoteReleaseRule")
+    def promote_release_rule(self) -> Optional[pulumi.Input['PromoteReleaseRuleArgs']]:
+        """
+        Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+        """
+        return pulumi.get(self, "promote_release_rule")
+
+    @promote_release_rule.setter
+    def promote_release_rule(self, value: Optional[pulumi.Input['PromoteReleaseRuleArgs']]):
+        pulumi.set(self, "promote_release_rule", value)
+
+    @property
+    @pulumi.getter(name="repairRolloutRule")
+    def repair_rollout_rule(self) -> Optional[pulumi.Input['RepairRolloutRuleArgs']]:
+        """
+        Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
+        """
+        return pulumi.get(self, "repair_rollout_rule")
+
+    @repair_rollout_rule.setter
+    def repair_rollout_rule(self, value: Optional[pulumi.Input['RepairRolloutRuleArgs']]):
+        pulumi.set(self, "repair_rollout_rule", value)
+
+
+@pulumi.input_type
 class BindingArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input['ExprArgs']] = None,
@@ -242,13 +389,21 @@ class BuildArtifactArgs:
 class CanaryDeploymentArgs:
     def __init__(__self__, *,
                  percentages: pulumi.Input[Sequence[pulumi.Input[int]]],
+                 postdeploy: Optional[pulumi.Input['PostdeployArgs']] = None,
+                 predeploy: Optional[pulumi.Input['PredeployArgs']] = None,
                  verify: Optional[pulumi.Input[bool]] = None):
         """
         CanaryDeployment represents the canary deployment configuration
         :param pulumi.Input[Sequence[pulumi.Input[int]]] percentages: The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        :param pulumi.Input['PostdeployArgs'] postdeploy: Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+        :param pulumi.Input['PredeployArgs'] predeploy: Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
         :param pulumi.Input[bool] verify: Whether to run verify tests after each percentage deployment.
         """
         pulumi.set(__self__, "percentages", percentages)
+        if postdeploy is not None:
+            pulumi.set(__self__, "postdeploy", postdeploy)
+        if predeploy is not None:
+            pulumi.set(__self__, "predeploy", predeploy)
         if verify is not None:
             pulumi.set(__self__, "verify", verify)
 
@@ -263,6 +418,30 @@ class CanaryDeploymentArgs:
     @percentages.setter
     def percentages(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
         pulumi.set(self, "percentages", value)
+
+    @property
+    @pulumi.getter
+    def postdeploy(self) -> Optional[pulumi.Input['PostdeployArgs']]:
+        """
+        Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+        """
+        return pulumi.get(self, "postdeploy")
+
+    @postdeploy.setter
+    def postdeploy(self, value: Optional[pulumi.Input['PostdeployArgs']]):
+        pulumi.set(self, "postdeploy", value)
+
+    @property
+    @pulumi.getter
+    def predeploy(self) -> Optional[pulumi.Input['PredeployArgs']]:
+        """
+        Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+        """
+        return pulumi.get(self, "predeploy")
+
+    @predeploy.setter
+    def predeploy(self, value: Optional[pulumi.Input['PredeployArgs']]):
+        pulumi.set(self, "predeploy", value)
 
     @property
     @pulumi.getter
@@ -441,6 +620,45 @@ class DefaultPoolArgs:
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
+
+
+@pulumi.input_type
+class DeployParametersArgs:
+    def __init__(__self__, *,
+                 values: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 match_target_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        DeployParameters contains deploy parameters information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] values: Values are deploy parameters in key-value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_target_labels: Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+        """
+        pulumi.set(__self__, "values", values)
+        if match_target_labels is not None:
+            pulumi.set(__self__, "match_target_labels", match_target_labels)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Values are deploy parameters in key-value pairs.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchTargetLabels")
+    def match_target_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+        """
+        return pulumi.get(self, "match_target_labels")
+
+    @match_target_labels.setter
+    def match_target_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "match_target_labels", value)
 
 
 @pulumi.input_type
@@ -639,16 +857,20 @@ class GatewayServiceMeshArgs:
     def __init__(__self__, *,
                  deployment: pulumi.Input[str],
                  http_route: pulumi.Input[str],
-                 service: pulumi.Input[str]):
+                 service: pulumi.Input[str],
+                 route_update_wait_time: Optional[pulumi.Input[str]] = None):
         """
         Information about the Kubernetes Gateway API service mesh configuration.
         :param pulumi.Input[str] deployment: Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
         :param pulumi.Input[str] http_route: Name of the Gateway API HTTPRoute.
         :param pulumi.Input[str] service: Name of the Kubernetes Service.
+        :param pulumi.Input[str] route_update_wait_time: Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "http_route", http_route)
         pulumi.set(__self__, "service", service)
+        if route_update_wait_time is not None:
+            pulumi.set(__self__, "route_update_wait_time", route_update_wait_time)
 
     @property
     @pulumi.getter
@@ -686,6 +908,18 @@ class GatewayServiceMeshArgs:
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
 
+    @property
+    @pulumi.getter(name="routeUpdateWaitTime")
+    def route_update_wait_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+        """
+        return pulumi.get(self, "route_update_wait_time")
+
+    @route_update_wait_time.setter
+    def route_update_wait_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route_update_wait_time", value)
+
 
 @pulumi.input_type
 class GkeClusterArgs:
@@ -694,7 +928,7 @@ class GkeClusterArgs:
                  internal_ip: Optional[pulumi.Input[bool]] = None):
         """
         Information specifying a GKE Cluster.
-        :param pulumi.Input[str] cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        :param pulumi.Input[str] cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
         :param pulumi.Input[bool] internal_ip: Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         """
         if cluster is not None:
@@ -706,7 +940,7 @@ class GkeClusterArgs:
     @pulumi.getter
     def cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
         """
         return pulumi.get(self, "cluster")
 
@@ -795,17 +1029,25 @@ class PhaseConfigArgs:
     def __init__(__self__, *,
                  percentage: pulumi.Input[int],
                  phase_id: pulumi.Input[str],
+                 postdeploy: Optional[pulumi.Input['PostdeployArgs']] = None,
+                 predeploy: Optional[pulumi.Input['PredeployArgs']] = None,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  verify: Optional[pulumi.Input[bool]] = None):
         """
         PhaseConfig represents the configuration for a phase in the custom canary deployment.
         :param pulumi.Input[int] percentage: Percentage deployment for the phase.
         :param pulumi.Input[str] phase_id: The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        :param pulumi.Input['PostdeployArgs'] postdeploy: Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+        :param pulumi.Input['PredeployArgs'] predeploy: Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
         :param pulumi.Input[bool] verify: Whether to run verify tests after the deployment.
         """
         pulumi.set(__self__, "percentage", percentage)
         pulumi.set(__self__, "phase_id", phase_id)
+        if postdeploy is not None:
+            pulumi.set(__self__, "postdeploy", postdeploy)
+        if predeploy is not None:
+            pulumi.set(__self__, "predeploy", predeploy)
         if profiles is not None:
             pulumi.set(__self__, "profiles", profiles)
         if verify is not None:
@@ -837,6 +1079,30 @@ class PhaseConfigArgs:
 
     @property
     @pulumi.getter
+    def postdeploy(self) -> Optional[pulumi.Input['PostdeployArgs']]:
+        """
+        Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+        """
+        return pulumi.get(self, "postdeploy")
+
+    @postdeploy.setter
+    def postdeploy(self, value: Optional[pulumi.Input['PostdeployArgs']]):
+        pulumi.set(self, "postdeploy", value)
+
+    @property
+    @pulumi.getter
+    def predeploy(self) -> Optional[pulumi.Input['PredeployArgs']]:
+        """
+        Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
+        """
+        return pulumi.get(self, "predeploy")
+
+    @predeploy.setter
+    def predeploy(self, value: Optional[pulumi.Input['PredeployArgs']]):
+        pulumi.set(self, "predeploy", value)
+
+    @property
+    @pulumi.getter
     def profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
@@ -858,6 +1124,54 @@ class PhaseConfigArgs:
     @verify.setter
     def verify(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "verify", value)
+
+
+@pulumi.input_type
+class PostdeployArgs:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Postdeploy contains the postdeploy job configuration information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
+
+
+@pulumi.input_type
+class PredeployArgs:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Predeploy contains the predeploy job configuration information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
 
 
 @pulumi.input_type
@@ -913,6 +1227,266 @@ class PrivatePoolArgs:
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
+
+
+@pulumi.input_type
+class PromoteReleaseRuleArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 destination_phase: Optional[pulumi.Input[str]] = None,
+                 destination_target_id: Optional[pulumi.Input[str]] = None,
+                 wait: Optional[pulumi.Input[str]] = None):
+        """
+        `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+        :param pulumi.Input[str] id: ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        :param pulumi.Input[str] destination_phase: Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+        :param pulumi.Input[str] destination_target_id: Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+        :param pulumi.Input[str] wait: Optional. How long the release need to be paused until being promoted to the next target.
+        """
+        pulumi.set(__self__, "id", id)
+        if destination_phase is not None:
+            pulumi.set(__self__, "destination_phase", destination_phase)
+        if destination_target_id is not None:
+            pulumi.set(__self__, "destination_target_id", destination_target_id)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="destinationPhase")
+    def destination_phase(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+        """
+        return pulumi.get(self, "destination_phase")
+
+    @destination_phase.setter
+    def destination_phase(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_phase", value)
+
+    @property
+    @pulumi.getter(name="destinationTargetId")
+    def destination_target_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+        """
+        return pulumi.get(self, "destination_target_id")
+
+    @destination_target_id.setter
+    def destination_target_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_target_id", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. How long the release need to be paused until being promoted to the next target.
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wait", value)
+
+
+@pulumi.input_type
+class RepairModeArgs:
+    def __init__(__self__, *,
+                 retry: Optional[pulumi.Input['RetryArgs']] = None,
+                 rollback: Optional[pulumi.Input['RollbackArgs']] = None):
+        """
+        Configuration of the repair action.
+        :param pulumi.Input['RetryArgs'] retry: Optional. Retries a failed job.
+        :param pulumi.Input['RollbackArgs'] rollback: Optional. Rolls back a `Rollout`.
+        """
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
+        if rollback is not None:
+            pulumi.set(__self__, "rollback", rollback)
+
+    @property
+    @pulumi.getter
+    def retry(self) -> Optional[pulumi.Input['RetryArgs']]:
+        """
+        Optional. Retries a failed job.
+        """
+        return pulumi.get(self, "retry")
+
+    @retry.setter
+    def retry(self, value: Optional[pulumi.Input['RetryArgs']]):
+        pulumi.set(self, "retry", value)
+
+    @property
+    @pulumi.getter
+    def rollback(self) -> Optional[pulumi.Input['RollbackArgs']]:
+        """
+        Optional. Rolls back a `Rollout`.
+        """
+        return pulumi.get(self, "rollback")
+
+    @rollback.setter
+    def rollback(self, value: Optional[pulumi.Input['RollbackArgs']]):
+        pulumi.set(self, "rollback", value)
+
+
+@pulumi.input_type
+class RepairRolloutRuleArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 repair_modes: pulumi.Input[Sequence[pulumi.Input['RepairModeArgs']]],
+                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_phases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
+        :param pulumi.Input[str] id: ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        :param pulumi.Input[Sequence[pulumi.Input['RepairModeArgs']]] repair_modes: Defines the types of automatic repair actions for failed jobs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jobs: Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_phases: Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "repair_modes", repair_modes)
+        if jobs is not None:
+            pulumi.set(__self__, "jobs", jobs)
+        if source_phases is not None:
+            pulumi.set(__self__, "source_phases", source_phases)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="repairModes")
+    def repair_modes(self) -> pulumi.Input[Sequence[pulumi.Input['RepairModeArgs']]]:
+        """
+        Defines the types of automatic repair actions for failed jobs.
+        """
+        return pulumi.get(self, "repair_modes")
+
+    @repair_modes.setter
+    def repair_modes(self, value: pulumi.Input[Sequence[pulumi.Input['RepairModeArgs']]]):
+        pulumi.set(self, "repair_modes", value)
+
+    @property
+    @pulumi.getter
+    def jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        return pulumi.get(self, "jobs")
+
+    @jobs.setter
+    def jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "jobs", value)
+
+    @property
+    @pulumi.getter(name="sourcePhases")
+    def source_phases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        return pulumi.get(self, "source_phases")
+
+    @source_phases.setter
+    def source_phases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_phases", value)
+
+
+@pulumi.input_type
+class RetryArgs:
+    def __init__(__self__, *,
+                 attempts: pulumi.Input[str],
+                 backoff_mode: Optional[pulumi.Input['RetryBackoffMode']] = None,
+                 wait: Optional[pulumi.Input[str]] = None):
+        """
+        Retries the failed job.
+        :param pulumi.Input[str] attempts: Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        :param pulumi.Input['RetryBackoffMode'] backoff_mode: Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+        :param pulumi.Input[str] wait: Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+        """
+        pulumi.set(__self__, "attempts", attempts)
+        if backoff_mode is not None:
+            pulumi.set(__self__, "backoff_mode", backoff_mode)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def attempts(self) -> pulumi.Input[str]:
+        """
+        Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        """
+        return pulumi.get(self, "attempts")
+
+    @attempts.setter
+    def attempts(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attempts", value)
+
+    @property
+    @pulumi.getter(name="backoffMode")
+    def backoff_mode(self) -> Optional[pulumi.Input['RetryBackoffMode']]:
+        """
+        Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+        """
+        return pulumi.get(self, "backoff_mode")
+
+    @backoff_mode.setter
+    def backoff_mode(self, value: Optional[pulumi.Input['RetryBackoffMode']]):
+        pulumi.set(self, "backoff_mode", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wait", value)
+
+
+@pulumi.input_type
+class RollbackArgs:
+    def __init__(__self__, *,
+                 destination_phase: Optional[pulumi.Input[str]] = None):
+        """
+        Rolls back a `Rollout`.
+        :param pulumi.Input[str] destination_phase: Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+        """
+        if destination_phase is not None:
+            pulumi.set(__self__, "destination_phase", destination_phase)
+
+    @property
+    @pulumi.getter(name="destinationPhase")
+    def destination_phase(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+        """
+        return pulumi.get(self, "destination_phase")
+
+    @destination_phase.setter
+    def destination_phase(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_phase", value)
 
 
 @pulumi.input_type
@@ -983,14 +1557,18 @@ class SerialPipelineArgs:
 class ServiceNetworkingArgs:
     def __init__(__self__, *,
                  deployment: pulumi.Input[str],
-                 service: pulumi.Input[str]):
+                 service: pulumi.Input[str],
+                 disable_pod_overprovisioning: Optional[pulumi.Input[bool]] = None):
         """
         Information about the Kubernetes Service networking configuration.
         :param pulumi.Input[str] deployment: Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
         :param pulumi.Input[str] service: Name of the Kubernetes Service.
+        :param pulumi.Input[bool] disable_pod_overprovisioning: Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "service", service)
+        if disable_pod_overprovisioning is not None:
+            pulumi.set(__self__, "disable_pod_overprovisioning", disable_pod_overprovisioning)
 
     @property
     @pulumi.getter
@@ -1016,25 +1594,53 @@ class ServiceNetworkingArgs:
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
 
+    @property
+    @pulumi.getter(name="disablePodOverprovisioning")
+    def disable_pod_overprovisioning(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+        """
+        return pulumi.get(self, "disable_pod_overprovisioning")
+
+    @disable_pod_overprovisioning.setter
+    def disable_pod_overprovisioning(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_pod_overprovisioning", value)
+
 
 @pulumi.input_type
 class StageArgs:
     def __init__(__self__, *,
+                 deploy_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['DeployParametersArgs']]]] = None,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategy: Optional[pulumi.Input['StrategyArgs']] = None,
                  target_id: Optional[pulumi.Input[str]] = None):
         """
         Stage specifies a location to which to deploy.
+        :param pulumi.Input[Sequence[pulumi.Input['DeployParametersArgs']]] deploy_parameters: Optional. The deploy parameters to use for the target in this stage.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
         :param pulumi.Input['StrategyArgs'] strategy: Optional. The strategy to use for a `Rollout` to this stage.
         :param pulumi.Input[str] target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
+        if deploy_parameters is not None:
+            pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if profiles is not None:
             pulumi.set(__self__, "profiles", profiles)
         if strategy is not None:
             pulumi.set(__self__, "strategy", strategy)
         if target_id is not None:
             pulumi.set(__self__, "target_id", target_id)
+
+    @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeployParametersArgs']]]]:
+        """
+        Optional. The deploy parameters to use for the target in this stage.
+        """
+        return pulumi.get(self, "deploy_parameters")
+
+    @deploy_parameters.setter
+    def deploy_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeployParametersArgs']]]]):
+        pulumi.set(self, "deploy_parameters", value)
 
     @property
     @pulumi.getter
@@ -1076,13 +1682,45 @@ class StageArgs:
 @pulumi.input_type
 class StandardArgs:
     def __init__(__self__, *,
+                 postdeploy: Optional[pulumi.Input['PostdeployArgs']] = None,
+                 predeploy: Optional[pulumi.Input['PredeployArgs']] = None,
                  verify: Optional[pulumi.Input[bool]] = None):
         """
         Standard represents the standard deployment strategy.
+        :param pulumi.Input['PostdeployArgs'] postdeploy: Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        :param pulumi.Input['PredeployArgs'] predeploy: Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
         :param pulumi.Input[bool] verify: Whether to verify a deployment.
         """
+        if postdeploy is not None:
+            pulumi.set(__self__, "postdeploy", postdeploy)
+        if predeploy is not None:
+            pulumi.set(__self__, "predeploy", predeploy)
         if verify is not None:
             pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def postdeploy(self) -> Optional[pulumi.Input['PostdeployArgs']]:
+        """
+        Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        """
+        return pulumi.get(self, "postdeploy")
+
+    @postdeploy.setter
+    def postdeploy(self, value: Optional[pulumi.Input['PostdeployArgs']]):
+        pulumi.set(self, "postdeploy", value)
+
+    @property
+    @pulumi.getter
+    def predeploy(self) -> Optional[pulumi.Input['PredeployArgs']]:
+        """
+        Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+        """
+        return pulumi.get(self, "predeploy")
+
+    @predeploy.setter
+    def predeploy(self, value: Optional[pulumi.Input['PredeployArgs']]):
+        pulumi.set(self, "predeploy", value)
 
     @property
     @pulumi.getter
@@ -1135,5 +1773,45 @@ class StrategyArgs:
     @standard.setter
     def standard(self, value: Optional[pulumi.Input['StandardArgs']]):
         pulumi.set(self, "standard", value)
+
+
+@pulumi.input_type
+class TargetAttributeArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+        :param pulumi.Input[str] id: ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Target labels.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Target labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
 

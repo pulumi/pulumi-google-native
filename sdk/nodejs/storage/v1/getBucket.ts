@@ -104,6 +104,10 @@ export interface GetBucketResult {
      */
     readonly name: string;
     /**
+     * The bucket's object retention config.
+     */
+    readonly objectRetention: outputs.storage.v1.BucketObjectRetentionResponse;
+    /**
      * The owner of the bucket. This is always the project team's owner group.
      */
     readonly owner: outputs.storage.v1.BucketOwnerResponse;
@@ -127,6 +131,10 @@ export interface GetBucketResult {
      * The URI of this bucket.
      */
     readonly selfLink: string;
+    /**
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+     */
+    readonly softDeletePolicy: outputs.storage.v1.BucketSoftDeletePolicyResponse;
     /**
      * The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
      */

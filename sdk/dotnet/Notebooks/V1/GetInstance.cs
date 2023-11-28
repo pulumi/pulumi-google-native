@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly bool InstallGpuDriver;
         /// <summary>
+        /// Checks how feasible a migration from UmN to WbI is.
+        /// </summary>
+        public readonly Outputs.InstanceMigrationEligibilityResponse InstanceMigrationEligibility;
+        /// <summary>
         /// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         /// </summary>
         public readonly ImmutableArray<string> InstanceOwners;
@@ -132,9 +136,13 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// Custom metadata to apply to this instance.
+        /// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
+        /// <summary>
+        /// Bool indicating whether this notebook has been migrated to a Workbench Instance
+        /// </summary>
+        public readonly bool Migrated;
         /// <summary>
         /// The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
         /// </summary>
@@ -152,7 +160,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly bool NoProxyAccess;
         /// <summary>
-        /// If true, no public IP will be assigned to this instance.
+        /// If true, no external IP will be assigned to this instance.
         /// </summary>
         public readonly bool NoPublicIp;
         /// <summary>
@@ -236,6 +244,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
 
             bool installGpuDriver,
 
+            Outputs.InstanceMigrationEligibilityResponse instanceMigrationEligibility,
+
             ImmutableArray<string> instanceOwners,
 
             string kmsKey,
@@ -245,6 +255,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
             string machineType,
 
             ImmutableDictionary<string, string> metadata,
+
+            bool migrated,
 
             string name,
 
@@ -295,11 +307,13 @@ namespace Pulumi.GoogleNative.Notebooks.V1
             DiskEncryption = diskEncryption;
             Disks = disks;
             InstallGpuDriver = installGpuDriver;
+            InstanceMigrationEligibility = instanceMigrationEligibility;
             InstanceOwners = instanceOwners;
             KmsKey = kmsKey;
             Labels = labels;
             MachineType = machineType;
             Metadata = metadata;
+            Migrated = migrated;
             Name = name;
             Network = network;
             NicType = nicType;

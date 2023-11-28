@@ -31,6 +31,7 @@ type Budget struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	NotificationsRule GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput `pulumi:"notificationsRule"`
+	OwnershipScope    pulumi.StringOutput                                        `pulumi:"ownershipScope"`
 	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules GoogleCloudBillingBudgetsV1ThresholdRuleResponseArrayOutput `pulumi:"thresholdRules"`
 }
@@ -96,6 +97,7 @@ type budgetArgs struct {
 	Etag *string `pulumi:"etag"`
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	NotificationsRule *GoogleCloudBillingBudgetsV1NotificationsRule `pulumi:"notificationsRule"`
+	OwnershipScope    *BudgetOwnershipScope                         `pulumi:"ownershipScope"`
 	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules []GoogleCloudBillingBudgetsV1ThresholdRule `pulumi:"thresholdRules"`
 }
@@ -113,6 +115,7 @@ type BudgetArgs struct {
 	Etag pulumi.StringPtrInput
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	NotificationsRule GoogleCloudBillingBudgetsV1NotificationsRulePtrInput
+	OwnershipScope    BudgetOwnershipScopePtrInput
 	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules GoogleCloudBillingBudgetsV1ThresholdRuleArrayInput
 }
@@ -198,6 +201,10 @@ func (o BudgetOutput) Name() pulumi.StringOutput {
 // Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 func (o BudgetOutput) NotificationsRule() GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput {
 	return o.ApplyT(func(v *Budget) GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput { return v.NotificationsRule }).(GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput)
+}
+
+func (o BudgetOutput) OwnershipScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.OwnershipScope }).(pulumi.StringOutput)
 }
 
 // Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.

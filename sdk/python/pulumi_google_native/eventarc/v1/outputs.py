@@ -20,6 +20,8 @@ __all__ = [
     'EventFilterResponse',
     'ExprResponse',
     'GKEResponse',
+    'HttpEndpointResponse',
+    'NetworkConfigResponse',
     'PubsubResponse',
     'TransportResponse',
 ]
@@ -226,6 +228,10 @@ class DestinationResponse(dict):
             suggest = "cloud_function"
         elif key == "cloudRun":
             suggest = "cloud_run"
+        elif key == "httpEndpoint":
+            suggest = "http_endpoint"
+        elif key == "networkConfig":
+            suggest = "network_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DestinationResponse. Access the value via the '{suggest}' property getter instead.")
@@ -242,24 +248,30 @@ class DestinationResponse(dict):
                  cloud_function: str,
                  cloud_run: 'outputs.CloudRunResponse',
                  gke: 'outputs.GKEResponse',
+                 http_endpoint: 'outputs.HttpEndpointResponse',
+                 network_config: 'outputs.NetworkConfigResponse',
                  workflow: str):
         """
         Represents a target of an invocation over HTTP.
-        :param str cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+        :param str cloud_function: The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         :param 'CloudRunResponse' cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         :param 'GKEResponse' gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        :param 'HttpEndpointResponse' http_endpoint: An HTTP endpoint destination described by an URI.
+        :param 'NetworkConfigResponse' network_config: Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
         :param str workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_run", cloud_run)
         pulumi.set(__self__, "gke", gke)
+        pulumi.set(__self__, "http_endpoint", http_endpoint)
+        pulumi.set(__self__, "network_config", network_config)
         pulumi.set(__self__, "workflow", workflow)
 
     @property
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> str:
         """
-        The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+        The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         """
         return pulumi.get(self, "cloud_function")
 
@@ -278,6 +290,22 @@ class DestinationResponse(dict):
         A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
         return pulumi.get(self, "gke")
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> 'outputs.HttpEndpointResponse':
+        """
+        An HTTP endpoint destination described by an URI.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.NetworkConfigResponse':
+        """
+        Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+        """
+        return pulumi.get(self, "network_config")
 
     @property
     @pulumi.getter
@@ -300,7 +328,7 @@ class EventFilterResponse(dict):
         """
         Filters events based on exact matches on the CloudEvents attributes.
         :param str attribute: The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
-        :param str operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        :param str operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The allowed values are `path_pattern` and `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers.
         :param str value: The value for the attribute.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -319,7 +347,7 @@ class EventFilterResponse(dict):
     @pulumi.getter
     def operator(self) -> str:
         """
-        Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The allowed values are `path_pattern` and `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers.
         """
         return pulumi.get(self, "operator")
 
@@ -451,6 +479,67 @@ class GKEResponse(dict):
         Name of the GKE service.
         """
         return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class HttpEndpointResponse(dict):
+    """
+    Represents a HTTP endpoint destination.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Represents a HTTP endpoint destination.
+        :param str uri: The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class NetworkConfigResponse(dict):
+    """
+    Represents a network config to be used for destination resolution and connectivity.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkAttachment":
+            suggest = "network_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_attachment: str):
+        """
+        Represents a network config to be used for destination resolution and connectivity.
+        :param str network_attachment: Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> str:
+        """
+        Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        """
+        return pulumi.get(self, "network_attachment")
 
 
 @pulumi.output_type

@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Domains.V1.Inputs
         }
 
         /// <summary>
-        /// The free DNS zone provided by [Google Domains](https://domains.google/).
+        /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
         /// </summary>
         [Input("googleDomainsDns")]
         public Input<Inputs.GoogleDomainsDnsArgs>? GoogleDomainsDns { get; set; }

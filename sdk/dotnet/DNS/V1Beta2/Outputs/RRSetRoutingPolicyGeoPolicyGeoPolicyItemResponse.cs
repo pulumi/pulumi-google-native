@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
         public readonly string Location;
         public readonly ImmutableArray<string> Rrdatas;
         /// <summary>
-        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+        /// DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
         /// </summary>
         public readonly ImmutableArray<string> SignatureRrdatas;
 

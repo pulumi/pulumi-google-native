@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1.Outputs
         /// </summary>
         public readonly string Certificate;
         /// <summary>
+        /// IdP field that maps to the user’s email address
+        /// </summary>
+        public readonly string EmailMapping;
+        /// <summary>
         /// Entity id URL
         /// </summary>
         public readonly string EntityId;
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1.Outputs
         private SAMLParamsResponse(
             string certificate,
 
+            string emailMapping,
+
             string entityId,
 
             string ssoUri,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1.Outputs
             string userEmail)
         {
             Certificate = certificate;
+            EmailMapping = emailMapping;
             EntityId = entityId;
             SsoUri = ssoUri;
             UserEmail = userEmail;

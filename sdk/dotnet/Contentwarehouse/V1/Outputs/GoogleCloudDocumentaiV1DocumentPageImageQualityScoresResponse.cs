@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
 {
 
     /// <summary>
-    /// Image Quality Scores for the page image
+    /// Image quality scores for the page image.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse> DetectedDefects;
         /// <summary>
-        /// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+        /// The overall quality score. Range `[0, 1]` where `1` is perfect quality.
         /// </summary>
         public readonly double QualityScore;
 

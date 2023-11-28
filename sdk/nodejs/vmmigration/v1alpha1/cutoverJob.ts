@@ -41,6 +41,10 @@ export class CutoverJob extends pulumi.CustomResource {
     }
 
     /**
+     * Details of the target Persistent Disks in Compute Engine.
+     */
+    public /*out*/ readonly computeEngineDisksTargetDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.ComputeEngineDisksTargetDetailsResponse>;
+    /**
      * Details of the target VM in Compute Engine.
      */
     public /*out*/ readonly computeEngineTargetDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.ComputeEngineTargetDetailsResponse>;
@@ -135,6 +139,7 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
+            resourceInputs["computeEngineDisksTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -149,6 +154,7 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["steps"] = undefined /*out*/;
             resourceInputs["targetDetails"] = undefined /*out*/;
         } else {
+            resourceInputs["computeEngineDisksTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

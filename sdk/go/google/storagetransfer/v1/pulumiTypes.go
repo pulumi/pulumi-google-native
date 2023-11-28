@@ -542,6 +542,8 @@ type AwsS3Data struct {
 	AwsAccessKey *AwsAccessKey `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
+	// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+	CloudfrontDomain *string `pulumi:"cloudfrontDomain"`
 	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
 	CredentialsSecret *string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -567,6 +569,8 @@ type AwsS3DataArgs struct {
 	AwsAccessKey AwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+	CloudfrontDomain pulumi.StringPtrInput `pulumi:"cloudfrontDomain"`
 	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
 	CredentialsSecret pulumi.StringPtrInput `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -681,6 +685,11 @@ func (o AwsS3DataOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3Data) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+func (o AwsS3DataOutput) CloudfrontDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsS3Data) *string { return v.CloudfrontDomain }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
 func (o AwsS3DataOutput) CredentialsSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsS3Data) *string { return v.CredentialsSecret }).(pulumi.StringPtrOutput)
@@ -746,6 +755,16 @@ func (o AwsS3DataPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+func (o AwsS3DataPtrOutput) CloudfrontDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3Data) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudfrontDomain
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
 func (o AwsS3DataPtrOutput) CredentialsSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsS3Data) *string {
@@ -782,6 +801,8 @@ type AwsS3DataResponse struct {
 	AwsAccessKey AwsAccessKeyResponse `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
+	// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+	CloudfrontDomain string `pulumi:"cloudfrontDomain"`
 	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
 	CredentialsSecret string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -819,6 +840,11 @@ func (o AwsS3DataResponseOutput) AwsAccessKey() AwsAccessKeyResponseOutput {
 // S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 func (o AwsS3DataResponseOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+func (o AwsS3DataResponseOutput) CloudfrontDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3DataResponse) string { return v.CloudfrontDomain }).(pulumi.StringOutput)
 }
 
 // Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`

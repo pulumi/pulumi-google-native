@@ -33,7 +33,7 @@ type LookupReleaseArgs struct {
 type LookupReleaseResult struct {
 	// Indicates whether this is an abandoned release.
 	Abandoned bool `pulumi:"abandoned"`
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations map[string]string `pulumi:"annotations"`
 	// List of artifacts to pass through to Skaffold command.
 	BuildArtifacts []BuildArtifactResponse `pulumi:"buildArtifacts"`
@@ -43,13 +43,15 @@ type LookupReleaseResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Snapshot of the parent pipeline taken at release creation time.
 	DeliveryPipelineSnapshot DeliveryPipelineResponse `pulumi:"deliveryPipelineSnapshot"`
+	// Optional. The deploy parameters to use for all targets in this release.
+	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Description of the `Release`. Max length is 255 characters.
 	Description string `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+	// Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
 	Name string `pulumi:"name"`
 	// Time at which the render completed.
 	RenderEndTime string `pulumi:"renderEndTime"`
@@ -61,7 +63,7 @@ type LookupReleaseResult struct {
 	SkaffoldConfigPath string `pulumi:"skaffoldConfigPath"`
 	// Cloud Storage URI of tar.gz archive containing Skaffold configuration.
 	SkaffoldConfigUri string `pulumi:"skaffoldConfigUri"`
-	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 	SkaffoldVersion string `pulumi:"skaffoldVersion"`
 	// Map from target ID to the target artifacts created during the render operation.
 	TargetArtifacts map[string]string `pulumi:"targetArtifacts"`
@@ -122,7 +124,7 @@ func (o LookupReleaseResultOutput) Abandoned() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupReleaseResult) bool { return v.Abandoned }).(pulumi.BoolOutput)
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 func (o LookupReleaseResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupReleaseResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -147,6 +149,11 @@ func (o LookupReleaseResultOutput) DeliveryPipelineSnapshot() DeliveryPipelineRe
 	return o.ApplyT(func(v LookupReleaseResult) DeliveryPipelineResponse { return v.DeliveryPipelineSnapshot }).(DeliveryPipelineResponseOutput)
 }
 
+// Optional. The deploy parameters to use for all targets in this release.
+func (o LookupReleaseResultOutput) DeployParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupReleaseResult) map[string]string { return v.DeployParameters }).(pulumi.StringMapOutput)
+}
+
 // Description of the `Release`. Max length is 255 characters.
 func (o LookupReleaseResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.Description }).(pulumi.StringOutput)
@@ -157,12 +164,12 @@ func (o LookupReleaseResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o LookupReleaseResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupReleaseResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+// Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
 func (o LookupReleaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -192,7 +199,7 @@ func (o LookupReleaseResultOutput) SkaffoldConfigUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.SkaffoldConfigUri }).(pulumi.StringOutput)
 }
 
-// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 func (o LookupReleaseResultOutput) SkaffoldVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.SkaffoldVersion }).(pulumi.StringOutput)
 }

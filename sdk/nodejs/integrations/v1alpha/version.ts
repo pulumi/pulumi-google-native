@@ -39,6 +39,14 @@ export class Version extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Cloud Logging details for the integration version
+     */
+    public readonly cloudLoggingDetails!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse>;
+    /**
+     * Optional. Optional. Indicates if sample workflow should be created.
+     */
+    public readonly createSampleIntegrations!: pulumi.Output<boolean | undefined>;
+    /**
      * Auto-generated.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -152,6 +160,8 @@ export class Version extends pulumi.CustomResource {
             if ((!args || args.productId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
+            resourceInputs["cloudLoggingDetails"] = args ? args.cloudLoggingDetails : undefined;
+            resourceInputs["createSampleIntegrations"] = args ? args.createSampleIntegrations : undefined;
             resourceInputs["databasePersistencePolicy"] = args ? args.databasePersistencePolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["errorCatcherConfigs"] = args ? args.errorCatcherConfigs : undefined;
@@ -180,6 +190,8 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["cloudLoggingDetails"] = undefined /*out*/;
+            resourceInputs["createSampleIntegrations"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databasePersistencePolicy"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -219,6 +231,14 @@ export class Version extends pulumi.CustomResource {
  * The set of arguments for constructing a Version resource.
  */
 export interface VersionArgs {
+    /**
+     * Optional. Cloud Logging details for the integration version
+     */
+    cloudLoggingDetails?: pulumi.Input<inputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs>;
+    /**
+     * Optional. Optional. Indicates if sample workflow should be created.
+     */
+    createSampleIntegrations?: pulumi.Input<boolean>;
     /**
      * Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
      */

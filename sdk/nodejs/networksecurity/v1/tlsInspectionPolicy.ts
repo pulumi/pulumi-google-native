@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -43,19 +46,39 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     */
+    public readonly customTlsFeatures!: pulumi.Output<string[]>;
+    /**
      * Optional. Free-text description of the resource.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+     */
+    public readonly excludePublicCaSet!: pulumi.Output<boolean>;
     public readonly location!: pulumi.Output<string>;
+    /**
+     * Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     */
+    public readonly minTlsVersion!: pulumi.Output<string>;
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     */
+    public readonly tlsFeatureProfile!: pulumi.Output<string>;
+    /**
      * Required. Short name of the TlsInspectionPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "tls_inspection_policy1".
      */
     public readonly tlsInspectionPolicyId!: pulumi.Output<string>;
+    /**
+     * Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
+     */
+    public readonly trustConfig!: pulumi.Output<string>;
     /**
      * The timestamp when the resource was updated.
      */
@@ -79,21 +102,31 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tlsInspectionPolicyId'");
             }
             resourceInputs["caPool"] = args ? args.caPool : undefined;
+            resourceInputs["customTlsFeatures"] = args ? args.customTlsFeatures : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["excludePublicCaSet"] = args ? args.excludePublicCaSet : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tlsFeatureProfile"] = args ? args.tlsFeatureProfile : undefined;
             resourceInputs["tlsInspectionPolicyId"] = args ? args.tlsInspectionPolicyId : undefined;
+            resourceInputs["trustConfig"] = args ? args.trustConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["caPool"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["customTlsFeatures"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["excludePublicCaSet"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["minTlsVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["tlsFeatureProfile"] = undefined /*out*/;
             resourceInputs["tlsInspectionPolicyId"] = undefined /*out*/;
+            resourceInputs["trustConfig"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -112,17 +145,37 @@ export interface TlsInspectionPolicyArgs {
      */
     caPool: pulumi.Input<string>;
     /**
+     * Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     */
+    customTlsFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Optional. Free-text description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+     */
+    excludePublicCaSet?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;
+    /**
+     * Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     */
+    minTlsVersion?: pulumi.Input<enums.networksecurity.v1.TlsInspectionPolicyMinTlsVersion>;
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
+     * Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+     */
+    tlsFeatureProfile?: pulumi.Input<enums.networksecurity.v1.TlsInspectionPolicyTlsFeatureProfile>;
+    /**
      * Required. Short name of the TlsInspectionPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "tls_inspection_policy1".
      */
     tlsInspectionPolicyId: pulumi.Input<string>;
+    /**
+     * Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
+     */
+    trustConfig?: pulumi.Input<string>;
 }

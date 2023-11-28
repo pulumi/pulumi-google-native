@@ -19,19 +19,39 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, git_remote_settings=None, name=None, npmrc_environment_variables_secret_version=None, workspace_compilation_overrides=None):
+    def __init__(__self__, display_name=None, git_remote_settings=None, labels=None, name=None, npmrc_environment_variables_secret_version=None, service_account=None, set_authenticated_user_admin=None, workspace_compilation_overrides=None):
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        pulumi.set(__self__, "display_name", display_name)
         if git_remote_settings and not isinstance(git_remote_settings, dict):
             raise TypeError("Expected argument 'git_remote_settings' to be a dict")
         pulumi.set(__self__, "git_remote_settings", git_remote_settings)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if npmrc_environment_variables_secret_version and not isinstance(npmrc_environment_variables_secret_version, str):
             raise TypeError("Expected argument 'npmrc_environment_variables_secret_version' to be a str")
         pulumi.set(__self__, "npmrc_environment_variables_secret_version", npmrc_environment_variables_secret_version)
+        if service_account and not isinstance(service_account, str):
+            raise TypeError("Expected argument 'service_account' to be a str")
+        pulumi.set(__self__, "service_account", service_account)
+        if set_authenticated_user_admin and not isinstance(set_authenticated_user_admin, bool):
+            raise TypeError("Expected argument 'set_authenticated_user_admin' to be a bool")
+        pulumi.set(__self__, "set_authenticated_user_admin", set_authenticated_user_admin)
         if workspace_compilation_overrides and not isinstance(workspace_compilation_overrides, dict):
             raise TypeError("Expected argument 'workspace_compilation_overrides' to be a dict")
         pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Optional. The repository's user-friendly name.
+        """
+        return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="gitRemoteSettings")
@@ -40,6 +60,14 @@ class GetRepositoryResult:
         Optional. If set, configures this repository to be linked to a Git remote.
         """
         return pulumi.get(self, "git_remote_settings")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. Repository user labels.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -58,6 +86,22 @@ class GetRepositoryResult:
         return pulumi.get(self, "npmrc_environment_variables_secret_version")
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Optional. The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="setAuthenticatedUserAdmin")
+    def set_authenticated_user_admin(self) -> bool:
+        """
+        Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+        """
+        return pulumi.get(self, "set_authenticated_user_admin")
+
+    @property
     @pulumi.getter(name="workspaceCompilationOverrides")
     def workspace_compilation_overrides(self) -> 'outputs.WorkspaceCompilationOverridesResponse':
         """
@@ -72,9 +116,13 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
         if False:
             yield self
         return GetRepositoryResult(
+            display_name=self.display_name,
             git_remote_settings=self.git_remote_settings,
+            labels=self.labels,
             name=self.name,
             npmrc_environment_variables_secret_version=self.npmrc_environment_variables_secret_version,
+            service_account=self.service_account,
+            set_authenticated_user_admin=self.set_authenticated_user_admin,
             workspace_compilation_overrides=self.workspace_compilation_overrides)
 
 
@@ -93,9 +141,13 @@ def get_repository(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataform/v1beta1:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
+        display_name=pulumi.get(__ret__, 'display_name'),
         git_remote_settings=pulumi.get(__ret__, 'git_remote_settings'),
+        labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         npmrc_environment_variables_secret_version=pulumi.get(__ret__, 'npmrc_environment_variables_secret_version'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        set_authenticated_user_admin=pulumi.get(__ret__, 'set_authenticated_user_admin'),
         workspace_compilation_overrides=pulumi.get(__ret__, 'workspace_compilation_overrides'))
 
 

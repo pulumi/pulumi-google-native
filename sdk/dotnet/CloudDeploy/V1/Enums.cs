@@ -78,6 +78,14 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// Use for deployment verification.
         /// </summary>
         public static ExecutionConfigUsagesItem Verify { get; } = new ExecutionConfigUsagesItem("VERIFY");
+        /// <summary>
+        /// Use for predeploy job execution.
+        /// </summary>
+        public static ExecutionConfigUsagesItem Predeploy { get; } = new ExecutionConfigUsagesItem("PREDEPLOY");
+        /// <summary>
+        /// Use for postdeploy job execution.
+        /// </summary>
+        public static ExecutionConfigUsagesItem Postdeploy { get; } = new ExecutionConfigUsagesItem("POSTDEPLOY");
 
         public static bool operator ==(ExecutionConfigUsagesItem left, ExecutionConfigUsagesItem right) => left.Equals(right);
         public static bool operator !=(ExecutionConfigUsagesItem left, ExecutionConfigUsagesItem right) => !left.Equals(right);
@@ -87,6 +95,47 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ExecutionConfigUsagesItem other && Equals(other);
         public bool Equals(ExecutionConfigUsagesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+    /// </summary>
+    [EnumType]
+    public readonly struct RetryBackoffMode : IEquatable<RetryBackoffMode>
+    {
+        private readonly string _value;
+
+        private RetryBackoffMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No WaitMode is specified.
+        /// </summary>
+        public static RetryBackoffMode BackoffModeUnspecified { get; } = new RetryBackoffMode("BACKOFF_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Increases the wait time linearly.
+        /// </summary>
+        public static RetryBackoffMode BackoffModeLinear { get; } = new RetryBackoffMode("BACKOFF_MODE_LINEAR");
+        /// <summary>
+        /// Increases the wait time exponentially.
+        /// </summary>
+        public static RetryBackoffMode BackoffModeExponential { get; } = new RetryBackoffMode("BACKOFF_MODE_EXPONENTIAL");
+
+        public static bool operator ==(RetryBackoffMode left, RetryBackoffMode right) => left.Equals(right);
+        public static bool operator !=(RetryBackoffMode left, RetryBackoffMode right) => !left.Equals(right);
+
+        public static explicit operator string(RetryBackoffMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RetryBackoffMode other && Equals(other);
+        public bool Equals(RetryBackoffMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

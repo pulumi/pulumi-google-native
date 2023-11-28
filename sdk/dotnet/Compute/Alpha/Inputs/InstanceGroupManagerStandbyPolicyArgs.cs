@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("initialDelaySec")]
         public Input<int>? InitialDelaySec { get; set; }
 
+        /// <summary>
+        /// Defines behaviour of using instances from standby pool to resize MIG.
+        /// </summary>
+        [Input("mode")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerStandbyPolicyMode>? Mode { get; set; }
+
         public InstanceGroupManagerStandbyPolicyArgs()
         {
         }

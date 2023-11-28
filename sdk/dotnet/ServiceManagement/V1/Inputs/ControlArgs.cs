@@ -21,6 +21,18 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
+        [Input("methodPolicies")]
+        private InputList<Inputs.MethodPolicyArgs>? _methodPolicies;
+
+        /// <summary>
+        /// Defines policies applying to the API methods of the service.
+        /// </summary>
+        public InputList<Inputs.MethodPolicyArgs> MethodPolicies
+        {
+            get => _methodPolicies ?? (_methodPolicies = new InputList<Inputs.MethodPolicyArgs>());
+            set => _methodPolicies = value;
+        }
+
         public ControlArgs()
         {
         }

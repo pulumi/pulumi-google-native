@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         private InputList<Inputs.GooglePrivacyDlpV2InfoTypeArgs>? _infoTypes;
 
         /// <summary>
-        /// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+        /// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2InfoTypeArgs> InfoTypes
         {
@@ -71,10 +71,22 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2FindingLimitsArgs>? Limits { get; set; }
 
         /// <summary>
-        /// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+        /// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
         /// </summary>
         [Input("minLikelihood")]
         public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigMinLikelihood>? MinLikelihood { get; set; }
+
+        [Input("minLikelihoodPerInfoType")]
+        private InputList<Inputs.GooglePrivacyDlpV2InfoTypeLikelihoodArgs>? _minLikelihoodPerInfoType;
+
+        /// <summary>
+        /// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
+        /// </summary>
+        public InputList<Inputs.GooglePrivacyDlpV2InfoTypeLikelihoodArgs> MinLikelihoodPerInfoType
+        {
+            get => _minLikelihoodPerInfoType ?? (_minLikelihoodPerInfoType = new InputList<Inputs.GooglePrivacyDlpV2InfoTypeLikelihoodArgs>());
+            set => _minLikelihoodPerInfoType = value;
+        }
 
         [Input("ruleSet")]
         private InputList<Inputs.GooglePrivacyDlpV2InspectionRuleSetArgs>? _ruleSet;

@@ -61,7 +61,7 @@ class GetLineageEventResult:
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         """
-        Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+        The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
         """
         return pulumi.get(self, "start_time")
 

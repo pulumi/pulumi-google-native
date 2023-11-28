@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> AdminEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
+        /// </summary>
+        [Output("availableFeatures")]
+        public Output<ImmutableArray<string>> AvailableFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
         /// </summary>
         [Output("circuitInfos")]
@@ -106,6 +112,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        /// </summary>
+        [Output("macsec")]
+        public Output<Outputs.InterconnectMacsecResponse> Macsec { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+        /// </summary>
+        [Output("macsecEnabled")]
+        public Output<bool> MacsecEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
@@ -149,6 +167,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+        /// </summary>
+        [Output("requestedFeatures")]
+        public Output<ImmutableArray<string>> RequestedFeatures { get; private set; } = null!;
 
         /// <summary>
         /// Target number of physical links in the link bundle, as requested by the customer.
@@ -272,6 +296,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        /// </summary>
+        [Input("macsec")]
+        public Input<Inputs.InterconnectMacsecArgs>? Macsec { get; set; }
+
+        /// <summary>
+        /// Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+        /// </summary>
+        [Input("macsecEnabled")]
+        public Input<bool>? MacsecEnabled { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
@@ -297,6 +333,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("requestedFeatures")]
+        private InputList<Pulumi.GoogleNative.Compute.Beta.InterconnectRequestedFeaturesItem>? _requestedFeatures;
+
+        /// <summary>
+        /// Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.Compute.Beta.InterconnectRequestedFeaturesItem> RequestedFeatures
+        {
+            get => _requestedFeatures ?? (_requestedFeatures = new InputList<Pulumi.GoogleNative.Compute.Beta.InterconnectRequestedFeaturesItem>());
+            set => _requestedFeatures = value;
+        }
 
         /// <summary>
         /// Target number of physical links in the link bundle, as requested by the customer.

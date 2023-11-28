@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AccessDeterminationLogConfigArgs',
     'ActionArgs',
     'AnnotationConfigArgs',
     'AnnotationSourceArgs',
@@ -25,6 +26,8 @@ __all__ = [
     'CleanTextFieldArgs',
     'CleanTextTagArgs',
     'CloudHealthcareSourceArgs',
+    'ConsentConfigArgs',
+    'ConsentHeaderHandlingArgs',
     'ContextualDeidConfigArgs',
     'CryptoHashConfigArgs',
     'CryptoHashFieldArgs',
@@ -88,6 +91,30 @@ __all__ = [
     'VersionSourceArgs',
     'VertexArgs',
 ]
+
+@pulumi.input_type
+class AccessDeterminationLogConfigArgs:
+    def __init__(__self__, *,
+                 log_level: Optional[pulumi.Input['AccessDeterminationLogConfigLogLevel']] = None):
+        """
+        Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The consent-related logs are included as part of `protoPayload.metadata`.
+        :param pulumi.Input['AccessDeterminationLogConfigLogLevel'] log_level: Optional. Controls the amount of detail to include as part of the audit logs.
+        """
+        if log_level is not None:
+            pulumi.set(__self__, "log_level", log_level)
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[pulumi.Input['AccessDeterminationLogConfigLogLevel']]:
+        """
+        Optional. Controls the amount of detail to include as part of the audit logs.
+        """
+        return pulumi.get(self, "log_level")
+
+    @log_level.setter
+    def log_level(self, value: Optional[pulumi.Input['AccessDeterminationLogConfigLogLevel']]):
+        pulumi.set(self, "log_level", value)
+
 
 @pulumi.input_type
 class ActionArgs:
@@ -549,7 +576,7 @@ class CharacterMaskConfigArgs:
 class CharacterMaskFieldArgs:
     def __init__(__self__):
         """
-        Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
         """
         pass
 
@@ -558,7 +585,7 @@ class CharacterMaskFieldArgs:
 class CleanDescriptorsOptionArgs:
     def __init__(__self__):
         """
-        This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+        This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional infoType during inspection.
         """
         pass
 
@@ -567,7 +594,7 @@ class CleanDescriptorsOptionArgs:
 class CleanTextFieldArgs:
     def __init__(__self__):
         """
-        Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        Inspect text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
         """
         pass
 
@@ -576,7 +603,7 @@ class CleanTextFieldArgs:
 class CleanTextTagArgs:
     def __init__(__self__):
         """
-        Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        Inspect text and transform sensitive text. Configurable using TextConfig. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
         """
         pass
 
@@ -606,10 +633,121 @@ class CloudHealthcareSourceArgs:
 
 
 @pulumi.input_type
+class ConsentConfigArgs:
+    def __init__(__self__, *,
+                 version: pulumi.Input['ConsentConfigVersion'],
+                 access_determination_log_config: Optional[pulumi.Input['AccessDeterminationLogConfigArgs']] = None,
+                 access_enforced: Optional[pulumi.Input[bool]] = None,
+                 consent_header_handling: Optional[pulumi.Input['ConsentHeaderHandlingArgs']] = None,
+                 enforced_admin_consents: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Configures whether to enforce consent for the FHIR store and which consent enforcement version is being used.
+        :param pulumi.Input['ConsentConfigVersion'] version: Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+        :param pulumi.Input['AccessDeterminationLogConfigArgs'] access_determination_log_config: Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used.
+        :param pulumi.Input[bool] access_enforced: Optional. If set to true, when accessing FHIR resources, the consent headers provided using [SMART-on-FHIR](https://cloud.google.com/healthcare/private/docs/how-tos/smart-on-fhir) will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+        :param pulumi.Input['ConsentHeaderHandlingArgs'] consent_header_handling: Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope` header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enforced_admin_consents: The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents.
+        """
+        pulumi.set(__self__, "version", version)
+        if access_determination_log_config is not None:
+            pulumi.set(__self__, "access_determination_log_config", access_determination_log_config)
+        if access_enforced is not None:
+            pulumi.set(__self__, "access_enforced", access_enforced)
+        if consent_header_handling is not None:
+            pulumi.set(__self__, "consent_header_handling", consent_header_handling)
+        if enforced_admin_consents is not None:
+            pulumi.set(__self__, "enforced_admin_consents", enforced_admin_consents)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input['ConsentConfigVersion']:
+        """
+        Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input['ConsentConfigVersion']):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="accessDeterminationLogConfig")
+    def access_determination_log_config(self) -> Optional[pulumi.Input['AccessDeterminationLogConfigArgs']]:
+        """
+        Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used.
+        """
+        return pulumi.get(self, "access_determination_log_config")
+
+    @access_determination_log_config.setter
+    def access_determination_log_config(self, value: Optional[pulumi.Input['AccessDeterminationLogConfigArgs']]):
+        pulumi.set(self, "access_determination_log_config", value)
+
+    @property
+    @pulumi.getter(name="accessEnforced")
+    def access_enforced(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If set to true, when accessing FHIR resources, the consent headers provided using [SMART-on-FHIR](https://cloud.google.com/healthcare/private/docs/how-tos/smart-on-fhir) will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+        """
+        return pulumi.get(self, "access_enforced")
+
+    @access_enforced.setter
+    def access_enforced(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "access_enforced", value)
+
+    @property
+    @pulumi.getter(name="consentHeaderHandling")
+    def consent_header_handling(self) -> Optional[pulumi.Input['ConsentHeaderHandlingArgs']]:
+        """
+        Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope` header.
+        """
+        return pulumi.get(self, "consent_header_handling")
+
+    @consent_header_handling.setter
+    def consent_header_handling(self, value: Optional[pulumi.Input['ConsentHeaderHandlingArgs']]):
+        pulumi.set(self, "consent_header_handling", value)
+
+    @property
+    @pulumi.getter(name="enforcedAdminConsents")
+    def enforced_admin_consents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents.
+        """
+        return pulumi.get(self, "enforced_admin_consents")
+
+    @enforced_admin_consents.setter
+    def enforced_admin_consents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enforced_admin_consents", value)
+
+
+@pulumi.input_type
+class ConsentHeaderHandlingArgs:
+    def __init__(__self__, *,
+                 profile: Optional[pulumi.Input['ConsentHeaderHandlingProfile']] = None):
+        """
+        How the server handles the consent header.
+        :param pulumi.Input['ConsentHeaderHandlingProfile'] profile: Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+        """
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @property
+    @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input['ConsentHeaderHandlingProfile']]:
+        """
+        Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input['ConsentHeaderHandlingProfile']]):
+        pulumi.set(self, "profile", value)
+
+
+@pulumi.input_type
 class ContextualDeidConfigArgs:
     def __init__(__self__):
         """
-        The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+        Fields that don't match a KeepField or CleanTextField `action` in the BASIC profile are collected into a contextual phrase list. For fields that match a CleanTextField `action` in FieldMetadata or ProfileType, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
         """
         pass
 
@@ -621,8 +759,8 @@ class CryptoHashConfigArgs:
                  kms_wrapped: Optional[pulumi.Input['KmsWrappedCryptoKeyArgs']] = None):
         """
         Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output. For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
-        :param pulumi.Input[str] crypto_key: An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
-        :param pulumi.Input['KmsWrappedCryptoKeyArgs'] kms_wrapped: KMS wrapped key. Must not be set if `crypto_key` is set.
+        :param pulumi.Input[str] crypto_key: An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
+        :param pulumi.Input['KmsWrappedCryptoKeyArgs'] kms_wrapped: KMS wrapped key. Must not be set if crypto_key is set.
         """
         if crypto_key is not None:
             pulumi.set(__self__, "crypto_key", crypto_key)
@@ -633,7 +771,7 @@ class CryptoHashConfigArgs:
     @pulumi.getter(name="cryptoKey")
     def crypto_key(self) -> Optional[pulumi.Input[str]]:
         """
-        An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
         """
         return pulumi.get(self, "crypto_key")
 
@@ -645,7 +783,7 @@ class CryptoHashConfigArgs:
     @pulumi.getter(name="kmsWrapped")
     def kms_wrapped(self) -> Optional[pulumi.Input['KmsWrappedCryptoKeyArgs']]:
         """
-        KMS wrapped key. Must not be set if `crypto_key` is set.
+        KMS wrapped key. Must not be set if crypto_key is set.
         """
         return pulumi.get(self, "kms_wrapped")
 
@@ -658,7 +796,7 @@ class CryptoHashConfigArgs:
 class CryptoHashFieldArgs:
     def __init__(__self__):
         """
-        Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
         """
         pass
 
@@ -670,8 +808,8 @@ class DateShiftConfigArgs:
                  kms_wrapped: Optional[pulumi.Input['KmsWrappedCryptoKeyArgs']] = None):
         """
         Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
-        :param pulumi.Input[str] crypto_key: An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
-        :param pulumi.Input['KmsWrappedCryptoKeyArgs'] kms_wrapped: KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
+        :param pulumi.Input[str] crypto_key: An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If crypto_key is not set, then kms_wrapped is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if kms_wrapped is set.
+        :param pulumi.Input['KmsWrappedCryptoKeyArgs'] kms_wrapped: KMS wrapped key. If kms_wrapped is not set, then crypto_key is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if crypto_key is set.
         """
         if crypto_key is not None:
             pulumi.set(__self__, "crypto_key", crypto_key)
@@ -682,7 +820,7 @@ class DateShiftConfigArgs:
     @pulumi.getter(name="cryptoKey")
     def crypto_key(self) -> Optional[pulumi.Input[str]]:
         """
-        An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+        An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If crypto_key is not set, then kms_wrapped is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if kms_wrapped is set.
         """
         return pulumi.get(self, "crypto_key")
 
@@ -694,7 +832,7 @@ class DateShiftConfigArgs:
     @pulumi.getter(name="kmsWrapped")
     def kms_wrapped(self) -> Optional[pulumi.Input['KmsWrappedCryptoKeyArgs']]:
         """
-        KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
+        KMS wrapped key. If kms_wrapped is not set, then crypto_key is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if crypto_key is set.
         """
         return pulumi.get(self, "kms_wrapped")
 
@@ -707,7 +845,7 @@ class DateShiftConfigArgs:
 class DateShiftFieldArgs:
     def __init__(__self__):
         """
-        Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
         """
         pass
 
@@ -774,7 +912,7 @@ class DeidentifyConfigArgs:
         :param pulumi.Input['ImageConfigArgs'] image: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         :param pulumi.Input['DeidentifyOperationMetadataArgs'] operation_metadata: Details about the work the de-identify operation performed.
         :param pulumi.Input['TextConfigArgs'] text: Configures de-identification of text wherever it is found in the source_dataset.
-        :param pulumi.Input[bool] use_regional_data_processing: Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+        :param pulumi.Input[bool] use_regional_data_processing: Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
         """
         if annotation is not None:
             pulumi.set(__self__, "annotation", annotation)
@@ -913,7 +1051,7 @@ class DeidentifyConfigArgs:
     @pulumi.getter(name="useRegionalDataProcessing")
     def use_regional_data_processing(self) -> Optional[pulumi.Input[bool]]:
         """
-        Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+        Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
         """
         return pulumi.get(self, "use_regional_data_processing")
 
@@ -1203,8 +1341,8 @@ class FhirFieldConfigArgs:
                  profile_type: Optional[pulumi.Input['FhirFieldConfigProfileType']] = None):
         """
         Specifies how to handle the de-identification of a FHIR store.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs']]] field_metadata_list: Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
-        :param pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs'] options: Specifies additional options, overriding the base `profile`.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs']]] field_metadata_list: Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
+        :param pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs'] options: Specifies additional options, overriding the base ProfileType.
         :param pulumi.Input['FhirFieldConfigProfileType'] profile_type: Base profile type for handling FHIR fields.
         """
         if field_metadata_list is not None:
@@ -1218,7 +1356,7 @@ class FhirFieldConfigArgs:
     @pulumi.getter(name="fieldMetadataList")
     def field_metadata_list(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs']]]]:
         """
-        Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
         """
         return pulumi.get(self, "field_metadata_list")
 
@@ -1230,7 +1368,7 @@ class FhirFieldConfigArgs:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs']]:
         """
-        Specifies additional options, overriding the base `profile`.
+        Specifies additional options, overriding the base ProfileType.
         """
         return pulumi.get(self, "options")
 
@@ -1261,7 +1399,7 @@ class FhirNotificationConfigArgs:
         Contains the configuration for FHIR notifications.
         :param pulumi.Input[str] pubsub_topic: The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
         :param pulumi.Input[bool] send_full_resource: Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
-        :param pulumi.Input[bool] send_previous_resource_on_delete: Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+        :param pulumi.Input[bool] send_previous_resource_on_delete: Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
         """
         if pubsub_topic is not None:
             pulumi.set(__self__, "pubsub_topic", pubsub_topic)
@@ -1298,7 +1436,7 @@ class FhirNotificationConfigArgs:
     @pulumi.getter(name="sendPreviousResourceOnDelete")
     def send_previous_resource_on_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+        Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
         """
         return pulumi.get(self, "send_previous_resource_on_delete")
 
@@ -1313,7 +1451,7 @@ class FhirOutputArgs:
                  fhir_store: Optional[pulumi.Input[str]] = None):
         """
         Details about the FHIR store to write the output to.
-        :param pulumi.Input[str] fhir_store: Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set `enable_update_create` to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
+        :param pulumi.Input[str] fhir_store: Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enableUpdateCreate to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
         """
         if fhir_store is not None:
             pulumi.set(__self__, "fhir_store", fhir_store)
@@ -1322,7 +1460,7 @@ class FhirOutputArgs:
     @pulumi.getter(name="fhirStore")
     def fhir_store(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set `enable_update_create` to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
+        Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enableUpdateCreate to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
         """
         return pulumi.get(self, "fhir_store")
 
@@ -1510,12 +1648,12 @@ class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs:
                  remove_field: Optional[pulumi.Input['RemoveFieldArgs']] = None):
         """
         Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
-        :param pulumi.Input['CharacterMaskFieldArgs'] character_mask_field: Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
-        :param pulumi.Input['CleanTextFieldArgs'] clean_text_field: Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
-        :param pulumi.Input['CryptoHashFieldArgs'] crypto_hash_field: Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
-        :param pulumi.Input['DateShiftFieldArgs'] date_shift_field: Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        :param pulumi.Input['CharacterMaskFieldArgs'] character_mask_field: Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
+        :param pulumi.Input['CleanTextFieldArgs'] clean_text_field: Inspect the field's text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
+        :param pulumi.Input['CryptoHashFieldArgs'] crypto_hash_field: Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
+        :param pulumi.Input['DateShiftFieldArgs'] date_shift_field: Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
         :param pulumi.Input['KeepFieldArgs'] keep_field: Keep the field unchanged.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR [type](https://www.hl7.org/fhir/datatypes.html) name. All types begin with an upper case letter. For example, the resource field `Patient.Address.city`, which uses a [string](https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be matched by `Patient.Address.String`. Partial matching is supported. For example, `Patient.Address.city` can be matched by `Address.city` (with `Patient` omitted). Partial matching and type matching can be combined, for example `Patient.Address.city` can be matched by `Address.String`. For "choice" types (those defined in the FHIR spec with the format `field[x]`), use two separate components. For example, `deceasedAge.unit` is matched by `Deceased.Age.unit`. The following types are supported: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`, `HumanName.family`) can be omitted.
         :param pulumi.Input['RemoveFieldArgs'] remove_field: Remove the field.
         """
         if character_mask_field is not None:
@@ -1537,7 +1675,7 @@ class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs:
     @pulumi.getter(name="characterMaskField")
     def character_mask_field(self) -> Optional[pulumi.Input['CharacterMaskFieldArgs']]:
         """
-        Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
         """
         return pulumi.get(self, "character_mask_field")
 
@@ -1549,7 +1687,7 @@ class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs:
     @pulumi.getter(name="cleanTextField")
     def clean_text_field(self) -> Optional[pulumi.Input['CleanTextFieldArgs']]:
         """
-        Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        Inspect the field's text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
         """
         return pulumi.get(self, "clean_text_field")
 
@@ -1561,7 +1699,7 @@ class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs:
     @pulumi.getter(name="cryptoHashField")
     def crypto_hash_field(self) -> Optional[pulumi.Input['CryptoHashFieldArgs']]:
         """
-        Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
         """
         return pulumi.get(self, "crypto_hash_field")
 
@@ -1573,7 +1711,7 @@ class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs:
     @pulumi.getter(name="dateShiftField")
     def date_shift_field(self) -> Optional[pulumi.Input['DateShiftFieldArgs']]:
         """
-        Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
         """
         return pulumi.get(self, "date_shift_field")
 
@@ -1597,7 +1735,7 @@ class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs:
     @pulumi.getter
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+        List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR [type](https://www.hl7.org/fhir/datatypes.html) name. All types begin with an upper case letter. For example, the resource field `Patient.Address.city`, which uses a [string](https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be matched by `Patient.Address.String`. Partial matching is supported. For example, `Patient.Address.city` can be matched by `Address.city` (with `Patient` omitted). Partial matching and type matching can be combined, for example `Patient.Address.city` can be matched by `Address.String`. For "choice" types (those defined in the FHIR spec with the format `field[x]`), use two separate components. For example, `deceasedAge.unit` is matched by `Deceased.Age.unit`. The following types are supported: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`, `HumanName.family`) can be omitted.
         """
         return pulumi.get(self, "paths")
 
@@ -1627,11 +1765,11 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs:
                  date_shift_config: Optional[pulumi.Input['DateShiftConfigArgs']] = None,
                  keep_extensions: Optional[pulumi.Input['KeepExtensionsConfigArgs']] = None):
         """
-        Specifies additional options to apply to the base `profile`.
-        :param pulumi.Input['CharacterMaskConfigArgs'] character_mask_config: Character mask config for `CharacterMaskField` `FieldMetadatas`.
+        Specifies additional options to apply to the base ProfileType.
+        :param pulumi.Input['CharacterMaskConfigArgs'] character_mask_config: Character mask config for CharacterMaskField.
         :param pulumi.Input['ContextualDeidConfigArgs'] contextual_deid: Configure contextual de-id.
-        :param pulumi.Input['CryptoHashConfigArgs'] crypto_hash_config: Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
-        :param pulumi.Input['DateShiftConfigArgs'] date_shift_config: Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+        :param pulumi.Input['CryptoHashConfigArgs'] crypto_hash_config: Crypto hash config for CharacterMaskField.
+        :param pulumi.Input['DateShiftConfigArgs'] date_shift_config: Date shifting config for CharacterMaskField.
         :param pulumi.Input['KeepExtensionsConfigArgs'] keep_extensions: Configure keeping extensions by default.
         """
         if character_mask_config is not None:
@@ -1649,7 +1787,7 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs:
     @pulumi.getter(name="characterMaskConfig")
     def character_mask_config(self) -> Optional[pulumi.Input['CharacterMaskConfigArgs']]:
         """
-        Character mask config for `CharacterMaskField` `FieldMetadatas`.
+        Character mask config for CharacterMaskField.
         """
         return pulumi.get(self, "character_mask_config")
 
@@ -1673,7 +1811,7 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs:
     @pulumi.getter(name="cryptoHashConfig")
     def crypto_hash_config(self) -> Optional[pulumi.Input['CryptoHashConfigArgs']]:
         """
-        Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+        Crypto hash config for CharacterMaskField.
         """
         return pulumi.get(self, "crypto_hash_config")
 
@@ -1685,7 +1823,7 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs:
     @pulumi.getter(name="dateShiftConfig")
     def date_shift_config(self) -> Optional[pulumi.Input['DateShiftConfigArgs']]:
         """
-        Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+        Date shifting config for CharacterMaskField.
         """
         return pulumi.get(self, "date_shift_config")
 
@@ -2222,7 +2360,7 @@ class InfoTypeTransformationArgs:
 class KeepExtensionsConfigArgs:
     def __init__(__self__):
         """
-        The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+        The behavior for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
         """
         pass
 

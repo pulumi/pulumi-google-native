@@ -24,7 +24,7 @@ class SchemaArgs:
         The set of arguments for constructing a Schema resource.
         :param pulumi.Input[str] definition: The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
         :param pulumi.Input[str] name: Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-        :param pulumi.Input[str] schema_id: The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+        :param pulumi.Input[str] schema_id: The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
         :param pulumi.Input['SchemaType'] type: The type of the schema definition.
         """
         if definition is not None:
@@ -75,7 +75,7 @@ class SchemaArgs:
     @pulumi.getter(name="schemaId")
     def schema_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+        The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
         """
         return pulumi.get(self, "schema_id")
 
@@ -114,7 +114,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
         :param pulumi.Input[str] name: Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-        :param pulumi.Input[str] schema_id: The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+        :param pulumi.Input[str] schema_id: The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
         :param pulumi.Input['SchemaType'] type: The type of the schema definition.
         """
         ...
@@ -236,7 +236,7 @@ class Schema(pulumi.CustomResource):
     @pulumi.getter(name="schemaId")
     def schema_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+        The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
         """
         return pulumi.get(self, "schema_id")
 

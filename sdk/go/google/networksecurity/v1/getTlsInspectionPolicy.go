@@ -34,10 +34,20 @@ type LookupTlsInspectionPolicyResult struct {
 	CaPool string `pulumi:"caPool"`
 	// The timestamp when the resource was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+	CustomTlsFeatures []string `pulumi:"customTlsFeatures"`
 	// Optional. Free-text description of the resource.
 	Description string `pulumi:"description"`
+	// Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+	ExcludePublicCaSet bool `pulumi:"excludePublicCaSet"`
+	// Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+	MinTlsVersion string `pulumi:"minTlsVersion"`
 	// Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
 	Name string `pulumi:"name"`
+	// Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+	TlsFeatureProfile string `pulumi:"tlsFeatureProfile"`
+	// Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
+	TrustConfig string `pulumi:"trustConfig"`
 	// The timestamp when the resource was updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -95,14 +105,39 @@ func (o LookupTlsInspectionPolicyResultOutput) CreateTime() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupTlsInspectionPolicyResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+func (o LookupTlsInspectionPolicyResultOutput) CustomTlsFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTlsInspectionPolicyResult) []string { return v.CustomTlsFeatures }).(pulumi.StringArrayOutput)
+}
+
 // Optional. Free-text description of the resource.
 func (o LookupTlsInspectionPolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTlsInspectionPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+func (o LookupTlsInspectionPolicyResultOutput) ExcludePublicCaSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTlsInspectionPolicyResult) bool { return v.ExcludePublicCaSet }).(pulumi.BoolOutput)
+}
+
+// Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+func (o LookupTlsInspectionPolicyResultOutput) MinTlsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTlsInspectionPolicyResult) string { return v.MinTlsVersion }).(pulumi.StringOutput)
+}
+
 // Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
 func (o LookupTlsInspectionPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTlsInspectionPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+func (o LookupTlsInspectionPolicyResultOutput) TlsFeatureProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTlsInspectionPolicyResult) string { return v.TlsFeatureProfile }).(pulumi.StringOutput)
+}
+
+// Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
+func (o LookupTlsInspectionPolicyResultOutput) TrustConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTlsInspectionPolicyResult) string { return v.TrustConfig }).(pulumi.StringOutput)
 }
 
 // The timestamp when the resource was updated.

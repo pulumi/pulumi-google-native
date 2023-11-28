@@ -19,16 +19,22 @@ __all__ = [
 
 @pulumi.output_type
 class GetSourceResult:
-    def __init__(__self__, aws=None, create_time=None, description=None, labels=None, name=None, update_time=None, vmware=None):
+    def __init__(__self__, aws=None, azure=None, create_time=None, description=None, encryption=None, labels=None, name=None, update_time=None, vmware=None):
         if aws and not isinstance(aws, dict):
             raise TypeError("Expected argument 'aws' to be a dict")
         pulumi.set(__self__, "aws", aws)
+        if azure and not isinstance(azure, dict):
+            raise TypeError("Expected argument 'azure' to be a dict")
+        pulumi.set(__self__, "azure", azure)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if encryption and not isinstance(encryption, dict):
+            raise TypeError("Expected argument 'encryption' to be a dict")
+        pulumi.set(__self__, "encryption", encryption)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -51,6 +57,14 @@ class GetSourceResult:
         return pulumi.get(self, "aws")
 
     @property
+    @pulumi.getter
+    def azure(self) -> 'outputs.AzureSourceDetailsResponse':
+        """
+        Azure type source details.
+        """
+        return pulumi.get(self, "azure")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
@@ -65,6 +79,14 @@ class GetSourceResult:
         User-provided description of the source.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.EncryptionResponse':
+        """
+        Optional. Immutable. The encryption details of the source data stored by the service.
+        """
+        return pulumi.get(self, "encryption")
 
     @property
     @pulumi.getter
@@ -106,8 +128,10 @@ class AwaitableGetSourceResult(GetSourceResult):
             yield self
         return GetSourceResult(
             aws=self.aws,
+            azure=self.azure,
             create_time=self.create_time,
             description=self.description,
+            encryption=self.encryption,
             labels=self.labels,
             name=self.name,
             update_time=self.update_time,
@@ -130,8 +154,10 @@ def get_source(location: Optional[str] = None,
 
     return AwaitableGetSourceResult(
         aws=pulumi.get(__ret__, 'aws'),
+        azure=pulumi.get(__ret__, 'azure'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        encryption=pulumi.get(__ret__, 'encryption'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         update_time=pulumi.get(__ret__, 'update_time'),

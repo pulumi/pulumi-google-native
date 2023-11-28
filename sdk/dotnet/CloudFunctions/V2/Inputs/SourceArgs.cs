@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Inputs
     public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+        /// </summary>
+        [Input("gitUri")]
+        public Input<string>? GitUri { get; set; }
+
+        /// <summary>
         /// If provided, get the source from this location in a Cloud Source Repository.
         /// </summary>
         [Input("repoSource")]

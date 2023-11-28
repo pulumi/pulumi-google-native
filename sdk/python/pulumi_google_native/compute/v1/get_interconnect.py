@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectResult:
-    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, remote_location=None, requested_link_count=None, satisfies_pzs=None, self_link=None, state=None):
+    def __init__(__self__, admin_enabled=None, available_features=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, macsec=None, macsec_enabled=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, remote_location=None, requested_features=None, requested_link_count=None, satisfies_pzs=None, self_link=None, state=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
+        if available_features and not isinstance(available_features, list):
+            raise TypeError("Expected argument 'available_features' to be a list")
+        pulumi.set(__self__, "available_features", available_features)
         if circuit_infos and not isinstance(circuit_infos, list):
             raise TypeError("Expected argument 'circuit_infos' to be a list")
         pulumi.set(__self__, "circuit_infos", circuit_infos)
@@ -65,6 +68,12 @@ class GetInterconnectResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if macsec and not isinstance(macsec, dict):
+            raise TypeError("Expected argument 'macsec' to be a dict")
+        pulumi.set(__self__, "macsec", macsec)
+        if macsec_enabled and not isinstance(macsec_enabled, bool):
+            raise TypeError("Expected argument 'macsec_enabled' to be a bool")
+        pulumi.set(__self__, "macsec_enabled", macsec_enabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -83,6 +92,9 @@ class GetInterconnectResult:
         if remote_location and not isinstance(remote_location, str):
             raise TypeError("Expected argument 'remote_location' to be a str")
         pulumi.set(__self__, "remote_location", remote_location)
+        if requested_features and not isinstance(requested_features, list):
+            raise TypeError("Expected argument 'requested_features' to be a list")
+        pulumi.set(__self__, "requested_features", requested_features)
         if requested_link_count and not isinstance(requested_link_count, int):
             raise TypeError("Expected argument 'requested_link_count' to be a int")
         pulumi.set(__self__, "requested_link_count", requested_link_count)
@@ -103,6 +115,14 @@ class GetInterconnectResult:
         Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
         """
         return pulumi.get(self, "admin_enabled")
+
+    @property
+    @pulumi.getter(name="availableFeatures")
+    def available_features(self) -> Sequence[str]:
+        """
+        [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
+        """
+        return pulumi.get(self, "available_features")
 
     @property
     @pulumi.getter(name="circuitInfos")
@@ -218,6 +238,22 @@ class GetInterconnectResult:
 
     @property
     @pulumi.getter
+    def macsec(self) -> 'outputs.InterconnectMacsecResponse':
+        """
+        Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        """
+        return pulumi.get(self, "macsec")
+
+    @property
+    @pulumi.getter(name="macsecEnabled")
+    def macsec_enabled(self) -> bool:
+        """
+        Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+        """
+        return pulumi.get(self, "macsec_enabled")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -265,6 +301,14 @@ class GetInterconnectResult:
         return pulumi.get(self, "remote_location")
 
     @property
+    @pulumi.getter(name="requestedFeatures")
+    def requested_features(self) -> Sequence[str]:
+        """
+        Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+        """
+        return pulumi.get(self, "requested_features")
+
+    @property
     @pulumi.getter(name="requestedLinkCount")
     def requested_link_count(self) -> int:
         """
@@ -304,6 +348,7 @@ class AwaitableGetInterconnectResult(GetInterconnectResult):
             yield self
         return GetInterconnectResult(
             admin_enabled=self.admin_enabled,
+            available_features=self.available_features,
             circuit_infos=self.circuit_infos,
             creation_timestamp=self.creation_timestamp,
             customer_name=self.customer_name,
@@ -318,12 +363,15 @@ class AwaitableGetInterconnectResult(GetInterconnectResult):
             labels=self.labels,
             link_type=self.link_type,
             location=self.location,
+            macsec=self.macsec,
+            macsec_enabled=self.macsec_enabled,
             name=self.name,
             noc_contact_email=self.noc_contact_email,
             operational_status=self.operational_status,
             peer_ip_address=self.peer_ip_address,
             provisioned_link_count=self.provisioned_link_count,
             remote_location=self.remote_location,
+            requested_features=self.requested_features,
             requested_link_count=self.requested_link_count,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
@@ -344,6 +392,7 @@ def get_interconnect(interconnect: Optional[str] = None,
 
     return AwaitableGetInterconnectResult(
         admin_enabled=pulumi.get(__ret__, 'admin_enabled'),
+        available_features=pulumi.get(__ret__, 'available_features'),
         circuit_infos=pulumi.get(__ret__, 'circuit_infos'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         customer_name=pulumi.get(__ret__, 'customer_name'),
@@ -358,12 +407,15 @@ def get_interconnect(interconnect: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         link_type=pulumi.get(__ret__, 'link_type'),
         location=pulumi.get(__ret__, 'location'),
+        macsec=pulumi.get(__ret__, 'macsec'),
+        macsec_enabled=pulumi.get(__ret__, 'macsec_enabled'),
         name=pulumi.get(__ret__, 'name'),
         noc_contact_email=pulumi.get(__ret__, 'noc_contact_email'),
         operational_status=pulumi.get(__ret__, 'operational_status'),
         peer_ip_address=pulumi.get(__ret__, 'peer_ip_address'),
         provisioned_link_count=pulumi.get(__ret__, 'provisioned_link_count'),
         remote_location=pulumi.get(__ret__, 'remote_location'),
+        requested_features=pulumi.get(__ret__, 'requested_features'),
         requested_link_count=pulumi.get(__ret__, 'requested_link_count'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         self_link=pulumi.get(__ret__, 'self_link'),

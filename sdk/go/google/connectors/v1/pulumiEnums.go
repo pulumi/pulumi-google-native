@@ -393,6 +393,1126 @@ func (in *authConfigAuthTypePtr) ToOutput(ctx context.Context) pulumix.Output[*A
 	}
 }
 
+// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+type ConnectionEventingEnablementType string
+
+const (
+	// Eventing Enablement Type Unspecifeied.
+	ConnectionEventingEnablementTypeEventingEnablementTypeUnspecified = ConnectionEventingEnablementType("EVENTING_ENABLEMENT_TYPE_UNSPECIFIED")
+	// Both connection and eventing.
+	ConnectionEventingEnablementTypeEventingAndConnection = ConnectionEventingEnablementType("EVENTING_AND_CONNECTION")
+	// Only Eventing.
+	ConnectionEventingEnablementTypeOnlyEventing = ConnectionEventingEnablementType("ONLY_EVENTING")
+)
+
+func (ConnectionEventingEnablementType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionEventingEnablementType)(nil)).Elem()
+}
+
+func (e ConnectionEventingEnablementType) ToConnectionEventingEnablementTypeOutput() ConnectionEventingEnablementTypeOutput {
+	return pulumi.ToOutput(e).(ConnectionEventingEnablementTypeOutput)
+}
+
+func (e ConnectionEventingEnablementType) ToConnectionEventingEnablementTypeOutputWithContext(ctx context.Context) ConnectionEventingEnablementTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConnectionEventingEnablementTypeOutput)
+}
+
+func (e ConnectionEventingEnablementType) ToConnectionEventingEnablementTypePtrOutput() ConnectionEventingEnablementTypePtrOutput {
+	return e.ToConnectionEventingEnablementTypePtrOutputWithContext(context.Background())
+}
+
+func (e ConnectionEventingEnablementType) ToConnectionEventingEnablementTypePtrOutputWithContext(ctx context.Context) ConnectionEventingEnablementTypePtrOutput {
+	return ConnectionEventingEnablementType(e).ToConnectionEventingEnablementTypeOutputWithContext(ctx).ToConnectionEventingEnablementTypePtrOutputWithContext(ctx)
+}
+
+func (e ConnectionEventingEnablementType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConnectionEventingEnablementType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConnectionEventingEnablementType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConnectionEventingEnablementType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConnectionEventingEnablementTypeOutput struct{ *pulumi.OutputState }
+
+func (ConnectionEventingEnablementTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionEventingEnablementType)(nil)).Elem()
+}
+
+func (o ConnectionEventingEnablementTypeOutput) ToConnectionEventingEnablementTypeOutput() ConnectionEventingEnablementTypeOutput {
+	return o
+}
+
+func (o ConnectionEventingEnablementTypeOutput) ToConnectionEventingEnablementTypeOutputWithContext(ctx context.Context) ConnectionEventingEnablementTypeOutput {
+	return o
+}
+
+func (o ConnectionEventingEnablementTypeOutput) ToConnectionEventingEnablementTypePtrOutput() ConnectionEventingEnablementTypePtrOutput {
+	return o.ToConnectionEventingEnablementTypePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionEventingEnablementTypeOutput) ToConnectionEventingEnablementTypePtrOutputWithContext(ctx context.Context) ConnectionEventingEnablementTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionEventingEnablementType) *ConnectionEventingEnablementType {
+		return &v
+	}).(ConnectionEventingEnablementTypePtrOutput)
+}
+
+func (o ConnectionEventingEnablementTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionEventingEnablementType] {
+	return pulumix.Output[ConnectionEventingEnablementType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectionEventingEnablementTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConnectionEventingEnablementTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectionEventingEnablementType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConnectionEventingEnablementTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionEventingEnablementTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectionEventingEnablementType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionEventingEnablementTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionEventingEnablementTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionEventingEnablementType)(nil)).Elem()
+}
+
+func (o ConnectionEventingEnablementTypePtrOutput) ToConnectionEventingEnablementTypePtrOutput() ConnectionEventingEnablementTypePtrOutput {
+	return o
+}
+
+func (o ConnectionEventingEnablementTypePtrOutput) ToConnectionEventingEnablementTypePtrOutputWithContext(ctx context.Context) ConnectionEventingEnablementTypePtrOutput {
+	return o
+}
+
+func (o ConnectionEventingEnablementTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionEventingEnablementType] {
+	return pulumix.Output[*ConnectionEventingEnablementType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectionEventingEnablementTypePtrOutput) Elem() ConnectionEventingEnablementTypeOutput {
+	return o.ApplyT(func(v *ConnectionEventingEnablementType) ConnectionEventingEnablementType {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionEventingEnablementType
+		return ret
+	}).(ConnectionEventingEnablementTypeOutput)
+}
+
+func (o ConnectionEventingEnablementTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionEventingEnablementTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConnectionEventingEnablementType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConnectionEventingEnablementTypeInput is an input type that accepts ConnectionEventingEnablementTypeArgs and ConnectionEventingEnablementTypeOutput values.
+// You can construct a concrete instance of `ConnectionEventingEnablementTypeInput` via:
+//
+//	ConnectionEventingEnablementTypeArgs{...}
+type ConnectionEventingEnablementTypeInput interface {
+	pulumi.Input
+
+	ToConnectionEventingEnablementTypeOutput() ConnectionEventingEnablementTypeOutput
+	ToConnectionEventingEnablementTypeOutputWithContext(context.Context) ConnectionEventingEnablementTypeOutput
+}
+
+var connectionEventingEnablementTypePtrType = reflect.TypeOf((**ConnectionEventingEnablementType)(nil)).Elem()
+
+type ConnectionEventingEnablementTypePtrInput interface {
+	pulumi.Input
+
+	ToConnectionEventingEnablementTypePtrOutput() ConnectionEventingEnablementTypePtrOutput
+	ToConnectionEventingEnablementTypePtrOutputWithContext(context.Context) ConnectionEventingEnablementTypePtrOutput
+}
+
+type connectionEventingEnablementTypePtr string
+
+func ConnectionEventingEnablementTypePtr(v string) ConnectionEventingEnablementTypePtrInput {
+	return (*connectionEventingEnablementTypePtr)(&v)
+}
+
+func (*connectionEventingEnablementTypePtr) ElementType() reflect.Type {
+	return connectionEventingEnablementTypePtrType
+}
+
+func (in *connectionEventingEnablementTypePtr) ToConnectionEventingEnablementTypePtrOutput() ConnectionEventingEnablementTypePtrOutput {
+	return pulumi.ToOutput(in).(ConnectionEventingEnablementTypePtrOutput)
+}
+
+func (in *connectionEventingEnablementTypePtr) ToConnectionEventingEnablementTypePtrOutputWithContext(ctx context.Context) ConnectionEventingEnablementTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConnectionEventingEnablementTypePtrOutput)
+}
+
+func (in *connectionEventingEnablementTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionEventingEnablementType] {
+	return pulumix.Output[*ConnectionEventingEnablementType]{
+		OutputState: in.ToConnectionEventingEnablementTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Type of the custom connector.
+type CustomConnectorCustomConnectorType string
+
+const (
+	// Connector type is not specified.
+	CustomConnectorCustomConnectorTypeCustomConnectorTypeUnspecified = CustomConnectorCustomConnectorType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED")
+	// OpenAPI connector.
+	CustomConnectorCustomConnectorTypeOpenApi = CustomConnectorCustomConnectorType("OPEN_API")
+	// Proto connector.
+	CustomConnectorCustomConnectorTypeProto = CustomConnectorCustomConnectorType("PROTO")
+)
+
+func (CustomConnectorCustomConnectorType) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomConnectorCustomConnectorType)(nil)).Elem()
+}
+
+func (e CustomConnectorCustomConnectorType) ToCustomConnectorCustomConnectorTypeOutput() CustomConnectorCustomConnectorTypeOutput {
+	return pulumi.ToOutput(e).(CustomConnectorCustomConnectorTypeOutput)
+}
+
+func (e CustomConnectorCustomConnectorType) ToCustomConnectorCustomConnectorTypeOutputWithContext(ctx context.Context) CustomConnectorCustomConnectorTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CustomConnectorCustomConnectorTypeOutput)
+}
+
+func (e CustomConnectorCustomConnectorType) ToCustomConnectorCustomConnectorTypePtrOutput() CustomConnectorCustomConnectorTypePtrOutput {
+	return e.ToCustomConnectorCustomConnectorTypePtrOutputWithContext(context.Background())
+}
+
+func (e CustomConnectorCustomConnectorType) ToCustomConnectorCustomConnectorTypePtrOutputWithContext(ctx context.Context) CustomConnectorCustomConnectorTypePtrOutput {
+	return CustomConnectorCustomConnectorType(e).ToCustomConnectorCustomConnectorTypeOutputWithContext(ctx).ToCustomConnectorCustomConnectorTypePtrOutputWithContext(ctx)
+}
+
+func (e CustomConnectorCustomConnectorType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomConnectorCustomConnectorType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomConnectorCustomConnectorType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CustomConnectorCustomConnectorType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CustomConnectorCustomConnectorTypeOutput struct{ *pulumi.OutputState }
+
+func (CustomConnectorCustomConnectorTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomConnectorCustomConnectorType)(nil)).Elem()
+}
+
+func (o CustomConnectorCustomConnectorTypeOutput) ToCustomConnectorCustomConnectorTypeOutput() CustomConnectorCustomConnectorTypeOutput {
+	return o
+}
+
+func (o CustomConnectorCustomConnectorTypeOutput) ToCustomConnectorCustomConnectorTypeOutputWithContext(ctx context.Context) CustomConnectorCustomConnectorTypeOutput {
+	return o
+}
+
+func (o CustomConnectorCustomConnectorTypeOutput) ToCustomConnectorCustomConnectorTypePtrOutput() CustomConnectorCustomConnectorTypePtrOutput {
+	return o.ToCustomConnectorCustomConnectorTypePtrOutputWithContext(context.Background())
+}
+
+func (o CustomConnectorCustomConnectorTypeOutput) ToCustomConnectorCustomConnectorTypePtrOutputWithContext(ctx context.Context) CustomConnectorCustomConnectorTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomConnectorCustomConnectorType) *CustomConnectorCustomConnectorType {
+		return &v
+	}).(CustomConnectorCustomConnectorTypePtrOutput)
+}
+
+func (o CustomConnectorCustomConnectorTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CustomConnectorCustomConnectorType] {
+	return pulumix.Output[CustomConnectorCustomConnectorType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CustomConnectorCustomConnectorTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CustomConnectorCustomConnectorTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomConnectorCustomConnectorType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CustomConnectorCustomConnectorTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomConnectorCustomConnectorTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomConnectorCustomConnectorType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomConnectorCustomConnectorTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomConnectorCustomConnectorTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomConnectorCustomConnectorType)(nil)).Elem()
+}
+
+func (o CustomConnectorCustomConnectorTypePtrOutput) ToCustomConnectorCustomConnectorTypePtrOutput() CustomConnectorCustomConnectorTypePtrOutput {
+	return o
+}
+
+func (o CustomConnectorCustomConnectorTypePtrOutput) ToCustomConnectorCustomConnectorTypePtrOutputWithContext(ctx context.Context) CustomConnectorCustomConnectorTypePtrOutput {
+	return o
+}
+
+func (o CustomConnectorCustomConnectorTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorCustomConnectorType] {
+	return pulumix.Output[*CustomConnectorCustomConnectorType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CustomConnectorCustomConnectorTypePtrOutput) Elem() CustomConnectorCustomConnectorTypeOutput {
+	return o.ApplyT(func(v *CustomConnectorCustomConnectorType) CustomConnectorCustomConnectorType {
+		if v != nil {
+			return *v
+		}
+		var ret CustomConnectorCustomConnectorType
+		return ret
+	}).(CustomConnectorCustomConnectorTypeOutput)
+}
+
+func (o CustomConnectorCustomConnectorTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomConnectorCustomConnectorTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomConnectorCustomConnectorType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CustomConnectorCustomConnectorTypeInput is an input type that accepts CustomConnectorCustomConnectorTypeArgs and CustomConnectorCustomConnectorTypeOutput values.
+// You can construct a concrete instance of `CustomConnectorCustomConnectorTypeInput` via:
+//
+//	CustomConnectorCustomConnectorTypeArgs{...}
+type CustomConnectorCustomConnectorTypeInput interface {
+	pulumi.Input
+
+	ToCustomConnectorCustomConnectorTypeOutput() CustomConnectorCustomConnectorTypeOutput
+	ToCustomConnectorCustomConnectorTypeOutputWithContext(context.Context) CustomConnectorCustomConnectorTypeOutput
+}
+
+var customConnectorCustomConnectorTypePtrType = reflect.TypeOf((**CustomConnectorCustomConnectorType)(nil)).Elem()
+
+type CustomConnectorCustomConnectorTypePtrInput interface {
+	pulumi.Input
+
+	ToCustomConnectorCustomConnectorTypePtrOutput() CustomConnectorCustomConnectorTypePtrOutput
+	ToCustomConnectorCustomConnectorTypePtrOutputWithContext(context.Context) CustomConnectorCustomConnectorTypePtrOutput
+}
+
+type customConnectorCustomConnectorTypePtr string
+
+func CustomConnectorCustomConnectorTypePtr(v string) CustomConnectorCustomConnectorTypePtrInput {
+	return (*customConnectorCustomConnectorTypePtr)(&v)
+}
+
+func (*customConnectorCustomConnectorTypePtr) ElementType() reflect.Type {
+	return customConnectorCustomConnectorTypePtrType
+}
+
+func (in *customConnectorCustomConnectorTypePtr) ToCustomConnectorCustomConnectorTypePtrOutput() CustomConnectorCustomConnectorTypePtrOutput {
+	return pulumi.ToOutput(in).(CustomConnectorCustomConnectorTypePtrOutput)
+}
+
+func (in *customConnectorCustomConnectorTypePtr) ToCustomConnectorCustomConnectorTypePtrOutputWithContext(ctx context.Context) CustomConnectorCustomConnectorTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CustomConnectorCustomConnectorTypePtrOutput)
+}
+
+func (in *customConnectorCustomConnectorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorCustomConnectorType] {
+	return pulumix.Output[*CustomConnectorCustomConnectorType]{
+		OutputState: in.ToCustomConnectorCustomConnectorTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Type of the customConnector.
+type CustomConnectorVersionType string
+
+const (
+	// Connector type is not specified.
+	CustomConnectorVersionTypeCustomConnectorTypeUnspecified = CustomConnectorVersionType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED")
+	// OpenAPI connector.
+	CustomConnectorVersionTypeOpenApi = CustomConnectorVersionType("OPEN_API")
+	// Proto connector.
+	CustomConnectorVersionTypeProto = CustomConnectorVersionType("PROTO")
+)
+
+func (CustomConnectorVersionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomConnectorVersionType)(nil)).Elem()
+}
+
+func (e CustomConnectorVersionType) ToCustomConnectorVersionTypeOutput() CustomConnectorVersionTypeOutput {
+	return pulumi.ToOutput(e).(CustomConnectorVersionTypeOutput)
+}
+
+func (e CustomConnectorVersionType) ToCustomConnectorVersionTypeOutputWithContext(ctx context.Context) CustomConnectorVersionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CustomConnectorVersionTypeOutput)
+}
+
+func (e CustomConnectorVersionType) ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput {
+	return e.ToCustomConnectorVersionTypePtrOutputWithContext(context.Background())
+}
+
+func (e CustomConnectorVersionType) ToCustomConnectorVersionTypePtrOutputWithContext(ctx context.Context) CustomConnectorVersionTypePtrOutput {
+	return CustomConnectorVersionType(e).ToCustomConnectorVersionTypeOutputWithContext(ctx).ToCustomConnectorVersionTypePtrOutputWithContext(ctx)
+}
+
+func (e CustomConnectorVersionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomConnectorVersionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomConnectorVersionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CustomConnectorVersionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CustomConnectorVersionTypeOutput struct{ *pulumi.OutputState }
+
+func (CustomConnectorVersionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomConnectorVersionType)(nil)).Elem()
+}
+
+func (o CustomConnectorVersionTypeOutput) ToCustomConnectorVersionTypeOutput() CustomConnectorVersionTypeOutput {
+	return o
+}
+
+func (o CustomConnectorVersionTypeOutput) ToCustomConnectorVersionTypeOutputWithContext(ctx context.Context) CustomConnectorVersionTypeOutput {
+	return o
+}
+
+func (o CustomConnectorVersionTypeOutput) ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput {
+	return o.ToCustomConnectorVersionTypePtrOutputWithContext(context.Background())
+}
+
+func (o CustomConnectorVersionTypeOutput) ToCustomConnectorVersionTypePtrOutputWithContext(ctx context.Context) CustomConnectorVersionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomConnectorVersionType) *CustomConnectorVersionType {
+		return &v
+	}).(CustomConnectorVersionTypePtrOutput)
+}
+
+func (o CustomConnectorVersionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CustomConnectorVersionType] {
+	return pulumix.Output[CustomConnectorVersionType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CustomConnectorVersionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CustomConnectorVersionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomConnectorVersionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CustomConnectorVersionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomConnectorVersionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomConnectorVersionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomConnectorVersionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomConnectorVersionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomConnectorVersionType)(nil)).Elem()
+}
+
+func (o CustomConnectorVersionTypePtrOutput) ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput {
+	return o
+}
+
+func (o CustomConnectorVersionTypePtrOutput) ToCustomConnectorVersionTypePtrOutputWithContext(ctx context.Context) CustomConnectorVersionTypePtrOutput {
+	return o
+}
+
+func (o CustomConnectorVersionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorVersionType] {
+	return pulumix.Output[*CustomConnectorVersionType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CustomConnectorVersionTypePtrOutput) Elem() CustomConnectorVersionTypeOutput {
+	return o.ApplyT(func(v *CustomConnectorVersionType) CustomConnectorVersionType {
+		if v != nil {
+			return *v
+		}
+		var ret CustomConnectorVersionType
+		return ret
+	}).(CustomConnectorVersionTypeOutput)
+}
+
+func (o CustomConnectorVersionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomConnectorVersionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomConnectorVersionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CustomConnectorVersionTypeInput is an input type that accepts CustomConnectorVersionTypeArgs and CustomConnectorVersionTypeOutput values.
+// You can construct a concrete instance of `CustomConnectorVersionTypeInput` via:
+//
+//	CustomConnectorVersionTypeArgs{...}
+type CustomConnectorVersionTypeInput interface {
+	pulumi.Input
+
+	ToCustomConnectorVersionTypeOutput() CustomConnectorVersionTypeOutput
+	ToCustomConnectorVersionTypeOutputWithContext(context.Context) CustomConnectorVersionTypeOutput
+}
+
+var customConnectorVersionTypePtrType = reflect.TypeOf((**CustomConnectorVersionType)(nil)).Elem()
+
+type CustomConnectorVersionTypePtrInput interface {
+	pulumi.Input
+
+	ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput
+	ToCustomConnectorVersionTypePtrOutputWithContext(context.Context) CustomConnectorVersionTypePtrOutput
+}
+
+type customConnectorVersionTypePtr string
+
+func CustomConnectorVersionTypePtr(v string) CustomConnectorVersionTypePtrInput {
+	return (*customConnectorVersionTypePtr)(&v)
+}
+
+func (*customConnectorVersionTypePtr) ElementType() reflect.Type {
+	return customConnectorVersionTypePtrType
+}
+
+func (in *customConnectorVersionTypePtr) ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput {
+	return pulumi.ToOutput(in).(CustomConnectorVersionTypePtrOutput)
+}
+
+func (in *customConnectorVersionTypePtr) ToCustomConnectorVersionTypePtrOutputWithContext(ctx context.Context) CustomConnectorVersionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CustomConnectorVersionTypePtrOutput)
+}
+
+func (in *customConnectorVersionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorVersionType] {
+	return pulumix.Output[*CustomConnectorVersionType]{
+		OutputState: in.ToCustomConnectorVersionTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Type.
+type EncryptionKeyType string
+
+const (
+	// Value type is not specified.
+	EncryptionKeyTypeTypeUnspecified = EncryptionKeyType("TYPE_UNSPECIFIED")
+	// Google Managed.
+	EncryptionKeyTypeGoogleManaged = EncryptionKeyType("GOOGLE_MANAGED")
+	// Customer Managed.
+	EncryptionKeyTypeCustomerManaged = EncryptionKeyType("CUSTOMER_MANAGED")
+)
+
+func (EncryptionKeyType) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionKeyType)(nil)).Elem()
+}
+
+func (e EncryptionKeyType) ToEncryptionKeyTypeOutput() EncryptionKeyTypeOutput {
+	return pulumi.ToOutput(e).(EncryptionKeyTypeOutput)
+}
+
+func (e EncryptionKeyType) ToEncryptionKeyTypeOutputWithContext(ctx context.Context) EncryptionKeyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EncryptionKeyTypeOutput)
+}
+
+func (e EncryptionKeyType) ToEncryptionKeyTypePtrOutput() EncryptionKeyTypePtrOutput {
+	return e.ToEncryptionKeyTypePtrOutputWithContext(context.Background())
+}
+
+func (e EncryptionKeyType) ToEncryptionKeyTypePtrOutputWithContext(ctx context.Context) EncryptionKeyTypePtrOutput {
+	return EncryptionKeyType(e).ToEncryptionKeyTypeOutputWithContext(ctx).ToEncryptionKeyTypePtrOutputWithContext(ctx)
+}
+
+func (e EncryptionKeyType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EncryptionKeyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EncryptionKeyType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EncryptionKeyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EncryptionKeyTypeOutput struct{ *pulumi.OutputState }
+
+func (EncryptionKeyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionKeyType)(nil)).Elem()
+}
+
+func (o EncryptionKeyTypeOutput) ToEncryptionKeyTypeOutput() EncryptionKeyTypeOutput {
+	return o
+}
+
+func (o EncryptionKeyTypeOutput) ToEncryptionKeyTypeOutputWithContext(ctx context.Context) EncryptionKeyTypeOutput {
+	return o
+}
+
+func (o EncryptionKeyTypeOutput) ToEncryptionKeyTypePtrOutput() EncryptionKeyTypePtrOutput {
+	return o.ToEncryptionKeyTypePtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionKeyTypeOutput) ToEncryptionKeyTypePtrOutputWithContext(ctx context.Context) EncryptionKeyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionKeyType) *EncryptionKeyType {
+		return &v
+	}).(EncryptionKeyTypePtrOutput)
+}
+
+func (o EncryptionKeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKeyType] {
+	return pulumix.Output[EncryptionKeyType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EncryptionKeyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EncryptionKeyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EncryptionKeyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EncryptionKeyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionKeyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EncryptionKeyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EncryptionKeyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionKeyTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionKeyType)(nil)).Elem()
+}
+
+func (o EncryptionKeyTypePtrOutput) ToEncryptionKeyTypePtrOutput() EncryptionKeyTypePtrOutput {
+	return o
+}
+
+func (o EncryptionKeyTypePtrOutput) ToEncryptionKeyTypePtrOutputWithContext(ctx context.Context) EncryptionKeyTypePtrOutput {
+	return o
+}
+
+func (o EncryptionKeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeyType] {
+	return pulumix.Output[*EncryptionKeyType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EncryptionKeyTypePtrOutput) Elem() EncryptionKeyTypeOutput {
+	return o.ApplyT(func(v *EncryptionKeyType) EncryptionKeyType {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionKeyType
+		return ret
+	}).(EncryptionKeyTypeOutput)
+}
+
+func (o EncryptionKeyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EncryptionKeyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EncryptionKeyTypeInput is an input type that accepts EncryptionKeyTypeArgs and EncryptionKeyTypeOutput values.
+// You can construct a concrete instance of `EncryptionKeyTypeInput` via:
+//
+//	EncryptionKeyTypeArgs{...}
+type EncryptionKeyTypeInput interface {
+	pulumi.Input
+
+	ToEncryptionKeyTypeOutput() EncryptionKeyTypeOutput
+	ToEncryptionKeyTypeOutputWithContext(context.Context) EncryptionKeyTypeOutput
+}
+
+var encryptionKeyTypePtrType = reflect.TypeOf((**EncryptionKeyType)(nil)).Elem()
+
+type EncryptionKeyTypePtrInput interface {
+	pulumi.Input
+
+	ToEncryptionKeyTypePtrOutput() EncryptionKeyTypePtrOutput
+	ToEncryptionKeyTypePtrOutputWithContext(context.Context) EncryptionKeyTypePtrOutput
+}
+
+type encryptionKeyTypePtr string
+
+func EncryptionKeyTypePtr(v string) EncryptionKeyTypePtrInput {
+	return (*encryptionKeyTypePtr)(&v)
+}
+
+func (*encryptionKeyTypePtr) ElementType() reflect.Type {
+	return encryptionKeyTypePtrType
+}
+
+func (in *encryptionKeyTypePtr) ToEncryptionKeyTypePtrOutput() EncryptionKeyTypePtrOutput {
+	return pulumi.ToOutput(in).(EncryptionKeyTypePtrOutput)
+}
+
+func (in *encryptionKeyTypePtr) ToEncryptionKeyTypePtrOutputWithContext(ctx context.Context) EncryptionKeyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EncryptionKeyTypePtrOutput)
+}
+
+func (in *encryptionKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeyType] {
+	return pulumix.Output[*EncryptionKeyType]{
+		OutputState: in.ToEncryptionKeyTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// type of the destination
+type EventSubscriptionDestinationType string
+
+const (
+	// Default state.
+	EventSubscriptionDestinationTypeTypeUnspecified = EventSubscriptionDestinationType("TYPE_UNSPECIFIED")
+	// Endpoint - Hit the value of endpoint when event is received
+	EventSubscriptionDestinationTypeEndpoint = EventSubscriptionDestinationType("ENDPOINT")
+)
+
+func (EventSubscriptionDestinationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSubscriptionDestinationType)(nil)).Elem()
+}
+
+func (e EventSubscriptionDestinationType) ToEventSubscriptionDestinationTypeOutput() EventSubscriptionDestinationTypeOutput {
+	return pulumi.ToOutput(e).(EventSubscriptionDestinationTypeOutput)
+}
+
+func (e EventSubscriptionDestinationType) ToEventSubscriptionDestinationTypeOutputWithContext(ctx context.Context) EventSubscriptionDestinationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EventSubscriptionDestinationTypeOutput)
+}
+
+func (e EventSubscriptionDestinationType) ToEventSubscriptionDestinationTypePtrOutput() EventSubscriptionDestinationTypePtrOutput {
+	return e.ToEventSubscriptionDestinationTypePtrOutputWithContext(context.Background())
+}
+
+func (e EventSubscriptionDestinationType) ToEventSubscriptionDestinationTypePtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationTypePtrOutput {
+	return EventSubscriptionDestinationType(e).ToEventSubscriptionDestinationTypeOutputWithContext(ctx).ToEventSubscriptionDestinationTypePtrOutputWithContext(ctx)
+}
+
+func (e EventSubscriptionDestinationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EventSubscriptionDestinationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EventSubscriptionDestinationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EventSubscriptionDestinationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EventSubscriptionDestinationTypeOutput struct{ *pulumi.OutputState }
+
+func (EventSubscriptionDestinationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSubscriptionDestinationType)(nil)).Elem()
+}
+
+func (o EventSubscriptionDestinationTypeOutput) ToEventSubscriptionDestinationTypeOutput() EventSubscriptionDestinationTypeOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationTypeOutput) ToEventSubscriptionDestinationTypeOutputWithContext(ctx context.Context) EventSubscriptionDestinationTypeOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationTypeOutput) ToEventSubscriptionDestinationTypePtrOutput() EventSubscriptionDestinationTypePtrOutput {
+	return o.ToEventSubscriptionDestinationTypePtrOutputWithContext(context.Background())
+}
+
+func (o EventSubscriptionDestinationTypeOutput) ToEventSubscriptionDestinationTypePtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSubscriptionDestinationType) *EventSubscriptionDestinationType {
+		return &v
+	}).(EventSubscriptionDestinationTypePtrOutput)
+}
+
+func (o EventSubscriptionDestinationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EventSubscriptionDestinationType] {
+	return pulumix.Output[EventSubscriptionDestinationType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventSubscriptionDestinationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EventSubscriptionDestinationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EventSubscriptionDestinationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EventSubscriptionDestinationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EventSubscriptionDestinationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EventSubscriptionDestinationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventSubscriptionDestinationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EventSubscriptionDestinationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSubscriptionDestinationType)(nil)).Elem()
+}
+
+func (o EventSubscriptionDestinationTypePtrOutput) ToEventSubscriptionDestinationTypePtrOutput() EventSubscriptionDestinationTypePtrOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationTypePtrOutput) ToEventSubscriptionDestinationTypePtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationTypePtrOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventSubscriptionDestinationType] {
+	return pulumix.Output[*EventSubscriptionDestinationType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventSubscriptionDestinationTypePtrOutput) Elem() EventSubscriptionDestinationTypeOutput {
+	return o.ApplyT(func(v *EventSubscriptionDestinationType) EventSubscriptionDestinationType {
+		if v != nil {
+			return *v
+		}
+		var ret EventSubscriptionDestinationType
+		return ret
+	}).(EventSubscriptionDestinationTypeOutput)
+}
+
+func (o EventSubscriptionDestinationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EventSubscriptionDestinationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EventSubscriptionDestinationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EventSubscriptionDestinationTypeInput is an input type that accepts EventSubscriptionDestinationTypeArgs and EventSubscriptionDestinationTypeOutput values.
+// You can construct a concrete instance of `EventSubscriptionDestinationTypeInput` via:
+//
+//	EventSubscriptionDestinationTypeArgs{...}
+type EventSubscriptionDestinationTypeInput interface {
+	pulumi.Input
+
+	ToEventSubscriptionDestinationTypeOutput() EventSubscriptionDestinationTypeOutput
+	ToEventSubscriptionDestinationTypeOutputWithContext(context.Context) EventSubscriptionDestinationTypeOutput
+}
+
+var eventSubscriptionDestinationTypePtrType = reflect.TypeOf((**EventSubscriptionDestinationType)(nil)).Elem()
+
+type EventSubscriptionDestinationTypePtrInput interface {
+	pulumi.Input
+
+	ToEventSubscriptionDestinationTypePtrOutput() EventSubscriptionDestinationTypePtrOutput
+	ToEventSubscriptionDestinationTypePtrOutputWithContext(context.Context) EventSubscriptionDestinationTypePtrOutput
+}
+
+type eventSubscriptionDestinationTypePtr string
+
+func EventSubscriptionDestinationTypePtr(v string) EventSubscriptionDestinationTypePtrInput {
+	return (*eventSubscriptionDestinationTypePtr)(&v)
+}
+
+func (*eventSubscriptionDestinationTypePtr) ElementType() reflect.Type {
+	return eventSubscriptionDestinationTypePtrType
+}
+
+func (in *eventSubscriptionDestinationTypePtr) ToEventSubscriptionDestinationTypePtrOutput() EventSubscriptionDestinationTypePtrOutput {
+	return pulumi.ToOutput(in).(EventSubscriptionDestinationTypePtrOutput)
+}
+
+func (in *eventSubscriptionDestinationTypePtr) ToEventSubscriptionDestinationTypePtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EventSubscriptionDestinationTypePtrOutput)
+}
+
+func (in *eventSubscriptionDestinationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EventSubscriptionDestinationType] {
+	return pulumix.Output[*EventSubscriptionDestinationType]{
+		OutputState: in.ToEventSubscriptionDestinationTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Type of the JMS Source. i.e. Queue or Topic
+type JMSType string
+
+const (
+	// Default state.
+	JMSTypeTypeUnspecified = JMSType("TYPE_UNSPECIFIED")
+	// JMS Queue.
+	JMSTypeQueue = JMSType("QUEUE")
+	// JMS Topic.
+	JMSTypeTopic = JMSType("TOPIC")
+)
+
+func (JMSType) ElementType() reflect.Type {
+	return reflect.TypeOf((*JMSType)(nil)).Elem()
+}
+
+func (e JMSType) ToJMSTypeOutput() JMSTypeOutput {
+	return pulumi.ToOutput(e).(JMSTypeOutput)
+}
+
+func (e JMSType) ToJMSTypeOutputWithContext(ctx context.Context) JMSTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JMSTypeOutput)
+}
+
+func (e JMSType) ToJMSTypePtrOutput() JMSTypePtrOutput {
+	return e.ToJMSTypePtrOutputWithContext(context.Background())
+}
+
+func (e JMSType) ToJMSTypePtrOutputWithContext(ctx context.Context) JMSTypePtrOutput {
+	return JMSType(e).ToJMSTypeOutputWithContext(ctx).ToJMSTypePtrOutputWithContext(ctx)
+}
+
+func (e JMSType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JMSType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JMSType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JMSType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JMSTypeOutput struct{ *pulumi.OutputState }
+
+func (JMSTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JMSType)(nil)).Elem()
+}
+
+func (o JMSTypeOutput) ToJMSTypeOutput() JMSTypeOutput {
+	return o
+}
+
+func (o JMSTypeOutput) ToJMSTypeOutputWithContext(ctx context.Context) JMSTypeOutput {
+	return o
+}
+
+func (o JMSTypeOutput) ToJMSTypePtrOutput() JMSTypePtrOutput {
+	return o.ToJMSTypePtrOutputWithContext(context.Background())
+}
+
+func (o JMSTypeOutput) ToJMSTypePtrOutputWithContext(ctx context.Context) JMSTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JMSType) *JMSType {
+		return &v
+	}).(JMSTypePtrOutput)
+}
+
+func (o JMSTypeOutput) ToOutput(ctx context.Context) pulumix.Output[JMSType] {
+	return pulumix.Output[JMSType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JMSTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JMSTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JMSType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JMSTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JMSTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JMSType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JMSTypePtrOutput struct{ *pulumi.OutputState }
+
+func (JMSTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JMSType)(nil)).Elem()
+}
+
+func (o JMSTypePtrOutput) ToJMSTypePtrOutput() JMSTypePtrOutput {
+	return o
+}
+
+func (o JMSTypePtrOutput) ToJMSTypePtrOutputWithContext(ctx context.Context) JMSTypePtrOutput {
+	return o
+}
+
+func (o JMSTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JMSType] {
+	return pulumix.Output[*JMSType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JMSTypePtrOutput) Elem() JMSTypeOutput {
+	return o.ApplyT(func(v *JMSType) JMSType {
+		if v != nil {
+			return *v
+		}
+		var ret JMSType
+		return ret
+	}).(JMSTypeOutput)
+}
+
+func (o JMSTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JMSTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JMSType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JMSTypeInput is an input type that accepts JMSTypeArgs and JMSTypeOutput values.
+// You can construct a concrete instance of `JMSTypeInput` via:
+//
+//	JMSTypeArgs{...}
+type JMSTypeInput interface {
+	pulumi.Input
+
+	ToJMSTypeOutput() JMSTypeOutput
+	ToJMSTypeOutputWithContext(context.Context) JMSTypeOutput
+}
+
+var jmstypePtrType = reflect.TypeOf((**JMSType)(nil)).Elem()
+
+type JMSTypePtrInput interface {
+	pulumi.Input
+
+	ToJMSTypePtrOutput() JMSTypePtrOutput
+	ToJMSTypePtrOutputWithContext(context.Context) JMSTypePtrOutput
+}
+
+type jmstypePtr string
+
+func JMSTypePtr(v string) JMSTypePtrInput {
+	return (*jmstypePtr)(&v)
+}
+
+func (*jmstypePtr) ElementType() reflect.Type {
+	return jmstypePtrType
+}
+
+func (in *jmstypePtr) ToJMSTypePtrOutput() JMSTypePtrOutput {
+	return pulumi.ToOutput(in).(JMSTypePtrOutput)
+}
+
+func (in *jmstypePtr) ToJMSTypePtrOutputWithContext(ctx context.Context) JMSTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JMSTypePtrOutput)
+}
+
+func (in *jmstypePtr) ToOutput(ctx context.Context) pulumix.Output[*JMSType] {
+	return pulumix.Output[*JMSType]{
+		OutputState: in.ToJMSTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Type of Client Cert (PEM/JKS/.. etc.)
 type SslConfigClientCertType string
 
@@ -1142,6 +2262,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAuthTypeInput)(nil)).Elem(), AuthConfigAuthType("AUTH_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAuthTypePtrInput)(nil)).Elem(), AuthConfigAuthType("AUTH_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingEnablementTypeInput)(nil)).Elem(), ConnectionEventingEnablementType("EVENTING_ENABLEMENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingEnablementTypePtrInput)(nil)).Elem(), ConnectionEventingEnablementType("EVENTING_ENABLEMENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomConnectorCustomConnectorTypeInput)(nil)).Elem(), CustomConnectorCustomConnectorType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomConnectorCustomConnectorTypePtrInput)(nil)).Elem(), CustomConnectorCustomConnectorType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomConnectorVersionTypeInput)(nil)).Elem(), CustomConnectorVersionType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomConnectorVersionTypePtrInput)(nil)).Elem(), CustomConnectorVersionType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyTypeInput)(nil)).Elem(), EncryptionKeyType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyTypePtrInput)(nil)).Elem(), EncryptionKeyType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSubscriptionDestinationTypeInput)(nil)).Elem(), EventSubscriptionDestinationType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSubscriptionDestinationTypePtrInput)(nil)).Elem(), EventSubscriptionDestinationType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JMSTypeInput)(nil)).Elem(), JMSType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JMSTypePtrInput)(nil)).Elem(), JMSType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigClientCertTypeInput)(nil)).Elem(), SslConfigClientCertType("CERT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigClientCertTypePtrInput)(nil)).Elem(), SslConfigClientCertType("CERT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigServerCertTypeInput)(nil)).Elem(), SslConfigServerCertType("CERT_TYPE_UNSPECIFIED"))
@@ -1154,6 +2286,18 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigAuthTypeOutput{})
 	pulumi.RegisterOutputType(AuthConfigAuthTypePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionEventingEnablementTypeOutput{})
+	pulumi.RegisterOutputType(ConnectionEventingEnablementTypePtrOutput{})
+	pulumi.RegisterOutputType(CustomConnectorCustomConnectorTypeOutput{})
+	pulumi.RegisterOutputType(CustomConnectorCustomConnectorTypePtrOutput{})
+	pulumi.RegisterOutputType(CustomConnectorVersionTypeOutput{})
+	pulumi.RegisterOutputType(CustomConnectorVersionTypePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionKeyTypeOutput{})
+	pulumi.RegisterOutputType(EncryptionKeyTypePtrOutput{})
+	pulumi.RegisterOutputType(EventSubscriptionDestinationTypeOutput{})
+	pulumi.RegisterOutputType(EventSubscriptionDestinationTypePtrOutput{})
+	pulumi.RegisterOutputType(JMSTypeOutput{})
+	pulumi.RegisterOutputType(JMSTypePtrOutput{})
 	pulumi.RegisterOutputType(SslConfigClientCertTypeOutput{})
 	pulumi.RegisterOutputType(SslConfigClientCertTypePtrOutput{})
 	pulumi.RegisterOutputType(SslConfigServerCertTypeOutput{})

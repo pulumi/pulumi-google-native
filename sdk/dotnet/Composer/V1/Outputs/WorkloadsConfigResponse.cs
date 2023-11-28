@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// </summary>
         public readonly Outputs.SchedulerResourceResponse Scheduler;
         /// <summary>
+        /// Optional. Resources used by Airflow triggerers.
+        /// </summary>
+        public readonly Outputs.TriggererResourceResponse Triggerer;
+        /// <summary>
         /// Optional. Resources used by Airflow web server.
         /// </summary>
         public readonly Outputs.WebServerResourceResponse WebServer;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         private WorkloadsConfigResponse(
             Outputs.SchedulerResourceResponse scheduler,
 
+            Outputs.TriggererResourceResponse triggerer,
+
             Outputs.WebServerResourceResponse webServer,
 
             Outputs.WorkerResourceResponse worker)
         {
             Scheduler = scheduler;
+            Triggerer = triggerer;
             WebServer = webServer;
             Worker = worker;
         }

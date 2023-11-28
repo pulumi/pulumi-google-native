@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetDiskResult
     {
         /// <summary>
+        /// The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+        /// </summary>
+        public readonly string AccessMode;
+        /// <summary>
         /// The architecture of the disk. Valid values are ARM64 or X86_64.
         /// </summary>
         public readonly string Architecture;
@@ -88,7 +92,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse DiskEncryptionKey;
         /// <summary>
-        /// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        /// Whether this disk is using confidential compute mode.
         /// </summary>
         public readonly bool EnableConfidentialCompute;
         /// <summary>
@@ -196,7 +200,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
-        /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
         /// </summary>
         public readonly string SizeGb;
         /// <summary>
@@ -282,6 +286,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetDiskResult(
+            string accessMode,
+
             string architecture,
 
             Outputs.DiskAsyncReplicationResponse asyncPrimaryDisk,
@@ -390,6 +396,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string zone)
         {
+            AccessMode = accessMode;
             Architecture = architecture;
             AsyncPrimaryDisk = asyncPrimaryDisk;
             AsyncSecondaryDisks = asyncSecondaryDisks;

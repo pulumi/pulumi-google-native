@@ -15,6 +15,7 @@ __all__ = ['TargetHttpProxyArgs', 'TargetHttpProxy']
 class TargetHttpProxyArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
@@ -23,6 +24,7 @@ class TargetHttpProxyArgs:
         """
         The set of arguments for constructing a TargetHttpProxy resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -30,6 +32,8 @@ class TargetHttpProxyArgs:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if http_keep_alive_timeout_sec is not None:
+            pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -52,6 +56,18 @@ class TargetHttpProxyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
+
+    @http_keep_alive_timeout_sec.setter
+    def http_keep_alive_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_keep_alive_timeout_sec", value)
 
     @property
     @pulumi.getter
@@ -117,6 +133,7 @@ class TargetHttpProxy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
@@ -129,6 +146,7 @@ class TargetHttpProxy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -159,6 +177,7 @@ class TargetHttpProxy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
@@ -174,6 +193,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             __props__ = TargetHttpProxyArgs.__new__(TargetHttpProxyArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
@@ -211,6 +231,7 @@ class TargetHttpProxy(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fingerprint"] = None
+        __props__.__dict__["http_keep_alive_timeout_sec"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -244,6 +265,14 @@ class TargetHttpProxy(pulumi.CustomResource):
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> pulumi.Output[int]:
+        """
+        Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
 
     @property
     @pulumi.getter

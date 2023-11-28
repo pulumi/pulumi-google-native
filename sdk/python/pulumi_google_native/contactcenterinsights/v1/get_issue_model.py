@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetIssueModelResult:
-    def __init__(__self__, create_time=None, display_name=None, input_data_config=None, issue_count=None, name=None, state=None, training_stats=None, update_time=None):
+    def __init__(__self__, create_time=None, display_name=None, input_data_config=None, issue_count=None, language_code=None, model_type=None, name=None, state=None, training_stats=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -32,6 +32,12 @@ class GetIssueModelResult:
         if issue_count and not isinstance(issue_count, str):
             raise TypeError("Expected argument 'issue_count' to be a str")
         pulumi.set(__self__, "issue_count", issue_count)
+        if language_code and not isinstance(language_code, str):
+            raise TypeError("Expected argument 'language_code' to be a str")
+        pulumi.set(__self__, "language_code", language_code)
+        if model_type and not isinstance(model_type, str):
+            raise TypeError("Expected argument 'model_type' to be a str")
+        pulumi.set(__self__, "model_type", model_type)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -78,6 +84,22 @@ class GetIssueModelResult:
         return pulumi.get(self, "issue_count")
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> str:
+        """
+        Language of the model.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter(name="modelType")
+    def model_type(self) -> str:
+        """
+        Type of the model.
+        """
+        return pulumi.get(self, "model_type")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -120,6 +142,8 @@ class AwaitableGetIssueModelResult(GetIssueModelResult):
             display_name=self.display_name,
             input_data_config=self.input_data_config,
             issue_count=self.issue_count,
+            language_code=self.language_code,
+            model_type=self.model_type,
             name=self.name,
             state=self.state,
             training_stats=self.training_stats,
@@ -145,6 +169,8 @@ def get_issue_model(issue_model_id: Optional[str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         input_data_config=pulumi.get(__ret__, 'input_data_config'),
         issue_count=pulumi.get(__ret__, 'issue_count'),
+        language_code=pulumi.get(__ret__, 'language_code'),
+        model_type=pulumi.get(__ret__, 'model_type'),
         name=pulumi.get(__ret__, 'name'),
         state=pulumi.get(__ret__, 'state'),
         training_stats=pulumi.get(__ret__, 'training_stats'),

@@ -22,19 +22,19 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public Input<bool>? AllNamespaces { get; set; }
 
         /// <summary>
-        /// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+        /// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
         /// </summary>
         [Input("encryptionKey")]
         public Input<Inputs.EncryptionKeyArgs>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
+        /// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
         /// </summary>
         [Input("includeSecrets")]
         public Input<bool>? IncludeSecrets { get; set; }
 
         /// <summary>
-        /// This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
+        /// Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
         /// </summary>
         [Input("includeVolumeData")]
         public Input<bool>? IncludeVolumeData { get; set; }

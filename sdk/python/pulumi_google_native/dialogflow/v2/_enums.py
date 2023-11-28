@@ -361,6 +361,10 @@ class GoogleCloudDialogflowV2SuggestionFeatureType(str, Enum):
     """
     Run smart reply model for chat.
     """
+    KNOWLEDGE_SEARCH = "KNOWLEDGE_SEARCH"
+    """
+    Run knowledge search with text input from agent or text generated query.
+    """
 
 
 class GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding(str, Enum):

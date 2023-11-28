@@ -28,7 +28,8 @@ type Environment struct {
 	// Optional. Display name for this environment.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
-	ForwardProxyUri pulumi.StringOutput `pulumi:"forwardProxyUri"`
+	ForwardProxyUri      pulumi.StringOutput `pulumi:"forwardProxyUri"`
+	HasAttachedFlowHooks pulumi.BoolOutput   `pulumi:"hasAttachedFlowHooks"`
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Optional. Name of the environment.
@@ -40,6 +41,8 @@ type Environment struct {
 	Properties GoogleCloudApigeeV1PropertiesResponseOutput `pulumi:"properties"`
 	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Optional. EnvironmentType selected for the environment.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -98,7 +101,8 @@ type environmentArgs struct {
 	// Optional. Display name for this environment.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
-	ForwardProxyUri *string `pulumi:"forwardProxyUri"`
+	ForwardProxyUri      *string `pulumi:"forwardProxyUri"`
+	HasAttachedFlowHooks *bool   `pulumi:"hasAttachedFlowHooks"`
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name *string `pulumi:"name"`
 	// Optional. NodeConfig of the environment.
@@ -106,6 +110,8 @@ type environmentArgs struct {
 	OrganizationId string                         `pulumi:"organizationId"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
+	// Optional. EnvironmentType selected for the environment.
+	Type *EnvironmentType `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -119,7 +125,8 @@ type EnvironmentArgs struct {
 	// Optional. Display name for this environment.
 	DisplayName pulumi.StringPtrInput
 	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
-	ForwardProxyUri pulumi.StringPtrInput
+	ForwardProxyUri      pulumi.StringPtrInput
+	HasAttachedFlowHooks pulumi.BoolPtrInput
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name pulumi.StringPtrInput
 	// Optional. NodeConfig of the environment.
@@ -127,6 +134,8 @@ type EnvironmentArgs struct {
 	OrganizationId pulumi.StringInput
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
+	// Optional. EnvironmentType selected for the environment.
+	Type EnvironmentTypePtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -208,6 +217,10 @@ func (o EnvironmentOutput) ForwardProxyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ForwardProxyUri }).(pulumi.StringOutput)
 }
 
+func (o EnvironmentOutput) HasAttachedFlowHooks() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Environment) pulumi.BoolOutput { return v.HasAttachedFlowHooks }).(pulumi.BoolOutput)
+}
+
 // Last modification time of this environment as milliseconds since epoch.
 func (o EnvironmentOutput) LastModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
@@ -235,6 +248,11 @@ func (o EnvironmentOutput) Properties() GoogleCloudApigeeV1PropertiesResponseOut
 // State of the environment. Values other than ACTIVE means the resource is not ready to use.
 func (o EnvironmentOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. EnvironmentType selected for the environment.
+func (o EnvironmentOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -84,7 +84,7 @@ def get_instance_cluster_backup_iam_policy(backup_id: Optional[str] = None,
                                            project: Optional[str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceClusterBackupIamPolicyResult:
     """
-    Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+    Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
     """
     __args__ = dict()
     __args__['backupId'] = backup_id
@@ -108,6 +108,6 @@ def get_instance_cluster_backup_iam_policy_output(backup_id: Optional[pulumi.Inp
                                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceClusterBackupIamPolicyResult]:
     """
-    Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+    Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
     """
     ...

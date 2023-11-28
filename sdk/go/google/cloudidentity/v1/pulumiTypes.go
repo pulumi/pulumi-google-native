@@ -786,14 +786,22 @@ func (o ExpiryDetailResponseOutput) ExpireTime() pulumi.StringOutput {
 
 // Resource representing the Android specific attributes of a Device.
 type GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse struct {
+	// Whether the device passes Android CTS compliance.
+	CtsProfileMatch bool `pulumi:"ctsProfileMatch"`
 	// Whether applications from unknown sources can be installed on device.
 	EnabledUnknownSources bool `pulumi:"enabledUnknownSources"`
+	// Whether any potentially harmful apps were detected on the device.
+	HasPotentiallyHarmfulApps bool `pulumi:"hasPotentiallyHarmfulApps"`
 	// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
 	OwnerProfileAccount bool `pulumi:"ownerProfileAccount"`
 	// Ownership privileges on device.
 	OwnershipPrivilege string `pulumi:"ownershipPrivilege"`
 	// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
 	SupportsWorkProfile bool `pulumi:"supportsWorkProfile"`
+	// Whether Android verified boot status is GREEN.
+	VerifiedBoot bool `pulumi:"verifiedBoot"`
+	// Whether Google Play Protect Verify Apps is enabled.
+	VerifyAppsEnabled bool `pulumi:"verifyAppsEnabled"`
 }
 
 // Resource representing the Android specific attributes of a Device.
@@ -817,9 +825,21 @@ func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) ToOutpu
 	}
 }
 
+// Whether the device passes Android CTS compliance.
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) CtsProfileMatch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool { return v.CtsProfileMatch }).(pulumi.BoolOutput)
+}
+
 // Whether applications from unknown sources can be installed on device.
 func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) EnabledUnknownSources() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool { return v.EnabledUnknownSources }).(pulumi.BoolOutput)
+}
+
+// Whether any potentially harmful apps were detected on the device.
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) HasPotentiallyHarmfulApps() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool {
+		return v.HasPotentiallyHarmfulApps
+	}).(pulumi.BoolOutput)
 }
 
 // Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
@@ -835,6 +855,16 @@ func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) Ownersh
 // Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
 func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) SupportsWorkProfile() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool { return v.SupportsWorkProfile }).(pulumi.BoolOutput)
+}
+
+// Whether Android verified boot status is GREEN.
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) VerifiedBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool { return v.VerifiedBoot }).(pulumi.BoolOutput)
+}
+
+// Whether Google Play Protect Verify Apps is enabled.
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) VerifyAppsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool { return v.VerifyAppsEnabled }).(pulumi.BoolOutput)
 }
 
 // A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.

@@ -189,6 +189,10 @@ class ScanConfigErrorCode(str, Enum):
     """
     The URL scheme of one or more of the supplied URLs is not supported.
     """
+    CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND = "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND"
+    """
+    CAI is not able to list assets.
+    """
 
 
 class ScanConfigExportToSecurityCommandCenter(str, Enum):

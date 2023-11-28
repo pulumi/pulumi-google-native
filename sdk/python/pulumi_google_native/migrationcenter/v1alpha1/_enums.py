@@ -12,9 +12,14 @@ __all__ = [
     'InlinePayloadInfoFormat',
     'ReportState',
     'ReportType',
+    'SoleTenancyPreferencesCommitmentPlan',
+    'SoleTenancyPreferencesHostMaintenancePolicy',
     'SourceType',
     'VirtualMachinePreferencesCommitmentPlan',
+    'VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod',
     'VirtualMachinePreferencesSizingOptimizationStrategy',
+    'VirtualMachinePreferencesTargetProduct',
+    'VmwareEnginePreferencesCommitmentPlan',
 ]
 
 
@@ -196,6 +201,50 @@ class ReportType(str, Enum):
     """
 
 
+class SoleTenancyPreferencesCommitmentPlan(str, Enum):
+    """
+    Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+    """
+    COMMITMENT_PLAN_UNSPECIFIED = "COMMITMENT_PLAN_UNSPECIFIED"
+    """
+    Unspecified commitment plan.
+    """
+    ON_DEMAND = "ON_DEMAND"
+    """
+    No commitment plan (on-demand usage).
+    """
+    COMMITMENT1_YEAR = "COMMITMENT_1_YEAR"
+    """
+    1 year commitment.
+    """
+    COMMITMENT3_YEAR = "COMMITMENT_3_YEAR"
+    """
+    3 years commitment.
+    """
+
+
+class SoleTenancyPreferencesHostMaintenancePolicy(str, Enum):
+    """
+    Sole Tenancy nodes maintenance policy.
+    """
+    HOST_MAINTENANCE_POLICY_UNSPECIFIED = "HOST_MAINTENANCE_POLICY_UNSPECIFIED"
+    """
+    Unspecified host maintenance policy.
+    """
+    HOST_MAINTENANCE_POLICY_DEFAULT = "HOST_MAINTENANCE_POLICY_DEFAULT"
+    """
+    Default host maintenance policy.
+    """
+    HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE = "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE"
+    """
+    Restart in place host maintenance policy.
+    """
+    HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP = "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP"
+    """
+    Migrate within node group host maintenance policy.
+    """
+
+
 class SourceType(str, Enum):
     """
     Data source type.
@@ -244,6 +293,32 @@ class VirtualMachinePreferencesCommitmentPlan(str, Enum):
     """
 
 
+class VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod(str, Enum):
+    """
+    Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+    """
+    AGGREGATION_METHOD_UNSPECIFIED = "AGGREGATION_METHOD_UNSPECIFIED"
+    """
+    Unspecified aggregation method. Can be used for default value.
+    """
+    AGGREGATION_METHOD_AVERAGE = "AGGREGATION_METHOD_AVERAGE"
+    """
+    Average of utilization data.
+    """
+    AGGREGATION_METHOD_MEDIAN = "AGGREGATION_METHOD_MEDIAN"
+    """
+    Median of utilization data.
+    """
+    AGGREGATION_METHOD_NINETY_FIFTH_PERCENTILE = "AGGREGATION_METHOD_NINETY_FIFTH_PERCENTILE"
+    """
+    95th percentile of utilization data.
+    """
+    AGGREGATION_METHOD_PEAK = "AGGREGATION_METHOD_PEAK"
+    """
+    Peak of utilization data.
+    """
+
+
 class VirtualMachinePreferencesSizingOptimizationStrategy(str, Enum):
     """
     Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
@@ -263,4 +338,60 @@ class VirtualMachinePreferencesSizingOptimizationStrategy(str, Enum):
     SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE = "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE"
     """
     Virtual machine sizing will match the reported usage, with little slack. Using this option can help reduce costs.
+    """
+    SIZING_OPTIMIZATION_STRATEGY_CUSTOM = "SIZING_OPTIMIZATION_STRATEGY_CUSTOM"
+    """
+    Virtual machine sizing will be determined by custom parameters. While not supported in the v1 API, this value is converted to UNSPECIFIED in conversions to the v1 API.
+    """
+
+
+class VirtualMachinePreferencesTargetProduct(str, Enum):
+    """
+    Target product for assets using this preference set. Specify either target product or business goal, but not both.
+    """
+    COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED = "COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED"
+    """
+    Unspecified (default value).
+    """
+    COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE = "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"
+    """
+    Prefer to migrate to Google Cloud Compute Engine.
+    """
+    COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE = "COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE"
+    """
+    Prefer to migrate to Google Cloud VMware Engine.
+    """
+    COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY = "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY"
+    """
+    Prefer to migrate to Google Cloud Sole Tenant Nodes.
+    """
+
+
+class VmwareEnginePreferencesCommitmentPlan(str, Enum):
+    """
+    Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+    """
+    COMMITMENT_PLAN_UNSPECIFIED = "COMMITMENT_PLAN_UNSPECIFIED"
+    """
+    Unspecified commitment plan.
+    """
+    ON_DEMAND = "ON_DEMAND"
+    """
+    No commitment plan (on-demand usage).
+    """
+    COMMITMENT1_YEAR_MONTHLY_PAYMENTS = "COMMITMENT_1_YEAR_MONTHLY_PAYMENTS"
+    """
+    1 year commitment (monthly payments).
+    """
+    COMMITMENT3_YEAR_MONTHLY_PAYMENTS = "COMMITMENT_3_YEAR_MONTHLY_PAYMENTS"
+    """
+    3 year commitment (monthly payments).
+    """
+    COMMITMENT1_YEAR_UPFRONT_PAYMENT = "COMMITMENT_1_YEAR_UPFRONT_PAYMENT"
+    """
+    1 year commitment (upfront payment).
+    """
+    COMMITMENT3_YEAR_UPFRONT_PAYMENT = "COMMITMENT_3_YEAR_UPFRONT_PAYMENT"
+    """
+    3 years commitment (upfront payment).
     """

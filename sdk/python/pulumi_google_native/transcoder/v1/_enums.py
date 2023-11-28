@@ -6,7 +6,9 @@ from enum import Enum
 
 __all__ = [
     'AnimationFadeFadeType',
+    'DashConfigSegmentReferenceScheme',
     'JobMode',
+    'JobOptimization',
     'ManifestType',
 ]
 
@@ -29,6 +31,24 @@ class AnimationFadeFadeType(str, Enum):
     """
 
 
+class DashConfigSegmentReferenceScheme(str, Enum):
+    """
+    The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+    """
+    SEGMENT_REFERENCE_SCHEME_UNSPECIFIED = "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED"
+    """
+    The segment reference scheme is not specified.
+    """
+    SEGMENT_LIST = "SEGMENT_LIST"
+    """
+    Explicitly lists the URLs of media files for each segment. For example, if SegmentSettings.individual_segments is `true`, then the manifest contains fields similar to the following: ```xml ... ```
+    """
+    SEGMENT_TEMPLATE_NUMBER = "SEGMENT_TEMPLATE_NUMBER"
+    """
+    SegmentSettings.individual_segments must be set to `true` to use this segment reference scheme. Uses the DASH specification `` tag to determine the URLs of media files for each segment. For example: ```xml ... ```
+    """
+
+
 class JobMode(str, Enum):
     """
     The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
@@ -44,6 +64,24 @@ class JobMode(str, Enum):
     PROCESSING_MODE_BATCH = "PROCESSING_MODE_BATCH"
     """
     The job processing mode is batch mode. Batch mode allows queuing of jobs.
+    """
+
+
+class JobOptimization(str, Enum):
+    """
+    Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+    """
+    OPTIMIZATION_STRATEGY_UNSPECIFIED = "OPTIMIZATION_STRATEGY_UNSPECIFIED"
+    """
+    The optimization strategy is not specified.
+    """
+    AUTODETECT = "AUTODETECT"
+    """
+    Prioritize job processing speed.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disable all optimizations.
     """
 
 

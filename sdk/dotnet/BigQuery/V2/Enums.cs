@@ -20,6 +20,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Default value.
+        /// </summary>
         public static ArgumentArgumentKind ArgumentKindUnspecified { get; } = new ArgumentArgumentKind("ARGUMENT_KIND_UNSPECIFIED");
         /// <summary>
         /// The argument is a variable with fully specified type, which can be a struct or an array, but not a table.
@@ -58,6 +61,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Default value.
+        /// </summary>
         public static ArgumentMode ModeUnspecified { get; } = new ArgumentMode("MODE_UNSPECIFIED");
         /// <summary>
         /// The argument is input-only.
@@ -171,6 +177,43 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     }
 
     /// <summary>
+    /// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+    /// </summary>
+    [EnumType]
+    public readonly struct RoutineDataGovernanceType : IEquatable<RoutineDataGovernanceType>
+    {
+        private readonly string _value;
+
+        private RoutineDataGovernanceType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The data governance type is unspecified.
+        /// </summary>
+        public static RoutineDataGovernanceType DataGovernanceTypeUnspecified { get; } = new RoutineDataGovernanceType("DATA_GOVERNANCE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The data governance type is data masking.
+        /// </summary>
+        public static RoutineDataGovernanceType DataMasking { get; } = new RoutineDataGovernanceType("DATA_MASKING");
+
+        public static bool operator ==(RoutineDataGovernanceType left, RoutineDataGovernanceType right) => left.Equals(right);
+        public static bool operator !=(RoutineDataGovernanceType left, RoutineDataGovernanceType right) => !left.Equals(right);
+
+        public static explicit operator string(RoutineDataGovernanceType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RoutineDataGovernanceType other && Equals(other);
+        public bool Equals(RoutineDataGovernanceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. The determinism level of the JavaScript UDF, if defined.
     /// </summary>
     [EnumType]
@@ -224,6 +267,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Default value.
+        /// </summary>
         public static RoutineLanguage LanguageUnspecified { get; } = new RoutineLanguage("LANGUAGE_UNSPECIFIED");
         /// <summary>
         /// SQL language.
@@ -274,6 +320,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Default value.
+        /// </summary>
         public static RoutineRoutineType RoutineTypeUnspecified { get; } = new RoutineRoutineType("ROUTINE_TYPE_UNSPECIFIED");
         /// <summary>
         /// Non-built-in persistent scalar function.
@@ -300,6 +349,47 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RoutineRoutineType other && Equals(other);
         public bool Equals(RoutineRoutineType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+    /// </summary>
+    [EnumType]
+    public readonly struct RoutineSecurityMode : IEquatable<RoutineSecurityMode>
+    {
+        private readonly string _value;
+
+        private RoutineSecurityMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The security mode of the routine is unspecified.
+        /// </summary>
+        public static RoutineSecurityMode SecurityModeUnspecified { get; } = new RoutineSecurityMode("SECURITY_MODE_UNSPECIFIED");
+        /// <summary>
+        /// The routine is to be executed with the privileges of the user who defines it.
+        /// </summary>
+        public static RoutineSecurityMode Definer { get; } = new RoutineSecurityMode("DEFINER");
+        /// <summary>
+        /// The routine is to be executed with the privileges of the user who invokes it.
+        /// </summary>
+        public static RoutineSecurityMode Invoker { get; } = new RoutineSecurityMode("INVOKER");
+
+        public static bool operator ==(RoutineSecurityMode left, RoutineSecurityMode right) => left.Equals(right);
+        public static bool operator !=(RoutineSecurityMode left, RoutineSecurityMode right) => !left.Equals(right);
+
+        public static explicit operator string(RoutineSecurityMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RoutineSecurityMode other && Equals(other);
+        public bool Equals(RoutineSecurityMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -388,6 +478,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Encoded as a list with fields of type Type.struct_type[i]. List is used because a JSON object cannot have duplicate field names.
         /// </summary>
         public static StandardSqlDataTypeTypeKind Struct { get; } = new StandardSqlDataTypeTypeKind("STRUCT");
+        /// <summary>
+        /// Encoded as a pair with types matching range_element_type. Pairs must begin with "[", end with ")", and be separated by ", ".
+        /// </summary>
+        public static StandardSqlDataTypeTypeKind Range { get; } = new StandardSqlDataTypeTypeKind("RANGE");
 
         public static bool operator ==(StandardSqlDataTypeTypeKind left, StandardSqlDataTypeTypeKind right) => left.Equals(right);
         public static bool operator !=(StandardSqlDataTypeTypeKind left, StandardSqlDataTypeTypeKind right) => !left.Equals(right);

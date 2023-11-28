@@ -54,7 +54,7 @@ export interface GetUptimeCheckConfigResult {
      */
     readonly monitoredResource: outputs.monitoring.v3.MonitoredResourceResponse;
     /**
-     * A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+     * Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
      */
     readonly name: string;
     /**
@@ -69,6 +69,10 @@ export interface GetUptimeCheckConfigResult {
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
      */
     readonly selectedRegions: string[];
+    /**
+     * Specifies a Synthetic Monitor to invoke.
+     */
+    readonly syntheticMonitor: outputs.monitoring.v3.SyntheticMonitorTargetResponse;
     /**
      * Contains information needed to make a TCP check.
      */

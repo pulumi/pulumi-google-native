@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
         /// The consumer project where PSC connections are allowed to be created in.
         /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Overall state of PSC Connections management for this consumer psc config.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
         private ConsumerPscConfigResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
 
             string network,
 
-            string project)
+            string project,
+
+            string state)
         {
             DisableGlobalAccess = disableGlobalAccess;
             Network = network;
             Project = project;
+            State = state;
         }
     }
 }

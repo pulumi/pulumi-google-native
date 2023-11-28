@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['GroupArgs', 'Group']
 
@@ -18,6 +19,7 @@ class GroupArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 migration_target_type: Optional[pulumi.Input['GroupMigrationTargetType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
@@ -25,6 +27,7 @@ class GroupArgs:
         :param pulumi.Input[str] group_id: Required. The group identifier.
         :param pulumi.Input[str] description: User-provided description of the group.
         :param pulumi.Input[str] display_name: Display name is a user defined name for this group which can be updated.
+        :param pulumi.Input['GroupMigrationTargetType'] migration_target_type: Immutable. The target type of this group.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "group_id", group_id)
@@ -34,6 +37,8 @@ class GroupArgs:
             pulumi.set(__self__, "display_name", display_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if migration_target_type is not None:
+            pulumi.set(__self__, "migration_target_type", migration_target_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -85,6 +90,18 @@ class GroupArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="migrationTargetType")
+    def migration_target_type(self) -> Optional[pulumi.Input['GroupMigrationTargetType']]:
+        """
+        Immutable. The target type of this group.
+        """
+        return pulumi.get(self, "migration_target_type")
+
+    @migration_target_type.setter
+    def migration_target_type(self, value: Optional[pulumi.Input['GroupMigrationTargetType']]):
+        pulumi.set(self, "migration_target_type", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -115,6 +132,7 @@ class Group(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 migration_target_type: Optional[pulumi.Input['GroupMigrationTargetType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -127,6 +145,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-provided description of the group.
         :param pulumi.Input[str] display_name: Display name is a user defined name for this group which can be updated.
         :param pulumi.Input[str] group_id: Required. The group identifier.
+        :param pulumi.Input['GroupMigrationTargetType'] migration_target_type: Immutable. The target type of this group.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         ...
@@ -158,6 +177,7 @@ class Group(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 migration_target_type: Optional[pulumi.Input['GroupMigrationTargetType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -175,6 +195,7 @@ class Group(pulumi.CustomResource):
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
             __props__.__dict__["location"] = location
+            __props__.__dict__["migration_target_type"] = migration_target_type
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["create_time"] = None
@@ -209,6 +230,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["group_id"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["migration_target_type"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
@@ -251,6 +273,14 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="migrationTargetType")
+    def migration_target_type(self) -> pulumi.Output[str]:
+        """
+        Immutable. The target type of this group.
+        """
+        return pulumi.get(self, "migration_target_type")
 
     @property
     @pulumi.getter

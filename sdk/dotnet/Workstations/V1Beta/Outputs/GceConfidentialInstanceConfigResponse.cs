@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
     public sealed class GceConfidentialInstanceConfigResponse
     {
         /// <summary>
-        /// Whether the instance has confidential compute enabled.
+        /// Optional. Whether the instance has confidential compute enabled.
         /// </summary>
         public readonly bool EnableConfidentialCompute;
 

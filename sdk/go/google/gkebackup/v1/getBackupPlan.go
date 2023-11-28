@@ -30,28 +30,32 @@ type LookupBackupPlanArgs struct {
 }
 
 type LookupBackupPlanResult struct {
-	// Defines the configuration of Backups created via this BackupPlan.
+	// Optional. Defines the configuration of Backups created via this BackupPlan.
 	BackupConfig BackupConfigResponse `pulumi:"backupConfig"`
-	// Defines a schedule for automatic Backup creation via this BackupPlan.
+	// Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
 	BackupSchedule ScheduleResponse `pulumi:"backupSchedule"`
 	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
 	Cluster string `pulumi:"cluster"`
 	// The timestamp when this BackupPlan resource was created.
 	CreateTime string `pulumi:"createTime"`
-	// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+	// Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
 	Deactivated bool `pulumi:"deactivated"`
-	// User specified descriptive string for this BackupPlan.
+	// Optional. User specified descriptive string for this BackupPlan.
 	Description string `pulumi:"description"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
 	Etag string `pulumi:"etag"`
-	// A set of custom labels supplied by user.
+	// Optional. A set of custom labels supplied by user.
 	Labels map[string]string `pulumi:"labels"`
 	// The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
 	Name string `pulumi:"name"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount int `pulumi:"protectedPodCount"`
-	// RetentionPolicy governs lifecycle of Backups created under this plan.
+	// Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
 	RetentionPolicy RetentionPolicyResponse `pulumi:"retentionPolicy"`
+	// State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+	State string `pulumi:"state"`
+	// Human-readable description of why BackupPlan is in the current `state`
+	StateReason string `pulumi:"stateReason"`
 	// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
 	Uid string `pulumi:"uid"`
 	// The timestamp when this BackupPlan resource was last updated.
@@ -101,12 +105,12 @@ func (o LookupBackupPlanResultOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// Defines the configuration of Backups created via this BackupPlan.
+// Optional. Defines the configuration of Backups created via this BackupPlan.
 func (o LookupBackupPlanResultOutput) BackupConfig() BackupConfigResponseOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) BackupConfigResponse { return v.BackupConfig }).(BackupConfigResponseOutput)
 }
 
-// Defines a schedule for automatic Backup creation via this BackupPlan.
+// Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
 func (o LookupBackupPlanResultOutput) BackupSchedule() ScheduleResponseOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) ScheduleResponse { return v.BackupSchedule }).(ScheduleResponseOutput)
 }
@@ -121,12 +125,12 @@ func (o LookupBackupPlanResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+// Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
 func (o LookupBackupPlanResultOutput) Deactivated() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) bool { return v.Deactivated }).(pulumi.BoolOutput)
 }
 
-// User specified descriptive string for this BackupPlan.
+// Optional. User specified descriptive string for this BackupPlan.
 func (o LookupBackupPlanResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -136,7 +140,7 @@ func (o LookupBackupPlanResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A set of custom labels supplied by user.
+// Optional. A set of custom labels supplied by user.
 func (o LookupBackupPlanResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -151,9 +155,19 @@ func (o LookupBackupPlanResultOutput) ProtectedPodCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) int { return v.ProtectedPodCount }).(pulumi.IntOutput)
 }
 
-// RetentionPolicy governs lifecycle of Backups created under this plan.
+// Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
 func (o LookupBackupPlanResultOutput) RetentionPolicy() RetentionPolicyResponseOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) RetentionPolicyResponse { return v.RetentionPolicy }).(RetentionPolicyResponseOutput)
+}
+
+// State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+func (o LookupBackupPlanResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Human-readable description of why BackupPlan is in the current `state`
+func (o LookupBackupPlanResultOutput) StateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.StateReason }).(pulumi.StringOutput)
 }
 
 // Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.

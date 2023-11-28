@@ -18,7 +18,7 @@ export const GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge = {
 } as const;
 
 /**
- * For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
+ * Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
  */
 export type GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge = (typeof GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge)[keyof typeof GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge];
 
@@ -90,7 +90,7 @@ export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPref
 } as const;
 
 /**
- * Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+ * Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
  */
 export type GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference = (typeof GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference)[keyof typeof GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference];
 

@@ -30,7 +30,7 @@ type LookupDeliveryPipelineArgs struct {
 }
 
 type LookupDeliveryPipelineResult struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information around the state of the Delivery Pipeline.
 	Condition PipelineConditionResponse `pulumi:"condition"`
@@ -40,9 +40,9 @@ type LookupDeliveryPipelineResult struct {
 	Description string `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+	// Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
 	Name string `pulumi:"name"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline SerialPipelineResponse `pulumi:"serialPipeline"`
@@ -97,7 +97,7 @@ func (o LookupDeliveryPipelineResultOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
 func (o LookupDeliveryPipelineResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDeliveryPipelineResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -122,12 +122,12 @@ func (o LookupDeliveryPipelineResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeliveryPipelineResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o LookupDeliveryPipelineResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDeliveryPipelineResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+// Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
 func (o LookupDeliveryPipelineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeliveryPipelineResult) string { return v.Name }).(pulumi.StringOutput)
 }

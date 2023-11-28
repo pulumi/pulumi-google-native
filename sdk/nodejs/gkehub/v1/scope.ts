@@ -39,10 +39,6 @@ export class Scope extends pulumi.CustomResource {
     }
 
     /**
-     * If true, all Memberships in the Fleet bind to this Scope.
-     */
-    public readonly allMemberships!: pulumi.Output<boolean>;
-    /**
      * When the scope was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -50,11 +46,19 @@ export class Scope extends pulumi.CustomResource {
      * When the scope was deleted.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * Optional. Labels for this Scope.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+     */
+    public readonly namespaceLabels!: pulumi.Output<{[key: string]: string}>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Required. Client chosen ID for the Scope. `scope_id` must be a ????
@@ -87,9 +91,10 @@ export class Scope extends pulumi.CustomResource {
             if ((!args || args.scopeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopeId'");
             }
-            resourceInputs["allMemberships"] = args ? args.allMemberships : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespaceLabels"] = args ? args.namespaceLabels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["scopeId"] = args ? args.scopeId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -98,11 +103,12 @@ export class Scope extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            resourceInputs["allMemberships"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["namespaceLabels"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["scopeId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -121,14 +127,18 @@ export class Scope extends pulumi.CustomResource {
  */
 export interface ScopeArgs {
     /**
-     * If true, all Memberships in the Fleet bind to this Scope.
+     * Optional. Labels for this Scope.
      */
-    allMemberships?: pulumi.Input<boolean>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+     */
+    namespaceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     project?: pulumi.Input<string>;
     /**
      * Required. Client chosen ID for the Scope. `scope_id` must be a ????

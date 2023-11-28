@@ -17,8 +17,12 @@ __all__ = [
     'BigQueryDatasetSourceResponse',
     'BindingResponse',
     'DataProviderResponse',
+    'DcrExchangeConfigResponse',
+    'DefaultExchangeConfigResponse',
     'ExprResponse',
     'PublisherResponse',
+    'RestrictedExportConfigResponse',
+    'SharingEnvironmentConfigResponse',
 ]
 
 @pulumi.output_type
@@ -240,6 +244,30 @@ class DataProviderResponse(dict):
 
 
 @pulumi.output_type
+class DcrExchangeConfigResponse(dict):
+    """
+    Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+    """
+    def __init__(__self__):
+        """
+        Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        """
+        pass
+
+
+@pulumi.output_type
+class DefaultExchangeConfigResponse(dict):
+    """
+    Default Analytics Hub data exchange, used for secured data sharing.
+    """
+    def __init__(__self__):
+        """
+        Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        pass
+
+
+@pulumi.output_type
 class ExprResponse(dict):
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -342,5 +370,120 @@ class PublisherResponse(dict):
         Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.
         """
         return pulumi.get(self, "primary_contact")
+
+
+@pulumi.output_type
+class RestrictedExportConfigResponse(dict):
+    """
+    Restricted export config, used to configure restricted export on linked dataset.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "restrictDirectTableAccess":
+            suggest = "restrict_direct_table_access"
+        elif key == "restrictQueryResult":
+            suggest = "restrict_query_result"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestrictedExportConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestrictedExportConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestrictedExportConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 restrict_direct_table_access: bool,
+                 restrict_query_result: bool):
+        """
+        Restricted export config, used to configure restricted export on linked dataset.
+        :param bool enabled: Optional. If true, enable restricted export.
+        :param bool restrict_direct_table_access: If true, restrict direct table access(read api/tabledata.list) on linked table.
+        :param bool restrict_query_result: Optional. If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "restrict_direct_table_access", restrict_direct_table_access)
+        pulumi.set(__self__, "restrict_query_result", restrict_query_result)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Optional. If true, enable restricted export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="restrictDirectTableAccess")
+    def restrict_direct_table_access(self) -> bool:
+        """
+        If true, restrict direct table access(read api/tabledata.list) on linked table.
+        """
+        return pulumi.get(self, "restrict_direct_table_access")
+
+    @property
+    @pulumi.getter(name="restrictQueryResult")
+    def restrict_query_result(self) -> bool:
+        """
+        Optional. If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        return pulumi.get(self, "restrict_query_result")
+
+
+@pulumi.output_type
+class SharingEnvironmentConfigResponse(dict):
+    """
+    Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for a data exchange.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dcrExchangeConfig":
+            suggest = "dcr_exchange_config"
+        elif key == "defaultExchangeConfig":
+            suggest = "default_exchange_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SharingEnvironmentConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SharingEnvironmentConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SharingEnvironmentConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dcr_exchange_config: 'outputs.DcrExchangeConfigResponse',
+                 default_exchange_config: 'outputs.DefaultExchangeConfigResponse'):
+        """
+        Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for a data exchange.
+        :param 'DcrExchangeConfigResponse' dcr_exchange_config: Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        :param 'DefaultExchangeConfigResponse' default_exchange_config: Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        pulumi.set(__self__, "dcr_exchange_config", dcr_exchange_config)
+        pulumi.set(__self__, "default_exchange_config", default_exchange_config)
+
+    @property
+    @pulumi.getter(name="dcrExchangeConfig")
+    def dcr_exchange_config(self) -> 'outputs.DcrExchangeConfigResponse':
+        """
+        Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        """
+        return pulumi.get(self, "dcr_exchange_config")
+
+    @property
+    @pulumi.getter(name="defaultExchangeConfig")
+    def default_exchange_config(self) -> 'outputs.DefaultExchangeConfigResponse':
+        """
+        Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        return pulumi.get(self, "default_exchange_config")
 
 

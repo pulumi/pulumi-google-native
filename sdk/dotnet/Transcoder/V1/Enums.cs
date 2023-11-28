@@ -49,6 +49,47 @@ namespace Pulumi.GoogleNative.Transcoder.V1
     }
 
     /// <summary>
+    /// The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+    /// </summary>
+    [EnumType]
+    public readonly struct DashConfigSegmentReferenceScheme : IEquatable<DashConfigSegmentReferenceScheme>
+    {
+        private readonly string _value;
+
+        private DashConfigSegmentReferenceScheme(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The segment reference scheme is not specified.
+        /// </summary>
+        public static DashConfigSegmentReferenceScheme SegmentReferenceSchemeUnspecified { get; } = new DashConfigSegmentReferenceScheme("SEGMENT_REFERENCE_SCHEME_UNSPECIFIED");
+        /// <summary>
+        /// Explicitly lists the URLs of media files for each segment. For example, if SegmentSettings.individual_segments is `true`, then the manifest contains fields similar to the following: ```xml ... ```
+        /// </summary>
+        public static DashConfigSegmentReferenceScheme SegmentList { get; } = new DashConfigSegmentReferenceScheme("SEGMENT_LIST");
+        /// <summary>
+        /// SegmentSettings.individual_segments must be set to `true` to use this segment reference scheme. Uses the DASH specification `` tag to determine the URLs of media files for each segment. For example: ```xml ... ```
+        /// </summary>
+        public static DashConfigSegmentReferenceScheme SegmentTemplateNumber { get; } = new DashConfigSegmentReferenceScheme("SEGMENT_TEMPLATE_NUMBER");
+
+        public static bool operator ==(DashConfigSegmentReferenceScheme left, DashConfigSegmentReferenceScheme right) => left.Equals(right);
+        public static bool operator !=(DashConfigSegmentReferenceScheme left, DashConfigSegmentReferenceScheme right) => !left.Equals(right);
+
+        public static explicit operator string(DashConfigSegmentReferenceScheme value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DashConfigSegmentReferenceScheme other && Equals(other);
+        public bool Equals(DashConfigSegmentReferenceScheme other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
     /// </summary>
     [EnumType]
@@ -82,6 +123,47 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is JobMode other && Equals(other);
         public bool Equals(JobMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+    /// </summary>
+    [EnumType]
+    public readonly struct JobOptimization : IEquatable<JobOptimization>
+    {
+        private readonly string _value;
+
+        private JobOptimization(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The optimization strategy is not specified.
+        /// </summary>
+        public static JobOptimization OptimizationStrategyUnspecified { get; } = new JobOptimization("OPTIMIZATION_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// Prioritize job processing speed.
+        /// </summary>
+        public static JobOptimization Autodetect { get; } = new JobOptimization("AUTODETECT");
+        /// <summary>
+        /// Disable all optimizations.
+        /// </summary>
+        public static JobOptimization Disabled { get; } = new JobOptimization("DISABLED");
+
+        public static bool operator ==(JobOptimization left, JobOptimization right) => left.Equals(right);
+        public static bool operator !=(JobOptimization left, JobOptimization right) => !left.Equals(right);
+
+        public static explicit operator string(JobOptimization value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JobOptimization other && Equals(other);
+        public bool Equals(JobOptimization other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -66,6 +66,10 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly creator!: pulumi.Output<string>;
     /**
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+     */
+    public readonly customAudiences!: pulumi.Output<string[]>;
+    /**
      * The deletion time.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
@@ -128,6 +132,10 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
+     * Optional. Specifies service-level scaling settings
+     */
+    public readonly scaling!: pulumi.Output<outputs.run.v2.GoogleCloudRunV2ServiceScalingResponse>;
+    /**
      * Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
      */
     public readonly serviceId!: pulumi.Output<string>;
@@ -181,6 +189,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["client"] = args ? args.client : undefined;
             resourceInputs["clientVersion"] = args ? args.clientVersion : undefined;
+            resourceInputs["customAudiences"] = args ? args.customAudiences : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ingress"] = args ? args.ingress : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -188,6 +197,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["scaling"] = args ? args.scaling : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["traffic"] = args ? args.traffic : undefined;
@@ -217,6 +227,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["customAudiences"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -234,6 +245,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["scaling"] = undefined /*out*/;
             resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["template"] = undefined /*out*/;
             resourceInputs["terminalCondition"] = undefined /*out*/;
@@ -271,6 +283,10 @@ export interface ServiceArgs {
      */
     clientVersion?: pulumi.Input<string>;
     /**
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+     */
+    customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
     description?: pulumi.Input<string>;
@@ -292,6 +308,10 @@ export interface ServiceArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. Specifies service-level scaling settings
+     */
+    scaling?: pulumi.Input<inputs.run.v2.GoogleCloudRunV2ServiceScalingArgs>;
     /**
      * Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
      */

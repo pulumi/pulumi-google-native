@@ -32,7 +32,7 @@ export interface GetJobResult {
      */
     readonly done: boolean;
     /**
-     * If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+     * If present, the location of miscellaneous control files which can be used as part of job setup and handling. If not present, control files might be placed in the same location as driver_output_uri.
      */
     readonly driverControlFilesUri: string;
     /**
@@ -44,6 +44,10 @@ export interface GetJobResult {
      */
     readonly driverSchedulingConfig: outputs.dataproc.v1.DriverSchedulingConfigResponse;
     /**
+     * Optional. Job is a Flink job.
+     */
+    readonly flinkJob: outputs.dataproc.v1.FlinkJobResponse;
+    /**
      * Optional. Job is a Hadoop job.
      */
     readonly hadoopJob: outputs.dataproc.v1.HadoopJobResponse;
@@ -52,11 +56,11 @@ export interface GetJobResult {
      */
     readonly hiveJob: outputs.dataproc.v1.HiveJobResponse;
     /**
-     * A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
+     * A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that might be reused over time.
      */
     readonly jobUuid: string;
     /**
-     * Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+     * Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
      */
     readonly labels: {[key: string]: string};
     /**
@@ -96,7 +100,7 @@ export interface GetJobResult {
      */
     readonly sparkSqlJob: outputs.dataproc.v1.SparkSqlJobResponse;
     /**
-     * The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
+     * The job status. Additional application-specific status information might be contained in the type_job and yarn_applications fields.
      */
     readonly status: outputs.dataproc.v1.JobStatusResponse;
     /**
@@ -108,7 +112,7 @@ export interface GetJobResult {
      */
     readonly trinoJob: outputs.dataproc.v1.TrinoJobResponse;
     /**
-     * The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+     * The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release.
      */
     readonly yarnApplications: outputs.dataproc.v1.YarnApplicationResponse[];
 }

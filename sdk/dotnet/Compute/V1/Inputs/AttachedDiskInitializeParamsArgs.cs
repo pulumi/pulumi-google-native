@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         private InputList<string>? _replicaZones;
 
         /// <summary>
-        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
         /// </summary>
         public InputList<string> ReplicaZones
         {

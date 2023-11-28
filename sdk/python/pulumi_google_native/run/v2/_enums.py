@@ -87,7 +87,7 @@ class GoogleCloudRunV2TrafficTargetType(str, Enum):
 
 class GoogleCloudRunV2VpcAccessEgress(str, Enum):
     """
-    Traffic VPC egress settings.
+    Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
     """
     VPC_EGRESS_UNSPECIFIED = "VPC_EGRESS_UNSPECIFIED"
     """

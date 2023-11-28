@@ -26,6 +26,22 @@ export const EnvironmentConfigEnvironmentSize = {
  */
 export type EnvironmentConfigEnvironmentSize = (typeof EnvironmentConfigEnvironmentSize)[keyof typeof EnvironmentConfigEnvironmentSize];
 
+export const EnvironmentConfigResilienceMode = {
+    /**
+     * Default mode doesn't change environment parameters.
+     */
+    ResilienceModeUnspecified: "RESILIENCE_MODE_UNSPECIFIED",
+    /**
+     * Enabled High Resilience mode, including Cloud SQL HA.
+     */
+    HighResilience: "HIGH_RESILIENCE",
+} as const;
+
+/**
+ * Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+ */
+export type EnvironmentConfigResilienceMode = (typeof EnvironmentConfigResilienceMode)[keyof typeof EnvironmentConfigResilienceMode];
+
 export const EnvironmentState = {
     /**
      * The state of the environment is unknown.

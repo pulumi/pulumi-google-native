@@ -30,6 +30,8 @@ type LookupDiskArgs struct {
 }
 
 type LookupDiskResult struct {
+	// The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+	AccessMode string `pulumi:"accessMode"`
 	// The architecture of the disk. Valid values are ARM64 or X86_64.
 	Architecture string `pulumi:"architecture"`
 	// Disk asynchronously replicated into this disk.
@@ -42,7 +44,7 @@ type LookupDiskResult struct {
 	Description string `pulumi:"description"`
 	// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
 	DiskEncryptionKey CustomerEncryptionKeyResponse `pulumi:"diskEncryptionKey"`
-	// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+	// Whether this disk is using confidential compute mode.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
 	EraseWindowsVssSignature bool `pulumi:"eraseWindowsVssSignature"`
@@ -98,7 +100,7 @@ type LookupDiskResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource's resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+	// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
 	SizeGb string `pulumi:"sizeGb"`
 	// URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
 	SourceConsistencyGroupPolicy string `pulumi:"sourceConsistencyGroupPolicy"`
@@ -187,6 +189,11 @@ func (o LookupDiskResultOutput) ToOutput(ctx context.Context) pulumix.Output[Loo
 	}
 }
 
+// The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+func (o LookupDiskResultOutput) AccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.AccessMode }).(pulumi.StringOutput)
+}
+
 // The architecture of the disk. Valid values are ARM64 or X86_64.
 func (o LookupDiskResultOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Architecture }).(pulumi.StringOutput)
@@ -217,7 +224,7 @@ func (o LookupDiskResultOutput) DiskEncryptionKey() CustomerEncryptionKeyRespons
 	return o.ApplyT(func(v LookupDiskResult) CustomerEncryptionKeyResponse { return v.DiskEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
 }
 
-// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+// Whether this disk is using confidential compute mode.
 func (o LookupDiskResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDiskResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -354,7 +361,7 @@ func (o LookupDiskResultOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
 
-// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
 func (o LookupDiskResultOutput) SizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SizeGb }).(pulumi.StringOutput)
 }

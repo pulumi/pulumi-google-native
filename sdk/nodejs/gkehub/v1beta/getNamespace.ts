@@ -17,6 +17,7 @@ export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions
         "location": args.location,
         "namespaceId": args.namespaceId,
         "project": args.project,
+        "scopeId": args.scopeId,
     }, opts);
 }
 
@@ -24,6 +25,7 @@ export interface GetNamespaceArgs {
     location: string;
     namespaceId: string;
     project?: string;
+    scopeId: string;
 }
 
 export interface GetNamespaceResult {
@@ -36,9 +38,17 @@ export interface GetNamespaceResult {
      */
     readonly deleteTime: string;
     /**
+     * Optional. Labels for this Namespace.
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
      */
     readonly name: string;
+    /**
+     * Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
+     */
+    readonly namespaceLabels: {[key: string]: string};
     /**
      * Scope associated with the namespace
      */
@@ -67,4 +77,5 @@ export interface GetNamespaceOutputArgs {
     location: pulumi.Input<string>;
     namespaceId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    scopeId: pulumi.Input<string>;
 }

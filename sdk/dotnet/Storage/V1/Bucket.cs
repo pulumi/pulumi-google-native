@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<ImmutableArray<Outputs.ObjectAccessControlResponse>> DefaultObjectAcl { get; private set; } = null!;
 
         /// <summary>
+        /// When set to true, object retention is enabled for this bucket.
+        /// </summary>
+        [Output("enableObjectRetention")]
+        public Output<bool?> EnableObjectRetention { get; private set; } = null!;
+
+        /// <summary>
         /// Encryption configuration for a bucket.
         /// </summary>
         [Output("encryption")]
@@ -124,6 +130,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The bucket's object retention config.
+        /// </summary>
+        [Output("objectRetention")]
+        public Output<Outputs.BucketObjectRetentionResponse> ObjectRetention { get; private set; } = null!;
+
+        /// <summary>
         /// The owner of the bucket. This is always the project team's owner group.
         /// </summary>
         [Output("owner")]
@@ -182,6 +194,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+        /// </summary>
+        [Output("softDeletePolicy")]
+        public Output<Outputs.BucketSoftDeletePolicyResponse> SoftDeletePolicy { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
@@ -329,6 +347,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         }
 
         /// <summary>
+        /// When set to true, object retention is enabled for this bucket.
+        /// </summary>
+        [Input("enableObjectRetention")]
+        public Input<bool>? EnableObjectRetention { get; set; }
+
+        /// <summary>
         /// Encryption configuration for a bucket.
         /// </summary>
         [Input("encryption")]
@@ -407,6 +431,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The bucket's object retention config.
+        /// </summary>
+        [Input("objectRetention")]
+        public Input<Inputs.BucketObjectRetentionArgs>? ObjectRetention { get; set; }
+
+        /// <summary>
         /// The owner of the bucket. This is always the project team's owner group.
         /// </summary>
         [Input("owner")]
@@ -465,6 +495,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+        /// </summary>
+        [Input("softDeletePolicy")]
+        public Input<Inputs.BucketSoftDeletePolicyArgs>? SoftDeletePolicy { get; set; }
 
         /// <summary>
         /// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.

@@ -12,7 +12,6 @@ from ._enums import *
 
 __all__ = [
     'GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsArgs',
-    'GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsArgs',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsArgs',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsArgs',
@@ -43,62 +42,6 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsArgs:
     @kms_settings.setter
     def kms_settings(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs']]):
         pulumi.set(self, "kms_settings", value)
-
-
-@pulumi.input_type
-class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs:
-    def __init__(__self__, *,
-                 ekm_provisioning_error_domain: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain']] = None,
-                 ekm_provisioning_error_mapping: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping']] = None,
-                 ekm_provisioning_state: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState']] = None):
-        """
-        External key management systems(EKM) Provisioning response
-        :param pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain'] ekm_provisioning_error_domain: Indicates Ekm provisioning error if any.
-        :param pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping'] ekm_provisioning_error_mapping: Detailed error message if Ekm provisioning fails
-        :param pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState'] ekm_provisioning_state: Indicates Ekm enrollment Provisioning of a given workload.
-        """
-        if ekm_provisioning_error_domain is not None:
-            pulumi.set(__self__, "ekm_provisioning_error_domain", ekm_provisioning_error_domain)
-        if ekm_provisioning_error_mapping is not None:
-            pulumi.set(__self__, "ekm_provisioning_error_mapping", ekm_provisioning_error_mapping)
-        if ekm_provisioning_state is not None:
-            pulumi.set(__self__, "ekm_provisioning_state", ekm_provisioning_state)
-
-    @property
-    @pulumi.getter(name="ekmProvisioningErrorDomain")
-    def ekm_provisioning_error_domain(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain']]:
-        """
-        Indicates Ekm provisioning error if any.
-        """
-        return pulumi.get(self, "ekm_provisioning_error_domain")
-
-    @ekm_provisioning_error_domain.setter
-    def ekm_provisioning_error_domain(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain']]):
-        pulumi.set(self, "ekm_provisioning_error_domain", value)
-
-    @property
-    @pulumi.getter(name="ekmProvisioningErrorMapping")
-    def ekm_provisioning_error_mapping(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping']]:
-        """
-        Detailed error message if Ekm provisioning fails
-        """
-        return pulumi.get(self, "ekm_provisioning_error_mapping")
-
-    @ekm_provisioning_error_mapping.setter
-    def ekm_provisioning_error_mapping(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping']]):
-        pulumi.set(self, "ekm_provisioning_error_mapping", value)
-
-    @property
-    @pulumi.getter(name="ekmProvisioningState")
-    def ekm_provisioning_state(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState']]:
-        """
-        Indicates Ekm enrollment Provisioning of a given workload.
-        """
-        return pulumi.get(self, "ekm_provisioning_state")
-
-    @ekm_provisioning_state.setter
-    def ekm_provisioning_state(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState']]):
-        pulumi.set(self, "ekm_provisioning_state", value)
 
 
 @pulumi.input_type
@@ -214,17 +157,33 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs:
 @pulumi.input_type
 class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs:
     def __init__(__self__, *,
+                 assured_workloads_monitoring: Optional[pulumi.Input[bool]] = None,
                  data_logs_viewer: Optional[pulumi.Input[bool]] = None,
-                 remediate_folder_violations: Optional[pulumi.Input[bool]] = None):
+                 service_access_approver: Optional[pulumi.Input[bool]] = None):
         """
         Permissions granted to the AW Partner SA account for the customer workload
+        :param pulumi.Input[bool] assured_workloads_monitoring: Optional. Allow partner to view violation alerts.
         :param pulumi.Input[bool] data_logs_viewer: Allow the partner to view inspectability logs and monitoring violations.
-        :param pulumi.Input[bool] remediate_folder_violations: Allow partner to monitor folder and remediate violations
+        :param pulumi.Input[bool] service_access_approver: Optional. Allow partner to view access approval logs.
         """
+        if assured_workloads_monitoring is not None:
+            pulumi.set(__self__, "assured_workloads_monitoring", assured_workloads_monitoring)
         if data_logs_viewer is not None:
             pulumi.set(__self__, "data_logs_viewer", data_logs_viewer)
-        if remediate_folder_violations is not None:
-            pulumi.set(__self__, "remediate_folder_violations", remediate_folder_violations)
+        if service_access_approver is not None:
+            pulumi.set(__self__, "service_access_approver", service_access_approver)
+
+    @property
+    @pulumi.getter(name="assuredWorkloadsMonitoring")
+    def assured_workloads_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Allow partner to view violation alerts.
+        """
+        return pulumi.get(self, "assured_workloads_monitoring")
+
+    @assured_workloads_monitoring.setter
+    def assured_workloads_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "assured_workloads_monitoring", value)
 
     @property
     @pulumi.getter(name="dataLogsViewer")
@@ -239,16 +198,16 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs:
         pulumi.set(self, "data_logs_viewer", value)
 
     @property
-    @pulumi.getter(name="remediateFolderViolations")
-    def remediate_folder_violations(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="serviceAccessApprover")
+    def service_access_approver(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow partner to monitor folder and remediate violations
+        Optional. Allow partner to view access approval logs.
         """
-        return pulumi.get(self, "remediate_folder_violations")
+        return pulumi.get(self, "service_access_approver")
 
-    @remediate_folder_violations.setter
-    def remediate_folder_violations(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "remediate_folder_violations", value)
+    @service_access_approver.setter
+    def service_access_approver(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_access_approver", value)
 
 
 @pulumi.input_type

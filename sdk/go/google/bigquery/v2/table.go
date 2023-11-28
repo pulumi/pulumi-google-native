@@ -18,6 +18,8 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
+	// [Optional] Specifies the configuration of a BigLake managed table.
+	BiglakeConfiguration BigLakeConfigurationResponseOutput `pulumi:"biglakeConfiguration"`
 	// Clone definition.
 	CloneDefinition CloneDefinitionResponseOutput `pulumi:"cloneDefinition"`
 	// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
@@ -84,6 +86,8 @@ type Table struct {
 	RangePartitioning RangePartitioningResponseOutput `pulumi:"rangePartitioning"`
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 	RequirePartitionFilter pulumi.BoolOutput `pulumi:"requirePartitionFilter"`
+	// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+	ResourceTags pulumi.StringMapOutput `pulumi:"resourceTags"`
 	// [Optional] Describes the schema of this table.
 	Schema TableSchemaResponseOutput `pulumi:"schema"`
 	// A URL that can be used to access this resource again.
@@ -152,6 +156,8 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
+	// [Optional] Specifies the configuration of a BigLake managed table.
+	BiglakeConfiguration *BigLakeConfiguration `pulumi:"biglakeConfiguration"`
 	// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
 	Clustering *Clustering `pulumi:"clustering"`
 	DatasetId  string      `pulumi:"datasetId"`
@@ -178,6 +184,8 @@ type tableArgs struct {
 	RangePartitioning *RangePartitioning `pulumi:"rangePartitioning"`
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
+	// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// [Optional] Describes the schema of this table.
 	Schema *TableSchema `pulumi:"schema"`
 	// [Optional] The table constraints on the table.
@@ -192,6 +200,8 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// [Optional] Specifies the configuration of a BigLake managed table.
+	BiglakeConfiguration BigLakeConfigurationPtrInput
 	// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
 	Clustering ClusteringPtrInput
 	DatasetId  pulumi.StringInput
@@ -218,6 +228,8 @@ type TableArgs struct {
 	RangePartitioning RangePartitioningPtrInput
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 	RequirePartitionFilter pulumi.BoolPtrInput
+	// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+	ResourceTags pulumi.StringMapInput
 	// [Optional] Describes the schema of this table.
 	Schema TableSchemaPtrInput
 	// [Optional] The table constraints on the table.
@@ -277,6 +289,11 @@ func (o TableOutput) ToOutput(ctx context.Context) pulumix.Output[*Table] {
 	return pulumix.Output[*Table]{
 		OutputState: o.OutputState,
 	}
+}
+
+// [Optional] Specifies the configuration of a BigLake managed table.
+func (o TableOutput) BiglakeConfiguration() BigLakeConfigurationResponseOutput {
+	return o.ApplyT(func(v *Table) BigLakeConfigurationResponseOutput { return v.BiglakeConfiguration }).(BigLakeConfigurationResponseOutput)
 }
 
 // Clone definition.
@@ -445,6 +462,11 @@ func (o TableOutput) RangePartitioning() RangePartitioningResponseOutput {
 // [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 func (o TableOutput) RequirePartitionFilter() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Table) pulumi.BoolOutput { return v.RequirePartitionFilter }).(pulumi.BoolOutput)
+}
+
+// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+func (o TableOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
 
 // [Optional] Describes the schema of this table.

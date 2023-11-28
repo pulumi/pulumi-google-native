@@ -28,7 +28,7 @@ export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationCon
      */
     SummarizationModelUnspecified: "SUMMARIZATION_MODEL_UNSPECIFIED",
     /**
-     * The Insights baseline model.
+     * The CCAI baseline model.
      */
     BaselineModel: "BASELINE_MODEL",
 } as const;
@@ -77,6 +77,26 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType = {
  * Required. The type of this phrase match rule group.
  */
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType = (typeof GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType)[keyof typeof GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType];
+
+export const IssueModelModelType = {
+    /**
+     * Unspecified model type.
+     */
+    ModelTypeUnspecified: "MODEL_TYPE_UNSPECIFIED",
+    /**
+     * Type V1.
+     */
+    TypeV1: "TYPE_V1",
+    /**
+     * Type V2.
+     */
+    TypeV2: "TYPE_V2",
+} as const;
+
+/**
+ * Type of the model.
+ */
+export type IssueModelModelType = (typeof IssueModelModelType)[keyof typeof IssueModelModelType];
 
 export const PhraseMatcherRoleMatch = {
     /**

@@ -58,6 +58,10 @@ export class BareMetalCluster extends pulumi.CustomResource {
      */
     public readonly bareMetalVersion!: pulumi.Output<string>;
     /**
+     * Binary Authorization related configurations.
+     */
+    public readonly binaryAuthorization!: pulumi.Output<outputs.gkeonprem.v1.BinaryAuthorizationResponse>;
+    /**
      * Cluster operations configuration.
      */
     public readonly clusterOperations!: pulumi.Output<outputs.gkeonprem.v1.BareMetalClusterOperationsConfigResponse>;
@@ -160,6 +164,10 @@ export class BareMetalCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
+     * The cluster upgrade policy.
+     */
+    public readonly upgradePolicy!: pulumi.Output<outputs.gkeonprem.v1.BareMetalClusterUpgradePolicyResponse>;
+    /**
      * The result of the preflight check.
      */
     public /*out*/ readonly validationCheck!: pulumi.Output<outputs.gkeonprem.v1.ValidationCheckResponse>;
@@ -200,6 +208,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["bareMetalClusterId"] = args ? args.bareMetalClusterId : undefined;
             resourceInputs["bareMetalVersion"] = args ? args.bareMetalVersion : undefined;
+            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["clusterOperations"] = args ? args.clusterOperations : undefined;
             resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -215,6 +224,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
             resourceInputs["proxy"] = args ? args.proxy : undefined;
             resourceInputs["securityConfig"] = args ? args.securityConfig : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
+            resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
             resourceInputs["adminClusterName"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
@@ -235,6 +245,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["bareMetalClusterId"] = undefined /*out*/;
             resourceInputs["bareMetalVersion"] = undefined /*out*/;
+            resourceInputs["binaryAuthorization"] = undefined /*out*/;
             resourceInputs["clusterOperations"] = undefined /*out*/;
             resourceInputs["controlPlane"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -262,6 +273,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
             resourceInputs["storage"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgradePolicy"] = undefined /*out*/;
             resourceInputs["validationCheck"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -291,6 +303,10 @@ export interface BareMetalClusterArgs {
      * The Anthos clusters on bare metal version for your user cluster.
      */
     bareMetalVersion: pulumi.Input<string>;
+    /**
+     * Binary Authorization related configurations.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.gkeonprem.v1.BinaryAuthorizationArgs>;
     /**
      * Cluster operations configuration.
      */
@@ -345,4 +361,8 @@ export interface BareMetalClusterArgs {
      * Storage configuration.
      */
     storage: pulumi.Input<inputs.gkeonprem.v1.BareMetalStorageConfigArgs>;
+    /**
+     * The cluster upgrade policy.
+     */
+    upgradePolicy?: pulumi.Input<inputs.gkeonprem.v1.BareMetalClusterUpgradePolicyArgs>;
 }

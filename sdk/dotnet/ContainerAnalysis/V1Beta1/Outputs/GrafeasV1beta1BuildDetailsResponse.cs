@@ -16,6 +16,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     [OutputType]
     public sealed class GrafeasV1beta1BuildDetailsResponse
     {
+        public readonly Outputs.InTotoSlsaProvenanceV1Response InTotoSlsaProvenanceV1;
         /// <summary>
         /// The actual provenance for the build.
         /// </summary>
@@ -27,10 +28,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 
         [OutputConstructor]
         private GrafeasV1beta1BuildDetailsResponse(
+            Outputs.InTotoSlsaProvenanceV1Response inTotoSlsaProvenanceV1,
+
             Outputs.BuildProvenanceResponse provenance,
 
             string provenanceBytes)
         {
+            InTotoSlsaProvenanceV1 = inTotoSlsaProvenanceV1;
             Provenance = provenance;
             ProvenanceBytes = provenanceBytes;
         }

@@ -85,6 +85,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string LocationHint;
         /// <summary>
+        /// Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+        /// </summary>
+        public readonly string MaintenanceInterval;
+        /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         /// </summary>
         public readonly string MaintenancePolicy;
@@ -129,6 +133,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string locationHint,
 
+            string maintenanceInterval,
+
             string maintenancePolicy,
 
             Outputs.NodeGroupMaintenanceWindowResponse maintenanceWindow,
@@ -153,6 +159,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Fingerprint = fingerprint;
             Kind = kind;
             LocationHint = locationHint;
+            MaintenanceInterval = maintenanceInterval;
             MaintenancePolicy = maintenancePolicy;
             MaintenanceWindow = maintenanceWindow;
             Name = name;

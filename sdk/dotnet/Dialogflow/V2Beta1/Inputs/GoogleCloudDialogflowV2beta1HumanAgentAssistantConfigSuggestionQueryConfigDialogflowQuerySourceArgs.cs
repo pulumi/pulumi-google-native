@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
 {
 
     /// <summary>
-    /// Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+    /// Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST, ENTITY_EXTRACTION.
     /// </summary>
     public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs : global::Pulumi.ResourceArgs
     {
@@ -20,6 +20,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         /// </summary>
         [Input("agent", required: true)]
         public Input<string> Agent { get; set; } = null!;
+
+        /// <summary>
+        /// The Dialogflow assist configuration for human agent.
+        /// </summary>
+        [Input("humanAgentSideConfig")]
+        public Input<Inputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs>? HumanAgentSideConfig { get; set; }
 
         public GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs()
         {

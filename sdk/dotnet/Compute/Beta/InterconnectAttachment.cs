@@ -166,7 +166,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> OperationalStatus { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+        /// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
         /// </summary>
         [Output("pairingKey")]
         public Output<string> PairingKey { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> PartnerAsn { get; private set; } = null!;
 
         /// <summary>
-        /// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+        /// Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
         /// </summary>
         [Output("partnerMetadata")]
         public Output<Outputs.InterconnectAttachmentPartnerMetadataResponse> PartnerMetadata { get; private set; } = null!;
@@ -414,7 +414,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+        /// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
         /// </summary>
         [Input("pairingKey")]
         public Input<string>? PairingKey { get; set; }
@@ -426,7 +426,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? PartnerAsn { get; set; }
 
         /// <summary>
-        /// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+        /// Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
         /// </summary>
         [Input("partnerMetadata")]
         public Input<Inputs.InterconnectAttachmentPartnerMetadataArgs>? PartnerMetadata { get; set; }

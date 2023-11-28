@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GoogleRpcStatusResponse Details;
         /// <summary>
-        /// The times the error occurred.
+        /// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
         /// </summary>
         public readonly ImmutableArray<string> Timestamps;
 

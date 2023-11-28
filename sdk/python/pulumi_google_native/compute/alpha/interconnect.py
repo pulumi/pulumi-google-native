@@ -42,13 +42,13 @@ class InterconnectArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
-        :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+        :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]] requested_features: Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]] requested_features: Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
         if admin_enabled is not None:
@@ -172,7 +172,7 @@ class InterconnectArgs:
     @pulumi.getter
     def macsec(self) -> Optional[pulumi.Input['InterconnectMacsecArgs']]:
         """
-        Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+        Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
         """
         return pulumi.get(self, "macsec")
 
@@ -184,7 +184,7 @@ class InterconnectArgs:
     @pulumi.getter(name="macsecEnabled")
     def macsec_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+        Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
         """
         return pulumi.get(self, "macsec_enabled")
 
@@ -253,7 +253,7 @@ class InterconnectArgs:
     @pulumi.getter(name="requestedFeatures")
     def requested_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]]:
         """
-        Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
         """
         return pulumi.get(self, "requested_features")
 
@@ -308,13 +308,13 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        :param pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']] macsec: Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
-        :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+        :param pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]] requested_features: Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]] requested_features: Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
         ...
@@ -468,7 +468,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="availableFeatures")
     def available_features(self) -> pulumi.Output[Sequence[str]]:
         """
-        [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+        [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
         """
         return pulumi.get(self, "available_features")
 
@@ -588,7 +588,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter
     def macsec(self) -> pulumi.Output['outputs.InterconnectMacsecResponse']:
         """
-        Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+        Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
         """
         return pulumi.get(self, "macsec")
 
@@ -596,7 +596,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="macsecEnabled")
     def macsec_enabled(self) -> pulumi.Output[bool]:
         """
-        Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+        Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
         """
         return pulumi.get(self, "macsec_enabled")
 
@@ -665,7 +665,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="requestedFeatures")
     def requested_features(self) -> pulumi.Output[Sequence[str]]:
         """
-        Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
         """
         return pulumi.get(self, "requested_features")
 

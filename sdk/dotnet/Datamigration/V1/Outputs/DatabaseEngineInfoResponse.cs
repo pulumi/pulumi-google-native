@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly string Engine;
         /// <summary>
-        /// Engine named version, for example 12.c.1.
+        /// Engine version, for example "12.c.1".
         /// </summary>
         public readonly string Version;
 

@@ -27,6 +27,7 @@ from .firewall_policy_iam_binding import *
 from .firewall_policy_iam_member import *
 from .firewall_policy_iam_policy import *
 from .forwarding_rule import *
+from .future_reservation import *
 from .get_address import *
 from .get_autoscaler import *
 from .get_backend_bucket import *
@@ -40,6 +41,7 @@ from .get_firewall import *
 from .get_firewall_policy import *
 from .get_firewall_policy_iam_policy import *
 from .get_forwarding_rule import *
+from .get_future_reservation import *
 from .get_global_address import *
 from .get_global_forwarding_rule import *
 from .get_global_network_endpoint_group import *
@@ -52,6 +54,7 @@ from .get_image_iam_policy import *
 from .get_instance import *
 from .get_instance_group import *
 from .get_instance_group_manager import *
+from .get_instance_group_manager_resize_request import *
 from .get_instance_iam_policy import *
 from .get_instance_template import *
 from .get_instance_template_iam_policy import *
@@ -141,6 +144,7 @@ from .image_iam_policy import *
 from .instance import *
 from .instance_group import *
 from .instance_group_manager import *
+from .instance_group_manager_resize_request import *
 from .instance_iam_binding import *
 from .instance_iam_member import *
 from .instance_iam_policy import *

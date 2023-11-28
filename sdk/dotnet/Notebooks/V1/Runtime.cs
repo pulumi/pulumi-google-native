@@ -50,6 +50,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<Outputs.RuntimeMetricsResponse> Metrics { get; private set; } = null!;
 
         /// <summary>
+        /// Bool indicating whether this notebook has been migrated to a Workbench Instance
+        /// </summary>
+        [Output("migrated")]
+        public Output<bool> Migrated { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
         /// </summary>
         [Output("name")]
@@ -69,6 +75,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         [Output("runtimeId")]
         public Output<string> RuntimeId { get; private set; } = null!;
+
+        /// <summary>
+        /// Checks how feasible a migration from GmN to WbI is.
+        /// </summary>
+        [Output("runtimeMigrationEligibility")]
+        public Output<Outputs.RuntimeMigrationEligibilityResponse> RuntimeMigrationEligibility { get; private set; } = null!;
 
         /// <summary>
         /// The config settings for software inside the runtime.

@@ -42,6 +42,8 @@ type LookupContactCenterResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The configuration of this instance, it is currently immutable once created.
 	InstanceConfig InstanceConfigResponse `pulumi:"instanceConfig"`
+	// Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+	KmsKey string `pulumi:"kmsKey"`
 	// Labels as key value pairs
 	Labels map[string]string `pulumi:"labels"`
 	// name of resource
@@ -129,6 +131,11 @@ func (o LookupContactCenterResultOutput) DisplayName() pulumi.StringOutput {
 // The configuration of this instance, it is currently immutable once created.
 func (o LookupContactCenterResultOutput) InstanceConfig() InstanceConfigResponseOutput {
 	return o.ApplyT(func(v LookupContactCenterResult) InstanceConfigResponse { return v.InstanceConfig }).(InstanceConfigResponseOutput)
+}
+
+// Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+func (o LookupContactCenterResultOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContactCenterResult) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // Labels as key value pairs

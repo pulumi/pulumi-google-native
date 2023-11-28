@@ -32,7 +32,11 @@ export interface GetQueuedResourceResult {
      */
     readonly bestEffort: outputs.tpu.v2alpha1.BestEffortResponse;
     /**
-     * The Guaranteed tier
+     * The time when the QueuedResource was created.
+     */
+    readonly createTime: string;
+    /**
+     * The Guaranteed tier.
      */
     readonly guaranteed: outputs.tpu.v2alpha1.GuaranteedResponse;
     /**
@@ -47,6 +51,10 @@ export interface GetQueuedResourceResult {
      * Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
      */
     readonly reservationName: string;
+    /**
+     * Optional. The Spot tier.
+     */
+    readonly spot: outputs.tpu.v2alpha1.SpotResponse;
     /**
      * State of the QueuedResource request.
      */

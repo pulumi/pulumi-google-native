@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
 {
 
     /// <summary>
-    /// End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
+    /// End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
     /// </summary>
     public sealed class AnimationEndArgs : global::Pulumi.ResourceArgs
     {

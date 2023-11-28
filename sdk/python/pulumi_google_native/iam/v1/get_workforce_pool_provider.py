@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkforcePoolProviderResult:
-    def __init__(__self__, attribute_condition=None, attribute_mapping=None, description=None, disabled=None, display_name=None, name=None, oidc=None, saml=None, state=None):
+    def __init__(__self__, attribute_condition=None, attribute_mapping=None, description=None, disabled=None, display_name=None, expire_time=None, name=None, oidc=None, saml=None, state=None):
         if attribute_condition and not isinstance(attribute_condition, str):
             raise TypeError("Expected argument 'attribute_condition' to be a str")
         pulumi.set(__self__, "attribute_condition", attribute_condition)
@@ -35,6 +35,9 @@ class GetWorkforcePoolProviderResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if expire_time and not isinstance(expire_time, str):
+            raise TypeError("Expected argument 'expire_time' to be a str")
+        pulumi.set(__self__, "expire_time", expire_time)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -89,6 +92,14 @@ class GetWorkforcePoolProviderResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Time after which the workload pool provider will be permanently purged and cannot be recovered.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -132,6 +143,7 @@ class AwaitableGetWorkforcePoolProviderResult(GetWorkforcePoolProviderResult):
             description=self.description,
             disabled=self.disabled,
             display_name=self.display_name,
+            expire_time=self.expire_time,
             name=self.name,
             oidc=self.oidc,
             saml=self.saml,
@@ -158,6 +170,7 @@ def get_workforce_pool_provider(location: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         disabled=pulumi.get(__ret__, 'disabled'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
         name=pulumi.get(__ret__, 'name'),
         oidc=pulumi.get(__ret__, 'oidc'),
         saml=pulumi.get(__ret__, 'saml'),

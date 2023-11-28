@@ -33,11 +33,11 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly string RepoType;
         /// <summary>
-        /// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+        /// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
         /// </summary>
         public readonly string Repository;
         /// <summary>
-        /// The URI of the repo. Either uri or repository can be specified and is required.
+        /// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
         /// </summary>
         public readonly string Uri;
 

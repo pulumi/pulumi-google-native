@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
 {
 
     /// <summary>
-    /// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+    /// [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
     /// </summary>
     public sealed class PrivateServiceConnectConnectivityArgs : global::Pulumi.ResourceArgs
     {

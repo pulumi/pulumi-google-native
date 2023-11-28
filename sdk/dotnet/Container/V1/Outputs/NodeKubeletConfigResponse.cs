@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly string CpuManagerPolicy;
         /// <summary>
+        /// Enable or disable Kubelet read only port.
+        /// </summary>
+        public readonly bool InsecureKubeletReadonlyPortEnabled;
+        /// <summary>
         /// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         /// </summary>
         public readonly string PodPidsLimit;
@@ -41,11 +45,14 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string cpuManagerPolicy,
 
+            bool insecureKubeletReadonlyPortEnabled,
+
             string podPidsLimit)
         {
             CpuCfsQuota = cpuCfsQuota;
             CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
+            InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             PodPidsLimit = podPidsLimit;
         }
     }

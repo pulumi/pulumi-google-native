@@ -38,17 +38,21 @@ export class Target extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Information specifying an Anthos Cluster.
+     * Optional. Information specifying an Anthos Cluster.
      */
     public readonly anthosCluster!: pulumi.Output<outputs.clouddeploy.v1.AnthosClusterResponse>;
     /**
      * Time at which the `Target` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. The deploy parameters to use for this target.
+     */
+    public readonly deployParameters!: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */
@@ -62,20 +66,20 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly executionConfigs!: pulumi.Output<outputs.clouddeploy.v1.ExecutionConfigResponse[]>;
     /**
-     * Information specifying a GKE Cluster.
+     * Optional. Information specifying a GKE Cluster.
      */
     public readonly gke!: pulumi.Output<outputs.clouddeploy.v1.GkeClusterResponse>;
     /**
-     * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Information specifying a multiTarget.
+     * Optional. Information specifying a multiTarget.
      */
     public readonly multiTarget!: pulumi.Output<outputs.clouddeploy.v1.MultiTargetResponse>;
     /**
-     * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+     * Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -88,7 +92,7 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly requireApproval!: pulumi.Output<boolean>;
     /**
-     * Information specifying a Cloud Run deployment target.
+     * Optional. Information specifying a Cloud Run deployment target.
      */
     public readonly run!: pulumi.Output<outputs.clouddeploy.v1.CloudRunLocationResponse>;
     /**
@@ -120,6 +124,7 @@ export class Target extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["anthosCluster"] = args ? args.anthosCluster : undefined;
+            resourceInputs["deployParameters"] = args ? args.deployParameters : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["executionConfigs"] = args ? args.executionConfigs : undefined;
@@ -140,6 +145,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["anthosCluster"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deployParameters"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["executionConfigs"] = undefined /*out*/;
@@ -168,13 +174,17 @@ export class Target extends pulumi.CustomResource {
  */
 export interface TargetArgs {
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Information specifying an Anthos Cluster.
+     * Optional. Information specifying an Anthos Cluster.
      */
     anthosCluster?: pulumi.Input<inputs.clouddeploy.v1.AnthosClusterArgs>;
+    /**
+     * Optional. The deploy parameters to use for this target.
+     */
+    deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */
@@ -188,20 +198,20 @@ export interface TargetArgs {
      */
     executionConfigs?: pulumi.Input<pulumi.Input<inputs.clouddeploy.v1.ExecutionConfigArgs>[]>;
     /**
-     * Information specifying a GKE Cluster.
+     * Optional. Information specifying a GKE Cluster.
      */
     gke?: pulumi.Input<inputs.clouddeploy.v1.GkeClusterArgs>;
     /**
-     * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Information specifying a multiTarget.
+     * Optional. Information specifying a multiTarget.
      */
     multiTarget?: pulumi.Input<inputs.clouddeploy.v1.MultiTargetArgs>;
     /**
-     * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+     * Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
@@ -214,7 +224,7 @@ export interface TargetArgs {
      */
     requireApproval?: pulumi.Input<boolean>;
     /**
-     * Information specifying a Cloud Run deployment target.
+     * Optional. Information specifying a Cloud Run deployment target.
      */
     run?: pulumi.Input<inputs.clouddeploy.v1.CloudRunLocationArgs>;
     /**

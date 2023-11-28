@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         [Input("logSettings")]
         public Input<Inputs.EnterpriseCrmEventbusProtoLogSettingsArgs>? LogSettings { get; set; }
 
+        /// <summary>
+        /// Used to indicate if the ParameterEntry is a read only field or not.
+        /// </summary>
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
+
         [Input("searchable")]
         public Input<Pulumi.GoogleNative.Integrations.V1Alpha.EnterpriseCrmEventbusProtoAttributesSearchable>? Searchable { get; set; }
 

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.DataLineage.V1.Inputs
     public sealed class GoogleCloudDatacatalogLineageV1EntityReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
+        /// [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
         /// </summary>
         [Input("fullyQualifiedName", required: true)]
         public Input<string> FullyQualifiedName { get; set; } = null!;

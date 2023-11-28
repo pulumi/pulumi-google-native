@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse
     {
         /// <summary>
-        /// A description of the diff, showing the actual output vs expected output.
+        /// A human readable description of the diff, showing the actual output vs expected output.
         /// </summary>
         public readonly string Description;
         /// <summary>

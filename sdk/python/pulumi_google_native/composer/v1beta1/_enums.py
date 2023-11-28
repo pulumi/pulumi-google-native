@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'EnvironmentConfigEnvironmentSize',
+    'EnvironmentConfigResilienceMode',
     'EnvironmentState',
     'NetworkingConfigConnectionType',
 ]
@@ -30,6 +31,20 @@ class EnvironmentConfigEnvironmentSize(str, Enum):
     ENVIRONMENT_SIZE_LARGE = "ENVIRONMENT_SIZE_LARGE"
     """
     The environment size is large.
+    """
+
+
+class EnvironmentConfigResilienceMode(str, Enum):
+    """
+    Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+    """
+    RESILIENCE_MODE_UNSPECIFIED = "RESILIENCE_MODE_UNSPECIFIED"
+    """
+    Default mode doesn't change environment parameters.
+    """
+    HIGH_RESILIENCE = "HIGH_RESILIENCE"
+    """
+    Enabled High Resilience mode, including Cloud SQL HA.
     """
 
 

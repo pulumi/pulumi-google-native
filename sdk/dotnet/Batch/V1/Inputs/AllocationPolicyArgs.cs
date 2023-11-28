@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         public Input<Inputs.LocationPolicyArgs>? Location { get; set; }
 
         /// <summary>
-        /// The network policy.
+        /// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
         /// </summary>
         [Input("network")]
         public Input<Inputs.NetworkPolicyArgs>? Network { get; set; }

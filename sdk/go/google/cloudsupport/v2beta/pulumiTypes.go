@@ -245,9 +245,9 @@ func (o ActorResponseOutput) GoogleSupport() pulumi.BoolOutput {
 
 // A classification object with a product type and value.
 type CaseClassification struct {
-	// The display name of the classification.
+	// A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
 	DisplayName *string `pulumi:"displayName"`
-	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.
 	Id *string `pulumi:"id"`
 }
 
@@ -264,9 +264,9 @@ type CaseClassificationInput interface {
 
 // A classification object with a product type and value.
 type CaseClassificationArgs struct {
-	// The display name of the classification.
+	// A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -366,12 +366,12 @@ func (o CaseClassificationOutput) ToOutput(ctx context.Context) pulumix.Output[C
 	}
 }
 
-// The display name of the classification.
+// A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
 func (o CaseClassificationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaseClassification) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.
 func (o CaseClassificationOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaseClassification) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -406,7 +406,7 @@ func (o CaseClassificationPtrOutput) Elem() CaseClassificationOutput {
 	}).(CaseClassificationOutput)
 }
 
-// The display name of the classification.
+// A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
 func (o CaseClassificationPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaseClassification) *string {
 		if v == nil {
@@ -416,7 +416,7 @@ func (o CaseClassificationPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.
 func (o CaseClassificationPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaseClassification) *string {
 		if v == nil {
@@ -428,7 +428,7 @@ func (o CaseClassificationPtrOutput) Id() pulumi.StringPtrOutput {
 
 // A classification object with a product type and value.
 type CaseClassificationResponse struct {
-	// The display name of the classification.
+	// A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
 	DisplayName string `pulumi:"displayName"`
 }
 
@@ -453,7 +453,7 @@ func (o CaseClassificationResponseOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// The display name of the classification.
+// A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
 func (o CaseClassificationResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v CaseClassificationResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }

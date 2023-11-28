@@ -70,6 +70,10 @@ export class ApiProduct extends pulumi.CustomResource {
      */
     public readonly graphqlOperationGroup!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationGroupResponse>;
     /**
+     * Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+     */
+    public readonly grpcOperationGroup!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1GrpcOperationGroupResponse>;
+    /**
      * Response only. Modified time of this environment as milliseconds since epoch.
      */
     public readonly lastModifiedAt!: pulumi.Output<string>;
@@ -129,6 +133,7 @@ export class ApiProduct extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["environments"] = args ? args.environments : undefined;
             resourceInputs["graphqlOperationGroup"] = args ? args.graphqlOperationGroup : undefined;
+            resourceInputs["grpcOperationGroup"] = args ? args.grpcOperationGroup : undefined;
             resourceInputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["operationGroup"] = args ? args.operationGroup : undefined;
@@ -148,6 +153,7 @@ export class ApiProduct extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["environments"] = undefined /*out*/;
             resourceInputs["graphqlOperationGroup"] = undefined /*out*/;
+            resourceInputs["grpcOperationGroup"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operationGroup"] = undefined /*out*/;
@@ -202,6 +208,10 @@ export interface ApiProductArgs {
      * Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
      */
     graphqlOperationGroup?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationGroupArgs>;
+    /**
+     * Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+     */
+    grpcOperationGroup?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1GrpcOperationGroupArgs>;
     /**
      * Response only. Modified time of this environment as milliseconds since epoch.
      */

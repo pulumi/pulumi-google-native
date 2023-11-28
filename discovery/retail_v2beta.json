@@ -818,6 +818,34 @@
                             "https://www.googleapis.com/auth/cloud-platform"
                           ]
                         },
+                        "purge": {
+                          "description": "Permanently deletes all selected Products under a branch. This process is asynchronous. If the request is valid, the removal will be enqueued and processed offline. Depending on the number of Products, this operation could take hours to complete. Before the operation completes, some Products may still be returned by ProductService.GetProduct or ProductService.ListProducts. Depending on the number of Products, this operation could take hours to complete. To get a sample of Products that would be deleted, set PurgeProductsRequest.force to false.",
+                          "flatPath": "v2beta/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products:purge",
+                          "httpMethod": "POST",
+                          "id": "retail.projects.locations.catalogs.branches.products.purge",
+                          "parameterOrder": [
+                            "parent"
+                          ],
+                          "parameters": {
+                            "parent": {
+                              "description": "Required. The resource name of the branch under which the products are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}`",
+                              "location": "path",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+$",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "path": "v2beta/{+parent}/products:purge",
+                          "request": {
+                            "$ref": "GoogleCloudRetailV2betaPurgeProductsRequest"
+                          },
+                          "response": {
+                            "$ref": "GoogleLongrunningOperation"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ]
+                        },
                         "removeFulfillmentPlaces": {
                           "description": "We recommend that you use the ProductService.RemoveLocalInventories method instead of the ProductService.RemoveFulfillmentPlaces method. ProductService.RemoveLocalInventories achieves the same results but provides more fine-grained control over ingesting local inventory data. Incrementally removes place IDs from a Product.fulfillment_info.place_ids. This process is asynchronous and does not require the Product to exist before updating fulfillment information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, the removed place IDs are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete.",
                           "flatPath": "v2beta/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products/{productsId}:removeFulfillmentPlaces",
@@ -2059,7 +2087,7 @@
       }
     }
   },
-  "revision": "20230516",
+  "revision": "20231109",
   "rootUrl": "https://retail.googleapis.com/",
   "schemas": {
     "GoogleApiHttpBody": {
@@ -2291,6 +2319,7 @@
           "type": "string"
         },
         "requestId": {
+          "deprecated": true,
           "description": "Deprecated. This field is never set.",
           "type": "string"
         },
@@ -2533,6 +2562,52 @@
       "properties": {},
       "type": "object"
     },
+    "GoogleCloudRetailV2PurgeProductsMetadata": {
+      "description": "Metadata related to the progress of the PurgeProducts operation. This will be returned by the google.longrunning.Operation.metadata field.",
+      "id": "GoogleCloudRetailV2PurgeProductsMetadata",
+      "properties": {
+        "createTime": {
+          "description": "Operation create time.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "failureCount": {
+          "description": "Count of entries that encountered errors while processing.",
+          "format": "int64",
+          "type": "string"
+        },
+        "successCount": {
+          "description": "Count of entries that were deleted successfully.",
+          "format": "int64",
+          "type": "string"
+        },
+        "updateTime": {
+          "description": "Operation last update time. If the operation is done, this is also the finish time.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2PurgeProductsResponse": {
+      "description": "Response of the PurgeProductsRequest. If the long running operation is successfully done, then this message is returned by the google.longrunning.Operations.response field.",
+      "id": "GoogleCloudRetailV2PurgeProductsResponse",
+      "properties": {
+        "purgeCount": {
+          "description": "The total count of products purged as a result of the operation.",
+          "format": "int64",
+          "type": "string"
+        },
+        "purgeSample": {
+          "description": "A sample of the product names that will be deleted. Only populated if `force` is set to false. A max of 100 names will be returned and the names are chosen at random.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudRetailV2PurgeUserEventsResponse": {
       "description": "Response of the PurgeUserEventsRequest. If the long running operation is successfully done, then this message is returned by the google.longrunning.Operations.response field.",
       "id": "GoogleCloudRetailV2PurgeUserEventsResponse",
@@ -2700,6 +2775,33 @@
       },
       "type": "object"
     },
+    "GoogleCloudRetailV2alphaEnrollSolutionMetadata": {
+      "description": "Metadata related to the EnrollSolution method. This will be returned by the google.longrunning.Operation.metadata field.",
+      "id": "GoogleCloudRetailV2alphaEnrollSolutionMetadata",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaEnrollSolutionResponse": {
+      "description": "Response for EnrollSolution method.",
+      "id": "GoogleCloudRetailV2alphaEnrollSolutionResponse",
+      "properties": {
+        "enrolledSolution": {
+          "description": "Retail API solution that the project has enrolled.",
+          "enum": [
+            "SOLUTION_TYPE_UNSPECIFIED",
+            "SOLUTION_TYPE_RECOMMENDATION",
+            "SOLUTION_TYPE_SEARCH"
+          ],
+          "enumDescriptions": [
+            "Default value.",
+            "Used for Recommendations AI.",
+            "Used for Retail Search."
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudRetailV2alphaExportErrorsConfig": {
       "description": "Configuration of destination for Export related errors.",
       "id": "GoogleCloudRetailV2alphaExportErrorsConfig",
@@ -2827,6 +2929,7 @@
           "type": "string"
         },
         "requestId": {
+          "deprecated": true,
           "description": "Deprecated. This field is never set.",
           "type": "string"
         },
@@ -2928,6 +3031,10 @@
         "projectId": {
           "description": "Output only. Google Cloud project ID.",
           "readOnly": true,
+          "type": "string"
+        },
+        "source": {
+          "description": "Optional. An optional arbitrary string that could be used as a tag for tracking link source.",
           "type": "string"
         },
         "state": {
@@ -3700,6 +3807,10 @@
           ],
           "type": "string"
         },
+        "facetConfig": {
+          "$ref": "GoogleCloudRetailV2betaCatalogAttributeFacetConfig",
+          "description": "Contains facet options."
+        },
         "inUse": {
           "description": "Output only. Indicates whether this attribute has been used by any products. `True` if at least one Product is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-loaded CatalogAttributes. Only pre-loaded catalog attributes that are neither in use by products nor predefined can be deleted. Catalog attributes that are either in use by products or are predefined attributes cannot be deleted; however, their configuration properties will reset to default values upon removal request. After catalog changes, it takes about 10 minutes for this field to update.",
           "readOnly": true,
@@ -3783,6 +3894,76 @@
       },
       "type": "object"
     },
+    "GoogleCloudRetailV2betaCatalogAttributeFacetConfig": {
+      "description": "Possible options for the facet that corresponds to the current attribute config.",
+      "id": "GoogleCloudRetailV2betaCatalogAttributeFacetConfig",
+      "properties": {
+        "facetIntervals": {
+          "description": "If you don't set the facet SearchRequest.FacetSpec.FacetKey.intervals in the request to a numerical attribute, then we use the computed intervals with rounded bounds obtained from all its product numerical attribute values. The computed intervals might not be ideal for some attributes. Therefore, we give you the option to overwrite them with the facet_intervals field. The maximum of facet intervals per CatalogAttribute is 40. Each interval must have a lower bound or an upper bound. If both bounds are provided, then the lower bound must be smaller or equal than the upper bound.",
+          "items": {
+            "$ref": "GoogleCloudRetailV2betaInterval"
+          },
+          "type": "array"
+        },
+        "ignoredFacetValues": {
+          "description": "Each instance represents a list of attribute values to ignore as facet values for a specific time range. The maximum number of instances per CatalogAttribute is 25.",
+          "items": {
+            "$ref": "GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues"
+          },
+          "type": "array"
+        },
+        "mergedFacetValues": {
+          "description": "Each instance replaces a list of facet values by a merged facet value. If a facet value is not in any list, then it will stay the same. To avoid conflicts, only paths of length 1 are accepted. In other words, if \"dark_blue\" merged into \"BLUE\", then the latter can't merge into \"blues\" because this would create a path of length 2. The maximum number of instances of MergedFacetValue per CatalogAttribute is 100. This feature is available only for textual custom attributes.",
+          "items": {
+            "$ref": "GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues": {
+      "description": "Facet values to ignore on facets during the specified time range for the given SearchResponse.Facet.key attribute.",
+      "id": "GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues",
+      "properties": {
+        "endTime": {
+          "description": "If start time is empty and end time is not empty, then ignore these facet values before end time.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "startTime": {
+          "description": "Time range for the current list of facet values to ignore. If multiple time ranges are specified for an facet value for the current attribute, consider all of them. If both are empty, ignore always. If start time and end time are set, then start time must be before end time. If start time is not empty and end time is empty, then will ignore these facet values after the start time.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "values": {
+          "description": "List of facet values to ignore for the following time range. The facet values are the same as the attribute values. There is a limit of 10 values per instance of IgnoredFacetValues. Each value can have at most 128 characters.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue": {
+      "description": "Replaces a set of textual facet values by the same (possibly different) merged facet value. Each facet value should appear at most once as a value per CatalogAttribute. This feature is available only for textual custom attributes.",
+      "id": "GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue",
+      "properties": {
+        "mergedValue": {
+          "description": "All the previous values are replaced by this merged facet value. This merged_value must be non-empty and can have up to 128 characters.",
+          "type": "string"
+        },
+        "values": {
+          "description": "All the facet values that are replaces by the same merged_value that follows. The maximum number of values per MergedFacetValue is 25. Each value can have up to 128 characters.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudRetailV2betaColorInfo": {
       "description": "The color information of a Product.",
       "id": "GoogleCloudRetailV2betaColorInfo",
@@ -3820,7 +4001,8 @@
           "type": "array"
         },
         "recentSearchResults": {
-          "description": "Matched recent searches of this user. The maximum number of recent searches is 10. This field is a restricted feature. If you want to enable it, contact Retail Search support. This feature is only available when CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent searches satisfy the follow rules: * They are ordered from latest to oldest. * They are matched with CompleteQueryRequest.query case insensitively. * They are transformed to lower case. * They are UTF-8 safe. Recent searches are deduplicated. More recent searches will be reserved when duplication happens.",
+          "deprecated": true,
+          "description": "Deprecated. Matched recent searches of this user. The maximum number of recent searches is 10. This field is a restricted feature. If you want to enable it, contact Retail Search support. This feature is only available when CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent searches satisfy the follow rules: * They are ordered from latest to oldest. * They are matched with CompleteQueryRequest.query case insensitively. * They are transformed to lower case. * They are UTF-8 safe. Recent searches are deduplicated. More recent searches will be reserved when duplication happens.",
           "items": {
             "$ref": "GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult"
           },
@@ -3848,6 +4030,7 @@
       "type": "object"
     },
     "GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult": {
+      "deprecated": true,
       "description": "Recent search of this user.",
       "id": "GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult",
       "properties": {
@@ -3959,6 +4142,13 @@
           },
           "type": "array"
         },
+        "pageCategories": {
+          "description": "Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "queryTerms": {
           "description": "A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).",
           "items": {
@@ -4019,6 +4209,7 @@
         },
         "facetSpec": {
           "$ref": "GoogleCloudRetailV2betaSearchRequestFacetSpec",
+          "deprecated": true,
           "description": "A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control."
         },
         "name": {
@@ -4099,6 +4290,7 @@
       "id": "GoogleCloudRetailV2betaCustomAttribute",
       "properties": {
         "indexable": {
+          "deprecated": true,
           "description": "This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.",
           "type": "boolean"
         },
@@ -4111,6 +4303,7 @@
           "type": "array"
         },
         "searchable": {
+          "deprecated": true,
           "description": "This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.",
           "type": "boolean"
         },
@@ -4373,6 +4566,7 @@
           "type": "string"
         },
         "requestId": {
+          "deprecated": true,
           "description": "Deprecated. This field is never set.",
           "type": "string"
         },
@@ -4420,6 +4614,7 @@
           "type": "string"
         },
         "requestId": {
+          "deprecated": true,
           "description": "Deprecated. This field has no effect.",
           "type": "string"
         },
@@ -4673,6 +4868,10 @@
         "projectId": {
           "description": "Output only. Google Cloud project ID.",
           "readOnly": true,
+          "type": "string"
+        },
+        "source": {
+          "description": "Optional. An optional arbitrary string that could be used as a tag for tracking link source.",
           "type": "string"
         },
         "state": {
@@ -5007,6 +5206,7 @@
           "type": "integer"
         },
         "pageToken": {
+          "deprecated": true,
           "description": "This field is not used; leave it unset.",
           "type": "string"
         },
@@ -5175,7 +5375,7 @@
           "type": "string"
         },
         "brands": {
-          "description": "The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).",
+          "description": "The brands of the product. A maximum of 30 brands are allowed unless overridden through the Google Cloud console. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).",
           "items": {
             "type": "string"
           },
@@ -5292,6 +5492,7 @@
           "description": "The rating of this product."
         },
         "retrievableFields": {
+          "deprecated": true,
           "description": "Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form \"attributes.key\" where \"key\" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse can increase response payload size and serving latency. This field is deprecated. Use the retrievable site-wide control instead.",
           "format": "google-fieldmask",
           "type": "string"
@@ -5459,6 +5660,67 @@
       "description": "Metadata related to the progress of the Purge operation. This will be returned by the google.longrunning.Operation.metadata field.",
       "id": "GoogleCloudRetailV2betaPurgeMetadata",
       "properties": {},
+      "type": "object"
+    },
+    "GoogleCloudRetailV2betaPurgeProductsMetadata": {
+      "description": "Metadata related to the progress of the PurgeProducts operation. This will be returned by the google.longrunning.Operation.metadata field.",
+      "id": "GoogleCloudRetailV2betaPurgeProductsMetadata",
+      "properties": {
+        "createTime": {
+          "description": "Operation create time.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "failureCount": {
+          "description": "Count of entries that encountered errors while processing.",
+          "format": "int64",
+          "type": "string"
+        },
+        "successCount": {
+          "description": "Count of entries that were deleted successfully.",
+          "format": "int64",
+          "type": "string"
+        },
+        "updateTime": {
+          "description": "Operation last update time. If the operation is done, this is also the finish time.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2betaPurgeProductsRequest": {
+      "description": "Request message for PurgeProducts method.",
+      "id": "GoogleCloudRetailV2betaPurgeProductsRequest",
+      "properties": {
+        "filter": {
+          "description": "Required. The filter string to specify the products to be deleted with a length limit of 5,000 characters. Empty string filter is not allowed. \"*\" implies delete all items in a branch. The eligible fields for filtering are: * `availability`: Double quoted Product.availability string. * `create_time` : in ISO 8601 \"zulu\" format. Supported syntax: * Comparators (\"\u003e\", \"\u003c\", \"\u003e=\", \"\u003c=\", \"=\"). Examples: * create_time \u003c= \"2015-02-13T17:05:46Z\" * availability = \"IN_STOCK\" * Conjunctions (\"AND\") Examples: * create_time \u003c= \"2015-02-13T17:05:46Z\" AND availability = \"PREORDER\" * Disjunctions (\"OR\") Examples: * create_time \u003c= \"2015-02-13T17:05:46Z\" OR availability = \"IN_STOCK\" * Can support nested queries. Examples: * (create_time \u003c= \"2015-02-13T17:05:46Z\" AND availability = \"PREORDER\") OR (create_time \u003e= \"2015-02-14T13:03:32Z\" AND availability = \"IN_STOCK\") * Filter Limits: * Filter should not contain more than 6 conditions. * Max nesting depth should not exceed 2 levels. Examples queries: * Delete back order products created before a timestamp. create_time \u003c= \"2015-02-13T17:05:46Z\" OR availability = \"BACKORDER\"",
+          "type": "string"
+        },
+        "force": {
+          "description": "Actually perform the purge. If `force` is set to false, the method will return the expected purge count without deleting any products.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2betaPurgeProductsResponse": {
+      "description": "Response of the PurgeProductsRequest. If the long running operation is successfully done, then this message is returned by the google.longrunning.Operations.response field.",
+      "id": "GoogleCloudRetailV2betaPurgeProductsResponse",
+      "properties": {
+        "purgeCount": {
+          "description": "The total count of products purged as a result of the operation.",
+          "format": "int64",
+          "type": "string"
+        },
+        "purgeSample": {
+          "description": "A sample of the product names that will be deleted. Only populated if `force` is set to false. A max of 100 names will be returned and the names are chosen at random.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
       "type": "object"
     },
     "GoogleCloudRetailV2betaPurgeUserEventsRequest": {
@@ -5690,6 +5952,10 @@
           "$ref": "GoogleCloudRetailV2betaRuleFilterAction",
           "description": "Filters results."
         },
+        "forceReturnFacetAction": {
+          "$ref": "GoogleCloudRetailV2betaRuleForceReturnFacetAction",
+          "description": "Force returns an attribute as a facet in the request."
+        },
         "ignoreAction": {
           "$ref": "GoogleCloudRetailV2betaRuleIgnoreAction",
           "description": "Ignores specific terms from query during search."
@@ -5701,6 +5967,10 @@
         "redirectAction": {
           "$ref": "GoogleCloudRetailV2betaRuleRedirectAction",
           "description": "Redirects a shopper to a specific page."
+        },
+        "removeFacetAction": {
+          "$ref": "GoogleCloudRetailV2betaRuleRemoveFacetAction",
+          "description": "Remove an attribute as a facet in the request (if present)."
         },
         "replacementAction": {
           "$ref": "GoogleCloudRetailV2betaRuleReplacementAction",
@@ -5768,6 +6038,36 @@
       },
       "type": "object"
     },
+    "GoogleCloudRetailV2betaRuleForceReturnFacetAction": {
+      "description": "Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is \"shoes\", the Condition.query_terms is \"shoes\", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is \"size\" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key \"size\" is not already in the top 8 slots, then the facet \"size\" will appear at a position close to 8. b) The facet key \"size\" in among the top 8 positions in the request, then it will stay at its current rank.",
+      "id": "GoogleCloudRetailV2betaRuleForceReturnFacetAction",
+      "properties": {
+        "facetPositionAdjustments": {
+          "description": "Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.",
+          "items": {
+            "$ref": "GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment": {
+      "description": "Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position.",
+      "id": "GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment",
+      "properties": {
+        "attributeName": {
+          "description": "The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.",
+          "type": "string"
+        },
+        "position": {
+          "description": "This is the position in the request as explained above. It should be strictly positive be at most 100.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudRetailV2betaRuleIgnoreAction": {
       "description": "Prevents a term in the query from being used in search. Example: Don't search for \"shoddy\".",
       "id": "GoogleCloudRetailV2betaRuleIgnoreAction",
@@ -5811,12 +6111,26 @@
       "type": "object"
     },
     "GoogleCloudRetailV2betaRuleRedirectAction": {
-      "description": "Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.",
+      "description": "Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.",
       "id": "GoogleCloudRetailV2betaRuleRedirectAction",
       "properties": {
         "redirectUri": {
           "description": "URL must have length equal or less than 2000 characters.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2betaRuleRemoveFacetAction": {
+      "description": "Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is \"shoes\", the Condition.query_terms is \"shoes\" and the attribute name \"size\", then facet key \"size\" will be removed from the request (if it is present).",
+      "id": "GoogleCloudRetailV2betaRuleRemoveFacetAction",
+      "properties": {
+        "attributeNames": {
+          "description": "The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -5870,11 +6184,12 @@
           "type": "string"
         },
         "canonicalFilter": {
-          "description": "The default filter that is applied when a user performs a search without checking any filters on the search page. The filter applied to every search request when quality improvement such as query expansion is needed. For example, if a query does not have enough results, an expanded query with SearchRequest.canonical_filter is returned as a supplement of the original query. This field is strongly recommended to achieve high search quality. For more information about filter syntax, see SearchRequest.filter.",
+          "description": "The default filter that is applied when a user performs a search without checking any filters on the search page. The filter applied to every search request when quality improvement such as query expansion is needed. In the case a query does not have a sufficient amount of results this filter will be used to determine whether or not to enable the query expansion flow. The original filter will still be used for the query expanded search. This field is strongly recommended to achieve high search quality. For more information about filter syntax, see SearchRequest.filter.",
           "type": "string"
         },
         "dynamicFacetSpec": {
           "$ref": "GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec",
+          "deprecated": true,
           "description": "Deprecated. Refer to https://cloud.google.com/retail/docs/configs#dynamic to enable dynamic facets. Do not set this field. The specification for dynamically generated facets. Notice that only textual facets can be dynamically generated."
         },
         "entity": {
@@ -6790,7 +7105,7 @@
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object"
         }
       },

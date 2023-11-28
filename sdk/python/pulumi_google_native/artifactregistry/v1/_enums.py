@@ -6,6 +6,8 @@ from enum import Enum
 
 __all__ = [
     'DockerRepositoryPublicRepository',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase',
     'MavenRepositoryConfigVersionPolicy',
     'MavenRepositoryPublicRepository',
     'NpmRepositoryPublicRepository',
@@ -26,6 +28,62 @@ class DockerRepositoryPublicRepository(str, Enum):
     DOCKER_HUB = "DOCKER_HUB"
     """
     Docker Hub.
+    """
+
+
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase(str, Enum):
+    """
+    A common public repository base for Apt.
+    """
+    REPOSITORY_BASE_UNSPECIFIED = "REPOSITORY_BASE_UNSPECIFIED"
+    """
+    Unspecified repository base.
+    """
+    DEBIAN = "DEBIAN"
+    """
+    Debian.
+    """
+    UBUNTU = "UBUNTU"
+    """
+    Ubuntu LTS/Pro.
+    """
+    DEBIAN_SNAPSHOT = "DEBIAN_SNAPSHOT"
+    """
+    Archived Debian.
+    """
+
+
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase(str, Enum):
+    """
+    A common public repository base for Yum.
+    """
+    REPOSITORY_BASE_UNSPECIFIED = "REPOSITORY_BASE_UNSPECIFIED"
+    """
+    Unspecified repository base.
+    """
+    CENTOS = "CENTOS"
+    """
+    CentOS.
+    """
+    CENTOS_DEBUG = "CENTOS_DEBUG"
+    """
+    CentOS Debug.
+    """
+    CENTOS_VAULT = "CENTOS_VAULT"
+    """
+    CentOS Vault.
+    """
+    CENTOS_STREAM = "CENTOS_STREAM"
+    """
+    CentOS Stream.
+    """
+    ROCKY = "ROCKY"
+    """
+    Rocky.
+    """
+    EPEL = "EPEL"
+    """
+    Fedora Extra Packages for Enterprise Linux (EPEL).
     """
 
 
@@ -91,7 +149,7 @@ class PythonRepositoryPublicRepository(str, Enum):
 
 class RepositoryFormat(str, Enum):
     """
-    The format of packages that are stored in the repository.
+    Optional. The format of packages that are stored in the repository.
     """
     FORMAT_UNSPECIFIED = "FORMAT_UNSPECIFIED"
     """
@@ -129,11 +187,15 @@ class RepositoryFormat(str, Enum):
     """
     Kubeflow Pipelines package format.
     """
+    GO = "GO"
+    """
+    Go package format.
+    """
 
 
 class RepositoryMode(str, Enum):
     """
-    The mode of the repository.
+    Optional. The mode of the repository.
     """
     MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
     """

@@ -32,6 +32,8 @@ type LookupEvaluationArgs struct {
 type LookupEvaluationResult struct {
 	// [Output only] Create time stamp
 	CreateTime string `pulumi:"createTime"`
+	// The Cloud Storage bucket name for custom rules.
+	CustomRulesBucket string `pulumi:"customRulesBucket"`
 	// Description of the Evaluation
 	Description string `pulumi:"description"`
 	// Labels as key value pairs
@@ -46,7 +48,7 @@ type LookupEvaluationResult struct {
 	RuleNames []string `pulumi:"ruleNames"`
 	// [Output only] The updated rule ids if exist.
 	RuleVersions []string `pulumi:"ruleVersions"`
-	// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+	// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
 	Schedule string `pulumi:"schedule"`
 	// [Output only] Update time stamp
 	UpdateTime string `pulumi:"updateTime"`
@@ -100,6 +102,11 @@ func (o LookupEvaluationResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEvaluationResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The Cloud Storage bucket name for custom rules.
+func (o LookupEvaluationResultOutput) CustomRulesBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEvaluationResult) string { return v.CustomRulesBucket }).(pulumi.StringOutput)
+}
+
 // Description of the Evaluation
 func (o LookupEvaluationResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEvaluationResult) string { return v.Description }).(pulumi.StringOutput)
@@ -135,7 +142,7 @@ func (o LookupEvaluationResultOutput) RuleVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEvaluationResult) []string { return v.RuleVersions }).(pulumi.StringArrayOutput)
 }
 
-// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
 func (o LookupEvaluationResultOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEvaluationResult) string { return v.Schedule }).(pulumi.StringOutput)
 }

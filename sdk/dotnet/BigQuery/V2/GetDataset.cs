@@ -30,6 +30,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
 
+        [Input("datasetView")]
+        public string? DatasetView { get; set; }
+
         [Input("project")]
         public string? Project { get; set; }
 
@@ -43,6 +46,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("datasetView")]
+        public Input<string>? DatasetView { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -94,6 +100,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// A hash of the resource.
         /// </summary>
         public readonly string Etag;
+        /// <summary>
+        /// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        /// </summary>
+        public readonly Outputs.ExternalDatasetReferenceResponse ExternalDatasetReference;
         /// <summary>
         /// [Optional] A descriptive name for the dataset.
         /// </summary>
@@ -161,6 +171,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string etag,
 
+            Outputs.ExternalDatasetReferenceResponse externalDatasetReference,
+
             string friendlyName,
 
             bool isCaseInsensitive,
@@ -193,6 +205,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             DefaultTableExpirationMs = defaultTableExpirationMs;
             Description = description;
             Etag = etag;
+            ExternalDatasetReference = externalDatasetReference;
             FriendlyName = friendlyName;
             IsCaseInsensitive = isCaseInsensitive;
             Kind = kind;

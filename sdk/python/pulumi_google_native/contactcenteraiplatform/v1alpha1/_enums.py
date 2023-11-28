@@ -41,3 +41,7 @@ class InstanceConfigInstanceSize(str, Enum):
     """
     Instance Size STANDARD_3XLARGE.
     """
+    DEV_XSMALL = "DEV_XSMALL"
+    """
+    Instance Size DEV_EXTRA_SMALL.
+    """

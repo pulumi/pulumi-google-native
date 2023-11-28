@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.
+ * Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to create a customer. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.
  * Auto-naming is currently not supported for this resource.
  */
 export class Customer extends pulumi.CustomResource {
@@ -81,7 +81,7 @@ export class Customer extends pulumi.CustomResource {
      */
     public readonly orgDisplayName!: pulumi.Output<string>;
     /**
-     * The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+     * The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
      */
     public readonly orgPostalAddress!: pulumi.Output<outputs.cloudchannel.v1.GoogleTypePostalAddressResponse>;
     /**
@@ -189,7 +189,7 @@ export interface CustomerArgs {
      */
     orgDisplayName: pulumi.Input<string>;
     /**
-     * The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+     * The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
      */
     orgPostalAddress: pulumi.Input<inputs.cloudchannel.v1.GoogleTypePostalAddressArgs>;
     /**

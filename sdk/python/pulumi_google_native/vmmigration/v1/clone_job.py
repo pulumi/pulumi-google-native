@@ -174,6 +174,7 @@ class CloneJob(pulumi.CustomResource):
             if source_id is None and not opts.urn:
                 raise TypeError("Missing required property 'source_id'")
             __props__.__dict__["source_id"] = source_id
+            __props__.__dict__["compute_engine_disks_target_details"] = None
             __props__.__dict__["compute_engine_target_details"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_time"] = None
@@ -207,6 +208,7 @@ class CloneJob(pulumi.CustomResource):
         __props__ = CloneJobArgs.__new__(CloneJobArgs)
 
         __props__.__dict__["clone_job_id"] = None
+        __props__.__dict__["compute_engine_disks_target_details"] = None
         __props__.__dict__["compute_engine_target_details"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["end_time"] = None
@@ -229,6 +231,14 @@ class CloneJob(pulumi.CustomResource):
         Required. The clone job identifier.
         """
         return pulumi.get(self, "clone_job_id")
+
+    @property
+    @pulumi.getter(name="computeEngineDisksTargetDetails")
+    def compute_engine_disks_target_details(self) -> pulumi.Output['outputs.ComputeEngineDisksTargetDetailsResponse']:
+        """
+        Details of the target Persistent Disks in Compute Engine.
+        """
+        return pulumi.get(self, "compute_engine_disks_target_details")
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")

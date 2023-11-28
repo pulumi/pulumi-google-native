@@ -36,7 +36,7 @@ type LookupBackupScheduleResult struct {
 	DailyRecurrence GoogleFirestoreAdminV1DailyRecurrenceResponse `pulumi:"dailyRecurrence"`
 	// The unique backup schedule identifier across all locations and databases for the given project. This will be auto-assigned. Format is `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
 	Name string `pulumi:"name"`
-	// At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	Retention string `pulumi:"retention"`
 	// The timestamp at which this backup schedule was most recently updated. When a backup schedule is first created, this is the same as create_time.
 	UpdateTime string `pulumi:"updateTime"`
@@ -104,7 +104,7 @@ func (o LookupBackupScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupScheduleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 func (o LookupBackupScheduleResultOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupScheduleResult) string { return v.Retention }).(pulumi.StringOutput)
 }

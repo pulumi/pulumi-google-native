@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.NetworkPerformanceConfigResponse NetworkPerformanceConfig;
         /// <summary>
+        /// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> PartnerMetadata;
+        /// <summary>
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
         public readonly string PostKeyRevocationActionType;
@@ -148,6 +152,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.NetworkPerformanceConfigResponse networkPerformanceConfig,
 
+            ImmutableDictionary<string, string> partnerMetadata,
+
             string postKeyRevocationActionType,
 
             string privateIpv6GoogleAccess,
@@ -186,6 +192,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             MinCpuPlatform = minCpuPlatform;
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfig = networkPerformanceConfig;
+            PartnerMetadata = partnerMetadata;
             PostKeyRevocationActionType = postKeyRevocationActionType;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ReservationAffinity = reservationAffinity;

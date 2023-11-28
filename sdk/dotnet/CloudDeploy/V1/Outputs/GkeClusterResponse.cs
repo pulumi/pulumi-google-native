@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class GkeClusterResponse
     {
         /// <summary>
-        /// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        /// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
         /// </summary>
         public readonly string Cluster;
         /// <summary>

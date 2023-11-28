@@ -62,6 +62,10 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+     */
+    public /*out*/ readonly probingDetails!: pulumi.Output<outputs.networkmanagement.v1.ProbingDetailsResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
@@ -122,6 +126,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["testId"] = args ? args.testId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["probingDetails"] = undefined /*out*/;
             resourceInputs["reachabilityDetails"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
@@ -131,6 +136,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["probingDetails"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["protocol"] = undefined /*out*/;
             resourceInputs["reachabilityDetails"] = undefined /*out*/;

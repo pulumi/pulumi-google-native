@@ -27,7 +27,7 @@ class GlobalPublicDelegatedPrefixArgs:
         """
         The set of arguments for constructing a GlobalPublicDelegatedPrefix resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        :param pulumi.Input[str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
@@ -67,7 +67,7 @@ class GlobalPublicDelegatedPrefixArgs:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        The IP address range, in CIDR format, represented by this public delegated prefix.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -165,7 +165,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        :param pulumi.Input[str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
@@ -221,6 +221,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["public_delegated_sub_prefixs"] = public_delegated_sub_prefixs
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["byoip_api_version"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
@@ -251,6 +252,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
 
         __props__ = GlobalPublicDelegatedPrefixArgs.__new__(GlobalPublicDelegatedPrefixArgs)
 
+        __props__.__dict__["byoip_api_version"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fingerprint"] = None
@@ -266,6 +268,14 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
         return GlobalPublicDelegatedPrefix(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="byoipApiVersion")
+    def byoip_api_version(self) -> pulumi.Output[str]:
+        """
+        The version of BYOIP API.
+        """
+        return pulumi.get(self, "byoip_api_version")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -295,7 +305,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Output[str]:
         """
-        The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        The IP address range, in CIDR format, represented by this public delegated prefix.
         """
         return pulumi.get(self, "ip_cidr_range")
 

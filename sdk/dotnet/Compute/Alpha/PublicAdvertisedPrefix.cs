@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class PublicAdvertisedPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The version of BYOIP API.
+        /// </summary>
+        [Output("byoipApiVersion")]
+        public Output<string> ByoipApiVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -28,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 address to be used for reverse DNS verification.
+        /// The address to be used for reverse DNS verification.
         /// </summary>
         [Output("dnsVerificationIp")]
         public Output<string> DnsVerificationIp { get; private set; } = null!;
@@ -40,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The address range, in CIDR format, represented by this public advertised prefix.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
@@ -158,13 +164,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IPv4 address to be used for reverse DNS verification.
+        /// The address to be used for reverse DNS verification.
         /// </summary>
         [Input("dnsVerificationIp")]
         public Input<string>? DnsVerificationIp { get; set; }
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The address range, in CIDR format, represented by this public advertised prefix.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }

@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualityRuleResultResponse
     {
         /// <summary>
-        /// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
+        /// The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
         /// </summary>
         public readonly string EvaluatedCount;
         /// <summary>
-        /// The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+        /// The query to find rows that did not pass this rule.This field is only valid for row-level type rules.
         /// </summary>
         public readonly string FailingRowsQuery;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string NullCount;
         /// <summary>
-        /// The ratio of passed_count / evaluated_count. This field is only valid for ColumnMap type rules.
+        /// The ratio of passed_count / evaluated_count.This field is only valid for row-level type rules.
         /// </summary>
         public readonly double PassRatio;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly bool Passed;
         /// <summary>
-        /// The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+        /// The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.
         /// </summary>
         public readonly string PassedCount;
         /// <summary>

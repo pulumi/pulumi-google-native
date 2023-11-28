@@ -31,6 +31,8 @@ type LookupInterconnectArgs struct {
 type LookupInterconnectResult struct {
 	// Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 	AdminEnabled bool `pulumi:"adminEnabled"`
+	// [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
+	AvailableFeatures []string `pulumi:"availableFeatures"`
 	// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
 	CircuitInfos []InterconnectCircuitInfoResponse `pulumi:"circuitInfos"`
 	// Creation timestamp in RFC3339 text format.
@@ -59,6 +61,10 @@ type LookupInterconnectResult struct {
 	LinkType string `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	Location string `pulumi:"location"`
+	// Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+	Macsec InterconnectMacsecResponse `pulumi:"macsec"`
+	// Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+	MacsecEnabled bool `pulumi:"macsecEnabled"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
@@ -71,6 +77,8 @@ type LookupInterconnectResult struct {
 	ProvisionedLinkCount int `pulumi:"provisionedLinkCount"`
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
 	RemoteLocation string `pulumi:"remoteLocation"`
+	// Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+	RequestedFeatures []string `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount int `pulumi:"requestedLinkCount"`
 	// Reserved for future use.
@@ -126,6 +134,11 @@ func (o LookupInterconnectResultOutput) ToOutput(ctx context.Context) pulumix.Ou
 // Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 func (o LookupInterconnectResultOutput) AdminEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) bool { return v.AdminEnabled }).(pulumi.BoolOutput)
+}
+
+// [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
+func (o LookupInterconnectResultOutput) AvailableFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInterconnectResult) []string { return v.AvailableFeatures }).(pulumi.StringArrayOutput)
 }
 
 // A list of CircuitInfo objects, that describe the individual circuits in this LAG.
@@ -198,6 +211,16 @@ func (o LookupInterconnectResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+func (o LookupInterconnectResultOutput) Macsec() InterconnectMacsecResponseOutput {
+	return o.ApplyT(func(v LookupInterconnectResult) InterconnectMacsecResponse { return v.Macsec }).(InterconnectMacsecResponseOutput)
+}
+
+// Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+func (o LookupInterconnectResultOutput) MacsecEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInterconnectResult) bool { return v.MacsecEnabled }).(pulumi.BoolOutput)
+}
+
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o LookupInterconnectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) string { return v.Name }).(pulumi.StringOutput)
@@ -226,6 +249,11 @@ func (o LookupInterconnectResultOutput) ProvisionedLinkCount() pulumi.IntOutput 
 // Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
 func (o LookupInterconnectResultOutput) RemoteLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) string { return v.RemoteLocation }).(pulumi.StringOutput)
+}
+
+// Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+func (o LookupInterconnectResultOutput) RequestedFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInterconnectResult) []string { return v.RequestedFeatures }).(pulumi.StringArrayOutput)
 }
 
 // Target number of physical links in the link bundle, as requested by the customer.

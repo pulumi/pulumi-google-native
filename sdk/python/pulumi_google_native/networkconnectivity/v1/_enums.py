@@ -6,9 +6,11 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'FilterProtocolVersion',
     'InternalRangeOverlapsItem',
     'InternalRangePeering',
     'InternalRangeUsage',
+    'PolicyBasedRouteNextHopOtherRoutes',
 ]
 
 
@@ -34,6 +36,20 @@ class AuditLogConfigLogType(str, Enum):
     """
 
 
+class FilterProtocolVersion(str, Enum):
+    """
+    Required. Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+    """
+    PROTOCOL_VERSION_UNSPECIFIED = "PROTOCOL_VERSION_UNSPECIFIED"
+    """
+    Default value.
+    """
+    IPV4 = "IPV4"
+    """
+    The PBR is for IPv4 internet protocol traffic.
+    """
+
+
 class InternalRangeOverlapsItem(str, Enum):
     OVERLAP_UNSPECIFIED = "OVERLAP_UNSPECIFIED"
     """
@@ -42,6 +58,10 @@ class InternalRangeOverlapsItem(str, Enum):
     OVERLAP_ROUTE_RANGE = "OVERLAP_ROUTE_RANGE"
     """
     Allow creation of static routes more specific that the current internal range.
+    """
+    OVERLAP_EXISTING_SUBNET_RANGE = "OVERLAP_EXISTING_SUBNET_RANGE"
+    """
+    Allow creation of internal ranges that overlap with existing subnets.
     """
 
 
@@ -82,4 +102,18 @@ class InternalRangeUsage(str, Enum):
     EXTERNAL_TO_VPC = "EXTERNAL_TO_VPC"
     """
     Ranges created with EXTERNAL_TO_VPC cannot be associated with VPC resources and are meant to block out address ranges for various use cases, like for example, usage on-prem, with dynamic route announcements via interconnect.
+    """
+
+
+class PolicyBasedRouteNextHopOtherRoutes(str, Enum):
+    """
+    Optional. Other routes that will be referenced to determine the next hop of the packet.
+    """
+    OTHER_ROUTES_UNSPECIFIED = "OTHER_ROUTES_UNSPECIFIED"
+    """
+    Default value.
+    """
+    DEFAULT_ROUTING = "DEFAULT_ROUTING"
+    """
+    Use the routes from the default routing tables (system-generated routes, custom routes, peering route) to determine the next hop. This will effectively exclude matching packets being applied on other PBRs with a lower priority.
     """

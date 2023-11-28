@@ -36,11 +36,15 @@ export interface GetSpokeResult {
      */
     readonly description: string;
     /**
+     * Optional. The name of the group that this spoke is associated with.
+     */
+    readonly group: string;
+    /**
      * Immutable. The name of the hub that this spoke is attached to.
      */
     readonly hub: string;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      */
     readonly labels: {[key: string]: string};
     /**
@@ -52,6 +56,10 @@ export interface GetSpokeResult {
      */
     readonly linkedRouterApplianceInstances: outputs.networkconnectivity.v1.LinkedRouterApplianceInstancesResponse;
     /**
+     * Optional. VPC network that is associated with the spoke.
+     */
+    readonly linkedVpcNetwork: outputs.networkconnectivity.v1.LinkedVpcNetworkResponse;
+    /**
      * VPN tunnels that are associated with the spoke.
      */
     readonly linkedVpnTunnels: outputs.networkconnectivity.v1.LinkedVpnTunnelsResponse;
@@ -60,11 +68,19 @@ export interface GetSpokeResult {
      */
     readonly name: string;
     /**
+     * The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+     */
+    readonly reasons: outputs.networkconnectivity.v1.StateReasonResponse[];
+    /**
+     * The type of resource associated with the spoke.
+     */
+    readonly spokeType: string;
+    /**
      * The current lifecycle state of this spoke.
      */
     readonly state: string;
     /**
-     * The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+     * The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
      */
     readonly uniqueId: string;
     /**

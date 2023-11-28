@@ -36,6 +36,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// See
         /// </summary>
         public readonly Outputs.EnterpriseCrmEventbusProtoLogSettingsResponse LogSettings;
+        /// <summary>
+        /// Used to indicate if the ParameterEntry is a read only field or not.
+        /// </summary>
+        public readonly bool ReadOnly;
         public readonly string Searchable;
         /// <summary>
         /// List of tasks that can view this property, if empty then all.
@@ -54,6 +58,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             Outputs.EnterpriseCrmEventbusProtoLogSettingsResponse logSettings,
 
+            bool readOnly,
+
             string searchable,
 
             ImmutableArray<string> taskVisibility)
@@ -63,6 +69,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             IsRequired = isRequired;
             IsSearchable = isSearchable;
             LogSettings = logSettings;
+            ReadOnly = readOnly;
             Searchable = searchable;
             TaskVisibility = taskVisibility;
         }

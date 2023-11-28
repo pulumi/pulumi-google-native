@@ -31,6 +31,8 @@ type Service struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator pulumi.StringOutput `pulumi:"creator"`
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
@@ -63,6 +65,8 @@ type Service struct {
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
+	// Optional. Specifies service-level scaling settings
+	Scaling GoogleCloudRunV2ServiceScalingResponseOutput `pulumi:"scaling"`
 	// Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The template used to create revisions for this Service.
@@ -141,6 +145,8 @@ type serviceArgs struct {
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+	CustomAudiences []string `pulumi:"customAudiences"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -153,6 +159,8 @@ type serviceArgs struct {
 	// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
+	// Optional. Specifies service-level scaling settings
+	Scaling *GoogleCloudRunV2ServiceScaling `pulumi:"scaling"`
 	// Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
 	ServiceId string `pulumi:"serviceId"`
 	// The template used to create revisions for this Service.
@@ -171,6 +179,8 @@ type ServiceArgs struct {
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+	CustomAudiences pulumi.StringArrayInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -183,6 +193,8 @@ type ServiceArgs struct {
 	// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
+	// Optional. Specifies service-level scaling settings
+	Scaling GoogleCloudRunV2ServiceScalingPtrInput
 	// Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
 	ServiceId pulumi.StringInput
 	// The template used to create revisions for this Service.
@@ -275,6 +287,11 @@ func (o ServiceOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
+// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+func (o ServiceOutput) CustomAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.CustomAudiences }).(pulumi.StringArrayOutput)
+}
+
 // The deletion time.
 func (o ServiceOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
@@ -356,6 +373,11 @@ func (o ServiceOutput) Reconciling() pulumi.BoolOutput {
 // Reserved for future use.
 func (o ServiceOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// Optional. Specifies service-level scaling settings
+func (o ServiceOutput) Scaling() GoogleCloudRunV2ServiceScalingResponseOutput {
+	return o.ApplyT(func(v *Service) GoogleCloudRunV2ServiceScalingResponseOutput { return v.Scaling }).(GoogleCloudRunV2ServiceScalingResponseOutput)
 }
 
 // Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBudgetResult:
-    def __init__(__self__, amount=None, budget_filter=None, display_name=None, etag=None, name=None, notifications_rule=None, threshold_rules=None):
+    def __init__(__self__, amount=None, budget_filter=None, display_name=None, etag=None, name=None, notifications_rule=None, ownership_scope=None, threshold_rules=None):
         if amount and not isinstance(amount, dict):
             raise TypeError("Expected argument 'amount' to be a dict")
         pulumi.set(__self__, "amount", amount)
@@ -38,6 +38,9 @@ class GetBudgetResult:
         if notifications_rule and not isinstance(notifications_rule, dict):
             raise TypeError("Expected argument 'notifications_rule' to be a dict")
         pulumi.set(__self__, "notifications_rule", notifications_rule)
+        if ownership_scope and not isinstance(ownership_scope, str):
+            raise TypeError("Expected argument 'ownership_scope' to be a str")
+        pulumi.set(__self__, "ownership_scope", ownership_scope)
         if threshold_rules and not isinstance(threshold_rules, list):
             raise TypeError("Expected argument 'threshold_rules' to be a list")
         pulumi.set(__self__, "threshold_rules", threshold_rules)
@@ -91,6 +94,11 @@ class GetBudgetResult:
         return pulumi.get(self, "notifications_rule")
 
     @property
+    @pulumi.getter(name="ownershipScope")
+    def ownership_scope(self) -> str:
+        return pulumi.get(self, "ownership_scope")
+
+    @property
     @pulumi.getter(name="thresholdRules")
     def threshold_rules(self) -> Sequence['outputs.GoogleCloudBillingBudgetsV1ThresholdRuleResponse']:
         """
@@ -111,6 +119,7 @@ class AwaitableGetBudgetResult(GetBudgetResult):
             etag=self.etag,
             name=self.name,
             notifications_rule=self.notifications_rule,
+            ownership_scope=self.ownership_scope,
             threshold_rules=self.threshold_rules)
 
 
@@ -133,6 +142,7 @@ def get_budget(billing_account_id: Optional[str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         name=pulumi.get(__ret__, 'name'),
         notifications_rule=pulumi.get(__ret__, 'notifications_rule'),
+        ownership_scope=pulumi.get(__ret__, 'ownership_scope'),
         threshold_rules=pulumi.get(__ret__, 'threshold_rules'))
 
 

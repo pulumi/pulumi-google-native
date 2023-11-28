@@ -17,9 +17,17 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
     public sealed class AndroidAttributesResponse
     {
         /// <summary>
+        /// Whether the device passes Android CTS compliance.
+        /// </summary>
+        public readonly bool CtsProfileMatch;
+        /// <summary>
         /// Whether applications from unknown sources can be installed on device.
         /// </summary>
         public readonly bool EnabledUnknownSources;
+        /// <summary>
+        /// Whether any potentially harmful apps were detected on the device.
+        /// </summary>
+        public readonly bool HasPotentiallyHarmfulApps;
         /// <summary>
         /// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
         /// </summary>
@@ -32,21 +40,41 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
         /// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
         /// </summary>
         public readonly bool SupportsWorkProfile;
+        /// <summary>
+        /// Whether Android verified boot status is GREEN.
+        /// </summary>
+        public readonly bool VerifiedBoot;
+        /// <summary>
+        /// Whether Google Play Protect Verify Apps is enabled.
+        /// </summary>
+        public readonly bool VerifyAppsEnabled;
 
         [OutputConstructor]
         private AndroidAttributesResponse(
+            bool ctsProfileMatch,
+
             bool enabledUnknownSources,
+
+            bool hasPotentiallyHarmfulApps,
 
             bool ownerProfileAccount,
 
             string ownershipPrivilege,
 
-            bool supportsWorkProfile)
+            bool supportsWorkProfile,
+
+            bool verifiedBoot,
+
+            bool verifyAppsEnabled)
         {
+            CtsProfileMatch = ctsProfileMatch;
             EnabledUnknownSources = enabledUnknownSources;
+            HasPotentiallyHarmfulApps = hasPotentiallyHarmfulApps;
             OwnerProfileAccount = ownerProfileAccount;
             OwnershipPrivilege = ownershipPrivilege;
             SupportsWorkProfile = supportsWorkProfile;
+            VerifiedBoot = verifiedBoot;
+            VerifyAppsEnabled = verifyAppsEnabled;
         }
     }
 }

@@ -109,6 +109,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+        /// </summary>
+        [Output("performanceConfig")]
+        public Output<Outputs.PerformanceConfigResponse> PerformanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The current migration job phase.
         /// </summary>
         [Output("phase")]
@@ -118,7 +124,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
@@ -297,11 +303,17 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+        /// </summary>
+        [Input("performanceConfig")]
+        public Input<Inputs.PerformanceConfigArgs>? PerformanceConfig { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse AdvancedSettings;
         /// <summary>
+        /// Optional. Answer feedback collection settings.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse AnswerFeedbackSettings;
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         /// </summary>
         public readonly string AvatarUri;
@@ -91,6 +95,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         /// </summary>
         public readonly bool EnableStackdriverLogging;
+        /// <summary>
+        /// Gen App Builder-related agent-level settings.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponse GenAppBuilderSettings;
+        /// <summary>
+        /// Git integration settings for this agent.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse GitIntegrationSettings;
         /// <summary>
         /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         /// </summary>
@@ -128,6 +140,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         private GetAgentResult(
             Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse advancedSettings,
 
+            Outputs.GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse answerFeedbackSettings,
+
             string avatarUri,
 
             string defaultLanguageCode,
@@ -139,6 +153,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             bool enableSpellCorrection,
 
             bool enableStackdriverLogging,
+
+            Outputs.GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponse genAppBuilderSettings,
+
+            Outputs.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse gitIntegrationSettings,
 
             bool locked,
 
@@ -157,12 +175,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             string timeZone)
         {
             AdvancedSettings = advancedSettings;
+            AnswerFeedbackSettings = answerFeedbackSettings;
             AvatarUri = avatarUri;
             DefaultLanguageCode = defaultLanguageCode;
             Description = description;
             DisplayName = displayName;
             EnableSpellCorrection = enableSpellCorrection;
             EnableStackdriverLogging = enableStackdriverLogging;
+            GenAppBuilderSettings = genAppBuilderSettings;
+            GitIntegrationSettings = gitIntegrationSettings;
             Locked = locked;
             Name = name;
             SecuritySettings = securitySettings;

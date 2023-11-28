@@ -76,20 +76,24 @@ __all__ = [
     'EnterpriseCrmLoggingGwsFieldLimitsArgs',
     'EnterpriseCrmLoggingGwsSanitizeOptionsArgs',
     'GoogleCloudIntegrationsV1alphaAccessTokenArgs',
+    'GoogleCloudIntegrationsV1alphaAssertionArgs',
     'GoogleCloudIntegrationsV1alphaAuthTokenArgs',
     'GoogleCloudIntegrationsV1alphaBooleanParameterArrayArgs',
     'GoogleCloudIntegrationsV1alphaClientCertificateArgs',
+    'GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs',
     'GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs',
     'GoogleCloudIntegrationsV1alphaCoordinateArgs',
     'GoogleCloudIntegrationsV1alphaCredentialArgs',
     'GoogleCloudIntegrationsV1alphaDoubleParameterArrayArgs',
     'GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs',
+    'GoogleCloudIntegrationsV1alphaEventParameterArgs',
     'GoogleCloudIntegrationsV1alphaFailurePolicyArgs',
     'GoogleCloudIntegrationsV1alphaIntParameterArrayArgs',
     'GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs',
     'GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs',
     'GoogleCloudIntegrationsV1alphaIntegrationParameterArgs',
     'GoogleCloudIntegrationsV1alphaJwtArgs',
+    'GoogleCloudIntegrationsV1alphaMockConfigArgs',
     'GoogleCloudIntegrationsV1alphaNextTaskArgs',
     'GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeArgs',
     'GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsArgs',
@@ -102,6 +106,7 @@ __all__ = [
     'GoogleCloudIntegrationsV1alphaStringParameterArrayArgs',
     'GoogleCloudIntegrationsV1alphaSuccessPolicyArgs',
     'GoogleCloudIntegrationsV1alphaTaskConfigArgs',
+    'GoogleCloudIntegrationsV1alphaTestTaskConfigArgs',
     'GoogleCloudIntegrationsV1alphaTriggerConfigArgs',
     'GoogleCloudIntegrationsV1alphaUsernameAndPasswordArgs',
     'GoogleCloudIntegrationsV1alphaValueTypeArgs',
@@ -115,6 +120,7 @@ class EnterpriseCrmEventbusProtoAttributesArgs:
                  is_required: Optional[pulumi.Input[bool]] = None,
                  is_searchable: Optional[pulumi.Input[bool]] = None,
                  log_settings: Optional[pulumi.Input['EnterpriseCrmEventbusProtoLogSettingsArgs']] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
                  searchable: Optional[pulumi.Input['EnterpriseCrmEventbusProtoAttributesSearchable']] = None,
                  task_visibility: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -124,6 +130,7 @@ class EnterpriseCrmEventbusProtoAttributesArgs:
         :param pulumi.Input[bool] is_required: Required for event execution. The validation will be done by the event bus when the event is triggered.
         :param pulumi.Input[bool] is_searchable: Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
         :param pulumi.Input['EnterpriseCrmEventbusProtoLogSettingsArgs'] log_settings: See
+        :param pulumi.Input[bool] read_only: Used to indicate if the ParameterEntry is a read only field or not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] task_visibility: List of tasks that can view this property, if empty then all.
         """
         if data_type is not None:
@@ -139,6 +146,8 @@ class EnterpriseCrmEventbusProtoAttributesArgs:
             pulumi.set(__self__, "is_searchable", is_searchable)
         if log_settings is not None:
             pulumi.set(__self__, "log_settings", log_settings)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
         if searchable is not None:
             pulumi.set(__self__, "searchable", searchable)
         if task_visibility is not None:
@@ -206,6 +215,18 @@ class EnterpriseCrmEventbusProtoAttributesArgs:
     @log_settings.setter
     def log_settings(self, value: Optional[pulumi.Input['EnterpriseCrmEventbusProtoLogSettingsArgs']]):
         pulumi.set(self, "log_settings", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Used to indicate if the ParameterEntry is a read only field or not.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
 
     @property
     @pulumi.getter
@@ -4085,9 +4106,10 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs:
                  start_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoNextTaskArgs']]]] = None,
                  trigger_criteria: Optional[pulumi.Input['EnterpriseCrmEventbusProtoTriggerCriteriaArgs']] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
+                 trigger_name: Optional[pulumi.Input[str]] = None,
                  trigger_type: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType']] = None):
         """
-        Configuration detail of a trigger. Next available id: 19
+        Configuration detail of a trigger. Next available id: 20
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client.
         :param pulumi.Input[str] trigger_number: A number to uniquely identify each trigger config within the workflow on UI.
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs']]] alert_config: An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published.
@@ -4101,6 +4123,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoNextTaskArgs']]] start_tasks: Set of tasks numbers from where the workflow execution is started by this trigger. If this is empty, then workflow is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same workflow execution graph).
         :param pulumi.Input['EnterpriseCrmEventbusProtoTriggerCriteriaArgs'] trigger_criteria: Optional. When set, Eventbus will run the task specified in the trigger_criteria and validate the result using the trigger_criteria.condition, and only execute the workflow when result is true.
         :param pulumi.Input[str] trigger_id: The backend trigger ID.
+        :param pulumi.Input[str] trigger_name: Optional. Name of the trigger This is added to identify the type of trigger. This is avoid the logic on triggerId to identify the trigger_type and push the same to monitoring.
         """
         pulumi.set(__self__, "enabled_clients", enabled_clients)
         pulumi.set(__self__, "trigger_number", trigger_number)
@@ -4128,6 +4151,8 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs:
             pulumi.set(__self__, "trigger_criteria", trigger_criteria)
         if trigger_id is not None:
             pulumi.set(__self__, "trigger_id", trigger_id)
+        if trigger_name is not None:
+            pulumi.set(__self__, "trigger_name", trigger_name)
         if trigger_type is not None:
             pulumi.set(__self__, "trigger_type", trigger_type)
 
@@ -4297,6 +4322,18 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs:
         pulumi.set(self, "trigger_id", value)
 
     @property
+    @pulumi.getter(name="triggerName")
+    def trigger_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Name of the trigger This is added to identify the type of trigger. This is avoid the logic on triggerId to identify the trigger_type and push the same to monitoring.
+        """
+        return pulumi.get(self, "trigger_name")
+
+    @trigger_name.setter
+    def trigger_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger_name", value)
+
+    @property
     @pulumi.getter(name="triggerType")
     def trigger_type(self) -> Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType']]:
         return pulumi.get(self, "trigger_type")
@@ -4313,6 +4350,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs:
                  children: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs']]]] = None,
                  data_type: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType']] = None,
                  default_value: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  in_out_type: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType']] = None,
                  is_transient: Optional[pulumi.Input[bool]] = None,
                  json_schema: Optional[pulumi.Input[str]] = None,
@@ -4327,6 +4365,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs']]] children: Child parameters nested within this parameter. This field only applies to protobuf parameters
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType'] data_type: The data type of the parameter.
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs'] default_value: Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
+        :param pulumi.Input[str] description: Optional. The description about the parameter
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType'] in_out_type: Specifies the input/output type for the parameter.
         :param pulumi.Input[bool] is_transient: Whether this parameter is a transient parameter.
         :param pulumi.Input[str] json_schema: This schema will be used to validate runtime JSON-typed values of this parameter.
@@ -4344,6 +4383,8 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs:
             pulumi.set(__self__, "data_type", data_type)
         if default_value is not None:
             pulumi.set(__self__, "default_value", default_value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if in_out_type is not None:
             pulumi.set(__self__, "in_out_type", in_out_type)
         if is_transient is not None:
@@ -4410,6 +4451,18 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs:
     @default_value.setter
     def default_value(self, value: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs']]):
         pulumi.set(self, "default_value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The description about the parameter
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="inOutType")
@@ -4773,6 +4826,78 @@ class GoogleCloudIntegrationsV1alphaAccessTokenArgs:
 
 
 @pulumi.input_type
+class GoogleCloudIntegrationsV1alphaAssertionArgs:
+    def __init__(__self__, *,
+                 assertion_strategy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy']] = None,
+                 condition: Optional[pulumi.Input[str]] = None,
+                 parameter: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']] = None,
+                 retry_count: Optional[pulumi.Input[int]] = None):
+        """
+        An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy'] assertion_strategy: The type of assertion to perform.
+        :param pulumi.Input[str] condition: Optional. Standard filter expression for ASSERT_CONDITION to succeed
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs'] parameter: Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
+        :param pulumi.Input[int] retry_count: Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
+        """
+        if assertion_strategy is not None:
+            pulumi.set(__self__, "assertion_strategy", assertion_strategy)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if retry_count is not None:
+            pulumi.set(__self__, "retry_count", retry_count)
+
+    @property
+    @pulumi.getter(name="assertionStrategy")
+    def assertion_strategy(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy']]:
+        """
+        The type of assertion to perform.
+        """
+        return pulumi.get(self, "assertion_strategy")
+
+    @assertion_strategy.setter
+    def assertion_strategy(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy']]):
+        pulumi.set(self, "assertion_strategy", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Standard filter expression for ASSERT_CONDITION to succeed
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']]:
+        """
+        Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']]):
+        pulumi.set(self, "parameter", value)
+
+    @property
+    @pulumi.getter(name="retryCount")
+    def retry_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
+        """
+        return pulumi.get(self, "retry_count")
+
+    @retry_count.setter
+    def retry_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retry_count", value)
+
+
+@pulumi.input_type
 class GoogleCloudIntegrationsV1alphaAuthTokenArgs:
     def __init__(__self__, *,
                  token: Optional[pulumi.Input[str]] = None,
@@ -4890,6 +5015,46 @@ class GoogleCloudIntegrationsV1alphaClientCertificateArgs:
     @ssl_certificate.setter
     def ssl_certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssl_certificate", value)
+
+
+@pulumi.input_type
+class GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs:
+    def __init__(__self__, *,
+                 cloud_logging_severity: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity']] = None,
+                 enable_cloud_logging: Optional[pulumi.Input[bool]] = None):
+        """
+        Cloud Logging details for execution info
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity'] cloud_logging_severity: Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
+        :param pulumi.Input[bool] enable_cloud_logging: Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed.
+        """
+        if cloud_logging_severity is not None:
+            pulumi.set(__self__, "cloud_logging_severity", cloud_logging_severity)
+        if enable_cloud_logging is not None:
+            pulumi.set(__self__, "enable_cloud_logging", enable_cloud_logging)
+
+    @property
+    @pulumi.getter(name="cloudLoggingSeverity")
+    def cloud_logging_severity(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity']]:
+        """
+        Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
+        """
+        return pulumi.get(self, "cloud_logging_severity")
+
+    @cloud_logging_severity.setter
+    def cloud_logging_severity(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity']]):
+        pulumi.set(self, "cloud_logging_severity", value)
+
+    @property
+    @pulumi.getter(name="enableCloudLogging")
+    def enable_cloud_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed.
+        """
+        return pulumi.get(self, "enable_cloud_logging")
+
+    @enable_cloud_logging.setter
+    def enable_cloud_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_cloud_logging", value)
 
 
 @pulumi.input_type
@@ -5274,6 +5439,46 @@ class GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs:
     @position.setter
     def position(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']]):
         pulumi.set(self, "position", value)
+
+
+@pulumi.input_type
+class GoogleCloudIntegrationsV1alphaEventParameterArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaValueTypeArgs']] = None):
+        """
+        This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
+        :param pulumi.Input[str] key: Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaValueTypeArgs'] value: Values for the defined keys. Each value can either be string, int, double or any proto message.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaValueTypeArgs']]:
+        """
+        Values for the defined keys. Each value can either be string, int, double or any proto message.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaValueTypeArgs']]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -5770,6 +5975,62 @@ class GoogleCloudIntegrationsV1alphaJwtArgs:
     @secret.setter
     def secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret", value)
+
+
+@pulumi.input_type
+class GoogleCloudIntegrationsV1alphaMockConfigArgs:
+    def __init__(__self__, *,
+                 failed_executions: Optional[pulumi.Input[str]] = None,
+                 mock_strategy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaMockConfigMockStrategy']] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']]]] = None):
+        """
+        The configuration for mocking of a task during test execution Next available id: 4
+        :param pulumi.Input[str] failed_executions: Optional. Number of times the given task should fail for failure mock strategy
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaMockConfigMockStrategy'] mock_strategy: Mockstrategy defines how the particular task should be mocked during test execution
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']]] parameters: Optional. List of key-value pairs for specific mock strategy
+        """
+        if failed_executions is not None:
+            pulumi.set(__self__, "failed_executions", failed_executions)
+        if mock_strategy is not None:
+            pulumi.set(__self__, "mock_strategy", mock_strategy)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="failedExecutions")
+    def failed_executions(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Number of times the given task should fail for failure mock strategy
+        """
+        return pulumi.get(self, "failed_executions")
+
+    @failed_executions.setter
+    def failed_executions(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "failed_executions", value)
+
+    @property
+    @pulumi.getter(name="mockStrategy")
+    def mock_strategy(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaMockConfigMockStrategy']]:
+        """
+        Mockstrategy defines how the particular task should be mocked during test execution
+        """
+        return pulumi.get(self, "mock_strategy")
+
+    @mock_strategy.setter
+    def mock_strategy(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaMockConfigMockStrategy']]):
+        pulumi.set(self, "mock_strategy", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']]]]:
+        """
+        Optional. List of key-value pairs for specific mock strategy
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
 
 
 @pulumi.input_type
@@ -6876,6 +7137,76 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
 
 
 @pulumi.input_type
+class GoogleCloudIntegrationsV1alphaTestTaskConfigArgs:
+    def __init__(__self__, *,
+                 task: pulumi.Input[str],
+                 task_number: pulumi.Input[str],
+                 assertions: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaAssertionArgs']]]] = None,
+                 mock_config: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaMockConfigArgs']] = None):
+        """
+        The task mock configuration details and assertions for functional tests. Next available id: 5
+        :param pulumi.Input[str] task: This defines in the test case, the task name in integration which will be mocked by this test task config
+        :param pulumi.Input[str] task_number: This defines in the test case, the task in integration which will be mocked by this test task config
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaAssertionArgs']]] assertions: Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaMockConfigArgs'] mock_config: Optional. Defines how to mock the given task during test execution
+        """
+        pulumi.set(__self__, "task", task)
+        pulumi.set(__self__, "task_number", task_number)
+        if assertions is not None:
+            pulumi.set(__self__, "assertions", assertions)
+        if mock_config is not None:
+            pulumi.set(__self__, "mock_config", mock_config)
+
+    @property
+    @pulumi.getter
+    def task(self) -> pulumi.Input[str]:
+        """
+        This defines in the test case, the task name in integration which will be mocked by this test task config
+        """
+        return pulumi.get(self, "task")
+
+    @task.setter
+    def task(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task", value)
+
+    @property
+    @pulumi.getter(name="taskNumber")
+    def task_number(self) -> pulumi.Input[str]:
+        """
+        This defines in the test case, the task in integration which will be mocked by this test task config
+        """
+        return pulumi.get(self, "task_number")
+
+    @task_number.setter
+    def task_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task_number", value)
+
+    @property
+    @pulumi.getter
+    def assertions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaAssertionArgs']]]]:
+        """
+        Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
+        """
+        return pulumi.get(self, "assertions")
+
+    @assertions.setter
+    def assertions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaAssertionArgs']]]]):
+        pulumi.set(self, "assertions", value)
+
+    @property
+    @pulumi.getter(name="mockConfig")
+    def mock_config(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaMockConfigArgs']]:
+        """
+        Optional. Defines how to mock the given task during test execution
+        """
+        return pulumi.get(self, "mock_config")
+
+    @mock_config.setter
+    def mock_config(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaMockConfigArgs']]):
+        pulumi.set(self, "mock_config", value)
+
+
+@pulumi.input_type
 class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
     def __init__(__self__, *,
                  trigger_number: pulumi.Input[str],
@@ -6888,6 +7219,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
                  position: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  start_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]]] = None,
+                 trigger: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  trigger_type: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType']] = None):
         """
@@ -6902,6 +7234,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs'] position: Optional. Informs the front-end application where to draw this error catcher config on the UI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]] start_tasks: Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph).
+        :param pulumi.Input[str] trigger: Optional. Name of the trigger. Example: "API Trigger", "Cloud Pub Sub Trigger" When set will be sent out to monitoring dashabord for tracking purpose.
         :param pulumi.Input[str] trigger_id: Optional. The backend trigger ID.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType'] trigger_type: Optional. Type of trigger
         """
@@ -6924,6 +7257,8 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
             pulumi.set(__self__, "properties", properties)
         if start_tasks is not None:
             pulumi.set(__self__, "start_tasks", start_tasks)
+        if trigger is not None:
+            pulumi.set(__self__, "trigger", trigger)
         if trigger_id is not None:
             pulumi.set(__self__, "trigger_id", trigger_id)
         if trigger_type is not None:
@@ -7048,6 +7383,18 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
     @start_tasks.setter
     def start_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]]]):
         pulumi.set(self, "start_tasks", value)
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Name of the trigger. Example: "API Trigger", "Cloud Pub Sub Trigger" When set will be sent out to monitoring dashabord for tracking purpose.
+        """
+        return pulumi.get(self, "trigger")
+
+    @trigger.setter
+    def trigger(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger", value)
 
     @property
     @pulumi.getter(name="triggerId")

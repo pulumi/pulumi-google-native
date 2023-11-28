@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
         /// </summary>
         public readonly string EgressSetting;
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         public readonly string Name;
 

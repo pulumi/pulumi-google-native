@@ -18,6 +18,14 @@ namespace Pulumi.GoogleNative.Memcache.V1.Outputs
         /// </summary>
         public readonly string Host;
         /// <summary>
+        /// The full version of memcached server running on this node. e.g. - memcached-1.5.16
+        /// </summary>
+        public readonly string MemcacheFullVersion;
+        /// <summary>
+        /// Major version of memcached server running on this node, e.g. MEMCACHE_1_5
+        /// </summary>
+        public readonly string MemcacheVersion;
+        /// <summary>
         /// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
         /// </summary>
         public readonly string NodeId;
@@ -42,6 +50,10 @@ namespace Pulumi.GoogleNative.Memcache.V1.Outputs
         private NodeResponse(
             string host,
 
+            string memcacheFullVersion,
+
+            string memcacheVersion,
+
             string nodeId,
 
             Outputs.MemcacheParametersResponse parameters,
@@ -53,6 +65,8 @@ namespace Pulumi.GoogleNative.Memcache.V1.Outputs
             string zone)
         {
             Host = host;
+            MemcacheFullVersion = memcacheFullVersion;
+            MemcacheVersion = memcacheVersion;
             NodeId = nodeId;
             Parameters = parameters;
             Port = port;

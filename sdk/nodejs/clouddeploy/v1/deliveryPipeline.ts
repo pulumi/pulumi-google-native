@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new DeliveryPipeline in a given project and location.
- * Auto-naming is currently not supported for this resource.
  */
 export class DeliveryPipeline extends pulumi.CustomResource {
     /**
@@ -39,7 +38,7 @@ export class DeliveryPipeline extends pulumi.CustomResource {
     }
 
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -63,12 +62,12 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
-     * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+     * Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -151,7 +150,7 @@ export class DeliveryPipeline extends pulumi.CustomResource {
  */
 export interface DeliveryPipelineArgs {
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -167,12 +166,12 @@ export interface DeliveryPipelineArgs {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+     * Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

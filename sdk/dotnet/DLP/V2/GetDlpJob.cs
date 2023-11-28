@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public readonly string JobTriggerName;
         /// <summary>
+        /// Time when the job was last modified by the system.
+        /// </summary>
+        public readonly string LastModified;
+        /// <summary>
         /// The server-assigned name.
         /// </summary>
         public readonly string Name;
@@ -122,6 +126,8 @@ namespace Pulumi.GoogleNative.DLP.V2
 
             string jobTriggerName,
 
+            string lastModified,
+
             string name,
 
             Outputs.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse riskDetails,
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.DLP.V2
             Errors = errors;
             InspectDetails = inspectDetails;
             JobTriggerName = jobTriggerName;
+            LastModified = lastModified;
             Name = name;
             RiskDetails = riskDetails;
             StartTime = startTime;

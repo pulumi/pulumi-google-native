@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.DataCatalog.V1
 {
     /// <summary>
-    /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+    /// The type of the entry. For details, see [`EntryType`](#entrytype).
     /// </summary>
     [EnumType]
     public readonly struct EntryType : IEquatable<EntryType>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public static EntryType Table { get; } = new EntryType("TABLE");
         /// <summary>
-        /// Output only. The type of models. For more information, see [Supported models in BigQuery ML] (https://cloud.google.com/bigquery-ml/docs/introduction#supported_models_in).
+        /// The type of models. For more information, see [Supported models in BigQuery ML](/bigquery/docs/bqml-introduction#supported_models).
         /// </summary>
         public static EntryType Model { get; } = new EntryType("MODEL");
         /// <summary>
@@ -49,11 +49,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public static EntryType Database { get; } = new EntryType("DATABASE");
         /// <summary>
-        /// Output only. Connection to a data source. For example, a BigQuery connection.
+        /// Connection to a data source. For example, a BigQuery connection.
         /// </summary>
         public static EntryType DataSourceConnection { get; } = new EntryType("DATA_SOURCE_CONNECTION");
         /// <summary>
-        /// Output only. Routine, for example, a BigQuery routine.
+        /// Routine, for example, a BigQuery routine.
         /// </summary>
         public static EntryType Routine { get; } = new EntryType("ROUTINE");
         /// <summary>
@@ -363,6 +363,136 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1RoutineSpecRoutineType other && Equals(other);
         public bool Equals(GoogleCloudDatacatalogV1RoutineSpecRoutineType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of the dataset.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDatacatalogV1VertexDatasetSpecDataType : IEquatable<GoogleCloudDatacatalogV1VertexDatasetSpecDataType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDatacatalogV1VertexDatasetSpecDataType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Should not be used.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType DataTypeUnspecified { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("DATA_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Structured data dataset.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType Table { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TABLE");
+        /// <summary>
+        /// Image dataset which supports ImageClassification, ImageObjectDetection and ImageSegmentation problems.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType Image { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("IMAGE");
+        /// <summary>
+        /// Document dataset which supports TextClassification, TextExtraction and TextSentiment problems.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType Text { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TEXT");
+        /// <summary>
+        /// Video dataset which supports VideoClassification, VideoObjectTracking and VideoActionRecognition problems.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType Video { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("VIDEO");
+        /// <summary>
+        /// Conversation dataset which supports conversation problems.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType Conversation { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("CONVERSATION");
+        /// <summary>
+        /// TimeSeries dataset.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType TimeSeries { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TIME_SERIES");
+        /// <summary>
+        /// Document dataset which supports DocumentAnnotation problems.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType Document { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("DOCUMENT");
+        /// <summary>
+        /// TextToSpeech dataset which supports TextToSpeech problems.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType TextToSpeech { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TEXT_TO_SPEECH");
+        /// <summary>
+        /// Translation dataset which supports Translation problems.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType Translation { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TRANSLATION");
+        /// <summary>
+        /// Store Vision dataset which is used for HITL integration.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType StoreVision { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("STORE_VISION");
+        /// <summary>
+        /// Enterprise Knowledge Graph dataset which is used for HITL labeling integration.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType EnterpriseKnowledgeGraph { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("ENTERPRISE_KNOWLEDGE_GRAPH");
+        /// <summary>
+        /// Text prompt dataset which supports Large Language Models.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexDatasetSpecDataType TextPrompt { get; } = new GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TEXT_PROMPT");
+
+        public static bool operator ==(GoogleCloudDatacatalogV1VertexDatasetSpecDataType left, GoogleCloudDatacatalogV1VertexDatasetSpecDataType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDatacatalogV1VertexDatasetSpecDataType left, GoogleCloudDatacatalogV1VertexDatasetSpecDataType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDatacatalogV1VertexDatasetSpecDataType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1VertexDatasetSpecDataType other && Equals(other);
+        public bool Equals(GoogleCloudDatacatalogV1VertexDatasetSpecDataType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of the model source.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType : IEquatable<GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Should not be used.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType ModelSourceTypeUnspecified { get; } = new GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("MODEL_SOURCE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The Model is uploaded by automl training pipeline.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType Automl { get; } = new GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("AUTOML");
+        /// <summary>
+        /// The Model is uploaded by user or custom training pipeline.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType Custom { get; } = new GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("CUSTOM");
+        /// <summary>
+        /// The Model is registered and sync'ed from BigQuery ML.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType Bqml { get; } = new GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("BQML");
+        /// <summary>
+        /// The Model is saved or tuned from Model Garden.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType ModelGarden { get; } = new GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("MODEL_GARDEN");
+
+        public static bool operator ==(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType left, GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType left, GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType other && Equals(other);
+        public bool Equals(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

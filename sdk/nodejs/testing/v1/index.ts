@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { DeviceSessionArgs } from "./deviceSession";
+export type DeviceSession = import("./deviceSession").DeviceSession;
+export const DeviceSession: typeof import("./deviceSession").DeviceSession = null as any;
+utilities.lazyLoad(exports, ["DeviceSession"], () => require("./deviceSession"));
+
+export { GetDeviceSessionArgs, GetDeviceSessionResult, GetDeviceSessionOutputArgs } from "./getDeviceSession";
+export const getDeviceSession: typeof import("./getDeviceSession").getDeviceSession = null as any;
+export const getDeviceSessionOutput: typeof import("./getDeviceSession").getDeviceSessionOutput = null as any;
+utilities.lazyLoad(exports, ["getDeviceSession","getDeviceSessionOutput"], () => require("./getDeviceSession"));
+
 export { GetTestMatrixArgs, GetTestMatrixResult, GetTestMatrixOutputArgs } from "./getTestMatrix";
 export const getTestMatrix: typeof import("./getTestMatrix").getTestMatrix = null as any;
 export const getTestMatrixOutput: typeof import("./getTestMatrix").getTestMatrixOutput = null as any;
@@ -23,6 +33,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:testing/v1:DeviceSession":
+                return new DeviceSession(name, <any>undefined, { urn })
             case "google-native:testing/v1:TestMatrix":
                 return new TestMatrix(name, <any>undefined, { urn })
             default:

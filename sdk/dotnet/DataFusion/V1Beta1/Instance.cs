@@ -146,6 +146,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<string> P4ServiceAccount { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Current patch revision of the Data Fusion.
+        /// </summary>
+        [Output("patchRevision")]
+        public Output<string> PatchRevision { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
         /// </summary>
         [Output("privateInstance")]
@@ -207,6 +213,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
+
+        /// <summary>
+        /// Endpoint on which the Data Fusion UI is accessible to third-party users.
+        /// </summary>
+        [Output("workforceIdentityServiceEndpoint")]
+        public Output<string> WorkforceIdentityServiceEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
@@ -357,6 +369,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
             get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
+
+        /// <summary>
+        /// Optional. Current patch revision of the Data Fusion.
+        /// </summary>
+        [Input("patchRevision")]
+        public Input<string>? PatchRevision { get; set; }
 
         /// <summary>
         /// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.

@@ -2241,7 +2241,9 @@ type ReportSummaryGroupFindingResponse struct {
 	Description string `pulumi:"description"`
 	// Display Name for the Group.
 	DisplayName string `pulumi:"displayName"`
-	// Count of the number of assets in this group which are also included in another group within the same report.
+	// This field is deprecated, do not rely on it having a value.
+	//
+	// Deprecated: This field is deprecated, do not rely on it having a value.
 	OverlappingAssetCount string `pulumi:"overlappingAssetCount"`
 	// Findings for each of the PreferenceSets for this group.
 	PreferenceSetFindings []ReportSummaryGroupPreferenceSetFindingResponse `pulumi:"preferenceSetFindings"`
@@ -2285,7 +2287,9 @@ func (o ReportSummaryGroupFindingResponseOutput) DisplayName() pulumi.StringOutp
 	return o.ApplyT(func(v ReportSummaryGroupFindingResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Count of the number of assets in this group which are also included in another group within the same report.
+// This field is deprecated, do not rely on it having a value.
+//
+// Deprecated: This field is deprecated, do not rely on it having a value.
 func (o ReportSummaryGroupFindingResponseOutput) OverlappingAssetCount() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportSummaryGroupFindingResponse) string { return v.OverlappingAssetCount }).(pulumi.StringOutput)
 }
@@ -2349,8 +2353,12 @@ type ReportSummaryGroupPreferenceSetFindingResponse struct {
 	PreferredRegion string `pulumi:"preferredRegion"`
 	// Text describing the pricing track specified for this Preference Set
 	PricingTrack string `pulumi:"pricingTrack"`
+	// A set of findings that applies to Stole-Tenant machines in the input.
+	SoleTenantFinding ReportSummarySoleTenantFindingResponse `pulumi:"soleTenantFinding"`
 	// Text describing the business priority specified for this Preference Set
 	TopPriority string `pulumi:"topPriority"`
+	// A set of findings that applies to VMWare machines in the input.
+	VmwareEngineFinding ReportSummaryVMWareEngineFindingResponse `pulumi:"vmwareEngineFinding"`
 }
 
 // Summary Findings for a specific Group/PreferenceSet combination.
@@ -2440,9 +2448,23 @@ func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) PricingTrack() pul
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) string { return v.PricingTrack }).(pulumi.StringOutput)
 }
 
+// A set of findings that applies to Stole-Tenant machines in the input.
+func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) SoleTenantFinding() ReportSummarySoleTenantFindingResponseOutput {
+	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) ReportSummarySoleTenantFindingResponse {
+		return v.SoleTenantFinding
+	}).(ReportSummarySoleTenantFindingResponseOutput)
+}
+
 // Text describing the business priority specified for this Preference Set
 func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) TopPriority() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) string { return v.TopPriority }).(pulumi.StringOutput)
+}
+
+// A set of findings that applies to VMWare machines in the input.
+func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) VmwareEngineFinding() ReportSummaryVMWareEngineFindingResponseOutput {
+	return o.ApplyT(func(v ReportSummaryGroupPreferenceSetFindingResponse) ReportSummaryVMWareEngineFindingResponse {
+		return v.VmwareEngineFinding
+	}).(ReportSummaryVMWareEngineFindingResponseOutput)
 }
 
 type ReportSummaryGroupPreferenceSetFindingResponseArrayOutput struct{ *pulumi.OutputState }
@@ -2736,6 +2758,126 @@ func (o ReportSummaryResponseOutput) GroupFindings() ReportSummaryGroupFindingRe
 	return o.ApplyT(func(v ReportSummaryResponse) []ReportSummaryGroupFindingResponse { return v.GroupFindings }).(ReportSummaryGroupFindingResponseArrayOutput)
 }
 
+// A set of findings that applies to assets destined for Sole-Tenant nodes.
+type ReportSummarySoleTenantFindingResponse struct {
+	// Count of assets which are allocated
+	AllocatedAssetCount string `pulumi:"allocatedAssetCount"`
+	// Set of regions in which the assets are allocated
+	AllocatedRegions []string `pulumi:"allocatedRegions"`
+	// Set of per-nodetype allocation records
+	NodeAllocations []ReportSummarySoleTenantNodeAllocationResponse `pulumi:"nodeAllocations"`
+}
+
+// A set of findings that applies to assets destined for Sole-Tenant nodes.
+type ReportSummarySoleTenantFindingResponseOutput struct{ *pulumi.OutputState }
+
+func (ReportSummarySoleTenantFindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummarySoleTenantFindingResponse)(nil)).Elem()
+}
+
+func (o ReportSummarySoleTenantFindingResponseOutput) ToReportSummarySoleTenantFindingResponseOutput() ReportSummarySoleTenantFindingResponseOutput {
+	return o
+}
+
+func (o ReportSummarySoleTenantFindingResponseOutput) ToReportSummarySoleTenantFindingResponseOutputWithContext(ctx context.Context) ReportSummarySoleTenantFindingResponseOutput {
+	return o
+}
+
+func (o ReportSummarySoleTenantFindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummarySoleTenantFindingResponse] {
+	return pulumix.Output[ReportSummarySoleTenantFindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Count of assets which are allocated
+func (o ReportSummarySoleTenantFindingResponseOutput) AllocatedAssetCount() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportSummarySoleTenantFindingResponse) string { return v.AllocatedAssetCount }).(pulumi.StringOutput)
+}
+
+// Set of regions in which the assets are allocated
+func (o ReportSummarySoleTenantFindingResponseOutput) AllocatedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReportSummarySoleTenantFindingResponse) []string { return v.AllocatedRegions }).(pulumi.StringArrayOutput)
+}
+
+// Set of per-nodetype allocation records
+func (o ReportSummarySoleTenantFindingResponseOutput) NodeAllocations() ReportSummarySoleTenantNodeAllocationResponseArrayOutput {
+	return o.ApplyT(func(v ReportSummarySoleTenantFindingResponse) []ReportSummarySoleTenantNodeAllocationResponse {
+		return v.NodeAllocations
+	}).(ReportSummarySoleTenantNodeAllocationResponseArrayOutput)
+}
+
+// Represents the assets allocated to a specific Sole-Tenant node type.
+type ReportSummarySoleTenantNodeAllocationResponse struct {
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount string `pulumi:"allocatedAssetCount"`
+	// Sole Tenant node type, e.g. "m3-node-128-3904"
+	Node SoleTenantNodeTypeResponse `pulumi:"node"`
+	// Count of this node type to be provisioned
+	NodeCount string `pulumi:"nodeCount"`
+}
+
+// Represents the assets allocated to a specific Sole-Tenant node type.
+type ReportSummarySoleTenantNodeAllocationResponseOutput struct{ *pulumi.OutputState }
+
+func (ReportSummarySoleTenantNodeAllocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummarySoleTenantNodeAllocationResponse)(nil)).Elem()
+}
+
+func (o ReportSummarySoleTenantNodeAllocationResponseOutput) ToReportSummarySoleTenantNodeAllocationResponseOutput() ReportSummarySoleTenantNodeAllocationResponseOutput {
+	return o
+}
+
+func (o ReportSummarySoleTenantNodeAllocationResponseOutput) ToReportSummarySoleTenantNodeAllocationResponseOutputWithContext(ctx context.Context) ReportSummarySoleTenantNodeAllocationResponseOutput {
+	return o
+}
+
+func (o ReportSummarySoleTenantNodeAllocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummarySoleTenantNodeAllocationResponse] {
+	return pulumix.Output[ReportSummarySoleTenantNodeAllocationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Count of assets allocated to these nodes
+func (o ReportSummarySoleTenantNodeAllocationResponseOutput) AllocatedAssetCount() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportSummarySoleTenantNodeAllocationResponse) string { return v.AllocatedAssetCount }).(pulumi.StringOutput)
+}
+
+// Sole Tenant node type, e.g. "m3-node-128-3904"
+func (o ReportSummarySoleTenantNodeAllocationResponseOutput) Node() SoleTenantNodeTypeResponseOutput {
+	return o.ApplyT(func(v ReportSummarySoleTenantNodeAllocationResponse) SoleTenantNodeTypeResponse { return v.Node }).(SoleTenantNodeTypeResponseOutput)
+}
+
+// Count of this node type to be provisioned
+func (o ReportSummarySoleTenantNodeAllocationResponseOutput) NodeCount() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportSummarySoleTenantNodeAllocationResponse) string { return v.NodeCount }).(pulumi.StringOutput)
+}
+
+type ReportSummarySoleTenantNodeAllocationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummarySoleTenantNodeAllocationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummarySoleTenantNodeAllocationResponse)(nil)).Elem()
+}
+
+func (o ReportSummarySoleTenantNodeAllocationResponseArrayOutput) ToReportSummarySoleTenantNodeAllocationResponseArrayOutput() ReportSummarySoleTenantNodeAllocationResponseArrayOutput {
+	return o
+}
+
+func (o ReportSummarySoleTenantNodeAllocationResponseArrayOutput) ToReportSummarySoleTenantNodeAllocationResponseArrayOutputWithContext(ctx context.Context) ReportSummarySoleTenantNodeAllocationResponseArrayOutput {
+	return o
+}
+
+func (o ReportSummarySoleTenantNodeAllocationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportSummarySoleTenantNodeAllocationResponse] {
+	return pulumix.Output[[]ReportSummarySoleTenantNodeAllocationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ReportSummarySoleTenantNodeAllocationResponseArrayOutput) Index(i pulumi.IntInput) ReportSummarySoleTenantNodeAllocationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummarySoleTenantNodeAllocationResponse {
+		return vs[0].([]ReportSummarySoleTenantNodeAllocationResponse)[vs[1].(int)]
+	}).(ReportSummarySoleTenantNodeAllocationResponseOutput)
+}
+
 // Utilization Chart is a specific type of visualization which displays a metric classified into "Used" and "Free" buckets.
 type ReportSummaryUtilizationChartDataResponse struct {
 	// Aggregate value which falls into the "Free" bucket.
@@ -2773,6 +2915,616 @@ func (o ReportSummaryUtilizationChartDataResponseOutput) Free() pulumi.StringOut
 // Aggregate value which falls into the "Used" bucket.
 func (o ReportSummaryUtilizationChartDataResponseOutput) Used() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportSummaryUtilizationChartDataResponse) string { return v.Used }).(pulumi.StringOutput)
+}
+
+// A set of findings that applies to assets destined for VMWare Engine.
+type ReportSummaryVMWareEngineFindingResponse struct {
+	// Count of assets which are allocated
+	AllocatedAssetCount string `pulumi:"allocatedAssetCount"`
+	// Set of regions in which the assets were allocated
+	AllocatedRegions []string `pulumi:"allocatedRegions"`
+	// Set of per-nodetype allocation records
+	NodeAllocations []ReportSummaryVMWareNodeAllocationResponse `pulumi:"nodeAllocations"`
+}
+
+// A set of findings that applies to assets destined for VMWare Engine.
+type ReportSummaryVMWareEngineFindingResponseOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryVMWareEngineFindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryVMWareEngineFindingResponse)(nil)).Elem()
+}
+
+func (o ReportSummaryVMWareEngineFindingResponseOutput) ToReportSummaryVMWareEngineFindingResponseOutput() ReportSummaryVMWareEngineFindingResponseOutput {
+	return o
+}
+
+func (o ReportSummaryVMWareEngineFindingResponseOutput) ToReportSummaryVMWareEngineFindingResponseOutputWithContext(ctx context.Context) ReportSummaryVMWareEngineFindingResponseOutput {
+	return o
+}
+
+func (o ReportSummaryVMWareEngineFindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryVMWareEngineFindingResponse] {
+	return pulumix.Output[ReportSummaryVMWareEngineFindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Count of assets which are allocated
+func (o ReportSummaryVMWareEngineFindingResponseOutput) AllocatedAssetCount() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportSummaryVMWareEngineFindingResponse) string { return v.AllocatedAssetCount }).(pulumi.StringOutput)
+}
+
+// Set of regions in which the assets were allocated
+func (o ReportSummaryVMWareEngineFindingResponseOutput) AllocatedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReportSummaryVMWareEngineFindingResponse) []string { return v.AllocatedRegions }).(pulumi.StringArrayOutput)
+}
+
+// Set of per-nodetype allocation records
+func (o ReportSummaryVMWareEngineFindingResponseOutput) NodeAllocations() ReportSummaryVMWareNodeAllocationResponseArrayOutput {
+	return o.ApplyT(func(v ReportSummaryVMWareEngineFindingResponse) []ReportSummaryVMWareNodeAllocationResponse {
+		return v.NodeAllocations
+	}).(ReportSummaryVMWareNodeAllocationResponseArrayOutput)
+}
+
+// Represents assets allocated to a specific VMWare Node type.
+type ReportSummaryVMWareNodeAllocationResponse struct {
+	// Count of assets allocated to these nodes
+	AllocatedAssetCount string `pulumi:"allocatedAssetCount"`
+	// Count of this node type to be provisioned
+	NodeCount string `pulumi:"nodeCount"`
+	// VMWare node type, e.g. "ve1-standard-72"
+	VmwareNode ReportSummaryVMWareNodeResponse `pulumi:"vmwareNode"`
+}
+
+// Represents assets allocated to a specific VMWare Node type.
+type ReportSummaryVMWareNodeAllocationResponseOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryVMWareNodeAllocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryVMWareNodeAllocationResponse)(nil)).Elem()
+}
+
+func (o ReportSummaryVMWareNodeAllocationResponseOutput) ToReportSummaryVMWareNodeAllocationResponseOutput() ReportSummaryVMWareNodeAllocationResponseOutput {
+	return o
+}
+
+func (o ReportSummaryVMWareNodeAllocationResponseOutput) ToReportSummaryVMWareNodeAllocationResponseOutputWithContext(ctx context.Context) ReportSummaryVMWareNodeAllocationResponseOutput {
+	return o
+}
+
+func (o ReportSummaryVMWareNodeAllocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryVMWareNodeAllocationResponse] {
+	return pulumix.Output[ReportSummaryVMWareNodeAllocationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Count of assets allocated to these nodes
+func (o ReportSummaryVMWareNodeAllocationResponseOutput) AllocatedAssetCount() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportSummaryVMWareNodeAllocationResponse) string { return v.AllocatedAssetCount }).(pulumi.StringOutput)
+}
+
+// Count of this node type to be provisioned
+func (o ReportSummaryVMWareNodeAllocationResponseOutput) NodeCount() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportSummaryVMWareNodeAllocationResponse) string { return v.NodeCount }).(pulumi.StringOutput)
+}
+
+// VMWare node type, e.g. "ve1-standard-72"
+func (o ReportSummaryVMWareNodeAllocationResponseOutput) VmwareNode() ReportSummaryVMWareNodeResponseOutput {
+	return o.ApplyT(func(v ReportSummaryVMWareNodeAllocationResponse) ReportSummaryVMWareNodeResponse { return v.VmwareNode }).(ReportSummaryVMWareNodeResponseOutput)
+}
+
+type ReportSummaryVMWareNodeAllocationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryVMWareNodeAllocationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportSummaryVMWareNodeAllocationResponse)(nil)).Elem()
+}
+
+func (o ReportSummaryVMWareNodeAllocationResponseArrayOutput) ToReportSummaryVMWareNodeAllocationResponseArrayOutput() ReportSummaryVMWareNodeAllocationResponseArrayOutput {
+	return o
+}
+
+func (o ReportSummaryVMWareNodeAllocationResponseArrayOutput) ToReportSummaryVMWareNodeAllocationResponseArrayOutputWithContext(ctx context.Context) ReportSummaryVMWareNodeAllocationResponseArrayOutput {
+	return o
+}
+
+func (o ReportSummaryVMWareNodeAllocationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportSummaryVMWareNodeAllocationResponse] {
+	return pulumix.Output[[]ReportSummaryVMWareNodeAllocationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ReportSummaryVMWareNodeAllocationResponseArrayOutput) Index(i pulumi.IntInput) ReportSummaryVMWareNodeAllocationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryVMWareNodeAllocationResponse {
+		return vs[0].([]ReportSummaryVMWareNodeAllocationResponse)[vs[1].(int)]
+	}).(ReportSummaryVMWareNodeAllocationResponseOutput)
+}
+
+// A VMWare Engine Node
+type ReportSummaryVMWareNodeResponse struct {
+	// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+	Code string `pulumi:"code"`
+}
+
+// A VMWare Engine Node
+type ReportSummaryVMWareNodeResponseOutput struct{ *pulumi.OutputState }
+
+func (ReportSummaryVMWareNodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportSummaryVMWareNodeResponse)(nil)).Elem()
+}
+
+func (o ReportSummaryVMWareNodeResponseOutput) ToReportSummaryVMWareNodeResponseOutput() ReportSummaryVMWareNodeResponseOutput {
+	return o
+}
+
+func (o ReportSummaryVMWareNodeResponseOutput) ToReportSummaryVMWareNodeResponseOutputWithContext(ctx context.Context) ReportSummaryVMWareNodeResponseOutput {
+	return o
+}
+
+func (o ReportSummaryVMWareNodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryVMWareNodeResponse] {
+	return pulumix.Output[ReportSummaryVMWareNodeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+func (o ReportSummaryVMWareNodeResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportSummaryVMWareNodeResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Preferences concerning Sole Tenancy nodes and VMs.
+type SoleTenancyPreferences struct {
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+	CommitmentPlan *SoleTenancyPreferencesCommitmentPlan `pulumi:"commitmentPlan"`
+	// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+	CpuOvercommitRatio *float64 `pulumi:"cpuOvercommitRatio"`
+	// Sole Tenancy nodes maintenance policy.
+	HostMaintenancePolicy *SoleTenancyPreferencesHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
+	// A list of sole tenant node types. An empty list means that all possible node types will be considered.
+	NodeTypes []SoleTenantNodeType `pulumi:"nodeTypes"`
+}
+
+// SoleTenancyPreferencesInput is an input type that accepts SoleTenancyPreferencesArgs and SoleTenancyPreferencesOutput values.
+// You can construct a concrete instance of `SoleTenancyPreferencesInput` via:
+//
+//	SoleTenancyPreferencesArgs{...}
+type SoleTenancyPreferencesInput interface {
+	pulumi.Input
+
+	ToSoleTenancyPreferencesOutput() SoleTenancyPreferencesOutput
+	ToSoleTenancyPreferencesOutputWithContext(context.Context) SoleTenancyPreferencesOutput
+}
+
+// Preferences concerning Sole Tenancy nodes and VMs.
+type SoleTenancyPreferencesArgs struct {
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+	CommitmentPlan SoleTenancyPreferencesCommitmentPlanPtrInput `pulumi:"commitmentPlan"`
+	// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+	CpuOvercommitRatio pulumi.Float64PtrInput `pulumi:"cpuOvercommitRatio"`
+	// Sole Tenancy nodes maintenance policy.
+	HostMaintenancePolicy SoleTenancyPreferencesHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
+	// A list of sole tenant node types. An empty list means that all possible node types will be considered.
+	NodeTypes SoleTenantNodeTypeArrayInput `pulumi:"nodeTypes"`
+}
+
+func (SoleTenancyPreferencesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenancyPreferences)(nil)).Elem()
+}
+
+func (i SoleTenancyPreferencesArgs) ToSoleTenancyPreferencesOutput() SoleTenancyPreferencesOutput {
+	return i.ToSoleTenancyPreferencesOutputWithContext(context.Background())
+}
+
+func (i SoleTenancyPreferencesArgs) ToSoleTenancyPreferencesOutputWithContext(ctx context.Context) SoleTenancyPreferencesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoleTenancyPreferencesOutput)
+}
+
+func (i SoleTenancyPreferencesArgs) ToOutput(ctx context.Context) pulumix.Output[SoleTenancyPreferences] {
+	return pulumix.Output[SoleTenancyPreferences]{
+		OutputState: i.ToSoleTenancyPreferencesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SoleTenancyPreferencesArgs) ToSoleTenancyPreferencesPtrOutput() SoleTenancyPreferencesPtrOutput {
+	return i.ToSoleTenancyPreferencesPtrOutputWithContext(context.Background())
+}
+
+func (i SoleTenancyPreferencesArgs) ToSoleTenancyPreferencesPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoleTenancyPreferencesOutput).ToSoleTenancyPreferencesPtrOutputWithContext(ctx)
+}
+
+// SoleTenancyPreferencesPtrInput is an input type that accepts SoleTenancyPreferencesArgs, SoleTenancyPreferencesPtr and SoleTenancyPreferencesPtrOutput values.
+// You can construct a concrete instance of `SoleTenancyPreferencesPtrInput` via:
+//
+//	        SoleTenancyPreferencesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SoleTenancyPreferencesPtrInput interface {
+	pulumi.Input
+
+	ToSoleTenancyPreferencesPtrOutput() SoleTenancyPreferencesPtrOutput
+	ToSoleTenancyPreferencesPtrOutputWithContext(context.Context) SoleTenancyPreferencesPtrOutput
+}
+
+type soleTenancyPreferencesPtrType SoleTenancyPreferencesArgs
+
+func SoleTenancyPreferencesPtr(v *SoleTenancyPreferencesArgs) SoleTenancyPreferencesPtrInput {
+	return (*soleTenancyPreferencesPtrType)(v)
+}
+
+func (*soleTenancyPreferencesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoleTenancyPreferences)(nil)).Elem()
+}
+
+func (i *soleTenancyPreferencesPtrType) ToSoleTenancyPreferencesPtrOutput() SoleTenancyPreferencesPtrOutput {
+	return i.ToSoleTenancyPreferencesPtrOutputWithContext(context.Background())
+}
+
+func (i *soleTenancyPreferencesPtrType) ToSoleTenancyPreferencesPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoleTenancyPreferencesPtrOutput)
+}
+
+func (i *soleTenancyPreferencesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferences] {
+	return pulumix.Output[*SoleTenancyPreferences]{
+		OutputState: i.ToSoleTenancyPreferencesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Preferences concerning Sole Tenancy nodes and VMs.
+type SoleTenancyPreferencesOutput struct{ *pulumi.OutputState }
+
+func (SoleTenancyPreferencesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenancyPreferences)(nil)).Elem()
+}
+
+func (o SoleTenancyPreferencesOutput) ToSoleTenancyPreferencesOutput() SoleTenancyPreferencesOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesOutput) ToSoleTenancyPreferencesOutputWithContext(ctx context.Context) SoleTenancyPreferencesOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesOutput) ToSoleTenancyPreferencesPtrOutput() SoleTenancyPreferencesPtrOutput {
+	return o.ToSoleTenancyPreferencesPtrOutputWithContext(context.Background())
+}
+
+func (o SoleTenancyPreferencesOutput) ToSoleTenancyPreferencesPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoleTenancyPreferences) *SoleTenancyPreferences {
+		return &v
+	}).(SoleTenancyPreferencesPtrOutput)
+}
+
+func (o SoleTenancyPreferencesOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenancyPreferences] {
+	return pulumix.Output[SoleTenancyPreferences]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+func (o SoleTenancyPreferencesOutput) CommitmentPlan() SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return o.ApplyT(func(v SoleTenancyPreferences) *SoleTenancyPreferencesCommitmentPlan { return v.CommitmentPlan }).(SoleTenancyPreferencesCommitmentPlanPtrOutput)
+}
+
+// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+func (o SoleTenancyPreferencesOutput) CpuOvercommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SoleTenancyPreferences) *float64 { return v.CpuOvercommitRatio }).(pulumi.Float64PtrOutput)
+}
+
+// Sole Tenancy nodes maintenance policy.
+func (o SoleTenancyPreferencesOutput) HostMaintenancePolicy() SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v SoleTenancyPreferences) *SoleTenancyPreferencesHostMaintenancePolicy {
+		return v.HostMaintenancePolicy
+	}).(SoleTenancyPreferencesHostMaintenancePolicyPtrOutput)
+}
+
+// A list of sole tenant node types. An empty list means that all possible node types will be considered.
+func (o SoleTenancyPreferencesOutput) NodeTypes() SoleTenantNodeTypeArrayOutput {
+	return o.ApplyT(func(v SoleTenancyPreferences) []SoleTenantNodeType { return v.NodeTypes }).(SoleTenantNodeTypeArrayOutput)
+}
+
+type SoleTenancyPreferencesPtrOutput struct{ *pulumi.OutputState }
+
+func (SoleTenancyPreferencesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoleTenancyPreferences)(nil)).Elem()
+}
+
+func (o SoleTenancyPreferencesPtrOutput) ToSoleTenancyPreferencesPtrOutput() SoleTenancyPreferencesPtrOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesPtrOutput) ToSoleTenancyPreferencesPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesPtrOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferences] {
+	return pulumix.Output[*SoleTenancyPreferences]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SoleTenancyPreferencesPtrOutput) Elem() SoleTenancyPreferencesOutput {
+	return o.ApplyT(func(v *SoleTenancyPreferences) SoleTenancyPreferences {
+		if v != nil {
+			return *v
+		}
+		var ret SoleTenancyPreferences
+		return ret
+	}).(SoleTenancyPreferencesOutput)
+}
+
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+func (o SoleTenancyPreferencesPtrOutput) CommitmentPlan() SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return o.ApplyT(func(v *SoleTenancyPreferences) *SoleTenancyPreferencesCommitmentPlan {
+		if v == nil {
+			return nil
+		}
+		return v.CommitmentPlan
+	}).(SoleTenancyPreferencesCommitmentPlanPtrOutput)
+}
+
+// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+func (o SoleTenancyPreferencesPtrOutput) CpuOvercommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SoleTenancyPreferences) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CpuOvercommitRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Sole Tenancy nodes maintenance policy.
+func (o SoleTenancyPreferencesPtrOutput) HostMaintenancePolicy() SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v *SoleTenancyPreferences) *SoleTenancyPreferencesHostMaintenancePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.HostMaintenancePolicy
+	}).(SoleTenancyPreferencesHostMaintenancePolicyPtrOutput)
+}
+
+// A list of sole tenant node types. An empty list means that all possible node types will be considered.
+func (o SoleTenancyPreferencesPtrOutput) NodeTypes() SoleTenantNodeTypeArrayOutput {
+	return o.ApplyT(func(v *SoleTenancyPreferences) []SoleTenantNodeType {
+		if v == nil {
+			return nil
+		}
+		return v.NodeTypes
+	}).(SoleTenantNodeTypeArrayOutput)
+}
+
+// Preferences concerning Sole Tenancy nodes and VMs.
+type SoleTenancyPreferencesResponse struct {
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+	CommitmentPlan string `pulumi:"commitmentPlan"`
+	// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+	CpuOvercommitRatio float64 `pulumi:"cpuOvercommitRatio"`
+	// Sole Tenancy nodes maintenance policy.
+	HostMaintenancePolicy string `pulumi:"hostMaintenancePolicy"`
+	// A list of sole tenant node types. An empty list means that all possible node types will be considered.
+	NodeTypes []SoleTenantNodeTypeResponse `pulumi:"nodeTypes"`
+}
+
+// Preferences concerning Sole Tenancy nodes and VMs.
+type SoleTenancyPreferencesResponseOutput struct{ *pulumi.OutputState }
+
+func (SoleTenancyPreferencesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenancyPreferencesResponse)(nil)).Elem()
+}
+
+func (o SoleTenancyPreferencesResponseOutput) ToSoleTenancyPreferencesResponseOutput() SoleTenancyPreferencesResponseOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesResponseOutput) ToSoleTenancyPreferencesResponseOutputWithContext(ctx context.Context) SoleTenancyPreferencesResponseOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenancyPreferencesResponse] {
+	return pulumix.Output[SoleTenancyPreferencesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+func (o SoleTenancyPreferencesResponseOutput) CommitmentPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v SoleTenancyPreferencesResponse) string { return v.CommitmentPlan }).(pulumi.StringOutput)
+}
+
+// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+func (o SoleTenancyPreferencesResponseOutput) CpuOvercommitRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v SoleTenancyPreferencesResponse) float64 { return v.CpuOvercommitRatio }).(pulumi.Float64Output)
+}
+
+// Sole Tenancy nodes maintenance policy.
+func (o SoleTenancyPreferencesResponseOutput) HostMaintenancePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v SoleTenancyPreferencesResponse) string { return v.HostMaintenancePolicy }).(pulumi.StringOutput)
+}
+
+// A list of sole tenant node types. An empty list means that all possible node types will be considered.
+func (o SoleTenancyPreferencesResponseOutput) NodeTypes() SoleTenantNodeTypeResponseArrayOutput {
+	return o.ApplyT(func(v SoleTenancyPreferencesResponse) []SoleTenantNodeTypeResponse { return v.NodeTypes }).(SoleTenantNodeTypeResponseArrayOutput)
+}
+
+// A Sole Tenant node type.
+type SoleTenantNodeType struct {
+	// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+	NodeName *string `pulumi:"nodeName"`
+}
+
+// SoleTenantNodeTypeInput is an input type that accepts SoleTenantNodeTypeArgs and SoleTenantNodeTypeOutput values.
+// You can construct a concrete instance of `SoleTenantNodeTypeInput` via:
+//
+//	SoleTenantNodeTypeArgs{...}
+type SoleTenantNodeTypeInput interface {
+	pulumi.Input
+
+	ToSoleTenantNodeTypeOutput() SoleTenantNodeTypeOutput
+	ToSoleTenantNodeTypeOutputWithContext(context.Context) SoleTenantNodeTypeOutput
+}
+
+// A Sole Tenant node type.
+type SoleTenantNodeTypeArgs struct {
+	// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+}
+
+func (SoleTenantNodeTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenantNodeType)(nil)).Elem()
+}
+
+func (i SoleTenantNodeTypeArgs) ToSoleTenantNodeTypeOutput() SoleTenantNodeTypeOutput {
+	return i.ToSoleTenantNodeTypeOutputWithContext(context.Background())
+}
+
+func (i SoleTenantNodeTypeArgs) ToSoleTenantNodeTypeOutputWithContext(ctx context.Context) SoleTenantNodeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoleTenantNodeTypeOutput)
+}
+
+func (i SoleTenantNodeTypeArgs) ToOutput(ctx context.Context) pulumix.Output[SoleTenantNodeType] {
+	return pulumix.Output[SoleTenantNodeType]{
+		OutputState: i.ToSoleTenantNodeTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SoleTenantNodeTypeArrayInput is an input type that accepts SoleTenantNodeTypeArray and SoleTenantNodeTypeArrayOutput values.
+// You can construct a concrete instance of `SoleTenantNodeTypeArrayInput` via:
+//
+//	SoleTenantNodeTypeArray{ SoleTenantNodeTypeArgs{...} }
+type SoleTenantNodeTypeArrayInput interface {
+	pulumi.Input
+
+	ToSoleTenantNodeTypeArrayOutput() SoleTenantNodeTypeArrayOutput
+	ToSoleTenantNodeTypeArrayOutputWithContext(context.Context) SoleTenantNodeTypeArrayOutput
+}
+
+type SoleTenantNodeTypeArray []SoleTenantNodeTypeInput
+
+func (SoleTenantNodeTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SoleTenantNodeType)(nil)).Elem()
+}
+
+func (i SoleTenantNodeTypeArray) ToSoleTenantNodeTypeArrayOutput() SoleTenantNodeTypeArrayOutput {
+	return i.ToSoleTenantNodeTypeArrayOutputWithContext(context.Background())
+}
+
+func (i SoleTenantNodeTypeArray) ToSoleTenantNodeTypeArrayOutputWithContext(ctx context.Context) SoleTenantNodeTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoleTenantNodeTypeArrayOutput)
+}
+
+func (i SoleTenantNodeTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]SoleTenantNodeType] {
+	return pulumix.Output[[]SoleTenantNodeType]{
+		OutputState: i.ToSoleTenantNodeTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A Sole Tenant node type.
+type SoleTenantNodeTypeOutput struct{ *pulumi.OutputState }
+
+func (SoleTenantNodeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenantNodeType)(nil)).Elem()
+}
+
+func (o SoleTenantNodeTypeOutput) ToSoleTenantNodeTypeOutput() SoleTenantNodeTypeOutput {
+	return o
+}
+
+func (o SoleTenantNodeTypeOutput) ToSoleTenantNodeTypeOutputWithContext(ctx context.Context) SoleTenantNodeTypeOutput {
+	return o
+}
+
+func (o SoleTenantNodeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenantNodeType] {
+	return pulumix.Output[SoleTenantNodeType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+func (o SoleTenantNodeTypeOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SoleTenantNodeType) *string { return v.NodeName }).(pulumi.StringPtrOutput)
+}
+
+type SoleTenantNodeTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (SoleTenantNodeTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SoleTenantNodeType)(nil)).Elem()
+}
+
+func (o SoleTenantNodeTypeArrayOutput) ToSoleTenantNodeTypeArrayOutput() SoleTenantNodeTypeArrayOutput {
+	return o
+}
+
+func (o SoleTenantNodeTypeArrayOutput) ToSoleTenantNodeTypeArrayOutputWithContext(ctx context.Context) SoleTenantNodeTypeArrayOutput {
+	return o
+}
+
+func (o SoleTenantNodeTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoleTenantNodeType] {
+	return pulumix.Output[[]SoleTenantNodeType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SoleTenantNodeTypeArrayOutput) Index(i pulumi.IntInput) SoleTenantNodeTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoleTenantNodeType {
+		return vs[0].([]SoleTenantNodeType)[vs[1].(int)]
+	}).(SoleTenantNodeTypeOutput)
+}
+
+// A Sole Tenant node type.
+type SoleTenantNodeTypeResponse struct {
+	// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+	NodeName string `pulumi:"nodeName"`
+}
+
+// A Sole Tenant node type.
+type SoleTenantNodeTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (SoleTenantNodeTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenantNodeTypeResponse)(nil)).Elem()
+}
+
+func (o SoleTenantNodeTypeResponseOutput) ToSoleTenantNodeTypeResponseOutput() SoleTenantNodeTypeResponseOutput {
+	return o
+}
+
+func (o SoleTenantNodeTypeResponseOutput) ToSoleTenantNodeTypeResponseOutputWithContext(ctx context.Context) SoleTenantNodeTypeResponseOutput {
+	return o
+}
+
+func (o SoleTenantNodeTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenantNodeTypeResponse] {
+	return pulumix.Output[SoleTenantNodeTypeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+func (o SoleTenantNodeTypeResponseOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v SoleTenantNodeTypeResponse) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+type SoleTenantNodeTypeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SoleTenantNodeTypeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SoleTenantNodeTypeResponse)(nil)).Elem()
+}
+
+func (o SoleTenantNodeTypeResponseArrayOutput) ToSoleTenantNodeTypeResponseArrayOutput() SoleTenantNodeTypeResponseArrayOutput {
+	return o
+}
+
+func (o SoleTenantNodeTypeResponseArrayOutput) ToSoleTenantNodeTypeResponseArrayOutputWithContext(ctx context.Context) SoleTenantNodeTypeResponseArrayOutput {
+	return o
+}
+
+func (o SoleTenantNodeTypeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoleTenantNodeTypeResponse] {
+	return pulumix.Output[[]SoleTenantNodeTypeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SoleTenantNodeTypeResponseArrayOutput) Index(i pulumi.IntInput) SoleTenantNodeTypeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoleTenantNodeTypeResponse {
+		return vs[0].([]SoleTenantNodeTypeResponse)[vs[1].(int)]
+	}).(SoleTenantNodeTypeResponseOutput)
 }
 
 // A resource that contains a URI to which a data file can be uploaded.
@@ -3005,16 +3757,26 @@ func (o ValidationReportResponseOutput) JobErrors() ImportErrorResponseArrayOutp
 	return o.ApplyT(func(v ValidationReportResponse) []ImportErrorResponse { return v.JobErrors }).(ImportErrorResponseArrayOutput)
 }
 
-// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+// VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
 type VirtualMachinePreferences struct {
 	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
 	CommitmentPlan *VirtualMachinePreferencesCommitmentPlan `pulumi:"commitmentPlan"`
 	// Compute Engine preferences concern insights and recommendations for Compute Engine target.
 	ComputeEnginePreferences *ComputeEnginePreferences `pulumi:"computeEnginePreferences"`
-	// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+	// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+	NetworkCostParameters *VirtualMachinePreferencesNetworkCostParameters `pulumi:"networkCostParameters"`
+	// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
 	RegionPreferences *RegionPreferences `pulumi:"regionPreferences"`
+	// Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+	SizingOptimizationCustomParameters *VirtualMachinePreferencesSizingOptimizationCustomParameters `pulumi:"sizingOptimizationCustomParameters"`
 	// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
 	SizingOptimizationStrategy *VirtualMachinePreferencesSizingOptimizationStrategy `pulumi:"sizingOptimizationStrategy"`
+	// Preferences concerning Sole Tenant nodes and virtual machines.
+	SoleTenancyPreferences *SoleTenancyPreferences `pulumi:"soleTenancyPreferences"`
+	// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+	TargetProduct *VirtualMachinePreferencesTargetProduct `pulumi:"targetProduct"`
+	// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+	VmwareEnginePreferences *VmwareEnginePreferences `pulumi:"vmwareEnginePreferences"`
 }
 
 // VirtualMachinePreferencesInput is an input type that accepts VirtualMachinePreferencesArgs and VirtualMachinePreferencesOutput values.
@@ -3028,16 +3790,26 @@ type VirtualMachinePreferencesInput interface {
 	ToVirtualMachinePreferencesOutputWithContext(context.Context) VirtualMachinePreferencesOutput
 }
 
-// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+// VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
 type VirtualMachinePreferencesArgs struct {
 	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
 	CommitmentPlan VirtualMachinePreferencesCommitmentPlanPtrInput `pulumi:"commitmentPlan"`
 	// Compute Engine preferences concern insights and recommendations for Compute Engine target.
 	ComputeEnginePreferences ComputeEnginePreferencesPtrInput `pulumi:"computeEnginePreferences"`
-	// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+	// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+	NetworkCostParameters VirtualMachinePreferencesNetworkCostParametersPtrInput `pulumi:"networkCostParameters"`
+	// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
 	RegionPreferences RegionPreferencesPtrInput `pulumi:"regionPreferences"`
+	// Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+	SizingOptimizationCustomParameters VirtualMachinePreferencesSizingOptimizationCustomParametersPtrInput `pulumi:"sizingOptimizationCustomParameters"`
 	// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
 	SizingOptimizationStrategy VirtualMachinePreferencesSizingOptimizationStrategyPtrInput `pulumi:"sizingOptimizationStrategy"`
+	// Preferences concerning Sole Tenant nodes and virtual machines.
+	SoleTenancyPreferences SoleTenancyPreferencesPtrInput `pulumi:"soleTenancyPreferences"`
+	// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+	TargetProduct VirtualMachinePreferencesTargetProductPtrInput `pulumi:"targetProduct"`
+	// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+	VmwareEnginePreferences VmwareEnginePreferencesPtrInput `pulumi:"vmwareEnginePreferences"`
 }
 
 func (VirtualMachinePreferencesArgs) ElementType() reflect.Type {
@@ -3105,7 +3877,7 @@ func (i *virtualMachinePreferencesPtrType) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+// VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
 type VirtualMachinePreferencesOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachinePreferencesOutput) ElementType() reflect.Type {
@@ -3146,9 +3918,23 @@ func (o VirtualMachinePreferencesOutput) ComputeEnginePreferences() ComputeEngin
 	return o.ApplyT(func(v VirtualMachinePreferences) *ComputeEnginePreferences { return v.ComputeEnginePreferences }).(ComputeEnginePreferencesPtrOutput)
 }
 
-// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+func (o VirtualMachinePreferencesOutput) NetworkCostParameters() VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferences) *VirtualMachinePreferencesNetworkCostParameters {
+		return v.NetworkCostParameters
+	}).(VirtualMachinePreferencesNetworkCostParametersPtrOutput)
+}
+
+// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
 func (o VirtualMachinePreferencesOutput) RegionPreferences() RegionPreferencesPtrOutput {
 	return o.ApplyT(func(v VirtualMachinePreferences) *RegionPreferences { return v.RegionPreferences }).(RegionPreferencesPtrOutput)
+}
+
+// Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+func (o VirtualMachinePreferencesOutput) SizingOptimizationCustomParameters() VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferences) *VirtualMachinePreferencesSizingOptimizationCustomParameters {
+		return v.SizingOptimizationCustomParameters
+	}).(VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput)
 }
 
 // Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
@@ -3156,6 +3942,21 @@ func (o VirtualMachinePreferencesOutput) SizingOptimizationStrategy() VirtualMac
 	return o.ApplyT(func(v VirtualMachinePreferences) *VirtualMachinePreferencesSizingOptimizationStrategy {
 		return v.SizingOptimizationStrategy
 	}).(VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput)
+}
+
+// Preferences concerning Sole Tenant nodes and virtual machines.
+func (o VirtualMachinePreferencesOutput) SoleTenancyPreferences() SoleTenancyPreferencesPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferences) *SoleTenancyPreferences { return v.SoleTenancyPreferences }).(SoleTenancyPreferencesPtrOutput)
+}
+
+// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+func (o VirtualMachinePreferencesOutput) TargetProduct() VirtualMachinePreferencesTargetProductPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferences) *VirtualMachinePreferencesTargetProduct { return v.TargetProduct }).(VirtualMachinePreferencesTargetProductPtrOutput)
+}
+
+// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+func (o VirtualMachinePreferencesOutput) VmwareEnginePreferences() VmwareEnginePreferencesPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferences) *VmwareEnginePreferences { return v.VmwareEnginePreferences }).(VmwareEnginePreferencesPtrOutput)
 }
 
 type VirtualMachinePreferencesPtrOutput struct{ *pulumi.OutputState }
@@ -3208,7 +4009,17 @@ func (o VirtualMachinePreferencesPtrOutput) ComputeEnginePreferences() ComputeEn
 	}).(ComputeEnginePreferencesPtrOutput)
 }
 
-// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+func (o VirtualMachinePreferencesPtrOutput) NetworkCostParameters() VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferences) *VirtualMachinePreferencesNetworkCostParameters {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkCostParameters
+	}).(VirtualMachinePreferencesNetworkCostParametersPtrOutput)
+}
+
+// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
 func (o VirtualMachinePreferencesPtrOutput) RegionPreferences() RegionPreferencesPtrOutput {
 	return o.ApplyT(func(v *VirtualMachinePreferences) *RegionPreferences {
 		if v == nil {
@@ -3216,6 +4027,16 @@ func (o VirtualMachinePreferencesPtrOutput) RegionPreferences() RegionPreference
 		}
 		return v.RegionPreferences
 	}).(RegionPreferencesPtrOutput)
+}
+
+// Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+func (o VirtualMachinePreferencesPtrOutput) SizingOptimizationCustomParameters() VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferences) *VirtualMachinePreferencesSizingOptimizationCustomParameters {
+		if v == nil {
+			return nil
+		}
+		return v.SizingOptimizationCustomParameters
+	}).(VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput)
 }
 
 // Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
@@ -3228,19 +4049,257 @@ func (o VirtualMachinePreferencesPtrOutput) SizingOptimizationStrategy() Virtual
 	}).(VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput)
 }
 
-// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+// Preferences concerning Sole Tenant nodes and virtual machines.
+func (o VirtualMachinePreferencesPtrOutput) SoleTenancyPreferences() SoleTenancyPreferencesPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferences) *SoleTenancyPreferences {
+		if v == nil {
+			return nil
+		}
+		return v.SoleTenancyPreferences
+	}).(SoleTenancyPreferencesPtrOutput)
+}
+
+// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+func (o VirtualMachinePreferencesPtrOutput) TargetProduct() VirtualMachinePreferencesTargetProductPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferences) *VirtualMachinePreferencesTargetProduct {
+		if v == nil {
+			return nil
+		}
+		return v.TargetProduct
+	}).(VirtualMachinePreferencesTargetProductPtrOutput)
+}
+
+// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+func (o VirtualMachinePreferencesPtrOutput) VmwareEnginePreferences() VmwareEnginePreferencesPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferences) *VmwareEnginePreferences {
+		if v == nil {
+			return nil
+		}
+		return v.VmwareEnginePreferences
+	}).(VmwareEnginePreferencesPtrOutput)
+}
+
+// Parameters that affect network cost estimations.
+type VirtualMachinePreferencesNetworkCostParameters struct {
+	// Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+	EstimatedEgressTrafficPercentage *int `pulumi:"estimatedEgressTrafficPercentage"`
+}
+
+// VirtualMachinePreferencesNetworkCostParametersInput is an input type that accepts VirtualMachinePreferencesNetworkCostParametersArgs and VirtualMachinePreferencesNetworkCostParametersOutput values.
+// You can construct a concrete instance of `VirtualMachinePreferencesNetworkCostParametersInput` via:
+//
+//	VirtualMachinePreferencesNetworkCostParametersArgs{...}
+type VirtualMachinePreferencesNetworkCostParametersInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePreferencesNetworkCostParametersOutput() VirtualMachinePreferencesNetworkCostParametersOutput
+	ToVirtualMachinePreferencesNetworkCostParametersOutputWithContext(context.Context) VirtualMachinePreferencesNetworkCostParametersOutput
+}
+
+// Parameters that affect network cost estimations.
+type VirtualMachinePreferencesNetworkCostParametersArgs struct {
+	// Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+	EstimatedEgressTrafficPercentage pulumi.IntPtrInput `pulumi:"estimatedEgressTrafficPercentage"`
+}
+
+func (VirtualMachinePreferencesNetworkCostParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesNetworkCostParameters)(nil)).Elem()
+}
+
+func (i VirtualMachinePreferencesNetworkCostParametersArgs) ToVirtualMachinePreferencesNetworkCostParametersOutput() VirtualMachinePreferencesNetworkCostParametersOutput {
+	return i.ToVirtualMachinePreferencesNetworkCostParametersOutputWithContext(context.Background())
+}
+
+func (i VirtualMachinePreferencesNetworkCostParametersArgs) ToVirtualMachinePreferencesNetworkCostParametersOutputWithContext(ctx context.Context) VirtualMachinePreferencesNetworkCostParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePreferencesNetworkCostParametersOutput)
+}
+
+func (i VirtualMachinePreferencesNetworkCostParametersArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesNetworkCostParameters] {
+	return pulumix.Output[VirtualMachinePreferencesNetworkCostParameters]{
+		OutputState: i.ToVirtualMachinePreferencesNetworkCostParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VirtualMachinePreferencesNetworkCostParametersArgs) ToVirtualMachinePreferencesNetworkCostParametersPtrOutput() VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return i.ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachinePreferencesNetworkCostParametersArgs) ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePreferencesNetworkCostParametersOutput).ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(ctx)
+}
+
+// VirtualMachinePreferencesNetworkCostParametersPtrInput is an input type that accepts VirtualMachinePreferencesNetworkCostParametersArgs, VirtualMachinePreferencesNetworkCostParametersPtr and VirtualMachinePreferencesNetworkCostParametersPtrOutput values.
+// You can construct a concrete instance of `VirtualMachinePreferencesNetworkCostParametersPtrInput` via:
+//
+//	        VirtualMachinePreferencesNetworkCostParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachinePreferencesNetworkCostParametersPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePreferencesNetworkCostParametersPtrOutput() VirtualMachinePreferencesNetworkCostParametersPtrOutput
+	ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(context.Context) VirtualMachinePreferencesNetworkCostParametersPtrOutput
+}
+
+type virtualMachinePreferencesNetworkCostParametersPtrType VirtualMachinePreferencesNetworkCostParametersArgs
+
+func VirtualMachinePreferencesNetworkCostParametersPtr(v *VirtualMachinePreferencesNetworkCostParametersArgs) VirtualMachinePreferencesNetworkCostParametersPtrInput {
+	return (*virtualMachinePreferencesNetworkCostParametersPtrType)(v)
+}
+
+func (*virtualMachinePreferencesNetworkCostParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachinePreferencesNetworkCostParameters)(nil)).Elem()
+}
+
+func (i *virtualMachinePreferencesNetworkCostParametersPtrType) ToVirtualMachinePreferencesNetworkCostParametersPtrOutput() VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return i.ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachinePreferencesNetworkCostParametersPtrType) ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePreferencesNetworkCostParametersPtrOutput)
+}
+
+func (i *virtualMachinePreferencesNetworkCostParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesNetworkCostParameters] {
+	return pulumix.Output[*VirtualMachinePreferencesNetworkCostParameters]{
+		OutputState: i.ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Parameters that affect network cost estimations.
+type VirtualMachinePreferencesNetworkCostParametersOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesNetworkCostParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesNetworkCostParameters)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersOutput) ToVirtualMachinePreferencesNetworkCostParametersOutput() VirtualMachinePreferencesNetworkCostParametersOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersOutput) ToVirtualMachinePreferencesNetworkCostParametersOutputWithContext(ctx context.Context) VirtualMachinePreferencesNetworkCostParametersOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersOutput) ToVirtualMachinePreferencesNetworkCostParametersPtrOutput() VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return o.ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersOutput) ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePreferencesNetworkCostParameters) *VirtualMachinePreferencesNetworkCostParameters {
+		return &v
+	}).(VirtualMachinePreferencesNetworkCostParametersPtrOutput)
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesNetworkCostParameters] {
+	return pulumix.Output[VirtualMachinePreferencesNetworkCostParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+func (o VirtualMachinePreferencesNetworkCostParametersOutput) EstimatedEgressTrafficPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesNetworkCostParameters) *int { return v.EstimatedEgressTrafficPercentage }).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachinePreferencesNetworkCostParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesNetworkCostParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachinePreferencesNetworkCostParameters)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersPtrOutput) ToVirtualMachinePreferencesNetworkCostParametersPtrOutput() VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersPtrOutput) ToVirtualMachinePreferencesNetworkCostParametersPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesNetworkCostParametersPtrOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesNetworkCostParameters] {
+	return pulumix.Output[*VirtualMachinePreferencesNetworkCostParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersPtrOutput) Elem() VirtualMachinePreferencesNetworkCostParametersOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferencesNetworkCostParameters) VirtualMachinePreferencesNetworkCostParameters {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachinePreferencesNetworkCostParameters
+		return ret
+	}).(VirtualMachinePreferencesNetworkCostParametersOutput)
+}
+
+// Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+func (o VirtualMachinePreferencesNetworkCostParametersPtrOutput) EstimatedEgressTrafficPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferencesNetworkCostParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EstimatedEgressTrafficPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Parameters that affect network cost estimations.
+type VirtualMachinePreferencesNetworkCostParametersResponse struct {
+	// Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+	EstimatedEgressTrafficPercentage int `pulumi:"estimatedEgressTrafficPercentage"`
+}
+
+// Parameters that affect network cost estimations.
+type VirtualMachinePreferencesNetworkCostParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesNetworkCostParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesNetworkCostParametersResponse)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersResponseOutput) ToVirtualMachinePreferencesNetworkCostParametersResponseOutput() VirtualMachinePreferencesNetworkCostParametersResponseOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersResponseOutput) ToVirtualMachinePreferencesNetworkCostParametersResponseOutputWithContext(ctx context.Context) VirtualMachinePreferencesNetworkCostParametersResponseOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesNetworkCostParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesNetworkCostParametersResponse] {
+	return pulumix.Output[VirtualMachinePreferencesNetworkCostParametersResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+func (o VirtualMachinePreferencesNetworkCostParametersResponseOutput) EstimatedEgressTrafficPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesNetworkCostParametersResponse) int {
+		return v.EstimatedEgressTrafficPercentage
+	}).(pulumi.IntOutput)
+}
+
+// VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
 type VirtualMachinePreferencesResponse struct {
 	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
 	CommitmentPlan string `pulumi:"commitmentPlan"`
 	// Compute Engine preferences concern insights and recommendations for Compute Engine target.
 	ComputeEnginePreferences ComputeEnginePreferencesResponse `pulumi:"computeEnginePreferences"`
-	// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+	// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+	NetworkCostParameters VirtualMachinePreferencesNetworkCostParametersResponse `pulumi:"networkCostParameters"`
+	// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
 	RegionPreferences RegionPreferencesResponse `pulumi:"regionPreferences"`
+	// Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+	SizingOptimizationCustomParameters VirtualMachinePreferencesSizingOptimizationCustomParametersResponse `pulumi:"sizingOptimizationCustomParameters"`
 	// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
 	SizingOptimizationStrategy string `pulumi:"sizingOptimizationStrategy"`
+	// Preferences concerning Sole Tenant nodes and virtual machines.
+	SoleTenancyPreferences SoleTenancyPreferencesResponse `pulumi:"soleTenancyPreferences"`
+	// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+	TargetProduct string `pulumi:"targetProduct"`
+	// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+	VmwareEnginePreferences VmwareEnginePreferencesResponse `pulumi:"vmwareEnginePreferences"`
 }
 
-// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+// VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
 type VirtualMachinePreferencesResponseOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachinePreferencesResponseOutput) ElementType() reflect.Type {
@@ -3273,14 +4332,609 @@ func (o VirtualMachinePreferencesResponseOutput) ComputeEnginePreferences() Comp
 	}).(ComputeEnginePreferencesResponseOutput)
 }
 
-// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+func (o VirtualMachinePreferencesResponseOutput) NetworkCostParameters() VirtualMachinePreferencesNetworkCostParametersResponseOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesResponse) VirtualMachinePreferencesNetworkCostParametersResponse {
+		return v.NetworkCostParameters
+	}).(VirtualMachinePreferencesNetworkCostParametersResponseOutput)
+}
+
+// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
 func (o VirtualMachinePreferencesResponseOutput) RegionPreferences() RegionPreferencesResponseOutput {
 	return o.ApplyT(func(v VirtualMachinePreferencesResponse) RegionPreferencesResponse { return v.RegionPreferences }).(RegionPreferencesResponseOutput)
+}
+
+// Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+func (o VirtualMachinePreferencesResponseOutput) SizingOptimizationCustomParameters() VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesResponse) VirtualMachinePreferencesSizingOptimizationCustomParametersResponse {
+		return v.SizingOptimizationCustomParameters
+	}).(VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput)
 }
 
 // Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
 func (o VirtualMachinePreferencesResponseOutput) SizingOptimizationStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachinePreferencesResponse) string { return v.SizingOptimizationStrategy }).(pulumi.StringOutput)
+}
+
+// Preferences concerning Sole Tenant nodes and virtual machines.
+func (o VirtualMachinePreferencesResponseOutput) SoleTenancyPreferences() SoleTenancyPreferencesResponseOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesResponse) SoleTenancyPreferencesResponse {
+		return v.SoleTenancyPreferences
+	}).(SoleTenancyPreferencesResponseOutput)
+}
+
+// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+func (o VirtualMachinePreferencesResponseOutput) TargetProduct() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesResponse) string { return v.TargetProduct }).(pulumi.StringOutput)
+}
+
+// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+func (o VirtualMachinePreferencesResponseOutput) VmwareEnginePreferences() VmwareEnginePreferencesResponseOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesResponse) VmwareEnginePreferencesResponse {
+		return v.VmwareEnginePreferences
+	}).(VmwareEnginePreferencesResponseOutput)
+}
+
+// Custom data to use for sizing optimizations.
+type VirtualMachinePreferencesSizingOptimizationCustomParameters struct {
+	// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+	AggregationMethod *VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod `pulumi:"aggregationMethod"`
+	// Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+	CpuUsagePercentage *int `pulumi:"cpuUsagePercentage"`
+	// Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+	MemoryUsagePercentage *int `pulumi:"memoryUsagePercentage"`
+	// Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+	StorageMultiplier *float64 `pulumi:"storageMultiplier"`
+}
+
+// VirtualMachinePreferencesSizingOptimizationCustomParametersInput is an input type that accepts VirtualMachinePreferencesSizingOptimizationCustomParametersArgs and VirtualMachinePreferencesSizingOptimizationCustomParametersOutput values.
+// You can construct a concrete instance of `VirtualMachinePreferencesSizingOptimizationCustomParametersInput` via:
+//
+//	VirtualMachinePreferencesSizingOptimizationCustomParametersArgs{...}
+type VirtualMachinePreferencesSizingOptimizationCustomParametersInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePreferencesSizingOptimizationCustomParametersOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersOutput
+	ToVirtualMachinePreferencesSizingOptimizationCustomParametersOutputWithContext(context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersOutput
+}
+
+// Custom data to use for sizing optimizations.
+type VirtualMachinePreferencesSizingOptimizationCustomParametersArgs struct {
+	// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+	AggregationMethod VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrInput `pulumi:"aggregationMethod"`
+	// Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+	CpuUsagePercentage pulumi.IntPtrInput `pulumi:"cpuUsagePercentage"`
+	// Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+	MemoryUsagePercentage pulumi.IntPtrInput `pulumi:"memoryUsagePercentage"`
+	// Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+	StorageMultiplier pulumi.Float64PtrInput `pulumi:"storageMultiplier"`
+}
+
+func (VirtualMachinePreferencesSizingOptimizationCustomParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationCustomParameters)(nil)).Elem()
+}
+
+func (i VirtualMachinePreferencesSizingOptimizationCustomParametersArgs) ToVirtualMachinePreferencesSizingOptimizationCustomParametersOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersOutput {
+	return i.ToVirtualMachinePreferencesSizingOptimizationCustomParametersOutputWithContext(context.Background())
+}
+
+func (i VirtualMachinePreferencesSizingOptimizationCustomParametersArgs) ToVirtualMachinePreferencesSizingOptimizationCustomParametersOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePreferencesSizingOptimizationCustomParametersOutput)
+}
+
+func (i VirtualMachinePreferencesSizingOptimizationCustomParametersArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesSizingOptimizationCustomParameters] {
+	return pulumix.Output[VirtualMachinePreferencesSizingOptimizationCustomParameters]{
+		OutputState: i.ToVirtualMachinePreferencesSizingOptimizationCustomParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VirtualMachinePreferencesSizingOptimizationCustomParametersArgs) ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return i.ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachinePreferencesSizingOptimizationCustomParametersArgs) ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePreferencesSizingOptimizationCustomParametersOutput).ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(ctx)
+}
+
+// VirtualMachinePreferencesSizingOptimizationCustomParametersPtrInput is an input type that accepts VirtualMachinePreferencesSizingOptimizationCustomParametersArgs, VirtualMachinePreferencesSizingOptimizationCustomParametersPtr and VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput values.
+// You can construct a concrete instance of `VirtualMachinePreferencesSizingOptimizationCustomParametersPtrInput` via:
+//
+//	        VirtualMachinePreferencesSizingOptimizationCustomParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachinePreferencesSizingOptimizationCustomParametersPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput
+	ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput
+}
+
+type virtualMachinePreferencesSizingOptimizationCustomParametersPtrType VirtualMachinePreferencesSizingOptimizationCustomParametersArgs
+
+func VirtualMachinePreferencesSizingOptimizationCustomParametersPtr(v *VirtualMachinePreferencesSizingOptimizationCustomParametersArgs) VirtualMachinePreferencesSizingOptimizationCustomParametersPtrInput {
+	return (*virtualMachinePreferencesSizingOptimizationCustomParametersPtrType)(v)
+}
+
+func (*virtualMachinePreferencesSizingOptimizationCustomParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachinePreferencesSizingOptimizationCustomParameters)(nil)).Elem()
+}
+
+func (i *virtualMachinePreferencesSizingOptimizationCustomParametersPtrType) ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return i.ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachinePreferencesSizingOptimizationCustomParametersPtrType) ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput)
+}
+
+func (i *virtualMachinePreferencesSizingOptimizationCustomParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesSizingOptimizationCustomParameters] {
+	return pulumix.Output[*VirtualMachinePreferencesSizingOptimizationCustomParameters]{
+		OutputState: i.ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Custom data to use for sizing optimizations.
+type VirtualMachinePreferencesSizingOptimizationCustomParametersOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationCustomParameters)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return o.ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePreferencesSizingOptimizationCustomParameters) *VirtualMachinePreferencesSizingOptimizationCustomParameters {
+		return &v
+	}).(VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput)
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesSizingOptimizationCustomParameters] {
+	return pulumix.Output[VirtualMachinePreferencesSizingOptimizationCustomParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) AggregationMethod() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesSizingOptimizationCustomParameters) *VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod {
+		return v.AggregationMethod
+	}).(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput)
+}
+
+// Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) CpuUsagePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesSizingOptimizationCustomParameters) *int { return v.CpuUsagePercentage }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) MemoryUsagePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesSizingOptimizationCustomParameters) *int {
+		return v.MemoryUsagePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersOutput) StorageMultiplier() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesSizingOptimizationCustomParameters) *float64 {
+		return v.StorageMultiplier
+	}).(pulumi.Float64PtrOutput)
+}
+
+type VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachinePreferencesSizingOptimizationCustomParameters)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesSizingOptimizationCustomParameters] {
+	return pulumix.Output[*VirtualMachinePreferencesSizingOptimizationCustomParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput) Elem() VirtualMachinePreferencesSizingOptimizationCustomParametersOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferencesSizingOptimizationCustomParameters) VirtualMachinePreferencesSizingOptimizationCustomParameters {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachinePreferencesSizingOptimizationCustomParameters
+		return ret
+	}).(VirtualMachinePreferencesSizingOptimizationCustomParametersOutput)
+}
+
+// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput) AggregationMethod() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferencesSizingOptimizationCustomParameters) *VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod {
+		if v == nil {
+			return nil
+		}
+		return v.AggregationMethod
+	}).(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput)
+}
+
+// Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput) CpuUsagePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferencesSizingOptimizationCustomParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuUsagePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput) MemoryUsagePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferencesSizingOptimizationCustomParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryUsagePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput) StorageMultiplier() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferencesSizingOptimizationCustomParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StorageMultiplier
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Custom data to use for sizing optimizations.
+type VirtualMachinePreferencesSizingOptimizationCustomParametersResponse struct {
+	// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+	AggregationMethod string `pulumi:"aggregationMethod"`
+	// Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+	CpuUsagePercentage int `pulumi:"cpuUsagePercentage"`
+	// Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+	MemoryUsagePercentage int `pulumi:"memoryUsagePercentage"`
+	// Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+	StorageMultiplier float64 `pulumi:"storageMultiplier"`
+}
+
+// Custom data to use for sizing optimizations.
+type VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationCustomParametersResponse)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesSizingOptimizationCustomParametersResponse] {
+	return pulumix.Output[VirtualMachinePreferencesSizingOptimizationCustomParametersResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput) AggregationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesSizingOptimizationCustomParametersResponse) string {
+		return v.AggregationMethod
+	}).(pulumi.StringOutput)
+}
+
+// Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput) CpuUsagePercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesSizingOptimizationCustomParametersResponse) int {
+		return v.CpuUsagePercentage
+	}).(pulumi.IntOutput)
+}
+
+// Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput) MemoryUsagePercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v VirtualMachinePreferencesSizingOptimizationCustomParametersResponse) int {
+		return v.MemoryUsagePercentage
+	}).(pulumi.IntOutput)
+}
+
+// Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput) StorageMultiplier() pulumi.Float64Output {
+	return o.ApplyT(func(v VirtualMachinePreferencesSizingOptimizationCustomParametersResponse) float64 {
+		return v.StorageMultiplier
+	}).(pulumi.Float64Output)
+}
+
+// The user preferences relating to Google Cloud VMware Engine target platform.
+type VmwareEnginePreferences struct {
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+	CommitmentPlan *VmwareEnginePreferencesCommitmentPlan `pulumi:"commitmentPlan"`
+	// CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+	CpuOvercommitRatio *float64 `pulumi:"cpuOvercommitRatio"`
+	// Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+	MemoryOvercommitRatio *float64 `pulumi:"memoryOvercommitRatio"`
+	// The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+	StorageDeduplicationCompressionRatio *float64 `pulumi:"storageDeduplicationCompressionRatio"`
+}
+
+// VmwareEnginePreferencesInput is an input type that accepts VmwareEnginePreferencesArgs and VmwareEnginePreferencesOutput values.
+// You can construct a concrete instance of `VmwareEnginePreferencesInput` via:
+//
+//	VmwareEnginePreferencesArgs{...}
+type VmwareEnginePreferencesInput interface {
+	pulumi.Input
+
+	ToVmwareEnginePreferencesOutput() VmwareEnginePreferencesOutput
+	ToVmwareEnginePreferencesOutputWithContext(context.Context) VmwareEnginePreferencesOutput
+}
+
+// The user preferences relating to Google Cloud VMware Engine target platform.
+type VmwareEnginePreferencesArgs struct {
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+	CommitmentPlan VmwareEnginePreferencesCommitmentPlanPtrInput `pulumi:"commitmentPlan"`
+	// CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+	CpuOvercommitRatio pulumi.Float64PtrInput `pulumi:"cpuOvercommitRatio"`
+	// Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+	MemoryOvercommitRatio pulumi.Float64PtrInput `pulumi:"memoryOvercommitRatio"`
+	// The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+	StorageDeduplicationCompressionRatio pulumi.Float64PtrInput `pulumi:"storageDeduplicationCompressionRatio"`
+}
+
+func (VmwareEnginePreferencesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareEnginePreferences)(nil)).Elem()
+}
+
+func (i VmwareEnginePreferencesArgs) ToVmwareEnginePreferencesOutput() VmwareEnginePreferencesOutput {
+	return i.ToVmwareEnginePreferencesOutputWithContext(context.Background())
+}
+
+func (i VmwareEnginePreferencesArgs) ToVmwareEnginePreferencesOutputWithContext(ctx context.Context) VmwareEnginePreferencesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareEnginePreferencesOutput)
+}
+
+func (i VmwareEnginePreferencesArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareEnginePreferences] {
+	return pulumix.Output[VmwareEnginePreferences]{
+		OutputState: i.ToVmwareEnginePreferencesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VmwareEnginePreferencesArgs) ToVmwareEnginePreferencesPtrOutput() VmwareEnginePreferencesPtrOutput {
+	return i.ToVmwareEnginePreferencesPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareEnginePreferencesArgs) ToVmwareEnginePreferencesPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareEnginePreferencesOutput).ToVmwareEnginePreferencesPtrOutputWithContext(ctx)
+}
+
+// VmwareEnginePreferencesPtrInput is an input type that accepts VmwareEnginePreferencesArgs, VmwareEnginePreferencesPtr and VmwareEnginePreferencesPtrOutput values.
+// You can construct a concrete instance of `VmwareEnginePreferencesPtrInput` via:
+//
+//	        VmwareEnginePreferencesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareEnginePreferencesPtrInput interface {
+	pulumi.Input
+
+	ToVmwareEnginePreferencesPtrOutput() VmwareEnginePreferencesPtrOutput
+	ToVmwareEnginePreferencesPtrOutputWithContext(context.Context) VmwareEnginePreferencesPtrOutput
+}
+
+type vmwareEnginePreferencesPtrType VmwareEnginePreferencesArgs
+
+func VmwareEnginePreferencesPtr(v *VmwareEnginePreferencesArgs) VmwareEnginePreferencesPtrInput {
+	return (*vmwareEnginePreferencesPtrType)(v)
+}
+
+func (*vmwareEnginePreferencesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareEnginePreferences)(nil)).Elem()
+}
+
+func (i *vmwareEnginePreferencesPtrType) ToVmwareEnginePreferencesPtrOutput() VmwareEnginePreferencesPtrOutput {
+	return i.ToVmwareEnginePreferencesPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareEnginePreferencesPtrType) ToVmwareEnginePreferencesPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareEnginePreferencesPtrOutput)
+}
+
+func (i *vmwareEnginePreferencesPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareEnginePreferences] {
+	return pulumix.Output[*VmwareEnginePreferences]{
+		OutputState: i.ToVmwareEnginePreferencesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The user preferences relating to Google Cloud VMware Engine target platform.
+type VmwareEnginePreferencesOutput struct{ *pulumi.OutputState }
+
+func (VmwareEnginePreferencesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareEnginePreferences)(nil)).Elem()
+}
+
+func (o VmwareEnginePreferencesOutput) ToVmwareEnginePreferencesOutput() VmwareEnginePreferencesOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesOutput) ToVmwareEnginePreferencesOutputWithContext(ctx context.Context) VmwareEnginePreferencesOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesOutput) ToVmwareEnginePreferencesPtrOutput() VmwareEnginePreferencesPtrOutput {
+	return o.ToVmwareEnginePreferencesPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareEnginePreferencesOutput) ToVmwareEnginePreferencesPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareEnginePreferences) *VmwareEnginePreferences {
+		return &v
+	}).(VmwareEnginePreferencesPtrOutput)
+}
+
+func (o VmwareEnginePreferencesOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareEnginePreferences] {
+	return pulumix.Output[VmwareEnginePreferences]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+func (o VmwareEnginePreferencesOutput) CommitmentPlan() VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return o.ApplyT(func(v VmwareEnginePreferences) *VmwareEnginePreferencesCommitmentPlan { return v.CommitmentPlan }).(VmwareEnginePreferencesCommitmentPlanPtrOutput)
+}
+
+// CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+func (o VmwareEnginePreferencesOutput) CpuOvercommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VmwareEnginePreferences) *float64 { return v.CpuOvercommitRatio }).(pulumi.Float64PtrOutput)
+}
+
+// Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+func (o VmwareEnginePreferencesOutput) MemoryOvercommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VmwareEnginePreferences) *float64 { return v.MemoryOvercommitRatio }).(pulumi.Float64PtrOutput)
+}
+
+// The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+func (o VmwareEnginePreferencesOutput) StorageDeduplicationCompressionRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VmwareEnginePreferences) *float64 { return v.StorageDeduplicationCompressionRatio }).(pulumi.Float64PtrOutput)
+}
+
+type VmwareEnginePreferencesPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareEnginePreferencesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareEnginePreferences)(nil)).Elem()
+}
+
+func (o VmwareEnginePreferencesPtrOutput) ToVmwareEnginePreferencesPtrOutput() VmwareEnginePreferencesPtrOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesPtrOutput) ToVmwareEnginePreferencesPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesPtrOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareEnginePreferences] {
+	return pulumix.Output[*VmwareEnginePreferences]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmwareEnginePreferencesPtrOutput) Elem() VmwareEnginePreferencesOutput {
+	return o.ApplyT(func(v *VmwareEnginePreferences) VmwareEnginePreferences {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareEnginePreferences
+		return ret
+	}).(VmwareEnginePreferencesOutput)
+}
+
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+func (o VmwareEnginePreferencesPtrOutput) CommitmentPlan() VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return o.ApplyT(func(v *VmwareEnginePreferences) *VmwareEnginePreferencesCommitmentPlan {
+		if v == nil {
+			return nil
+		}
+		return v.CommitmentPlan
+	}).(VmwareEnginePreferencesCommitmentPlanPtrOutput)
+}
+
+// CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+func (o VmwareEnginePreferencesPtrOutput) CpuOvercommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VmwareEnginePreferences) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CpuOvercommitRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+func (o VmwareEnginePreferencesPtrOutput) MemoryOvercommitRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VmwareEnginePreferences) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryOvercommitRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+func (o VmwareEnginePreferencesPtrOutput) StorageDeduplicationCompressionRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VmwareEnginePreferences) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StorageDeduplicationCompressionRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The user preferences relating to Google Cloud VMware Engine target platform.
+type VmwareEnginePreferencesResponse struct {
+	// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+	CommitmentPlan string `pulumi:"commitmentPlan"`
+	// CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+	CpuOvercommitRatio float64 `pulumi:"cpuOvercommitRatio"`
+	// Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+	MemoryOvercommitRatio float64 `pulumi:"memoryOvercommitRatio"`
+	// The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+	StorageDeduplicationCompressionRatio float64 `pulumi:"storageDeduplicationCompressionRatio"`
+}
+
+// The user preferences relating to Google Cloud VMware Engine target platform.
+type VmwareEnginePreferencesResponseOutput struct{ *pulumi.OutputState }
+
+func (VmwareEnginePreferencesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareEnginePreferencesResponse)(nil)).Elem()
+}
+
+func (o VmwareEnginePreferencesResponseOutput) ToVmwareEnginePreferencesResponseOutput() VmwareEnginePreferencesResponseOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesResponseOutput) ToVmwareEnginePreferencesResponseOutputWithContext(ctx context.Context) VmwareEnginePreferencesResponseOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareEnginePreferencesResponse] {
+	return pulumix.Output[VmwareEnginePreferencesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+func (o VmwareEnginePreferencesResponseOutput) CommitmentPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareEnginePreferencesResponse) string { return v.CommitmentPlan }).(pulumi.StringOutput)
+}
+
+// CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+func (o VmwareEnginePreferencesResponseOutput) CpuOvercommitRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v VmwareEnginePreferencesResponse) float64 { return v.CpuOvercommitRatio }).(pulumi.Float64Output)
+}
+
+// Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+func (o VmwareEnginePreferencesResponseOutput) MemoryOvercommitRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v VmwareEnginePreferencesResponse) float64 { return v.MemoryOvercommitRatio }).(pulumi.Float64Output)
+}
+
+// The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+func (o VmwareEnginePreferencesResponseOutput) StorageDeduplicationCompressionRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v VmwareEnginePreferencesResponse) float64 { return v.StorageDeduplicationCompressionRatio }).(pulumi.Float64Output)
 }
 
 func init() {
@@ -3300,10 +4954,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionPreferencesPtrInput)(nil)).Elem(), RegionPreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReportConfigGroupPreferenceSetAssignmentInput)(nil)).Elem(), ReportConfigGroupPreferenceSetAssignmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReportConfigGroupPreferenceSetAssignmentArrayInput)(nil)).Elem(), ReportConfigGroupPreferenceSetAssignmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenancyPreferencesInput)(nil)).Elem(), SoleTenancyPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenancyPreferencesPtrInput)(nil)).Elem(), SoleTenancyPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenantNodeTypeInput)(nil)).Elem(), SoleTenantNodeTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenantNodeTypeArrayInput)(nil)).Elem(), SoleTenantNodeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UploadFileInfoInput)(nil)).Elem(), UploadFileInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UploadFileInfoPtrInput)(nil)).Elem(), UploadFileInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesInput)(nil)).Elem(), VirtualMachinePreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesPtrInput)(nil)).Elem(), VirtualMachinePreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesNetworkCostParametersInput)(nil)).Elem(), VirtualMachinePreferencesNetworkCostParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesNetworkCostParametersPtrInput)(nil)).Elem(), VirtualMachinePreferencesNetworkCostParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationCustomParametersInput)(nil)).Elem(), VirtualMachinePreferencesSizingOptimizationCustomParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationCustomParametersPtrInput)(nil)).Elem(), VirtualMachinePreferencesSizingOptimizationCustomParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareEnginePreferencesInput)(nil)).Elem(), VmwareEnginePreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareEnginePreferencesPtrInput)(nil)).Elem(), VmwareEnginePreferencesArgs{})
 	pulumi.RegisterOutputType(ComputeEnginePreferencesOutput{})
 	pulumi.RegisterOutputType(ComputeEnginePreferencesPtrOutput{})
 	pulumi.RegisterOutputType(ComputeEnginePreferencesResponseOutput{})
@@ -3354,12 +5018,35 @@ func init() {
 	pulumi.RegisterOutputType(ReportSummaryMachineSeriesAllocationResponseOutput{})
 	pulumi.RegisterOutputType(ReportSummaryMachineSeriesAllocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReportSummaryResponseOutput{})
+	pulumi.RegisterOutputType(ReportSummarySoleTenantFindingResponseOutput{})
+	pulumi.RegisterOutputType(ReportSummarySoleTenantNodeAllocationResponseOutput{})
+	pulumi.RegisterOutputType(ReportSummarySoleTenantNodeAllocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReportSummaryUtilizationChartDataResponseOutput{})
+	pulumi.RegisterOutputType(ReportSummaryVMWareEngineFindingResponseOutput{})
+	pulumi.RegisterOutputType(ReportSummaryVMWareNodeAllocationResponseOutput{})
+	pulumi.RegisterOutputType(ReportSummaryVMWareNodeAllocationResponseArrayOutput{})
+	pulumi.RegisterOutputType(ReportSummaryVMWareNodeResponseOutput{})
+	pulumi.RegisterOutputType(SoleTenancyPreferencesOutput{})
+	pulumi.RegisterOutputType(SoleTenancyPreferencesPtrOutput{})
+	pulumi.RegisterOutputType(SoleTenancyPreferencesResponseOutput{})
+	pulumi.RegisterOutputType(SoleTenantNodeTypeOutput{})
+	pulumi.RegisterOutputType(SoleTenantNodeTypeArrayOutput{})
+	pulumi.RegisterOutputType(SoleTenantNodeTypeResponseOutput{})
+	pulumi.RegisterOutputType(SoleTenantNodeTypeResponseArrayOutput{})
 	pulumi.RegisterOutputType(UploadFileInfoOutput{})
 	pulumi.RegisterOutputType(UploadFileInfoPtrOutput{})
 	pulumi.RegisterOutputType(UploadFileInfoResponseOutput{})
 	pulumi.RegisterOutputType(ValidationReportResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePreferencesOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePreferencesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesNetworkCostParametersOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesNetworkCostParametersPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesNetworkCostParametersResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePreferencesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesSizingOptimizationCustomParametersOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesSizingOptimizationCustomParametersPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesSizingOptimizationCustomParametersResponseOutput{})
+	pulumi.RegisterOutputType(VmwareEnginePreferencesOutput{})
+	pulumi.RegisterOutputType(VmwareEnginePreferencesPtrOutput{})
+	pulumi.RegisterOutputType(VmwareEnginePreferencesResponseOutput{})
 }

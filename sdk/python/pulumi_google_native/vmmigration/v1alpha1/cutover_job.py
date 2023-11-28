@@ -174,6 +174,7 @@ class CutoverJob(pulumi.CustomResource):
             if source_id is None and not opts.urn:
                 raise TypeError("Missing required property 'source_id'")
             __props__.__dict__["source_id"] = source_id
+            __props__.__dict__["compute_engine_disks_target_details"] = None
             __props__.__dict__["compute_engine_target_details"] = None
             __props__.__dict__["compute_engine_vm_details"] = None
             __props__.__dict__["create_time"] = None
@@ -211,6 +212,7 @@ class CutoverJob(pulumi.CustomResource):
 
         __props__ = CutoverJobArgs.__new__(CutoverJobArgs)
 
+        __props__.__dict__["compute_engine_disks_target_details"] = None
         __props__.__dict__["compute_engine_target_details"] = None
         __props__.__dict__["compute_engine_vm_details"] = None
         __props__.__dict__["create_time"] = None
@@ -231,6 +233,14 @@ class CutoverJob(pulumi.CustomResource):
         __props__.__dict__["steps"] = None
         __props__.__dict__["target_details"] = None
         return CutoverJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="computeEngineDisksTargetDetails")
+    def compute_engine_disks_target_details(self) -> pulumi.Output['outputs.ComputeEngineDisksTargetDetailsResponse']:
+        """
+        Details of the target Persistent Disks in Compute Engine.
+        """
+        return pulumi.get(self, "compute_engine_disks_target_details")
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")

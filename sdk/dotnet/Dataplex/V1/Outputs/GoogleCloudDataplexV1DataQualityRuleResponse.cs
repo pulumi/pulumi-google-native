@@ -21,47 +21,55 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string Column;
         /// <summary>
+        /// Optional. Description of the rule. The maximum length is 1,024 characters.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
         /// </summary>
         public readonly string Dimension;
         /// <summary>
-        /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+        /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
         /// </summary>
         public readonly bool IgnoreNull;
         /// <summary>
-        /// ColumnMap rule which evaluates whether each column value is null.
+        /// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// Row-level rule which evaluates whether each column value is null.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse NonNullExpectation;
         /// <summary>
-        /// ColumnMap rule which evaluates whether each column value lies between a specified range.
+        /// Row-level rule which evaluates whether each column value lies between a specified range.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse RangeExpectation;
         /// <summary>
-        /// ColumnMap rule which evaluates whether each column value matches a specified regex.
+        /// Row-level rule which evaluates whether each column value matches a specified regex.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse RegexExpectation;
         /// <summary>
-        /// Table rule which evaluates whether each row passes the specified condition.
+        /// Row-level rule which evaluates whether each row in a table passes the specified condition.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse RowConditionExpectation;
         /// <summary>
-        /// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        /// Row-level rule which evaluates whether each column value is contained by a specified set.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse SetExpectation;
         /// <summary>
-        /// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        /// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse StatisticRangeExpectation;
         /// <summary>
-        /// Table rule which evaluates whether the provided expression is true.
+        /// Aggregate rule which evaluates whether the provided expression is true for a table.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse TableConditionExpectation;
         /// <summary>
-        /// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+        /// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
         /// </summary>
         public readonly double Threshold;
         /// <summary>
-        /// ColumnAggregate rule which evaluates whether the column has duplicates.
+        /// Row-level rule which evaluates whether each column value is unique.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse UniquenessExpectation;
 
@@ -69,9 +77,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         private GoogleCloudDataplexV1DataQualityRuleResponse(
             string column,
 
+            string description,
+
             string dimension,
 
             bool ignoreNull,
+
+            string name,
 
             Outputs.GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse nonNullExpectation,
 
@@ -92,8 +104,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
             Outputs.GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse uniquenessExpectation)
         {
             Column = column;
+            Description = description;
             Dimension = dimension;
             IgnoreNull = ignoreNull;
+            Name = name;
             NonNullExpectation = nonNullExpectation;
             RangeExpectation = rangeExpectation;
             RegexExpectation = regexExpectation;

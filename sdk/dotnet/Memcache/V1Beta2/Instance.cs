@@ -118,6 +118,12 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+        /// </summary>
+        [Output("reservedIpRangeId")]
+        public Output<ImmutableArray<string>> ReservedIpRangeId { get; private set; } = null!;
+
+        /// <summary>
         /// The state of this Memcached instance.
         /// </summary>
         [Output("state")]
@@ -275,6 +281,18 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("reservedIpRangeId")]
+        private InputList<string>? _reservedIpRangeId;
+
+        /// <summary>
+        /// Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+        /// </summary>
+        public InputList<string> ReservedIpRangeId
+        {
+            get => _reservedIpRangeId ?? (_reservedIpRangeId = new InputList<string>());
+            set => _reservedIpRangeId = value;
+        }
 
         [Input("zones")]
         private InputList<string>? _zones;

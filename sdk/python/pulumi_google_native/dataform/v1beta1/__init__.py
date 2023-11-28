@@ -5,7 +5,11 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .collection_iam_binding import *
+from .collection_iam_member import *
+from .collection_iam_policy import *
 from .compilation_result import *
+from .get_collection_iam_policy import *
 from .get_compilation_result import *
 from .get_release_config import *
 from .get_repository import *

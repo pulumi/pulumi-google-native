@@ -60,6 +60,8 @@ type LookupInstanceResult struct {
 	NodeCount int `pulumi:"nodeCount"`
 	// User defined parameters to apply to the memcached process on each node.
 	Parameters MemcacheParametersResponse `pulumi:"parameters"`
+	// Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+	ReservedIpRangeId []string `pulumi:"reservedIpRangeId"`
 	// The state of this Memcached instance.
 	State string `pulumi:"state"`
 	// The time the instance was updated.
@@ -186,6 +188,11 @@ func (o LookupInstanceResultOutput) NodeCount() pulumi.IntOutput {
 // User defined parameters to apply to the memcached process on each node.
 func (o LookupInstanceResultOutput) Parameters() MemcacheParametersResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) MemcacheParametersResponse { return v.Parameters }).(MemcacheParametersResponseOutput)
+}
+
+// Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+func (o LookupInstanceResultOutput) ReservedIpRangeId() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.ReservedIpRangeId }).(pulumi.StringArrayOutput)
 }
 
 // The state of this Memcached instance.

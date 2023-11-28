@@ -250,7 +250,7 @@ class EndpointArgs:
         :param pulumi.Input['CloudFunctionEndpointArgs'] cloud_function: A [Cloud Function](https://cloud.google.com/functions).
         :param pulumi.Input['CloudRunRevisionEndpointArgs'] cloud_run_revision: A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
         :param pulumi.Input[str] cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
-        :param pulumi.Input[str] forwarding_rule: Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+        :param pulumi.Input[str] forwarding_rule: A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
         :param pulumi.Input[str] gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param pulumi.Input[str] instance: A Compute Engine instance URI.
         :param pulumi.Input[str] ip_address: The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
@@ -336,7 +336,7 @@ class EndpointArgs:
     @pulumi.getter(name="forwardingRule")
     def forwarding_rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+        A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
         """
         return pulumi.get(self, "forwarding_rule")
 

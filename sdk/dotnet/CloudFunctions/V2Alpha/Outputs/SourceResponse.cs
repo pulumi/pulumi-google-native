@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
     public sealed class SourceResponse
     {
         /// <summary>
+        /// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+        /// </summary>
+        public readonly string GitUri;
+        /// <summary>
         /// If provided, get the source from this location in a Cloud Source Repository.
         /// </summary>
         public readonly Outputs.RepoSourceResponse RepoSource;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
 
         [OutputConstructor]
         private SourceResponse(
+            string gitUri,
+
             Outputs.RepoSourceResponse repoSource,
 
             Outputs.StorageSourceResponse storageSource)
         {
+            GitUri = gitUri;
             RepoSource = repoSource;
             StorageSource = storageSource;
         }

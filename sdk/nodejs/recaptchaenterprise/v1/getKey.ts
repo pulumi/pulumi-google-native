@@ -42,19 +42,19 @@ export interface GetKeyResult {
      */
     readonly iosSettings: outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse;
     /**
-     * See Creating and managing labels.
+     * Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
      */
     readonly labels: {[key: string]: string};
     /**
-     * The resource name for the Key in the format "projects/{project}/keys/{key}".
+     * Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
      */
     readonly name: string;
     /**
-     * Options for user acceptance testing.
+     * Optional. Options for user acceptance testing.
      */
     readonly testingOptions: outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse;
     /**
-     * Settings for WAF
+     * Optional. Settings for WAF
      */
     readonly wafSettings: outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse;
     /**

@@ -41,6 +41,8 @@ type LookupNodeGroupResult struct {
 	Kind string `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint string `pulumi:"locationHint"`
+	// Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
 	MaintenancePolicy string                             `pulumi:"maintenancePolicy"`
 	MaintenanceWindow NodeGroupMaintenanceWindowResponse `pulumi:"maintenanceWindow"`
@@ -129,6 +131,11 @@ func (o LookupNodeGroupResultOutput) Kind() pulumi.StringOutput {
 // An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 func (o LookupNodeGroupResultOutput) LocationHint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeGroupResult) string { return v.LocationHint }).(pulumi.StringOutput)
+}
+
+// Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+func (o LookupNodeGroupResultOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeGroupResult) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
 
 // Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.

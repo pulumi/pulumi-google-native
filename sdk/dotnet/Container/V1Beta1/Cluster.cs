@@ -118,6 +118,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+        /// </summary>
+        [Output("enableK8sBetaApis")]
+        public Output<Outputs.K8sBetaAPIConfigResponse> EnableK8sBetaApis { get; private set; } = null!;
+
+        /// <summary>
         /// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
         /// </summary>
         [Output("enableKubernetesAlpha")]
@@ -134,6 +140,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// GKE Enterprise Configuration.
+        /// </summary>
+        [Output("enterpriseConfig")]
+        public Output<Outputs.EnterpriseConfigResponse> EnterpriseConfig { get; private set; } = null!;
 
         /// <summary>
         /// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
@@ -325,6 +337,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+        /// </summary>
+        [Output("parentProductConfig")]
+        public Output<Outputs.ParentProductConfigResponse> ParentProductConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for the PodSecurityPolicy feature.
         /// </summary>
         [Output("podSecurityPolicyConfig")]
@@ -346,7 +364,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Enable/Disable Protect API features for the cluster.
+        /// Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         /// </summary>
         [Output("protectConfig")]
         public Output<Outputs.ProtectConfigResponse> ProtectConfig { get; private set; } = null!;
@@ -368,6 +386,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("resourceUsageExportConfig")]
         public Output<Outputs.ResourceUsageExportConfigResponse> ResourceUsageExportConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable/Disable Security Posture API features for the cluster.
+        /// </summary>
+        [Output("securityPostureConfig")]
+        public Output<Outputs.SecurityPostureConfigResponse> SecurityPostureConfig { get; private set; } = null!;
 
         /// <summary>
         /// [Output only] Server-defined URL for the resource.
@@ -594,6 +618,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+        /// </summary>
+        [Input("enableK8sBetaApis")]
+        public Input<Inputs.K8sBetaAPIConfigArgs>? EnableK8sBetaApis { get; set; }
+
+        /// <summary>
         /// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
         /// </summary>
         [Input("enableKubernetesAlpha")]
@@ -604,6 +634,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("enableTpu")]
         public Input<bool>? EnableTpu { get; set; }
+
+        /// <summary>
+        /// GKE Enterprise Configuration.
+        /// </summary>
+        [Input("enterpriseConfig")]
+        public Input<Inputs.EnterpriseConfigArgs>? EnterpriseConfig { get; set; }
 
         /// <summary>
         /// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
@@ -802,6 +838,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<string>? Parent { get; set; }
 
         /// <summary>
+        /// The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+        /// </summary>
+        [Input("parentProductConfig")]
+        public Input<Inputs.ParentProductConfigArgs>? ParentProductConfig { get; set; }
+
+        /// <summary>
         /// Configuration for the PodSecurityPolicy feature.
         /// </summary>
         [Input("podSecurityPolicyConfig")]
@@ -826,7 +868,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Enable/Disable Protect API features for the cluster.
+        /// Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         /// </summary>
         [Input("protectConfig")]
         public Input<Inputs.ProtectConfigArgs>? ProtectConfig { get; set; }
@@ -854,6 +896,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("resourceUsageExportConfig")]
         public Input<Inputs.ResourceUsageExportConfigArgs>? ResourceUsageExportConfig { get; set; }
+
+        /// <summary>
+        /// Enable/Disable Security Posture API features for the cluster.
+        /// </summary>
+        [Input("securityPostureConfig")]
+        public Input<Inputs.SecurityPostureConfigArgs>? SecurityPostureConfig { get; set; }
 
         /// <summary>
         /// Shielded Nodes configuration.

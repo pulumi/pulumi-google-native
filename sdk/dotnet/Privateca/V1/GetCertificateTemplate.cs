@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+        /// </summary>
+        public readonly string MaximumLifetime;
+        /// <summary>
         /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         /// </summary>
         public readonly string Name;
@@ -106,6 +110,8 @@ namespace Pulumi.GoogleNative.Privateca.V1
 
             ImmutableDictionary<string, string> labels,
 
+            string maximumLifetime,
+
             string name,
 
             Outputs.CertificateExtensionConstraintsResponse passthroughExtensions,
@@ -118,6 +124,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
             Description = description;
             IdentityConstraints = identityConstraints;
             Labels = labels;
+            MaximumLifetime = maximumLifetime;
             Name = name;
             PassthroughExtensions = passthroughExtensions;
             PredefinedValues = predefinedValues;

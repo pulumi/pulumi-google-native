@@ -33,13 +33,17 @@ type InstanceGroupManagerResizeRequest struct {
 	QueuingPolicy QueuingPolicyResponseOutput `pulumi:"queuingPolicy"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+	RequestedRunDuration DurationResponseOutput `pulumi:"requestedRunDuration"`
+	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
+	ResizeBy pulumi.IntOutput `pulumi:"resizeBy"`
 	// The URL for this resize request. The server defines this URL.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// [Output only] Current state of the request.
 	State pulumi.StringOutput `pulumi:"state"`
-	// [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+	// [Output only] Status of the request.
 	Status InstanceGroupManagerResizeRequestStatusResponseOutput `pulumi:"status"`
 	Zone   pulumi.StringOutput                                   `pulumi:"zone"`
 }
@@ -105,7 +109,11 @@ type instanceGroupManagerResizeRequestArgs struct {
 	QueuingPolicy *QueuingPolicy `pulumi:"queuingPolicy"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
-	Zone      *string `pulumi:"zone"`
+	// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+	RequestedRunDuration *Duration `pulumi:"requestedRunDuration"`
+	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
+	ResizeBy *int    `pulumi:"resizeBy"`
+	Zone     *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a InstanceGroupManagerResizeRequest resource.
@@ -122,7 +130,11 @@ type InstanceGroupManagerResizeRequestArgs struct {
 	QueuingPolicy QueuingPolicyPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
-	Zone      pulumi.StringPtrInput
+	// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+	RequestedRunDuration DurationPtrInput
+	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
+	ResizeBy pulumi.IntPtrInput
+	Zone     pulumi.StringPtrInput
 }
 
 func (InstanceGroupManagerResizeRequestArgs) ElementType() reflect.Type {
@@ -217,6 +229,16 @@ func (o InstanceGroupManagerResizeRequestOutput) RequestId() pulumi.StringPtrOut
 	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
+// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+func (o InstanceGroupManagerResizeRequestOutput) RequestedRunDuration() DurationResponseOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) DurationResponseOutput { return v.RequestedRunDuration }).(DurationResponseOutput)
+}
+
+// The number of instances to be created by this resize request. The group's target size will be increased by this number.
+func (o InstanceGroupManagerResizeRequestOutput) ResizeBy() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) pulumi.IntOutput { return v.ResizeBy }).(pulumi.IntOutput)
+}
+
 // The URL for this resize request. The server defines this URL.
 func (o InstanceGroupManagerResizeRequestOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -232,7 +254,7 @@ func (o InstanceGroupManagerResizeRequestOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+// [Output only] Status of the request.
 func (o InstanceGroupManagerResizeRequestOutput) Status() InstanceGroupManagerResizeRequestStatusResponseOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) InstanceGroupManagerResizeRequestStatusResponseOutput {
 		return v.Status

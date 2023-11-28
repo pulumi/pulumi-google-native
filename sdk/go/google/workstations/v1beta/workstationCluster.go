@@ -17,39 +17,41 @@ import (
 type WorkstationCluster struct {
 	pulumi.CustomResourceState
 
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Status conditions describing the current resource state.
+	// Status conditions describing the workstation cluster's current state.
 	Conditions StatusResponseArrayOutput `pulumi:"conditions"`
-	// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+	// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
 	ControlPlaneIp pulumi.StringOutput `pulumi:"controlPlaneIp"`
-	// Time when this resource was created.
+	// Time when this workstation cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+	// Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
 	Degraded pulumi.BoolOutput `pulumi:"degraded"`
-	// Time when this resource was soft-deleted.
+	// Time when this workstation cluster was soft-deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// Human-readable name for this resource.
+	// Optional. Human-readable name for this workstation cluster.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Configuration options for a custom domain.
+	DomainConfig DomainConfigResponseOutput `pulumi:"domainConfig"`
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Full name of this resource.
+	// Identifier. Full name of this workstation cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+	// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// Configuration for private cluster.
+	// Optional. Configuration for private workstation cluster.
 	PrivateClusterConfig PrivateClusterConfigResponseOutput `pulumi:"privateClusterConfig"`
 	Project              pulumi.StringOutput                `pulumi:"project"`
-	// Indicates whether this resource is currently being updated to match its intended state.
+	// Indicates whether this workstation cluster is currently being updated to match its intended state.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
-	// A system-assigned unique identified for this resource.
+	// A system-assigned unique identifier for this workstation cluster.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// Time when this resource was most recently updated.
+	// Time when this workstation cluster was most recently updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Required. ID to use for the workstation cluster.
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
@@ -104,23 +106,25 @@ func (WorkstationClusterState) ElementType() reflect.Type {
 }
 
 type workstationClusterArgs struct {
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Human-readable name for this resource.
+	// Optional. Human-readable name for this workstation cluster.
 	DisplayName *string `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Configuration options for a custom domain.
+	DomainConfig *DomainConfig `pulumi:"domainConfig"`
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Full name of this resource.
+	// Identifier. Full name of this workstation cluster.
 	Name *string `pulumi:"name"`
-	// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+	// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
 	Network *string `pulumi:"network"`
-	// Configuration for private cluster.
+	// Optional. Configuration for private workstation cluster.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
 	Project              *string               `pulumi:"project"`
-	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// Required. ID to use for the workstation cluster.
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
@@ -128,23 +132,25 @@ type workstationClusterArgs struct {
 
 // The set of arguments for constructing a WorkstationCluster resource.
 type WorkstationClusterArgs struct {
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations pulumi.StringMapInput
-	// Human-readable name for this resource.
+	// Optional. Human-readable name for this workstation cluster.
 	DisplayName pulumi.StringPtrInput
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Configuration options for a custom domain.
+	DomainConfig DomainConfigPtrInput
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Full name of this resource.
+	// Identifier. Full name of this workstation cluster.
 	Name pulumi.StringPtrInput
-	// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+	// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
 	Network pulumi.StringPtrInput
-	// Configuration for private cluster.
+	// Optional. Configuration for private workstation cluster.
 	PrivateClusterConfig PrivateClusterConfigPtrInput
 	Project              pulumi.StringPtrInput
-	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
 	Subnetwork pulumi.StringPtrInput
 	// Required. ID to use for the workstation cluster.
 	WorkstationClusterId pulumi.StringInput
@@ -199,47 +205,52 @@ func (o WorkstationClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*
 	}
 }
 
-// Client-specified annotations.
+// Optional. Client-specified annotations.
 func (o WorkstationClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Status conditions describing the current resource state.
+// Status conditions describing the workstation cluster's current state.
 func (o WorkstationClusterOutput) Conditions() StatusResponseArrayOutput {
 	return o.ApplyT(func(v *WorkstationCluster) StatusResponseArrayOutput { return v.Conditions }).(StatusResponseArrayOutput)
 }
 
-// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
 func (o WorkstationClusterOutput) ControlPlaneIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.ControlPlaneIp }).(pulumi.StringOutput)
 }
 
-// Time when this resource was created.
+// Time when this workstation cluster was created.
 func (o WorkstationClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+// Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
 func (o WorkstationClusterOutput) Degraded() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.BoolOutput { return v.Degraded }).(pulumi.BoolOutput)
 }
 
-// Time when this resource was soft-deleted.
+// Time when this workstation cluster was soft-deleted.
 func (o WorkstationClusterOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// Human-readable name for this resource.
+// Optional. Human-readable name for this workstation cluster.
 func (o WorkstationClusterOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+// Optional. Configuration options for a custom domain.
+func (o WorkstationClusterOutput) DomainConfig() DomainConfigResponseOutput {
+	return o.ApplyT(func(v *WorkstationCluster) DomainConfigResponseOutput { return v.DomainConfig }).(DomainConfigResponseOutput)
+}
+
+// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 func (o WorkstationClusterOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
 func (o WorkstationClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -248,17 +259,17 @@ func (o WorkstationClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Full name of this resource.
+// Identifier. Full name of this workstation cluster.
 func (o WorkstationClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
 func (o WorkstationClusterOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
-// Configuration for private cluster.
+// Optional. Configuration for private workstation cluster.
 func (o WorkstationClusterOutput) PrivateClusterConfig() PrivateClusterConfigResponseOutput {
 	return o.ApplyT(func(v *WorkstationCluster) PrivateClusterConfigResponseOutput { return v.PrivateClusterConfig }).(PrivateClusterConfigResponseOutput)
 }
@@ -267,22 +278,22 @@ func (o WorkstationClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Indicates whether this resource is currently being updated to match its intended state.
+// Indicates whether this workstation cluster is currently being updated to match its intended state.
 func (o WorkstationClusterOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
 func (o WorkstationClusterOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
-// A system-assigned unique identified for this resource.
+// A system-assigned unique identifier for this workstation cluster.
 func (o WorkstationClusterOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// Time when this resource was most recently updated.
+// Time when this workstation cluster was most recently updated.
 func (o WorkstationClusterOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

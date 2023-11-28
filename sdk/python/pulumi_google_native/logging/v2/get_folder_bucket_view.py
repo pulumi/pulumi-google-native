@@ -95,7 +95,7 @@ def get_folder_bucket_view(bucket_id: Optional[str] = None,
                            view_id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFolderBucketViewResult:
     """
-    Gets a view on a log bucket..
+    Gets a view on a log bucket.
     """
     __args__ = dict()
     __args__['bucketId'] = bucket_id
@@ -120,6 +120,6 @@ def get_folder_bucket_view_output(bucket_id: Optional[pulumi.Input[str]] = None,
                                   view_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderBucketViewResult]:
     """
-    Gets a view on a log bucket..
+    Gets a view on a log bucket.
     """
     ...

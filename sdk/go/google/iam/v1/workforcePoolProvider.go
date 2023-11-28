@@ -28,7 +28,9 @@ type WorkforcePoolProvider struct {
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// A user-specified display name for the provider. Cannot exceed 32 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	Location    pulumi.StringOutput `pulumi:"location"`
+	// Time after which the workload pool provider will be permanently purged and cannot be recovered.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the provider. Format: `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An OpenId Connect 1.0 identity provider configuration.
@@ -211,6 +213,11 @@ func (o WorkforcePoolProviderOutput) Disabled() pulumi.BoolOutput {
 // A user-specified display name for the provider. Cannot exceed 32 characters.
 func (o WorkforcePoolProviderOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Time after which the workload pool provider will be permanently purged and cannot be recovered.
+func (o WorkforcePoolProviderOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 func (o WorkforcePoolProviderOutput) Location() pulumi.StringOutput {

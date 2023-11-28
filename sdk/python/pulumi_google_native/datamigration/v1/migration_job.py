@@ -31,6 +31,7 @@ class MigrationJobArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_config: Optional[pulumi.Input['PerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input['ReverseSshConnectivityArgs']] = None,
@@ -53,7 +54,8 @@ class MigrationJobArgs:
         :param pulumi.Input[str] filter: This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
-        :param pulumi.Input[str] request_id: A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input['PerformanceConfigArgs'] performance_config: Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+        :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input['ReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input['DatabaseTypeArgs'] source_database: The database engine type and provider of the source.
         :param pulumi.Input['MigrationJobState'] state: The current migration job state.
@@ -84,6 +86,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_config is not None:
+            pulumi.set(__self__, "performance_config", performance_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -265,6 +269,18 @@ class MigrationJobArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="performanceConfig")
+    def performance_config(self) -> Optional[pulumi.Input['PerformanceConfigArgs']]:
+        """
+        Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+        """
+        return pulumi.get(self, "performance_config")
+
+    @performance_config.setter
+    def performance_config(self, value: Optional[pulumi.Input['PerformanceConfigArgs']]):
+        pulumi.set(self, "performance_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -277,7 +293,7 @@ class MigrationJobArgs:
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         return pulumi.get(self, "request_id")
 
@@ -363,6 +379,7 @@ class MigrationJob(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_config: Optional[pulumi.Input[pulumi.InputType['PerformanceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
@@ -389,7 +406,8 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] migration_job_id: Required. The ID of the instance to create.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
-        :param pulumi.Input[str] request_id: A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[pulumi.InputType['PerformanceConfigArgs']] performance_config: Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+        :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] source_database: The database engine type and provider of the source.
@@ -434,6 +452,7 @@ class MigrationJob(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_config: Optional[pulumi.Input[pulumi.InputType['PerformanceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
@@ -468,6 +487,7 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'migration_job_id'")
             __props__.__dict__["migration_job_id"] = migration_job_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["performance_config"] = performance_config
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reverse_ssh_connectivity"] = reverse_ssh_connectivity
@@ -527,6 +547,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["migration_job_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["performance_config"] = None
         __props__.__dict__["phase"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
@@ -666,6 +687,14 @@ class MigrationJob(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="performanceConfig")
+    def performance_config(self) -> pulumi.Output['outputs.PerformanceConfigResponse']:
+        """
+        Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+        """
+        return pulumi.get(self, "performance_config")
+
+    @property
     @pulumi.getter
     def phase(self) -> pulumi.Output[str]:
         """
@@ -682,7 +711,7 @@ class MigrationJob(pulumi.CustomResource):
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[Optional[str]]:
         """
-        A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         return pulumi.get(self, "request_id")
 

@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.
+// Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to create a customer. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.
 // Auto-naming is currently not supported for this resource.
 type Customer struct {
 	pulumi.CustomResourceState
@@ -40,7 +40,7 @@ type Customer struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the organization that the customer entity represents.
 	OrgDisplayName pulumi.StringOutput `pulumi:"orgDisplayName"`
-	// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+	// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 	OrgPostalAddress GoogleTypePostalAddressResponseOutput `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoResponseOutput `pulumi:"primaryContactInfo"`
@@ -122,7 +122,7 @@ type customerArgs struct {
 	LanguageCode *string `pulumi:"languageCode"`
 	// Name of the organization that the customer entity represents.
 	OrgDisplayName string `pulumi:"orgDisplayName"`
-	// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+	// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 	OrgPostalAddress GoogleTypePostalAddress `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo *GoogleCloudChannelV1ContactInfo `pulumi:"primaryContactInfo"`
@@ -144,7 +144,7 @@ type CustomerArgs struct {
 	LanguageCode pulumi.StringPtrInput
 	// Name of the organization that the customer entity represents.
 	OrgDisplayName pulumi.StringInput
-	// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+	// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 	OrgPostalAddress GoogleTypePostalAddressInput
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoPtrInput
@@ -257,7 +257,7 @@ func (o CustomerOutput) OrgDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.OrgDisplayName }).(pulumi.StringOutput)
 }
 
-// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 func (o CustomerOutput) OrgPostalAddress() GoogleTypePostalAddressResponseOutput {
 	return o.ApplyT(func(v *Customer) GoogleTypePostalAddressResponseOutput { return v.OrgPostalAddress }).(GoogleTypePostalAddressResponseOutput)
 }

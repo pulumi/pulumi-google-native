@@ -10,9 +10,7 @@ from .get_endpoint import *
 from .get_namespace import *
 from .get_namespace_iam_policy import *
 from .get_namespace_service_iam_policy import *
-from .get_namespace_service_workload_iam_policy import *
 from .get_namespace_workload_iam_policy import *
-from .get_registration_policy_iam_policy import *
 from .get_service import *
 from .namespace import *
 from .namespace_iam_binding import *
@@ -21,15 +19,9 @@ from .namespace_iam_policy import *
 from .namespace_service_iam_binding import *
 from .namespace_service_iam_member import *
 from .namespace_service_iam_policy import *
-from .namespace_service_workload_iam_binding import *
-from .namespace_service_workload_iam_member import *
-from .namespace_service_workload_iam_policy import *
 from .namespace_workload_iam_binding import *
 from .namespace_workload_iam_member import *
 from .namespace_workload_iam_policy import *
-from .registration_policy_iam_binding import *
-from .registration_policy_iam_member import *
-from .registration_policy_iam_policy import *
 from .service import *
 from ._inputs import *
 from . import outputs

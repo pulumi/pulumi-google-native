@@ -71,7 +71,7 @@ class GetRepositoryResult:
     @pulumi.getter
     def format(self) -> str:
         """
-        The format of packages that are stored in the repository.
+        Optional. The format of packages that are stored in the repository.
         """
         return pulumi.get(self, "format")
 
@@ -103,7 +103,7 @@ class GetRepositoryResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         """
         return pulumi.get(self, "name")
 

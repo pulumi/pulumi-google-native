@@ -52,6 +52,7 @@ from .get_entity import *
 from .get_entry_group_iam_policy import *
 from .get_entry_type_iam_policy import *
 from .get_environment import *
+from .get_governance_rule_iam_policy import *
 from .get_lake import *
 from .get_lake_asset_iam_policy import *
 from .get_lake_content_iam_policy import *
@@ -63,6 +64,9 @@ from .get_lake_zone_iam_policy import *
 from .get_partition import *
 from .get_task import *
 from .get_zone import *
+from .governance_rule_iam_binding import *
+from .governance_rule_iam_member import *
+from .governance_rule_iam_policy import *
 from .lake import *
 from .lake_asset_iam_binding import *
 from .lake_asset_iam_member import *

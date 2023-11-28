@@ -37,7 +37,7 @@ type LookupOrganizationRoleResult struct {
 	Etag string `pulumi:"etag"`
 	// The names of the permissions this role grants when bound in an IAM policy.
 	IncludedPermissions []string `pulumi:"includedPermissions"`
-	// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+	// The name of the role. When `Role` is used in `CreateRole`, the role name must not be set. When `Role` is used in output and other input such as `UpdateRole`, the role name is the complete path. For example, `roles/logging.viewer` for predefined roles, `organizations/{ORGANIZATION_ID}/roles/my-role` for organization-level custom roles, and `projects/{PROJECT_ID}/roles/my-role` for project-level custom roles.
 	Name string `pulumi:"name"`
 	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
 	Stage string `pulumi:"stage"`
@@ -107,7 +107,7 @@ func (o LookupOrganizationRoleResultOutput) IncludedPermissions() pulumi.StringA
 	return o.ApplyT(func(v LookupOrganizationRoleResult) []string { return v.IncludedPermissions }).(pulumi.StringArrayOutput)
 }
 
-// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+// The name of the role. When `Role` is used in `CreateRole`, the role name must not be set. When `Role` is used in output and other input such as `UpdateRole`, the role name is the complete path. For example, `roles/logging.viewer` for predefined roles, `organizations/{ORGANIZATION_ID}/roles/my-role` for organization-level custom roles, and `projects/{PROJECT_ID}/roles/my-role` for project-level custom roles.
 func (o LookupOrganizationRoleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }

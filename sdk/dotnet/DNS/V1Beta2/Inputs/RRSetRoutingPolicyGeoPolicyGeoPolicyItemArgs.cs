@@ -42,7 +42,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         private InputList<string>? _signatureRrdatas;
 
         /// <summary>
-        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+        /// DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
         /// </summary>
         public InputList<string> SignatureRrdatas
         {

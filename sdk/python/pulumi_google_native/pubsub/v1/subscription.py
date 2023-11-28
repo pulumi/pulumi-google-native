@@ -37,21 +37,21 @@ class SubscriptionArgs:
         """
         The set of arguments for constructing a Subscription resource.
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
-        :param pulumi.Input[int] ack_deadline_seconds: The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
-        :param pulumi.Input['BigQueryConfigArgs'] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        :param pulumi.Input['CloudStorageConfigArgs'] cloud_storage_config: If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
-        :param pulumi.Input['DeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
-        :param pulumi.Input[bool] detached: Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
-        :param pulumi.Input[bool] enable_exactly_once_delivery: If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
-        :param pulumi.Input[bool] enable_message_ordering: If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
-        :param pulumi.Input['ExpirationPolicyArgs'] expiration_policy: A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
-        :param pulumi.Input[str] filter: An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
-        :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
+        :param pulumi.Input[int] ack_deadline_seconds: Optional. The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        :param pulumi.Input['BigQueryConfigArgs'] bigquery_config: Optional. If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        :param pulumi.Input['CloudStorageConfigArgs'] cloud_storage_config: Optional. If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+        :param pulumi.Input['DeadLetterPolicyArgs'] dead_letter_policy: Optional. A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
+        :param pulumi.Input[bool] detached: Optional. Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
+        :param pulumi.Input[bool] enable_exactly_once_delivery: Optional. If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
+        :param pulumi.Input[bool] enable_message_ordering: Optional. If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
+        :param pulumi.Input['ExpirationPolicyArgs'] expiration_policy: Optional. A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
+        :param pulumi.Input[str] filter: Optional. An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+        :param pulumi.Input[str] message_retention_duration: Optional. How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
         :param pulumi.Input[str] name: The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-        :param pulumi.Input['PushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to configure it.
-        :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
-        :param pulumi.Input['RetryPolicyArgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
+        :param pulumi.Input['PushConfigArgs'] push_config: Optional. If push delivery is used with this subscription, this field is used to configure it.
+        :param pulumi.Input[bool] retain_acked_messages: Optional. Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
+        :param pulumi.Input['RetryPolicyArgs'] retry_policy: Optional. A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         """
         pulumi.set(__self__, "subscription_id", subscription_id)
         pulumi.set(__self__, "topic", topic)
@@ -113,7 +113,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="ackDeadlineSeconds")
     def ack_deadline_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        Optional. The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
         """
         return pulumi.get(self, "ack_deadline_seconds")
 
@@ -125,7 +125,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="bigqueryConfig")
     def bigquery_config(self) -> Optional[pulumi.Input['BigQueryConfigArgs']]:
         """
-        If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        Optional. If delivery to BigQuery is used with this subscription, this field is used to configure it.
         """
         return pulumi.get(self, "bigquery_config")
 
@@ -137,7 +137,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="cloudStorageConfig")
     def cloud_storage_config(self) -> Optional[pulumi.Input['CloudStorageConfigArgs']]:
         """
-        If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+        Optional. If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
         """
         return pulumi.get(self, "cloud_storage_config")
 
@@ -149,7 +149,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="deadLetterPolicy")
     def dead_letter_policy(self) -> Optional[pulumi.Input['DeadLetterPolicyArgs']]:
         """
-        A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
+        Optional. A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
         """
         return pulumi.get(self, "dead_letter_policy")
 
@@ -161,7 +161,7 @@ class SubscriptionArgs:
     @pulumi.getter
     def detached(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
+        Optional. Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
         """
         return pulumi.get(self, "detached")
 
@@ -173,7 +173,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="enableExactlyOnceDelivery")
     def enable_exactly_once_delivery(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
+        Optional. If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
         """
         return pulumi.get(self, "enable_exactly_once_delivery")
 
@@ -185,7 +185,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="enableMessageOrdering")
     def enable_message_ordering(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
+        Optional. If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
         """
         return pulumi.get(self, "enable_message_ordering")
 
@@ -197,7 +197,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="expirationPolicy")
     def expiration_policy(self) -> Optional[pulumi.Input['ExpirationPolicyArgs']]:
         """
-        A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
+        Optional. A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
         """
         return pulumi.get(self, "expiration_policy")
 
@@ -209,7 +209,7 @@ class SubscriptionArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
+        Optional. An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
         """
         return pulumi.get(self, "filter")
 
@@ -221,7 +221,7 @@ class SubscriptionArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+        Optional. See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
         """
         return pulumi.get(self, "labels")
 
@@ -233,7 +233,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="messageRetentionDuration")
     def message_retention_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
+        Optional. How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
         """
         return pulumi.get(self, "message_retention_duration")
 
@@ -266,7 +266,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> Optional[pulumi.Input['PushConfigArgs']]:
         """
-        If push delivery is used with this subscription, this field is used to configure it.
+        Optional. If push delivery is used with this subscription, this field is used to configure it.
         """
         return pulumi.get(self, "push_config")
 
@@ -278,7 +278,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="retainAckedMessages")
     def retain_acked_messages(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
+        Optional. Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
         """
         return pulumi.get(self, "retain_acked_messages")
 
@@ -290,7 +290,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="retryPolicy")
     def retry_policy(self) -> Optional[pulumi.Input['RetryPolicyArgs']]:
         """
-        A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
+        Optional. A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         """
         return pulumi.get(self, "retry_policy")
 
@@ -324,25 +324,25 @@ class Subscription(pulumi.CustomResource):
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a subscription to a given topic. See the [resource name rules] (https://cloud.google.com/pubsub/docs/admin#resource_names). If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the returned Subscription object. Note that for REST API requests, you must specify a name in the request.
+        Creates a subscription to a given topic. See the [resource name rules] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in the returned Subscription object. Note that for REST API requests, you must specify a name in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ack_deadline_seconds: The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
-        :param pulumi.Input[pulumi.InputType['BigQueryConfigArgs']] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        :param pulumi.Input[pulumi.InputType['CloudStorageConfigArgs']] cloud_storage_config: If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
-        :param pulumi.Input[pulumi.InputType['DeadLetterPolicyArgs']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
-        :param pulumi.Input[bool] detached: Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
-        :param pulumi.Input[bool] enable_exactly_once_delivery: If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
-        :param pulumi.Input[bool] enable_message_ordering: If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
-        :param pulumi.Input[pulumi.InputType['ExpirationPolicyArgs']] expiration_policy: A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
-        :param pulumi.Input[str] filter: An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
-        :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
+        :param pulumi.Input[int] ack_deadline_seconds: Optional. The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        :param pulumi.Input[pulumi.InputType['BigQueryConfigArgs']] bigquery_config: Optional. If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        :param pulumi.Input[pulumi.InputType['CloudStorageConfigArgs']] cloud_storage_config: Optional. If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+        :param pulumi.Input[pulumi.InputType['DeadLetterPolicyArgs']] dead_letter_policy: Optional. A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
+        :param pulumi.Input[bool] detached: Optional. Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
+        :param pulumi.Input[bool] enable_exactly_once_delivery: Optional. If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
+        :param pulumi.Input[bool] enable_message_ordering: Optional. If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
+        :param pulumi.Input[pulumi.InputType['ExpirationPolicyArgs']] expiration_policy: Optional. A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
+        :param pulumi.Input[str] filter: Optional. An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+        :param pulumi.Input[str] message_retention_duration: Optional. How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
         :param pulumi.Input[str] name: The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-        :param pulumi.Input[pulumi.InputType['PushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to configure it.
-        :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
-        :param pulumi.Input[pulumi.InputType['RetryPolicyArgs']] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
+        :param pulumi.Input[pulumi.InputType['PushConfigArgs']] push_config: Optional. If push delivery is used with this subscription, this field is used to configure it.
+        :param pulumi.Input[bool] retain_acked_messages: Optional. Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
+        :param pulumi.Input[pulumi.InputType['RetryPolicyArgs']] retry_policy: Optional. A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
         """
         ...
@@ -352,7 +352,7 @@ class Subscription(pulumi.CustomResource):
                  args: SubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a subscription to a given topic. See the [resource name rules] (https://cloud.google.com/pubsub/docs/admin#resource_names). If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the returned Subscription object. Note that for REST API requests, you must specify a name in the request.
+        Creates a subscription to a given topic. See the [resource name rules] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in the returned Subscription object. Note that for REST API requests, you must specify a name in the request.
 
         :param str resource_name: The name of the resource.
         :param SubscriptionArgs args: The arguments to use to populate this resource's properties.
@@ -470,7 +470,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="ackDeadlineSeconds")
     def ack_deadline_seconds(self) -> pulumi.Output[int]:
         """
-        The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        Optional. The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
         """
         return pulumi.get(self, "ack_deadline_seconds")
 
@@ -478,7 +478,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="bigqueryConfig")
     def bigquery_config(self) -> pulumi.Output['outputs.BigQueryConfigResponse']:
         """
-        If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        Optional. If delivery to BigQuery is used with this subscription, this field is used to configure it.
         """
         return pulumi.get(self, "bigquery_config")
 
@@ -486,7 +486,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="cloudStorageConfig")
     def cloud_storage_config(self) -> pulumi.Output['outputs.CloudStorageConfigResponse']:
         """
-        If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+        Optional. If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
         """
         return pulumi.get(self, "cloud_storage_config")
 
@@ -494,7 +494,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="deadLetterPolicy")
     def dead_letter_policy(self) -> pulumi.Output['outputs.DeadLetterPolicyResponse']:
         """
-        A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
+        Optional. A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
         """
         return pulumi.get(self, "dead_letter_policy")
 
@@ -502,7 +502,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter
     def detached(self) -> pulumi.Output[bool]:
         """
-        Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
+        Optional. Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
         """
         return pulumi.get(self, "detached")
 
@@ -510,7 +510,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="enableExactlyOnceDelivery")
     def enable_exactly_once_delivery(self) -> pulumi.Output[bool]:
         """
-        If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
+        Optional. If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
         """
         return pulumi.get(self, "enable_exactly_once_delivery")
 
@@ -518,7 +518,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="enableMessageOrdering")
     def enable_message_ordering(self) -> pulumi.Output[bool]:
         """
-        If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
+        Optional. If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
         """
         return pulumi.get(self, "enable_message_ordering")
 
@@ -526,7 +526,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="expirationPolicy")
     def expiration_policy(self) -> pulumi.Output['outputs.ExpirationPolicyResponse']:
         """
-        A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
+        Optional. A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
         """
         return pulumi.get(self, "expiration_policy")
 
@@ -534,7 +534,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter
     def filter(self) -> pulumi.Output[str]:
         """
-        An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
+        Optional. An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
         """
         return pulumi.get(self, "filter")
 
@@ -542,7 +542,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+        Optional. See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
         """
         return pulumi.get(self, "labels")
 
@@ -550,7 +550,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="messageRetentionDuration")
     def message_retention_duration(self) -> pulumi.Output[str]:
         """
-        How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
+        Optional. How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
         """
         return pulumi.get(self, "message_retention_duration")
 
@@ -571,7 +571,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> pulumi.Output['outputs.PushConfigResponse']:
         """
-        If push delivery is used with this subscription, this field is used to configure it.
+        Optional. If push delivery is used with this subscription, this field is used to configure it.
         """
         return pulumi.get(self, "push_config")
 
@@ -579,7 +579,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="retainAckedMessages")
     def retain_acked_messages(self) -> pulumi.Output[bool]:
         """
-        Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
+        Optional. Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
         """
         return pulumi.get(self, "retain_acked_messages")
 
@@ -587,7 +587,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="retryPolicy")
     def retry_policy(self) -> pulumi.Output['outputs.RetryPolicyResponse']:
         """
-        A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
+        Optional. A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         """
         return pulumi.get(self, "retry_policy")
 

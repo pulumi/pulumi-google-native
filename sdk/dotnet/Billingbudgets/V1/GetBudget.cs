@@ -81,6 +81,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         /// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
         /// </summary>
         public readonly Outputs.GoogleCloudBillingBudgetsV1NotificationsRuleResponse NotificationsRule;
+        public readonly string OwnershipScope;
         /// <summary>
         /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         /// </summary>
@@ -100,6 +101,8 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
 
             Outputs.GoogleCloudBillingBudgetsV1NotificationsRuleResponse notificationsRule,
 
+            string ownershipScope,
+
             ImmutableArray<Outputs.GoogleCloudBillingBudgetsV1ThresholdRuleResponse> thresholdRules)
         {
             Amount = amount;
@@ -108,6 +111,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
             Etag = etag;
             Name = name;
             NotificationsRule = notificationsRule;
+            OwnershipScope = ownershipScope;
             ThresholdRules = thresholdRules;
         }
     }

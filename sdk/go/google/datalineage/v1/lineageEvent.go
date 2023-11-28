@@ -29,7 +29,7 @@ type LineageEvent struct {
 	// A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	RunId     pulumi.StringOutput    `pulumi:"runId"`
-	// Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+	// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 }
 
@@ -45,6 +45,9 @@ func NewLineageEvent(ctx *pulumi.Context,
 	}
 	if args.RunId == nil {
 		return nil, errors.New("invalid value for required argument 'RunId'")
+	}
+	if args.StartTime == nil {
+		return nil, errors.New("invalid value for required argument 'StartTime'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"location",
@@ -98,8 +101,8 @@ type lineageEventArgs struct {
 	// A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
 	RequestId *string `pulumi:"requestId"`
 	RunId     string  `pulumi:"runId"`
-	// Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
-	StartTime *string `pulumi:"startTime"`
+	// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+	StartTime string `pulumi:"startTime"`
 }
 
 // The set of arguments for constructing a LineageEvent resource.
@@ -116,8 +119,8 @@ type LineageEventArgs struct {
 	// A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
 	RequestId pulumi.StringPtrInput
 	RunId     pulumi.StringInput
-	// Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
-	StartTime pulumi.StringPtrInput
+	// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+	StartTime pulumi.StringInput
 }
 
 func (LineageEventArgs) ElementType() reflect.Type {
@@ -205,7 +208,7 @@ func (o LineageEventOutput) RunId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LineageEvent) pulumi.StringOutput { return v.RunId }).(pulumi.StringOutput)
 }
 
-// Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
 func (o LineageEventOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *LineageEvent) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
 }

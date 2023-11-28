@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly bool Done;
         /// <summary>
-        /// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+        /// If present, the location of miscellaneous control files which can be used as part of job setup and handling. If not present, control files might be placed in the same location as driver_output_uri.
         /// </summary>
         public readonly string DriverControlFilesUri;
         /// <summary>
@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly Outputs.DriverSchedulingConfigResponse DriverSchedulingConfig;
         /// <summary>
+        /// Optional. Job is a Flink job.
+        /// </summary>
+        public readonly Outputs.FlinkJobResponse FlinkJob;
+        /// <summary>
         /// Optional. Job is a Hadoop job.
         /// </summary>
         public readonly Outputs.HadoopJobResponse HadoopJob;
@@ -88,11 +92,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly Outputs.HiveJobResponse HiveJob;
         /// <summary>
-        /// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
+        /// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that might be reused over time.
         /// </summary>
         public readonly string JobUuid;
         /// <summary>
-        /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -132,7 +136,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly Outputs.SparkSqlJobResponse SparkSqlJob;
         /// <summary>
-        /// The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
+        /// The job status. Additional application-specific status information might be contained in the type_job and yarn_applications fields.
         /// </summary>
         public readonly Outputs.JobStatusResponse Status;
         /// <summary>
@@ -144,7 +148,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly Outputs.TrinoJobResponse TrinoJob;
         /// <summary>
-        /// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+        /// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release.
         /// </summary>
         public readonly ImmutableArray<Outputs.YarnApplicationResponse> YarnApplications;
 
@@ -157,6 +161,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
             string driverOutputResourceUri,
 
             Outputs.DriverSchedulingConfigResponse driverSchedulingConfig,
+
+            Outputs.FlinkJobResponse flinkJob,
 
             Outputs.HadoopJobResponse hadoopJob,
 
@@ -196,6 +202,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
             DriverControlFilesUri = driverControlFilesUri;
             DriverOutputResourceUri = driverOutputResourceUri;
             DriverSchedulingConfig = driverSchedulingConfig;
+            FlinkJob = flinkJob;
             HadoopJob = hadoopJob;
             HiveJob = hiveJob;
             JobUuid = jobUuid;

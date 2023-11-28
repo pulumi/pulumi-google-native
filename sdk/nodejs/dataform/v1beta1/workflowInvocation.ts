@@ -39,7 +39,7 @@ export class WorkflowInvocation extends pulumi.CustomResource {
     }
 
     /**
-     * Immutable. The name of the compilation result to compile. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*`.
+     * Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*`.
      */
     public readonly compilationResult!: pulumi.Output<string>;
     /**
@@ -57,6 +57,10 @@ export class WorkflowInvocation extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     public readonly repositoryId!: pulumi.Output<string>;
+    /**
+     * The resolved compilation result that was used to create this invocation. Will be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*`.
+     */
+    public /*out*/ readonly resolvedCompilationResult!: pulumi.Output<string>;
     /**
      * This workflow invocation's current state.
      */
@@ -88,6 +92,7 @@ export class WorkflowInvocation extends pulumi.CustomResource {
             resourceInputs["workflowConfig"] = args ? args.workflowConfig : undefined;
             resourceInputs["invocationTiming"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resolvedCompilationResult"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["compilationResult"] = undefined /*out*/;
@@ -97,6 +102,7 @@ export class WorkflowInvocation extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["repositoryId"] = undefined /*out*/;
+            resourceInputs["resolvedCompilationResult"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["workflowConfig"] = undefined /*out*/;
         }
@@ -112,7 +118,7 @@ export class WorkflowInvocation extends pulumi.CustomResource {
  */
 export interface WorkflowInvocationArgs {
     /**
-     * Immutable. The name of the compilation result to compile. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*`.
+     * Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*`.
      */
     compilationResult?: pulumi.Input<string>;
     /**

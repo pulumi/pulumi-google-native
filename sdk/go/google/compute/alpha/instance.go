@@ -70,6 +70,8 @@ type Instance struct {
 	NetworkPerformanceConfig NetworkPerformanceConfigResponseOutput `pulumi:"networkPerformanceConfig"`
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceParamsResponseOutput `pulumi:"params"`
+	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata pulumi.StringMapOutput `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType pulumi.StringOutput `pulumi:"postKeyRevocationActionType"`
 	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
@@ -207,6 +209,8 @@ type instanceArgs struct {
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceParams `pulumi:"params"`
+	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType *InstancePostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
@@ -285,6 +289,8 @@ type InstanceArgs struct {
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceParamsPtrInput
+	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata pulumi.StringMapInput
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType InstancePostKeyRevocationActionTypePtrInput
 	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
@@ -508,6 +514,11 @@ func (o InstanceOutput) NetworkPerformanceConfig() NetworkPerformanceConfigRespo
 // Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 func (o InstanceOutput) Params() InstanceParamsResponseOutput {
 	return o.ApplyT(func(v *Instance) InstanceParamsResponseOutput { return v.Params }).(InstanceParamsResponseOutput)
+}
+
+// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+func (o InstanceOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.

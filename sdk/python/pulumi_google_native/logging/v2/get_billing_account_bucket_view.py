@@ -95,7 +95,7 @@ def get_billing_account_bucket_view(billing_account_id: Optional[str] = None,
                                     view_id: Optional[str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingAccountBucketViewResult:
     """
-    Gets a view on a log bucket..
+    Gets a view on a log bucket.
     """
     __args__ = dict()
     __args__['billingAccountId'] = billing_account_id
@@ -120,6 +120,6 @@ def get_billing_account_bucket_view_output(billing_account_id: Optional[pulumi.I
                                            view_id: Optional[pulumi.Input[str]] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingAccountBucketViewResult]:
     """
-    Gets a view on a log bucket..
+    Gets a view on a log bucket.
     """
     ...

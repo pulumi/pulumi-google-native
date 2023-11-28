@@ -30,6 +30,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
+        [Input("includeExtraData")]
+        public string? IncludeExtraData { get; set; }
+
         public GetAppArgs()
         {
         }
@@ -40,6 +43,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
+
+        [Input("includeExtraData")]
+        public Input<string>? IncludeExtraData { get; set; }
 
         public GetAppInvokeArgs()
         {
@@ -87,6 +93,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// The Google Container Registry domain used for storing managed build docker images for this application.
         /// </summary>
         public readonly string GcrDomain;
+        /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> GeneratedCustomerMetadata;
         public readonly Outputs.IdentityAwareProxyResponse Iap;
         /// <summary>
         /// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
@@ -125,6 +135,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 
             string gcrDomain,
 
+            ImmutableDictionary<string, string> generatedCustomerMetadata,
+
             Outputs.IdentityAwareProxyResponse iap,
 
             string location,
@@ -144,6 +156,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
             DispatchRules = dispatchRules;
             FeatureSettings = featureSettings;
             GcrDomain = gcrDomain;
+            GeneratedCustomerMetadata = generatedCustomerMetadata;
             Iap = iap;
             Location = location;
             Name = name;

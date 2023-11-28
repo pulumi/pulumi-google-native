@@ -32,6 +32,8 @@ type LookupAgentArgs struct {
 type LookupAgentResult struct {
 	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	AdvancedSettings GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse `pulumi:"advancedSettings"`
+	// Optional. Answer feedback collection settings.
+	AnswerFeedbackSettings GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse `pulumi:"answerFeedbackSettings"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri string `pulumi:"avatarUri"`
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -44,6 +46,10 @@ type LookupAgentResult struct {
 	EnableSpellCorrection bool `pulumi:"enableSpellCorrection"`
 	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 	EnableStackdriverLogging bool `pulumi:"enableStackdriverLogging"`
+	// Gen App Builder-related agent-level settings.
+	GenAppBuilderSettings GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse `pulumi:"genAppBuilderSettings"`
+	// Git integration settings for this agent.
+	GitIntegrationSettings GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse `pulumi:"gitIntegrationSettings"`
 	// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 	Locked bool `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
@@ -112,6 +118,13 @@ func (o LookupAgentResultOutput) AdvancedSettings() GoogleCloudDialogflowCxV3bet
 	}).(GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponseOutput)
 }
 
+// Optional. Answer feedback collection settings.
+func (o LookupAgentResultOutput) AnswerFeedbackSettings() GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponseOutput {
+	return o.ApplyT(func(v LookupAgentResult) GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse {
+		return v.AnswerFeedbackSettings
+	}).(GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponseOutput)
+}
+
 // The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 func (o LookupAgentResultOutput) AvatarUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentResult) string { return v.AvatarUri }).(pulumi.StringOutput)
@@ -140,6 +153,20 @@ func (o LookupAgentResultOutput) EnableSpellCorrection() pulumi.BoolOutput {
 // Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 func (o LookupAgentResultOutput) EnableStackdriverLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAgentResult) bool { return v.EnableStackdriverLogging }).(pulumi.BoolOutput)
+}
+
+// Gen App Builder-related agent-level settings.
+func (o LookupAgentResultOutput) GenAppBuilderSettings() GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponseOutput {
+	return o.ApplyT(func(v LookupAgentResult) GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse {
+		return v.GenAppBuilderSettings
+	}).(GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponseOutput)
+}
+
+// Git integration settings for this agent.
+func (o LookupAgentResultOutput) GitIntegrationSettings() GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponseOutput {
+	return o.ApplyT(func(v LookupAgentResult) GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse {
+		return v.GitIntegrationSettings
+	}).(GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponseOutput)
 }
 
 // Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.

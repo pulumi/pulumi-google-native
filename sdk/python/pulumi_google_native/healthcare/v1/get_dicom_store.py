@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDicomStoreResult:
-    def __init__(__self__, labels=None, name=None, notification_config=None):
+    def __init__(__self__, labels=None, name=None, notification_config=None, stream_configs=None):
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -29,6 +29,9 @@ class GetDicomStoreResult:
         if notification_config and not isinstance(notification_config, dict):
             raise TypeError("Expected argument 'notification_config' to be a dict")
         pulumi.set(__self__, "notification_config", notification_config)
+        if stream_configs and not isinstance(stream_configs, list):
+            raise TypeError("Expected argument 'stream_configs' to be a list")
+        pulumi.set(__self__, "stream_configs", stream_configs)
 
     @property
     @pulumi.getter
@@ -54,6 +57,14 @@ class GetDicomStoreResult:
         """
         return pulumi.get(self, "notification_config")
 
+    @property
+    @pulumi.getter(name="streamConfigs")
+    def stream_configs(self) -> Sequence['outputs.GoogleCloudHealthcareV1DicomStreamConfigResponse']:
+        """
+        Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        """
+        return pulumi.get(self, "stream_configs")
+
 
 class AwaitableGetDicomStoreResult(GetDicomStoreResult):
     # pylint: disable=using-constant-test
@@ -63,7 +74,8 @@ class AwaitableGetDicomStoreResult(GetDicomStoreResult):
         return GetDicomStoreResult(
             labels=self.labels,
             name=self.name,
-            notification_config=self.notification_config)
+            notification_config=self.notification_config,
+            stream_configs=self.stream_configs)
 
 
 def get_dicom_store(dataset_id: Optional[str] = None,
@@ -85,7 +97,8 @@ def get_dicom_store(dataset_id: Optional[str] = None,
     return AwaitableGetDicomStoreResult(
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
-        notification_config=pulumi.get(__ret__, 'notification_config'))
+        notification_config=pulumi.get(__ret__, 'notification_config'),
+        stream_configs=pulumi.get(__ret__, 'stream_configs'))
 
 
 @_utilities.lift_output_func(get_dicom_store)

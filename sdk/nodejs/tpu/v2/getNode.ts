@@ -32,7 +32,7 @@ export interface GetNodeResult {
      */
     readonly acceleratorConfig: outputs.tpu.v2.AcceleratorConfigResponse;
     /**
-     * The type of hardware accelerators associated with this node.
+     * Optional. The type of hardware accelerators associated with this node.
      */
     readonly acceleratorType: string;
     /**
@@ -72,6 +72,10 @@ export interface GetNodeResult {
      */
     readonly metadata: {[key: string]: string};
     /**
+     * Whether the Node belongs to a Multislice group.
+     */
+    readonly multisliceNode: boolean;
+    /**
      * Immutable. The name of the TPU.
      */
     readonly name: string;
@@ -83,6 +87,10 @@ export interface GetNodeResult {
      * The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
      */
     readonly networkEndpoints: outputs.tpu.v2.NetworkEndpointResponse[];
+    /**
+     * The qualified name of the QueuedResource that requested this Node.
+     */
+    readonly queuedResource: string;
     /**
      * The runtime version running in the Node.
      */

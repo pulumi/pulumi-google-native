@@ -194,525 +194,6 @@ func (o ApplicationEndpointResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ApplicationEndpointResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The basic ingress config for ClientGateways.
-type Config struct {
-	// The settings used to configure basic ClientGateways.
-	DestinationRoutes []DestinationRoute `pulumi:"destinationRoutes"`
-	// Immutable. The transport protocol used between the client and the server.
-	TransportProtocol ConfigTransportProtocol `pulumi:"transportProtocol"`
-}
-
-// ConfigInput is an input type that accepts ConfigArgs and ConfigOutput values.
-// You can construct a concrete instance of `ConfigInput` via:
-//
-//	ConfigArgs{...}
-type ConfigInput interface {
-	pulumi.Input
-
-	ToConfigOutput() ConfigOutput
-	ToConfigOutputWithContext(context.Context) ConfigOutput
-}
-
-// The basic ingress config for ClientGateways.
-type ConfigArgs struct {
-	// The settings used to configure basic ClientGateways.
-	DestinationRoutes DestinationRouteArrayInput `pulumi:"destinationRoutes"`
-	// Immutable. The transport protocol used between the client and the server.
-	TransportProtocol ConfigTransportProtocolInput `pulumi:"transportProtocol"`
-}
-
-func (ConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Config)(nil)).Elem()
-}
-
-func (i ConfigArgs) ToConfigOutput() ConfigOutput {
-	return i.ToConfigOutputWithContext(context.Background())
-}
-
-func (i ConfigArgs) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigOutput)
-}
-
-func (i ConfigArgs) ToOutput(ctx context.Context) pulumix.Output[Config] {
-	return pulumix.Output[Config]{
-		OutputState: i.ToConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i ConfigArgs) ToConfigPtrOutput() ConfigPtrOutput {
-	return i.ToConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ConfigArgs) ToConfigPtrOutputWithContext(ctx context.Context) ConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigOutput).ToConfigPtrOutputWithContext(ctx)
-}
-
-// ConfigPtrInput is an input type that accepts ConfigArgs, ConfigPtr and ConfigPtrOutput values.
-// You can construct a concrete instance of `ConfigPtrInput` via:
-//
-//	        ConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ConfigPtrInput interface {
-	pulumi.Input
-
-	ToConfigPtrOutput() ConfigPtrOutput
-	ToConfigPtrOutputWithContext(context.Context) ConfigPtrOutput
-}
-
-type configPtrType ConfigArgs
-
-func ConfigPtr(v *ConfigArgs) ConfigPtrInput {
-	return (*configPtrType)(v)
-}
-
-func (*configPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Config)(nil)).Elem()
-}
-
-func (i *configPtrType) ToConfigPtrOutput() ConfigPtrOutput {
-	return i.ToConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *configPtrType) ToConfigPtrOutputWithContext(ctx context.Context) ConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigPtrOutput)
-}
-
-func (i *configPtrType) ToOutput(ctx context.Context) pulumix.Output[*Config] {
-	return pulumix.Output[*Config]{
-		OutputState: i.ToConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-// The basic ingress config for ClientGateways.
-type ConfigOutput struct{ *pulumi.OutputState }
-
-func (ConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Config)(nil)).Elem()
-}
-
-func (o ConfigOutput) ToConfigOutput() ConfigOutput {
-	return o
-}
-
-func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
-	return o
-}
-
-func (o ConfigOutput) ToConfigPtrOutput() ConfigPtrOutput {
-	return o.ToConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ConfigOutput) ToConfigPtrOutputWithContext(ctx context.Context) ConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Config) *Config {
-		return &v
-	}).(ConfigPtrOutput)
-}
-
-func (o ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Config] {
-	return pulumix.Output[Config]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The settings used to configure basic ClientGateways.
-func (o ConfigOutput) DestinationRoutes() DestinationRouteArrayOutput {
-	return o.ApplyT(func(v Config) []DestinationRoute { return v.DestinationRoutes }).(DestinationRouteArrayOutput)
-}
-
-// Immutable. The transport protocol used between the client and the server.
-func (o ConfigOutput) TransportProtocol() ConfigTransportProtocolOutput {
-	return o.ApplyT(func(v Config) ConfigTransportProtocol { return v.TransportProtocol }).(ConfigTransportProtocolOutput)
-}
-
-type ConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Config)(nil)).Elem()
-}
-
-func (o ConfigPtrOutput) ToConfigPtrOutput() ConfigPtrOutput {
-	return o
-}
-
-func (o ConfigPtrOutput) ToConfigPtrOutputWithContext(ctx context.Context) ConfigPtrOutput {
-	return o
-}
-
-func (o ConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Config] {
-	return pulumix.Output[*Config]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o ConfigPtrOutput) Elem() ConfigOutput {
-	return o.ApplyT(func(v *Config) Config {
-		if v != nil {
-			return *v
-		}
-		var ret Config
-		return ret
-	}).(ConfigOutput)
-}
-
-// The settings used to configure basic ClientGateways.
-func (o ConfigPtrOutput) DestinationRoutes() DestinationRouteArrayOutput {
-	return o.ApplyT(func(v *Config) []DestinationRoute {
-		if v == nil {
-			return nil
-		}
-		return v.DestinationRoutes
-	}).(DestinationRouteArrayOutput)
-}
-
-// Immutable. The transport protocol used between the client and the server.
-func (o ConfigPtrOutput) TransportProtocol() ConfigTransportProtocolPtrOutput {
-	return o.ApplyT(func(v *Config) *ConfigTransportProtocol {
-		if v == nil {
-			return nil
-		}
-		return &v.TransportProtocol
-	}).(ConfigTransportProtocolPtrOutput)
-}
-
-// The basic ingress config for ClientGateways.
-type ConfigResponse struct {
-	// The settings used to configure basic ClientGateways.
-	DestinationRoutes []DestinationRouteResponse `pulumi:"destinationRoutes"`
-	// Immutable. The transport protocol used between the client and the server.
-	TransportProtocol string `pulumi:"transportProtocol"`
-}
-
-// The basic ingress config for ClientGateways.
-type ConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (ConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigResponse)(nil)).Elem()
-}
-
-func (o ConfigResponseOutput) ToConfigResponseOutput() ConfigResponseOutput {
-	return o
-}
-
-func (o ConfigResponseOutput) ToConfigResponseOutputWithContext(ctx context.Context) ConfigResponseOutput {
-	return o
-}
-
-func (o ConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigResponse] {
-	return pulumix.Output[ConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The settings used to configure basic ClientGateways.
-func (o ConfigResponseOutput) DestinationRoutes() DestinationRouteResponseArrayOutput {
-	return o.ApplyT(func(v ConfigResponse) []DestinationRouteResponse { return v.DestinationRoutes }).(DestinationRouteResponseArrayOutput)
-}
-
-// Immutable. The transport protocol used between the client and the server.
-func (o ConfigResponseOutput) TransportProtocol() pulumi.StringOutput {
-	return o.ApplyT(func(v ConfigResponse) string { return v.TransportProtocol }).(pulumi.StringOutput)
-}
-
-// The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-type DestinationRoute struct {
-	// The network address of the subnet for which the packet is routed to the ClientGateway.
-	Address string `pulumi:"address"`
-	// The network mask of the subnet for which the packet is routed to the ClientGateway.
-	Netmask string `pulumi:"netmask"`
-}
-
-// DestinationRouteInput is an input type that accepts DestinationRouteArgs and DestinationRouteOutput values.
-// You can construct a concrete instance of `DestinationRouteInput` via:
-//
-//	DestinationRouteArgs{...}
-type DestinationRouteInput interface {
-	pulumi.Input
-
-	ToDestinationRouteOutput() DestinationRouteOutput
-	ToDestinationRouteOutputWithContext(context.Context) DestinationRouteOutput
-}
-
-// The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-type DestinationRouteArgs struct {
-	// The network address of the subnet for which the packet is routed to the ClientGateway.
-	Address pulumi.StringInput `pulumi:"address"`
-	// The network mask of the subnet for which the packet is routed to the ClientGateway.
-	Netmask pulumi.StringInput `pulumi:"netmask"`
-}
-
-func (DestinationRouteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DestinationRoute)(nil)).Elem()
-}
-
-func (i DestinationRouteArgs) ToDestinationRouteOutput() DestinationRouteOutput {
-	return i.ToDestinationRouteOutputWithContext(context.Background())
-}
-
-func (i DestinationRouteArgs) ToDestinationRouteOutputWithContext(ctx context.Context) DestinationRouteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationRouteOutput)
-}
-
-func (i DestinationRouteArgs) ToOutput(ctx context.Context) pulumix.Output[DestinationRoute] {
-	return pulumix.Output[DestinationRoute]{
-		OutputState: i.ToDestinationRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
-// DestinationRouteArrayInput is an input type that accepts DestinationRouteArray and DestinationRouteArrayOutput values.
-// You can construct a concrete instance of `DestinationRouteArrayInput` via:
-//
-//	DestinationRouteArray{ DestinationRouteArgs{...} }
-type DestinationRouteArrayInput interface {
-	pulumi.Input
-
-	ToDestinationRouteArrayOutput() DestinationRouteArrayOutput
-	ToDestinationRouteArrayOutputWithContext(context.Context) DestinationRouteArrayOutput
-}
-
-type DestinationRouteArray []DestinationRouteInput
-
-func (DestinationRouteArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DestinationRoute)(nil)).Elem()
-}
-
-func (i DestinationRouteArray) ToDestinationRouteArrayOutput() DestinationRouteArrayOutput {
-	return i.ToDestinationRouteArrayOutputWithContext(context.Background())
-}
-
-func (i DestinationRouteArray) ToDestinationRouteArrayOutputWithContext(ctx context.Context) DestinationRouteArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationRouteArrayOutput)
-}
-
-func (i DestinationRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]DestinationRoute] {
-	return pulumix.Output[[]DestinationRoute]{
-		OutputState: i.ToDestinationRouteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-// The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-type DestinationRouteOutput struct{ *pulumi.OutputState }
-
-func (DestinationRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DestinationRoute)(nil)).Elem()
-}
-
-func (o DestinationRouteOutput) ToDestinationRouteOutput() DestinationRouteOutput {
-	return o
-}
-
-func (o DestinationRouteOutput) ToDestinationRouteOutputWithContext(ctx context.Context) DestinationRouteOutput {
-	return o
-}
-
-func (o DestinationRouteOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationRoute] {
-	return pulumix.Output[DestinationRoute]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The network address of the subnet for which the packet is routed to the ClientGateway.
-func (o DestinationRouteOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v DestinationRoute) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// The network mask of the subnet for which the packet is routed to the ClientGateway.
-func (o DestinationRouteOutput) Netmask() pulumi.StringOutput {
-	return o.ApplyT(func(v DestinationRoute) string { return v.Netmask }).(pulumi.StringOutput)
-}
-
-type DestinationRouteArrayOutput struct{ *pulumi.OutputState }
-
-func (DestinationRouteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DestinationRoute)(nil)).Elem()
-}
-
-func (o DestinationRouteArrayOutput) ToDestinationRouteArrayOutput() DestinationRouteArrayOutput {
-	return o
-}
-
-func (o DestinationRouteArrayOutput) ToDestinationRouteArrayOutputWithContext(ctx context.Context) DestinationRouteArrayOutput {
-	return o
-}
-
-func (o DestinationRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DestinationRoute] {
-	return pulumix.Output[[]DestinationRoute]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o DestinationRouteArrayOutput) Index(i pulumi.IntInput) DestinationRouteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationRoute {
-		return vs[0].([]DestinationRoute)[vs[1].(int)]
-	}).(DestinationRouteOutput)
-}
-
-// The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-type DestinationRouteResponse struct {
-	// The network address of the subnet for which the packet is routed to the ClientGateway.
-	Address string `pulumi:"address"`
-	// The network mask of the subnet for which the packet is routed to the ClientGateway.
-	Netmask string `pulumi:"netmask"`
-}
-
-// The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-type DestinationRouteResponseOutput struct{ *pulumi.OutputState }
-
-func (DestinationRouteResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DestinationRouteResponse)(nil)).Elem()
-}
-
-func (o DestinationRouteResponseOutput) ToDestinationRouteResponseOutput() DestinationRouteResponseOutput {
-	return o
-}
-
-func (o DestinationRouteResponseOutput) ToDestinationRouteResponseOutputWithContext(ctx context.Context) DestinationRouteResponseOutput {
-	return o
-}
-
-func (o DestinationRouteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationRouteResponse] {
-	return pulumix.Output[DestinationRouteResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The network address of the subnet for which the packet is routed to the ClientGateway.
-func (o DestinationRouteResponseOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v DestinationRouteResponse) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// The network mask of the subnet for which the packet is routed to the ClientGateway.
-func (o DestinationRouteResponseOutput) Netmask() pulumi.StringOutput {
-	return o.ApplyT(func(v DestinationRouteResponse) string { return v.Netmask }).(pulumi.StringOutput)
-}
-
-type DestinationRouteResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (DestinationRouteResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DestinationRouteResponse)(nil)).Elem()
-}
-
-func (o DestinationRouteResponseArrayOutput) ToDestinationRouteResponseArrayOutput() DestinationRouteResponseArrayOutput {
-	return o
-}
-
-func (o DestinationRouteResponseArrayOutput) ToDestinationRouteResponseArrayOutputWithContext(ctx context.Context) DestinationRouteResponseArrayOutput {
-	return o
-}
-
-func (o DestinationRouteResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DestinationRouteResponse] {
-	return pulumix.Output[[]DestinationRouteResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o DestinationRouteResponseArrayOutput) Index(i pulumi.IntInput) DestinationRouteResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationRouteResponse {
-		return vs[0].([]DestinationRouteResponse)[vs[1].(int)]
-	}).(DestinationRouteResponseOutput)
-}
-
-// The details of the egress info. One of the following options should be set.
-type Egress struct {
-	// A VPC from the consumer project.
-	PeeredVpc *PeeredVpc `pulumi:"peeredVpc"`
-}
-
-// EgressInput is an input type that accepts EgressArgs and EgressOutput values.
-// You can construct a concrete instance of `EgressInput` via:
-//
-//	EgressArgs{...}
-type EgressInput interface {
-	pulumi.Input
-
-	ToEgressOutput() EgressOutput
-	ToEgressOutputWithContext(context.Context) EgressOutput
-}
-
-// The details of the egress info. One of the following options should be set.
-type EgressArgs struct {
-	// A VPC from the consumer project.
-	PeeredVpc PeeredVpcPtrInput `pulumi:"peeredVpc"`
-}
-
-func (EgressArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Egress)(nil)).Elem()
-}
-
-func (i EgressArgs) ToEgressOutput() EgressOutput {
-	return i.ToEgressOutputWithContext(context.Background())
-}
-
-func (i EgressArgs) ToEgressOutputWithContext(ctx context.Context) EgressOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EgressOutput)
-}
-
-func (i EgressArgs) ToOutput(ctx context.Context) pulumix.Output[Egress] {
-	return pulumix.Output[Egress]{
-		OutputState: i.ToEgressOutputWithContext(ctx).OutputState,
-	}
-}
-
-// The details of the egress info. One of the following options should be set.
-type EgressOutput struct{ *pulumi.OutputState }
-
-func (EgressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Egress)(nil)).Elem()
-}
-
-func (o EgressOutput) ToEgressOutput() EgressOutput {
-	return o
-}
-
-func (o EgressOutput) ToEgressOutputWithContext(ctx context.Context) EgressOutput {
-	return o
-}
-
-func (o EgressOutput) ToOutput(ctx context.Context) pulumix.Output[Egress] {
-	return pulumix.Output[Egress]{
-		OutputState: o.OutputState,
-	}
-}
-
-// A VPC from the consumer project.
-func (o EgressOutput) PeeredVpc() PeeredVpcPtrOutput {
-	return o.ApplyT(func(v Egress) *PeeredVpc { return v.PeeredVpc }).(PeeredVpcPtrOutput)
-}
-
-// The details of the egress info. One of the following options should be set.
-type EgressResponse struct {
-	// A VPC from the consumer project.
-	PeeredVpc PeeredVpcResponse `pulumi:"peeredVpc"`
-}
-
-// The details of the egress info. One of the following options should be set.
-type EgressResponseOutput struct{ *pulumi.OutputState }
-
-func (EgressResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EgressResponse)(nil)).Elem()
-}
-
-func (o EgressResponseOutput) ToEgressResponseOutput() EgressResponseOutput {
-	return o
-}
-
-func (o EgressResponseOutput) ToEgressResponseOutputWithContext(ctx context.Context) EgressResponseOutput {
-	return o
-}
-
-func (o EgressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EgressResponse] {
-	return pulumix.Output[EgressResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// A VPC from the consumer project.
-func (o EgressResponseOutput) PeeredVpc() PeeredVpcResponseOutput {
-	return o.ApplyT(func(v EgressResponse) PeeredVpcResponse { return v.PeeredVpc }).(PeeredVpcResponseOutput)
-}
-
 // Gateway represents a user facing component that serves as an entrance to enable connectivity.
 type Gateway struct {
 	// The type of hosting used by the gateway.
@@ -1980,165 +1461,172 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseArrayOutput
 	}).(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput)
 }
 
-// Message contains the authentication information to validate against the proxy server.
-type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo struct {
-	// Optional. Service Account for encrypting the JWT.
+// Message contains the JWT encryption information for the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo struct {
+	// Optional. Service Account for encryption key.
 	EncryptionSaEmail *string `pulumi:"encryptionSaEmail"`
+	// Optional. JWK in string.
+	Jwk *string `pulumi:"jwk"`
 }
 
-// GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs and GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput values.
-// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoInput` via:
+// GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs and GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoInput` via:
 //
-//	GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs{...}
-type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoInput interface {
+//	GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs{...}
+type GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoInput interface {
 	pulumi.Input
 
-	ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput
-	ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput
 }
 
-// Message contains the authentication information to validate against the proxy server.
-type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs struct {
-	// Optional. Service Account for encrypting the JWT.
+// Message contains the JWT encryption information for the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs struct {
+	// Optional. Service Account for encryption key.
 	EncryptionSaEmail pulumi.StringPtrInput `pulumi:"encryptionSaEmail"`
+	// Optional. JWK in string.
+	Jwk pulumi.StringPtrInput `pulumi:"jwk"`
 }
 
-func (GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo)(nil)).Elem()
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo)(nil)).Elem()
 }
 
-func (i GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
-	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutputWithContext(context.Background())
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput)
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput)
 }
 
-func (i GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo] {
-	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo]{
-		OutputState: i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutputWithContext(ctx).OutputState,
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo] {
+	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo]{
+		OutputState: i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
-	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(context.Background())
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput).ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx)
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput).ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(ctx)
 }
 
-// GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs, GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtr and GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput` via:
+// GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs, GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtr and GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrInput` via:
 //
-//	        GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs{...}
+//	        GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs{...}
 //
 //	or:
 //
 //	        nil
-type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput interface {
+type GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrInput interface {
 	pulumi.Input
 
-	ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput
-	ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput
 }
 
-type googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs
+type googleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrType GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs
 
-func GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtr(v *GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput {
-	return (*googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType)(v)
+func GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtr(v *GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrInput {
+	return (*googleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrType)(v)
 }
 
-func (*googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo)(nil)).Elem()
+func (*googleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo)(nil)).Elem()
 }
 
-func (i *googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
-	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(context.Background())
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(context.Background())
 }
 
-func (i *googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput)
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput)
 }
 
-func (i *googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo] {
-	return pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo]{
-		OutputState: i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx).OutputState,
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo] {
+	return pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo]{
+		OutputState: i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-// Message contains the authentication information to validate against the proxy server.
-type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput struct{ *pulumi.OutputState }
+// Message contains the JWT encryption information for the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo)(nil)).Elem()
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo)(nil)).Elem()
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput {
 	return o
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput {
 	return o
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
-	return o.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(context.Background())
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput {
+	return o.ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo) *GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo {
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo) *GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo {
 		return &v
-	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput)
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput)
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo] {
-	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo]{
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo] {
+	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo]{
 		OutputState: o.OutputState,
 	}
 }
 
-// Optional. Service Account for encrypting the JWT.
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) EncryptionSaEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo) *string {
-		return v.EncryptionSaEmail
-	}).(pulumi.StringPtrOutput)
+// Optional. Service Account for encryption key.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput) EncryptionSaEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo) *string { return v.EncryptionSaEmail }).(pulumi.StringPtrOutput)
 }
 
-type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo)(nil)).Elem()
+// Optional. JWK in string.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput) Jwk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo) *string { return v.Jwk }).(pulumi.StringPtrOutput)
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+type GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput {
 	return o
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput {
 	return o
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo] {
-	return pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo]{
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo] {
+	return pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) Elem() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
-	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo {
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput) Elem() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo {
 		if v != nil {
 			return *v
 		}
-		var ret GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo
+		var ret GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
 		return ret
-	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput)
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput)
 }
 
-// Optional. Service Account for encrypting the JWT.
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) EncryptionSaEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo) *string {
+// Optional. Service Account for encryption key.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput) EncryptionSaEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo) *string {
 		if v == nil {
 			return nil
 		}
@@ -2146,43 +1634,277 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Message contains the authentication information to validate against the proxy server.
-type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse struct {
-	// Optional. Service Account for encrypting the JWT.
+// Optional. JWK in string.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput) Jwk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Jwk
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message contains the JWT encryption information for the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse struct {
+	// Optional. Service Account for encryption key.
 	EncryptionSaEmail string `pulumi:"encryptionSaEmail"`
+	// Optional. JWK in string.
+	Jwk string `pulumi:"jwk"`
 }
 
-// Message contains the authentication information to validate against the proxy server.
-type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput struct{ *pulumi.OutputState }
+// Message contains the JWT encryption information for the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse)(nil)).Elem()
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse)(nil)).Elem()
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput {
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput {
 	return o
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput {
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput {
 	return o
 }
 
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse] {
-	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse]{
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse] {
+	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse]{
 		OutputState: o.OutputState,
 	}
 }
 
-// Optional. Service Account for encrypting the JWT.
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput) EncryptionSaEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse) string {
+// Optional. Service Account for encryption key.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput) EncryptionSaEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse) string {
 		return v.EncryptionSaEmail
 	}).(pulumi.StringOutput)
 }
 
-// Metadata associated with Tenant and is provided by the Partner.
+// Optional. JWK in string.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput) Jwk() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse) string { return v.Jwk }).(pulumi.StringOutput)
+}
+
+// Message to capture group information
+type GoogleCloudBeyondcorpPartnerservicesV1alphaGroup struct {
+	// The group email id
+	Email *string `pulumi:"email"`
+	// Google group id
+	Id *string `pulumi:"id"`
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaGroupInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs and GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaGroupInput` via:
+//
+//	GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs{...}
+type GoogleCloudBeyondcorpPartnerservicesV1alphaGroupInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput
+}
+
+// Message to capture group information
+type GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs struct {
+	// The group email id
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// Google group id
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaGroup)(nil)).Elem()
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput)
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaGroup] {
+	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaGroup]{
+		OutputState: i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput).ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs, GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtr and GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrInput` via:
+//
+//	        GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput
+}
+
+type googleCloudBeyondcorpPartnerservicesV1alphaGroupPtrType GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs
+
+func GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtr(v *GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrInput {
+	return (*googleCloudBeyondcorpPartnerservicesV1alphaGroupPtrType)(v)
+}
+
+func (*googleCloudBeyondcorpPartnerservicesV1alphaGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaGroup)(nil)).Elem()
+}
+
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaGroupPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaGroupPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput)
+}
+
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaGroupPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaGroup] {
+	return pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaGroup]{
+		OutputState: i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Message to capture group information
+type GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaGroup)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput {
+	return o.ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBeyondcorpPartnerservicesV1alphaGroup) *GoogleCloudBeyondcorpPartnerservicesV1alphaGroup {
+		return &v
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput)
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaGroup] {
+	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The group email id
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaGroup) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// Google group id
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaGroup)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaGroup] {
+	return pulumix.Output[*GoogleCloudBeyondcorpPartnerservicesV1alphaGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput) Elem() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaGroup) GoogleCloudBeyondcorpPartnerservicesV1alphaGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBeyondcorpPartnerservicesV1alphaGroup
+		return ret
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput)
+}
+
+// The group email id
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google group id
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message to capture group information
+type GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse struct {
+	// The group email id
+	Email string `pulumi:"email"`
+}
+
+// Message to capture group information
+type GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse] {
+	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The group email id
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// Metadata associated with PartnerTenant and is provided by the Partner.
 type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata struct {
-	// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+	// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+	InternalTenantId *string `pulumi:"internalTenantId"`
+	// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
 	PartnerTenantId *string `pulumi:"partnerTenantId"`
 }
 
@@ -2197,9 +1919,11 @@ type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataInput interface {
 	ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput
 }
 
-// Metadata associated with Tenant and is provided by the Partner.
+// Metadata associated with PartnerTenant and is provided by the Partner.
 type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs struct {
-	// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+	// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+	InternalTenantId pulumi.StringPtrInput `pulumi:"internalTenantId"`
+	// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
 	PartnerTenantId pulumi.StringPtrInput `pulumi:"partnerTenantId"`
 }
 
@@ -2268,7 +1992,7 @@ func (i *googleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrType) ToOu
 	}
 }
 
-// Metadata associated with Tenant and is provided by the Partner.
+// Metadata associated with PartnerTenant and is provided by the Partner.
 type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) ElementType() reflect.Type {
@@ -2299,7 +2023,12 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) ToOutp
 	}
 }
 
-// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) InternalTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata) *string { return v.InternalTenantId }).(pulumi.StringPtrOutput)
+}
+
+// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
 func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) PartnerTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata) *string { return v.PartnerTenantId }).(pulumi.StringPtrOutput)
 }
@@ -2334,7 +2063,17 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput) Ele
 	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput)
 }
 
-// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput) InternalTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
 func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput) PartnerTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata) *string {
 		if v == nil {
@@ -2344,13 +2083,15 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput) Par
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata associated with Tenant and is provided by the Partner.
+// Metadata associated with PartnerTenant and is provided by the Partner.
 type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse struct {
-	// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+	// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+	InternalTenantId string `pulumi:"internalTenantId"`
+	// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
 	PartnerTenantId string `pulumi:"partnerTenantId"`
 }
 
-// Metadata associated with Tenant and is provided by the Partner.
+// Metadata associated with PartnerTenant and is provided by the Partner.
 type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput) ElementType() reflect.Type {
@@ -2371,7 +2112,14 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput
 	}
 }
 
-// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput) InternalTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse) string {
+		return v.InternalTenantId
+	}).(pulumi.StringOutput)
+}
+
+// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
 func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput) PartnerTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse) string {
 		return v.PartnerTenantId
@@ -2475,6 +2223,123 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput) To
 // Proxy Auto-Configuration (PAC) URI.
 func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput) PacUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse) string { return v.PacUri }).(pulumi.StringOutput)
+}
+
+// Message to capture settings for a BrowserDlpRule
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting struct {
+	// Immutable. The type of the Setting. .
+	Type string `pulumi:"type"`
+	// The value of the Setting.
+	Value map[string]string `pulumi:"value"`
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs and GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingInput` via:
+//
+//	GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs{...}
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput
+}
+
+// Message to capture settings for a BrowserDlpRule
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs struct {
+	// Immutable. The type of the Setting. .
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value of the Setting.
+	Value pulumi.StringMapInput `pulumi:"value"`
+}
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting)(nil)).Elem()
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput)
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting] {
+	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting]{
+		OutputState: i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Message to capture settings for a BrowserDlpRule
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting] {
+	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Immutable. The type of the Setting. .
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the Setting.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput) Value() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting) map[string]string { return v.Value }).(pulumi.StringMapOutput)
+}
+
+// Message to capture settings for a BrowserDlpRule
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse struct {
+	// Immutable. The type of the Setting. .
+	Type string `pulumi:"type"`
+	// The value of the Setting.
+	Value map[string]string `pulumi:"value"`
+}
+
+// Message to capture settings for a BrowserDlpRule
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse] {
+	return pulumix.Output[GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Immutable. The type of the Setting. .
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the Setting.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput) Value() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse) map[string]string {
+		return v.Value
+	}).(pulumi.StringMapOutput)
 }
 
 // Message contains the transport layer information to verify the proxy server.
@@ -3480,301 +3345,6 @@ func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
-// Settings of how to connect to the ClientGateway. One of the following options should be set.
-type Ingress struct {
-	// The basic ingress config for ClientGateways.
-	Config *Config `pulumi:"config"`
-}
-
-// IngressInput is an input type that accepts IngressArgs and IngressOutput values.
-// You can construct a concrete instance of `IngressInput` via:
-//
-//	IngressArgs{...}
-type IngressInput interface {
-	pulumi.Input
-
-	ToIngressOutput() IngressOutput
-	ToIngressOutputWithContext(context.Context) IngressOutput
-}
-
-// Settings of how to connect to the ClientGateway. One of the following options should be set.
-type IngressArgs struct {
-	// The basic ingress config for ClientGateways.
-	Config ConfigPtrInput `pulumi:"config"`
-}
-
-func (IngressArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ingress)(nil)).Elem()
-}
-
-func (i IngressArgs) ToIngressOutput() IngressOutput {
-	return i.ToIngressOutputWithContext(context.Background())
-}
-
-func (i IngressArgs) ToIngressOutputWithContext(ctx context.Context) IngressOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IngressOutput)
-}
-
-func (i IngressArgs) ToOutput(ctx context.Context) pulumix.Output[Ingress] {
-	return pulumix.Output[Ingress]{
-		OutputState: i.ToIngressOutputWithContext(ctx).OutputState,
-	}
-}
-
-// Settings of how to connect to the ClientGateway. One of the following options should be set.
-type IngressOutput struct{ *pulumi.OutputState }
-
-func (IngressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ingress)(nil)).Elem()
-}
-
-func (o IngressOutput) ToIngressOutput() IngressOutput {
-	return o
-}
-
-func (o IngressOutput) ToIngressOutputWithContext(ctx context.Context) IngressOutput {
-	return o
-}
-
-func (o IngressOutput) ToOutput(ctx context.Context) pulumix.Output[Ingress] {
-	return pulumix.Output[Ingress]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The basic ingress config for ClientGateways.
-func (o IngressOutput) Config() ConfigPtrOutput {
-	return o.ApplyT(func(v Ingress) *Config { return v.Config }).(ConfigPtrOutput)
-}
-
-// Settings of how to connect to the ClientGateway. One of the following options should be set.
-type IngressResponse struct {
-	// The basic ingress config for ClientGateways.
-	Config ConfigResponse `pulumi:"config"`
-}
-
-// Settings of how to connect to the ClientGateway. One of the following options should be set.
-type IngressResponseOutput struct{ *pulumi.OutputState }
-
-func (IngressResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IngressResponse)(nil)).Elem()
-}
-
-func (o IngressResponseOutput) ToIngressResponseOutput() IngressResponseOutput {
-	return o
-}
-
-func (o IngressResponseOutput) ToIngressResponseOutputWithContext(ctx context.Context) IngressResponseOutput {
-	return o
-}
-
-func (o IngressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngressResponse] {
-	return pulumix.Output[IngressResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The basic ingress config for ClientGateways.
-func (o IngressResponseOutput) Config() ConfigResponseOutput {
-	return o.ApplyT(func(v IngressResponse) ConfigResponse { return v.Config }).(ConfigResponseOutput)
-}
-
-// The peered VPC owned by the consumer project.
-type PeeredVpc struct {
-	// The name of the peered VPC owned by the consumer project.
-	NetworkVpc string `pulumi:"networkVpc"`
-}
-
-// PeeredVpcInput is an input type that accepts PeeredVpcArgs and PeeredVpcOutput values.
-// You can construct a concrete instance of `PeeredVpcInput` via:
-//
-//	PeeredVpcArgs{...}
-type PeeredVpcInput interface {
-	pulumi.Input
-
-	ToPeeredVpcOutput() PeeredVpcOutput
-	ToPeeredVpcOutputWithContext(context.Context) PeeredVpcOutput
-}
-
-// The peered VPC owned by the consumer project.
-type PeeredVpcArgs struct {
-	// The name of the peered VPC owned by the consumer project.
-	NetworkVpc pulumi.StringInput `pulumi:"networkVpc"`
-}
-
-func (PeeredVpcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeredVpc)(nil)).Elem()
-}
-
-func (i PeeredVpcArgs) ToPeeredVpcOutput() PeeredVpcOutput {
-	return i.ToPeeredVpcOutputWithContext(context.Background())
-}
-
-func (i PeeredVpcArgs) ToPeeredVpcOutputWithContext(ctx context.Context) PeeredVpcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeeredVpcOutput)
-}
-
-func (i PeeredVpcArgs) ToOutput(ctx context.Context) pulumix.Output[PeeredVpc] {
-	return pulumix.Output[PeeredVpc]{
-		OutputState: i.ToPeeredVpcOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i PeeredVpcArgs) ToPeeredVpcPtrOutput() PeeredVpcPtrOutput {
-	return i.ToPeeredVpcPtrOutputWithContext(context.Background())
-}
-
-func (i PeeredVpcArgs) ToPeeredVpcPtrOutputWithContext(ctx context.Context) PeeredVpcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeeredVpcOutput).ToPeeredVpcPtrOutputWithContext(ctx)
-}
-
-// PeeredVpcPtrInput is an input type that accepts PeeredVpcArgs, PeeredVpcPtr and PeeredVpcPtrOutput values.
-// You can construct a concrete instance of `PeeredVpcPtrInput` via:
-//
-//	        PeeredVpcArgs{...}
-//
-//	or:
-//
-//	        nil
-type PeeredVpcPtrInput interface {
-	pulumi.Input
-
-	ToPeeredVpcPtrOutput() PeeredVpcPtrOutput
-	ToPeeredVpcPtrOutputWithContext(context.Context) PeeredVpcPtrOutput
-}
-
-type peeredVpcPtrType PeeredVpcArgs
-
-func PeeredVpcPtr(v *PeeredVpcArgs) PeeredVpcPtrInput {
-	return (*peeredVpcPtrType)(v)
-}
-
-func (*peeredVpcPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PeeredVpc)(nil)).Elem()
-}
-
-func (i *peeredVpcPtrType) ToPeeredVpcPtrOutput() PeeredVpcPtrOutput {
-	return i.ToPeeredVpcPtrOutputWithContext(context.Background())
-}
-
-func (i *peeredVpcPtrType) ToPeeredVpcPtrOutputWithContext(ctx context.Context) PeeredVpcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeeredVpcPtrOutput)
-}
-
-func (i *peeredVpcPtrType) ToOutput(ctx context.Context) pulumix.Output[*PeeredVpc] {
-	return pulumix.Output[*PeeredVpc]{
-		OutputState: i.ToPeeredVpcPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-// The peered VPC owned by the consumer project.
-type PeeredVpcOutput struct{ *pulumi.OutputState }
-
-func (PeeredVpcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeredVpc)(nil)).Elem()
-}
-
-func (o PeeredVpcOutput) ToPeeredVpcOutput() PeeredVpcOutput {
-	return o
-}
-
-func (o PeeredVpcOutput) ToPeeredVpcOutputWithContext(ctx context.Context) PeeredVpcOutput {
-	return o
-}
-
-func (o PeeredVpcOutput) ToPeeredVpcPtrOutput() PeeredVpcPtrOutput {
-	return o.ToPeeredVpcPtrOutputWithContext(context.Background())
-}
-
-func (o PeeredVpcOutput) ToPeeredVpcPtrOutputWithContext(ctx context.Context) PeeredVpcPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PeeredVpc) *PeeredVpc {
-		return &v
-	}).(PeeredVpcPtrOutput)
-}
-
-func (o PeeredVpcOutput) ToOutput(ctx context.Context) pulumix.Output[PeeredVpc] {
-	return pulumix.Output[PeeredVpc]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The name of the peered VPC owned by the consumer project.
-func (o PeeredVpcOutput) NetworkVpc() pulumi.StringOutput {
-	return o.ApplyT(func(v PeeredVpc) string { return v.NetworkVpc }).(pulumi.StringOutput)
-}
-
-type PeeredVpcPtrOutput struct{ *pulumi.OutputState }
-
-func (PeeredVpcPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PeeredVpc)(nil)).Elem()
-}
-
-func (o PeeredVpcPtrOutput) ToPeeredVpcPtrOutput() PeeredVpcPtrOutput {
-	return o
-}
-
-func (o PeeredVpcPtrOutput) ToPeeredVpcPtrOutputWithContext(ctx context.Context) PeeredVpcPtrOutput {
-	return o
-}
-
-func (o PeeredVpcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeredVpc] {
-	return pulumix.Output[*PeeredVpc]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o PeeredVpcPtrOutput) Elem() PeeredVpcOutput {
-	return o.ApplyT(func(v *PeeredVpc) PeeredVpc {
-		if v != nil {
-			return *v
-		}
-		var ret PeeredVpc
-		return ret
-	}).(PeeredVpcOutput)
-}
-
-// The name of the peered VPC owned by the consumer project.
-func (o PeeredVpcPtrOutput) NetworkVpc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PeeredVpc) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NetworkVpc
-	}).(pulumi.StringPtrOutput)
-}
-
-// The peered VPC owned by the consumer project.
-type PeeredVpcResponse struct {
-	// The name of the peered VPC owned by the consumer project.
-	NetworkVpc string `pulumi:"networkVpc"`
-}
-
-// The peered VPC owned by the consumer project.
-type PeeredVpcResponseOutput struct{ *pulumi.OutputState }
-
-func (PeeredVpcResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeredVpcResponse)(nil)).Elem()
-}
-
-func (o PeeredVpcResponseOutput) ToPeeredVpcResponseOutput() PeeredVpcResponseOutput {
-	return o
-}
-
-func (o PeeredVpcResponseOutput) ToPeeredVpcResponseOutputWithContext(ctx context.Context) PeeredVpcResponseOutput {
-	return o
-}
-
-func (o PeeredVpcResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PeeredVpcResponse] {
-	return pulumix.Output[PeeredVpcResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The name of the peered VPC owned by the consumer project.
-func (o PeeredVpcResponseOutput) NetworkVpc() pulumi.StringOutput {
-	return o.ApplyT(func(v PeeredVpcResponse) string { return v.NetworkVpc }).(pulumi.StringOutput)
-}
-
 // PrincipalInfo represents an Identity oneof.
 type PrincipalInfo struct {
 	// A GCP service account.
@@ -4448,11 +4018,6 @@ func (o ServiceAccountResponseOutput) Email() pulumi.StringOutput {
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationEndpointInput)(nil)).Elem(), ApplicationEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigInput)(nil)).Elem(), ConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigPtrInput)(nil)).Elem(), ConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DestinationRouteInput)(nil)).Elem(), DestinationRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DestinationRouteArrayInput)(nil)).Elem(), DestinationRouteArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EgressInput)(nil)).Elem(), EgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInput)(nil)).Elem(), GatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPtrInput)(nil)).Elem(), GatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointArgs{})
@@ -4464,11 +4029,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaGroupInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigInput)(nil)).Elem(), GoogleIamV1AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditConfigArray{})
@@ -4478,9 +4046,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingArrayInput)(nil)).Elem(), GoogleIamV1BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprInput)(nil)).Elem(), GoogleTypeExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprPtrInput)(nil)).Elem(), GoogleTypeExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IngressInput)(nil)).Elem(), IngressArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PeeredVpcInput)(nil)).Elem(), PeeredVpcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PeeredVpcPtrInput)(nil)).Elem(), PeeredVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalInfoInput)(nil)).Elem(), PrincipalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceInfoInput)(nil)).Elem(), ResourceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceInfoPtrInput)(nil)).Elem(), ResourceInfoArgs{})
@@ -4491,15 +4056,6 @@ func init() {
 	pulumi.RegisterOutputType(AllocatedConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationEndpointOutput{})
 	pulumi.RegisterOutputType(ApplicationEndpointResponseOutput{})
-	pulumi.RegisterOutputType(ConfigOutput{})
-	pulumi.RegisterOutputType(ConfigPtrOutput{})
-	pulumi.RegisterOutputType(ConfigResponseOutput{})
-	pulumi.RegisterOutputType(DestinationRouteOutput{})
-	pulumi.RegisterOutputType(DestinationRouteArrayOutput{})
-	pulumi.RegisterOutputType(DestinationRouteResponseOutput{})
-	pulumi.RegisterOutputType(DestinationRouteResponseArrayOutput{})
-	pulumi.RegisterOutputType(EgressOutput{})
-	pulumi.RegisterOutputType(EgressResponseOutput{})
 	pulumi.RegisterOutputType(GatewayOutput{})
 	pulumi.RegisterOutputType(GatewayPtrOutput{})
 	pulumi.RegisterOutputType(GatewayResponseOutput{})
@@ -4518,14 +4074,19 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput{})
-	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaGroupOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaGroupPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigOutput{})
@@ -4543,11 +4104,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleTypeExprOutput{})
 	pulumi.RegisterOutputType(GoogleTypeExprPtrOutput{})
 	pulumi.RegisterOutputType(GoogleTypeExprResponseOutput{})
-	pulumi.RegisterOutputType(IngressOutput{})
-	pulumi.RegisterOutputType(IngressResponseOutput{})
-	pulumi.RegisterOutputType(PeeredVpcOutput{})
-	pulumi.RegisterOutputType(PeeredVpcPtrOutput{})
-	pulumi.RegisterOutputType(PeeredVpcResponseOutput{})
 	pulumi.RegisterOutputType(PrincipalInfoOutput{})
 	pulumi.RegisterOutputType(PrincipalInfoResponseOutput{})
 	pulumi.RegisterOutputType(ResourceInfoOutput{})

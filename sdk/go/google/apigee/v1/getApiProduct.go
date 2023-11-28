@@ -45,6 +45,8 @@ type LookupApiProductResult struct {
 	Environments []string `pulumi:"environments"`
 	// Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
 	GraphqlOperationGroup GoogleCloudApigeeV1GraphQLOperationGroupResponse `pulumi:"graphqlOperationGroup"`
+	// Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+	GrpcOperationGroup GoogleCloudApigeeV1GrpcOperationGroupResponse `pulumi:"grpcOperationGroup"`
 	// Response only. Modified time of this environment as milliseconds since epoch.
 	LastModifiedAt string `pulumi:"lastModifiedAt"`
 	// Internal name of the API product. Characters you can use in the name are restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited when updating the API product.
@@ -147,6 +149,13 @@ func (o LookupApiProductResultOutput) GraphqlOperationGroup() GoogleCloudApigeeV
 	return o.ApplyT(func(v LookupApiProductResult) GoogleCloudApigeeV1GraphQLOperationGroupResponse {
 		return v.GraphqlOperationGroup
 	}).(GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput)
+}
+
+// Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+func (o LookupApiProductResultOutput) GrpcOperationGroup() GoogleCloudApigeeV1GrpcOperationGroupResponseOutput {
+	return o.ApplyT(func(v LookupApiProductResult) GoogleCloudApigeeV1GrpcOperationGroupResponse {
+		return v.GrpcOperationGroup
+	}).(GoogleCloudApigeeV1GrpcOperationGroupResponseOutput)
 }
 
 // Response only. Modified time of this environment as milliseconds since epoch.

@@ -81,6 +81,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EntryTypeIamPolicy{}
 	case "google-native:dataplex/v1:Environment":
 		r = &Environment{}
+	case "google-native:dataplex/v1:GovernanceRuleIamBinding":
+		r = &GovernanceRuleIamBinding{}
+	case "google-native:dataplex/v1:GovernanceRuleIamMember":
+		r = &GovernanceRuleIamMember{}
+	case "google-native:dataplex/v1:GovernanceRuleIamPolicy":
+		r = &GovernanceRuleIamPolicy{}
 	case "google-native:dataplex/v1:Lake":
 		r = &Lake{}
 	case "google-native:dataplex/v1:LakeAssetIamBinding":

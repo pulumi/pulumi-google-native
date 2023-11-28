@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     public partial class Target : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Information specifying an Anthos Cluster.
+        /// Optional. Information specifying an Anthos Cluster.
         /// </summary>
         [Output("anthosCluster")]
         public Output<Outputs.AnthosClusterResponse> AnthosCluster { get; private set; } = null!;
@@ -32,6 +32,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The deploy parameters to use for this target.
+        /// </summary>
+        [Output("deployParameters")]
+        public Output<ImmutableDictionary<string, string>> DeployParameters { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Description of the `Target`. Max length is 255 characters.
@@ -52,13 +58,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<ImmutableArray<Outputs.ExecutionConfigResponse>> ExecutionConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Information specifying a GKE Cluster.
+        /// Optional. Information specifying a GKE Cluster.
         /// </summary>
         [Output("gke")]
         public Output<Outputs.GkeClusterResponse> Gke { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -67,13 +73,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Information specifying a multiTarget.
+        /// Optional. Information specifying a multiTarget.
         /// </summary>
         [Output("multiTarget")]
         public Output<Outputs.MultiTargetResponse> MultiTarget { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+        /// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -94,7 +100,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<bool> RequireApproval { get; private set; } = null!;
 
         /// <summary>
-        /// Information specifying a Cloud Run deployment target.
+        /// Optional. Information specifying a Cloud Run deployment target.
         /// </summary>
         [Output("run")]
         public Output<Outputs.CloudRunLocationResponse> Run { get; private set; } = null!;
@@ -172,7 +178,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -181,10 +187,22 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         }
 
         /// <summary>
-        /// Information specifying an Anthos Cluster.
+        /// Optional. Information specifying an Anthos Cluster.
         /// </summary>
         [Input("anthosCluster")]
         public Input<Inputs.AnthosClusterArgs>? AnthosCluster { get; set; }
+
+        [Input("deployParameters")]
+        private InputMap<string>? _deployParameters;
+
+        /// <summary>
+        /// Optional. The deploy parameters to use for this target.
+        /// </summary>
+        public InputMap<string> DeployParameters
+        {
+            get => _deployParameters ?? (_deployParameters = new InputMap<string>());
+            set => _deployParameters = value;
+        }
 
         /// <summary>
         /// Optional. Description of the `Target`. Max length is 255 characters.
@@ -211,7 +229,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         }
 
         /// <summary>
-        /// Information specifying a GKE Cluster.
+        /// Optional. Information specifying a GKE Cluster.
         /// </summary>
         [Input("gke")]
         public Input<Inputs.GkeClusterArgs>? Gke { get; set; }
@@ -220,7 +238,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -232,13 +250,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Information specifying a multiTarget.
+        /// Optional. Information specifying a multiTarget.
         /// </summary>
         [Input("multiTarget")]
         public Input<Inputs.MultiTargetArgs>? MultiTarget { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+        /// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -259,7 +277,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Input<bool>? RequireApproval { get; set; }
 
         /// <summary>
-        /// Information specifying a Cloud Run deployment target.
+        /// Optional. Information specifying a Cloud Run deployment target.
         /// </summary>
         [Input("run")]
         public Input<Inputs.CloudRunLocationArgs>? Run { get; set; }

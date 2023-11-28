@@ -17,13 +17,17 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualityResultResponse
     {
         /// <summary>
-        /// A list of results at the dimension level.
+        /// A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityDimensionResultResponse> Dimensions;
         /// <summary>
         /// Overall data quality result -- true if all rules passed.
         /// </summary>
         public readonly bool Passed;
+        /// <summary>
+        /// The result of post scan actions.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse PostScanActionsResult;
         /// <summary>
         /// The count of rows processed.
         /// </summary>
@@ -43,6 +47,8 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
             bool passed,
 
+            Outputs.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse postScanActionsResult,
+
             string rowCount,
 
             ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityRuleResultResponse> rules,
@@ -51,6 +57,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         {
             Dimensions = dimensions;
             Passed = passed;
+            PostScanActionsResult = postScanActionsResult;
             RowCount = rowCount;
             Rules = rules;
             ScannedData = scannedData;

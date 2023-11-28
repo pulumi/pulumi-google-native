@@ -133,6 +133,9 @@ export class AuthConfig extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.productId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
@@ -230,7 +233,7 @@ export interface AuthConfigArgs {
     /**
      * The name of the auth config.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
      */

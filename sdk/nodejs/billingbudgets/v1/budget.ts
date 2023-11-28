@@ -63,6 +63,7 @@ export class Budget extends pulumi.CustomResource {
      * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
      */
     public readonly notificationsRule!: pulumi.Output<outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1NotificationsRuleResponse>;
+    public readonly ownershipScope!: pulumi.Output<string>;
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
      */
@@ -91,6 +92,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["notificationsRule"] = args ? args.notificationsRule : undefined;
+            resourceInputs["ownershipScope"] = args ? args.ownershipScope : undefined;
             resourceInputs["thresholdRules"] = args ? args.thresholdRules : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
@@ -101,6 +103,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationsRule"] = undefined /*out*/;
+            resourceInputs["ownershipScope"] = undefined /*out*/;
             resourceInputs["thresholdRules"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -135,6 +138,7 @@ export interface BudgetArgs {
      * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
      */
     notificationsRule?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1NotificationsRuleArgs>;
+    ownershipScope?: pulumi.Input<enums.billingbudgets.v1.BudgetOwnershipScope>;
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
      */

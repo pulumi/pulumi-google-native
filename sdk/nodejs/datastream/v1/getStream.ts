@@ -60,6 +60,10 @@ export interface GetStreamResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+     */
+    readonly lastRecoveryTime: string;
+    /**
      * The stream's name.
      */
     readonly name: string;

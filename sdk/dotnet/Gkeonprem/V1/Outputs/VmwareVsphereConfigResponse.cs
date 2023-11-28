@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
         /// </summary>
         public readonly string Datastore;
         /// <summary>
+        /// Vsphere host groups to apply to all VMs in the node pool
+        /// </summary>
+        public readonly ImmutableArray<string> HostGroups;
+        /// <summary>
         /// Tags to apply to VMs.
         /// </summary>
         public readonly ImmutableArray<Outputs.VmwareVsphereTagResponse> Tags;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
         private VmwareVsphereConfigResponse(
             string datastore,
 
+            ImmutableArray<string> hostGroups,
+
             ImmutableArray<Outputs.VmwareVsphereTagResponse> tags)
         {
             Datastore = datastore;
+            HostGroups = hostGroups;
             Tags = tags;
         }
     }

@@ -79,10 +79,40 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.RouterBgpPeerEnable>? Enable { get; set; }
 
         /// <summary>
+        /// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+        /// </summary>
+        [Input("enableIpv4")]
+        public Input<bool>? EnableIpv4 { get; set; }
+
+        /// <summary>
         /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
+
+        [Input("exportPolicies")]
+        private InputList<string>? _exportPolicies;
+
+        /// <summary>
+        /// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        /// </summary>
+        public InputList<string> ExportPolicies
+        {
+            get => _exportPolicies ?? (_exportPolicies = new InputList<string>());
+            set => _exportPolicies = value;
+        }
+
+        [Input("importPolicies")]
+        private InputList<string>? _importPolicies;
+
+        /// <summary>
+        /// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+        /// </summary>
+        public InputList<string> ImportPolicies
+        {
+            get => _importPolicies ?? (_importPolicies = new InputList<string>());
+            set => _importPolicies = value;
+        }
 
         /// <summary>
         /// Name of the interface the BGP peer is associated with.
@@ -95,6 +125,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// IPv4 address of the interface inside Google Cloud Platform.
+        /// </summary>
+        [Input("ipv4NexthopAddress")]
+        public Input<string>? Ipv4NexthopAddress { get; set; }
 
         /// <summary>
         /// IPv6 address of the interface inside Google Cloud Platform.
@@ -125,6 +161,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
+
+        /// <summary>
+        /// IPv4 address of the BGP interface outside Google Cloud Platform.
+        /// </summary>
+        [Input("peerIpv4NexthopAddress")]
+        public Input<string>? PeerIpv4NexthopAddress { get; set; }
 
         /// <summary>
         /// IPv6 address of the BGP interface outside Google Cloud Platform.

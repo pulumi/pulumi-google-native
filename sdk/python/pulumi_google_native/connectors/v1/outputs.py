@@ -18,16 +18,29 @@ __all__ = [
     'BindingResponse',
     'ConfigVariableResponse',
     'ConnectionStatusResponse',
+    'ConnectorVersionInfraConfigResponse',
     'ConnectorsLogConfigResponse',
     'DestinationConfigResponse',
     'DestinationResponse',
+    'EncryptionKeyResponse',
+    'EndPointResponse',
+    'EventSubscriptionDestinationResponse',
+    'EventSubscriptionStatusResponse',
+    'EventingConfigResponse',
+    'EventingRuntimeDataResponse',
+    'EventingStatusResponse',
     'ExprResponse',
+    'HPAConfigResponse',
+    'HeaderResponse',
+    'JMSResponse',
     'JwtClaimsResponse',
     'LockConfigResponse',
     'NodeConfigResponse',
     'Oauth2AuthCodeFlowResponse',
     'Oauth2ClientCredentialsResponse',
     'Oauth2JwtBearerResponse',
+    'ResourceLimitsResponse',
+    'ResourceRequestsResponse',
     'SecretResponse',
     'SshPublicKeyResponse',
     'SslConfigResponse',
@@ -320,6 +333,8 @@ class ConfigVariableResponse(dict):
         suggest = None
         if key == "boolValue":
             suggest = "bool_value"
+        elif key == "encryptionKeyValue":
+            suggest = "encryption_key_value"
         elif key == "intValue":
             suggest = "int_value"
         elif key == "secretValue":
@@ -340,6 +355,7 @@ class ConfigVariableResponse(dict):
 
     def __init__(__self__, *,
                  bool_value: bool,
+                 encryption_key_value: 'outputs.EncryptionKeyResponse',
                  int_value: str,
                  key: str,
                  secret_value: 'outputs.SecretResponse',
@@ -347,12 +363,14 @@ class ConfigVariableResponse(dict):
         """
         ConfigVariable represents a configuration variable present in a Connection. or AuthConfig.
         :param bool bool_value: Value is a bool.
+        :param 'EncryptionKeyResponse' encryption_key_value: Value is a Encryption Key.
         :param str int_value: Value is an integer
         :param str key: Key of the config variable.
         :param 'SecretResponse' secret_value: Value is a secret.
         :param str string_value: Value is a string.
         """
         pulumi.set(__self__, "bool_value", bool_value)
+        pulumi.set(__self__, "encryption_key_value", encryption_key_value)
         pulumi.set(__self__, "int_value", int_value)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "secret_value", secret_value)
@@ -365,6 +383,14 @@ class ConfigVariableResponse(dict):
         Value is a bool.
         """
         return pulumi.get(self, "bool_value")
+
+    @property
+    @pulumi.getter(name="encryptionKeyValue")
+    def encryption_key_value(self) -> 'outputs.EncryptionKeyResponse':
+        """
+        Value is a Encryption Key.
+        """
+        return pulumi.get(self, "encryption_key_value")
 
     @property
     @pulumi.getter(name="intValue")
@@ -441,6 +467,123 @@ class ConnectionStatusResponse(dict):
         Status provides detailed information for the state.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class ConnectorVersionInfraConfigResponse(dict):
+    """
+    This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionRatelimitWindowSeconds":
+            suggest = "connection_ratelimit_window_seconds"
+        elif key == "hpaConfig":
+            suggest = "hpa_config"
+        elif key == "internalclientRatelimitThreshold":
+            suggest = "internalclient_ratelimit_threshold"
+        elif key == "ratelimitThreshold":
+            suggest = "ratelimit_threshold"
+        elif key == "resourceLimits":
+            suggest = "resource_limits"
+        elif key == "resourceRequests":
+            suggest = "resource_requests"
+        elif key == "sharedDeployment":
+            suggest = "shared_deployment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorVersionInfraConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorVersionInfraConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorVersionInfraConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_ratelimit_window_seconds: str,
+                 hpa_config: 'outputs.HPAConfigResponse',
+                 internalclient_ratelimit_threshold: str,
+                 ratelimit_threshold: str,
+                 resource_limits: 'outputs.ResourceLimitsResponse',
+                 resource_requests: 'outputs.ResourceRequestsResponse',
+                 shared_deployment: str):
+        """
+        This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version
+        :param str connection_ratelimit_window_seconds: The window used for ratelimiting runtime requests to connections.
+        :param 'HPAConfigResponse' hpa_config: HPA autoscaling config.
+        :param str internalclient_ratelimit_threshold: Max QPS supported for internal requests originating from Connd.
+        :param str ratelimit_threshold: Max QPS supported by the connector version before throttling of requests.
+        :param 'ResourceLimitsResponse' resource_limits: System resource limits.
+        :param 'ResourceRequestsResponse' resource_requests: System resource requests.
+        :param str shared_deployment: The name of shared connector deployment.
+        """
+        pulumi.set(__self__, "connection_ratelimit_window_seconds", connection_ratelimit_window_seconds)
+        pulumi.set(__self__, "hpa_config", hpa_config)
+        pulumi.set(__self__, "internalclient_ratelimit_threshold", internalclient_ratelimit_threshold)
+        pulumi.set(__self__, "ratelimit_threshold", ratelimit_threshold)
+        pulumi.set(__self__, "resource_limits", resource_limits)
+        pulumi.set(__self__, "resource_requests", resource_requests)
+        pulumi.set(__self__, "shared_deployment", shared_deployment)
+
+    @property
+    @pulumi.getter(name="connectionRatelimitWindowSeconds")
+    def connection_ratelimit_window_seconds(self) -> str:
+        """
+        The window used for ratelimiting runtime requests to connections.
+        """
+        return pulumi.get(self, "connection_ratelimit_window_seconds")
+
+    @property
+    @pulumi.getter(name="hpaConfig")
+    def hpa_config(self) -> 'outputs.HPAConfigResponse':
+        """
+        HPA autoscaling config.
+        """
+        return pulumi.get(self, "hpa_config")
+
+    @property
+    @pulumi.getter(name="internalclientRatelimitThreshold")
+    def internalclient_ratelimit_threshold(self) -> str:
+        """
+        Max QPS supported for internal requests originating from Connd.
+        """
+        return pulumi.get(self, "internalclient_ratelimit_threshold")
+
+    @property
+    @pulumi.getter(name="ratelimitThreshold")
+    def ratelimit_threshold(self) -> str:
+        """
+        Max QPS supported by the connector version before throttling of requests.
+        """
+        return pulumi.get(self, "ratelimit_threshold")
+
+    @property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> 'outputs.ResourceLimitsResponse':
+        """
+        System resource limits.
+        """
+        return pulumi.get(self, "resource_limits")
+
+    @property
+    @pulumi.getter(name="resourceRequests")
+    def resource_requests(self) -> 'outputs.ResourceRequestsResponse':
+        """
+        System resource requests.
+        """
+        return pulumi.get(self, "resource_requests")
+
+    @property
+    @pulumi.getter(name="sharedDeployment")
+    def shared_deployment(self) -> str:
+        """
+        The name of shared connector deployment.
+        """
+        return pulumi.get(self, "shared_deployment")
 
 
 @pulumi.output_type
@@ -556,6 +699,413 @@ class DestinationResponse(dict):
 
 
 @pulumi.output_type
+class EncryptionKeyResponse(dict):
+    """
+    Encryption Key value.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str,
+                 type: str):
+        """
+        Encryption Key value.
+        :param str kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+        :param str type: Type.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class EndPointResponse(dict):
+    """
+    Endpoint message includes details of the Destination endpoint.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointUri":
+            suggest = "endpoint_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndPointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndPointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndPointResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint_uri: str,
+                 headers: Sequence['outputs.HeaderResponse']):
+        """
+        Endpoint message includes details of the Destination endpoint.
+        :param str endpoint_uri: The URI of the Endpoint.
+        :param Sequence['HeaderResponse'] headers: List of Header to be added to the Endpoint.
+        """
+        pulumi.set(__self__, "endpoint_uri", endpoint_uri)
+        pulumi.set(__self__, "headers", headers)
+
+    @property
+    @pulumi.getter(name="endpointUri")
+    def endpoint_uri(self) -> str:
+        """
+        The URI of the Endpoint.
+        """
+        return pulumi.get(self, "endpoint_uri")
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Sequence['outputs.HeaderResponse']:
+        """
+        List of Header to be added to the Endpoint.
+        """
+        return pulumi.get(self, "headers")
+
+
+@pulumi.output_type
+class EventSubscriptionDestinationResponse(dict):
+    """
+    Message for EventSubscription Destination to act on receiving an event
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSubscriptionDestinationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSubscriptionDestinationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSubscriptionDestinationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: 'outputs.EndPointResponse',
+                 service_account: str,
+                 type: str):
+        """
+        Message for EventSubscription Destination to act on receiving an event
+        :param 'EndPointResponse' endpoint: OPTION 1: Hit an endpoint when we receive an event.
+        :param str service_account: Service account needed for runtime plane to trigger IP workflow.
+        :param str type: type of the destination
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> 'outputs.EndPointResponse':
+        """
+        OPTION 1: Hit an endpoint when we receive an event.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Service account needed for runtime plane to trigger IP workflow.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        type of the destination
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class EventSubscriptionStatusResponse(dict):
+    """
+    EventSubscription Status denotes the status of the EventSubscription resource.
+    """
+    def __init__(__self__, *,
+                 description: str,
+                 state: str):
+        """
+        EventSubscription Status denotes the status of the EventSubscription resource.
+        :param str description: Description of the state.
+        :param str state: State of Event Subscription resource.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the state.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of Event Subscription resource.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class EventingConfigResponse(dict):
+    """
+    Eventing Configuration of a connection
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalVariables":
+            suggest = "additional_variables"
+        elif key == "authConfig":
+            suggest = "auth_config"
+        elif key == "encryptionKey":
+            suggest = "encryption_key"
+        elif key == "enrichmentEnabled":
+            suggest = "enrichment_enabled"
+        elif key == "eventsListenerIngressEndpoint":
+            suggest = "events_listener_ingress_endpoint"
+        elif key == "privateConnectivityEnabled":
+            suggest = "private_connectivity_enabled"
+        elif key == "registrationDestinationConfig":
+            suggest = "registration_destination_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_variables: Sequence['outputs.ConfigVariableResponse'],
+                 auth_config: 'outputs.AuthConfigResponse',
+                 encryption_key: 'outputs.ConfigVariableResponse',
+                 enrichment_enabled: bool,
+                 events_listener_ingress_endpoint: str,
+                 private_connectivity_enabled: bool,
+                 registration_destination_config: 'outputs.DestinationConfigResponse'):
+        """
+        Eventing Configuration of a connection
+        :param Sequence['ConfigVariableResponse'] additional_variables: Additional eventing related field values
+        :param 'AuthConfigResponse' auth_config: Auth details for the webhook adapter.
+        :param 'ConfigVariableResponse' encryption_key: Encryption key (can be either Google managed or CMEK).
+        :param bool enrichment_enabled: Enrichment Enabled.
+        :param str events_listener_ingress_endpoint: Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+        :param bool private_connectivity_enabled: Optional. Private Connectivity Enabled.
+        :param 'DestinationConfigResponse' registration_destination_config: Registration endpoint for auto registration.
+        """
+        pulumi.set(__self__, "additional_variables", additional_variables)
+        pulumi.set(__self__, "auth_config", auth_config)
+        pulumi.set(__self__, "encryption_key", encryption_key)
+        pulumi.set(__self__, "enrichment_enabled", enrichment_enabled)
+        pulumi.set(__self__, "events_listener_ingress_endpoint", events_listener_ingress_endpoint)
+        pulumi.set(__self__, "private_connectivity_enabled", private_connectivity_enabled)
+        pulumi.set(__self__, "registration_destination_config", registration_destination_config)
+
+    @property
+    @pulumi.getter(name="additionalVariables")
+    def additional_variables(self) -> Sequence['outputs.ConfigVariableResponse']:
+        """
+        Additional eventing related field values
+        """
+        return pulumi.get(self, "additional_variables")
+
+    @property
+    @pulumi.getter(name="authConfig")
+    def auth_config(self) -> 'outputs.AuthConfigResponse':
+        """
+        Auth details for the webhook adapter.
+        """
+        return pulumi.get(self, "auth_config")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> 'outputs.ConfigVariableResponse':
+        """
+        Encryption key (can be either Google managed or CMEK).
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="enrichmentEnabled")
+    def enrichment_enabled(self) -> bool:
+        """
+        Enrichment Enabled.
+        """
+        return pulumi.get(self, "enrichment_enabled")
+
+    @property
+    @pulumi.getter(name="eventsListenerIngressEndpoint")
+    def events_listener_ingress_endpoint(self) -> str:
+        """
+        Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+        """
+        return pulumi.get(self, "events_listener_ingress_endpoint")
+
+    @property
+    @pulumi.getter(name="privateConnectivityEnabled")
+    def private_connectivity_enabled(self) -> bool:
+        """
+        Optional. Private Connectivity Enabled.
+        """
+        return pulumi.get(self, "private_connectivity_enabled")
+
+    @property
+    @pulumi.getter(name="registrationDestinationConfig")
+    def registration_destination_config(self) -> 'outputs.DestinationConfigResponse':
+        """
+        Registration endpoint for auto registration.
+        """
+        return pulumi.get(self, "registration_destination_config")
+
+
+@pulumi.output_type
+class EventingRuntimeDataResponse(dict):
+    """
+    Eventing runtime data has the details related to eventing managed by the system.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventsListenerEndpoint":
+            suggest = "events_listener_endpoint"
+        elif key == "eventsListenerPscSa":
+            suggest = "events_listener_psc_sa"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventingRuntimeDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventingRuntimeDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventingRuntimeDataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 events_listener_endpoint: str,
+                 events_listener_psc_sa: str,
+                 status: 'outputs.EventingStatusResponse'):
+        """
+        Eventing runtime data has the details related to eventing managed by the system.
+        :param str events_listener_endpoint: Events listener endpoint. The value will populated after provisioning the events listener.
+        :param str events_listener_psc_sa: Events listener PSC Service attachment. The value will be populated after provisioning the events listener with private connectivity enabled.
+        :param 'EventingStatusResponse' status: Current status of eventing.
+        """
+        pulumi.set(__self__, "events_listener_endpoint", events_listener_endpoint)
+        pulumi.set(__self__, "events_listener_psc_sa", events_listener_psc_sa)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="eventsListenerEndpoint")
+    def events_listener_endpoint(self) -> str:
+        """
+        Events listener endpoint. The value will populated after provisioning the events listener.
+        """
+        return pulumi.get(self, "events_listener_endpoint")
+
+    @property
+    @pulumi.getter(name="eventsListenerPscSa")
+    def events_listener_psc_sa(self) -> str:
+        """
+        Events listener PSC Service attachment. The value will be populated after provisioning the events listener with private connectivity enabled.
+        """
+        return pulumi.get(self, "events_listener_psc_sa")
+
+    @property
+    @pulumi.getter
+    def status(self) -> 'outputs.EventingStatusResponse':
+        """
+        Current status of eventing.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class EventingStatusResponse(dict):
+    """
+    EventingStatus indicates the state of eventing.
+    """
+    def __init__(__self__, *,
+                 description: str,
+                 state: str):
+        """
+        EventingStatus indicates the state of eventing.
+        :param str description: Description of error if State is set to "ERROR".
+        :param str state: State.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of error if State is set to "ERROR".
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
 class ExprResponse(dict):
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -608,6 +1158,124 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class HPAConfigResponse(dict):
+    """
+    Autoscaling config for connector deployment system metrics.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuUtilizationThreshold":
+            suggest = "cpu_utilization_threshold"
+        elif key == "memoryUtilizationThreshold":
+            suggest = "memory_utilization_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HPAConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HPAConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HPAConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_utilization_threshold: str,
+                 memory_utilization_threshold: str):
+        """
+        Autoscaling config for connector deployment system metrics.
+        :param str cpu_utilization_threshold: Percent CPU utilization where HPA triggers autoscaling.
+        :param str memory_utilization_threshold: Percent Memory utilization where HPA triggers autoscaling.
+        """
+        pulumi.set(__self__, "cpu_utilization_threshold", cpu_utilization_threshold)
+        pulumi.set(__self__, "memory_utilization_threshold", memory_utilization_threshold)
+
+    @property
+    @pulumi.getter(name="cpuUtilizationThreshold")
+    def cpu_utilization_threshold(self) -> str:
+        """
+        Percent CPU utilization where HPA triggers autoscaling.
+        """
+        return pulumi.get(self, "cpu_utilization_threshold")
+
+    @property
+    @pulumi.getter(name="memoryUtilizationThreshold")
+    def memory_utilization_threshold(self) -> str:
+        """
+        Percent Memory utilization where HPA triggers autoscaling.
+        """
+        return pulumi.get(self, "memory_utilization_threshold")
+
+
+@pulumi.output_type
+class HeaderResponse(dict):
+    """
+    Header details for a given header to be added to Endpoint.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        Header details for a given header to be added to Endpoint.
+        :param str key: Key of Header.
+        :param str value: Value of Header.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of Header.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value of Header.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class JMSResponse(dict):
+    """
+    JMS message denotes the source of the event
+    """
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        """
+        JMS message denotes the source of the event
+        :param str name: Optional. Name of the JMS source. i.e. queueName or topicName
+        :param str type: Optional. Type of the JMS Source. i.e. Queue or Topic
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Optional. Name of the JMS source. i.e. queueName or topicName
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Optional. Type of the JMS Source. i.e. Queue or Topic
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -749,6 +1417,8 @@ class Oauth2AuthCodeFlowResponse(dict):
         suggest = None
         if key == "authCode":
             suggest = "auth_code"
+        elif key == "authUri":
+            suggest = "auth_uri"
         elif key == "clientId":
             suggest = "client_id"
         elif key == "clientSecret":
@@ -773,6 +1443,7 @@ class Oauth2AuthCodeFlowResponse(dict):
 
     def __init__(__self__, *,
                  auth_code: str,
+                 auth_uri: str,
                  client_id: str,
                  client_secret: 'outputs.SecretResponse',
                  enable_pkce: bool,
@@ -782,6 +1453,7 @@ class Oauth2AuthCodeFlowResponse(dict):
         """
         Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
         :param str auth_code: Authorization code to be exchanged for access and refresh tokens.
+        :param str auth_uri: Auth URL for Authorization Code Flow
         :param str client_id: Client ID for user-provided OAuth app.
         :param 'SecretResponse' client_secret: Client secret for user-provided OAuth app.
         :param bool enable_pkce: Whether to enable PKCE when the user performs the auth code flow.
@@ -790,6 +1462,7 @@ class Oauth2AuthCodeFlowResponse(dict):
         :param Sequence[str] scopes: Scopes the connection will request when the user performs the auth code flow.
         """
         pulumi.set(__self__, "auth_code", auth_code)
+        pulumi.set(__self__, "auth_uri", auth_uri)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
         pulumi.set(__self__, "enable_pkce", enable_pkce)
@@ -804,6 +1477,14 @@ class Oauth2AuthCodeFlowResponse(dict):
         Authorization code to be exchanged for access and refresh tokens.
         """
         return pulumi.get(self, "auth_code")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> str:
+        """
+        Auth URL for Authorization Code Flow
+        """
+        return pulumi.get(self, "auth_uri")
 
     @property
     @pulumi.getter(name="clientId")
@@ -956,6 +1637,72 @@ class Oauth2JwtBearerResponse(dict):
         JwtClaims providers fields to generate the token.
         """
         return pulumi.get(self, "jwt_claims")
+
+
+@pulumi.output_type
+class ResourceLimitsResponse(dict):
+    """
+    Resource limits defined for connection pods of a given connector type.
+    """
+    def __init__(__self__, *,
+                 cpu: str,
+                 memory: str):
+        """
+        Resource limits defined for connection pods of a given connector type.
+        :param str cpu: CPU limit.
+        :param str memory: Memory limit.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> str:
+        """
+        CPU limit.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> str:
+        """
+        Memory limit.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class ResourceRequestsResponse(dict):
+    """
+    Resource requests defined for connection pods of a given connector type.
+    """
+    def __init__(__self__, *,
+                 cpu: str,
+                 memory: str):
+        """
+        Resource requests defined for connection pods of a given connector type.
+        :param str cpu: CPU request.
+        :param str memory: Memory request.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> str:
+        """
+        CPU request.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> str:
+        """
+        Memory request.
+        """
+        return pulumi.get(self, "memory")
 
 
 @pulumi.output_type

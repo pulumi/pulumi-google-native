@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     public sealed class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        /// Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

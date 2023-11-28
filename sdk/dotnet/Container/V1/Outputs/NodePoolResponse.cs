@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.NodePoolAutoscalingResponse Autoscaling;
         /// <summary>
+        /// Enable best effort provisioning for nodes
+        /// </summary>
+        public readonly Outputs.BestEffortProvisioningResponse BestEffortProvisioning;
+        /// <summary>
         /// Which conditions caused the current node pool state.
         /// </summary>
         public readonly ImmutableArray<Outputs.StatusConditionResponse> Conditions;
@@ -69,6 +73,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly int PodIpv4CidrSize;
         /// <summary>
+        /// Specifies the configuration of queued provisioning.
+        /// </summary>
+        public readonly Outputs.QueuedProvisioningResponse QueuedProvisioning;
+        /// <summary>
         /// [Output only] Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -97,6 +105,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         private NodePoolResponse(
             Outputs.NodePoolAutoscalingResponse autoscaling,
 
+            Outputs.BestEffortProvisioningResponse bestEffortProvisioning,
+
             ImmutableArray<Outputs.StatusConditionResponse> conditions,
 
             Outputs.NodeConfigResponse config,
@@ -121,6 +131,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             int podIpv4CidrSize,
 
+            Outputs.QueuedProvisioningResponse queuedProvisioning,
+
             string selfLink,
 
             string status,
@@ -134,6 +146,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             string version)
         {
             Autoscaling = autoscaling;
+            BestEffortProvisioning = bestEffortProvisioning;
             Conditions = conditions;
             Config = config;
             Etag = etag;
@@ -146,6 +159,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             NetworkConfig = networkConfig;
             PlacementPolicy = placementPolicy;
             PodIpv4CidrSize = podIpv4CidrSize;
+            QueuedProvisioning = queuedProvisioning;
             SelfLink = selfLink;
             Status = status;
             StatusMessage = statusMessage;

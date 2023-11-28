@@ -32,6 +32,10 @@ export const AcceleratorConfigType = {
      */
     NvidiaTeslaA100: "NVIDIA_TESLA_A100",
     /**
+     * Accelerator type is Nvidia Tesla L4.
+     */
+    NvidiaL4: "NVIDIA_L4",
+    /**
      * Accelerator type is NVIDIA Tesla T4 Virtual Workstations.
      */
     NvidiaTeslaT4Vws: "NVIDIA_TESLA_T4_VWS",
@@ -288,9 +292,13 @@ export const RuntimeAcceleratorConfigType = {
      */
     NvidiaTeslaT4: "NVIDIA_TESLA_T4",
     /**
-     * Accelerator type is Nvidia Tesla A100.
+     * Accelerator type is Nvidia Tesla A100 - 40GB.
      */
     NvidiaTeslaA100: "NVIDIA_TESLA_A100",
+    /**
+     * Accelerator type is Nvidia L4.
+     */
+    NvidiaL4: "NVIDIA_L4",
     /**
      * (Coming soon) Accelerator type is TPU V2.
      */

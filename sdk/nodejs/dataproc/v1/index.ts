@@ -90,6 +90,16 @@ export const getRegionWorkflowTemplateIamPolicy: typeof import("./getRegionWorkf
 export const getRegionWorkflowTemplateIamPolicyOutput: typeof import("./getRegionWorkflowTemplateIamPolicy").getRegionWorkflowTemplateIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionWorkflowTemplateIamPolicy","getRegionWorkflowTemplateIamPolicyOutput"], () => require("./getRegionWorkflowTemplateIamPolicy"));
 
+export { GetSessionArgs, GetSessionResult, GetSessionOutputArgs } from "./getSession";
+export const getSession: typeof import("./getSession").getSession = null as any;
+export const getSessionOutput: typeof import("./getSession").getSessionOutput = null as any;
+utilities.lazyLoad(exports, ["getSession","getSessionOutput"], () => require("./getSession"));
+
+export { GetSessionTemplateArgs, GetSessionTemplateResult, GetSessionTemplateOutputArgs } from "./getSessionTemplate";
+export const getSessionTemplate: typeof import("./getSessionTemplate").getSessionTemplate = null as any;
+export const getSessionTemplateOutput: typeof import("./getSessionTemplate").getSessionTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getSessionTemplate","getSessionTemplateOutput"], () => require("./getSessionTemplate"));
+
 export { GetWorkflowTemplateArgs, GetWorkflowTemplateResult, GetWorkflowTemplateOutputArgs } from "./getWorkflowTemplate";
 export const getWorkflowTemplate: typeof import("./getWorkflowTemplate").getWorkflowTemplate = null as any;
 export const getWorkflowTemplateOutput: typeof import("./getWorkflowTemplate").getWorkflowTemplateOutput = null as any;
@@ -185,6 +195,16 @@ export type RegionWorkflowTemplateIamPolicy = import("./regionWorkflowTemplateIa
 export const RegionWorkflowTemplateIamPolicy: typeof import("./regionWorkflowTemplateIamPolicy").RegionWorkflowTemplateIamPolicy = null as any;
 utilities.lazyLoad(exports, ["RegionWorkflowTemplateIamPolicy"], () => require("./regionWorkflowTemplateIamPolicy"));
 
+export { SessionArgs } from "./session";
+export type Session = import("./session").Session;
+export const Session: typeof import("./session").Session = null as any;
+utilities.lazyLoad(exports, ["Session"], () => require("./session"));
+
+export { SessionTemplateArgs } from "./sessionTemplate";
+export type SessionTemplate = import("./sessionTemplate").SessionTemplate;
+export const SessionTemplate: typeof import("./sessionTemplate").SessionTemplate = null as any;
+utilities.lazyLoad(exports, ["SessionTemplate"], () => require("./sessionTemplate"));
+
 export { WorkflowTemplateArgs } from "./workflowTemplate";
 export type WorkflowTemplate = import("./workflowTemplate").WorkflowTemplate;
 export const WorkflowTemplate: typeof import("./workflowTemplate").WorkflowTemplate = null as any;
@@ -259,6 +279,10 @@ const _module = {
                 return new RegionWorkflowTemplateIamMember(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
                 return new RegionWorkflowTemplateIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:Session":
+                return new Session(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:SessionTemplate":
+                return new SessionTemplate(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:WorkflowTemplate":
                 return new WorkflowTemplate(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:WorkflowTemplateIamBinding":

@@ -46,10 +46,22 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of the environment.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Storage configuration for this environment.
+        /// </summary>
+        [Output("storageConfig")]
+        public Output<Outputs.StorageConfigResponse> StorageConfig { get; private set; } = null!;
 
         /// <summary>
         /// The time at which this environment was last modified.
@@ -148,6 +160,12 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1
         /// </summary>
         [Input("state")]
         public Input<Pulumi.GoogleNative.Composer.V1Beta1.EnvironmentState>? State { get; set; }
+
+        /// <summary>
+        /// Optional. Storage configuration for this environment.
+        /// </summary>
+        [Input("storageConfig")]
+        public Input<Inputs.StorageConfigArgs>? StorageConfig { get; set; }
 
         public EnvironmentArgs()
         {

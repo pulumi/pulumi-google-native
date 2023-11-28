@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// List of reservations in this commitment.
+        /// List of create-on-create reseravtions for this commitment.
         /// </summary>
         [Output("reservations")]
         public Output<ImmutableArray<Outputs.ReservationResponse>> Reservations { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         private InputList<Inputs.ReservationArgs>? _reservations;
 
         /// <summary>
-        /// List of reservations in this commitment.
+        /// List of create-on-create reseravtions for this commitment.
         /// </summary>
         public InputList<Inputs.ReservationArgs> Reservations
         {

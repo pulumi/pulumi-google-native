@@ -16,6 +16,8 @@ import (
 type StoragePool struct {
 	pulumi.CustomResourceState
 
+	// Provisioning type of the byte capacity of the pool.
+	CapacityProvisioningType pulumi.StringOutput `pulumi:"capacityProvisioningType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -27,10 +29,14 @@ type StoragePool struct {
 	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+	PerformanceProvisioningType pulumi.StringOutput `pulumi:"performanceProvisioningType"`
+	Project                     pulumi.StringOutput `pulumi:"project"`
 	// Provsioned IOPS of the storage pool.
 	ProvisionedIops pulumi.StringOutput `pulumi:"provisionedIops"`
+	// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+	ProvisionedThroughput pulumi.StringOutput `pulumi:"provisionedThroughput"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Status information for the storage pool resource.
@@ -43,9 +49,11 @@ type StoragePool struct {
 	SizeGb pulumi.StringOutput `pulumi:"sizeGb"`
 	// The status of storage pool creation. - CREATING: Storage pool is provisioning. storagePool. - FAILED: Storage pool creation failed. - READY: Storage pool is ready for use. - DELETING: Storage pool is deleting.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Type of the storage pool
-	Type pulumi.StringOutput `pulumi:"type"`
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	// Status information for the storage pool resource.
+	Status StoragePoolResourceStatusResponseOutput `pulumi:"status"`
+	// Type of the storage pool.
+	StoragePoolType pulumi.StringOutput `pulumi:"storagePoolType"`
+	Zone            pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewStoragePool registers a new resource with the given unique name, arguments, and options.
@@ -93,42 +101,54 @@ func (StoragePoolState) ElementType() reflect.Type {
 }
 
 type storagePoolArgs struct {
+	// Provisioning type of the byte capacity of the pool.
+	CapacityProvisioningType *StoragePoolCapacityProvisioningType `pulumi:"capacityProvisioningType"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name *string `pulumi:"name"`
+	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+	PerformanceProvisioningType *StoragePoolPerformanceProvisioningType `pulumi:"performanceProvisioningType"`
+	Project                     *string                                 `pulumi:"project"`
 	// Provsioned IOPS of the storage pool.
 	ProvisionedIops *string `pulumi:"provisionedIops"`
+	// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+	ProvisionedThroughput *string `pulumi:"provisionedThroughput"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Size, in GiB, of the storage pool.
 	SizeGb *string `pulumi:"sizeGb"`
-	// Type of the storage pool
-	Type *StoragePoolType `pulumi:"type"`
-	Zone *string          `pulumi:"zone"`
+	// Type of the storage pool.
+	StoragePoolType *string `pulumi:"storagePoolType"`
+	Zone            *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a StoragePool resource.
 type StoragePoolArgs struct {
+	// Provisioning type of the byte capacity of the pool.
+	CapacityProvisioningType StoragePoolCapacityProvisioningTypePtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+	PerformanceProvisioningType StoragePoolPerformanceProvisioningTypePtrInput
+	Project                     pulumi.StringPtrInput
 	// Provsioned IOPS of the storage pool.
 	ProvisionedIops pulumi.StringPtrInput
+	// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+	ProvisionedThroughput pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Size, in GiB, of the storage pool.
 	SizeGb pulumi.StringPtrInput
-	// Type of the storage pool
-	Type StoragePoolTypePtrInput
-	Zone pulumi.StringPtrInput
+	// Type of the storage pool.
+	StoragePoolType pulumi.StringPtrInput
+	Zone            pulumi.StringPtrInput
 }
 
 func (StoragePoolArgs) ElementType() reflect.Type {
@@ -180,6 +200,11 @@ func (o StoragePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*Storage
 	}
 }
 
+// Provisioning type of the byte capacity of the pool.
+func (o StoragePoolOutput) CapacityProvisioningType() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.CapacityProvisioningType }).(pulumi.StringOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o StoragePoolOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -210,6 +235,11 @@ func (o StoragePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+func (o StoragePoolOutput) PerformanceProvisioningType() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.PerformanceProvisioningType }).(pulumi.StringOutput)
+}
+
 func (o StoragePoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -217,6 +247,11 @@ func (o StoragePoolOutput) Project() pulumi.StringOutput {
 // Provsioned IOPS of the storage pool.
 func (o StoragePoolOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ProvisionedIops }).(pulumi.StringOutput)
+}
+
+// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+func (o StoragePoolOutput) ProvisionedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
 
 // An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -249,9 +284,14 @@ func (o StoragePoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Type of the storage pool
-func (o StoragePoolOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+// Status information for the storage pool resource.
+func (o StoragePoolOutput) Status() StoragePoolResourceStatusResponseOutput {
+	return o.ApplyT(func(v *StoragePool) StoragePoolResourceStatusResponseOutput { return v.Status }).(StoragePoolResourceStatusResponseOutput)
+}
+
+// Type of the storage pool.
+func (o StoragePoolOutput) StoragePoolType() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.StoragePoolType }).(pulumi.StringOutput)
 }
 
 func (o StoragePoolOutput) Zone() pulumi.StringOutput {

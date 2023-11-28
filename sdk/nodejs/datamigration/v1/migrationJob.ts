@@ -99,12 +99,16 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+     */
+    public readonly performanceConfig!: pulumi.Output<outputs.datamigration.v1.PerformanceConfigResponse>;
+    /**
      * The current migration job phase.
      */
     public /*out*/ readonly phase!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
@@ -175,6 +179,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["migrationJobId"] = args ? args.migrationJobId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["performanceConfig"] = args ? args.performanceConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["reverseSshConnectivity"] = args ? args.reverseSshConnectivity : undefined;
@@ -207,6 +212,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["migrationJobId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["performanceConfig"] = undefined /*out*/;
             resourceInputs["phase"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -275,9 +281,13 @@ export interface MigrationJobArgs {
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+     */
+    performanceConfig?: pulumi.Input<inputs.datamigration.v1.PerformanceConfigArgs>;
     project?: pulumi.Input<string>;
     /**
-     * A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     requestId?: pulumi.Input<string>;
     /**

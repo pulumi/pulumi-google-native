@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
     public sealed class PostgreSqlConnectionProfileResponse
     {
         /// <summary>
+        /// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+        /// </summary>
+        public readonly string AlloydbClusterId;
+        /// <summary>
         /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         /// </summary>
         public readonly string CloudSqlId;
@@ -59,6 +63,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
         [OutputConstructor]
         private PostgreSqlConnectionProfileResponse(
+            string alloydbClusterId,
+
             string cloudSqlId,
 
             string host,
@@ -79,6 +85,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             string username)
         {
+            AlloydbClusterId = alloydbClusterId;
             CloudSqlId = cloudSqlId;
             Host = host;
             NetworkArchitecture = networkArchitecture;

@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> DownloadBytes { get; private set; } = null!;
 
         /// <summary>
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// </summary>
+        [Output("guestOsFeatures")]
+        public Output<ImmutableArray<Outputs.GuestOsFeatureResponse>> GuestOsFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#snapshot for Snapshot resources.
         /// </summary>
         [Output("kind")]
@@ -149,6 +155,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("sourceDiskEncryptionKey")]
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceDiskEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The source disk whose recovery checkpoint will be used to create this snapshot.
+        /// </summary>
+        [Output("sourceDiskForRecoveryCheckpoint")]
+        public Output<string> SourceDiskForRecoveryCheckpoint { get; private set; } = null!;
 
         /// <summary>
         /// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
@@ -309,6 +321,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The source disk whose recovery checkpoint will be used to create this snapshot.
+        /// </summary>
+        [Input("sourceDiskForRecoveryCheckpoint")]
+        public Input<string>? SourceDiskForRecoveryCheckpoint { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

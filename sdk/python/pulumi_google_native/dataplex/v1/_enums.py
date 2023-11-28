@@ -126,7 +126,7 @@ class GoogleCloudDataplexV1ContentSqlScriptEngine(str, Enum):
 
 class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic(str, Enum):
     """
-    The aggregate metric to evaluate.
+    Optional. The aggregate metric to evaluate.
     """
     STATISTIC_UNDEFINED = "STATISTIC_UNDEFINED"
     """

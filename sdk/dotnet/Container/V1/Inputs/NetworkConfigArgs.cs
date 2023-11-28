@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<Inputs.DNSConfigArgs>? DnsConfig { get; set; }
 
         /// <summary>
+        /// Whether FQDN Network Policy is enabled on this cluster.
+        /// </summary>
+        [Input("enableFqdnNetworkPolicy")]
+        public Input<bool>? EnableFqdnNetworkPolicy { get; set; }
+
+        /// <summary>
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         [Input("enableIntraNodeVisibility")]
@@ -46,10 +52,22 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<bool>? EnableL4ilbSubsetting { get; set; }
 
         /// <summary>
+        /// Whether multi-networking is enabled for this cluster.
+        /// </summary>
+        [Input("enableMultiNetworking")]
+        public Input<bool>? EnableMultiNetworking { get; set; }
+
+        /// <summary>
         /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
         /// </summary>
         [Input("gatewayApiConfig")]
         public Input<Inputs.GatewayAPIConfigArgs>? GatewayApiConfig { get; set; }
+
+        /// <summary>
+        /// Network bandwidth tier configuration.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.ClusterNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)

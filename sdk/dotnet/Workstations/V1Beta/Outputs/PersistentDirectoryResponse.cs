@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
         /// </summary>
         public readonly Outputs.GceRegionalPersistentDiskResponse GcePd;
         /// <summary>
-        /// Location of this directory in the running workstation.
+        /// Optional. Location of this directory in the running workstation.
         /// </summary>
         public readonly string MountPath;
 

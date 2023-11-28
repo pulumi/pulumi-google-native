@@ -11,28 +11,35 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
 {
 
     /// <summary>
-    /// VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+    /// VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudRunV2VpcAccessResponse
     {
         /// <summary>
-        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
         /// </summary>
         public readonly string Connector;
         /// <summary>
-        /// Traffic VPC egress settings.
+        /// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
         /// </summary>
         public readonly string Egress;
+        /// <summary>
+        /// Direct VPC egress settings. Currently only single network interface is supported.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudRunV2NetworkInterfaceResponse> NetworkInterfaces;
 
         [OutputConstructor]
         private GoogleCloudRunV2VpcAccessResponse(
             string connector,
 
-            string egress)
+            string egress,
+
+            ImmutableArray<Outputs.GoogleCloudRunV2NetworkInterfaceResponse> networkInterfaces)
         {
             Connector = connector;
             Egress = egress;
+            NetworkInterfaces = networkInterfaces;
         }
     }
 }

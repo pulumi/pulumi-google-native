@@ -41,6 +41,7 @@ __all__ = [
     'PgpSignedAttestationContentType',
     'RelationshipNoteType',
     'RemediationRemediationType',
+    'SBOMStatusSbomState',
     'VersionKind',
     'VexAssessmentState',
     'VulnerabilityCvssVersion',
@@ -1042,6 +1043,24 @@ class RemediationRemediationType(str, Enum):
     WORKAROUND = "WORKAROUND"
     """
     A workaround is available.
+    """
+
+
+class SBOMStatusSbomState(str, Enum):
+    """
+    The progress of the SBOM generation.
+    """
+    SBOM_STATE_UNSPECIFIED = "SBOM_STATE_UNSPECIFIED"
+    """
+    Default unknown state.
+    """
+    PENDING = "PENDING"
+    """
+    SBOM scanning is pending.
+    """
+    COMPLETE = "COMPLETE"
+    """
+    SBOM scanning has completed.
     """
 
 

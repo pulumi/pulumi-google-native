@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const DiscoveryConfigStatus = {
+    /**
+     * Unused
+     */
+    StatusUnspecified: "STATUS_UNSPECIFIED",
+    /**
+     * The discovery config is currently active.
+     */
+    Running: "RUNNING",
+    /**
+     * The discovery config is paused temporarily.
+     */
+    Paused: "PAUSED",
+} as const;
+
+/**
+ * Required. A status for this configuration.
+ */
+export type DiscoveryConfigStatus = (typeof DiscoveryConfigStatus)[keyof typeof DiscoveryConfigStatus];
+
 export const GooglePrivacyDlpV2BigQueryOptionsSampleMethod = {
     SampleMethodUnspecified: "SAMPLE_METHOD_UNSPECIFIED",
     /**
@@ -15,6 +35,23 @@ export const GooglePrivacyDlpV2BigQueryOptionsSampleMethod = {
 } as const;
 
 export type GooglePrivacyDlpV2BigQueryOptionsSampleMethod = (typeof GooglePrivacyDlpV2BigQueryOptionsSampleMethod)[keyof typeof GooglePrivacyDlpV2BigQueryOptionsSampleMethod];
+
+export const GooglePrivacyDlpV2BigQueryTableTypesTypesItem = {
+    /**
+     * Unused.
+     */
+    BigQueryTableTypeUnspecified: "BIG_QUERY_TABLE_TYPE_UNSPECIFIED",
+    /**
+     * A normal BigQuery table.
+     */
+    BigQueryTableTypeTable: "BIG_QUERY_TABLE_TYPE_TABLE",
+    /**
+     * A table that references data stored in Cloud Storage.
+     */
+    BigQueryTableTypeExternalBigLake: "BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE",
+} as const;
+
+export type GooglePrivacyDlpV2BigQueryTableTypesTypesItem = (typeof GooglePrivacyDlpV2BigQueryTableTypesTypesItem)[keyof typeof GooglePrivacyDlpV2BigQueryTableTypesTypesItem];
 
 export const GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore = {
     /**
@@ -54,7 +91,7 @@ export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem = {
      */
     FileTypeUnspecified: "FILE_TYPE_UNSPECIFIED",
     /**
-     * Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+     * Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
      */
     BinaryFile: "BINARY_FILE",
     /**
@@ -62,15 +99,15 @@ export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem = {
      */
     TextFile: "TEXT_FILE",
     /**
-     * Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+     * Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
      */
     Image: "IMAGE",
     /**
-     * Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+     * Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.
      */
     Word: "WORD",
     /**
-     * PDF files >30 MB will be scanned as binary files. Included file extensions: pdf
+     * PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.
      */
     Pdf: "PDF",
     /**
@@ -86,11 +123,11 @@ export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem = {
      */
     Tsv: "TSV",
     /**
-     * Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+     * Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.
      */
     Powerpoint: "POWERPOINT",
     /**
-     * Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+     * Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files.
      */
     Excel: "EXCEL",
 } as const;
@@ -233,7 +270,7 @@ export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem = {
      */
     FileTypeUnspecified: "FILE_TYPE_UNSPECIFIED",
     /**
-     * Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+     * Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
      */
     BinaryFile: "BINARY_FILE",
     /**
@@ -241,15 +278,15 @@ export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem = {
      */
     TextFile: "TEXT_FILE",
     /**
-     * Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+     * Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
      */
     Image: "IMAGE",
     /**
-     * Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+     * Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.
      */
     Word: "WORD",
     /**
-     * PDF files >30 MB will be scanned as binary files. Included file extensions: pdf
+     * PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.
      */
     Pdf: "PDF",
     /**
@@ -265,16 +302,114 @@ export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem = {
      */
     Tsv: "TSV",
     /**
-     * Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+     * Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.
      */
     Powerpoint: "POWERPOINT",
     /**
-     * Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+     * Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files.
      */
     Excel: "EXCEL",
 } as const;
 
 export type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem = (typeof GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)[keyof typeof GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem];
+
+export const GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection = {
+    /**
+     * Unused.
+     */
+    BigQueryCollectionUnspecified: "BIG_QUERY_COLLECTION_UNSPECIFIED",
+    /**
+     * Automatically generate profiles for all tables, even if the table type is not yet fully supported for analysis. Profiles for unsupported tables will be generated with errors to indicate their partial support. When full support is added, the tables will automatically be profiled during the next scheduled run.
+     */
+    BigQueryCollectionAllTypes: "BIG_QUERY_COLLECTION_ALL_TYPES",
+    /**
+     * Only those types fully supported will be profiled. Will expand automatically as Cloud DLP adds support for new table types. Unsupported table types will not have partial profiles generated.
+     */
+    BigQueryCollectionOnlySupportedTypes: "BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES",
+} as const;
+
+/**
+ * Restrict discovery to categories of table types.
+ */
+export type GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection = (typeof GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection)[keyof typeof GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection];
+
+export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency = {
+    /**
+     * Unspecified.
+     */
+    UpdateFrequencyUnspecified: "UPDATE_FREQUENCY_UNSPECIFIED",
+    /**
+     * After the data profile is created, it will never be updated.
+     */
+    UpdateFrequencyNever: "UPDATE_FREQUENCY_NEVER",
+    /**
+     * The data profile can be updated up to once every 24 hours.
+     */
+    UpdateFrequencyDaily: "UPDATE_FREQUENCY_DAILY",
+    /**
+     * The data profile can be updated up to once every 30 days. Default.
+     */
+    UpdateFrequencyMonthly: "UPDATE_FREQUENCY_MONTHLY",
+} as const;
+
+/**
+ * How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+ */
+export type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency = (typeof GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency)[keyof typeof GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency];
+
+export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem = {
+    /**
+     * Unused
+     */
+    SchemaModificationUnspecified: "SCHEMA_MODIFICATION_UNSPECIFIED",
+    /**
+     * Profiles should be regenerated when new columns are added to the table. Default.
+     */
+    SchemaNewColumns: "SCHEMA_NEW_COLUMNS",
+    /**
+     * Profiles should be regenerated when columns are removed from the table.
+     */
+    SchemaRemovedColumns: "SCHEMA_REMOVED_COLUMNS",
+} as const;
+
+export type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem = (typeof GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem)[keyof typeof GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem];
+
+export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency = {
+    /**
+     * Unspecified.
+     */
+    UpdateFrequencyUnspecified: "UPDATE_FREQUENCY_UNSPECIFIED",
+    /**
+     * After the data profile is created, it will never be updated.
+     */
+    UpdateFrequencyNever: "UPDATE_FREQUENCY_NEVER",
+    /**
+     * The data profile can be updated up to once every 24 hours.
+     */
+    UpdateFrequencyDaily: "UPDATE_FREQUENCY_DAILY",
+    /**
+     * The data profile can be updated up to once every 30 days. Default.
+     */
+    UpdateFrequencyMonthly: "UPDATE_FREQUENCY_MONTHLY",
+} as const;
+
+/**
+ * How frequently data profiles can be updated when tables are modified. Defaults to never.
+ */
+export type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency = (typeof GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency)[keyof typeof GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency];
+
+export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem = {
+    /**
+     * Unused.
+     */
+    TableModificationUnspecified: "TABLE_MODIFICATION_UNSPECIFIED",
+    /**
+     * A table will be considered modified when the last_modified_time from BigQuery has been updated.
+     */
+    TableModifiedTimestamp: "TABLE_MODIFIED_TIMESTAMP",
+} as const;
+
+export type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem = (typeof GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem)[keyof typeof GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem];
 
 export const GooglePrivacyDlpV2ExclusionRuleMatchingType = {
     /**
@@ -315,6 +450,38 @@ export const GooglePrivacyDlpV2ExpressionsLogicalOperator = {
  * The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
  */
 export type GooglePrivacyDlpV2ExpressionsLogicalOperator = (typeof GooglePrivacyDlpV2ExpressionsLogicalOperator)[keyof typeof GooglePrivacyDlpV2ExpressionsLogicalOperator];
+
+export const GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood = {
+    /**
+     * Default value; same as POSSIBLE.
+     */
+    LikelihoodUnspecified: "LIKELIHOOD_UNSPECIFIED",
+    /**
+     * Highest chance of a false positive.
+     */
+    VeryUnlikely: "VERY_UNLIKELY",
+    /**
+     * High chance of a false positive.
+     */
+    Unlikely: "UNLIKELY",
+    /**
+     * Some matching signals. The default value.
+     */
+    Possible: "POSSIBLE",
+    /**
+     * Low chance of a false positive.
+     */
+    Likely: "LIKELY",
+    /**
+     * Confidence level is high. Lowest chance of a false positive.
+     */
+    VeryLikely: "VERY_LIKELY",
+} as const;
+
+/**
+ * Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+ */
+export type GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood = (typeof GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood)[keyof typeof GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood];
 
 export const GooglePrivacyDlpV2InspectConfigContentOptionsItem = {
     /**
@@ -361,7 +528,7 @@ export const GooglePrivacyDlpV2InspectConfigMinLikelihood = {
 } as const;
 
 /**
- * Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+ * Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
  */
 export type GooglePrivacyDlpV2InspectConfigMinLikelihood = (typeof GooglePrivacyDlpV2InspectConfigMinLikelihood)[keyof typeof GooglePrivacyDlpV2InspectConfigMinLikelihood];
 
@@ -428,6 +595,114 @@ export const GooglePrivacyDlpV2OutputStorageConfigOutputSchema = {
  * Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
  */
 export type GooglePrivacyDlpV2OutputStorageConfigOutputSchema = (typeof GooglePrivacyDlpV2OutputStorageConfigOutputSchema)[keyof typeof GooglePrivacyDlpV2OutputStorageConfigOutputSchema];
+
+export const GooglePrivacyDlpV2PubSubConditionMinimumRiskScore = {
+    /**
+     * Unused.
+     */
+    ProfileScoreBucketUnspecified: "PROFILE_SCORE_BUCKET_UNSPECIFIED",
+    /**
+     * High risk/sensitivity detected.
+     */
+    High: "HIGH",
+    /**
+     * Medium or high risk/sensitivity detected.
+     */
+    MediumOrHigh: "MEDIUM_OR_HIGH",
+} as const;
+
+/**
+ * The minimum data risk score that triggers the condition.
+ */
+export type GooglePrivacyDlpV2PubSubConditionMinimumRiskScore = (typeof GooglePrivacyDlpV2PubSubConditionMinimumRiskScore)[keyof typeof GooglePrivacyDlpV2PubSubConditionMinimumRiskScore];
+
+export const GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore = {
+    /**
+     * Unused.
+     */
+    ProfileScoreBucketUnspecified: "PROFILE_SCORE_BUCKET_UNSPECIFIED",
+    /**
+     * High risk/sensitivity detected.
+     */
+    High: "HIGH",
+    /**
+     * Medium or high risk/sensitivity detected.
+     */
+    MediumOrHigh: "MEDIUM_OR_HIGH",
+} as const;
+
+/**
+ * The minimum sensitivity level that triggers the condition.
+ */
+export type GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore = (typeof GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore)[keyof typeof GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore];
+
+export const GooglePrivacyDlpV2PubSubExpressionsLogicalOperator = {
+    /**
+     * Unused.
+     */
+    LogicalOperatorUnspecified: "LOGICAL_OPERATOR_UNSPECIFIED",
+    /**
+     * Conditional OR.
+     */
+    Or: "OR",
+    /**
+     * Conditional AND.
+     */
+    And: "AND",
+} as const;
+
+/**
+ * The operator to apply to the collection of conditions.
+ */
+export type GooglePrivacyDlpV2PubSubExpressionsLogicalOperator = (typeof GooglePrivacyDlpV2PubSubExpressionsLogicalOperator)[keyof typeof GooglePrivacyDlpV2PubSubExpressionsLogicalOperator];
+
+export const GooglePrivacyDlpV2PubSubNotificationDetailOfMessage = {
+    /**
+     * Unused.
+     */
+    DetailLevelUnspecified: "DETAIL_LEVEL_UNSPECIFIED",
+    /**
+     * The full table data profile.
+     */
+    TableProfile: "TABLE_PROFILE",
+    /**
+     * The resource name of the table.
+     */
+    ResourceName: "RESOURCE_NAME",
+} as const;
+
+/**
+ * How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+ */
+export type GooglePrivacyDlpV2PubSubNotificationDetailOfMessage = (typeof GooglePrivacyDlpV2PubSubNotificationDetailOfMessage)[keyof typeof GooglePrivacyDlpV2PubSubNotificationDetailOfMessage];
+
+export const GooglePrivacyDlpV2PubSubNotificationEvent = {
+    /**
+     * Unused.
+     */
+    EventTypeUnspecified: "EVENT_TYPE_UNSPECIFIED",
+    /**
+     * New profile (not a re-profile).
+     */
+    NewProfile: "NEW_PROFILE",
+    /**
+     * Changed one of the following profile metrics: * Table data risk score * Table sensitivity score * Table resource visibility * Table encryption type * Table predicted infoTypes * Table other infoTypes
+     */
+    ChangedProfile: "CHANGED_PROFILE",
+    /**
+     * Table data risk score or sensitivity score increased.
+     */
+    ScoreIncreased: "SCORE_INCREASED",
+    /**
+     * A user (non-internal) error occurred.
+     */
+    ErrorChanged: "ERROR_CHANGED",
+} as const;
+
+/**
+ * The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+ */
+export type GooglePrivacyDlpV2PubSubNotificationEvent = (typeof GooglePrivacyDlpV2PubSubNotificationEvent)[keyof typeof GooglePrivacyDlpV2PubSubNotificationEvent];
 
 export const GooglePrivacyDlpV2SensitivityScoreScore = {
     /**
@@ -552,6 +827,26 @@ export const JobTriggerStatus = {
  * Required. A status for this trigger.
  */
 export type JobTriggerStatus = (typeof JobTriggerStatus)[keyof typeof JobTriggerStatus];
+
+export const OrganizationDiscoveryConfigStatus = {
+    /**
+     * Unused
+     */
+    StatusUnspecified: "STATUS_UNSPECIFIED",
+    /**
+     * The discovery config is currently active.
+     */
+    Running: "RUNNING",
+    /**
+     * The discovery config is paused temporarily.
+     */
+    Paused: "PAUSED",
+} as const;
+
+/**
+ * Required. A status for this configuration.
+ */
+export type OrganizationDiscoveryConfigStatus = (typeof OrganizationDiscoveryConfigStatus)[keyof typeof OrganizationDiscoveryConfigStatus];
 
 export const OrganizationJobTriggerStatus = {
     /**

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     public sealed class ReplicaConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+        /// </summary>
+        [Input("cascadableReplica")]
+        public Input<bool>? CascadableReplica { get; set; }
+
+        /// <summary>
         /// Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
         /// </summary>
         [Input("failoverTarget")]

@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
     }
 
     /// <summary>
-    /// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+    /// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
     /// </summary>
     [EnumType]
     public readonly struct GceRegionalPersistentDiskReclaimPolicy : IEquatable<GceRegionalPersistentDiskReclaimPolicy>
@@ -70,11 +70,11 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         /// </summary>
         public static GceRegionalPersistentDiskReclaimPolicy ReclaimPolicyUnspecified { get; } = new GceRegionalPersistentDiskReclaimPolicy("RECLAIM_POLICY_UNSPECIFIED");
         /// <summary>
-        /// The persistent disk will be deleted with the workstation.
+        /// Delete the persistent disk when deleting the workstation.
         /// </summary>
         public static GceRegionalPersistentDiskReclaimPolicy Delete { get; } = new GceRegionalPersistentDiskReclaimPolicy("DELETE");
         /// <summary>
-        /// The persistent disk will be remain after the workstation is deleted, and the administrator must manually delete the disk.
+        /// Keep the persistent disk when deleting the workstation. An administrator must manually delete the disk.
         /// </summary>
         public static GceRegionalPersistentDiskReclaimPolicy Retain { get; } = new GceRegionalPersistentDiskReclaimPolicy("RETAIN");
 

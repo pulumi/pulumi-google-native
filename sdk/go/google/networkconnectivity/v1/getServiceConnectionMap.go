@@ -38,6 +38,8 @@ type LookupServiceConnectionMapResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// A description of this resource.
 	Description string `pulumi:"description"`
+	// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag string `pulumi:"etag"`
 	// The infrastructure used for connections between consumers/producers.
 	Infrastructure string `pulumi:"infrastructure"`
 	// User-defined labels.
@@ -119,6 +121,11 @@ func (o LookupServiceConnectionMapResultOutput) CreateTime() pulumi.StringOutput
 // A description of this resource.
 func (o LookupServiceConnectionMapResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceConnectionMapResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o LookupServiceConnectionMapResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceConnectionMapResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The infrastructure used for connections between consumers/producers.

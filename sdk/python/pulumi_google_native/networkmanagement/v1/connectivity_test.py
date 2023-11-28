@@ -250,6 +250,7 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__.__dict__["test_id"] = test_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["display_name"] = None
+            __props__.__dict__["probing_details"] = None
             __props__.__dict__["reachability_details"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "test_id"])
@@ -282,6 +283,7 @@ class ConnectivityTest(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["probing_details"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["protocol"] = None
         __props__.__dict__["reachability_details"] = None
@@ -338,6 +340,14 @@ class ConnectivityTest(pulumi.CustomResource):
         Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="probingDetails")
+    def probing_details(self) -> pulumi.Output['outputs.ProbingDetailsResponse']:
+        """
+        The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+        """
+        return pulumi.get(self, "probing_details")
 
     @property
     @pulumi.getter

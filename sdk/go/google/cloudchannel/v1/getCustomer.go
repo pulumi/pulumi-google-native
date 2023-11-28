@@ -50,7 +50,7 @@ type LookupCustomerResult struct {
 	Name string `pulumi:"name"`
 	// Name of the organization that the customer entity represents.
 	OrgDisplayName string `pulumi:"orgDisplayName"`
-	// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+	// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 	OrgPostalAddress GoogleTypePostalAddressResponse `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoResponse `pulumi:"primaryContactInfo"`
@@ -151,7 +151,7 @@ func (o LookupCustomerResultOutput) OrgDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerResult) string { return v.OrgDisplayName }).(pulumi.StringOutput)
 }
 
-// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 func (o LookupCustomerResultOutput) OrgPostalAddress() GoogleTypePostalAddressResponseOutput {
 	return o.ApplyT(func(v LookupCustomerResult) GoogleTypePostalAddressResponse { return v.OrgPostalAddress }).(GoogleTypePostalAddressResponseOutput)
 }

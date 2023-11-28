@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+ * Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
  */
 export function getInstanceTableIamPolicy(args: GetInstanceTableIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTableIamPolicyResult> {
 
@@ -45,7 +45,7 @@ export interface GetInstanceTableIamPolicyResult {
     readonly version: number;
 }
 /**
- * Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+ * Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
  */
 export function getInstanceTableIamPolicyOutput(args: GetInstanceTableIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTableIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getInstanceTableIamPolicy(a, opts))

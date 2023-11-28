@@ -48,6 +48,10 @@ export interface GetWorkforcePoolProviderResult {
      */
     readonly displayName: string;
     /**
+     * Time after which the workload pool provider will be permanently purged and cannot be recovered.
+     */
+    readonly expireTime: string;
+    /**
      * The resource name of the provider. Format: `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
      */
     readonly name: string;

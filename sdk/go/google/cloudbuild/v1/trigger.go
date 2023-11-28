@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Creates a new `BuildTrigger`. This API is experimental.
+// Creates a new `BuildTrigger`.
 type Trigger struct {
 	pulumi.CustomResourceState
 

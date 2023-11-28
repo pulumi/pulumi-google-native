@@ -58,7 +58,7 @@ export class LineageEvent extends pulumi.CustomResource {
     public readonly requestId!: pulumi.Output<string | undefined>;
     public readonly runId!: pulumi.Output<string>;
     /**
-     * Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+     * The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
      */
     public readonly startTime!: pulumi.Output<string>;
 
@@ -78,6 +78,9 @@ export class LineageEvent extends pulumi.CustomResource {
             }
             if ((!args || args.runId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runId'");
+            }
+            if ((!args || args.startTime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'startTime'");
             }
             resourceInputs["endTime"] = args ? args.endTime : undefined;
             resourceInputs["links"] = args ? args.links : undefined;
@@ -131,7 +134,7 @@ export interface LineageEventArgs {
     requestId?: pulumi.Input<string>;
     runId: pulumi.Input<string>;
     /**
-     * Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+     * The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
      */
-    startTime?: pulumi.Input<string>;
+    startTime: pulumi.Input<string>;
 }

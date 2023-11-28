@@ -45,22 +45,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppGatewayIamMember{}
 	case "google-native:beyondcorp/v1alpha:AppGatewayIamPolicy":
 		r = &AppGatewayIamPolicy{}
+	case "google-native:beyondcorp/v1alpha:ApplicationDomainIamBinding":
+		r = &ApplicationDomainIamBinding{}
+	case "google-native:beyondcorp/v1alpha:ApplicationDomainIamMember":
+		r = &ApplicationDomainIamMember{}
+	case "google-native:beyondcorp/v1alpha:ApplicationDomainIamPolicy":
+		r = &ApplicationDomainIamPolicy{}
 	case "google-native:beyondcorp/v1alpha:ApplicationIamBinding":
 		r = &ApplicationIamBinding{}
 	case "google-native:beyondcorp/v1alpha:ApplicationIamMember":
 		r = &ApplicationIamMember{}
 	case "google-native:beyondcorp/v1alpha:ApplicationIamPolicy":
 		r = &ApplicationIamPolicy{}
-	case "google-native:beyondcorp/v1alpha:ClientConnectorService":
-		r = &ClientConnectorService{}
+	case "google-native:beyondcorp/v1alpha:BrowserDlpRule":
+		r = &BrowserDlpRule{}
 	case "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamBinding":
 		r = &ClientConnectorServiceIamBinding{}
 	case "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamMember":
 		r = &ClientConnectorServiceIamMember{}
 	case "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamPolicy":
 		r = &ClientConnectorServiceIamPolicy{}
-	case "google-native:beyondcorp/v1alpha:ClientGateway":
-		r = &ClientGateway{}
 	case "google-native:beyondcorp/v1alpha:ClientGatewayIamBinding":
 		r = &ClientGatewayIamBinding{}
 	case "google-native:beyondcorp/v1alpha:ClientGatewayIamMember":
@@ -89,12 +93,30 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetConnectionIamMember{}
 	case "google-native:beyondcorp/v1alpha:NetConnectionIamPolicy":
 		r = &NetConnectionIamPolicy{}
+	case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantBrowserDlpRuleIamBinding":
+		r = &OrganizationPartnerTenantBrowserDlpRuleIamBinding{}
+	case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantBrowserDlpRuleIamMember":
+		r = &OrganizationPartnerTenantBrowserDlpRuleIamMember{}
+	case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantBrowserDlpRuleIamPolicy":
+		r = &OrganizationPartnerTenantBrowserDlpRuleIamPolicy{}
+	case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantIamBinding":
+		r = &OrganizationPartnerTenantIamBinding{}
+	case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantIamMember":
+		r = &OrganizationPartnerTenantIamMember{}
+	case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantIamPolicy":
+		r = &OrganizationPartnerTenantIamPolicy{}
+	case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantProxyConfigIamBinding":
+		r = &OrganizationPartnerTenantProxyConfigIamBinding{}
+	case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantProxyConfigIamMember":
+		r = &OrganizationPartnerTenantProxyConfigIamMember{}
+	case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantProxyConfigIamPolicy":
+		r = &OrganizationPartnerTenantProxyConfigIamPolicy{}
+	case "google-native:beyondcorp/v1alpha:PartnerTenant":
+		r = &PartnerTenant{}
 	case "google-native:beyondcorp/v1alpha:ProxyConfig":
 		r = &ProxyConfig{}
 	case "google-native:beyondcorp/v1alpha:Subscription":
 		r = &Subscription{}
-	case "google-native:beyondcorp/v1alpha:Tenant":
-		r = &Tenant{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

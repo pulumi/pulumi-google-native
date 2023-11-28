@@ -31,8 +31,8 @@ class ConversionWorkspaceArgs:
         :param pulumi.Input[str] conversion_workspace_id: Required. The ID of the conversion workspace to create.
         :param pulumi.Input['DatabaseEngineInfoArgs'] destination: The destination engine details.
         :param pulumi.Input['DatabaseEngineInfoArgs'] source: The source engine details.
-        :param pulumi.Input[str] display_name: The display name for the workspace.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] global_settings: A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+        :param pulumi.Input[str] display_name: Optional. The display name for the workspace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] global_settings: Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
         :param pulumi.Input[str] name: Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
         :param pulumi.Input[str] request_id: A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
@@ -92,7 +92,7 @@ class ConversionWorkspaceArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name for the workspace.
+        Optional. The display name for the workspace.
         """
         return pulumi.get(self, "display_name")
 
@@ -104,7 +104,7 @@ class ConversionWorkspaceArgs:
     @pulumi.getter(name="globalSettings")
     def global_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+        Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
         """
         return pulumi.get(self, "global_settings")
 
@@ -177,8 +177,8 @@ class ConversionWorkspace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] conversion_workspace_id: Required. The ID of the conversion workspace to create.
         :param pulumi.Input[pulumi.InputType['DatabaseEngineInfoArgs']] destination: The destination engine details.
-        :param pulumi.Input[str] display_name: The display name for the workspace.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] global_settings: A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+        :param pulumi.Input[str] display_name: Optional. The display name for the workspace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] global_settings: Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
         :param pulumi.Input[str] name: Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
         :param pulumi.Input[str] request_id: A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[pulumi.InputType['DatabaseEngineInfoArgs']] source: The source engine details.
@@ -313,7 +313,7 @@ class ConversionWorkspace(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The display name for the workspace.
+        Optional. The display name for the workspace.
         """
         return pulumi.get(self, "display_name")
 
@@ -321,7 +321,7 @@ class ConversionWorkspace(pulumi.CustomResource):
     @pulumi.getter(name="globalSettings")
     def global_settings(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+        Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
         """
         return pulumi.get(self, "global_settings")
 

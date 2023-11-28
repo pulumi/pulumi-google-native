@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEnvironmentResult:
-    def __init__(__self__, api_proxy_type=None, created_at=None, deployment_type=None, description=None, display_name=None, forward_proxy_uri=None, last_modified_at=None, name=None, node_config=None, properties=None, state=None):
+    def __init__(__self__, api_proxy_type=None, created_at=None, deployment_type=None, description=None, display_name=None, forward_proxy_uri=None, has_attached_flow_hooks=None, last_modified_at=None, name=None, node_config=None, properties=None, state=None, type=None):
         if api_proxy_type and not isinstance(api_proxy_type, str):
             raise TypeError("Expected argument 'api_proxy_type' to be a str")
         pulumi.set(__self__, "api_proxy_type", api_proxy_type)
@@ -38,6 +38,9 @@ class GetEnvironmentResult:
         if forward_proxy_uri and not isinstance(forward_proxy_uri, str):
             raise TypeError("Expected argument 'forward_proxy_uri' to be a str")
         pulumi.set(__self__, "forward_proxy_uri", forward_proxy_uri)
+        if has_attached_flow_hooks and not isinstance(has_attached_flow_hooks, bool):
+            raise TypeError("Expected argument 'has_attached_flow_hooks' to be a bool")
+        pulumi.set(__self__, "has_attached_flow_hooks", has_attached_flow_hooks)
         if last_modified_at and not isinstance(last_modified_at, str):
             raise TypeError("Expected argument 'last_modified_at' to be a str")
         pulumi.set(__self__, "last_modified_at", last_modified_at)
@@ -53,6 +56,9 @@ class GetEnvironmentResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="apiProxyType")
@@ -103,6 +109,11 @@ class GetEnvironmentResult:
         return pulumi.get(self, "forward_proxy_uri")
 
     @property
+    @pulumi.getter(name="hasAttachedFlowHooks")
+    def has_attached_flow_hooks(self) -> bool:
+        return pulumi.get(self, "has_attached_flow_hooks")
+
+    @property
     @pulumi.getter(name="lastModifiedAt")
     def last_modified_at(self) -> str:
         """
@@ -142,6 +153,14 @@ class GetEnvironmentResult:
         """
         return pulumi.get(self, "state")
 
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Optional. EnvironmentType selected for the environment.
+        """
+        return pulumi.get(self, "type")
+
 
 class AwaitableGetEnvironmentResult(GetEnvironmentResult):
     # pylint: disable=using-constant-test
@@ -155,11 +174,13 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             description=self.description,
             display_name=self.display_name,
             forward_proxy_uri=self.forward_proxy_uri,
+            has_attached_flow_hooks=self.has_attached_flow_hooks,
             last_modified_at=self.last_modified_at,
             name=self.name,
             node_config=self.node_config,
             properties=self.properties,
-            state=self.state)
+            state=self.state,
+            type=self.type)
 
 
 def get_environment(environment_id: Optional[str] = None,
@@ -181,11 +202,13 @@ def get_environment(environment_id: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         forward_proxy_uri=pulumi.get(__ret__, 'forward_proxy_uri'),
+        has_attached_flow_hooks=pulumi.get(__ret__, 'has_attached_flow_hooks'),
         last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
         name=pulumi.get(__ret__, 'name'),
         node_config=pulumi.get(__ret__, 'node_config'),
         properties=pulumi.get(__ret__, 'properties'),
-        state=pulumi.get(__ret__, 'state'))
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_environment)

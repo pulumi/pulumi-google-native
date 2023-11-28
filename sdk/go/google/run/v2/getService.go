@@ -44,6 +44,8 @@ type LookupServiceResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator string `pulumi:"creator"`
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+	CustomAudiences []string `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime string `pulumi:"deleteTime"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
@@ -74,6 +76,8 @@ type LookupServiceResult struct {
 	Reconciling bool `pulumi:"reconciling"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
+	// Optional. Specifies service-level scaling settings
+	Scaling GoogleCloudRunV2ServiceScalingResponse `pulumi:"scaling"`
 	// The template used to create revisions for this Service.
 	Template GoogleCloudRunV2RevisionTemplateResponse `pulumi:"template"`
 	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
@@ -168,6 +172,11 @@ func (o LookupServiceResultOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Creator }).(pulumi.StringOutput)
 }
 
+// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+func (o LookupServiceResultOutput) CustomAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []string { return v.CustomAudiences }).(pulumi.StringArrayOutput)
+}
+
 // The deletion time.
 func (o LookupServiceResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.DeleteTime }).(pulumi.StringOutput)
@@ -241,6 +250,11 @@ func (o LookupServiceResultOutput) Reconciling() pulumi.BoolOutput {
 // Reserved for future use.
 func (o LookupServiceResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// Optional. Specifies service-level scaling settings
+func (o LookupServiceResultOutput) Scaling() GoogleCloudRunV2ServiceScalingResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) GoogleCloudRunV2ServiceScalingResponse { return v.Scaling }).(GoogleCloudRunV2ServiceScalingResponseOutput)
 }
 
 // The template used to create revisions for this Service.

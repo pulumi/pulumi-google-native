@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1
 {
     /// <summary>
-    /// Creates a new `BuildTrigger`. This API is experimental.
+    /// Creates a new `BuildTrigger`.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1:Trigger")]
     public partial class Trigger : global::Pulumi.CustomResource

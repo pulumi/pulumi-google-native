@@ -28,6 +28,10 @@ export interface GetPublicDelegatedPrefixArgs {
 
 export interface GetPublicDelegatedPrefixResult {
     /**
+     * The version of BYOIP API.
+     */
+    readonly byoipApiVersion: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
@@ -40,7 +44,7 @@ export interface GetPublicDelegatedPrefixResult {
      */
     readonly fingerprint: string;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+     * The IP address range, in CIDR format, represented by this public delegated prefix.
      */
     readonly ipCidrRange: string;
     /**

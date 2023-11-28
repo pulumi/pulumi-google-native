@@ -30,7 +30,7 @@ export interface GetWorkflowInvocationArgs {
 
 export interface GetWorkflowInvocationResult {
     /**
-     * Immutable. The name of the compilation result to compile. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*`.
+     * Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*`.
      */
     readonly compilationResult: string;
     /**
@@ -45,6 +45,10 @@ export interface GetWorkflowInvocationResult {
      * The workflow invocation's name.
      */
     readonly name: string;
+    /**
+     * The resolved compilation result that was used to create this invocation. Will be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*`.
+     */
+    readonly resolvedCompilationResult: string;
     /**
      * This workflow invocation's current state.
      */

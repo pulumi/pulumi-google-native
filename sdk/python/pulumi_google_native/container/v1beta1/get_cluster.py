@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, cost_management_config=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, etag=None, expire_time=None, fleet=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, protect_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None, zone=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, cost_management_config=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, enterprise_config=None, etag=None, expire_time=None, fleet=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, parent_product_config=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, protect_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, security_posture_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None, zone=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -71,6 +71,9 @@ class GetClusterResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if enable_k8s_beta_apis and not isinstance(enable_k8s_beta_apis, dict):
+            raise TypeError("Expected argument 'enable_k8s_beta_apis' to be a dict")
+        pulumi.set(__self__, "enable_k8s_beta_apis", enable_k8s_beta_apis)
         if enable_kubernetes_alpha and not isinstance(enable_kubernetes_alpha, bool):
             raise TypeError("Expected argument 'enable_kubernetes_alpha' to be a bool")
         pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
@@ -80,6 +83,9 @@ class GetClusterResult:
         if endpoint and not isinstance(endpoint, str):
             raise TypeError("Expected argument 'endpoint' to be a str")
         pulumi.set(__self__, "endpoint", endpoint)
+        if enterprise_config and not isinstance(enterprise_config, dict):
+            raise TypeError("Expected argument 'enterprise_config' to be a dict")
+        pulumi.set(__self__, "enterprise_config", enterprise_config)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -176,6 +182,9 @@ class GetClusterResult:
         if notification_config and not isinstance(notification_config, dict):
             raise TypeError("Expected argument 'notification_config' to be a dict")
         pulumi.set(__self__, "notification_config", notification_config)
+        if parent_product_config and not isinstance(parent_product_config, dict):
+            raise TypeError("Expected argument 'parent_product_config' to be a dict")
+        pulumi.set(__self__, "parent_product_config", parent_product_config)
         if pod_security_policy_config and not isinstance(pod_security_policy_config, dict):
             raise TypeError("Expected argument 'pod_security_policy_config' to be a dict")
         pulumi.set(__self__, "pod_security_policy_config", pod_security_policy_config)
@@ -197,6 +206,9 @@ class GetClusterResult:
         if resource_usage_export_config and not isinstance(resource_usage_export_config, dict):
             raise TypeError("Expected argument 'resource_usage_export_config' to be a dict")
         pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if security_posture_config and not isinstance(security_posture_config, dict):
+            raise TypeError("Expected argument 'security_posture_config' to be a dict")
+        pulumi.set(__self__, "security_posture_config", security_posture_config)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -377,6 +389,14 @@ class GetClusterResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="enableK8sBetaApis")
+    def enable_k8s_beta_apis(self) -> 'outputs.K8sBetaAPIConfigResponse':
+        """
+        Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+        """
+        return pulumi.get(self, "enable_k8s_beta_apis")
+
+    @property
     @pulumi.getter(name="enableKubernetesAlpha")
     def enable_kubernetes_alpha(self) -> bool:
         """
@@ -402,6 +422,14 @@ class GetClusterResult:
         [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
         """
         return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="enterpriseConfig")
+    def enterprise_config(self) -> 'outputs.EnterpriseConfigResponse':
+        """
+        GKE Enterprise Configuration.
+        """
+        return pulumi.get(self, "enterprise_config")
 
     @property
     @pulumi.getter
@@ -672,6 +700,14 @@ class GetClusterResult:
         return pulumi.get(self, "notification_config")
 
     @property
+    @pulumi.getter(name="parentProductConfig")
+    def parent_product_config(self) -> 'outputs.ParentProductConfigResponse':
+        """
+        The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+        """
+        return pulumi.get(self, "parent_product_config")
+
+    @property
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> 'outputs.PodSecurityPolicyConfigResponse':
         """
@@ -702,8 +738,11 @@ class GetClusterResult:
     @pulumi.getter(name="protectConfig")
     def protect_config(self) -> 'outputs.ProtectConfigResponse':
         """
-        Enable/Disable Protect API features for the cluster.
+        Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         """
+        warnings.warn("""Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""", DeprecationWarning)
+        pulumi.log.warn("""protect_config is deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""")
+
         return pulumi.get(self, "protect_config")
 
     @property
@@ -729,6 +768,14 @@ class GetClusterResult:
         Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
         """
         return pulumi.get(self, "resource_usage_export_config")
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> 'outputs.SecurityPostureConfigResponse':
+        """
+        Enable/Disable Security Posture API features for the cluster.
+        """
+        return pulumi.get(self, "security_posture_config")
 
     @property
     @pulumi.getter(name="selfLink")
@@ -864,9 +911,11 @@ class AwaitableGetClusterResult(GetClusterResult):
             database_encryption=self.database_encryption,
             default_max_pods_constraint=self.default_max_pods_constraint,
             description=self.description,
+            enable_k8s_beta_apis=self.enable_k8s_beta_apis,
             enable_kubernetes_alpha=self.enable_kubernetes_alpha,
             enable_tpu=self.enable_tpu,
             endpoint=self.endpoint,
+            enterprise_config=self.enterprise_config,
             etag=self.etag,
             expire_time=self.expire_time,
             fleet=self.fleet,
@@ -899,6 +948,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             node_pool_defaults=self.node_pool_defaults,
             node_pools=self.node_pools,
             notification_config=self.notification_config,
+            parent_product_config=self.parent_product_config,
             pod_security_policy_config=self.pod_security_policy_config,
             private_cluster=self.private_cluster,
             private_cluster_config=self.private_cluster_config,
@@ -906,6 +956,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             release_channel=self.release_channel,
             resource_labels=self.resource_labels,
             resource_usage_export_config=self.resource_usage_export_config,
+            security_posture_config=self.security_posture_config,
             self_link=self.self_link,
             services_ipv4_cidr=self.services_ipv4_cidr,
             shielded_nodes=self.shielded_nodes,
@@ -957,9 +1008,11 @@ def get_cluster(cluster_id: Optional[str] = None,
         database_encryption=pulumi.get(__ret__, 'database_encryption'),
         default_max_pods_constraint=pulumi.get(__ret__, 'default_max_pods_constraint'),
         description=pulumi.get(__ret__, 'description'),
+        enable_k8s_beta_apis=pulumi.get(__ret__, 'enable_k8s_beta_apis'),
         enable_kubernetes_alpha=pulumi.get(__ret__, 'enable_kubernetes_alpha'),
         enable_tpu=pulumi.get(__ret__, 'enable_tpu'),
         endpoint=pulumi.get(__ret__, 'endpoint'),
+        enterprise_config=pulumi.get(__ret__, 'enterprise_config'),
         etag=pulumi.get(__ret__, 'etag'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         fleet=pulumi.get(__ret__, 'fleet'),
@@ -992,6 +1045,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         node_pool_defaults=pulumi.get(__ret__, 'node_pool_defaults'),
         node_pools=pulumi.get(__ret__, 'node_pools'),
         notification_config=pulumi.get(__ret__, 'notification_config'),
+        parent_product_config=pulumi.get(__ret__, 'parent_product_config'),
         pod_security_policy_config=pulumi.get(__ret__, 'pod_security_policy_config'),
         private_cluster=pulumi.get(__ret__, 'private_cluster'),
         private_cluster_config=pulumi.get(__ret__, 'private_cluster_config'),
@@ -999,6 +1053,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         release_channel=pulumi.get(__ret__, 'release_channel'),
         resource_labels=pulumi.get(__ret__, 'resource_labels'),
         resource_usage_export_config=pulumi.get(__ret__, 'resource_usage_export_config'),
+        security_posture_config=pulumi.get(__ret__, 'security_posture_config'),
         self_link=pulumi.get(__ret__, 'self_link'),
         services_ipv4_cidr=pulumi.get(__ret__, 'services_ipv4_cidr'),
         shielded_nodes=pulumi.get(__ret__, 'shielded_nodes'),

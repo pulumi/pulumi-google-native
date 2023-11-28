@@ -44,6 +44,10 @@ export interface GetServiceConnectionMapResult {
      */
     readonly description: string;
     /**
+     * Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    readonly etag: string;
+    /**
      * The infrastructure used for connections between consumers/producers.
      */
     readonly infrastructure: string;

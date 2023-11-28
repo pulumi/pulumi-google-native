@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 {
     /// <summary>
     /// Creates a new Rollout in a given project and location.
-    /// Auto-naming is currently not supported for this resource.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
@@ -19,7 +18,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     public partial class Rollout : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
@@ -37,7 +36,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> ApproveTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// Name of the `ControllerRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         /// </summary>
         [Output("controllerRollout")]
         public Output<string> ControllerRollout { get; private set; } = null!;
@@ -100,7 +99,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> FailureReason { get; private set; } = null!;
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -115,7 +114,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<Outputs.MetadataResponse> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -137,6 +136,18 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the `Rollout` that is rolled back by this `Rollout`. Empty if this `Rollout` wasn't created as a rollback.
+        /// </summary>
+        [Output("rollbackOfRollout")]
+        public Output<string> RollbackOfRollout { get; private set; } = null!;
+
+        /// <summary>
+        /// Names of `Rollouts` that rolled back this `Rollout`.
+        /// </summary>
+        [Output("rolledBackByRollouts")]
+        public Output<ImmutableArray<string>> RolledBackByRollouts { get; private set; } = null!;
 
         /// <summary>
         /// Required. ID of the `Rollout`.
@@ -225,7 +236,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -252,7 +263,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -264,7 +275,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         private InputList<string>? _inputs;
 
         /// <summary>
-        /// List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+        /// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
         /// </summary>
         public InputList<string> Inputs
         {

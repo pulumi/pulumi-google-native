@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkstationResult:
-    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, env=None, etag=None, host=None, labels=None, name=None, reconciling=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, env=None, etag=None, host=None, labels=None, name=None, reconciling=None, start_time=None, state=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -49,6 +49,9 @@ class GetWorkstationResult:
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if start_time and not isinstance(start_time, str):
+            raise TypeError("Expected argument 'start_time' to be a str")
+        pulumi.set(__self__, "start_time", start_time)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -63,7 +66,7 @@ class GetWorkstationResult:
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        Client-specified annotations.
+        Optional. Client-specified annotations.
         """
         return pulumi.get(self, "annotations")
 
@@ -71,7 +74,7 @@ class GetWorkstationResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Time when this resource was created.
+        Time when this workstation was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -79,7 +82,7 @@ class GetWorkstationResult:
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> str:
         """
-        Time when this resource was soft-deleted.
+        Time when this workstation was soft-deleted.
         """
         return pulumi.get(self, "delete_time")
 
@@ -87,7 +90,7 @@ class GetWorkstationResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Human-readable name for this resource.
+        Optional. Human-readable name for this workstation.
         """
         return pulumi.get(self, "display_name")
 
@@ -95,7 +98,7 @@ class GetWorkstationResult:
     @pulumi.getter
     def env(self) -> Mapping[str, str]:
         """
-        Environment variables passed to the workstation container's entrypoint.
+        Optional. Environment variables passed to the workstation container's entrypoint.
         """
         return pulumi.get(self, "env")
 
@@ -103,7 +106,7 @@ class GetWorkstationResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -119,7 +122,7 @@ class GetWorkstationResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
         """
         return pulumi.get(self, "labels")
 
@@ -127,7 +130,7 @@ class GetWorkstationResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Full name of this resource.
+        Identifier. Full name of this workstation.
         """
         return pulumi.get(self, "name")
 
@@ -135,9 +138,17 @@ class GetWorkstationResult:
     @pulumi.getter
     def reconciling(self) -> bool:
         """
-        Indicates whether this resource is currently being updated to match its intended state.
+        Indicates whether this workstation is currently being updated to match its intended state.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Time when this workstation was most recently successfully started, regardless of the workstation's initial state.
+        """
+        return pulumi.get(self, "start_time")
 
     @property
     @pulumi.getter
@@ -151,7 +162,7 @@ class GetWorkstationResult:
     @pulumi.getter
     def uid(self) -> str:
         """
-        A system-assigned unique identified for this resource.
+        A system-assigned unique identifier for this workstation.
         """
         return pulumi.get(self, "uid")
 
@@ -159,7 +170,7 @@ class GetWorkstationResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        Time when this resource was most recently updated.
+        Time when this workstation was most recently updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -180,6 +191,7 @@ class AwaitableGetWorkstationResult(GetWorkstationResult):
             labels=self.labels,
             name=self.name,
             reconciling=self.reconciling,
+            start_time=self.start_time,
             state=self.state,
             uid=self.uid,
             update_time=self.update_time)
@@ -214,6 +226,7 @@ def get_workstation(location: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
+        start_time=pulumi.get(__ret__, 'start_time'),
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))

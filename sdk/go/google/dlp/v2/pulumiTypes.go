@@ -538,6 +538,176 @@ func (o GooglePrivacyDlpV2AllInfoTypesResponseOutput) ToOutput(ctx context.Conte
 	}
 }
 
+// Catch-all for all other tables not specified by other filters. Should always be last, except for single-table configurations, which will only have a TableReference target.
+type GooglePrivacyDlpV2AllOtherBigQueryTables struct {
+}
+
+// GooglePrivacyDlpV2AllOtherBigQueryTablesInput is an input type that accepts GooglePrivacyDlpV2AllOtherBigQueryTablesArgs and GooglePrivacyDlpV2AllOtherBigQueryTablesOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2AllOtherBigQueryTablesInput` via:
+//
+//	GooglePrivacyDlpV2AllOtherBigQueryTablesArgs{...}
+type GooglePrivacyDlpV2AllOtherBigQueryTablesInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2AllOtherBigQueryTablesOutput() GooglePrivacyDlpV2AllOtherBigQueryTablesOutput
+	ToGooglePrivacyDlpV2AllOtherBigQueryTablesOutputWithContext(context.Context) GooglePrivacyDlpV2AllOtherBigQueryTablesOutput
+}
+
+// Catch-all for all other tables not specified by other filters. Should always be last, except for single-table configurations, which will only have a TableReference target.
+type GooglePrivacyDlpV2AllOtherBigQueryTablesArgs struct {
+}
+
+func (GooglePrivacyDlpV2AllOtherBigQueryTablesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2AllOtherBigQueryTables)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2AllOtherBigQueryTablesArgs) ToGooglePrivacyDlpV2AllOtherBigQueryTablesOutput() GooglePrivacyDlpV2AllOtherBigQueryTablesOutput {
+	return i.ToGooglePrivacyDlpV2AllOtherBigQueryTablesOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2AllOtherBigQueryTablesArgs) ToGooglePrivacyDlpV2AllOtherBigQueryTablesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllOtherBigQueryTablesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AllOtherBigQueryTablesOutput)
+}
+
+func (i GooglePrivacyDlpV2AllOtherBigQueryTablesArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2AllOtherBigQueryTables] {
+	return pulumix.Output[GooglePrivacyDlpV2AllOtherBigQueryTables]{
+		OutputState: i.ToGooglePrivacyDlpV2AllOtherBigQueryTablesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2AllOtherBigQueryTablesArgs) ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput() GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return i.ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2AllOtherBigQueryTablesArgs) ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AllOtherBigQueryTablesOutput).ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2AllOtherBigQueryTablesPtrInput is an input type that accepts GooglePrivacyDlpV2AllOtherBigQueryTablesArgs, GooglePrivacyDlpV2AllOtherBigQueryTablesPtr and GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2AllOtherBigQueryTablesPtrInput` via:
+//
+//	        GooglePrivacyDlpV2AllOtherBigQueryTablesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2AllOtherBigQueryTablesPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput() GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput
+	ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(context.Context) GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput
+}
+
+type googlePrivacyDlpV2AllOtherBigQueryTablesPtrType GooglePrivacyDlpV2AllOtherBigQueryTablesArgs
+
+func GooglePrivacyDlpV2AllOtherBigQueryTablesPtr(v *GooglePrivacyDlpV2AllOtherBigQueryTablesArgs) GooglePrivacyDlpV2AllOtherBigQueryTablesPtrInput {
+	return (*googlePrivacyDlpV2AllOtherBigQueryTablesPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2AllOtherBigQueryTablesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2AllOtherBigQueryTables)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2AllOtherBigQueryTablesPtrType) ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput() GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return i.ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2AllOtherBigQueryTablesPtrType) ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2AllOtherBigQueryTablesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2AllOtherBigQueryTables] {
+	return pulumix.Output[*GooglePrivacyDlpV2AllOtherBigQueryTables]{
+		OutputState: i.ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Catch-all for all other tables not specified by other filters. Should always be last, except for single-table configurations, which will only have a TableReference target.
+type GooglePrivacyDlpV2AllOtherBigQueryTablesOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2AllOtherBigQueryTablesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2AllOtherBigQueryTables)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesOutput) ToGooglePrivacyDlpV2AllOtherBigQueryTablesOutput() GooglePrivacyDlpV2AllOtherBigQueryTablesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesOutput) ToGooglePrivacyDlpV2AllOtherBigQueryTablesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllOtherBigQueryTablesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesOutput) ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput() GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return o.ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesOutput) ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2AllOtherBigQueryTables) *GooglePrivacyDlpV2AllOtherBigQueryTables {
+		return &v
+	}).(GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2AllOtherBigQueryTables] {
+	return pulumix.Output[GooglePrivacyDlpV2AllOtherBigQueryTables]{
+		OutputState: o.OutputState,
+	}
+}
+
+type GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2AllOtherBigQueryTables)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput) ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput() GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput) ToGooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2AllOtherBigQueryTables] {
+	return pulumix.Output[*GooglePrivacyDlpV2AllOtherBigQueryTables]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput) Elem() GooglePrivacyDlpV2AllOtherBigQueryTablesOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2AllOtherBigQueryTables) GooglePrivacyDlpV2AllOtherBigQueryTables {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2AllOtherBigQueryTables
+		return ret
+	}).(GooglePrivacyDlpV2AllOtherBigQueryTablesOutput)
+}
+
+// Catch-all for all other tables not specified by other filters. Should always be last, except for single-table configurations, which will only have a TableReference target.
+type GooglePrivacyDlpV2AllOtherBigQueryTablesResponse struct {
+}
+
+// Catch-all for all other tables not specified by other filters. Should always be last, except for single-table configurations, which will only have a TableReference target.
+type GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2AllOtherBigQueryTablesResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput) ToGooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput() GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput) ToGooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2AllOtherBigQueryTablesResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2AllOtherBigQueryTablesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Apply to all text.
 type GooglePrivacyDlpV2AllText struct {
 }
@@ -1034,6 +1204,294 @@ func (o GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput) Index(i pulumi.IntI
 	}).(GooglePrivacyDlpV2AuxiliaryTableResponseOutput)
 }
 
+// Target used to match against for discovery with BigQuery tables
+type GooglePrivacyDlpV2BigQueryDiscoveryTarget struct {
+	// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+	Cadence *GooglePrivacyDlpV2DiscoveryGenerationCadence `pulumi:"cadence"`
+	// In addition to matching the filter, these conditions must be true before a profile is generated.
+	Conditions *GooglePrivacyDlpV2DiscoveryBigQueryConditions `pulumi:"conditions"`
+	// Tables that match this filter will not have profiles created.
+	Disabled *GooglePrivacyDlpV2Disabled `pulumi:"disabled"`
+	// The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+	Filter GooglePrivacyDlpV2DiscoveryBigQueryFilter `pulumi:"filter"`
+}
+
+// GooglePrivacyDlpV2BigQueryDiscoveryTargetInput is an input type that accepts GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs and GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryDiscoveryTargetInput` via:
+//
+//	GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs{...}
+type GooglePrivacyDlpV2BigQueryDiscoveryTargetInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryDiscoveryTargetOutput() GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput
+	ToGooglePrivacyDlpV2BigQueryDiscoveryTargetOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput
+}
+
+// Target used to match against for discovery with BigQuery tables
+type GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs struct {
+	// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+	Cadence GooglePrivacyDlpV2DiscoveryGenerationCadencePtrInput `pulumi:"cadence"`
+	// In addition to matching the filter, these conditions must be true before a profile is generated.
+	Conditions GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrInput `pulumi:"conditions"`
+	// Tables that match this filter will not have profiles created.
+	Disabled GooglePrivacyDlpV2DisabledPtrInput `pulumi:"disabled"`
+	// The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+	Filter GooglePrivacyDlpV2DiscoveryBigQueryFilterInput `pulumi:"filter"`
+}
+
+func (GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryDiscoveryTarget)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetOutput() GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryDiscoveryTargetOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput)
+}
+
+func (i GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryDiscoveryTarget] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryDiscoveryTarget]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryDiscoveryTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput() GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput).ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs, GooglePrivacyDlpV2BigQueryDiscoveryTargetPtr and GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrInput` via:
+//
+//	        GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput() GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput
+	ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput
+}
+
+type googlePrivacyDlpV2BigQueryDiscoveryTargetPtrType GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs
+
+func GooglePrivacyDlpV2BigQueryDiscoveryTargetPtr(v *GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs) GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrInput {
+	return (*googlePrivacyDlpV2BigQueryDiscoveryTargetPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2BigQueryDiscoveryTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryDiscoveryTarget)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2BigQueryDiscoveryTargetPtrType) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput() GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2BigQueryDiscoveryTargetPtrType) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2BigQueryDiscoveryTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryDiscoveryTarget] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryDiscoveryTarget]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Target used to match against for discovery with BigQuery tables
+type GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryDiscoveryTarget)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetOutput() GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput() GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput {
+	return o.ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryDiscoveryTarget) *GooglePrivacyDlpV2BigQueryDiscoveryTarget {
+		return &v
+	}).(GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryDiscoveryTarget] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryDiscoveryTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) Cadence() GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryDiscoveryTarget) *GooglePrivacyDlpV2DiscoveryGenerationCadence {
+		return v.Cadence
+	}).(GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput)
+}
+
+// In addition to matching the filter, these conditions must be true before a profile is generated.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) Conditions() GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryDiscoveryTarget) *GooglePrivacyDlpV2DiscoveryBigQueryConditions {
+		return v.Conditions
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput)
+}
+
+// Tables that match this filter will not have profiles created.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) Disabled() GooglePrivacyDlpV2DisabledPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryDiscoveryTarget) *GooglePrivacyDlpV2Disabled { return v.Disabled }).(GooglePrivacyDlpV2DisabledPtrOutput)
+}
+
+// The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput) Filter() GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryDiscoveryTarget) GooglePrivacyDlpV2DiscoveryBigQueryFilter {
+		return v.Filter
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput)
+}
+
+type GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryDiscoveryTarget)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput() GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryDiscoveryTarget] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryDiscoveryTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput) Elem() GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryDiscoveryTarget) GooglePrivacyDlpV2BigQueryDiscoveryTarget {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryDiscoveryTarget
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput)
+}
+
+// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput) Cadence() GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryDiscoveryTarget) *GooglePrivacyDlpV2DiscoveryGenerationCadence {
+		if v == nil {
+			return nil
+		}
+		return v.Cadence
+	}).(GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput)
+}
+
+// In addition to matching the filter, these conditions must be true before a profile is generated.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput) Conditions() GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryDiscoveryTarget) *GooglePrivacyDlpV2DiscoveryBigQueryConditions {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput)
+}
+
+// Tables that match this filter will not have profiles created.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput) Disabled() GooglePrivacyDlpV2DisabledPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryDiscoveryTarget) *GooglePrivacyDlpV2Disabled {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(GooglePrivacyDlpV2DisabledPtrOutput)
+}
+
+// The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput) Filter() GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryDiscoveryTarget) *GooglePrivacyDlpV2DiscoveryBigQueryFilter {
+		if v == nil {
+			return nil
+		}
+		return &v.Filter
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput)
+}
+
+// Target used to match against for discovery with BigQuery tables
+type GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse struct {
+	// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+	Cadence GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse `pulumi:"cadence"`
+	// In addition to matching the filter, these conditions must be true before a profile is generated.
+	Conditions GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse `pulumi:"conditions"`
+	// Tables that match this filter will not have profiles created.
+	Disabled GooglePrivacyDlpV2DisabledResponse `pulumi:"disabled"`
+	// The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+	Filter GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse `pulumi:"filter"`
+}
+
+// Target used to match against for discovery with BigQuery tables
+type GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput() GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput) ToGooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput) Cadence() GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse) GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse {
+		return v.Cadence
+	}).(GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput)
+}
+
+// In addition to matching the filter, these conditions must be true before a profile is generated.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput) Conditions() GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse) GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse {
+		return v.Conditions
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput)
+}
+
+// Tables that match this filter will not have profiles created.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput) Disabled() GooglePrivacyDlpV2DisabledResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse) GooglePrivacyDlpV2DisabledResponse {
+		return v.Disabled
+	}).(GooglePrivacyDlpV2DisabledResponseOutput)
+}
+
+// The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+func (o GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput) Filter() GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse) GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse {
+		return v.Filter
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput)
+}
+
 // Message defining a field of a BigQuery table.
 type GooglePrivacyDlpV2BigQueryField struct {
 	// Designated field in the BigQuery table.
@@ -1260,11 +1718,11 @@ func (o GooglePrivacyDlpV2BigQueryFieldResponseOutput) Table() GooglePrivacyDlpV
 
 // Options defining BigQuery table and row identifiers.
 type GooglePrivacyDlpV2BigQueryOptions struct {
-	// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+	// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 	ExcludedFields []GooglePrivacyDlpV2FieldId `pulumi:"excludedFields"`
 	// Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
 	IdentifyingFields []GooglePrivacyDlpV2FieldId `pulumi:"identifyingFields"`
-	// Limit scanning only to these fields.
+	// Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 	IncludedFields []GooglePrivacyDlpV2FieldId `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit *string `pulumi:"rowsLimit"`
@@ -1288,11 +1746,11 @@ type GooglePrivacyDlpV2BigQueryOptionsInput interface {
 
 // Options defining BigQuery table and row identifiers.
 type GooglePrivacyDlpV2BigQueryOptionsArgs struct {
-	// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+	// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 	ExcludedFields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"excludedFields"`
 	// Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
 	IdentifyingFields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"identifyingFields"`
-	// Limit scanning only to these fields.
+	// Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 	IncludedFields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit pulumi.StringPtrInput `pulumi:"rowsLimit"`
@@ -1399,7 +1857,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsOutput) ToOutput(ctx context.Context) p
 	}
 }
 
-// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 func (o GooglePrivacyDlpV2BigQueryOptionsOutput) ExcludedFields() GooglePrivacyDlpV2FieldIdArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) []GooglePrivacyDlpV2FieldId { return v.ExcludedFields }).(GooglePrivacyDlpV2FieldIdArrayOutput)
 }
@@ -1409,7 +1867,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsOutput) IdentifyingFields() GooglePriva
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) []GooglePrivacyDlpV2FieldId { return v.IdentifyingFields }).(GooglePrivacyDlpV2FieldIdArrayOutput)
 }
 
-// Limit scanning only to these fields.
+// Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 func (o GooglePrivacyDlpV2BigQueryOptionsOutput) IncludedFields() GooglePrivacyDlpV2FieldIdArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) []GooglePrivacyDlpV2FieldId { return v.IncludedFields }).(GooglePrivacyDlpV2FieldIdArrayOutput)
 }
@@ -1465,7 +1923,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) Elem() GooglePrivacyDlpV2Big
 	}).(GooglePrivacyDlpV2BigQueryOptionsOutput)
 }
 
-// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) ExcludedFields() GooglePrivacyDlpV2FieldIdArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptions) []GooglePrivacyDlpV2FieldId {
 		if v == nil {
@@ -1485,7 +1943,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) IdentifyingFields() GooglePr
 	}).(GooglePrivacyDlpV2FieldIdArrayOutput)
 }
 
-// Limit scanning only to these fields.
+// Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) IncludedFields() GooglePrivacyDlpV2FieldIdArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptions) []GooglePrivacyDlpV2FieldId {
 		if v == nil {
@@ -1536,11 +1994,11 @@ func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) TableReference() GooglePriva
 
 // Options defining BigQuery table and row identifiers.
 type GooglePrivacyDlpV2BigQueryOptionsResponse struct {
-	// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+	// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 	ExcludedFields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"excludedFields"`
 	// Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
 	IdentifyingFields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"identifyingFields"`
-	// Limit scanning only to these fields.
+	// Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 	IncludedFields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit string `pulumi:"rowsLimit"`
@@ -1572,7 +2030,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) ToOutput(ctx context.Co
 	}
 }
 
-// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) ExcludedFields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) []GooglePrivacyDlpV2FieldIdResponse {
 		return v.ExcludedFields
@@ -1586,7 +2044,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) IdentifyingFields() Goo
 	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
 }
 
-// Limit scanning only to these fields.
+// Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
 func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) IncludedFields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) []GooglePrivacyDlpV2FieldIdResponse {
 		return v.IncludedFields
@@ -1612,6 +2070,418 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) TableReference() Google
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) GooglePrivacyDlpV2BigQueryTableResponse {
 		return v.TableReference
 	}).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
+}
+
+// A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
+type GooglePrivacyDlpV2BigQueryRegex struct {
+	// If unset, this property matches all datasets.
+	DatasetIdRegex *string `pulumi:"datasetIdRegex"`
+	// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+	ProjectIdRegex *string `pulumi:"projectIdRegex"`
+	// If unset, this property matches all tables.
+	TableIdRegex *string `pulumi:"tableIdRegex"`
+}
+
+// GooglePrivacyDlpV2BigQueryRegexInput is an input type that accepts GooglePrivacyDlpV2BigQueryRegexArgs and GooglePrivacyDlpV2BigQueryRegexOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryRegexInput` via:
+//
+//	GooglePrivacyDlpV2BigQueryRegexArgs{...}
+type GooglePrivacyDlpV2BigQueryRegexInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryRegexOutput() GooglePrivacyDlpV2BigQueryRegexOutput
+	ToGooglePrivacyDlpV2BigQueryRegexOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryRegexOutput
+}
+
+// A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
+type GooglePrivacyDlpV2BigQueryRegexArgs struct {
+	// If unset, this property matches all datasets.
+	DatasetIdRegex pulumi.StringPtrInput `pulumi:"datasetIdRegex"`
+	// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+	ProjectIdRegex pulumi.StringPtrInput `pulumi:"projectIdRegex"`
+	// If unset, this property matches all tables.
+	TableIdRegex pulumi.StringPtrInput `pulumi:"tableIdRegex"`
+}
+
+func (GooglePrivacyDlpV2BigQueryRegexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegex)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexArgs) ToGooglePrivacyDlpV2BigQueryRegexOutput() GooglePrivacyDlpV2BigQueryRegexOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryRegexOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexArgs) ToGooglePrivacyDlpV2BigQueryRegexOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryRegexOutput)
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryRegex] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryRegex]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryRegexOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GooglePrivacyDlpV2BigQueryRegexArrayInput is an input type that accepts GooglePrivacyDlpV2BigQueryRegexArray and GooglePrivacyDlpV2BigQueryRegexArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryRegexArrayInput` via:
+//
+//	GooglePrivacyDlpV2BigQueryRegexArray{ GooglePrivacyDlpV2BigQueryRegexArgs{...} }
+type GooglePrivacyDlpV2BigQueryRegexArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryRegexArrayOutput() GooglePrivacyDlpV2BigQueryRegexArrayOutput
+	ToGooglePrivacyDlpV2BigQueryRegexArrayOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryRegexArrayOutput
+}
+
+type GooglePrivacyDlpV2BigQueryRegexArray []GooglePrivacyDlpV2BigQueryRegexInput
+
+func (GooglePrivacyDlpV2BigQueryRegexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2BigQueryRegex)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexArray) ToGooglePrivacyDlpV2BigQueryRegexArrayOutput() GooglePrivacyDlpV2BigQueryRegexArrayOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryRegexArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexArray) ToGooglePrivacyDlpV2BigQueryRegexArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryRegexArrayOutput)
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2BigQueryRegex] {
+	return pulumix.Output[[]GooglePrivacyDlpV2BigQueryRegex]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryRegexArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
+type GooglePrivacyDlpV2BigQueryRegexOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryRegexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegex)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexOutput) ToGooglePrivacyDlpV2BigQueryRegexOutput() GooglePrivacyDlpV2BigQueryRegexOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexOutput) ToGooglePrivacyDlpV2BigQueryRegexOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryRegex] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryRegex]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If unset, this property matches all datasets.
+func (o GooglePrivacyDlpV2BigQueryRegexOutput) DatasetIdRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryRegex) *string { return v.DatasetIdRegex }).(pulumi.StringPtrOutput)
+}
+
+// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+func (o GooglePrivacyDlpV2BigQueryRegexOutput) ProjectIdRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryRegex) *string { return v.ProjectIdRegex }).(pulumi.StringPtrOutput)
+}
+
+// If unset, this property matches all tables.
+func (o GooglePrivacyDlpV2BigQueryRegexOutput) TableIdRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryRegex) *string { return v.TableIdRegex }).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2BigQueryRegexArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryRegexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2BigQueryRegex)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexArrayOutput) ToGooglePrivacyDlpV2BigQueryRegexArrayOutput() GooglePrivacyDlpV2BigQueryRegexArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexArrayOutput) ToGooglePrivacyDlpV2BigQueryRegexArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2BigQueryRegex] {
+	return pulumix.Output[[]GooglePrivacyDlpV2BigQueryRegex]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2BigQueryRegexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2BigQueryRegex {
+		return vs[0].([]GooglePrivacyDlpV2BigQueryRegex)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2BigQueryRegexOutput)
+}
+
+// A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
+type GooglePrivacyDlpV2BigQueryRegexResponse struct {
+	// If unset, this property matches all datasets.
+	DatasetIdRegex string `pulumi:"datasetIdRegex"`
+	// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+	ProjectIdRegex string `pulumi:"projectIdRegex"`
+	// If unset, this property matches all tables.
+	TableIdRegex string `pulumi:"tableIdRegex"`
+}
+
+// A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
+type GooglePrivacyDlpV2BigQueryRegexResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryRegexResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegexResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexResponseOutput) ToGooglePrivacyDlpV2BigQueryRegexResponseOutput() GooglePrivacyDlpV2BigQueryRegexResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexResponseOutput) ToGooglePrivacyDlpV2BigQueryRegexResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryRegexResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryRegexResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If unset, this property matches all datasets.
+func (o GooglePrivacyDlpV2BigQueryRegexResponseOutput) DatasetIdRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryRegexResponse) string { return v.DatasetIdRegex }).(pulumi.StringOutput)
+}
+
+// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+func (o GooglePrivacyDlpV2BigQueryRegexResponseOutput) ProjectIdRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryRegexResponse) string { return v.ProjectIdRegex }).(pulumi.StringOutput)
+}
+
+// If unset, this property matches all tables.
+func (o GooglePrivacyDlpV2BigQueryRegexResponseOutput) TableIdRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryRegexResponse) string { return v.TableIdRegex }).(pulumi.StringOutput)
+}
+
+type GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2BigQueryRegexResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput) ToGooglePrivacyDlpV2BigQueryRegexResponseArrayOutput() GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput) ToGooglePrivacyDlpV2BigQueryRegexResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2BigQueryRegexResponse] {
+	return pulumix.Output[[]GooglePrivacyDlpV2BigQueryRegexResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2BigQueryRegexResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2BigQueryRegexResponse {
+		return vs[0].([]GooglePrivacyDlpV2BigQueryRegexResponse)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2BigQueryRegexResponseOutput)
+}
+
+// A collection of regular expressions to determine what tables to match against.
+type GooglePrivacyDlpV2BigQueryRegexes struct {
+	// A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+	Patterns []GooglePrivacyDlpV2BigQueryRegex `pulumi:"patterns"`
+}
+
+// GooglePrivacyDlpV2BigQueryRegexesInput is an input type that accepts GooglePrivacyDlpV2BigQueryRegexesArgs and GooglePrivacyDlpV2BigQueryRegexesOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryRegexesInput` via:
+//
+//	GooglePrivacyDlpV2BigQueryRegexesArgs{...}
+type GooglePrivacyDlpV2BigQueryRegexesInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryRegexesOutput() GooglePrivacyDlpV2BigQueryRegexesOutput
+	ToGooglePrivacyDlpV2BigQueryRegexesOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryRegexesOutput
+}
+
+// A collection of regular expressions to determine what tables to match against.
+type GooglePrivacyDlpV2BigQueryRegexesArgs struct {
+	// A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+	Patterns GooglePrivacyDlpV2BigQueryRegexArrayInput `pulumi:"patterns"`
+}
+
+func (GooglePrivacyDlpV2BigQueryRegexesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegexes)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexesArgs) ToGooglePrivacyDlpV2BigQueryRegexesOutput() GooglePrivacyDlpV2BigQueryRegexesOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryRegexesOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexesArgs) ToGooglePrivacyDlpV2BigQueryRegexesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryRegexesOutput)
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexesArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryRegexes] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryRegexes]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryRegexesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexesArgs) ToGooglePrivacyDlpV2BigQueryRegexesPtrOutput() GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryRegexesArgs) ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryRegexesOutput).ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2BigQueryRegexesPtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryRegexesArgs, GooglePrivacyDlpV2BigQueryRegexesPtr and GooglePrivacyDlpV2BigQueryRegexesPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryRegexesPtrInput` via:
+//
+//	        GooglePrivacyDlpV2BigQueryRegexesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2BigQueryRegexesPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryRegexesPtrOutput() GooglePrivacyDlpV2BigQueryRegexesPtrOutput
+	ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryRegexesPtrOutput
+}
+
+type googlePrivacyDlpV2BigQueryRegexesPtrType GooglePrivacyDlpV2BigQueryRegexesArgs
+
+func GooglePrivacyDlpV2BigQueryRegexesPtr(v *GooglePrivacyDlpV2BigQueryRegexesArgs) GooglePrivacyDlpV2BigQueryRegexesPtrInput {
+	return (*googlePrivacyDlpV2BigQueryRegexesPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2BigQueryRegexesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryRegexes)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2BigQueryRegexesPtrType) ToGooglePrivacyDlpV2BigQueryRegexesPtrOutput() GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2BigQueryRegexesPtrType) ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryRegexesPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2BigQueryRegexesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryRegexes] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryRegexes]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A collection of regular expressions to determine what tables to match against.
+type GooglePrivacyDlpV2BigQueryRegexesOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryRegexesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegexes)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesOutput) ToGooglePrivacyDlpV2BigQueryRegexesOutput() GooglePrivacyDlpV2BigQueryRegexesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesOutput) ToGooglePrivacyDlpV2BigQueryRegexesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesOutput) ToGooglePrivacyDlpV2BigQueryRegexesPtrOutput() GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return o.ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesOutput) ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryRegexes) *GooglePrivacyDlpV2BigQueryRegexes {
+		return &v
+	}).(GooglePrivacyDlpV2BigQueryRegexesPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryRegexes] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryRegexes]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+func (o GooglePrivacyDlpV2BigQueryRegexesOutput) Patterns() GooglePrivacyDlpV2BigQueryRegexArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryRegexes) []GooglePrivacyDlpV2BigQueryRegex { return v.Patterns }).(GooglePrivacyDlpV2BigQueryRegexArrayOutput)
+}
+
+type GooglePrivacyDlpV2BigQueryRegexesPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryRegexesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryRegexes)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesPtrOutput) ToGooglePrivacyDlpV2BigQueryRegexesPtrOutput() GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesPtrOutput) ToGooglePrivacyDlpV2BigQueryRegexesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryRegexes] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryRegexes]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesPtrOutput) Elem() GooglePrivacyDlpV2BigQueryRegexesOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryRegexes) GooglePrivacyDlpV2BigQueryRegexes {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryRegexes
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryRegexesOutput)
+}
+
+// A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+func (o GooglePrivacyDlpV2BigQueryRegexesPtrOutput) Patterns() GooglePrivacyDlpV2BigQueryRegexArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryRegexes) []GooglePrivacyDlpV2BigQueryRegex {
+		if v == nil {
+			return nil
+		}
+		return v.Patterns
+	}).(GooglePrivacyDlpV2BigQueryRegexArrayOutput)
+}
+
+// A collection of regular expressions to determine what tables to match against.
+type GooglePrivacyDlpV2BigQueryRegexesResponse struct {
+	// A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+	Patterns []GooglePrivacyDlpV2BigQueryRegexResponse `pulumi:"patterns"`
+}
+
+// A collection of regular expressions to determine what tables to match against.
+type GooglePrivacyDlpV2BigQueryRegexesResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryRegexesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegexesResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesResponseOutput) ToGooglePrivacyDlpV2BigQueryRegexesResponseOutput() GooglePrivacyDlpV2BigQueryRegexesResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesResponseOutput) ToGooglePrivacyDlpV2BigQueryRegexesResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryRegexesResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryRegexesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryRegexesResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryRegexesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+func (o GooglePrivacyDlpV2BigQueryRegexesResponseOutput) Patterns() GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryRegexesResponse) []GooglePrivacyDlpV2BigQueryRegexResponse {
+		return v.Patterns
+	}).(GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput)
 }
 
 // Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
@@ -1816,6 +2686,206 @@ func (o GooglePrivacyDlpV2BigQueryTablePtrOutput) TableId() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies a collection of BigQuery tables. Used for Discovery.
+type GooglePrivacyDlpV2BigQueryTableCollection struct {
+	// A collection of regular expressions to match a BigQuery table against.
+	IncludeRegexes *GooglePrivacyDlpV2BigQueryRegexes `pulumi:"includeRegexes"`
+}
+
+// GooglePrivacyDlpV2BigQueryTableCollectionInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableCollectionArgs and GooglePrivacyDlpV2BigQueryTableCollectionOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTableCollectionInput` via:
+//
+//	GooglePrivacyDlpV2BigQueryTableCollectionArgs{...}
+type GooglePrivacyDlpV2BigQueryTableCollectionInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryTableCollectionOutput() GooglePrivacyDlpV2BigQueryTableCollectionOutput
+	ToGooglePrivacyDlpV2BigQueryTableCollectionOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryTableCollectionOutput
+}
+
+// Specifies a collection of BigQuery tables. Used for Discovery.
+type GooglePrivacyDlpV2BigQueryTableCollectionArgs struct {
+	// A collection of regular expressions to match a BigQuery table against.
+	IncludeRegexes GooglePrivacyDlpV2BigQueryRegexesPtrInput `pulumi:"includeRegexes"`
+}
+
+func (GooglePrivacyDlpV2BigQueryTableCollectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableCollection)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableCollectionArgs) ToGooglePrivacyDlpV2BigQueryTableCollectionOutput() GooglePrivacyDlpV2BigQueryTableCollectionOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryTableCollectionOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableCollectionArgs) ToGooglePrivacyDlpV2BigQueryTableCollectionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableCollectionOutput)
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableCollectionArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryTableCollection] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryTableCollection]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryTableCollectionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableCollectionArgs) ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutput() GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableCollectionArgs) ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableCollectionOutput).ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2BigQueryTableCollectionPtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableCollectionArgs, GooglePrivacyDlpV2BigQueryTableCollectionPtr and GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTableCollectionPtrInput` via:
+//
+//	        GooglePrivacyDlpV2BigQueryTableCollectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2BigQueryTableCollectionPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutput() GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput
+	ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput
+}
+
+type googlePrivacyDlpV2BigQueryTableCollectionPtrType GooglePrivacyDlpV2BigQueryTableCollectionArgs
+
+func GooglePrivacyDlpV2BigQueryTableCollectionPtr(v *GooglePrivacyDlpV2BigQueryTableCollectionArgs) GooglePrivacyDlpV2BigQueryTableCollectionPtrInput {
+	return (*googlePrivacyDlpV2BigQueryTableCollectionPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2BigQueryTableCollectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryTableCollection)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2BigQueryTableCollectionPtrType) ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutput() GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2BigQueryTableCollectionPtrType) ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2BigQueryTableCollectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryTableCollection] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryTableCollection]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Specifies a collection of BigQuery tables. Used for Discovery.
+type GooglePrivacyDlpV2BigQueryTableCollectionOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryTableCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableCollection)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionOutput) ToGooglePrivacyDlpV2BigQueryTableCollectionOutput() GooglePrivacyDlpV2BigQueryTableCollectionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionOutput) ToGooglePrivacyDlpV2BigQueryTableCollectionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableCollectionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionOutput) ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutput() GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return o.ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionOutput) ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryTableCollection) *GooglePrivacyDlpV2BigQueryTableCollection {
+		return &v
+	}).(GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryTableCollection] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryTableCollection]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A collection of regular expressions to match a BigQuery table against.
+func (o GooglePrivacyDlpV2BigQueryTableCollectionOutput) IncludeRegexes() GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableCollection) *GooglePrivacyDlpV2BigQueryRegexes {
+		return v.IncludeRegexes
+	}).(GooglePrivacyDlpV2BigQueryRegexesPtrOutput)
+}
+
+type GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryTableCollection)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput) ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutput() GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput) ToGooglePrivacyDlpV2BigQueryTableCollectionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryTableCollection] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryTableCollection]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput) Elem() GooglePrivacyDlpV2BigQueryTableCollectionOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableCollection) GooglePrivacyDlpV2BigQueryTableCollection {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryTableCollection
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryTableCollectionOutput)
+}
+
+// A collection of regular expressions to match a BigQuery table against.
+func (o GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput) IncludeRegexes() GooglePrivacyDlpV2BigQueryRegexesPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableCollection) *GooglePrivacyDlpV2BigQueryRegexes {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeRegexes
+	}).(GooglePrivacyDlpV2BigQueryRegexesPtrOutput)
+}
+
+// Specifies a collection of BigQuery tables. Used for Discovery.
+type GooglePrivacyDlpV2BigQueryTableCollectionResponse struct {
+	// A collection of regular expressions to match a BigQuery table against.
+	IncludeRegexes GooglePrivacyDlpV2BigQueryRegexesResponse `pulumi:"includeRegexes"`
+}
+
+// Specifies a collection of BigQuery tables. Used for Discovery.
+type GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableCollectionResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput) ToGooglePrivacyDlpV2BigQueryTableCollectionResponseOutput() GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput) ToGooglePrivacyDlpV2BigQueryTableCollectionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryTableCollectionResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryTableCollectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A collection of regular expressions to match a BigQuery table against.
+func (o GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput) IncludeRegexes() GooglePrivacyDlpV2BigQueryRegexesResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableCollectionResponse) GooglePrivacyDlpV2BigQueryRegexesResponse {
+		return v.IncludeRegexes
+	}).(GooglePrivacyDlpV2BigQueryRegexesResponseOutput)
+}
+
 // Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
 type GooglePrivacyDlpV2BigQueryTableResponse struct {
 	// Dataset ID of the table.
@@ -1860,6 +2930,204 @@ func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) Project() pulumi.StringOu
 // Name of the table.
 func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableResponse) string { return v.TableId }).(pulumi.StringOutput)
+}
+
+// The types of BigQuery tables supported by Cloud DLP.
+type GooglePrivacyDlpV2BigQueryTableTypes struct {
+	// A set of BigQuery table types.
+	Types []GooglePrivacyDlpV2BigQueryTableTypesTypesItem `pulumi:"types"`
+}
+
+// GooglePrivacyDlpV2BigQueryTableTypesInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableTypesArgs and GooglePrivacyDlpV2BigQueryTableTypesOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTableTypesInput` via:
+//
+//	GooglePrivacyDlpV2BigQueryTableTypesArgs{...}
+type GooglePrivacyDlpV2BigQueryTableTypesInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryTableTypesOutput() GooglePrivacyDlpV2BigQueryTableTypesOutput
+	ToGooglePrivacyDlpV2BigQueryTableTypesOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryTableTypesOutput
+}
+
+// The types of BigQuery tables supported by Cloud DLP.
+type GooglePrivacyDlpV2BigQueryTableTypesArgs struct {
+	// A set of BigQuery table types.
+	Types GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayInput `pulumi:"types"`
+}
+
+func (GooglePrivacyDlpV2BigQueryTableTypesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypes)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableTypesArgs) ToGooglePrivacyDlpV2BigQueryTableTypesOutput() GooglePrivacyDlpV2BigQueryTableTypesOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryTableTypesOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableTypesArgs) ToGooglePrivacyDlpV2BigQueryTableTypesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableTypesOutput)
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableTypesArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypes] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypes]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryTableTypesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableTypesArgs) ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableTypesArgs) ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableTypesOutput).ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2BigQueryTableTypesPtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableTypesArgs, GooglePrivacyDlpV2BigQueryTableTypesPtr and GooglePrivacyDlpV2BigQueryTableTypesPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTableTypesPtrInput` via:
+//
+//	        GooglePrivacyDlpV2BigQueryTableTypesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2BigQueryTableTypesPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesPtrOutput
+	ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryTableTypesPtrOutput
+}
+
+type googlePrivacyDlpV2BigQueryTableTypesPtrType GooglePrivacyDlpV2BigQueryTableTypesArgs
+
+func GooglePrivacyDlpV2BigQueryTableTypesPtr(v *GooglePrivacyDlpV2BigQueryTableTypesArgs) GooglePrivacyDlpV2BigQueryTableTypesPtrInput {
+	return (*googlePrivacyDlpV2BigQueryTableTypesPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2BigQueryTableTypesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryTableTypes)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2BigQueryTableTypesPtrType) ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2BigQueryTableTypesPtrType) ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableTypesPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2BigQueryTableTypesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypes] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypes]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The types of BigQuery tables supported by Cloud DLP.
+type GooglePrivacyDlpV2BigQueryTableTypesOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryTableTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypes)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesOutput) ToGooglePrivacyDlpV2BigQueryTableTypesOutput() GooglePrivacyDlpV2BigQueryTableTypesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesOutput) ToGooglePrivacyDlpV2BigQueryTableTypesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesOutput) ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return o.ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesOutput) ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryTableTypes) *GooglePrivacyDlpV2BigQueryTableTypes {
+		return &v
+	}).(GooglePrivacyDlpV2BigQueryTableTypesPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypes] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A set of BigQuery table types.
+func (o GooglePrivacyDlpV2BigQueryTableTypesOutput) Types() GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableTypes) []GooglePrivacyDlpV2BigQueryTableTypesTypesItem {
+		return v.Types
+	}).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput)
+}
+
+type GooglePrivacyDlpV2BigQueryTableTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryTableTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryTableTypes)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesPtrOutput) ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesPtrOutput) ToGooglePrivacyDlpV2BigQueryTableTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypes] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypes]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesPtrOutput) Elem() GooglePrivacyDlpV2BigQueryTableTypesOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableTypes) GooglePrivacyDlpV2BigQueryTableTypes {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryTableTypes
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryTableTypesOutput)
+}
+
+// A set of BigQuery table types.
+func (o GooglePrivacyDlpV2BigQueryTableTypesPtrOutput) Types() GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableTypes) []GooglePrivacyDlpV2BigQueryTableTypesTypesItem {
+		if v == nil {
+			return nil
+		}
+		return v.Types
+	}).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput)
+}
+
+// The types of BigQuery tables supported by Cloud DLP.
+type GooglePrivacyDlpV2BigQueryTableTypesResponse struct {
+	// A set of BigQuery table types.
+	Types []string `pulumi:"types"`
+}
+
+// The types of BigQuery tables supported by Cloud DLP.
+type GooglePrivacyDlpV2BigQueryTableTypesResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryTableTypesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypesResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesResponseOutput) ToGooglePrivacyDlpV2BigQueryTableTypesResponseOutput() GooglePrivacyDlpV2BigQueryTableTypesResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesResponseOutput) ToGooglePrivacyDlpV2BigQueryTableTypesResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypesResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A set of BigQuery table types.
+func (o GooglePrivacyDlpV2BigQueryTableTypesResponseOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableTypesResponse) []string { return v.Types }).(pulumi.StringArrayOutput)
 }
 
 // Bucket is represented as a range, along with replacement values.
@@ -3272,9 +4540,9 @@ func (o GooglePrivacyDlpV2CloudStorageFileSetResponseOutput) Url() pulumi.String
 
 // Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptions struct {
-	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFile *string `pulumi:"bytesLimitPerFile"`
-	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFilePercent *int `pulumi:"bytesLimitPerFilePercent"`
 	// The set of one or more files to scan.
 	FileSet *GooglePrivacyDlpV2FileSet `pulumi:"fileSet"`
@@ -3298,9 +4566,9 @@ type GooglePrivacyDlpV2CloudStorageOptionsInput interface {
 
 // Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsArgs struct {
-	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFile pulumi.StringPtrInput `pulumi:"bytesLimitPerFile"`
-	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFilePercent pulumi.IntPtrInput `pulumi:"bytesLimitPerFilePercent"`
 	// The set of one or more files to scan.
 	FileSet GooglePrivacyDlpV2FileSetPtrInput `pulumi:"fileSet"`
@@ -3407,12 +4675,12 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) ToOutput(ctx context.Contex
 	}
 }
 
-// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) BytesLimitPerFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptions) *string { return v.BytesLimitPerFile }).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) BytesLimitPerFilePercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptions) *int { return v.BytesLimitPerFilePercent }).(pulumi.IntPtrOutput)
 }
@@ -3470,7 +4738,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) Elem() GooglePrivacyDlpV
 	}).(GooglePrivacyDlpV2CloudStorageOptionsOutput)
 }
 
-// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) BytesLimitPerFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) *string {
 		if v == nil {
@@ -3480,7 +4748,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) BytesLimitPerFile() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) BytesLimitPerFilePercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) *int {
 		if v == nil {
@@ -3531,9 +4799,9 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) SampleMethod() GooglePri
 
 // Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsResponse struct {
-	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFile string `pulumi:"bytesLimitPerFile"`
-	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFilePercent int `pulumi:"bytesLimitPerFilePercent"`
 	// The set of one or more files to scan.
 	FileSet GooglePrivacyDlpV2FileSetResponse `pulumi:"fileSet"`
@@ -3565,12 +4833,12 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) ToOutput(ctx contex
 	}
 }
 
-// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) BytesLimitPerFile() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptionsResponse) string { return v.BytesLimitPerFile }).(pulumi.StringOutput)
 }
 
-// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) BytesLimitPerFilePercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptionsResponse) int { return v.BytesLimitPerFilePercent }).(pulumi.IntOutput)
 }
@@ -5758,7 +7026,7 @@ type GooglePrivacyDlpV2CustomInfoType struct {
 	Likelihood *GooglePrivacyDlpV2CustomInfoTypeLikelihood `pulumi:"likelihood"`
 	// Regular expression based CustomInfoType.
 	Regex *GooglePrivacyDlpV2Regex `pulumi:"regex"`
-	// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+	// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
 	SensitivityScore *GooglePrivacyDlpV2SensitivityScore `pulumi:"sensitivityScore"`
 	// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
 	StoredType *GooglePrivacyDlpV2StoredType `pulumi:"storedType"`
@@ -5791,7 +7059,7 @@ type GooglePrivacyDlpV2CustomInfoTypeArgs struct {
 	Likelihood GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrInput `pulumi:"likelihood"`
 	// Regular expression based CustomInfoType.
 	Regex GooglePrivacyDlpV2RegexPtrInput `pulumi:"regex"`
-	// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+	// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
 	SensitivityScore GooglePrivacyDlpV2SensitivityScorePtrInput `pulumi:"sensitivityScore"`
 	// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
 	StoredType GooglePrivacyDlpV2StoredTypePtrInput `pulumi:"storedType"`
@@ -5903,7 +7171,7 @@ func (o GooglePrivacyDlpV2CustomInfoTypeOutput) Regex() GooglePrivacyDlpV2RegexP
 	return o.ApplyT(func(v GooglePrivacyDlpV2CustomInfoType) *GooglePrivacyDlpV2Regex { return v.Regex }).(GooglePrivacyDlpV2RegexPtrOutput)
 }
 
-// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
 func (o GooglePrivacyDlpV2CustomInfoTypeOutput) SensitivityScore() GooglePrivacyDlpV2SensitivityScorePtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CustomInfoType) *GooglePrivacyDlpV2SensitivityScore {
 		return v.SensitivityScore
@@ -5960,7 +7228,7 @@ type GooglePrivacyDlpV2CustomInfoTypeResponse struct {
 	Likelihood string `pulumi:"likelihood"`
 	// Regular expression based CustomInfoType.
 	Regex GooglePrivacyDlpV2RegexResponse `pulumi:"regex"`
-	// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+	// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
 	SensitivityScore GooglePrivacyDlpV2SensitivityScoreResponse `pulumi:"sensitivityScore"`
 	// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
 	StoredType GooglePrivacyDlpV2StoredTypeResponse `pulumi:"storedType"`
@@ -6023,7 +7291,7 @@ func (o GooglePrivacyDlpV2CustomInfoTypeResponseOutput) Regex() GooglePrivacyDlp
 	return o.ApplyT(func(v GooglePrivacyDlpV2CustomInfoTypeResponse) GooglePrivacyDlpV2RegexResponse { return v.Regex }).(GooglePrivacyDlpV2RegexResponseOutput)
 }
 
-// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
 func (o GooglePrivacyDlpV2CustomInfoTypeResponseOutput) SensitivityScore() GooglePrivacyDlpV2SensitivityScoreResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CustomInfoTypeResponse) GooglePrivacyDlpV2SensitivityScoreResponse {
 		return v.SensitivityScore
@@ -6068,6 +7336,410 @@ func (o GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2CustomInfoTypeResponse {
 		return vs[0].([]GooglePrivacyDlpV2CustomInfoTypeResponse)[vs[1].(int)]
 	}).(GooglePrivacyDlpV2CustomInfoTypeResponseOutput)
+}
+
+// A task to execute when a data profile has been generated.
+type GooglePrivacyDlpV2DataProfileAction struct {
+	// Export data profiles into a provided location.
+	ExportData *GooglePrivacyDlpV2Export `pulumi:"exportData"`
+	// Publish a message into the Pub/Sub topic.
+	PubSubNotification *GooglePrivacyDlpV2PubSubNotification `pulumi:"pubSubNotification"`
+}
+
+// GooglePrivacyDlpV2DataProfileActionInput is an input type that accepts GooglePrivacyDlpV2DataProfileActionArgs and GooglePrivacyDlpV2DataProfileActionOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DataProfileActionInput` via:
+//
+//	GooglePrivacyDlpV2DataProfileActionArgs{...}
+type GooglePrivacyDlpV2DataProfileActionInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DataProfileActionOutput() GooglePrivacyDlpV2DataProfileActionOutput
+	ToGooglePrivacyDlpV2DataProfileActionOutputWithContext(context.Context) GooglePrivacyDlpV2DataProfileActionOutput
+}
+
+// A task to execute when a data profile has been generated.
+type GooglePrivacyDlpV2DataProfileActionArgs struct {
+	// Export data profiles into a provided location.
+	ExportData GooglePrivacyDlpV2ExportPtrInput `pulumi:"exportData"`
+	// Publish a message into the Pub/Sub topic.
+	PubSubNotification GooglePrivacyDlpV2PubSubNotificationPtrInput `pulumi:"pubSubNotification"`
+}
+
+func (GooglePrivacyDlpV2DataProfileActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DataProfileAction)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DataProfileActionArgs) ToGooglePrivacyDlpV2DataProfileActionOutput() GooglePrivacyDlpV2DataProfileActionOutput {
+	return i.ToGooglePrivacyDlpV2DataProfileActionOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DataProfileActionArgs) ToGooglePrivacyDlpV2DataProfileActionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfileActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DataProfileActionOutput)
+}
+
+func (i GooglePrivacyDlpV2DataProfileActionArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DataProfileAction] {
+	return pulumix.Output[GooglePrivacyDlpV2DataProfileAction]{
+		OutputState: i.ToGooglePrivacyDlpV2DataProfileActionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GooglePrivacyDlpV2DataProfileActionArrayInput is an input type that accepts GooglePrivacyDlpV2DataProfileActionArray and GooglePrivacyDlpV2DataProfileActionArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DataProfileActionArrayInput` via:
+//
+//	GooglePrivacyDlpV2DataProfileActionArray{ GooglePrivacyDlpV2DataProfileActionArgs{...} }
+type GooglePrivacyDlpV2DataProfileActionArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DataProfileActionArrayOutput() GooglePrivacyDlpV2DataProfileActionArrayOutput
+	ToGooglePrivacyDlpV2DataProfileActionArrayOutputWithContext(context.Context) GooglePrivacyDlpV2DataProfileActionArrayOutput
+}
+
+type GooglePrivacyDlpV2DataProfileActionArray []GooglePrivacyDlpV2DataProfileActionInput
+
+func (GooglePrivacyDlpV2DataProfileActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DataProfileAction)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DataProfileActionArray) ToGooglePrivacyDlpV2DataProfileActionArrayOutput() GooglePrivacyDlpV2DataProfileActionArrayOutput {
+	return i.ToGooglePrivacyDlpV2DataProfileActionArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DataProfileActionArray) ToGooglePrivacyDlpV2DataProfileActionArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfileActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DataProfileActionArrayOutput)
+}
+
+func (i GooglePrivacyDlpV2DataProfileActionArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DataProfileAction] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DataProfileAction]{
+		OutputState: i.ToGooglePrivacyDlpV2DataProfileActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A task to execute when a data profile has been generated.
+type GooglePrivacyDlpV2DataProfileActionOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DataProfileActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DataProfileAction)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionOutput) ToGooglePrivacyDlpV2DataProfileActionOutput() GooglePrivacyDlpV2DataProfileActionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionOutput) ToGooglePrivacyDlpV2DataProfileActionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfileActionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DataProfileAction] {
+	return pulumix.Output[GooglePrivacyDlpV2DataProfileAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Export data profiles into a provided location.
+func (o GooglePrivacyDlpV2DataProfileActionOutput) ExportData() GooglePrivacyDlpV2ExportPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DataProfileAction) *GooglePrivacyDlpV2Export { return v.ExportData }).(GooglePrivacyDlpV2ExportPtrOutput)
+}
+
+// Publish a message into the Pub/Sub topic.
+func (o GooglePrivacyDlpV2DataProfileActionOutput) PubSubNotification() GooglePrivacyDlpV2PubSubNotificationPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DataProfileAction) *GooglePrivacyDlpV2PubSubNotification {
+		return v.PubSubNotification
+	}).(GooglePrivacyDlpV2PubSubNotificationPtrOutput)
+}
+
+type GooglePrivacyDlpV2DataProfileActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DataProfileActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DataProfileAction)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionArrayOutput) ToGooglePrivacyDlpV2DataProfileActionArrayOutput() GooglePrivacyDlpV2DataProfileActionArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionArrayOutput) ToGooglePrivacyDlpV2DataProfileActionArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfileActionArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DataProfileAction] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DataProfileAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DataProfileActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2DataProfileAction {
+		return vs[0].([]GooglePrivacyDlpV2DataProfileAction)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2DataProfileActionOutput)
+}
+
+// A task to execute when a data profile has been generated.
+type GooglePrivacyDlpV2DataProfileActionResponse struct {
+	// Export data profiles into a provided location.
+	ExportData GooglePrivacyDlpV2ExportResponse `pulumi:"exportData"`
+	// Publish a message into the Pub/Sub topic.
+	PubSubNotification GooglePrivacyDlpV2PubSubNotificationResponse `pulumi:"pubSubNotification"`
+}
+
+// A task to execute when a data profile has been generated.
+type GooglePrivacyDlpV2DataProfileActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DataProfileActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DataProfileActionResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionResponseOutput) ToGooglePrivacyDlpV2DataProfileActionResponseOutput() GooglePrivacyDlpV2DataProfileActionResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionResponseOutput) ToGooglePrivacyDlpV2DataProfileActionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfileActionResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DataProfileActionResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DataProfileActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Export data profiles into a provided location.
+func (o GooglePrivacyDlpV2DataProfileActionResponseOutput) ExportData() GooglePrivacyDlpV2ExportResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DataProfileActionResponse) GooglePrivacyDlpV2ExportResponse {
+		return v.ExportData
+	}).(GooglePrivacyDlpV2ExportResponseOutput)
+}
+
+// Publish a message into the Pub/Sub topic.
+func (o GooglePrivacyDlpV2DataProfileActionResponseOutput) PubSubNotification() GooglePrivacyDlpV2PubSubNotificationResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DataProfileActionResponse) GooglePrivacyDlpV2PubSubNotificationResponse {
+		return v.PubSubNotification
+	}).(GooglePrivacyDlpV2PubSubNotificationResponseOutput)
+}
+
+type GooglePrivacyDlpV2DataProfileActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DataProfileActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DataProfileActionResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionResponseArrayOutput) ToGooglePrivacyDlpV2DataProfileActionResponseArrayOutput() GooglePrivacyDlpV2DataProfileActionResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionResponseArrayOutput) ToGooglePrivacyDlpV2DataProfileActionResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfileActionResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DataProfileActionResponse] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DataProfileActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DataProfileActionResponseArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DataProfileActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2DataProfileActionResponse {
+		return vs[0].([]GooglePrivacyDlpV2DataProfileActionResponse)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2DataProfileActionResponseOutput)
+}
+
+// A condition for determining whether a Pub/Sub should be triggered.
+type GooglePrivacyDlpV2DataProfilePubSubCondition struct {
+	// An expression.
+	Expressions *GooglePrivacyDlpV2PubSubExpressions `pulumi:"expressions"`
+}
+
+// GooglePrivacyDlpV2DataProfilePubSubConditionInput is an input type that accepts GooglePrivacyDlpV2DataProfilePubSubConditionArgs and GooglePrivacyDlpV2DataProfilePubSubConditionOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DataProfilePubSubConditionInput` via:
+//
+//	GooglePrivacyDlpV2DataProfilePubSubConditionArgs{...}
+type GooglePrivacyDlpV2DataProfilePubSubConditionInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DataProfilePubSubConditionOutput() GooglePrivacyDlpV2DataProfilePubSubConditionOutput
+	ToGooglePrivacyDlpV2DataProfilePubSubConditionOutputWithContext(context.Context) GooglePrivacyDlpV2DataProfilePubSubConditionOutput
+}
+
+// A condition for determining whether a Pub/Sub should be triggered.
+type GooglePrivacyDlpV2DataProfilePubSubConditionArgs struct {
+	// An expression.
+	Expressions GooglePrivacyDlpV2PubSubExpressionsPtrInput `pulumi:"expressions"`
+}
+
+func (GooglePrivacyDlpV2DataProfilePubSubConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DataProfilePubSubCondition)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DataProfilePubSubConditionArgs) ToGooglePrivacyDlpV2DataProfilePubSubConditionOutput() GooglePrivacyDlpV2DataProfilePubSubConditionOutput {
+	return i.ToGooglePrivacyDlpV2DataProfilePubSubConditionOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DataProfilePubSubConditionArgs) ToGooglePrivacyDlpV2DataProfilePubSubConditionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfilePubSubConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DataProfilePubSubConditionOutput)
+}
+
+func (i GooglePrivacyDlpV2DataProfilePubSubConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DataProfilePubSubCondition] {
+	return pulumix.Output[GooglePrivacyDlpV2DataProfilePubSubCondition]{
+		OutputState: i.ToGooglePrivacyDlpV2DataProfilePubSubConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2DataProfilePubSubConditionArgs) ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput() GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return i.ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DataProfilePubSubConditionArgs) ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DataProfilePubSubConditionOutput).ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2DataProfilePubSubConditionPtrInput is an input type that accepts GooglePrivacyDlpV2DataProfilePubSubConditionArgs, GooglePrivacyDlpV2DataProfilePubSubConditionPtr and GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DataProfilePubSubConditionPtrInput` via:
+//
+//	        GooglePrivacyDlpV2DataProfilePubSubConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2DataProfilePubSubConditionPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput() GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput
+	ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput
+}
+
+type googlePrivacyDlpV2DataProfilePubSubConditionPtrType GooglePrivacyDlpV2DataProfilePubSubConditionArgs
+
+func GooglePrivacyDlpV2DataProfilePubSubConditionPtr(v *GooglePrivacyDlpV2DataProfilePubSubConditionArgs) GooglePrivacyDlpV2DataProfilePubSubConditionPtrInput {
+	return (*googlePrivacyDlpV2DataProfilePubSubConditionPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2DataProfilePubSubConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DataProfilePubSubCondition)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2DataProfilePubSubConditionPtrType) ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput() GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return i.ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2DataProfilePubSubConditionPtrType) ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2DataProfilePubSubConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DataProfilePubSubCondition] {
+	return pulumix.Output[*GooglePrivacyDlpV2DataProfilePubSubCondition]{
+		OutputState: i.ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A condition for determining whether a Pub/Sub should be triggered.
+type GooglePrivacyDlpV2DataProfilePubSubConditionOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DataProfilePubSubConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DataProfilePubSubCondition)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionOutput) ToGooglePrivacyDlpV2DataProfilePubSubConditionOutput() GooglePrivacyDlpV2DataProfilePubSubConditionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionOutput) ToGooglePrivacyDlpV2DataProfilePubSubConditionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfilePubSubConditionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionOutput) ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput() GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return o.ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionOutput) ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DataProfilePubSubCondition) *GooglePrivacyDlpV2DataProfilePubSubCondition {
+		return &v
+	}).(GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DataProfilePubSubCondition] {
+	return pulumix.Output[GooglePrivacyDlpV2DataProfilePubSubCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An expression.
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionOutput) Expressions() GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DataProfilePubSubCondition) *GooglePrivacyDlpV2PubSubExpressions {
+		return v.Expressions
+	}).(GooglePrivacyDlpV2PubSubExpressionsPtrOutput)
+}
+
+type GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DataProfilePubSubCondition)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput) ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput() GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput) ToGooglePrivacyDlpV2DataProfilePubSubConditionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DataProfilePubSubCondition] {
+	return pulumix.Output[*GooglePrivacyDlpV2DataProfilePubSubCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput) Elem() GooglePrivacyDlpV2DataProfilePubSubConditionOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DataProfilePubSubCondition) GooglePrivacyDlpV2DataProfilePubSubCondition {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DataProfilePubSubCondition
+		return ret
+	}).(GooglePrivacyDlpV2DataProfilePubSubConditionOutput)
+}
+
+// An expression.
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput) Expressions() GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DataProfilePubSubCondition) *GooglePrivacyDlpV2PubSubExpressions {
+		if v == nil {
+			return nil
+		}
+		return v.Expressions
+	}).(GooglePrivacyDlpV2PubSubExpressionsPtrOutput)
+}
+
+// A condition for determining whether a Pub/Sub should be triggered.
+type GooglePrivacyDlpV2DataProfilePubSubConditionResponse struct {
+	// An expression.
+	Expressions GooglePrivacyDlpV2PubSubExpressionsResponse `pulumi:"expressions"`
+}
+
+// A condition for determining whether a Pub/Sub should be triggered.
+type GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DataProfilePubSubConditionResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput) ToGooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput() GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput) ToGooglePrivacyDlpV2DataProfilePubSubConditionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DataProfilePubSubConditionResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DataProfilePubSubConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An expression.
+func (o GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput) Expressions() GooglePrivacyDlpV2PubSubExpressionsResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DataProfilePubSubConditionResponse) GooglePrivacyDlpV2PubSubExpressionsResponse {
+		return v.Expressions
+	}).(GooglePrivacyDlpV2PubSubExpressionsResponseOutput)
 }
 
 // Options defining a data set within Google Cloud Datastore.
@@ -8163,6 +9835,1780 @@ func (o GooglePrivacyDlpV2DictionaryResponseOutput) WordList() GooglePrivacyDlpV
 	return o.ApplyT(func(v GooglePrivacyDlpV2DictionaryResponse) GooglePrivacyDlpV2WordListResponse { return v.WordList }).(GooglePrivacyDlpV2WordListResponseOutput)
 }
 
+// Do not profile the tables.
+type GooglePrivacyDlpV2Disabled struct {
+}
+
+// GooglePrivacyDlpV2DisabledInput is an input type that accepts GooglePrivacyDlpV2DisabledArgs and GooglePrivacyDlpV2DisabledOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DisabledInput` via:
+//
+//	GooglePrivacyDlpV2DisabledArgs{...}
+type GooglePrivacyDlpV2DisabledInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DisabledOutput() GooglePrivacyDlpV2DisabledOutput
+	ToGooglePrivacyDlpV2DisabledOutputWithContext(context.Context) GooglePrivacyDlpV2DisabledOutput
+}
+
+// Do not profile the tables.
+type GooglePrivacyDlpV2DisabledArgs struct {
+}
+
+func (GooglePrivacyDlpV2DisabledArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2Disabled)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DisabledArgs) ToGooglePrivacyDlpV2DisabledOutput() GooglePrivacyDlpV2DisabledOutput {
+	return i.ToGooglePrivacyDlpV2DisabledOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DisabledArgs) ToGooglePrivacyDlpV2DisabledOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DisabledOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DisabledOutput)
+}
+
+func (i GooglePrivacyDlpV2DisabledArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2Disabled] {
+	return pulumix.Output[GooglePrivacyDlpV2Disabled]{
+		OutputState: i.ToGooglePrivacyDlpV2DisabledOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2DisabledArgs) ToGooglePrivacyDlpV2DisabledPtrOutput() GooglePrivacyDlpV2DisabledPtrOutput {
+	return i.ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DisabledArgs) ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DisabledPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DisabledOutput).ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2DisabledPtrInput is an input type that accepts GooglePrivacyDlpV2DisabledArgs, GooglePrivacyDlpV2DisabledPtr and GooglePrivacyDlpV2DisabledPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DisabledPtrInput` via:
+//
+//	        GooglePrivacyDlpV2DisabledArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2DisabledPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DisabledPtrOutput() GooglePrivacyDlpV2DisabledPtrOutput
+	ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DisabledPtrOutput
+}
+
+type googlePrivacyDlpV2DisabledPtrType GooglePrivacyDlpV2DisabledArgs
+
+func GooglePrivacyDlpV2DisabledPtr(v *GooglePrivacyDlpV2DisabledArgs) GooglePrivacyDlpV2DisabledPtrInput {
+	return (*googlePrivacyDlpV2DisabledPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2DisabledPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2Disabled)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2DisabledPtrType) ToGooglePrivacyDlpV2DisabledPtrOutput() GooglePrivacyDlpV2DisabledPtrOutput {
+	return i.ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2DisabledPtrType) ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DisabledPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DisabledPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2DisabledPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2Disabled] {
+	return pulumix.Output[*GooglePrivacyDlpV2Disabled]{
+		OutputState: i.ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Do not profile the tables.
+type GooglePrivacyDlpV2DisabledOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DisabledOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2Disabled)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DisabledOutput) ToGooglePrivacyDlpV2DisabledOutput() GooglePrivacyDlpV2DisabledOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DisabledOutput) ToGooglePrivacyDlpV2DisabledOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DisabledOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DisabledOutput) ToGooglePrivacyDlpV2DisabledPtrOutput() GooglePrivacyDlpV2DisabledPtrOutput {
+	return o.ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DisabledOutput) ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DisabledPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Disabled) *GooglePrivacyDlpV2Disabled {
+		return &v
+	}).(GooglePrivacyDlpV2DisabledPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DisabledOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2Disabled] {
+	return pulumix.Output[GooglePrivacyDlpV2Disabled]{
+		OutputState: o.OutputState,
+	}
+}
+
+type GooglePrivacyDlpV2DisabledPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DisabledPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2Disabled)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DisabledPtrOutput) ToGooglePrivacyDlpV2DisabledPtrOutput() GooglePrivacyDlpV2DisabledPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DisabledPtrOutput) ToGooglePrivacyDlpV2DisabledPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DisabledPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DisabledPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2Disabled] {
+	return pulumix.Output[*GooglePrivacyDlpV2Disabled]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DisabledPtrOutput) Elem() GooglePrivacyDlpV2DisabledOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Disabled) GooglePrivacyDlpV2Disabled {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Disabled
+		return ret
+	}).(GooglePrivacyDlpV2DisabledOutput)
+}
+
+// Do not profile the tables.
+type GooglePrivacyDlpV2DisabledResponse struct {
+}
+
+// Do not profile the tables.
+type GooglePrivacyDlpV2DisabledResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DisabledResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DisabledResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DisabledResponseOutput) ToGooglePrivacyDlpV2DisabledResponseOutput() GooglePrivacyDlpV2DisabledResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DisabledResponseOutput) ToGooglePrivacyDlpV2DisabledResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DisabledResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DisabledResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DisabledResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DisabledResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Requirements that must be true before a table is scanned in discovery for the first time. There is an AND relationship between the top-level attributes. Additionally, minimum conditions with an OR relationship that must be met before Cloud DLP scans a table can be set (like a minimum row count or a minimum table age).
+type GooglePrivacyDlpV2DiscoveryBigQueryConditions struct {
+	// BigQuery table must have been created after this date. Used to avoid backfilling.
+	CreatedAfter *string `pulumi:"createdAfter"`
+	// At least one of the conditions must be true for a table to be scanned.
+	OrConditions *GooglePrivacyDlpV2OrConditions `pulumi:"orConditions"`
+	// Restrict discovery to categories of table types.
+	TypeCollection *GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection `pulumi:"typeCollection"`
+	// Restrict discovery to specific table types.
+	Types *GooglePrivacyDlpV2BigQueryTableTypes `pulumi:"types"`
+}
+
+// GooglePrivacyDlpV2DiscoveryBigQueryConditionsInput is an input type that accepts GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs and GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryBigQueryConditionsInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs{...}
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput
+	ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput
+}
+
+// Requirements that must be true before a table is scanned in discovery for the first time. There is an AND relationship between the top-level attributes. Additionally, minimum conditions with an OR relationship that must be met before Cloud DLP scans a table can be set (like a minimum row count or a minimum table age).
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs struct {
+	// BigQuery table must have been created after this date. Used to avoid backfilling.
+	CreatedAfter pulumi.StringPtrInput `pulumi:"createdAfter"`
+	// At least one of the conditions must be true for a table to be scanned.
+	OrConditions GooglePrivacyDlpV2OrConditionsPtrInput `pulumi:"orConditions"`
+	// Restrict discovery to categories of table types.
+	TypeCollection GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrInput `pulumi:"typeCollection"`
+	// Restrict discovery to specific table types.
+	Types GooglePrivacyDlpV2BigQueryTableTypesPtrInput `pulumi:"types"`
+}
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryConditions)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditions] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditions]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput).ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrInput is an input type that accepts GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs, GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtr and GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrInput` via:
+//
+//	        GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput
+	ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput
+}
+
+type googlePrivacyDlpV2DiscoveryBigQueryConditionsPtrType GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs
+
+func GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtr(v *GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs) GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrInput {
+	return (*googlePrivacyDlpV2DiscoveryBigQueryConditionsPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2DiscoveryBigQueryConditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryBigQueryConditions)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2DiscoveryBigQueryConditionsPtrType) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2DiscoveryBigQueryConditionsPtrType) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2DiscoveryBigQueryConditionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditions] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditions]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Requirements that must be true before a table is scanned in discovery for the first time. There is an AND relationship between the top-level attributes. Additionally, minimum conditions with an OR relationship that must be met before Cloud DLP scans a table can be set (like a minimum row count or a minimum table age).
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryConditions)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoveryBigQueryConditions) *GooglePrivacyDlpV2DiscoveryBigQueryConditions {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditions] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// BigQuery table must have been created after this date. Used to avoid backfilling.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) CreatedAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryConditions) *string { return v.CreatedAfter }).(pulumi.StringPtrOutput)
+}
+
+// At least one of the conditions must be true for a table to be scanned.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) OrConditions() GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryConditions) *GooglePrivacyDlpV2OrConditions {
+		return v.OrConditions
+	}).(GooglePrivacyDlpV2OrConditionsPtrOutput)
+}
+
+// Restrict discovery to categories of table types.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) TypeCollection() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryConditions) *GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection {
+		return v.TypeCollection
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput)
+}
+
+// Restrict discovery to specific table types.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput) Types() GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryConditions) *GooglePrivacyDlpV2BigQueryTableTypes {
+		return v.Types
+	}).(GooglePrivacyDlpV2BigQueryTableTypesPtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryBigQueryConditions)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditions] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput) Elem() GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryBigQueryConditions) GooglePrivacyDlpV2DiscoveryBigQueryConditions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoveryBigQueryConditions
+		return ret
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput)
+}
+
+// BigQuery table must have been created after this date. Used to avoid backfilling.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput) CreatedAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryBigQueryConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAfter
+	}).(pulumi.StringPtrOutput)
+}
+
+// At least one of the conditions must be true for a table to be scanned.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput) OrConditions() GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryBigQueryConditions) *GooglePrivacyDlpV2OrConditions {
+		if v == nil {
+			return nil
+		}
+		return v.OrConditions
+	}).(GooglePrivacyDlpV2OrConditionsPtrOutput)
+}
+
+// Restrict discovery to categories of table types.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput) TypeCollection() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryBigQueryConditions) *GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection {
+		if v == nil {
+			return nil
+		}
+		return v.TypeCollection
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput)
+}
+
+// Restrict discovery to specific table types.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput) Types() GooglePrivacyDlpV2BigQueryTableTypesPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryBigQueryConditions) *GooglePrivacyDlpV2BigQueryTableTypes {
+		if v == nil {
+			return nil
+		}
+		return v.Types
+	}).(GooglePrivacyDlpV2BigQueryTableTypesPtrOutput)
+}
+
+// Requirements that must be true before a table is scanned in discovery for the first time. There is an AND relationship between the top-level attributes. Additionally, minimum conditions with an OR relationship that must be met before Cloud DLP scans a table can be set (like a minimum row count or a minimum table age).
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse struct {
+	// BigQuery table must have been created after this date. Used to avoid backfilling.
+	CreatedAfter string `pulumi:"createdAfter"`
+	// At least one of the conditions must be true for a table to be scanned.
+	OrConditions GooglePrivacyDlpV2OrConditionsResponse `pulumi:"orConditions"`
+	// Restrict discovery to categories of table types.
+	TypeCollection string `pulumi:"typeCollection"`
+	// Restrict discovery to specific table types.
+	Types GooglePrivacyDlpV2BigQueryTableTypesResponse `pulumi:"types"`
+}
+
+// Requirements that must be true before a table is scanned in discovery for the first time. There is an AND relationship between the top-level attributes. Additionally, minimum conditions with an OR relationship that must be met before Cloud DLP scans a table can be set (like a minimum row count or a minimum table age).
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// BigQuery table must have been created after this date. Used to avoid backfilling.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput) CreatedAfter() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse) string { return v.CreatedAfter }).(pulumi.StringOutput)
+}
+
+// At least one of the conditions must be true for a table to be scanned.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput) OrConditions() GooglePrivacyDlpV2OrConditionsResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse) GooglePrivacyDlpV2OrConditionsResponse {
+		return v.OrConditions
+	}).(GooglePrivacyDlpV2OrConditionsResponseOutput)
+}
+
+// Restrict discovery to categories of table types.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput) TypeCollection() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse) string { return v.TypeCollection }).(pulumi.StringOutput)
+}
+
+// Restrict discovery to specific table types.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput) Types() GooglePrivacyDlpV2BigQueryTableTypesResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse) GooglePrivacyDlpV2BigQueryTableTypesResponse {
+		return v.Types
+	}).(GooglePrivacyDlpV2BigQueryTableTypesResponseOutput)
+}
+
+// Determines what tables will have profiles generated within an organization or project. Includes the ability to filter by regular expression patterns on project ID, dataset ID, and table ID.
+type GooglePrivacyDlpV2DiscoveryBigQueryFilter struct {
+	// Catch-all. This should always be the last filter in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+	OtherTables *GooglePrivacyDlpV2AllOtherBigQueryTables `pulumi:"otherTables"`
+	// A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID.
+	Tables *GooglePrivacyDlpV2BigQueryTableCollection `pulumi:"tables"`
+}
+
+// GooglePrivacyDlpV2DiscoveryBigQueryFilterInput is an input type that accepts GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs and GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryBigQueryFilterInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs{...}
+type GooglePrivacyDlpV2DiscoveryBigQueryFilterInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryBigQueryFilterOutput() GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput
+	ToGooglePrivacyDlpV2DiscoveryBigQueryFilterOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput
+}
+
+// Determines what tables will have profiles generated within an organization or project. Includes the ability to filter by regular expression patterns on project ID, dataset ID, and table ID.
+type GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs struct {
+	// Catch-all. This should always be the last filter in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+	OtherTables GooglePrivacyDlpV2AllOtherBigQueryTablesPtrInput `pulumi:"otherTables"`
+	// A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID.
+	Tables GooglePrivacyDlpV2BigQueryTableCollectionPtrInput `pulumi:"tables"`
+}
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryFilter)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterOutput() GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryBigQueryFilterOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryFilter] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryFilter]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryBigQueryFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput).ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrInput is an input type that accepts GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs, GooglePrivacyDlpV2DiscoveryBigQueryFilterPtr and GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrInput` via:
+//
+//	        GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput
+	ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput
+}
+
+type googlePrivacyDlpV2DiscoveryBigQueryFilterPtrType GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs
+
+func GooglePrivacyDlpV2DiscoveryBigQueryFilterPtr(v *GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs) GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrInput {
+	return (*googlePrivacyDlpV2DiscoveryBigQueryFilterPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2DiscoveryBigQueryFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryBigQueryFilter)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2DiscoveryBigQueryFilterPtrType) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2DiscoveryBigQueryFilterPtrType) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2DiscoveryBigQueryFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryFilter] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryFilter]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Determines what tables will have profiles generated within an organization or project. Includes the ability to filter by regular expression patterns on project ID, dataset ID, and table ID.
+type GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryFilter)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterOutput() GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoveryBigQueryFilter) *GooglePrivacyDlpV2DiscoveryBigQueryFilter {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryFilter] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Catch-all. This should always be the last filter in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput) OtherTables() GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryFilter) *GooglePrivacyDlpV2AllOtherBigQueryTables {
+		return v.OtherTables
+	}).(GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput)
+}
+
+// A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput) Tables() GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryFilter) *GooglePrivacyDlpV2BigQueryTableCollection {
+		return v.Tables
+	}).(GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryBigQueryFilter)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryFilter] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput) Elem() GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryBigQueryFilter) GooglePrivacyDlpV2DiscoveryBigQueryFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoveryBigQueryFilter
+		return ret
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput)
+}
+
+// Catch-all. This should always be the last filter in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput) OtherTables() GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryBigQueryFilter) *GooglePrivacyDlpV2AllOtherBigQueryTables {
+		if v == nil {
+			return nil
+		}
+		return v.OtherTables
+	}).(GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput)
+}
+
+// A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput) Tables() GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryBigQueryFilter) *GooglePrivacyDlpV2BigQueryTableCollection {
+		if v == nil {
+			return nil
+		}
+		return v.Tables
+	}).(GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput)
+}
+
+// Determines what tables will have profiles generated within an organization or project. Includes the ability to filter by regular expression patterns on project ID, dataset ID, and table ID.
+type GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse struct {
+	// Catch-all. This should always be the last filter in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+	OtherTables GooglePrivacyDlpV2AllOtherBigQueryTablesResponse `pulumi:"otherTables"`
+	// A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID.
+	Tables GooglePrivacyDlpV2BigQueryTableCollectionResponse `pulumi:"tables"`
+}
+
+// Determines what tables will have profiles generated within an organization or project. Includes the ability to filter by regular expression patterns on project ID, dataset ID, and table ID.
+type GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput() GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Catch-all. This should always be the last filter in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput) OtherTables() GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse) GooglePrivacyDlpV2AllOtherBigQueryTablesResponse {
+		return v.OtherTables
+	}).(GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput)
+}
+
+// A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID.
+func (o GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput) Tables() GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse) GooglePrivacyDlpV2BigQueryTableCollectionResponse {
+		return v.Tables
+	}).(GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput)
+}
+
+// What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as quickly as possible depending on system capacity.
+type GooglePrivacyDlpV2DiscoveryGenerationCadence struct {
+	// Governs when to update data profiles when a schema is modified.
+	SchemaModifiedCadence *GooglePrivacyDlpV2DiscoverySchemaModifiedCadence `pulumi:"schemaModifiedCadence"`
+	// Governs when to update data profiles when a table is modified.
+	TableModifiedCadence *GooglePrivacyDlpV2DiscoveryTableModifiedCadence `pulumi:"tableModifiedCadence"`
+}
+
+// GooglePrivacyDlpV2DiscoveryGenerationCadenceInput is an input type that accepts GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs and GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryGenerationCadenceInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs{...}
+type GooglePrivacyDlpV2DiscoveryGenerationCadenceInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryGenerationCadenceOutput() GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput
+	ToGooglePrivacyDlpV2DiscoveryGenerationCadenceOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput
+}
+
+// What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as quickly as possible depending on system capacity.
+type GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs struct {
+	// Governs when to update data profiles when a schema is modified.
+	SchemaModifiedCadence GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrInput `pulumi:"schemaModifiedCadence"`
+	// Governs when to update data profiles when a table is modified.
+	TableModifiedCadence GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrInput `pulumi:"tableModifiedCadence"`
+}
+
+func (GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryGenerationCadence)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs) ToGooglePrivacyDlpV2DiscoveryGenerationCadenceOutput() GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryGenerationCadenceOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs) ToGooglePrivacyDlpV2DiscoveryGenerationCadenceOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryGenerationCadence] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryGenerationCadence]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryGenerationCadenceOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs) ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput() GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs) ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput).ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2DiscoveryGenerationCadencePtrInput is an input type that accepts GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs, GooglePrivacyDlpV2DiscoveryGenerationCadencePtr and GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryGenerationCadencePtrInput` via:
+//
+//	        GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2DiscoveryGenerationCadencePtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput() GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput
+	ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput
+}
+
+type googlePrivacyDlpV2DiscoveryGenerationCadencePtrType GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs
+
+func GooglePrivacyDlpV2DiscoveryGenerationCadencePtr(v *GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs) GooglePrivacyDlpV2DiscoveryGenerationCadencePtrInput {
+	return (*googlePrivacyDlpV2DiscoveryGenerationCadencePtrType)(v)
+}
+
+func (*googlePrivacyDlpV2DiscoveryGenerationCadencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryGenerationCadence)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2DiscoveryGenerationCadencePtrType) ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput() GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2DiscoveryGenerationCadencePtrType) ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput)
+}
+
+func (i *googlePrivacyDlpV2DiscoveryGenerationCadencePtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryGenerationCadence] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryGenerationCadence]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as quickly as possible depending on system capacity.
+type GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryGenerationCadence)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput) ToGooglePrivacyDlpV2DiscoveryGenerationCadenceOutput() GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput) ToGooglePrivacyDlpV2DiscoveryGenerationCadenceOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput) ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput() GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput) ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoveryGenerationCadence) *GooglePrivacyDlpV2DiscoveryGenerationCadence {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryGenerationCadence] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryGenerationCadence]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Governs when to update data profiles when a schema is modified.
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput) SchemaModifiedCadence() GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryGenerationCadence) *GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
+		return v.SchemaModifiedCadence
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput)
+}
+
+// Governs when to update data profiles when a table is modified.
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput) TableModifiedCadence() GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryGenerationCadence) *GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
+		return v.TableModifiedCadence
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryGenerationCadence)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput) ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput() GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput) ToGooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryGenerationCadence] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryGenerationCadence]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput) Elem() GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryGenerationCadence) GooglePrivacyDlpV2DiscoveryGenerationCadence {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoveryGenerationCadence
+		return ret
+	}).(GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput)
+}
+
+// Governs when to update data profiles when a schema is modified.
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput) SchemaModifiedCadence() GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryGenerationCadence) *GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaModifiedCadence
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput)
+}
+
+// Governs when to update data profiles when a table is modified.
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput) TableModifiedCadence() GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryGenerationCadence) *GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
+		if v == nil {
+			return nil
+		}
+		return v.TableModifiedCadence
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput)
+}
+
+// What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as quickly as possible depending on system capacity.
+type GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse struct {
+	// Governs when to update data profiles when a schema is modified.
+	SchemaModifiedCadence GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse `pulumi:"schemaModifiedCadence"`
+	// Governs when to update data profiles when a table is modified.
+	TableModifiedCadence GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse `pulumi:"tableModifiedCadence"`
+}
+
+// What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as quickly as possible depending on system capacity.
+type GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput) ToGooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput() GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput) ToGooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Governs when to update data profiles when a schema is modified.
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput) SchemaModifiedCadence() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse {
+		return v.SchemaModifiedCadence
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput)
+}
+
+// Governs when to update data profiles when a table is modified.
+func (o GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput) TableModifiedCadence() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse {
+		return v.TableModifiedCadence
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput)
+}
+
+// The cadence at which to update data profiles when a schema is modified.
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadence struct {
+	// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+	Frequency *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency `pulumi:"frequency"`
+	// The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
+	Types []GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem `pulumi:"types"`
+}
+
+// GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceInput is an input type that accepts GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs and GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceInput` via:
+//
+//	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs{...}
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput
+}
+
+// The cadence at which to update data profiles when a schema is modified.
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs struct {
+	// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+	Frequency GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrInput `pulumi:"frequency"`
+	// The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
+	Types GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayInput `pulumi:"types"`
+}
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadence)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput {
+	return i.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadence] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadence]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput).ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrInput is an input type that accepts GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs, GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtr and GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrInput` via:
+//
+//	        GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput
+}
+
+type googlePrivacyDlpV2DiscoverySchemaModifiedCadencePtrType GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs
+
+func GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtr(v *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs) GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrInput {
+	return (*googlePrivacyDlpV2DiscoverySchemaModifiedCadencePtrType)(v)
+}
+
+func (*googlePrivacyDlpV2DiscoverySchemaModifiedCadencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoverySchemaModifiedCadence)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2DiscoverySchemaModifiedCadencePtrType) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2DiscoverySchemaModifiedCadencePtrType) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput)
+}
+
+func (i *googlePrivacyDlpV2DiscoverySchemaModifiedCadencePtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadence] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadence]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The cadence at which to update data profiles when a schema is modified.
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadence)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoverySchemaModifiedCadence) *GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadence] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadence]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput) Frequency() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoverySchemaModifiedCadence) *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency {
+		return v.Frequency
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput)
+}
+
+// The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput) Types() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoverySchemaModifiedCadence) []GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem {
+		return v.Types
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput)
+}
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoverySchemaModifiedCadence)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadence] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadence]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput) Elem() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoverySchemaModifiedCadence) GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoverySchemaModifiedCadence
+		return ret
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput)
+}
+
+// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput) Frequency() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoverySchemaModifiedCadence) *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput)
+}
+
+// The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput) Types() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoverySchemaModifiedCadence) []GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem {
+		if v == nil {
+			return nil
+		}
+		return v.Types
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput)
+}
+
+// The cadence at which to update data profiles when a schema is modified.
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse struct {
+	// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+	Frequency string `pulumi:"frequency"`
+	// The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
+	Types []string `pulumi:"types"`
+}
+
+// The cadence at which to update data profiles when a schema is modified.
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+// The location to begin a discovery scan. Denotes an organization ID or folder ID within an organization.
+type GooglePrivacyDlpV2DiscoveryStartingLocation struct {
+	// The ID of the Folder within an organization to scan.
+	FolderId *string `pulumi:"folderId"`
+	// The ID of an organization to scan.
+	OrganizationId *string `pulumi:"organizationId"`
+}
+
+// GooglePrivacyDlpV2DiscoveryStartingLocationInput is an input type that accepts GooglePrivacyDlpV2DiscoveryStartingLocationArgs and GooglePrivacyDlpV2DiscoveryStartingLocationOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryStartingLocationInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryStartingLocationArgs{...}
+type GooglePrivacyDlpV2DiscoveryStartingLocationInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryStartingLocationOutput() GooglePrivacyDlpV2DiscoveryStartingLocationOutput
+	ToGooglePrivacyDlpV2DiscoveryStartingLocationOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryStartingLocationOutput
+}
+
+// The location to begin a discovery scan. Denotes an organization ID or folder ID within an organization.
+type GooglePrivacyDlpV2DiscoveryStartingLocationArgs struct {
+	// The ID of the Folder within an organization to scan.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// The ID of an organization to scan.
+	OrganizationId pulumi.StringPtrInput `pulumi:"organizationId"`
+}
+
+func (GooglePrivacyDlpV2DiscoveryStartingLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryStartingLocation)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoveryStartingLocationArgs) ToGooglePrivacyDlpV2DiscoveryStartingLocationOutput() GooglePrivacyDlpV2DiscoveryStartingLocationOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryStartingLocationOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryStartingLocationArgs) ToGooglePrivacyDlpV2DiscoveryStartingLocationOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryStartingLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryStartingLocationOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoveryStartingLocationArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryStartingLocation] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryStartingLocation]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryStartingLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2DiscoveryStartingLocationArgs) ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput() GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryStartingLocationArgs) ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryStartingLocationOutput).ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2DiscoveryStartingLocationPtrInput is an input type that accepts GooglePrivacyDlpV2DiscoveryStartingLocationArgs, GooglePrivacyDlpV2DiscoveryStartingLocationPtr and GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryStartingLocationPtrInput` via:
+//
+//	        GooglePrivacyDlpV2DiscoveryStartingLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2DiscoveryStartingLocationPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput() GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput
+	ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput
+}
+
+type googlePrivacyDlpV2DiscoveryStartingLocationPtrType GooglePrivacyDlpV2DiscoveryStartingLocationArgs
+
+func GooglePrivacyDlpV2DiscoveryStartingLocationPtr(v *GooglePrivacyDlpV2DiscoveryStartingLocationArgs) GooglePrivacyDlpV2DiscoveryStartingLocationPtrInput {
+	return (*googlePrivacyDlpV2DiscoveryStartingLocationPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2DiscoveryStartingLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryStartingLocation)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2DiscoveryStartingLocationPtrType) ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput() GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2DiscoveryStartingLocationPtrType) ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2DiscoveryStartingLocationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryStartingLocation] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryStartingLocation]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The location to begin a discovery scan. Denotes an organization ID or folder ID within an organization.
+type GooglePrivacyDlpV2DiscoveryStartingLocationOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryStartingLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryStartingLocation)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationOutput) ToGooglePrivacyDlpV2DiscoveryStartingLocationOutput() GooglePrivacyDlpV2DiscoveryStartingLocationOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationOutput) ToGooglePrivacyDlpV2DiscoveryStartingLocationOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryStartingLocationOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationOutput) ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput() GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationOutput) ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoveryStartingLocation) *GooglePrivacyDlpV2DiscoveryStartingLocation {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryStartingLocation] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryStartingLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the Folder within an organization to scan.
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationOutput) FolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryStartingLocation) *string { return v.FolderId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of an organization to scan.
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryStartingLocation) *string { return v.OrganizationId }).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryStartingLocation)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput) ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput() GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput) ToGooglePrivacyDlpV2DiscoveryStartingLocationPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryStartingLocation] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryStartingLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput) Elem() GooglePrivacyDlpV2DiscoveryStartingLocationOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryStartingLocation) GooglePrivacyDlpV2DiscoveryStartingLocation {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoveryStartingLocation
+		return ret
+	}).(GooglePrivacyDlpV2DiscoveryStartingLocationOutput)
+}
+
+// The ID of the Folder within an organization to scan.
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput) FolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryStartingLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FolderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of an organization to scan.
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryStartingLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location to begin a discovery scan. Denotes an organization ID or folder ID within an organization.
+type GooglePrivacyDlpV2DiscoveryStartingLocationResponse struct {
+	// The ID of the Folder within an organization to scan.
+	FolderId string `pulumi:"folderId"`
+	// The ID of an organization to scan.
+	OrganizationId string `pulumi:"organizationId"`
+}
+
+// The location to begin a discovery scan. Denotes an organization ID or folder ID within an organization.
+type GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryStartingLocationResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput) ToGooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput() GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput) ToGooglePrivacyDlpV2DiscoveryStartingLocationResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryStartingLocationResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryStartingLocationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the Folder within an organization to scan.
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryStartingLocationResponse) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The ID of an organization to scan.
+func (o GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryStartingLocationResponse) string { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// The cadence at which to update data profiles when a table is modified.
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadence struct {
+	// How frequently data profiles can be updated when tables are modified. Defaults to never.
+	Frequency *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency `pulumi:"frequency"`
+	// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+	Types []GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem `pulumi:"types"`
+}
+
+// GooglePrivacyDlpV2DiscoveryTableModifiedCadenceInput is an input type that accepts GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs and GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryTableModifiedCadenceInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs{...}
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput
+}
+
+// The cadence at which to update data profiles when a table is modified.
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs struct {
+	// How frequently data profiles can be updated when tables are modified. Defaults to never.
+	Frequency GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrInput `pulumi:"frequency"`
+	// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+	Types GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayInput `pulumi:"types"`
+}
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadence)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadence] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadence]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput).ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrInput is an input type that accepts GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs, GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtr and GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrInput` via:
+//
+//	        GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput
+}
+
+type googlePrivacyDlpV2DiscoveryTableModifiedCadencePtrType GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs
+
+func GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtr(v *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs) GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrInput {
+	return (*googlePrivacyDlpV2DiscoveryTableModifiedCadencePtrType)(v)
+}
+
+func (*googlePrivacyDlpV2DiscoveryTableModifiedCadencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryTableModifiedCadence)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2DiscoveryTableModifiedCadencePtrType) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2DiscoveryTableModifiedCadencePtrType) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput)
+}
+
+func (i *googlePrivacyDlpV2DiscoveryTableModifiedCadencePtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadence] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadence]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The cadence at which to update data profiles when a table is modified.
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadence)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoveryTableModifiedCadence) *GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadence] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadence]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How frequently data profiles can be updated when tables are modified. Defaults to never.
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput) Frequency() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryTableModifiedCadence) *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency {
+		return v.Frequency
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput)
+}
+
+// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput) Types() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryTableModifiedCadence) []GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem {
+		return v.Types
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryTableModifiedCadence)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadence] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadence]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput) Elem() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryTableModifiedCadence) GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoveryTableModifiedCadence
+		return ret
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput)
+}
+
+// How frequently data profiles can be updated when tables are modified. Defaults to never.
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput) Frequency() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryTableModifiedCadence) *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput)
+}
+
+// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput) Types() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryTableModifiedCadence) []GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem {
+		if v == nil {
+			return nil
+		}
+		return v.Types
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput)
+}
+
+// The cadence at which to update data profiles when a table is modified.
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse struct {
+	// How frequently data profiles can be updated when tables are modified. Defaults to never.
+	Frequency string `pulumi:"frequency"`
+	// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+	Types []string `pulumi:"types"`
+}
+
+// The cadence at which to update data profiles when a table is modified.
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How frequently data profiles can be updated when tables are modified. Defaults to never.
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+// Target used to match against for Discovery.
+type GooglePrivacyDlpV2DiscoveryTarget struct {
+	// BigQuery target for Discovery. The first target to match a table will be the one applied.
+	BigQueryTarget *GooglePrivacyDlpV2BigQueryDiscoveryTarget `pulumi:"bigQueryTarget"`
+}
+
+// GooglePrivacyDlpV2DiscoveryTargetInput is an input type that accepts GooglePrivacyDlpV2DiscoveryTargetArgs and GooglePrivacyDlpV2DiscoveryTargetOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryTargetInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryTargetArgs{...}
+type GooglePrivacyDlpV2DiscoveryTargetInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryTargetOutput() GooglePrivacyDlpV2DiscoveryTargetOutput
+	ToGooglePrivacyDlpV2DiscoveryTargetOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryTargetOutput
+}
+
+// Target used to match against for Discovery.
+type GooglePrivacyDlpV2DiscoveryTargetArgs struct {
+	// BigQuery target for Discovery. The first target to match a table will be the one applied.
+	BigQueryTarget GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrInput `pulumi:"bigQueryTarget"`
+}
+
+func (GooglePrivacyDlpV2DiscoveryTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTarget)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTargetArgs) ToGooglePrivacyDlpV2DiscoveryTargetOutput() GooglePrivacyDlpV2DiscoveryTargetOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryTargetOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTargetArgs) ToGooglePrivacyDlpV2DiscoveryTargetOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryTargetOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTargetArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTarget] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTarget]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GooglePrivacyDlpV2DiscoveryTargetArrayInput is an input type that accepts GooglePrivacyDlpV2DiscoveryTargetArray and GooglePrivacyDlpV2DiscoveryTargetArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryTargetArrayInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryTargetArray{ GooglePrivacyDlpV2DiscoveryTargetArgs{...} }
+type GooglePrivacyDlpV2DiscoveryTargetArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryTargetArrayOutput() GooglePrivacyDlpV2DiscoveryTargetArrayOutput
+	ToGooglePrivacyDlpV2DiscoveryTargetArrayOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryTargetArrayOutput
+}
+
+type GooglePrivacyDlpV2DiscoveryTargetArray []GooglePrivacyDlpV2DiscoveryTargetInput
+
+func (GooglePrivacyDlpV2DiscoveryTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DiscoveryTarget)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTargetArray) ToGooglePrivacyDlpV2DiscoveryTargetArrayOutput() GooglePrivacyDlpV2DiscoveryTargetArrayOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTargetArray) ToGooglePrivacyDlpV2DiscoveryTargetArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryTargetArrayOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTarget] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTarget]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryTargetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Target used to match against for Discovery.
+type GooglePrivacyDlpV2DiscoveryTargetOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTarget)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetOutput) ToGooglePrivacyDlpV2DiscoveryTargetOutput() GooglePrivacyDlpV2DiscoveryTargetOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetOutput) ToGooglePrivacyDlpV2DiscoveryTargetOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTargetOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTarget] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+// BigQuery target for Discovery. The first target to match a table will be the one applied.
+func (o GooglePrivacyDlpV2DiscoveryTargetOutput) BigQueryTarget() GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryTarget) *GooglePrivacyDlpV2BigQueryDiscoveryTarget {
+		return v.BigQueryTarget
+	}).(GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DiscoveryTarget)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetArrayOutput) ToGooglePrivacyDlpV2DiscoveryTargetArrayOutput() GooglePrivacyDlpV2DiscoveryTargetArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetArrayOutput) ToGooglePrivacyDlpV2DiscoveryTargetArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTargetArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTarget] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DiscoveryTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2DiscoveryTarget {
+		return vs[0].([]GooglePrivacyDlpV2DiscoveryTarget)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2DiscoveryTargetOutput)
+}
+
+// Target used to match against for Discovery.
+type GooglePrivacyDlpV2DiscoveryTargetResponse struct {
+	// BigQuery target for Discovery. The first target to match a table will be the one applied.
+	BigQueryTarget GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse `pulumi:"bigQueryTarget"`
+}
+
+// Target used to match against for Discovery.
+type GooglePrivacyDlpV2DiscoveryTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTargetResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetResponseOutput) ToGooglePrivacyDlpV2DiscoveryTargetResponseOutput() GooglePrivacyDlpV2DiscoveryTargetResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetResponseOutput) ToGooglePrivacyDlpV2DiscoveryTargetResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTargetResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTargetResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// BigQuery target for Discovery. The first target to match a table will be the one applied.
+func (o GooglePrivacyDlpV2DiscoveryTargetResponseOutput) BigQueryTarget() GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DiscoveryTargetResponse) GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse {
+		return v.BigQueryTarget
+	}).(GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DiscoveryTargetResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput) ToGooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput() GooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput) ToGooglePrivacyDlpV2DiscoveryTargetResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTargetResponse] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DiscoveryTargetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2DiscoveryTargetResponse {
+		return vs[0].([]GooglePrivacyDlpV2DiscoveryTargetResponse)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2DiscoveryTargetResponseOutput)
+}
+
 // An entity in a dataset is a field or set of fields that correspond to a single person. For example, in medical records the `EntityId` might be a patient identifier, or for financial records it might be an account identifier. This message is used when generalizations or analysis must take into account that multiple rows correspond to the same entity.
 type GooglePrivacyDlpV2EntityId struct {
 	// Composite key indicating which field contains the entity identifier.
@@ -8363,7 +11809,7 @@ func (o GooglePrivacyDlpV2EntityIdResponseOutput) Field() GooglePrivacyDlpV2Fiel
 type GooglePrivacyDlpV2ErrorResponse struct {
 	// Detailed error codes and messages.
 	Details GoogleRpcStatusResponse `pulumi:"details"`
-	// The times the error occurred.
+	// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
 	Timestamps []string `pulumi:"timestamps"`
 }
 
@@ -8393,7 +11839,7 @@ func (o GooglePrivacyDlpV2ErrorResponseOutput) Details() GoogleRpcStatusResponse
 	return o.ApplyT(func(v GooglePrivacyDlpV2ErrorResponse) GoogleRpcStatusResponse { return v.Details }).(GoogleRpcStatusResponseOutput)
 }
 
-// The times the error occurred.
+// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
 func (o GooglePrivacyDlpV2ErrorResponseOutput) Timestamps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ErrorResponse) []string { return v.Timestamps }).(pulumi.StringArrayOutput)
 }
@@ -9154,6 +12600,204 @@ func (o GooglePrivacyDlpV2ExclusionRuleResponseOutput) MatchingType() pulumi.Str
 // Regular expression which defines the rule.
 func (o GooglePrivacyDlpV2ExclusionRuleResponseOutput) Regex() GooglePrivacyDlpV2RegexResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ExclusionRuleResponse) GooglePrivacyDlpV2RegexResponse { return v.Regex }).(GooglePrivacyDlpV2RegexResponseOutput)
+}
+
+// If set, the detailed data profiles will be persisted to the location of your choice whenever updated.
+type GooglePrivacyDlpV2Export struct {
+	// Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+	ProfileTable *GooglePrivacyDlpV2BigQueryTable `pulumi:"profileTable"`
+}
+
+// GooglePrivacyDlpV2ExportInput is an input type that accepts GooglePrivacyDlpV2ExportArgs and GooglePrivacyDlpV2ExportOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ExportInput` via:
+//
+//	GooglePrivacyDlpV2ExportArgs{...}
+type GooglePrivacyDlpV2ExportInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ExportOutput() GooglePrivacyDlpV2ExportOutput
+	ToGooglePrivacyDlpV2ExportOutputWithContext(context.Context) GooglePrivacyDlpV2ExportOutput
+}
+
+// If set, the detailed data profiles will be persisted to the location of your choice whenever updated.
+type GooglePrivacyDlpV2ExportArgs struct {
+	// Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+	ProfileTable GooglePrivacyDlpV2BigQueryTablePtrInput `pulumi:"profileTable"`
+}
+
+func (GooglePrivacyDlpV2ExportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2Export)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2ExportArgs) ToGooglePrivacyDlpV2ExportOutput() GooglePrivacyDlpV2ExportOutput {
+	return i.ToGooglePrivacyDlpV2ExportOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ExportArgs) ToGooglePrivacyDlpV2ExportOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExportOutput)
+}
+
+func (i GooglePrivacyDlpV2ExportArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2Export] {
+	return pulumix.Output[GooglePrivacyDlpV2Export]{
+		OutputState: i.ToGooglePrivacyDlpV2ExportOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2ExportArgs) ToGooglePrivacyDlpV2ExportPtrOutput() GooglePrivacyDlpV2ExportPtrOutput {
+	return i.ToGooglePrivacyDlpV2ExportPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ExportArgs) ToGooglePrivacyDlpV2ExportPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExportOutput).ToGooglePrivacyDlpV2ExportPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2ExportPtrInput is an input type that accepts GooglePrivacyDlpV2ExportArgs, GooglePrivacyDlpV2ExportPtr and GooglePrivacyDlpV2ExportPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ExportPtrInput` via:
+//
+//	        GooglePrivacyDlpV2ExportArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2ExportPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ExportPtrOutput() GooglePrivacyDlpV2ExportPtrOutput
+	ToGooglePrivacyDlpV2ExportPtrOutputWithContext(context.Context) GooglePrivacyDlpV2ExportPtrOutput
+}
+
+type googlePrivacyDlpV2ExportPtrType GooglePrivacyDlpV2ExportArgs
+
+func GooglePrivacyDlpV2ExportPtr(v *GooglePrivacyDlpV2ExportArgs) GooglePrivacyDlpV2ExportPtrInput {
+	return (*googlePrivacyDlpV2ExportPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2ExportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2Export)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2ExportPtrType) ToGooglePrivacyDlpV2ExportPtrOutput() GooglePrivacyDlpV2ExportPtrOutput {
+	return i.ToGooglePrivacyDlpV2ExportPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2ExportPtrType) ToGooglePrivacyDlpV2ExportPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExportPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2ExportPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2Export] {
+	return pulumix.Output[*GooglePrivacyDlpV2Export]{
+		OutputState: i.ToGooglePrivacyDlpV2ExportPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// If set, the detailed data profiles will be persisted to the location of your choice whenever updated.
+type GooglePrivacyDlpV2ExportOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2Export)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ExportOutput) ToGooglePrivacyDlpV2ExportOutput() GooglePrivacyDlpV2ExportOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExportOutput) ToGooglePrivacyDlpV2ExportOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExportOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExportOutput) ToGooglePrivacyDlpV2ExportPtrOutput() GooglePrivacyDlpV2ExportPtrOutput {
+	return o.ToGooglePrivacyDlpV2ExportPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2ExportOutput) ToGooglePrivacyDlpV2ExportPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Export) *GooglePrivacyDlpV2Export {
+		return &v
+	}).(GooglePrivacyDlpV2ExportPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2ExportOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2Export] {
+	return pulumix.Output[GooglePrivacyDlpV2Export]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+func (o GooglePrivacyDlpV2ExportOutput) ProfileTable() GooglePrivacyDlpV2BigQueryTablePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Export) *GooglePrivacyDlpV2BigQueryTable { return v.ProfileTable }).(GooglePrivacyDlpV2BigQueryTablePtrOutput)
+}
+
+type GooglePrivacyDlpV2ExportPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ExportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2Export)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ExportPtrOutput) ToGooglePrivacyDlpV2ExportPtrOutput() GooglePrivacyDlpV2ExportPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExportPtrOutput) ToGooglePrivacyDlpV2ExportPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExportPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExportPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2Export] {
+	return pulumix.Output[*GooglePrivacyDlpV2Export]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2ExportPtrOutput) Elem() GooglePrivacyDlpV2ExportOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Export) GooglePrivacyDlpV2Export {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Export
+		return ret
+	}).(GooglePrivacyDlpV2ExportOutput)
+}
+
+// Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+func (o GooglePrivacyDlpV2ExportPtrOutput) ProfileTable() GooglePrivacyDlpV2BigQueryTablePtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Export) *GooglePrivacyDlpV2BigQueryTable {
+		if v == nil {
+			return nil
+		}
+		return v.ProfileTable
+	}).(GooglePrivacyDlpV2BigQueryTablePtrOutput)
+}
+
+// If set, the detailed data profiles will be persisted to the location of your choice whenever updated.
+type GooglePrivacyDlpV2ExportResponse struct {
+	// Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+	ProfileTable GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"profileTable"`
+}
+
+// If set, the detailed data profiles will be persisted to the location of your choice whenever updated.
+type GooglePrivacyDlpV2ExportResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ExportResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ExportResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ExportResponseOutput) ToGooglePrivacyDlpV2ExportResponseOutput() GooglePrivacyDlpV2ExportResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExportResponseOutput) ToGooglePrivacyDlpV2ExportResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExportResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2ExportResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2ExportResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+func (o GooglePrivacyDlpV2ExportResponseOutput) ProfileTable() GooglePrivacyDlpV2BigQueryTableResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ExportResponse) GooglePrivacyDlpV2BigQueryTableResponse {
+		return v.ProfileTable
+	}).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
 }
 
 // An expression, consisting of an operator and conditions.
@@ -11898,6 +15542,208 @@ func (o GooglePrivacyDlpV2InfoTypeArrayOutput) Index(i pulumi.IntInput) GooglePr
 	}).(GooglePrivacyDlpV2InfoTypeOutput)
 }
 
+// Configuration for setting a minimum likelihood per infotype. Used to customize the minimum likelihood level for specific infotypes in the request. For example, use this if you want to lower the precision for PERSON_NAME without lowering the precision for the other infotypes in the request.
+type GooglePrivacyDlpV2InfoTypeLikelihood struct {
+	// Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
+	InfoType *GooglePrivacyDlpV2InfoType `pulumi:"infoType"`
+	// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+	MinLikelihood *GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood `pulumi:"minLikelihood"`
+}
+
+// GooglePrivacyDlpV2InfoTypeLikelihoodInput is an input type that accepts GooglePrivacyDlpV2InfoTypeLikelihoodArgs and GooglePrivacyDlpV2InfoTypeLikelihoodOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeLikelihoodInput` via:
+//
+//	GooglePrivacyDlpV2InfoTypeLikelihoodArgs{...}
+type GooglePrivacyDlpV2InfoTypeLikelihoodInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2InfoTypeLikelihoodOutput() GooglePrivacyDlpV2InfoTypeLikelihoodOutput
+	ToGooglePrivacyDlpV2InfoTypeLikelihoodOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodOutput
+}
+
+// Configuration for setting a minimum likelihood per infotype. Used to customize the minimum likelihood level for specific infotypes in the request. For example, use this if you want to lower the precision for PERSON_NAME without lowering the precision for the other infotypes in the request.
+type GooglePrivacyDlpV2InfoTypeLikelihoodArgs struct {
+	// Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
+	InfoType GooglePrivacyDlpV2InfoTypePtrInput `pulumi:"infoType"`
+	// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+	MinLikelihood GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrInput `pulumi:"minLikelihood"`
+}
+
+func (GooglePrivacyDlpV2InfoTypeLikelihoodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLikelihood)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2InfoTypeLikelihoodArgs) ToGooglePrivacyDlpV2InfoTypeLikelihoodOutput() GooglePrivacyDlpV2InfoTypeLikelihoodOutput {
+	return i.ToGooglePrivacyDlpV2InfoTypeLikelihoodOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2InfoTypeLikelihoodArgs) ToGooglePrivacyDlpV2InfoTypeLikelihoodOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeLikelihoodOutput)
+}
+
+func (i GooglePrivacyDlpV2InfoTypeLikelihoodArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihood] {
+	return pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihood]{
+		OutputState: i.ToGooglePrivacyDlpV2InfoTypeLikelihoodOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GooglePrivacyDlpV2InfoTypeLikelihoodArrayInput is an input type that accepts GooglePrivacyDlpV2InfoTypeLikelihoodArray and GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeLikelihoodArrayInput` via:
+//
+//	GooglePrivacyDlpV2InfoTypeLikelihoodArray{ GooglePrivacyDlpV2InfoTypeLikelihoodArgs{...} }
+type GooglePrivacyDlpV2InfoTypeLikelihoodArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput() GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput
+	ToGooglePrivacyDlpV2InfoTypeLikelihoodArrayOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput
+}
+
+type GooglePrivacyDlpV2InfoTypeLikelihoodArray []GooglePrivacyDlpV2InfoTypeLikelihoodInput
+
+func (GooglePrivacyDlpV2InfoTypeLikelihoodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2InfoTypeLikelihood)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2InfoTypeLikelihoodArray) ToGooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput() GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput {
+	return i.ToGooglePrivacyDlpV2InfoTypeLikelihoodArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2InfoTypeLikelihoodArray) ToGooglePrivacyDlpV2InfoTypeLikelihoodArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput)
+}
+
+func (i GooglePrivacyDlpV2InfoTypeLikelihoodArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2InfoTypeLikelihood] {
+	return pulumix.Output[[]GooglePrivacyDlpV2InfoTypeLikelihood]{
+		OutputState: i.ToGooglePrivacyDlpV2InfoTypeLikelihoodArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for setting a minimum likelihood per infotype. Used to customize the minimum likelihood level for specific infotypes in the request. For example, use this if you want to lower the precision for PERSON_NAME without lowering the precision for the other infotypes in the request.
+type GooglePrivacyDlpV2InfoTypeLikelihoodOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2InfoTypeLikelihoodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLikelihood)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodOutput() GooglePrivacyDlpV2InfoTypeLikelihoodOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihood] {
+	return pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihood]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodOutput) InfoType() GooglePrivacyDlpV2InfoTypePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeLikelihood) *GooglePrivacyDlpV2InfoType { return v.InfoType }).(GooglePrivacyDlpV2InfoTypePtrOutput)
+}
+
+// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodOutput) MinLikelihood() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeLikelihood) *GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood {
+		return v.MinLikelihood
+	}).(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput)
+}
+
+type GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2InfoTypeLikelihood)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput() GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2InfoTypeLikelihood] {
+	return pulumix.Output[[]GooglePrivacyDlpV2InfoTypeLikelihood]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2InfoTypeLikelihoodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2InfoTypeLikelihood {
+		return vs[0].([]GooglePrivacyDlpV2InfoTypeLikelihood)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2InfoTypeLikelihoodOutput)
+}
+
+// Configuration for setting a minimum likelihood per infotype. Used to customize the minimum likelihood level for specific infotypes in the request. For example, use this if you want to lower the precision for PERSON_NAME without lowering the precision for the other infotypes in the request.
+type GooglePrivacyDlpV2InfoTypeLikelihoodResponse struct {
+	// Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
+	InfoType GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoType"`
+	// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+	MinLikelihood string `pulumi:"minLikelihood"`
+}
+
+// Configuration for setting a minimum likelihood per infotype. Used to customize the minimum likelihood level for specific infotypes in the request. For example, use this if you want to lower the precision for PERSON_NAME without lowering the precision for the other infotypes in the request.
+type GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLikelihoodResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput() GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihoodResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihoodResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput) InfoType() GooglePrivacyDlpV2InfoTypeResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeLikelihoodResponse) GooglePrivacyDlpV2InfoTypeResponse {
+		return v.InfoType
+	}).(GooglePrivacyDlpV2InfoTypeResponseOutput)
+}
+
+// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput) MinLikelihood() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeLikelihoodResponse) string { return v.MinLikelihood }).(pulumi.StringOutput)
+}
+
+type GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2InfoTypeLikelihoodResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput() GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2InfoTypeLikelihoodResponse] {
+	return pulumix.Output[[]GooglePrivacyDlpV2InfoTypeLikelihoodResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2InfoTypeLikelihoodResponse {
+		return vs[0].([]GooglePrivacyDlpV2InfoTypeLikelihoodResponse)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput)
+}
+
 // Max findings configuration per infoType, per content item or long running DlpJob.
 type GooglePrivacyDlpV2InfoTypeLimit struct {
 	// Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
@@ -12651,12 +16497,14 @@ type GooglePrivacyDlpV2InspectConfig struct {
 	ExcludeInfoTypes *bool `pulumi:"excludeInfoTypes"`
 	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 	IncludeQuote *bool `pulumi:"includeQuote"`
-	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoType `pulumi:"infoTypes"`
 	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within an InspectJobConfig, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 	Limits *GooglePrivacyDlpV2FindingLimits `pulumi:"limits"`
-	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+	// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
 	MinLikelihood *GooglePrivacyDlpV2InspectConfigMinLikelihood `pulumi:"minLikelihood"`
+	// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
+	MinLikelihoodPerInfoType []GooglePrivacyDlpV2InfoTypeLikelihood `pulumi:"minLikelihoodPerInfoType"`
 	// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
 	RuleSet []GooglePrivacyDlpV2InspectionRuleSet `pulumi:"ruleSet"`
 }
@@ -12684,12 +16532,14 @@ type GooglePrivacyDlpV2InspectConfigArgs struct {
 	ExcludeInfoTypes pulumi.BoolPtrInput `pulumi:"excludeInfoTypes"`
 	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 	IncludeQuote pulumi.BoolPtrInput `pulumi:"includeQuote"`
-	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes GooglePrivacyDlpV2InfoTypeArrayInput `pulumi:"infoTypes"`
 	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within an InspectJobConfig, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 	Limits GooglePrivacyDlpV2FindingLimitsPtrInput `pulumi:"limits"`
-	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+	// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
 	MinLikelihood GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrInput `pulumi:"minLikelihood"`
+	// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
+	MinLikelihoodPerInfoType GooglePrivacyDlpV2InfoTypeLikelihoodArrayInput `pulumi:"minLikelihoodPerInfoType"`
 	// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
 	RuleSet GooglePrivacyDlpV2InspectionRuleSetArrayInput `pulumi:"ruleSet"`
 }
@@ -12814,7 +16664,7 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) IncludeQuote() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *bool { return v.IncludeQuote }).(pulumi.BoolPtrOutput)
 }
 
-// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 func (o GooglePrivacyDlpV2InspectConfigOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InfoType { return v.InfoTypes }).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
@@ -12824,11 +16674,18 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) Limits() GooglePrivacyDlpV2Findin
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2FindingLimits { return v.Limits }).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
 
-// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
 func (o GooglePrivacyDlpV2InspectConfigOutput) MinLikelihood() GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2InspectConfigMinLikelihood {
 		return v.MinLikelihood
 	}).(GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput)
+}
+
+// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
+func (o GooglePrivacyDlpV2InspectConfigOutput) MinLikelihoodPerInfoType() GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InfoTypeLikelihood {
+		return v.MinLikelihoodPerInfoType
+	}).(GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput)
 }
 
 // Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
@@ -12908,7 +16765,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) IncludeQuote() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InfoType {
 		if v == nil {
@@ -12928,7 +16785,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) Limits() GooglePrivacyDlpV2Fin
 	}).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
 
-// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) MinLikelihood() GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2InspectConfigMinLikelihood {
 		if v == nil {
@@ -12936,6 +16793,16 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) MinLikelihood() GooglePrivacyD
 		}
 		return v.MinLikelihood
 	}).(GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput)
+}
+
+// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
+func (o GooglePrivacyDlpV2InspectConfigPtrOutput) MinLikelihoodPerInfoType() GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InfoTypeLikelihood {
+		if v == nil {
+			return nil
+		}
+		return v.MinLikelihoodPerInfoType
+	}).(GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput)
 }
 
 // Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
@@ -12960,12 +16827,14 @@ type GooglePrivacyDlpV2InspectConfigResponse struct {
 	ExcludeInfoTypes bool `pulumi:"excludeInfoTypes"`
 	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 	IncludeQuote bool `pulumi:"includeQuote"`
-	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
 	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within an InspectJobConfig, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 	Limits GooglePrivacyDlpV2FindingLimitsResponse `pulumi:"limits"`
-	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+	// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
 	MinLikelihood string `pulumi:"minLikelihood"`
+	// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
+	MinLikelihoodPerInfoType []GooglePrivacyDlpV2InfoTypeLikelihoodResponse `pulumi:"minLikelihoodPerInfoType"`
 	// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
 	RuleSet []GooglePrivacyDlpV2InspectionRuleSetResponse `pulumi:"ruleSet"`
 }
@@ -13015,7 +16884,7 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) IncludeQuote() pulumi.Boo
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) bool { return v.IncludeQuote }).(pulumi.BoolOutput)
 }
 
-// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) []GooglePrivacyDlpV2InfoTypeResponse {
 		return v.InfoTypes
@@ -13029,9 +16898,16 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) Limits() GooglePrivacyDlp
 	}).(GooglePrivacyDlpV2FindingLimitsResponseOutput)
 }
 
-// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) MinLikelihood() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) string { return v.MinLikelihood }).(pulumi.StringOutput)
+}
+
+// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
+func (o GooglePrivacyDlpV2InspectConfigResponseOutput) MinLikelihoodPerInfoType() GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) []GooglePrivacyDlpV2InfoTypeLikelihoodResponse {
+		return v.MinLikelihoodPerInfoType
+	}).(GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput)
 }
 
 // Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
@@ -16830,6 +20706,452 @@ func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) QuantileValues() G
 	}).(GooglePrivacyDlpV2ValueResponseArrayOutput)
 }
 
+// There is an OR relationship between these attributes. They are used to determine if a table should be scanned or not in Discovery.
+type GooglePrivacyDlpV2OrConditions struct {
+	// Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
+	MinAge *string `pulumi:"minAge"`
+	// Minimum number of rows that should be present before Cloud DLP profiles a table
+	MinRowCount *int `pulumi:"minRowCount"`
+}
+
+// GooglePrivacyDlpV2OrConditionsInput is an input type that accepts GooglePrivacyDlpV2OrConditionsArgs and GooglePrivacyDlpV2OrConditionsOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2OrConditionsInput` via:
+//
+//	GooglePrivacyDlpV2OrConditionsArgs{...}
+type GooglePrivacyDlpV2OrConditionsInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2OrConditionsOutput() GooglePrivacyDlpV2OrConditionsOutput
+	ToGooglePrivacyDlpV2OrConditionsOutputWithContext(context.Context) GooglePrivacyDlpV2OrConditionsOutput
+}
+
+// There is an OR relationship between these attributes. They are used to determine if a table should be scanned or not in Discovery.
+type GooglePrivacyDlpV2OrConditionsArgs struct {
+	// Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
+	MinAge pulumi.StringPtrInput `pulumi:"minAge"`
+	// Minimum number of rows that should be present before Cloud DLP profiles a table
+	MinRowCount pulumi.IntPtrInput `pulumi:"minRowCount"`
+}
+
+func (GooglePrivacyDlpV2OrConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2OrConditions)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2OrConditionsArgs) ToGooglePrivacyDlpV2OrConditionsOutput() GooglePrivacyDlpV2OrConditionsOutput {
+	return i.ToGooglePrivacyDlpV2OrConditionsOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2OrConditionsArgs) ToGooglePrivacyDlpV2OrConditionsOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2OrConditionsOutput)
+}
+
+func (i GooglePrivacyDlpV2OrConditionsArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2OrConditions] {
+	return pulumix.Output[GooglePrivacyDlpV2OrConditions]{
+		OutputState: i.ToGooglePrivacyDlpV2OrConditionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2OrConditionsArgs) ToGooglePrivacyDlpV2OrConditionsPtrOutput() GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return i.ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2OrConditionsArgs) ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2OrConditionsOutput).ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2OrConditionsPtrInput is an input type that accepts GooglePrivacyDlpV2OrConditionsArgs, GooglePrivacyDlpV2OrConditionsPtr and GooglePrivacyDlpV2OrConditionsPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2OrConditionsPtrInput` via:
+//
+//	        GooglePrivacyDlpV2OrConditionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2OrConditionsPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2OrConditionsPtrOutput() GooglePrivacyDlpV2OrConditionsPtrOutput
+	ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(context.Context) GooglePrivacyDlpV2OrConditionsPtrOutput
+}
+
+type googlePrivacyDlpV2OrConditionsPtrType GooglePrivacyDlpV2OrConditionsArgs
+
+func GooglePrivacyDlpV2OrConditionsPtr(v *GooglePrivacyDlpV2OrConditionsArgs) GooglePrivacyDlpV2OrConditionsPtrInput {
+	return (*googlePrivacyDlpV2OrConditionsPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2OrConditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2OrConditions)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2OrConditionsPtrType) ToGooglePrivacyDlpV2OrConditionsPtrOutput() GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return i.ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2OrConditionsPtrType) ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2OrConditionsPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2OrConditionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2OrConditions] {
+	return pulumix.Output[*GooglePrivacyDlpV2OrConditions]{
+		OutputState: i.ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// There is an OR relationship between these attributes. They are used to determine if a table should be scanned or not in Discovery.
+type GooglePrivacyDlpV2OrConditionsOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2OrConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2OrConditions)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2OrConditionsOutput) ToGooglePrivacyDlpV2OrConditionsOutput() GooglePrivacyDlpV2OrConditionsOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrConditionsOutput) ToGooglePrivacyDlpV2OrConditionsOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrConditionsOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrConditionsOutput) ToGooglePrivacyDlpV2OrConditionsPtrOutput() GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return o.ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2OrConditionsOutput) ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2OrConditions) *GooglePrivacyDlpV2OrConditions {
+		return &v
+	}).(GooglePrivacyDlpV2OrConditionsPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2OrConditionsOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2OrConditions] {
+	return pulumix.Output[GooglePrivacyDlpV2OrConditions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
+func (o GooglePrivacyDlpV2OrConditionsOutput) MinAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2OrConditions) *string { return v.MinAge }).(pulumi.StringPtrOutput)
+}
+
+// Minimum number of rows that should be present before Cloud DLP profiles a table
+func (o GooglePrivacyDlpV2OrConditionsOutput) MinRowCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2OrConditions) *int { return v.MinRowCount }).(pulumi.IntPtrOutput)
+}
+
+type GooglePrivacyDlpV2OrConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2OrConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2OrConditions)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2OrConditionsPtrOutput) ToGooglePrivacyDlpV2OrConditionsPtrOutput() GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrConditionsPtrOutput) ToGooglePrivacyDlpV2OrConditionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrConditionsPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrConditionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2OrConditions] {
+	return pulumix.Output[*GooglePrivacyDlpV2OrConditions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2OrConditionsPtrOutput) Elem() GooglePrivacyDlpV2OrConditionsOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2OrConditions) GooglePrivacyDlpV2OrConditions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2OrConditions
+		return ret
+	}).(GooglePrivacyDlpV2OrConditionsOutput)
+}
+
+// Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
+func (o GooglePrivacyDlpV2OrConditionsPtrOutput) MinAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2OrConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinAge
+	}).(pulumi.StringPtrOutput)
+}
+
+// Minimum number of rows that should be present before Cloud DLP profiles a table
+func (o GooglePrivacyDlpV2OrConditionsPtrOutput) MinRowCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2OrConditions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinRowCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// There is an OR relationship between these attributes. They are used to determine if a table should be scanned or not in Discovery.
+type GooglePrivacyDlpV2OrConditionsResponse struct {
+	// Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
+	MinAge string `pulumi:"minAge"`
+	// Minimum number of rows that should be present before Cloud DLP profiles a table
+	MinRowCount int `pulumi:"minRowCount"`
+}
+
+// There is an OR relationship between these attributes. They are used to determine if a table should be scanned or not in Discovery.
+type GooglePrivacyDlpV2OrConditionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2OrConditionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2OrConditionsResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2OrConditionsResponseOutput) ToGooglePrivacyDlpV2OrConditionsResponseOutput() GooglePrivacyDlpV2OrConditionsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrConditionsResponseOutput) ToGooglePrivacyDlpV2OrConditionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrConditionsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrConditionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2OrConditionsResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2OrConditionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
+func (o GooglePrivacyDlpV2OrConditionsResponseOutput) MinAge() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2OrConditionsResponse) string { return v.MinAge }).(pulumi.StringOutput)
+}
+
+// Minimum number of rows that should be present before Cloud DLP profiles a table
+func (o GooglePrivacyDlpV2OrConditionsResponseOutput) MinRowCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2OrConditionsResponse) int { return v.MinRowCount }).(pulumi.IntOutput)
+}
+
+// Project and scan location information. Only set when the parent is an org.
+type GooglePrivacyDlpV2OrgConfig struct {
+	// The data to scan: folder, org, or project
+	Location *GooglePrivacyDlpV2DiscoveryStartingLocation `pulumi:"location"`
+	// The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
+	Project *string `pulumi:"project"`
+}
+
+// GooglePrivacyDlpV2OrgConfigInput is an input type that accepts GooglePrivacyDlpV2OrgConfigArgs and GooglePrivacyDlpV2OrgConfigOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2OrgConfigInput` via:
+//
+//	GooglePrivacyDlpV2OrgConfigArgs{...}
+type GooglePrivacyDlpV2OrgConfigInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2OrgConfigOutput() GooglePrivacyDlpV2OrgConfigOutput
+	ToGooglePrivacyDlpV2OrgConfigOutputWithContext(context.Context) GooglePrivacyDlpV2OrgConfigOutput
+}
+
+// Project and scan location information. Only set when the parent is an org.
+type GooglePrivacyDlpV2OrgConfigArgs struct {
+	// The data to scan: folder, org, or project
+	Location GooglePrivacyDlpV2DiscoveryStartingLocationPtrInput `pulumi:"location"`
+	// The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (GooglePrivacyDlpV2OrgConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2OrgConfig)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2OrgConfigArgs) ToGooglePrivacyDlpV2OrgConfigOutput() GooglePrivacyDlpV2OrgConfigOutput {
+	return i.ToGooglePrivacyDlpV2OrgConfigOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2OrgConfigArgs) ToGooglePrivacyDlpV2OrgConfigOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrgConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2OrgConfigOutput)
+}
+
+func (i GooglePrivacyDlpV2OrgConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2OrgConfig] {
+	return pulumix.Output[GooglePrivacyDlpV2OrgConfig]{
+		OutputState: i.ToGooglePrivacyDlpV2OrgConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2OrgConfigArgs) ToGooglePrivacyDlpV2OrgConfigPtrOutput() GooglePrivacyDlpV2OrgConfigPtrOutput {
+	return i.ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2OrgConfigArgs) ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrgConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2OrgConfigOutput).ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2OrgConfigPtrInput is an input type that accepts GooglePrivacyDlpV2OrgConfigArgs, GooglePrivacyDlpV2OrgConfigPtr and GooglePrivacyDlpV2OrgConfigPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2OrgConfigPtrInput` via:
+//
+//	        GooglePrivacyDlpV2OrgConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2OrgConfigPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2OrgConfigPtrOutput() GooglePrivacyDlpV2OrgConfigPtrOutput
+	ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(context.Context) GooglePrivacyDlpV2OrgConfigPtrOutput
+}
+
+type googlePrivacyDlpV2OrgConfigPtrType GooglePrivacyDlpV2OrgConfigArgs
+
+func GooglePrivacyDlpV2OrgConfigPtr(v *GooglePrivacyDlpV2OrgConfigArgs) GooglePrivacyDlpV2OrgConfigPtrInput {
+	return (*googlePrivacyDlpV2OrgConfigPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2OrgConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2OrgConfig)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2OrgConfigPtrType) ToGooglePrivacyDlpV2OrgConfigPtrOutput() GooglePrivacyDlpV2OrgConfigPtrOutput {
+	return i.ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2OrgConfigPtrType) ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrgConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2OrgConfigPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2OrgConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2OrgConfig] {
+	return pulumix.Output[*GooglePrivacyDlpV2OrgConfig]{
+		OutputState: i.ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Project and scan location information. Only set when the parent is an org.
+type GooglePrivacyDlpV2OrgConfigOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2OrgConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2OrgConfig)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2OrgConfigOutput) ToGooglePrivacyDlpV2OrgConfigOutput() GooglePrivacyDlpV2OrgConfigOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrgConfigOutput) ToGooglePrivacyDlpV2OrgConfigOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrgConfigOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrgConfigOutput) ToGooglePrivacyDlpV2OrgConfigPtrOutput() GooglePrivacyDlpV2OrgConfigPtrOutput {
+	return o.ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2OrgConfigOutput) ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrgConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2OrgConfig) *GooglePrivacyDlpV2OrgConfig {
+		return &v
+	}).(GooglePrivacyDlpV2OrgConfigPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2OrgConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2OrgConfig] {
+	return pulumix.Output[GooglePrivacyDlpV2OrgConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The data to scan: folder, org, or project
+func (o GooglePrivacyDlpV2OrgConfigOutput) Location() GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2OrgConfig) *GooglePrivacyDlpV2DiscoveryStartingLocation { return v.Location }).(GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput)
+}
+
+// The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
+func (o GooglePrivacyDlpV2OrgConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2OrgConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2OrgConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2OrgConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2OrgConfig)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2OrgConfigPtrOutput) ToGooglePrivacyDlpV2OrgConfigPtrOutput() GooglePrivacyDlpV2OrgConfigPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrgConfigPtrOutput) ToGooglePrivacyDlpV2OrgConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrgConfigPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrgConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2OrgConfig] {
+	return pulumix.Output[*GooglePrivacyDlpV2OrgConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2OrgConfigPtrOutput) Elem() GooglePrivacyDlpV2OrgConfigOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2OrgConfig) GooglePrivacyDlpV2OrgConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2OrgConfig
+		return ret
+	}).(GooglePrivacyDlpV2OrgConfigOutput)
+}
+
+// The data to scan: folder, org, or project
+func (o GooglePrivacyDlpV2OrgConfigPtrOutput) Location() GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2OrgConfig) *GooglePrivacyDlpV2DiscoveryStartingLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput)
+}
+
+// The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
+func (o GooglePrivacyDlpV2OrgConfigPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2OrgConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project and scan location information. Only set when the parent is an org.
+type GooglePrivacyDlpV2OrgConfigResponse struct {
+	// The data to scan: folder, org, or project
+	Location GooglePrivacyDlpV2DiscoveryStartingLocationResponse `pulumi:"location"`
+	// The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
+	Project string `pulumi:"project"`
+}
+
+// Project and scan location information. Only set when the parent is an org.
+type GooglePrivacyDlpV2OrgConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2OrgConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2OrgConfigResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2OrgConfigResponseOutput) ToGooglePrivacyDlpV2OrgConfigResponseOutput() GooglePrivacyDlpV2OrgConfigResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrgConfigResponseOutput) ToGooglePrivacyDlpV2OrgConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OrgConfigResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2OrgConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2OrgConfigResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2OrgConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The data to scan: folder, org, or project
+func (o GooglePrivacyDlpV2OrgConfigResponseOutput) Location() GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2OrgConfigResponse) GooglePrivacyDlpV2DiscoveryStartingLocationResponse {
+		return v.Location
+	}).(GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput)
+}
+
+// The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
+func (o GooglePrivacyDlpV2OrgConfigResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2OrgConfigResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
 // Cloud repository for storing output.
 type GooglePrivacyDlpV2OutputStorageConfig struct {
 	// Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
@@ -18374,6 +22696,716 @@ func (o GooglePrivacyDlpV2ProximityResponseOutput) WindowAfter() pulumi.IntOutpu
 // Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2ProximityResponseOutput) WindowBefore() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ProximityResponse) int { return v.WindowBefore }).(pulumi.IntOutput)
+}
+
+// A condition consisting of a value.
+type GooglePrivacyDlpV2PubSubCondition struct {
+	// The minimum data risk score that triggers the condition.
+	MinimumRiskScore *GooglePrivacyDlpV2PubSubConditionMinimumRiskScore `pulumi:"minimumRiskScore"`
+	// The minimum sensitivity level that triggers the condition.
+	MinimumSensitivityScore *GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore `pulumi:"minimumSensitivityScore"`
+}
+
+// GooglePrivacyDlpV2PubSubConditionInput is an input type that accepts GooglePrivacyDlpV2PubSubConditionArgs and GooglePrivacyDlpV2PubSubConditionOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubConditionInput` via:
+//
+//	GooglePrivacyDlpV2PubSubConditionArgs{...}
+type GooglePrivacyDlpV2PubSubConditionInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubConditionOutput() GooglePrivacyDlpV2PubSubConditionOutput
+	ToGooglePrivacyDlpV2PubSubConditionOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubConditionOutput
+}
+
+// A condition consisting of a value.
+type GooglePrivacyDlpV2PubSubConditionArgs struct {
+	// The minimum data risk score that triggers the condition.
+	MinimumRiskScore GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrInput `pulumi:"minimumRiskScore"`
+	// The minimum sensitivity level that triggers the condition.
+	MinimumSensitivityScore GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrInput `pulumi:"minimumSensitivityScore"`
+}
+
+func (GooglePrivacyDlpV2PubSubConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubCondition)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2PubSubConditionArgs) ToGooglePrivacyDlpV2PubSubConditionOutput() GooglePrivacyDlpV2PubSubConditionOutput {
+	return i.ToGooglePrivacyDlpV2PubSubConditionOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2PubSubConditionArgs) ToGooglePrivacyDlpV2PubSubConditionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PubSubConditionOutput)
+}
+
+func (i GooglePrivacyDlpV2PubSubConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubCondition] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubCondition]{
+		OutputState: i.ToGooglePrivacyDlpV2PubSubConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GooglePrivacyDlpV2PubSubConditionArrayInput is an input type that accepts GooglePrivacyDlpV2PubSubConditionArray and GooglePrivacyDlpV2PubSubConditionArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubConditionArrayInput` via:
+//
+//	GooglePrivacyDlpV2PubSubConditionArray{ GooglePrivacyDlpV2PubSubConditionArgs{...} }
+type GooglePrivacyDlpV2PubSubConditionArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubConditionArrayOutput() GooglePrivacyDlpV2PubSubConditionArrayOutput
+	ToGooglePrivacyDlpV2PubSubConditionArrayOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubConditionArrayOutput
+}
+
+type GooglePrivacyDlpV2PubSubConditionArray []GooglePrivacyDlpV2PubSubConditionInput
+
+func (GooglePrivacyDlpV2PubSubConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2PubSubCondition)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2PubSubConditionArray) ToGooglePrivacyDlpV2PubSubConditionArrayOutput() GooglePrivacyDlpV2PubSubConditionArrayOutput {
+	return i.ToGooglePrivacyDlpV2PubSubConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2PubSubConditionArray) ToGooglePrivacyDlpV2PubSubConditionArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PubSubConditionArrayOutput)
+}
+
+func (i GooglePrivacyDlpV2PubSubConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2PubSubCondition] {
+	return pulumix.Output[[]GooglePrivacyDlpV2PubSubCondition]{
+		OutputState: i.ToGooglePrivacyDlpV2PubSubConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A condition consisting of a value.
+type GooglePrivacyDlpV2PubSubConditionOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubCondition)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionOutput) ToGooglePrivacyDlpV2PubSubConditionOutput() GooglePrivacyDlpV2PubSubConditionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionOutput) ToGooglePrivacyDlpV2PubSubConditionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubCondition] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The minimum data risk score that triggers the condition.
+func (o GooglePrivacyDlpV2PubSubConditionOutput) MinimumRiskScore() GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubCondition) *GooglePrivacyDlpV2PubSubConditionMinimumRiskScore {
+		return v.MinimumRiskScore
+	}).(GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput)
+}
+
+// The minimum sensitivity level that triggers the condition.
+func (o GooglePrivacyDlpV2PubSubConditionOutput) MinimumSensitivityScore() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubCondition) *GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore {
+		return v.MinimumSensitivityScore
+	}).(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput)
+}
+
+type GooglePrivacyDlpV2PubSubConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2PubSubCondition)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionArrayOutput) ToGooglePrivacyDlpV2PubSubConditionArrayOutput() GooglePrivacyDlpV2PubSubConditionArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionArrayOutput) ToGooglePrivacyDlpV2PubSubConditionArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2PubSubCondition] {
+	return pulumix.Output[[]GooglePrivacyDlpV2PubSubCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2PubSubConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2PubSubCondition {
+		return vs[0].([]GooglePrivacyDlpV2PubSubCondition)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2PubSubConditionOutput)
+}
+
+// A condition consisting of a value.
+type GooglePrivacyDlpV2PubSubConditionResponse struct {
+	// The minimum data risk score that triggers the condition.
+	MinimumRiskScore string `pulumi:"minimumRiskScore"`
+	// The minimum sensitivity level that triggers the condition.
+	MinimumSensitivityScore string `pulumi:"minimumSensitivityScore"`
+}
+
+// A condition consisting of a value.
+type GooglePrivacyDlpV2PubSubConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionResponseOutput) ToGooglePrivacyDlpV2PubSubConditionResponseOutput() GooglePrivacyDlpV2PubSubConditionResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionResponseOutput) ToGooglePrivacyDlpV2PubSubConditionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubConditionResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The minimum data risk score that triggers the condition.
+func (o GooglePrivacyDlpV2PubSubConditionResponseOutput) MinimumRiskScore() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubConditionResponse) string { return v.MinimumRiskScore }).(pulumi.StringOutput)
+}
+
+// The minimum sensitivity level that triggers the condition.
+func (o GooglePrivacyDlpV2PubSubConditionResponseOutput) MinimumSensitivityScore() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubConditionResponse) string { return v.MinimumSensitivityScore }).(pulumi.StringOutput)
+}
+
+type GooglePrivacyDlpV2PubSubConditionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubConditionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2PubSubConditionResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionResponseArrayOutput) ToGooglePrivacyDlpV2PubSubConditionResponseArrayOutput() GooglePrivacyDlpV2PubSubConditionResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionResponseArrayOutput) ToGooglePrivacyDlpV2PubSubConditionResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2PubSubConditionResponse] {
+	return pulumix.Output[[]GooglePrivacyDlpV2PubSubConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionResponseArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2PubSubConditionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2PubSubConditionResponse {
+		return vs[0].([]GooglePrivacyDlpV2PubSubConditionResponse)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2PubSubConditionResponseOutput)
+}
+
+// An expression, consisting of an operator and conditions.
+type GooglePrivacyDlpV2PubSubExpressions struct {
+	// Conditions to apply to the expression.
+	Conditions []GooglePrivacyDlpV2PubSubCondition `pulumi:"conditions"`
+	// The operator to apply to the collection of conditions.
+	LogicalOperator *GooglePrivacyDlpV2PubSubExpressionsLogicalOperator `pulumi:"logicalOperator"`
+}
+
+// GooglePrivacyDlpV2PubSubExpressionsInput is an input type that accepts GooglePrivacyDlpV2PubSubExpressionsArgs and GooglePrivacyDlpV2PubSubExpressionsOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubExpressionsInput` via:
+//
+//	GooglePrivacyDlpV2PubSubExpressionsArgs{...}
+type GooglePrivacyDlpV2PubSubExpressionsInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubExpressionsOutput() GooglePrivacyDlpV2PubSubExpressionsOutput
+	ToGooglePrivacyDlpV2PubSubExpressionsOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubExpressionsOutput
+}
+
+// An expression, consisting of an operator and conditions.
+type GooglePrivacyDlpV2PubSubExpressionsArgs struct {
+	// Conditions to apply to the expression.
+	Conditions GooglePrivacyDlpV2PubSubConditionArrayInput `pulumi:"conditions"`
+	// The operator to apply to the collection of conditions.
+	LogicalOperator GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrInput `pulumi:"logicalOperator"`
+}
+
+func (GooglePrivacyDlpV2PubSubExpressionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubExpressions)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2PubSubExpressionsArgs) ToGooglePrivacyDlpV2PubSubExpressionsOutput() GooglePrivacyDlpV2PubSubExpressionsOutput {
+	return i.ToGooglePrivacyDlpV2PubSubExpressionsOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2PubSubExpressionsArgs) ToGooglePrivacyDlpV2PubSubExpressionsOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PubSubExpressionsOutput)
+}
+
+func (i GooglePrivacyDlpV2PubSubExpressionsArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubExpressions] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubExpressions]{
+		OutputState: i.ToGooglePrivacyDlpV2PubSubExpressionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2PubSubExpressionsArgs) ToGooglePrivacyDlpV2PubSubExpressionsPtrOutput() GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return i.ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2PubSubExpressionsArgs) ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PubSubExpressionsOutput).ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2PubSubExpressionsPtrInput is an input type that accepts GooglePrivacyDlpV2PubSubExpressionsArgs, GooglePrivacyDlpV2PubSubExpressionsPtr and GooglePrivacyDlpV2PubSubExpressionsPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubExpressionsPtrInput` via:
+//
+//	        GooglePrivacyDlpV2PubSubExpressionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2PubSubExpressionsPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubExpressionsPtrOutput() GooglePrivacyDlpV2PubSubExpressionsPtrOutput
+	ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubExpressionsPtrOutput
+}
+
+type googlePrivacyDlpV2PubSubExpressionsPtrType GooglePrivacyDlpV2PubSubExpressionsArgs
+
+func GooglePrivacyDlpV2PubSubExpressionsPtr(v *GooglePrivacyDlpV2PubSubExpressionsArgs) GooglePrivacyDlpV2PubSubExpressionsPtrInput {
+	return (*googlePrivacyDlpV2PubSubExpressionsPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2PubSubExpressionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2PubSubExpressions)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2PubSubExpressionsPtrType) ToGooglePrivacyDlpV2PubSubExpressionsPtrOutput() GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return i.ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2PubSubExpressionsPtrType) ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PubSubExpressionsPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2PubSubExpressionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubExpressions] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubExpressions]{
+		OutputState: i.ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// An expression, consisting of an operator and conditions.
+type GooglePrivacyDlpV2PubSubExpressionsOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubExpressionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubExpressions)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsOutput) ToGooglePrivacyDlpV2PubSubExpressionsOutput() GooglePrivacyDlpV2PubSubExpressionsOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsOutput) ToGooglePrivacyDlpV2PubSubExpressionsOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsOutput) ToGooglePrivacyDlpV2PubSubExpressionsPtrOutput() GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return o.ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsOutput) ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PubSubExpressions) *GooglePrivacyDlpV2PubSubExpressions {
+		return &v
+	}).(GooglePrivacyDlpV2PubSubExpressionsPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubExpressions] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubExpressions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Conditions to apply to the expression.
+func (o GooglePrivacyDlpV2PubSubExpressionsOutput) Conditions() GooglePrivacyDlpV2PubSubConditionArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubExpressions) []GooglePrivacyDlpV2PubSubCondition { return v.Conditions }).(GooglePrivacyDlpV2PubSubConditionArrayOutput)
+}
+
+// The operator to apply to the collection of conditions.
+func (o GooglePrivacyDlpV2PubSubExpressionsOutput) LogicalOperator() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubExpressions) *GooglePrivacyDlpV2PubSubExpressionsLogicalOperator {
+		return v.LogicalOperator
+	}).(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput)
+}
+
+type GooglePrivacyDlpV2PubSubExpressionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubExpressionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2PubSubExpressions)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsPtrOutput) ToGooglePrivacyDlpV2PubSubExpressionsPtrOutput() GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsPtrOutput) ToGooglePrivacyDlpV2PubSubExpressionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubExpressions] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubExpressions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsPtrOutput) Elem() GooglePrivacyDlpV2PubSubExpressionsOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubExpressions) GooglePrivacyDlpV2PubSubExpressions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PubSubExpressions
+		return ret
+	}).(GooglePrivacyDlpV2PubSubExpressionsOutput)
+}
+
+// Conditions to apply to the expression.
+func (o GooglePrivacyDlpV2PubSubExpressionsPtrOutput) Conditions() GooglePrivacyDlpV2PubSubConditionArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubExpressions) []GooglePrivacyDlpV2PubSubCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(GooglePrivacyDlpV2PubSubConditionArrayOutput)
+}
+
+// The operator to apply to the collection of conditions.
+func (o GooglePrivacyDlpV2PubSubExpressionsPtrOutput) LogicalOperator() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubExpressions) *GooglePrivacyDlpV2PubSubExpressionsLogicalOperator {
+		if v == nil {
+			return nil
+		}
+		return v.LogicalOperator
+	}).(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput)
+}
+
+// An expression, consisting of an operator and conditions.
+type GooglePrivacyDlpV2PubSubExpressionsResponse struct {
+	// Conditions to apply to the expression.
+	Conditions []GooglePrivacyDlpV2PubSubConditionResponse `pulumi:"conditions"`
+	// The operator to apply to the collection of conditions.
+	LogicalOperator string `pulumi:"logicalOperator"`
+}
+
+// An expression, consisting of an operator and conditions.
+type GooglePrivacyDlpV2PubSubExpressionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubExpressionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubExpressionsResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsResponseOutput) ToGooglePrivacyDlpV2PubSubExpressionsResponseOutput() GooglePrivacyDlpV2PubSubExpressionsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsResponseOutput) ToGooglePrivacyDlpV2PubSubExpressionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubExpressionsResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubExpressionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Conditions to apply to the expression.
+func (o GooglePrivacyDlpV2PubSubExpressionsResponseOutput) Conditions() GooglePrivacyDlpV2PubSubConditionResponseArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubExpressionsResponse) []GooglePrivacyDlpV2PubSubConditionResponse {
+		return v.Conditions
+	}).(GooglePrivacyDlpV2PubSubConditionResponseArrayOutput)
+}
+
+// The operator to apply to the collection of conditions.
+func (o GooglePrivacyDlpV2PubSubExpressionsResponseOutput) LogicalOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubExpressionsResponse) string { return v.LogicalOperator }).(pulumi.StringOutput)
+}
+
+// Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The message payload data will be the byte serialization of `DataProfilePubSubMessage`.
+type GooglePrivacyDlpV2PubSubNotification struct {
+	// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+	DetailOfMessage *GooglePrivacyDlpV2PubSubNotificationDetailOfMessage `pulumi:"detailOfMessage"`
+	// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+	Event *GooglePrivacyDlpV2PubSubNotificationEvent `pulumi:"event"`
+	// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
+	PubsubCondition *GooglePrivacyDlpV2DataProfilePubSubCondition `pulumi:"pubsubCondition"`
+	// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+	Topic *string `pulumi:"topic"`
+}
+
+// GooglePrivacyDlpV2PubSubNotificationInput is an input type that accepts GooglePrivacyDlpV2PubSubNotificationArgs and GooglePrivacyDlpV2PubSubNotificationOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubNotificationInput` via:
+//
+//	GooglePrivacyDlpV2PubSubNotificationArgs{...}
+type GooglePrivacyDlpV2PubSubNotificationInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubNotificationOutput() GooglePrivacyDlpV2PubSubNotificationOutput
+	ToGooglePrivacyDlpV2PubSubNotificationOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubNotificationOutput
+}
+
+// Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The message payload data will be the byte serialization of `DataProfilePubSubMessage`.
+type GooglePrivacyDlpV2PubSubNotificationArgs struct {
+	// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+	DetailOfMessage GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrInput `pulumi:"detailOfMessage"`
+	// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+	Event GooglePrivacyDlpV2PubSubNotificationEventPtrInput `pulumi:"event"`
+	// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
+	PubsubCondition GooglePrivacyDlpV2DataProfilePubSubConditionPtrInput `pulumi:"pubsubCondition"`
+	// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (GooglePrivacyDlpV2PubSubNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotification)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2PubSubNotificationArgs) ToGooglePrivacyDlpV2PubSubNotificationOutput() GooglePrivacyDlpV2PubSubNotificationOutput {
+	return i.ToGooglePrivacyDlpV2PubSubNotificationOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2PubSubNotificationArgs) ToGooglePrivacyDlpV2PubSubNotificationOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PubSubNotificationOutput)
+}
+
+func (i GooglePrivacyDlpV2PubSubNotificationArgs) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubNotification] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubNotification]{
+		OutputState: i.ToGooglePrivacyDlpV2PubSubNotificationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GooglePrivacyDlpV2PubSubNotificationArgs) ToGooglePrivacyDlpV2PubSubNotificationPtrOutput() GooglePrivacyDlpV2PubSubNotificationPtrOutput {
+	return i.ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2PubSubNotificationArgs) ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PubSubNotificationOutput).ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2PubSubNotificationPtrInput is an input type that accepts GooglePrivacyDlpV2PubSubNotificationArgs, GooglePrivacyDlpV2PubSubNotificationPtr and GooglePrivacyDlpV2PubSubNotificationPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubNotificationPtrInput` via:
+//
+//	        GooglePrivacyDlpV2PubSubNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2PubSubNotificationPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubNotificationPtrOutput() GooglePrivacyDlpV2PubSubNotificationPtrOutput
+	ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubNotificationPtrOutput
+}
+
+type googlePrivacyDlpV2PubSubNotificationPtrType GooglePrivacyDlpV2PubSubNotificationArgs
+
+func GooglePrivacyDlpV2PubSubNotificationPtr(v *GooglePrivacyDlpV2PubSubNotificationArgs) GooglePrivacyDlpV2PubSubNotificationPtrInput {
+	return (*googlePrivacyDlpV2PubSubNotificationPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2PubSubNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2PubSubNotification)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2PubSubNotificationPtrType) ToGooglePrivacyDlpV2PubSubNotificationPtrOutput() GooglePrivacyDlpV2PubSubNotificationPtrOutput {
+	return i.ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2PubSubNotificationPtrType) ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PubSubNotificationPtrOutput)
+}
+
+func (i *googlePrivacyDlpV2PubSubNotificationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubNotification] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubNotification]{
+		OutputState: i.ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The message payload data will be the byte serialization of `DataProfilePubSubMessage`.
+type GooglePrivacyDlpV2PubSubNotificationOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotification)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationOutput) ToGooglePrivacyDlpV2PubSubNotificationOutput() GooglePrivacyDlpV2PubSubNotificationOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationOutput) ToGooglePrivacyDlpV2PubSubNotificationOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationOutput) ToGooglePrivacyDlpV2PubSubNotificationPtrOutput() GooglePrivacyDlpV2PubSubNotificationPtrOutput {
+	return o.ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationOutput) ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PubSubNotification) *GooglePrivacyDlpV2PubSubNotification {
+		return &v
+	}).(GooglePrivacyDlpV2PubSubNotificationPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubNotification] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubNotification]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+func (o GooglePrivacyDlpV2PubSubNotificationOutput) DetailOfMessage() GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubNotification) *GooglePrivacyDlpV2PubSubNotificationDetailOfMessage {
+		return v.DetailOfMessage
+	}).(GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput)
+}
+
+// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+func (o GooglePrivacyDlpV2PubSubNotificationOutput) Event() GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubNotification) *GooglePrivacyDlpV2PubSubNotificationEvent {
+		return v.Event
+	}).(GooglePrivacyDlpV2PubSubNotificationEventPtrOutput)
+}
+
+// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
+func (o GooglePrivacyDlpV2PubSubNotificationOutput) PubsubCondition() GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubNotification) *GooglePrivacyDlpV2DataProfilePubSubCondition {
+		return v.PubsubCondition
+	}).(GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput)
+}
+
+// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+func (o GooglePrivacyDlpV2PubSubNotificationOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubNotification) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2PubSubNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2PubSubNotification)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationPtrOutput) ToGooglePrivacyDlpV2PubSubNotificationPtrOutput() GooglePrivacyDlpV2PubSubNotificationPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationPtrOutput) ToGooglePrivacyDlpV2PubSubNotificationPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubNotification] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubNotification]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationPtrOutput) Elem() GooglePrivacyDlpV2PubSubNotificationOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubNotification) GooglePrivacyDlpV2PubSubNotification {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PubSubNotification
+		return ret
+	}).(GooglePrivacyDlpV2PubSubNotificationOutput)
+}
+
+// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+func (o GooglePrivacyDlpV2PubSubNotificationPtrOutput) DetailOfMessage() GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubNotification) *GooglePrivacyDlpV2PubSubNotificationDetailOfMessage {
+		if v == nil {
+			return nil
+		}
+		return v.DetailOfMessage
+	}).(GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput)
+}
+
+// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+func (o GooglePrivacyDlpV2PubSubNotificationPtrOutput) Event() GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubNotification) *GooglePrivacyDlpV2PubSubNotificationEvent {
+		if v == nil {
+			return nil
+		}
+		return v.Event
+	}).(GooglePrivacyDlpV2PubSubNotificationEventPtrOutput)
+}
+
+// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
+func (o GooglePrivacyDlpV2PubSubNotificationPtrOutput) PubsubCondition() GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubNotification) *GooglePrivacyDlpV2DataProfilePubSubCondition {
+		if v == nil {
+			return nil
+		}
+		return v.PubsubCondition
+	}).(GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput)
+}
+
+// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+func (o GooglePrivacyDlpV2PubSubNotificationPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+// Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The message payload data will be the byte serialization of `DataProfilePubSubMessage`.
+type GooglePrivacyDlpV2PubSubNotificationResponse struct {
+	// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+	DetailOfMessage string `pulumi:"detailOfMessage"`
+	// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+	Event string `pulumi:"event"`
+	// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
+	PubsubCondition GooglePrivacyDlpV2DataProfilePubSubConditionResponse `pulumi:"pubsubCondition"`
+	// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+	Topic string `pulumi:"topic"`
+}
+
+// Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The message payload data will be the byte serialization of `DataProfilePubSubMessage`.
+type GooglePrivacyDlpV2PubSubNotificationResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubNotificationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationResponseOutput) ToGooglePrivacyDlpV2PubSubNotificationResponseOutput() GooglePrivacyDlpV2PubSubNotificationResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationResponseOutput) ToGooglePrivacyDlpV2PubSubNotificationResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubNotificationResponse] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubNotificationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+func (o GooglePrivacyDlpV2PubSubNotificationResponseOutput) DetailOfMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubNotificationResponse) string { return v.DetailOfMessage }).(pulumi.StringOutput)
+}
+
+// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+func (o GooglePrivacyDlpV2PubSubNotificationResponseOutput) Event() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubNotificationResponse) string { return v.Event }).(pulumi.StringOutput)
+}
+
+// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
+func (o GooglePrivacyDlpV2PubSubNotificationResponseOutput) PubsubCondition() GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubNotificationResponse) GooglePrivacyDlpV2DataProfilePubSubConditionResponse {
+		return v.PubsubCondition
+	}).(GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput)
+}
+
+// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+func (o GooglePrivacyDlpV2PubSubNotificationResponseOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PubSubNotificationResponse) string { return v.Topic }).(pulumi.StringOutput)
 }
 
 // Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates are applied to the resource that Cloud DLP scanned. Data Catalog tag templates are stored in the same project and region where the BigQuery table exists. For Cloud DLP to create and apply the tag template, the Cloud DLP service agent must have the `roles/datacatalog.tagTemplateOwner` permission on the project. The tag template contains fields summarizing the results of the DlpJob. Any field values previously written by another DlpJob are deleted. InfoType naming patterns are strictly enforced when using this feature. Findings are persisted in Data Catalog storage and are governed by service-specific policies for Data Catalog. For more information, see [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
@@ -21280,7 +26312,7 @@ func (o GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput) ToOutput(ctx 
 	}
 }
 
-// De-id options.
+// De-identification options.
 type GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse struct {
 	// Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
 	SnapshotDeidentifyTemplate GooglePrivacyDlpV2DeidentifyTemplateResponse `pulumi:"snapshotDeidentifyTemplate"`
@@ -21290,7 +26322,7 @@ type GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse struct {
 	SnapshotStructuredDeidentifyTemplate GooglePrivacyDlpV2DeidentifyTemplateResponse `pulumi:"snapshotStructuredDeidentifyTemplate"`
 }
 
-// De-id options.
+// De-identification options.
 type GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) ElementType() reflect.Type {
@@ -27471,16 +32503,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ActionArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllInfoTypesInput)(nil)).Elem(), GooglePrivacyDlpV2AllInfoTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllInfoTypesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2AllInfoTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllOtherBigQueryTablesInput)(nil)).Elem(), GooglePrivacyDlpV2AllOtherBigQueryTablesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllOtherBigQueryTablesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2AllOtherBigQueryTablesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllTextInput)(nil)).Elem(), GooglePrivacyDlpV2AllTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllTextPtrInput)(nil)).Elem(), GooglePrivacyDlpV2AllTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AuxiliaryTableInput)(nil)).Elem(), GooglePrivacyDlpV2AuxiliaryTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AuxiliaryTableArrayInput)(nil)).Elem(), GooglePrivacyDlpV2AuxiliaryTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryDiscoveryTargetInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryDiscoveryTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryFieldInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryFieldPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegexInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryRegexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegexArrayInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryRegexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegexesInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryRegexesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryRegexesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryRegexesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTablePtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableCollectionInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableCollectionPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypesInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketInput)(nil)).Elem(), GooglePrivacyDlpV2BucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketArrayInput)(nil)).Elem(), GooglePrivacyDlpV2BucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketingConfigInput)(nil)).Elem(), GooglePrivacyDlpV2BucketingConfigArgs{})
@@ -27515,6 +32559,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeInput)(nil)).Elem(), GooglePrivacyDlpV2CustomInfoTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeArrayInput)(nil)).Elem(), GooglePrivacyDlpV2CustomInfoTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DataProfileActionInput)(nil)).Elem(), GooglePrivacyDlpV2DataProfileActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DataProfileActionArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DataProfileActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DataProfilePubSubConditionInput)(nil)).Elem(), GooglePrivacyDlpV2DataProfilePubSubConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DataProfilePubSubConditionPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DataProfilePubSubConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DatastoreOptionsInput)(nil)).Elem(), GooglePrivacyDlpV2DatastoreOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DatastoreOptionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DatastoreOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DateShiftConfigInput)(nil)).Elem(), GooglePrivacyDlpV2DateShiftConfigArgs{})
@@ -27529,6 +32577,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DetectionRuleArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DetectionRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DictionaryInput)(nil)).Elem(), GooglePrivacyDlpV2DictionaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DictionaryPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DisabledInput)(nil)).Elem(), GooglePrivacyDlpV2DisabledArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DisabledPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DisabledArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryConditionsInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryBigQueryConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryFilterInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryBigQueryFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryGenerationCadenceInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryGenerationCadencePtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryGenerationCadenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryStartingLocationInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryStartingLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryStartingLocationPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryStartingLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryTableModifiedCadenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTargetInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTargetArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2EntityIdInput)(nil)).Elem(), GooglePrivacyDlpV2EntityIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2EntityIdPtrInput)(nil)).Elem(), GooglePrivacyDlpV2EntityIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExcludeByHotwordInput)(nil)).Elem(), GooglePrivacyDlpV2ExcludeByHotwordArgs{})
@@ -27537,6 +32601,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExcludeInfoTypesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExcludeInfoTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRuleInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRulePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExportInput)(nil)).Elem(), GooglePrivacyDlpV2ExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExportPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExpressionsInput)(nil)).Elem(), GooglePrivacyDlpV2ExpressionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExpressionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExpressionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldIdInput)(nil)).Elem(), GooglePrivacyDlpV2FieldIdArgs{})
@@ -27561,6 +32627,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypePtrInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLikelihoodInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLikelihoodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLikelihoodArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLikelihoodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLimitInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLimitArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeTransformationArgs{})
@@ -27597,6 +32665,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ManualPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsConfigInput)(nil)).Elem(), GooglePrivacyDlpV2NumericalStatsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2NumericalStatsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OrConditionsInput)(nil)).Elem(), GooglePrivacyDlpV2OrConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OrConditionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2OrConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OrgConfigInput)(nil)).Elem(), GooglePrivacyDlpV2OrgConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OrgConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2OrgConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigInput)(nil)).Elem(), GooglePrivacyDlpV2OutputStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2OutputStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PartitionIdInput)(nil)).Elem(), GooglePrivacyDlpV2PartitionIdArgs{})
@@ -27607,6 +32679,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PrivacyMetricPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PrivacyMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ProximityInput)(nil)).Elem(), GooglePrivacyDlpV2ProximityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ProximityPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ProximityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionArrayInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubExpressionsInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubExpressionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubExpressionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubExpressionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogInput)(nil)).Elem(), GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishSummaryToCsccInput)(nil)).Elem(), GooglePrivacyDlpV2PublishSummaryToCsccArgs{})
@@ -27697,6 +32775,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllInfoTypesOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllInfoTypesPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllInfoTypesResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllOtherBigQueryTablesOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllOtherBigQueryTablesPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllOtherBigQueryTablesResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllTextOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllTextPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllTextResponseOutput{})
@@ -27705,15 +32786,31 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AuxiliaryTableArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AuxiliaryTableResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryDiscoveryTargetOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryDiscoveryTargetPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryDiscoveryTargetResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryFieldOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryFieldPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryFieldResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryRegexOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryRegexArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryRegexResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryRegexResponseArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryRegexesOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryRegexesPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryRegexesResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTablePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableCollectionOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableCollectionPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableCollectionResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableTypesOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableTypesPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableTypesResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BucketOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BucketArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BucketResponseOutput{})
@@ -27772,6 +32869,13 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CustomInfoTypeArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CustomInfoTypeResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DataProfileActionOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DataProfileActionArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DataProfileActionResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DataProfileActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DataProfilePubSubConditionOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DataProfilePubSubConditionPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DataProfilePubSubConditionResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DatastoreOptionsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DatastoreOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DatastoreOptionsResponseOutput{})
@@ -27802,6 +32906,31 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DictionaryOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DictionaryPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DictionaryResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DisabledOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DisabledPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DisabledResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryBigQueryConditionsOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryBigQueryConditionsPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryBigQueryFilterOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryBigQueryFilterPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryBigQueryFilterResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryGenerationCadenceOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryGenerationCadencePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryGenerationCadenceResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoverySchemaModifiedCadencePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryStartingLocationOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryStartingLocationPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryStartingLocationResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTableModifiedCadencePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTargetOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTargetArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTargetResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2EntityIdOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2EntityIdPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2EntityIdResponseOutput{})
@@ -27816,6 +32945,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExclusionRuleOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExclusionRulePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExclusionRuleResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExportOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExportPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExportResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExpressionsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExpressionsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExpressionsResponseOutput{})
@@ -27854,6 +32986,10 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeLikelihoodOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeLikelihoodArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeLikelihoodResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeLikelihoodResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeLimitOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeLimitArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeLimitResponseOutput{})
@@ -27935,6 +33071,12 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2NumericalStatsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2NumericalStatsConfigResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2NumericalStatsResultResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2OrConditionsOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2OrConditionsPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2OrConditionsResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2OrgConfigOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2OrgConfigPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2OrgConfigResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigResponseOutput{})
@@ -27950,6 +33092,16 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ProximityOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ProximityPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ProximityResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubConditionOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubConditionArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubConditionResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubExpressionsOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubExpressionsPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubExpressionsResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubNotificationOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubNotificationPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubNotificationResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput{})

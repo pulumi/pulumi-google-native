@@ -16,20 +16,49 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'AuthorityArgs',
+    'BinaryAuthorizationConfigArgs',
     'BindingArgs',
+    'ClusterUpgradeFleetSpecArgs',
+    'ClusterUpgradeGKEUpgradeOverrideArgs',
+    'ClusterUpgradeGKEUpgradeArgs',
+    'ClusterUpgradePostConditionsArgs',
     'CommonFeatureSpecArgs',
     'CommonFleetDefaultMemberConfigSpecArgs',
+    'ConfigManagementConfigSyncArgs',
+    'ConfigManagementGitConfigArgs',
+    'ConfigManagementHierarchyControllerConfigArgs',
+    'ConfigManagementMembershipSpecArgs',
+    'ConfigManagementOciConfigArgs',
+    'ConfigManagementPolicyControllerMonitoringArgs',
+    'ConfigManagementPolicyControllerArgs',
+    'DefaultClusterConfigArgs',
     'EdgeClusterArgs',
     'ExprArgs',
     'FleetObservabilityFeatureSpecArgs',
+    'FleetObservabilityLoggingConfigArgs',
+    'FleetObservabilityRoutingConfigArgs',
     'GkeClusterArgs',
+    'IdentityServiceAuthMethodArgs',
+    'IdentityServiceAzureADConfigArgs',
+    'IdentityServiceGoogleConfigArgs',
+    'IdentityServiceMembershipSpecArgs',
+    'IdentityServiceOidcConfigArgs',
     'KubernetesResourceArgs',
     'MembershipEndpointArgs',
     'MonitoringConfigArgs',
     'MultiCloudClusterArgs',
     'MultiClusterIngressFeatureSpecArgs',
     'OnPremClusterArgs',
+    'PolicyBindingArgs',
+    'PolicyControllerHubConfigArgs',
+    'PolicyControllerMembershipSpecArgs',
+    'PolicyControllerMonitoringConfigArgs',
+    'PolicyControllerPolicyContentSpecArgs',
+    'PolicyControllerTemplateLibraryConfigArgs',
     'ResourceOptionsArgs',
+    'RoleArgs',
+    'SecurityPostureConfigArgs',
+    'ServiceMeshMembershipSpecArgs',
 ]
 
 @pulumi.input_type
@@ -152,7 +181,7 @@ class AuthorityArgs:
                  oidc_jwks: Optional[pulumi.Input[str]] = None):
         """
         Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
-        :param pulumi.Input[str] issuer: Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
+        :param pulumi.Input[str] issuer: Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters, it must use `location` rather than `zone` for GKE clusters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
         :param pulumi.Input[str] oidc_jwks: Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
         """
         if issuer is not None:
@@ -164,7 +193,7 @@ class AuthorityArgs:
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
+        Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters, it must use `location` rather than `zone` for GKE clusters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
         """
         return pulumi.get(self, "issuer")
 
@@ -183,6 +212,46 @@ class AuthorityArgs:
     @oidc_jwks.setter
     def oidc_jwks(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oidc_jwks", value)
+
+
+@pulumi.input_type
+class BinaryAuthorizationConfigArgs:
+    def __init__(__self__, *,
+                 evaluation_mode: Optional[pulumi.Input['BinaryAuthorizationConfigEvaluationMode']] = None,
+                 policy_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBindingArgs']]]] = None):
+        """
+        BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.
+        :param pulumi.Input['BinaryAuthorizationConfigEvaluationMode'] evaluation_mode: Optional. Mode of operation for binauthz policy evaluation.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyBindingArgs']]] policy_bindings: Optional. Binauthz policies that apply to this cluster.
+        """
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+        if policy_bindings is not None:
+            pulumi.set(__self__, "policy_bindings", policy_bindings)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[pulumi.Input['BinaryAuthorizationConfigEvaluationMode']]:
+        """
+        Optional. Mode of operation for binauthz policy evaluation.
+        """
+        return pulumi.get(self, "evaluation_mode")
+
+    @evaluation_mode.setter
+    def evaluation_mode(self, value: Optional[pulumi.Input['BinaryAuthorizationConfigEvaluationMode']]):
+        pulumi.set(self, "evaluation_mode", value)
+
+    @property
+    @pulumi.getter(name="policyBindings")
+    def policy_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBindingArgs']]]]:
+        """
+        Optional. Binauthz policies that apply to this cluster.
+        """
+        return pulumi.get(self, "policy_bindings")
+
+    @policy_bindings.setter
+    def policy_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyBindingArgs']]]]):
+        pulumi.set(self, "policy_bindings", value)
 
 
 @pulumi.input_type
@@ -242,19 +311,179 @@ class BindingArgs:
 
 
 @pulumi.input_type
+class ClusterUpgradeFleetSpecArgs:
+    def __init__(__self__, *,
+                 post_conditions: pulumi.Input['ClusterUpgradePostConditionsArgs'],
+                 gke_upgrade_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUpgradeGKEUpgradeOverrideArgs']]]] = None,
+                 upstream_fleets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade feature.
+        :param pulumi.Input['ClusterUpgradePostConditionsArgs'] post_conditions: Post conditions to evaluate to mark an upgrade COMPLETE. Required.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterUpgradeGKEUpgradeOverrideArgs']]] gke_upgrade_overrides: Allow users to override some properties of each GKE upgrade.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] upstream_fleets: This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code for code definitions. The fleet name should be either fleet project number or id. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet.
+        """
+        pulumi.set(__self__, "post_conditions", post_conditions)
+        if gke_upgrade_overrides is not None:
+            pulumi.set(__self__, "gke_upgrade_overrides", gke_upgrade_overrides)
+        if upstream_fleets is not None:
+            pulumi.set(__self__, "upstream_fleets", upstream_fleets)
+
+    @property
+    @pulumi.getter(name="postConditions")
+    def post_conditions(self) -> pulumi.Input['ClusterUpgradePostConditionsArgs']:
+        """
+        Post conditions to evaluate to mark an upgrade COMPLETE. Required.
+        """
+        return pulumi.get(self, "post_conditions")
+
+    @post_conditions.setter
+    def post_conditions(self, value: pulumi.Input['ClusterUpgradePostConditionsArgs']):
+        pulumi.set(self, "post_conditions", value)
+
+    @property
+    @pulumi.getter(name="gkeUpgradeOverrides")
+    def gke_upgrade_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUpgradeGKEUpgradeOverrideArgs']]]]:
+        """
+        Allow users to override some properties of each GKE upgrade.
+        """
+        return pulumi.get(self, "gke_upgrade_overrides")
+
+    @gke_upgrade_overrides.setter
+    def gke_upgrade_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUpgradeGKEUpgradeOverrideArgs']]]]):
+        pulumi.set(self, "gke_upgrade_overrides", value)
+
+    @property
+    @pulumi.getter(name="upstreamFleets")
+    def upstream_fleets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code for code definitions. The fleet name should be either fleet project number or id. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet.
+        """
+        return pulumi.get(self, "upstream_fleets")
+
+    @upstream_fleets.setter
+    def upstream_fleets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "upstream_fleets", value)
+
+
+@pulumi.input_type
+class ClusterUpgradeGKEUpgradeOverrideArgs:
+    def __init__(__self__, *,
+                 post_conditions: pulumi.Input['ClusterUpgradePostConditionsArgs'],
+                 upgrade: pulumi.Input['ClusterUpgradeGKEUpgradeArgs']):
+        """
+        Properties of a GKE upgrade that can be overridden by the user. For example, a user can skip soaking by overriding the soaking to 0.
+        :param pulumi.Input['ClusterUpgradePostConditionsArgs'] post_conditions: Post conditions to override for the specified upgrade (name + version). Required.
+        :param pulumi.Input['ClusterUpgradeGKEUpgradeArgs'] upgrade: Which upgrade to override. Required.
+        """
+        pulumi.set(__self__, "post_conditions", post_conditions)
+        pulumi.set(__self__, "upgrade", upgrade)
+
+    @property
+    @pulumi.getter(name="postConditions")
+    def post_conditions(self) -> pulumi.Input['ClusterUpgradePostConditionsArgs']:
+        """
+        Post conditions to override for the specified upgrade (name + version). Required.
+        """
+        return pulumi.get(self, "post_conditions")
+
+    @post_conditions.setter
+    def post_conditions(self, value: pulumi.Input['ClusterUpgradePostConditionsArgs']):
+        pulumi.set(self, "post_conditions", value)
+
+    @property
+    @pulumi.getter
+    def upgrade(self) -> pulumi.Input['ClusterUpgradeGKEUpgradeArgs']:
+        """
+        Which upgrade to override. Required.
+        """
+        return pulumi.get(self, "upgrade")
+
+    @upgrade.setter
+    def upgrade(self, value: pulumi.Input['ClusterUpgradeGKEUpgradeArgs']):
+        pulumi.set(self, "upgrade", value)
+
+
+@pulumi.input_type
+class ClusterUpgradeGKEUpgradeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+        :param pulumi.Input[str] name: Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        :param pulumi.Input[str] version: Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class ClusterUpgradePostConditionsArgs:
+    def __init__(__self__, *,
+                 soaking: pulumi.Input[str]):
+        """
+        Post conditional checks after an upgrade has been applied on all eligible clusters.
+        :param pulumi.Input[str] soaking: Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days. Required.
+        """
+        pulumi.set(__self__, "soaking", soaking)
+
+    @property
+    @pulumi.getter
+    def soaking(self) -> pulumi.Input[str]:
+        """
+        Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days. Required.
+        """
+        return pulumi.get(self, "soaking")
+
+    @soaking.setter
+    def soaking(self, value: pulumi.Input[str]):
+        pulumi.set(self, "soaking", value)
+
+
+@pulumi.input_type
 class CommonFeatureSpecArgs:
     def __init__(__self__, *,
                  appdevexperience: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']] = None,
+                 clusterupgrade: Optional[pulumi.Input['ClusterUpgradeFleetSpecArgs']] = None,
                  fleetobservability: Optional[pulumi.Input['FleetObservabilityFeatureSpecArgs']] = None,
                  multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None):
         """
         CommonFeatureSpec contains Hub-wide configuration information
         :param pulumi.Input['AppDevExperienceFeatureSpecArgs'] appdevexperience: Appdevexperience specific spec.
+        :param pulumi.Input['ClusterUpgradeFleetSpecArgs'] clusterupgrade: ClusterUpgrade (fleet-based) feature spec.
         :param pulumi.Input['FleetObservabilityFeatureSpecArgs'] fleetobservability: FleetObservability feature spec.
         :param pulumi.Input['MultiClusterIngressFeatureSpecArgs'] multiclusteringress: Multicluster Ingress-specific spec.
         """
         if appdevexperience is not None:
             pulumi.set(__self__, "appdevexperience", appdevexperience)
+        if clusterupgrade is not None:
+            pulumi.set(__self__, "clusterupgrade", clusterupgrade)
         if fleetobservability is not None:
             pulumi.set(__self__, "fleetobservability", fleetobservability)
         if multiclusteringress is not None:
@@ -271,6 +500,18 @@ class CommonFeatureSpecArgs:
     @appdevexperience.setter
     def appdevexperience(self, value: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']]):
         pulumi.set(self, "appdevexperience", value)
+
+    @property
+    @pulumi.getter
+    def clusterupgrade(self) -> Optional[pulumi.Input['ClusterUpgradeFleetSpecArgs']]:
+        """
+        ClusterUpgrade (fleet-based) feature spec.
+        """
+        return pulumi.get(self, "clusterupgrade")
+
+    @clusterupgrade.setter
+    def clusterupgrade(self, value: Optional[pulumi.Input['ClusterUpgradeFleetSpecArgs']]):
+        pulumi.set(self, "clusterupgrade", value)
 
     @property
     @pulumi.getter
@@ -299,11 +540,768 @@ class CommonFeatureSpecArgs:
 
 @pulumi.input_type
 class CommonFleetDefaultMemberConfigSpecArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 configmanagement: Optional[pulumi.Input['ConfigManagementMembershipSpecArgs']] = None,
+                 identityservice: Optional[pulumi.Input['IdentityServiceMembershipSpecArgs']] = None,
+                 mesh: Optional[pulumi.Input['ServiceMeshMembershipSpecArgs']] = None,
+                 policycontroller: Optional[pulumi.Input['PolicyControllerMembershipSpecArgs']] = None):
         """
         CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+        :param pulumi.Input['ConfigManagementMembershipSpecArgs'] configmanagement: Config Management-specific spec.
+        :param pulumi.Input['IdentityServiceMembershipSpecArgs'] identityservice: Identity Service-specific spec.
+        :param pulumi.Input['ServiceMeshMembershipSpecArgs'] mesh: Anthos Service Mesh-specific spec
+        :param pulumi.Input['PolicyControllerMembershipSpecArgs'] policycontroller: Policy Controller spec.
         """
-        pass
+        if configmanagement is not None:
+            pulumi.set(__self__, "configmanagement", configmanagement)
+        if identityservice is not None:
+            pulumi.set(__self__, "identityservice", identityservice)
+        if mesh is not None:
+            pulumi.set(__self__, "mesh", mesh)
+        if policycontroller is not None:
+            pulumi.set(__self__, "policycontroller", policycontroller)
+
+    @property
+    @pulumi.getter
+    def configmanagement(self) -> Optional[pulumi.Input['ConfigManagementMembershipSpecArgs']]:
+        """
+        Config Management-specific spec.
+        """
+        return pulumi.get(self, "configmanagement")
+
+    @configmanagement.setter
+    def configmanagement(self, value: Optional[pulumi.Input['ConfigManagementMembershipSpecArgs']]):
+        pulumi.set(self, "configmanagement", value)
+
+    @property
+    @pulumi.getter
+    def identityservice(self) -> Optional[pulumi.Input['IdentityServiceMembershipSpecArgs']]:
+        """
+        Identity Service-specific spec.
+        """
+        return pulumi.get(self, "identityservice")
+
+    @identityservice.setter
+    def identityservice(self, value: Optional[pulumi.Input['IdentityServiceMembershipSpecArgs']]):
+        pulumi.set(self, "identityservice", value)
+
+    @property
+    @pulumi.getter
+    def mesh(self) -> Optional[pulumi.Input['ServiceMeshMembershipSpecArgs']]:
+        """
+        Anthos Service Mesh-specific spec
+        """
+        return pulumi.get(self, "mesh")
+
+    @mesh.setter
+    def mesh(self, value: Optional[pulumi.Input['ServiceMeshMembershipSpecArgs']]):
+        pulumi.set(self, "mesh", value)
+
+    @property
+    @pulumi.getter
+    def policycontroller(self) -> Optional[pulumi.Input['PolicyControllerMembershipSpecArgs']]:
+        """
+        Policy Controller spec.
+        """
+        return pulumi.get(self, "policycontroller")
+
+    @policycontroller.setter
+    def policycontroller(self, value: Optional[pulumi.Input['PolicyControllerMembershipSpecArgs']]):
+        pulumi.set(self, "policycontroller", value)
+
+
+@pulumi.input_type
+class ConfigManagementConfigSyncArgs:
+    def __init__(__self__, *,
+                 allow_vertical_scale: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 git: Optional[pulumi.Input['ConfigManagementGitConfigArgs']] = None,
+                 metrics_gcp_service_account_email: Optional[pulumi.Input[str]] = None,
+                 oci: Optional[pulumi.Input['ConfigManagementOciConfigArgs']] = None,
+                 prevent_drift: Optional[pulumi.Input[bool]] = None,
+                 source_format: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for Config Sync
+        :param pulumi.Input[bool] allow_vertical_scale: Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
+        :param pulumi.Input[bool] enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        :param pulumi.Input['ConfigManagementGitConfigArgs'] git: Git repo configuration for the cluster.
+        :param pulumi.Input[str] metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+        :param pulumi.Input['ConfigManagementOciConfigArgs'] oci: OCI repo configuration for the cluster
+        :param pulumi.Input[bool] prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+        :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        """
+        if allow_vertical_scale is not None:
+            warnings.warn("""Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""allow_vertical_scale is deprecated: Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.""")
+        if allow_vertical_scale is not None:
+            pulumi.set(__self__, "allow_vertical_scale", allow_vertical_scale)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if metrics_gcp_service_account_email is not None:
+            pulumi.set(__self__, "metrics_gcp_service_account_email", metrics_gcp_service_account_email)
+        if oci is not None:
+            pulumi.set(__self__, "oci", oci)
+        if prevent_drift is not None:
+            pulumi.set(__self__, "prevent_drift", prevent_drift)
+        if source_format is not None:
+            pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter(name="allowVerticalScale")
+    def allow_vertical_scale(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
+        """
+        warnings.warn("""Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""allow_vertical_scale is deprecated: Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.""")
+
+        return pulumi.get(self, "allow_vertical_scale")
+
+    @allow_vertical_scale.setter
+    def allow_vertical_scale(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_vertical_scale", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional[pulumi.Input['ConfigManagementGitConfigArgs']]:
+        """
+        Git repo configuration for the cluster.
+        """
+        return pulumi.get(self, "git")
+
+    @git.setter
+    def git(self, value: Optional[pulumi.Input['ConfigManagementGitConfigArgs']]):
+        pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter(name="metricsGcpServiceAccountEmail")
+    def metrics_gcp_service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+        """
+        return pulumi.get(self, "metrics_gcp_service_account_email")
+
+    @metrics_gcp_service_account_email.setter
+    def metrics_gcp_service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metrics_gcp_service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def oci(self) -> Optional[pulumi.Input['ConfigManagementOciConfigArgs']]:
+        """
+        OCI repo configuration for the cluster
+        """
+        return pulumi.get(self, "oci")
+
+    @oci.setter
+    def oci(self, value: Optional[pulumi.Input['ConfigManagementOciConfigArgs']]):
+        pulumi.set(self, "oci", value)
+
+    @property
+    @pulumi.getter(name="preventDrift")
+    def prevent_drift(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+        """
+        return pulumi.get(self, "prevent_drift")
+
+    @prevent_drift.setter
+    def prevent_drift(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_drift", value)
+
+    @property
+    @pulumi.getter(name="sourceFormat")
+    def source_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        """
+        return pulumi.get(self, "source_format")
+
+    @source_format.setter
+    def source_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_format", value)
+
+
+@pulumi.input_type
+class ConfigManagementGitConfigArgs:
+    def __init__(__self__, *,
+                 gcp_service_account_email: Optional[pulumi.Input[str]] = None,
+                 https_proxy: Optional[pulumi.Input[str]] = None,
+                 policy_dir: Optional[pulumi.Input[str]] = None,
+                 secret_type: Optional[pulumi.Input[str]] = None,
+                 sync_branch: Optional[pulumi.Input[str]] = None,
+                 sync_repo: Optional[pulumi.Input[str]] = None,
+                 sync_rev: Optional[pulumi.Input[str]] = None,
+                 sync_wait_secs: Optional[pulumi.Input[str]] = None):
+        """
+        Git repo configuration for a single cluster.
+        :param pulumi.Input[str] gcp_service_account_email: The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        :param pulumi.Input[str] https_proxy: URL for the HTTPS proxy to be used when communicating with the Git repo.
+        :param pulumi.Input[str] policy_dir: The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+        :param pulumi.Input[str] secret_type: Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount or none. The validation of this is case-sensitive. Required.
+        :param pulumi.Input[str] sync_branch: The branch of the repository to sync from. Default: master.
+        :param pulumi.Input[str] sync_repo: The URL of the Git repository to use as the source of truth.
+        :param pulumi.Input[str] sync_rev: Git revision (tag or hash) to check out. Default HEAD.
+        :param pulumi.Input[str] sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
+        """
+        if gcp_service_account_email is not None:
+            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+        if https_proxy is not None:
+            pulumi.set(__self__, "https_proxy", https_proxy)
+        if policy_dir is not None:
+            pulumi.set(__self__, "policy_dir", policy_dir)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
+        if sync_branch is not None:
+            pulumi.set(__self__, "sync_branch", sync_branch)
+        if sync_repo is not None:
+            pulumi.set(__self__, "sync_repo", sync_repo)
+        if sync_rev is not None:
+            pulumi.set(__self__, "sync_rev", sync_rev)
+        if sync_wait_secs is not None:
+            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        """
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @gcp_service_account_email.setter
+    def gcp_service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcp_service_account_email", value)
+
+    @property
+    @pulumi.getter(name="httpsProxy")
+    def https_proxy(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL for the HTTPS proxy to be used when communicating with the Git repo.
+        """
+        return pulumi.get(self, "https_proxy")
+
+    @https_proxy.setter
+    def https_proxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "https_proxy", value)
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @policy_dir.setter
+    def policy_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_dir", value)
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount or none. The validation of this is case-sensitive. Required.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @secret_type.setter
+    def secret_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_type", value)
+
+    @property
+    @pulumi.getter(name="syncBranch")
+    def sync_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The branch of the repository to sync from. Default: master.
+        """
+        return pulumi.get(self, "sync_branch")
+
+    @sync_branch.setter
+    def sync_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_branch", value)
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the Git repository to use as the source of truth.
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @sync_repo.setter
+    def sync_repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_repo", value)
+
+    @property
+    @pulumi.getter(name="syncRev")
+    def sync_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        Git revision (tag or hash) to check out. Default HEAD.
+        """
+        return pulumi.get(self, "sync_rev")
+
+    @sync_rev.setter
+    def sync_rev(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_rev", value)
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Period in seconds between consecutive syncs. Default: 15.
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+    @sync_wait_secs.setter
+    def sync_wait_secs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_wait_secs", value)
+
+
+@pulumi.input_type
+class ConfigManagementHierarchyControllerConfigArgs:
+    def __init__(__self__, *,
+                 enable_hierarchical_resource_quota: Optional[pulumi.Input[bool]] = None,
+                 enable_pod_tree_labels: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for Hierarchy Controller
+        :param pulumi.Input[bool] enable_hierarchical_resource_quota: Whether hierarchical resource quota is enabled in this cluster.
+        :param pulumi.Input[bool] enable_pod_tree_labels: Whether pod tree labels are enabled in this cluster.
+        :param pulumi.Input[bool] enabled: Whether Hierarchy Controller is enabled in this cluster.
+        """
+        if enable_hierarchical_resource_quota is not None:
+            pulumi.set(__self__, "enable_hierarchical_resource_quota", enable_hierarchical_resource_quota)
+        if enable_pod_tree_labels is not None:
+            pulumi.set(__self__, "enable_pod_tree_labels", enable_pod_tree_labels)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="enableHierarchicalResourceQuota")
+    def enable_hierarchical_resource_quota(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether hierarchical resource quota is enabled in this cluster.
+        """
+        return pulumi.get(self, "enable_hierarchical_resource_quota")
+
+    @enable_hierarchical_resource_quota.setter
+    def enable_hierarchical_resource_quota(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_hierarchical_resource_quota", value)
+
+    @property
+    @pulumi.getter(name="enablePodTreeLabels")
+    def enable_pod_tree_labels(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether pod tree labels are enabled in this cluster.
+        """
+        return pulumi.get(self, "enable_pod_tree_labels")
+
+    @enable_pod_tree_labels.setter
+    def enable_pod_tree_labels(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_pod_tree_labels", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Hierarchy Controller is enabled in this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class ConfigManagementMembershipSpecArgs:
+    def __init__(__self__, *,
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 config_sync: Optional[pulumi.Input['ConfigManagementConfigSyncArgs']] = None,
+                 hierarchy_controller: Optional[pulumi.Input['ConfigManagementHierarchyControllerConfigArgs']] = None,
+                 policy_controller: Optional[pulumi.Input['ConfigManagementPolicyControllerArgs']] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.
+        :param pulumi.Input[str] cluster: The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector.
+        :param pulumi.Input['ConfigManagementConfigSyncArgs'] config_sync: Config Sync configuration for the cluster.
+        :param pulumi.Input['ConfigManagementHierarchyControllerConfigArgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster.
+        :param pulumi.Input['ConfigManagementPolicyControllerArgs'] policy_controller: Policy Controller configuration for the cluster.
+        :param pulumi.Input[str] version: Version of ACM installed.
+        """
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if config_sync is not None:
+            pulumi.set(__self__, "config_sync", config_sync)
+        if hierarchy_controller is not None:
+            pulumi.set(__self__, "hierarchy_controller", hierarchy_controller)
+        if policy_controller is not None:
+            pulumi.set(__self__, "policy_controller", policy_controller)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter(name="configSync")
+    def config_sync(self) -> Optional[pulumi.Input['ConfigManagementConfigSyncArgs']]:
+        """
+        Config Sync configuration for the cluster.
+        """
+        return pulumi.get(self, "config_sync")
+
+    @config_sync.setter
+    def config_sync(self, value: Optional[pulumi.Input['ConfigManagementConfigSyncArgs']]):
+        pulumi.set(self, "config_sync", value)
+
+    @property
+    @pulumi.getter(name="hierarchyController")
+    def hierarchy_controller(self) -> Optional[pulumi.Input['ConfigManagementHierarchyControllerConfigArgs']]:
+        """
+        Hierarchy Controller configuration for the cluster.
+        """
+        return pulumi.get(self, "hierarchy_controller")
+
+    @hierarchy_controller.setter
+    def hierarchy_controller(self, value: Optional[pulumi.Input['ConfigManagementHierarchyControllerConfigArgs']]):
+        pulumi.set(self, "hierarchy_controller", value)
+
+    @property
+    @pulumi.getter(name="policyController")
+    def policy_controller(self) -> Optional[pulumi.Input['ConfigManagementPolicyControllerArgs']]:
+        """
+        Policy Controller configuration for the cluster.
+        """
+        return pulumi.get(self, "policy_controller")
+
+    @policy_controller.setter
+    def policy_controller(self, value: Optional[pulumi.Input['ConfigManagementPolicyControllerArgs']]):
+        pulumi.set(self, "policy_controller", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of ACM installed.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class ConfigManagementOciConfigArgs:
+    def __init__(__self__, *,
+                 gcp_service_account_email: Optional[pulumi.Input[str]] = None,
+                 policy_dir: Optional[pulumi.Input[str]] = None,
+                 secret_type: Optional[pulumi.Input[str]] = None,
+                 sync_repo: Optional[pulumi.Input[str]] = None,
+                 sync_wait_secs: Optional[pulumi.Input[str]] = None):
+        """
+        OCI repo configuration for a single cluster
+        :param pulumi.Input[str] gcp_service_account_email: The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        :param pulumi.Input[str] policy_dir: The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        :param pulumi.Input[str] secret_type: Type of secret configured for access to the Git repo.
+        :param pulumi.Input[str] sync_repo: The OCI image repository URL for the package to sync from. e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
+        :param pulumi.Input[str] sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
+        """
+        if gcp_service_account_email is not None:
+            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+        if policy_dir is not None:
+            pulumi.set(__self__, "policy_dir", policy_dir)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
+        if sync_repo is not None:
+            pulumi.set(__self__, "sync_repo", sync_repo)
+        if sync_wait_secs is not None:
+            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        """
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @gcp_service_account_email.setter
+    def gcp_service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcp_service_account_email", value)
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @policy_dir.setter
+    def policy_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_dir", value)
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of secret configured for access to the Git repo.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @secret_type.setter
+    def secret_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_type", value)
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OCI image repository URL for the package to sync from. e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @sync_repo.setter
+    def sync_repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_repo", value)
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Period in seconds between consecutive syncs. Default: 15.
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+    @sync_wait_secs.setter
+    def sync_wait_secs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_wait_secs", value)
+
+
+@pulumi.input_type
+class ConfigManagementPolicyControllerMonitoringArgs:
+    def __init__(__self__, *,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigManagementPolicyControllerMonitoringBackendsItem']]]] = None):
+        """
+        PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigManagementPolicyControllerMonitoringBackendsItem']]] backends: Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        """
+        if backends is not None:
+            pulumi.set(__self__, "backends", backends)
+
+    @property
+    @pulumi.getter
+    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigManagementPolicyControllerMonitoringBackendsItem']]]]:
+        """
+        Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        """
+        return pulumi.get(self, "backends")
+
+    @backends.setter
+    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigManagementPolicyControllerMonitoringBackendsItem']]]]):
+        pulumi.set(self, "backends", value)
+
+
+@pulumi.input_type
+class ConfigManagementPolicyControllerArgs:
+    def __init__(__self__, *,
+                 audit_interval_seconds: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 log_denies_enabled: Optional[pulumi.Input[bool]] = None,
+                 monitoring: Optional[pulumi.Input['ConfigManagementPolicyControllerMonitoringArgs']] = None,
+                 mutation_enabled: Optional[pulumi.Input[bool]] = None,
+                 referential_rules_enabled: Optional[pulumi.Input[bool]] = None,
+                 template_library_installed: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for Policy Controller
+        :param pulumi.Input[str] audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        :param pulumi.Input[bool] enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        :param pulumi.Input[bool] log_denies_enabled: Logs all denies and dry run failures.
+        :param pulumi.Input['ConfigManagementPolicyControllerMonitoringArgs'] monitoring: Monitoring specifies the configuration of monitoring.
+        :param pulumi.Input[bool] mutation_enabled: Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment will be deployed to the cluster.
+        :param pulumi.Input[bool] referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        :param pulumi.Input[bool] template_library_installed: Installs the default template library along with Policy Controller.
+        """
+        if audit_interval_seconds is not None:
+            pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exemptable_namespaces is not None:
+            pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+        if log_denies_enabled is not None:
+            pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if mutation_enabled is not None:
+            pulumi.set(__self__, "mutation_enabled", mutation_enabled)
+        if referential_rules_enabled is not None:
+            pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+        if template_library_installed is not None:
+            pulumi.set(__self__, "template_library_installed", template_library_installed)
+
+    @property
+    @pulumi.getter(name="auditIntervalSeconds")
+    def audit_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        return pulumi.get(self, "audit_interval_seconds")
+
+    @audit_interval_seconds.setter
+    def audit_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audit_interval_seconds", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="exemptableNamespaces")
+    def exemptable_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        return pulumi.get(self, "exemptable_namespaces")
+
+    @exemptable_namespaces.setter
+    def exemptable_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exemptable_namespaces", value)
+
+    @property
+    @pulumi.getter(name="logDeniesEnabled")
+    def log_denies_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Logs all denies and dry run failures.
+        """
+        return pulumi.get(self, "log_denies_enabled")
+
+    @log_denies_enabled.setter
+    def log_denies_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "log_denies_enabled", value)
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[pulumi.Input['ConfigManagementPolicyControllerMonitoringArgs']]:
+        """
+        Monitoring specifies the configuration of monitoring.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @monitoring.setter
+    def monitoring(self, value: Optional[pulumi.Input['ConfigManagementPolicyControllerMonitoringArgs']]):
+        pulumi.set(self, "monitoring", value)
+
+    @property
+    @pulumi.getter(name="mutationEnabled")
+    def mutation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment will be deployed to the cluster.
+        """
+        return pulumi.get(self, "mutation_enabled")
+
+    @mutation_enabled.setter
+    def mutation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mutation_enabled", value)
+
+    @property
+    @pulumi.getter(name="referentialRulesEnabled")
+    def referential_rules_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        return pulumi.get(self, "referential_rules_enabled")
+
+    @referential_rules_enabled.setter
+    def referential_rules_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "referential_rules_enabled", value)
+
+    @property
+    @pulumi.getter(name="templateLibraryInstalled")
+    def template_library_installed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Installs the default template library along with Policy Controller.
+        """
+        return pulumi.get(self, "template_library_installed")
+
+    @template_library_installed.setter
+    def template_library_installed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "template_library_installed", value)
+
+
+@pulumi.input_type
+class DefaultClusterConfigArgs:
+    def __init__(__self__, *,
+                 binary_authorization_config: Optional[pulumi.Input['BinaryAuthorizationConfigArgs']] = None,
+                 security_posture_config: Optional[pulumi.Input['SecurityPostureConfigArgs']] = None):
+        """
+        DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
+        :param pulumi.Input['BinaryAuthorizationConfigArgs'] binary_authorization_config: Optional. Enable/Disable binary authorization features for the cluster.
+        :param pulumi.Input['SecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture features for the cluster.
+        """
+        if binary_authorization_config is not None:
+            pulumi.set(__self__, "binary_authorization_config", binary_authorization_config)
+        if security_posture_config is not None:
+            pulumi.set(__self__, "security_posture_config", security_posture_config)
+
+    @property
+    @pulumi.getter(name="binaryAuthorizationConfig")
+    def binary_authorization_config(self) -> Optional[pulumi.Input['BinaryAuthorizationConfigArgs']]:
+        """
+        Optional. Enable/Disable binary authorization features for the cluster.
+        """
+        return pulumi.get(self, "binary_authorization_config")
+
+    @binary_authorization_config.setter
+    def binary_authorization_config(self, value: Optional[pulumi.Input['BinaryAuthorizationConfigArgs']]):
+        pulumi.set(self, "binary_authorization_config", value)
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> Optional[pulumi.Input['SecurityPostureConfigArgs']]:
+        """
+        Enable/Disable Security Posture features for the cluster.
+        """
+        return pulumi.get(self, "security_posture_config")
+
+    @security_posture_config.setter
+    def security_posture_config(self, value: Optional[pulumi.Input['SecurityPostureConfigArgs']]):
+        pulumi.set(self, "security_posture_config", value)
 
 
 @pulumi.input_type
@@ -404,11 +1402,90 @@ class ExprArgs:
 
 @pulumi.input_type
 class FleetObservabilityFeatureSpecArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 logging_config: Optional[pulumi.Input['FleetObservabilityLoggingConfigArgs']] = None):
         """
         **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+        :param pulumi.Input['FleetObservabilityLoggingConfigArgs'] logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
         """
-        pass
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['FleetObservabilityLoggingConfigArgs']]:
+        """
+        Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['FleetObservabilityLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
+
+
+@pulumi.input_type
+class FleetObservabilityLoggingConfigArgs:
+    def __init__(__self__, *,
+                 default_config: Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']] = None,
+                 fleet_scope_logs_config: Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']] = None):
+        """
+        LoggingConfig defines the configuration for different types of logs.
+        :param pulumi.Input['FleetObservabilityRoutingConfigArgs'] default_config: Specified if applying the default routing config to logs not specified in other configs.
+        :param pulumi.Input['FleetObservabilityRoutingConfigArgs'] fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        if default_config is not None:
+            pulumi.set(__self__, "default_config", default_config)
+        if fleet_scope_logs_config is not None:
+            pulumi.set(__self__, "fleet_scope_logs_config", fleet_scope_logs_config)
+
+    @property
+    @pulumi.getter(name="defaultConfig")
+    def default_config(self) -> Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']]:
+        """
+        Specified if applying the default routing config to logs not specified in other configs.
+        """
+        return pulumi.get(self, "default_config")
+
+    @default_config.setter
+    def default_config(self, value: Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']]):
+        pulumi.set(self, "default_config", value)
+
+    @property
+    @pulumi.getter(name="fleetScopeLogsConfig")
+    def fleet_scope_logs_config(self) -> Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']]:
+        """
+        Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        return pulumi.get(self, "fleet_scope_logs_config")
+
+    @fleet_scope_logs_config.setter
+    def fleet_scope_logs_config(self, value: Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']]):
+        pulumi.set(self, "fleet_scope_logs_config", value)
+
+
+@pulumi.input_type
+class FleetObservabilityRoutingConfigArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input['FleetObservabilityRoutingConfigMode']] = None):
+        """
+        RoutingConfig configures the behaviour of fleet logging feature.
+        :param pulumi.Input['FleetObservabilityRoutingConfigMode'] mode: mode configures the logs routing mode.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['FleetObservabilityRoutingConfigMode']]:
+        """
+        mode configures the logs routing mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['FleetObservabilityRoutingConfigMode']]):
+        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type
@@ -433,6 +1510,430 @@ class GkeClusterArgs:
     @resource_link.setter
     def resource_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_link", value)
+
+
+@pulumi.input_type
+class IdentityServiceAuthMethodArgs:
+    def __init__(__self__, *,
+                 azuread_config: Optional[pulumi.Input['IdentityServiceAzureADConfigArgs']] = None,
+                 google_config: Optional[pulumi.Input['IdentityServiceGoogleConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 oidc_config: Optional[pulumi.Input['IdentityServiceOidcConfigArgs']] = None,
+                 proxy: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
+        :param pulumi.Input['IdentityServiceAzureADConfigArgs'] azuread_config: AzureAD specific Configuration.
+        :param pulumi.Input['IdentityServiceGoogleConfigArgs'] google_config: GoogleConfig specific configuration.
+        :param pulumi.Input[str] name: Identifier for auth config.
+        :param pulumi.Input['IdentityServiceOidcConfigArgs'] oidc_config: OIDC specific configuration.
+        :param pulumi.Input[str] proxy: Proxy server address to use for auth method.
+        """
+        if azuread_config is not None:
+            pulumi.set(__self__, "azuread_config", azuread_config)
+        if google_config is not None:
+            pulumi.set(__self__, "google_config", google_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if oidc_config is not None:
+            pulumi.set(__self__, "oidc_config", oidc_config)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
+
+    @property
+    @pulumi.getter(name="azureadConfig")
+    def azuread_config(self) -> Optional[pulumi.Input['IdentityServiceAzureADConfigArgs']]:
+        """
+        AzureAD specific Configuration.
+        """
+        return pulumi.get(self, "azuread_config")
+
+    @azuread_config.setter
+    def azuread_config(self, value: Optional[pulumi.Input['IdentityServiceAzureADConfigArgs']]):
+        pulumi.set(self, "azuread_config", value)
+
+    @property
+    @pulumi.getter(name="googleConfig")
+    def google_config(self) -> Optional[pulumi.Input['IdentityServiceGoogleConfigArgs']]:
+        """
+        GoogleConfig specific configuration.
+        """
+        return pulumi.get(self, "google_config")
+
+    @google_config.setter
+    def google_config(self, value: Optional[pulumi.Input['IdentityServiceGoogleConfigArgs']]):
+        pulumi.set(self, "google_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier for auth config.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="oidcConfig")
+    def oidc_config(self) -> Optional[pulumi.Input['IdentityServiceOidcConfigArgs']]:
+        """
+        OIDC specific configuration.
+        """
+        return pulumi.get(self, "oidc_config")
+
+    @oidc_config.setter
+    def oidc_config(self, value: Optional[pulumi.Input['IdentityServiceOidcConfigArgs']]):
+        pulumi.set(self, "oidc_config", value)
+
+    @property
+    @pulumi.getter
+    def proxy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Proxy server address to use for auth method.
+        """
+        return pulumi.get(self, "proxy")
+
+    @proxy.setter
+    def proxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy", value)
+
+
+@pulumi.input_type
+class IdentityServiceAzureADConfigArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 kubectl_redirect_uri: Optional[pulumi.Input[str]] = None,
+                 tenant: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for the AzureAD Auth flow.
+        :param pulumi.Input[str] client_id: ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+        :param pulumi.Input[str] client_secret: Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+        :param pulumi.Input[str] kubectl_redirect_uri: The redirect URL that kubectl uses for authorization.
+        :param pulumi.Input[str] tenant: Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if kubectl_redirect_uri is not None:
+            pulumi.set(__self__, "kubectl_redirect_uri", kubectl_redirect_uri)
+        if tenant is not None:
+            pulumi.set(__self__, "tenant", tenant)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="kubectlRedirectUri")
+    def kubectl_redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The redirect URL that kubectl uses for authorization.
+        """
+        return pulumi.get(self, "kubectl_redirect_uri")
+
+    @kubectl_redirect_uri.setter
+    def kubectl_redirect_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubectl_redirect_uri", value)
+
+    @property
+    @pulumi.getter
+    def tenant(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+        """
+        return pulumi.get(self, "tenant")
+
+    @tenant.setter
+    def tenant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant", value)
+
+
+@pulumi.input_type
+class IdentityServiceGoogleConfigArgs:
+    def __init__(__self__, *,
+                 disable: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Google Plugin Auth flow.
+        :param pulumi.Input[bool] disable: Disable automatic configuration of Google Plugin on supported platforms.
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable automatic configuration of Google Plugin on supported platforms.
+        """
+        return pulumi.get(self, "disable")
+
+    @disable.setter
+    def disable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable", value)
+
+
+@pulumi.input_type
+class IdentityServiceMembershipSpecArgs:
+    def __init__(__self__, *,
+                 auth_methods: Optional[pulumi.Input[Sequence[pulumi.Input['IdentityServiceAuthMethodArgs']]]] = None):
+        """
+        **Anthos Identity Service**: Configuration for a single Membership.
+        :param pulumi.Input[Sequence[pulumi.Input['IdentityServiceAuthMethodArgs']]] auth_methods: A member may support multiple auth methods.
+        """
+        if auth_methods is not None:
+            pulumi.set(__self__, "auth_methods", auth_methods)
+
+    @property
+    @pulumi.getter(name="authMethods")
+    def auth_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IdentityServiceAuthMethodArgs']]]]:
+        """
+        A member may support multiple auth methods.
+        """
+        return pulumi.get(self, "auth_methods")
+
+    @auth_methods.setter
+    def auth_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IdentityServiceAuthMethodArgs']]]]):
+        pulumi.set(self, "auth_methods", value)
+
+
+@pulumi.input_type
+class IdentityServiceOidcConfigArgs:
+    def __init__(__self__, *,
+                 certificate_authority_data: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 deploy_cloud_console_proxy: Optional[pulumi.Input[bool]] = None,
+                 enable_access_token: Optional[pulumi.Input[bool]] = None,
+                 extra_params: Optional[pulumi.Input[str]] = None,
+                 group_prefix: Optional[pulumi.Input[str]] = None,
+                 groups_claim: Optional[pulumi.Input[str]] = None,
+                 issuer_uri: Optional[pulumi.Input[str]] = None,
+                 kubectl_redirect_uri: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[str]] = None,
+                 user_claim: Optional[pulumi.Input[str]] = None,
+                 user_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for OIDC Auth flow.
+        :param pulumi.Input[str] certificate_authority_data: PEM-encoded CA for OIDC provider.
+        :param pulumi.Input[str] client_id: ID for OIDC client application.
+        :param pulumi.Input[str] client_secret: Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+        :param pulumi.Input[bool] deploy_cloud_console_proxy: Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+        :param pulumi.Input[bool] enable_access_token: Enable access token.
+        :param pulumi.Input[str] extra_params: Comma-separated list of key-value pairs.
+        :param pulumi.Input[str] group_prefix: Prefix to prepend to group name.
+        :param pulumi.Input[str] groups_claim: Claim in OIDC ID token that holds group information.
+        :param pulumi.Input[str] issuer_uri: URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+        :param pulumi.Input[str] kubectl_redirect_uri: Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+        :param pulumi.Input[str] scopes: Comma-separated list of identifiers.
+        :param pulumi.Input[str] user_claim: Claim in OIDC ID token that holds username.
+        :param pulumi.Input[str] user_prefix: Prefix to prepend to user name.
+        """
+        if certificate_authority_data is not None:
+            pulumi.set(__self__, "certificate_authority_data", certificate_authority_data)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if deploy_cloud_console_proxy is not None:
+            pulumi.set(__self__, "deploy_cloud_console_proxy", deploy_cloud_console_proxy)
+        if enable_access_token is not None:
+            pulumi.set(__self__, "enable_access_token", enable_access_token)
+        if extra_params is not None:
+            pulumi.set(__self__, "extra_params", extra_params)
+        if group_prefix is not None:
+            pulumi.set(__self__, "group_prefix", group_prefix)
+        if groups_claim is not None:
+            pulumi.set(__self__, "groups_claim", groups_claim)
+        if issuer_uri is not None:
+            pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if kubectl_redirect_uri is not None:
+            pulumi.set(__self__, "kubectl_redirect_uri", kubectl_redirect_uri)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if user_claim is not None:
+            pulumi.set(__self__, "user_claim", user_claim)
+        if user_prefix is not None:
+            pulumi.set(__self__, "user_prefix", user_prefix)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityData")
+    def certificate_authority_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        PEM-encoded CA for OIDC provider.
+        """
+        return pulumi.get(self, "certificate_authority_data")
+
+    @certificate_authority_data.setter
+    def certificate_authority_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_authority_data", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID for OIDC client application.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="deployCloudConsoleProxy")
+    def deploy_cloud_console_proxy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+        """
+        return pulumi.get(self, "deploy_cloud_console_proxy")
+
+    @deploy_cloud_console_proxy.setter
+    def deploy_cloud_console_proxy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deploy_cloud_console_proxy", value)
+
+    @property
+    @pulumi.getter(name="enableAccessToken")
+    def enable_access_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable access token.
+        """
+        return pulumi.get(self, "enable_access_token")
+
+    @enable_access_token.setter
+    def enable_access_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_access_token", value)
+
+    @property
+    @pulumi.getter(name="extraParams")
+    def extra_params(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of key-value pairs.
+        """
+        return pulumi.get(self, "extra_params")
+
+    @extra_params.setter
+    def extra_params(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "extra_params", value)
+
+    @property
+    @pulumi.getter(name="groupPrefix")
+    def group_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix to prepend to group name.
+        """
+        return pulumi.get(self, "group_prefix")
+
+    @group_prefix.setter
+    def group_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_prefix", value)
+
+    @property
+    @pulumi.getter(name="groupsClaim")
+    def groups_claim(self) -> Optional[pulumi.Input[str]]:
+        """
+        Claim in OIDC ID token that holds group information.
+        """
+        return pulumi.get(self, "groups_claim")
+
+    @groups_claim.setter
+    def groups_claim(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "groups_claim", value)
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+        """
+        return pulumi.get(self, "issuer_uri")
+
+    @issuer_uri.setter
+    def issuer_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer_uri", value)
+
+    @property
+    @pulumi.getter(name="kubectlRedirectUri")
+    def kubectl_redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+        """
+        return pulumi.get(self, "kubectl_redirect_uri")
+
+    @kubectl_redirect_uri.setter
+    def kubectl_redirect_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubectl_redirect_uri", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of identifiers.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter(name="userClaim")
+    def user_claim(self) -> Optional[pulumi.Input[str]]:
+        """
+        Claim in OIDC ID token that holds username.
+        """
+        return pulumi.get(self, "user_claim")
+
+    @user_claim.setter
+    def user_claim(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_claim", value)
+
+    @property
+    @pulumi.getter(name="userPrefix")
+    def user_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix to prepend to user name.
+        """
+        return pulumi.get(self, "user_prefix")
+
+    @user_prefix.setter
+    def user_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_prefix", value)
 
 
 @pulumi.input_type
@@ -588,12 +2089,12 @@ class MonitoringConfigArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
-        This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.
-        :param pulumi.Input[str] cluster: Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
-        :param pulumi.Input[str] cluster_hash: Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
-        :param pulumi.Input[str] kubernetes_metrics_prefix: Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
-        :param pulumi.Input[str] location: Immutable. Location used to report Metrics
-        :param pulumi.Input[str] project: Immutable. Project used to report Metrics
+        MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics.
+        :param pulumi.Input[str] cluster: Optional. Cluster name used to report metrics. For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
+        :param pulumi.Input[str] cluster_hash: Optional. For GKE and Multicloud clusters, this is the UUID of the cluster resource. For VMWare and Baremetal clusters, this is the kube-system UID.
+        :param pulumi.Input[str] kubernetes_metrics_prefix: Optional. Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos.
+        :param pulumi.Input[str] location: Optional. Location used to report Metrics
+        :param pulumi.Input[str] project: Optional. Project used to report Metrics
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -610,7 +2111,7 @@ class MonitoringConfigArgs:
     @pulumi.getter
     def cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+        Optional. Cluster name used to report metrics. For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
         """
         return pulumi.get(self, "cluster")
 
@@ -622,7 +2123,7 @@ class MonitoringConfigArgs:
     @pulumi.getter(name="clusterHash")
     def cluster_hash(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+        Optional. For GKE and Multicloud clusters, this is the UUID of the cluster resource. For VMWare and Baremetal clusters, this is the kube-system UID.
         """
         return pulumi.get(self, "cluster_hash")
 
@@ -634,7 +2135,7 @@ class MonitoringConfigArgs:
     @pulumi.getter(name="kubernetesMetricsPrefix")
     def kubernetes_metrics_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+        Optional. Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos.
         """
         return pulumi.get(self, "kubernetes_metrics_prefix")
 
@@ -646,7 +2147,7 @@ class MonitoringConfigArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Location used to report Metrics
+        Optional. Location used to report Metrics
         """
         return pulumi.get(self, "location")
 
@@ -658,7 +2159,7 @@ class MonitoringConfigArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Project used to report Metrics
+        Optional. Project used to report Metrics
         """
         return pulumi.get(self, "project")
 
@@ -772,6 +2273,326 @@ class OnPremClusterArgs:
 
 
 @pulumi.input_type
+class PolicyBindingArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Binauthz policy that applies to this cluster.
+        :param pulumi.Input[str] name: The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PolicyControllerHubConfigArgs:
+    def __init__(__self__, *,
+                 audit_interval_seconds: Optional[pulumi.Input[str]] = None,
+                 constraint_violation_limit: Optional[pulumi.Input[str]] = None,
+                 deployment_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 install_spec: Optional[pulumi.Input['PolicyControllerHubConfigInstallSpec']] = None,
+                 log_denies_enabled: Optional[pulumi.Input[bool]] = None,
+                 monitoring: Optional[pulumi.Input['PolicyControllerMonitoringConfigArgs']] = None,
+                 mutation_enabled: Optional[pulumi.Input[bool]] = None,
+                 policy_content: Optional[pulumi.Input['PolicyControllerPolicyContentSpecArgs']] = None,
+                 referential_rules_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for Policy Controller
+        :param pulumi.Input[str] audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        :param pulumi.Input[str] constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation').
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        :param pulumi.Input['PolicyControllerHubConfigInstallSpec'] install_spec: The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
+        :param pulumi.Input[bool] log_denies_enabled: Logs all denies and dry run failures.
+        :param pulumi.Input['PolicyControllerMonitoringConfigArgs'] monitoring: Monitoring specifies the configuration of monitoring.
+        :param pulumi.Input[bool] mutation_enabled: Enables the ability to mutate resources using Policy Controller.
+        :param pulumi.Input['PolicyControllerPolicyContentSpecArgs'] policy_content: Specifies the desired policy content on the cluster
+        :param pulumi.Input[bool] referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        if audit_interval_seconds is not None:
+            pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+        if constraint_violation_limit is not None:
+            pulumi.set(__self__, "constraint_violation_limit", constraint_violation_limit)
+        if deployment_configs is not None:
+            pulumi.set(__self__, "deployment_configs", deployment_configs)
+        if exemptable_namespaces is not None:
+            pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+        if install_spec is not None:
+            pulumi.set(__self__, "install_spec", install_spec)
+        if log_denies_enabled is not None:
+            pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if mutation_enabled is not None:
+            pulumi.set(__self__, "mutation_enabled", mutation_enabled)
+        if policy_content is not None:
+            pulumi.set(__self__, "policy_content", policy_content)
+        if referential_rules_enabled is not None:
+            pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+
+    @property
+    @pulumi.getter(name="auditIntervalSeconds")
+    def audit_interval_seconds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        return pulumi.get(self, "audit_interval_seconds")
+
+    @audit_interval_seconds.setter
+    def audit_interval_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audit_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="constraintViolationLimit")
+    def constraint_violation_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
+        """
+        return pulumi.get(self, "constraint_violation_limit")
+
+    @constraint_violation_limit.setter
+    def constraint_violation_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "constraint_violation_limit", value)
+
+    @property
+    @pulumi.getter(name="deploymentConfigs")
+    def deployment_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of deployment configs to deployments ("admission", "audit", "mutation').
+        """
+        return pulumi.get(self, "deployment_configs")
+
+    @deployment_configs.setter
+    def deployment_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "deployment_configs", value)
+
+    @property
+    @pulumi.getter(name="exemptableNamespaces")
+    def exemptable_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        return pulumi.get(self, "exemptable_namespaces")
+
+    @exemptable_namespaces.setter
+    def exemptable_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exemptable_namespaces", value)
+
+    @property
+    @pulumi.getter(name="installSpec")
+    def install_spec(self) -> Optional[pulumi.Input['PolicyControllerHubConfigInstallSpec']]:
+        """
+        The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
+        """
+        return pulumi.get(self, "install_spec")
+
+    @install_spec.setter
+    def install_spec(self, value: Optional[pulumi.Input['PolicyControllerHubConfigInstallSpec']]):
+        pulumi.set(self, "install_spec", value)
+
+    @property
+    @pulumi.getter(name="logDeniesEnabled")
+    def log_denies_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Logs all denies and dry run failures.
+        """
+        return pulumi.get(self, "log_denies_enabled")
+
+    @log_denies_enabled.setter
+    def log_denies_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "log_denies_enabled", value)
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[pulumi.Input['PolicyControllerMonitoringConfigArgs']]:
+        """
+        Monitoring specifies the configuration of monitoring.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @monitoring.setter
+    def monitoring(self, value: Optional[pulumi.Input['PolicyControllerMonitoringConfigArgs']]):
+        pulumi.set(self, "monitoring", value)
+
+    @property
+    @pulumi.getter(name="mutationEnabled")
+    def mutation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the ability to mutate resources using Policy Controller.
+        """
+        return pulumi.get(self, "mutation_enabled")
+
+    @mutation_enabled.setter
+    def mutation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mutation_enabled", value)
+
+    @property
+    @pulumi.getter(name="policyContent")
+    def policy_content(self) -> Optional[pulumi.Input['PolicyControllerPolicyContentSpecArgs']]:
+        """
+        Specifies the desired policy content on the cluster
+        """
+        return pulumi.get(self, "policy_content")
+
+    @policy_content.setter
+    def policy_content(self, value: Optional[pulumi.Input['PolicyControllerPolicyContentSpecArgs']]):
+        pulumi.set(self, "policy_content", value)
+
+    @property
+    @pulumi.getter(name="referentialRulesEnabled")
+    def referential_rules_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        return pulumi.get(self, "referential_rules_enabled")
+
+    @referential_rules_enabled.setter
+    def referential_rules_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "referential_rules_enabled", value)
+
+
+@pulumi.input_type
+class PolicyControllerMembershipSpecArgs:
+    def __init__(__self__, *,
+                 policy_controller_hub_config: Optional[pulumi.Input['PolicyControllerHubConfigArgs']] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
+        :param pulumi.Input['PolicyControllerHubConfigArgs'] policy_controller_hub_config: Policy Controller configuration for the cluster.
+        :param pulumi.Input[str] version: Version of Policy Controller installed.
+        """
+        if policy_controller_hub_config is not None:
+            pulumi.set(__self__, "policy_controller_hub_config", policy_controller_hub_config)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="policyControllerHubConfig")
+    def policy_controller_hub_config(self) -> Optional[pulumi.Input['PolicyControllerHubConfigArgs']]:
+        """
+        Policy Controller configuration for the cluster.
+        """
+        return pulumi.get(self, "policy_controller_hub_config")
+
+    @policy_controller_hub_config.setter
+    def policy_controller_hub_config(self, value: Optional[pulumi.Input['PolicyControllerHubConfigArgs']]):
+        pulumi.set(self, "policy_controller_hub_config", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of Policy Controller installed.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class PolicyControllerMonitoringConfigArgs:
+    def __init__(__self__, *,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyControllerMonitoringConfigBackendsItem']]]] = None):
+        """
+        MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyControllerMonitoringConfigBackendsItem']]] backends: Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        """
+        if backends is not None:
+            pulumi.set(__self__, "backends", backends)
+
+    @property
+    @pulumi.getter
+    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyControllerMonitoringConfigBackendsItem']]]]:
+        """
+        Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        """
+        return pulumi.get(self, "backends")
+
+    @backends.setter
+    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyControllerMonitoringConfigBackendsItem']]]]):
+        pulumi.set(self, "backends", value)
+
+
+@pulumi.input_type
+class PolicyControllerPolicyContentSpecArgs:
+    def __init__(__self__, *,
+                 bundles: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 template_library: Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigArgs']] = None):
+        """
+        PolicyContentSpec defines the user's desired content configuration on the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        :param pulumi.Input['PolicyControllerTemplateLibraryConfigArgs'] template_library: Configures the installation of the Template Library.
+        """
+        if bundles is not None:
+            pulumi.set(__self__, "bundles", bundles)
+        if template_library is not None:
+            pulumi.set(__self__, "template_library", template_library)
+
+    @property
+    @pulumi.getter
+    def bundles(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        """
+        return pulumi.get(self, "bundles")
+
+    @bundles.setter
+    def bundles(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "bundles", value)
+
+    @property
+    @pulumi.getter(name="templateLibrary")
+    def template_library(self) -> Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigArgs']]:
+        """
+        Configures the installation of the Template Library.
+        """
+        return pulumi.get(self, "template_library")
+
+    @template_library.setter
+    def template_library(self, value: Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigArgs']]):
+        pulumi.set(self, "template_library", value)
+
+
+@pulumi.input_type
+class PolicyControllerTemplateLibraryConfigArgs:
+    def __init__(__self__, *,
+                 installation: Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigInstallation']] = None):
+        """
+        The config specifying which default library templates to install.
+        :param pulumi.Input['PolicyControllerTemplateLibraryConfigInstallation'] installation: Configures the manner in which the template library is installed on the cluster.
+        """
+        if installation is not None:
+            pulumi.set(__self__, "installation", installation)
+
+    @property
+    @pulumi.getter
+    def installation(self) -> Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigInstallation']]:
+        """
+        Configures the manner in which the template library is installed on the cluster.
+        """
+        return pulumi.get(self, "installation")
+
+    @installation.setter
+    def installation(self, value: Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigInstallation']]):
+        pulumi.set(self, "installation", value)
+
+
+@pulumi.input_type
 class ResourceOptionsArgs:
     def __init__(__self__, *,
                  connect_version: Optional[pulumi.Input[str]] = None,
@@ -825,5 +2646,115 @@ class ResourceOptionsArgs:
     @v1beta1_crd.setter
     def v1beta1_crd(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "v1beta1_crd", value)
+
+
+@pulumi.input_type
+class RoleArgs:
+    def __init__(__self__, *,
+                 predefined_role: Optional[pulumi.Input['RolePredefinedRole']] = None):
+        """
+        Role is the type for Kubernetes roles
+        :param pulumi.Input['RolePredefinedRole'] predefined_role: predefined_role is the Kubernetes default role to use
+        """
+        if predefined_role is not None:
+            pulumi.set(__self__, "predefined_role", predefined_role)
+
+    @property
+    @pulumi.getter(name="predefinedRole")
+    def predefined_role(self) -> Optional[pulumi.Input['RolePredefinedRole']]:
+        """
+        predefined_role is the Kubernetes default role to use
+        """
+        return pulumi.get(self, "predefined_role")
+
+    @predefined_role.setter
+    def predefined_role(self, value: Optional[pulumi.Input['RolePredefinedRole']]):
+        pulumi.set(self, "predefined_role", value)
+
+
+@pulumi.input_type
+class SecurityPostureConfigArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input['SecurityPostureConfigMode']] = None,
+                 vulnerability_mode: Optional[pulumi.Input['SecurityPostureConfigVulnerabilityMode']] = None):
+        """
+        SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+        :param pulumi.Input['SecurityPostureConfigMode'] mode: Sets which mode to use for Security Posture features.
+        :param pulumi.Input['SecurityPostureConfigVulnerabilityMode'] vulnerability_mode: Sets which mode to use for vulnerability scanning.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if vulnerability_mode is not None:
+            pulumi.set(__self__, "vulnerability_mode", vulnerability_mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['SecurityPostureConfigMode']]:
+        """
+        Sets which mode to use for Security Posture features.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['SecurityPostureConfigMode']]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="vulnerabilityMode")
+    def vulnerability_mode(self) -> Optional[pulumi.Input['SecurityPostureConfigVulnerabilityMode']]:
+        """
+        Sets which mode to use for vulnerability scanning.
+        """
+        return pulumi.get(self, "vulnerability_mode")
+
+    @vulnerability_mode.setter
+    def vulnerability_mode(self, value: Optional[pulumi.Input['SecurityPostureConfigVulnerabilityMode']]):
+        pulumi.set(self, "vulnerability_mode", value)
+
+
+@pulumi.input_type
+class ServiceMeshMembershipSpecArgs:
+    def __init__(__self__, *,
+                 control_plane: Optional[pulumi.Input['ServiceMeshMembershipSpecControlPlane']] = None,
+                 management: Optional[pulumi.Input['ServiceMeshMembershipSpecManagement']] = None):
+        """
+        **Service Mesh**: Spec for a single Membership for the servicemesh feature
+        :param pulumi.Input['ServiceMeshMembershipSpecControlPlane'] control_plane: Deprecated: use `management` instead Enables automatic control plane management.
+        :param pulumi.Input['ServiceMeshMembershipSpecManagement'] management: Enables automatic Service Mesh management.
+        """
+        if control_plane is not None:
+            warnings.warn("""Deprecated: use `management` instead Enables automatic control plane management.""", DeprecationWarning)
+            pulumi.log.warn("""control_plane is deprecated: Deprecated: use `management` instead Enables automatic control plane management.""")
+        if control_plane is not None:
+            pulumi.set(__self__, "control_plane", control_plane)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
+
+    @property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> Optional[pulumi.Input['ServiceMeshMembershipSpecControlPlane']]:
+        """
+        Deprecated: use `management` instead Enables automatic control plane management.
+        """
+        warnings.warn("""Deprecated: use `management` instead Enables automatic control plane management.""", DeprecationWarning)
+        pulumi.log.warn("""control_plane is deprecated: Deprecated: use `management` instead Enables automatic control plane management.""")
+
+        return pulumi.get(self, "control_plane")
+
+    @control_plane.setter
+    def control_plane(self, value: Optional[pulumi.Input['ServiceMeshMembershipSpecControlPlane']]):
+        pulumi.set(self, "control_plane", value)
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional[pulumi.Input['ServiceMeshMembershipSpecManagement']]:
+        """
+        Enables automatic Service Mesh management.
+        """
+        return pulumi.get(self, "management")
+
+    @management.setter
+    def management(self, value: Optional[pulumi.Input['ServiceMeshMembershipSpecManagement']]):
+        pulumi.set(self, "management", value)
 
 

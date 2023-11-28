@@ -53,6 +53,8 @@ type LookupListingResult struct {
 	Publisher PublisherResponse `pulumi:"publisher"`
 	// Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
 	RequestAccess string `pulumi:"requestAccess"`
+	// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	RestrictedExportConfig RestrictedExportConfigResponse `pulumi:"restrictedExportConfig"`
 	// Current state of the listing.
 	State string `pulumi:"state"`
 }
@@ -154,6 +156,11 @@ func (o LookupListingResultOutput) Publisher() PublisherResponseOutput {
 // Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
 func (o LookupListingResultOutput) RequestAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListingResult) string { return v.RequestAccess }).(pulumi.StringOutput)
+}
+
+// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
+func (o LookupListingResultOutput) RestrictedExportConfig() RestrictedExportConfigResponseOutput {
+	return o.ApplyT(func(v LookupListingResult) RestrictedExportConfigResponse { return v.RestrictedExportConfig }).(RestrictedExportConfigResponseOutput)
 }
 
 // Current state of the listing.

@@ -28,67 +28,71 @@ export interface GetWorkstationClusterArgs {
 
 export interface GetWorkstationClusterResult {
     /**
-     * Client-specified annotations.
+     * Optional. Client-specified annotations.
      */
     readonly annotations: {[key: string]: string};
     /**
-     * Status conditions describing the current resource state.
+     * Status conditions describing the workstation cluster's current state.
      */
     readonly conditions: outputs.workstations.v1beta.StatusResponse[];
     /**
-     * The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     * The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
      */
     readonly controlPlaneIp: string;
     /**
-     * Time when this resource was created.
+     * Time when this workstation cluster was created.
      */
     readonly createTime: string;
     /**
-     * Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+     * Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
      */
     readonly degraded: boolean;
     /**
-     * Time when this resource was soft-deleted.
+     * Time when this workstation cluster was soft-deleted.
      */
     readonly deleteTime: string;
     /**
-     * Human-readable name for this resource.
+     * Optional. Human-readable name for this workstation cluster.
      */
     readonly displayName: string;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+     * Optional. Configuration options for a custom domain.
+     */
+    readonly domainConfig: outputs.workstations.v1beta.DomainConfigResponse;
+    /**
+     * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     readonly etag: string;
     /**
-     * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
      */
     readonly labels: {[key: string]: string};
     /**
-     * Full name of this resource.
+     * Identifier. Full name of this workstation cluster.
      */
     readonly name: string;
     /**
-     * Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+     * Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
      */
     readonly network: string;
     /**
-     * Configuration for private cluster.
+     * Optional. Configuration for private workstation cluster.
      */
     readonly privateClusterConfig: outputs.workstations.v1beta.PrivateClusterConfigResponse;
     /**
-     * Indicates whether this resource is currently being updated to match its intended state.
+     * Indicates whether this workstation cluster is currently being updated to match its intended state.
      */
     readonly reconciling: boolean;
     /**
-     * Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+     * Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
      */
     readonly subnetwork: string;
     /**
-     * A system-assigned unique identified for this resource.
+     * A system-assigned unique identifier for this workstation cluster.
      */
     readonly uid: string;
     /**
-     * Time when this resource was most recently updated.
+     * Time when this workstation cluster was most recently updated.
      */
     readonly updateTime: string;
 }

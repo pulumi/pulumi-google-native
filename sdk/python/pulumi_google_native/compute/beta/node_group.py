@@ -21,6 +21,7 @@ class NodeGroupArgs:
                  autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
+                 maintenance_interval: Optional[pulumi.Input['NodeGroupMaintenanceInterval']] = None,
                  maintenance_policy: Optional[pulumi.Input['NodeGroupMaintenancePolicy']] = None,
                  maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,7 @@ class NodeGroupArgs:
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: Specifies how autoscaling should behave.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+        :param pulumi.Input['NodeGroupMaintenanceInterval'] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
         :param pulumi.Input['NodeGroupMaintenancePolicy'] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] node_template: URL of the node template to create the node group from.
@@ -48,6 +50,8 @@ class NodeGroupArgs:
             pulumi.set(__self__, "description", description)
         if location_hint is not None:
             pulumi.set(__self__, "location_hint", location_hint)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_window is not None:
@@ -112,6 +116,18 @@ class NodeGroupArgs:
     @location_hint.setter
     def location_hint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location_hint", value)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input['NodeGroupMaintenanceInterval']]:
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+        """
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input['NodeGroupMaintenanceInterval']]):
+        pulumi.set(self, "maintenance_interval", value)
 
     @property
     @pulumi.getter(name="maintenancePolicy")
@@ -210,6 +226,7 @@ class NodeGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
+                 maintenance_interval: Optional[pulumi.Input['NodeGroupMaintenanceInterval']] = None,
                  maintenance_policy: Optional[pulumi.Input['NodeGroupMaintenancePolicy']] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -228,6 +245,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[int] initial_node_count: Initial count of nodes in the node group.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+        :param pulumi.Input['NodeGroupMaintenanceInterval'] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
         :param pulumi.Input['NodeGroupMaintenancePolicy'] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] node_template: URL of the node template to create the node group from.
@@ -262,6 +280,7 @@ class NodeGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
+                 maintenance_interval: Optional[pulumi.Input['NodeGroupMaintenanceInterval']] = None,
                  maintenance_policy: Optional[pulumi.Input['NodeGroupMaintenancePolicy']] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -285,6 +304,7 @@ class NodeGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'initial_node_count'")
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["location_hint"] = location_hint
+            __props__.__dict__["maintenance_interval"] = maintenance_interval
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
@@ -330,6 +350,7 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["initial_node_count"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["location_hint"] = None
+        __props__.__dict__["maintenance_interval"] = None
         __props__.__dict__["maintenance_policy"] = None
         __props__.__dict__["maintenance_window"] = None
         __props__.__dict__["name"] = None
@@ -395,6 +416,14 @@ class NodeGroup(pulumi.CustomResource):
         An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
         """
         return pulumi.get(self, "location_hint")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> pulumi.Output[str]:
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+        """
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="maintenancePolicy")

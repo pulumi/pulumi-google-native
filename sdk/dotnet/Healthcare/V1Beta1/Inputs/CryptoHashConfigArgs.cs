@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     public sealed class CryptoHashConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
         /// </summary>
         [Input("cryptoKey")]
         public Input<string>? CryptoKey { get; set; }
 
         /// <summary>
-        /// KMS wrapped key. Must not be set if `crypto_key` is set.
+        /// KMS wrapped key. Must not be set if crypto_key is set.
         /// </summary>
         [Input("kmsWrapped")]
         public Input<Inputs.KmsWrappedCryptoKeyArgs>? KmsWrapped { get; set; }

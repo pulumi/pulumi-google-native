@@ -40,6 +40,8 @@ type LookupServiceBindingResult struct {
 	Name string `pulumi:"name"`
 	// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
 	Service string `pulumi:"service"`
+	// The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+	ServiceId string `pulumi:"serviceId"`
 	// The timestamp when the resource was updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -110,6 +112,11 @@ func (o LookupServiceBindingResultOutput) Name() pulumi.StringOutput {
 // The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
 func (o LookupServiceBindingResultOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceBindingResult) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+func (o LookupServiceBindingResultOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceBindingResult) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // The timestamp when the resource was updated.

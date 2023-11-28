@@ -41,7 +41,7 @@ export interface GetSubscriptionResult {
      */
     readonly name: string;
     /**
-     * Number of seats in the subscription.
+     * Optional. Number of seats in the subscription.
      */
     readonly seatCount: string;
     /**

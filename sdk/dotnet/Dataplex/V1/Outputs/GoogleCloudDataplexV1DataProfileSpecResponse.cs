@@ -17,6 +17,18 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataProfileSpecResponse
     {
         /// <summary>
+        /// Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse ExcludeFields;
+        /// <summary>
+        /// Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse IncludeFields;
+        /// <summary>
+        /// Optional. Actions to take upon job completion..
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse PostScanActions;
+        /// <summary>
         /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
         /// </summary>
         public readonly string RowFilter;
@@ -27,10 +39,19 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDataplexV1DataProfileSpecResponse(
+            Outputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse excludeFields,
+
+            Outputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse includeFields,
+
+            Outputs.GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse postScanActions,
+
             string rowFilter,
 
             double samplingPercent)
         {
+            ExcludeFields = excludeFields;
+            IncludeFields = includeFields;
+            PostScanActions = postScanActions;
             RowFilter = rowFilter;
             SamplingPercent = samplingPercent;
         }

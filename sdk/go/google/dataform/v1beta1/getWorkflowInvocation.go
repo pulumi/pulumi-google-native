@@ -31,7 +31,7 @@ type LookupWorkflowInvocationArgs struct {
 }
 
 type LookupWorkflowInvocationResult struct {
-	// Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+	// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 	CompilationResult string `pulumi:"compilationResult"`
 	// Immutable. If left unset, a default InvocationConfig will be used.
 	InvocationConfig InvocationConfigResponse `pulumi:"invocationConfig"`
@@ -39,6 +39,8 @@ type LookupWorkflowInvocationResult struct {
 	InvocationTiming IntervalResponse `pulumi:"invocationTiming"`
 	// The workflow invocation's name.
 	Name string `pulumi:"name"`
+	// The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+	ResolvedCompilationResult string `pulumi:"resolvedCompilationResult"`
 	// This workflow invocation's current state.
 	State string `pulumi:"state"`
 	// Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
@@ -89,7 +91,7 @@ func (o LookupWorkflowInvocationResultOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 func (o LookupWorkflowInvocationResultOutput) CompilationResult() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowInvocationResult) string { return v.CompilationResult }).(pulumi.StringOutput)
 }
@@ -107,6 +109,11 @@ func (o LookupWorkflowInvocationResultOutput) InvocationTiming() IntervalRespons
 // The workflow invocation's name.
 func (o LookupWorkflowInvocationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowInvocationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+func (o LookupWorkflowInvocationResultOutput) ResolvedCompilationResult() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowInvocationResult) string { return v.ResolvedCompilationResult }).(pulumi.StringOutput)
 }
 
 // This workflow invocation's current state.

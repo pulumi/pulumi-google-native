@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public Input<Inputs.GoogleCloudApigeeV1AdvancedApiOpsConfigArgs>? AdvancedApiOpsConfig { get; set; }
 
         /// <summary>
+        /// Configuration for the Analytics add-on.
+        /// </summary>
+        [Input("analyticsConfig")]
+        public Input<Inputs.GoogleCloudApigeeV1AnalyticsConfigArgs>? AnalyticsConfig { get; set; }
+
+        /// <summary>
         /// Configuration for the API Security add-on.
         /// </summary>
         [Input("apiSecurityConfig")]

@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         public readonly string ActionType;
         /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         /// </summary>
         public readonly string Condition;
         /// <summary>

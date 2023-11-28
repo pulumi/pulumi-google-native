@@ -80,9 +80,17 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+        /// </summary>
+        public readonly string Priority;
+        /// <summary>
         /// Use a single-cluster routing policy.
         /// </summary>
         public readonly Outputs.SingleClusterRoutingResponse SingleClusterRouting;
+        /// <summary>
+        /// The standard options used for isolating this app profile's traffic from other use cases.
+        /// </summary>
+        public readonly Outputs.StandardIsolationResponse StandardIsolation;
 
         [OutputConstructor]
         private GetAppProfileResult(
@@ -94,13 +102,19 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
             string name,
 
-            Outputs.SingleClusterRoutingResponse singleClusterRouting)
+            string priority,
+
+            Outputs.SingleClusterRoutingResponse singleClusterRouting,
+
+            Outputs.StandardIsolationResponse standardIsolation)
         {
             Description = description;
             Etag = etag;
             MultiClusterRoutingUseAny = multiClusterRoutingUseAny;
             Name = name;
+            Priority = priority;
             SingleClusterRouting = singleClusterRouting;
+            StandardIsolation = standardIsolation;
         }
     }
 }

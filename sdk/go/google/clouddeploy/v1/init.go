@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:clouddeploy/v1:Automation":
+		r = &Automation{}
 	case "google-native:clouddeploy/v1:DeliveryPipeline":
 		r = &DeliveryPipeline{}
 	case "google-native:clouddeploy/v1:DeliveryPipelineIamBinding":

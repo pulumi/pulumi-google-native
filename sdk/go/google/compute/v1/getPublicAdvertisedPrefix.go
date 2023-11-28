@@ -29,20 +29,24 @@ type LookupPublicAdvertisedPrefixArgs struct {
 }
 
 type LookupPublicAdvertisedPrefixResult struct {
+	// The version of BYOIP API.
+	ByoipApiVersion string `pulumi:"byoipApiVersion"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// The IPv4 address to be used for reverse DNS verification.
+	// The address to be used for reverse DNS verification.
 	DnsVerificationIp string `pulumi:"dnsVerificationIp"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
 	Fingerprint string `pulumi:"fingerprint"`
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
+	// Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.
+	PdpScope string `pulumi:"pdpScope"`
 	// The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs []PublicAdvertisedPrefixPublicDelegatedPrefixResponse `pulumi:"publicDelegatedPrefixs"`
 	// Server-defined URL for the resource.
@@ -95,6 +99,11 @@ func (o LookupPublicAdvertisedPrefixResultOutput) ToOutput(ctx context.Context) 
 	}
 }
 
+// The version of BYOIP API.
+func (o LookupPublicAdvertisedPrefixResultOutput) ByoipApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.ByoipApiVersion }).(pulumi.StringOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o LookupPublicAdvertisedPrefixResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -105,7 +114,7 @@ func (o LookupPublicAdvertisedPrefixResultOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The IPv4 address to be used for reverse DNS verification.
+// The address to be used for reverse DNS verification.
 func (o LookupPublicAdvertisedPrefixResultOutput) DnsVerificationIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.DnsVerificationIp }).(pulumi.StringOutput)
 }
@@ -115,7 +124,7 @@ func (o LookupPublicAdvertisedPrefixResultOutput) Fingerprint() pulumi.StringOut
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+// The address range, in CIDR format, represented by this public advertised prefix.
 func (o LookupPublicAdvertisedPrefixResultOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.IpCidrRange }).(pulumi.StringOutput)
 }
@@ -128,6 +137,11 @@ func (o LookupPublicAdvertisedPrefixResultOutput) Kind() pulumi.StringOutput {
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o LookupPublicAdvertisedPrefixResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.
+func (o LookupPublicAdvertisedPrefixResultOutput) PdpScope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.PdpScope }).(pulumi.StringOutput)
 }
 
 // The list of public delegated prefixes that exist for this public advertised prefix.

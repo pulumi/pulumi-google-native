@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<double>? AqStrength { get; set; }
 
         /// <summary>
-        /// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+        /// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
         /// </summary>
         [Input("bFrameCount")]
         public Input<int>? BFrameCount { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<int>? CrfLevel { get; set; }
 
         /// <summary>
-        /// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+        /// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
         /// </summary>
         [Input("enableTwoPass")]
         public Input<bool>? EnableTwoPass { get; set; }
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<string>? Profile { get; set; }
 
         /// <summary>
-        /// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        /// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
         /// </summary>
         [Input("rateControlMode")]
         public Input<string>? RateControlMode { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<string>? Tune { get; set; }
 
         /// <summary>
-        /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+        /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
         /// </summary>
         [Input("vbvFullnessBits")]
         public Input<int>? VbvFullnessBits { get; set; }

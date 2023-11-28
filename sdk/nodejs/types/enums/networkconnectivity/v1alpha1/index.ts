@@ -35,6 +35,10 @@ export const InternalRangeOverlapsItem = {
      * Allow creation of static routes more specific than the current internal range.
      */
     OverlapRouteRange: "OVERLAP_ROUTE_RANGE",
+    /**
+     * Allow creation of internal ranges that overlap with existing subnets.
+     */
+    OverlapExistingSubnetRange: "OVERLAP_EXISTING_SUBNET_RANGE",
 } as const;
 
 export type InternalRangeOverlapsItem = (typeof InternalRangeOverlapsItem)[keyof typeof InternalRangeOverlapsItem];

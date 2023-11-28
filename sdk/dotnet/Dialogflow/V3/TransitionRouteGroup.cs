@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+        /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` .
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+        /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` .
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

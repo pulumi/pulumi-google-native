@@ -74,6 +74,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        /// </summary>
+        [Output("externalDatasetReference")]
+        public Output<Outputs.ExternalDatasetReferenceResponse> ExternalDatasetReference { get; private set; } = null!;
+
+        /// <summary>
         /// [Optional] A descriptive name for the dataset.
         /// </summary>
         [Output("friendlyName")]
@@ -229,6 +235,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        /// </summary>
+        [Input("externalDatasetReference")]
+        public Input<Inputs.ExternalDatasetReferenceArgs>? ExternalDatasetReference { get; set; }
 
         /// <summary>
         /// [Optional] A descriptive name for the dataset.

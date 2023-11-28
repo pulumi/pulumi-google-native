@@ -19,6 +19,8 @@ type Agent struct {
 
 	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	AdvancedSettings GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput `pulumi:"advancedSettings"`
+	// Optional. Answer feedback collection settings.
+	AnswerFeedbackSettings GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponseOutput `pulumi:"answerFeedbackSettings"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringOutput `pulumi:"avatarUri"`
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -30,8 +32,12 @@ type Agent struct {
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolOutput `pulumi:"enableSpellCorrection"`
 	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
-	EnableStackdriverLogging pulumi.BoolOutput   `pulumi:"enableStackdriverLogging"`
-	Location                 pulumi.StringOutput `pulumi:"location"`
+	EnableStackdriverLogging pulumi.BoolOutput `pulumi:"enableStackdriverLogging"`
+	// Gen App Builder-related agent-level settings.
+	GenAppBuilderSettings GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponseOutput `pulumi:"genAppBuilderSettings"`
+	// Git integration settings for this agent.
+	GitIntegrationSettings GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponseOutput `pulumi:"gitIntegrationSettings"`
+	Location               pulumi.StringOutput                                                `pulumi:"location"`
 	// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
@@ -107,6 +113,8 @@ func (AgentState) ElementType() reflect.Type {
 type agentArgs struct {
 	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	AdvancedSettings *GoogleCloudDialogflowCxV3AdvancedSettings `pulumi:"advancedSettings"`
+	// Optional. Answer feedback collection settings.
+	AnswerFeedbackSettings *GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings `pulumi:"answerFeedbackSettings"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri *string `pulumi:"avatarUri"`
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -118,8 +126,12 @@ type agentArgs struct {
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
 	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
-	EnableStackdriverLogging *bool   `pulumi:"enableStackdriverLogging"`
-	Location                 *string `pulumi:"location"`
+	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+	// Gen App Builder-related agent-level settings.
+	GenAppBuilderSettings *GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings `pulumi:"genAppBuilderSettings"`
+	// Git integration settings for this agent.
+	GitIntegrationSettings *GoogleCloudDialogflowCxV3AgentGitIntegrationSettings `pulumi:"gitIntegrationSettings"`
+	Location               *string                                               `pulumi:"location"`
 	// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 	Locked *bool `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
@@ -143,6 +155,8 @@ type agentArgs struct {
 type AgentArgs struct {
 	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	AdvancedSettings GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput
+	// Optional. Answer feedback collection settings.
+	AnswerFeedbackSettings GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsPtrInput
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringPtrInput
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -155,7 +169,11 @@ type AgentArgs struct {
 	EnableSpellCorrection pulumi.BoolPtrInput
 	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 	EnableStackdriverLogging pulumi.BoolPtrInput
-	Location                 pulumi.StringPtrInput
+	// Gen App Builder-related agent-level settings.
+	GenAppBuilderSettings GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsPtrInput
+	// Git integration settings for this agent.
+	GitIntegrationSettings GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsPtrInput
+	Location               pulumi.StringPtrInput
 	// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 	Locked pulumi.BoolPtrInput
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
@@ -229,6 +247,13 @@ func (o AgentOutput) AdvancedSettings() GoogleCloudDialogflowCxV3AdvancedSetting
 	return o.ApplyT(func(v *Agent) GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput { return v.AdvancedSettings }).(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput)
 }
 
+// Optional. Answer feedback collection settings.
+func (o AgentOutput) AnswerFeedbackSettings() GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponseOutput {
+	return o.ApplyT(func(v *Agent) GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponseOutput {
+		return v.AnswerFeedbackSettings
+	}).(GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponseOutput)
+}
+
 // The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 func (o AgentOutput) AvatarUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.AvatarUri }).(pulumi.StringOutput)
@@ -257,6 +282,20 @@ func (o AgentOutput) EnableSpellCorrection() pulumi.BoolOutput {
 // Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 func (o AgentOutput) EnableStackdriverLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Agent) pulumi.BoolOutput { return v.EnableStackdriverLogging }).(pulumi.BoolOutput)
+}
+
+// Gen App Builder-related agent-level settings.
+func (o AgentOutput) GenAppBuilderSettings() GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponseOutput {
+	return o.ApplyT(func(v *Agent) GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponseOutput {
+		return v.GenAppBuilderSettings
+	}).(GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponseOutput)
+}
+
+// Git integration settings for this agent.
+func (o AgentOutput) GitIntegrationSettings() GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponseOutput {
+	return o.ApplyT(func(v *Agent) GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponseOutput {
+		return v.GitIntegrationSettings
+	}).(GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponseOutput)
 }
 
 func (o AgentOutput) Location() pulumi.StringOutput {

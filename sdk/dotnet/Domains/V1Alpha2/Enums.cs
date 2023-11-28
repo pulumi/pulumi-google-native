@@ -74,11 +74,11 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         /// </summary>
         public static ContactSettingsPrivacy PublicContactData { get; } = new ContactSettingsPrivacy("PUBLIC_CONTACT_DATA");
         /// <summary>
-        /// None of the data from `ContactSettings` is publicly available. Instead, proxy contact data is published for your domain. Email sent to the proxy email address is forwarded to the registrant's email address. Cloud Domains provides this privacy proxy service at no additional cost.
+        /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) None of the data from `ContactSettings` is publicly available. Instead, proxy contact data is published for your domain. Email sent to the proxy email address is forwarded to the registrant's email address. Cloud Domains provides this privacy proxy service at no additional cost.
         /// </summary>
         public static ContactSettingsPrivacy PrivateContactData { get; } = new ContactSettingsPrivacy("PRIVATE_CONTACT_DATA");
         /// <summary>
-        /// Some data from `ContactSettings` is publicly available. The actual information redacted depends on the domain. For details, see [the registration privacy article](https://support.google.com/domains/answer/3251242).
+        /// The organization name (if provided) and limited non-identifying data from `ContactSettings` is available to the public (e.g. country and state). The remaining data is marked as `REDACTED FOR PRIVACY` in the WHOIS database. The actual information redacted depends on the domain. For details, see [the registration privacy article](https://support.google.com/domains/answer/3251242).
         /// </summary>
         public static ContactSettingsPrivacy RedactedContactData { get; } = new ContactSettingsPrivacy("REDACTED_CONTACT_DATA");
 
@@ -281,6 +281,51 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleDomainsDnsDsState other && Equals(other);
         public bool Equals(GoogleDomainsDnsDsState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+    /// </summary>
+    [EnumType]
+    public readonly struct ManagementSettingsPreferredRenewalMethod : IEquatable<ManagementSettingsPreferredRenewalMethod>
+    {
+        private readonly string _value;
+
+        private ManagementSettingsPreferredRenewalMethod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The renewal method is undefined.
+        /// </summary>
+        public static ManagementSettingsPreferredRenewalMethod RenewalMethodUnspecified { get; } = new ManagementSettingsPreferredRenewalMethod("RENEWAL_METHOD_UNSPECIFIED");
+        /// <summary>
+        /// The domain is automatically renewed each year.
+        /// </summary>
+        public static ManagementSettingsPreferredRenewalMethod AutomaticRenewal { get; } = new ManagementSettingsPreferredRenewalMethod("AUTOMATIC_RENEWAL");
+        /// <summary>
+        /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) This option was never used. Use RENEWAL_DISABLED instead.
+        /// </summary>
+        public static ManagementSettingsPreferredRenewalMethod ManualRenewal { get; } = new ManagementSettingsPreferredRenewalMethod("MANUAL_RENEWAL");
+        /// <summary>
+        /// The domain won't be renewed and will expire at its expiration time.
+        /// </summary>
+        public static ManagementSettingsPreferredRenewalMethod RenewalDisabled { get; } = new ManagementSettingsPreferredRenewalMethod("RENEWAL_DISABLED");
+
+        public static bool operator ==(ManagementSettingsPreferredRenewalMethod left, ManagementSettingsPreferredRenewalMethod right) => left.Equals(right);
+        public static bool operator !=(ManagementSettingsPreferredRenewalMethod left, ManagementSettingsPreferredRenewalMethod right) => !left.Equals(right);
+
+        public static explicit operator string(ManagementSettingsPreferredRenewalMethod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ManagementSettingsPreferredRenewalMethod other && Equals(other);
+        public bool Equals(ManagementSettingsPreferredRenewalMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
 {
 
     /// <summary>
-    /// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+    /// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
     /// </summary>
     public sealed class CharacterMaskFieldArgs : global::Pulumi.ResourceArgs
     {

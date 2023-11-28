@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
         /// </summary>
         public readonly Outputs.NetworkTagsResponse NetworkTags;
+        /// <summary>
+        /// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
+        /// </summary>
+        public readonly Outputs.ResourceManagerTagsResponse ResourceManagerTags;
 
         [OutputConstructor]
-        private NodePoolAutoConfigResponse(Outputs.NetworkTagsResponse networkTags)
+        private NodePoolAutoConfigResponse(
+            Outputs.NetworkTagsResponse networkTags,
+
+            Outputs.ResourceManagerTagsResponse resourceManagerTags)
         {
             NetworkTags = networkTags;
+            ResourceManagerTags = resourceManagerTags;
         }
     }
 }

@@ -2,6 +2,23 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const BudgetOwnershipScope = {
+    /**
+     * Unspecified ownership scope, same as ALL_USERS.
+     */
+    OwnershipScopeUnspecified: "OWNERSHIP_SCOPE_UNSPECIFIED",
+    /**
+     * Both billing account-level users and project-level users have full access to the budget, if the users have the required IAM permissions.
+     */
+    AllUsers: "ALL_USERS",
+    /**
+     * Only billing account-level users have full access to the budget. Project-level users have read-only access, even if they have the required IAM permissions.
+     */
+    BillingAccount: "BILLING_ACCOUNT",
+} as const;
+
+export type BudgetOwnershipScope = (typeof BudgetOwnershipScope)[keyof typeof BudgetOwnershipScope];
+
 export const GoogleCloudBillingBudgetsV1FilterCalendarPeriod = {
     /**
      * Calendar period is unset. This is the default if the budget is for a custom time period (CustomPeriod).

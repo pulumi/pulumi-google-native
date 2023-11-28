@@ -66,11 +66,11 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
         :param pulumi.Input['InstanceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
-        :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
+        :param pulumi.Input[bool] no_public_ip: If true, no external IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
@@ -338,7 +338,7 @@ class InstanceArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Custom metadata to apply to this instance.
+        Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
         """
         return pulumi.get(self, "metadata")
 
@@ -386,7 +386,7 @@ class InstanceArgs:
     @pulumi.getter(name="noPublicIp")
     def no_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, no public IP will be assigned to this instance.
+        If true, no external IP will be assigned to this instance.
         """
         return pulumi.get(self, "no_public_ip")
 
@@ -583,11 +583,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
         :param pulumi.Input[str] machine_type: The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
         :param pulumi.Input['InstanceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
-        :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
+        :param pulumi.Input[bool] no_public_ip: If true, no external IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
@@ -704,6 +704,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["creator"] = None
             __props__.__dict__["disks"] = None
+            __props__.__dict__["instance_migration_eligibility"] = None
+            __props__.__dict__["migrated"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["proxy_uri"] = None
             __props__.__dict__["state"] = None
@@ -746,12 +748,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["disks"] = None
         __props__.__dict__["install_gpu_driver"] = None
         __props__.__dict__["instance_id"] = None
+        __props__.__dict__["instance_migration_eligibility"] = None
         __props__.__dict__["instance_owners"] = None
         __props__.__dict__["kms_key"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["machine_type"] = None
         __props__.__dict__["metadata"] = None
+        __props__.__dict__["migrated"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["nic_type"] = None
@@ -886,6 +890,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "instance_id")
 
     @property
+    @pulumi.getter(name="instanceMigrationEligibility")
+    def instance_migration_eligibility(self) -> pulumi.Output['outputs.InstanceMigrationEligibilityResponse']:
+        """
+        Checks how feasible a migration from UmN to WbI is.
+        """
+        return pulumi.get(self, "instance_migration_eligibility")
+
+    @property
     @pulumi.getter(name="instanceOwners")
     def instance_owners(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -926,9 +938,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Custom metadata to apply to this instance.
+        Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def migrated(self) -> pulumi.Output[bool]:
+        """
+        Bool indicating whether this notebook has been migrated to a Workbench Instance
+        """
+        return pulumi.get(self, "migrated")
 
     @property
     @pulumi.getter
@@ -966,7 +986,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="noPublicIp")
     def no_public_ip(self) -> pulumi.Output[bool]:
         """
-        If true, no public IP will be assigned to this instance.
+        If true, no external IP will be assigned to this instance.
         """
         return pulumi.get(self, "no_public_ip")
 

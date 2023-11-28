@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerInstanceFlexibilityPolicyResponse InstanceFlexibilityPolicy;
+        /// <summary>
         /// The URL of the Instance Group resource.
         /// </summary>
         public readonly string InstanceGroup;
@@ -140,6 +144,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>
+        /// Standby policy for stopped and suspended instances.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerStandbyPolicyResponse StandbyPolicy;
+        /// <summary>
         /// Stateful configuration for this Instanced Group Manager
         /// </summary>
         public readonly Outputs.StatefulPolicyResponse StatefulPolicy;
@@ -155,6 +163,14 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
         /// </summary>
         public readonly int TargetSize;
+        /// <summary>
+        /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
+        /// </summary>
+        public readonly int TargetStoppedSize;
+        /// <summary>
+        /// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
+        /// </summary>
+        public readonly int TargetSuspendedSize;
         /// <summary>
         /// The update policy for this managed instance group.
         /// </summary>
@@ -188,6 +204,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string fingerprint,
 
+            Outputs.InstanceGroupManagerInstanceFlexibilityPolicyResponse instanceFlexibilityPolicy,
+
             string instanceGroup,
 
             Outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse instanceLifecyclePolicy,
@@ -208,6 +226,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string serviceAccount,
 
+            Outputs.InstanceGroupManagerStandbyPolicyResponse standbyPolicy,
+
             Outputs.StatefulPolicyResponse statefulPolicy,
 
             Outputs.InstanceGroupManagerStatusResponse status,
@@ -215,6 +235,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
             ImmutableArray<string> targetPools,
 
             int targetSize,
+
+            int targetStoppedSize,
+
+            int targetSuspendedSize,
 
             Outputs.InstanceGroupManagerUpdatePolicyResponse updatePolicy,
 
@@ -231,6 +255,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             DistributionPolicy = distributionPolicy;
             FailoverAction = failoverAction;
             Fingerprint = fingerprint;
+            InstanceFlexibilityPolicy = instanceFlexibilityPolicy;
             InstanceGroup = instanceGroup;
             InstanceLifecyclePolicy = instanceLifecyclePolicy;
             InstanceTemplate = instanceTemplate;
@@ -241,10 +266,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Region = region;
             SelfLink = selfLink;
             ServiceAccount = serviceAccount;
+            StandbyPolicy = standbyPolicy;
             StatefulPolicy = statefulPolicy;
             Status = status;
             TargetPools = targetPools;
             TargetSize = targetSize;
+            TargetStoppedSize = targetStoppedSize;
+            TargetSuspendedSize = targetSuspendedSize;
             UpdatePolicy = updatePolicy;
             Versions = versions;
             Zone = zone;

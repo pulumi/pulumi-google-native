@@ -8,29 +8,25 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Gets details of a single Tenant.
+ * Gets details of a single ProxyConfig.
  */
 export function getProxyConfig(args: GetProxyConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetProxyConfigResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:beyondcorp/v1alpha:getProxyConfig", {
         "organizationId": args.organizationId,
+        "partnerTenantId": args.partnerTenantId,
         "proxyConfigId": args.proxyConfigId,
-        "tenantId": args.tenantId,
     }, opts);
 }
 
 export interface GetProxyConfigArgs {
     organizationId: string;
+    partnerTenantId: string;
     proxyConfigId: string;
-    tenantId: string;
 }
 
 export interface GetProxyConfigResult {
-    /**
-     * Optional. Information to facilitate Authentication against the proxy server.
-     */
-    readonly authenticationInfo: outputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse;
     /**
      * Timestamp when the resource was created.
      */
@@ -39,6 +35,10 @@ export interface GetProxyConfigResult {
      * Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
      */
     readonly displayName: string;
+    /**
+     * Optional. Information to encrypt JWT for the proxy server.
+     */
+    readonly encryptionInfo: outputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse;
     /**
      * ProxyConfig resource name.
      */
@@ -61,7 +61,7 @@ export interface GetProxyConfigResult {
     readonly updateTime: string;
 }
 /**
- * Gets details of a single Tenant.
+ * Gets details of a single ProxyConfig.
  */
 export function getProxyConfigOutput(args: GetProxyConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProxyConfigResult> {
     return pulumi.output(args).apply((a: any) => getProxyConfig(a, opts))
@@ -69,6 +69,6 @@ export function getProxyConfigOutput(args: GetProxyConfigOutputArgs, opts?: pulu
 
 export interface GetProxyConfigOutputArgs {
     organizationId: pulumi.Input<string>;
+    partnerTenantId: pulumi.Input<string>;
     proxyConfigId: pulumi.Input<string>;
-    tenantId: pulumi.Input<string>;
 }

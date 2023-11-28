@@ -267,7 +267,11 @@ class NodeResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "nodeId":
+        if key == "memcacheFullVersion":
+            suggest = "memcache_full_version"
+        elif key == "memcacheVersion":
+            suggest = "memcache_version"
+        elif key == "nodeId":
             suggest = "node_id"
 
         if suggest:
@@ -283,6 +287,8 @@ class NodeResponse(dict):
 
     def __init__(__self__, *,
                  host: str,
+                 memcache_full_version: str,
+                 memcache_version: str,
                  node_id: str,
                  parameters: 'outputs.MemcacheParametersResponse',
                  port: int,
@@ -290,6 +296,8 @@ class NodeResponse(dict):
                  zone: str):
         """
         :param str host: Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+        :param str memcache_full_version: The full version of memcached server running on this node. e.g. - memcached-1.5.16
+        :param str memcache_version: Major version of memcached server running on this node, e.g. MEMCACHE_1_5
         :param str node_id: Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
         :param 'MemcacheParametersResponse' parameters: User defined parameters currently applied to the node.
         :param int port: The port number of the Memcached server on this node.
@@ -297,6 +305,8 @@ class NodeResponse(dict):
         :param str zone: Location (GCP Zone) for the Memcached node.
         """
         pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "memcache_full_version", memcache_full_version)
+        pulumi.set(__self__, "memcache_version", memcache_version)
         pulumi.set(__self__, "node_id", node_id)
         pulumi.set(__self__, "parameters", parameters)
         pulumi.set(__self__, "port", port)
@@ -310,6 +320,22 @@ class NodeResponse(dict):
         Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="memcacheFullVersion")
+    def memcache_full_version(self) -> str:
+        """
+        The full version of memcached server running on this node. e.g. - memcached-1.5.16
+        """
+        return pulumi.get(self, "memcache_full_version")
+
+    @property
+    @pulumi.getter(name="memcacheVersion")
+    def memcache_version(self) -> str:
+        """
+        Major version of memcached server running on this node, e.g. MEMCACHE_1_5
+        """
+        return pulumi.get(self, "memcache_version")
 
     @property
     @pulumi.getter(name="nodeId")

@@ -26,6 +26,7 @@ func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulum
 type LookupInstanceArgs struct {
 	Instance string  `pulumi:"instance"`
 	Project  *string `pulumi:"project"`
+	View     *string `pulumi:"view"`
 	Zone     string  `pulumi:"zone"`
 }
 
@@ -84,6 +85,8 @@ type LookupInstanceResult struct {
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceParamsResponse `pulumi:"params"`
+	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
 	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
@@ -150,6 +153,7 @@ func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, op
 type LookupInstanceOutputArgs struct {
 	Instance pulumi.StringInput    `pulumi:"instance"`
 	Project  pulumi.StringPtrInput `pulumi:"project"`
+	View     pulumi.StringPtrInput `pulumi:"view"`
 	Zone     pulumi.StringInput    `pulumi:"zone"`
 }
 
@@ -313,6 +317,11 @@ func (o LookupInstanceResultOutput) NetworkPerformanceConfig() NetworkPerformanc
 // Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 func (o LookupInstanceResultOutput) Params() InstanceParamsResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) InstanceParamsResponse { return v.Params }).(InstanceParamsResponseOutput)
+}
+
+// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+func (o LookupInstanceResultOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.

@@ -486,7 +486,7 @@ func (o ResourceFilterResponseOutput) Scopes() pulumi.StringArrayOutput {
 
 // Message describing resource status
 type ResourceStatusResponse struct {
-	// the new version of rule id if exists
+	// Historical: Used before 2023-05-22 the new version of rule id if exists
 	RulesNewerVersions []string `pulumi:"rulesNewerVersions"`
 	// State of the resource
 	State string `pulumi:"state"`
@@ -513,7 +513,7 @@ func (o ResourceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// the new version of rule id if exists
+// Historical: Used before 2023-05-22 the new version of rule id if exists
 func (o ResourceStatusResponseOutput) RulesNewerVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceStatusResponse) []string { return v.RulesNewerVersions }).(pulumi.StringArrayOutput)
 }

@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetPublicAdvertisedPrefixResult
     {
         /// <summary>
+        /// The version of BYOIP API.
+        /// </summary>
+        public readonly string ByoipApiVersion;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -66,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The IPv4 address to be used for reverse DNS verification.
+        /// The address to be used for reverse DNS verification.
         /// </summary>
         public readonly string DnsVerificationIp;
         /// <summary>
@@ -74,7 +78,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The address range, in CIDR format, represented by this public advertised prefix.
         /// </summary>
         public readonly string IpCidrRange;
         /// <summary>
@@ -112,6 +116,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetPublicAdvertisedPrefixResult(
+            string byoipApiVersion,
+
             string creationTimestamp,
 
             string description,
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string status)
         {
+            ByoipApiVersion = byoipApiVersion;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DnsVerificationIp = dnsVerificationIp;

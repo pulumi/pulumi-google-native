@@ -127,15 +127,20 @@ export const RRSetRoutingPolicyLoadBalancerTargetIpProtocol = {
     Udp: "udp",
 } as const;
 
+/**
+ * The protocol of the load balancer to health check.
+ */
 export type RRSetRoutingPolicyLoadBalancerTargetIpProtocol = (typeof RRSetRoutingPolicyLoadBalancerTargetIpProtocol)[keyof typeof RRSetRoutingPolicyLoadBalancerTargetIpProtocol];
 
 export const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType = {
     None: "none",
+    GlobalL7ilb: "globalL7ilb",
     RegionalL4ilb: "regionalL4ilb",
+    RegionalL7ilb: "regionalL7ilb",
 } as const;
 
 /**
- * The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+ * The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. 
  */
 export type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType = (typeof RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType)[keyof typeof RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType];
 

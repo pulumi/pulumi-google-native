@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly string DagTimeout;
         /// <summary>
+        /// Optional. Encryption settings for the encrypting customer core content.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse EncryptionConfig;
+        /// <summary>
         /// The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         public readonly ImmutableArray<Outputs.OrderedJobResponse> Jobs;
@@ -112,6 +116,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 
             string dagTimeout,
 
+            Outputs.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse encryptionConfig,
+
             ImmutableArray<Outputs.OrderedJobResponse> jobs,
 
             ImmutableDictionary<string, string> labels,
@@ -128,6 +134,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         {
             CreateTime = createTime;
             DagTimeout = dagTimeout;
+            EncryptionConfig = encryptionConfig;
             Jobs = jobs;
             Labels = labels;
             Name = name;

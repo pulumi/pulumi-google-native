@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     public sealed class GoogleCloudDialogflowCxV3beta1FormParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         /// </summary>
         [Input("defaultValue")]

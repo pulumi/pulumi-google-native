@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigrationJobResult:
-    def __init__(__self__, cmek_key_name=None, conversion_workspace=None, create_time=None, destination=None, destination_database=None, display_name=None, dump_flags=None, dump_path=None, duration=None, end_time=None, error=None, filter=None, labels=None, name=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
+    def __init__(__self__, cmek_key_name=None, conversion_workspace=None, create_time=None, destination=None, destination_database=None, display_name=None, dump_flags=None, dump_path=None, duration=None, end_time=None, error=None, filter=None, labels=None, name=None, performance_config=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
         if cmek_key_name and not isinstance(cmek_key_name, str):
             raise TypeError("Expected argument 'cmek_key_name' to be a str")
         pulumi.set(__self__, "cmek_key_name", cmek_key_name)
@@ -62,6 +62,9 @@ class GetMigrationJobResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if performance_config and not isinstance(performance_config, dict):
+            raise TypeError("Expected argument 'performance_config' to be a dict")
+        pulumi.set(__self__, "performance_config", performance_config)
         if phase and not isinstance(phase, str):
             raise TypeError("Expected argument 'phase' to be a str")
         pulumi.set(__self__, "phase", phase)
@@ -203,6 +206,14 @@ class GetMigrationJobResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="performanceConfig")
+    def performance_config(self) -> 'outputs.PerformanceConfigResponse':
+        """
+        Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+        """
+        return pulumi.get(self, "performance_config")
+
+    @property
     @pulumi.getter
     def phase(self) -> str:
         """
@@ -295,6 +306,7 @@ class AwaitableGetMigrationJobResult(GetMigrationJobResult):
             filter=self.filter,
             labels=self.labels,
             name=self.name,
+            performance_config=self.performance_config,
             phase=self.phase,
             reverse_ssh_connectivity=self.reverse_ssh_connectivity,
             source=self.source,
@@ -335,6 +347,7 @@ def get_migration_job(location: Optional[str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        performance_config=pulumi.get(__ret__, 'performance_config'),
         phase=pulumi.get(__ret__, 'phase'),
         reverse_ssh_connectivity=pulumi.get(__ret__, 'reverse_ssh_connectivity'),
         source=pulumi.get(__ret__, 'source'),

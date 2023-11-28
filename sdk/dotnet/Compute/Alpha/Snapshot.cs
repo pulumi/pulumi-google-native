@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> DownloadBytes { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+        /// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
         /// </summary>
         [Output("enableConfidentialCompute")]
         public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
@@ -133,6 +133,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// URL of the region where the snapshot resides. Only applicable for regional snapshots.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Output("requestId")]
@@ -197,6 +203,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("sourceInstantSnapshot")]
         public Output<string> SourceInstantSnapshot { get; private set; } = null!;
+
+        /// <summary>
+        /// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        /// </summary>
+        [Output("sourceInstantSnapshotEncryptionKey")]
+        public Output<Outputs.CustomerEncryptionKeyResponse> SourceInstantSnapshotEncryptionKey { get; private set; } = null!;
 
         /// <summary>
         /// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
@@ -308,7 +320,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+        /// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
@@ -393,6 +405,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("sourceInstantSnapshot")]
         public Input<string>? SourceInstantSnapshot { get; set; }
+
+        /// <summary>
+        /// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        /// </summary>
+        [Input("sourceInstantSnapshotEncryptionKey")]
+        public Input<Inputs.CustomerEncryptionKeyArgs>? SourceInstantSnapshotEncryptionKey { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

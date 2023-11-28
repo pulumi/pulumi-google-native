@@ -16,19 +16,19 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
     public sealed class SchemaSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The encoding of messages validated against `schema`.
+        /// Optional. The encoding of messages validated against `schema`.
         /// </summary>
         [Input("encoding")]
         public Input<Pulumi.GoogleNative.Pubsub.V1.SchemaSettingsEncoding>? Encoding { get; set; }
 
         /// <summary>
-        /// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        /// Optional. The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
         /// </summary>
         [Input("firstRevisionId")]
         public Input<string>? FirstRevisionId { get; set; }
 
         /// <summary>
-        /// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+        /// Optional. The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
         /// </summary>
         [Input("lastRevisionId")]
         public Input<string>? LastRevisionId { get; set; }

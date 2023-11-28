@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
+        /// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        /// </summary>
+        [Output("instanceFlexibilityPolicy")]
+        public Output<Outputs.InstanceGroupManagerInstanceFlexibilityPolicyResponse> InstanceFlexibilityPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The URL of the Instance Group resource.
         /// </summary>
         [Output("instanceGroup")]
@@ -136,6 +142,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
+        /// Standby policy for stopped and suspended instances.
+        /// </summary>
+        [Output("standbyPolicy")]
+        public Output<Outputs.InstanceGroupManagerStandbyPolicyResponse> StandbyPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Stateful configuration for this Instanced Group Manager
         /// </summary>
         [Output("statefulPolicy")]
@@ -158,6 +170,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("targetSize")]
         public Output<int> TargetSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
+        /// </summary>
+        [Output("targetStoppedSize")]
+        public Output<int> TargetStoppedSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
+        /// </summary>
+        [Output("targetSuspendedSize")]
+        public Output<int> TargetSuspendedSize { get; private set; } = null!;
 
         /// <summary>
         /// The update policy for this managed instance group.
@@ -270,6 +294,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<Pulumi.GoogleNative.Compute.Beta.RegionInstanceGroupManagerFailoverAction>? FailoverAction { get; set; }
 
         /// <summary>
+        /// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        /// </summary>
+        [Input("instanceFlexibilityPolicy")]
+        public Input<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyArgs>? InstanceFlexibilityPolicy { get; set; }
+
+        /// <summary>
         /// The repair policy for this managed instance group.
         /// </summary>
         [Input("instanceLifecyclePolicy")]
@@ -324,6 +354,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
+        /// Standby policy for stopped and suspended instances.
+        /// </summary>
+        [Input("standbyPolicy")]
+        public Input<Inputs.InstanceGroupManagerStandbyPolicyArgs>? StandbyPolicy { get; set; }
+
+        /// <summary>
         /// Stateful configuration for this Instanced Group Manager
         /// </summary>
         [Input("statefulPolicy")]
@@ -346,6 +382,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
+
+        /// <summary>
+        /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
+        /// </summary>
+        [Input("targetStoppedSize")]
+        public Input<int>? TargetStoppedSize { get; set; }
+
+        /// <summary>
+        /// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
+        /// </summary>
+        [Input("targetSuspendedSize")]
+        public Input<int>? TargetSuspendedSize { get; set; }
 
         /// <summary>
         /// The update policy for this managed instance group.

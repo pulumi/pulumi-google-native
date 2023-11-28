@@ -38,6 +38,10 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
+     * The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+     */
+    public readonly batchModePriority!: pulumi.Output<number>;
+    /**
      * The configuration for this job.
      */
     public readonly config!: pulumi.Output<outputs.transcoder.v1.JobConfigResponse>;
@@ -50,7 +54,7 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
-     * An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`.
+     * An error object that describes the reason for the failure. This property is always present when ProcessingState is `FAILED`.
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.transcoder.v1.StatusResponse>;
     /**
@@ -70,6 +74,10 @@ export class Job extends pulumi.CustomResource {
      * The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+     */
+    public readonly optimization!: pulumi.Output<string>;
     /**
      * Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
      */
@@ -103,12 +111,14 @@ export class Job extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["batchModePriority"] = args ? args.batchModePriority : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["inputUri"] = args ? args.inputUri : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["optimization"] = args ? args.optimization : undefined;
             resourceInputs["outputUri"] = args ? args.outputUri : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["templateId"] = args ? args.templateId : undefined;
@@ -119,6 +129,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["batchModePriority"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
@@ -128,6 +139,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["optimization"] = undefined /*out*/;
             resourceInputs["outputUri"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
@@ -146,6 +158,10 @@ export class Job extends pulumi.CustomResource {
  * The set of arguments for constructing a Job resource.
  */
 export interface JobArgs {
+    /**
+     * The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+     */
+    batchModePriority?: pulumi.Input<number>;
     /**
      * The configuration for this job.
      */
@@ -167,6 +183,10 @@ export interface JobArgs {
      * The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+     */
+    optimization?: pulumi.Input<enums.transcoder.v1.JobOptimization>;
     /**
      * Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
      */

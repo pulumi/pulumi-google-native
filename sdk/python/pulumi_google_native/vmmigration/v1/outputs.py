@@ -17,10 +17,18 @@ __all__ = [
     'ApplianceVersionResponse',
     'AppliedLicenseResponse',
     'AvailableUpdatesResponse',
+    'AwsDiskDetailsResponse',
     'AwsSourceDetailsResponse',
     'AwsSourceVmDetailsResponse',
+    'AzureDiskDetailsResponse',
+    'AzureSourceDetailsResponse',
+    'AzureSourceVmDetailsResponse',
+    'BootDiskDefaultsResponse',
+    'ClientSecretCredentialsResponse',
     'CloneJobResponse',
     'CloneStepResponse',
+    'ComputeEngineDisksTargetDefaultsResponse',
+    'ComputeEngineDisksTargetDetailsResponse',
     'ComputeEngineTargetDefaultsResponse',
     'ComputeEngineTargetDetailsResponse',
     'ComputeSchedulingResponse',
@@ -28,12 +36,20 @@ __all__ = [
     'CutoverJobResponse',
     'CutoverStepResponse',
     'CycleStepResponse',
+    'DiskImageDefaultsResponse',
+    'DisksMigrationDisksTargetDefaultsResponse',
+    'DisksMigrationDisksTargetDetailsResponse',
+    'DisksMigrationVmTargetDefaultsResponse',
+    'DisksMigrationVmTargetDetailsResponse',
+    'EncryptionResponse',
     'InitializingReplicationStepResponse',
     'InstantiatingMigratedVMStepResponse',
     'LinkResponse',
     'LocalizedMessageResponse',
     'MigrationWarningResponse',
     'NetworkInterfaceResponse',
+    'PersistentDiskDefaultsResponse',
+    'PersistentDiskResponse',
     'PostProcessingStepResponse',
     'PreparingVMDisksStepResponse',
     'ReplicatingStepResponse',
@@ -45,9 +61,13 @@ __all__ = [
     'StatusResponse',
     'TagResponse',
     'UpgradeStatusResponse',
+    'VmAttachmentDetailsResponse',
+    'VmCapabilitiesResponse',
     'VmUtilizationInfoResponse',
     'VmUtilizationMetricsResponse',
+    'VmwareDiskDetailsResponse',
     'VmwareSourceDetailsResponse',
+    'VmwareSourceVmDetailsResponse',
     'VmwareVmDetailsResponse',
 ]
 
@@ -303,6 +323,71 @@ class AvailableUpdatesResponse(dict):
 
 
 @pulumi.output_type
+class AwsDiskDetailsResponse(dict):
+    """
+    The details of an AWS instance disk.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskNumber":
+            suggest = "disk_number"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsDiskDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsDiskDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_number: int,
+                 size_gb: str,
+                 volume_id: str):
+        """
+        The details of an AWS instance disk.
+        :param int disk_number: The ordinal number of the disk.
+        :param str size_gb: Size in GB.
+        :param str volume_id: AWS volume ID.
+        """
+        pulumi.set(__self__, "disk_number", disk_number)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="diskNumber")
+    def disk_number(self) -> int:
+        """
+        The ordinal number of the disk.
+        """
+        return pulumi.get(self, "disk_number")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> str:
+        """
+        Size in GB.
+        """
+        return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> str:
+        """
+        AWS volume ID.
+        """
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
 class AwsSourceDetailsResponse(dict):
     """
     AwsSourceDetails message describes a specific source details for the AWS source type.
@@ -438,6 +523,8 @@ class AwsSourceVmDetailsResponse(dict):
         suggest = None
         if key == "committedStorageBytes":
             suggest = "committed_storage_bytes"
+        elif key == "vmCapabilitiesInfo":
+            suggest = "vm_capabilities_info"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AwsSourceVmDetailsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -452,14 +539,20 @@ class AwsSourceVmDetailsResponse(dict):
 
     def __init__(__self__, *,
                  committed_storage_bytes: str,
-                 firmware: str):
+                 disks: Sequence['outputs.AwsDiskDetailsResponse'],
+                 firmware: str,
+                 vm_capabilities_info: 'outputs.VmCapabilitiesResponse'):
         """
         Represent the source AWS VM details.
         :param str committed_storage_bytes: The total size of the disks being migrated in bytes.
+        :param Sequence['AwsDiskDetailsResponse'] disks: The disks attached to the source VM.
         :param str firmware: The firmware type of the source VM.
+        :param 'VmCapabilitiesResponse' vm_capabilities_info: Information about VM capabilities needed for some Compute Engine features.
         """
         pulumi.set(__self__, "committed_storage_bytes", committed_storage_bytes)
+        pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "firmware", firmware)
+        pulumi.set(__self__, "vm_capabilities_info", vm_capabilities_info)
 
     @property
     @pulumi.getter(name="committedStorageBytes")
@@ -471,11 +564,431 @@ class AwsSourceVmDetailsResponse(dict):
 
     @property
     @pulumi.getter
+    def disks(self) -> Sequence['outputs.AwsDiskDetailsResponse']:
+        """
+        The disks attached to the source VM.
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
     def firmware(self) -> str:
         """
         The firmware type of the source VM.
         """
         return pulumi.get(self, "firmware")
+
+    @property
+    @pulumi.getter(name="vmCapabilitiesInfo")
+    def vm_capabilities_info(self) -> 'outputs.VmCapabilitiesResponse':
+        """
+        Information about VM capabilities needed for some Compute Engine features.
+        """
+        return pulumi.get(self, "vm_capabilities_info")
+
+
+@pulumi.output_type
+class AzureDiskDetailsResponse(dict):
+    """
+    The details of an Azure VM disk.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskId":
+            suggest = "disk_id"
+        elif key == "diskNumber":
+            suggest = "disk_number"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureDiskDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureDiskDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_id: str,
+                 disk_number: int,
+                 size_gb: str):
+        """
+        The details of an Azure VM disk.
+        :param str disk_id: Azure disk ID.
+        :param int disk_number: The ordinal number of the disk.
+        :param str size_gb: Size in GB.
+        """
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_number", disk_number)
+        pulumi.set(__self__, "size_gb", size_gb)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        """
+        Azure disk ID.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskNumber")
+    def disk_number(self) -> int:
+        """
+        The ordinal number of the disk.
+        """
+        return pulumi.get(self, "disk_number")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> str:
+        """
+        Size in GB.
+        """
+        return pulumi.get(self, "size_gb")
+
+
+@pulumi.output_type
+class AzureSourceDetailsResponse(dict):
+    """
+    AzureSourceDetails message describes a specific source details for the Azure source type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "azureLocation":
+            suggest = "azure_location"
+        elif key == "clientSecretCreds":
+            suggest = "client_secret_creds"
+        elif key == "migrationResourcesUserTags":
+            suggest = "migration_resources_user_tags"
+        elif key == "resourceGroupId":
+            suggest = "resource_group_id"
+        elif key == "subscriptionId":
+            suggest = "subscription_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureSourceDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureSourceDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureSourceDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 azure_location: str,
+                 client_secret_creds: 'outputs.ClientSecretCredentialsResponse',
+                 error: 'outputs.StatusResponse',
+                 migration_resources_user_tags: Mapping[str, str],
+                 resource_group_id: str,
+                 state: str,
+                 subscription_id: str):
+        """
+        AzureSourceDetails message describes a specific source details for the Azure source type.
+        :param str azure_location: Immutable. The Azure location (region) that the source VMs will be migrated from.
+        :param 'ClientSecretCredentialsResponse' client_secret_creds: Azure Credentials using tenant ID, client ID and secret.
+        :param 'StatusResponse' error: Provides details on the state of the Source in case of an error.
+        :param Mapping[str, str] migration_resources_user_tags: User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+        :param str resource_group_id: The ID of the Azure resource group that contains all resources related to the migration process of this source.
+        :param str state: State of the source as determined by the health check.
+        :param str subscription_id: Immutable. Azure subscription ID.
+        """
+        pulumi.set(__self__, "azure_location", azure_location)
+        pulumi.set(__self__, "client_secret_creds", client_secret_creds)
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "migration_resources_user_tags", migration_resources_user_tags)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @property
+    @pulumi.getter(name="azureLocation")
+    def azure_location(self) -> str:
+        """
+        Immutable. The Azure location (region) that the source VMs will be migrated from.
+        """
+        return pulumi.get(self, "azure_location")
+
+    @property
+    @pulumi.getter(name="clientSecretCreds")
+    def client_secret_creds(self) -> 'outputs.ClientSecretCredentialsResponse':
+        """
+        Azure Credentials using tenant ID, client ID and secret.
+        """
+        return pulumi.get(self, "client_secret_creds")
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        Provides details on the state of the Source in case of an error.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="migrationResourcesUserTags")
+    def migration_resources_user_tags(self) -> Mapping[str, str]:
+        """
+        User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+        """
+        return pulumi.get(self, "migration_resources_user_tags")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the Azure resource group that contains all resources related to the migration process of this source.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the source as determined by the health check.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> str:
+        """
+        Immutable. Azure subscription ID.
+        """
+        return pulumi.get(self, "subscription_id")
+
+
+@pulumi.output_type
+class AzureSourceVmDetailsResponse(dict):
+    """
+    Represent the source Azure VM details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "committedStorageBytes":
+            suggest = "committed_storage_bytes"
+        elif key == "vmCapabilitiesInfo":
+            suggest = "vm_capabilities_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureSourceVmDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureSourceVmDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureSourceVmDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 committed_storage_bytes: str,
+                 disks: Sequence['outputs.AzureDiskDetailsResponse'],
+                 firmware: str,
+                 vm_capabilities_info: 'outputs.VmCapabilitiesResponse'):
+        """
+        Represent the source Azure VM details.
+        :param str committed_storage_bytes: The total size of the disks being migrated in bytes.
+        :param Sequence['AzureDiskDetailsResponse'] disks: The disks attached to the source VM.
+        :param str firmware: The firmware type of the source VM.
+        :param 'VmCapabilitiesResponse' vm_capabilities_info: Information about VM capabilities needed for some Compute Engine features.
+        """
+        pulumi.set(__self__, "committed_storage_bytes", committed_storage_bytes)
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "firmware", firmware)
+        pulumi.set(__self__, "vm_capabilities_info", vm_capabilities_info)
+
+    @property
+    @pulumi.getter(name="committedStorageBytes")
+    def committed_storage_bytes(self) -> str:
+        """
+        The total size of the disks being migrated in bytes.
+        """
+        return pulumi.get(self, "committed_storage_bytes")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.AzureDiskDetailsResponse']:
+        """
+        The disks attached to the source VM.
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def firmware(self) -> str:
+        """
+        The firmware type of the source VM.
+        """
+        return pulumi.get(self, "firmware")
+
+    @property
+    @pulumi.getter(name="vmCapabilitiesInfo")
+    def vm_capabilities_info(self) -> 'outputs.VmCapabilitiesResponse':
+        """
+        Information about VM capabilities needed for some Compute Engine features.
+        """
+        return pulumi.get(self, "vm_capabilities_info")
+
+
+@pulumi.output_type
+class BootDiskDefaultsResponse(dict):
+    """
+    BootDiskDefaults hold information about the boot disk of a VM.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceName":
+            suggest = "device_name"
+        elif key == "diskName":
+            suggest = "disk_name"
+        elif key == "diskType":
+            suggest = "disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BootDiskDefaultsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BootDiskDefaultsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BootDiskDefaultsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 device_name: str,
+                 disk_name: str,
+                 disk_type: str,
+                 encryption: 'outputs.EncryptionResponse',
+                 image: 'outputs.DiskImageDefaultsResponse'):
+        """
+        BootDiskDefaults hold information about the boot disk of a VM.
+        :param str device_name: Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        :param str disk_name: Optional. The name of the disk.
+        :param str disk_type: Optional. The type of disk provisioning to use for the VM.
+        :param 'EncryptionResponse' encryption: Optional. The encryption to apply to the boot disk.
+        :param 'DiskImageDefaultsResponse' image: The image to use when creating the disk.
+        """
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "image", image)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> str:
+        """
+        Optional. The name of the disk.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        Optional. The type of disk provisioning to use for the VM.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.EncryptionResponse':
+        """
+        Optional. The encryption to apply to the boot disk.
+        """
+        return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter
+    def image(self) -> 'outputs.DiskImageDefaultsResponse':
+        """
+        The image to use when creating the disk.
+        """
+        return pulumi.get(self, "image")
+
+
+@pulumi.output_type
+class ClientSecretCredentialsResponse(dict):
+    """
+    Message describing Azure Credentials using tenant ID, client ID and secret.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientSecretCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientSecretCredentialsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientSecretCredentialsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: str,
+                 client_secret: str,
+                 tenant_id: str):
+        """
+        Message describing Azure Credentials using tenant ID, client ID and secret.
+        :param str client_id: Azure client ID.
+        :param str client_secret: Input only. Azure client secret.
+        :param str tenant_id: Azure tenant ID.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        Azure client ID.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        """
+        Input only. Azure client secret.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        Azure tenant ID.
+        """
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type
@@ -486,7 +999,9 @@ class CloneJobResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "computeEngineTargetDetails":
+        if key == "computeEngineDisksTargetDetails":
+            suggest = "compute_engine_disks_target_details"
+        elif key == "computeEngineTargetDetails":
             suggest = "compute_engine_target_details"
         elif key == "createTime":
             suggest = "create_time"
@@ -507,6 +1022,7 @@ class CloneJobResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 compute_engine_disks_target_details: 'outputs.ComputeEngineDisksTargetDetailsResponse',
                  compute_engine_target_details: 'outputs.ComputeEngineTargetDetailsResponse',
                  create_time: str,
                  end_time: str,
@@ -517,6 +1033,7 @@ class CloneJobResponse(dict):
                  steps: Sequence['outputs.CloneStepResponse']):
         """
         CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
+        :param 'ComputeEngineDisksTargetDetailsResponse' compute_engine_disks_target_details: Details of the target Persistent Disks in Compute Engine.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
         :param str create_time: The time the clone job was created (as an API call, not when it was actually created in the target).
         :param str end_time: The time the clone job was ended.
@@ -526,6 +1043,7 @@ class CloneJobResponse(dict):
         :param str state_time: The time the state was last updated.
         :param Sequence['CloneStepResponse'] steps: The clone steps list representing its progress.
         """
+        pulumi.set(__self__, "compute_engine_disks_target_details", compute_engine_disks_target_details)
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "end_time", end_time)
@@ -534,6 +1052,14 @@ class CloneJobResponse(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_time", state_time)
         pulumi.set(__self__, "steps", steps)
+
+    @property
+    @pulumi.getter(name="computeEngineDisksTargetDetails")
+    def compute_engine_disks_target_details(self) -> 'outputs.ComputeEngineDisksTargetDetailsResponse':
+        """
+        Details of the target Persistent Disks in Compute Engine.
+        """
+        return pulumi.get(self, "compute_engine_disks_target_details")
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -692,6 +1218,156 @@ class CloneStepResponse(dict):
 
 
 @pulumi.output_type
+class ComputeEngineDisksTargetDefaultsResponse(dict):
+    """
+    ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disksTargetDefaults":
+            suggest = "disks_target_defaults"
+        elif key == "targetProject":
+            suggest = "target_project"
+        elif key == "vmTargetDefaults":
+            suggest = "vm_target_defaults"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComputeEngineDisksTargetDefaultsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComputeEngineDisksTargetDefaultsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComputeEngineDisksTargetDefaultsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disks: Sequence['outputs.PersistentDiskDefaultsResponse'],
+                 disks_target_defaults: 'outputs.DisksMigrationDisksTargetDefaultsResponse',
+                 target_project: str,
+                 vm_target_defaults: 'outputs.DisksMigrationVmTargetDefaultsResponse',
+                 zone: str):
+        """
+        ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
+        :param Sequence['PersistentDiskDefaultsResponse'] disks: The details of each Persistent Disk to create.
+        :param 'DisksMigrationDisksTargetDefaultsResponse' disks_target_defaults: Details of the disk only migration target.
+        :param str target_project: The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+        :param 'DisksMigrationVmTargetDefaultsResponse' vm_target_defaults: Details of the VM migration target.
+        :param str zone: The zone in which to create the Persistent Disks.
+        """
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "disks_target_defaults", disks_target_defaults)
+        pulumi.set(__self__, "target_project", target_project)
+        pulumi.set(__self__, "vm_target_defaults", vm_target_defaults)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.PersistentDiskDefaultsResponse']:
+        """
+        The details of each Persistent Disk to create.
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter(name="disksTargetDefaults")
+    def disks_target_defaults(self) -> 'outputs.DisksMigrationDisksTargetDefaultsResponse':
+        """
+        Details of the disk only migration target.
+        """
+        return pulumi.get(self, "disks_target_defaults")
+
+    @property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> str:
+        """
+        The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+        """
+        return pulumi.get(self, "target_project")
+
+    @property
+    @pulumi.getter(name="vmTargetDefaults")
+    def vm_target_defaults(self) -> 'outputs.DisksMigrationVmTargetDefaultsResponse':
+        """
+        Details of the VM migration target.
+        """
+        return pulumi.get(self, "vm_target_defaults")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        The zone in which to create the Persistent Disks.
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class ComputeEngineDisksTargetDetailsResponse(dict):
+    """
+    ComputeEngineDisksTargetDetails is a collection of created Persistent Disks details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disksTargetDetails":
+            suggest = "disks_target_details"
+        elif key == "vmTargetDetails":
+            suggest = "vm_target_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComputeEngineDisksTargetDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComputeEngineDisksTargetDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComputeEngineDisksTargetDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disks: Sequence['outputs.PersistentDiskResponse'],
+                 disks_target_details: 'outputs.DisksMigrationDisksTargetDetailsResponse',
+                 vm_target_details: 'outputs.DisksMigrationVmTargetDetailsResponse'):
+        """
+        ComputeEngineDisksTargetDetails is a collection of created Persistent Disks details.
+        :param Sequence['PersistentDiskResponse'] disks: The details of each created Persistent Disk.
+        :param 'DisksMigrationDisksTargetDetailsResponse' disks_target_details: Details of the disks-only migration target.
+        :param 'DisksMigrationVmTargetDetailsResponse' vm_target_details: Details for the VM the migrated data disks are attached to.
+        """
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "disks_target_details", disks_target_details)
+        pulumi.set(__self__, "vm_target_details", vm_target_details)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.PersistentDiskResponse']:
+        """
+        The details of each created Persistent Disk.
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter(name="disksTargetDetails")
+    def disks_target_details(self) -> 'outputs.DisksMigrationDisksTargetDetailsResponse':
+        """
+        Details of the disks-only migration target.
+        """
+        return pulumi.get(self, "disks_target_details")
+
+    @property
+    @pulumi.getter(name="vmTargetDetails")
+    def vm_target_details(self) -> 'outputs.DisksMigrationVmTargetDetailsResponse':
+        """
+        Details for the VM the migrated data disks are attached to.
+        """
+        return pulumi.get(self, "vm_target_details")
+
+
+@pulumi.output_type
 class ComputeEngineTargetDefaultsResponse(dict):
     """
     ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
@@ -745,6 +1421,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
                  boot_option: str,
                  compute_scheduling: 'outputs.ComputeSchedulingResponse',
                  disk_type: str,
+                 encryption: 'outputs.EncryptionResponse',
                  hostname: str,
                  labels: Mapping[str, str],
                  license_type: str,
@@ -762,9 +1439,10 @@ class ComputeEngineTargetDefaultsResponse(dict):
         ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
         :param Sequence[str] additional_licenses: Additional licenses to assign to the VM.
         :param 'AppliedLicenseResponse' applied_license: The OS license returned from the adaptation module report.
-        :param str boot_option: The VM Boot Option, as set in the source vm.
+        :param str boot_option: The VM Boot Option, as set in the source VM.
         :param 'ComputeSchedulingResponse' compute_scheduling: Compute instance scheduling information (if empty default is used).
         :param str disk_type: The disk type to use in the VM.
+        :param 'EncryptionResponse' encryption: Optional. Immutable. The encryption to apply to the VM disks.
         :param str hostname: The hostname to assign to the VM.
         :param Mapping[str, str] labels: A map of labels to associate with the VM.
         :param str license_type: The license type to use in OS adaptation.
@@ -772,8 +1450,8 @@ class ComputeEngineTargetDefaultsResponse(dict):
         :param str machine_type_series: The machine type series to create the VM with.
         :param Mapping[str, str] metadata: The metadata key/value pairs to assign to the VM.
         :param Sequence['NetworkInterfaceResponse'] network_interfaces: List of NICs connected to this VM.
-        :param Sequence[str] network_tags: A map of network tags to associate with the VM.
-        :param bool secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        :param Sequence[str] network_tags: A list of network tags to associate with the VM.
+        :param bool secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
         :param str service_account: The service account to associate the VM with.
         :param str target_project: The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
         :param str vm_name: The name of the VM to create.
@@ -784,6 +1462,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
         pulumi.set(__self__, "boot_option", boot_option)
         pulumi.set(__self__, "compute_scheduling", compute_scheduling)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "encryption", encryption)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "license_type", license_type)
@@ -818,7 +1497,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
     @pulumi.getter(name="bootOption")
     def boot_option(self) -> str:
         """
-        The VM Boot Option, as set in the source vm.
+        The VM Boot Option, as set in the source VM.
         """
         return pulumi.get(self, "boot_option")
 
@@ -837,6 +1516,14 @@ class ComputeEngineTargetDefaultsResponse(dict):
         The disk type to use in the VM.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.EncryptionResponse':
+        """
+        Optional. Immutable. The encryption to apply to the VM disks.
+        """
+        return pulumi.get(self, "encryption")
 
     @property
     @pulumi.getter
@@ -898,7 +1585,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
     @pulumi.getter(name="networkTags")
     def network_tags(self) -> Sequence[str]:
         """
-        A map of network tags to associate with the VM.
+        A list of network tags to associate with the VM.
         """
         return pulumi.get(self, "network_tags")
 
@@ -906,7 +1593,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
     @pulumi.getter(name="secureBoot")
     def secure_boot(self) -> bool:
         """
-        Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
         """
         return pulumi.get(self, "secure_boot")
 
@@ -995,6 +1682,7 @@ class ComputeEngineTargetDetailsResponse(dict):
                  boot_option: str,
                  compute_scheduling: 'outputs.ComputeSchedulingResponse',
                  disk_type: str,
+                 encryption: 'outputs.EncryptionResponse',
                  hostname: str,
                  labels: Mapping[str, str],
                  license_type: str,
@@ -1012,9 +1700,10 @@ class ComputeEngineTargetDetailsResponse(dict):
         ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project.
         :param Sequence[str] additional_licenses: Additional licenses to assign to the VM.
         :param 'AppliedLicenseResponse' applied_license: The OS license returned from the adaptation module report.
-        :param str boot_option: The VM Boot Option, as set in the source vm.
+        :param str boot_option: The VM Boot Option, as set in the source VM.
         :param 'ComputeSchedulingResponse' compute_scheduling: Compute instance scheduling information (if empty default is used).
         :param str disk_type: The disk type to use in the VM.
+        :param 'EncryptionResponse' encryption: Optional. The encryption to apply to the VM disks.
         :param str hostname: The hostname to assign to the VM.
         :param Mapping[str, str] labels: A map of labels to associate with the VM.
         :param str license_type: The license type to use in OS adaptation.
@@ -1022,9 +1711,9 @@ class ComputeEngineTargetDetailsResponse(dict):
         :param str machine_type_series: The machine type series to create the VM with.
         :param Mapping[str, str] metadata: The metadata key/value pairs to assign to the VM.
         :param Sequence['NetworkInterfaceResponse'] network_interfaces: List of NICs connected to this VM.
-        :param Sequence[str] network_tags: A map of network tags to associate with the VM.
+        :param Sequence[str] network_tags: A list of network tags to associate with the VM.
         :param str project: The Google Cloud target project ID or project name.
-        :param bool secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        :param bool secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
         :param str service_account: The service account to associate the VM with.
         :param str vm_name: The name of the VM to create.
         :param str zone: The zone in which to create the VM.
@@ -1034,6 +1723,7 @@ class ComputeEngineTargetDetailsResponse(dict):
         pulumi.set(__self__, "boot_option", boot_option)
         pulumi.set(__self__, "compute_scheduling", compute_scheduling)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "encryption", encryption)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "license_type", license_type)
@@ -1068,7 +1758,7 @@ class ComputeEngineTargetDetailsResponse(dict):
     @pulumi.getter(name="bootOption")
     def boot_option(self) -> str:
         """
-        The VM Boot Option, as set in the source vm.
+        The VM Boot Option, as set in the source VM.
         """
         return pulumi.get(self, "boot_option")
 
@@ -1087,6 +1777,14 @@ class ComputeEngineTargetDetailsResponse(dict):
         The disk type to use in the VM.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.EncryptionResponse':
+        """
+        Optional. The encryption to apply to the VM disks.
+        """
+        return pulumi.get(self, "encryption")
 
     @property
     @pulumi.getter
@@ -1148,7 +1846,7 @@ class ComputeEngineTargetDetailsResponse(dict):
     @pulumi.getter(name="networkTags")
     def network_tags(self) -> Sequence[str]:
         """
-        A map of network tags to associate with the VM.
+        A list of network tags to associate with the VM.
         """
         return pulumi.get(self, "network_tags")
 
@@ -1164,7 +1862,7 @@ class ComputeEngineTargetDetailsResponse(dict):
     @pulumi.getter(name="secureBoot")
     def secure_boot(self) -> bool:
         """
-        Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
         """
         return pulumi.get(self, "secure_boot")
 
@@ -1318,7 +2016,9 @@ class CutoverJobResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "computeEngineTargetDetails":
+        if key == "computeEngineDisksTargetDetails":
+            suggest = "compute_engine_disks_target_details"
+        elif key == "computeEngineTargetDetails":
             suggest = "compute_engine_target_details"
         elif key == "createTime":
             suggest = "create_time"
@@ -1343,6 +2043,7 @@ class CutoverJobResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 compute_engine_disks_target_details: 'outputs.ComputeEngineDisksTargetDetailsResponse',
                  compute_engine_target_details: 'outputs.ComputeEngineTargetDetailsResponse',
                  create_time: str,
                  end_time: str,
@@ -1355,6 +2056,7 @@ class CutoverJobResponse(dict):
                  steps: Sequence['outputs.CutoverStepResponse']):
         """
         CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
+        :param 'ComputeEngineDisksTargetDetailsResponse' compute_engine_disks_target_details: Details of the target Persistent Disks in Compute Engine.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
         :param str create_time: The time the cutover job was created (as an API call, not when it was actually created in the target).
         :param str end_time: The time the cutover job had finished.
@@ -1366,6 +2068,7 @@ class CutoverJobResponse(dict):
         :param str state_time: The time the state was last updated.
         :param Sequence['CutoverStepResponse'] steps: The cutover steps list representing its progress.
         """
+        pulumi.set(__self__, "compute_engine_disks_target_details", compute_engine_disks_target_details)
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "end_time", end_time)
@@ -1376,6 +2079,14 @@ class CutoverJobResponse(dict):
         pulumi.set(__self__, "state_message", state_message)
         pulumi.set(__self__, "state_time", state_time)
         pulumi.set(__self__, "steps", steps)
+
+    @property
+    @pulumi.getter(name="computeEngineDisksTargetDetails")
+    def compute_engine_disks_target_details(self) -> 'outputs.ComputeEngineDisksTargetDetailsResponse':
+        """
+        Details of the target Persistent Disks in Compute Engine.
+        """
+        return pulumi.get(self, "compute_engine_disks_target_details")
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -1665,6 +2376,347 @@ class CycleStepResponse(dict):
 
 
 @pulumi.output_type
+class DiskImageDefaultsResponse(dict):
+    """
+    Contains details about the image source used to create the disk.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceImage":
+            suggest = "source_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskImageDefaultsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskImageDefaultsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskImageDefaultsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_image: str):
+        """
+        Contains details about the image source used to create the disk.
+        :param str source_image: The Image resource used when creating the disk.
+        """
+        pulumi.set(__self__, "source_image", source_image)
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> str:
+        """
+        The Image resource used when creating the disk.
+        """
+        return pulumi.get(self, "source_image")
+
+
+@pulumi.output_type
+class DisksMigrationDisksTargetDefaultsResponse(dict):
+    """
+    Details for a disk only migration.
+    """
+    def __init__(__self__):
+        """
+        Details for a disk only migration.
+        """
+        pass
+
+
+@pulumi.output_type
+class DisksMigrationDisksTargetDetailsResponse(dict):
+    """
+    Details for a disks-only migration.
+    """
+    def __init__(__self__):
+        """
+        Details for a disks-only migration.
+        """
+        pass
+
+
+@pulumi.output_type
+class DisksMigrationVmTargetDefaultsResponse(dict):
+    """
+    Details for creation of a VM that migrated data disks will be attached to.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalLicenses":
+            suggest = "additional_licenses"
+        elif key == "bootDiskDefaults":
+            suggest = "boot_disk_defaults"
+        elif key == "computeScheduling":
+            suggest = "compute_scheduling"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "machineTypeSeries":
+            suggest = "machine_type_series"
+        elif key == "networkInterfaces":
+            suggest = "network_interfaces"
+        elif key == "networkTags":
+            suggest = "network_tags"
+        elif key == "secureBoot":
+            suggest = "secure_boot"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "vmName":
+            suggest = "vm_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DisksMigrationVmTargetDefaultsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DisksMigrationVmTargetDefaultsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DisksMigrationVmTargetDefaultsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_licenses: Sequence[str],
+                 boot_disk_defaults: 'outputs.BootDiskDefaultsResponse',
+                 compute_scheduling: 'outputs.ComputeSchedulingResponse',
+                 encryption: 'outputs.EncryptionResponse',
+                 hostname: str,
+                 labels: Mapping[str, str],
+                 machine_type: str,
+                 machine_type_series: str,
+                 metadata: Mapping[str, str],
+                 network_interfaces: Sequence['outputs.NetworkInterfaceResponse'],
+                 network_tags: Sequence[str],
+                 secure_boot: bool,
+                 service_account: str,
+                 vm_name: str):
+        """
+        Details for creation of a VM that migrated data disks will be attached to.
+        :param Sequence[str] additional_licenses: Optional. Additional licenses to assign to the VM.
+        :param 'BootDiskDefaultsResponse' boot_disk_defaults: Optional. Details of the boot disk of the VM.
+        :param 'ComputeSchedulingResponse' compute_scheduling: Optional. Compute instance scheduling information (if empty default is used).
+        :param 'EncryptionResponse' encryption: Optional. The encryption to apply to the VM.
+        :param str hostname: Optional. The hostname to assign to the VM.
+        :param Mapping[str, str] labels: Optional. A map of labels to associate with the VM.
+        :param str machine_type: The machine type to create the VM with.
+        :param str machine_type_series: Optional. The machine type series to create the VM with. For presentation only.
+        :param Mapping[str, str] metadata: Optional. The metadata key/value pairs to assign to the VM.
+        :param Sequence['NetworkInterfaceResponse'] network_interfaces: Optional. NICs to attach to the VM.
+        :param Sequence[str] network_tags: Optional. A list of network tags to associate with the VM.
+        :param bool secure_boot: Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+        :param str service_account: Optional. The service account to associate the VM with.
+        :param str vm_name: The name of the VM to create.
+        """
+        pulumi.set(__self__, "additional_licenses", additional_licenses)
+        pulumi.set(__self__, "boot_disk_defaults", boot_disk_defaults)
+        pulumi.set(__self__, "compute_scheduling", compute_scheduling)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "machine_type_series", machine_type_series)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "network_tags", network_tags)
+        pulumi.set(__self__, "secure_boot", secure_boot)
+        pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "vm_name", vm_name)
+
+    @property
+    @pulumi.getter(name="additionalLicenses")
+    def additional_licenses(self) -> Sequence[str]:
+        """
+        Optional. Additional licenses to assign to the VM.
+        """
+        return pulumi.get(self, "additional_licenses")
+
+    @property
+    @pulumi.getter(name="bootDiskDefaults")
+    def boot_disk_defaults(self) -> 'outputs.BootDiskDefaultsResponse':
+        """
+        Optional. Details of the boot disk of the VM.
+        """
+        return pulumi.get(self, "boot_disk_defaults")
+
+    @property
+    @pulumi.getter(name="computeScheduling")
+    def compute_scheduling(self) -> 'outputs.ComputeSchedulingResponse':
+        """
+        Optional. Compute instance scheduling information (if empty default is used).
+        """
+        return pulumi.get(self, "compute_scheduling")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.EncryptionResponse':
+        """
+        Optional. The encryption to apply to the VM.
+        """
+        return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Optional. The hostname to assign to the VM.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. A map of labels to associate with the VM.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        The machine type to create the VM with.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="machineTypeSeries")
+    def machine_type_series(self) -> str:
+        """
+        Optional. The machine type series to create the VM with. For presentation only.
+        """
+        return pulumi.get(self, "machine_type_series")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        Optional. The metadata key/value pairs to assign to the VM.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Sequence['outputs.NetworkInterfaceResponse']:
+        """
+        Optional. NICs to attach to the VM.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Sequence[str]:
+        """
+        Optional. A list of network tags to associate with the VM.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter(name="secureBoot")
+    def secure_boot(self) -> bool:
+        """
+        Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+        """
+        return pulumi.get(self, "secure_boot")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Optional. The service account to associate the VM with.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="vmName")
+    def vm_name(self) -> str:
+        """
+        The name of the VM to create.
+        """
+        return pulumi.get(self, "vm_name")
+
+
+@pulumi.output_type
+class DisksMigrationVmTargetDetailsResponse(dict):
+    """
+    Details for the VM created VM as part of disks migration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vmUri":
+            suggest = "vm_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DisksMigrationVmTargetDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DisksMigrationVmTargetDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DisksMigrationVmTargetDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vm_uri: str):
+        """
+        Details for the VM created VM as part of disks migration.
+        :param str vm_uri: The URI of the Compute Engine VM.
+        """
+        pulumi.set(__self__, "vm_uri", vm_uri)
+
+    @property
+    @pulumi.getter(name="vmUri")
+    def vm_uri(self) -> str:
+        """
+        The URI of the Compute Engine VM.
+        """
+        return pulumi.get(self, "vm_uri")
+
+
+@pulumi.output_type
+class EncryptionResponse(dict):
+    """
+    Encryption message describes the details of the applied encryption.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: str):
+        """
+        Encryption message describes the details of the applied encryption.
+        :param str kms_key: The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key")
+
+
+@pulumi.output_type
 class InitializingReplicationStepResponse(dict):
     """
     InitializingReplicationStep contains specific step details.
@@ -1915,6 +2967,160 @@ class NetworkInterfaceResponse(dict):
         The subnetwork to connect the NIC to.
         """
         return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class PersistentDiskDefaultsResponse(dict):
+    """
+    Details for creation of a Persistent Disk.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalLabels":
+            suggest = "additional_labels"
+        elif key == "diskName":
+            suggest = "disk_name"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "sourceDiskNumber":
+            suggest = "source_disk_number"
+        elif key == "vmAttachmentDetails":
+            suggest = "vm_attachment_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PersistentDiskDefaultsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PersistentDiskDefaultsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PersistentDiskDefaultsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_labels: Mapping[str, str],
+                 disk_name: str,
+                 disk_type: str,
+                 encryption: 'outputs.EncryptionResponse',
+                 source_disk_number: int,
+                 vm_attachment_details: 'outputs.VmAttachmentDetailsResponse'):
+        """
+        Details for creation of a Persistent Disk.
+        :param Mapping[str, str] additional_labels: A map of labels to associate with the Persistent Disk.
+        :param str disk_name: Optional. The name of the Persistent Disk to create.
+        :param str disk_type: The disk type to use.
+        :param 'EncryptionResponse' encryption: Optional. The encryption to apply to the disk.
+        :param int source_disk_number: The ordinal number of the source VM disk.
+        :param 'VmAttachmentDetailsResponse' vm_attachment_details: Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+        """
+        pulumi.set(__self__, "additional_labels", additional_labels)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "source_disk_number", source_disk_number)
+        pulumi.set(__self__, "vm_attachment_details", vm_attachment_details)
+
+    @property
+    @pulumi.getter(name="additionalLabels")
+    def additional_labels(self) -> Mapping[str, str]:
+        """
+        A map of labels to associate with the Persistent Disk.
+        """
+        return pulumi.get(self, "additional_labels")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> str:
+        """
+        Optional. The name of the Persistent Disk to create.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        The disk type to use.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.EncryptionResponse':
+        """
+        Optional. The encryption to apply to the disk.
+        """
+        return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter(name="sourceDiskNumber")
+    def source_disk_number(self) -> int:
+        """
+        The ordinal number of the source VM disk.
+        """
+        return pulumi.get(self, "source_disk_number")
+
+    @property
+    @pulumi.getter(name="vmAttachmentDetails")
+    def vm_attachment_details(self) -> 'outputs.VmAttachmentDetailsResponse':
+        """
+        Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+        """
+        return pulumi.get(self, "vm_attachment_details")
+
+
+@pulumi.output_type
+class PersistentDiskResponse(dict):
+    """
+    Details of a created Persistent Disk.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskUri":
+            suggest = "disk_uri"
+        elif key == "sourceDiskNumber":
+            suggest = "source_disk_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PersistentDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PersistentDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PersistentDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_uri: str,
+                 source_disk_number: int):
+        """
+        Details of a created Persistent Disk.
+        :param str disk_uri: The URI of the Persistent Disk.
+        :param int source_disk_number: The ordinal number of the source VM disk.
+        """
+        pulumi.set(__self__, "disk_uri", disk_uri)
+        pulumi.set(__self__, "source_disk_number", source_disk_number)
+
+    @property
+    @pulumi.getter(name="diskUri")
+    def disk_uri(self) -> str:
+        """
+        The URI of the Persistent Disk.
+        """
+        return pulumi.get(self, "disk_uri")
+
+    @property
+    @pulumi.getter(name="sourceDiskNumber")
+    def source_disk_number(self) -> int:
+        """
+        The ordinal number of the source VM disk.
+        """
+        return pulumi.get(self, "source_disk_number")
 
 
 @pulumi.output_type
@@ -2475,6 +3681,97 @@ class UpgradeStatusResponse(dict):
 
 
 @pulumi.output_type
+class VmAttachmentDetailsResponse(dict):
+    """
+    Details for attachment of the disk to a VM.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceName":
+            suggest = "device_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmAttachmentDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmAttachmentDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmAttachmentDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 device_name: str):
+        """
+        Details for attachment of the disk to a VM.
+        :param str device_name: Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        """
+        pulumi.set(__self__, "device_name", device_name)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        """
+        return pulumi.get(self, "device_name")
+
+
+@pulumi.output_type
+class VmCapabilitiesResponse(dict):
+    """
+    Migrating VM source information about the VM capabilities needed for some Compute Engine features.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastOsCapabilitiesUpdateTime":
+            suggest = "last_os_capabilities_update_time"
+        elif key == "osCapabilities":
+            suggest = "os_capabilities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmCapabilitiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmCapabilitiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmCapabilitiesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_os_capabilities_update_time: str,
+                 os_capabilities: Sequence[str]):
+        """
+        Migrating VM source information about the VM capabilities needed for some Compute Engine features.
+        :param str last_os_capabilities_update_time: The last time OS capabilities list was updated.
+        :param Sequence[str] os_capabilities: Unordered list. List of certain VM OS capabilities needed for some Compute Engine features.
+        """
+        pulumi.set(__self__, "last_os_capabilities_update_time", last_os_capabilities_update_time)
+        pulumi.set(__self__, "os_capabilities", os_capabilities)
+
+    @property
+    @pulumi.getter(name="lastOsCapabilitiesUpdateTime")
+    def last_os_capabilities_update_time(self) -> str:
+        """
+        The last time OS capabilities list was updated.
+        """
+        return pulumi.get(self, "last_os_capabilities_update_time")
+
+    @property
+    @pulumi.getter(name="osCapabilities")
+    def os_capabilities(self) -> Sequence[str]:
+        """
+        Unordered list. List of certain VM OS capabilities needed for some Compute Engine features.
+        """
+        return pulumi.get(self, "os_capabilities")
+
+
+@pulumi.output_type
 class VmUtilizationInfoResponse(dict):
     """
     Utilization information of a single VM.
@@ -2668,6 +3965,69 @@ class VmUtilizationMetricsResponse(dict):
 
 
 @pulumi.output_type
+class VmwareDiskDetailsResponse(dict):
+    """
+    The details of a Vmware VM disk.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskNumber":
+            suggest = "disk_number"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareDiskDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareDiskDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_number: int,
+                 label: str,
+                 size_gb: str):
+        """
+        The details of a Vmware VM disk.
+        :param int disk_number: The ordinal number of the disk.
+        :param str label: The disk label.
+        :param str size_gb: Size in GB.
+        """
+        pulumi.set(__self__, "disk_number", disk_number)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size_gb", size_gb)
+
+    @property
+    @pulumi.getter(name="diskNumber")
+    def disk_number(self) -> int:
+        """
+        The ordinal number of the disk.
+        """
+        return pulumi.get(self, "disk_number")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The disk label.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> str:
+        """
+        Size in GB.
+        """
+        return pulumi.get(self, "size_gb")
+
+
+@pulumi.output_type
 class VmwareSourceDetailsResponse(dict):
     """
     VmwareSourceDetails message describes a specific source details for the vmware source type.
@@ -2750,6 +4110,80 @@ class VmwareSourceDetailsResponse(dict):
         The ip address of the vcenter this Source represents.
         """
         return pulumi.get(self, "vcenter_ip")
+
+
+@pulumi.output_type
+class VmwareSourceVmDetailsResponse(dict):
+    """
+    Represent the source Vmware VM details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "committedStorageBytes":
+            suggest = "committed_storage_bytes"
+        elif key == "vmCapabilitiesInfo":
+            suggest = "vm_capabilities_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareSourceVmDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareSourceVmDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareSourceVmDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 committed_storage_bytes: str,
+                 disks: Sequence['outputs.VmwareDiskDetailsResponse'],
+                 firmware: str,
+                 vm_capabilities_info: 'outputs.VmCapabilitiesResponse'):
+        """
+        Represent the source Vmware VM details.
+        :param str committed_storage_bytes: The total size of the disks being migrated in bytes.
+        :param Sequence['VmwareDiskDetailsResponse'] disks: The disks attached to the source VM.
+        :param str firmware: The firmware type of the source VM.
+        :param 'VmCapabilitiesResponse' vm_capabilities_info: Information about VM capabilities needed for some Compute Engine features.
+        """
+        pulumi.set(__self__, "committed_storage_bytes", committed_storage_bytes)
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "firmware", firmware)
+        pulumi.set(__self__, "vm_capabilities_info", vm_capabilities_info)
+
+    @property
+    @pulumi.getter(name="committedStorageBytes")
+    def committed_storage_bytes(self) -> str:
+        """
+        The total size of the disks being migrated in bytes.
+        """
+        return pulumi.get(self, "committed_storage_bytes")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.VmwareDiskDetailsResponse']:
+        """
+        The disks attached to the source VM.
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def firmware(self) -> str:
+        """
+        The firmware type of the source VM.
+        """
+        return pulumi.get(self, "firmware")
+
+    @property
+    @pulumi.getter(name="vmCapabilitiesInfo")
+    def vm_capabilities_info(self) -> 'outputs.VmCapabilitiesResponse':
+        """
+        Information about VM capabilities needed for some Compute Engine features.
+        """
+        return pulumi.get(self, "vm_capabilities_info")
 
 
 @pulumi.output_type

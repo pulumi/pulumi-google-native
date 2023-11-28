@@ -54,20 +54,20 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly iosSettings!: pulumi.Output<outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse>;
     /**
-     * See Creating and managing labels.
+     * Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The resource name for the Key in the format "projects/{project}/keys/{key}".
+     * Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Options for user acceptance testing.
+     * Optional. Options for user acceptance testing.
      */
     public readonly testingOptions!: pulumi.Output<outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse>;
     /**
-     * Settings for WAF
+     * Optional. Settings for WAF
      */
     public readonly wafSettings!: pulumi.Output<outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse>;
     /**
@@ -82,10 +82,13 @@ export class Key extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: KeyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: KeyArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             resourceInputs["androidSettings"] = args ? args.androidSettings : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["iosSettings"] = args ? args.iosSettings : undefined;
@@ -126,26 +129,26 @@ export interface KeyArgs {
     /**
      * Human-readable display name of this key. Modifiable by user.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Settings for keys that can be used by iOS apps.
      */
     iosSettings?: pulumi.Input<inputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs>;
     /**
-     * See Creating and managing labels.
+     * Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name for the Key in the format "projects/{project}/keys/{key}".
+     * Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Options for user acceptance testing.
+     * Optional. Options for user acceptance testing.
      */
     testingOptions?: pulumi.Input<inputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs>;
     /**
-     * Settings for WAF
+     * Optional. Settings for WAF
      */
     wafSettings?: pulumi.Input<inputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WafSettingsArgs>;
     /**

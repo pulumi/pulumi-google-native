@@ -18,6 +18,7 @@ export function getBareMetalNodePool(args: GetBareMetalNodePoolArgs, opts?: pulu
         "bareMetalNodePoolId": args.bareMetalNodePoolId,
         "location": args.location,
         "project": args.project,
+        "view": args.view,
     }, opts);
 }
 
@@ -26,6 +27,7 @@ export interface GetBareMetalNodePoolArgs {
     bareMetalNodePoolId: string;
     location: string;
     project?: string;
+    view?: string;
 }
 
 export interface GetBareMetalNodePoolResult {
@@ -77,6 +79,10 @@ export interface GetBareMetalNodePoolResult {
      * The time at which this bare metal node pool was last updated.
      */
     readonly updateTime: string;
+    /**
+     * The worker node pool upgrade policy.
+     */
+    readonly upgradePolicy: outputs.gkeonprem.v1.BareMetalNodePoolUpgradePolicyResponse;
 }
 /**
  * Gets details of a single bare metal node pool.
@@ -90,4 +96,5 @@ export interface GetBareMetalNodePoolOutputArgs {
     bareMetalNodePoolId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
 }

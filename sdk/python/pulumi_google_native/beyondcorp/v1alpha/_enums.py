@@ -8,7 +8,6 @@ __all__ = [
     'AppConnectionType',
     'AppGatewayHostType',
     'AppGatewayType',
-    'ConfigTransportProtocol',
     'ConnectionType',
     'GatewayType',
     'GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType',
@@ -59,20 +58,6 @@ class AppGatewayType(str, Enum):
     TCP_PROXY = "TCP_PROXY"
     """
     TCP Proxy based BeyondCorp Connection. API will default to this if unset.
-    """
-
-
-class ConfigTransportProtocol(str, Enum):
-    """
-    Required. Immutable. The transport protocol used between the client and the server.
-    """
-    TRANSPORT_PROTOCOL_UNSPECIFIED = "TRANSPORT_PROTOCOL_UNSPECIFIED"
-    """
-    Default value. This value is unused.
-    """
-    TCP = "TCP"
-    """
-    TCP protocol.
     """
 
 

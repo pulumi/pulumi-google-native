@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         public readonly string Repository;
 

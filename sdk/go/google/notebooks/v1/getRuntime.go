@@ -40,8 +40,12 @@ type LookupRuntimeResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
 	Metrics RuntimeMetricsResponse `pulumi:"metrics"`
+	// Bool indicating whether this notebook has been migrated to a Workbench Instance
+	Migrated bool `pulumi:"migrated"`
 	// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
 	Name string `pulumi:"name"`
+	// Checks how feasible a migration from GmN to WbI is.
+	RuntimeMigrationEligibility RuntimeMigrationEligibilityResponse `pulumi:"runtimeMigrationEligibility"`
 	// The config settings for software inside the runtime.
 	SoftwareConfig RuntimeSoftwareConfigResponse `pulumi:"softwareConfig"`
 	// Runtime state.
@@ -120,9 +124,19 @@ func (o LookupRuntimeResultOutput) Metrics() RuntimeMetricsResponseOutput {
 	return o.ApplyT(func(v LookupRuntimeResult) RuntimeMetricsResponse { return v.Metrics }).(RuntimeMetricsResponseOutput)
 }
 
+// Bool indicating whether this notebook has been migrated to a Workbench Instance
+func (o LookupRuntimeResultOutput) Migrated() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRuntimeResult) bool { return v.Migrated }).(pulumi.BoolOutput)
+}
+
 // The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
 func (o LookupRuntimeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuntimeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Checks how feasible a migration from GmN to WbI is.
+func (o LookupRuntimeResultOutput) RuntimeMigrationEligibility() RuntimeMigrationEligibilityResponseOutput {
+	return o.ApplyT(func(v LookupRuntimeResult) RuntimeMigrationEligibilityResponse { return v.RuntimeMigrationEligibility }).(RuntimeMigrationEligibilityResponseOutput)
 }
 
 // The config settings for software inside the runtime.

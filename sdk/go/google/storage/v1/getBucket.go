@@ -68,6 +68,8 @@ type LookupBucketResult struct {
 	Metageneration string `pulumi:"metageneration"`
 	// The name of the bucket.
 	Name string `pulumi:"name"`
+	// The bucket's object retention config.
+	ObjectRetention BucketObjectRetentionResponse `pulumi:"objectRetention"`
 	// The owner of the bucket. This is always the project team's owner group.
 	Owner BucketOwnerResponse `pulumi:"owner"`
 	// The project number of the project the bucket belongs to.
@@ -80,6 +82,8 @@ type LookupBucketResult struct {
 	SatisfiesPZS bool `pulumi:"satisfiesPZS"`
 	// The URI of this bucket.
 	SelfLink string `pulumi:"selfLink"`
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+	SoftDeletePolicy BucketSoftDeletePolicyResponse `pulumi:"softDeletePolicy"`
 	// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
 	StorageClass string `pulumi:"storageClass"`
 	// The creation time of the bucket in RFC 3339 format.
@@ -227,6 +231,11 @@ func (o LookupBucketResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The bucket's object retention config.
+func (o LookupBucketResultOutput) ObjectRetention() BucketObjectRetentionResponseOutput {
+	return o.ApplyT(func(v LookupBucketResult) BucketObjectRetentionResponse { return v.ObjectRetention }).(BucketObjectRetentionResponseOutput)
+}
+
 // The owner of the bucket. This is always the project team's owner group.
 func (o LookupBucketResultOutput) Owner() BucketOwnerResponseOutput {
 	return o.ApplyT(func(v LookupBucketResult) BucketOwnerResponse { return v.Owner }).(BucketOwnerResponseOutput)
@@ -255,6 +264,11 @@ func (o LookupBucketResultOutput) SatisfiesPZS() pulumi.BoolOutput {
 // The URI of this bucket.
 func (o LookupBucketResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+func (o LookupBucketResultOutput) SoftDeletePolicy() BucketSoftDeletePolicyResponseOutput {
+	return o.ApplyT(func(v LookupBucketResult) BucketSoftDeletePolicyResponse { return v.SoftDeletePolicy }).(BucketSoftDeletePolicyResponseOutput)
 }
 
 // The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.

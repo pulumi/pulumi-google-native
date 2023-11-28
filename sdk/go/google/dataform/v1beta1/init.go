@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:dataform/v1beta1:CollectionIamBinding":
+		r = &CollectionIamBinding{}
+	case "google-native:dataform/v1beta1:CollectionIamMember":
+		r = &CollectionIamMember{}
+	case "google-native:dataform/v1beta1:CollectionIamPolicy":
+		r = &CollectionIamPolicy{}
 	case "google-native:dataform/v1beta1:CompilationResult":
 		r = &CompilationResult{}
 	case "google-native:dataform/v1beta1:ReleaseConfig":

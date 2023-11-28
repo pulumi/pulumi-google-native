@@ -14,7 +14,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
 type AcceleratorConfig struct {
 	// Count of cores of this accelerator.
 	CoreCount *string `pulumi:"coreCount"`
@@ -33,7 +33,7 @@ type AcceleratorConfigInput interface {
 	ToAcceleratorConfigOutputWithContext(context.Context) AcceleratorConfigOutput
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
 type AcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
@@ -106,7 +106,7 @@ func (i *acceleratorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
 type AcceleratorConfigOutput struct{ *pulumi.OutputState }
 
 func (AcceleratorConfigOutput) ElementType() reflect.Type {
@@ -197,7 +197,7 @@ func (o AcceleratorConfigPtrOutput) Type() AcceleratorConfigTypePtrOutput {
 	}).(AcceleratorConfigTypePtrOutput)
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
 type AcceleratorConfigResponse struct {
 	// Count of cores of this accelerator.
 	CoreCount string `pulumi:"coreCount"`
@@ -205,7 +205,7 @@ type AcceleratorConfigResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
 type AcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (AcceleratorConfigResponseOutput) ElementType() reflect.Type {
@@ -2470,6 +2470,45 @@ func (o GuestOsFeatureResponseArrayOutput) Index(i pulumi.IntInput) GuestOsFeatu
 	}).(GuestOsFeatureResponseOutput)
 }
 
+// InstanceMigrationEligibility represents the feasibility information of a migration from UmN to WbI.
+type InstanceMigrationEligibilityResponse struct {
+	// Certain configurations make the UmN ineligible for an automatic migration. A manual migration is required.
+	Errors []string `pulumi:"errors"`
+	// Certain configurations will be defaulted during the migration.
+	Warnings []string `pulumi:"warnings"`
+}
+
+// InstanceMigrationEligibility represents the feasibility information of a migration from UmN to WbI.
+type InstanceMigrationEligibilityResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceMigrationEligibilityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMigrationEligibilityResponse)(nil)).Elem()
+}
+
+func (o InstanceMigrationEligibilityResponseOutput) ToInstanceMigrationEligibilityResponseOutput() InstanceMigrationEligibilityResponseOutput {
+	return o
+}
+
+func (o InstanceMigrationEligibilityResponseOutput) ToInstanceMigrationEligibilityResponseOutputWithContext(ctx context.Context) InstanceMigrationEligibilityResponseOutput {
+	return o
+}
+
+func (o InstanceMigrationEligibilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceMigrationEligibilityResponse] {
+	return pulumix.Output[InstanceMigrationEligibilityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Certain configurations make the UmN ineligible for an automatic migration. A manual migration is required.
+func (o InstanceMigrationEligibilityResponseOutput) Errors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceMigrationEligibilityResponse) []string { return v.Errors }).(pulumi.StringArrayOutput)
+}
+
+// Certain configurations will be defaulted during the migration.
+func (o InstanceMigrationEligibilityResponseOutput) Warnings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceMigrationEligibilityResponse) []string { return v.Warnings }).(pulumi.StringArrayOutput)
+}
+
 // A Local attached disk resource.
 type LocalDisk struct {
 	// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
@@ -3369,7 +3408,7 @@ func (o ReservationAffinityResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReservationAffinityResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-// Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+// Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
 type RuntimeAcceleratorConfig struct {
 	// Count of cores of this accelerator.
 	CoreCount *string `pulumi:"coreCount"`
@@ -3388,7 +3427,7 @@ type RuntimeAcceleratorConfigInput interface {
 	ToRuntimeAcceleratorConfigOutputWithContext(context.Context) RuntimeAcceleratorConfigOutput
 }
 
-// Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+// Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
 type RuntimeAcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
@@ -3461,7 +3500,7 @@ func (i *runtimeAcceleratorConfigPtrType) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+// Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
 type RuntimeAcceleratorConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeAcceleratorConfigOutput) ElementType() reflect.Type {
@@ -3552,7 +3591,7 @@ func (o RuntimeAcceleratorConfigPtrOutput) Type() RuntimeAcceleratorConfigTypePt
 	}).(RuntimeAcceleratorConfigTypePtrOutput)
 }
 
-// Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+// Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
 type RuntimeAcceleratorConfigResponse struct {
 	// Count of cores of this accelerator.
 	CoreCount string `pulumi:"coreCount"`
@@ -3560,7 +3599,7 @@ type RuntimeAcceleratorConfigResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+// Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
 type RuntimeAcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (RuntimeAcceleratorConfigResponseOutput) ElementType() reflect.Type {
@@ -3910,7 +3949,46 @@ func (o RuntimeMetricsResponseOutput) SystemMetrics() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeMetricsResponse) map[string]string { return v.SystemMetrics }).(pulumi.StringMapOutput)
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// RuntimeMigrationEligibility represents the feasibility information of a migration from GmN to WbI.
+type RuntimeMigrationEligibilityResponse struct {
+	// Certain configurations make the GmN ineligible for an automatic migration. A manual migration is required.
+	Errors []string `pulumi:"errors"`
+	// Certain configurations will be defaulted during the migration.
+	Warnings []string `pulumi:"warnings"`
+}
+
+// RuntimeMigrationEligibility represents the feasibility information of a migration from GmN to WbI.
+type RuntimeMigrationEligibilityResponseOutput struct{ *pulumi.OutputState }
+
+func (RuntimeMigrationEligibilityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeMigrationEligibilityResponse)(nil)).Elem()
+}
+
+func (o RuntimeMigrationEligibilityResponseOutput) ToRuntimeMigrationEligibilityResponseOutput() RuntimeMigrationEligibilityResponseOutput {
+	return o
+}
+
+func (o RuntimeMigrationEligibilityResponseOutput) ToRuntimeMigrationEligibilityResponseOutputWithContext(ctx context.Context) RuntimeMigrationEligibilityResponseOutput {
+	return o
+}
+
+func (o RuntimeMigrationEligibilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeMigrationEligibilityResponse] {
+	return pulumix.Output[RuntimeMigrationEligibilityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Certain configurations make the GmN ineligible for an automatic migration. A manual migration is required.
+func (o RuntimeMigrationEligibilityResponseOutput) Errors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuntimeMigrationEligibilityResponse) []string { return v.Errors }).(pulumi.StringArrayOutput)
+}
+
+// Certain configurations will be defaulted during the migration.
+func (o RuntimeMigrationEligibilityResponseOutput) Warnings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuntimeMigrationEligibilityResponse) []string { return v.Warnings }).(pulumi.StringArrayOutput)
+}
+
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfig struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
@@ -3931,7 +4009,7 @@ type RuntimeShieldedInstanceConfigInput interface {
 	ToRuntimeShieldedInstanceConfigOutputWithContext(context.Context) RuntimeShieldedInstanceConfigOutput
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfigArgs struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
@@ -4006,7 +4084,7 @@ func (i *runtimeShieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pul
 	}
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeShieldedInstanceConfigOutput) ElementType() reflect.Type {
@@ -4112,7 +4190,7 @@ func (o RuntimeShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfigResponse struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
@@ -4122,7 +4200,7 @@ type RuntimeShieldedInstanceConfigResponse struct {
 	EnableVtpm bool `pulumi:"enableVtpm"`
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (RuntimeShieldedInstanceConfigResponseOutput) ElementType() reflect.Type {
@@ -4630,7 +4708,7 @@ func (o RuntimeSoftwareConfigResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfig struct {
 	// Count of cores of this accelerator.
 	CoreCount *string `pulumi:"coreCount"`
@@ -4649,7 +4727,7 @@ type SchedulerAcceleratorConfigInput interface {
 	ToSchedulerAcceleratorConfigOutputWithContext(context.Context) SchedulerAcceleratorConfigOutput
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
@@ -4722,7 +4800,7 @@ func (i *schedulerAcceleratorConfigPtrType) ToOutput(ctx context.Context) pulumi
 	}
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfigOutput struct{ *pulumi.OutputState }
 
 func (SchedulerAcceleratorConfigOutput) ElementType() reflect.Type {
@@ -4813,7 +4891,7 @@ func (o SchedulerAcceleratorConfigPtrOutput) Type() SchedulerAcceleratorConfigTy
 	}).(SchedulerAcceleratorConfigTypePtrOutput)
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfigResponse struct {
 	// Count of cores of this accelerator.
 	CoreCount string `pulumi:"coreCount"`
@@ -4821,7 +4899,7 @@ type SchedulerAcceleratorConfigResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (SchedulerAcceleratorConfigResponseOutput) ElementType() reflect.Type {
@@ -4852,7 +4930,7 @@ func (o SchedulerAcceleratorConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulerAcceleratorConfigResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type ShieldedInstanceConfig struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
@@ -4873,7 +4951,7 @@ type ShieldedInstanceConfigInput interface {
 	ToShieldedInstanceConfigOutputWithContext(context.Context) ShieldedInstanceConfigOutput
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type ShieldedInstanceConfigArgs struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
@@ -4948,7 +5026,7 @@ func (i *shieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type ShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (ShieldedInstanceConfigOutput) ElementType() reflect.Type {
@@ -5054,7 +5132,7 @@ func (o ShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type ShieldedInstanceConfigResponse struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
@@ -5064,7 +5142,7 @@ type ShieldedInstanceConfigResponse struct {
 	EnableVtpm bool `pulumi:"enableVtpm"`
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type ShieldedInstanceConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (ShieldedInstanceConfigResponseOutput) ElementType() reflect.Type {
@@ -6761,6 +6839,7 @@ func init() {
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(GuestOsFeatureResponseOutput{})
 	pulumi.RegisterOutputType(GuestOsFeatureResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceMigrationEligibilityResponseOutput{})
 	pulumi.RegisterOutputType(LocalDiskOutput{})
 	pulumi.RegisterOutputType(LocalDiskPtrOutput{})
 	pulumi.RegisterOutputType(LocalDiskInitializeParamsOutput{})
@@ -6779,6 +6858,7 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeGuestOsFeatureResponseOutput{})
 	pulumi.RegisterOutputType(RuntimeGuestOsFeatureResponseArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeMetricsResponseOutput{})
+	pulumi.RegisterOutputType(RuntimeMigrationEligibilityResponseOutput{})
 	pulumi.RegisterOutputType(RuntimeShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(RuntimeShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeShieldedInstanceConfigResponseOutput{})

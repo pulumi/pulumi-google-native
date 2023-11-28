@@ -42,6 +42,8 @@ type LookupDlpJobResult struct {
 	InspectDetails GooglePrivacyDlpV2InspectDataSourceDetailsResponse `pulumi:"inspectDetails"`
 	// If created by a job trigger, the resource name of the trigger that instantiated the job.
 	JobTriggerName string `pulumi:"jobTriggerName"`
+	// Time when the job was last modified by the system.
+	LastModified string `pulumi:"lastModified"`
 	// The server-assigned name.
 	Name string `pulumi:"name"`
 	// Results from analyzing risk of a data source.
@@ -125,6 +127,11 @@ func (o LookupDlpJobResultOutput) InspectDetails() GooglePrivacyDlpV2InspectData
 // If created by a job trigger, the resource name of the trigger that instantiated the job.
 func (o LookupDlpJobResultOutput) JobTriggerName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDlpJobResult) string { return v.JobTriggerName }).(pulumi.StringOutput)
+}
+
+// Time when the job was last modified by the system.
+func (o LookupDlpJobResultOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDlpJobResult) string { return v.LastModified }).(pulumi.StringOutput)
 }
 
 // The server-assigned name.

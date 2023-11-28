@@ -52,6 +52,10 @@ export interface GetDlpJobResult {
      */
     readonly jobTriggerName: string;
     /**
+     * Time when the job was last modified by the system.
+     */
+    readonly lastModified: string;
+    /**
      * The server-assigned name.
      */
     readonly name: string;

@@ -20,6 +20,7 @@ class InstanceArgs:
                  config: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
+                 autoscaling_config: Optional[pulumi.Input['AutoscalingConfigArgs']] = None,
                  endpoint_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  free_instance_metadata: Optional[pulumi.Input['FreeInstanceMetadataArgs']] = None,
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
@@ -33,6 +34,7 @@ class InstanceArgs:
         :param pulumi.Input[str] config: The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[str] instance_id: The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
+        :param pulumi.Input['AutoscalingConfigArgs'] autoscaling_config: Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_uris: Deprecated. This field is not populated.
         :param pulumi.Input['FreeInstanceMetadataArgs'] free_instance_metadata: Free instance metadata. Only populated for free instances.
         :param pulumi.Input['InstanceInstanceType'] instance_type: The `InstanceType` of the current instance.
@@ -44,6 +46,8 @@ class InstanceArgs:
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "instance_id", instance_id)
+        if autoscaling_config is not None:
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if endpoint_uris is not None:
             warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
             pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
@@ -99,6 +103,18 @@ class InstanceArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> Optional[pulumi.Input['AutoscalingConfigArgs']]:
+        """
+        Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+        """
+        return pulumi.get(self, "autoscaling_config")
+
+    @autoscaling_config.setter
+    def autoscaling_config(self, value: Optional[pulumi.Input['AutoscalingConfigArgs']]):
+        pulumi.set(self, "autoscaling_config", value)
 
     @property
     @pulumi.getter(name="endpointUris")
@@ -202,6 +218,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingConfigArgs']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  endpoint_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -219,6 +236,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AutoscalingConfigArgs']] autoscaling_config: Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
         :param pulumi.Input[str] config: The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_uris: Deprecated. This field is not populated.
@@ -254,6 +272,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingConfigArgs']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  endpoint_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -274,6 +293,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["autoscaling_config"] = autoscaling_config
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
@@ -321,6 +341,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = InstanceArgs.__new__(InstanceArgs)
 
+        __props__.__dict__["autoscaling_config"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
@@ -335,6 +356,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> pulumi.Output['outputs.AutoscalingConfigResponse']:
+        """
+        Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+        """
+        return pulumi.get(self, "autoscaling_config")
 
     @property
     @pulumi.getter

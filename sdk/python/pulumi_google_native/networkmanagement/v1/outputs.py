@@ -25,6 +25,7 @@ __all__ = [
     'CloudSQLInstanceInfoResponse',
     'DeliverInfoResponse',
     'DropInfoResponse',
+    'EdgeLocationResponse',
     'EndpointInfoResponse',
     'EndpointResponse',
     'ExprResponse',
@@ -32,10 +33,14 @@ __all__ = [
     'ForwardInfoResponse',
     'ForwardingRuleInfoResponse',
     'GKEMasterInfoResponse',
+    'GoogleServiceInfoResponse',
     'InstanceInfoResponse',
+    'LatencyDistributionResponse',
+    'LatencyPercentileResponse',
     'LoadBalancerBackendResponse',
     'LoadBalancerInfoResponse',
     'NetworkInfoResponse',
+    'ProbingDetailsResponse',
     'ReachabilityDetailsResponse',
     'RouteInfoResponse',
     'StatusResponse',
@@ -742,6 +747,45 @@ class DropInfoResponse(dict):
 
 
 @pulumi.output_type
+class EdgeLocationResponse(dict):
+    """
+    Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metropolitanArea":
+            suggest = "metropolitan_area"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeLocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeLocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeLocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metropolitan_area: str):
+        """
+        Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
+        :param str metropolitan_area: Name of the metropolitan area.
+        """
+        pulumi.set(__self__, "metropolitan_area", metropolitan_area)
+
+    @property
+    @pulumi.getter(name="metropolitanArea")
+    def metropolitan_area(self) -> str:
+        """
+        Name of the metropolitan area.
+        """
+        return pulumi.get(self, "metropolitan_area")
+
+
+@pulumi.output_type
 class EndpointInfoResponse(dict):
     """
     For display only. The specification of the endpoints for the test. EndpointInfo is derived from source and destination Endpoint and validated by the backend data plane model.
@@ -755,6 +799,8 @@ class EndpointInfoResponse(dict):
             suggest = "destination_network_uri"
         elif key == "destinationPort":
             suggest = "destination_port"
+        elif key == "sourceAgentUri":
+            suggest = "source_agent_uri"
         elif key == "sourceIp":
             suggest = "source_ip"
         elif key == "sourceNetworkUri":
@@ -778,6 +824,7 @@ class EndpointInfoResponse(dict):
                  destination_network_uri: str,
                  destination_port: int,
                  protocol: str,
+                 source_agent_uri: str,
                  source_ip: str,
                  source_network_uri: str,
                  source_port: int):
@@ -787,6 +834,7 @@ class EndpointInfoResponse(dict):
         :param str destination_network_uri: URI of the network where this packet is sent to.
         :param int destination_port: Destination port. Only valid when protocol is TCP or UDP.
         :param str protocol: IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        :param str source_agent_uri: URI of the source telemetry agent this packet originates from.
         :param str source_ip: Source IP address.
         :param str source_network_uri: URI of the network where this packet originates from.
         :param int source_port: Source port. Only valid when protocol is TCP or UDP.
@@ -795,6 +843,7 @@ class EndpointInfoResponse(dict):
         pulumi.set(__self__, "destination_network_uri", destination_network_uri)
         pulumi.set(__self__, "destination_port", destination_port)
         pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "source_agent_uri", source_agent_uri)
         pulumi.set(__self__, "source_ip", source_ip)
         pulumi.set(__self__, "source_network_uri", source_network_uri)
         pulumi.set(__self__, "source_port", source_port)
@@ -830,6 +879,14 @@ class EndpointInfoResponse(dict):
         IP protocol in string format, for example: "TCP", "UDP", "ICMP".
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="sourceAgentUri")
+    def source_agent_uri(self) -> str:
+        """
+        URI of the source telemetry agent this packet originates from.
+        """
+        return pulumi.get(self, "source_agent_uri")
 
     @property
     @pulumi.getter(name="sourceIp")
@@ -872,10 +929,18 @@ class EndpointResponse(dict):
             suggest = "cloud_run_revision"
         elif key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
+        elif key == "forwardingRule":
+            suggest = "forwarding_rule"
+        elif key == "forwardingRuleTarget":
+            suggest = "forwarding_rule_target"
         elif key == "gkeMasterCluster":
             suggest = "gke_master_cluster"
         elif key == "ipAddress":
             suggest = "ip_address"
+        elif key == "loadBalancerId":
+            suggest = "load_balancer_id"
+        elif key == "loadBalancerType":
+            suggest = "load_balancer_type"
         elif key == "networkType":
             suggest = "network_type"
 
@@ -895,9 +960,13 @@ class EndpointResponse(dict):
                  cloud_function: 'outputs.CloudFunctionEndpointResponse',
                  cloud_run_revision: 'outputs.CloudRunRevisionEndpointResponse',
                  cloud_sql_instance: str,
+                 forwarding_rule: str,
+                 forwarding_rule_target: str,
                  gke_master_cluster: str,
                  instance: str,
                  ip_address: str,
+                 load_balancer_id: str,
+                 load_balancer_type: str,
                  network: str,
                  network_type: str,
                  port: int,
@@ -908,9 +977,13 @@ class EndpointResponse(dict):
         :param 'CloudFunctionEndpointResponse' cloud_function: A [Cloud Function](https://cloud.google.com/functions).
         :param 'CloudRunRevisionEndpointResponse' cloud_run_revision: A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
         :param str cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+        :param str forwarding_rule: A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+        :param str forwarding_rule_target: Specifies the type of the target of the forwarding rule.
         :param str gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param str instance: A Compute Engine instance URI.
-        :param str ip_address: The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](/load-balancing/docs/load-balancing-overview).
+        :param str ip_address: The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
+        :param str load_balancer_id: ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers.
+        :param str load_balancer_type: Type of the load balancer the forwarding rule points to.
         :param str network: A Compute Engine network URI.
         :param str network_type: Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
         :param int port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
@@ -920,9 +993,13 @@ class EndpointResponse(dict):
         pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_run_revision", cloud_run_revision)
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "forwarding_rule_target", forwarding_rule_target)
         pulumi.set(__self__, "gke_master_cluster", gke_master_cluster)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "port", port)
@@ -961,6 +1038,22 @@ class EndpointResponse(dict):
         return pulumi.get(self, "cloud_sql_instance")
 
     @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> str:
+        """
+        A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="forwardingRuleTarget")
+    def forwarding_rule_target(self) -> str:
+        """
+        Specifies the type of the target of the forwarding rule.
+        """
+        return pulumi.get(self, "forwarding_rule_target")
+
+    @property
     @pulumi.getter(name="gkeMasterCluster")
     def gke_master_cluster(self) -> str:
         """
@@ -980,9 +1073,25 @@ class EndpointResponse(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
         """
-        The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](/load-balancing/docs/load-balancing-overview).
+        The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> str:
+        """
+        ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> str:
+        """
+        Type of the load balancer the forwarding rule points to.
+        """
+        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter
@@ -1458,6 +1567,58 @@ class GKEMasterInfoResponse(dict):
 
 
 @pulumi.output_type
+class GoogleServiceInfoResponse(dict):
+    """
+    For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleServiceType":
+            suggest = "google_service_type"
+        elif key == "sourceIp":
+            suggest = "source_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleServiceInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleServiceInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleServiceInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_service_type: str,
+                 source_ip: str):
+        """
+        For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths
+        :param str google_service_type: Recognized type of a Google Service.
+        :param str source_ip: Source IP address.
+        """
+        pulumi.set(__self__, "google_service_type", google_service_type)
+        pulumi.set(__self__, "source_ip", source_ip)
+
+    @property
+    @pulumi.getter(name="googleServiceType")
+    def google_service_type(self) -> str:
+        """
+        Recognized type of a Google Service.
+        """
+        return pulumi.get(self, "google_service_type")
+
+    @property
+    @pulumi.getter(name="sourceIp")
+    def source_ip(self) -> str:
+        """
+        Source IP address.
+        """
+        return pulumi.get(self, "source_ip")
+
+
+@pulumi.output_type
 class InstanceInfoResponse(dict):
     """
     For display only. Metadata associated with a Compute Engine instance.
@@ -1581,6 +1742,95 @@ class InstanceInfoResponse(dict):
         URI of a Compute Engine instance.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class LatencyDistributionResponse(dict):
+    """
+    Describes measured latency distribution.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "latencyPercentiles":
+            suggest = "latency_percentiles"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LatencyDistributionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LatencyDistributionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LatencyDistributionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 latency_percentiles: Sequence['outputs.LatencyPercentileResponse']):
+        """
+        Describes measured latency distribution.
+        :param Sequence['LatencyPercentileResponse'] latency_percentiles: Representative latency percentiles.
+        """
+        pulumi.set(__self__, "latency_percentiles", latency_percentiles)
+
+    @property
+    @pulumi.getter(name="latencyPercentiles")
+    def latency_percentiles(self) -> Sequence['outputs.LatencyPercentileResponse']:
+        """
+        Representative latency percentiles.
+        """
+        return pulumi.get(self, "latency_percentiles")
+
+
+@pulumi.output_type
+class LatencyPercentileResponse(dict):
+    """
+    Latency percentile rank and value.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "latencyMicros":
+            suggest = "latency_micros"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LatencyPercentileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LatencyPercentileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LatencyPercentileResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 latency_micros: str,
+                 percent: int):
+        """
+        Latency percentile rank and value.
+        :param str latency_micros: percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency lower or equal to the value of this field.
+        :param int percent: Percentage of samples this data point applies to.
+        """
+        pulumi.set(__self__, "latency_micros", latency_micros)
+        pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter(name="latencyMicros")
+    def latency_micros(self) -> str:
+        """
+        percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency lower or equal to the value of this field.
+        """
+        return pulumi.get(self, "latency_micros")
+
+    @property
+    @pulumi.getter
+    def percent(self) -> int:
+        """
+        Percentage of samples this data point applies to.
+        """
+        return pulumi.get(self, "percent")
 
 
 @pulumi.output_type
@@ -1711,7 +1961,7 @@ class LoadBalancerInfoResponse(dict):
         :param str backend_type: Type of load balancer's backend configuration.
         :param str backend_uri: Backend configuration URI.
         :param Sequence['LoadBalancerBackendResponse'] backends: Information for the loadbalancer backends.
-        :param str health_check_uri: URI of the health check for the load balancer.
+        :param str health_check_uri: URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
         :param str load_balancer_type: Type of the load balancer.
         """
         pulumi.set(__self__, "backend_type", backend_type)
@@ -1748,8 +1998,11 @@ class LoadBalancerInfoResponse(dict):
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> str:
         """
-        URI of the health check for the load balancer.
+        URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
         """
+        warnings.warn("""URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.""", DeprecationWarning)
+        pulumi.log.warn("""health_check_uri is deprecated: URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.""")
+
         return pulumi.get(self, "health_check_uri")
 
     @property
@@ -1822,6 +2075,145 @@ class NetworkInfoResponse(dict):
         URI of a Compute Engine network.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class ProbingDetailsResponse(dict):
+    """
+    Results of active probing from the last run of the test.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "abortCause":
+            suggest = "abort_cause"
+        elif key == "destinationEgressLocation":
+            suggest = "destination_egress_location"
+        elif key == "endpointInfo":
+            suggest = "endpoint_info"
+        elif key == "probingLatency":
+            suggest = "probing_latency"
+        elif key == "sentProbeCount":
+            suggest = "sent_probe_count"
+        elif key == "successfulProbeCount":
+            suggest = "successful_probe_count"
+        elif key == "verifyTime":
+            suggest = "verify_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbingDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbingDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbingDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 abort_cause: str,
+                 destination_egress_location: 'outputs.EdgeLocationResponse',
+                 endpoint_info: 'outputs.EndpointInfoResponse',
+                 error: 'outputs.StatusResponse',
+                 probing_latency: 'outputs.LatencyDistributionResponse',
+                 result: str,
+                 sent_probe_count: int,
+                 successful_probe_count: int,
+                 verify_time: str):
+        """
+        Results of active probing from the last run of the test.
+        :param str abort_cause: The reason probing was aborted.
+        :param 'EdgeLocationResponse' destination_egress_location: The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
+        :param 'EndpointInfoResponse' endpoint_info: The source and destination endpoints derived from the test input and used for active probing.
+        :param 'StatusResponse' error: Details about an internal failure or the cancellation of active probing.
+        :param 'LatencyDistributionResponse' probing_latency: Latency as measured by active probing in one direction: from the source to the destination endpoint.
+        :param str result: The overall result of active probing.
+        :param int sent_probe_count: Number of probes sent.
+        :param int successful_probe_count: Number of probes that reached the destination.
+        :param str verify_time: The time that reachability was assessed through active probing.
+        """
+        pulumi.set(__self__, "abort_cause", abort_cause)
+        pulumi.set(__self__, "destination_egress_location", destination_egress_location)
+        pulumi.set(__self__, "endpoint_info", endpoint_info)
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "probing_latency", probing_latency)
+        pulumi.set(__self__, "result", result)
+        pulumi.set(__self__, "sent_probe_count", sent_probe_count)
+        pulumi.set(__self__, "successful_probe_count", successful_probe_count)
+        pulumi.set(__self__, "verify_time", verify_time)
+
+    @property
+    @pulumi.getter(name="abortCause")
+    def abort_cause(self) -> str:
+        """
+        The reason probing was aborted.
+        """
+        return pulumi.get(self, "abort_cause")
+
+    @property
+    @pulumi.getter(name="destinationEgressLocation")
+    def destination_egress_location(self) -> 'outputs.EdgeLocationResponse':
+        """
+        The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
+        """
+        return pulumi.get(self, "destination_egress_location")
+
+    @property
+    @pulumi.getter(name="endpointInfo")
+    def endpoint_info(self) -> 'outputs.EndpointInfoResponse':
+        """
+        The source and destination endpoints derived from the test input and used for active probing.
+        """
+        return pulumi.get(self, "endpoint_info")
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        Details about an internal failure or the cancellation of active probing.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="probingLatency")
+    def probing_latency(self) -> 'outputs.LatencyDistributionResponse':
+        """
+        Latency as measured by active probing in one direction: from the source to the destination endpoint.
+        """
+        return pulumi.get(self, "probing_latency")
+
+    @property
+    @pulumi.getter
+    def result(self) -> str:
+        """
+        The overall result of active probing.
+        """
+        return pulumi.get(self, "result")
+
+    @property
+    @pulumi.getter(name="sentProbeCount")
+    def sent_probe_count(self) -> int:
+        """
+        Number of probes sent.
+        """
+        return pulumi.get(self, "sent_probe_count")
+
+    @property
+    @pulumi.getter(name="successfulProbeCount")
+    def successful_probe_count(self) -> int:
+        """
+        Number of probes that reached the destination.
+        """
+        return pulumi.get(self, "successful_probe_count")
+
+    @property
+    @pulumi.getter(name="verifyTime")
+    def verify_time(self) -> str:
+        """
+        The time that reachability was assessed through active probing.
+        """
+        return pulumi.get(self, "verify_time")
 
 
 @pulumi.output_type
@@ -1912,12 +2304,18 @@ class RouteInfoResponse(dict):
             suggest = "display_name"
         elif key == "instanceTags":
             suggest = "instance_tags"
+        elif key == "nccHubUri":
+            suggest = "ncc_hub_uri"
+        elif key == "nccSpokeUri":
+            suggest = "ncc_spoke_uri"
         elif key == "networkUri":
             suggest = "network_uri"
         elif key == "nextHop":
             suggest = "next_hop"
         elif key == "nextHopType":
             suggest = "next_hop_type"
+        elif key == "routeScope":
+            suggest = "route_scope"
         elif key == "routeType":
             suggest = "route_type"
         elif key == "srcIpRange":
@@ -1941,11 +2339,14 @@ class RouteInfoResponse(dict):
                  dest_port_ranges: Sequence[str],
                  display_name: str,
                  instance_tags: Sequence[str],
+                 ncc_hub_uri: str,
+                 ncc_spoke_uri: str,
                  network_uri: str,
                  next_hop: str,
                  next_hop_type: str,
                  priority: int,
                  protocols: Sequence[str],
+                 route_scope: str,
                  route_type: str,
                  src_ip_range: str,
                  src_port_ranges: Sequence[str],
@@ -1954,27 +2355,33 @@ class RouteInfoResponse(dict):
         For display only. Metadata associated with a Compute Engine route.
         :param str dest_ip_range: Destination IP range of the route.
         :param Sequence[str] dest_port_ranges: Destination port ranges of the route. Policy based routes only.
-        :param str display_name: Name of a Compute Engine route.
+        :param str display_name: Name of a route.
         :param Sequence[str] instance_tags: Instance tags of the route.
-        :param str network_uri: URI of a Compute Engine network.
+        :param str ncc_hub_uri: URI of a NCC Hub. NCC_HUB routes only.
+        :param str ncc_spoke_uri: URI of a NCC Spoke. NCC_HUB routes only.
+        :param str network_uri: URI of a Compute Engine network. NETWORK routes only.
         :param str next_hop: Next hop of the route.
         :param str next_hop_type: Type of next hop.
         :param int priority: Priority of the route.
         :param Sequence[str] protocols: Protocols of the route. Policy based routes only.
+        :param str route_scope: Indicates where route is applicable.
         :param str route_type: Type of route.
         :param str src_ip_range: Source IP address range of the route. Policy based routes only.
         :param Sequence[str] src_port_ranges: Source port ranges of the route. Policy based routes only.
-        :param str uri: URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
+        :param str uri: URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from Google Cloud VPC to on-premises network also does not have an URI.
         """
         pulumi.set(__self__, "dest_ip_range", dest_ip_range)
         pulumi.set(__self__, "dest_port_ranges", dest_port_ranges)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "instance_tags", instance_tags)
+        pulumi.set(__self__, "ncc_hub_uri", ncc_hub_uri)
+        pulumi.set(__self__, "ncc_spoke_uri", ncc_spoke_uri)
         pulumi.set(__self__, "network_uri", network_uri)
         pulumi.set(__self__, "next_hop", next_hop)
         pulumi.set(__self__, "next_hop_type", next_hop_type)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "protocols", protocols)
+        pulumi.set(__self__, "route_scope", route_scope)
         pulumi.set(__self__, "route_type", route_type)
         pulumi.set(__self__, "src_ip_range", src_ip_range)
         pulumi.set(__self__, "src_port_ranges", src_port_ranges)
@@ -2000,7 +2407,7 @@ class RouteInfoResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Name of a Compute Engine route.
+        Name of a route.
         """
         return pulumi.get(self, "display_name")
 
@@ -2013,10 +2420,26 @@ class RouteInfoResponse(dict):
         return pulumi.get(self, "instance_tags")
 
     @property
+    @pulumi.getter(name="nccHubUri")
+    def ncc_hub_uri(self) -> str:
+        """
+        URI of a NCC Hub. NCC_HUB routes only.
+        """
+        return pulumi.get(self, "ncc_hub_uri")
+
+    @property
+    @pulumi.getter(name="nccSpokeUri")
+    def ncc_spoke_uri(self) -> str:
+        """
+        URI of a NCC Spoke. NCC_HUB routes only.
+        """
+        return pulumi.get(self, "ncc_spoke_uri")
+
+    @property
     @pulumi.getter(name="networkUri")
     def network_uri(self) -> str:
         """
-        URI of a Compute Engine network.
+        URI of a Compute Engine network. NETWORK routes only.
         """
         return pulumi.get(self, "network_uri")
 
@@ -2053,6 +2476,14 @@ class RouteInfoResponse(dict):
         return pulumi.get(self, "protocols")
 
     @property
+    @pulumi.getter(name="routeScope")
+    def route_scope(self) -> str:
+        """
+        Indicates where route is applicable.
+        """
+        return pulumi.get(self, "route_scope")
+
+    @property
     @pulumi.getter(name="routeType")
     def route_type(self) -> str:
         """
@@ -2080,7 +2511,7 @@ class RouteInfoResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
+        URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from Google Cloud VPC to on-premises network also does not have an URI.
         """
         return pulumi.get(self, "uri")
 
@@ -2151,6 +2582,8 @@ class StepResponse(dict):
             suggest = "forwarding_rule"
         elif key == "gkeMaster":
             suggest = "gke_master"
+        elif key == "googleService":
+            suggest = "google_service"
         elif key == "loadBalancer":
             suggest = "load_balancer"
         elif key == "vpcConnector":
@@ -2186,6 +2619,7 @@ class StepResponse(dict):
                  forward: 'outputs.ForwardInfoResponse',
                  forwarding_rule: 'outputs.ForwardingRuleInfoResponse',
                  gke_master: 'outputs.GKEMasterInfoResponse',
+                 google_service: 'outputs.GoogleServiceInfoResponse',
                  instance: 'outputs.InstanceInfoResponse',
                  load_balancer: 'outputs.LoadBalancerInfoResponse',
                  network: 'outputs.NetworkInfoResponse',
@@ -2211,6 +2645,7 @@ class StepResponse(dict):
         :param 'ForwardInfoResponse' forward: Display information of the final state "forward" and reason.
         :param 'ForwardingRuleInfoResponse' forwarding_rule: Display information of a Compute Engine forwarding rule.
         :param 'GKEMasterInfoResponse' gke_master: Display information of a Google Kubernetes Engine cluster master.
+        :param 'GoogleServiceInfoResponse' google_service: Display information of a Google service
         :param 'InstanceInfoResponse' instance: Display information of a Compute Engine instance.
         :param 'LoadBalancerInfoResponse' load_balancer: Display information of the load balancers.
         :param 'NetworkInfoResponse' network: Display information of a Google Cloud network.
@@ -2235,6 +2670,7 @@ class StepResponse(dict):
         pulumi.set(__self__, "forward", forward)
         pulumi.set(__self__, "forwarding_rule", forwarding_rule)
         pulumi.set(__self__, "gke_master", gke_master)
+        pulumi.set(__self__, "google_service", google_service)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "load_balancer", load_balancer)
         pulumi.set(__self__, "network", network)
@@ -2356,6 +2792,14 @@ class StepResponse(dict):
         Display information of a Google Kubernetes Engine cluster master.
         """
         return pulumi.get(self, "gke_master")
+
+    @property
+    @pulumi.getter(name="googleService")
+    def google_service(self) -> 'outputs.GoogleServiceInfoResponse':
+        """
+        Display information of a Google service
+        """
+        return pulumi.get(self, "google_service")
 
     @property
     @pulumi.getter

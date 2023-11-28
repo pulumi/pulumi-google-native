@@ -31,8 +31,8 @@ class RestorePlanArgs:
         :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         :param pulumi.Input['RestoreConfigArgs'] restore_config: Configuration of Restores created via this RestorePlan.
         :param pulumi.Input[str] restore_plan_id: Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
-        :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
+        :param pulumi.Input[str] description: Optional. User specified descriptive string for this RestorePlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A set of custom labels supplied by user.
         """
         pulumi.set(__self__, "backup_plan", backup_plan)
         pulumi.set(__self__, "cluster", cluster)
@@ -99,7 +99,7 @@ class RestorePlanArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        User specified descriptive string for this RestorePlan.
+        Optional. User specified descriptive string for this RestorePlan.
         """
         return pulumi.get(self, "description")
 
@@ -111,7 +111,7 @@ class RestorePlanArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A set of custom labels supplied by user.
+        Optional. A set of custom labels supplied by user.
         """
         return pulumi.get(self, "labels")
 
@@ -160,8 +160,8 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_plan: Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
         :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
-        :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
+        :param pulumi.Input[str] description: Optional. User specified descriptive string for this RestorePlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A set of custom labels supplied by user.
         :param pulumi.Input[pulumi.InputType['RestoreConfigArgs']] restore_config: Configuration of Restores created via this RestorePlan.
         :param pulumi.Input[str] restore_plan_id: Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
         """
@@ -226,6 +226,8 @@ class RestorePlan(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["state_reason"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "restore_plan_id"])
@@ -263,6 +265,8 @@ class RestorePlan(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["restore_config"] = None
         __props__.__dict__["restore_plan_id"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["state_reason"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return RestorePlan(resource_name, opts=opts, __props__=__props__)
@@ -295,7 +299,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        User specified descriptive string for this RestorePlan.
+        Optional. User specified descriptive string for this RestorePlan.
         """
         return pulumi.get(self, "description")
 
@@ -311,7 +315,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        A set of custom labels supplied by user.
+        Optional. A set of custom labels supplied by user.
         """
         return pulumi.get(self, "labels")
 
@@ -348,6 +352,22 @@ class RestorePlan(pulumi.CustomResource):
         Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
         """
         return pulumi.get(self, "restore_plan_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> pulumi.Output[str]:
+        """
+        Human-readable description of why RestorePlan is in the current `state`
+        """
+        return pulumi.get(self, "state_reason")
 
     @property
     @pulumi.getter

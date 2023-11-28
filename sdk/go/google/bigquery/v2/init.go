@@ -27,12 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Job{}
 	case "google-native:bigquery/v2:Routine":
 		r = &Routine{}
-	case "google-native:bigquery/v2:RowAccessPolicyIamBinding":
-		r = &RowAccessPolicyIamBinding{}
-	case "google-native:bigquery/v2:RowAccessPolicyIamMember":
-		r = &RowAccessPolicyIamMember{}
-	case "google-native:bigquery/v2:RowAccessPolicyIamPolicy":
-		r = &RowAccessPolicyIamPolicy{}
 	case "google-native:bigquery/v2:Table":
 		r = &Table{}
 	case "google-native:bigquery/v2:TableIamBinding":

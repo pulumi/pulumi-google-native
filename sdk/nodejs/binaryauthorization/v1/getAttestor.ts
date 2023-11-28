@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+ * Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
  */
 export function getAttestor(args: GetAttestorArgs, opts?: pulumi.InvokeOptions): Promise<GetAttestorResult> {
 
@@ -47,7 +47,7 @@ export interface GetAttestorResult {
     readonly userOwnedGrafeasNote: outputs.binaryauthorization.v1.UserOwnedGrafeasNoteResponse;
 }
 /**
- * Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+ * Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
  */
 export function getAttestorOutput(args: GetAttestorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestorResult> {
     return pulumi.output(args).apply((a: any) => getAttestor(a, opts))

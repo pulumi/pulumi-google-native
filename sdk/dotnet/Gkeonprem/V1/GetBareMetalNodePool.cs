@@ -39,6 +39,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("view")]
+        public string? View { get; set; }
+
         public GetBareMetalNodePoolArgs()
         {
         }
@@ -58,6 +61,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
 
         public GetBareMetalNodePoolInvokeArgs()
         {
@@ -117,6 +123,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// The time at which this bare metal node pool was last updated.
         /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// The worker node pool upgrade policy.
+        /// </summary>
+        public readonly Outputs.BareMetalNodePoolUpgradePolicyResponse UpgradePolicy;
 
         [OutputConstructor]
         private GetBareMetalNodePoolResult(
@@ -142,7 +152,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
 
             string uid,
 
-            string updateTime)
+            string updateTime,
+
+            Outputs.BareMetalNodePoolUpgradePolicyResponse upgradePolicy)
         {
             Annotations = annotations;
             CreateTime = createTime;
@@ -156,6 +168,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
             Status = status;
             Uid = uid;
             UpdateTime = updateTime;
+            UpgradePolicy = upgradePolicy;
         }
     }
 }

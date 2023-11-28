@@ -19,7 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetGlobalPublicDelegatedPrefixResult:
-    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, ip_cidr_range=None, is_live_migration=None, kind=None, name=None, parent_prefix=None, public_delegated_sub_prefixs=None, region=None, self_link=None, self_link_with_id=None, status=None):
+    def __init__(__self__, allocatable_prefix_length=None, byoip_api_version=None, creation_timestamp=None, description=None, fingerprint=None, ip_cidr_range=None, is_live_migration=None, kind=None, mode=None, name=None, parent_prefix=None, public_delegated_sub_prefixs=None, region=None, self_link=None, self_link_with_id=None, status=None):
+        if allocatable_prefix_length and not isinstance(allocatable_prefix_length, int):
+            raise TypeError("Expected argument 'allocatable_prefix_length' to be a int")
+        pulumi.set(__self__, "allocatable_prefix_length", allocatable_prefix_length)
+        if byoip_api_version and not isinstance(byoip_api_version, str):
+            raise TypeError("Expected argument 'byoip_api_version' to be a str")
+        pulumi.set(__self__, "byoip_api_version", byoip_api_version)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -38,6 +44,9 @@ class GetGlobalPublicDelegatedPrefixResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if mode and not isinstance(mode, str):
+            raise TypeError("Expected argument 'mode' to be a str")
+        pulumi.set(__self__, "mode", mode)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -59,6 +68,22 @@ class GetGlobalPublicDelegatedPrefixResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="allocatablePrefixLength")
+    def allocatable_prefix_length(self) -> int:
+        """
+        The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        """
+        return pulumi.get(self, "allocatable_prefix_length")
+
+    @property
+    @pulumi.getter(name="byoipApiVersion")
+    def byoip_api_version(self) -> str:
+        """
+        The version of BYOIP API.
+        """
+        return pulumi.get(self, "byoip_api_version")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -88,7 +113,7 @@ class GetGlobalPublicDelegatedPrefixResult:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> str:
         """
-        The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        The IP address range, in CIDR format, represented by this public delegated prefix.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -107,6 +132,14 @@ class GetGlobalPublicDelegatedPrefixResult:
         Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The public delegated prefix mode for IPv6 only.
+        """
+        return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
@@ -171,12 +204,15 @@ class AwaitableGetGlobalPublicDelegatedPrefixResult(GetGlobalPublicDelegatedPref
         if False:
             yield self
         return GetGlobalPublicDelegatedPrefixResult(
+            allocatable_prefix_length=self.allocatable_prefix_length,
+            byoip_api_version=self.byoip_api_version,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
             ip_cidr_range=self.ip_cidr_range,
             is_live_migration=self.is_live_migration,
             kind=self.kind,
+            mode=self.mode,
             name=self.name,
             parent_prefix=self.parent_prefix,
             public_delegated_sub_prefixs=self.public_delegated_sub_prefixs,
@@ -199,12 +235,15 @@ def get_global_public_delegated_prefix(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getGlobalPublicDelegatedPrefix', __args__, opts=opts, typ=GetGlobalPublicDelegatedPrefixResult).value
 
     return AwaitableGetGlobalPublicDelegatedPrefixResult(
+        allocatable_prefix_length=pulumi.get(__ret__, 'allocatable_prefix_length'),
+        byoip_api_version=pulumi.get(__ret__, 'byoip_api_version'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
         is_live_migration=pulumi.get(__ret__, 'is_live_migration'),
         kind=pulumi.get(__ret__, 'kind'),
+        mode=pulumi.get(__ret__, 'mode'),
         name=pulumi.get(__ret__, 'name'),
         parent_prefix=pulumi.get(__ret__, 'parent_prefix'),
         public_delegated_sub_prefixs=pulumi.get(__ret__, 'public_delegated_sub_prefixs'),

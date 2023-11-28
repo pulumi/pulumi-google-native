@@ -63,6 +63,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [Output("networks")]
         public Output<ImmutableArray<Outputs.NetworkConfigResponse>> Networks { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+        /// </summary>
+        [Output("pod")]
+        public Output<string> Pod { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -199,6 +205,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             get => _networks ?? (_networks = new InputList<Inputs.NetworkConfigArgs>());
             set => _networks = value;
         }
+
+        /// <summary>
+        /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+        /// </summary>
+        [Input("pod")]
+        public Input<string>? Pod { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

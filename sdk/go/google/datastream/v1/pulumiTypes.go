@@ -2717,8 +2717,12 @@ type MysqlColumn struct {
 	Nullable *bool `pulumi:"nullable"`
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision *int `pulumi:"precision"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale *int `pulumi:"scale"`
 }
 
 // MysqlColumnInput is an input type that accepts MysqlColumnArgs and MysqlColumnOutput values.
@@ -2746,8 +2750,12 @@ type MysqlColumnArgs struct {
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
 }
 
 func (MysqlColumnArgs) ElementType() reflect.Type {
@@ -2850,9 +2858,19 @@ func (o MysqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MysqlColumn) *int { return v.OrdinalPosition }).(pulumi.IntPtrOutput)
 }
 
+// Column precision.
+func (o MysqlColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MysqlColumn) *int { return v.Precision }).(pulumi.IntPtrOutput)
+}
+
 // Whether or not the column represents a primary key.
 func (o MysqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MysqlColumn) *bool { return v.PrimaryKey }).(pulumi.BoolPtrOutput)
+}
+
+// Column scale.
+func (o MysqlColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MysqlColumn) *int { return v.Scale }).(pulumi.IntPtrOutput)
 }
 
 type MysqlColumnArrayOutput struct{ *pulumi.OutputState }
@@ -2895,8 +2913,12 @@ type MysqlColumnResponse struct {
 	Nullable bool `pulumi:"nullable"`
 	// The ordinal position of the column in the table.
 	OrdinalPosition int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision int `pulumi:"precision"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale int `pulumi:"scale"`
 }
 
 // MySQL Column.
@@ -2950,9 +2972,19 @@ func (o MysqlColumnResponseOutput) OrdinalPosition() pulumi.IntOutput {
 	return o.ApplyT(func(v MysqlColumnResponse) int { return v.OrdinalPosition }).(pulumi.IntOutput)
 }
 
+// Column precision.
+func (o MysqlColumnResponseOutput) Precision() pulumi.IntOutput {
+	return o.ApplyT(func(v MysqlColumnResponse) int { return v.Precision }).(pulumi.IntOutput)
+}
+
 // Whether or not the column represents a primary key.
 func (o MysqlColumnResponseOutput) PrimaryKey() pulumi.BoolOutput {
 	return o.ApplyT(func(v MysqlColumnResponse) bool { return v.PrimaryKey }).(pulumi.BoolOutput)
+}
+
+// Column scale.
+func (o MysqlColumnResponseOutput) Scale() pulumi.IntOutput {
+	return o.ApplyT(func(v MysqlColumnResponse) int { return v.Scale }).(pulumi.IntOutput)
 }
 
 type MysqlColumnResponseArrayOutput struct{ *pulumi.OutputState }
@@ -4734,6 +4766,8 @@ type OracleProfile struct {
 	DatabaseService string `pulumi:"databaseService"`
 	// Hostname for the Oracle connection.
 	Hostname string `pulumi:"hostname"`
+	// Optional. SSL configuration for the Oracle connection.
+	OracleSslConfig *OracleSslConfig `pulumi:"oracleSslConfig"`
 	// Password for the Oracle connection.
 	Password string `pulumi:"password"`
 	// Port for the Oracle connection, default value is 1521.
@@ -4761,6 +4795,8 @@ type OracleProfileArgs struct {
 	DatabaseService pulumi.StringInput `pulumi:"databaseService"`
 	// Hostname for the Oracle connection.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Optional. SSL configuration for the Oracle connection.
+	OracleSslConfig OracleSslConfigPtrInput `pulumi:"oracleSslConfig"`
 	// Password for the Oracle connection.
 	Password pulumi.StringInput `pulumi:"password"`
 	// Port for the Oracle connection, default value is 1521.
@@ -4880,6 +4916,11 @@ func (o OracleProfileOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleProfile) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// Optional. SSL configuration for the Oracle connection.
+func (o OracleProfileOutput) OracleSslConfig() OracleSslConfigPtrOutput {
+	return o.ApplyT(func(v OracleProfile) *OracleSslConfig { return v.OracleSslConfig }).(OracleSslConfigPtrOutput)
+}
+
 // Password for the Oracle connection.
 func (o OracleProfileOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleProfile) string { return v.Password }).(pulumi.StringOutput)
@@ -4955,6 +4996,16 @@ func (o OracleProfilePtrOutput) Hostname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. SSL configuration for the Oracle connection.
+func (o OracleProfilePtrOutput) OracleSslConfig() OracleSslConfigPtrOutput {
+	return o.ApplyT(func(v *OracleProfile) *OracleSslConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OracleSslConfig
+	}).(OracleSslConfigPtrOutput)
+}
+
 // Password for the Oracle connection.
 func (o OracleProfilePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OracleProfile) *string {
@@ -4993,6 +5044,8 @@ type OracleProfileResponse struct {
 	DatabaseService string `pulumi:"databaseService"`
 	// Hostname for the Oracle connection.
 	Hostname string `pulumi:"hostname"`
+	// Optional. SSL configuration for the Oracle connection.
+	OracleSslConfig OracleSslConfigResponse `pulumi:"oracleSslConfig"`
 	// Password for the Oracle connection.
 	Password string `pulumi:"password"`
 	// Port for the Oracle connection, default value is 1521.
@@ -5035,6 +5088,11 @@ func (o OracleProfileResponseOutput) DatabaseService() pulumi.StringOutput {
 // Hostname for the Oracle connection.
 func (o OracleProfileResponseOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleProfileResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Optional. SSL configuration for the Oracle connection.
+func (o OracleProfileResponseOutput) OracleSslConfig() OracleSslConfigResponseOutput {
+	return o.ApplyT(func(v OracleProfileResponse) OracleSslConfigResponse { return v.OracleSslConfig }).(OracleSslConfigResponseOutput)
 }
 
 // Password for the Oracle connection.
@@ -5770,6 +5828,209 @@ func (o OracleSourceConfigResponseOutput) MaxConcurrentCdcTasks() pulumi.IntOutp
 // Stream large object values. NOTE: This feature is currently experimental.
 func (o OracleSourceConfigResponseOutput) StreamLargeObjects() StreamLargeObjectsResponseOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) StreamLargeObjectsResponse { return v.StreamLargeObjects }).(StreamLargeObjectsResponseOutput)
+}
+
+// Oracle SSL configuration information.
+type OracleSslConfig struct {
+	// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+	CaCertificate *string `pulumi:"caCertificate"`
+}
+
+// OracleSslConfigInput is an input type that accepts OracleSslConfigArgs and OracleSslConfigOutput values.
+// You can construct a concrete instance of `OracleSslConfigInput` via:
+//
+//	OracleSslConfigArgs{...}
+type OracleSslConfigInput interface {
+	pulumi.Input
+
+	ToOracleSslConfigOutput() OracleSslConfigOutput
+	ToOracleSslConfigOutputWithContext(context.Context) OracleSslConfigOutput
+}
+
+// Oracle SSL configuration information.
+type OracleSslConfigArgs struct {
+	// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
+}
+
+func (OracleSslConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleSslConfig)(nil)).Elem()
+}
+
+func (i OracleSslConfigArgs) ToOracleSslConfigOutput() OracleSslConfigOutput {
+	return i.ToOracleSslConfigOutputWithContext(context.Background())
+}
+
+func (i OracleSslConfigArgs) ToOracleSslConfigOutputWithContext(ctx context.Context) OracleSslConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleSslConfigOutput)
+}
+
+func (i OracleSslConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OracleSslConfig] {
+	return pulumix.Output[OracleSslConfig]{
+		OutputState: i.ToOracleSslConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i OracleSslConfigArgs) ToOracleSslConfigPtrOutput() OracleSslConfigPtrOutput {
+	return i.ToOracleSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OracleSslConfigArgs) ToOracleSslConfigPtrOutputWithContext(ctx context.Context) OracleSslConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleSslConfigOutput).ToOracleSslConfigPtrOutputWithContext(ctx)
+}
+
+// OracleSslConfigPtrInput is an input type that accepts OracleSslConfigArgs, OracleSslConfigPtr and OracleSslConfigPtrOutput values.
+// You can construct a concrete instance of `OracleSslConfigPtrInput` via:
+//
+//	        OracleSslConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type OracleSslConfigPtrInput interface {
+	pulumi.Input
+
+	ToOracleSslConfigPtrOutput() OracleSslConfigPtrOutput
+	ToOracleSslConfigPtrOutputWithContext(context.Context) OracleSslConfigPtrOutput
+}
+
+type oracleSslConfigPtrType OracleSslConfigArgs
+
+func OracleSslConfigPtr(v *OracleSslConfigArgs) OracleSslConfigPtrInput {
+	return (*oracleSslConfigPtrType)(v)
+}
+
+func (*oracleSslConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleSslConfig)(nil)).Elem()
+}
+
+func (i *oracleSslConfigPtrType) ToOracleSslConfigPtrOutput() OracleSslConfigPtrOutput {
+	return i.ToOracleSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oracleSslConfigPtrType) ToOracleSslConfigPtrOutputWithContext(ctx context.Context) OracleSslConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleSslConfigPtrOutput)
+}
+
+func (i *oracleSslConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*OracleSslConfig] {
+	return pulumix.Output[*OracleSslConfig]{
+		OutputState: i.ToOracleSslConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Oracle SSL configuration information.
+type OracleSslConfigOutput struct{ *pulumi.OutputState }
+
+func (OracleSslConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleSslConfig)(nil)).Elem()
+}
+
+func (o OracleSslConfigOutput) ToOracleSslConfigOutput() OracleSslConfigOutput {
+	return o
+}
+
+func (o OracleSslConfigOutput) ToOracleSslConfigOutputWithContext(ctx context.Context) OracleSslConfigOutput {
+	return o
+}
+
+func (o OracleSslConfigOutput) ToOracleSslConfigPtrOutput() OracleSslConfigPtrOutput {
+	return o.ToOracleSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OracleSslConfigOutput) ToOracleSslConfigPtrOutputWithContext(ctx context.Context) OracleSslConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleSslConfig) *OracleSslConfig {
+		return &v
+	}).(OracleSslConfigPtrOutput)
+}
+
+func (o OracleSslConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OracleSslConfig] {
+	return pulumix.Output[OracleSslConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+func (o OracleSslConfigOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleSslConfig) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
+}
+
+type OracleSslConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OracleSslConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleSslConfig)(nil)).Elem()
+}
+
+func (o OracleSslConfigPtrOutput) ToOracleSslConfigPtrOutput() OracleSslConfigPtrOutput {
+	return o
+}
+
+func (o OracleSslConfigPtrOutput) ToOracleSslConfigPtrOutputWithContext(ctx context.Context) OracleSslConfigPtrOutput {
+	return o
+}
+
+func (o OracleSslConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OracleSslConfig] {
+	return pulumix.Output[*OracleSslConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OracleSslConfigPtrOutput) Elem() OracleSslConfigOutput {
+	return o.ApplyT(func(v *OracleSslConfig) OracleSslConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OracleSslConfig
+		return ret
+	}).(OracleSslConfigOutput)
+}
+
+// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+func (o OracleSslConfigPtrOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleSslConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Oracle SSL configuration information.
+type OracleSslConfigResponse struct {
+	// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+	CaCertificate string `pulumi:"caCertificate"`
+	// Indicates whether the ca_certificate field has been set for this Connection-Profile.
+	CaCertificateSet bool `pulumi:"caCertificateSet"`
+}
+
+// Oracle SSL configuration information.
+type OracleSslConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (OracleSslConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleSslConfigResponse)(nil)).Elem()
+}
+
+func (o OracleSslConfigResponseOutput) ToOracleSslConfigResponseOutput() OracleSslConfigResponseOutput {
+	return o
+}
+
+func (o OracleSslConfigResponseOutput) ToOracleSslConfigResponseOutputWithContext(ctx context.Context) OracleSslConfigResponseOutput {
+	return o
+}
+
+func (o OracleSslConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OracleSslConfigResponse] {
+	return pulumix.Output[OracleSslConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+func (o OracleSslConfigResponseOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleSslConfigResponse) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// Indicates whether the ca_certificate field has been set for this Connection-Profile.
+func (o OracleSslConfigResponseOutput) CaCertificateSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v OracleSslConfigResponse) bool { return v.CaCertificateSet }).(pulumi.BoolOutput)
 }
 
 // Oracle table.
@@ -7654,7 +7915,7 @@ func (o PrivateConnectivityResponseOutput) PrivateConnection() pulumi.StringOutp
 
 // A single target dataset to which all data will be streamed.
 type SingleTargetDataset struct {
-	// The dataset ID of the target dataset.
+	// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
 	DatasetId *string `pulumi:"datasetId"`
 }
 
@@ -7671,7 +7932,7 @@ type SingleTargetDatasetInput interface {
 
 // A single target dataset to which all data will be streamed.
 type SingleTargetDatasetArgs struct {
-	// The dataset ID of the target dataset.
+	// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 }
 
@@ -7771,7 +8032,7 @@ func (o SingleTargetDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// The dataset ID of the target dataset.
+// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
 func (o SingleTargetDatasetOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleTargetDataset) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
@@ -7806,7 +8067,7 @@ func (o SingleTargetDatasetPtrOutput) Elem() SingleTargetDatasetOutput {
 	}).(SingleTargetDatasetOutput)
 }
 
-// The dataset ID of the target dataset.
+// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
 func (o SingleTargetDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SingleTargetDataset) *string {
 		if v == nil {
@@ -7818,7 +8079,7 @@ func (o SingleTargetDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
 
 // A single target dataset to which all data will be streamed.
 type SingleTargetDatasetResponse struct {
-	// The dataset ID of the target dataset.
+	// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
 	DatasetId string `pulumi:"datasetId"`
 }
 
@@ -7843,7 +8104,7 @@ func (o SingleTargetDatasetResponseOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// The dataset ID of the target dataset.
+// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
 func (o SingleTargetDatasetResponseOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v SingleTargetDatasetResponse) string { return v.DatasetId }).(pulumi.StringOutput)
 }
@@ -8801,6 +9062,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleSchemaArrayInput)(nil)).Elem(), OracleSchemaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleSourceConfigInput)(nil)).Elem(), OracleSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleSourceConfigPtrInput)(nil)).Elem(), OracleSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OracleSslConfigInput)(nil)).Elem(), OracleSslConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OracleSslConfigPtrInput)(nil)).Elem(), OracleSslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleTableInput)(nil)).Elem(), OracleTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleTableArrayInput)(nil)).Elem(), OracleTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlColumnInput)(nil)).Elem(), PostgresqlColumnArgs{})
@@ -8906,6 +9169,9 @@ func init() {
 	pulumi.RegisterOutputType(OracleSourceConfigOutput{})
 	pulumi.RegisterOutputType(OracleSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(OracleSourceConfigResponseOutput{})
+	pulumi.RegisterOutputType(OracleSslConfigOutput{})
+	pulumi.RegisterOutputType(OracleSslConfigPtrOutput{})
+	pulumi.RegisterOutputType(OracleSslConfigResponseOutput{})
 	pulumi.RegisterOutputType(OracleTableOutput{})
 	pulumi.RegisterOutputType(OracleTableArrayOutput{})
 	pulumi.RegisterOutputType(OracleTableResponseOutput{})

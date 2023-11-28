@@ -22,6 +22,7 @@ class CertificateTemplateArgs:
                  identity_constraints: Optional[pulumi.Input['CertificateIdentityConstraintsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maximum_lifetime: Optional[pulumi.Input[str]] = None,
                  passthrough_extensions: Optional[pulumi.Input['CertificateExtensionConstraintsArgs']] = None,
                  predefined_values: Optional[pulumi.Input['X509ParametersArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class CertificateTemplateArgs:
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input['CertificateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+        :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         :param pulumi.Input['CertificateExtensionConstraintsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         :param pulumi.Input['X509ParametersArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -45,6 +47,8 @@ class CertificateTemplateArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maximum_lifetime is not None:
+            pulumi.set(__self__, "maximum_lifetime", maximum_lifetime)
         if passthrough_extensions is not None:
             pulumi.set(__self__, "passthrough_extensions", passthrough_extensions)
         if predefined_values is not None:
@@ -112,6 +116,18 @@ class CertificateTemplateArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="maximumLifetime")
+    def maximum_lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+        """
+        return pulumi.get(self, "maximum_lifetime")
+
+    @maximum_lifetime.setter
+    def maximum_lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maximum_lifetime", value)
+
+    @property
     @pulumi.getter(name="passthroughExtensions")
     def passthrough_extensions(self) -> Optional[pulumi.Input['CertificateExtensionConstraintsArgs']]:
         """
@@ -167,6 +183,7 @@ class CertificateTemplate(pulumi.CustomResource):
                  identity_constraints: Optional[pulumi.Input[pulumi.InputType['CertificateIdentityConstraintsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maximum_lifetime: Optional[pulumi.Input[str]] = None,
                  passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateExtensionConstraintsArgs']]] = None,
                  predefined_values: Optional[pulumi.Input[pulumi.InputType['X509ParametersArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -182,6 +199,7 @@ class CertificateTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input[pulumi.InputType['CertificateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+        :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         :param pulumi.Input[pulumi.InputType['CertificateExtensionConstraintsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         :param pulumi.Input[pulumi.InputType['X509ParametersArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -216,6 +234,7 @@ class CertificateTemplate(pulumi.CustomResource):
                  identity_constraints: Optional[pulumi.Input[pulumi.InputType['CertificateIdentityConstraintsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maximum_lifetime: Optional[pulumi.Input[str]] = None,
                  passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateExtensionConstraintsArgs']]] = None,
                  predefined_values: Optional[pulumi.Input[pulumi.InputType['X509ParametersArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -236,6 +255,7 @@ class CertificateTemplate(pulumi.CustomResource):
             __props__.__dict__["identity_constraints"] = identity_constraints
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["maximum_lifetime"] = maximum_lifetime
             __props__.__dict__["passthrough_extensions"] = passthrough_extensions
             __props__.__dict__["predefined_values"] = predefined_values
             __props__.__dict__["project"] = project
@@ -273,6 +293,7 @@ class CertificateTemplate(pulumi.CustomResource):
         __props__.__dict__["identity_constraints"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["maximum_lifetime"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["passthrough_extensions"] = None
         __props__.__dict__["predefined_values"] = None
@@ -325,6 +346,14 @@ class CertificateTemplate(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="maximumLifetime")
+    def maximum_lifetime(self) -> pulumi.Output[str]:
+        """
+        Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+        """
+        return pulumi.get(self, "maximum_lifetime")
 
     @property
     @pulumi.getter

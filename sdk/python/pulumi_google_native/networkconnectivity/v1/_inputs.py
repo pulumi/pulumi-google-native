@@ -16,13 +16,17 @@ __all__ = [
     'BindingArgs',
     'ConsumerPscConfigArgs',
     'ExprArgs',
+    'FilterArgs',
+    'InterconnectAttachmentArgs',
     'LinkedInterconnectAttachmentsArgs',
     'LinkedRouterApplianceInstancesArgs',
+    'LinkedVpcNetworkArgs',
     'LinkedVpnTunnelsArgs',
     'ProducerPscConfigArgs',
     'PscConfigArgs',
     'RouterApplianceInstanceArgs',
     'RoutingVPCArgs',
+    'VirtualMachineArgs',
 ]
 
 @pulumi.input_type
@@ -290,6 +294,101 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class FilterArgs:
+    def __init__(__self__, *,
+                 protocol_version: pulumi.Input['FilterProtocolVersion'],
+                 dest_range: Optional[pulumi.Input[str]] = None,
+                 ip_protocol: Optional[pulumi.Input[str]] = None,
+                 src_range: Optional[pulumi.Input[str]] = None):
+        """
+        Filter matches L4 traffic.
+        :param pulumi.Input['FilterProtocolVersion'] protocol_version: Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+        :param pulumi.Input[str] dest_range: Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        :param pulumi.Input[str] ip_protocol: Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+        :param pulumi.Input[str] src_range: Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        """
+        pulumi.set(__self__, "protocol_version", protocol_version)
+        if dest_range is not None:
+            pulumi.set(__self__, "dest_range", dest_range)
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if src_range is not None:
+            pulumi.set(__self__, "src_range", src_range)
+
+    @property
+    @pulumi.getter(name="protocolVersion")
+    def protocol_version(self) -> pulumi.Input['FilterProtocolVersion']:
+        """
+        Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+        """
+        return pulumi.get(self, "protocol_version")
+
+    @protocol_version.setter
+    def protocol_version(self, value: pulumi.Input['FilterProtocolVersion']):
+        pulumi.set(self, "protocol_version", value)
+
+    @property
+    @pulumi.getter(name="destRange")
+    def dest_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        """
+        return pulumi.get(self, "dest_range")
+
+    @dest_range.setter
+    def dest_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_range", value)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter(name="srcRange")
+    def src_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        """
+        return pulumi.get(self, "src_range")
+
+    @src_range.setter
+    def src_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "src_range", value)
+
+
+@pulumi.input_type
+class InterconnectAttachmentArgs:
+    def __init__(__self__, *,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        InterconnectAttachment that this route applies to.
+        :param pulumi.Input[str] region: Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
 class LinkedInterconnectAttachmentsArgs:
     def __init__(__self__, *,
                  site_to_site_data_transfer: Optional[pulumi.Input[bool]] = None,
@@ -370,6 +469,45 @@ class LinkedRouterApplianceInstancesArgs:
 
 
 @pulumi.input_type
+class LinkedVpcNetworkArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        An existing VPC network.
+        :param pulumi.Input[str] uri: The URI of the VPC network resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_export_ranges: Optional. IP ranges encompassing the subnets to be excluded from peering.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if exclude_export_ranges is not None:
+            pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The URI of the VPC network resource.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="excludeExportRanges")
+    def exclude_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. IP ranges encompassing the subnets to be excluded from peering.
+        """
+        return pulumi.get(self, "exclude_export_ranges")
+
+    @exclude_export_ranges.setter
+    def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_export_ranges", value)
+
+
+@pulumi.input_type
 class LinkedVpnTunnelsArgs:
     def __init__(__self__, *,
                  site_to_site_data_transfer: Optional[pulumi.Input[bool]] = None,
@@ -440,7 +578,7 @@ class PscConfigArgs:
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
-        :param pulumi.Input[str] limit: Max number of PSC connections for this policy.
+        :param pulumi.Input[str] limit: Optional. Max number of PSC connections for this policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
         """
         if limit is not None:
@@ -452,7 +590,7 @@ class PscConfigArgs:
     @pulumi.getter
     def limit(self) -> Optional[pulumi.Input[str]]:
         """
-        Max number of PSC connections for this policy.
+        Optional. Max number of PSC connections for this policy.
         """
         return pulumi.get(self, "limit")
 
@@ -535,5 +673,29 @@ class RoutingVPCArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class VirtualMachineArgs:
+    def __init__(__self__, *,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        VM instances to which this policy-based route applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 

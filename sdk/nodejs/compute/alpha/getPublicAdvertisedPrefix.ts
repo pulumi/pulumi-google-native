@@ -26,6 +26,10 @@ export interface GetPublicAdvertisedPrefixArgs {
 
 export interface GetPublicAdvertisedPrefixResult {
     /**
+     * The version of BYOIP API.
+     */
+    readonly byoipApiVersion: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
@@ -34,7 +38,7 @@ export interface GetPublicAdvertisedPrefixResult {
      */
     readonly description: string;
     /**
-     * The IPv4 address to be used for reverse DNS verification.
+     * The address to be used for reverse DNS verification.
      */
     readonly dnsVerificationIp: string;
     /**
@@ -42,7 +46,7 @@ export interface GetPublicAdvertisedPrefixResult {
      */
     readonly fingerprint: string;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      */
     readonly ipCidrRange: string;
     /**

@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Scope;
         /// <summary>
+        /// Specifies the number of slices in a multislice workload.
+        /// </summary>
+        public readonly int SliceCount;
+        /// <summary>
         /// Specifies instances to hosts placement relationship
         /// </summary>
         public readonly string Style;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string scope,
 
+            int sliceCount,
+
             string style,
 
             string tpuTopology,
@@ -72,6 +78,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Locality = locality;
             MaxDistance = maxDistance;
             Scope = scope;
+            SliceCount = sliceCount;
             Style = style;
             TpuTopology = tpuTopology;
             VmCount = vmCount;

@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     public static class GetTrigger
     {
         /// <summary>
-        /// Returns information about a `BuildTrigger`. This API is experimental.
+        /// Returns information about a `BuildTrigger`.
         /// </summary>
         public static Task<GetTriggerResult> InvokeAsync(GetTriggerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTriggerResult>("google-native:cloudbuild/v1:getTrigger", args ?? new GetTriggerArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns information about a `BuildTrigger`. This API is experimental.
+        /// Returns information about a `BuildTrigger`.
         /// </summary>
         public static Output<GetTriggerResult> Invoke(GetTriggerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTriggerResult>("google-native:cloudbuild/v1:getTrigger", args ?? new GetTriggerInvokeArgs(), options.WithDefaults());

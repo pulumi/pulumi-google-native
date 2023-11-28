@@ -34,6 +34,10 @@ export interface GetGlobalNetworkEndpointGroupResult {
      */
     readonly appEngine: outputs.compute.alpha.NetworkEndpointGroupAppEngineResponse;
     /**
+     * Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+     */
+    readonly clientPortMappingMode: string;
+    /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     readonly cloudFunction: outputs.compute.alpha.NetworkEndpointGroupCloudFunctionResponse;

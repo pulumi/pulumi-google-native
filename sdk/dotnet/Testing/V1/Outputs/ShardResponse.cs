@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
     public sealed class ShardResponse
     {
         /// <summary>
+        /// The estimated shard duration based on previous test case timing records, if available.
+        /// </summary>
+        public readonly string EstimatedShardDuration;
+        /// <summary>
         /// The total number of shards.
         /// </summary>
         public readonly int NumShards;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
         [OutputConstructor]
         private ShardResponse(
+            string estimatedShardDuration,
+
             int numShards,
 
             int shardIndex,
 
             Outputs.TestTargetsForShardResponse testTargetsForShard)
         {
+            EstimatedShardDuration = estimatedShardDuration;
             NumShards = numShards;
             ShardIndex = shardIndex;
             TestTargetsForShard = testTargetsForShard;

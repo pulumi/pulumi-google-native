@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
         public Input<int>? Height { get; set; }
 
         /// <summary>
-        /// Encoding mime type for the image.
+        /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
         /// </summary>
         [Input("mimeType")]
         public Input<string>? MimeType { get; set; }

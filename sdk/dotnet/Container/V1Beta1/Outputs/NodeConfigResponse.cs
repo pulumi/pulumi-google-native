@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
+        /// Optional. Enable confidential storage on Hyperdisk. boot_disk_kms_key is required when enable_confidential_storage is true. This is only available for private preview.
+        /// </summary>
+        public readonly bool EnableConfidentialStorage;
+        /// <summary>
         /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         /// </summary>
         public readonly Outputs.EphemeralStorageConfigResponse EphemeralStorageConfig;
@@ -60,6 +64,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// Enable or disable gvnic on the node pool.
         /// </summary>
         public readonly Outputs.VirtualNICResponse Gvnic;
+        /// <summary>
+        /// HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts.
+        /// </summary>
+        public readonly Outputs.HostMaintenancePolicyResponse HostMaintenancePolicy;
         /// <summary>
         /// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         /// </summary>
@@ -109,7 +117,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>
-        /// Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more inforamtion about preemptible VM instances.
+        /// Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances.
         /// </summary>
         public readonly bool Preemptible;
         /// <summary>
@@ -120,6 +128,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourceLabels;
+        /// <summary>
+        /// A map of resource manager tag keys and values to be attached to the nodes.
+        /// </summary>
+        public readonly Outputs.ResourceManagerTagsResponse ResourceManagerTags;
         /// <summary>
         /// Sandbox configuration for this node.
         /// </summary>
@@ -132,6 +144,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// Shielded Instance options.
         /// </summary>
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
+        /// <summary>
+        /// Parameters for node pools to be backed by shared sole tenant node groups.
+        /// </summary>
+        public readonly Outputs.SoleTenantConfigResponse SoleTenantConfig;
         /// <summary>
         /// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         /// </summary>
@@ -167,6 +183,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             string diskType,
 
+            bool enableConfidentialStorage,
+
             Outputs.EphemeralStorageConfigResponse ephemeralStorageConfig,
 
             Outputs.EphemeralStorageLocalSsdConfigResponse ephemeralStorageLocalSsdConfig,
@@ -176,6 +194,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             Outputs.GcfsConfigResponse gcfsConfig,
 
             Outputs.VirtualNICResponse gvnic,
+
+            Outputs.HostMaintenancePolicyResponse hostMaintenancePolicy,
 
             string imageType,
 
@@ -207,11 +227,15 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             ImmutableDictionary<string, string> resourceLabels,
 
+            Outputs.ResourceManagerTagsResponse resourceManagerTags,
+
             Outputs.SandboxConfigResponse sandboxConfig,
 
             string serviceAccount,
 
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
+
+            Outputs.SoleTenantConfigResponse soleTenantConfig,
 
             bool spot,
 
@@ -229,11 +253,13 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             ConfidentialNodes = confidentialNodes;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            EnableConfidentialStorage = enableConfidentialStorage;
             EphemeralStorageConfig = ephemeralStorageConfig;
             EphemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             FastSocket = fastSocket;
             GcfsConfig = gcfsConfig;
             Gvnic = gvnic;
+            HostMaintenancePolicy = hostMaintenancePolicy;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;
             Labels = labels;
@@ -249,9 +275,11 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             Preemptible = preemptible;
             ReservationAffinity = reservationAffinity;
             ResourceLabels = resourceLabels;
+            ResourceManagerTags = resourceManagerTags;
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
+            SoleTenantConfig = soleTenantConfig;
             Spot = spot;
             Tags = tags;
             Taints = taints;

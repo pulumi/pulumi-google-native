@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
         /// </summary>
         public readonly string EvaluationMode;
+        /// <summary>
+        /// Optional. Binauthz policies that apply to this cluster.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PolicyBindingResponse> PolicyBindings;
 
         [OutputConstructor]
         private BinaryAuthorizationResponse(
             bool enabled,
 
-            string evaluationMode)
+            string evaluationMode,
+
+            ImmutableArray<Outputs.PolicyBindingResponse> policyBindings)
         {
             Enabled = enabled;
             EvaluationMode = evaluationMode;
+            PolicyBindings = policyBindings;
         }
     }
 }

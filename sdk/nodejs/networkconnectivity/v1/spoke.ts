@@ -46,11 +46,15 @@ export class Spoke extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Optional. The name of the group that this spoke is associated with.
+     */
+    public readonly group!: pulumi.Output<string>;
+    /**
      * Immutable. The name of the hub that this spoke is attached to.
      */
     public readonly hub!: pulumi.Output<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -62,6 +66,10 @@ export class Spoke extends pulumi.CustomResource {
      */
     public readonly linkedRouterApplianceInstances!: pulumi.Output<outputs.networkconnectivity.v1.LinkedRouterApplianceInstancesResponse>;
     /**
+     * Optional. VPC network that is associated with the spoke.
+     */
+    public readonly linkedVpcNetwork!: pulumi.Output<outputs.networkconnectivity.v1.LinkedVpcNetworkResponse>;
+    /**
      * VPN tunnels that are associated with the spoke.
      */
     public readonly linkedVpnTunnels!: pulumi.Output<outputs.networkconnectivity.v1.LinkedVpnTunnelsResponse>;
@@ -72,7 +80,11 @@ export class Spoke extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+     */
+    public /*out*/ readonly reasons!: pulumi.Output<outputs.networkconnectivity.v1.StateReasonResponse[]>;
+    /**
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
@@ -80,11 +92,15 @@ export class Spoke extends pulumi.CustomResource {
      */
     public readonly spokeId!: pulumi.Output<string>;
     /**
+     * The type of resource associated with the spoke.
+     */
+    public /*out*/ readonly spokeType!: pulumi.Output<string>;
+    /**
      * The current lifecycle state of this spoke.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+     * The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
      */
     public /*out*/ readonly uniqueId!: pulumi.Output<string>;
     /**
@@ -107,10 +123,12 @@ export class Spoke extends pulumi.CustomResource {
                 throw new Error("Missing required property 'spokeId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["hub"] = args ? args.hub : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
             resourceInputs["linkedRouterApplianceInstances"] = args ? args.linkedRouterApplianceInstances : undefined;
+            resourceInputs["linkedVpcNetwork"] = args ? args.linkedVpcNetwork : undefined;
             resourceInputs["linkedVpnTunnels"] = args ? args.linkedVpnTunnels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -118,22 +136,28 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["spokeId"] = args ? args.spokeId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["reasons"] = undefined /*out*/;
+            resourceInputs["spokeType"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["group"] = undefined /*out*/;
             resourceInputs["hub"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["linkedInterconnectAttachments"] = undefined /*out*/;
             resourceInputs["linkedRouterApplianceInstances"] = undefined /*out*/;
+            resourceInputs["linkedVpcNetwork"] = undefined /*out*/;
             resourceInputs["linkedVpnTunnels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["reasons"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["spokeId"] = undefined /*out*/;
+            resourceInputs["spokeType"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -154,11 +178,15 @@ export interface SpokeArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Optional. The name of the group that this spoke is associated with.
+     */
+    group?: pulumi.Input<string>;
+    /**
      * Immutable. The name of the hub that this spoke is attached to.
      */
     hub?: pulumi.Input<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -170,6 +198,10 @@ export interface SpokeArgs {
      */
     linkedRouterApplianceInstances?: pulumi.Input<inputs.networkconnectivity.v1.LinkedRouterApplianceInstancesArgs>;
     /**
+     * Optional. VPC network that is associated with the spoke.
+     */
+    linkedVpcNetwork?: pulumi.Input<inputs.networkconnectivity.v1.LinkedVpcNetworkArgs>;
+    /**
      * VPN tunnels that are associated with the spoke.
      */
     linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.v1.LinkedVpnTunnelsArgs>;
@@ -180,7 +212,7 @@ export interface SpokeArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
     /**

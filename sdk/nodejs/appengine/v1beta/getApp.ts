@@ -15,11 +15,13 @@ export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<G
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:appengine/v1beta:getApp", {
         "appId": args.appId,
+        "includeExtraData": args.includeExtraData,
     }, opts);
 }
 
 export interface GetAppArgs {
     appId: string;
+    includeExtraData?: string;
 }
 
 export interface GetAppResult {
@@ -59,6 +61,10 @@ export interface GetAppResult {
      * The Google Container Registry domain used for storing managed build docker images for this application.
      */
     readonly gcrDomain: string;
+    /**
+     * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+     */
+    readonly generatedCustomerMetadata: {[key: string]: string};
     readonly iap: outputs.appengine.v1beta.IdentityAwareProxyResponse;
     /**
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
@@ -86,4 +92,5 @@ export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions
 
 export interface GetAppOutputArgs {
     appId: pulumi.Input<string>;
+    includeExtraData?: pulumi.Input<string>;
 }

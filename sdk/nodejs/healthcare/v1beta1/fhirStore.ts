@@ -42,6 +42,10 @@ export class FhirStore extends pulumi.CustomResource {
      * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
      */
     public readonly complexDataTypeReferenceParsing!: pulumi.Output<string>;
+    /**
+     * Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+     */
+    public readonly consentConfig!: pulumi.Output<outputs.healthcare.v1beta1.ConsentConfigResponse>;
     public readonly datasetId!: pulumi.Output<string>;
     /**
      * If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
@@ -115,6 +119,7 @@ export class FhirStore extends pulumi.CustomResource {
                 throw new Error("Missing required property 'datasetId'");
             }
             resourceInputs["complexDataTypeReferenceParsing"] = args ? args.complexDataTypeReferenceParsing : undefined;
+            resourceInputs["consentConfig"] = args ? args.consentConfig : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
             resourceInputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
@@ -133,6 +138,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["complexDataTypeReferenceParsing"] = undefined /*out*/;
+            resourceInputs["consentConfig"] = undefined /*out*/;
             resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["defaultSearchHandlingStrict"] = undefined /*out*/;
             resourceInputs["disableReferentialIntegrity"] = undefined /*out*/;
@@ -165,6 +171,10 @@ export interface FhirStoreArgs {
      * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
      */
     complexDataTypeReferenceParsing?: pulumi.Input<enums.healthcare.v1beta1.FhirStoreComplexDataTypeReferenceParsing>;
+    /**
+     * Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+     */
+    consentConfig?: pulumi.Input<inputs.healthcare.v1beta1.ConsentConfigArgs>;
     datasetId: pulumi.Input<string>;
     /**
      * If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.

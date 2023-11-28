@@ -49,3 +49,23 @@ export const InstanceType = {
  * Required. Instance type.
  */
 export type InstanceType = (typeof InstanceType)[keyof typeof InstanceType];
+
+export const NetworkConfigConnectionType = {
+    /**
+     * No specific connection type was requested, the default value of VPC_PEERING is chosen.
+     */
+    ConnectionTypeUnspecified: "CONNECTION_TYPE_UNSPECIFIED",
+    /**
+     * Requests the use of VPC peerings for connecting the consumer and tenant projects.
+     */
+    VpcPeering: "VPC_PEERING",
+    /**
+     * Requests the use of Private Service Connect Interfaces for connecting the consumer and tenant projects.
+     */
+    PrivateServiceConnectInterfaces: "PRIVATE_SERVICE_CONNECT_INTERFACES",
+} as const;
+
+/**
+ * Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+ */
+export type NetworkConfigConnectionType = (typeof NetworkConfigConnectionType)[keyof typeof NetworkConfigConnectionType];

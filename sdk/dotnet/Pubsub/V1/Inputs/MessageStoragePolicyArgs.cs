@@ -19,13 +19,19 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         private InputList<string>? _allowedPersistenceRegions;
 
         /// <summary>
-        /// A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
+        /// Optional. A list of IDs of Google Cloud regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed Google Cloud regions (or running outside of Google Cloud altogether) are routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
         /// </summary>
         public InputList<string> AllowedPersistenceRegions
         {
             get => _allowedPersistenceRegions ?? (_allowedPersistenceRegions = new InputList<string>());
             set => _allowedPersistenceRegions = value;
         }
+
+        /// <summary>
+        /// Optional. If true, `allowed_persistence_regions` is also used to enforce in-transit guarantees for messages. That is, Pub/Sub will fail Publish operations on this topic and subscribe operations on any subscription attached to this topic in any region that is not in `allowed_persistence_regions`.
+        /// </summary>
+        [Input("enforceInTransit")]
+        public Input<bool>? EnforceInTransit { get; set; }
 
         public MessageStoragePolicyArgs()
         {

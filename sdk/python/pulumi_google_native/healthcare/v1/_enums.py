@@ -12,6 +12,7 @@ __all__ = [
     'FhirStoreComplexDataTypeReferenceParsing',
     'FhirStoreVersion',
     'FieldMetadataAction',
+    'GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition',
     'GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition',
     'ImageConfigTextRedactionMode',
     'ParserConfigVersion',
@@ -178,6 +179,28 @@ class FieldMetadataAction(str, Enum):
     DO_NOT_TRANSFORM = "DO_NOT_TRANSFORM"
     """
     Do not transform.
+    """
+
+
+class GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition(str, Enum):
+    """
+    Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+    """
+    WRITE_DISPOSITION_UNSPECIFIED = "WRITE_DISPOSITION_UNSPECIFIED"
+    """
+    Default behavior is the same as WRITE_EMPTY.
+    """
+    WRITE_EMPTY = "WRITE_EMPTY"
+    """
+    Only export data if the destination table is empty.
+    """
+    WRITE_TRUNCATE = "WRITE_TRUNCATE"
+    """
+    Erase all existing data in the destination table before writing the instances.
+    """
+    WRITE_APPEND = "WRITE_APPEND"
+    """
+    Append data to the destination table.
     """
 
 

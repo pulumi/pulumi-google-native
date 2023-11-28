@@ -20,7 +20,9 @@ __all__ = [
     'AttestationResponse',
     'BasisResponse',
     'BindingResponse',
+    'BuildDefinitionResponse',
     'BuildDetailsResponse',
+    'BuildMetadataResponse',
     'BuildProvenanceResponse',
     'BuildSignatureResponse',
     'BuildTypeResponse',
@@ -69,6 +71,7 @@ __all__ = [
     'HashResponse',
     'IdentifierHelperResponse',
     'InTotoProvenanceResponse',
+    'InTotoSlsaProvenanceV1Response',
     'InTotoStatementResponse',
     'InstallationResponse',
     'JustificationResponse',
@@ -85,6 +88,7 @@ __all__ = [
     'PackageResponse',
     'PgpSignedAttestationResponse',
     'ProductResponse',
+    'ProvenanceBuilderResponse',
     'PublisherResponse',
     'RecipeResponse',
     'RelatedUrlResponse',
@@ -92,15 +96,19 @@ __all__ = [
     'RelationshipOccurrenceResponse',
     'RemediationResponse',
     'RepoSourceResponse',
+    'ResourceDescriptorResponse',
     'ResourceResponse',
+    'RunDetailsResponse',
     'SBOMReferenceNoteResponse',
     'SBOMReferenceOccurrenceResponse',
+    'SBOMStatusResponse',
     'SbomReferenceIntotoPayloadResponse',
     'SbomReferenceIntotoPredicateResponse',
     'SlsaBuilderResponse',
     'SlsaCompletenessResponse',
     'SlsaMetadataResponse',
     'SlsaProvenanceResponse',
+    'SlsaProvenanceV1Response',
     'SlsaProvenanceZeroTwoResponse',
     'SlsaRecipeResponse',
     'SourceResponse',
@@ -219,6 +227,8 @@ class AssessmentResponse(dict):
             suggest = "related_uris"
         elif key == "shortDescription":
             suggest = "short_description"
+        elif key == "vulnerabilityId":
+            suggest = "vulnerability_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AssessmentResponse. Access the value via the '{suggest}' property getter instead.")
@@ -239,7 +249,8 @@ class AssessmentResponse(dict):
                  related_uris: Sequence['outputs.URIResponse'],
                  remediations: Sequence['outputs.RemediationResponse'],
                  short_description: str,
-                 state: str):
+                 state: str,
+                 vulnerability_id: str):
         """
         Assessment provides all information that is related to a single vulnerability for this product.
         :param str cve: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
@@ -250,6 +261,7 @@ class AssessmentResponse(dict):
         :param Sequence['RemediationResponse'] remediations: Specifies details on how to handle (and presumably, fix) a vulnerability.
         :param str short_description: A one sentence description of this Vex.
         :param str state: Provides the state of this Vulnerability assessment.
+        :param str vulnerability_id: The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
         """
         pulumi.set(__self__, "cve", cve)
         pulumi.set(__self__, "impacts", impacts)
@@ -259,6 +271,7 @@ class AssessmentResponse(dict):
         pulumi.set(__self__, "remediations", remediations)
         pulumi.set(__self__, "short_description", short_description)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "vulnerability_id", vulnerability_id)
 
     @property
     @pulumi.getter
@@ -323,6 +336,14 @@ class AssessmentResponse(dict):
         Provides the state of this Vulnerability assessment.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="vulnerabilityId")
+    def vulnerability_id(self) -> str:
+        """
+        The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+        """
+        return pulumi.get(self, "vulnerability_id")
 
 
 @pulumi.output_type
@@ -512,6 +533,62 @@ class BindingResponse(dict):
 
 
 @pulumi.output_type
+class BuildDefinitionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildType":
+            suggest = "build_type"
+        elif key == "externalParameters":
+            suggest = "external_parameters"
+        elif key == "internalParameters":
+            suggest = "internal_parameters"
+        elif key == "resolvedDependencies":
+            suggest = "resolved_dependencies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BuildDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BuildDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BuildDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_type: str,
+                 external_parameters: Mapping[str, str],
+                 internal_parameters: Mapping[str, str],
+                 resolved_dependencies: Sequence['outputs.ResourceDescriptorResponse']):
+        pulumi.set(__self__, "build_type", build_type)
+        pulumi.set(__self__, "external_parameters", external_parameters)
+        pulumi.set(__self__, "internal_parameters", internal_parameters)
+        pulumi.set(__self__, "resolved_dependencies", resolved_dependencies)
+
+    @property
+    @pulumi.getter(name="buildType")
+    def build_type(self) -> str:
+        return pulumi.get(self, "build_type")
+
+    @property
+    @pulumi.getter(name="externalParameters")
+    def external_parameters(self) -> Mapping[str, str]:
+        return pulumi.get(self, "external_parameters")
+
+    @property
+    @pulumi.getter(name="internalParameters")
+    def internal_parameters(self) -> Mapping[str, str]:
+        return pulumi.get(self, "internal_parameters")
+
+    @property
+    @pulumi.getter(name="resolvedDependencies")
+    def resolved_dependencies(self) -> Sequence['outputs.ResourceDescriptorResponse']:
+        return pulumi.get(self, "resolved_dependencies")
+
+
+@pulumi.output_type
 class BuildDetailsResponse(dict):
     """
     Message encapsulating build provenance details.
@@ -519,7 +596,9 @@ class BuildDetailsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "intotoProvenance":
+        if key == "inTotoSlsaProvenanceV1":
+            suggest = "in_toto_slsa_provenance_v1"
+        elif key == "intotoProvenance":
             suggest = "intoto_provenance"
         elif key == "intotoStatement":
             suggest = "intoto_statement"
@@ -538,21 +617,32 @@ class BuildDetailsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 in_toto_slsa_provenance_v1: 'outputs.InTotoSlsaProvenanceV1Response',
                  intoto_provenance: 'outputs.InTotoProvenanceResponse',
                  intoto_statement: 'outputs.InTotoStatementResponse',
                  provenance: 'outputs.BuildProvenanceResponse',
                  provenance_bytes: str):
         """
         Message encapsulating build provenance details.
+        :param 'InTotoSlsaProvenanceV1Response' in_toto_slsa_provenance_v1: In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
         :param 'InTotoProvenanceResponse' intoto_provenance: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         :param 'InTotoStatementResponse' intoto_statement: In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
         :param 'BuildProvenanceResponse' provenance: The actual provenance
         :param str provenance_bytes: Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
         """
+        pulumi.set(__self__, "in_toto_slsa_provenance_v1", in_toto_slsa_provenance_v1)
         pulumi.set(__self__, "intoto_provenance", intoto_provenance)
         pulumi.set(__self__, "intoto_statement", intoto_statement)
         pulumi.set(__self__, "provenance", provenance)
         pulumi.set(__self__, "provenance_bytes", provenance_bytes)
+
+    @property
+    @pulumi.getter(name="inTotoSlsaProvenanceV1")
+    def in_toto_slsa_provenance_v1(self) -> 'outputs.InTotoSlsaProvenanceV1Response':
+        """
+        In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+        """
+        return pulumi.get(self, "in_toto_slsa_provenance_v1")
 
     @property
     @pulumi.getter(name="intotoProvenance")
@@ -588,6 +678,53 @@ class BuildDetailsResponse(dict):
         Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
         """
         return pulumi.get(self, "provenance_bytes")
+
+
+@pulumi.output_type
+class BuildMetadataResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "finishedOn":
+            suggest = "finished_on"
+        elif key == "invocationId":
+            suggest = "invocation_id"
+        elif key == "startedOn":
+            suggest = "started_on"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BuildMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BuildMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BuildMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 finished_on: str,
+                 invocation_id: str,
+                 started_on: str):
+        pulumi.set(__self__, "finished_on", finished_on)
+        pulumi.set(__self__, "invocation_id", invocation_id)
+        pulumi.set(__self__, "started_on", started_on)
+
+    @property
+    @pulumi.getter(name="finishedOn")
+    def finished_on(self) -> str:
+        return pulumi.get(self, "finished_on")
+
+    @property
+    @pulumi.getter(name="invocationId")
+    def invocation_id(self) -> str:
+        return pulumi.get(self, "invocation_id")
+
+    @property
+    @pulumi.getter(name="startedOn")
+    def started_on(self) -> str:
+        return pulumi.get(self, "started_on")
 
 
 @pulumi.output_type
@@ -2014,6 +2151,8 @@ class DiscoveredResponse(dict):
             suggest = "continuous_analysis"
         elif key == "lastScanTime":
             suggest = "last_scan_time"
+        elif key == "sbomStatus":
+            suggest = "sbom_status"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DiscoveredResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2035,7 +2174,8 @@ class DiscoveredResponse(dict):
                  continuous_analysis: str,
                  cpe: str,
                  last_scan_time: str,
-                 operation: 'outputs.OperationResponse'):
+                 operation: 'outputs.OperationResponse',
+                 sbom_status: 'outputs.SBOMStatusResponse'):
         """
         Provides information about the scan status of a discovered resource.
         :param 'AnalysisCompletedResponse' analysis_completed: The list of analysis that were completed for a resource.
@@ -2047,6 +2187,7 @@ class DiscoveredResponse(dict):
         :param str cpe: The CPE of the resource being scanned.
         :param str last_scan_time: The last time this resource was scanned.
         :param 'OperationResponse' operation: An operation that indicates the status of the current scan. This field is deprecated, do not use.
+        :param 'SBOMStatusResponse' sbom_status: The status of an SBOM generation.
         """
         pulumi.set(__self__, "analysis_completed", analysis_completed)
         pulumi.set(__self__, "analysis_error", analysis_error)
@@ -2057,6 +2198,7 @@ class DiscoveredResponse(dict):
         pulumi.set(__self__, "cpe", cpe)
         pulumi.set(__self__, "last_scan_time", last_scan_time)
         pulumi.set(__self__, "operation", operation)
+        pulumi.set(__self__, "sbom_status", sbom_status)
 
     @property
     @pulumi.getter(name="analysisCompleted")
@@ -2132,6 +2274,14 @@ class DiscoveredResponse(dict):
         pulumi.log.warn("""operation is deprecated: Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.""")
 
         return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter(name="sbomStatus")
+    def sbom_status(self) -> 'outputs.SBOMStatusResponse':
+        """
+        The status of an SBOM generation.
+        """
+        return pulumi.get(self, "sbom_status")
 
 
 @pulumi.output_type
@@ -3765,6 +3915,62 @@ class InTotoProvenanceResponse(dict):
 
 
 @pulumi.output_type
+class InTotoSlsaProvenanceV1Response(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predicateType":
+            suggest = "predicate_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InTotoSlsaProvenanceV1Response. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InTotoSlsaProvenanceV1Response.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InTotoSlsaProvenanceV1Response.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 predicate: 'outputs.SlsaProvenanceV1Response',
+                 predicate_type: str,
+                 subject: Sequence['outputs.SubjectResponse'],
+                 type: str):
+        """
+        :param str type: InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+        """
+        pulumi.set(__self__, "predicate", predicate)
+        pulumi.set(__self__, "predicate_type", predicate_type)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def predicate(self) -> 'outputs.SlsaProvenanceV1Response':
+        return pulumi.get(self, "predicate")
+
+    @property
+    @pulumi.getter(name="predicateType")
+    def predicate_type(self) -> str:
+        return pulumi.get(self, "predicate_type")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Sequence['outputs.SubjectResponse']:
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class InTotoStatementResponse(dict):
     """
     Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
@@ -4350,7 +4556,7 @@ class OperationResponse(dict):
         :param 'StatusResponse' error: The error result of the operation in case of failure or cancellation.
         :param Mapping[str, str] metadata: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
         :param str name: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        :param Mapping[str, str] response: The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        :param Mapping[str, str] response: The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
         """
         pulumi.set(__self__, "done", done)
         pulumi.set(__self__, "error", error)
@@ -4394,7 +4600,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def response(self) -> Mapping[str, str]:
         """
-        The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
         """
         return pulumi.get(self, "response")
 
@@ -5117,6 +5323,42 @@ class ProductResponse(dict):
 
 
 @pulumi.output_type
+class ProvenanceBuilderResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "builderDependencies":
+            suggest = "builder_dependencies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProvenanceBuilderResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProvenanceBuilderResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProvenanceBuilderResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 builder_dependencies: Sequence['outputs.ResourceDescriptorResponse'],
+                 version: Mapping[str, str]):
+        pulumi.set(__self__, "builder_dependencies", builder_dependencies)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="builderDependencies")
+    def builder_dependencies(self) -> Sequence['outputs.ResourceDescriptorResponse']:
+        return pulumi.get(self, "builder_dependencies")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Mapping[str, str]:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
 class PublisherResponse(dict):
     """
     Publisher contains information about the publisher of this Note.
@@ -5527,6 +5769,79 @@ class RepoSourceResponse(dict):
 
 
 @pulumi.output_type
+class ResourceDescriptorResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "downloadLocation":
+            suggest = "download_location"
+        elif key == "mediaType":
+            suggest = "media_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceDescriptorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceDescriptorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceDescriptorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 annotations: Mapping[str, str],
+                 content: str,
+                 digest: Mapping[str, str],
+                 download_location: str,
+                 media_type: str,
+                 name: str,
+                 uri: str):
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "download_location", download_location)
+        pulumi.set(__self__, "media_type", media_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Mapping[str, str]:
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter(name="downloadLocation")
+    def download_location(self) -> str:
+        return pulumi.get(self, "download_location")
+
+    @property
+    @pulumi.getter(name="mediaType")
+    def media_type(self) -> str:
+        return pulumi.get(self, "media_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class ResourceResponse(dict):
     """
      Resource is an entity that can have metadata. E.g., a Docker image.
@@ -5585,6 +5900,32 @@ class ResourceResponse(dict):
         The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class RunDetailsResponse(dict):
+    def __init__(__self__, *,
+                 builder: 'outputs.ProvenanceBuilderResponse',
+                 byproducts: Sequence['outputs.ResourceDescriptorResponse'],
+                 metadata: 'outputs.BuildMetadataResponse'):
+        pulumi.set(__self__, "builder", builder)
+        pulumi.set(__self__, "byproducts", byproducts)
+        pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def builder(self) -> 'outputs.ProvenanceBuilderResponse':
+        return pulumi.get(self, "builder")
+
+    @property
+    @pulumi.getter
+    def byproducts(self) -> Sequence['outputs.ResourceDescriptorResponse']:
+        return pulumi.get(self, "byproducts")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> 'outputs.BuildMetadataResponse':
+        return pulumi.get(self, "metadata")
 
 
 @pulumi.output_type
@@ -5679,6 +6020,56 @@ class SBOMReferenceOccurrenceResponse(dict):
         The signatures over the payload.
         """
         return pulumi.get(self, "signatures")
+
+
+@pulumi.output_type
+class SBOMStatusResponse(dict):
+    """
+    The status of an SBOM generation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sbomState":
+            suggest = "sbom_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SBOMStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SBOMStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SBOMStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error: str,
+                 sbom_state: str):
+        """
+        The status of an SBOM generation.
+        :param str error: If there was an error generating an SBOM, this will indicate what that error was.
+        :param str sbom_state: The progress of the SBOM generation.
+        """
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "sbom_state", sbom_state)
+
+    @property
+    @pulumi.getter
+    def error(self) -> str:
+        """
+        If there was an error generating an SBOM, this will indicate what that error was.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="sbomState")
+    def sbom_state(self) -> str:
+        """
+        The progress of the SBOM generation.
+        """
+        return pulumi.get(self, "sbom_state")
 
 
 @pulumi.output_type
@@ -6023,6 +6414,50 @@ class SlsaProvenanceResponse(dict):
         Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
         """
         return pulumi.get(self, "recipe")
+
+
+@pulumi.output_type
+class SlsaProvenanceV1Response(dict):
+    """
+    Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildDefinition":
+            suggest = "build_definition"
+        elif key == "runDetails":
+            suggest = "run_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlsaProvenanceV1Response. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlsaProvenanceV1Response.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlsaProvenanceV1Response.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_definition: 'outputs.BuildDefinitionResponse',
+                 run_details: 'outputs.RunDetailsResponse'):
+        """
+        Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.
+        """
+        pulumi.set(__self__, "build_definition", build_definition)
+        pulumi.set(__self__, "run_details", run_details)
+
+    @property
+    @pulumi.getter(name="buildDefinition")
+    def build_definition(self) -> 'outputs.BuildDefinitionResponse':
+        return pulumi.get(self, "build_definition")
+
+    @property
+    @pulumi.getter(name="runDetails")
+    def run_details(self) -> 'outputs.RunDetailsResponse':
+        return pulumi.get(self, "run_details")
 
 
 @pulumi.output_type
@@ -6717,6 +7152,8 @@ class VexAssessmentResponse(dict):
             suggest = "note_name"
         elif key == "relatedUris":
             suggest = "related_uris"
+        elif key == "vulnerabilityId":
+            suggest = "vulnerability_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VexAssessmentResponse. Access the value via the '{suggest}' property getter instead.")
@@ -6736,7 +7173,8 @@ class VexAssessmentResponse(dict):
                  note_name: str,
                  related_uris: Sequence['outputs.URIResponse'],
                  remediations: Sequence['outputs.RemediationResponse'],
-                 state: str):
+                 state: str,
+                 vulnerability_id: str):
         """
         VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
         :param str cve: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
@@ -6746,6 +7184,7 @@ class VexAssessmentResponse(dict):
         :param Sequence['URIResponse'] related_uris: Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
         :param Sequence['RemediationResponse'] remediations: Specifies details on how to handle (and presumably, fix) a vulnerability.
         :param str state: Provides the state of this Vulnerability assessment.
+        :param str vulnerability_id: The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
         """
         pulumi.set(__self__, "cve", cve)
         pulumi.set(__self__, "impacts", impacts)
@@ -6754,6 +7193,7 @@ class VexAssessmentResponse(dict):
         pulumi.set(__self__, "related_uris", related_uris)
         pulumi.set(__self__, "remediations", remediations)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "vulnerability_id", vulnerability_id)
 
     @property
     @pulumi.getter
@@ -6810,6 +7250,14 @@ class VexAssessmentResponse(dict):
         Provides the state of this Vulnerability assessment.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="vulnerabilityId")
+    def vulnerability_id(self) -> str:
+        """
+        The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+        """
+        return pulumi.get(self, "vulnerability_id")
 
 
 @pulumi.output_type
@@ -6939,6 +7387,8 @@ class VulnerabilityDetailsResponse(dict):
             suggest = "cvss_version"
         elif key == "effectiveSeverity":
             suggest = "effective_severity"
+        elif key == "extraDetails":
+            suggest = "extra_details"
         elif key == "packageIssue":
             suggest = "package_issue"
         elif key == "vexAssessment":
@@ -6961,6 +7411,7 @@ class VulnerabilityDetailsResponse(dict):
                  cvss_v3: 'outputs.CVSSResponse',
                  cvss_version: str,
                  effective_severity: str,
+                 extra_details: str,
                  package_issue: Sequence['outputs.PackageIssueResponse'],
                  severity: str,
                  type: str,
@@ -6972,6 +7423,7 @@ class VulnerabilityDetailsResponse(dict):
         :param 'CVSSResponse' cvss_v3: The CVSS v3 score of this vulnerability.
         :param str cvss_version: CVSS version used to populate cvss_score and severity.
         :param str effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
+        :param str extra_details: Occurrence-specific extra details about the vulnerability.
         :param Sequence['PackageIssueResponse'] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
         :param str severity: The note provider assigned Severity of the vulnerability.
         :param str type: The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
@@ -6982,6 +7434,7 @@ class VulnerabilityDetailsResponse(dict):
         pulumi.set(__self__, "cvss_v3", cvss_v3)
         pulumi.set(__self__, "cvss_version", cvss_version)
         pulumi.set(__self__, "effective_severity", effective_severity)
+        pulumi.set(__self__, "extra_details", extra_details)
         pulumi.set(__self__, "package_issue", package_issue)
         pulumi.set(__self__, "severity", severity)
         pulumi.set(__self__, "type", type)
@@ -7026,6 +7479,14 @@ class VulnerabilityDetailsResponse(dict):
         The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
         """
         return pulumi.get(self, "effective_severity")
+
+    @property
+    @pulumi.getter(name="extraDetails")
+    def extra_details(self) -> str:
+        """
+        Occurrence-specific extra details about the vulnerability.
+        """
+        return pulumi.get(self, "extra_details")
 
     @property
     @pulumi.getter(name="packageIssue")

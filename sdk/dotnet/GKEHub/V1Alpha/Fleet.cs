@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The default cluster configurations to apply across the fleet.
+        /// </summary>
+        [Output("defaultClusterConfig")]
+        public Output<Outputs.DefaultClusterConfigResponse> DefaultClusterConfig { get; private set; } = null!;
+
+        /// <summary>
         /// When the Fleet was deleted.
         /// </summary>
         [Output("deleteTime")]
@@ -33,6 +39,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Labels for this Fleet.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -115,10 +127,28 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     public sealed class FleetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The default cluster configurations to apply across the fleet.
+        /// </summary>
+        [Input("defaultClusterConfig")]
+        public Input<Inputs.DefaultClusterConfigArgs>? DefaultClusterConfig { get; set; }
+
+        /// <summary>
         /// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Optional. Labels for this Fleet.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

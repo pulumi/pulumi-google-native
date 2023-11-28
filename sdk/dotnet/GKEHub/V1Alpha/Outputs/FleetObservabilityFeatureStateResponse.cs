@@ -11,14 +11,28 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 {
 
     /// <summary>
-    /// **FleetObservability**: An empty state left as an example Hub-wide Feature state.
+    /// **FleetObservability**: Hub-wide Feature for FleetObservability feature. state.
     /// </summary>
     [OutputType]
     public sealed class FleetObservabilityFeatureStateResponse
     {
+        /// <summary>
+        /// The feature state of default logging.
+        /// </summary>
+        public readonly Outputs.FleetObservabilityFleetObservabilityLoggingStateResponse Logging;
+        /// <summary>
+        /// The feature state of fleet monitoring.
+        /// </summary>
+        public readonly Outputs.FleetObservabilityFleetObservabilityMonitoringStateResponse Monitoring;
+
         [OutputConstructor]
-        private FleetObservabilityFeatureStateResponse()
+        private FleetObservabilityFeatureStateResponse(
+            Outputs.FleetObservabilityFleetObservabilityLoggingStateResponse logging,
+
+            Outputs.FleetObservabilityFleetObservabilityMonitoringStateResponse monitoring)
         {
+            Logging = logging;
+            Monitoring = monitoring;
         }
     }
 }

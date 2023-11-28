@@ -2,86 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain = {
-    /**
-     * No error domain
-     */
-    EkmProvisioningErrorDomainUnspecified: "EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED",
-    /**
-     * Error but domain is unspecified.
-     */
-    UnspecifiedError: "UNSPECIFIED_ERROR",
-    /**
-     * Internal logic breaks within provisioning code.
-     */
-    GoogleServerError: "GOOGLE_SERVER_ERROR",
-    /**
-     * Error occurred with the customer not granting permission/creating resource.
-     */
-    ExternalUserError: "EXTERNAL_USER_ERROR",
-    /**
-     * Error occurred within the partner’s provisioning cluster.
-     */
-    ExternalPartnerError: "EXTERNAL_PARTNER_ERROR",
-    /**
-     * Resource wasn't provisioned in the required 7 day time period
-     */
-    TimeoutError: "TIMEOUT_ERROR",
-} as const;
-
-/**
- * Indicates Ekm provisioning error if any.
- */
-export type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain = (typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain)[keyof typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain];
-
-export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping = {
-    /**
-     * Error is unspecified.
-     */
-    EkmProvisioningErrorMappingUnspecified: "EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED",
-    /**
-     * Service account is used is invalid.
-     */
-    InvalidServiceAccount: "INVALID_SERVICE_ACCOUNT",
-    /**
-     * Iam permission monitoring.MetricsScopeAdmin wasn't applied.
-     */
-    MissingMetricsScopeAdminPermission: "MISSING_METRICS_SCOPE_ADMIN_PERMISSION",
-    /**
-     * Iam permission cloudkms.ekmConnectionsAdmin wasn't applied.
-     */
-    MissingEkmConnectionAdminPermission: "MISSING_EKM_CONNECTION_ADMIN_PERMISSION",
-} as const;
-
-/**
- * Detailed error message if Ekm provisioning fails
- */
-export type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping = (typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping)[keyof typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping];
-
-export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState = {
-    /**
-     * Default State for Ekm Provisioning
-     */
-    EkmProvisioningStateUnspecified: "EKM_PROVISIONING_STATE_UNSPECIFIED",
-    /**
-     * Pending State for Ekm Provisioning
-     */
-    EkmProvisioningStatePending: "EKM_PROVISIONING_STATE_PENDING",
-    /**
-     * Failed State for Ekm Provisioning
-     */
-    EkmProvisioningStateFailed: "EKM_PROVISIONING_STATE_FAILED",
-    /**
-     * Completed State for Ekm Provisioning
-     */
-    EkmProvisioningStateCompleted: "EKM_PROVISIONING_STATE_COMPLETED",
-} as const;
-
-/**
- * Indicates Ekm enrollment Provisioning of a given workload.
- */
-export type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState = (typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState)[keyof typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState];
-
 export const GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType = {
     /**
      * Unknown resource type.
@@ -156,7 +76,7 @@ export const WorkloadComplianceRegime = {
      */
     Itar: "ITAR",
     /**
-     * Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.
+     * Assured Workloads for Australia Regions and Support controls
      */
     AuRegionsAndUsSupport: "AU_REGIONS_AND_US_SUPPORT",
     /**
@@ -175,6 +95,18 @@ export const WorkloadComplianceRegime = {
      * Assured Workloads for Canada Protected B regime
      */
     CaProtectedB: "CA_PROTECTED_B",
+    /**
+     * Information protection as per DoD IL5 requirements.
+     */
+    Il5: "IL5",
+    /**
+     * Information protection as per DoD IL2 requirements.
+     */
+    Il2: "IL2",
+    /**
+     * Assured Workloads for Japan Regions
+     */
+    JpRegionsAndSupport: "JP_REGIONS_AND_SUPPORT",
 } as const;
 
 /**

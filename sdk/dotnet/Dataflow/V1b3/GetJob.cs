@@ -130,13 +130,17 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         public readonly string ReplacedByJobId;
         /// <summary>
-        /// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+        /// The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
         /// </summary>
         public readonly string RequestedState;
         /// <summary>
         /// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
         /// </summary>
         public readonly Outputs.RuntimeUpdatableParamsResponse RuntimeUpdatableParams;
+        /// <summary>
+        /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        /// </summary>
+        public readonly bool SatisfiesPzi;
         /// <summary>
         /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         /// </summary>
@@ -206,6 +210,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
 
             Outputs.RuntimeUpdatableParamsResponse runtimeUpdatableParams,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             ImmutableArray<Outputs.ExecutionStageStateResponse> stageStates,
@@ -239,6 +245,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
             ReplacedByJobId = replacedByJobId;
             RequestedState = requestedState;
             RuntimeUpdatableParams = runtimeUpdatableParams;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             StageStates = stageStates;
             StartTime = startTime;

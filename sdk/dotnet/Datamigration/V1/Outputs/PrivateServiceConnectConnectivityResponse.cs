@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 {
 
     /// <summary>
-    /// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+    /// [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
     /// </summary>
     [OutputType]
     public sealed class PrivateServiceConnectConnectivityResponse

@@ -131,6 +131,47 @@ namespace Pulumi.GoogleNative.Metastore.V1
     }
 
     /// <summary>
+    /// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+    /// </summary>
+    [EnumType]
+    public readonly struct HiveMetastoreConfigEndpointProtocol : IEquatable<HiveMetastoreConfigEndpointProtocol>
+    {
+        private readonly string _value;
+
+        private HiveMetastoreConfigEndpointProtocol(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The protocol is not set.
+        /// </summary>
+        public static HiveMetastoreConfigEndpointProtocol EndpointProtocolUnspecified { get; } = new HiveMetastoreConfigEndpointProtocol("ENDPOINT_PROTOCOL_UNSPECIFIED");
+        /// <summary>
+        /// Use the legacy Apache Thrift protocol for the metastore service endpoint.
+        /// </summary>
+        public static HiveMetastoreConfigEndpointProtocol Thrift { get; } = new HiveMetastoreConfigEndpointProtocol("THRIFT");
+        /// <summary>
+        /// Use the modernized gRPC protocol for the metastore service endpoint.
+        /// </summary>
+        public static HiveMetastoreConfigEndpointProtocol Grpc { get; } = new HiveMetastoreConfigEndpointProtocol("GRPC");
+
+        public static bool operator ==(HiveMetastoreConfigEndpointProtocol left, HiveMetastoreConfigEndpointProtocol right) => left.Equals(right);
+        public static bool operator !=(HiveMetastoreConfigEndpointProtocol left, HiveMetastoreConfigEndpointProtocol right) => !left.Equals(right);
+
+        public static explicit operator string(HiveMetastoreConfigEndpointProtocol value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is HiveMetastoreConfigEndpointProtocol other && Equals(other);
+        public bool Equals(HiveMetastoreConfigEndpointProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The day of week, when the window starts.
     /// </summary>
     [EnumType]

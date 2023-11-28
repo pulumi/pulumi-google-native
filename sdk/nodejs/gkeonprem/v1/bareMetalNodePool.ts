@@ -92,6 +92,10 @@ export class BareMetalNodePool extends pulumi.CustomResource {
      * The time at which this bare metal node pool was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * The worker node pool upgrade policy.
+     */
+    public readonly upgradePolicy!: pulumi.Output<outputs.gkeonprem.v1.BareMetalNodePoolUpgradePolicyResponse>;
 
     /**
      * Create a BareMetalNodePool resource with the given unique name, arguments, and options.
@@ -119,6 +123,7 @@ export class BareMetalNodePool extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodePoolConfig"] = args ? args.nodePoolConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
@@ -143,6 +148,7 @@ export class BareMetalNodePool extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgradePolicy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["bareMetalClusterId", "location", "project"] };
@@ -182,4 +188,8 @@ export interface BareMetalNodePoolArgs {
      */
     nodePoolConfig: pulumi.Input<inputs.gkeonprem.v1.BareMetalNodePoolConfigArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * The worker node pool upgrade policy.
+     */
+    upgradePolicy?: pulumi.Input<inputs.gkeonprem.v1.BareMetalNodePoolUpgradePolicyArgs>;
 }

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
     public sealed class GceConfidentialInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the instance has confidential compute enabled.
+        /// Optional. Whether the instance has confidential compute enabled.
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }

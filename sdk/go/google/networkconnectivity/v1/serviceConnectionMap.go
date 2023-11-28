@@ -24,6 +24,8 @@ type ServiceConnectionMap struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A description of this resource.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The infrastructure used for connections between consumers/producers.
 	Infrastructure pulumi.StringOutput `pulumi:"infrastructure"`
 	// User-defined labels.
@@ -97,6 +99,8 @@ type serviceConnectionMapArgs struct {
 	ConsumerPscConfigs []ConsumerPscConfig `pulumi:"consumerPscConfigs"`
 	// A description of this resource.
 	Description *string `pulumi:"description"`
+	// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
 	// User-defined labels.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -121,6 +125,8 @@ type ServiceConnectionMapArgs struct {
 	ConsumerPscConfigs ConsumerPscConfigArrayInput
 	// A description of this resource.
 	Description pulumi.StringPtrInput
+	// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput
 	// User-defined labels.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -208,6 +214,11 @@ func (o ServiceConnectionMapOutput) CreateTime() pulumi.StringOutput {
 // A description of this resource.
 func (o ServiceConnectionMapOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceConnectionMap) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o ServiceConnectionMapOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceConnectionMap) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The infrastructure used for connections between consumers/producers.

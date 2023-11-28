@@ -532,6 +532,8 @@ type InstanceConfig struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
 	LogicalInterfaces []GoogleCloudBaremetalsolutionV2LogicalInterface `pulumi:"logicalInterfaces"`
+	// The name of the instance config.
+	Name *string `pulumi:"name"`
 	// The type of network configuration on the instance.
 	NetworkConfig *InstanceConfigNetworkConfig `pulumi:"networkConfig"`
 	// Server network template name. Filled if InstanceConfig.multivlan_config is true.
@@ -540,6 +542,8 @@ type InstanceConfig struct {
 	OsImage *string `pulumi:"osImage"`
 	// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 	PrivateNetwork *NetworkAddress `pulumi:"privateNetwork"`
+	// Optional. List of names of ssh keys used to provision the instance.
+	SshKeyNames []string `pulumi:"sshKeyNames"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote *string `pulumi:"userNote"`
 }
@@ -569,6 +573,8 @@ type InstanceConfigArgs struct {
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
 	LogicalInterfaces GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput `pulumi:"logicalInterfaces"`
+	// The name of the instance config.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The type of network configuration on the instance.
 	NetworkConfig InstanceConfigNetworkConfigPtrInput `pulumi:"networkConfig"`
 	// Server network template name. Filled if InstanceConfig.multivlan_config is true.
@@ -577,6 +583,8 @@ type InstanceConfigArgs struct {
 	OsImage pulumi.StringPtrInput `pulumi:"osImage"`
 	// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 	PrivateNetwork NetworkAddressPtrInput `pulumi:"privateNetwork"`
+	// Optional. List of names of ssh keys used to provision the instance.
+	SshKeyNames pulumi.StringArrayInput `pulumi:"sshKeyNames"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote pulumi.StringPtrInput `pulumi:"userNote"`
 }
@@ -681,6 +689,11 @@ func (o InstanceConfigOutput) LogicalInterfaces() GoogleCloudBaremetalsolutionV2
 	return o.ApplyT(func(v InstanceConfig) []GoogleCloudBaremetalsolutionV2LogicalInterface { return v.LogicalInterfaces }).(GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput)
 }
 
+// The name of the instance config.
+func (o InstanceConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 // The type of network configuration on the instance.
 func (o InstanceConfigOutput) NetworkConfig() InstanceConfigNetworkConfigPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigNetworkConfig { return v.NetworkConfig }).(InstanceConfigNetworkConfigPtrOutput)
@@ -699,6 +712,11 @@ func (o InstanceConfigOutput) OsImage() pulumi.StringPtrOutput {
 // Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 func (o InstanceConfigOutput) PrivateNetwork() NetworkAddressPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *NetworkAddress { return v.PrivateNetwork }).(NetworkAddressPtrOutput)
+}
+
+// Optional. List of names of ssh keys used to provision the instance.
+func (o InstanceConfigOutput) SshKeyNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceConfig) []string { return v.SshKeyNames }).(pulumi.StringArrayOutput)
 }
 
 // User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -754,6 +772,8 @@ type InstanceConfigResponse struct {
 	OsImage string `pulumi:"osImage"`
 	// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 	PrivateNetwork NetworkAddressResponse `pulumi:"privateNetwork"`
+	// Optional. List of names of ssh keys used to provision the instance.
+	SshKeyNames []string `pulumi:"sshKeyNames"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote string `pulumi:"userNote"`
 }
@@ -829,6 +849,11 @@ func (o InstanceConfigResponseOutput) OsImage() pulumi.StringOutput {
 // Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 func (o InstanceConfigResponseOutput) PrivateNetwork() NetworkAddressResponseOutput {
 	return o.ApplyT(func(v InstanceConfigResponse) NetworkAddressResponse { return v.PrivateNetwork }).(NetworkAddressResponseOutput)
+}
+
+// Optional. List of names of ssh keys used to provision the instance.
+func (o InstanceConfigResponseOutput) SshKeyNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceConfigResponse) []string { return v.SshKeyNames }).(pulumi.StringArrayOutput)
 }
 
 // User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -1292,202 +1317,6 @@ func (o LogicalNetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) Log
 	}).(LogicalNetworkInterfaceResponseOutput)
 }
 
-// A storage volume logical unit number (LUN).
-type Lun struct {
-	// Display if this LUN is a boot LUN.
-	BootLun *bool `pulumi:"bootLun"`
-	// An identifier for the LUN, generated by the backend.
-	Id *string `pulumi:"id"`
-	// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
-	MultiprotocolType *LunMultiprotocolType `pulumi:"multiprotocolType"`
-	// Display if this LUN can be shared between multiple physical servers.
-	Shareable *bool `pulumi:"shareable"`
-	// The size of this LUN, in gigabytes.
-	SizeGb *string `pulumi:"sizeGb"`
-	// The state of this storage volume.
-	State *LunState `pulumi:"state"`
-	// The storage type for this LUN.
-	StorageType *LunStorageType `pulumi:"storageType"`
-	// Display the storage volume for this LUN.
-	StorageVolume *string `pulumi:"storageVolume"`
-	// The WWID for this LUN.
-	Wwid *string `pulumi:"wwid"`
-}
-
-// LunInput is an input type that accepts LunArgs and LunOutput values.
-// You can construct a concrete instance of `LunInput` via:
-//
-//	LunArgs{...}
-type LunInput interface {
-	pulumi.Input
-
-	ToLunOutput() LunOutput
-	ToLunOutputWithContext(context.Context) LunOutput
-}
-
-// A storage volume logical unit number (LUN).
-type LunArgs struct {
-	// Display if this LUN is a boot LUN.
-	BootLun pulumi.BoolPtrInput `pulumi:"bootLun"`
-	// An identifier for the LUN, generated by the backend.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
-	MultiprotocolType LunMultiprotocolTypePtrInput `pulumi:"multiprotocolType"`
-	// Display if this LUN can be shared between multiple physical servers.
-	Shareable pulumi.BoolPtrInput `pulumi:"shareable"`
-	// The size of this LUN, in gigabytes.
-	SizeGb pulumi.StringPtrInput `pulumi:"sizeGb"`
-	// The state of this storage volume.
-	State LunStatePtrInput `pulumi:"state"`
-	// The storage type for this LUN.
-	StorageType LunStorageTypePtrInput `pulumi:"storageType"`
-	// Display the storage volume for this LUN.
-	StorageVolume pulumi.StringPtrInput `pulumi:"storageVolume"`
-	// The WWID for this LUN.
-	Wwid pulumi.StringPtrInput `pulumi:"wwid"`
-}
-
-func (LunArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lun)(nil)).Elem()
-}
-
-func (i LunArgs) ToLunOutput() LunOutput {
-	return i.ToLunOutputWithContext(context.Background())
-}
-
-func (i LunArgs) ToLunOutputWithContext(ctx context.Context) LunOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LunOutput)
-}
-
-func (i LunArgs) ToOutput(ctx context.Context) pulumix.Output[Lun] {
-	return pulumix.Output[Lun]{
-		OutputState: i.ToLunOutputWithContext(ctx).OutputState,
-	}
-}
-
-// LunArrayInput is an input type that accepts LunArray and LunArrayOutput values.
-// You can construct a concrete instance of `LunArrayInput` via:
-//
-//	LunArray{ LunArgs{...} }
-type LunArrayInput interface {
-	pulumi.Input
-
-	ToLunArrayOutput() LunArrayOutput
-	ToLunArrayOutputWithContext(context.Context) LunArrayOutput
-}
-
-type LunArray []LunInput
-
-func (LunArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Lun)(nil)).Elem()
-}
-
-func (i LunArray) ToLunArrayOutput() LunArrayOutput {
-	return i.ToLunArrayOutputWithContext(context.Background())
-}
-
-func (i LunArray) ToLunArrayOutputWithContext(ctx context.Context) LunArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LunArrayOutput)
-}
-
-func (i LunArray) ToOutput(ctx context.Context) pulumix.Output[[]Lun] {
-	return pulumix.Output[[]Lun]{
-		OutputState: i.ToLunArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-// A storage volume logical unit number (LUN).
-type LunOutput struct{ *pulumi.OutputState }
-
-func (LunOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lun)(nil)).Elem()
-}
-
-func (o LunOutput) ToLunOutput() LunOutput {
-	return o
-}
-
-func (o LunOutput) ToLunOutputWithContext(ctx context.Context) LunOutput {
-	return o
-}
-
-func (o LunOutput) ToOutput(ctx context.Context) pulumix.Output[Lun] {
-	return pulumix.Output[Lun]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Display if this LUN is a boot LUN.
-func (o LunOutput) BootLun() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Lun) *bool { return v.BootLun }).(pulumi.BoolPtrOutput)
-}
-
-// An identifier for the LUN, generated by the backend.
-func (o LunOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Lun) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
-func (o LunOutput) MultiprotocolType() LunMultiprotocolTypePtrOutput {
-	return o.ApplyT(func(v Lun) *LunMultiprotocolType { return v.MultiprotocolType }).(LunMultiprotocolTypePtrOutput)
-}
-
-// Display if this LUN can be shared between multiple physical servers.
-func (o LunOutput) Shareable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Lun) *bool { return v.Shareable }).(pulumi.BoolPtrOutput)
-}
-
-// The size of this LUN, in gigabytes.
-func (o LunOutput) SizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Lun) *string { return v.SizeGb }).(pulumi.StringPtrOutput)
-}
-
-// The state of this storage volume.
-func (o LunOutput) State() LunStatePtrOutput {
-	return o.ApplyT(func(v Lun) *LunState { return v.State }).(LunStatePtrOutput)
-}
-
-// The storage type for this LUN.
-func (o LunOutput) StorageType() LunStorageTypePtrOutput {
-	return o.ApplyT(func(v Lun) *LunStorageType { return v.StorageType }).(LunStorageTypePtrOutput)
-}
-
-// Display the storage volume for this LUN.
-func (o LunOutput) StorageVolume() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Lun) *string { return v.StorageVolume }).(pulumi.StringPtrOutput)
-}
-
-// The WWID for this LUN.
-func (o LunOutput) Wwid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Lun) *string { return v.Wwid }).(pulumi.StringPtrOutput)
-}
-
-type LunArrayOutput struct{ *pulumi.OutputState }
-
-func (LunArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Lun)(nil)).Elem()
-}
-
-func (o LunArrayOutput) ToLunArrayOutput() LunArrayOutput {
-	return o
-}
-
-func (o LunArrayOutput) ToLunArrayOutputWithContext(ctx context.Context) LunArrayOutput {
-	return o
-}
-
-func (o LunArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Lun] {
-	return pulumix.Output[[]Lun]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o LunArrayOutput) Index(i pulumi.IntInput) LunOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Lun {
-		return vs[0].([]Lun)[vs[1].(int)]
-	}).(LunOutput)
-}
-
 // A LUN(Logical Unit Number) range.
 type LunRange struct {
 	// Number of LUNs to create.
@@ -1684,134 +1513,6 @@ func (o LunRangeResponseArrayOutput) Index(i pulumi.IntInput) LunRangeResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LunRangeResponse {
 		return vs[0].([]LunRangeResponse)[vs[1].(int)]
 	}).(LunRangeResponseOutput)
-}
-
-// A storage volume logical unit number (LUN).
-type LunResponse struct {
-	// Display if this LUN is a boot LUN.
-	BootLun bool `pulumi:"bootLun"`
-	// Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state.
-	ExpireTime string `pulumi:"expireTime"`
-	// Instances this Lun is attached to.
-	Instances []string `pulumi:"instances"`
-	// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
-	MultiprotocolType string `pulumi:"multiprotocolType"`
-	// The name of the LUN.
-	Name string `pulumi:"name"`
-	// Display if this LUN can be shared between multiple physical servers.
-	Shareable bool `pulumi:"shareable"`
-	// The size of this LUN, in gigabytes.
-	SizeGb string `pulumi:"sizeGb"`
-	// The state of this storage volume.
-	State string `pulumi:"state"`
-	// The storage type for this LUN.
-	StorageType string `pulumi:"storageType"`
-	// Display the storage volume for this LUN.
-	StorageVolume string `pulumi:"storageVolume"`
-	// The WWID for this LUN.
-	Wwid string `pulumi:"wwid"`
-}
-
-// A storage volume logical unit number (LUN).
-type LunResponseOutput struct{ *pulumi.OutputState }
-
-func (LunResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LunResponse)(nil)).Elem()
-}
-
-func (o LunResponseOutput) ToLunResponseOutput() LunResponseOutput {
-	return o
-}
-
-func (o LunResponseOutput) ToLunResponseOutputWithContext(ctx context.Context) LunResponseOutput {
-	return o
-}
-
-func (o LunResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LunResponse] {
-	return pulumix.Output[LunResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Display if this LUN is a boot LUN.
-func (o LunResponseOutput) BootLun() pulumi.BoolOutput {
-	return o.ApplyT(func(v LunResponse) bool { return v.BootLun }).(pulumi.BoolOutput)
-}
-
-// Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state.
-func (o LunResponseOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LunResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
-}
-
-// Instances this Lun is attached to.
-func (o LunResponseOutput) Instances() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LunResponse) []string { return v.Instances }).(pulumi.StringArrayOutput)
-}
-
-// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
-func (o LunResponseOutput) MultiprotocolType() pulumi.StringOutput {
-	return o.ApplyT(func(v LunResponse) string { return v.MultiprotocolType }).(pulumi.StringOutput)
-}
-
-// The name of the LUN.
-func (o LunResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LunResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Display if this LUN can be shared between multiple physical servers.
-func (o LunResponseOutput) Shareable() pulumi.BoolOutput {
-	return o.ApplyT(func(v LunResponse) bool { return v.Shareable }).(pulumi.BoolOutput)
-}
-
-// The size of this LUN, in gigabytes.
-func (o LunResponseOutput) SizeGb() pulumi.StringOutput {
-	return o.ApplyT(func(v LunResponse) string { return v.SizeGb }).(pulumi.StringOutput)
-}
-
-// The state of this storage volume.
-func (o LunResponseOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v LunResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-// The storage type for this LUN.
-func (o LunResponseOutput) StorageType() pulumi.StringOutput {
-	return o.ApplyT(func(v LunResponse) string { return v.StorageType }).(pulumi.StringOutput)
-}
-
-// Display the storage volume for this LUN.
-func (o LunResponseOutput) StorageVolume() pulumi.StringOutput {
-	return o.ApplyT(func(v LunResponse) string { return v.StorageVolume }).(pulumi.StringOutput)
-}
-
-// The WWID for this LUN.
-func (o LunResponseOutput) Wwid() pulumi.StringOutput {
-	return o.ApplyT(func(v LunResponse) string { return v.Wwid }).(pulumi.StringOutput)
-}
-
-type LunResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LunResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LunResponse)(nil)).Elem()
-}
-
-func (o LunResponseArrayOutput) ToLunResponseArrayOutput() LunResponseArrayOutput {
-	return o
-}
-
-func (o LunResponseArrayOutput) ToLunResponseArrayOutputWithContext(ctx context.Context) LunResponseArrayOutput {
-	return o
-}
-
-func (o LunResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LunResponse] {
-	return pulumix.Output[[]LunResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o LunResponseArrayOutput) Index(i pulumi.IntInput) LunResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LunResponse {
-		return vs[0].([]LunResponse)[vs[1].(int)]
-	}).(LunResponseOutput)
 }
 
 // A network.
@@ -2014,78 +1715,6 @@ func (o NetworkAddressPtrOutput) NetworkId() pulumi.StringPtrOutput {
 		}
 		return v.NetworkId
 	}).(pulumi.StringPtrOutput)
-}
-
-// A reservation of one or more addresses in a network.
-type NetworkAddressReservationResponse struct {
-	// The last address of this reservation block, inclusive. I.e., for cases when reservations are only single addresses, end_address and start_address will be the same. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
-	EndAddress string `pulumi:"endAddress"`
-	// A note about this reservation, intended for human consumption.
-	Note string `pulumi:"note"`
-	// The first address of this reservation block. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
-	StartAddress string `pulumi:"startAddress"`
-}
-
-// A reservation of one or more addresses in a network.
-type NetworkAddressReservationResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkAddressReservationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAddressReservationResponse)(nil)).Elem()
-}
-
-func (o NetworkAddressReservationResponseOutput) ToNetworkAddressReservationResponseOutput() NetworkAddressReservationResponseOutput {
-	return o
-}
-
-func (o NetworkAddressReservationResponseOutput) ToNetworkAddressReservationResponseOutputWithContext(ctx context.Context) NetworkAddressReservationResponseOutput {
-	return o
-}
-
-func (o NetworkAddressReservationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkAddressReservationResponse] {
-	return pulumix.Output[NetworkAddressReservationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The last address of this reservation block, inclusive. I.e., for cases when reservations are only single addresses, end_address and start_address will be the same. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
-func (o NetworkAddressReservationResponseOutput) EndAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkAddressReservationResponse) string { return v.EndAddress }).(pulumi.StringOutput)
-}
-
-// A note about this reservation, intended for human consumption.
-func (o NetworkAddressReservationResponseOutput) Note() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkAddressReservationResponse) string { return v.Note }).(pulumi.StringOutput)
-}
-
-// The first address of this reservation block. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
-func (o NetworkAddressReservationResponseOutput) StartAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkAddressReservationResponse) string { return v.StartAddress }).(pulumi.StringOutput)
-}
-
-type NetworkAddressReservationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (NetworkAddressReservationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkAddressReservationResponse)(nil)).Elem()
-}
-
-func (o NetworkAddressReservationResponseArrayOutput) ToNetworkAddressReservationResponseArrayOutput() NetworkAddressReservationResponseArrayOutput {
-	return o
-}
-
-func (o NetworkAddressReservationResponseArrayOutput) ToNetworkAddressReservationResponseArrayOutputWithContext(ctx context.Context) NetworkAddressReservationResponseArrayOutput {
-	return o
-}
-
-func (o NetworkAddressReservationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkAddressReservationResponse] {
-	return pulumix.Output[[]NetworkAddressReservationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o NetworkAddressReservationResponseArrayOutput) Index(i pulumi.IntInput) NetworkAddressReservationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAddressReservationResponse {
-		return vs[0].([]NetworkAddressReservationResponse)[vs[1].(int)]
-	}).(NetworkAddressReservationResponseOutput)
 }
 
 // A network.
@@ -2460,241 +2089,6 @@ func (o NetworkConfigResponseArrayOutput) Index(i pulumi.IntInput) NetworkConfig
 	}).(NetworkConfigResponseOutput)
 }
 
-// Mount point for a network.
-type NetworkMountPointResponse struct {
-	// Network should be a default gateway.
-	DefaultGateway bool `pulumi:"defaultGateway"`
-	// Instance to attach network to.
-	Instance string `pulumi:"instance"`
-	// Ip address of the server.
-	IpAddress string `pulumi:"ipAddress"`
-	// Logical interface to detach from.
-	LogicalInterface string `pulumi:"logicalInterface"`
-}
-
-// Mount point for a network.
-type NetworkMountPointResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkMountPointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkMountPointResponse)(nil)).Elem()
-}
-
-func (o NetworkMountPointResponseOutput) ToNetworkMountPointResponseOutput() NetworkMountPointResponseOutput {
-	return o
-}
-
-func (o NetworkMountPointResponseOutput) ToNetworkMountPointResponseOutputWithContext(ctx context.Context) NetworkMountPointResponseOutput {
-	return o
-}
-
-func (o NetworkMountPointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkMountPointResponse] {
-	return pulumix.Output[NetworkMountPointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Network should be a default gateway.
-func (o NetworkMountPointResponseOutput) DefaultGateway() pulumi.BoolOutput {
-	return o.ApplyT(func(v NetworkMountPointResponse) bool { return v.DefaultGateway }).(pulumi.BoolOutput)
-}
-
-// Instance to attach network to.
-func (o NetworkMountPointResponseOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkMountPointResponse) string { return v.Instance }).(pulumi.StringOutput)
-}
-
-// Ip address of the server.
-func (o NetworkMountPointResponseOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkMountPointResponse) string { return v.IpAddress }).(pulumi.StringOutput)
-}
-
-// Logical interface to detach from.
-func (o NetworkMountPointResponseOutput) LogicalInterface() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkMountPointResponse) string { return v.LogicalInterface }).(pulumi.StringOutput)
-}
-
-type NetworkMountPointResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (NetworkMountPointResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkMountPointResponse)(nil)).Elem()
-}
-
-func (o NetworkMountPointResponseArrayOutput) ToNetworkMountPointResponseArrayOutput() NetworkMountPointResponseArrayOutput {
-	return o
-}
-
-func (o NetworkMountPointResponseArrayOutput) ToNetworkMountPointResponseArrayOutputWithContext(ctx context.Context) NetworkMountPointResponseArrayOutput {
-	return o
-}
-
-func (o NetworkMountPointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkMountPointResponse] {
-	return pulumix.Output[[]NetworkMountPointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o NetworkMountPointResponseArrayOutput) Index(i pulumi.IntInput) NetworkMountPointResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkMountPointResponse {
-		return vs[0].([]NetworkMountPointResponse)[vs[1].(int)]
-	}).(NetworkMountPointResponseOutput)
-}
-
-// A Network.
-type NetworkResponse struct {
-	// The cidr of the Network.
-	Cidr string `pulumi:"cidr"`
-	// Gateway ip address.
-	GatewayIp string `pulumi:"gatewayIp"`
-	// IP address configured.
-	IpAddress string `pulumi:"ipAddress"`
-	// Whether network uses standard frames or jumbo ones.
-	JumboFramesEnabled bool `pulumi:"jumboFramesEnabled"`
-	// Labels as key value pairs.
-	Labels map[string]string `pulumi:"labels"`
-	// List of physical interfaces.
-	MacAddress []string `pulumi:"macAddress"`
-	// Input only. List of mount points to attach the network to.
-	MountPoints []NetworkMountPointResponse `pulumi:"mountPoints"`
-	// The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
-	Name string `pulumi:"name"`
-	// Pod name.
-	Pod string `pulumi:"pod"`
-	// List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
-	Reservations []NetworkAddressReservationResponse `pulumi:"reservations"`
-	// IP range for reserved for services (e.g. NFS).
-	ServicesCidr string `pulumi:"servicesCidr"`
-	// The Network state.
-	State string `pulumi:"state"`
-	// The type of this network.
-	Type string `pulumi:"type"`
-	// The vlan id of the Network.
-	VlanId string `pulumi:"vlanId"`
-	// The vrf for the Network.
-	Vrf VRFResponse `pulumi:"vrf"`
-}
-
-// A Network.
-type NetworkResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkResponse)(nil)).Elem()
-}
-
-func (o NetworkResponseOutput) ToNetworkResponseOutput() NetworkResponseOutput {
-	return o
-}
-
-func (o NetworkResponseOutput) ToNetworkResponseOutputWithContext(ctx context.Context) NetworkResponseOutput {
-	return o
-}
-
-func (o NetworkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkResponse] {
-	return pulumix.Output[NetworkResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The cidr of the Network.
-func (o NetworkResponseOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.Cidr }).(pulumi.StringOutput)
-}
-
-// Gateway ip address.
-func (o NetworkResponseOutput) GatewayIp() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.GatewayIp }).(pulumi.StringOutput)
-}
-
-// IP address configured.
-func (o NetworkResponseOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.IpAddress }).(pulumi.StringOutput)
-}
-
-// Whether network uses standard frames or jumbo ones.
-func (o NetworkResponseOutput) JumboFramesEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v NetworkResponse) bool { return v.JumboFramesEnabled }).(pulumi.BoolOutput)
-}
-
-// Labels as key value pairs.
-func (o NetworkResponseOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v NetworkResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// List of physical interfaces.
-func (o NetworkResponseOutput) MacAddress() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkResponse) []string { return v.MacAddress }).(pulumi.StringArrayOutput)
-}
-
-// Input only. List of mount points to attach the network to.
-func (o NetworkResponseOutput) MountPoints() NetworkMountPointResponseArrayOutput {
-	return o.ApplyT(func(v NetworkResponse) []NetworkMountPointResponse { return v.MountPoints }).(NetworkMountPointResponseArrayOutput)
-}
-
-// The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
-func (o NetworkResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Pod name.
-func (o NetworkResponseOutput) Pod() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.Pod }).(pulumi.StringOutput)
-}
-
-// List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
-func (o NetworkResponseOutput) Reservations() NetworkAddressReservationResponseArrayOutput {
-	return o.ApplyT(func(v NetworkResponse) []NetworkAddressReservationResponse { return v.Reservations }).(NetworkAddressReservationResponseArrayOutput)
-}
-
-// IP range for reserved for services (e.g. NFS).
-func (o NetworkResponseOutput) ServicesCidr() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.ServicesCidr }).(pulumi.StringOutput)
-}
-
-// The Network state.
-func (o NetworkResponseOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-// The type of this network.
-func (o NetworkResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The vlan id of the Network.
-func (o NetworkResponseOutput) VlanId() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.VlanId }).(pulumi.StringOutput)
-}
-
-// The vrf for the Network.
-func (o NetworkResponseOutput) Vrf() VRFResponseOutput {
-	return o.ApplyT(func(v NetworkResponse) VRFResponse { return v.Vrf }).(VRFResponseOutput)
-}
-
-type NetworkResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (NetworkResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkResponse)(nil)).Elem()
-}
-
-func (o NetworkResponseArrayOutput) ToNetworkResponseArrayOutput() NetworkResponseArrayOutput {
-	return o
-}
-
-func (o NetworkResponseArrayOutput) ToNetworkResponseArrayOutputWithContext(ctx context.Context) NetworkResponseArrayOutput {
-	return o
-}
-
-func (o NetworkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkResponse] {
-	return pulumix.Output[[]NetworkResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o NetworkResponseArrayOutput) Index(i pulumi.IntInput) NetworkResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkResponse {
-		return vs[0].([]NetworkResponse)[vs[1].(int)]
-	}).(NetworkResponseOutput)
-}
-
 // A NFS export entry.
 type NfsExport struct {
 	// Allow dev flag in NfsShare AllowedClientsRequest.
@@ -2973,746 +2367,6 @@ func (o NfsExportResponseArrayOutput) Index(i pulumi.IntInput) NfsExportResponse
 	}).(NfsExportResponseOutput)
 }
 
-// QOS policy parameters.
-type QosPolicyResponse struct {
-	// The bandwidth permitted by the QOS policy, in gbps.
-	BandwidthGbps float64 `pulumi:"bandwidthGbps"`
-}
-
-// QOS policy parameters.
-type QosPolicyResponseOutput struct{ *pulumi.OutputState }
-
-func (QosPolicyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosPolicyResponse)(nil)).Elem()
-}
-
-func (o QosPolicyResponseOutput) ToQosPolicyResponseOutput() QosPolicyResponseOutput {
-	return o
-}
-
-func (o QosPolicyResponseOutput) ToQosPolicyResponseOutputWithContext(ctx context.Context) QosPolicyResponseOutput {
-	return o
-}
-
-func (o QosPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QosPolicyResponse] {
-	return pulumix.Output[QosPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The bandwidth permitted by the QOS policy, in gbps.
-func (o QosPolicyResponseOutput) BandwidthGbps() pulumi.Float64Output {
-	return o.ApplyT(func(v QosPolicyResponse) float64 { return v.BandwidthGbps }).(pulumi.Float64Output)
-}
-
-// Details about snapshot space reservation and usage on the storage volume.
-type SnapshotReservationDetail struct {
-	// The space on this storage volume reserved for snapshots, shown in GiB.
-	ReservedSpaceGib *string `pulumi:"reservedSpaceGib"`
-	// Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
-	ReservedSpacePercent *int `pulumi:"reservedSpacePercent"`
-	// The amount, in GiB, of available space in this storage volume's reserved snapshot space.
-	ReservedSpaceRemainingGib *string `pulumi:"reservedSpaceRemainingGib"`
-	// The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
-	ReservedSpaceUsedPercent *int `pulumi:"reservedSpaceUsedPercent"`
-}
-
-// SnapshotReservationDetailInput is an input type that accepts SnapshotReservationDetailArgs and SnapshotReservationDetailOutput values.
-// You can construct a concrete instance of `SnapshotReservationDetailInput` via:
-//
-//	SnapshotReservationDetailArgs{...}
-type SnapshotReservationDetailInput interface {
-	pulumi.Input
-
-	ToSnapshotReservationDetailOutput() SnapshotReservationDetailOutput
-	ToSnapshotReservationDetailOutputWithContext(context.Context) SnapshotReservationDetailOutput
-}
-
-// Details about snapshot space reservation and usage on the storage volume.
-type SnapshotReservationDetailArgs struct {
-	// The space on this storage volume reserved for snapshots, shown in GiB.
-	ReservedSpaceGib pulumi.StringPtrInput `pulumi:"reservedSpaceGib"`
-	// Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
-	ReservedSpacePercent pulumi.IntPtrInput `pulumi:"reservedSpacePercent"`
-	// The amount, in GiB, of available space in this storage volume's reserved snapshot space.
-	ReservedSpaceRemainingGib pulumi.StringPtrInput `pulumi:"reservedSpaceRemainingGib"`
-	// The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
-	ReservedSpaceUsedPercent pulumi.IntPtrInput `pulumi:"reservedSpaceUsedPercent"`
-}
-
-func (SnapshotReservationDetailArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotReservationDetail)(nil)).Elem()
-}
-
-func (i SnapshotReservationDetailArgs) ToSnapshotReservationDetailOutput() SnapshotReservationDetailOutput {
-	return i.ToSnapshotReservationDetailOutputWithContext(context.Background())
-}
-
-func (i SnapshotReservationDetailArgs) ToSnapshotReservationDetailOutputWithContext(ctx context.Context) SnapshotReservationDetailOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotReservationDetailOutput)
-}
-
-func (i SnapshotReservationDetailArgs) ToOutput(ctx context.Context) pulumix.Output[SnapshotReservationDetail] {
-	return pulumix.Output[SnapshotReservationDetail]{
-		OutputState: i.ToSnapshotReservationDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i SnapshotReservationDetailArgs) ToSnapshotReservationDetailPtrOutput() SnapshotReservationDetailPtrOutput {
-	return i.ToSnapshotReservationDetailPtrOutputWithContext(context.Background())
-}
-
-func (i SnapshotReservationDetailArgs) ToSnapshotReservationDetailPtrOutputWithContext(ctx context.Context) SnapshotReservationDetailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotReservationDetailOutput).ToSnapshotReservationDetailPtrOutputWithContext(ctx)
-}
-
-// SnapshotReservationDetailPtrInput is an input type that accepts SnapshotReservationDetailArgs, SnapshotReservationDetailPtr and SnapshotReservationDetailPtrOutput values.
-// You can construct a concrete instance of `SnapshotReservationDetailPtrInput` via:
-//
-//	        SnapshotReservationDetailArgs{...}
-//
-//	or:
-//
-//	        nil
-type SnapshotReservationDetailPtrInput interface {
-	pulumi.Input
-
-	ToSnapshotReservationDetailPtrOutput() SnapshotReservationDetailPtrOutput
-	ToSnapshotReservationDetailPtrOutputWithContext(context.Context) SnapshotReservationDetailPtrOutput
-}
-
-type snapshotReservationDetailPtrType SnapshotReservationDetailArgs
-
-func SnapshotReservationDetailPtr(v *SnapshotReservationDetailArgs) SnapshotReservationDetailPtrInput {
-	return (*snapshotReservationDetailPtrType)(v)
-}
-
-func (*snapshotReservationDetailPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SnapshotReservationDetail)(nil)).Elem()
-}
-
-func (i *snapshotReservationDetailPtrType) ToSnapshotReservationDetailPtrOutput() SnapshotReservationDetailPtrOutput {
-	return i.ToSnapshotReservationDetailPtrOutputWithContext(context.Background())
-}
-
-func (i *snapshotReservationDetailPtrType) ToSnapshotReservationDetailPtrOutputWithContext(ctx context.Context) SnapshotReservationDetailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotReservationDetailPtrOutput)
-}
-
-func (i *snapshotReservationDetailPtrType) ToOutput(ctx context.Context) pulumix.Output[*SnapshotReservationDetail] {
-	return pulumix.Output[*SnapshotReservationDetail]{
-		OutputState: i.ToSnapshotReservationDetailPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-// Details about snapshot space reservation and usage on the storage volume.
-type SnapshotReservationDetailOutput struct{ *pulumi.OutputState }
-
-func (SnapshotReservationDetailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotReservationDetail)(nil)).Elem()
-}
-
-func (o SnapshotReservationDetailOutput) ToSnapshotReservationDetailOutput() SnapshotReservationDetailOutput {
-	return o
-}
-
-func (o SnapshotReservationDetailOutput) ToSnapshotReservationDetailOutputWithContext(ctx context.Context) SnapshotReservationDetailOutput {
-	return o
-}
-
-func (o SnapshotReservationDetailOutput) ToSnapshotReservationDetailPtrOutput() SnapshotReservationDetailPtrOutput {
-	return o.ToSnapshotReservationDetailPtrOutputWithContext(context.Background())
-}
-
-func (o SnapshotReservationDetailOutput) ToSnapshotReservationDetailPtrOutputWithContext(ctx context.Context) SnapshotReservationDetailPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotReservationDetail) *SnapshotReservationDetail {
-		return &v
-	}).(SnapshotReservationDetailPtrOutput)
-}
-
-func (o SnapshotReservationDetailOutput) ToOutput(ctx context.Context) pulumix.Output[SnapshotReservationDetail] {
-	return pulumix.Output[SnapshotReservationDetail]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The space on this storage volume reserved for snapshots, shown in GiB.
-func (o SnapshotReservationDetailOutput) ReservedSpaceGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SnapshotReservationDetail) *string { return v.ReservedSpaceGib }).(pulumi.StringPtrOutput)
-}
-
-// Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
-func (o SnapshotReservationDetailOutput) ReservedSpacePercent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SnapshotReservationDetail) *int { return v.ReservedSpacePercent }).(pulumi.IntPtrOutput)
-}
-
-// The amount, in GiB, of available space in this storage volume's reserved snapshot space.
-func (o SnapshotReservationDetailOutput) ReservedSpaceRemainingGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SnapshotReservationDetail) *string { return v.ReservedSpaceRemainingGib }).(pulumi.StringPtrOutput)
-}
-
-// The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
-func (o SnapshotReservationDetailOutput) ReservedSpaceUsedPercent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SnapshotReservationDetail) *int { return v.ReservedSpaceUsedPercent }).(pulumi.IntPtrOutput)
-}
-
-type SnapshotReservationDetailPtrOutput struct{ *pulumi.OutputState }
-
-func (SnapshotReservationDetailPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SnapshotReservationDetail)(nil)).Elem()
-}
-
-func (o SnapshotReservationDetailPtrOutput) ToSnapshotReservationDetailPtrOutput() SnapshotReservationDetailPtrOutput {
-	return o
-}
-
-func (o SnapshotReservationDetailPtrOutput) ToSnapshotReservationDetailPtrOutputWithContext(ctx context.Context) SnapshotReservationDetailPtrOutput {
-	return o
-}
-
-func (o SnapshotReservationDetailPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SnapshotReservationDetail] {
-	return pulumix.Output[*SnapshotReservationDetail]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SnapshotReservationDetailPtrOutput) Elem() SnapshotReservationDetailOutput {
-	return o.ApplyT(func(v *SnapshotReservationDetail) SnapshotReservationDetail {
-		if v != nil {
-			return *v
-		}
-		var ret SnapshotReservationDetail
-		return ret
-	}).(SnapshotReservationDetailOutput)
-}
-
-// The space on this storage volume reserved for snapshots, shown in GiB.
-func (o SnapshotReservationDetailPtrOutput) ReservedSpaceGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SnapshotReservationDetail) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ReservedSpaceGib
-	}).(pulumi.StringPtrOutput)
-}
-
-// Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
-func (o SnapshotReservationDetailPtrOutput) ReservedSpacePercent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SnapshotReservationDetail) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ReservedSpacePercent
-	}).(pulumi.IntPtrOutput)
-}
-
-// The amount, in GiB, of available space in this storage volume's reserved snapshot space.
-func (o SnapshotReservationDetailPtrOutput) ReservedSpaceRemainingGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SnapshotReservationDetail) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ReservedSpaceRemainingGib
-	}).(pulumi.StringPtrOutput)
-}
-
-// The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
-func (o SnapshotReservationDetailPtrOutput) ReservedSpaceUsedPercent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SnapshotReservationDetail) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ReservedSpaceUsedPercent
-	}).(pulumi.IntPtrOutput)
-}
-
-// Details about snapshot space reservation and usage on the storage volume.
-type SnapshotReservationDetailResponse struct {
-	// The space on this storage volume reserved for snapshots, shown in GiB.
-	ReservedSpaceGib string `pulumi:"reservedSpaceGib"`
-	// Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
-	ReservedSpacePercent int `pulumi:"reservedSpacePercent"`
-	// The amount, in GiB, of available space in this storage volume's reserved snapshot space.
-	ReservedSpaceRemainingGib string `pulumi:"reservedSpaceRemainingGib"`
-	// The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
-	ReservedSpaceUsedPercent int `pulumi:"reservedSpaceUsedPercent"`
-}
-
-// Details about snapshot space reservation and usage on the storage volume.
-type SnapshotReservationDetailResponseOutput struct{ *pulumi.OutputState }
-
-func (SnapshotReservationDetailResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotReservationDetailResponse)(nil)).Elem()
-}
-
-func (o SnapshotReservationDetailResponseOutput) ToSnapshotReservationDetailResponseOutput() SnapshotReservationDetailResponseOutput {
-	return o
-}
-
-func (o SnapshotReservationDetailResponseOutput) ToSnapshotReservationDetailResponseOutputWithContext(ctx context.Context) SnapshotReservationDetailResponseOutput {
-	return o
-}
-
-func (o SnapshotReservationDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SnapshotReservationDetailResponse] {
-	return pulumix.Output[SnapshotReservationDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The space on this storage volume reserved for snapshots, shown in GiB.
-func (o SnapshotReservationDetailResponseOutput) ReservedSpaceGib() pulumi.StringOutput {
-	return o.ApplyT(func(v SnapshotReservationDetailResponse) string { return v.ReservedSpaceGib }).(pulumi.StringOutput)
-}
-
-// Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
-func (o SnapshotReservationDetailResponseOutput) ReservedSpacePercent() pulumi.IntOutput {
-	return o.ApplyT(func(v SnapshotReservationDetailResponse) int { return v.ReservedSpacePercent }).(pulumi.IntOutput)
-}
-
-// The amount, in GiB, of available space in this storage volume's reserved snapshot space.
-func (o SnapshotReservationDetailResponseOutput) ReservedSpaceRemainingGib() pulumi.StringOutput {
-	return o.ApplyT(func(v SnapshotReservationDetailResponse) string { return v.ReservedSpaceRemainingGib }).(pulumi.StringOutput)
-}
-
-// The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
-func (o SnapshotReservationDetailResponseOutput) ReservedSpaceUsedPercent() pulumi.IntOutput {
-	return o.ApplyT(func(v SnapshotReservationDetailResponse) int { return v.ReservedSpaceUsedPercent }).(pulumi.IntOutput)
-}
-
-// A network VRF.
-type VRFResponse struct {
-	// The name of the VRF.
-	Name string `pulumi:"name"`
-	// The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility.
-	QosPolicy QosPolicyResponse `pulumi:"qosPolicy"`
-	// The possible state of VRF.
-	State string `pulumi:"state"`
-	// The list of VLAN attachments for the VRF.
-	VlanAttachments []VlanAttachmentResponse `pulumi:"vlanAttachments"`
-}
-
-// A network VRF.
-type VRFResponseOutput struct{ *pulumi.OutputState }
-
-func (VRFResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VRFResponse)(nil)).Elem()
-}
-
-func (o VRFResponseOutput) ToVRFResponseOutput() VRFResponseOutput {
-	return o
-}
-
-func (o VRFResponseOutput) ToVRFResponseOutputWithContext(ctx context.Context) VRFResponseOutput {
-	return o
-}
-
-func (o VRFResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VRFResponse] {
-	return pulumix.Output[VRFResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The name of the VRF.
-func (o VRFResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v VRFResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility.
-func (o VRFResponseOutput) QosPolicy() QosPolicyResponseOutput {
-	return o.ApplyT(func(v VRFResponse) QosPolicyResponse { return v.QosPolicy }).(QosPolicyResponseOutput)
-}
-
-// The possible state of VRF.
-func (o VRFResponseOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v VRFResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-// The list of VLAN attachments for the VRF.
-func (o VRFResponseOutput) VlanAttachments() VlanAttachmentResponseArrayOutput {
-	return o.ApplyT(func(v VRFResponse) []VlanAttachmentResponse { return v.VlanAttachments }).(VlanAttachmentResponseArrayOutput)
-}
-
-// VLAN attachment details.
-type VlanAttachmentResponse struct {
-	// Input only. Pairing key.
-	PairingKey string `pulumi:"pairingKey"`
-	// The peer IP of the attachment.
-	PeerIp string `pulumi:"peerIp"`
-	// The peer vlan ID of the attachment.
-	PeerVlanId string `pulumi:"peerVlanId"`
-	// The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level.
-	QosPolicy QosPolicyResponse `pulumi:"qosPolicy"`
-	// The router IP of the attachment.
-	RouterIp string `pulumi:"routerIp"`
-}
-
-// VLAN attachment details.
-type VlanAttachmentResponseOutput struct{ *pulumi.OutputState }
-
-func (VlanAttachmentResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VlanAttachmentResponse)(nil)).Elem()
-}
-
-func (o VlanAttachmentResponseOutput) ToVlanAttachmentResponseOutput() VlanAttachmentResponseOutput {
-	return o
-}
-
-func (o VlanAttachmentResponseOutput) ToVlanAttachmentResponseOutputWithContext(ctx context.Context) VlanAttachmentResponseOutput {
-	return o
-}
-
-func (o VlanAttachmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VlanAttachmentResponse] {
-	return pulumix.Output[VlanAttachmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Input only. Pairing key.
-func (o VlanAttachmentResponseOutput) PairingKey() pulumi.StringOutput {
-	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.PairingKey }).(pulumi.StringOutput)
-}
-
-// The peer IP of the attachment.
-func (o VlanAttachmentResponseOutput) PeerIp() pulumi.StringOutput {
-	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.PeerIp }).(pulumi.StringOutput)
-}
-
-// The peer vlan ID of the attachment.
-func (o VlanAttachmentResponseOutput) PeerVlanId() pulumi.StringOutput {
-	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.PeerVlanId }).(pulumi.StringOutput)
-}
-
-// The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level.
-func (o VlanAttachmentResponseOutput) QosPolicy() QosPolicyResponseOutput {
-	return o.ApplyT(func(v VlanAttachmentResponse) QosPolicyResponse { return v.QosPolicy }).(QosPolicyResponseOutput)
-}
-
-// The router IP of the attachment.
-func (o VlanAttachmentResponseOutput) RouterIp() pulumi.StringOutput {
-	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.RouterIp }).(pulumi.StringOutput)
-}
-
-type VlanAttachmentResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VlanAttachmentResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VlanAttachmentResponse)(nil)).Elem()
-}
-
-func (o VlanAttachmentResponseArrayOutput) ToVlanAttachmentResponseArrayOutput() VlanAttachmentResponseArrayOutput {
-	return o
-}
-
-func (o VlanAttachmentResponseArrayOutput) ToVlanAttachmentResponseArrayOutputWithContext(ctx context.Context) VlanAttachmentResponseArrayOutput {
-	return o
-}
-
-func (o VlanAttachmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VlanAttachmentResponse] {
-	return pulumix.Output[[]VlanAttachmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o VlanAttachmentResponseArrayOutput) Index(i pulumi.IntInput) VlanAttachmentResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VlanAttachmentResponse {
-		return vs[0].([]VlanAttachmentResponse)[vs[1].(int)]
-	}).(VlanAttachmentResponseOutput)
-}
-
-// A storage volume.
-type Volume struct {
-	// The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
-	AutoGrownSizeGib *string `pulumi:"autoGrownSizeGib"`
-	// The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
-	CurrentSizeGib *string `pulumi:"currentSizeGib"`
-	// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
-	EmergencySizeGib *string `pulumi:"emergencySizeGib"`
-	// An identifier for the `Volume`, generated by the backend.
-	Id *string `pulumi:"id"`
-	// Labels as key value pairs.
-	Labels map[string]string `pulumi:"labels"`
-	// Maximum size volume can be expanded to in case of evergency, in GiB.
-	MaxSizeGib *string `pulumi:"maxSizeGib"`
-	// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
-	Notes *string `pulumi:"notes"`
-	// Originally requested size, in GiB.
-	OriginallyRequestedSizeGib *string `pulumi:"originallyRequestedSizeGib"`
-	// Immutable. Performance tier of the Volume. Default is SHARED.
-	PerformanceTier *VolumePerformanceTier `pulumi:"performanceTier"`
-	// Immutable. Pod name.
-	Pod *string `pulumi:"pod"`
-	// The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
-	RemainingSpaceGib *string `pulumi:"remainingSpaceGib"`
-	// The requested size of this storage volume, in GiB.
-	RequestedSizeGib *string `pulumi:"requestedSizeGib"`
-	// The behavior to use when snapshot reserved space is full.
-	SnapshotAutoDeleteBehavior *VolumeSnapshotAutoDeleteBehavior `pulumi:"snapshotAutoDeleteBehavior"`
-	// Whether snapshots are enabled.
-	SnapshotEnabled *bool `pulumi:"snapshotEnabled"`
-	// Details about snapshot space reservation and usage on the storage volume.
-	SnapshotReservationDetail *SnapshotReservationDetail `pulumi:"snapshotReservationDetail"`
-	// The name of the snapshot schedule policy in use for this volume, if any.
-	SnapshotSchedulePolicy *string `pulumi:"snapshotSchedulePolicy"`
-	// The state of this storage volume.
-	State *VolumeState `pulumi:"state"`
-	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-	StorageAggregatePool *string `pulumi:"storageAggregatePool"`
-	// The storage type for this volume.
-	StorageType *VolumeStorageType `pulumi:"storageType"`
-	// The workload profile for the volume.
-	WorkloadProfile *VolumeWorkloadProfile `pulumi:"workloadProfile"`
-}
-
-// VolumeInput is an input type that accepts VolumeArgs and VolumeOutput values.
-// You can construct a concrete instance of `VolumeInput` via:
-//
-//	VolumeArgs{...}
-type VolumeInput interface {
-	pulumi.Input
-
-	ToVolumeOutput() VolumeOutput
-	ToVolumeOutputWithContext(context.Context) VolumeOutput
-}
-
-// A storage volume.
-type VolumeArgs struct {
-	// The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
-	AutoGrownSizeGib pulumi.StringPtrInput `pulumi:"autoGrownSizeGib"`
-	// The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
-	CurrentSizeGib pulumi.StringPtrInput `pulumi:"currentSizeGib"`
-	// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
-	EmergencySizeGib pulumi.StringPtrInput `pulumi:"emergencySizeGib"`
-	// An identifier for the `Volume`, generated by the backend.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Labels as key value pairs.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Maximum size volume can be expanded to in case of evergency, in GiB.
-	MaxSizeGib pulumi.StringPtrInput `pulumi:"maxSizeGib"`
-	// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
-	Notes pulumi.StringPtrInput `pulumi:"notes"`
-	// Originally requested size, in GiB.
-	OriginallyRequestedSizeGib pulumi.StringPtrInput `pulumi:"originallyRequestedSizeGib"`
-	// Immutable. Performance tier of the Volume. Default is SHARED.
-	PerformanceTier VolumePerformanceTierPtrInput `pulumi:"performanceTier"`
-	// Immutable. Pod name.
-	Pod pulumi.StringPtrInput `pulumi:"pod"`
-	// The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
-	RemainingSpaceGib pulumi.StringPtrInput `pulumi:"remainingSpaceGib"`
-	// The requested size of this storage volume, in GiB.
-	RequestedSizeGib pulumi.StringPtrInput `pulumi:"requestedSizeGib"`
-	// The behavior to use when snapshot reserved space is full.
-	SnapshotAutoDeleteBehavior VolumeSnapshotAutoDeleteBehaviorPtrInput `pulumi:"snapshotAutoDeleteBehavior"`
-	// Whether snapshots are enabled.
-	SnapshotEnabled pulumi.BoolPtrInput `pulumi:"snapshotEnabled"`
-	// Details about snapshot space reservation and usage on the storage volume.
-	SnapshotReservationDetail SnapshotReservationDetailPtrInput `pulumi:"snapshotReservationDetail"`
-	// The name of the snapshot schedule policy in use for this volume, if any.
-	SnapshotSchedulePolicy pulumi.StringPtrInput `pulumi:"snapshotSchedulePolicy"`
-	// The state of this storage volume.
-	State VolumeStatePtrInput `pulumi:"state"`
-	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-	StorageAggregatePool pulumi.StringPtrInput `pulumi:"storageAggregatePool"`
-	// The storage type for this volume.
-	StorageType VolumeStorageTypePtrInput `pulumi:"storageType"`
-	// The workload profile for the volume.
-	WorkloadProfile VolumeWorkloadProfilePtrInput `pulumi:"workloadProfile"`
-}
-
-func (VolumeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Volume)(nil)).Elem()
-}
-
-func (i VolumeArgs) ToVolumeOutput() VolumeOutput {
-	return i.ToVolumeOutputWithContext(context.Background())
-}
-
-func (i VolumeArgs) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeOutput)
-}
-
-func (i VolumeArgs) ToOutput(ctx context.Context) pulumix.Output[Volume] {
-	return pulumix.Output[Volume]{
-		OutputState: i.ToVolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
-// VolumeArrayInput is an input type that accepts VolumeArray and VolumeArrayOutput values.
-// You can construct a concrete instance of `VolumeArrayInput` via:
-//
-//	VolumeArray{ VolumeArgs{...} }
-type VolumeArrayInput interface {
-	pulumi.Input
-
-	ToVolumeArrayOutput() VolumeArrayOutput
-	ToVolumeArrayOutputWithContext(context.Context) VolumeArrayOutput
-}
-
-type VolumeArray []VolumeInput
-
-func (VolumeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Volume)(nil)).Elem()
-}
-
-func (i VolumeArray) ToVolumeArrayOutput() VolumeArrayOutput {
-	return i.ToVolumeArrayOutputWithContext(context.Background())
-}
-
-func (i VolumeArray) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeArrayOutput)
-}
-
-func (i VolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]Volume] {
-	return pulumix.Output[[]Volume]{
-		OutputState: i.ToVolumeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-// A storage volume.
-type VolumeOutput struct{ *pulumi.OutputState }
-
-func (VolumeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Volume)(nil)).Elem()
-}
-
-func (o VolumeOutput) ToVolumeOutput() VolumeOutput {
-	return o
-}
-
-func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput {
-	return o
-}
-
-func (o VolumeOutput) ToOutput(ctx context.Context) pulumix.Output[Volume] {
-	return pulumix.Output[Volume]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
-func (o VolumeOutput) AutoGrownSizeGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.AutoGrownSizeGib }).(pulumi.StringPtrOutput)
-}
-
-// The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
-func (o VolumeOutput) CurrentSizeGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.CurrentSizeGib }).(pulumi.StringPtrOutput)
-}
-
-// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
-func (o VolumeOutput) EmergencySizeGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.EmergencySizeGib }).(pulumi.StringPtrOutput)
-}
-
-// An identifier for the `Volume`, generated by the backend.
-func (o VolumeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Labels as key value pairs.
-func (o VolumeOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Volume) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// Maximum size volume can be expanded to in case of evergency, in GiB.
-func (o VolumeOutput) MaxSizeGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.MaxSizeGib }).(pulumi.StringPtrOutput)
-}
-
-// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
-func (o VolumeOutput) Notes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.Notes }).(pulumi.StringPtrOutput)
-}
-
-// Originally requested size, in GiB.
-func (o VolumeOutput) OriginallyRequestedSizeGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.OriginallyRequestedSizeGib }).(pulumi.StringPtrOutput)
-}
-
-// Immutable. Performance tier of the Volume. Default is SHARED.
-func (o VolumeOutput) PerformanceTier() VolumePerformanceTierPtrOutput {
-	return o.ApplyT(func(v Volume) *VolumePerformanceTier { return v.PerformanceTier }).(VolumePerformanceTierPtrOutput)
-}
-
-// Immutable. Pod name.
-func (o VolumeOutput) Pod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.Pod }).(pulumi.StringPtrOutput)
-}
-
-// The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
-func (o VolumeOutput) RemainingSpaceGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.RemainingSpaceGib }).(pulumi.StringPtrOutput)
-}
-
-// The requested size of this storage volume, in GiB.
-func (o VolumeOutput) RequestedSizeGib() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.RequestedSizeGib }).(pulumi.StringPtrOutput)
-}
-
-// The behavior to use when snapshot reserved space is full.
-func (o VolumeOutput) SnapshotAutoDeleteBehavior() VolumeSnapshotAutoDeleteBehaviorPtrOutput {
-	return o.ApplyT(func(v Volume) *VolumeSnapshotAutoDeleteBehavior { return v.SnapshotAutoDeleteBehavior }).(VolumeSnapshotAutoDeleteBehaviorPtrOutput)
-}
-
-// Whether snapshots are enabled.
-func (o VolumeOutput) SnapshotEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Volume) *bool { return v.SnapshotEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Details about snapshot space reservation and usage on the storage volume.
-func (o VolumeOutput) SnapshotReservationDetail() SnapshotReservationDetailPtrOutput {
-	return o.ApplyT(func(v Volume) *SnapshotReservationDetail { return v.SnapshotReservationDetail }).(SnapshotReservationDetailPtrOutput)
-}
-
-// The name of the snapshot schedule policy in use for this volume, if any.
-func (o VolumeOutput) SnapshotSchedulePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.SnapshotSchedulePolicy }).(pulumi.StringPtrOutput)
-}
-
-// The state of this storage volume.
-func (o VolumeOutput) State() VolumeStatePtrOutput {
-	return o.ApplyT(func(v Volume) *VolumeState { return v.State }).(VolumeStatePtrOutput)
-}
-
-// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-func (o VolumeOutput) StorageAggregatePool() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.StorageAggregatePool }).(pulumi.StringPtrOutput)
-}
-
-// The storage type for this volume.
-func (o VolumeOutput) StorageType() VolumeStorageTypePtrOutput {
-	return o.ApplyT(func(v Volume) *VolumeStorageType { return v.StorageType }).(VolumeStorageTypePtrOutput)
-}
-
-// The workload profile for the volume.
-func (o VolumeOutput) WorkloadProfile() VolumeWorkloadProfilePtrOutput {
-	return o.ApplyT(func(v Volume) *VolumeWorkloadProfile { return v.WorkloadProfile }).(VolumeWorkloadProfilePtrOutput)
-}
-
-type VolumeArrayOutput struct{ *pulumi.OutputState }
-
-func (VolumeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Volume)(nil)).Elem()
-}
-
-func (o VolumeArrayOutput) ToVolumeArrayOutput() VolumeArrayOutput {
-	return o
-}
-
-func (o VolumeArrayOutput) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeArrayOutput {
-	return o
-}
-
-func (o VolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Volume] {
-	return pulumix.Output[[]Volume]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o VolumeArrayOutput) Index(i pulumi.IntInput) VolumeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Volume {
-		return vs[0].([]Volume)[vs[1].(int)]
-	}).(VolumeOutput)
-}
-
 // Configuration parameters for a new volume.
 type VolumeConfig struct {
 	// The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
@@ -3733,8 +2387,6 @@ type VolumeConfig struct {
 	SizeGb *int `pulumi:"sizeGb"`
 	// Whether snapshots should be enabled.
 	SnapshotsEnabled *bool `pulumi:"snapshotsEnabled"`
-	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-	StorageAggregatePool *string `pulumi:"storageAggregatePool"`
 	// The type of this Volume.
 	Type *VolumeConfigType `pulumi:"type"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -3772,8 +2424,6 @@ type VolumeConfigArgs struct {
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
 	// Whether snapshots should be enabled.
 	SnapshotsEnabled pulumi.BoolPtrInput `pulumi:"snapshotsEnabled"`
-	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-	StorageAggregatePool pulumi.StringPtrInput `pulumi:"storageAggregatePool"`
 	// The type of this Volume.
 	Type VolumeConfigTypePtrInput `pulumi:"type"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -3895,11 +2545,6 @@ func (o VolumeConfigOutput) SnapshotsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeConfig) *bool { return v.SnapshotsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-func (o VolumeConfigOutput) StorageAggregatePool() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeConfig) *string { return v.StorageAggregatePool }).(pulumi.StringPtrOutput)
-}
-
 // The type of this Volume.
 func (o VolumeConfigOutput) Type() VolumeConfigTypePtrOutput {
 	return o.ApplyT(func(v VolumeConfig) *VolumeConfigType { return v.Type }).(VolumeConfigTypePtrOutput)
@@ -3956,8 +2601,6 @@ type VolumeConfigResponse struct {
 	SizeGb int `pulumi:"sizeGb"`
 	// Whether snapshots should be enabled.
 	SnapshotsEnabled bool `pulumi:"snapshotsEnabled"`
-	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-	StorageAggregatePool string `pulumi:"storageAggregatePool"`
 	// The type of this Volume.
 	Type string `pulumi:"type"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -4030,11 +2673,6 @@ func (o VolumeConfigResponseOutput) SnapshotsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VolumeConfigResponse) bool { return v.SnapshotsEnabled }).(pulumi.BoolOutput)
 }
 
-// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-func (o VolumeConfigResponseOutput) StorageAggregatePool() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeConfigResponse) string { return v.StorageAggregatePool }).(pulumi.StringOutput)
-}
-
 // The type of this Volume.
 func (o VolumeConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeConfigResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -4071,232 +2709,6 @@ func (o VolumeConfigResponseArrayOutput) Index(i pulumi.IntInput) VolumeConfigRe
 	}).(VolumeConfigResponseOutput)
 }
 
-// A storage volume.
-type VolumeResponse struct {
-	// Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well.
-	Attached bool `pulumi:"attached"`
-	// The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
-	AutoGrownSizeGib string `pulumi:"autoGrownSizeGib"`
-	// Whether this volume is a boot volume. A boot volume is one which contains a boot LUN.
-	BootVolume bool `pulumi:"bootVolume"`
-	// The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
-	CurrentSizeGib string `pulumi:"currentSizeGib"`
-	// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
-	EmergencySizeGib string `pulumi:"emergencySizeGib"`
-	// Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state.
-	ExpireTime string `pulumi:"expireTime"`
-	// Instances this Volume is attached to. This field is set only in Get requests.
-	Instances []string `pulumi:"instances"`
-	// Labels as key value pairs.
-	Labels map[string]string `pulumi:"labels"`
-	// Maximum size volume can be expanded to in case of evergency, in GiB.
-	MaxSizeGib string `pulumi:"maxSizeGib"`
-	// The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}`
-	Name string `pulumi:"name"`
-	// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
-	Notes string `pulumi:"notes"`
-	// Originally requested size, in GiB.
-	OriginallyRequestedSizeGib string `pulumi:"originallyRequestedSizeGib"`
-	// Immutable. Performance tier of the Volume. Default is SHARED.
-	PerformanceTier string `pulumi:"performanceTier"`
-	// Immutable. Pod name.
-	Pod string `pulumi:"pod"`
-	// Storage protocol for the Volume.
-	Protocol string `pulumi:"protocol"`
-	// The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
-	RemainingSpaceGib string `pulumi:"remainingSpaceGib"`
-	// The requested size of this storage volume, in GiB.
-	RequestedSizeGib string `pulumi:"requestedSizeGib"`
-	// The behavior to use when snapshot reserved space is full.
-	SnapshotAutoDeleteBehavior string `pulumi:"snapshotAutoDeleteBehavior"`
-	// Whether snapshots are enabled.
-	SnapshotEnabled bool `pulumi:"snapshotEnabled"`
-	// Details about snapshot space reservation and usage on the storage volume.
-	SnapshotReservationDetail SnapshotReservationDetailResponse `pulumi:"snapshotReservationDetail"`
-	// The name of the snapshot schedule policy in use for this volume, if any.
-	SnapshotSchedulePolicy string `pulumi:"snapshotSchedulePolicy"`
-	// The state of this storage volume.
-	State string `pulumi:"state"`
-	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-	StorageAggregatePool string `pulumi:"storageAggregatePool"`
-	// The storage type for this volume.
-	StorageType string `pulumi:"storageType"`
-	// The workload profile for the volume.
-	WorkloadProfile string `pulumi:"workloadProfile"`
-}
-
-// A storage volume.
-type VolumeResponseOutput struct{ *pulumi.OutputState }
-
-func (VolumeResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeResponse)(nil)).Elem()
-}
-
-func (o VolumeResponseOutput) ToVolumeResponseOutput() VolumeResponseOutput {
-	return o
-}
-
-func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
-	return o
-}
-
-func (o VolumeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeResponse] {
-	return pulumix.Output[VolumeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well.
-func (o VolumeResponseOutput) Attached() pulumi.BoolOutput {
-	return o.ApplyT(func(v VolumeResponse) bool { return v.Attached }).(pulumi.BoolOutput)
-}
-
-// The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
-func (o VolumeResponseOutput) AutoGrownSizeGib() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.AutoGrownSizeGib }).(pulumi.StringOutput)
-}
-
-// Whether this volume is a boot volume. A boot volume is one which contains a boot LUN.
-func (o VolumeResponseOutput) BootVolume() pulumi.BoolOutput {
-	return o.ApplyT(func(v VolumeResponse) bool { return v.BootVolume }).(pulumi.BoolOutput)
-}
-
-// The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
-func (o VolumeResponseOutput) CurrentSizeGib() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.CurrentSizeGib }).(pulumi.StringOutput)
-}
-
-// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
-func (o VolumeResponseOutput) EmergencySizeGib() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.EmergencySizeGib }).(pulumi.StringOutput)
-}
-
-// Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state.
-func (o VolumeResponseOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
-}
-
-// Instances this Volume is attached to. This field is set only in Get requests.
-func (o VolumeResponseOutput) Instances() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VolumeResponse) []string { return v.Instances }).(pulumi.StringArrayOutput)
-}
-
-// Labels as key value pairs.
-func (o VolumeResponseOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v VolumeResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// Maximum size volume can be expanded to in case of evergency, in GiB.
-func (o VolumeResponseOutput) MaxSizeGib() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.MaxSizeGib }).(pulumi.StringOutput)
-}
-
-// The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}`
-func (o VolumeResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
-func (o VolumeResponseOutput) Notes() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.Notes }).(pulumi.StringOutput)
-}
-
-// Originally requested size, in GiB.
-func (o VolumeResponseOutput) OriginallyRequestedSizeGib() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.OriginallyRequestedSizeGib }).(pulumi.StringOutput)
-}
-
-// Immutable. Performance tier of the Volume. Default is SHARED.
-func (o VolumeResponseOutput) PerformanceTier() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.PerformanceTier }).(pulumi.StringOutput)
-}
-
-// Immutable. Pod name.
-func (o VolumeResponseOutput) Pod() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.Pod }).(pulumi.StringOutput)
-}
-
-// Storage protocol for the Volume.
-func (o VolumeResponseOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.Protocol }).(pulumi.StringOutput)
-}
-
-// The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
-func (o VolumeResponseOutput) RemainingSpaceGib() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.RemainingSpaceGib }).(pulumi.StringOutput)
-}
-
-// The requested size of this storage volume, in GiB.
-func (o VolumeResponseOutput) RequestedSizeGib() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.RequestedSizeGib }).(pulumi.StringOutput)
-}
-
-// The behavior to use when snapshot reserved space is full.
-func (o VolumeResponseOutput) SnapshotAutoDeleteBehavior() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.SnapshotAutoDeleteBehavior }).(pulumi.StringOutput)
-}
-
-// Whether snapshots are enabled.
-func (o VolumeResponseOutput) SnapshotEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v VolumeResponse) bool { return v.SnapshotEnabled }).(pulumi.BoolOutput)
-}
-
-// Details about snapshot space reservation and usage on the storage volume.
-func (o VolumeResponseOutput) SnapshotReservationDetail() SnapshotReservationDetailResponseOutput {
-	return o.ApplyT(func(v VolumeResponse) SnapshotReservationDetailResponse { return v.SnapshotReservationDetail }).(SnapshotReservationDetailResponseOutput)
-}
-
-// The name of the snapshot schedule policy in use for this volume, if any.
-func (o VolumeResponseOutput) SnapshotSchedulePolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.SnapshotSchedulePolicy }).(pulumi.StringOutput)
-}
-
-// The state of this storage volume.
-func (o VolumeResponseOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-func (o VolumeResponseOutput) StorageAggregatePool() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.StorageAggregatePool }).(pulumi.StringOutput)
-}
-
-// The storage type for this volume.
-func (o VolumeResponseOutput) StorageType() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.StorageType }).(pulumi.StringOutput)
-}
-
-// The workload profile for the volume.
-func (o VolumeResponseOutput) WorkloadProfile() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.WorkloadProfile }).(pulumi.StringOutput)
-}
-
-type VolumeResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VolumeResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeResponse)(nil)).Elem()
-}
-
-func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutput() VolumeResponseArrayOutput {
-	return o
-}
-
-func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
-	return o
-}
-
-func (o VolumeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeResponse] {
-	return pulumix.Output[[]VolumeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeResponse {
-		return vs[0].([]VolumeResponse)[vs[1].(int)]
-	}).(VolumeResponseOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedClientInput)(nil)).Elem(), AllowedClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedClientArrayInput)(nil)).Elem(), AllowedClientArray{})
@@ -4308,8 +2720,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntakeVlanAttachmentArrayInput)(nil)).Elem(), IntakeVlanAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceInput)(nil)).Elem(), LogicalNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceArrayInput)(nil)).Elem(), LogicalNetworkInterfaceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LunInput)(nil)).Elem(), LunArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LunArrayInput)(nil)).Elem(), LunArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LunRangeInput)(nil)).Elem(), LunRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LunRangeArrayInput)(nil)).Elem(), LunRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAddressInput)(nil)).Elem(), NetworkAddressArgs{})
@@ -4318,10 +2728,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigArrayInput)(nil)).Elem(), NetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportInput)(nil)).Elem(), NfsExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportArrayInput)(nil)).Elem(), NfsExportArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotReservationDetailInput)(nil)).Elem(), SnapshotReservationDetailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotReservationDetailPtrInput)(nil)).Elem(), SnapshotReservationDetailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VolumeInput)(nil)).Elem(), VolumeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VolumeArrayInput)(nil)).Elem(), VolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigInput)(nil)).Elem(), VolumeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigArrayInput)(nil)).Elem(), VolumeConfigArray{})
 	pulumi.RegisterOutputType(AllowedClientOutput{})
@@ -4344,44 +2750,23 @@ func init() {
 	pulumi.RegisterOutputType(LogicalNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkInterfaceResponseArrayOutput{})
-	pulumi.RegisterOutputType(LunOutput{})
-	pulumi.RegisterOutputType(LunArrayOutput{})
 	pulumi.RegisterOutputType(LunRangeOutput{})
 	pulumi.RegisterOutputType(LunRangeArrayOutput{})
 	pulumi.RegisterOutputType(LunRangeResponseOutput{})
 	pulumi.RegisterOutputType(LunRangeResponseArrayOutput{})
-	pulumi.RegisterOutputType(LunResponseOutput{})
-	pulumi.RegisterOutputType(LunResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAddressOutput{})
 	pulumi.RegisterOutputType(NetworkAddressPtrOutput{})
-	pulumi.RegisterOutputType(NetworkAddressReservationResponseOutput{})
-	pulumi.RegisterOutputType(NetworkAddressReservationResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAddressResponseOutput{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(NetworkMountPointResponseOutput{})
-	pulumi.RegisterOutputType(NetworkMountPointResponseArrayOutput{})
-	pulumi.RegisterOutputType(NetworkResponseOutput{})
-	pulumi.RegisterOutputType(NetworkResponseArrayOutput{})
 	pulumi.RegisterOutputType(NfsExportOutput{})
 	pulumi.RegisterOutputType(NfsExportArrayOutput{})
 	pulumi.RegisterOutputType(NfsExportResponseOutput{})
 	pulumi.RegisterOutputType(NfsExportResponseArrayOutput{})
-	pulumi.RegisterOutputType(QosPolicyResponseOutput{})
-	pulumi.RegisterOutputType(SnapshotReservationDetailOutput{})
-	pulumi.RegisterOutputType(SnapshotReservationDetailPtrOutput{})
-	pulumi.RegisterOutputType(SnapshotReservationDetailResponseOutput{})
-	pulumi.RegisterOutputType(VRFResponseOutput{})
-	pulumi.RegisterOutputType(VlanAttachmentResponseOutput{})
-	pulumi.RegisterOutputType(VlanAttachmentResponseArrayOutput{})
-	pulumi.RegisterOutputType(VolumeOutput{})
-	pulumi.RegisterOutputType(VolumeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeConfigOutput{})
 	pulumi.RegisterOutputType(VolumeConfigArrayOutput{})
 	pulumi.RegisterOutputType(VolumeConfigResponseOutput{})
 	pulumi.RegisterOutputType(VolumeConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(VolumeResponseOutput{})
-	pulumi.RegisterOutputType(VolumeResponseArrayOutput{})
 }

@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.StandardSqlDataTypeArgs>? DataType { get; set; }
 
         /// <summary>
+        /// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+        /// </summary>
+        [Input("isAggregate")]
+        public Input<bool>? IsAggregate { get; set; }
+
+        /// <summary>
         /// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
         /// </summary>
         [Input("mode")]

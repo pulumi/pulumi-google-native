@@ -144,6 +144,47 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     }
 
     /// <summary>
+    /// Optional. Kernel
+    /// </summary>
+    [EnumType]
+    public readonly struct JupyterConfigKernel : IEquatable<JupyterConfigKernel>
+    {
+        private readonly string _value;
+
+        private JupyterConfigKernel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The kernel is unknown.
+        /// </summary>
+        public static JupyterConfigKernel KernelUnspecified { get; } = new JupyterConfigKernel("KERNEL_UNSPECIFIED");
+        /// <summary>
+        /// Python kernel.
+        /// </summary>
+        public static JupyterConfigKernel Python { get; } = new JupyterConfigKernel("PYTHON");
+        /// <summary>
+        /// Scala kernel.
+        /// </summary>
+        public static JupyterConfigKernel Scala { get; } = new JupyterConfigKernel("SCALA");
+
+        public static bool operator ==(JupyterConfigKernel left, JupyterConfigKernel right) => left.Equals(right);
+        public static bool operator !=(JupyterConfigKernel left, JupyterConfigKernel right) => !left.Equals(right);
+
+        public static explicit operator string(JupyterConfigKernel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JupyterConfigKernel other && Equals(other);
+        public bool Equals(JupyterConfigKernel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. A standard set of metrics is collected unless metricOverrides are specified for the metric source (see Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) for more information).
     /// </summary>
     [EnumType]
@@ -188,6 +229,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// hivemetastore metric source
         /// </summary>
         public static MetricMetricSource Hivemetastore { get; } = new MetricMetricSource("HIVEMETASTORE");
+        /// <summary>
+        /// flink metric source
+        /// </summary>
+        public static MetricMetricSource Flink { get; } = new MetricMetricSource("FLINK");
 
         public static bool operator ==(MetricMetricSource left, MetricMetricSource right) => left.Equals(right);
         public static bool operator !=(MetricMetricSource left, MetricMetricSource right) => !left.Equals(right);

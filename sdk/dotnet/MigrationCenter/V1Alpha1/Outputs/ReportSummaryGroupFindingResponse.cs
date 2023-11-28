@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Count of the number of assets in this group which are also included in another group within the same report.
+        /// This field is deprecated, do not rely on it having a value.
         /// </summary>
         public readonly string OverlappingAssetCount;
         /// <summary>

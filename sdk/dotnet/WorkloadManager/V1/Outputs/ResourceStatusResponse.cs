@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1.Outputs
     public sealed class ResourceStatusResponse
     {
         /// <summary>
-        /// the new version of rule id if exists
+        /// Historical: Used before 2023-05-22 the new version of rule id if exists
         /// </summary>
         public readonly ImmutableArray<string> RulesNewerVersions;
         /// <summary>

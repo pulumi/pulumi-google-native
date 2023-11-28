@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicyGroupPlacementPolicyScope>? Scope { get; set; }
 
         /// <summary>
+        /// Specifies the number of slices in a multislice workload.
+        /// </summary>
+        [Input("sliceCount")]
+        public Input<int>? SliceCount { get; set; }
+
+        /// <summary>
         /// Specifies instances to hosts placement relationship
         /// </summary>
         [Input("style")]

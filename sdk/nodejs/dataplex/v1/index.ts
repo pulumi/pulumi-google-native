@@ -235,6 +235,11 @@ export const getEnvironment: typeof import("./getEnvironment").getEnvironment = 
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
 utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
+export { GetGovernanceRuleIamPolicyArgs, GetGovernanceRuleIamPolicyResult, GetGovernanceRuleIamPolicyOutputArgs } from "./getGovernanceRuleIamPolicy";
+export const getGovernanceRuleIamPolicy: typeof import("./getGovernanceRuleIamPolicy").getGovernanceRuleIamPolicy = null as any;
+export const getGovernanceRuleIamPolicyOutput: typeof import("./getGovernanceRuleIamPolicy").getGovernanceRuleIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getGovernanceRuleIamPolicy","getGovernanceRuleIamPolicyOutput"], () => require("./getGovernanceRuleIamPolicy"));
+
 export { GetLakeArgs, GetLakeResult, GetLakeOutputArgs } from "./getLake";
 export const getLake: typeof import("./getLake").getLake = null as any;
 export const getLakeOutput: typeof import("./getLake").getLakeOutput = null as any;
@@ -289,6 +294,21 @@ export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
 export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getZone","getZoneOutput"], () => require("./getZone"));
+
+export { GovernanceRuleIamBindingArgs } from "./governanceRuleIamBinding";
+export type GovernanceRuleIamBinding = import("./governanceRuleIamBinding").GovernanceRuleIamBinding;
+export const GovernanceRuleIamBinding: typeof import("./governanceRuleIamBinding").GovernanceRuleIamBinding = null as any;
+utilities.lazyLoad(exports, ["GovernanceRuleIamBinding"], () => require("./governanceRuleIamBinding"));
+
+export { GovernanceRuleIamMemberArgs } from "./governanceRuleIamMember";
+export type GovernanceRuleIamMember = import("./governanceRuleIamMember").GovernanceRuleIamMember;
+export const GovernanceRuleIamMember: typeof import("./governanceRuleIamMember").GovernanceRuleIamMember = null as any;
+utilities.lazyLoad(exports, ["GovernanceRuleIamMember"], () => require("./governanceRuleIamMember"));
+
+export { GovernanceRuleIamPolicyArgs } from "./governanceRuleIamPolicy";
+export type GovernanceRuleIamPolicy = import("./governanceRuleIamPolicy").GovernanceRuleIamPolicy;
+export const GovernanceRuleIamPolicy: typeof import("./governanceRuleIamPolicy").GovernanceRuleIamPolicy = null as any;
+utilities.lazyLoad(exports, ["GovernanceRuleIamPolicy"], () => require("./governanceRuleIamPolicy"));
 
 export { LakeArgs } from "./lake";
 export type Lake = import("./lake").Lake;
@@ -483,6 +503,12 @@ const _module = {
                 return new EntryTypeIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:GovernanceRuleIamBinding":
+                return new GovernanceRuleIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:GovernanceRuleIamMember":
+                return new GovernanceRuleIamMember(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:GovernanceRuleIamPolicy":
+                return new GovernanceRuleIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Lake":
                 return new Lake(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeAssetIamBinding":

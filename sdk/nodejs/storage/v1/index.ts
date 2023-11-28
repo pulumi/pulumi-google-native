@@ -70,6 +70,16 @@ export const getHmacKey: typeof import("./getHmacKey").getHmacKey = null as any;
 export const getHmacKeyOutput: typeof import("./getHmacKey").getHmacKeyOutput = null as any;
 utilities.lazyLoad(exports, ["getHmacKey","getHmacKeyOutput"], () => require("./getHmacKey"));
 
+export { GetManagedFolderArgs, GetManagedFolderResult, GetManagedFolderOutputArgs } from "./getManagedFolder";
+export const getManagedFolder: typeof import("./getManagedFolder").getManagedFolder = null as any;
+export const getManagedFolderOutput: typeof import("./getManagedFolder").getManagedFolderOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedFolder","getManagedFolderOutput"], () => require("./getManagedFolder"));
+
+export { GetManagedFolderIamPolicyArgs, GetManagedFolderIamPolicyResult, GetManagedFolderIamPolicyOutputArgs } from "./getManagedFolderIamPolicy";
+export const getManagedFolderIamPolicy: typeof import("./getManagedFolderIamPolicy").getManagedFolderIamPolicy = null as any;
+export const getManagedFolderIamPolicyOutput: typeof import("./getManagedFolderIamPolicy").getManagedFolderIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedFolderIamPolicy","getManagedFolderIamPolicyOutput"], () => require("./getManagedFolderIamPolicy"));
+
 export { GetNotificationArgs, GetNotificationResult, GetNotificationOutputArgs } from "./getNotification";
 export const getNotification: typeof import("./getNotification").getNotification = null as any;
 export const getNotificationOutput: typeof import("./getNotification").getNotificationOutput = null as any;
@@ -89,6 +99,26 @@ export { HmacKeyArgs } from "./hmacKey";
 export type HmacKey = import("./hmacKey").HmacKey;
 export const HmacKey: typeof import("./hmacKey").HmacKey = null as any;
 utilities.lazyLoad(exports, ["HmacKey"], () => require("./hmacKey"));
+
+export { ManagedFolderArgs } from "./managedFolder";
+export type ManagedFolder = import("./managedFolder").ManagedFolder;
+export const ManagedFolder: typeof import("./managedFolder").ManagedFolder = null as any;
+utilities.lazyLoad(exports, ["ManagedFolder"], () => require("./managedFolder"));
+
+export { ManagedFolderIamBindingArgs } from "./managedFolderIamBinding";
+export type ManagedFolderIamBinding = import("./managedFolderIamBinding").ManagedFolderIamBinding;
+export const ManagedFolderIamBinding: typeof import("./managedFolderIamBinding").ManagedFolderIamBinding = null as any;
+utilities.lazyLoad(exports, ["ManagedFolderIamBinding"], () => require("./managedFolderIamBinding"));
+
+export { ManagedFolderIamMemberArgs } from "./managedFolderIamMember";
+export type ManagedFolderIamMember = import("./managedFolderIamMember").ManagedFolderIamMember;
+export const ManagedFolderIamMember: typeof import("./managedFolderIamMember").ManagedFolderIamMember = null as any;
+utilities.lazyLoad(exports, ["ManagedFolderIamMember"], () => require("./managedFolderIamMember"));
+
+export { ManagedFolderIamPolicyArgs } from "./managedFolderIamPolicy";
+export type ManagedFolderIamPolicy = import("./managedFolderIamPolicy").ManagedFolderIamPolicy;
+export const ManagedFolderIamPolicy: typeof import("./managedFolderIamPolicy").ManagedFolderIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ManagedFolderIamPolicy"], () => require("./managedFolderIamPolicy"));
 
 export { NotificationArgs } from "./notification";
 export type Notification = import("./notification").Notification;
@@ -136,6 +166,14 @@ const _module = {
                 return new DefaultObjectAccessControl(name, <any>undefined, { urn })
             case "google-native:storage/v1:HmacKey":
                 return new HmacKey(name, <any>undefined, { urn })
+            case "google-native:storage/v1:ManagedFolder":
+                return new ManagedFolder(name, <any>undefined, { urn })
+            case "google-native:storage/v1:ManagedFolderIamBinding":
+                return new ManagedFolderIamBinding(name, <any>undefined, { urn })
+            case "google-native:storage/v1:ManagedFolderIamMember":
+                return new ManagedFolderIamMember(name, <any>undefined, { urn })
+            case "google-native:storage/v1:ManagedFolderIamPolicy":
+                return new ManagedFolderIamPolicy(name, <any>undefined, { urn })
             case "google-native:storage/v1:Notification":
                 return new Notification(name, <any>undefined, { urn })
             case "google-native:storage/v1:ObjectAccessControl":

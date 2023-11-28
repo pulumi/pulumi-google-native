@@ -21,8 +21,20 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         [Output("collectionId")]
         public Output<string> CollectionId { get; private set; } = null!;
 
+        /// <summary>
+        /// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+        /// </summary>
+        [Output("content")]
+        public Output<Outputs.GoogleCloudDiscoveryengineV1betaDocumentContentResponse> Content { get; private set; } = null!;
+
         [Output("dataStoreId")]
         public Output<string> DataStoreId { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
+        /// </summary>
+        [Output("derivedStructData")]
+        public Output<ImmutableDictionary<string, string>> DerivedStructData { get; private set; } = null!;
 
         /// <summary>
         /// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
@@ -31,7 +43,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         public Output<string> DocumentId { get; private set; } = null!;
 
         /// <summary>
-        /// The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         [Output("jsonData")]
         public Output<string> JsonData { get; private set; } = null!;
@@ -61,7 +73,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         public Output<string> SchemaId { get; private set; } = null!;
 
         /// <summary>
-        /// The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        /// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         [Output("structData")]
         public Output<ImmutableDictionary<string, string>> StructData { get; private set; } = null!;
@@ -126,6 +138,12 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         [Input("collectionId", required: true)]
         public Input<string> CollectionId { get; set; } = null!;
 
+        /// <summary>
+        /// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+        /// </summary>
+        [Input("content")]
+        public Input<Inputs.GoogleCloudDiscoveryengineV1betaDocumentContentArgs>? Content { get; set; }
+
         [Input("dataStoreId", required: true)]
         public Input<string> DataStoreId { get; set; } = null!;
 
@@ -142,7 +160,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         [Input("jsonData")]
         public Input<string>? JsonData { get; set; }
@@ -175,7 +193,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         private InputMap<string>? _structData;
 
         /// <summary>
-        /// The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        /// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         public InputMap<string> StructData
         {

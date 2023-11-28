@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkflowInvocationResult:
-    def __init__(__self__, compilation_result=None, invocation_config=None, invocation_timing=None, name=None, state=None, workflow_config=None):
+    def __init__(__self__, compilation_result=None, invocation_config=None, invocation_timing=None, name=None, resolved_compilation_result=None, state=None, workflow_config=None):
         if compilation_result and not isinstance(compilation_result, str):
             raise TypeError("Expected argument 'compilation_result' to be a str")
         pulumi.set(__self__, "compilation_result", compilation_result)
@@ -32,6 +32,9 @@ class GetWorkflowInvocationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if resolved_compilation_result and not isinstance(resolved_compilation_result, str):
+            raise TypeError("Expected argument 'resolved_compilation_result' to be a str")
+        pulumi.set(__self__, "resolved_compilation_result", resolved_compilation_result)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -43,7 +46,7 @@ class GetWorkflowInvocationResult:
     @pulumi.getter(name="compilationResult")
     def compilation_result(self) -> str:
         """
-        Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         """
         return pulumi.get(self, "compilation_result")
 
@@ -72,6 +75,14 @@ class GetWorkflowInvocationResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="resolvedCompilationResult")
+    def resolved_compilation_result(self) -> str:
+        """
+        The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        """
+        return pulumi.get(self, "resolved_compilation_result")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -98,6 +109,7 @@ class AwaitableGetWorkflowInvocationResult(GetWorkflowInvocationResult):
             invocation_config=self.invocation_config,
             invocation_timing=self.invocation_timing,
             name=self.name,
+            resolved_compilation_result=self.resolved_compilation_result,
             state=self.state,
             workflow_config=self.workflow_config)
 
@@ -123,6 +135,7 @@ def get_workflow_invocation(location: Optional[str] = None,
         invocation_config=pulumi.get(__ret__, 'invocation_config'),
         invocation_timing=pulumi.get(__ret__, 'invocation_timing'),
         name=pulumi.get(__ret__, 'name'),
+        resolved_compilation_result=pulumi.get(__ret__, 'resolved_compilation_result'),
         state=pulumi.get(__ret__, 'state'),
         workflow_config=pulumi.get(__ret__, 'workflow_config'))
 

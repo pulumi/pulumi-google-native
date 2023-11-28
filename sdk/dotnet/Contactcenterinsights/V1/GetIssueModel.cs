@@ -80,6 +80,14 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public readonly string IssueCount;
         /// <summary>
+        /// Language of the model.
+        /// </summary>
+        public readonly string LanguageCode;
+        /// <summary>
+        /// Type of the model.
+        /// </summary>
+        public readonly string ModelType;
+        /// <summary>
         /// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
         /// </summary>
         public readonly string Name;
@@ -106,6 +114,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 
             string issueCount,
 
+            string languageCode,
+
+            string modelType,
+
             string name,
 
             string state,
@@ -118,6 +130,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
             DisplayName = displayName;
             InputDataConfig = inputDataConfig;
             IssueCount = issueCount;
+            LanguageCode = languageCode;
+            ModelType = modelType;
             Name = name;
             State = state;
             TrainingStats = trainingStats;

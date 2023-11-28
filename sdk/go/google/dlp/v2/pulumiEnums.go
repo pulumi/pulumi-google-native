@@ -11,6 +11,193 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Required. A status for this configuration.
+type DiscoveryConfigStatus string
+
+const (
+	// Unused
+	DiscoveryConfigStatusStatusUnspecified = DiscoveryConfigStatus("STATUS_UNSPECIFIED")
+	// The discovery config is currently active.
+	DiscoveryConfigStatusRunning = DiscoveryConfigStatus("RUNNING")
+	// The discovery config is paused temporarily.
+	DiscoveryConfigStatusPaused = DiscoveryConfigStatus("PAUSED")
+)
+
+func (DiscoveryConfigStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryConfigStatus)(nil)).Elem()
+}
+
+func (e DiscoveryConfigStatus) ToDiscoveryConfigStatusOutput() DiscoveryConfigStatusOutput {
+	return pulumi.ToOutput(e).(DiscoveryConfigStatusOutput)
+}
+
+func (e DiscoveryConfigStatus) ToDiscoveryConfigStatusOutputWithContext(ctx context.Context) DiscoveryConfigStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiscoveryConfigStatusOutput)
+}
+
+func (e DiscoveryConfigStatus) ToDiscoveryConfigStatusPtrOutput() DiscoveryConfigStatusPtrOutput {
+	return e.ToDiscoveryConfigStatusPtrOutputWithContext(context.Background())
+}
+
+func (e DiscoveryConfigStatus) ToDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) DiscoveryConfigStatusPtrOutput {
+	return DiscoveryConfigStatus(e).ToDiscoveryConfigStatusOutputWithContext(ctx).ToDiscoveryConfigStatusPtrOutputWithContext(ctx)
+}
+
+func (e DiscoveryConfigStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiscoveryConfigStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiscoveryConfigStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DiscoveryConfigStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DiscoveryConfigStatusOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryConfigStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryConfigStatus)(nil)).Elem()
+}
+
+func (o DiscoveryConfigStatusOutput) ToDiscoveryConfigStatusOutput() DiscoveryConfigStatusOutput {
+	return o
+}
+
+func (o DiscoveryConfigStatusOutput) ToDiscoveryConfigStatusOutputWithContext(ctx context.Context) DiscoveryConfigStatusOutput {
+	return o
+}
+
+func (o DiscoveryConfigStatusOutput) ToDiscoveryConfigStatusPtrOutput() DiscoveryConfigStatusPtrOutput {
+	return o.ToDiscoveryConfigStatusPtrOutputWithContext(context.Background())
+}
+
+func (o DiscoveryConfigStatusOutput) ToDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) DiscoveryConfigStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoveryConfigStatus) *DiscoveryConfigStatus {
+		return &v
+	}).(DiscoveryConfigStatusPtrOutput)
+}
+
+func (o DiscoveryConfigStatusOutput) ToOutput(ctx context.Context) pulumix.Output[DiscoveryConfigStatus] {
+	return pulumix.Output[DiscoveryConfigStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DiscoveryConfigStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DiscoveryConfigStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscoveryConfigStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DiscoveryConfigStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiscoveryConfigStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscoveryConfigStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiscoveryConfigStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryConfigStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveryConfigStatus)(nil)).Elem()
+}
+
+func (o DiscoveryConfigStatusPtrOutput) ToDiscoveryConfigStatusPtrOutput() DiscoveryConfigStatusPtrOutput {
+	return o
+}
+
+func (o DiscoveryConfigStatusPtrOutput) ToDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) DiscoveryConfigStatusPtrOutput {
+	return o
+}
+
+func (o DiscoveryConfigStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiscoveryConfigStatus] {
+	return pulumix.Output[*DiscoveryConfigStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DiscoveryConfigStatusPtrOutput) Elem() DiscoveryConfigStatusOutput {
+	return o.ApplyT(func(v *DiscoveryConfigStatus) DiscoveryConfigStatus {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveryConfigStatus
+		return ret
+	}).(DiscoveryConfigStatusOutput)
+}
+
+func (o DiscoveryConfigStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiscoveryConfigStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiscoveryConfigStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DiscoveryConfigStatusInput is an input type that accepts DiscoveryConfigStatusArgs and DiscoveryConfigStatusOutput values.
+// You can construct a concrete instance of `DiscoveryConfigStatusInput` via:
+//
+//	DiscoveryConfigStatusArgs{...}
+type DiscoveryConfigStatusInput interface {
+	pulumi.Input
+
+	ToDiscoveryConfigStatusOutput() DiscoveryConfigStatusOutput
+	ToDiscoveryConfigStatusOutputWithContext(context.Context) DiscoveryConfigStatusOutput
+}
+
+var discoveryConfigStatusPtrType = reflect.TypeOf((**DiscoveryConfigStatus)(nil)).Elem()
+
+type DiscoveryConfigStatusPtrInput interface {
+	pulumi.Input
+
+	ToDiscoveryConfigStatusPtrOutput() DiscoveryConfigStatusPtrOutput
+	ToDiscoveryConfigStatusPtrOutputWithContext(context.Context) DiscoveryConfigStatusPtrOutput
+}
+
+type discoveryConfigStatusPtr string
+
+func DiscoveryConfigStatusPtr(v string) DiscoveryConfigStatusPtrInput {
+	return (*discoveryConfigStatusPtr)(&v)
+}
+
+func (*discoveryConfigStatusPtr) ElementType() reflect.Type {
+	return discoveryConfigStatusPtrType
+}
+
+func (in *discoveryConfigStatusPtr) ToDiscoveryConfigStatusPtrOutput() DiscoveryConfigStatusPtrOutput {
+	return pulumi.ToOutput(in).(DiscoveryConfigStatusPtrOutput)
+}
+
+func (in *discoveryConfigStatusPtr) ToDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) DiscoveryConfigStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiscoveryConfigStatusPtrOutput)
+}
+
+func (in *discoveryConfigStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*DiscoveryConfigStatus] {
+	return pulumix.Output[*DiscoveryConfigStatus]{
+		OutputState: in.ToDiscoveryConfigStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GooglePrivacyDlpV2BigQueryOptionsSampleMethod string
 
 const (
@@ -194,6 +381,249 @@ func (in *googlePrivacyDlpV2BigQueryOptionsSampleMethodPtr) ToOutput(ctx context
 	return pulumix.Output[*GooglePrivacyDlpV2BigQueryOptionsSampleMethod]{
 		OutputState: in.ToGooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutputWithContext(ctx).OutputState,
 	}
+}
+
+type GooglePrivacyDlpV2BigQueryTableTypesTypesItem string
+
+const (
+	// Unused.
+	GooglePrivacyDlpV2BigQueryTableTypesTypesItemBigQueryTableTypeUnspecified = GooglePrivacyDlpV2BigQueryTableTypesTypesItem("BIG_QUERY_TABLE_TYPE_UNSPECIFIED")
+	// A normal BigQuery table.
+	GooglePrivacyDlpV2BigQueryTableTypesTypesItemBigQueryTableTypeTable = GooglePrivacyDlpV2BigQueryTableTypesTypesItem("BIG_QUERY_TABLE_TYPE_TABLE")
+	// A table that references data stored in Cloud Storage.
+	GooglePrivacyDlpV2BigQueryTableTypesTypesItemBigQueryTableTypeExternalBigLake = GooglePrivacyDlpV2BigQueryTableTypesTypesItem("BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE")
+)
+
+func (GooglePrivacyDlpV2BigQueryTableTypesTypesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypesTypesItem)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput)
+}
+
+func (e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput)
+}
+
+func (e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput {
+	return e.ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput {
+	return GooglePrivacyDlpV2BigQueryTableTypesTypesItem(e).ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemOutputWithContext(ctx).ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypesTypesItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput {
+	return o.ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryTableTypesTypesItem) *GooglePrivacyDlpV2BigQueryTableTypesTypesItem {
+		return &v
+	}).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypesTypesItem] {
+	return pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypesTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2BigQueryTableTypesTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryTableTypesTypesItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypesTypesItem] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypesTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) Elem() GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableTypesTypesItem) GooglePrivacyDlpV2BigQueryTableTypesTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryTableTypesTypesItem
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput)
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2BigQueryTableTypesTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2BigQueryTableTypesTypesItemInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableTypesTypesItemArgs and GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTableTypesTypesItemInput` via:
+//
+//	GooglePrivacyDlpV2BigQueryTableTypesTypesItemArgs{...}
+type GooglePrivacyDlpV2BigQueryTableTypesTypesItemInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput
+	ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput
+}
+
+var googlePrivacyDlpV2BigQueryTableTypesTypesItemPtrType = reflect.TypeOf((**GooglePrivacyDlpV2BigQueryTableTypesTypesItem)(nil)).Elem()
+
+type GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput
+	ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput
+}
+
+type googlePrivacyDlpV2BigQueryTableTypesTypesItemPtr string
+
+func GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtr(v string) GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrInput {
+	return (*googlePrivacyDlpV2BigQueryTableTypesTypesItemPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2BigQueryTableTypesTypesItemPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2BigQueryTableTypesTypesItemPtrType
+}
+
+func (in *googlePrivacyDlpV2BigQueryTableTypesTypesItemPtr) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2BigQueryTableTypesTypesItemPtr) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2BigQueryTableTypesTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypesTypesItem] {
+	return pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypesTypesItem]{
+		OutputState: in.ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray and GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayInput` via:
+//
+//	GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray{ GooglePrivacyDlpV2BigQueryTableTypesTypesItemArgs{...} }
+type GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput
+	ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput
+}
+
+type GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray []GooglePrivacyDlpV2BigQueryTableTypesTypesItem
+
+func (GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput {
+	return i.ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput)
+}
+
+func (i GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem] {
+	return pulumix.Output[[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem]{
+		OutputState: i.ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput() GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem] {
+	return pulumix.Output[[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2BigQueryTableTypesTypesItem {
+		return vs[0].([]GooglePrivacyDlpV2BigQueryTableTypesTypesItem)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput)
 }
 
 // Common characters to not transform when masking. Useful to avoid removing punctuation.
@@ -394,15 +824,15 @@ type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem string
 const (
 	// Includes all files.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemFileTypeUnspecified = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("FILE_TYPE_UNSPECIFIED")
-	// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+	// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemBinaryFile = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("BINARY_FILE")
 	// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemTextFile = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("TEXT_FILE")
-	// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+	// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemImage = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("IMAGE")
-	// Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+	// Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemWord = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("WORD")
-	// PDF files >30 MB will be scanned as binary files. Included file extensions: pdf
+	// PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPdf = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("PDF")
 	// Included file extensions: avro
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemAvro = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("AVRO")
@@ -410,9 +840,9 @@ const (
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemCsv = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("CSV")
 	// Included file extensions: tsv
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemTsv = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("TSV")
-	// Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+	// Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPowerpoint = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("POWERPOINT")
-	// Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+	// Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemExcel = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("EXCEL")
 )
 
@@ -1604,15 +2034,15 @@ type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem string
 const (
 	// Includes all files.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemFileTypeUnspecified = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("FILE_TYPE_UNSPECIFIED")
-	// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+	// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemBinaryFile = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("BINARY_FILE")
 	// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemTextFile = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TEXT_FILE")
-	// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+	// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemImage = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("IMAGE")
-	// Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+	// Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemWord = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("WORD")
-	// PDF files >30 MB will be scanned as binary files. Included file extensions: pdf
+	// PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPdf = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("PDF")
 	// Included file extensions: avro
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemAvro = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("AVRO")
@@ -1620,9 +2050,9 @@ const (
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemCsv = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("CSV")
 	// Included file extensions: tsv
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemTsv = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TSV")
-	// Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+	// Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPowerpoint = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("POWERPOINT")
-	// Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+	// Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemExcel = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("EXCEL")
 )
 
@@ -1856,6 +2286,1055 @@ func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem {
 		return vs[0].([]GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)[vs[1].(int)]
 	}).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput)
+}
+
+// Restrict discovery to categories of table types.
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection string
+
+const (
+	// Unused.
+	GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionBigQueryCollectionUnspecified = GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection("BIG_QUERY_COLLECTION_UNSPECIFIED")
+	// Automatically generate profiles for all tables, even if the table type is not yet fully supported for analysis. Profiles for unsupported tables will be generated with errors to indicate their partial support. When full support is added, the tables will automatically be profiled during the next scheduled run.
+	GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionBigQueryCollectionAllTypes = GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection("BIG_QUERY_COLLECTION_ALL_TYPES")
+	// Only those types fully supported will be profiled. Will expand automatically as Cloud DLP adds support for new table types. Unsupported table types will not have partial profiles generated.
+	GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionBigQueryCollectionOnlySupportedTypes = GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection("BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES")
+)
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return e.ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection(e).ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutputWithContext(ctx).ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) *GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) Elem() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection
+		return ret
+	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionInput is an input type that accepts GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionArgs and GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionArgs{...}
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput
+	ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput
+}
+
+var googlePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrType = reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection)(nil)).Elem()
+
+type GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput
+	ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput
+}
+
+type googlePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtr string
+
+func GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtr(v string) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrInput {
+	return (*googlePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrType
+}
+
+func (in *googlePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtr) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtr) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection]{
+		OutputState: in.ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency string
+
+const (
+	// Unspecified.
+	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyUpdateFrequencyUnspecified = GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_UNSPECIFIED")
+	// After the data profile is created, it will never be updated.
+	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyUpdateFrequencyNever = GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_NEVER")
+	// The data profile can be updated up to once every 24 hours.
+	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyUpdateFrequencyDaily = GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_DAILY")
+	// The data profile can be updated up to once every 30 days. Default.
+	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyUpdateFrequencyMonthly = GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_MONTHLY")
+)
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return e.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency(e).ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutputWithContext(ctx).ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) Elem() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency
+		return ret
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyInput is an input type that accepts GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyArgs and GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyInput` via:
+//
+//	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyArgs{...}
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput
+}
+
+var googlePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrType = reflect.TypeOf((**GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency)(nil)).Elem()
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput
+}
+
+type googlePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtr string
+
+func GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtr(v string) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrInput {
+	return (*googlePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrType
+}
+
+func (in *googlePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtr) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtr) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency]{
+		OutputState: in.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem string
+
+const (
+	// Unused
+	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemSchemaModificationUnspecified = GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem("SCHEMA_MODIFICATION_UNSPECIFIED")
+	// Profiles should be regenerated when new columns are added to the table. Default.
+	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemSchemaNewColumns = GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem("SCHEMA_NEW_COLUMNS")
+	// Profiles should be regenerated when columns are removed from the table.
+	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemSchemaRemovedColumns = GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem("SCHEMA_REMOVED_COLUMNS")
+)
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput {
+	return e.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput {
+	return GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem(e).ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutputWithContext(ctx).ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) Elem() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem
+		return ret
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemInput is an input type that accepts GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArgs and GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemInput` via:
+//
+//	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArgs{...}
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput
+}
+
+var googlePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrType = reflect.TypeOf((**GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem)(nil)).Elem()
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput
+}
+
+type googlePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtr string
+
+func GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtr(v string) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrInput {
+	return (*googlePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrType
+}
+
+func (in *googlePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtr) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtr) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem]{
+		OutputState: in.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayInput is an input type that accepts GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray and GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayInput` via:
+//
+//	GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray{ GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArgs{...} }
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput
+	ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput
+}
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray []GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput {
+	return i.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem {
+		return vs[0].([]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput)
+}
+
+// How frequently data profiles can be updated when tables are modified. Defaults to never.
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency string
+
+const (
+	// Unspecified.
+	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyUpdateFrequencyUnspecified = GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_UNSPECIFIED")
+	// After the data profile is created, it will never be updated.
+	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyUpdateFrequencyNever = GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_NEVER")
+	// The data profile can be updated up to once every 24 hours.
+	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyUpdateFrequencyDaily = GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_DAILY")
+	// The data profile can be updated up to once every 30 days. Default.
+	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyUpdateFrequencyMonthly = GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_MONTHLY")
+)
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return e.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency(e).ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutputWithContext(ctx).ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) Elem() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency
+		return ret
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyInput is an input type that accepts GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyArgs and GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyArgs{...}
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput
+}
+
+var googlePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrType = reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency)(nil)).Elem()
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput
+}
+
+type googlePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtr string
+
+func GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtr(v string) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrInput {
+	return (*googlePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrType
+}
+
+func (in *googlePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtr) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtr) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency]{
+		OutputState: in.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem string
+
+const (
+	// Unused.
+	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemTableModificationUnspecified = GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem("TABLE_MODIFICATION_UNSPECIFIED")
+	// A table will be considered modified when the last_modified_time from BigQuery has been updated.
+	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemTableModifiedTimestamp = GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem("TABLE_MODIFIED_TIMESTAMP")
+)
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput {
+	return e.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput {
+	return GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem(e).ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutputWithContext(ctx).ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput {
+	return o.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem {
+		return &v
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem] {
+	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) Elem() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem
+		return ret
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput)
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemInput is an input type that accepts GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArgs and GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArgs{...}
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput
+}
+
+var googlePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrType = reflect.TypeOf((**GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem)(nil)).Elem()
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput
+}
+
+type googlePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtr string
+
+func GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtr(v string) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrInput {
+	return (*googlePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrType
+}
+
+func (in *googlePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtr) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtr) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem] {
+	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem]{
+		OutputState: in.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayInput is an input type that accepts GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray and GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayInput` via:
+//
+//	GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray{ GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArgs{...} }
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput
+	ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutputWithContext(context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput
+}
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray []GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput {
+	return i.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput)
+}
+
+func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem]{
+		OutputState: i.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem] {
+	return pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem {
+		return vs[0].([]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput)
 }
 
 // How the rule is applied, see MatchingType documentation for details.
@@ -2232,6 +3711,199 @@ func (in *googlePrivacyDlpV2ExpressionsLogicalOperatorPtr) ToOutput(ctx context.
 	}
 }
 
+// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+type GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood string
+
+const (
+	// Default value; same as POSSIBLE.
+	GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodLikelihoodUnspecified = GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("LIKELIHOOD_UNSPECIFIED")
+	// Highest chance of a false positive.
+	GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodVeryUnlikely = GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("VERY_UNLIKELY")
+	// High chance of a false positive.
+	GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodUnlikely = GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("UNLIKELY")
+	// Some matching signals. The default value.
+	GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPossible = GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("POSSIBLE")
+	// Low chance of a false positive.
+	GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodLikely = GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("LIKELY")
+	// Confidence level is high. Lowest chance of a false positive.
+	GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodVeryLikely = GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("VERY_LIKELY")
+)
+
+func (GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput)
+}
+
+func (e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput)
+}
+
+func (e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
+	return e.ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
+	return GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood(e).ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutputWithContext(ctx).ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
+	return o.ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) *GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood {
+		return &v
+	}).(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood] {
+	return pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood] {
+	return pulumix.Output[*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood
+		return ret
+	}).(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput)
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodInput is an input type that accepts GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodArgs and GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodInput` via:
+//
+//	GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodArgs{...}
+type GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput
+	ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput
+}
+
+var googlePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrType = reflect.TypeOf((**GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood)(nil)).Elem()
+
+type GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput
+	ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput
+}
+
+type googlePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtr string
+
+func GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtr(v string) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrInput {
+	return (*googlePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrType
+}
+
+func (in *googlePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtr) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtr) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood] {
+	return pulumix.Output[*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood]{
+		OutputState: in.ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GooglePrivacyDlpV2InspectConfigContentOptionsItem string
 
 const (
@@ -2475,7 +4147,7 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput) Index(i pu
 	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput)
 }
 
-// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
 type GooglePrivacyDlpV2InspectConfigMinLikelihood string
 
 const (
@@ -3051,6 +4723,945 @@ func (in *googlePrivacyDlpV2OutputStorageConfigOutputSchemaPtr) ToGooglePrivacyD
 func (in *googlePrivacyDlpV2OutputStorageConfigOutputSchemaPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2OutputStorageConfigOutputSchema] {
 	return pulumix.Output[*GooglePrivacyDlpV2OutputStorageConfigOutputSchema]{
 		OutputState: in.ToGooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The minimum data risk score that triggers the condition.
+type GooglePrivacyDlpV2PubSubConditionMinimumRiskScore string
+
+const (
+	// Unused.
+	GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreProfileScoreBucketUnspecified = GooglePrivacyDlpV2PubSubConditionMinimumRiskScore("PROFILE_SCORE_BUCKET_UNSPECIFIED")
+	// High risk/sensitivity detected.
+	GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreHigh = GooglePrivacyDlpV2PubSubConditionMinimumRiskScore("HIGH")
+	// Medium or high risk/sensitivity detected.
+	GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreMediumOrHigh = GooglePrivacyDlpV2PubSubConditionMinimumRiskScore("MEDIUM_OR_HIGH")
+)
+
+func (GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionMinimumRiskScore)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput() GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
+	return e.ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
+	return GooglePrivacyDlpV2PubSubConditionMinimumRiskScore(e).ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutputWithContext(ctx).ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionMinimumRiskScore)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput() GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
+	return o.ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) *GooglePrivacyDlpV2PubSubConditionMinimumRiskScore {
+		return &v
+	}).(GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubConditionMinimumRiskScore] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubConditionMinimumRiskScore]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2PubSubConditionMinimumRiskScore)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumRiskScore] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumRiskScore]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) Elem() GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) GooglePrivacyDlpV2PubSubConditionMinimumRiskScore {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PubSubConditionMinimumRiskScore
+		return ret
+	}).(GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2PubSubConditionMinimumRiskScore) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreInput is an input type that accepts GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreArgs and GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreInput` via:
+//
+//	GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreArgs{...}
+type GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput() GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput
+	ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput
+}
+
+var googlePrivacyDlpV2PubSubConditionMinimumRiskScorePtrType = reflect.TypeOf((**GooglePrivacyDlpV2PubSubConditionMinimumRiskScore)(nil)).Elem()
+
+type GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput
+	ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput
+}
+
+type googlePrivacyDlpV2PubSubConditionMinimumRiskScorePtr string
+
+func GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtr(v string) GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrInput {
+	return (*googlePrivacyDlpV2PubSubConditionMinimumRiskScorePtr)(&v)
+}
+
+func (*googlePrivacyDlpV2PubSubConditionMinimumRiskScorePtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2PubSubConditionMinimumRiskScorePtrType
+}
+
+func (in *googlePrivacyDlpV2PubSubConditionMinimumRiskScorePtr) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubConditionMinimumRiskScorePtr) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubConditionMinimumRiskScorePtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumRiskScore] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumRiskScore]{
+		OutputState: in.ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The minimum sensitivity level that triggers the condition.
+type GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore string
+
+const (
+	// Unused.
+	GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreProfileScoreBucketUnspecified = GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore("PROFILE_SCORE_BUCKET_UNSPECIFIED")
+	// High risk/sensitivity detected.
+	GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreHigh = GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore("HIGH")
+	// Medium or high risk/sensitivity detected.
+	GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreMediumOrHigh = GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore("MEDIUM_OR_HIGH")
+)
+
+func (GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
+	return e.ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
+	return GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore(e).ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutputWithContext(ctx).ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
+	return o.ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) *GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore {
+		return &v
+	}).(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) Elem() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore
+		return ret
+	}).(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreInput is an input type that accepts GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreArgs and GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreInput` via:
+//
+//	GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreArgs{...}
+type GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput
+	ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput
+}
+
+var googlePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrType = reflect.TypeOf((**GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore)(nil)).Elem()
+
+type GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput
+	ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput
+}
+
+type googlePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtr string
+
+func GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtr(v string) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrInput {
+	return (*googlePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtr)(&v)
+}
+
+func (*googlePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrType
+}
+
+func (in *googlePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtr) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtr) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore]{
+		OutputState: in.ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The operator to apply to the collection of conditions.
+type GooglePrivacyDlpV2PubSubExpressionsLogicalOperator string
+
+const (
+	// Unused.
+	GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorLogicalOperatorUnspecified = GooglePrivacyDlpV2PubSubExpressionsLogicalOperator("LOGICAL_OPERATOR_UNSPECIFIED")
+	// Conditional OR.
+	GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOr = GooglePrivacyDlpV2PubSubExpressionsLogicalOperator("OR")
+	// Conditional AND.
+	GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorAnd = GooglePrivacyDlpV2PubSubExpressionsLogicalOperator("AND")
+)
+
+func (GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubExpressionsLogicalOperator)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return e.ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return GooglePrivacyDlpV2PubSubExpressionsLogicalOperator(e).ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutputWithContext(ctx).ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubExpressionsLogicalOperator)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return o.ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) *GooglePrivacyDlpV2PubSubExpressionsLogicalOperator {
+		return &v
+	}).(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubExpressionsLogicalOperator] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubExpressionsLogicalOperator]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2PubSubExpressionsLogicalOperator)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubExpressionsLogicalOperator] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubExpressionsLogicalOperator]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) Elem() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) GooglePrivacyDlpV2PubSubExpressionsLogicalOperator {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PubSubExpressionsLogicalOperator
+		return ret
+	}).(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2PubSubExpressionsLogicalOperator) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorInput is an input type that accepts GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorArgs and GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorInput` via:
+//
+//	GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorArgs{...}
+type GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput
+	ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput
+}
+
+var googlePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrType = reflect.TypeOf((**GooglePrivacyDlpV2PubSubExpressionsLogicalOperator)(nil)).Elem()
+
+type GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput
+	ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput
+}
+
+type googlePrivacyDlpV2PubSubExpressionsLogicalOperatorPtr string
+
+func GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtr(v string) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrInput {
+	return (*googlePrivacyDlpV2PubSubExpressionsLogicalOperatorPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2PubSubExpressionsLogicalOperatorPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrType
+}
+
+func (in *googlePrivacyDlpV2PubSubExpressionsLogicalOperatorPtr) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubExpressionsLogicalOperatorPtr) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubExpressionsLogicalOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubExpressionsLogicalOperator] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubExpressionsLogicalOperator]{
+		OutputState: in.ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+type GooglePrivacyDlpV2PubSubNotificationDetailOfMessage string
+
+const (
+	// Unused.
+	GooglePrivacyDlpV2PubSubNotificationDetailOfMessageDetailLevelUnspecified = GooglePrivacyDlpV2PubSubNotificationDetailOfMessage("DETAIL_LEVEL_UNSPECIFIED")
+	// The full table data profile.
+	GooglePrivacyDlpV2PubSubNotificationDetailOfMessageTableProfile = GooglePrivacyDlpV2PubSubNotificationDetailOfMessage("TABLE_PROFILE")
+	// The resource name of the table.
+	GooglePrivacyDlpV2PubSubNotificationDetailOfMessageResourceName = GooglePrivacyDlpV2PubSubNotificationDetailOfMessage("RESOURCE_NAME")
+)
+
+func (GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationDetailOfMessage)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput() GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput() GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return e.ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return GooglePrivacyDlpV2PubSubNotificationDetailOfMessage(e).ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutputWithContext(ctx).ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationDetailOfMessage)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput() GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput() GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return o.ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) *GooglePrivacyDlpV2PubSubNotificationDetailOfMessage {
+		return &v
+	}).(GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubNotificationDetailOfMessage] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubNotificationDetailOfMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2PubSubNotificationDetailOfMessage)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput() GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationDetailOfMessage] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationDetailOfMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) Elem() GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) GooglePrivacyDlpV2PubSubNotificationDetailOfMessage {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PubSubNotificationDetailOfMessage
+		return ret
+	}).(GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2PubSubNotificationDetailOfMessage) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2PubSubNotificationDetailOfMessageInput is an input type that accepts GooglePrivacyDlpV2PubSubNotificationDetailOfMessageArgs and GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubNotificationDetailOfMessageInput` via:
+//
+//	GooglePrivacyDlpV2PubSubNotificationDetailOfMessageArgs{...}
+type GooglePrivacyDlpV2PubSubNotificationDetailOfMessageInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput() GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput
+	ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput
+}
+
+var googlePrivacyDlpV2PubSubNotificationDetailOfMessagePtrType = reflect.TypeOf((**GooglePrivacyDlpV2PubSubNotificationDetailOfMessage)(nil)).Elem()
+
+type GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput() GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput
+	ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput
+}
+
+type googlePrivacyDlpV2PubSubNotificationDetailOfMessagePtr string
+
+func GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtr(v string) GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrInput {
+	return (*googlePrivacyDlpV2PubSubNotificationDetailOfMessagePtr)(&v)
+}
+
+func (*googlePrivacyDlpV2PubSubNotificationDetailOfMessagePtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2PubSubNotificationDetailOfMessagePtrType
+}
+
+func (in *googlePrivacyDlpV2PubSubNotificationDetailOfMessagePtr) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput() GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubNotificationDetailOfMessagePtr) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubNotificationDetailOfMessagePtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationDetailOfMessage] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationDetailOfMessage]{
+		OutputState: in.ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+type GooglePrivacyDlpV2PubSubNotificationEvent string
+
+const (
+	// Unused.
+	GooglePrivacyDlpV2PubSubNotificationEventEventTypeUnspecified = GooglePrivacyDlpV2PubSubNotificationEvent("EVENT_TYPE_UNSPECIFIED")
+	// New profile (not a re-profile).
+	GooglePrivacyDlpV2PubSubNotificationEventNewProfile = GooglePrivacyDlpV2PubSubNotificationEvent("NEW_PROFILE")
+	// Changed one of the following profile metrics: * Table data risk score * Table sensitivity score * Table resource visibility * Table encryption type * Table predicted infoTypes * Table other infoTypes
+	GooglePrivacyDlpV2PubSubNotificationEventChangedProfile = GooglePrivacyDlpV2PubSubNotificationEvent("CHANGED_PROFILE")
+	// Table data risk score or sensitivity score increased.
+	GooglePrivacyDlpV2PubSubNotificationEventScoreIncreased = GooglePrivacyDlpV2PubSubNotificationEvent("SCORE_INCREASED")
+	// A user (non-internal) error occurred.
+	GooglePrivacyDlpV2PubSubNotificationEventErrorChanged = GooglePrivacyDlpV2PubSubNotificationEvent("ERROR_CHANGED")
+)
+
+func (GooglePrivacyDlpV2PubSubNotificationEvent) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationEvent)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationEvent) ToGooglePrivacyDlpV2PubSubNotificationEventOutput() GooglePrivacyDlpV2PubSubNotificationEventOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2PubSubNotificationEventOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationEvent) ToGooglePrivacyDlpV2PubSubNotificationEventOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationEventOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2PubSubNotificationEventOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationEvent) ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutput() GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return e.ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationEvent) ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return GooglePrivacyDlpV2PubSubNotificationEvent(e).ToGooglePrivacyDlpV2PubSubNotificationEventOutputWithContext(ctx).ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationEvent) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationEvent) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationEvent) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2PubSubNotificationEvent) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2PubSubNotificationEventOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubNotificationEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationEvent)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToGooglePrivacyDlpV2PubSubNotificationEventOutput() GooglePrivacyDlpV2PubSubNotificationEventOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToGooglePrivacyDlpV2PubSubNotificationEventOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationEventOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutput() GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return o.ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PubSubNotificationEvent) *GooglePrivacyDlpV2PubSubNotificationEvent {
+		return &v
+	}).(GooglePrivacyDlpV2PubSubNotificationEventPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubNotificationEvent] {
+	return pulumix.Output[GooglePrivacyDlpV2PubSubNotificationEvent]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubNotificationEvent) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2PubSubNotificationEvent) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2PubSubNotificationEventPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2PubSubNotificationEvent)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutput() GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationEvent] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationEvent]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) Elem() GooglePrivacyDlpV2PubSubNotificationEventOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PubSubNotificationEvent) GooglePrivacyDlpV2PubSubNotificationEvent {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PubSubNotificationEvent
+		return ret
+	}).(GooglePrivacyDlpV2PubSubNotificationEventOutput)
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2PubSubNotificationEvent) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2PubSubNotificationEventInput is an input type that accepts GooglePrivacyDlpV2PubSubNotificationEventArgs and GooglePrivacyDlpV2PubSubNotificationEventOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2PubSubNotificationEventInput` via:
+//
+//	GooglePrivacyDlpV2PubSubNotificationEventArgs{...}
+type GooglePrivacyDlpV2PubSubNotificationEventInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubNotificationEventOutput() GooglePrivacyDlpV2PubSubNotificationEventOutput
+	ToGooglePrivacyDlpV2PubSubNotificationEventOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubNotificationEventOutput
+}
+
+var googlePrivacyDlpV2PubSubNotificationEventPtrType = reflect.TypeOf((**GooglePrivacyDlpV2PubSubNotificationEvent)(nil)).Elem()
+
+type GooglePrivacyDlpV2PubSubNotificationEventPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutput() GooglePrivacyDlpV2PubSubNotificationEventPtrOutput
+	ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(context.Context) GooglePrivacyDlpV2PubSubNotificationEventPtrOutput
+}
+
+type googlePrivacyDlpV2PubSubNotificationEventPtr string
+
+func GooglePrivacyDlpV2PubSubNotificationEventPtr(v string) GooglePrivacyDlpV2PubSubNotificationEventPtrInput {
+	return (*googlePrivacyDlpV2PubSubNotificationEventPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2PubSubNotificationEventPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2PubSubNotificationEventPtrType
+}
+
+func (in *googlePrivacyDlpV2PubSubNotificationEventPtr) ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutput() GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2PubSubNotificationEventPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubNotificationEventPtr) ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2PubSubNotificationEventPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2PubSubNotificationEventPtr) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationEvent] {
+	return pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationEvent]{
+		OutputState: in.ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -3824,6 +6435,193 @@ func (in *jobTriggerStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*Job
 	}
 }
 
+// Required. A status for this configuration.
+type OrganizationDiscoveryConfigStatus string
+
+const (
+	// Unused
+	OrganizationDiscoveryConfigStatusStatusUnspecified = OrganizationDiscoveryConfigStatus("STATUS_UNSPECIFIED")
+	// The discovery config is currently active.
+	OrganizationDiscoveryConfigStatusRunning = OrganizationDiscoveryConfigStatus("RUNNING")
+	// The discovery config is paused temporarily.
+	OrganizationDiscoveryConfigStatusPaused = OrganizationDiscoveryConfigStatus("PAUSED")
+)
+
+func (OrganizationDiscoveryConfigStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationDiscoveryConfigStatus)(nil)).Elem()
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToOrganizationDiscoveryConfigStatusOutput() OrganizationDiscoveryConfigStatusOutput {
+	return pulumi.ToOutput(e).(OrganizationDiscoveryConfigStatusOutput)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToOrganizationDiscoveryConfigStatusOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationDiscoveryConfigStatusOutput)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput {
+	return e.ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusPtrOutput {
+	return OrganizationDiscoveryConfigStatus(e).ToOrganizationDiscoveryConfigStatusOutputWithContext(ctx).ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OrganizationDiscoveryConfigStatusOutput struct{ *pulumi.OutputState }
+
+func (OrganizationDiscoveryConfigStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationDiscoveryConfigStatus)(nil)).Elem()
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOrganizationDiscoveryConfigStatusOutput() OrganizationDiscoveryConfigStatusOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOrganizationDiscoveryConfigStatusOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput {
+	return o.ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationDiscoveryConfigStatus) *OrganizationDiscoveryConfigStatus {
+		return &v
+	}).(OrganizationDiscoveryConfigStatusPtrOutput)
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationDiscoveryConfigStatus] {
+	return pulumix.Output[OrganizationDiscoveryConfigStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationDiscoveryConfigStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationDiscoveryConfigStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationDiscoveryConfigStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationDiscoveryConfigStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationDiscoveryConfigStatus)(nil)).Elem()
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusPtrOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationDiscoveryConfigStatus] {
+	return pulumix.Output[*OrganizationDiscoveryConfigStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) Elem() OrganizationDiscoveryConfigStatusOutput {
+	return o.ApplyT(func(v *OrganizationDiscoveryConfigStatus) OrganizationDiscoveryConfigStatus {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationDiscoveryConfigStatus
+		return ret
+	}).(OrganizationDiscoveryConfigStatusOutput)
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationDiscoveryConfigStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OrganizationDiscoveryConfigStatusInput is an input type that accepts OrganizationDiscoveryConfigStatusArgs and OrganizationDiscoveryConfigStatusOutput values.
+// You can construct a concrete instance of `OrganizationDiscoveryConfigStatusInput` via:
+//
+//	OrganizationDiscoveryConfigStatusArgs{...}
+type OrganizationDiscoveryConfigStatusInput interface {
+	pulumi.Input
+
+	ToOrganizationDiscoveryConfigStatusOutput() OrganizationDiscoveryConfigStatusOutput
+	ToOrganizationDiscoveryConfigStatusOutputWithContext(context.Context) OrganizationDiscoveryConfigStatusOutput
+}
+
+var organizationDiscoveryConfigStatusPtrType = reflect.TypeOf((**OrganizationDiscoveryConfigStatus)(nil)).Elem()
+
+type OrganizationDiscoveryConfigStatusPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput
+	ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(context.Context) OrganizationDiscoveryConfigStatusPtrOutput
+}
+
+type organizationDiscoveryConfigStatusPtr string
+
+func OrganizationDiscoveryConfigStatusPtr(v string) OrganizationDiscoveryConfigStatusPtrInput {
+	return (*organizationDiscoveryConfigStatusPtr)(&v)
+}
+
+func (*organizationDiscoveryConfigStatusPtr) ElementType() reflect.Type {
+	return organizationDiscoveryConfigStatusPtrType
+}
+
+func (in *organizationDiscoveryConfigStatusPtr) ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput {
+	return pulumi.ToOutput(in).(OrganizationDiscoveryConfigStatusPtrOutput)
+}
+
+func (in *organizationDiscoveryConfigStatusPtr) ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationDiscoveryConfigStatusPtrOutput)
+}
+
+func (in *organizationDiscoveryConfigStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationDiscoveryConfigStatus] {
+	return pulumix.Output[*OrganizationDiscoveryConfigStatus]{
+		OutputState: in.ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. A status for this trigger.
 type OrganizationJobTriggerStatus string
 
@@ -4014,8 +6812,13 @@ func (in *organizationJobTriggerStatusPtr) ToOutput(ctx context.Context) pulumix
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryConfigStatusInput)(nil)).Elem(), DiscoveryConfigStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryConfigStatusPtrInput)(nil)).Elem(), DiscoveryConfigStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsSampleMethodInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsSampleMethod("SAMPLE_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsSampleMethod("SAMPLE_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypesTypesItemInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableTypesTypesItem("BIG_QUERY_TABLE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableTypesTypesItem("BIG_QUERY_TABLE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreInput)(nil)).Elem(), GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore("COMMON_CHARS_TO_IGNORE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrInput)(nil)).Elem(), GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore("COMMON_CHARS_TO_IGNORE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("FILE_TYPE_UNSPECIFIED"))
@@ -4034,10 +6837,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("FILE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("FILE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection("BIG_QUERY_COLLECTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection("BIG_QUERY_COLLECTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem("SCHEMA_MODIFICATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem("SCHEMA_MODIFICATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem("TABLE_MODIFICATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem("TABLE_MODIFICATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRuleMatchingTypeInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleMatchingType("MATCHING_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleMatchingType("MATCHING_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExpressionsLogicalOperatorInput)(nil)).Elem(), GooglePrivacyDlpV2ExpressionsLogicalOperator("LOGICAL_OPERATOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExpressionsLogicalOperator("LOGICAL_OPERATOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("LIKELIHOOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("LIKELIHOOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectConfigContentOptionsItemInput)(nil)).Elem(), GooglePrivacyDlpV2InspectConfigContentOptionsItem("CONTENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrInput)(nil)).Elem(), GooglePrivacyDlpV2InspectConfigContentOptionsItem("CONTENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InspectConfigContentOptionsItemArray{})
@@ -4047,6 +6864,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrInput)(nil)).Elem(), GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("LIKELIHOOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigOutputSchemaInput)(nil)).Elem(), GooglePrivacyDlpV2OutputStorageConfigOutputSchema("OUTPUT_SCHEMA_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrInput)(nil)).Elem(), GooglePrivacyDlpV2OutputStorageConfigOutputSchema("OUTPUT_SCHEMA_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubConditionMinimumRiskScore("PROFILE_SCORE_BUCKET_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubConditionMinimumRiskScore("PROFILE_SCORE_BUCKET_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore("PROFILE_SCORE_BUCKET_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore("PROFILE_SCORE_BUCKET_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubExpressionsLogicalOperator("LOGICAL_OPERATOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubExpressionsLogicalOperator("LOGICAL_OPERATOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationDetailOfMessageInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubNotificationDetailOfMessage("DETAIL_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubNotificationDetailOfMessage("DETAIL_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationEventInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubNotificationEvent("EVENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PubSubNotificationEventPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PubSubNotificationEvent("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScoreScoreInput)(nil)).Elem(), GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_SCORE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScoreScorePtrInput)(nil)).Elem(), GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_SCORE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimePartConfigPartToExtractInput)(nil)).Elem(), GooglePrivacyDlpV2TimePartConfigPartToExtract("TIME_PART_UNSPECIFIED"))
@@ -4055,10 +6882,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueDayOfWeekValuePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ValueDayOfWeekValue("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerStatusInput)(nil)).Elem(), JobTriggerStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerStatusPtrInput)(nil)).Elem(), JobTriggerStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationDiscoveryConfigStatusInput)(nil)).Elem(), OrganizationDiscoveryConfigStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationDiscoveryConfigStatusPtrInput)(nil)).Elem(), OrganizationDiscoveryConfigStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationJobTriggerStatusInput)(nil)).Elem(), OrganizationJobTriggerStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationJobTriggerStatusPtrInput)(nil)).Elem(), OrganizationJobTriggerStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterOutputType(DiscoveryConfigStatusOutput{})
+	pulumi.RegisterOutputType(DiscoveryConfigStatusPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput{})
@@ -4077,10 +6911,24 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput{})
@@ -4090,6 +6938,16 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubNotificationEventOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2PubSubNotificationEventPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2SensitivityScoreScoreOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimePartConfigPartToExtractOutput{})
@@ -4098,6 +6956,8 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput{})
 	pulumi.RegisterOutputType(JobTriggerStatusOutput{})
 	pulumi.RegisterOutputType(JobTriggerStatusPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationDiscoveryConfigStatusOutput{})
+	pulumi.RegisterOutputType(OrganizationDiscoveryConfigStatusPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationJobTriggerStatusOutput{})
 	pulumi.RegisterOutputType(OrganizationJobTriggerStatusPtrOutput{})
 }

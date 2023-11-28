@@ -787,9 +787,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public static GoogleCloudDialogflowV2beta1SuggestionFeatureType SmartReply { get; } = new GoogleCloudDialogflowV2beta1SuggestionFeatureType("SMART_REPLY");
         /// <summary>
+        /// Run Dialogflow assist model for chat, which will return automated agent response as suggestion.
+        /// </summary>
+        public static GoogleCloudDialogflowV2beta1SuggestionFeatureType DialogflowAssist { get; } = new GoogleCloudDialogflowV2beta1SuggestionFeatureType("DIALOGFLOW_ASSIST");
+        /// <summary>
         /// Run conversation summarization model for chat.
         /// </summary>
         public static GoogleCloudDialogflowV2beta1SuggestionFeatureType ConversationSummarization { get; } = new GoogleCloudDialogflowV2beta1SuggestionFeatureType("CONVERSATION_SUMMARIZATION");
+        /// <summary>
+        /// Run knowledge search with text input from agent or text generated query.
+        /// </summary>
+        public static GoogleCloudDialogflowV2beta1SuggestionFeatureType KnowledgeSearch { get; } = new GoogleCloudDialogflowV2beta1SuggestionFeatureType("KNOWLEDGE_SEARCH");
 
         public static bool operator ==(GoogleCloudDialogflowV2beta1SuggestionFeatureType left, GoogleCloudDialogflowV2beta1SuggestionFeatureType right) => left.Equals(right);
         public static bool operator !=(GoogleCloudDialogflowV2beta1SuggestionFeatureType left, GoogleCloudDialogflowV2beta1SuggestionFeatureType right) => !left.Equals(right);

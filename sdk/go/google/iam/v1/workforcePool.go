@@ -17,13 +17,17 @@ import (
 type WorkforcePool struct {
 	pulumi.CustomResourceState
 
+	// Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+	AccessRestrictions AccessRestrictionsResponseOutput `pulumi:"accessRestrictions"`
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	Location    pulumi.StringOutput `pulumi:"location"`
+	// Time after which the workforce pool will be permanently purged and cannot be recovered.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
@@ -80,6 +84,8 @@ func (WorkforcePoolState) ElementType() reflect.Type {
 }
 
 type workforcePoolArgs struct {
+	// Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+	AccessRestrictions *AccessRestrictions `pulumi:"accessRestrictions"`
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -97,6 +103,8 @@ type workforcePoolArgs struct {
 
 // The set of arguments for constructing a WorkforcePool resource.
 type WorkforcePoolArgs struct {
+	// Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+	AccessRestrictions AccessRestrictionsPtrInput
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -161,6 +169,11 @@ func (o WorkforcePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*Workf
 	}
 }
 
+// Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+func (o WorkforcePoolOutput) AccessRestrictions() AccessRestrictionsResponseOutput {
+	return o.ApplyT(func(v *WorkforcePool) AccessRestrictionsResponseOutput { return v.AccessRestrictions }).(AccessRestrictionsResponseOutput)
+}
+
 // A user-specified description of the pool. Cannot exceed 256 characters.
 func (o WorkforcePoolOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePool) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -174,6 +187,11 @@ func (o WorkforcePoolOutput) Disabled() pulumi.BoolOutput {
 // A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
 func (o WorkforcePoolOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePool) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Time after which the workforce pool will be permanently purged and cannot be recovered.
+func (o WorkforcePoolOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkforcePool) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 func (o WorkforcePoolOutput) Location() pulumi.StringOutput {

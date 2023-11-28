@@ -20,7 +20,7 @@ type Node struct {
 
 	// The AccleratorConfig for the TPU Node.
 	AcceleratorConfig AcceleratorConfigResponseOutput `pulumi:"acceleratorConfig"`
-	// The type of hardware accelerators associated with this node.
+	// Optional. The type of hardware accelerators associated with this node.
 	AcceleratorType pulumi.StringOutput `pulumi:"acceleratorType"`
 	// The API version that created this Node.
 	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
@@ -41,6 +41,8 @@ type Node struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
+	// Whether the Node belongs to a Multislice group.
+	MultisliceNode pulumi.BoolOutput `pulumi:"multisliceNode"`
 	// Immutable. The name of the TPU.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network configurations for the TPU node.
@@ -50,6 +52,8 @@ type Node struct {
 	// The unqualified resource name.
 	NodeId  pulumi.StringPtrOutput `pulumi:"nodeId"`
 	Project pulumi.StringOutput    `pulumi:"project"`
+	// The qualified name of the QueuedResource that requested this Node.
+	QueuedResource pulumi.StringOutput `pulumi:"queuedResource"`
 	// The runtime version running in the Node.
 	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
@@ -73,9 +77,6 @@ func NewNode(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AcceleratorType == nil {
-		return nil, errors.New("invalid value for required argument 'AcceleratorType'")
-	}
 	if args.RuntimeVersion == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimeVersion'")
 	}
@@ -119,8 +120,8 @@ func (NodeState) ElementType() reflect.Type {
 type nodeArgs struct {
 	// The AccleratorConfig for the TPU Node.
 	AcceleratorConfig *AcceleratorConfig `pulumi:"acceleratorConfig"`
-	// The type of hardware accelerators associated with this node.
-	AcceleratorType string `pulumi:"acceleratorType"`
+	// Optional. The type of hardware accelerators associated with this node.
+	AcceleratorType *string `pulumi:"acceleratorType"`
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The additional data disks for the Node.
@@ -155,8 +156,8 @@ type nodeArgs struct {
 type NodeArgs struct {
 	// The AccleratorConfig for the TPU Node.
 	AcceleratorConfig AcceleratorConfigPtrInput
-	// The type of hardware accelerators associated with this node.
-	AcceleratorType pulumi.StringInput
+	// Optional. The type of hardware accelerators associated with this node.
+	AcceleratorType pulumi.StringPtrInput
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock pulumi.StringPtrInput
 	// The additional data disks for the Node.
@@ -241,7 +242,7 @@ func (o NodeOutput) AcceleratorConfig() AcceleratorConfigResponseOutput {
 	return o.ApplyT(func(v *Node) AcceleratorConfigResponseOutput { return v.AcceleratorConfig }).(AcceleratorConfigResponseOutput)
 }
 
-// The type of hardware accelerators associated with this node.
+// Optional. The type of hardware accelerators associated with this node.
 func (o NodeOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.AcceleratorType }).(pulumi.StringOutput)
 }
@@ -295,6 +296,11 @@ func (o NodeOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Whether the Node belongs to a Multislice group.
+func (o NodeOutput) MultisliceNode() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Node) pulumi.BoolOutput { return v.MultisliceNode }).(pulumi.BoolOutput)
+}
+
 // Immutable. The name of the TPU.
 func (o NodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -317,6 +323,11 @@ func (o NodeOutput) NodeId() pulumi.StringPtrOutput {
 
 func (o NodeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The qualified name of the QueuedResource that requested this Node.
+func (o NodeOutput) QueuedResource() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.QueuedResource }).(pulumi.StringOutput)
 }
 
 // The runtime version running in the Node.

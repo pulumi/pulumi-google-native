@@ -71,7 +71,7 @@ class GetConversionWorkspaceResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The display name for the workspace.
+        Optional. The display name for the workspace.
         """
         return pulumi.get(self, "display_name")
 
@@ -79,7 +79,7 @@ class GetConversionWorkspaceResult:
     @pulumi.getter(name="globalSettings")
     def global_settings(self) -> Mapping[str, str]:
         """
-        A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+        Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
         """
         return pulumi.get(self, "global_settings")
 

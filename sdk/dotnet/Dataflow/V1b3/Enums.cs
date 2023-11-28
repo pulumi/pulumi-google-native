@@ -48,6 +48,48 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct DataSamplingConfigBehaviorsItem : IEquatable<DataSamplingConfigBehaviorsItem>
+    {
+        private readonly string _value;
+
+        private DataSamplingConfigBehaviorsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// If given, has no effect on sampling behavior. Used as an unknown or unset sentinel value.
+        /// </summary>
+        public static DataSamplingConfigBehaviorsItem DataSamplingBehaviorUnspecified { get; } = new DataSamplingConfigBehaviorsItem("DATA_SAMPLING_BEHAVIOR_UNSPECIFIED");
+        /// <summary>
+        /// When given, disables element sampling. Has same behavior as not setting the behavior.
+        /// </summary>
+        public static DataSamplingConfigBehaviorsItem Disabled { get; } = new DataSamplingConfigBehaviorsItem("DISABLED");
+        /// <summary>
+        /// When given, enables sampling in-flight from all PCollections.
+        /// </summary>
+        public static DataSamplingConfigBehaviorsItem AlwaysOn { get; } = new DataSamplingConfigBehaviorsItem("ALWAYS_ON");
+        /// <summary>
+        /// When given, enables sampling input elements when a user-defined DoFn causes an exception.
+        /// </summary>
+        public static DataSamplingConfigBehaviorsItem Exceptions { get; } = new DataSamplingConfigBehaviorsItem("EXCEPTIONS");
+
+        public static bool operator ==(DataSamplingConfigBehaviorsItem left, DataSamplingConfigBehaviorsItem right) => left.Equals(right);
+        public static bool operator !=(DataSamplingConfigBehaviorsItem left, DataSamplingConfigBehaviorsItem right) => !left.Equals(right);
+
+        public static explicit operator string(DataSamplingConfigBehaviorsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DataSamplingConfigBehaviorsItem other && Equals(other);
+        public bool Equals(DataSamplingConfigBehaviorsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Which Flexible Resource Scheduling mode to run in.
     /// </summary>
@@ -317,7 +359,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
     }
 
     /// <summary>
-    /// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+    /// The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
     /// </summary>
     [EnumType]
     public readonly struct JobRequestedState : IEquatable<JobRequestedState>

@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDocumentaiV1DocumentPageImageResponse Image;
         /// <summary>
-        /// Image Quality Scores.
+        /// Image quality scores.
         /// </summary>
         public readonly Outputs.GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse ImageQualityScores;
         /// <summary>

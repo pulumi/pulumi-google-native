@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> EncryptedInterconnectRouter { get; private set; } = null!;
 
         /// <summary>
-        /// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+        /// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
         /// </summary>
         [Output("interfaces")]
         public Output<ImmutableArray<Outputs.RouterInterfaceResponse>> Interfaces { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         private InputList<Inputs.RouterInterfaceArgs>? _interfaces;
 
         /// <summary>
-        /// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+        /// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
         /// </summary>
         public InputList<Inputs.RouterInterfaceArgs> Interfaces
         {

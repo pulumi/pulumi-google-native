@@ -18,6 +18,8 @@ var _ = internal.GetEnvOrDefault
 type GoogleCloudBillingBudgetsV1beta1AllUpdatesRule struct {
 	// Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
 	DisableDefaultIamRecipients *bool `pulumi:"disableDefaultIamRecipients"`
+	// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+	EnableProjectLevelRecipients *bool `pulumi:"enableProjectLevelRecipients"`
 	// Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details.
 	MonitoringNotificationChannels []string `pulumi:"monitoringNotificationChannels"`
 	// Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task for more details on Pub/Sub roles and permissions.
@@ -41,6 +43,8 @@ type GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleInput interface {
 type GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs struct {
 	// Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
 	DisableDefaultIamRecipients pulumi.BoolPtrInput `pulumi:"disableDefaultIamRecipients"`
+	// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+	EnableProjectLevelRecipients pulumi.BoolPtrInput `pulumi:"enableProjectLevelRecipients"`
 	// Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details.
 	MonitoringNotificationChannels pulumi.StringArrayInput `pulumi:"monitoringNotificationChannels"`
 	// Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task for more details on Pub/Sub roles and permissions.
@@ -150,6 +154,11 @@ func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleOutput) DisableDefaultIamR
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1AllUpdatesRule) *bool { return v.DisableDefaultIamRecipients }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleOutput) EnableProjectLevelRecipients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1AllUpdatesRule) *bool { return v.EnableProjectLevelRecipients }).(pulumi.BoolPtrOutput)
+}
+
 // Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details.
 func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleOutput) MonitoringNotificationChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1AllUpdatesRule) []string {
@@ -207,6 +216,16 @@ func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput) DisableDefaultI
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput) EnableProjectLevelRecipients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableProjectLevelRecipients
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details.
 func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput) MonitoringNotificationChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule) []string {
@@ -241,6 +260,8 @@ func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput) SchemaVersion()
 type GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse struct {
 	// Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
 	DisableDefaultIamRecipients bool `pulumi:"disableDefaultIamRecipients"`
+	// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+	EnableProjectLevelRecipients bool `pulumi:"enableProjectLevelRecipients"`
 	// Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details.
 	MonitoringNotificationChannels []string `pulumi:"monitoringNotificationChannels"`
 	// Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task for more details on Pub/Sub roles and permissions.
@@ -274,6 +295,13 @@ func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponseOutput) ToOutput(c
 func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponseOutput) DisableDefaultIamRecipients() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse) bool {
 		return v.DisableDefaultIamRecipients
+	}).(pulumi.BoolOutput)
+}
+
+// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponseOutput) EnableProjectLevelRecipients() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse) bool {
+		return v.EnableProjectLevelRecipients
 	}).(pulumi.BoolOutput)
 }
 
@@ -653,6 +681,8 @@ type GoogleCloudBillingBudgetsV1beta1Filter struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
 	Projects []string `pulumi:"projects"`
+	// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+	ResourceAncestors []string `pulumi:"resourceAncestors"`
 	// Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services []string `pulumi:"services"`
 	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If omitted, the report will include usage from the parent account and all subaccounts, if they exist.
@@ -684,6 +714,8 @@ type GoogleCloudBillingBudgetsV1beta1FilterArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
+	// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+	ResourceAncestors pulumi.StringArrayInput `pulumi:"resourceAncestors"`
 	// Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services pulumi.StringArrayInput `pulumi:"services"`
 	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If omitted, the report will include usage from the parent account and all subaccounts, if they exist.
@@ -822,6 +854,11 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterOutput) Projects() pulumi.StringAr
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Filter) []string { return v.Projects }).(pulumi.StringArrayOutput)
 }
 
+// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+func (o GoogleCloudBillingBudgetsV1beta1FilterOutput) ResourceAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Filter) []string { return v.ResourceAncestors }).(pulumi.StringArrayOutput)
+}
+
 // Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 func (o GoogleCloudBillingBudgetsV1beta1FilterOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Filter) []string { return v.Services }).(pulumi.StringArrayOutput)
@@ -922,6 +959,16 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterPtrOutput) Projects() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+func (o GoogleCloudBillingBudgetsV1beta1FilterPtrOutput) ResourceAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Filter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceAncestors
+	}).(pulumi.StringArrayOutput)
+}
+
 // Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 func (o GoogleCloudBillingBudgetsV1beta1FilterPtrOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Filter) []string {
@@ -956,6 +1003,8 @@ type GoogleCloudBillingBudgetsV1beta1FilterResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
 	Projects []string `pulumi:"projects"`
+	// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+	ResourceAncestors []string `pulumi:"resourceAncestors"`
 	// Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services []string `pulumi:"services"`
 	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If omitted, the report will include usage from the parent account and all subaccounts, if they exist.
@@ -1013,6 +1062,11 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterResponseOutput) Labels() pulumi.St
 // Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
 func (o GoogleCloudBillingBudgetsV1beta1FilterResponseOutput) Projects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1FilterResponse) []string { return v.Projects }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+func (o GoogleCloudBillingBudgetsV1beta1FilterResponseOutput) ResourceAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1FilterResponse) []string { return v.ResourceAncestors }).(pulumi.StringArrayOutput)
 }
 
 // Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.

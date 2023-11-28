@@ -38,9 +38,29 @@ export class CustomClass extends pulumi.CustomResource {
     }
 
     /**
+     * Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+     */
+    public /*out*/ readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
      */
     public readonly customClassId!: pulumi.Output<string>;
+    /**
+     * The time at which this resource was requested for deletion. This field is not used.
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * User-settable, human-readable name for the CustomClass. Must be 63 characters or less. This field is not used.
+     */
+    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    /**
+     * This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The time at which this resource will be purged. This field is not used.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
      * A collection of class items.
      */
@@ -59,6 +79,18 @@ export class CustomClass extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Whether or not this CustomClass is in the process of being updated. This field is not used.
+     */
+    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    /**
+     * The CustomClass lifecycle state. This field is not used.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * System-assigned unique identifier for the CustomClass. This field is not used.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
 
     /**
      * Create a CustomClass resource with the given unique name, arguments, and options.
@@ -79,16 +111,32 @@ export class CustomClass extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["kmsKeyVersionName"] = undefined /*out*/;
+            resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         } else {
+            resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["customClassId"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["items"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["kmsKeyVersionName"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project"] };

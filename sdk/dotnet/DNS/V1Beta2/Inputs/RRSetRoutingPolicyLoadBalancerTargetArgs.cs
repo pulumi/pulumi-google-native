@@ -10,14 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
+    /// <summary>
+    /// The configuration for an individual load balancer to health check.
+    /// </summary>
     public sealed class RRSetRoutingPolicyLoadBalancerTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The frontend IP address of the Load Balancer to health check.
+        /// The frontend IP address of the load balancer to health check.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        /// <summary>
+        /// The protocol of the load balancer to health check.
+        /// </summary>
         [Input("ipProtocol")]
         public Input<Pulumi.GoogleNative.DNS.V1Beta2.RRSetRoutingPolicyLoadBalancerTargetIpProtocol>? IpProtocol { get; set; }
 
@@ -25,31 +31,31 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+        /// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. 
         /// </summary>
         [Input("loadBalancerType")]
         public Input<Pulumi.GoogleNative.DNS.V1Beta2.RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType>? LoadBalancerType { get; set; }
 
         /// <summary>
-        /// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
         /// </summary>
         [Input("networkUrl")]
         public Input<string>? NetworkUrl { get; set; }
 
         /// <summary>
-        /// The configured port of the Load Balancer.
+        /// The configured port of the load balancer.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// The project ID in which the ILB exists.
+        /// The project ID in which the load balancer is located.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The region in which the ILB exists.
+        /// The region in which the load balancer is located.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

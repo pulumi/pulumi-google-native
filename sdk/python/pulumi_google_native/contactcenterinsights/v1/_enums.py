@@ -9,6 +9,7 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel',
     'GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium',
     'GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType',
+    'IssueModelModelType',
     'PhraseMatcherRoleMatch',
     'PhraseMatcherType',
 ]
@@ -42,7 +43,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSumm
     """
     BASELINE_MODEL = "BASELINE_MODEL"
     """
-    The Insights baseline model.
+    The CCAI baseline model.
     """
 
 
@@ -79,6 +80,24 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType(str, Enum):
     ANY_OF = "ANY_OF"
     """
     If any of the phrase match rules are met, there is a match.
+    """
+
+
+class IssueModelModelType(str, Enum):
+    """
+    Type of the model.
+    """
+    MODEL_TYPE_UNSPECIFIED = "MODEL_TYPE_UNSPECIFIED"
+    """
+    Unspecified model type.
+    """
+    TYPE_V1 = "TYPE_V1"
+    """
+    Type V1.
+    """
+    TYPE_V2 = "TYPE_V2"
+    """
+    Type V2.
     """
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
-    /// Sets the access control policy on a Table resource. Replaces any existing policy.
+    /// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>

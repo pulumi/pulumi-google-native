@@ -77,6 +77,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<bool>? CrashSafeReplicationEnabled { get; set; }
 
         /// <summary>
+        /// Configuration for data cache.
+        /// </summary>
+        [Input("dataCacheConfig")]
+        public Input<Inputs.DataCacheConfigArgs>? DataCacheConfig { get; set; }
+
+        /// <summary>
         /// The size of data disk, in GB. The data disk size minimum is 10GB.
         /// </summary>
         [Input("dataDiskSizeGb")]
@@ -123,6 +129,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
             get => _denyMaintenancePeriods ?? (_denyMaintenancePeriods = new InputList<Inputs.DenyMaintenancePeriodArgs>());
             set => _denyMaintenancePeriods = value;
         }
+
+        /// <summary>
+        /// Optional. The edition of the instance.
+        /// </summary>
+        [Input("edition")]
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.SettingsEdition>? Edition { get; set; }
 
         /// <summary>
         /// Insights configuration, for now relevant only for Postgres.

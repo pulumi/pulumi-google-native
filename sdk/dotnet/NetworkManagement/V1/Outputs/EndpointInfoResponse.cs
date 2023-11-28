@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly string Protocol;
         /// <summary>
+        /// URI of the source telemetry agent this packet originates from.
+        /// </summary>
+        public readonly string SourceAgentUri;
+        /// <summary>
         /// Source IP address.
         /// </summary>
         public readonly string SourceIp;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
             string protocol,
 
+            string sourceAgentUri,
+
             string sourceIp,
 
             string sourceNetworkUri,
@@ -65,6 +71,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
             DestinationNetworkUri = destinationNetworkUri;
             DestinationPort = destinationPort;
             Protocol = protocol;
+            SourceAgentUri = sourceAgentUri;
             SourceIp = sourceIp;
             SourceNetworkUri = sourceNetworkUri;
             SourcePort = sourcePort;

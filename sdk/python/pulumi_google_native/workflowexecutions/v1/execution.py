@@ -324,7 +324,7 @@ class Execution(pulumi.CustomResource):
     @pulumi.getter(name="stateError")
     def state_error(self) -> pulumi.Output['outputs.StateErrorResponse']:
         """
-        Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+        Error regarding the state of the Execution resource. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
         """
         return pulumi.get(self, "state_error")
 

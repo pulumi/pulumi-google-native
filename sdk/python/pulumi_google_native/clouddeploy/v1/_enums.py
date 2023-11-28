@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'AuditLogConfigLogType',
     'ExecutionConfigUsagesItem',
+    'RetryBackoffMode',
 ]
 
 
@@ -48,4 +49,30 @@ class ExecutionConfigUsagesItem(str, Enum):
     VERIFY = "VERIFY"
     """
     Use for deployment verification.
+    """
+    PREDEPLOY = "PREDEPLOY"
+    """
+    Use for predeploy job execution.
+    """
+    POSTDEPLOY = "POSTDEPLOY"
+    """
+    Use for postdeploy job execution.
+    """
+
+
+class RetryBackoffMode(str, Enum):
+    """
+    Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+    """
+    BACKOFF_MODE_UNSPECIFIED = "BACKOFF_MODE_UNSPECIFIED"
+    """
+    No WaitMode is specified.
+    """
+    BACKOFF_MODE_LINEAR = "BACKOFF_MODE_LINEAR"
+    """
+    Increases the wait time linearly.
+    """
+    BACKOFF_MODE_EXPONENTIAL = "BACKOFF_MODE_EXPONENTIAL"
+    """
+    Increases the wait time exponentially.
     """

@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Output("nodeGroupId")]
         public Output<string?> NodeGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. operation id of the parent operation sending the create request
+        /// </summary>
+        [Output("parentOperationId")]
+        public Output<string?> ParentOperationId { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -146,6 +152,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         [Input("nodeGroupId")]
         public Input<string>? NodeGroupId { get; set; }
+
+        /// <summary>
+        /// Optional. operation id of the parent operation sending the create request
+        /// </summary>
+        [Input("parentOperationId")]
+        public Input<string>? ParentOperationId { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -35,6 +35,7 @@ __all__ = [
     'OracleRdbmsArgs',
     'OracleSchemaArgs',
     'OracleSourceConfigArgs',
+    'OracleSslConfigArgs',
     'OracleTableArgs',
     'PostgresqlColumnArgs',
     'PostgresqlProfileArgs',
@@ -571,7 +572,9 @@ class MysqlColumnArgs:
                  length: Optional[pulumi.Input[int]] = None,
                  nullable: Optional[pulumi.Input[bool]] = None,
                  ordinal_position: Optional[pulumi.Input[int]] = None,
-                 primary_key: Optional[pulumi.Input[bool]] = None):
+                 precision: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
         """
         MySQL Column.
         :param pulumi.Input[str] collation: Column collation.
@@ -580,7 +583,9 @@ class MysqlColumnArgs:
         :param pulumi.Input[int] length: Column length.
         :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
         :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[int] precision: Column precision.
         :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[int] scale: Column scale.
         """
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
@@ -594,8 +599,12 @@ class MysqlColumnArgs:
             pulumi.set(__self__, "nullable", nullable)
         if ordinal_position is not None:
             pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
         if primary_key is not None:
             pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
 
     @property
     @pulumi.getter
@@ -670,6 +679,18 @@ class MysqlColumnArgs:
         pulumi.set(self, "ordinal_position", value)
 
     @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -680,6 +701,18 @@ class MysqlColumnArgs:
     @primary_key.setter
     def primary_key(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
 
 
 @pulumi.input_type
@@ -1159,6 +1192,7 @@ class OracleProfileArgs:
                  password: pulumi.Input[str],
                  username: pulumi.Input[str],
                  connection_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 oracle_ssl_config: Optional[pulumi.Input['OracleSslConfigArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None):
         """
         Oracle database profile.
@@ -1167,6 +1201,7 @@ class OracleProfileArgs:
         :param pulumi.Input[str] password: Password for the Oracle connection.
         :param pulumi.Input[str] username: Username for the Oracle connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] connection_attributes: Connection string attributes
+        :param pulumi.Input['OracleSslConfigArgs'] oracle_ssl_config: Optional. SSL configuration for the Oracle connection.
         :param pulumi.Input[int] port: Port for the Oracle connection, default value is 1521.
         """
         pulumi.set(__self__, "database_service", database_service)
@@ -1175,6 +1210,8 @@ class OracleProfileArgs:
         pulumi.set(__self__, "username", username)
         if connection_attributes is not None:
             pulumi.set(__self__, "connection_attributes", connection_attributes)
+        if oracle_ssl_config is not None:
+            pulumi.set(__self__, "oracle_ssl_config", oracle_ssl_config)
         if port is not None:
             pulumi.set(__self__, "port", port)
 
@@ -1237,6 +1274,18 @@ class OracleProfileArgs:
     @connection_attributes.setter
     def connection_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "connection_attributes", value)
+
+    @property
+    @pulumi.getter(name="oracleSslConfig")
+    def oracle_ssl_config(self) -> Optional[pulumi.Input['OracleSslConfigArgs']]:
+        """
+        Optional. SSL configuration for the Oracle connection.
+        """
+        return pulumi.get(self, "oracle_ssl_config")
+
+    @oracle_ssl_config.setter
+    def oracle_ssl_config(self, value: Optional[pulumi.Input['OracleSslConfigArgs']]):
+        pulumi.set(self, "oracle_ssl_config", value)
 
     @property
     @pulumi.getter
@@ -1417,6 +1466,30 @@ class OracleSourceConfigArgs:
     @stream_large_objects.setter
     def stream_large_objects(self, value: Optional[pulumi.Input['StreamLargeObjectsArgs']]):
         pulumi.set(self, "stream_large_objects", value)
+
+
+@pulumi.input_type
+class OracleSslConfigArgs:
+    def __init__(__self__, *,
+                 ca_certificate: Optional[pulumi.Input[str]] = None):
+        """
+        Oracle SSL configuration information.
+        :param pulumi.Input[str] ca_certificate: Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @ca_certificate.setter
+    def ca_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_certificate", value)
 
 
 @pulumi.input_type
@@ -1898,7 +1971,7 @@ class SingleTargetDatasetArgs:
                  dataset_id: Optional[pulumi.Input[str]] = None):
         """
         A single target dataset to which all data will be streamed.
-        :param pulumi.Input[str] dataset_id: The dataset ID of the target dataset.
+        :param pulumi.Input[str] dataset_id: The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
         """
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
@@ -1907,7 +1980,7 @@ class SingleTargetDatasetArgs:
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The dataset ID of the target dataset.
+        The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
         """
         return pulumi.get(self, "dataset_id")
 

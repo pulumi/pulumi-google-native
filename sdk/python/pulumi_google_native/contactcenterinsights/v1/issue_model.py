@@ -19,21 +19,29 @@ class IssueModelArgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  input_data_config: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs']] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 model_type: Optional[pulumi.Input['IssueModelModelType']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IssueModel resource.
         :param pulumi.Input[str] display_name: The representative name for the issue model.
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs'] input_data_config: Configs for the input data that used to create the issue model.
+        :param pulumi.Input[str] language_code: Language of the model.
+        :param pulumi.Input['IssueModelModelType'] model_type: Type of the model.
         :param pulumi.Input[str] name: Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if input_data_config is not None:
             pulumi.set(__self__, "input_data_config", input_data_config)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if model_type is not None:
+            pulumi.set(__self__, "model_type", model_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -64,6 +72,18 @@ class IssueModelArgs:
         pulumi.set(self, "input_data_config", value)
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Language of the model.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language_code", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
@@ -71,6 +91,18 @@ class IssueModelArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="modelType")
+    def model_type(self) -> Optional[pulumi.Input['IssueModelModelType']]:
+        """
+        Type of the model.
+        """
+        return pulumi.get(self, "model_type")
+
+    @model_type.setter
+    def model_type(self, value: Optional[pulumi.Input['IssueModelModelType']]):
+        pulumi.set(self, "model_type", value)
 
     @property
     @pulumi.getter
@@ -101,7 +133,9 @@ class IssueModel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  input_data_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs']]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 model_type: Optional[pulumi.Input['IssueModelModelType']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -112,6 +146,8 @@ class IssueModel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The representative name for the issue model.
         :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs']] input_data_config: Configs for the input data that used to create the issue model.
+        :param pulumi.Input[str] language_code: Language of the model.
+        :param pulumi.Input['IssueModelModelType'] model_type: Type of the model.
         :param pulumi.Input[str] name: Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
         """
         ...
@@ -140,7 +176,9 @@ class IssueModel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  input_data_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs']]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 model_type: Optional[pulumi.Input['IssueModelModelType']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -154,7 +192,9 @@ class IssueModel(pulumi.CustomResource):
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["input_data_config"] = input_data_config
+            __props__.__dict__["language_code"] = language_code
             __props__.__dict__["location"] = location
+            __props__.__dict__["model_type"] = model_type
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
@@ -190,7 +230,9 @@ class IssueModel(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["input_data_config"] = None
         __props__.__dict__["issue_count"] = None
+        __props__.__dict__["language_code"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["model_type"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
@@ -231,9 +273,25 @@ class IssueModel(pulumi.CustomResource):
         return pulumi.get(self, "issue_count")
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Output[str]:
+        """
+        Language of the model.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="modelType")
+    def model_type(self) -> pulumi.Output[str]:
+        """
+        Type of the model.
+        """
+        return pulumi.get(self, "model_type")
 
     @property
     @pulumi.getter

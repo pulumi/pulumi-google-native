@@ -56,6 +56,10 @@ export class DicomStore extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.v1.NotificationConfigResponse>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+     */
+    public readonly streamConfigs!: pulumi.Output<outputs.healthcare.v1.GoogleCloudHealthcareV1DicomStreamConfigResponse[]>;
 
     /**
      * Create a DicomStore resource with the given unique name, arguments, and options.
@@ -78,6 +82,7 @@ export class DicomStore extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
         } else {
             resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["dicomStoreId"] = undefined /*out*/;
@@ -86,6 +91,7 @@ export class DicomStore extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["streamConfigs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["datasetId", "location", "project"] };
@@ -117,4 +123,8 @@ export interface DicomStoreArgs {
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.v1.NotificationConfigArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+     */
+    streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.GoogleCloudHealthcareV1DicomStreamConfigArgs>[]>;
 }

@@ -30,6 +30,11 @@ export type FeatureIamPolicy = import("./featureIamPolicy").FeatureIamPolicy;
 export const FeatureIamPolicy: typeof import("./featureIamPolicy").FeatureIamPolicy = null as any;
 utilities.lazyLoad(exports, ["FeatureIamPolicy"], () => require("./featureIamPolicy"));
 
+export { FleetArgs } from "./fleet";
+export type Fleet = import("./fleet").Fleet;
+export const Fleet: typeof import("./fleet").Fleet = null as any;
+utilities.lazyLoad(exports, ["Fleet"], () => require("./fleet"));
+
 export { GetBindingArgs, GetBindingResult, GetBindingOutputArgs } from "./getBinding";
 export const getBinding: typeof import("./getBinding").getBinding = null as any;
 export const getBindingOutput: typeof import("./getBinding").getBindingOutput = null as any;
@@ -45,6 +50,11 @@ export const getFeatureIamPolicy: typeof import("./getFeatureIamPolicy").getFeat
 export const getFeatureIamPolicyOutput: typeof import("./getFeatureIamPolicy").getFeatureIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getFeatureIamPolicy","getFeatureIamPolicyOutput"], () => require("./getFeatureIamPolicy"));
 
+export { GetFleetArgs, GetFleetResult, GetFleetOutputArgs } from "./getFleet";
+export const getFleet: typeof import("./getFleet").getFleet = null as any;
+export const getFleetOutput: typeof import("./getFleet").getFleetOutput = null as any;
+utilities.lazyLoad(exports, ["getFleet","getFleetOutput"], () => require("./getFleet"));
+
 export { GetMembershipArgs, GetMembershipResult, GetMembershipOutputArgs } from "./getMembership";
 export const getMembership: typeof import("./getMembership").getMembership = null as any;
 export const getMembershipOutput: typeof import("./getMembership").getMembershipOutput = null as any;
@@ -55,10 +65,25 @@ export const getMembershipIamPolicy: typeof import("./getMembershipIamPolicy").g
 export const getMembershipIamPolicyOutput: typeof import("./getMembershipIamPolicy").getMembershipIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getMembershipIamPolicy","getMembershipIamPolicyOutput"], () => require("./getMembershipIamPolicy"));
 
+export { GetNamespaceArgs, GetNamespaceResult, GetNamespaceOutputArgs } from "./getNamespace";
+export const getNamespace: typeof import("./getNamespace").getNamespace = null as any;
+export const getNamespaceOutput: typeof import("./getNamespace").getNamespaceOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespace","getNamespaceOutput"], () => require("./getNamespace"));
+
+export { GetRbacrolebindingArgs, GetRbacrolebindingResult, GetRbacrolebindingOutputArgs } from "./getRbacrolebinding";
+export const getRbacrolebinding: typeof import("./getRbacrolebinding").getRbacrolebinding = null as any;
+export const getRbacrolebindingOutput: typeof import("./getRbacrolebinding").getRbacrolebindingOutput = null as any;
+utilities.lazyLoad(exports, ["getRbacrolebinding","getRbacrolebindingOutput"], () => require("./getRbacrolebinding"));
+
 export { GetScopeArgs, GetScopeResult, GetScopeOutputArgs } from "./getScope";
 export const getScope: typeof import("./getScope").getScope = null as any;
 export const getScopeOutput: typeof import("./getScope").getScopeOutput = null as any;
 utilities.lazyLoad(exports, ["getScope","getScopeOutput"], () => require("./getScope"));
+
+export { GetScopeIamPolicyArgs, GetScopeIamPolicyResult, GetScopeIamPolicyOutputArgs } from "./getScopeIamPolicy";
+export const getScopeIamPolicy: typeof import("./getScopeIamPolicy").getScopeIamPolicy = null as any;
+export const getScopeIamPolicyOutput: typeof import("./getScopeIamPolicy").getScopeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getScopeIamPolicy","getScopeIamPolicyOutput"], () => require("./getScopeIamPolicy"));
 
 export { MembershipArgs } from "./membership";
 export type Membership = import("./membership").Membership;
@@ -80,10 +105,35 @@ export type MembershipIamPolicy = import("./membershipIamPolicy").MembershipIamP
 export const MembershipIamPolicy: typeof import("./membershipIamPolicy").MembershipIamPolicy = null as any;
 utilities.lazyLoad(exports, ["MembershipIamPolicy"], () => require("./membershipIamPolicy"));
 
+export { NamespaceArgs } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+
+export { RbacrolebindingArgs } from "./rbacrolebinding";
+export type Rbacrolebinding = import("./rbacrolebinding").Rbacrolebinding;
+export const Rbacrolebinding: typeof import("./rbacrolebinding").Rbacrolebinding = null as any;
+utilities.lazyLoad(exports, ["Rbacrolebinding"], () => require("./rbacrolebinding"));
+
 export { ScopeArgs } from "./scope";
 export type Scope = import("./scope").Scope;
 export const Scope: typeof import("./scope").Scope = null as any;
 utilities.lazyLoad(exports, ["Scope"], () => require("./scope"));
+
+export { ScopeIamBindingArgs } from "./scopeIamBinding";
+export type ScopeIamBinding = import("./scopeIamBinding").ScopeIamBinding;
+export const ScopeIamBinding: typeof import("./scopeIamBinding").ScopeIamBinding = null as any;
+utilities.lazyLoad(exports, ["ScopeIamBinding"], () => require("./scopeIamBinding"));
+
+export { ScopeIamMemberArgs } from "./scopeIamMember";
+export type ScopeIamMember = import("./scopeIamMember").ScopeIamMember;
+export const ScopeIamMember: typeof import("./scopeIamMember").ScopeIamMember = null as any;
+utilities.lazyLoad(exports, ["ScopeIamMember"], () => require("./scopeIamMember"));
+
+export { ScopeIamPolicyArgs } from "./scopeIamPolicy";
+export type ScopeIamPolicy = import("./scopeIamPolicy").ScopeIamPolicy;
+export const ScopeIamPolicy: typeof import("./scopeIamPolicy").ScopeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ScopeIamPolicy"], () => require("./scopeIamPolicy"));
 
 
 // Export enums:
@@ -103,6 +153,8 @@ const _module = {
                 return new FeatureIamMember(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:FeatureIamPolicy":
                 return new FeatureIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:Fleet":
+                return new Fleet(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:Membership":
                 return new Membership(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:MembershipIamBinding":
@@ -111,8 +163,18 @@ const _module = {
                 return new MembershipIamMember(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:MembershipIamPolicy":
                 return new MembershipIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:Namespace":
+                return new Namespace(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:Rbacrolebinding":
+                return new Rbacrolebinding(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:Scope":
                 return new Scope(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:ScopeIamBinding":
+                return new ScopeIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:ScopeIamMember":
+                return new ScopeIamMember(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:ScopeIamPolicy":
+                return new ScopeIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

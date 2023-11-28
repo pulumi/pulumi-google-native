@@ -19,6 +19,7 @@ class JobArgs:
                  placement: pulumi.Input['JobPlacementArgs'],
                  region: pulumi.Input[str],
                  driver_scheduling_config: Optional[pulumi.Input['DriverSchedulingConfigArgs']] = None,
+                 flink_job: Optional[pulumi.Input['FlinkJobArgs']] = None,
                  hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
                  hive_job: Optional[pulumi.Input['HiveJobArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -37,9 +38,10 @@ class JobArgs:
         The set of arguments for constructing a Job resource.
         :param pulumi.Input['JobPlacementArgs'] placement: Job information, including how, when, and where to run the job.
         :param pulumi.Input['DriverSchedulingConfigArgs'] driver_scheduling_config: Optional. Driver scheduling configuration.
+        :param pulumi.Input['FlinkJobArgs'] flink_job: Optional. Job is a Flink job.
         :param pulumi.Input['HadoopJobArgs'] hadoop_job: Optional. Job is a Hadoop job.
         :param pulumi.Input['HiveJobArgs'] hive_job: Optional. Job is a Hive job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         :param pulumi.Input['PigJobArgs'] pig_job: Optional. Job is a Pig job.
         :param pulumi.Input['PrestoJobArgs'] presto_job: Optional. Job is a Presto job.
         :param pulumi.Input['PySparkJobArgs'] pyspark_job: Optional. Job is a PySpark job.
@@ -55,6 +57,8 @@ class JobArgs:
         pulumi.set(__self__, "region", region)
         if driver_scheduling_config is not None:
             pulumi.set(__self__, "driver_scheduling_config", driver_scheduling_config)
+        if flink_job is not None:
+            pulumi.set(__self__, "flink_job", flink_job)
         if hadoop_job is not None:
             pulumi.set(__self__, "hadoop_job", hadoop_job)
         if hive_job is not None:
@@ -118,6 +122,18 @@ class JobArgs:
         pulumi.set(self, "driver_scheduling_config", value)
 
     @property
+    @pulumi.getter(name="flinkJob")
+    def flink_job(self) -> Optional[pulumi.Input['FlinkJobArgs']]:
+        """
+        Optional. Job is a Flink job.
+        """
+        return pulumi.get(self, "flink_job")
+
+    @flink_job.setter
+    def flink_job(self, value: Optional[pulumi.Input['FlinkJobArgs']]):
+        pulumi.set(self, "flink_job", value)
+
+    @property
     @pulumi.getter(name="hadoopJob")
     def hadoop_job(self) -> Optional[pulumi.Input['HadoopJobArgs']]:
         """
@@ -145,7 +161,7 @@ class JobArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         """
         return pulumi.get(self, "labels")
 
@@ -289,6 +305,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  driver_scheduling_config: Optional[pulumi.Input[pulumi.InputType['DriverSchedulingConfigArgs']]] = None,
+                 flink_job: Optional[pulumi.Input[pulumi.InputType['FlinkJobArgs']]] = None,
                  hadoop_job: Optional[pulumi.Input[pulumi.InputType['HadoopJobArgs']]] = None,
                  hive_job: Optional[pulumi.Input[pulumi.InputType['HiveJobArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -313,9 +330,10 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DriverSchedulingConfigArgs']] driver_scheduling_config: Optional. Driver scheduling configuration.
+        :param pulumi.Input[pulumi.InputType['FlinkJobArgs']] flink_job: Optional. Job is a Flink job.
         :param pulumi.Input[pulumi.InputType['HadoopJobArgs']] hadoop_job: Optional. Job is a Hadoop job.
         :param pulumi.Input[pulumi.InputType['HiveJobArgs']] hive_job: Optional. Job is a Hive job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         :param pulumi.Input[pulumi.InputType['PigJobArgs']] pig_job: Optional. Job is a Pig job.
         :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: Job information, including how, when, and where to run the job.
         :param pulumi.Input[pulumi.InputType['PrestoJobArgs']] presto_job: Optional. Job is a Presto job.
@@ -354,6 +372,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  driver_scheduling_config: Optional[pulumi.Input[pulumi.InputType['DriverSchedulingConfigArgs']]] = None,
+                 flink_job: Optional[pulumi.Input[pulumi.InputType['FlinkJobArgs']]] = None,
                  hadoop_job: Optional[pulumi.Input[pulumi.InputType['HadoopJobArgs']]] = None,
                  hive_job: Optional[pulumi.Input[pulumi.InputType['HiveJobArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -380,6 +399,7 @@ class Job(pulumi.CustomResource):
             __props__ = JobArgs.__new__(JobArgs)
 
             __props__.__dict__["driver_scheduling_config"] = driver_scheduling_config
+            __props__.__dict__["flink_job"] = flink_job
             __props__.__dict__["hadoop_job"] = hadoop_job
             __props__.__dict__["hive_job"] = hive_job
             __props__.__dict__["labels"] = labels
@@ -435,6 +455,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["driver_control_files_uri"] = None
         __props__.__dict__["driver_output_resource_uri"] = None
         __props__.__dict__["driver_scheduling_config"] = None
+        __props__.__dict__["flink_job"] = None
         __props__.__dict__["hadoop_job"] = None
         __props__.__dict__["hive_job"] = None
         __props__.__dict__["job_uuid"] = None
@@ -468,7 +489,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="driverControlFilesUri")
     def driver_control_files_uri(self) -> pulumi.Output[str]:
         """
-        If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+        If present, the location of miscellaneous control files which can be used as part of job setup and handling. If not present, control files might be placed in the same location as driver_output_uri.
         """
         return pulumi.get(self, "driver_control_files_uri")
 
@@ -487,6 +508,14 @@ class Job(pulumi.CustomResource):
         Optional. Driver scheduling configuration.
         """
         return pulumi.get(self, "driver_scheduling_config")
+
+    @property
+    @pulumi.getter(name="flinkJob")
+    def flink_job(self) -> pulumi.Output['outputs.FlinkJobResponse']:
+        """
+        Optional. Job is a Flink job.
+        """
+        return pulumi.get(self, "flink_job")
 
     @property
     @pulumi.getter(name="hadoopJob")
@@ -508,7 +537,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="jobUuid")
     def job_uuid(self) -> pulumi.Output[str]:
         """
-        A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
+        A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that might be reused over time.
         """
         return pulumi.get(self, "job_uuid")
 
@@ -516,7 +545,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         """
         return pulumi.get(self, "labels")
 
@@ -606,7 +635,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output['outputs.JobStatusResponse']:
         """
-        The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
+        The job status. Additional application-specific status information might be contained in the type_job and yarn_applications fields.
         """
         return pulumi.get(self, "status")
 
@@ -630,7 +659,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="yarnApplications")
     def yarn_applications(self) -> pulumi.Output[Sequence['outputs.YarnApplicationResponse']]:
         """
-        The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+        The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release.
         """
         return pulumi.get(self, "yarn_applications")
 

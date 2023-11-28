@@ -946,7 +946,7 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse(dict):
 @pulumi.output_type
 class GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse(dict):
     """
-    The conversation source, which is a combination of transcript and audio.
+    The conversation source, which is a combination of transcript, audio, and metadata.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -971,7 +971,7 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse(dict):
                  dialogflow_source: 'outputs.GoogleCloudContactcenterinsightsV1DialogflowSourceResponse',
                  gcs_source: 'outputs.GoogleCloudContactcenterinsightsV1GcsSourceResponse'):
         """
-        The conversation source, which is a combination of transcript and audio.
+        The conversation source, which is a combination of transcript, audio, and metadata.
         :param 'GoogleCloudContactcenterinsightsV1DialogflowSourceResponse' dialogflow_source: The source when the conversation comes from Dialogflow.
         :param 'GoogleCloudContactcenterinsightsV1GcsSourceResponse' gcs_source: A Cloud Storage location specification for the audio and transcript.
         """

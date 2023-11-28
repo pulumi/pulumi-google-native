@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         public readonly int AttributeCount;
         /// <summary>
+        /// The number of classes in the DataTaxonomy.
+        /// </summary>
+        public readonly int ClassCount;
+        /// <summary>
         /// The time when the DataTaxonomy was created.
         /// </summary>
         public readonly string CreateTime;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         private GetDataTaxonomyResult(
             int attributeCount,
 
+            int classCount,
+
             string createTime,
 
             string description,
@@ -121,6 +127,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
             string updateTime)
         {
             AttributeCount = attributeCount;
+            ClassCount = classCount;
             CreateTime = createTime;
             Description = description;
             DisplayName = displayName;

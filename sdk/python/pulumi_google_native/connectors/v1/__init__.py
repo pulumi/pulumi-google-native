@@ -10,10 +10,16 @@ from .connection import *
 from .connection_iam_binding import *
 from .connection_iam_member import *
 from .connection_iam_policy import *
+from .custom_connector import *
+from .custom_connector_version import *
 from .endpoint_attachment import *
+from .event_subscription import *
 from .get_connection import *
 from .get_connection_iam_policy import *
+from .get_custom_connector import *
+from .get_custom_connector_version import *
 from .get_endpoint_attachment import *
+from .get_event_subscription import *
 from .get_managed_zone import *
 from .get_provider_iam_policy import *
 from .managed_zone import *

@@ -39,6 +39,8 @@ type Instance struct {
 	GuestAccelerators AcceleratorConfigResponseArrayOutput `pulumi:"guestAccelerators"`
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
+	// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+	InstanceEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"instanceEncryptionKey"`
 	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType pulumi.StringOutput `pulumi:"keyRevocationActionType"`
 	// Type of the resource. Always compute#instance for instances.
@@ -166,6 +168,8 @@ type instanceArgs struct {
 	GuestAccelerators []AcceleratorConfig `pulumi:"guestAccelerators"`
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname *string `pulumi:"hostname"`
+	// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+	InstanceEncryptionKey *CustomerEncryptionKey `pulumi:"instanceEncryptionKey"`
 	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType *InstanceKeyRevocationActionType `pulumi:"keyRevocationActionType"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
@@ -228,6 +232,8 @@ type InstanceArgs struct {
 	GuestAccelerators AcceleratorConfigArrayInput
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname pulumi.StringPtrInput
+	// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+	InstanceEncryptionKey CustomerEncryptionKeyPtrInput
 	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType InstanceKeyRevocationActionTypePtrInput
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
@@ -377,6 +383,11 @@ func (o InstanceOutput) GuestAccelerators() AcceleratorConfigResponseArrayOutput
 // Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 func (o InstanceOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+func (o InstanceOutput) InstanceEncryptionKey() CustomerEncryptionKeyResponseOutput {
+	return o.ApplyT(func(v *Instance) CustomerEncryptionKeyResponseOutput { return v.InstanceEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
 }
 
 // KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.

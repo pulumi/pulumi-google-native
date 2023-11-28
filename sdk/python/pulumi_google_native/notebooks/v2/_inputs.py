@@ -8,11 +8,62 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
+    'AcceleratorConfigArgs',
     'BindingArgs',
+    'BootDiskArgs',
+    'ContainerImageArgs',
+    'DataDiskArgs',
     'ExprArgs',
+    'GPUDriverConfigArgs',
+    'GceSetupArgs',
+    'NetworkInterfaceArgs',
+    'ServiceAccountArgs',
+    'ShieldedInstanceConfigArgs',
+    'VmImageArgs',
 ]
+
+@pulumi.input_type
+class AcceleratorConfigArgs:
+    def __init__(__self__, *,
+                 core_count: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['AcceleratorConfigType']] = None):
+        """
+        An accelerator configuration for a VM instance Definition of a hardware accelerator. Note that there is no check on `type` and `core_count` combinations. TPUs are not supported. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination.
+        :param pulumi.Input[str] core_count: Optional. Count of cores of this accelerator.
+        :param pulumi.Input['AcceleratorConfigType'] type: Optional. Type of this accelerator.
+        """
+        if core_count is not None:
+            pulumi.set(__self__, "core_count", core_count)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Count of cores of this accelerator.
+        """
+        return pulumi.get(self, "core_count")
+
+    @core_count.setter
+    def core_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "core_count", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['AcceleratorConfigType']]:
+        """
+        Optional. Type of this accelerator.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['AcceleratorConfigType']]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class BindingArgs:
@@ -68,6 +119,189 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class BootDiskArgs:
+    def __init__(__self__, *,
+                 disk_encryption: Optional[pulumi.Input['BootDiskDiskEncryption']] = None,
+                 disk_size_gb: Optional[pulumi.Input[str]] = None,
+                 disk_type: Optional[pulumi.Input['BootDiskDiskType']] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None):
+        """
+        The definition of a boot disk.
+        :param pulumi.Input['BootDiskDiskEncryption'] disk_encryption: Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+        :param pulumi.Input[str] disk_size_gb: Optional. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to the recommended value of 150GB.
+        :param pulumi.Input['BootDiskDiskType'] disk_type: Optional. Indicates the type of the disk.
+        :param pulumi.Input[str] kms_key: Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.
+        """
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input['BootDiskDiskEncryption']]:
+        """
+        Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input['BootDiskDiskEncryption']]):
+        pulumi.set(self, "disk_encryption", value)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to the recommended value of 150GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input['BootDiskDiskType']]:
+        """
+        Optional. Indicates the type of the disk.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input['BootDiskDiskType']]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
+
+
+@pulumi.input_type
+class ContainerImageArgs:
+    def __init__(__self__, *,
+                 repository: pulumi.Input[str],
+                 tag: Optional[pulumi.Input[str]] = None):
+        """
+        Definition of a container image for starting a notebook instance with the environment installed in a container.
+        :param pulumi.Input[str] repository: The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+        :param pulumi.Input[str] tag: Optional. The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        pulumi.set(__self__, "repository", repository)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[str]:
+        """
+        The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
+class DataDiskArgs:
+    def __init__(__self__, *,
+                 disk_encryption: Optional[pulumi.Input['DataDiskDiskEncryption']] = None,
+                 disk_size_gb: Optional[pulumi.Input[str]] = None,
+                 disk_type: Optional[pulumi.Input['DataDiskDiskType']] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None):
+        """
+        An instance-attached disk resource.
+        :param pulumi.Input['DataDiskDiskEncryption'] disk_encryption: Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+        :param pulumi.Input[str] disk_size_gb: Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to 100.
+        :param pulumi.Input['DataDiskDiskType'] disk_type: Optional. Input only. Indicates the type of the disk.
+        :param pulumi.Input[str] kms_key: Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.
+        """
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input['DataDiskDiskEncryption']]:
+        """
+        Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input['DataDiskDiskEncryption']]):
+        pulumi.set(self, "disk_encryption", value)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to 100.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input['DataDiskDiskType']]:
+        """
+        Optional. Input only. Indicates the type of the disk.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input['DataDiskDiskType']]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
 
 @pulumi.input_type
@@ -140,5 +374,468 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class GPUDriverConfigArgs:
+    def __init__(__self__, *,
+                 custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
+                 enable_gpu_driver: Optional[pulumi.Input[bool]] = None):
+        """
+        A GPU driver configuration
+        :param pulumi.Input[str] custom_gpu_driver_path: Optional. Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+        :param pulumi.Input[bool] enable_gpu_driver: Optional. Whether the end user authorizes Google Cloud to install GPU driver on this VM instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
+        """
+        if custom_gpu_driver_path is not None:
+            pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
+        if enable_gpu_driver is not None:
+            pulumi.set(__self__, "enable_gpu_driver", enable_gpu_driver)
+
+    @property
+    @pulumi.getter(name="customGpuDriverPath")
+    def custom_gpu_driver_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+        """
+        return pulumi.get(self, "custom_gpu_driver_path")
+
+    @custom_gpu_driver_path.setter
+    def custom_gpu_driver_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_gpu_driver_path", value)
+
+    @property
+    @pulumi.getter(name="enableGpuDriver")
+    def enable_gpu_driver(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether the end user authorizes Google Cloud to install GPU driver on this VM instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
+        """
+        return pulumi.get(self, "enable_gpu_driver")
+
+    @enable_gpu_driver.setter
+    def enable_gpu_driver(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_gpu_driver", value)
+
+
+@pulumi.input_type
+class GceSetupArgs:
+    def __init__(__self__, *,
+                 accelerator_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
+                 boot_disk: Optional[pulumi.Input['BootDiskArgs']] = None,
+                 container_image: Optional[pulumi.Input['ContainerImageArgs']] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['DataDiskArgs']]]] = None,
+                 disable_public_ip: Optional[pulumi.Input[bool]] = None,
+                 enable_ip_forwarding: Optional[pulumi.Input[bool]] = None,
+                 gpu_driver_config: Optional[pulumi.Input['GPUDriverConfigArgs']] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
+                 service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vm_image: Optional[pulumi.Input['VmImageArgs']] = None):
+        """
+        The definition of how to configure a VM instance outside of Resources and Identity.
+        :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] accelerator_configs: Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator configuration.
+        :param pulumi.Input['BootDiskArgs'] boot_disk: Optional. The boot disk for the VM.
+        :param pulumi.Input['ContainerImageArgs'] container_image: Optional. Use a container image to start the notebook instance.
+        :param pulumi.Input[Sequence[pulumi.Input['DataDiskArgs']]] data_disks: Optional. Data disks attached to the VM instance. Currently supports only one data disk.
+        :param pulumi.Input[bool] disable_public_ip: Optional. If true, no external IP will be assigned to this VM instance.
+        :param pulumi.Input[bool] enable_ip_forwarding: Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+        :param pulumi.Input['GPUDriverConfigArgs'] gpu_driver_config: Optional. Configuration for GPU drivers.
+        :param pulumi.Input[str] machine_type: Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Custom metadata to apply to this instance.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: Optional. The network interfaces for the VM. Supports only one interface.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: Optional. The service account that serves as an identity for the VM instance. Currently supports only one service account.
+        :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        :param pulumi.Input['VmImageArgs'] vm_image: Optional. Use a Compute Engine VM image to start the notebook instance.
+        """
+        if accelerator_configs is not None:
+            pulumi.set(__self__, "accelerator_configs", accelerator_configs)
+        if boot_disk is not None:
+            pulumi.set(__self__, "boot_disk", boot_disk)
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
+        if data_disks is not None:
+            pulumi.set(__self__, "data_disks", data_disks)
+        if disable_public_ip is not None:
+            pulumi.set(__self__, "disable_public_ip", disable_public_ip)
+        if enable_ip_forwarding is not None:
+            pulumi.set(__self__, "enable_ip_forwarding", enable_ip_forwarding)
+        if gpu_driver_config is not None:
+            pulumi.set(__self__, "gpu_driver_config", gpu_driver_config)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if service_accounts is not None:
+            pulumi.set(__self__, "service_accounts", service_accounts)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vm_image is not None:
+            pulumi.set(__self__, "vm_image", vm_image)
+
+    @property
+    @pulumi.getter(name="acceleratorConfigs")
+    def accelerator_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]]:
+        """
+        Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator configuration.
+        """
+        return pulumi.get(self, "accelerator_configs")
+
+    @accelerator_configs.setter
+    def accelerator_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]]):
+        pulumi.set(self, "accelerator_configs", value)
+
+    @property
+    @pulumi.getter(name="bootDisk")
+    def boot_disk(self) -> Optional[pulumi.Input['BootDiskArgs']]:
+        """
+        Optional. The boot disk for the VM.
+        """
+        return pulumi.get(self, "boot_disk")
+
+    @boot_disk.setter
+    def boot_disk(self, value: Optional[pulumi.Input['BootDiskArgs']]):
+        pulumi.set(self, "boot_disk", value)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional[pulumi.Input['ContainerImageArgs']]:
+        """
+        Optional. Use a container image to start the notebook instance.
+        """
+        return pulumi.get(self, "container_image")
+
+    @container_image.setter
+    def container_image(self, value: Optional[pulumi.Input['ContainerImageArgs']]):
+        pulumi.set(self, "container_image", value)
+
+    @property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataDiskArgs']]]]:
+        """
+        Optional. Data disks attached to the VM instance. Currently supports only one data disk.
+        """
+        return pulumi.get(self, "data_disks")
+
+    @data_disks.setter
+    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataDiskArgs']]]]):
+        pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="disablePublicIp")
+    def disable_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If true, no external IP will be assigned to this VM instance.
+        """
+        return pulumi.get(self, "disable_public_ip")
+
+    @disable_public_ip.setter
+    def disable_public_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_public_ip", value)
+
+    @property
+    @pulumi.getter(name="enableIpForwarding")
+    def enable_ip_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+        """
+        return pulumi.get(self, "enable_ip_forwarding")
+
+    @enable_ip_forwarding.setter
+    def enable_ip_forwarding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ip_forwarding", value)
+
+    @property
+    @pulumi.getter(name="gpuDriverConfig")
+    def gpu_driver_config(self) -> Optional[pulumi.Input['GPUDriverConfigArgs']]:
+        """
+        Optional. Configuration for GPU drivers.
+        """
+        return pulumi.get(self, "gpu_driver_config")
+
+    @gpu_driver_config.setter
+    def gpu_driver_config(self, value: Optional[pulumi.Input['GPUDriverConfigArgs']]):
+        pulumi.set(self, "gpu_driver_config", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Custom metadata to apply to this instance.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]]:
+        """
+        Optional. The network interfaces for the VM. Supports only one interface.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="serviceAccounts")
+    def service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]]:
+        """
+        Optional. The service account that serves as an identity for the VM instance. Currently supports only one service account.
+        """
+        return pulumi.get(self, "service_accounts")
+
+    @service_accounts.setter
+    def service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]]):
+        pulumi.set(self, "service_accounts", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ShieldedInstanceConfigArgs']]:
+        """
+        Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vmImage")
+    def vm_image(self) -> Optional[pulumi.Input['VmImageArgs']]:
+        """
+        Optional. Use a Compute Engine VM image to start the notebook instance.
+        """
+        return pulumi.get(self, "vm_image")
+
+    @vm_image.setter
+    def vm_image(self, value: Optional[pulumi.Input['VmImageArgs']]):
+        pulumi.set(self, "vm_image", value)
+
+
+@pulumi.input_type
+class NetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 network: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input['NetworkInterfaceNicType']] = None,
+                 subnet: Optional[pulumi.Input[str]] = None):
+        """
+        The definition of a network interface resource attached to a VM.
+        :param pulumi.Input[str] network: Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
+        :param pulumi.Input['NetworkInterfaceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        :param pulumi.Input[str] subnet: Optional. The name of the subnet that this VM instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[pulumi.Input['NetworkInterfaceNicType']]:
+        """
+        Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        """
+        return pulumi.get(self, "nic_type")
+
+    @nic_type.setter
+    def nic_type(self, value: Optional[pulumi.Input['NetworkInterfaceNicType']]):
+        pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the subnet that this VM instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnet", value)
+
+
+@pulumi.input_type
+class ServiceAccountArgs:
+    def __init__(__self__, *,
+                 email: Optional[pulumi.Input[str]] = None):
+        """
+        A service account that acts as an identity.
+        :param pulumi.Input[str] email: Optional. Email address of the service account.
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Email address of the service account.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+
+@pulumi.input_type
+class ShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None,
+                 enable_vtpm: Optional[pulumi.Input[bool]] = None):
+        """
+        A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+        :param pulumi.Input[bool] enable_integrity_monitoring: Optional. Defines whether the VM instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the VM instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the VM instance is created. Enabled by default.
+        :param pulumi.Input[bool] enable_secure_boot: Optional. Defines whether the VM instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+        :param pulumi.Input[bool] enable_vtpm: Optional. Defines whether the VM instance has the vTPM enabled. Enabled by default.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        if enable_vtpm is not None:
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the VM instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the VM instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the VM instance is created. Enabled by default.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @enable_integrity_monitoring.setter
+    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_integrity_monitoring", value)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the VM instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the VM instance has the vTPM enabled. Enabled by default.
+        """
+        return pulumi.get(self, "enable_vtpm")
+
+    @enable_vtpm.setter
+    def enable_vtpm(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_vtpm", value)
+
+
+@pulumi.input_type
+class VmImageArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[str],
+                 family: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
+        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
+        :param pulumi.Input[str] family: Optional. Use this VM image family to find the image; the newest image in this family will be used.
+        :param pulumi.Input[str] name: Optional. Use VM image name to find the image.
+        """
+        pulumi.set(__self__, "project", project)
+        if family is not None:
+            pulumi.set(__self__, "family", family)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def family(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Use this VM image family to find the image; the newest image in this family will be used.
+        """
+        return pulumi.get(self, "family")
+
+    @family.setter
+    def family(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "family", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Use VM image name to find the image.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 

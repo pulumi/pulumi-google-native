@@ -39,9 +39,17 @@ export class Repository extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. The repository's user-friendly name.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
      * Optional. If set, configures this repository to be linked to a Git remote.
      */
     public readonly gitRemoteSettings!: pulumi.Output<outputs.dataform.v1beta1.GitRemoteSettingsResponse>;
+    /**
+     * Optional. Repository user labels.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The repository's name.
@@ -56,6 +64,14 @@ export class Repository extends pulumi.CustomResource {
      * Required. The ID to use for the repository, which will become the final component of the repository's resource name.
      */
     public readonly repositoryId!: pulumi.Output<string>;
+    /**
+     * Optional. The service account to run workflow invocations under.
+     */
+    public readonly serviceAccount!: pulumi.Output<string>;
+    /**
+     * Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+     */
+    public readonly setAuthenticatedUserAdmin!: pulumi.Output<boolean>;
     /**
      * Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
      */
@@ -75,20 +91,28 @@ export class Repository extends pulumi.CustomResource {
             if ((!args || args.repositoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repositoryId'");
             }
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["gitRemoteSettings"] = args ? args.gitRemoteSettings : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = args ? args.npmrcEnvironmentVariablesSecretVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["setAuthenticatedUserAdmin"] = args ? args.setAuthenticatedUserAdmin : undefined;
             resourceInputs["workspaceCompilationOverrides"] = args ? args.workspaceCompilationOverrides : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["gitRemoteSettings"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["repositoryId"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["setAuthenticatedUserAdmin"] = undefined /*out*/;
             resourceInputs["workspaceCompilationOverrides"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -103,9 +127,17 @@ export class Repository extends pulumi.CustomResource {
  */
 export interface RepositoryArgs {
     /**
+     * Optional. The repository's user-friendly name.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
      * Optional. If set, configures this repository to be linked to a Git remote.
      */
     gitRemoteSettings?: pulumi.Input<inputs.dataform.v1beta1.GitRemoteSettingsArgs>;
+    /**
+     * Optional. Repository user labels.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*&#47;secrets/*&#47;versions/*`. The file itself must be in a JSON format.
@@ -116,6 +148,14 @@ export interface RepositoryArgs {
      * Required. The ID to use for the repository, which will become the final component of the repository's resource name.
      */
     repositoryId: pulumi.Input<string>;
+    /**
+     * Optional. The service account to run workflow invocations under.
+     */
+    serviceAccount?: pulumi.Input<string>;
+    /**
+     * Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+     */
+    setAuthenticatedUserAdmin?: pulumi.Input<boolean>;
     /**
      * Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
      */

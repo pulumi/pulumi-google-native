@@ -139,6 +139,51 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     }
 
     /// <summary>
+    /// The type of the connected data store.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType : IEquatable<GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not specified. This value indicates that the data store type is not specified, so it will not be used during search.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType DataStoreTypeUnspecified { get; } = new GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("DATA_STORE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A data store that contains public web content.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType PublicWeb { get; } = new GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("PUBLIC_WEB");
+        /// <summary>
+        /// A data store that contains unstructured private data.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType Unstructured { get; } = new GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("UNSTRUCTURED");
+        /// <summary>
+        /// A data store that contains structured data (for example FAQ).
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType Structured { get; } = new GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("STRUCTURED");
+
+        public static bool operator ==(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType left, GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType left, GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Count-based metric type. Only one of type or count_type is specified in each Metric.
     /// </summary>
     [EnumType]
@@ -713,6 +758,43 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SecuritySettingRedactionStrategy other && Equals(other);
         public bool Equals(SecuritySettingRedactionStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecuritySettingRetentionStrategy : IEquatable<SecuritySettingRetentionStrategy>
+    {
+        private readonly string _value;
+
+        private SecuritySettingRetentionStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Retains the persisted data with Dialogflow's internal default 365d TTLs.
+        /// </summary>
+        public static SecuritySettingRetentionStrategy RetentionStrategyUnspecified { get; } = new SecuritySettingRetentionStrategy("RETENTION_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// Removes data when the conversation ends. If there is no Conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
+        /// </summary>
+        public static SecuritySettingRetentionStrategy RemoveAfterConversation { get; } = new SecuritySettingRetentionStrategy("REMOVE_AFTER_CONVERSATION");
+
+        public static bool operator ==(SecuritySettingRetentionStrategy left, SecuritySettingRetentionStrategy right) => left.Equals(right);
+        public static bool operator !=(SecuritySettingRetentionStrategy left, SecuritySettingRetentionStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(SecuritySettingRetentionStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecuritySettingRetentionStrategy other && Equals(other);
+        public bool Equals(SecuritySettingRetentionStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

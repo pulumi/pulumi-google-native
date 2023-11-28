@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
     public sealed class NodeNetworkConfigResponse
     {
         /// <summary>
+        /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AdditionalNodeNetworkConfigResponse> AdditionalNodeNetworkConfigs;
+        /// <summary>
+        /// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AdditionalPodNetworkConfigResponse> AdditionalPodNetworkConfigs;
+        /// <summary>
         /// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         /// </summary>
         public readonly bool CreatePodRange;
@@ -37,12 +45,20 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string PodIpv4CidrBlock;
         /// <summary>
+        /// [Output only] The utilization of the IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+        /// </summary>
+        public readonly double PodIpv4RangeUtilization;
+        /// <summary>
         /// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         /// </summary>
         public readonly string PodRange;
 
         [OutputConstructor]
         private NodeNetworkConfigResponse(
+            ImmutableArray<Outputs.AdditionalNodeNetworkConfigResponse> additionalNodeNetworkConfigs,
+
+            ImmutableArray<Outputs.AdditionalPodNetworkConfigResponse> additionalPodNetworkConfigs,
+
             bool createPodRange,
 
             bool enablePrivateNodes,
@@ -53,13 +69,18 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             string podIpv4CidrBlock,
 
+            double podIpv4RangeUtilization,
+
             string podRange)
         {
+            AdditionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            AdditionalPodNetworkConfigs = additionalPodNetworkConfigs;
             CreatePodRange = createPodRange;
             EnablePrivateNodes = enablePrivateNodes;
             NetworkPerformanceConfig = networkPerformanceConfig;
             PodCidrOverprovisionConfig = podCidrOverprovisionConfig;
             PodIpv4CidrBlock = podIpv4CidrBlock;
+            PodIpv4RangeUtilization = podIpv4RangeUtilization;
             PodRange = podRange;
         }
     }

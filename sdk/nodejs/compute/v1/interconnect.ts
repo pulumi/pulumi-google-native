@@ -42,6 +42,10 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly adminEnabled!: pulumi.Output<boolean>;
     /**
+     * [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
+     */
+    public /*out*/ readonly availableFeatures!: pulumi.Output<string[]>;
+    /**
      * A list of CircuitInfo objects, that describe the individual circuits in this LAG.
      */
     public /*out*/ readonly circuitInfos!: pulumi.Output<outputs.compute.v1.InterconnectCircuitInfoResponse[]>;
@@ -98,6 +102,14 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+     */
+    public readonly macsec!: pulumi.Output<outputs.compute.v1.InterconnectMacsecResponse>;
+    /**
+     * Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+     */
+    public readonly macsecEnabled!: pulumi.Output<boolean>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
@@ -126,6 +138,10 @@ export class Interconnect extends pulumi.CustomResource {
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
+     * Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+     */
+    public readonly requestedFeatures!: pulumi.Output<string[]>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */
@@ -161,12 +177,16 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["linkType"] = args ? args.linkType : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["macsec"] = args ? args.macsec : undefined;
+            resourceInputs["macsecEnabled"] = args ? args.macsecEnabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nocContactEmail"] = args ? args.nocContactEmail : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["remoteLocation"] = args ? args.remoteLocation : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["requestedFeatures"] = args ? args.requestedFeatures : undefined;
             resourceInputs["requestedLinkCount"] = args ? args.requestedLinkCount : undefined;
+            resourceInputs["availableFeatures"] = undefined /*out*/;
             resourceInputs["circuitInfos"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["expectedOutages"] = undefined /*out*/;
@@ -183,6 +203,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["adminEnabled"] = undefined /*out*/;
+            resourceInputs["availableFeatures"] = undefined /*out*/;
             resourceInputs["circuitInfos"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customerName"] = undefined /*out*/;
@@ -197,6 +218,8 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["linkType"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["macsec"] = undefined /*out*/;
+            resourceInputs["macsecEnabled"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nocContactEmail"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
@@ -205,6 +228,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["provisionedLinkCount"] = undefined /*out*/;
             resourceInputs["remoteLocation"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["requestedFeatures"] = undefined /*out*/;
             resourceInputs["requestedLinkCount"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -250,6 +274,14 @@ export interface InterconnectArgs {
      */
     location?: pulumi.Input<string>;
     /**
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+     */
+    macsec?: pulumi.Input<inputs.compute.v1.InterconnectMacsecArgs>;
+    /**
+     * Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+     */
+    macsecEnabled?: pulumi.Input<boolean>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
@@ -266,6 +298,10 @@ export interface InterconnectArgs {
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+     */
+    requestedFeatures?: pulumi.Input<pulumi.Input<enums.compute.v1.InterconnectRequestedFeaturesItem>[]>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */

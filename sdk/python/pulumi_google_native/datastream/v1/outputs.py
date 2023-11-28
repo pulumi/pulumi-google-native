@@ -37,6 +37,7 @@ __all__ = [
     'OracleRdbmsResponse',
     'OracleSchemaResponse',
     'OracleSourceConfigResponse',
+    'OracleSslConfigResponse',
     'OracleTableResponse',
     'PostgresqlColumnResponse',
     'PostgresqlProfileResponse',
@@ -749,7 +750,9 @@ class MysqlColumnResponse(dict):
                  length: int,
                  nullable: bool,
                  ordinal_position: int,
-                 primary_key: bool):
+                 precision: int,
+                 primary_key: bool,
+                 scale: int):
         """
         MySQL Column.
         :param str collation: Column collation.
@@ -758,7 +761,9 @@ class MysqlColumnResponse(dict):
         :param int length: Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
+        :param int precision: Column precision.
         :param bool primary_key: Whether or not the column represents a primary key.
+        :param int scale: Column scale.
         """
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "column", column)
@@ -766,7 +771,9 @@ class MysqlColumnResponse(dict):
         pulumi.set(__self__, "length", length)
         pulumi.set(__self__, "nullable", nullable)
         pulumi.set(__self__, "ordinal_position", ordinal_position)
+        pulumi.set(__self__, "precision", precision)
         pulumi.set(__self__, "primary_key", primary_key)
+        pulumi.set(__self__, "scale", scale)
 
     @property
     @pulumi.getter
@@ -817,12 +824,28 @@ class MysqlColumnResponse(dict):
         return pulumi.get(self, "ordinal_position")
 
     @property
+    @pulumi.getter
+    def precision(self) -> int:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> bool:
         """
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> int:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
 
 
 @pulumi.output_type
@@ -1372,6 +1395,8 @@ class OracleProfileResponse(dict):
             suggest = "connection_attributes"
         elif key == "databaseService":
             suggest = "database_service"
+        elif key == "oracleSslConfig":
+            suggest = "oracle_ssl_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OracleProfileResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1388,6 +1413,7 @@ class OracleProfileResponse(dict):
                  connection_attributes: Mapping[str, str],
                  database_service: str,
                  hostname: str,
+                 oracle_ssl_config: 'outputs.OracleSslConfigResponse',
                  password: str,
                  port: int,
                  username: str):
@@ -1396,6 +1422,7 @@ class OracleProfileResponse(dict):
         :param Mapping[str, str] connection_attributes: Connection string attributes
         :param str database_service: Database for the Oracle connection.
         :param str hostname: Hostname for the Oracle connection.
+        :param 'OracleSslConfigResponse' oracle_ssl_config: Optional. SSL configuration for the Oracle connection.
         :param str password: Password for the Oracle connection.
         :param int port: Port for the Oracle connection, default value is 1521.
         :param str username: Username for the Oracle connection.
@@ -1403,6 +1430,7 @@ class OracleProfileResponse(dict):
         pulumi.set(__self__, "connection_attributes", connection_attributes)
         pulumi.set(__self__, "database_service", database_service)
         pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "oracle_ssl_config", oracle_ssl_config)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "username", username)
@@ -1430,6 +1458,14 @@ class OracleProfileResponse(dict):
         Hostname for the Oracle connection.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="oracleSslConfig")
+    def oracle_ssl_config(self) -> 'outputs.OracleSslConfigResponse':
+        """
+        Optional. SSL configuration for the Oracle connection.
+        """
+        return pulumi.get(self, "oracle_ssl_config")
 
     @property
     @pulumi.getter
@@ -1647,6 +1683,58 @@ class OracleSourceConfigResponse(dict):
         Stream large object values. NOTE: This feature is currently experimental.
         """
         return pulumi.get(self, "stream_large_objects")
+
+
+@pulumi.output_type
+class OracleSslConfigResponse(dict):
+    """
+    Oracle SSL configuration information.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "caCertificateSet":
+            suggest = "ca_certificate_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OracleSslConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OracleSslConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OracleSslConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: str,
+                 ca_certificate_set: bool):
+        """
+        Oracle SSL configuration information.
+        :param str ca_certificate: Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+        :param bool ca_certificate_set: Indicates whether the ca_certificate field has been set for this Connection-Profile.
+        """
+        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        pulumi.set(__self__, "ca_certificate_set", ca_certificate_set)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> str:
+        """
+        Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="caCertificateSet")
+    def ca_certificate_set(self) -> bool:
+        """
+        Indicates whether the ca_certificate field has been set for this Connection-Profile.
+        """
+        return pulumi.get(self, "ca_certificate_set")
 
 
 @pulumi.output_type
@@ -2178,7 +2266,7 @@ class SingleTargetDatasetResponse(dict):
                  dataset_id: str):
         """
         A single target dataset to which all data will be streamed.
-        :param str dataset_id: The dataset ID of the target dataset.
+        :param str dataset_id: The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
 
@@ -2186,7 +2274,7 @@ class SingleTargetDatasetResponse(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         """
-        The dataset ID of the target dataset.
+        The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
         """
         return pulumi.get(self, "dataset_id")
 

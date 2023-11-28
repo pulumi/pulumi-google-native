@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         /// </summary>
         public readonly double MaxUtilization;
+        /// <summary>
+        /// This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default 
+        /// </summary>
+        public readonly string Preference;
 
         [OutputConstructor]
         private BackendResponse(
@@ -89,7 +93,9 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             double maxRatePerInstance,
 
-            double maxUtilization)
+            double maxUtilization,
+
+            string preference)
         {
             BalancingMode = balancingMode;
             CapacityScaler = capacityScaler;
@@ -103,6 +109,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             MaxRatePerEndpoint = maxRatePerEndpoint;
             MaxRatePerInstance = maxRatePerInstance;
             MaxUtilization = maxUtilization;
+            Preference = preference;
         }
     }
 }

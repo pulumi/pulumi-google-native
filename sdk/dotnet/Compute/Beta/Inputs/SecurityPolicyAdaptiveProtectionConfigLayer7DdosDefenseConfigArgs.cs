@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("ruleVisibility")]
         public Input<Pulumi.GoogleNative.Compute.Beta.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility>? RuleVisibility { get; set; }
 
+        [Input("thresholdConfigs")]
+        private InputList<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs>? _thresholdConfigs;
+
+        /// <summary>
+        /// Configuration options for layer7 adaptive protection for various customizable thresholds.
+        /// </summary>
+        public InputList<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs> ThresholdConfigs
+        {
+            get => _thresholdConfigs ?? (_thresholdConfigs = new InputList<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs>());
+            set => _thresholdConfigs = value;
+        }
+
         public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs()
         {
         }

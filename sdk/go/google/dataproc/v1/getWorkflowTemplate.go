@@ -35,6 +35,8 @@ type LookupWorkflowTemplateResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout string `pulumi:"dagTimeout"`
+	// Optional. Encryption settings for the encrypting customer core content.
+	EncryptionConfig GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// The Directed Acyclic Graph of Jobs to submit.
 	Jobs []OrderedJobResponse `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
@@ -103,6 +105,13 @@ func (o LookupWorkflowTemplateResultOutput) CreateTime() pulumi.StringOutput {
 // Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 func (o LookupWorkflowTemplateResultOutput) DagTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowTemplateResult) string { return v.DagTimeout }).(pulumi.StringOutput)
+}
+
+// Optional. Encryption settings for the encrypting customer core content.
+func (o LookupWorkflowTemplateResultOutput) EncryptionConfig() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput {
+	return o.ApplyT(func(v LookupWorkflowTemplateResult) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse {
+		return v.EncryptionConfig
+	}).(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput)
 }
 
 // The Directed Acyclic Graph of Jobs to submit.

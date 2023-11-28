@@ -15,6 +15,7 @@ export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): P
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:appengine/v1beta:getVersion", {
         "appId": args.appId,
+        "includeExtraData": args.includeExtraData,
         "serviceId": args.serviceId,
         "versionId": args.versionId,
         "view": args.view,
@@ -23,6 +24,7 @@ export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetVersionArgs {
     appId: string;
+    includeExtraData?: string;
     serviceId: string;
     versionId: string;
     view?: string;
@@ -98,11 +100,15 @@ export interface GetVersionResult {
      */
     readonly flexibleRuntimeSettings: outputs.appengine.v1beta.FlexibleRuntimeSettingsResponse;
     /**
+     * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+     */
+    readonly generatedCustomerMetadata: {[key: string]: string};
+    /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */
     readonly handlers: outputs.appengine.v1beta.UrlMapResponse[];
     /**
-     * Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+     * Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
      */
     readonly healthCheck: outputs.appengine.v1beta.HealthCheckResponse;
     /**
@@ -118,7 +124,7 @@ export interface GetVersionResult {
      */
     readonly libraries: outputs.appengine.v1beta.LibraryResponse[];
     /**
-     * Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+     * Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
      */
     readonly livenessCheck: outputs.appengine.v1beta.LivenessCheckResponse;
     /**
@@ -138,7 +144,7 @@ export interface GetVersionResult {
      */
     readonly nobuildFilesRegex: string;
     /**
-     * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+     * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
      */
     readonly readinessCheck: outputs.appengine.v1beta.ReadinessCheckResponse;
     /**
@@ -201,6 +207,7 @@ export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.Invok
 
 export interface GetVersionOutputArgs {
     appId: pulumi.Input<string>;
+    includeExtraData?: pulumi.Input<string>;
     serviceId: pulumi.Input<string>;
     versionId: pulumi.Input<string>;
     view?: pulumi.Input<string>;

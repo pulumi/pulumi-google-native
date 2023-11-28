@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Gkeonprem.V1
 {
     /// <summary>
+    /// Specifies which upgrade policy to use.
+    /// </summary>
+    [EnumType]
+    public readonly struct BareMetalClusterUpgradePolicyPolicy : IEquatable<BareMetalClusterUpgradePolicyPolicy>
+    {
+        private readonly string _value;
+
+        private BareMetalClusterUpgradePolicyPolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No upgrade policy selected.
+        /// </summary>
+        public static BareMetalClusterUpgradePolicyPolicy NodePoolPolicyUnspecified { get; } = new BareMetalClusterUpgradePolicyPolicy("NODE_POOL_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// Upgrade worker node pools sequentially.
+        /// </summary>
+        public static BareMetalClusterUpgradePolicyPolicy Serial { get; } = new BareMetalClusterUpgradePolicyPolicy("SERIAL");
+        /// <summary>
+        /// Upgrade all worker node pools in parallel.
+        /// </summary>
+        public static BareMetalClusterUpgradePolicyPolicy Concurrent { get; } = new BareMetalClusterUpgradePolicyPolicy("CONCURRENT");
+
+        public static bool operator ==(BareMetalClusterUpgradePolicyPolicy left, BareMetalClusterUpgradePolicyPolicy right) => left.Equals(right);
+        public static bool operator !=(BareMetalClusterUpgradePolicyPolicy left, BareMetalClusterUpgradePolicyPolicy right) => !left.Equals(right);
+
+        public static explicit operator string(BareMetalClusterUpgradePolicyPolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BareMetalClusterUpgradePolicyPolicy other && Equals(other);
+        public bool Equals(BareMetalClusterUpgradePolicyPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies the nodes operating system (default: LINUX).
     /// </summary>
     [EnumType]
@@ -74,6 +115,47 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is BareMetalWorkloadNodeConfigContainerRuntime other && Equals(other);
         public bool Equals(BareMetalWorkloadNodeConfigContainerRuntime other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+    /// </summary>
+    [EnumType]
+    public readonly struct BinaryAuthorizationEvaluationMode : IEquatable<BinaryAuthorizationEvaluationMode>
+    {
+        private readonly string _value;
+
+        private BinaryAuthorizationEvaluationMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value
+        /// </summary>
+        public static BinaryAuthorizationEvaluationMode EvaluationModeUnspecified { get; } = new BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Disable BinaryAuthorization
+        /// </summary>
+        public static BinaryAuthorizationEvaluationMode Disabled { get; } = new BinaryAuthorizationEvaluationMode("DISABLED");
+        /// <summary>
+        /// Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy.
+        /// </summary>
+        public static BinaryAuthorizationEvaluationMode ProjectSingletonPolicyEnforce { get; } = new BinaryAuthorizationEvaluationMode("PROJECT_SINGLETON_POLICY_ENFORCE");
+
+        public static bool operator ==(BinaryAuthorizationEvaluationMode left, BinaryAuthorizationEvaluationMode right) => left.Equals(right);
+        public static bool operator !=(BinaryAuthorizationEvaluationMode left, BinaryAuthorizationEvaluationMode right) => !left.Equals(right);
+
+        public static explicit operator string(BinaryAuthorizationEvaluationMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BinaryAuthorizationEvaluationMode other && Equals(other);
+        public bool Equals(BinaryAuthorizationEvaluationMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

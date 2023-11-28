@@ -16,10 +16,28 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
     public sealed class CommonFleetDefaultMemberConfigSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Config Management-specific spec.
+        /// </summary>
+        [Input("configmanagement")]
+        public Input<Inputs.ConfigManagementMembershipSpecArgs>? Configmanagement { get; set; }
+
+        /// <summary>
         /// Identity Service-specific spec.
         /// </summary>
         [Input("identityservice")]
         public Input<Inputs.IdentityServiceMembershipSpecArgs>? Identityservice { get; set; }
+
+        /// <summary>
+        /// Anthos Service Mesh-specific spec
+        /// </summary>
+        [Input("mesh")]
+        public Input<Inputs.ServiceMeshMembershipSpecArgs>? Mesh { get; set; }
+
+        /// <summary>
+        /// Policy Controller spec.
+        /// </summary>
+        [Input("policycontroller")]
+        public Input<Inputs.PolicyControllerMembershipSpecArgs>? Policycontroller { get; set; }
 
         public CommonFleetDefaultMemberConfigSpecArgs()
         {

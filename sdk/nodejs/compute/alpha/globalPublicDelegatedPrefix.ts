@@ -38,6 +38,14 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
     }
 
     /**
+     * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     */
+    public readonly allocatablePrefixLength!: pulumi.Output<number>;
+    /**
+     * The version of BYOIP API.
+     */
+    public /*out*/ readonly byoipApiVersion!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -50,7 +58,7 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+     * The IP address range, in CIDR format, represented by this public delegated prefix.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
@@ -61,6 +69,10 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
      * Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
+    /**
+     * The public delegated prefix mode for IPv6 only.
+     */
+    public readonly mode!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -106,14 +118,17 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["allocatablePrefixLength"] = args ? args.allocatablePrefixLength : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["isLiveMigration"] = args ? args.isLiveMigration : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parentPrefix"] = args ? args.parentPrefix : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["publicDelegatedSubPrefixs"] = args ? args.publicDelegatedSubPrefixs : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["byoipApiVersion"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -122,12 +137,15 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
+            resourceInputs["allocatablePrefixLength"] = undefined /*out*/;
+            resourceInputs["byoipApiVersion"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["ipCidrRange"] = undefined /*out*/;
             resourceInputs["isLiveMigration"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["mode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parentPrefix"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -150,17 +168,25 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
  */
 export interface GlobalPublicDelegatedPrefixArgs {
     /**
+     * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     */
+    allocatablePrefixLength?: pulumi.Input<number>;
+    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+     * The IP address range, in CIDR format, represented by this public delegated prefix.
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
      * If true, the prefix will be live migrated.
      */
     isLiveMigration?: pulumi.Input<boolean>;
+    /**
+     * The public delegated prefix mode for IPv6 only.
+     */
+    mode?: pulumi.Input<enums.compute.alpha.GlobalPublicDelegatedPrefixMode>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

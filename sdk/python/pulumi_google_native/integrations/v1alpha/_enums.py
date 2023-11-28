@@ -50,12 +50,15 @@ __all__ = [
     'EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem',
     'EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy',
     'EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType',
+    'GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy',
+    'GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity',
     'GoogleCloudIntegrationsV1alphaCredentialCredentialType',
     'GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy',
     'GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType',
     'GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType',
     'GoogleCloudIntegrationsV1alphaIntegrationParameterDataType',
     'GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType',
+    'GoogleCloudIntegrationsV1alphaMockConfigMockStrategy',
     'GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType',
     'GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType',
     'GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType',
@@ -70,6 +73,7 @@ __all__ = [
     'GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType',
     'TemplatesVersionDatabasePersistencePolicy',
     'TemplatesVersionStatus',
+    'TestCaseDatabasePersistencePolicy',
     'VersionDatabasePersistencePolicy',
     'VersionOrigin',
 ]
@@ -919,6 +923,8 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType(str, Enum):
     SFDC_CDC_CHANNEL = "SFDC_CDC_CHANNEL"
     SFDC_PLATFORM_EVENTS_CHANNEL = "SFDC_PLATFORM_EVENTS_CHANNEL"
     CLOUD_SCHEDULER = "CLOUD_SCHEDULER"
+    INTEGRATION_CONNECTOR_TRIGGER = "INTEGRATION_CONNECTOR_TRIGGER"
+    PRIVATE_TRIGGER = "PRIVATE_TRIGGER"
 
 
 class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType(str, Enum):
@@ -1078,6 +1084,70 @@ class EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType(str, Enum):
     DO_NOT_SANITIZE = "DO_NOT_SANITIZE"
     """
     No sanitization is required.
+    """
+
+
+class GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy(str, Enum):
+    """
+    The type of assertion to perform.
+    """
+    ASSERTION_STRATEGY_UNSPECIFIED = "ASSERTION_STRATEGY_UNSPECIFIED"
+    """
+    Unspecified Assertion strategy
+    """
+    ASSERT_SUCCESSFUL_EXECUTION = "ASSERT_SUCCESSFUL_EXECUTION"
+    """
+    Test a successful execution
+    """
+    ASSERT_FAILED_EXECUTION = "ASSERT_FAILED_EXECUTION"
+    """
+    Test a failed execution
+    """
+    ASSERT_NO_EXECUTION = "ASSERT_NO_EXECUTION"
+    """
+    Test that the task was never executed
+    """
+    ASSERT_EQUALS = "ASSERT_EQUALS"
+    """
+    Test the parameter selected is equal to the expected value
+    """
+    ASSERT_NOT_EQUALS = "ASSERT_NOT_EQUALS"
+    """
+    Test the parameter selected is not equal to the expected value
+    """
+    ASSERT_CONTAINS = "ASSERT_CONTAINS"
+    """
+    Test the parameter selected contains the configured value
+    """
+    ASSERT_CONDITION = "ASSERT_CONDITION"
+    """
+    Test a specific condition
+    """
+
+
+class GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity(str, Enum):
+    """
+    Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
+    """
+    CLOUD_LOGGING_SEVERITY_UNSPECIFIED = "CLOUD_LOGGING_SEVERITY_UNSPECIFIED"
+    """
+    Unspecified
+    """
+    DEFAULT = "DEFAULT"
+    """
+    If Severity selected is `DEFAULT`, then all the Integration Execution States will be sent to Cloud Logging.
+    """
+    INFO = "INFO"
+    """
+    If Severity selected is `INFO`, then only the following Integration Execution States (`IN_PROCESS`, `ON_HOLD`, `SUCCEEDED` and `SUSPENDED`) will be sent to Cloud Logging.
+    """
+    ERROR = "ERROR"
+    """
+    If Severity selected is `ERROR`, then only the following Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud Logging.
+    """
+    WARNING = "WARNING"
+    """
+    If Severity selected is `WARNING`, then only the following Integration Execution States (`RETRY_ON_HOLD`) will be sent to Cloud Logging.
     """
 
 
@@ -1314,6 +1384,32 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType(str, Enu
     IN_OUT = "IN_OUT"
     """
     Input and Output Parameters. These can be used as both input and output. EventBus will validate for the existence of these parameters before execution and will also return this parameter back in the response.
+    """
+
+
+class GoogleCloudIntegrationsV1alphaMockConfigMockStrategy(str, Enum):
+    """
+    Mockstrategy defines how the particular task should be mocked during test execution
+    """
+    MOCK_STRATEGY_UNSPECIFIED = "MOCK_STRATEGY_UNSPECIFIED"
+    """
+    This should never be used to annotate a field
+    """
+    NO_MOCK_STRATEGY = "NO_MOCK_STRATEGY"
+    """
+    Execute actual task
+    """
+    SPECIFIC_MOCK_STRATEGY = "SPECIFIC_MOCK_STRATEGY"
+    """
+    Don't execute actual task, instead use the values specified by user for output of the task
+    """
+    FAILURE_MOCK_STRATEGY = "FAILURE_MOCK_STRATEGY"
+    """
+    Don't execute actual task, instead return task failure
+    """
+    SKIP_MOCK_STRATEGY = "SKIP_MOCK_STRATEGY"
+    """
+    Don't execute actual task, instead mark it as successful
     """
 
 
@@ -1643,6 +1739,14 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType(str, Enum):
     """
     Trigger by Cloud Scheduler job.
     """
+    INTEGRATION_CONNECTOR_TRIGGER = "INTEGRATION_CONNECTOR_TRIGGER"
+    """
+    Trigger by Connector Event
+    """
+    PRIVATE_TRIGGER = "PRIVATE_TRIGGER"
+    """
+    Trigger for private workflow
+    """
 
 
 class TemplatesVersionDatabasePersistencePolicy(str, Enum):
@@ -1657,6 +1761,10 @@ class TemplatesVersionDatabasePersistencePolicy(str, Enum):
     """
     Disables persistence for all execution data.
     """
+    DATABASE_PERSISTENCE_ASYNC = "DATABASE_PERSISTENCE_ASYNC"
+    """
+    Asynchronously persist all execution data.
+    """
 
 
 class TemplatesVersionStatus(str, Enum):
@@ -1670,6 +1778,24 @@ class TemplatesVersionStatus(str, Enum):
     SNAPSHOT = "SNAPSHOT"
 
 
+class TestCaseDatabasePersistencePolicy(str, Enum):
+    """
+    Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index..
+    """
+    DATABASE_PERSISTENCE_POLICY_UNSPECIFIED = "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"
+    """
+    Enables persistence for all execution data.
+    """
+    DATABASE_PERSISTENCE_DISABLED = "DATABASE_PERSISTENCE_DISABLED"
+    """
+    Disables persistence for all execution data.
+    """
+    DATABASE_PERSISTENCE_ASYNC = "DATABASE_PERSISTENCE_ASYNC"
+    """
+    Asynchronously persist all execution data.
+    """
+
+
 class VersionDatabasePersistencePolicy(str, Enum):
     """
     Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
@@ -1681,6 +1807,10 @@ class VersionDatabasePersistencePolicy(str, Enum):
     DATABASE_PERSISTENCE_DISABLED = "DATABASE_PERSISTENCE_DISABLED"
     """
     Disables persistence for all execution data.
+    """
+    DATABASE_PERSISTENCE_ASYNC = "DATABASE_PERSISTENCE_ASYNC"
+    """
+    Asynchronously persist all execution data.
     """
 
 
@@ -1704,4 +1834,8 @@ class VersionOrigin(str, Enum):
     APPLICATION_IP_PROVISIONING = "APPLICATION_IP_PROVISIONING"
     """
     Workflow is being created via Standalone IP Provisioning
+    """
+    TEST_CASE = "TEST_CASE"
+    """
+    Workflow is being created via Test Case.
     """

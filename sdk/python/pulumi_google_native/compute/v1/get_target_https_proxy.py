@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetHttpsProxyResult:
-    def __init__(__self__, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
+    def __init__(__self__, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_keep_alive_timeout_sec=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
         if authorization_policy and not isinstance(authorization_policy, str):
             raise TypeError("Expected argument 'authorization_policy' to be a str")
         pulumi.set(__self__, "authorization_policy", authorization_policy)
@@ -34,6 +34,9 @@ class GetTargetHttpsProxyResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if http_keep_alive_timeout_sec and not isinstance(http_keep_alive_timeout_sec, int):
+            raise TypeError("Expected argument 'http_keep_alive_timeout_sec' to be a int")
+        pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -104,6 +107,14 @@ class GetTargetHttpsProxyResult:
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> int:
+        """
+        Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
 
     @property
     @pulumi.getter
@@ -197,6 +208,7 @@ class AwaitableGetTargetHttpsProxyResult(GetTargetHttpsProxyResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
+            http_keep_alive_timeout_sec=self.http_keep_alive_timeout_sec,
             kind=self.kind,
             name=self.name,
             proxy_bind=self.proxy_bind,
@@ -227,6 +239,7 @@ def get_target_https_proxy(project: Optional[str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        http_keep_alive_timeout_sec=pulumi.get(__ret__, 'http_keep_alive_timeout_sec'),
         kind=pulumi.get(__ret__, 'kind'),
         name=pulumi.get(__ret__, 'name'),
         proxy_bind=pulumi.get(__ret__, 'proxy_bind'),

@@ -73,6 +73,10 @@ export class Document extends pulumi.CustomResource {
      * Raw document content.
      */
     public readonly inlineRawDocument!: pulumi.Output<string>;
+    /**
+     * Indicates if the document has a legal hold on it.
+     */
+    public /*out*/ readonly legalHold!: pulumi.Output<boolean>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the document. Format: projects/{project_number}/locations/{location}/documents/{document_id}. The name is ignored when creating a document.
@@ -159,6 +163,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["updater"] = args ? args.updater : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dispositionTime"] = undefined /*out*/;
+            resourceInputs["legalHold"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["cloudAiDocument"] = undefined /*out*/;
@@ -170,6 +175,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["dispositionTime"] = undefined /*out*/;
             resourceInputs["documentSchemaName"] = undefined /*out*/;
             resourceInputs["inlineRawDocument"] = undefined /*out*/;
+            resourceInputs["legalHold"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["plainText"] = undefined /*out*/;

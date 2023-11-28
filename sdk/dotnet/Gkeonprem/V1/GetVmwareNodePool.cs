@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("view")]
+        public string? View { get; set; }
+
         [Input("vmwareClusterId", required: true)]
         public string VmwareClusterId { get; set; } = null!;
 
@@ -52,6 +55,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
 
         [Input("vmwareClusterId", required: true)]
         public Input<string> VmwareClusterId { get; set; } = null!;

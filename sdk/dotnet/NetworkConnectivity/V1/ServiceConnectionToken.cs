@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// The time to which this token is valid.
         /// </summary>
         [Output("expireTime")]
@@ -136,6 +142,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

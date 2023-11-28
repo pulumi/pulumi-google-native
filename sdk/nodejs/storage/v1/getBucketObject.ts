@@ -22,6 +22,7 @@ export function getBucketObject(args: GetBucketObjectArgs, opts?: pulumi.InvokeO
         "ifMetagenerationNotMatch": args.ifMetagenerationNotMatch,
         "object": args.object,
         "projection": args.projection,
+        "softDeleted": args.softDeleted,
         "userProject": args.userProject,
     }, opts);
 }
@@ -35,6 +36,7 @@ export interface GetBucketObjectArgs {
     ifMetagenerationNotMatch?: string;
     object: string;
     projection?: string;
+    softDeleted?: boolean;
     userProject?: string;
 }
 
@@ -96,6 +98,10 @@ export interface GetBucketObjectResult {
      */
     readonly generation: string;
     /**
+     * This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+     */
+    readonly hardDeleteTime: string;
+    /**
      * The kind of item this is. For objects, this is always storage#object.
      */
     readonly kind: string;
@@ -128,6 +134,10 @@ export interface GetBucketObjectResult {
      */
     readonly owner: outputs.storage.v1.BucketObjectOwnerResponse;
     /**
+     * A collection of object level retention parameters.
+     */
+    readonly retention: outputs.storage.v1.BucketObjectRetentionResponse;
+    /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */
     readonly retentionExpirationTime: string;
@@ -139,6 +149,10 @@ export interface GetBucketObjectResult {
      * Content-Length of the data in bytes.
      */
     readonly size: string;
+    /**
+     * The time at which the object became soft-deleted in RFC 3339 format.
+     */
+    readonly softDeleteTime: string;
     /**
      * Storage class of the object.
      */
@@ -152,7 +166,7 @@ export interface GetBucketObjectResult {
      */
     readonly timeCreated: string;
     /**
-     * The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+     * The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
      */
     readonly timeDeleted: string;
     /**
@@ -180,5 +194,6 @@ export interface GetBucketObjectOutputArgs {
     ifMetagenerationNotMatch?: pulumi.Input<string>;
     object: pulumi.Input<string>;
     projection?: pulumi.Input<string>;
+    softDeleted?: pulumi.Input<boolean>;
     userProject?: pulumi.Input<string>;
 }

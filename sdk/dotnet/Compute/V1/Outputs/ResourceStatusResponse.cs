@@ -20,11 +20,16 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// An opaque ID of the host on which the VM is running.
         /// </summary>
         public readonly string PhysicalHost;
+        public readonly Outputs.UpcomingMaintenanceResponse UpcomingMaintenance;
 
         [OutputConstructor]
-        private ResourceStatusResponse(string physicalHost)
+        private ResourceStatusResponse(
+            string physicalHost,
+
+            Outputs.UpcomingMaintenanceResponse upcomingMaintenance)
         {
             PhysicalHost = physicalHost;
+            UpcomingMaintenance = upcomingMaintenance;
         }
     }
 }

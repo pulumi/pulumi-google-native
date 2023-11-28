@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         [Output("gateways")]
         public Output<ImmutableArray<string>> Gateways { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Set of label tags associated with the TlsRoute resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -64,7 +70,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+        /// Required. Short name of the TlsRoute resource to be created.
         /// </summary>
         [Output("tlsRouteId")]
         public Output<string> TlsRouteId { get; private set; } = null!;
@@ -144,6 +150,18 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
             set => _gateways = value;
         }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Optional. Set of label tags associated with the TlsRoute resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -181,7 +199,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         }
 
         /// <summary>
-        /// Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+        /// Required. Short name of the TlsRoute resource to be created.
         /// </summary>
         [Input("tlsRouteId", required: true)]
         public Input<string> TlsRouteId { get; set; } = null!;

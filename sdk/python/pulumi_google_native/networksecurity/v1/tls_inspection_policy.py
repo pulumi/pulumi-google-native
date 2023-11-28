@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['TlsInspectionPolicyArgs', 'TlsInspectionPolicy']
 
@@ -16,27 +17,47 @@ class TlsInspectionPolicyArgs:
     def __init__(__self__, *,
                  ca_pool: pulumi.Input[str],
                  tls_inspection_policy_id: pulumi.Input[str],
+                 custom_tls_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_public_ca_set: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input['TlsInspectionPolicyMinTlsVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 tls_feature_profile: Optional[pulumi.Input['TlsInspectionPolicyTlsFeatureProfile']] = None,
+                 trust_config: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TlsInspectionPolicy resource.
         :param pulumi.Input[str] ca_pool: A CA pool resource used to issue interception certificates. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
         :param pulumi.Input[str] tls_inspection_policy_id: Required. Short name of the TlsInspectionPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "tls_inspection_policy1".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_tls_features: Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[str] description: Optional. Free-text description of the resource.
+        :param pulumi.Input[bool] exclude_public_ca_set: Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+        :param pulumi.Input['TlsInspectionPolicyMinTlsVersion'] min_tls_version: Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[str] name: Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+        :param pulumi.Input['TlsInspectionPolicyTlsFeatureProfile'] tls_feature_profile: Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        :param pulumi.Input[str] trust_config: Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
         """
         pulumi.set(__self__, "ca_pool", ca_pool)
         pulumi.set(__self__, "tls_inspection_policy_id", tls_inspection_policy_id)
+        if custom_tls_features is not None:
+            pulumi.set(__self__, "custom_tls_features", custom_tls_features)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if exclude_public_ca_set is not None:
+            pulumi.set(__self__, "exclude_public_ca_set", exclude_public_ca_set)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if min_tls_version is not None:
+            pulumi.set(__self__, "min_tls_version", min_tls_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tls_feature_profile is not None:
+            pulumi.set(__self__, "tls_feature_profile", tls_feature_profile)
+        if trust_config is not None:
+            pulumi.set(__self__, "trust_config", trust_config)
 
     @property
     @pulumi.getter(name="caPool")
@@ -63,6 +84,18 @@ class TlsInspectionPolicyArgs:
         pulumi.set(self, "tls_inspection_policy_id", value)
 
     @property
+    @pulumi.getter(name="customTlsFeatures")
+    def custom_tls_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "custom_tls_features")
+
+    @custom_tls_features.setter
+    def custom_tls_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_tls_features", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -75,6 +108,18 @@ class TlsInspectionPolicyArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="excludePublicCaSet")
+    def exclude_public_ca_set(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "exclude_public_ca_set")
+
+    @exclude_public_ca_set.setter
+    def exclude_public_ca_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exclude_public_ca_set", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
@@ -82,6 +127,18 @@ class TlsInspectionPolicyArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="minTlsVersion")
+    def min_tls_version(self) -> Optional[pulumi.Input['TlsInspectionPolicyMinTlsVersion']]:
+        """
+        Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "min_tls_version")
+
+    @min_tls_version.setter
+    def min_tls_version(self, value: Optional[pulumi.Input['TlsInspectionPolicyMinTlsVersion']]):
+        pulumi.set(self, "min_tls_version", value)
 
     @property
     @pulumi.getter
@@ -104,6 +161,30 @@ class TlsInspectionPolicyArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="tlsFeatureProfile")
+    def tls_feature_profile(self) -> Optional[pulumi.Input['TlsInspectionPolicyTlsFeatureProfile']]:
+        """
+        Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "tls_feature_profile")
+
+    @tls_feature_profile.setter
+    def tls_feature_profile(self, value: Optional[pulumi.Input['TlsInspectionPolicyTlsFeatureProfile']]):
+        pulumi.set(self, "tls_feature_profile", value)
+
+    @property
+    @pulumi.getter(name="trustConfig")
+    def trust_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "trust_config")
+
+    @trust_config.setter
+    def trust_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trust_config", value)
+
 
 class TlsInspectionPolicy(pulumi.CustomResource):
     @overload
@@ -111,11 +192,16 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_pool: Optional[pulumi.Input[str]] = None,
+                 custom_tls_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_public_ca_set: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input['TlsInspectionPolicyMinTlsVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 tls_feature_profile: Optional[pulumi.Input['TlsInspectionPolicyTlsFeatureProfile']] = None,
                  tls_inspection_policy_id: Optional[pulumi.Input[str]] = None,
+                 trust_config: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new TlsInspectionPolicy in a given project and location.
@@ -123,9 +209,14 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_pool: A CA pool resource used to issue interception certificates. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_tls_features: Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[str] description: Optional. Free-text description of the resource.
+        :param pulumi.Input[bool] exclude_public_ca_set: Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+        :param pulumi.Input['TlsInspectionPolicyMinTlsVersion'] min_tls_version: Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[str] name: Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+        :param pulumi.Input['TlsInspectionPolicyTlsFeatureProfile'] tls_feature_profile: Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[str] tls_inspection_policy_id: Required. Short name of the TlsInspectionPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "tls_inspection_policy1".
+        :param pulumi.Input[str] trust_config: Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
         """
         ...
     @overload
@@ -152,11 +243,16 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_pool: Optional[pulumi.Input[str]] = None,
+                 custom_tls_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_public_ca_set: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input['TlsInspectionPolicyMinTlsVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 tls_feature_profile: Optional[pulumi.Input['TlsInspectionPolicyTlsFeatureProfile']] = None,
                  tls_inspection_policy_id: Optional[pulumi.Input[str]] = None,
+                 trust_config: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -169,13 +265,18 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             if ca_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'ca_pool'")
             __props__.__dict__["ca_pool"] = ca_pool
+            __props__.__dict__["custom_tls_features"] = custom_tls_features
             __props__.__dict__["description"] = description
+            __props__.__dict__["exclude_public_ca_set"] = exclude_public_ca_set
             __props__.__dict__["location"] = location
+            __props__.__dict__["min_tls_version"] = min_tls_version
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["tls_feature_profile"] = tls_feature_profile
             if tls_inspection_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tls_inspection_policy_id'")
             __props__.__dict__["tls_inspection_policy_id"] = tls_inspection_policy_id
+            __props__.__dict__["trust_config"] = trust_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "tls_inspection_policy_id"])
@@ -204,11 +305,16 @@ class TlsInspectionPolicy(pulumi.CustomResource):
 
         __props__.__dict__["ca_pool"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["custom_tls_features"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["exclude_public_ca_set"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["min_tls_version"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["tls_feature_profile"] = None
         __props__.__dict__["tls_inspection_policy_id"] = None
+        __props__.__dict__["trust_config"] = None
         __props__.__dict__["update_time"] = None
         return TlsInspectionPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -229,6 +335,14 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="customTlsFeatures")
+    def custom_tls_features(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "custom_tls_features")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
@@ -237,9 +351,25 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="excludePublicCaSet")
+    def exclude_public_ca_set(self) -> pulumi.Output[bool]:
+        """
+        Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "exclude_public_ca_set")
+
+    @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="minTlsVersion")
+    def min_tls_version(self) -> pulumi.Output[str]:
+        """
+        Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "min_tls_version")
 
     @property
     @pulumi.getter
@@ -255,12 +385,28 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="tlsFeatureProfile")
+    def tls_feature_profile(self) -> pulumi.Output[str]:
+        """
+        Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "tls_feature_profile")
+
+    @property
     @pulumi.getter(name="tlsInspectionPolicyId")
     def tls_inspection_policy_id(self) -> pulumi.Output[str]:
         """
         Required. Short name of the TlsInspectionPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "tls_inspection_policy1".
         """
         return pulumi.get(self, "tls_inspection_policy_id")
+
+    @property
+    @pulumi.getter(name="trustConfig")
+    def trust_config(self) -> pulumi.Output[str]:
+        """
+        Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "trust_config")
 
     @property
     @pulumi.getter(name="updateTime")

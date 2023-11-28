@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Compute.V1
     public sealed class GetPublicDelegatedPrefixResult
     {
         /// <summary>
+        /// The version of BYOIP API.
+        /// </summary>
+        public readonly string ByoipApiVersion;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -76,7 +80,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         public readonly string IpCidrRange;
         /// <summary>
@@ -114,6 +118,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [OutputConstructor]
         private GetPublicDelegatedPrefixResult(
+            string byoipApiVersion,
+
             string creationTimestamp,
 
             string description,
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string status)
         {
+            ByoipApiVersion = byoipApiVersion;
             CreationTimestamp = creationTimestamp;
             Description = description;
             Fingerprint = fingerprint;

@@ -765,6 +765,195 @@ func (in *environmentDeploymentTypePtr) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// Optional. EnvironmentType selected for the environment.
+type EnvironmentType string
+
+const (
+	// Environment type not specified.
+	EnvironmentTypeEnvironmentTypeUnspecified = EnvironmentType("ENVIRONMENT_TYPE_UNSPECIFIED")
+	// Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
+	EnvironmentTypeBase = EnvironmentType("BASE")
+	// This is the default type and it supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
+	EnvironmentTypeIntermediate = EnvironmentType("INTERMEDIATE")
+	// Comprehensive environment supports advanced capabilites and even higher capacity than Intermediate environment. Refer to Apigee's public documentation for more details.
+	EnvironmentTypeComprehensive = EnvironmentType("COMPREHENSIVE")
+)
+
+func (EnvironmentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentType)(nil)).Elem()
+}
+
+func (e EnvironmentType) ToEnvironmentTypeOutput() EnvironmentTypeOutput {
+	return pulumi.ToOutput(e).(EnvironmentTypeOutput)
+}
+
+func (e EnvironmentType) ToEnvironmentTypeOutputWithContext(ctx context.Context) EnvironmentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnvironmentTypeOutput)
+}
+
+func (e EnvironmentType) ToEnvironmentTypePtrOutput() EnvironmentTypePtrOutput {
+	return e.ToEnvironmentTypePtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentType) ToEnvironmentTypePtrOutputWithContext(ctx context.Context) EnvironmentTypePtrOutput {
+	return EnvironmentType(e).ToEnvironmentTypeOutputWithContext(ctx).ToEnvironmentTypePtrOutputWithContext(ctx)
+}
+
+func (e EnvironmentType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnvironmentTypeOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentType)(nil)).Elem()
+}
+
+func (o EnvironmentTypeOutput) ToEnvironmentTypeOutput() EnvironmentTypeOutput {
+	return o
+}
+
+func (o EnvironmentTypeOutput) ToEnvironmentTypeOutputWithContext(ctx context.Context) EnvironmentTypeOutput {
+	return o
+}
+
+func (o EnvironmentTypeOutput) ToEnvironmentTypePtrOutput() EnvironmentTypePtrOutput {
+	return o.ToEnvironmentTypePtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentTypeOutput) ToEnvironmentTypePtrOutputWithContext(ctx context.Context) EnvironmentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentType) *EnvironmentType {
+		return &v
+	}).(EnvironmentTypePtrOutput)
+}
+
+func (o EnvironmentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentType] {
+	return pulumix.Output[EnvironmentType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnvironmentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnvironmentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentType)(nil)).Elem()
+}
+
+func (o EnvironmentTypePtrOutput) ToEnvironmentTypePtrOutput() EnvironmentTypePtrOutput {
+	return o
+}
+
+func (o EnvironmentTypePtrOutput) ToEnvironmentTypePtrOutputWithContext(ctx context.Context) EnvironmentTypePtrOutput {
+	return o
+}
+
+func (o EnvironmentTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentType] {
+	return pulumix.Output[*EnvironmentType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentTypePtrOutput) Elem() EnvironmentTypeOutput {
+	return o.ApplyT(func(v *EnvironmentType) EnvironmentType {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentType
+		return ret
+	}).(EnvironmentTypeOutput)
+}
+
+func (o EnvironmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnvironmentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EnvironmentTypeInput is an input type that accepts EnvironmentTypeArgs and EnvironmentTypeOutput values.
+// You can construct a concrete instance of `EnvironmentTypeInput` via:
+//
+//	EnvironmentTypeArgs{...}
+type EnvironmentTypeInput interface {
+	pulumi.Input
+
+	ToEnvironmentTypeOutput() EnvironmentTypeOutput
+	ToEnvironmentTypeOutputWithContext(context.Context) EnvironmentTypeOutput
+}
+
+var environmentTypePtrType = reflect.TypeOf((**EnvironmentType)(nil)).Elem()
+
+type EnvironmentTypePtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentTypePtrOutput() EnvironmentTypePtrOutput
+	ToEnvironmentTypePtrOutputWithContext(context.Context) EnvironmentTypePtrOutput
+}
+
+type environmentTypePtr string
+
+func EnvironmentTypePtr(v string) EnvironmentTypePtrInput {
+	return (*environmentTypePtr)(&v)
+}
+
+func (*environmentTypePtr) ElementType() reflect.Type {
+	return environmentTypePtrType
+}
+
+func (in *environmentTypePtr) ToEnvironmentTypePtrOutput() EnvironmentTypePtrOutput {
+	return pulumi.ToOutput(in).(EnvironmentTypePtrOutput)
+}
+
+func (in *environmentTypePtr) ToEnvironmentTypePtrOutputWithContext(ctx context.Context) EnvironmentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentTypePtrOutput)
+}
+
+func (in *environmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentType] {
+	return pulumix.Output[*EnvironmentType]{
+		OutputState: in.ToEnvironmentTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Sampler of distributed tracing. OFF is the default value.
 type GoogleCloudApigeeV1TraceSamplingConfigSampler string
 
@@ -1346,7 +1535,7 @@ const (
 	OrganizationBillingTypeBillingTypeUnspecified = OrganizationBillingType("BILLING_TYPE_UNSPECIFIED")
 	// A pre-paid subscription to Apigee.
 	OrganizationBillingTypeSubscription = OrganizationBillingType("SUBSCRIPTION")
-	// Free and limited access to Apigee for evaluation purposes only. only.
+	// Free and limited access to Apigee for evaluation purposes only.
 	OrganizationBillingTypeEvaluation = OrganizationBillingType("EVALUATION")
 	// Access to Apigee using a Pay-As-You-Go plan.
 	OrganizationBillingTypePayg = OrganizationBillingType("PAYG")
@@ -2842,6 +3031,193 @@ func (in *ratePlanStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*Ra
 	}
 }
 
+// Required. Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
+type SecurityActionStateEnum string
+
+const (
+	// The default value. This only exists for forward compatibility. A create request with this value will be rejected.
+	SecurityActionStateEnumStateUnspecified = SecurityActionStateEnum("STATE_UNSPECIFIED")
+	// An ENABLED SecurityAction is actively enforced if the `expiration_time` is in the future.
+	SecurityActionStateEnumEnabled = SecurityActionStateEnum("ENABLED")
+	// A disabled SecurityAction is never enforced.
+	SecurityActionStateEnumDisabled = SecurityActionStateEnum("DISABLED")
+)
+
+func (SecurityActionStateEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionStateEnum)(nil)).Elem()
+}
+
+func (e SecurityActionStateEnum) ToSecurityActionStateEnumOutput() SecurityActionStateEnumOutput {
+	return pulumi.ToOutput(e).(SecurityActionStateEnumOutput)
+}
+
+func (e SecurityActionStateEnum) ToSecurityActionStateEnumOutputWithContext(ctx context.Context) SecurityActionStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityActionStateEnumOutput)
+}
+
+func (e SecurityActionStateEnum) ToSecurityActionStateEnumPtrOutput() SecurityActionStateEnumPtrOutput {
+	return e.ToSecurityActionStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityActionStateEnum) ToSecurityActionStateEnumPtrOutputWithContext(ctx context.Context) SecurityActionStateEnumPtrOutput {
+	return SecurityActionStateEnum(e).ToSecurityActionStateEnumOutputWithContext(ctx).ToSecurityActionStateEnumPtrOutputWithContext(ctx)
+}
+
+func (e SecurityActionStateEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityActionStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityActionStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityActionStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityActionStateEnumOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionStateEnum)(nil)).Elem()
+}
+
+func (o SecurityActionStateEnumOutput) ToSecurityActionStateEnumOutput() SecurityActionStateEnumOutput {
+	return o
+}
+
+func (o SecurityActionStateEnumOutput) ToSecurityActionStateEnumOutputWithContext(ctx context.Context) SecurityActionStateEnumOutput {
+	return o
+}
+
+func (o SecurityActionStateEnumOutput) ToSecurityActionStateEnumPtrOutput() SecurityActionStateEnumPtrOutput {
+	return o.ToSecurityActionStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityActionStateEnumOutput) ToSecurityActionStateEnumPtrOutputWithContext(ctx context.Context) SecurityActionStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityActionStateEnum) *SecurityActionStateEnum {
+		return &v
+	}).(SecurityActionStateEnumPtrOutput)
+}
+
+func (o SecurityActionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityActionStateEnum] {
+	return pulumix.Output[SecurityActionStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityActionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityActionStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityActionStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityActionStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityActionStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityActionStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityActionStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionStateEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityActionStateEnum)(nil)).Elem()
+}
+
+func (o SecurityActionStateEnumPtrOutput) ToSecurityActionStateEnumPtrOutput() SecurityActionStateEnumPtrOutput {
+	return o
+}
+
+func (o SecurityActionStateEnumPtrOutput) ToSecurityActionStateEnumPtrOutputWithContext(ctx context.Context) SecurityActionStateEnumPtrOutput {
+	return o
+}
+
+func (o SecurityActionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityActionStateEnum] {
+	return pulumix.Output[*SecurityActionStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityActionStateEnumPtrOutput) Elem() SecurityActionStateEnumOutput {
+	return o.ApplyT(func(v *SecurityActionStateEnum) SecurityActionStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityActionStateEnum
+		return ret
+	}).(SecurityActionStateEnumOutput)
+}
+
+func (o SecurityActionStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityActionStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityActionStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityActionStateEnumInput is an input type that accepts SecurityActionStateEnumArgs and SecurityActionStateEnumOutput values.
+// You can construct a concrete instance of `SecurityActionStateEnumInput` via:
+//
+//	SecurityActionStateEnumArgs{...}
+type SecurityActionStateEnumInput interface {
+	pulumi.Input
+
+	ToSecurityActionStateEnumOutput() SecurityActionStateEnumOutput
+	ToSecurityActionStateEnumOutputWithContext(context.Context) SecurityActionStateEnumOutput
+}
+
+var securityActionStateEnumPtrType = reflect.TypeOf((**SecurityActionStateEnum)(nil)).Elem()
+
+type SecurityActionStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToSecurityActionStateEnumPtrOutput() SecurityActionStateEnumPtrOutput
+	ToSecurityActionStateEnumPtrOutputWithContext(context.Context) SecurityActionStateEnumPtrOutput
+}
+
+type securityActionStateEnumPtr string
+
+func SecurityActionStateEnumPtr(v string) SecurityActionStateEnumPtrInput {
+	return (*securityActionStateEnumPtr)(&v)
+}
+
+func (*securityActionStateEnumPtr) ElementType() reflect.Type {
+	return securityActionStateEnumPtrType
+}
+
+func (in *securityActionStateEnumPtr) ToSecurityActionStateEnumPtrOutput() SecurityActionStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(SecurityActionStateEnumPtrOutput)
+}
+
+func (in *securityActionStateEnumPtr) ToSecurityActionStateEnumPtrOutputWithContext(ctx context.Context) SecurityActionStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityActionStateEnumPtrOutput)
+}
+
+func (in *securityActionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityActionStateEnum] {
+	return pulumix.Output[*SecurityActionStateEnum]{
+		OutputState: in.ToSecurityActionStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Immutable. The protocol used by this TargetServer.
 type TargetServerProtocol string
 
@@ -2850,8 +3226,14 @@ const (
 	TargetServerProtocolProtocolUnspecified = TargetServerProtocol("PROTOCOL_UNSPECIFIED")
 	// The TargetServer uses HTTP.
 	TargetServerProtocolHttp = TargetServerProtocol("HTTP")
+	// The TargetSever uses HTTP2.
+	TargetServerProtocolHttp2 = TargetServerProtocol("HTTP2")
+	// The TargetServer uses GRPC.
+	TargetServerProtocolGrpcTarget = TargetServerProtocol("GRPC_TARGET")
 	// GRPC TargetServer to be used in ExternalCallout Policy. Prefer to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL _CALLOUT generally available.
 	TargetServerProtocolGrpc = TargetServerProtocol("GRPC")
+	// The TargetServer is to be used in the ExternalCallout Policy
+	TargetServerProtocolExternalCallout = TargetServerProtocol("EXTERNAL_CALLOUT")
 )
 
 func (TargetServerProtocol) ElementType() reflect.Type {
@@ -3038,6 +3420,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentApiProxyTypePtrInput)(nil)).Elem(), EnvironmentApiProxyType("API_PROXY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentDeploymentTypeInput)(nil)).Elem(), EnvironmentDeploymentType("DEPLOYMENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentDeploymentTypePtrInput)(nil)).Elem(), EnvironmentDeploymentType("DEPLOYMENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentTypeInput)(nil)).Elem(), EnvironmentType("ENVIRONMENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentTypePtrInput)(nil)).Elem(), EnvironmentType("ENVIRONMENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1TraceSamplingConfigSamplerInput)(nil)).Elem(), GoogleCloudApigeeV1TraceSamplingConfigSampler("SAMPLER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrInput)(nil)).Elem(), GoogleCloudApigeeV1TraceSamplingConfigSampler("SAMPLER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
@@ -3060,6 +3444,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanRevenueShareTypePtrInput)(nil)).Elem(), RatePlanRevenueShareType("REVENUE_SHARE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanStateEnumInput)(nil)).Elem(), RatePlanStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanStateEnumPtrInput)(nil)).Elem(), RatePlanStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionStateEnumInput)(nil)).Elem(), SecurityActionStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionStateEnumPtrInput)(nil)).Elem(), SecurityActionStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerProtocolInput)(nil)).Elem(), TargetServerProtocol("PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerProtocolPtrInput)(nil)).Elem(), TargetServerProtocol("PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ApiProductQuotaCounterScopeOutput{})
@@ -3070,6 +3456,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentApiProxyTypePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentDeploymentTypeOutput{})
 	pulumi.RegisterOutputType(EnvironmentDeploymentTypePtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentTypeOutput{})
+	pulumi.RegisterOutputType(EnvironmentTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
@@ -3092,6 +3480,8 @@ func init() {
 	pulumi.RegisterOutputType(RatePlanRevenueShareTypePtrOutput{})
 	pulumi.RegisterOutputType(RatePlanStateEnumOutput{})
 	pulumi.RegisterOutputType(RatePlanStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(SecurityActionStateEnumOutput{})
+	pulumi.RegisterOutputType(SecurityActionStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(TargetServerProtocolOutput{})
 	pulumi.RegisterOutputType(TargetServerProtocolPtrOutput{})
 }

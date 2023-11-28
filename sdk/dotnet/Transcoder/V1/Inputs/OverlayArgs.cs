@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         private InputList<Inputs.AnimationArgs>? _animations;
 
         /// <summary>
-        /// List of Animations. The list should be chronological, without any time overlap.
+        /// List of animations. The list should be chronological, without any time overlap.
         /// </summary>
         public InputList<Inputs.AnimationArgs> Animations
         {

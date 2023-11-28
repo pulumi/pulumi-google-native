@@ -291,6 +291,11 @@
                       "location": "query",
                       "type": "string"
                     },
+                    "orderBy": {
+                      "description": "Optional. Sort results. Supported are \"name\", \"name desc\", \"create_time\", and \"create_time desc\".",
+                      "location": "query",
+                      "type": "string"
+                    },
                     "pageSize": {
                       "description": "Page size.",
                       "format": "int32",
@@ -556,7 +561,7 @@
       }
     }
   },
-  "revision": "20230503",
+  "revision": "20231106",
   "rootUrl": "https://batch.googleapis.com/",
   "schemas": {
     "Accelerator": {
@@ -568,7 +573,12 @@
           "format": "int64",
           "type": "string"
         },
+        "driverVersion": {
+          "description": "Optional. The NVIDIA GPU driver version that should be installed for this type. You can define the specific driver version such as \"470.103.01\", following the driver version requirements in https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver. Batch will install the specific accelerator driver if qualified.",
+          "type": "string"
+        },
         "installGpuDrivers": {
+          "deprecated": true,
           "description": "Deprecated: please use instances[0].install_gpu_drivers instead.",
           "type": "boolean"
         },
@@ -594,12 +604,70 @@
       },
       "type": "object"
     },
+    "AgentContainer": {
+      "description": "Container runnable representation on the agent side.",
+      "id": "AgentContainer",
+      "properties": {
+        "commands": {
+          "description": "Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "entrypoint": {
+          "description": "Overrides the `ENTRYPOINT` specified in the container.",
+          "type": "string"
+        },
+        "imageUri": {
+          "description": "The URI to pull the container image from.",
+          "type": "string"
+        },
+        "options": {
+          "description": "Arbitrary additional options to include in the \"docker run\" command when running this container, e.g. \"--network host\".",
+          "type": "string"
+        },
+        "volumes": {
+          "description": "Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "AgentEnvironment": {
+      "description": "AgentEnvironment is the Environment representation between Agent and CLH communication. The environment is used in both task level and agent level.",
+      "id": "AgentEnvironment",
+      "properties": {
+        "encryptedVariables": {
+          "$ref": "AgentKMSEnvMap",
+          "description": "An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values."
+        },
+        "secretVariables": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.",
+          "type": "object"
+        },
+        "variables": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "A map of environment variable names to values.",
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "AgentInfo": {
       "description": "VM Agent Info.",
       "id": "AgentInfo",
       "properties": {
         "jobId": {
-          "description": "The assigned Job ID",
+          "description": "Optional. The assigned Job ID",
           "type": "string"
         },
         "reportTime": {
@@ -637,11 +705,27 @@
       },
       "type": "object"
     },
+    "AgentKMSEnvMap": {
+      "description": "AgentKMSEnvMap contains the encrypted key/value pair to be used in the environment on the Agent side.",
+      "id": "AgentKMSEnvMap",
+      "properties": {
+        "cipherText": {
+          "description": "The value of the cipherText response from the `encrypt` method.",
+          "type": "string"
+        },
+        "keyName": {
+          "description": "The name of the KMS key that will be used to decrypt the cipher text.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "AgentMetadata": {
       "description": "VM Agent Metadata.",
       "id": "AgentMetadata",
       "properties": {
         "creationTime": {
+          "deprecated": true,
           "description": "When the VM agent started. Use agent_startup_time instead.",
           "format": "google-datetime",
           "type": "string"
@@ -685,10 +769,29 @@
       },
       "type": "object"
     },
+    "AgentScript": {
+      "description": "Script runnable representation on the agent side.",
+      "id": "AgentScript",
+      "properties": {
+        "path": {
+          "description": "Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.",
+          "type": "string"
+        },
+        "text": {
+          "description": "Shell script text. To specify an interpreter, please add a `#!\\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "AgentTask": {
       "description": "TODO(b/182501497) The message needs to be redefined when the Agent API server updates data in storage per the backend design.",
       "id": "AgentTask",
       "properties": {
+        "agentTaskSpec": {
+          "$ref": "AgentTaskSpec",
+          "description": "AgentTaskSpec is the taskSpec representation between Agent and CLH communication. This field will replace the TaskSpec field above in future to have a better separation between user-facaing API and internal API."
+        },
         "intendedState": {
           "description": "The intended state of the task.",
           "enum": [
@@ -712,7 +815,7 @@
         },
         "spec": {
           "$ref": "TaskSpec",
-          "description": "Task Spec."
+          "description": "Task Spec. This field will be replaced by agent_task_spec below in future."
         },
         "status": {
           "$ref": "TaskStatus",
@@ -755,6 +858,86 @@
         "taskStatus": {
           "$ref": "TaskStatus",
           "description": "The status of the Task. If we need agent specific fields we should fork the public TaskStatus into an agent specific one. Or add them below."
+        }
+      },
+      "type": "object"
+    },
+    "AgentTaskRunnable": {
+      "description": "AgentTaskRunnable is the Runnable representation between Agent and CLH communication.",
+      "id": "AgentTaskRunnable",
+      "properties": {
+        "alwaysRun": {
+          "description": "By default, after a Runnable fails, no further Runnable are executed. This flag indicates that this Runnable must be run even if the Task has already failed. This is useful for Runnables that copy output files off of the VM or for debugging. The always_run flag does not override the Task's overall max_run_duration. If the max_run_duration has expired then no further Runnables will execute, not even always_run Runnables.",
+          "type": "boolean"
+        },
+        "background": {
+          "description": "This flag allows a Runnable to continue running in the background while the Task executes subsequent Runnables. This is useful to provide services to other Runnables (or to provide debugging support tools like SSH servers).",
+          "type": "boolean"
+        },
+        "container": {
+          "$ref": "AgentContainer",
+          "description": "Container runnable."
+        },
+        "environment": {
+          "$ref": "AgentEnvironment",
+          "description": "Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup)."
+        },
+        "ignoreExitStatus": {
+          "description": "Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.",
+          "type": "boolean"
+        },
+        "script": {
+          "$ref": "AgentScript",
+          "description": "Script runnable."
+        },
+        "timeout": {
+          "description": "Timeout for this Runnable.",
+          "format": "google-duration",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "AgentTaskSpec": {
+      "description": "AgentTaskSpec is the user's TaskSpec representation between Agent and CLH communication.",
+      "id": "AgentTaskSpec",
+      "properties": {
+        "environment": {
+          "$ref": "AgentEnvironment",
+          "description": "Environment variables to set before running the Task."
+        },
+        "maxRunDuration": {
+          "description": "Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "runnables": {
+          "description": "AgentTaskRunnable is runanbles that will be executed on the agent.",
+          "items": {
+            "$ref": "AgentTaskRunnable"
+          },
+          "type": "array"
+        },
+        "userAccount": {
+          "$ref": "AgentTaskUserAccount",
+          "description": "User account on the VM to run the runnables in the agentTaskSpec. If not set, the runnable will be run under root user."
+        }
+      },
+      "type": "object"
+    },
+    "AgentTaskUserAccount": {
+      "description": "AgentTaskUserAccount contains the information of a POSIX account on the guest os which is used to execute the runnables.",
+      "id": "AgentTaskUserAccount",
+      "properties": {
+        "gid": {
+          "description": "gid id an unique identifier of the POSIX account group corresponding to the user account.",
+          "format": "int64",
+          "type": "string"
+        },
+        "uid": {
+          "description": "uid is an unique identifier of the POSIX account corresponding to the user account.",
+          "format": "int64",
+          "type": "string"
         }
       },
       "type": "object"
@@ -805,7 +988,7 @@
         },
         "network": {
           "$ref": "NetworkPolicy",
-          "description": "The network policy."
+          "description": "The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field."
         },
         "placement": {
           "$ref": "PlacementPolicy",
@@ -853,8 +1036,14 @@
       "properties": {},
       "type": "object"
     },
+    "CloudLoggingOption": {
+      "description": "CloudLoggingOption contains additional settings for cloud logging generated by Batch job.",
+      "id": "CloudLoggingOption",
+      "properties": {},
+      "type": "object"
+    },
     "ComputeResource": {
-      "description": "Compute resource requirements",
+      "description": "Compute resource requirements. ComputeResource defines the amount of resources required for each task. Make sure your tasks have enough resources to successfully run. If you also define the types of resources for a job to use with the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure both fields are compatible with each other.",
       "id": "ComputeResource",
       "properties": {
         "bootDiskMib": {
@@ -863,12 +1052,12 @@
           "type": "string"
         },
         "cpuMilli": {
-          "description": "The milliCPU count.",
+          "description": "The milliCPU count. `cpuMilli` defines the amount of CPU resources per task in milliCPU units. For example, `1000` corresponds to 1 vCPU per task. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the CPU resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 2 vCPUs each, you are recommended to set `cpuMilli` no more than `2000`, or you are recommended to run two tasks on the same VM if you set `cpuMilli` to `1000` or less.",
           "format": "int64",
           "type": "string"
         },
         "memoryMib": {
-          "description": "Memory in MiB.",
+          "description": "Memory in MiB. `memoryMib` defines the amount of memory per task in MiB units. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the memory resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 8 GiB each, you are recommended to set `memoryMib` to no more than `8192`, or you are recommended to run two tasks on the same VM if you set `memoryMib` to `4096` or less.",
           "format": "int64",
           "type": "string"
         }
@@ -911,7 +1100,7 @@
           "type": "string"
         },
         "volumes": {
-          "description": "Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro",
+          "description": "Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.",
           "items": {
             "type": "string"
           },
@@ -925,15 +1114,15 @@
       "id": "Disk",
       "properties": {
         "diskInterface": {
-          "description": "Local SSDs are available through both \"SCSI\" and \"NVMe\" interfaces. If not indicated, \"NVMe\" will be the default one for local ssds. We only support \"SCSI\" for persistent disks now.",
+          "description": "Local SSDs are available through both \"SCSI\" and \"NVMe\" interfaces. If not indicated, \"NVMe\" will be the default one for local ssds. This field is ignored for persistent disks as the interface is chosen automatically. See https://cloud.google.com/compute/docs/disks/persistent-disks#choose_an_interface.",
           "type": "string"
         },
         "image": {
-          "description": "Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * \"batch-debian\": use Batch Debian images. * \"batch-centos\": use Batch CentOS images. * \"batch-cos\": use Batch Container-Optimized images.",
+          "description": "URL for a VM image to use as the data source for this disk. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * `batch-debian`: use Batch Debian images. * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.",
           "type": "string"
         },
         "sizeGb": {
-          "description": "Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.",
+          "description": "Disk size in GB. **Non-Boot Disk**: If the `type` specifies a persistent disk, this field is ignored if `data_source` is set as `image` or `snapshot`. If the `type` specifies a local SSD, this field should be a multiple of 375 GB, otherwise, the final size will be the next greater multiple of 375 GB. **Boot Disk**: Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the `boot_disk_mib` field in task spec's `compute_resource` are defined, Batch will only honor this field. Also, this field should be no smaller than the source disk's size when the `data_source` is set as `snapshot` or `image`. For example, if you set an image as the `data_source` field and the image's default disk size 30 GB, you can only use this field to make the disk larger or equal to 30 GB.",
           "format": "int64",
           "type": "string"
         },
@@ -1006,7 +1195,7 @@
           "description": "Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image."
         },
         "disks": {
-          "description": "Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.",
+          "description": "Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.",
           "items": {
             "$ref": "AttachedDisk"
           },
@@ -1017,7 +1206,7 @@
           "type": "string"
         },
         "minCpuPlatform": {
-          "description": "The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.",
+          "description": "The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.",
           "type": "string"
         },
         "provisioningModel": {
@@ -1035,16 +1224,20 @@
             "Preemptible VM (PVM). Above SPOT VM is the preferable model for preemptible VM instances: the old preemptible VM model (indicated by this field) is the older model, and has been migrated to use the SPOT model as the underlying technology. This old model will still be supported."
           ],
           "type": "string"
+        },
+        "reservation": {
+          "description": "Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.",
+          "type": "string"
         }
       },
       "type": "object"
     },
     "InstancePolicyOrTemplate": {
-      "description": "Either an InstancePolicy or an instance template.",
+      "description": "InstancePolicyOrTemplate lets you define the type of resources to use for this job either with an InstancePolicy or an instance template. If undefined, Batch picks the type of VM to use and doesn't include optional VM resources such as GPUs and extra disks.",
       "id": "InstancePolicyOrTemplate",
       "properties": {
         "installGpuDrivers": {
-          "description": "Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false.",
+          "description": "Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false. For Container-Optimized Image cases, Batch will install the accelerator driver following milestones of https://cloud.google.com/container-optimized-os/docs/release-notes. For non Container-Optimized Image cases, following https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.",
           "type": "boolean"
         },
         "instanceTemplate": {
@@ -1171,7 +1364,7 @@
           "description": "The attribute requirements of messages to be sent to this Pub/Sub topic. Without this field, no message will be sent."
         },
         "pubsubTopic": {
-          "description": "The Pub/Sub topic where notifications like the job state changes will be published. This topic exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.",
+          "description": "The Pub/Sub topic where notifications like the job state changes will be published. The topic must exist in the same project as the job and billings will be charged to this project. If not specified, no Pub/Sub messages will be sent. Topic format: `projects/{project}/topics/{topic}`.",
           "type": "string"
         }
       },
@@ -1198,7 +1391,7 @@
             "DELETION_IN_PROGRESS"
           ],
           "enumDescriptions": [
-            "",
+            "Job state unspecified.",
             "Job is admitted (validated and persisted) and waiting for resources.",
             "Job is scheduled to run as soon as resource allocation is ready. The resource allocation may happen at a later time but with a high chance to succeed.",
             "Resource allocation has been successful. At least one Task in the Job is RUNNING.",
@@ -1401,6 +1594,10 @@
       "description": "LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.",
       "id": "LogsPolicy",
       "properties": {
+        "cloudLoggingOption": {
+          "$ref": "CloudLoggingOption",
+          "description": "Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING."
+        },
         "destination": {
           "description": "Where logs should be saved.",
           "enum": [
@@ -1423,7 +1620,7 @@
       "type": "object"
     },
     "Message": {
-      "description": "Message details. Describe the attribute that a message should have. Without specified message attributes, no message will be sent by default.",
+      "description": "Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.",
       "id": "Message",
       "properties": {
         "newJobState": {
@@ -1438,7 +1635,7 @@
             "DELETION_IN_PROGRESS"
           ],
           "enumDescriptions": [
-            "",
+            "Job state unspecified.",
             "Job is admitted (validated and persisted) and waiting for resources.",
             "Job is scheduled to run as soon as resource allocation is ready. The resource allocation may happen at a later time but with a high chance to succeed.",
             "Resource allocation has been successful. At least one Task in the Job is RUNNING.",
@@ -1564,7 +1761,7 @@
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object"
         }
       },
@@ -1669,6 +1866,10 @@
             "$ref": "AgentTask"
           },
           "type": "array"
+        },
+        "useBatchMonitoredResource": {
+          "description": "If true, the cloud logging for batch agent will use batch.googleapis.com/Job as monitored resource for Batch job related logging.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -1692,6 +1893,10 @@
         "container": {
           "$ref": "Container",
           "description": "Container runnable."
+        },
+        "displayName": {
+          "description": "Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used in logs and other outputs to identify the script, making it easier for users to understand the logs. If not provided the index of the runnable will be used for outputs.",
+          "type": "string"
         },
         "environment": {
           "$ref": "Environment",
@@ -1854,7 +2059,7 @@
       "type": "object"
     },
     "TaskGroup": {
-      "description": "A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.",
+      "description": "A TaskGroup defines one or more Tasks that all share the same TaskSpec.",
       "id": "TaskGroup",
       "properties": {
         "name": {
@@ -1863,7 +2068,7 @@
           "type": "string"
         },
         "parallelism": {
-          "description": "Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.",
+          "description": "Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.",
           "format": "int64",
           "type": "string"
         },
@@ -1874,6 +2079,20 @@
         "requireHostsFile": {
           "description": "When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.",
           "type": "boolean"
+        },
+        "schedulingPolicy": {
+          "description": "Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.",
+          "enum": [
+            "SCHEDULING_POLICY_UNSPECIFIED",
+            "AS_SOON_AS_POSSIBLE",
+            "IN_ORDER"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Run Tasks as soon as resources are available. Tasks might be executed in parallel depending on parallelism and task_count values.",
+            "Run Tasks sequentially with increased task index."
+          ],
+          "type": "string"
         },
         "taskCount": {
           "description": "Number of Tasks in the TaskGroup. Default is 1.",
@@ -1886,7 +2105,7 @@
           "type": "string"
         },
         "taskEnvironments": {
-          "description": "An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.",
+          "description": "An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1).",
           "items": {
             "$ref": "Environment"
           },
@@ -1937,6 +2156,7 @@
           "additionalProperties": {
             "type": "string"
           },
+          "deprecated": true,
           "description": "Deprecated: please use environment(non-plural) instead.",
           "type": "object"
         },

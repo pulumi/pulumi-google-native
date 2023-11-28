@@ -40,7 +40,7 @@ type LookupClusterResult struct {
 	Location string `pulumi:"location"`
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name string `pulumi:"name"`
-	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 	ServeNodes int `pulumi:"serveNodes"`
 	// The current state of the cluster.
 	State string `pulumi:"state"`
@@ -114,7 +114,7 @@ func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 func (o LookupClusterResultOutput) ServeNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.ServeNodes }).(pulumi.IntOutput)
 }

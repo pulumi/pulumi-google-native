@@ -576,6 +576,195 @@ func (in *experimentStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*
 	}
 }
 
+// The type of the connected data store.
+type GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType string
+
+const (
+	// Not specified. This value indicates that the data store type is not specified, so it will not be used during search.
+	GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeDataStoreTypeUnspecified = GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("DATA_STORE_TYPE_UNSPECIFIED")
+	// A data store that contains public web content.
+	GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePublicWeb = GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("PUBLIC_WEB")
+	// A data store that contains unstructured private data.
+	GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeUnstructured = GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("UNSTRUCTURED")
+	// A data store that contains structured data (for example FAQ).
+	GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeStructured = GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("STRUCTURED")
+)
+
+func (GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput() GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput() GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput {
+	return GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType(e).ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput() GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput() GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) *GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput() GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput) Elem() GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType
+		return ret
+	}).(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeInput is an input type that accepts GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeArgs and GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeInput` via:
+//
+//	GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeArgs{...}
+type GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput() GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput
+	ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput
+}
+
+var googleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput() GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput
+	ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtr string
+
+func GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtr(v string) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrInput {
+	return (*googleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrType
+}
+
+func (in *googleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtr) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput() GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtr) ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Count-based metric type. Only one of type or count_type is specified in each Metric.
 type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType string
 
@@ -3089,6 +3278,191 @@ func (in *securitySettingRedactionStrategyPtr) ToOutput(ctx context.Context) pul
 	}
 }
 
+// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+type SecuritySettingRetentionStrategy string
+
+const (
+	// Retains the persisted data with Dialogflow's internal default 365d TTLs.
+	SecuritySettingRetentionStrategyRetentionStrategyUnspecified = SecuritySettingRetentionStrategy("RETENTION_STRATEGY_UNSPECIFIED")
+	// Removes data when the conversation ends. If there is no Conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
+	SecuritySettingRetentionStrategyRemoveAfterConversation = SecuritySettingRetentionStrategy("REMOVE_AFTER_CONVERSATION")
+)
+
+func (SecuritySettingRetentionStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettingRetentionStrategy)(nil)).Elem()
+}
+
+func (e SecuritySettingRetentionStrategy) ToSecuritySettingRetentionStrategyOutput() SecuritySettingRetentionStrategyOutput {
+	return pulumi.ToOutput(e).(SecuritySettingRetentionStrategyOutput)
+}
+
+func (e SecuritySettingRetentionStrategy) ToSecuritySettingRetentionStrategyOutputWithContext(ctx context.Context) SecuritySettingRetentionStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecuritySettingRetentionStrategyOutput)
+}
+
+func (e SecuritySettingRetentionStrategy) ToSecuritySettingRetentionStrategyPtrOutput() SecuritySettingRetentionStrategyPtrOutput {
+	return e.ToSecuritySettingRetentionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e SecuritySettingRetentionStrategy) ToSecuritySettingRetentionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRetentionStrategyPtrOutput {
+	return SecuritySettingRetentionStrategy(e).ToSecuritySettingRetentionStrategyOutputWithContext(ctx).ToSecuritySettingRetentionStrategyPtrOutputWithContext(ctx)
+}
+
+func (e SecuritySettingRetentionStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecuritySettingRetentionStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecuritySettingRetentionStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecuritySettingRetentionStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecuritySettingRetentionStrategyOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingRetentionStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettingRetentionStrategy)(nil)).Elem()
+}
+
+func (o SecuritySettingRetentionStrategyOutput) ToSecuritySettingRetentionStrategyOutput() SecuritySettingRetentionStrategyOutput {
+	return o
+}
+
+func (o SecuritySettingRetentionStrategyOutput) ToSecuritySettingRetentionStrategyOutputWithContext(ctx context.Context) SecuritySettingRetentionStrategyOutput {
+	return o
+}
+
+func (o SecuritySettingRetentionStrategyOutput) ToSecuritySettingRetentionStrategyPtrOutput() SecuritySettingRetentionStrategyPtrOutput {
+	return o.ToSecuritySettingRetentionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRetentionStrategyOutput) ToSecuritySettingRetentionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRetentionStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettingRetentionStrategy) *SecuritySettingRetentionStrategy {
+		return &v
+	}).(SecuritySettingRetentionStrategyPtrOutput)
+}
+
+func (o SecuritySettingRetentionStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[SecuritySettingRetentionStrategy] {
+	return pulumix.Output[SecuritySettingRetentionStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecuritySettingRetentionStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRetentionStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecuritySettingRetentionStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecuritySettingRetentionStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRetentionStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecuritySettingRetentionStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecuritySettingRetentionStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingRetentionStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettingRetentionStrategy)(nil)).Elem()
+}
+
+func (o SecuritySettingRetentionStrategyPtrOutput) ToSecuritySettingRetentionStrategyPtrOutput() SecuritySettingRetentionStrategyPtrOutput {
+	return o
+}
+
+func (o SecuritySettingRetentionStrategyPtrOutput) ToSecuritySettingRetentionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRetentionStrategyPtrOutput {
+	return o
+}
+
+func (o SecuritySettingRetentionStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettingRetentionStrategy] {
+	return pulumix.Output[*SecuritySettingRetentionStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecuritySettingRetentionStrategyPtrOutput) Elem() SecuritySettingRetentionStrategyOutput {
+	return o.ApplyT(func(v *SecuritySettingRetentionStrategy) SecuritySettingRetentionStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettingRetentionStrategy
+		return ret
+	}).(SecuritySettingRetentionStrategyOutput)
+}
+
+func (o SecuritySettingRetentionStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRetentionStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecuritySettingRetentionStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecuritySettingRetentionStrategyInput is an input type that accepts SecuritySettingRetentionStrategyArgs and SecuritySettingRetentionStrategyOutput values.
+// You can construct a concrete instance of `SecuritySettingRetentionStrategyInput` via:
+//
+//	SecuritySettingRetentionStrategyArgs{...}
+type SecuritySettingRetentionStrategyInput interface {
+	pulumi.Input
+
+	ToSecuritySettingRetentionStrategyOutput() SecuritySettingRetentionStrategyOutput
+	ToSecuritySettingRetentionStrategyOutputWithContext(context.Context) SecuritySettingRetentionStrategyOutput
+}
+
+var securitySettingRetentionStrategyPtrType = reflect.TypeOf((**SecuritySettingRetentionStrategy)(nil)).Elem()
+
+type SecuritySettingRetentionStrategyPtrInput interface {
+	pulumi.Input
+
+	ToSecuritySettingRetentionStrategyPtrOutput() SecuritySettingRetentionStrategyPtrOutput
+	ToSecuritySettingRetentionStrategyPtrOutputWithContext(context.Context) SecuritySettingRetentionStrategyPtrOutput
+}
+
+type securitySettingRetentionStrategyPtr string
+
+func SecuritySettingRetentionStrategyPtr(v string) SecuritySettingRetentionStrategyPtrInput {
+	return (*securitySettingRetentionStrategyPtr)(&v)
+}
+
+func (*securitySettingRetentionStrategyPtr) ElementType() reflect.Type {
+	return securitySettingRetentionStrategyPtrType
+}
+
+func (in *securitySettingRetentionStrategyPtr) ToSecuritySettingRetentionStrategyPtrOutput() SecuritySettingRetentionStrategyPtrOutput {
+	return pulumi.ToOutput(in).(SecuritySettingRetentionStrategyPtrOutput)
+}
+
+func (in *securitySettingRetentionStrategyPtr) ToSecuritySettingRetentionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRetentionStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecuritySettingRetentionStrategyPtrOutput)
+}
+
+func (in *securitySettingRetentionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettingRetentionStrategy] {
+	return pulumix.Output[*SecuritySettingRetentionStrategy]{
+		OutputState: in.ToSecuritySettingRetentionStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. Indicates whether the additional data should override or supplement the custom entity type definition.
 type SessionEntityTypeEntityOverrideMode string
 
@@ -3283,6 +3657,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeKindPtrInput)(nil)).Elem(), EntityTypeKind("KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentStateEnumInput)(nil)).Elem(), ExperimentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentStateEnumPtrInput)(nil)).Elem(), ExperimentStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("DATA_STORE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType("DATA_STORE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypeInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType("COUNT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType("COUNT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypeInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType("METRIC_UNSPECIFIED"))
@@ -3310,6 +3686,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingRedactionScopePtrInput)(nil)).Elem(), SecuritySettingRedactionScope("REDACTION_SCOPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingRedactionStrategyInput)(nil)).Elem(), SecuritySettingRedactionStrategy("REDACTION_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingRedactionStrategyPtrInput)(nil)).Elem(), SecuritySettingRedactionStrategy("REDACTION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingRetentionStrategyInput)(nil)).Elem(), SecuritySettingRetentionStrategy("RETENTION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingRetentionStrategyPtrInput)(nil)).Elem(), SecuritySettingRetentionStrategy("RETENTION_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionEntityTypeEntityOverrideModeInput)(nil)).Elem(), SessionEntityTypeEntityOverrideMode("ENTITY_OVERRIDE_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionEntityTypeEntityOverrideModePtrInput)(nil)).Elem(), SessionEntityTypeEntityOverrideMode("ENTITY_OVERRIDE_MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(EntityTypeAutoExpansionModeOutput{})
@@ -3318,6 +3696,8 @@ func init() {
 	pulumi.RegisterOutputType(EntityTypeKindPtrOutput{})
 	pulumi.RegisterOutputType(ExperimentStateEnumOutput{})
 	pulumi.RegisterOutputType(ExperimentStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypeOutput{})
@@ -3345,6 +3725,8 @@ func init() {
 	pulumi.RegisterOutputType(SecuritySettingRedactionScopePtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingRedactionStrategyOutput{})
 	pulumi.RegisterOutputType(SecuritySettingRedactionStrategyPtrOutput{})
+	pulumi.RegisterOutputType(SecuritySettingRetentionStrategyOutput{})
+	pulumi.RegisterOutputType(SecuritySettingRetentionStrategyPtrOutput{})
 	pulumi.RegisterOutputType(SessionEntityTypeEntityOverrideModeOutput{})
 	pulumi.RegisterOutputType(SessionEntityTypeEntityOverrideModePtrOutput{})
 }

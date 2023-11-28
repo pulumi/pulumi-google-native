@@ -60,6 +60,10 @@ export class CertificateTemplate extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
+     * Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+     */
+    public readonly maximumLifetime!: pulumi.Output<string>;
+    /**
      * The resource name for this CertificateTemplate in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -100,6 +104,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
             resourceInputs["identityConstraints"] = args ? args.identityConstraints : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maximumLifetime"] = args ? args.maximumLifetime : undefined;
             resourceInputs["passthroughExtensions"] = args ? args.passthroughExtensions : undefined;
             resourceInputs["predefinedValues"] = args ? args.predefinedValues : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -114,6 +119,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
             resourceInputs["identityConstraints"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["maximumLifetime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["passthroughExtensions"] = undefined /*out*/;
             resourceInputs["predefinedValues"] = undefined /*out*/;
@@ -149,6 +155,10 @@ export interface CertificateTemplateArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+     */
+    maximumLifetime?: pulumi.Input<string>;
     /**
      * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
      */

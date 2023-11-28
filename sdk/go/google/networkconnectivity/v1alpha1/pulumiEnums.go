@@ -207,6 +207,8 @@ const (
 	InternalRangeOverlapsItemOverlapUnspecified = InternalRangeOverlapsItem("OVERLAP_UNSPECIFIED")
 	// Allow creation of static routes more specific than the current internal range.
 	InternalRangeOverlapsItemOverlapRouteRange = InternalRangeOverlapsItem("OVERLAP_ROUTE_RANGE")
+	// Allow creation of internal ranges that overlap with existing subnets.
+	InternalRangeOverlapsItemOverlapExistingSubnetRange = InternalRangeOverlapsItem("OVERLAP_EXISTING_SUBNET_RANGE")
 )
 
 func (InternalRangeOverlapsItem) ElementType() reflect.Type {

@@ -38,6 +38,10 @@ export class Disk extends pulumi.CustomResource {
     }
 
     /**
+     * The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+     */
+    public readonly accessMode!: pulumi.Output<string>;
+    /**
      * The architecture of the disk. Valid values are ARM64 or X86_64.
      */
     public readonly architecture!: pulumi.Output<string>;
@@ -62,7 +66,7 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.alpha.CustomerEncryptionKeyResponse>;
     /**
-     * Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+     * Whether this disk is using confidential compute mode.
      */
     public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
     /**
@@ -177,7 +181,7 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
      */
     public readonly sizeGb!: pulumi.Output<string>;
     /**
@@ -271,6 +275,7 @@ export class Disk extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
             resourceInputs["architecture"] = args ? args.architecture : undefined;
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -328,6 +333,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         } else {
+            resourceInputs["accessMode"] = undefined /*out*/;
             resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["asyncPrimaryDisk"] = undefined /*out*/;
             resourceInputs["asyncSecondaryDisks"] = undefined /*out*/;
@@ -397,6 +403,10 @@ export class Disk extends pulumi.CustomResource {
  */
 export interface DiskArgs {
     /**
+     * The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+     */
+    accessMode?: pulumi.Input<enums.compute.alpha.DiskAccessMode>;
+    /**
      * The architecture of the disk. Valid values are ARM64 or X86_64.
      */
     architecture?: pulumi.Input<enums.compute.alpha.DiskArchitecture>;
@@ -413,7 +423,7 @@ export interface DiskArgs {
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
-     * Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+     * Whether this disk is using confidential compute mode.
      */
     enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
@@ -488,7 +498,7 @@ export interface DiskArgs {
      */
     resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+     * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
      */
     sizeGb?: pulumi.Input<string>;
     /**

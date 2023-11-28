@@ -20,7 +20,7 @@ type Backup struct {
 
 	// If True, all namespaces were included in the Backup.
 	AllNamespaces pulumi.BoolOutput `pulumi:"allNamespaces"`
-	// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+	// Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
 	BackupId     pulumi.StringPtrOutput `pulumi:"backupId"`
 	BackupPlanId pulumi.StringOutput    `pulumi:"backupPlanId"`
 	// Information about the GKE cluster from which this Backup was created.
@@ -35,17 +35,17 @@ type Backup struct {
 	ContainsVolumeData pulumi.BoolOutput `pulumi:"containsVolumeData"`
 	// The timestamp when this Backup resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+	// Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
 	DeleteLockDays pulumi.IntOutput `pulumi:"deleteLockDays"`
 	// The time at which an existing delete lock will expire for this backup (calculated from create_time + delete_lock_days).
 	DeleteLockExpireTime pulumi.StringOutput `pulumi:"deleteLockExpireTime"`
-	// User specified descriptive string for this Backup.
+	// Optional. User specified descriptive string for this Backup.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's encryption_key value.
 	EncryptionKey EncryptionKeyResponseOutput `pulumi:"encryptionKey"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` or `DeleteBackup` to ensure that their change will be applied to the same version of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// A set of custom labels supplied by user.
+	// Optional. A set of custom labels supplied by user.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually.
@@ -57,7 +57,7 @@ type Backup struct {
 	Project  pulumi.StringOutput `pulumi:"project"`
 	// The total number of Kubernetes resources included in the Backup.
 	ResourceCount pulumi.IntOutput `pulumi:"resourceCount"`
-	// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+	// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
 	RetainDays pulumi.IntOutput `pulumi:"retainDays"`
 	// The time at which this Backup will be automatically deleted (calculated from create_time + retain_days).
 	RetainExpireTime pulumi.StringOutput `pulumi:"retainExpireTime"`
@@ -128,35 +128,35 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
-	// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+	// Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
 	BackupId     *string `pulumi:"backupId"`
 	BackupPlanId string  `pulumi:"backupPlanId"`
-	// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+	// Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
 	DeleteLockDays *int `pulumi:"deleteLockDays"`
-	// User specified descriptive string for this Backup.
+	// Optional. User specified descriptive string for this Backup.
 	Description *string `pulumi:"description"`
-	// A set of custom labels supplied by user.
+	// Optional. A set of custom labels supplied by user.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
-	// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+	// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
 	RetainDays *int `pulumi:"retainDays"`
 }
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
-	// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+	// Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
 	BackupId     pulumi.StringPtrInput
 	BackupPlanId pulumi.StringInput
-	// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+	// Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
 	DeleteLockDays pulumi.IntPtrInput
-	// User specified descriptive string for this Backup.
+	// Optional. User specified descriptive string for this Backup.
 	Description pulumi.StringPtrInput
-	// A set of custom labels supplied by user.
+	// Optional. A set of custom labels supplied by user.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
-	// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+	// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
 	RetainDays pulumi.IntPtrInput
 }
 
@@ -214,7 +214,7 @@ func (o BackupOutput) AllNamespaces() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.AllNamespaces }).(pulumi.BoolOutput)
 }
 
-// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+// Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
 func (o BackupOutput) BackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.BackupId }).(pulumi.StringPtrOutput)
 }
@@ -253,7 +253,7 @@ func (o BackupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+// Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
 func (o BackupOutput) DeleteLockDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.DeleteLockDays }).(pulumi.IntOutput)
 }
@@ -263,7 +263,7 @@ func (o BackupOutput) DeleteLockExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DeleteLockExpireTime }).(pulumi.StringOutput)
 }
 
-// User specified descriptive string for this Backup.
+// Optional. User specified descriptive string for this Backup.
 func (o BackupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -278,7 +278,7 @@ func (o BackupOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A set of custom labels supplied by user.
+// Optional. A set of custom labels supplied by user.
 func (o BackupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -311,7 +311,7 @@ func (o BackupOutput) ResourceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.ResourceCount }).(pulumi.IntOutput)
 }
 
-// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
 func (o BackupOutput) RetainDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.RetainDays }).(pulumi.IntOutput)
 }

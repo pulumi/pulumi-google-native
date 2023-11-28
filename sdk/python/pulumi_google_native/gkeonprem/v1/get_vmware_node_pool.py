@@ -200,6 +200,7 @@ class AwaitableGetVmwareNodePoolResult(GetVmwareNodePoolResult):
 
 def get_vmware_node_pool(location: Optional[str] = None,
                          project: Optional[str] = None,
+                         view: Optional[str] = None,
                          vmware_cluster_id: Optional[str] = None,
                          vmware_node_pool_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmwareNodePoolResult:
@@ -209,6 +210,7 @@ def get_vmware_node_pool(location: Optional[str] = None,
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
+    __args__['view'] = view
     __args__['vmwareClusterId'] = vmware_cluster_id
     __args__['vmwareNodePoolId'] = vmware_node_pool_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -234,6 +236,7 @@ def get_vmware_node_pool(location: Optional[str] = None,
 @_utilities.lift_output_func(get_vmware_node_pool)
 def get_vmware_node_pool_output(location: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                view: Optional[pulumi.Input[Optional[str]]] = None,
                                 vmware_cluster_id: Optional[pulumi.Input[str]] = None,
                                 vmware_node_pool_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVmwareNodePoolResult]:

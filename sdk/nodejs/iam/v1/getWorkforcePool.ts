@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -23,6 +26,10 @@ export interface GetWorkforcePoolArgs {
 
 export interface GetWorkforcePoolResult {
     /**
+     * Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+     */
+    readonly accessRestrictions: outputs.iam.v1.AccessRestrictionsResponse;
+    /**
      * A user-specified description of the pool. Cannot exceed 256 characters.
      */
     readonly description: string;
@@ -34,6 +41,10 @@ export interface GetWorkforcePoolResult {
      * A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
      */
     readonly displayName: string;
+    /**
+     * Time after which the workforce pool will be permanently purged and cannot be recovered.
+     */
+    readonly expireTime: string;
     /**
      * The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`
      */

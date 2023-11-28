@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
     public sealed class BareMetalNodePoolConfigResponse
     {
         /// <summary>
-        /// The modifiable kubelet configurations for the baremetal machines.
+        /// The modifiable kubelet configurations for the bare metal machines.
         /// </summary>
         public readonly Outputs.BareMetalKubeletConfigResponse KubeletConfig;
         /// <summary>

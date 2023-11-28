@@ -512,7 +512,7 @@
       }
     }
   },
-  "revision": "20230503",
+  "revision": "20231108",
   "rootUrl": "https://contactcenteraiplatform.googleapis.com/",
   "schemas": {
     "AdminUser": {
@@ -537,7 +537,7 @@
       "type": "object"
     },
     "ContactCenter": {
-      "description": "Message describing ContactCenter object Next ID: 14",
+      "description": "Message describing ContactCenter object Next ID: 16",
       "id": "ContactCenter",
       "properties": {
         "adminUser": {
@@ -566,6 +566,10 @@
           "$ref": "InstanceConfig",
           "description": "The configuration of this instance, it is currently immutable once created."
         },
+        "kmsKey": {
+          "description": "Immutable. The KMS key name to encrypt the user input (`ContactCenter`).",
+          "type": "string"
+        },
         "labels": {
           "additionalProperties": {
             "type": "string"
@@ -590,7 +594,8 @@
             "STATE_TERMINATING",
             "STATE_FAILED",
             "STATE_TERMINATING_FAILED",
-            "STATE_TERMINATED"
+            "STATE_TERMINATED",
+            "STATE_IN_GRACE_PERIOD"
           ],
           "enumDescriptions": [
             "The default value. This value is used if the state is omitted.",
@@ -599,7 +604,8 @@
             "State TERMINATING",
             "State FAILED",
             "State TERMINATING_FAILED",
-            "State TERMINATED"
+            "State TERMINATED",
+            "State IN_GRACE_PERIOD"
           ],
           "readOnly": true,
           "type": "string"
@@ -627,11 +633,13 @@
       "id": "ContactCenterQuota",
       "properties": {
         "contactCenterCountLimit": {
+          "deprecated": true,
           "description": "Deprecated: Use the Quota fields instead. Reflects the count limit of contact centers on a billing account.",
           "format": "int32",
           "type": "integer"
         },
         "contactCenterCountSum": {
+          "deprecated": true,
           "description": "Deprecated: Use the Quota fields instead. Reflects the count sum of contact centers on a billing account.",
           "format": "int32",
           "type": "integer"
@@ -652,6 +660,50 @@
       "properties": {},
       "type": "object"
     },
+    "GoogleCloudCommonOperationMetadata": {
+      "description": "Represents the metadata of the long-running operation.",
+      "id": "GoogleCloudCommonOperationMetadata",
+      "properties": {
+        "apiVersion": {
+          "description": "Output only. API version used to start the operation.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "cancelRequested": {
+          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "createTime": {
+          "description": "Output only. The time the operation was created.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "endTime": {
+          "description": "Output only. The time the operation finished running.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "statusDetail": {
+          "description": "Output only. Human-readable status of the operation, if any.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "target": {
+          "description": "Output only. Server-defined resource path for the target of the operation.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "verb": {
+          "description": "Output only. Name of the verb executed by the operation.",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "InstanceConfig": {
       "description": "Message storing the instance configuration.",
       "id": "InstanceConfig",
@@ -665,7 +717,8 @@
             "STANDARD_LARGE",
             "STANDARD_XLARGE",
             "STANDARD_2XLARGE",
-            "STANDARD_3XLARGE"
+            "STANDARD_3XLARGE",
+            "DEV_XSMALL"
           ],
           "enumDescriptions": [
             "The default value. This value is used if the state is omitted.",
@@ -674,7 +727,8 @@
             "Instance Size STANDARD_LARGE.",
             "Instance Size STANDARD_XLARGE.",
             "Instance Size STANDARD_2XLARGE.",
-            "Instance Size STANDARD_3XLARGE."
+            "Instance Size STANDARD_3XLARGE.",
+            "Instance Size DEV_EXTRA_SMALL."
           ],
           "type": "string"
         }
@@ -805,7 +859,7 @@
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object"
         }
       },
@@ -882,7 +936,8 @@
             "STANDARD_LARGE",
             "STANDARD_XLARGE",
             "STANDARD_2XLARGE",
-            "STANDARD_3XLARGE"
+            "STANDARD_3XLARGE",
+            "DEV_XSMALL"
           ],
           "enumDescriptions": [
             "The default value. This value is used if the state is omitted.",
@@ -891,7 +946,8 @@
             "Instance Size STANDARD_LARGE.",
             "Instance Size STANDARD_XLARGE.",
             "Instance Size STANDARD_2XLARGE.",
-            "Instance Size STANDARD_3XLARGE."
+            "Instance Size STANDARD_3XLARGE.",
+            "Instance Size DEV_EXTRA_SMALL."
           ],
           "type": "string"
         }
@@ -906,6 +962,10 @@
           "description": "SAML certificate",
           "type": "string"
         },
+        "emailMapping": {
+          "description": "IdP field that maps to the user’s email address",
+          "type": "string"
+        },
         "entityId": {
           "description": "Entity id URL",
           "type": "string"
@@ -915,6 +975,7 @@
           "type": "string"
         },
         "userEmail": {
+          "deprecated": true,
           "description": "Email address of the first admin users.",
           "type": "string"
         }

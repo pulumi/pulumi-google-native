@@ -59,6 +59,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<Outputs.GoogleCloudDatacatalogV1DatabaseTableSpecResponse> DatabaseTableSpec { get; private set; } = null!;
 
         /// <summary>
+        /// Specification that applies to a dataset.
+        /// </summary>
+        [Output("datasetSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1DatasetSpecResponse> DatasetSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         /// </summary>
         [Output("description")]
@@ -125,6 +131,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<Outputs.GoogleCloudDatacatalogV1LookerSystemSpecResponse> LookerSystemSpec { get; private set; } = null!;
 
         /// <summary>
+        /// Model specification.
+        /// </summary>
+        [Output("modelSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1ModelSpecResponse> ModelSpec { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         [Output("name")]
@@ -170,7 +182,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<Outputs.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse> SqlDatabaseSystemSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        /// The type of the entry. For details, see [`EntryType`](#entrytype).
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -270,6 +282,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<Inputs.GoogleCloudDatacatalogV1DatabaseTableSpecArgs>? DatabaseTableSpec { get; set; }
 
         /// <summary>
+        /// Specification that applies to a dataset.
+        /// </summary>
+        [Input("datasetSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1DatasetSpecArgs>? DatasetSpec { get; set; }
+
+        /// <summary>
         /// Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         /// </summary>
         [Input("description")]
@@ -335,6 +353,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Input("lookerSystemSpec")]
         public Input<Inputs.GoogleCloudDatacatalogV1LookerSystemSpecArgs>? LookerSystemSpec { get; set; }
 
+        /// <summary>
+        /// Model specification.
+        /// </summary>
+        [Input("modelSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1ModelSpecArgs>? ModelSpec { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -369,7 +393,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<Inputs.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs>? SqlDatabaseSystemSpec { get; set; }
 
         /// <summary>
-        /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        /// The type of the entry. For details, see [`EntryType`](#entrytype).
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.DataCatalog.V1.EntryType>? Type { get; set; }

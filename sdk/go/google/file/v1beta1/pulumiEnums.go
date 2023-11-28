@@ -218,6 +218,8 @@ const (
 	InstanceTierEnterprise = InstanceTier("ENTERPRISE")
 	// ZONAL instances offer expanded capacity and performance scaling capabilities.
 	InstanceTierZonal = InstanceTier("ZONAL")
+	// REGIONAL instances offer the features and availability needed for mission-critical workloads.
+	InstanceTierRegional = InstanceTier("REGIONAL")
 )
 
 func (InstanceTier) ElementType() reflect.Type {

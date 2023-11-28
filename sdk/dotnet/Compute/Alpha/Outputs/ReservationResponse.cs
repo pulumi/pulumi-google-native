@@ -29,6 +29,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
+        /// Duration time relative to reservation creation when GCE will automatically delete this resource.
+        /// </summary>
+        public readonly Outputs.DurationResponse DeleteAfterDuration;
+        /// <summary>
+        /// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        /// </summary>
+        public readonly string DeleteAtTime;
+        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         public readonly string Description;
@@ -89,6 +97,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string creationTimestamp,
 
+            Outputs.DurationResponse deleteAfterDuration,
+
+            string deleteAtTime,
+
             string description,
 
             string kind,
@@ -118,6 +130,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             AggregateReservation = aggregateReservation;
             Commitment = commitment;
             CreationTimestamp = creationTimestamp;
+            DeleteAfterDuration = deleteAfterDuration;
+            DeleteAtTime = deleteAtTime;
             Description = description;
             Kind = kind;
             Name = name;

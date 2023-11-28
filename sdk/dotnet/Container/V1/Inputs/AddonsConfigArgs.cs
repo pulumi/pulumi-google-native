@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<Inputs.GcpFilestoreCsiDriverConfigArgs>? GcpFilestoreCsiDriverConfig { get; set; }
 
         /// <summary>
+        /// Configuration for the Cloud Storage Fuse CSI driver.
+        /// </summary>
+        [Input("gcsFuseCsiDriverConfig")]
+        public Input<Inputs.GcsFuseCsiDriverConfigArgs>? GcsFuseCsiDriverConfig { get; set; }
+
+        /// <summary>
         /// Configuration for the Backup for GKE agent addon.
         /// </summary>
         [Input("gkeBackupAgentConfig")]

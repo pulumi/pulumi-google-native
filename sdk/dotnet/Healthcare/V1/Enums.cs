@@ -327,6 +327,51 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     }
 
     /// <summary>
+    /// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition : IEquatable<GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition>
+    {
+        private readonly string _value;
+
+        private GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default behavior is the same as WRITE_EMPTY.
+        /// </summary>
+        public static GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition WriteDispositionUnspecified { get; } = new GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED");
+        /// <summary>
+        /// Only export data if the destination table is empty.
+        /// </summary>
+        public static GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition WriteEmpty { get; } = new GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_EMPTY");
+        /// <summary>
+        /// Erase all existing data in the destination table before writing the instances.
+        /// </summary>
+        public static GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition WriteTruncate { get; } = new GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_TRUNCATE");
+        /// <summary>
+        /// Append data to the destination table.
+        /// </summary>
+        public static GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition WriteAppend { get; } = new GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_APPEND");
+
+        public static bool operator ==(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition left, GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition left, GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition other && Equals(other);
+        public bool Equals(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
     /// </summary>
     [EnumType]

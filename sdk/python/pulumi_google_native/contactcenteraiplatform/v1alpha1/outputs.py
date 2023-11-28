@@ -116,7 +116,9 @@ class SAMLParamsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "entityId":
+        if key == "emailMapping":
+            suggest = "email_mapping"
+        elif key == "entityId":
             suggest = "entity_id"
         elif key == "ssoUri":
             suggest = "sso_uri"
@@ -136,17 +138,20 @@ class SAMLParamsResponse(dict):
 
     def __init__(__self__, *,
                  certificate: str,
+                 email_mapping: str,
                  entity_id: str,
                  sso_uri: str,
                  user_email: str):
         """
         Message storing SAML params to enable Google as IDP.
         :param str certificate: SAML certificate
+        :param str email_mapping: IdP field that maps to the user’s email address
         :param str entity_id: Entity id URL
         :param str sso_uri: Single sign-on URL
         :param str user_email: Email address of the first admin users.
         """
         pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "email_mapping", email_mapping)
         pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "sso_uri", sso_uri)
         pulumi.set(__self__, "user_email", user_email)
@@ -158,6 +163,14 @@ class SAMLParamsResponse(dict):
         SAML certificate
         """
         return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="emailMapping")
+    def email_mapping(self) -> str:
+        """
+        IdP field that maps to the user’s email address
+        """
+        return pulumi.get(self, "email_mapping")
 
     @property
     @pulumi.getter(name="entityId")

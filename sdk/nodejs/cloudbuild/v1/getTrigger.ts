@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns information about a `BuildTrigger`. This API is experimental.
+ * Returns information about a `BuildTrigger`.
  */
 export function getTrigger(args: GetTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggerResult> {
 
@@ -135,7 +135,7 @@ export interface GetTriggerResult {
     readonly webhookConfig: outputs.cloudbuild.v1.WebhookConfigResponse;
 }
 /**
- * Returns information about a `BuildTrigger`. This API is experimental.
+ * Returns information about a `BuildTrigger`.
  */
 export function getTriggerOutput(args: GetTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggerResult> {
     return pulumi.output(args).apply((a: any) => getTrigger(a, opts))

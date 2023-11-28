@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
 func LookupInstanceTableIamPolicy(ctx *pulumi.Context, args *LookupInstanceTableIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupInstanceTableIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceTableIamPolicyResult

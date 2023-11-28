@@ -411,9 +411,17 @@ class GoogleCloudDialogflowV2beta1SuggestionFeatureType(str, Enum):
     """
     Run smart reply model for chat.
     """
+    DIALOGFLOW_ASSIST = "DIALOGFLOW_ASSIST"
+    """
+    Run Dialogflow assist model for chat, which will return automated agent response as suggestion.
+    """
     CONVERSATION_SUMMARIZATION = "CONVERSATION_SUMMARIZATION"
     """
     Run conversation summarization model for chat.
+    """
+    KNOWLEDGE_SEARCH = "KNOWLEDGE_SEARCH"
+    """
+    Run knowledge search with text input from agent or text generated query.
     """
 
 

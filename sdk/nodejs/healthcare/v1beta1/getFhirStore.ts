@@ -34,6 +34,10 @@ export interface GetFhirStoreResult {
      */
     readonly complexDataTypeReferenceParsing: string;
     /**
+     * Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+     */
+    readonly consentConfig: outputs.healthcare.v1beta1.ConsentConfigResponse;
+    /**
      * If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
      */
     readonly defaultSearchHandlingStrict: boolean;

@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConversionWorkspaceIamMember{}
 	case "google-native:datamigration/v1:ConversionWorkspaceIamPolicy":
 		r = &ConversionWorkspaceIamPolicy{}
+	case "google-native:datamigration/v1:MappingRule":
+		r = &MappingRule{}
 	case "google-native:datamigration/v1:MigrationJob":
 		r = &MigrationJob{}
 	case "google-native:datamigration/v1:MigrationJobIamBinding":

@@ -158,7 +158,7 @@ class ResourceStatusResponse(dict):
                  state: str):
         """
         Message describing resource status
-        :param Sequence[str] rules_newer_versions: the new version of rule id if exists
+        :param Sequence[str] rules_newer_versions: Historical: Used before 2023-05-22 the new version of rule id if exists
         :param str state: State of the resource
         """
         pulumi.set(__self__, "rules_newer_versions", rules_newer_versions)
@@ -168,7 +168,7 @@ class ResourceStatusResponse(dict):
     @pulumi.getter(name="rulesNewerVersions")
     def rules_newer_versions(self) -> Sequence[str]:
         """
-        the new version of rule id if exists
+        Historical: Used before 2023-05-22 the new version of rule id if exists
         """
         return pulumi.get(self, "rules_newer_versions")
 

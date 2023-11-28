@@ -45,6 +45,10 @@ export class CloneJob extends pulumi.CustomResource {
      */
     public readonly cloneJobId!: pulumi.Output<string>;
     /**
+     * Details of the target Persistent Disks in Compute Engine.
+     */
+    public /*out*/ readonly computeEngineDisksTargetDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.ComputeEngineDisksTargetDetailsResponse>;
+    /**
      * Details of the target VM in Compute Engine.
      */
     public /*out*/ readonly computeEngineTargetDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.ComputeEngineTargetDetailsResponse>;
@@ -123,6 +127,7 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
+            resourceInputs["computeEngineDisksTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -135,6 +140,7 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["targetDetails"] = undefined /*out*/;
         } else {
             resourceInputs["cloneJobId"] = undefined /*out*/;
+            resourceInputs["computeEngineDisksTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

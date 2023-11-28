@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     public sealed class GkeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        /// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }

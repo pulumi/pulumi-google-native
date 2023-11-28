@@ -38,6 +38,7 @@ __all__ = [
     'BareMetalBgpLbConfigResponse',
     'BareMetalBgpPeerConfigResponse',
     'BareMetalClusterOperationsConfigResponse',
+    'BareMetalClusterUpgradePolicyResponse',
     'BareMetalControlPlaneConfigResponse',
     'BareMetalControlPlaneNodePoolConfigResponse',
     'BareMetalDrainedMachineResponse',
@@ -59,7 +60,9 @@ __all__ = [
     'BareMetalNodeAccessConfigResponse',
     'BareMetalNodeConfigResponse',
     'BareMetalNodePoolConfigResponse',
+    'BareMetalNodePoolUpgradePolicyResponse',
     'BareMetalOsEnvironmentConfigResponse',
+    'BareMetalParallelUpgradeConfigResponse',
     'BareMetalPortConfigResponse',
     'BareMetalProxyConfigResponse',
     'BareMetalSecurityConfigResponse',
@@ -67,6 +70,7 @@ __all__ = [
     'BareMetalStorageConfigResponse',
     'BareMetalVipConfigResponse',
     'BareMetalWorkloadNodeConfigResponse',
+    'BinaryAuthorizationResponse',
     'BindingResponse',
     'ClusterUserResponse',
     'ExprResponse',
@@ -81,6 +85,7 @@ __all__ = [
     'VmwareAddressPoolResponse',
     'VmwareAutoRepairConfigResponse',
     'VmwareAutoResizeConfigResponse',
+    'VmwareClusterUpgradePolicyResponse',
     'VmwareControlPlaneNodeConfigResponse',
     'VmwareControlPlaneV2ConfigResponse',
     'VmwareControlPlaneVsphereConfigResponse',
@@ -96,6 +101,7 @@ __all__ = [
     'VmwareNetworkConfigResponse',
     'VmwareNodeConfigResponse',
     'VmwareNodePoolAutoscalingConfigResponse',
+    'VmwareSeesawConfigResponse',
     'VmwareStaticIpConfigResponse',
     'VmwareStorageConfigResponse',
     'VmwareVCenterConfigResponse',
@@ -130,7 +136,7 @@ class AuthorizationResponse(dict):
                  admin_users: Sequence['outputs.ClusterUserResponse']):
         """
         Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster.
-        :param Sequence['ClusterUserResponse'] admin_users: For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+        :param Sequence['ClusterUserResponse'] admin_users: For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
@@ -138,7 +144,7 @@ class AuthorizationResponse(dict):
     @pulumi.getter(name="adminUsers")
     def admin_users(self) -> Sequence['outputs.ClusterUserResponse']:
         """
-        For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+        For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
         """
         return pulumi.get(self, "admin_users")
 
@@ -1236,6 +1242,28 @@ class BareMetalClusterOperationsConfigResponse(dict):
 
 
 @pulumi.output_type
+class BareMetalClusterUpgradePolicyResponse(dict):
+    """
+    BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+    """
+    def __init__(__self__, *,
+                 policy: str):
+        """
+        BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+        :param str policy: Specifies which upgrade policy to use.
+        """
+        pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        Specifies which upgrade policy to use.
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
 class BareMetalControlPlaneConfigResponse(dict):
     """
     Specifies the control plane configuration.
@@ -1472,7 +1500,7 @@ class BareMetalIslandModeCidrConfigResponse(dict):
 @pulumi.output_type
 class BareMetalKubeletConfigResponse(dict):
     """
-    KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
+    KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1500,7 +1528,7 @@ class BareMetalKubeletConfigResponse(dict):
                  registry_pull_qps: int,
                  serialize_image_pulls_disabled: bool):
         """
-        KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
+        KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
         :param int registry_burst: The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
         :param int registry_pull_qps: The limit of registry pulls per second. Setting this value to 0 means no limit. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 5.
         :param bool serialize_image_pulls_disabled: Prevents the Kubelet from pulling multiple images at a time. We recommend *not* changing the default value on nodes that run docker daemon with version < 1.9 or an Another Union File System (Aufs) storage backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has more details.
@@ -2267,7 +2295,7 @@ class BareMetalNodePoolConfigResponse(dict):
                  taints: Sequence['outputs.NodeTaintResponse']):
         """
         BareMetalNodePoolConfig describes the configuration of all nodes within a given bare metal node pool.
-        :param 'BareMetalKubeletConfigResponse' kubelet_config: The modifiable kubelet configurations for the baremetal machines.
+        :param 'BareMetalKubeletConfigResponse' kubelet_config: The modifiable kubelet configurations for the bare metal machines.
         :param Mapping[str, str] labels: The labels assigned to nodes of this node pool. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param Sequence['BareMetalNodeConfigResponse'] node_configs: The list of machine addresses in the bare metal node pool.
         :param str operating_system: Specifies the nodes operating system (default: LINUX).
@@ -2283,7 +2311,7 @@ class BareMetalNodePoolConfigResponse(dict):
     @pulumi.getter(name="kubeletConfig")
     def kubelet_config(self) -> 'outputs.BareMetalKubeletConfigResponse':
         """
-        The modifiable kubelet configurations for the baremetal machines.
+        The modifiable kubelet configurations for the bare metal machines.
         """
         return pulumi.get(self, "kubelet_config")
 
@@ -2318,6 +2346,45 @@ class BareMetalNodePoolConfigResponse(dict):
         The initial taints assigned to nodes of this node pool.
         """
         return pulumi.get(self, "taints")
+
+
+@pulumi.output_type
+class BareMetalNodePoolUpgradePolicyResponse(dict):
+    """
+    BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parallelUpgradeConfig":
+            suggest = "parallel_upgrade_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalNodePoolUpgradePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalNodePoolUpgradePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalNodePoolUpgradePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parallel_upgrade_config: 'outputs.BareMetalParallelUpgradeConfigResponse'):
+        """
+        BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+        :param 'BareMetalParallelUpgradeConfigResponse' parallel_upgrade_config: The parallel upgrade settings for worker node pools.
+        """
+        pulumi.set(__self__, "parallel_upgrade_config", parallel_upgrade_config)
+
+    @property
+    @pulumi.getter(name="parallelUpgradeConfig")
+    def parallel_upgrade_config(self) -> 'outputs.BareMetalParallelUpgradeConfigResponse':
+        """
+        The parallel upgrade settings for worker node pools.
+        """
+        return pulumi.get(self, "parallel_upgrade_config")
 
 
 @pulumi.output_type
@@ -2357,6 +2424,58 @@ class BareMetalOsEnvironmentConfigResponse(dict):
         Whether the package repo should not be included when initializing bare metal machines.
         """
         return pulumi.get(self, "package_repo_excluded")
+
+
+@pulumi.output_type
+class BareMetalParallelUpgradeConfigResponse(dict):
+    """
+    BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "concurrentNodes":
+            suggest = "concurrent_nodes"
+        elif key == "minimumAvailableNodes":
+            suggest = "minimum_available_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalParallelUpgradeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalParallelUpgradeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalParallelUpgradeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 concurrent_nodes: int,
+                 minimum_available_nodes: int):
+        """
+        BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
+        :param int concurrent_nodes: The maximum number of nodes that can be upgraded at once.
+        :param int minimum_available_nodes: The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+        """
+        pulumi.set(__self__, "concurrent_nodes", concurrent_nodes)
+        pulumi.set(__self__, "minimum_available_nodes", minimum_available_nodes)
+
+    @property
+    @pulumi.getter(name="concurrentNodes")
+    def concurrent_nodes(self) -> int:
+        """
+        The maximum number of nodes that can be upgraded at once.
+        """
+        return pulumi.get(self, "concurrent_nodes")
+
+    @property
+    @pulumi.getter(name="minimumAvailableNodes")
+    def minimum_available_nodes(self) -> int:
+        """
+        The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+        """
+        return pulumi.get(self, "minimum_available_nodes")
 
 
 @pulumi.output_type
@@ -2646,6 +2765,45 @@ class BareMetalWorkloadNodeConfigResponse(dict):
         The maximum number of pods a node can run. The size of the CIDR range assigned to the node will be derived from this parameter.
         """
         return pulumi.get(self, "max_pods_per_node")
+
+
+@pulumi.output_type
+class BinaryAuthorizationResponse(dict):
+    """
+    Configuration for Binary Authorization.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMode":
+            suggest = "evaluation_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BinaryAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BinaryAuthorizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BinaryAuthorizationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluation_mode: str):
+        """
+        Configuration for Binary Authorization.
+        :param str evaluation_mode: Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+        """
+        pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> str:
+        """
+        Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+        """
+        return pulumi.get(self, "evaluation_mode")
 
 
 @pulumi.output_type
@@ -3258,6 +3416,45 @@ class VmwareAutoResizeConfigResponse(dict):
 
 
 @pulumi.output_type
+class VmwareClusterUpgradePolicyResponse(dict):
+    """
+    VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlaneOnly":
+            suggest = "control_plane_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareClusterUpgradePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareClusterUpgradePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareClusterUpgradePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane_only: bool):
+        """
+        VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+        :param bool control_plane_only: Controls whether the upgrade applies to the control plane only.
+        """
+        pulumi.set(__self__, "control_plane_only", control_plane_only)
+
+    @property
+    @pulumi.getter(name="controlPlaneOnly")
+    def control_plane_only(self) -> bool:
+        """
+        Controls whether the upgrade applies to the control plane only.
+        """
+        return pulumi.get(self, "control_plane_only")
+
+
+@pulumi.output_type
 class VmwareControlPlaneNodeConfigResponse(dict):
     """
     Specifies control plane node config for the VMware user cluster.
@@ -3386,13 +3583,33 @@ class VmwareControlPlaneVsphereConfigResponse(dict):
     """
     Specifies control plane node config.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storagePolicyName":
+            suggest = "storage_policy_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareControlPlaneVsphereConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareControlPlaneVsphereConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareControlPlaneVsphereConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 datastore: str):
+                 datastore: str,
+                 storage_policy_name: str):
         """
         Specifies control plane node config.
         :param str datastore: The Vsphere datastore used by the control plane Node.
+        :param str storage_policy_name: The Vsphere storage policy used by the control plane Node.
         """
         pulumi.set(__self__, "datastore", datastore)
+        pulumi.set(__self__, "storage_policy_name", storage_policy_name)
 
     @property
     @pulumi.getter
@@ -3401,6 +3618,14 @@ class VmwareControlPlaneVsphereConfigResponse(dict):
         The Vsphere datastore used by the control plane Node.
         """
         return pulumi.get(self, "datastore")
+
+    @property
+    @pulumi.getter(name="storagePolicyName")
+    def storage_policy_name(self) -> str:
+        """
+        The Vsphere storage policy used by the control plane Node.
+        """
+        return pulumi.get(self, "storage_policy_name")
 
 
 @pulumi.output_type
@@ -3707,6 +3932,8 @@ class VmwareLoadBalancerConfigResponse(dict):
             suggest = "manual_lb_config"
         elif key == "metalLbConfig":
             suggest = "metal_lb_config"
+        elif key == "seesawConfig":
+            suggest = "seesaw_config"
         elif key == "vipConfig":
             suggest = "vip_config"
 
@@ -3725,17 +3952,20 @@ class VmwareLoadBalancerConfigResponse(dict):
                  f5_config: 'outputs.VmwareF5BigIpConfigResponse',
                  manual_lb_config: 'outputs.VmwareManualLbConfigResponse',
                  metal_lb_config: 'outputs.VmwareMetalLbConfigResponse',
+                 seesaw_config: 'outputs.VmwareSeesawConfigResponse',
                  vip_config: 'outputs.VmwareVipConfigResponse'):
         """
         Specifies the locad balancer config for the VMware user cluster.
         :param 'VmwareF5BigIpConfigResponse' f5_config: Configuration for F5 Big IP typed load balancers.
         :param 'VmwareManualLbConfigResponse' manual_lb_config: Manually configured load balancers.
         :param 'VmwareMetalLbConfigResponse' metal_lb_config: Configuration for MetalLB typed load balancers.
+        :param 'VmwareSeesawConfigResponse' seesaw_config: Configuration for Seesaw typed load balancers.
         :param 'VmwareVipConfigResponse' vip_config: The VIPs used by the load balancer.
         """
         pulumi.set(__self__, "f5_config", f5_config)
         pulumi.set(__self__, "manual_lb_config", manual_lb_config)
         pulumi.set(__self__, "metal_lb_config", metal_lb_config)
+        pulumi.set(__self__, "seesaw_config", seesaw_config)
         pulumi.set(__self__, "vip_config", vip_config)
 
     @property
@@ -3761,6 +3991,14 @@ class VmwareLoadBalancerConfigResponse(dict):
         Configuration for MetalLB typed load balancers.
         """
         return pulumi.get(self, "metal_lb_config")
+
+    @property
+    @pulumi.getter(name="seesawConfig")
+    def seesaw_config(self) -> 'outputs.VmwareSeesawConfigResponse':
+        """
+        Configuration for Seesaw typed load balancers.
+        """
+        return pulumi.get(self, "seesaw_config")
 
     @property
     @pulumi.getter(name="vipConfig")
@@ -4204,6 +4442,106 @@ class VmwareNodePoolAutoscalingConfigResponse(dict):
 
 
 @pulumi.output_type
+class VmwareSeesawConfigResponse(dict):
+    """
+    VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableHa":
+            suggest = "enable_ha"
+        elif key == "ipBlocks":
+            suggest = "ip_blocks"
+        elif key == "masterIp":
+            suggest = "master_ip"
+        elif key == "stackdriverName":
+            suggest = "stackdriver_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareSeesawConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareSeesawConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareSeesawConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_ha: bool,
+                 group: str,
+                 ip_blocks: Sequence['outputs.VmwareIpBlockResponse'],
+                 master_ip: str,
+                 stackdriver_name: str,
+                 vms: Sequence[str]):
+        """
+        VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'.
+        :param bool enable_ha: Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.
+        :param str group: In general the following format should be used for the Seesaw group name: seesaw-for-[cluster_name].
+        :param Sequence['VmwareIpBlockResponse'] ip_blocks: The IP Blocks to be used by the Seesaw load balancer
+        :param str master_ip: MasterIP is the IP announced by the master of Seesaw group.
+        :param str stackdriver_name: Name to be used by Stackdriver.
+        :param Sequence[str] vms: Names of the VMs created for this Seesaw group.
+        """
+        pulumi.set(__self__, "enable_ha", enable_ha)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "ip_blocks", ip_blocks)
+        pulumi.set(__self__, "master_ip", master_ip)
+        pulumi.set(__self__, "stackdriver_name", stackdriver_name)
+        pulumi.set(__self__, "vms", vms)
+
+    @property
+    @pulumi.getter(name="enableHa")
+    def enable_ha(self) -> bool:
+        """
+        Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.
+        """
+        return pulumi.get(self, "enable_ha")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        """
+        In general the following format should be used for the Seesaw group name: seesaw-for-[cluster_name].
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter(name="ipBlocks")
+    def ip_blocks(self) -> Sequence['outputs.VmwareIpBlockResponse']:
+        """
+        The IP Blocks to be used by the Seesaw load balancer
+        """
+        return pulumi.get(self, "ip_blocks")
+
+    @property
+    @pulumi.getter(name="masterIp")
+    def master_ip(self) -> str:
+        """
+        MasterIP is the IP announced by the master of Seesaw group.
+        """
+        return pulumi.get(self, "master_ip")
+
+    @property
+    @pulumi.getter(name="stackdriverName")
+    def stackdriver_name(self) -> str:
+        """
+        Name to be used by Stackdriver.
+        """
+        return pulumi.get(self, "stackdriver_name")
+
+    @property
+    @pulumi.getter
+    def vms(self) -> Sequence[str]:
+        """
+        Names of the VMs created for this Seesaw group.
+        """
+        return pulumi.get(self, "vms")
+
+
+@pulumi.output_type
 class VmwareStaticIpConfigResponse(dict):
     """
     Represents the network configuration required for the VMware user clusters with Static IP configurations.
@@ -4293,6 +4631,8 @@ class VmwareVCenterConfigResponse(dict):
             suggest = "ca_cert_data"
         elif key == "resourcePool":
             suggest = "resource_pool"
+        elif key == "storagePolicyName":
+            suggest = "storage_policy_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VmwareVCenterConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -4312,7 +4652,8 @@ class VmwareVCenterConfigResponse(dict):
                  datacenter: str,
                  datastore: str,
                  folder: str,
-                 resource_pool: str):
+                 resource_pool: str,
+                 storage_policy_name: str):
         """
         Represents configuration for the VMware VCenter for the user cluster.
         :param str address: The vCenter IP address.
@@ -4322,6 +4663,7 @@ class VmwareVCenterConfigResponse(dict):
         :param str datastore: The name of the vCenter datastore for the user cluster.
         :param str folder: The name of the vCenter folder for the user cluster.
         :param str resource_pool: The name of the vCenter resource pool for the user cluster.
+        :param str storage_policy_name: The name of the vCenter storage policy for the user cluster.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "ca_cert_data", ca_cert_data)
@@ -4330,6 +4672,7 @@ class VmwareVCenterConfigResponse(dict):
         pulumi.set(__self__, "datastore", datastore)
         pulumi.set(__self__, "folder", folder)
         pulumi.set(__self__, "resource_pool", resource_pool)
+        pulumi.set(__self__, "storage_policy_name", storage_policy_name)
 
     @property
     @pulumi.getter
@@ -4386,6 +4729,14 @@ class VmwareVCenterConfigResponse(dict):
         The name of the vCenter resource pool for the user cluster.
         """
         return pulumi.get(self, "resource_pool")
+
+    @property
+    @pulumi.getter(name="storagePolicyName")
+    def storage_policy_name(self) -> str:
+        """
+        The name of the vCenter storage policy for the user cluster.
+        """
+        return pulumi.get(self, "storage_policy_name")
 
 
 @pulumi.output_type
@@ -4445,15 +4796,35 @@ class VmwareVsphereConfigResponse(dict):
     """
     VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostGroups":
+            suggest = "host_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareVsphereConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareVsphereConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareVsphereConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  datastore: str,
+                 host_groups: Sequence[str],
                  tags: Sequence['outputs.VmwareVsphereTagResponse']):
         """
         VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
         :param str datastore: The name of the vCenter datastore. Inherited from the user cluster.
+        :param Sequence[str] host_groups: Vsphere host groups to apply to all VMs in the node pool
         :param Sequence['VmwareVsphereTagResponse'] tags: Tags to apply to VMs.
         """
         pulumi.set(__self__, "datastore", datastore)
+        pulumi.set(__self__, "host_groups", host_groups)
         pulumi.set(__self__, "tags", tags)
 
     @property
@@ -4463,6 +4834,14 @@ class VmwareVsphereConfigResponse(dict):
         The name of the vCenter datastore. Inherited from the user cluster.
         """
         return pulumi.get(self, "datastore")
+
+    @property
+    @pulumi.getter(name="hostGroups")
+    def host_groups(self) -> Sequence[str]:
+        """
+        Vsphere host groups to apply to all VMs in the node pool
+        """
+        return pulumi.get(self, "host_groups")
 
     @property
     @pulumi.getter

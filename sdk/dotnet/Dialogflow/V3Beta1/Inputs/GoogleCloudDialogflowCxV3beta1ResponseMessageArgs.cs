@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs>? ConversationSuccess { get; set; }
 
         /// <summary>
+        /// Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
+        /// </summary>
+        [Input("knowledgeInfoCard")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardArgs>? KnowledgeInfoCard { get; set; }
+
+        /// <summary>
         /// Hands off conversation to a human agent.
         /// </summary>
         [Input("liveAgentHandoff")]

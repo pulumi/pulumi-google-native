@@ -60,6 +60,10 @@ export interface GetServiceResult {
      */
     readonly maintenanceWindow: outputs.metastore.v1.MaintenanceWindowResponse;
     /**
+     * Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+     */
+    readonly metadataIntegration: outputs.metastore.v1.MetadataIntegrationResponse;
+    /**
      * The metadata management activities of the metastore service.
      */
     readonly metadataManagementActivity: outputs.metastore.v1.MetadataManagementActivityResponse;

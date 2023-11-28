@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
         public Input<Inputs.GoogleCloudDocumentaiV1DocumentPageImageArgs>? Image { get; set; }
 
         /// <summary>
-        /// Image Quality Scores.
+        /// Image quality scores.
         /// </summary>
         [Input("imageQualityScores")]
         public Input<Inputs.GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs>? ImageQualityScores { get; set; }

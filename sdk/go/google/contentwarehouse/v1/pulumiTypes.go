@@ -7441,7 +7441,7 @@ type GoogleCloudDocumentaiV1Document struct {
 	EntityRelations []GoogleCloudDocumentaiV1DocumentEntityRelation `pulumi:"entityRelations"`
 	// Any error that occurred while processing this document.
 	Error *GoogleRpcStatus `pulumi:"error"`
-	// An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+	// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
 	MimeType *string `pulumi:"mimeType"`
 	// Visual page layout for the Document.
 	Pages []GoogleCloudDocumentaiV1DocumentPage `pulumi:"pages"`
@@ -7480,7 +7480,7 @@ type GoogleCloudDocumentaiV1DocumentArgs struct {
 	EntityRelations GoogleCloudDocumentaiV1DocumentEntityRelationArrayInput `pulumi:"entityRelations"`
 	// Any error that occurred while processing this document.
 	Error GoogleRpcStatusPtrInput `pulumi:"error"`
-	// An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+	// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
 	// Visual page layout for the Document.
 	Pages GoogleCloudDocumentaiV1DocumentPageArrayInput `pulumi:"pages"`
@@ -7616,7 +7616,7 @@ func (o GoogleCloudDocumentaiV1DocumentOutput) Error() GoogleRpcStatusPtrOutput 
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Document) *GoogleRpcStatus { return v.Error }).(GoogleRpcStatusPtrOutput)
 }
 
-// An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
 func (o GoogleCloudDocumentaiV1DocumentOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Document) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
@@ -7728,7 +7728,7 @@ func (o GoogleCloudDocumentaiV1DocumentPtrOutput) Error() GoogleRpcStatusPtrOutp
 	}).(GoogleRpcStatusPtrOutput)
 }
 
-// An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
 func (o GoogleCloudDocumentaiV1DocumentPtrOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1Document) *string {
 		if v == nil {
@@ -8791,7 +8791,7 @@ type GoogleCloudDocumentaiV1DocumentPage struct {
 	FormFields []GoogleCloudDocumentaiV1DocumentPageFormField `pulumi:"formFields"`
 	// Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned.
 	Image *GoogleCloudDocumentaiV1DocumentPageImage `pulumi:"image"`
-	// Image Quality Scores.
+	// Image quality scores.
 	ImageQualityScores *GoogleCloudDocumentaiV1DocumentPageImageQualityScores `pulumi:"imageQualityScores"`
 	// Layout for the page.
 	Layout *GoogleCloudDocumentaiV1DocumentPageLayout `pulumi:"layout"`
@@ -8840,7 +8840,7 @@ type GoogleCloudDocumentaiV1DocumentPageArgs struct {
 	FormFields GoogleCloudDocumentaiV1DocumentPageFormFieldArrayInput `pulumi:"formFields"`
 	// Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned.
 	Image GoogleCloudDocumentaiV1DocumentPageImagePtrInput `pulumi:"image"`
-	// Image Quality Scores.
+	// Image quality scores.
 	ImageQualityScores GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrInput `pulumi:"imageQualityScores"`
 	// Layout for the page.
 	Layout GoogleCloudDocumentaiV1DocumentPageLayoutPtrInput `pulumi:"layout"`
@@ -8974,7 +8974,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageOutput) Image() GoogleCloudDocumentai
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPage) *GoogleCloudDocumentaiV1DocumentPageImage { return v.Image }).(GoogleCloudDocumentaiV1DocumentPageImagePtrOutput)
 }
 
-// Image Quality Scores.
+// Image quality scores.
 func (o GoogleCloudDocumentaiV1DocumentPageOutput) ImageQualityScores() GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPage) *GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
 		return v.ImageQualityScores
@@ -9971,7 +9971,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseArrayOutput) I
 type GoogleCloudDocumentaiV1DocumentPageDetectedLanguage struct {
 	// Confidence of detected language. Range `[0, 1]`.
 	Confidence *float64 `pulumi:"confidence"`
-	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
 	LanguageCode *string `pulumi:"languageCode"`
 }
 
@@ -9990,7 +9990,7 @@ type GoogleCloudDocumentaiV1DocumentPageDetectedLanguageInput interface {
 type GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs struct {
 	// Confidence of detected language. Range `[0, 1]`.
 	Confidence pulumi.Float64PtrInput `pulumi:"confidence"`
-	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
 	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
 }
 
@@ -10069,7 +10069,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput) Confidence() 
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedLanguage) *float64 { return v.Confidence }).(pulumi.Float64PtrOutput)
 }
 
-// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedLanguage) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
@@ -10104,7 +10104,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput) Index(i 
 type GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse struct {
 	// Confidence of detected language. Range `[0, 1]`.
 	Confidence float64 `pulumi:"confidence"`
-	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -10134,7 +10134,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseOutput) Confi
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse) float64 { return v.Confidence }).(pulumi.Float64Output)
 }
 
-// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
@@ -10733,7 +10733,7 @@ type GoogleCloudDocumentaiV1DocumentPageImage struct {
 	Content *string `pulumi:"content"`
 	// Height of the image in pixels.
 	Height *int `pulumi:"height"`
-	// Encoding mime type for the image.
+	// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
 	MimeType *string `pulumi:"mimeType"`
 	// Width of the image in pixels.
 	Width *int `pulumi:"width"`
@@ -10756,7 +10756,7 @@ type GoogleCloudDocumentaiV1DocumentPageImageArgs struct {
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// Height of the image in pixels.
 	Height pulumi.IntPtrInput `pulumi:"height"`
-	// Encoding mime type for the image.
+	// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
 	// Width of the image in pixels.
 	Width pulumi.IntPtrInput `pulumi:"width"`
@@ -10868,7 +10868,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageOutput) Height() pulumi.IntPtrOu
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImage) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
-// Encoding mime type for the image.
+// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
 func (o GoogleCloudDocumentaiV1DocumentPageImageOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImage) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
@@ -10928,7 +10928,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImagePtrOutput) Height() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// Encoding mime type for the image.
+// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
 func (o GoogleCloudDocumentaiV1DocumentPageImagePtrOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageImage) *string {
 		if v == nil {
@@ -10948,11 +10948,11 @@ func (o GoogleCloudDocumentaiV1DocumentPageImagePtrOutput) Width() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Image Quality Scores for the page image
+// Image quality scores for the page image.
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScores struct {
 	// A list of detected defects.
 	DetectedDefects []GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect `pulumi:"detectedDefects"`
-	// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+	// The overall quality score. Range `[0, 1]` where `1` is perfect quality.
 	QualityScore *float64 `pulumi:"qualityScore"`
 }
 
@@ -10967,11 +10967,11 @@ type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresInput interface {
 	ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutputWithContext(context.Context) GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput
 }
 
-// Image Quality Scores for the page image
+// Image quality scores for the page image.
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs struct {
 	// A list of detected defects.
 	DetectedDefects GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayInput `pulumi:"detectedDefects"`
-	// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+	// The overall quality score. Range `[0, 1]` where `1` is perfect quality.
 	QualityScore pulumi.Float64PtrInput `pulumi:"qualityScore"`
 }
 
@@ -11040,7 +11040,7 @@ func (i *googleCloudDocumentaiV1DocumentPageImageQualityScoresPtrType) ToOutput(
 	}
 }
 
-// Image Quality Scores for the page image
+// Image quality scores for the page image.
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput) ElementType() reflect.Type {
@@ -11078,7 +11078,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput) DetectedDef
 	}).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput)
 }
 
-// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+// The overall quality score. Range `[0, 1]` where `1` is perfect quality.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput) QualityScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScores) *float64 { return v.QualityScore }).(pulumi.Float64PtrOutput)
 }
@@ -11123,7 +11123,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) Detected
 	}).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput)
 }
 
-// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+// The overall quality score. Range `[0, 1]` where `1` is perfect quality.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) QualityScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageImageQualityScores) *float64 {
 		if v == nil {
@@ -11135,7 +11135,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) QualityS
 
 // Image Quality Defects
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect struct {
-	// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+	// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
 	Confidence *float64 `pulumi:"confidence"`
 	// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
 	Type *string `pulumi:"type"`
@@ -11154,7 +11154,7 @@ type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectInput in
 
 // Image Quality Defects
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs struct {
-	// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+	// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
 	Confidence pulumi.Float64PtrInput `pulumi:"confidence"`
 	// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -11230,7 +11230,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutpu
 	}
 }
 
-// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutput) Confidence() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect) *float64 {
 		return v.Confidence
@@ -11270,7 +11270,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArray
 
 // Image Quality Defects
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse struct {
-	// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+	// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
 	Confidence float64 `pulumi:"confidence"`
 	// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
 	Type string `pulumi:"type"`
@@ -11297,7 +11297,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectRespo
 	}
 }
 
-// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseOutput) Confidence() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse) float64 {
 		return v.Confidence
@@ -11337,15 +11337,15 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectRespo
 	}).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseOutput)
 }
 
-// Image Quality Scores for the page image
+// Image quality scores for the page image.
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse struct {
 	// A list of detected defects.
 	DetectedDefects []GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse `pulumi:"detectedDefects"`
-	// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+	// The overall quality score. Range `[0, 1]` where `1` is perfect quality.
 	QualityScore float64 `pulumi:"qualityScore"`
 }
 
-// Image Quality Scores for the page image
+// Image quality scores for the page image.
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput) ElementType() reflect.Type {
@@ -11373,7 +11373,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput) Det
 	}).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseArrayOutput)
 }
 
-// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+// The overall quality score. Range `[0, 1]` where `1` is perfect quality.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput) QualityScore() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse) float64 { return v.QualityScore }).(pulumi.Float64Output)
 }
@@ -11384,7 +11384,7 @@ type GoogleCloudDocumentaiV1DocumentPageImageResponse struct {
 	Content string `pulumi:"content"`
 	// Height of the image in pixels.
 	Height int `pulumi:"height"`
-	// Encoding mime type for the image.
+	// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
 	MimeType string `pulumi:"mimeType"`
 	// Width of the image in pixels.
 	Width int `pulumi:"width"`
@@ -11421,7 +11421,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageResponseOutput) Height() pulumi.
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageResponse) int { return v.Height }).(pulumi.IntOutput)
 }
 
-// Encoding mime type for the image.
+// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
 func (o GoogleCloudDocumentaiV1DocumentPageImageResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageResponse) string { return v.MimeType }).(pulumi.StringOutput)
 }
@@ -12411,7 +12411,7 @@ type GoogleCloudDocumentaiV1DocumentPageResponse struct {
 	FormFields []GoogleCloudDocumentaiV1DocumentPageFormFieldResponse `pulumi:"formFields"`
 	// Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned.
 	Image GoogleCloudDocumentaiV1DocumentPageImageResponse `pulumi:"image"`
-	// Image Quality Scores.
+	// Image quality scores.
 	ImageQualityScores GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse `pulumi:"imageQualityScores"`
 	// Layout for the page.
 	Layout GoogleCloudDocumentaiV1DocumentPageLayoutResponse `pulumi:"layout"`
@@ -12498,7 +12498,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageResponseOutput) Image() GoogleCloudDo
 	}).(GoogleCloudDocumentaiV1DocumentPageImageResponseOutput)
 }
 
-// Image Quality Scores.
+// Image quality scores.
 func (o GoogleCloudDocumentaiV1DocumentPageResponseOutput) ImageQualityScores() GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageResponse) GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse {
 		return v.ImageQualityScores
@@ -15318,7 +15318,7 @@ type GoogleCloudDocumentaiV1DocumentResponse struct {
 	EntityRelations []GoogleCloudDocumentaiV1DocumentEntityRelationResponse `pulumi:"entityRelations"`
 	// Any error that occurred while processing this document.
 	Error GoogleRpcStatusResponse `pulumi:"error"`
-	// An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+	// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
 	MimeType string `pulumi:"mimeType"`
 	// Visual page layout for the Document.
 	Pages []GoogleCloudDocumentaiV1DocumentPageResponse `pulumi:"pages"`
@@ -15381,7 +15381,7 @@ func (o GoogleCloudDocumentaiV1DocumentResponseOutput) Error() GoogleRpcStatusRe
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentResponse) GoogleRpcStatusResponse { return v.Error }).(GoogleRpcStatusResponseOutput)
 }
 
-// An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
 func (o GoogleCloudDocumentaiV1DocumentResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentResponse) string { return v.MimeType }).(pulumi.StringOutput)
 }
@@ -16186,13 +16186,13 @@ type GoogleCloudDocumentaiV1DocumentStyle struct {
 	FontFamily *string `pulumi:"fontFamily"`
 	// Font size.
 	FontSize *GoogleCloudDocumentaiV1DocumentStyleFontSize `pulumi:"fontSize"`
-	// Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp
+	// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
 	FontWeight *string `pulumi:"fontWeight"`
 	// Text anchor indexing into the Document.text.
 	TextAnchor *GoogleCloudDocumentaiV1DocumentTextAnchor `pulumi:"textAnchor"`
-	// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+	// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
 	TextDecoration *string `pulumi:"textDecoration"`
-	// Text style. Possible values are normal, italic, and oblique. https://www.w3schools.com/cssref/pr_font_font-style.asp
+	// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
 	TextStyle *string `pulumi:"textStyle"`
 }
 
@@ -16217,13 +16217,13 @@ type GoogleCloudDocumentaiV1DocumentStyleArgs struct {
 	FontFamily pulumi.StringPtrInput `pulumi:"fontFamily"`
 	// Font size.
 	FontSize GoogleCloudDocumentaiV1DocumentStyleFontSizePtrInput `pulumi:"fontSize"`
-	// Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp
+	// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
 	FontWeight pulumi.StringPtrInput `pulumi:"fontWeight"`
 	// Text anchor indexing into the Document.text.
 	TextAnchor GoogleCloudDocumentaiV1DocumentTextAnchorPtrInput `pulumi:"textAnchor"`
-	// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+	// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
 	TextDecoration pulumi.StringPtrInput `pulumi:"textDecoration"`
-	// Text style. Possible values are normal, italic, and oblique. https://www.w3schools.com/cssref/pr_font_font-style.asp
+	// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
 	TextStyle pulumi.StringPtrInput `pulumi:"textStyle"`
 }
 
@@ -16319,7 +16319,7 @@ func (o GoogleCloudDocumentaiV1DocumentStyleOutput) FontSize() GoogleCloudDocume
 	}).(GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput)
 }
 
-// Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp
+// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
 func (o GoogleCloudDocumentaiV1DocumentStyleOutput) FontWeight() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyle) *string { return v.FontWeight }).(pulumi.StringPtrOutput)
 }
@@ -16331,12 +16331,12 @@ func (o GoogleCloudDocumentaiV1DocumentStyleOutput) TextAnchor() GoogleCloudDocu
 	}).(GoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput)
 }
 
-// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
 func (o GoogleCloudDocumentaiV1DocumentStyleOutput) TextDecoration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyle) *string { return v.TextDecoration }).(pulumi.StringPtrOutput)
 }
 
-// Text style. Possible values are normal, italic, and oblique. https://www.w3schools.com/cssref/pr_font_font-style.asp
+// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
 func (o GoogleCloudDocumentaiV1DocumentStyleOutput) TextStyle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyle) *string { return v.TextStyle }).(pulumi.StringPtrOutput)
 }
@@ -16371,7 +16371,7 @@ func (o GoogleCloudDocumentaiV1DocumentStyleArrayOutput) Index(i pulumi.IntInput
 type GoogleCloudDocumentaiV1DocumentStyleFontSize struct {
 	// Font size for the text.
 	Size *float64 `pulumi:"size"`
-	// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+	// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
 	Unit *string `pulumi:"unit"`
 }
 
@@ -16390,7 +16390,7 @@ type GoogleCloudDocumentaiV1DocumentStyleFontSizeInput interface {
 type GoogleCloudDocumentaiV1DocumentStyleFontSizeArgs struct {
 	// Font size for the text.
 	Size pulumi.Float64PtrInput `pulumi:"size"`
-	// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+	// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 }
 
@@ -16495,7 +16495,7 @@ func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeOutput) Size() pulumi.Float6
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleFontSize) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
 
-// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
 func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleFontSize) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
@@ -16540,7 +16540,7 @@ func (o GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput) Size() pulumi.Flo
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
 func (o GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentStyleFontSize) *string {
 		if v == nil {
@@ -16554,7 +16554,7 @@ func (o GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput) Unit() pulumi.Str
 type GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse struct {
 	// Font size for the text.
 	Size float64 `pulumi:"size"`
-	// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+	// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
 	Unit string `pulumi:"unit"`
 }
 
@@ -16584,7 +16584,7 @@ func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeResponseOutput) Size() pulum
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse) float64 { return v.Size }).(pulumi.Float64Output)
 }
 
-// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
 func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeResponseOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse) string { return v.Unit }).(pulumi.StringOutput)
 }
@@ -16599,13 +16599,13 @@ type GoogleCloudDocumentaiV1DocumentStyleResponse struct {
 	FontFamily string `pulumi:"fontFamily"`
 	// Font size.
 	FontSize GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse `pulumi:"fontSize"`
-	// Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp
+	// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
 	FontWeight string `pulumi:"fontWeight"`
 	// Text anchor indexing into the Document.text.
 	TextAnchor GoogleCloudDocumentaiV1DocumentTextAnchorResponse `pulumi:"textAnchor"`
-	// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+	// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
 	TextDecoration string `pulumi:"textDecoration"`
-	// Text style. Possible values are normal, italic, and oblique. https://www.w3schools.com/cssref/pr_font_font-style.asp
+	// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
 	TextStyle string `pulumi:"textStyle"`
 }
 
@@ -16652,7 +16652,7 @@ func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) FontSize() GoogleClo
 	}).(GoogleCloudDocumentaiV1DocumentStyleFontSizeResponseOutput)
 }
 
-// Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp
+// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
 func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) FontWeight() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleResponse) string { return v.FontWeight }).(pulumi.StringOutput)
 }
@@ -16664,12 +16664,12 @@ func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) TextAnchor() GoogleC
 	}).(GoogleCloudDocumentaiV1DocumentTextAnchorResponseOutput)
 }
 
-// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
 func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) TextDecoration() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleResponse) string { return v.TextDecoration }).(pulumi.StringOutput)
 }
 
-// Text style. Possible values are normal, italic, and oblique. https://www.w3schools.com/cssref/pr_font_font-style.asp
+// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
 func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) TextStyle() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleResponse) string { return v.TextStyle }).(pulumi.StringOutput)
 }
@@ -18352,7 +18352,7 @@ func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIa
 	}).(GoogleIamV1BindingResponseOutput)
 }
 
-// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
 type GoogleIamV1Policy struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []GoogleIamV1AuditConfig `pulumi:"auditConfigs"`
@@ -18375,7 +18375,7 @@ type GoogleIamV1PolicyInput interface {
 	ToGoogleIamV1PolicyOutputWithContext(context.Context) GoogleIamV1PolicyOutput
 }
 
-// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
 type GoogleIamV1PolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs GoogleIamV1AuditConfigArrayInput `pulumi:"auditConfigs"`
@@ -18452,7 +18452,7 @@ func (i *googleIamV1PolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
 type GoogleIamV1PolicyOutput struct{ *pulumi.OutputState }
 
 func (GoogleIamV1PolicyOutput) ElementType() reflect.Type {
@@ -18573,7 +18573,7 @@ func (o GoogleIamV1PolicyPtrOutput) Version() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
 type GoogleIamV1PolicyResponse struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []GoogleIamV1AuditConfigResponse `pulumi:"auditConfigs"`
@@ -18585,7 +18585,7 @@ type GoogleIamV1PolicyResponse struct {
 	Version int `pulumi:"version"`
 }
 
-// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
 type GoogleIamV1PolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleIamV1PolicyResponseOutput) ElementType() reflect.Type {
@@ -18874,7 +18874,7 @@ func (o GoogleRpcStatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleRpcStatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't carry information about the absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most 1e-5. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
+// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
 type GoogleTypeColor struct {
 	// The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish between a default value and the value being unset. If omitted, this color object is rendered as a solid color (as if the alpha value had been explicitly given a value of 1.0).
 	Alpha *float64 `pulumi:"alpha"`
@@ -18897,7 +18897,7 @@ type GoogleTypeColorInput interface {
 	ToGoogleTypeColorOutputWithContext(context.Context) GoogleTypeColorOutput
 }
 
-// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't carry information about the absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most 1e-5. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
+// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
 type GoogleTypeColorArgs struct {
 	// The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish between a default value and the value being unset. If omitted, this color object is rendered as a solid color (as if the alpha value had been explicitly given a value of 1.0).
 	Alpha pulumi.Float64PtrInput `pulumi:"alpha"`
@@ -18974,7 +18974,7 @@ func (i *googleTypeColorPtrType) ToOutput(ctx context.Context) pulumix.Output[*G
 	}
 }
 
-// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't carry information about the absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most 1e-5. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
+// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
 type GoogleTypeColorOutput struct{ *pulumi.OutputState }
 
 func (GoogleTypeColorOutput) ElementType() reflect.Type {
@@ -19095,7 +19095,7 @@ func (o GoogleTypeColorPtrOutput) Red() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't carry information about the absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most 1e-5. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
+// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
 type GoogleTypeColorResponse struct {
 	// The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish between a default value and the value being unset. If omitted, this color object is rendered as a solid color (as if the alpha value had been explicitly given a value of 1.0).
 	Alpha float64 `pulumi:"alpha"`
@@ -19107,7 +19107,7 @@ type GoogleTypeColorResponse struct {
 	Red float64 `pulumi:"red"`
 }
 
-// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't carry information about the absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most 1e-5. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
+// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
 type GoogleTypeColorResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleTypeColorResponseOutput) ElementType() reflect.Type {

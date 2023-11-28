@@ -94,7 +94,7 @@ export const GoogleCloudRunV2VpcAccessEgress = {
 } as const;
 
 /**
- * Traffic VPC egress settings.
+ * Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
  */
 export type GoogleCloudRunV2VpcAccessEgress = (typeof GoogleCloudRunV2VpcAccessEgress)[keyof typeof GoogleCloudRunV2VpcAccessEgress];
 

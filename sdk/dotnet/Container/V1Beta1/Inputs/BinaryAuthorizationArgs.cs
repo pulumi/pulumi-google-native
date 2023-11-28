@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         [Input("evaluationMode")]
         public Input<Pulumi.GoogleNative.Container.V1Beta1.BinaryAuthorizationEvaluationMode>? EvaluationMode { get; set; }
 
+        [Input("policyBindings")]
+        private InputList<Inputs.PolicyBindingArgs>? _policyBindings;
+
+        /// <summary>
+        /// Optional. Binauthz policies that apply to this cluster.
+        /// </summary>
+        public InputList<Inputs.PolicyBindingArgs> PolicyBindings
+        {
+            get => _policyBindings ?? (_policyBindings = new InputList<Inputs.PolicyBindingArgs>());
+            set => _policyBindings = value;
+        }
+
         public BinaryAuthorizationArgs()
         {
         }

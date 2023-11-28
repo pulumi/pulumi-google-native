@@ -28,6 +28,10 @@ export interface GetReservationArgs {
 
 export interface GetReservationResult {
     /**
+     * Reservation for aggregated resources, providing shape flexibility.
+     */
+    readonly aggregateReservation: outputs.compute.beta.AllocationAggregateReservationResponse;
+    /**
      * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
      */
     readonly commitment: string;
@@ -35,6 +39,14 @@ export interface GetReservationResult {
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
+    /**
+     * Duration time relative to reservation creation when GCE will automatically delete this resource.
+     */
+    readonly deleteAfterDuration: outputs.compute.beta.DurationResponse;
+    /**
+     * Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+     */
+    readonly deleteAtTime: string;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

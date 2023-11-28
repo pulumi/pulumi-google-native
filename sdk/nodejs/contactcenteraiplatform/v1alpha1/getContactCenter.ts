@@ -52,6 +52,10 @@ export interface GetContactCenterResult {
      */
     readonly instanceConfig: outputs.contactcenteraiplatform.v1alpha1.InstanceConfigResponse;
     /**
+     * Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+     */
+    readonly kmsKey: string;
+    /**
      * Labels as key value pairs
      */
     readonly labels: {[key: string]: string};

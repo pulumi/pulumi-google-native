@@ -241,6 +241,7 @@ class CapacityCommitment(pulumi.CustomResource):
             __props__.__dict__["commitment_end_time"] = None
             __props__.__dict__["commitment_start_time"] = None
             __props__.__dict__["failure_status"] = None
+            __props__.__dict__["is_flat_rate"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
@@ -273,6 +274,7 @@ class CapacityCommitment(pulumi.CustomResource):
         __props__.__dict__["edition"] = None
         __props__.__dict__["enforce_single_admin_project_per_org"] = None
         __props__.__dict__["failure_status"] = None
+        __props__.__dict__["is_flat_rate"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["multi_region_auxiliary"] = None
         __props__.__dict__["name"] = None
@@ -330,6 +332,14 @@ class CapacityCommitment(pulumi.CustomResource):
         For FAILED commitment plan, provides the reason of failure.
         """
         return pulumi.get(self, "failure_status")
+
+    @property
+    @pulumi.getter(name="isFlatRate")
+    def is_flat_rate(self) -> pulumi.Output[bool]:
+        """
+        If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.
+        """
+        return pulumi.get(self, "is_flat_rate")
 
     @property
     @pulumi.getter

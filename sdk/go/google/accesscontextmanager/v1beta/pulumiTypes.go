@@ -244,7 +244,7 @@ type Condition struct {
 	IpSubnetworks []string `pulumi:"ipSubnetworks"`
 	// The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user.
 	Members []string `pulumi:"members"`
-	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 	Negate *bool `pulumi:"negate"`
 	// The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
 	Regions []string `pulumi:"regions"`
@@ -271,7 +271,7 @@ type ConditionArgs struct {
 	IpSubnetworks pulumi.StringArrayInput `pulumi:"ipSubnetworks"`
 	// The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 	Negate pulumi.BoolPtrInput `pulumi:"negate"`
 	// The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
@@ -364,7 +364,7 @@ func (o ConditionOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Condition) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 func (o ConditionOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Condition) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
 }
@@ -413,7 +413,7 @@ type ConditionResponse struct {
 	IpSubnetworks []string `pulumi:"ipSubnetworks"`
 	// The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user.
 	Members []string `pulumi:"members"`
-	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 	Negate bool `pulumi:"negate"`
 	// The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
 	Regions []string `pulumi:"regions"`
@@ -457,7 +457,7 @@ func (o ConditionResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
 func (o ConditionResponseOutput) Negate() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConditionResponse) bool { return v.Negate }).(pulumi.BoolOutput)
 }

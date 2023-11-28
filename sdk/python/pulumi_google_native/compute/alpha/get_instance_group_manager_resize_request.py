@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceGroupManagerResizeRequestResult:
-    def __init__(__self__, count=None, creation_timestamp=None, description=None, kind=None, name=None, queuing_policy=None, self_link=None, self_link_with_id=None, state=None, status=None, zone=None):
+    def __init__(__self__, count=None, creation_timestamp=None, description=None, kind=None, name=None, queuing_policy=None, requested_run_duration=None, resize_by=None, self_link=None, self_link_with_id=None, state=None, status=None, zone=None):
         if count and not isinstance(count, int):
             raise TypeError("Expected argument 'count' to be a int")
         pulumi.set(__self__, "count", count)
@@ -38,6 +38,12 @@ class GetInstanceGroupManagerResizeRequestResult:
         if queuing_policy and not isinstance(queuing_policy, dict):
             raise TypeError("Expected argument 'queuing_policy' to be a dict")
         pulumi.set(__self__, "queuing_policy", queuing_policy)
+        if requested_run_duration and not isinstance(requested_run_duration, dict):
+            raise TypeError("Expected argument 'requested_run_duration' to be a dict")
+        pulumi.set(__self__, "requested_run_duration", requested_run_duration)
+        if resize_by and not isinstance(resize_by, int):
+            raise TypeError("Expected argument 'resize_by' to be a int")
+        pulumi.set(__self__, "resize_by", resize_by)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -103,6 +109,22 @@ class GetInstanceGroupManagerResizeRequestResult:
         return pulumi.get(self, "queuing_policy")
 
     @property
+    @pulumi.getter(name="requestedRunDuration")
+    def requested_run_duration(self) -> 'outputs.DurationResponse':
+        """
+        Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        """
+        return pulumi.get(self, "requested_run_duration")
+
+    @property
+    @pulumi.getter(name="resizeBy")
+    def resize_by(self) -> int:
+        """
+        The number of instances to be created by this resize request. The group's target size will be increased by this number.
+        """
+        return pulumi.get(self, "resize_by")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -130,7 +152,7 @@ class GetInstanceGroupManagerResizeRequestResult:
     @pulumi.getter
     def status(self) -> 'outputs.InstanceGroupManagerResizeRequestStatusResponse':
         """
-        [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+        [Output only] Status of the request.
         """
         return pulumi.get(self, "status")
 
@@ -155,6 +177,8 @@ class AwaitableGetInstanceGroupManagerResizeRequestResult(GetInstanceGroupManage
             kind=self.kind,
             name=self.name,
             queuing_policy=self.queuing_policy,
+            requested_run_duration=self.requested_run_duration,
+            resize_by=self.resize_by,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             state=self.state,
@@ -185,6 +209,8 @@ def get_instance_group_manager_resize_request(instance_group_manager: Optional[s
         kind=pulumi.get(__ret__, 'kind'),
         name=pulumi.get(__ret__, 'name'),
         queuing_policy=pulumi.get(__ret__, 'queuing_policy'),
+        requested_run_duration=pulumi.get(__ret__, 'requested_run_duration'),
+        resize_by=pulumi.get(__ret__, 'resize_by'),
         self_link=pulumi.get(__ret__, 'self_link'),
         self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
         state=pulumi.get(__ret__, 'state'),

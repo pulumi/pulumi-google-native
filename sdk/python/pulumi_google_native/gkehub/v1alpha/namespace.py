@@ -15,37 +15,35 @@ __all__ = ['NamespaceArgs', 'Namespace']
 @pulumi.input_type
 class NamespaceArgs:
     def __init__(__self__, *,
-                 namespace_id: pulumi.Input[str],
                  scope: pulumi.Input[str],
+                 scope_id: pulumi.Input[str],
+                 scope_namespace_id: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
-        :param pulumi.Input[str] namespace_id: Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
         :param pulumi.Input[str] scope: Scope associated with the namespace
+        :param pulumi.Input[str] scope_namespace_id: Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this Namespace.
         :param pulumi.Input[str] name: The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] namespace_labels: Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
         """
-        pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "scope_id", scope_id)
+        pulumi.set(__self__, "scope_namespace_id", scope_namespace_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if namespace_labels is not None:
+            pulumi.set(__self__, "namespace_labels", namespace_labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> pulumi.Input[str]:
-        """
-        Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-        """
-        return pulumi.get(self, "namespace_id")
-
-    @namespace_id.setter
-    def namespace_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "namespace_id", value)
 
     @property
     @pulumi.getter
@@ -58,6 +56,39 @@ class NamespaceArgs:
     @scope.setter
     def scope(self, value: pulumi.Input[str]):
         pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="scopeId")
+    def scope_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "scope_id")
+
+    @scope_id.setter
+    def scope_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope_id", value)
+
+    @property
+    @pulumi.getter(name="scopeNamespaceId")
+    def scope_namespace_id(self) -> pulumi.Input[str]:
+        """
+        Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        """
+        return pulumi.get(self, "scope_namespace_id")
+
+    @scope_namespace_id.setter
+    def scope_namespace_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope_namespace_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Labels for this Namespace.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -81,6 +112,18 @@ class NamespaceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
+        """
+        return pulumi.get(self, "namespace_labels")
+
+    @namespace_labels.setter
+    def namespace_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "namespace_labels", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -95,11 +138,14 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
+                 scope_id: Optional[pulumi.Input[str]] = None,
+                 scope_namespace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a fleet namespace.
@@ -107,9 +153,11 @@ class Namespace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this Namespace.
         :param pulumi.Input[str] name: The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
-        :param pulumi.Input[str] namespace_id: Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] namespace_labels: Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
         :param pulumi.Input[str] scope: Scope associated with the namespace
+        :param pulumi.Input[str] scope_namespace_id: Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
         """
         ...
     @overload
@@ -136,11 +184,14 @@ class Namespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
+                 scope_id: Optional[pulumi.Input[str]] = None,
+                 scope_namespace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -150,21 +201,26 @@ class Namespace(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NamespaceArgs.__new__(NamespaceArgs)
 
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if namespace_id is None and not opts.urn:
-                raise TypeError("Missing required property 'namespace_id'")
-            __props__.__dict__["namespace_id"] = namespace_id
+            __props__.__dict__["namespace_labels"] = namespace_labels
             __props__.__dict__["project"] = project
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
             __props__.__dict__["scope"] = scope
+            if scope_id is None and not opts.urn:
+                raise TypeError("Missing required property 'scope_id'")
+            __props__.__dict__["scope_id"] = scope_id
+            if scope_namespace_id is None and not opts.urn:
+                raise TypeError("Missing required property 'scope_namespace_id'")
+            __props__.__dict__["scope_namespace_id"] = scope_namespace_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "namespace_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "scope_id", "scope_namespace_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Namespace, __self__).__init__(
             'google-native:gkehub/v1alpha:Namespace',
@@ -190,11 +246,14 @@ class Namespace(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delete_time"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
-        __props__.__dict__["namespace_id"] = None
+        __props__.__dict__["namespace_labels"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["scope"] = None
+        __props__.__dict__["scope_id"] = None
+        __props__.__dict__["scope_namespace_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
@@ -218,6 +277,14 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Labels for this Namespace.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
 
@@ -230,12 +297,12 @@ class Namespace(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
         """
-        return pulumi.get(self, "namespace_id")
+        return pulumi.get(self, "namespace_labels")
 
     @property
     @pulumi.getter
@@ -249,6 +316,19 @@ class Namespace(pulumi.CustomResource):
         Scope associated with the namespace
         """
         return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="scopeId")
+    def scope_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "scope_id")
+
+    @property
+    @pulumi.getter(name="scopeNamespaceId")
+    def scope_namespace_id(self) -> pulumi.Output[str]:
+        """
+        Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        """
+        return pulumi.get(self, "scope_namespace_id")
 
     @property
     @pulumi.getter

@@ -33,6 +33,10 @@ export interface GetServiceConnectionTokenResult {
      */
     readonly description: string;
     /**
+     * Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    readonly etag: string;
+    /**
      * The time to which this token is valid.
      */
     readonly expireTime: string;

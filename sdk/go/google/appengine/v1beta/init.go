@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:appengine/v1beta:App":
 		r = &App{}
-	case "google-native:appengine/v1beta:Application":
-		r = &Application{}
 	case "google-native:appengine/v1beta:AuthorizedCertificate":
 		r = &AuthorizedCertificate{}
 	case "google-native:appengine/v1beta:DomainMapping":

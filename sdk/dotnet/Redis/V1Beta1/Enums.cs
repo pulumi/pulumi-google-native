@@ -8,6 +8,88 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Redis.V1Beta1
 {
     /// <summary>
+    /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterAuthorizationMode : IEquatable<ClusterAuthorizationMode>
+    {
+        private readonly string _value;
+
+        private ClusterAuthorizationMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not set.
+        /// </summary>
+        public static ClusterAuthorizationMode AuthModeUnspecified { get; } = new ClusterAuthorizationMode("AUTH_MODE_UNSPECIFIED");
+        /// <summary>
+        /// IAM basic authorization mode
+        /// </summary>
+        public static ClusterAuthorizationMode AuthModeIamAuth { get; } = new ClusterAuthorizationMode("AUTH_MODE_IAM_AUTH");
+        /// <summary>
+        /// Authorization disabled mode
+        /// </summary>
+        public static ClusterAuthorizationMode AuthModeDisabled { get; } = new ClusterAuthorizationMode("AUTH_MODE_DISABLED");
+
+        public static bool operator ==(ClusterAuthorizationMode left, ClusterAuthorizationMode right) => left.Equals(right);
+        public static bool operator !=(ClusterAuthorizationMode left, ClusterAuthorizationMode right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterAuthorizationMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterAuthorizationMode other && Equals(other);
+        public bool Equals(ClusterAuthorizationMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterTransitEncryptionMode : IEquatable<ClusterTransitEncryptionMode>
+    {
+        private readonly string _value;
+
+        private ClusterTransitEncryptionMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// In-transit encryption not set.
+        /// </summary>
+        public static ClusterTransitEncryptionMode TransitEncryptionModeUnspecified { get; } = new ClusterTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED");
+        /// <summary>
+        /// In-transit encryption disabled.
+        /// </summary>
+        public static ClusterTransitEncryptionMode TransitEncryptionModeDisabled { get; } = new ClusterTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED");
+        /// <summary>
+        /// Use server managed encryption for in-transit encryption.
+        /// </summary>
+        public static ClusterTransitEncryptionMode TransitEncryptionModeServerAuthentication { get; } = new ClusterTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION");
+
+        public static bool operator ==(ClusterTransitEncryptionMode left, ClusterTransitEncryptionMode right) => left.Equals(right);
+        public static bool operator !=(ClusterTransitEncryptionMode left, ClusterTransitEncryptionMode right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterTransitEncryptionMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterTransitEncryptionMode other && Equals(other);
+        public bool Equals(ClusterTransitEncryptionMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
     /// </summary>
     [EnumType]

@@ -34,9 +34,9 @@ type LookupConversionWorkspaceResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The destination engine details.
 	Destination DatabaseEngineInfoResponse `pulumi:"destination"`
-	// The display name for the workspace.
+	// Optional. The display name for the workspace.
 	DisplayName string `pulumi:"displayName"`
-	// A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+	// Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
 	GlobalSettings map[string]string `pulumi:"globalSettings"`
 	// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed).
 	HasUncommittedChanges bool `pulumi:"hasUncommittedChanges"`
@@ -105,12 +105,12 @@ func (o LookupConversionWorkspaceResultOutput) Destination() DatabaseEngineInfoR
 	return o.ApplyT(func(v LookupConversionWorkspaceResult) DatabaseEngineInfoResponse { return v.Destination }).(DatabaseEngineInfoResponseOutput)
 }
 
-// The display name for the workspace.
+// Optional. The display name for the workspace.
 func (o LookupConversionWorkspaceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConversionWorkspaceResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+// Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
 func (o LookupConversionWorkspaceResultOutput) GlobalSettings() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConversionWorkspaceResult) map[string]string { return v.GlobalSettings }).(pulumi.StringMapOutput)
 }

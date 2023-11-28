@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public static class GetApicategory
     {
         /// <summary>
-        /// Gets a category on the portal.
+        /// Gets an API category.
         /// </summary>
         public static Task<GetApicategoryResult> InvokeAsync(GetApicategoryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApicategoryResult>("google-native:apigee/v1:getApicategory", args ?? new GetApicategoryArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets a category on the portal.
+        /// Gets an API category.
         /// </summary>
         public static Output<GetApicategoryResult> Invoke(GetApicategoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApicategoryResult>("google-native:apigee/v1:getApicategory", args ?? new GetApicategoryInvokeArgs(), options.WithDefaults());
@@ -64,11 +64,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public sealed class GetApicategoryResult
     {
         /// <summary>
-        /// Details of category.
+        /// The API category resource.
         /// </summary>
-        public readonly Outputs.GoogleCloudApigeeV1ApiCategoryDataResponse Data;
+        public readonly Outputs.GoogleCloudApigeeV1ApiCategoryResponse Data;
         /// <summary>
-        /// ID that can be used to find errors in the log files.
+        /// Unique error code for the request, if any.
         /// </summary>
         public readonly string ErrorCode;
         /// <summary>
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// ID that can be used to find request details in the log files.
+        /// Unique ID of the request.
         /// </summary>
         public readonly string RequestId;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
         [OutputConstructor]
         private GetApicategoryResult(
-            Outputs.GoogleCloudApigeeV1ApiCategoryDataResponse data,
+            Outputs.GoogleCloudApigeeV1ApiCategoryResponse data,
 
             string errorCode,
 

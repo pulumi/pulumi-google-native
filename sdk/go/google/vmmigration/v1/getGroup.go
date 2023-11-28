@@ -36,6 +36,8 @@ type LookupGroupResult struct {
 	Description string `pulumi:"description"`
 	// Display name is a user defined name for this group which can be updated.
 	DisplayName string `pulumi:"displayName"`
+	// Immutable. The target type of this group.
+	MigrationTargetType string `pulumi:"migrationTargetType"`
 	// The Group name.
 	Name string `pulumi:"name"`
 	// The update time timestamp.
@@ -98,6 +100,11 @@ func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
 // Display name is a user defined name for this group which can be updated.
 func (o LookupGroupResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Immutable. The target type of this group.
+func (o LookupGroupResultOutput) MigrationTargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.MigrationTargetType }).(pulumi.StringOutput)
 }
 
 // The Group name.

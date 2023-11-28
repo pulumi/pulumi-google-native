@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.StandardSqlDataTypeResponse DataType;
         /// <summary>
+        /// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+        /// </summary>
+        public readonly bool IsAggregate;
+        /// <summary>
         /// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
         /// </summary>
         public readonly string Mode;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             Outputs.StandardSqlDataTypeResponse dataType,
 
+            bool isAggregate,
+
             string mode,
 
             string name)
         {
             ArgumentKind = argumentKind;
             DataType = dataType;
+            IsAggregate = isAggregate;
             Mode = mode;
             Name = name;
         }

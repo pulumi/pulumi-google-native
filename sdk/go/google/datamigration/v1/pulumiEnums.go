@@ -11,6 +11,193 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+type AlloyDbSettingsDatabaseVersion string
+
+const (
+	// This is an unknown database version.
+	AlloyDbSettingsDatabaseVersionDatabaseVersionUnspecified = AlloyDbSettingsDatabaseVersion("DATABASE_VERSION_UNSPECIFIED")
+	// The database version is Postgres 14.
+	AlloyDbSettingsDatabaseVersionPostgres14 = AlloyDbSettingsDatabaseVersion("POSTGRES_14")
+	// The database version is Postgres 15.
+	AlloyDbSettingsDatabaseVersionPostgres15 = AlloyDbSettingsDatabaseVersion("POSTGRES_15")
+)
+
+func (AlloyDbSettingsDatabaseVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlloyDbSettingsDatabaseVersion)(nil)).Elem()
+}
+
+func (e AlloyDbSettingsDatabaseVersion) ToAlloyDbSettingsDatabaseVersionOutput() AlloyDbSettingsDatabaseVersionOutput {
+	return pulumi.ToOutput(e).(AlloyDbSettingsDatabaseVersionOutput)
+}
+
+func (e AlloyDbSettingsDatabaseVersion) ToAlloyDbSettingsDatabaseVersionOutputWithContext(ctx context.Context) AlloyDbSettingsDatabaseVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AlloyDbSettingsDatabaseVersionOutput)
+}
+
+func (e AlloyDbSettingsDatabaseVersion) ToAlloyDbSettingsDatabaseVersionPtrOutput() AlloyDbSettingsDatabaseVersionPtrOutput {
+	return e.ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(context.Background())
+}
+
+func (e AlloyDbSettingsDatabaseVersion) ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) AlloyDbSettingsDatabaseVersionPtrOutput {
+	return AlloyDbSettingsDatabaseVersion(e).ToAlloyDbSettingsDatabaseVersionOutputWithContext(ctx).ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(ctx)
+}
+
+func (e AlloyDbSettingsDatabaseVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AlloyDbSettingsDatabaseVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AlloyDbSettingsDatabaseVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AlloyDbSettingsDatabaseVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AlloyDbSettingsDatabaseVersionOutput struct{ *pulumi.OutputState }
+
+func (AlloyDbSettingsDatabaseVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlloyDbSettingsDatabaseVersion)(nil)).Elem()
+}
+
+func (o AlloyDbSettingsDatabaseVersionOutput) ToAlloyDbSettingsDatabaseVersionOutput() AlloyDbSettingsDatabaseVersionOutput {
+	return o
+}
+
+func (o AlloyDbSettingsDatabaseVersionOutput) ToAlloyDbSettingsDatabaseVersionOutputWithContext(ctx context.Context) AlloyDbSettingsDatabaseVersionOutput {
+	return o
+}
+
+func (o AlloyDbSettingsDatabaseVersionOutput) ToAlloyDbSettingsDatabaseVersionPtrOutput() AlloyDbSettingsDatabaseVersionPtrOutput {
+	return o.ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(context.Background())
+}
+
+func (o AlloyDbSettingsDatabaseVersionOutput) ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) AlloyDbSettingsDatabaseVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlloyDbSettingsDatabaseVersion) *AlloyDbSettingsDatabaseVersion {
+		return &v
+	}).(AlloyDbSettingsDatabaseVersionPtrOutput)
+}
+
+func (o AlloyDbSettingsDatabaseVersionOutput) ToOutput(ctx context.Context) pulumix.Output[AlloyDbSettingsDatabaseVersion] {
+	return pulumix.Output[AlloyDbSettingsDatabaseVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AlloyDbSettingsDatabaseVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AlloyDbSettingsDatabaseVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlloyDbSettingsDatabaseVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AlloyDbSettingsDatabaseVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlloyDbSettingsDatabaseVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlloyDbSettingsDatabaseVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlloyDbSettingsDatabaseVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (AlloyDbSettingsDatabaseVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlloyDbSettingsDatabaseVersion)(nil)).Elem()
+}
+
+func (o AlloyDbSettingsDatabaseVersionPtrOutput) ToAlloyDbSettingsDatabaseVersionPtrOutput() AlloyDbSettingsDatabaseVersionPtrOutput {
+	return o
+}
+
+func (o AlloyDbSettingsDatabaseVersionPtrOutput) ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) AlloyDbSettingsDatabaseVersionPtrOutput {
+	return o
+}
+
+func (o AlloyDbSettingsDatabaseVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlloyDbSettingsDatabaseVersion] {
+	return pulumix.Output[*AlloyDbSettingsDatabaseVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AlloyDbSettingsDatabaseVersionPtrOutput) Elem() AlloyDbSettingsDatabaseVersionOutput {
+	return o.ApplyT(func(v *AlloyDbSettingsDatabaseVersion) AlloyDbSettingsDatabaseVersion {
+		if v != nil {
+			return *v
+		}
+		var ret AlloyDbSettingsDatabaseVersion
+		return ret
+	}).(AlloyDbSettingsDatabaseVersionOutput)
+}
+
+func (o AlloyDbSettingsDatabaseVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlloyDbSettingsDatabaseVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AlloyDbSettingsDatabaseVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AlloyDbSettingsDatabaseVersionInput is an input type that accepts AlloyDbSettingsDatabaseVersionArgs and AlloyDbSettingsDatabaseVersionOutput values.
+// You can construct a concrete instance of `AlloyDbSettingsDatabaseVersionInput` via:
+//
+//	AlloyDbSettingsDatabaseVersionArgs{...}
+type AlloyDbSettingsDatabaseVersionInput interface {
+	pulumi.Input
+
+	ToAlloyDbSettingsDatabaseVersionOutput() AlloyDbSettingsDatabaseVersionOutput
+	ToAlloyDbSettingsDatabaseVersionOutputWithContext(context.Context) AlloyDbSettingsDatabaseVersionOutput
+}
+
+var alloyDbSettingsDatabaseVersionPtrType = reflect.TypeOf((**AlloyDbSettingsDatabaseVersion)(nil)).Elem()
+
+type AlloyDbSettingsDatabaseVersionPtrInput interface {
+	pulumi.Input
+
+	ToAlloyDbSettingsDatabaseVersionPtrOutput() AlloyDbSettingsDatabaseVersionPtrOutput
+	ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(context.Context) AlloyDbSettingsDatabaseVersionPtrOutput
+}
+
+type alloyDbSettingsDatabaseVersionPtr string
+
+func AlloyDbSettingsDatabaseVersionPtr(v string) AlloyDbSettingsDatabaseVersionPtrInput {
+	return (*alloyDbSettingsDatabaseVersionPtr)(&v)
+}
+
+func (*alloyDbSettingsDatabaseVersionPtr) ElementType() reflect.Type {
+	return alloyDbSettingsDatabaseVersionPtrType
+}
+
+func (in *alloyDbSettingsDatabaseVersionPtr) ToAlloyDbSettingsDatabaseVersionPtrOutput() AlloyDbSettingsDatabaseVersionPtrOutput {
+	return pulumi.ToOutput(in).(AlloyDbSettingsDatabaseVersionPtrOutput)
+}
+
+func (in *alloyDbSettingsDatabaseVersionPtr) ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) AlloyDbSettingsDatabaseVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AlloyDbSettingsDatabaseVersionPtrOutput)
+}
+
+func (in *alloyDbSettingsDatabaseVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*AlloyDbSettingsDatabaseVersion] {
+	return pulumix.Output[*AlloyDbSettingsDatabaseVersion]{
+		OutputState: in.ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The log type that this config enables.
 type AuditLogConfigLogType string
 
@@ -771,20 +958,40 @@ const (
 	CloudSqlSettingsDatabaseVersionMysql56 = CloudSqlSettingsDatabaseVersion("MYSQL_5_6")
 	// MySQL 5.7.
 	CloudSqlSettingsDatabaseVersionMysql57 = CloudSqlSettingsDatabaseVersion("MYSQL_5_7")
+	// MySQL 8.0.
+	CloudSqlSettingsDatabaseVersionMysql80 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0")
+	// The database major version is MySQL 8.0 and the minor version is 18.
+	CloudSqlSettingsDatabaseVersionMysql8018 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_18")
+	// The database major version is MySQL 8.0 and the minor version is 26.
+	CloudSqlSettingsDatabaseVersionMysql8026 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_26")
+	// The database major version is MySQL 8.0 and the minor version is 27.
+	CloudSqlSettingsDatabaseVersionMysql8027 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_27")
+	// The database major version is MySQL 8.0 and the minor version is 28.
+	CloudSqlSettingsDatabaseVersionMysql8028 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_28")
+	// The database major version is MySQL 8.0 and the minor version is 30.
+	CloudSqlSettingsDatabaseVersionMysql8030 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_30")
+	// The database major version is MySQL 8.0 and the minor version is 31.
+	CloudSqlSettingsDatabaseVersionMysql8031 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_31")
+	// The database major version is MySQL 8.0 and the minor version is 32.
+	CloudSqlSettingsDatabaseVersionMysql8032 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_32")
+	// The database major version is MySQL 8.0 and the minor version is 33.
+	CloudSqlSettingsDatabaseVersionMysql8033 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_33")
+	// The database major version is MySQL 8.0 and the minor version is 34.
+	CloudSqlSettingsDatabaseVersionMysql8034 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_34")
 	// PostgreSQL 9.6.
 	CloudSqlSettingsDatabaseVersionPostgres96 = CloudSqlSettingsDatabaseVersion("POSTGRES_9_6")
 	// PostgreSQL 11.
 	CloudSqlSettingsDatabaseVersionPostgres11 = CloudSqlSettingsDatabaseVersion("POSTGRES_11")
 	// PostgreSQL 10.
 	CloudSqlSettingsDatabaseVersionPostgres10 = CloudSqlSettingsDatabaseVersion("POSTGRES_10")
-	// MySQL 8.0.
-	CloudSqlSettingsDatabaseVersionMysql80 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0")
 	// PostgreSQL 12.
 	CloudSqlSettingsDatabaseVersionPostgres12 = CloudSqlSettingsDatabaseVersion("POSTGRES_12")
 	// PostgreSQL 13.
 	CloudSqlSettingsDatabaseVersionPostgres13 = CloudSqlSettingsDatabaseVersion("POSTGRES_13")
 	// PostgreSQL 14.
 	CloudSqlSettingsDatabaseVersionPostgres14 = CloudSqlSettingsDatabaseVersion("POSTGRES_14")
+	// PostgreSQL 15.
+	CloudSqlSettingsDatabaseVersionPostgres15 = CloudSqlSettingsDatabaseVersion("POSTGRES_15")
 )
 
 func (CloudSqlSettingsDatabaseVersion) ElementType() reflect.Type {
@@ -959,6 +1166,193 @@ func (in *cloudSqlSettingsDatabaseVersionPtr) ToCloudSqlSettingsDatabaseVersionP
 func (in *cloudSqlSettingsDatabaseVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDatabaseVersion] {
 	return pulumix.Output[*CloudSqlSettingsDatabaseVersion]{
 		OutputState: in.ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The edition of the given Cloud SQL instance.
+type CloudSqlSettingsEdition string
+
+const (
+	// The instance did not specify the edition.
+	CloudSqlSettingsEditionEditionUnspecified = CloudSqlSettingsEdition("EDITION_UNSPECIFIED")
+	// The instance is an enterprise edition.
+	CloudSqlSettingsEditionEnterprise = CloudSqlSettingsEdition("ENTERPRISE")
+	// The instance is an enterprise plus edition.
+	CloudSqlSettingsEditionEnterprisePlus = CloudSqlSettingsEdition("ENTERPRISE_PLUS")
+)
+
+func (CloudSqlSettingsEdition) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSqlSettingsEdition)(nil)).Elem()
+}
+
+func (e CloudSqlSettingsEdition) ToCloudSqlSettingsEditionOutput() CloudSqlSettingsEditionOutput {
+	return pulumi.ToOutput(e).(CloudSqlSettingsEditionOutput)
+}
+
+func (e CloudSqlSettingsEdition) ToCloudSqlSettingsEditionOutputWithContext(ctx context.Context) CloudSqlSettingsEditionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CloudSqlSettingsEditionOutput)
+}
+
+func (e CloudSqlSettingsEdition) ToCloudSqlSettingsEditionPtrOutput() CloudSqlSettingsEditionPtrOutput {
+	return e.ToCloudSqlSettingsEditionPtrOutputWithContext(context.Background())
+}
+
+func (e CloudSqlSettingsEdition) ToCloudSqlSettingsEditionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsEditionPtrOutput {
+	return CloudSqlSettingsEdition(e).ToCloudSqlSettingsEditionOutputWithContext(ctx).ToCloudSqlSettingsEditionPtrOutputWithContext(ctx)
+}
+
+func (e CloudSqlSettingsEdition) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CloudSqlSettingsEdition) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CloudSqlSettingsEdition) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CloudSqlSettingsEdition) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CloudSqlSettingsEditionOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsEditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSqlSettingsEdition)(nil)).Elem()
+}
+
+func (o CloudSqlSettingsEditionOutput) ToCloudSqlSettingsEditionOutput() CloudSqlSettingsEditionOutput {
+	return o
+}
+
+func (o CloudSqlSettingsEditionOutput) ToCloudSqlSettingsEditionOutputWithContext(ctx context.Context) CloudSqlSettingsEditionOutput {
+	return o
+}
+
+func (o CloudSqlSettingsEditionOutput) ToCloudSqlSettingsEditionPtrOutput() CloudSqlSettingsEditionPtrOutput {
+	return o.ToCloudSqlSettingsEditionPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsEditionOutput) ToCloudSqlSettingsEditionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsEditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlSettingsEdition) *CloudSqlSettingsEdition {
+		return &v
+	}).(CloudSqlSettingsEditionPtrOutput)
+}
+
+func (o CloudSqlSettingsEditionOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsEdition] {
+	return pulumix.Output[CloudSqlSettingsEdition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CloudSqlSettingsEditionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsEditionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsEdition) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CloudSqlSettingsEditionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsEditionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsEdition) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudSqlSettingsEditionPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsEditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudSqlSettingsEdition)(nil)).Elem()
+}
+
+func (o CloudSqlSettingsEditionPtrOutput) ToCloudSqlSettingsEditionPtrOutput() CloudSqlSettingsEditionPtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsEditionPtrOutput) ToCloudSqlSettingsEditionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsEditionPtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsEditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsEdition] {
+	return pulumix.Output[*CloudSqlSettingsEdition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CloudSqlSettingsEditionPtrOutput) Elem() CloudSqlSettingsEditionOutput {
+	return o.ApplyT(func(v *CloudSqlSettingsEdition) CloudSqlSettingsEdition {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlSettingsEdition
+		return ret
+	}).(CloudSqlSettingsEditionOutput)
+}
+
+func (o CloudSqlSettingsEditionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsEditionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CloudSqlSettingsEdition) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CloudSqlSettingsEditionInput is an input type that accepts CloudSqlSettingsEditionArgs and CloudSqlSettingsEditionOutput values.
+// You can construct a concrete instance of `CloudSqlSettingsEditionInput` via:
+//
+//	CloudSqlSettingsEditionArgs{...}
+type CloudSqlSettingsEditionInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsEditionOutput() CloudSqlSettingsEditionOutput
+	ToCloudSqlSettingsEditionOutputWithContext(context.Context) CloudSqlSettingsEditionOutput
+}
+
+var cloudSqlSettingsEditionPtrType = reflect.TypeOf((**CloudSqlSettingsEdition)(nil)).Elem()
+
+type CloudSqlSettingsEditionPtrInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsEditionPtrOutput() CloudSqlSettingsEditionPtrOutput
+	ToCloudSqlSettingsEditionPtrOutputWithContext(context.Context) CloudSqlSettingsEditionPtrOutput
+}
+
+type cloudSqlSettingsEditionPtr string
+
+func CloudSqlSettingsEditionPtr(v string) CloudSqlSettingsEditionPtrInput {
+	return (*cloudSqlSettingsEditionPtr)(&v)
+}
+
+func (*cloudSqlSettingsEditionPtr) ElementType() reflect.Type {
+	return cloudSqlSettingsEditionPtrType
+}
+
+func (in *cloudSqlSettingsEditionPtr) ToCloudSqlSettingsEditionPtrOutput() CloudSqlSettingsEditionPtrOutput {
+	return pulumi.ToOutput(in).(CloudSqlSettingsEditionPtrOutput)
+}
+
+func (in *cloudSqlSettingsEditionPtr) ToCloudSqlSettingsEditionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsEditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsEditionPtrOutput)
+}
+
+func (in *cloudSqlSettingsEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsEdition] {
+	return pulumix.Output[*CloudSqlSettingsEdition]{
+		OutputState: in.ToCloudSqlSettingsEditionPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -1919,6 +2313,790 @@ func (in *databaseTypeProviderPtr) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
+// Required. Relation between source value and compare value
+type DoubleComparisonFilterValueComparison string
+
+const (
+	// Value comparison unspecified.
+	DoubleComparisonFilterValueComparisonValueComparisonUnspecified = DoubleComparisonFilterValueComparison("VALUE_COMPARISON_UNSPECIFIED")
+	// Value is smaller than the Compare value.
+	DoubleComparisonFilterValueComparisonValueComparisonIfValueSmallerThan = DoubleComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_SMALLER_THAN")
+	// Value is smaller or equal than the Compare value.
+	DoubleComparisonFilterValueComparisonValueComparisonIfValueSmallerEqualThan = DoubleComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN")
+	// Value is larger than the Compare value.
+	DoubleComparisonFilterValueComparisonValueComparisonIfValueLargerThan = DoubleComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_LARGER_THAN")
+	// Value is larger or equal than the Compare value.
+	DoubleComparisonFilterValueComparisonValueComparisonIfValueLargerEqualThan = DoubleComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN")
+)
+
+func (DoubleComparisonFilterValueComparison) ElementType() reflect.Type {
+	return reflect.TypeOf((*DoubleComparisonFilterValueComparison)(nil)).Elem()
+}
+
+func (e DoubleComparisonFilterValueComparison) ToDoubleComparisonFilterValueComparisonOutput() DoubleComparisonFilterValueComparisonOutput {
+	return pulumi.ToOutput(e).(DoubleComparisonFilterValueComparisonOutput)
+}
+
+func (e DoubleComparisonFilterValueComparison) ToDoubleComparisonFilterValueComparisonOutputWithContext(ctx context.Context) DoubleComparisonFilterValueComparisonOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DoubleComparisonFilterValueComparisonOutput)
+}
+
+func (e DoubleComparisonFilterValueComparison) ToDoubleComparisonFilterValueComparisonPtrOutput() DoubleComparisonFilterValueComparisonPtrOutput {
+	return e.ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(context.Background())
+}
+
+func (e DoubleComparisonFilterValueComparison) ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) DoubleComparisonFilterValueComparisonPtrOutput {
+	return DoubleComparisonFilterValueComparison(e).ToDoubleComparisonFilterValueComparisonOutputWithContext(ctx).ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(ctx)
+}
+
+func (e DoubleComparisonFilterValueComparison) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DoubleComparisonFilterValueComparison) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DoubleComparisonFilterValueComparison) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DoubleComparisonFilterValueComparison) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DoubleComparisonFilterValueComparisonOutput struct{ *pulumi.OutputState }
+
+func (DoubleComparisonFilterValueComparisonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DoubleComparisonFilterValueComparison)(nil)).Elem()
+}
+
+func (o DoubleComparisonFilterValueComparisonOutput) ToDoubleComparisonFilterValueComparisonOutput() DoubleComparisonFilterValueComparisonOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterValueComparisonOutput) ToDoubleComparisonFilterValueComparisonOutputWithContext(ctx context.Context) DoubleComparisonFilterValueComparisonOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterValueComparisonOutput) ToDoubleComparisonFilterValueComparisonPtrOutput() DoubleComparisonFilterValueComparisonPtrOutput {
+	return o.ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(context.Background())
+}
+
+func (o DoubleComparisonFilterValueComparisonOutput) ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) DoubleComparisonFilterValueComparisonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DoubleComparisonFilterValueComparison) *DoubleComparisonFilterValueComparison {
+		return &v
+	}).(DoubleComparisonFilterValueComparisonPtrOutput)
+}
+
+func (o DoubleComparisonFilterValueComparisonOutput) ToOutput(ctx context.Context) pulumix.Output[DoubleComparisonFilterValueComparison] {
+	return pulumix.Output[DoubleComparisonFilterValueComparison]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DoubleComparisonFilterValueComparisonOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DoubleComparisonFilterValueComparisonOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DoubleComparisonFilterValueComparison) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DoubleComparisonFilterValueComparisonOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DoubleComparisonFilterValueComparisonOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DoubleComparisonFilterValueComparison) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DoubleComparisonFilterValueComparisonPtrOutput struct{ *pulumi.OutputState }
+
+func (DoubleComparisonFilterValueComparisonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DoubleComparisonFilterValueComparison)(nil)).Elem()
+}
+
+func (o DoubleComparisonFilterValueComparisonPtrOutput) ToDoubleComparisonFilterValueComparisonPtrOutput() DoubleComparisonFilterValueComparisonPtrOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterValueComparisonPtrOutput) ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) DoubleComparisonFilterValueComparisonPtrOutput {
+	return o
+}
+
+func (o DoubleComparisonFilterValueComparisonPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DoubleComparisonFilterValueComparison] {
+	return pulumix.Output[*DoubleComparisonFilterValueComparison]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DoubleComparisonFilterValueComparisonPtrOutput) Elem() DoubleComparisonFilterValueComparisonOutput {
+	return o.ApplyT(func(v *DoubleComparisonFilterValueComparison) DoubleComparisonFilterValueComparison {
+		if v != nil {
+			return *v
+		}
+		var ret DoubleComparisonFilterValueComparison
+		return ret
+	}).(DoubleComparisonFilterValueComparisonOutput)
+}
+
+func (o DoubleComparisonFilterValueComparisonPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DoubleComparisonFilterValueComparisonPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DoubleComparisonFilterValueComparison) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DoubleComparisonFilterValueComparisonInput is an input type that accepts DoubleComparisonFilterValueComparisonArgs and DoubleComparisonFilterValueComparisonOutput values.
+// You can construct a concrete instance of `DoubleComparisonFilterValueComparisonInput` via:
+//
+//	DoubleComparisonFilterValueComparisonArgs{...}
+type DoubleComparisonFilterValueComparisonInput interface {
+	pulumi.Input
+
+	ToDoubleComparisonFilterValueComparisonOutput() DoubleComparisonFilterValueComparisonOutput
+	ToDoubleComparisonFilterValueComparisonOutputWithContext(context.Context) DoubleComparisonFilterValueComparisonOutput
+}
+
+var doubleComparisonFilterValueComparisonPtrType = reflect.TypeOf((**DoubleComparisonFilterValueComparison)(nil)).Elem()
+
+type DoubleComparisonFilterValueComparisonPtrInput interface {
+	pulumi.Input
+
+	ToDoubleComparisonFilterValueComparisonPtrOutput() DoubleComparisonFilterValueComparisonPtrOutput
+	ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(context.Context) DoubleComparisonFilterValueComparisonPtrOutput
+}
+
+type doubleComparisonFilterValueComparisonPtr string
+
+func DoubleComparisonFilterValueComparisonPtr(v string) DoubleComparisonFilterValueComparisonPtrInput {
+	return (*doubleComparisonFilterValueComparisonPtr)(&v)
+}
+
+func (*doubleComparisonFilterValueComparisonPtr) ElementType() reflect.Type {
+	return doubleComparisonFilterValueComparisonPtrType
+}
+
+func (in *doubleComparisonFilterValueComparisonPtr) ToDoubleComparisonFilterValueComparisonPtrOutput() DoubleComparisonFilterValueComparisonPtrOutput {
+	return pulumi.ToOutput(in).(DoubleComparisonFilterValueComparisonPtrOutput)
+}
+
+func (in *doubleComparisonFilterValueComparisonPtr) ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) DoubleComparisonFilterValueComparisonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DoubleComparisonFilterValueComparisonPtrOutput)
+}
+
+func (in *doubleComparisonFilterValueComparisonPtr) ToOutput(ctx context.Context) pulumix.Output[*DoubleComparisonFilterValueComparison] {
+	return pulumix.Output[*DoubleComparisonFilterValueComparison]{
+		OutputState: in.ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Relation between source value and compare value
+type IntComparisonFilterValueComparison string
+
+const (
+	// Value comparison unspecified.
+	IntComparisonFilterValueComparisonValueComparisonUnspecified = IntComparisonFilterValueComparison("VALUE_COMPARISON_UNSPECIFIED")
+	// Value is smaller than the Compare value.
+	IntComparisonFilterValueComparisonValueComparisonIfValueSmallerThan = IntComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_SMALLER_THAN")
+	// Value is smaller or equal than the Compare value.
+	IntComparisonFilterValueComparisonValueComparisonIfValueSmallerEqualThan = IntComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN")
+	// Value is larger than the Compare value.
+	IntComparisonFilterValueComparisonValueComparisonIfValueLargerThan = IntComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_LARGER_THAN")
+	// Value is larger or equal than the Compare value.
+	IntComparisonFilterValueComparisonValueComparisonIfValueLargerEqualThan = IntComparisonFilterValueComparison("VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN")
+)
+
+func (IntComparisonFilterValueComparison) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntComparisonFilterValueComparison)(nil)).Elem()
+}
+
+func (e IntComparisonFilterValueComparison) ToIntComparisonFilterValueComparisonOutput() IntComparisonFilterValueComparisonOutput {
+	return pulumi.ToOutput(e).(IntComparisonFilterValueComparisonOutput)
+}
+
+func (e IntComparisonFilterValueComparison) ToIntComparisonFilterValueComparisonOutputWithContext(ctx context.Context) IntComparisonFilterValueComparisonOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IntComparisonFilterValueComparisonOutput)
+}
+
+func (e IntComparisonFilterValueComparison) ToIntComparisonFilterValueComparisonPtrOutput() IntComparisonFilterValueComparisonPtrOutput {
+	return e.ToIntComparisonFilterValueComparisonPtrOutputWithContext(context.Background())
+}
+
+func (e IntComparisonFilterValueComparison) ToIntComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) IntComparisonFilterValueComparisonPtrOutput {
+	return IntComparisonFilterValueComparison(e).ToIntComparisonFilterValueComparisonOutputWithContext(ctx).ToIntComparisonFilterValueComparisonPtrOutputWithContext(ctx)
+}
+
+func (e IntComparisonFilterValueComparison) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IntComparisonFilterValueComparison) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IntComparisonFilterValueComparison) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IntComparisonFilterValueComparison) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IntComparisonFilterValueComparisonOutput struct{ *pulumi.OutputState }
+
+func (IntComparisonFilterValueComparisonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntComparisonFilterValueComparison)(nil)).Elem()
+}
+
+func (o IntComparisonFilterValueComparisonOutput) ToIntComparisonFilterValueComparisonOutput() IntComparisonFilterValueComparisonOutput {
+	return o
+}
+
+func (o IntComparisonFilterValueComparisonOutput) ToIntComparisonFilterValueComparisonOutputWithContext(ctx context.Context) IntComparisonFilterValueComparisonOutput {
+	return o
+}
+
+func (o IntComparisonFilterValueComparisonOutput) ToIntComparisonFilterValueComparisonPtrOutput() IntComparisonFilterValueComparisonPtrOutput {
+	return o.ToIntComparisonFilterValueComparisonPtrOutputWithContext(context.Background())
+}
+
+func (o IntComparisonFilterValueComparisonOutput) ToIntComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) IntComparisonFilterValueComparisonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntComparisonFilterValueComparison) *IntComparisonFilterValueComparison {
+		return &v
+	}).(IntComparisonFilterValueComparisonPtrOutput)
+}
+
+func (o IntComparisonFilterValueComparisonOutput) ToOutput(ctx context.Context) pulumix.Output[IntComparisonFilterValueComparison] {
+	return pulumix.Output[IntComparisonFilterValueComparison]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IntComparisonFilterValueComparisonOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IntComparisonFilterValueComparisonOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IntComparisonFilterValueComparison) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IntComparisonFilterValueComparisonOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IntComparisonFilterValueComparisonOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IntComparisonFilterValueComparison) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IntComparisonFilterValueComparisonPtrOutput struct{ *pulumi.OutputState }
+
+func (IntComparisonFilterValueComparisonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntComparisonFilterValueComparison)(nil)).Elem()
+}
+
+func (o IntComparisonFilterValueComparisonPtrOutput) ToIntComparisonFilterValueComparisonPtrOutput() IntComparisonFilterValueComparisonPtrOutput {
+	return o
+}
+
+func (o IntComparisonFilterValueComparisonPtrOutput) ToIntComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) IntComparisonFilterValueComparisonPtrOutput {
+	return o
+}
+
+func (o IntComparisonFilterValueComparisonPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntComparisonFilterValueComparison] {
+	return pulumix.Output[*IntComparisonFilterValueComparison]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IntComparisonFilterValueComparisonPtrOutput) Elem() IntComparisonFilterValueComparisonOutput {
+	return o.ApplyT(func(v *IntComparisonFilterValueComparison) IntComparisonFilterValueComparison {
+		if v != nil {
+			return *v
+		}
+		var ret IntComparisonFilterValueComparison
+		return ret
+	}).(IntComparisonFilterValueComparisonOutput)
+}
+
+func (o IntComparisonFilterValueComparisonPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IntComparisonFilterValueComparisonPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IntComparisonFilterValueComparison) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IntComparisonFilterValueComparisonInput is an input type that accepts IntComparisonFilterValueComparisonArgs and IntComparisonFilterValueComparisonOutput values.
+// You can construct a concrete instance of `IntComparisonFilterValueComparisonInput` via:
+//
+//	IntComparisonFilterValueComparisonArgs{...}
+type IntComparisonFilterValueComparisonInput interface {
+	pulumi.Input
+
+	ToIntComparisonFilterValueComparisonOutput() IntComparisonFilterValueComparisonOutput
+	ToIntComparisonFilterValueComparisonOutputWithContext(context.Context) IntComparisonFilterValueComparisonOutput
+}
+
+var intComparisonFilterValueComparisonPtrType = reflect.TypeOf((**IntComparisonFilterValueComparison)(nil)).Elem()
+
+type IntComparisonFilterValueComparisonPtrInput interface {
+	pulumi.Input
+
+	ToIntComparisonFilterValueComparisonPtrOutput() IntComparisonFilterValueComparisonPtrOutput
+	ToIntComparisonFilterValueComparisonPtrOutputWithContext(context.Context) IntComparisonFilterValueComparisonPtrOutput
+}
+
+type intComparisonFilterValueComparisonPtr string
+
+func IntComparisonFilterValueComparisonPtr(v string) IntComparisonFilterValueComparisonPtrInput {
+	return (*intComparisonFilterValueComparisonPtr)(&v)
+}
+
+func (*intComparisonFilterValueComparisonPtr) ElementType() reflect.Type {
+	return intComparisonFilterValueComparisonPtrType
+}
+
+func (in *intComparisonFilterValueComparisonPtr) ToIntComparisonFilterValueComparisonPtrOutput() IntComparisonFilterValueComparisonPtrOutput {
+	return pulumi.ToOutput(in).(IntComparisonFilterValueComparisonPtrOutput)
+}
+
+func (in *intComparisonFilterValueComparisonPtr) ToIntComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) IntComparisonFilterValueComparisonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IntComparisonFilterValueComparisonPtrOutput)
+}
+
+func (in *intComparisonFilterValueComparisonPtr) ToOutput(ctx context.Context) pulumix.Output[*IntComparisonFilterValueComparison] {
+	return pulumix.Output[*IntComparisonFilterValueComparison]{
+		OutputState: in.ToIntComparisonFilterValueComparisonPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. The rule scope
+type MappingRuleRuleScope string
+
+const (
+	// Unspecified database entity type.
+	MappingRuleRuleScopeDatabaseEntityTypeUnspecified = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_UNSPECIFIED")
+	// Schema.
+	MappingRuleRuleScopeDatabaseEntityTypeSchema = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_SCHEMA")
+	// Table.
+	MappingRuleRuleScopeDatabaseEntityTypeTable = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_TABLE")
+	// Column.
+	MappingRuleRuleScopeDatabaseEntityTypeColumn = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_COLUMN")
+	// Constraint.
+	MappingRuleRuleScopeDatabaseEntityTypeConstraint = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_CONSTRAINT")
+	// Index.
+	MappingRuleRuleScopeDatabaseEntityTypeIndex = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_INDEX")
+	// Trigger.
+	MappingRuleRuleScopeDatabaseEntityTypeTrigger = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_TRIGGER")
+	// View.
+	MappingRuleRuleScopeDatabaseEntityTypeView = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_VIEW")
+	// Sequence.
+	MappingRuleRuleScopeDatabaseEntityTypeSequence = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_SEQUENCE")
+	// Stored Procedure.
+	MappingRuleRuleScopeDatabaseEntityTypeStoredProcedure = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_STORED_PROCEDURE")
+	// Function.
+	MappingRuleRuleScopeDatabaseEntityTypeFunction = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_FUNCTION")
+	// Synonym.
+	MappingRuleRuleScopeDatabaseEntityTypeSynonym = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_SYNONYM")
+	// Package.
+	MappingRuleRuleScopeDatabaseEntityTypeDatabasePackage = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_DATABASE_PACKAGE")
+	// UDT.
+	MappingRuleRuleScopeDatabaseEntityTypeUdt = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_UDT")
+	// Materialized View.
+	MappingRuleRuleScopeDatabaseEntityTypeMaterializedView = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW")
+	// Database.
+	MappingRuleRuleScopeDatabaseEntityTypeDatabase = MappingRuleRuleScope("DATABASE_ENTITY_TYPE_DATABASE")
+)
+
+func (MappingRuleRuleScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*MappingRuleRuleScope)(nil)).Elem()
+}
+
+func (e MappingRuleRuleScope) ToMappingRuleRuleScopeOutput() MappingRuleRuleScopeOutput {
+	return pulumi.ToOutput(e).(MappingRuleRuleScopeOutput)
+}
+
+func (e MappingRuleRuleScope) ToMappingRuleRuleScopeOutputWithContext(ctx context.Context) MappingRuleRuleScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MappingRuleRuleScopeOutput)
+}
+
+func (e MappingRuleRuleScope) ToMappingRuleRuleScopePtrOutput() MappingRuleRuleScopePtrOutput {
+	return e.ToMappingRuleRuleScopePtrOutputWithContext(context.Background())
+}
+
+func (e MappingRuleRuleScope) ToMappingRuleRuleScopePtrOutputWithContext(ctx context.Context) MappingRuleRuleScopePtrOutput {
+	return MappingRuleRuleScope(e).ToMappingRuleRuleScopeOutputWithContext(ctx).ToMappingRuleRuleScopePtrOutputWithContext(ctx)
+}
+
+func (e MappingRuleRuleScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MappingRuleRuleScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MappingRuleRuleScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MappingRuleRuleScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MappingRuleRuleScopeOutput struct{ *pulumi.OutputState }
+
+func (MappingRuleRuleScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MappingRuleRuleScope)(nil)).Elem()
+}
+
+func (o MappingRuleRuleScopeOutput) ToMappingRuleRuleScopeOutput() MappingRuleRuleScopeOutput {
+	return o
+}
+
+func (o MappingRuleRuleScopeOutput) ToMappingRuleRuleScopeOutputWithContext(ctx context.Context) MappingRuleRuleScopeOutput {
+	return o
+}
+
+func (o MappingRuleRuleScopeOutput) ToMappingRuleRuleScopePtrOutput() MappingRuleRuleScopePtrOutput {
+	return o.ToMappingRuleRuleScopePtrOutputWithContext(context.Background())
+}
+
+func (o MappingRuleRuleScopeOutput) ToMappingRuleRuleScopePtrOutputWithContext(ctx context.Context) MappingRuleRuleScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MappingRuleRuleScope) *MappingRuleRuleScope {
+		return &v
+	}).(MappingRuleRuleScopePtrOutput)
+}
+
+func (o MappingRuleRuleScopeOutput) ToOutput(ctx context.Context) pulumix.Output[MappingRuleRuleScope] {
+	return pulumix.Output[MappingRuleRuleScope]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MappingRuleRuleScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MappingRuleRuleScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MappingRuleRuleScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MappingRuleRuleScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MappingRuleRuleScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MappingRuleRuleScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MappingRuleRuleScopePtrOutput struct{ *pulumi.OutputState }
+
+func (MappingRuleRuleScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MappingRuleRuleScope)(nil)).Elem()
+}
+
+func (o MappingRuleRuleScopePtrOutput) ToMappingRuleRuleScopePtrOutput() MappingRuleRuleScopePtrOutput {
+	return o
+}
+
+func (o MappingRuleRuleScopePtrOutput) ToMappingRuleRuleScopePtrOutputWithContext(ctx context.Context) MappingRuleRuleScopePtrOutput {
+	return o
+}
+
+func (o MappingRuleRuleScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MappingRuleRuleScope] {
+	return pulumix.Output[*MappingRuleRuleScope]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MappingRuleRuleScopePtrOutput) Elem() MappingRuleRuleScopeOutput {
+	return o.ApplyT(func(v *MappingRuleRuleScope) MappingRuleRuleScope {
+		if v != nil {
+			return *v
+		}
+		var ret MappingRuleRuleScope
+		return ret
+	}).(MappingRuleRuleScopeOutput)
+}
+
+func (o MappingRuleRuleScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MappingRuleRuleScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MappingRuleRuleScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MappingRuleRuleScopeInput is an input type that accepts MappingRuleRuleScopeArgs and MappingRuleRuleScopeOutput values.
+// You can construct a concrete instance of `MappingRuleRuleScopeInput` via:
+//
+//	MappingRuleRuleScopeArgs{...}
+type MappingRuleRuleScopeInput interface {
+	pulumi.Input
+
+	ToMappingRuleRuleScopeOutput() MappingRuleRuleScopeOutput
+	ToMappingRuleRuleScopeOutputWithContext(context.Context) MappingRuleRuleScopeOutput
+}
+
+var mappingRuleRuleScopePtrType = reflect.TypeOf((**MappingRuleRuleScope)(nil)).Elem()
+
+type MappingRuleRuleScopePtrInput interface {
+	pulumi.Input
+
+	ToMappingRuleRuleScopePtrOutput() MappingRuleRuleScopePtrOutput
+	ToMappingRuleRuleScopePtrOutputWithContext(context.Context) MappingRuleRuleScopePtrOutput
+}
+
+type mappingRuleRuleScopePtr string
+
+func MappingRuleRuleScopePtr(v string) MappingRuleRuleScopePtrInput {
+	return (*mappingRuleRuleScopePtr)(&v)
+}
+
+func (*mappingRuleRuleScopePtr) ElementType() reflect.Type {
+	return mappingRuleRuleScopePtrType
+}
+
+func (in *mappingRuleRuleScopePtr) ToMappingRuleRuleScopePtrOutput() MappingRuleRuleScopePtrOutput {
+	return pulumi.ToOutput(in).(MappingRuleRuleScopePtrOutput)
+}
+
+func (in *mappingRuleRuleScopePtr) ToMappingRuleRuleScopePtrOutputWithContext(ctx context.Context) MappingRuleRuleScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MappingRuleRuleScopePtrOutput)
+}
+
+func (in *mappingRuleRuleScopePtr) ToOutput(ctx context.Context) pulumix.Output[*MappingRuleRuleScope] {
+	return pulumix.Output[*MappingRuleRuleScope]{
+		OutputState: in.ToMappingRuleRuleScopePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The mapping rule state
+type MappingRuleStateEnum string
+
+const (
+	// The state of the mapping rule is unknown.
+	MappingRuleStateEnumStateUnspecified = MappingRuleStateEnum("STATE_UNSPECIFIED")
+	// The rule is enabled.
+	MappingRuleStateEnumEnabled = MappingRuleStateEnum("ENABLED")
+	// The rule is disabled.
+	MappingRuleStateEnumDisabled = MappingRuleStateEnum("DISABLED")
+	// The rule is logically deleted.
+	MappingRuleStateEnumDeleted = MappingRuleStateEnum("DELETED")
+)
+
+func (MappingRuleStateEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*MappingRuleStateEnum)(nil)).Elem()
+}
+
+func (e MappingRuleStateEnum) ToMappingRuleStateEnumOutput() MappingRuleStateEnumOutput {
+	return pulumi.ToOutput(e).(MappingRuleStateEnumOutput)
+}
+
+func (e MappingRuleStateEnum) ToMappingRuleStateEnumOutputWithContext(ctx context.Context) MappingRuleStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MappingRuleStateEnumOutput)
+}
+
+func (e MappingRuleStateEnum) ToMappingRuleStateEnumPtrOutput() MappingRuleStateEnumPtrOutput {
+	return e.ToMappingRuleStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e MappingRuleStateEnum) ToMappingRuleStateEnumPtrOutputWithContext(ctx context.Context) MappingRuleStateEnumPtrOutput {
+	return MappingRuleStateEnum(e).ToMappingRuleStateEnumOutputWithContext(ctx).ToMappingRuleStateEnumPtrOutputWithContext(ctx)
+}
+
+func (e MappingRuleStateEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MappingRuleStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MappingRuleStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MappingRuleStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MappingRuleStateEnumOutput struct{ *pulumi.OutputState }
+
+func (MappingRuleStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MappingRuleStateEnum)(nil)).Elem()
+}
+
+func (o MappingRuleStateEnumOutput) ToMappingRuleStateEnumOutput() MappingRuleStateEnumOutput {
+	return o
+}
+
+func (o MappingRuleStateEnumOutput) ToMappingRuleStateEnumOutputWithContext(ctx context.Context) MappingRuleStateEnumOutput {
+	return o
+}
+
+func (o MappingRuleStateEnumOutput) ToMappingRuleStateEnumPtrOutput() MappingRuleStateEnumPtrOutput {
+	return o.ToMappingRuleStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o MappingRuleStateEnumOutput) ToMappingRuleStateEnumPtrOutputWithContext(ctx context.Context) MappingRuleStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MappingRuleStateEnum) *MappingRuleStateEnum {
+		return &v
+	}).(MappingRuleStateEnumPtrOutput)
+}
+
+func (o MappingRuleStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[MappingRuleStateEnum] {
+	return pulumix.Output[MappingRuleStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MappingRuleStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MappingRuleStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MappingRuleStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MappingRuleStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MappingRuleStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MappingRuleStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MappingRuleStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (MappingRuleStateEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MappingRuleStateEnum)(nil)).Elem()
+}
+
+func (o MappingRuleStateEnumPtrOutput) ToMappingRuleStateEnumPtrOutput() MappingRuleStateEnumPtrOutput {
+	return o
+}
+
+func (o MappingRuleStateEnumPtrOutput) ToMappingRuleStateEnumPtrOutputWithContext(ctx context.Context) MappingRuleStateEnumPtrOutput {
+	return o
+}
+
+func (o MappingRuleStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MappingRuleStateEnum] {
+	return pulumix.Output[*MappingRuleStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MappingRuleStateEnumPtrOutput) Elem() MappingRuleStateEnumOutput {
+	return o.ApplyT(func(v *MappingRuleStateEnum) MappingRuleStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret MappingRuleStateEnum
+		return ret
+	}).(MappingRuleStateEnumOutput)
+}
+
+func (o MappingRuleStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MappingRuleStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MappingRuleStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MappingRuleStateEnumInput is an input type that accepts MappingRuleStateEnumArgs and MappingRuleStateEnumOutput values.
+// You can construct a concrete instance of `MappingRuleStateEnumInput` via:
+//
+//	MappingRuleStateEnumArgs{...}
+type MappingRuleStateEnumInput interface {
+	pulumi.Input
+
+	ToMappingRuleStateEnumOutput() MappingRuleStateEnumOutput
+	ToMappingRuleStateEnumOutputWithContext(context.Context) MappingRuleStateEnumOutput
+}
+
+var mappingRuleStateEnumPtrType = reflect.TypeOf((**MappingRuleStateEnum)(nil)).Elem()
+
+type MappingRuleStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToMappingRuleStateEnumPtrOutput() MappingRuleStateEnumPtrOutput
+	ToMappingRuleStateEnumPtrOutputWithContext(context.Context) MappingRuleStateEnumPtrOutput
+}
+
+type mappingRuleStateEnumPtr string
+
+func MappingRuleStateEnumPtr(v string) MappingRuleStateEnumPtrInput {
+	return (*mappingRuleStateEnumPtr)(&v)
+}
+
+func (*mappingRuleStateEnumPtr) ElementType() reflect.Type {
+	return mappingRuleStateEnumPtrType
+}
+
+func (in *mappingRuleStateEnumPtr) ToMappingRuleStateEnumPtrOutput() MappingRuleStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(MappingRuleStateEnumPtrOutput)
+}
+
+func (in *mappingRuleStateEnumPtr) ToMappingRuleStateEnumPtrOutputWithContext(ctx context.Context) MappingRuleStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MappingRuleStateEnumPtrOutput)
+}
+
+func (in *mappingRuleStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*MappingRuleStateEnum] {
+	return pulumix.Output[*MappingRuleStateEnum]{
+		OutputState: in.ToMappingRuleStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The current migration job state.
 type MigrationJobStateEnum string
 
@@ -2319,7 +3497,765 @@ func (in *migrationJobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Mig
 	}
 }
 
+// Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+type MultiEntityRenameSourceNameTransformation string
+
+const (
+	// Entity name transformation unspecified.
+	MultiEntityRenameSourceNameTransformationEntityNameTransformationUnspecified = MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_UNSPECIFIED")
+	// No transformation.
+	MultiEntityRenameSourceNameTransformationEntityNameTransformationNoTransformation = MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_NO_TRANSFORMATION")
+	// Transform to lower case.
+	MultiEntityRenameSourceNameTransformationEntityNameTransformationLowerCase = MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_LOWER_CASE")
+	// Transform to upper case.
+	MultiEntityRenameSourceNameTransformationEntityNameTransformationUpperCase = MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_UPPER_CASE")
+	// Transform to capitalized case.
+	MultiEntityRenameSourceNameTransformationEntityNameTransformationCapitalizedCase = MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE")
+)
+
+func (MultiEntityRenameSourceNameTransformation) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiEntityRenameSourceNameTransformation)(nil)).Elem()
+}
+
+func (e MultiEntityRenameSourceNameTransformation) ToMultiEntityRenameSourceNameTransformationOutput() MultiEntityRenameSourceNameTransformationOutput {
+	return pulumi.ToOutput(e).(MultiEntityRenameSourceNameTransformationOutput)
+}
+
+func (e MultiEntityRenameSourceNameTransformation) ToMultiEntityRenameSourceNameTransformationOutputWithContext(ctx context.Context) MultiEntityRenameSourceNameTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MultiEntityRenameSourceNameTransformationOutput)
+}
+
+func (e MultiEntityRenameSourceNameTransformation) ToMultiEntityRenameSourceNameTransformationPtrOutput() MultiEntityRenameSourceNameTransformationPtrOutput {
+	return e.ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(context.Background())
+}
+
+func (e MultiEntityRenameSourceNameTransformation) ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(ctx context.Context) MultiEntityRenameSourceNameTransformationPtrOutput {
+	return MultiEntityRenameSourceNameTransformation(e).ToMultiEntityRenameSourceNameTransformationOutputWithContext(ctx).ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(ctx)
+}
+
+func (e MultiEntityRenameSourceNameTransformation) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MultiEntityRenameSourceNameTransformation) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MultiEntityRenameSourceNameTransformation) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MultiEntityRenameSourceNameTransformation) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MultiEntityRenameSourceNameTransformationOutput struct{ *pulumi.OutputState }
+
+func (MultiEntityRenameSourceNameTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiEntityRenameSourceNameTransformation)(nil)).Elem()
+}
+
+func (o MultiEntityRenameSourceNameTransformationOutput) ToMultiEntityRenameSourceNameTransformationOutput() MultiEntityRenameSourceNameTransformationOutput {
+	return o
+}
+
+func (o MultiEntityRenameSourceNameTransformationOutput) ToMultiEntityRenameSourceNameTransformationOutputWithContext(ctx context.Context) MultiEntityRenameSourceNameTransformationOutput {
+	return o
+}
+
+func (o MultiEntityRenameSourceNameTransformationOutput) ToMultiEntityRenameSourceNameTransformationPtrOutput() MultiEntityRenameSourceNameTransformationPtrOutput {
+	return o.ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(context.Background())
+}
+
+func (o MultiEntityRenameSourceNameTransformationOutput) ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(ctx context.Context) MultiEntityRenameSourceNameTransformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiEntityRenameSourceNameTransformation) *MultiEntityRenameSourceNameTransformation {
+		return &v
+	}).(MultiEntityRenameSourceNameTransformationPtrOutput)
+}
+
+func (o MultiEntityRenameSourceNameTransformationOutput) ToOutput(ctx context.Context) pulumix.Output[MultiEntityRenameSourceNameTransformation] {
+	return pulumix.Output[MultiEntityRenameSourceNameTransformation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MultiEntityRenameSourceNameTransformationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MultiEntityRenameSourceNameTransformationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MultiEntityRenameSourceNameTransformation) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MultiEntityRenameSourceNameTransformationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MultiEntityRenameSourceNameTransformationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MultiEntityRenameSourceNameTransformation) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MultiEntityRenameSourceNameTransformationPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiEntityRenameSourceNameTransformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiEntityRenameSourceNameTransformation)(nil)).Elem()
+}
+
+func (o MultiEntityRenameSourceNameTransformationPtrOutput) ToMultiEntityRenameSourceNameTransformationPtrOutput() MultiEntityRenameSourceNameTransformationPtrOutput {
+	return o
+}
+
+func (o MultiEntityRenameSourceNameTransformationPtrOutput) ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(ctx context.Context) MultiEntityRenameSourceNameTransformationPtrOutput {
+	return o
+}
+
+func (o MultiEntityRenameSourceNameTransformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiEntityRenameSourceNameTransformation] {
+	return pulumix.Output[*MultiEntityRenameSourceNameTransformation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MultiEntityRenameSourceNameTransformationPtrOutput) Elem() MultiEntityRenameSourceNameTransformationOutput {
+	return o.ApplyT(func(v *MultiEntityRenameSourceNameTransformation) MultiEntityRenameSourceNameTransformation {
+		if v != nil {
+			return *v
+		}
+		var ret MultiEntityRenameSourceNameTransformation
+		return ret
+	}).(MultiEntityRenameSourceNameTransformationOutput)
+}
+
+func (o MultiEntityRenameSourceNameTransformationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MultiEntityRenameSourceNameTransformationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MultiEntityRenameSourceNameTransformation) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MultiEntityRenameSourceNameTransformationInput is an input type that accepts MultiEntityRenameSourceNameTransformationArgs and MultiEntityRenameSourceNameTransformationOutput values.
+// You can construct a concrete instance of `MultiEntityRenameSourceNameTransformationInput` via:
+//
+//	MultiEntityRenameSourceNameTransformationArgs{...}
+type MultiEntityRenameSourceNameTransformationInput interface {
+	pulumi.Input
+
+	ToMultiEntityRenameSourceNameTransformationOutput() MultiEntityRenameSourceNameTransformationOutput
+	ToMultiEntityRenameSourceNameTransformationOutputWithContext(context.Context) MultiEntityRenameSourceNameTransformationOutput
+}
+
+var multiEntityRenameSourceNameTransformationPtrType = reflect.TypeOf((**MultiEntityRenameSourceNameTransformation)(nil)).Elem()
+
+type MultiEntityRenameSourceNameTransformationPtrInput interface {
+	pulumi.Input
+
+	ToMultiEntityRenameSourceNameTransformationPtrOutput() MultiEntityRenameSourceNameTransformationPtrOutput
+	ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(context.Context) MultiEntityRenameSourceNameTransformationPtrOutput
+}
+
+type multiEntityRenameSourceNameTransformationPtr string
+
+func MultiEntityRenameSourceNameTransformationPtr(v string) MultiEntityRenameSourceNameTransformationPtrInput {
+	return (*multiEntityRenameSourceNameTransformationPtr)(&v)
+}
+
+func (*multiEntityRenameSourceNameTransformationPtr) ElementType() reflect.Type {
+	return multiEntityRenameSourceNameTransformationPtrType
+}
+
+func (in *multiEntityRenameSourceNameTransformationPtr) ToMultiEntityRenameSourceNameTransformationPtrOutput() MultiEntityRenameSourceNameTransformationPtrOutput {
+	return pulumi.ToOutput(in).(MultiEntityRenameSourceNameTransformationPtrOutput)
+}
+
+func (in *multiEntityRenameSourceNameTransformationPtr) ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(ctx context.Context) MultiEntityRenameSourceNameTransformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MultiEntityRenameSourceNameTransformationPtrOutput)
+}
+
+func (in *multiEntityRenameSourceNameTransformationPtr) ToOutput(ctx context.Context) pulumix.Output[*MultiEntityRenameSourceNameTransformation] {
+	return pulumix.Output[*MultiEntityRenameSourceNameTransformation]{
+		OutputState: in.ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Initial dump parallelism level.
+type PerformanceConfigDumpParallelLevel string
+
+const (
+	// Unknown dump parallel level. Will be defaulted to OPTIMAL.
+	PerformanceConfigDumpParallelLevelDumpParallelLevelUnspecified = PerformanceConfigDumpParallelLevel("DUMP_PARALLEL_LEVEL_UNSPECIFIED")
+	// Minimal parallel level.
+	PerformanceConfigDumpParallelLevelMin = PerformanceConfigDumpParallelLevel("MIN")
+	// Optimal parallel level.
+	PerformanceConfigDumpParallelLevelOptimal = PerformanceConfigDumpParallelLevel("OPTIMAL")
+	// Maximum parallel level.
+	PerformanceConfigDumpParallelLevelMax = PerformanceConfigDumpParallelLevel("MAX")
+)
+
+func (PerformanceConfigDumpParallelLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceConfigDumpParallelLevel)(nil)).Elem()
+}
+
+func (e PerformanceConfigDumpParallelLevel) ToPerformanceConfigDumpParallelLevelOutput() PerformanceConfigDumpParallelLevelOutput {
+	return pulumi.ToOutput(e).(PerformanceConfigDumpParallelLevelOutput)
+}
+
+func (e PerformanceConfigDumpParallelLevel) ToPerformanceConfigDumpParallelLevelOutputWithContext(ctx context.Context) PerformanceConfigDumpParallelLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PerformanceConfigDumpParallelLevelOutput)
+}
+
+func (e PerformanceConfigDumpParallelLevel) ToPerformanceConfigDumpParallelLevelPtrOutput() PerformanceConfigDumpParallelLevelPtrOutput {
+	return e.ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(context.Background())
+}
+
+func (e PerformanceConfigDumpParallelLevel) ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(ctx context.Context) PerformanceConfigDumpParallelLevelPtrOutput {
+	return PerformanceConfigDumpParallelLevel(e).ToPerformanceConfigDumpParallelLevelOutputWithContext(ctx).ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(ctx)
+}
+
+func (e PerformanceConfigDumpParallelLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PerformanceConfigDumpParallelLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PerformanceConfigDumpParallelLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PerformanceConfigDumpParallelLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PerformanceConfigDumpParallelLevelOutput struct{ *pulumi.OutputState }
+
+func (PerformanceConfigDumpParallelLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceConfigDumpParallelLevel)(nil)).Elem()
+}
+
+func (o PerformanceConfigDumpParallelLevelOutput) ToPerformanceConfigDumpParallelLevelOutput() PerformanceConfigDumpParallelLevelOutput {
+	return o
+}
+
+func (o PerformanceConfigDumpParallelLevelOutput) ToPerformanceConfigDumpParallelLevelOutputWithContext(ctx context.Context) PerformanceConfigDumpParallelLevelOutput {
+	return o
+}
+
+func (o PerformanceConfigDumpParallelLevelOutput) ToPerformanceConfigDumpParallelLevelPtrOutput() PerformanceConfigDumpParallelLevelPtrOutput {
+	return o.ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(context.Background())
+}
+
+func (o PerformanceConfigDumpParallelLevelOutput) ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(ctx context.Context) PerformanceConfigDumpParallelLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PerformanceConfigDumpParallelLevel) *PerformanceConfigDumpParallelLevel {
+		return &v
+	}).(PerformanceConfigDumpParallelLevelPtrOutput)
+}
+
+func (o PerformanceConfigDumpParallelLevelOutput) ToOutput(ctx context.Context) pulumix.Output[PerformanceConfigDumpParallelLevel] {
+	return pulumix.Output[PerformanceConfigDumpParallelLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PerformanceConfigDumpParallelLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PerformanceConfigDumpParallelLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PerformanceConfigDumpParallelLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PerformanceConfigDumpParallelLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PerformanceConfigDumpParallelLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PerformanceConfigDumpParallelLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PerformanceConfigDumpParallelLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (PerformanceConfigDumpParallelLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerformanceConfigDumpParallelLevel)(nil)).Elem()
+}
+
+func (o PerformanceConfigDumpParallelLevelPtrOutput) ToPerformanceConfigDumpParallelLevelPtrOutput() PerformanceConfigDumpParallelLevelPtrOutput {
+	return o
+}
+
+func (o PerformanceConfigDumpParallelLevelPtrOutput) ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(ctx context.Context) PerformanceConfigDumpParallelLevelPtrOutput {
+	return o
+}
+
+func (o PerformanceConfigDumpParallelLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PerformanceConfigDumpParallelLevel] {
+	return pulumix.Output[*PerformanceConfigDumpParallelLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PerformanceConfigDumpParallelLevelPtrOutput) Elem() PerformanceConfigDumpParallelLevelOutput {
+	return o.ApplyT(func(v *PerformanceConfigDumpParallelLevel) PerformanceConfigDumpParallelLevel {
+		if v != nil {
+			return *v
+		}
+		var ret PerformanceConfigDumpParallelLevel
+		return ret
+	}).(PerformanceConfigDumpParallelLevelOutput)
+}
+
+func (o PerformanceConfigDumpParallelLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PerformanceConfigDumpParallelLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PerformanceConfigDumpParallelLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PerformanceConfigDumpParallelLevelInput is an input type that accepts PerformanceConfigDumpParallelLevelArgs and PerformanceConfigDumpParallelLevelOutput values.
+// You can construct a concrete instance of `PerformanceConfigDumpParallelLevelInput` via:
+//
+//	PerformanceConfigDumpParallelLevelArgs{...}
+type PerformanceConfigDumpParallelLevelInput interface {
+	pulumi.Input
+
+	ToPerformanceConfigDumpParallelLevelOutput() PerformanceConfigDumpParallelLevelOutput
+	ToPerformanceConfigDumpParallelLevelOutputWithContext(context.Context) PerformanceConfigDumpParallelLevelOutput
+}
+
+var performanceConfigDumpParallelLevelPtrType = reflect.TypeOf((**PerformanceConfigDumpParallelLevel)(nil)).Elem()
+
+type PerformanceConfigDumpParallelLevelPtrInput interface {
+	pulumi.Input
+
+	ToPerformanceConfigDumpParallelLevelPtrOutput() PerformanceConfigDumpParallelLevelPtrOutput
+	ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(context.Context) PerformanceConfigDumpParallelLevelPtrOutput
+}
+
+type performanceConfigDumpParallelLevelPtr string
+
+func PerformanceConfigDumpParallelLevelPtr(v string) PerformanceConfigDumpParallelLevelPtrInput {
+	return (*performanceConfigDumpParallelLevelPtr)(&v)
+}
+
+func (*performanceConfigDumpParallelLevelPtr) ElementType() reflect.Type {
+	return performanceConfigDumpParallelLevelPtrType
+}
+
+func (in *performanceConfigDumpParallelLevelPtr) ToPerformanceConfigDumpParallelLevelPtrOutput() PerformanceConfigDumpParallelLevelPtrOutput {
+	return pulumi.ToOutput(in).(PerformanceConfigDumpParallelLevelPtrOutput)
+}
+
+func (in *performanceConfigDumpParallelLevelPtr) ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(ctx context.Context) PerformanceConfigDumpParallelLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PerformanceConfigDumpParallelLevelPtrOutput)
+}
+
+func (in *performanceConfigDumpParallelLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*PerformanceConfigDumpParallelLevel] {
+	return pulumix.Output[*PerformanceConfigDumpParallelLevel]{
+		OutputState: in.ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Enum to set the option defining the datatypes numeric filter has to be applied to
+type SourceNumericFilterNumericFilterOption string
+
+const (
+	// Numeric filter option unspecified
+	SourceNumericFilterNumericFilterOptionNumericFilterOptionUnspecified = SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_UNSPECIFIED")
+	// Numeric filter option that matches all numeric columns.
+	SourceNumericFilterNumericFilterOptionNumericFilterOptionAll = SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_ALL")
+	// Numeric filter option that matches columns having numeric datatypes with specified precision and scale within the limited range of filter.
+	SourceNumericFilterNumericFilterOptionNumericFilterOptionLimit = SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_LIMIT")
+	// Numeric filter option that matches only the numeric columns with no precision and scale specified.
+	SourceNumericFilterNumericFilterOptionNumericFilterOptionLimitless = SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_LIMITLESS")
+)
+
+func (SourceNumericFilterNumericFilterOption) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceNumericFilterNumericFilterOption)(nil)).Elem()
+}
+
+func (e SourceNumericFilterNumericFilterOption) ToSourceNumericFilterNumericFilterOptionOutput() SourceNumericFilterNumericFilterOptionOutput {
+	return pulumi.ToOutput(e).(SourceNumericFilterNumericFilterOptionOutput)
+}
+
+func (e SourceNumericFilterNumericFilterOption) ToSourceNumericFilterNumericFilterOptionOutputWithContext(ctx context.Context) SourceNumericFilterNumericFilterOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SourceNumericFilterNumericFilterOptionOutput)
+}
+
+func (e SourceNumericFilterNumericFilterOption) ToSourceNumericFilterNumericFilterOptionPtrOutput() SourceNumericFilterNumericFilterOptionPtrOutput {
+	return e.ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(context.Background())
+}
+
+func (e SourceNumericFilterNumericFilterOption) ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(ctx context.Context) SourceNumericFilterNumericFilterOptionPtrOutput {
+	return SourceNumericFilterNumericFilterOption(e).ToSourceNumericFilterNumericFilterOptionOutputWithContext(ctx).ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(ctx)
+}
+
+func (e SourceNumericFilterNumericFilterOption) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SourceNumericFilterNumericFilterOption) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SourceNumericFilterNumericFilterOption) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SourceNumericFilterNumericFilterOption) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SourceNumericFilterNumericFilterOptionOutput struct{ *pulumi.OutputState }
+
+func (SourceNumericFilterNumericFilterOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceNumericFilterNumericFilterOption)(nil)).Elem()
+}
+
+func (o SourceNumericFilterNumericFilterOptionOutput) ToSourceNumericFilterNumericFilterOptionOutput() SourceNumericFilterNumericFilterOptionOutput {
+	return o
+}
+
+func (o SourceNumericFilterNumericFilterOptionOutput) ToSourceNumericFilterNumericFilterOptionOutputWithContext(ctx context.Context) SourceNumericFilterNumericFilterOptionOutput {
+	return o
+}
+
+func (o SourceNumericFilterNumericFilterOptionOutput) ToSourceNumericFilterNumericFilterOptionPtrOutput() SourceNumericFilterNumericFilterOptionPtrOutput {
+	return o.ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(context.Background())
+}
+
+func (o SourceNumericFilterNumericFilterOptionOutput) ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(ctx context.Context) SourceNumericFilterNumericFilterOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceNumericFilterNumericFilterOption) *SourceNumericFilterNumericFilterOption {
+		return &v
+	}).(SourceNumericFilterNumericFilterOptionPtrOutput)
+}
+
+func (o SourceNumericFilterNumericFilterOptionOutput) ToOutput(ctx context.Context) pulumix.Output[SourceNumericFilterNumericFilterOption] {
+	return pulumix.Output[SourceNumericFilterNumericFilterOption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SourceNumericFilterNumericFilterOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SourceNumericFilterNumericFilterOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SourceNumericFilterNumericFilterOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SourceNumericFilterNumericFilterOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SourceNumericFilterNumericFilterOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SourceNumericFilterNumericFilterOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SourceNumericFilterNumericFilterOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceNumericFilterNumericFilterOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceNumericFilterNumericFilterOption)(nil)).Elem()
+}
+
+func (o SourceNumericFilterNumericFilterOptionPtrOutput) ToSourceNumericFilterNumericFilterOptionPtrOutput() SourceNumericFilterNumericFilterOptionPtrOutput {
+	return o
+}
+
+func (o SourceNumericFilterNumericFilterOptionPtrOutput) ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(ctx context.Context) SourceNumericFilterNumericFilterOptionPtrOutput {
+	return o
+}
+
+func (o SourceNumericFilterNumericFilterOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceNumericFilterNumericFilterOption] {
+	return pulumix.Output[*SourceNumericFilterNumericFilterOption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SourceNumericFilterNumericFilterOptionPtrOutput) Elem() SourceNumericFilterNumericFilterOptionOutput {
+	return o.ApplyT(func(v *SourceNumericFilterNumericFilterOption) SourceNumericFilterNumericFilterOption {
+		if v != nil {
+			return *v
+		}
+		var ret SourceNumericFilterNumericFilterOption
+		return ret
+	}).(SourceNumericFilterNumericFilterOptionOutput)
+}
+
+func (o SourceNumericFilterNumericFilterOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SourceNumericFilterNumericFilterOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SourceNumericFilterNumericFilterOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SourceNumericFilterNumericFilterOptionInput is an input type that accepts SourceNumericFilterNumericFilterOptionArgs and SourceNumericFilterNumericFilterOptionOutput values.
+// You can construct a concrete instance of `SourceNumericFilterNumericFilterOptionInput` via:
+//
+//	SourceNumericFilterNumericFilterOptionArgs{...}
+type SourceNumericFilterNumericFilterOptionInput interface {
+	pulumi.Input
+
+	ToSourceNumericFilterNumericFilterOptionOutput() SourceNumericFilterNumericFilterOptionOutput
+	ToSourceNumericFilterNumericFilterOptionOutputWithContext(context.Context) SourceNumericFilterNumericFilterOptionOutput
+}
+
+var sourceNumericFilterNumericFilterOptionPtrType = reflect.TypeOf((**SourceNumericFilterNumericFilterOption)(nil)).Elem()
+
+type SourceNumericFilterNumericFilterOptionPtrInput interface {
+	pulumi.Input
+
+	ToSourceNumericFilterNumericFilterOptionPtrOutput() SourceNumericFilterNumericFilterOptionPtrOutput
+	ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(context.Context) SourceNumericFilterNumericFilterOptionPtrOutput
+}
+
+type sourceNumericFilterNumericFilterOptionPtr string
+
+func SourceNumericFilterNumericFilterOptionPtr(v string) SourceNumericFilterNumericFilterOptionPtrInput {
+	return (*sourceNumericFilterNumericFilterOptionPtr)(&v)
+}
+
+func (*sourceNumericFilterNumericFilterOptionPtr) ElementType() reflect.Type {
+	return sourceNumericFilterNumericFilterOptionPtrType
+}
+
+func (in *sourceNumericFilterNumericFilterOptionPtr) ToSourceNumericFilterNumericFilterOptionPtrOutput() SourceNumericFilterNumericFilterOptionPtrOutput {
+	return pulumi.ToOutput(in).(SourceNumericFilterNumericFilterOptionPtrOutput)
+}
+
+func (in *sourceNumericFilterNumericFilterOptionPtr) ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(ctx context.Context) SourceNumericFilterNumericFilterOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SourceNumericFilterNumericFilterOptionPtrOutput)
+}
+
+func (in *sourceNumericFilterNumericFilterOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*SourceNumericFilterNumericFilterOption] {
+	return pulumix.Output[*SourceNumericFilterNumericFilterOption]{
+		OutputState: in.ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+type ValueListFilterValuePresentList string
+
+const (
+	// Value present in list unspecified
+	ValueListFilterValuePresentListValuePresentInListUnspecified = ValueListFilterValuePresentList("VALUE_PRESENT_IN_LIST_UNSPECIFIED")
+	// If the source value is in the supplied list at value_list
+	ValueListFilterValuePresentListValuePresentInListIfValueList = ValueListFilterValuePresentList("VALUE_PRESENT_IN_LIST_IF_VALUE_LIST")
+	// If the source value is not in the supplied list at value_list
+	ValueListFilterValuePresentListValuePresentInListIfValueNotList = ValueListFilterValuePresentList("VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST")
+)
+
+func (ValueListFilterValuePresentList) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueListFilterValuePresentList)(nil)).Elem()
+}
+
+func (e ValueListFilterValuePresentList) ToValueListFilterValuePresentListOutput() ValueListFilterValuePresentListOutput {
+	return pulumi.ToOutput(e).(ValueListFilterValuePresentListOutput)
+}
+
+func (e ValueListFilterValuePresentList) ToValueListFilterValuePresentListOutputWithContext(ctx context.Context) ValueListFilterValuePresentListOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ValueListFilterValuePresentListOutput)
+}
+
+func (e ValueListFilterValuePresentList) ToValueListFilterValuePresentListPtrOutput() ValueListFilterValuePresentListPtrOutput {
+	return e.ToValueListFilterValuePresentListPtrOutputWithContext(context.Background())
+}
+
+func (e ValueListFilterValuePresentList) ToValueListFilterValuePresentListPtrOutputWithContext(ctx context.Context) ValueListFilterValuePresentListPtrOutput {
+	return ValueListFilterValuePresentList(e).ToValueListFilterValuePresentListOutputWithContext(ctx).ToValueListFilterValuePresentListPtrOutputWithContext(ctx)
+}
+
+func (e ValueListFilterValuePresentList) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ValueListFilterValuePresentList) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ValueListFilterValuePresentList) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ValueListFilterValuePresentList) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ValueListFilterValuePresentListOutput struct{ *pulumi.OutputState }
+
+func (ValueListFilterValuePresentListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueListFilterValuePresentList)(nil)).Elem()
+}
+
+func (o ValueListFilterValuePresentListOutput) ToValueListFilterValuePresentListOutput() ValueListFilterValuePresentListOutput {
+	return o
+}
+
+func (o ValueListFilterValuePresentListOutput) ToValueListFilterValuePresentListOutputWithContext(ctx context.Context) ValueListFilterValuePresentListOutput {
+	return o
+}
+
+func (o ValueListFilterValuePresentListOutput) ToValueListFilterValuePresentListPtrOutput() ValueListFilterValuePresentListPtrOutput {
+	return o.ToValueListFilterValuePresentListPtrOutputWithContext(context.Background())
+}
+
+func (o ValueListFilterValuePresentListOutput) ToValueListFilterValuePresentListPtrOutputWithContext(ctx context.Context) ValueListFilterValuePresentListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValueListFilterValuePresentList) *ValueListFilterValuePresentList {
+		return &v
+	}).(ValueListFilterValuePresentListPtrOutput)
+}
+
+func (o ValueListFilterValuePresentListOutput) ToOutput(ctx context.Context) pulumix.Output[ValueListFilterValuePresentList] {
+	return pulumix.Output[ValueListFilterValuePresentList]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ValueListFilterValuePresentListOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ValueListFilterValuePresentListOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ValueListFilterValuePresentList) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ValueListFilterValuePresentListOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ValueListFilterValuePresentListOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ValueListFilterValuePresentList) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ValueListFilterValuePresentListPtrOutput struct{ *pulumi.OutputState }
+
+func (ValueListFilterValuePresentListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValueListFilterValuePresentList)(nil)).Elem()
+}
+
+func (o ValueListFilterValuePresentListPtrOutput) ToValueListFilterValuePresentListPtrOutput() ValueListFilterValuePresentListPtrOutput {
+	return o
+}
+
+func (o ValueListFilterValuePresentListPtrOutput) ToValueListFilterValuePresentListPtrOutputWithContext(ctx context.Context) ValueListFilterValuePresentListPtrOutput {
+	return o
+}
+
+func (o ValueListFilterValuePresentListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ValueListFilterValuePresentList] {
+	return pulumix.Output[*ValueListFilterValuePresentList]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ValueListFilterValuePresentListPtrOutput) Elem() ValueListFilterValuePresentListOutput {
+	return o.ApplyT(func(v *ValueListFilterValuePresentList) ValueListFilterValuePresentList {
+		if v != nil {
+			return *v
+		}
+		var ret ValueListFilterValuePresentList
+		return ret
+	}).(ValueListFilterValuePresentListOutput)
+}
+
+func (o ValueListFilterValuePresentListPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ValueListFilterValuePresentListPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ValueListFilterValuePresentList) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ValueListFilterValuePresentListInput is an input type that accepts ValueListFilterValuePresentListArgs and ValueListFilterValuePresentListOutput values.
+// You can construct a concrete instance of `ValueListFilterValuePresentListInput` via:
+//
+//	ValueListFilterValuePresentListArgs{...}
+type ValueListFilterValuePresentListInput interface {
+	pulumi.Input
+
+	ToValueListFilterValuePresentListOutput() ValueListFilterValuePresentListOutput
+	ToValueListFilterValuePresentListOutputWithContext(context.Context) ValueListFilterValuePresentListOutput
+}
+
+var valueListFilterValuePresentListPtrType = reflect.TypeOf((**ValueListFilterValuePresentList)(nil)).Elem()
+
+type ValueListFilterValuePresentListPtrInput interface {
+	pulumi.Input
+
+	ToValueListFilterValuePresentListPtrOutput() ValueListFilterValuePresentListPtrOutput
+	ToValueListFilterValuePresentListPtrOutputWithContext(context.Context) ValueListFilterValuePresentListPtrOutput
+}
+
+type valueListFilterValuePresentListPtr string
+
+func ValueListFilterValuePresentListPtr(v string) ValueListFilterValuePresentListPtrInput {
+	return (*valueListFilterValuePresentListPtr)(&v)
+}
+
+func (*valueListFilterValuePresentListPtr) ElementType() reflect.Type {
+	return valueListFilterValuePresentListPtrType
+}
+
+func (in *valueListFilterValuePresentListPtr) ToValueListFilterValuePresentListPtrOutput() ValueListFilterValuePresentListPtrOutput {
+	return pulumi.ToOutput(in).(ValueListFilterValuePresentListPtrOutput)
+}
+
+func (in *valueListFilterValuePresentListPtr) ToValueListFilterValuePresentListPtrOutputWithContext(ctx context.Context) ValueListFilterValuePresentListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ValueListFilterValuePresentListPtrOutput)
+}
+
+func (in *valueListFilterValuePresentListPtr) ToOutput(ctx context.Context) pulumix.Output[*ValueListFilterValuePresentList] {
+	return pulumix.Output[*ValueListFilterValuePresentList]{
+		OutputState: in.ToValueListFilterValuePresentListPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlloyDbSettingsDatabaseVersionInput)(nil)).Elem(), AlloyDbSettingsDatabaseVersion("DATABASE_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AlloyDbSettingsDatabaseVersionPtrInput)(nil)).Elem(), AlloyDbSettingsDatabaseVersion("DATABASE_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsActivationPolicyInput)(nil)).Elem(), CloudSqlSettingsActivationPolicy("SQL_ACTIVATION_POLICY_UNSPECIFIED"))
@@ -2330,6 +4266,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsDataDiskTypePtrInput)(nil)).Elem(), CloudSqlSettingsDataDiskType("SQL_DATA_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsDatabaseVersionInput)(nil)).Elem(), CloudSqlSettingsDatabaseVersion("SQL_DATABASE_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsDatabaseVersionPtrInput)(nil)).Elem(), CloudSqlSettingsDatabaseVersion("SQL_DATABASE_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsEditionInput)(nil)).Elem(), CloudSqlSettingsEdition("EDITION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsEditionPtrInput)(nil)).Elem(), CloudSqlSettingsEdition("EDITION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileProviderInput)(nil)).Elem(), ConnectionProfileProvider("DATABASE_PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileProviderPtrInput)(nil)).Elem(), ConnectionProfileProvider("DATABASE_PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStateEnumInput)(nil)).Elem(), ConnectionProfileStateEnum("STATE_UNSPECIFIED"))
@@ -2340,10 +4278,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeEnginePtrInput)(nil)).Elem(), DatabaseTypeEngine("DATABASE_ENGINE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeProviderInput)(nil)).Elem(), DatabaseTypeProvider("DATABASE_PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeProviderPtrInput)(nil)).Elem(), DatabaseTypeProvider("DATABASE_PROVIDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DoubleComparisonFilterValueComparisonInput)(nil)).Elem(), DoubleComparisonFilterValueComparison("VALUE_COMPARISON_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DoubleComparisonFilterValueComparisonPtrInput)(nil)).Elem(), DoubleComparisonFilterValueComparison("VALUE_COMPARISON_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IntComparisonFilterValueComparisonInput)(nil)).Elem(), IntComparisonFilterValueComparison("VALUE_COMPARISON_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IntComparisonFilterValueComparisonPtrInput)(nil)).Elem(), IntComparisonFilterValueComparison("VALUE_COMPARISON_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MappingRuleRuleScopeInput)(nil)).Elem(), MappingRuleRuleScope("DATABASE_ENTITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MappingRuleRuleScopePtrInput)(nil)).Elem(), MappingRuleRuleScope("DATABASE_ENTITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MappingRuleStateEnumInput)(nil)).Elem(), MappingRuleStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MappingRuleStateEnumPtrInput)(nil)).Elem(), MappingRuleStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobStateEnumInput)(nil)).Elem(), MigrationJobStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobStateEnumPtrInput)(nil)).Elem(), MigrationJobStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobTypeInput)(nil)).Elem(), MigrationJobType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobTypePtrInput)(nil)).Elem(), MigrationJobType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiEntityRenameSourceNameTransformationInput)(nil)).Elem(), MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiEntityRenameSourceNameTransformationPtrInput)(nil)).Elem(), MultiEntityRenameSourceNameTransformation("ENTITY_NAME_TRANSFORMATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceConfigDumpParallelLevelInput)(nil)).Elem(), PerformanceConfigDumpParallelLevel("DUMP_PARALLEL_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceConfigDumpParallelLevelPtrInput)(nil)).Elem(), PerformanceConfigDumpParallelLevel("DUMP_PARALLEL_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceNumericFilterNumericFilterOptionInput)(nil)).Elem(), SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceNumericFilterNumericFilterOptionPtrInput)(nil)).Elem(), SourceNumericFilterNumericFilterOption("NUMERIC_FILTER_OPTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ValueListFilterValuePresentListInput)(nil)).Elem(), ValueListFilterValuePresentList("VALUE_PRESENT_IN_LIST_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ValueListFilterValuePresentListPtrInput)(nil)).Elem(), ValueListFilterValuePresentList("VALUE_PRESENT_IN_LIST_UNSPECIFIED"))
+	pulumi.RegisterOutputType(AlloyDbSettingsDatabaseVersionOutput{})
+	pulumi.RegisterOutputType(AlloyDbSettingsDatabaseVersionPtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsActivationPolicyOutput{})
@@ -2354,6 +4310,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudSqlSettingsDataDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsDatabaseVersionOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsDatabaseVersionPtrOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsEditionOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsEditionPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileProviderOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileProviderPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileStateEnumOutput{})
@@ -2364,8 +4322,24 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseTypeEnginePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeProviderOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeProviderPtrOutput{})
+	pulumi.RegisterOutputType(DoubleComparisonFilterValueComparisonOutput{})
+	pulumi.RegisterOutputType(DoubleComparisonFilterValueComparisonPtrOutput{})
+	pulumi.RegisterOutputType(IntComparisonFilterValueComparisonOutput{})
+	pulumi.RegisterOutputType(IntComparisonFilterValueComparisonPtrOutput{})
+	pulumi.RegisterOutputType(MappingRuleRuleScopeOutput{})
+	pulumi.RegisterOutputType(MappingRuleRuleScopePtrOutput{})
+	pulumi.RegisterOutputType(MappingRuleStateEnumOutput{})
+	pulumi.RegisterOutputType(MappingRuleStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(MigrationJobStateEnumOutput{})
 	pulumi.RegisterOutputType(MigrationJobStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(MigrationJobTypeOutput{})
 	pulumi.RegisterOutputType(MigrationJobTypePtrOutput{})
+	pulumi.RegisterOutputType(MultiEntityRenameSourceNameTransformationOutput{})
+	pulumi.RegisterOutputType(MultiEntityRenameSourceNameTransformationPtrOutput{})
+	pulumi.RegisterOutputType(PerformanceConfigDumpParallelLevelOutput{})
+	pulumi.RegisterOutputType(PerformanceConfigDumpParallelLevelPtrOutput{})
+	pulumi.RegisterOutputType(SourceNumericFilterNumericFilterOptionOutput{})
+	pulumi.RegisterOutputType(SourceNumericFilterNumericFilterOptionPtrOutput{})
+	pulumi.RegisterOutputType(ValueListFilterValuePresentListOutput{})
+	pulumi.RegisterOutputType(ValueListFilterValuePresentListPtrOutput{})
 }

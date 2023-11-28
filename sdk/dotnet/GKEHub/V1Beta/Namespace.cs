@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Labels for this Namespace.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -38,10 +44,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        /// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
         /// </summary>
-        [Output("namespaceId")]
-        public Output<string> NamespaceId { get; private set; } = null!;
+        [Output("namespaceLabels")]
+        public Output<ImmutableDictionary<string, string>> NamespaceLabels { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -51,6 +57,15 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
+
+        [Output("scopeId")]
+        public Output<string> ScopeId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        /// </summary>
+        [Output("scopeNamespaceId")]
+        public Output<string> ScopeNamespaceId { get; private set; } = null!;
 
         /// <summary>
         /// State of the namespace resource.
@@ -96,8 +111,9 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
                 ReplaceOnChanges =
                 {
                     "location",
-                    "namespaceId",
                     "project",
+                    "scopeId",
+                    "scopeNamespaceId",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -121,6 +137,18 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
 
     public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Optional. Labels for this Namespace.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -130,11 +158,17 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("namespaceLabels")]
+        private InputMap<string>? _namespaceLabels;
+
         /// <summary>
-        /// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        /// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
         /// </summary>
-        [Input("namespaceId", required: true)]
-        public Input<string> NamespaceId { get; set; } = null!;
+        public InputMap<string> NamespaceLabels
+        {
+            get => _namespaceLabels ?? (_namespaceLabels = new InputMap<string>());
+            set => _namespaceLabels = value;
+        }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -144,6 +178,15 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
+
+        [Input("scopeId", required: true)]
+        public Input<string> ScopeId { get; set; } = null!;
+
+        /// <summary>
+        /// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        /// </summary>
+        [Input("scopeNamespaceId", required: true)]
+        public Input<string> ScopeNamespaceId { get; set; } = null!;
 
         public NamespaceArgs()
         {

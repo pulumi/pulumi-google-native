@@ -2,6 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const BootDiskDefaultsDiskType = {
+    /**
+     * An unspecified disk type. Will be used as STANDARD.
+     */
+    ComputeEngineDiskTypeUnspecified: "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED",
+    /**
+     * A Standard disk type.
+     */
+    ComputeEngineDiskTypeStandard: "COMPUTE_ENGINE_DISK_TYPE_STANDARD",
+    /**
+     * SSD hard disk type.
+     */
+    ComputeEngineDiskTypeSsd: "COMPUTE_ENGINE_DISK_TYPE_SSD",
+    /**
+     * An alternative to SSD persistent disks that balance performance and cost.
+     */
+    ComputeEngineDiskTypeBalanced: "COMPUTE_ENGINE_DISK_TYPE_BALANCED",
+} as const;
+
+/**
+ * Optional. The type of disk provisioning to use for the VM.
+ */
+export type BootDiskDefaultsDiskType = (typeof BootDiskDefaultsDiskType)[keyof typeof BootDiskDefaultsDiskType];
+
 export const ComputeEngineTargetDefaultsDiskType = {
     /**
      * An unspecified disk type. Will be used as STANDARD.
@@ -85,6 +109,50 @@ export const ComputeSchedulingRestartType = {
  * Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
  */
 export type ComputeSchedulingRestartType = (typeof ComputeSchedulingRestartType)[keyof typeof ComputeSchedulingRestartType];
+
+export const GroupMigrationTargetType = {
+    /**
+     * Group type is not specified. This defaults to Compute Engine targets.
+     */
+    MigrationTargetTypeUnspecified: "MIGRATION_TARGET_TYPE_UNSPECIFIED",
+    /**
+     * All MigratingVMs in the group must have Compute Engine targets.
+     */
+    MigrationTargetTypeGce: "MIGRATION_TARGET_TYPE_GCE",
+    /**
+     * All MigratingVMs in the group must have Compute Engine Disks targets.
+     */
+    MigrationTargetTypeDisks: "MIGRATION_TARGET_TYPE_DISKS",
+} as const;
+
+/**
+ * Immutable. The target type of this group.
+ */
+export type GroupMigrationTargetType = (typeof GroupMigrationTargetType)[keyof typeof GroupMigrationTargetType];
+
+export const PersistentDiskDefaultsDiskType = {
+    /**
+     * An unspecified disk type. Will be used as STANDARD.
+     */
+    ComputeEngineDiskTypeUnspecified: "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED",
+    /**
+     * A Standard disk type.
+     */
+    ComputeEngineDiskTypeStandard: "COMPUTE_ENGINE_DISK_TYPE_STANDARD",
+    /**
+     * SSD hard disk type.
+     */
+    ComputeEngineDiskTypeSsd: "COMPUTE_ENGINE_DISK_TYPE_SSD",
+    /**
+     * An alternative to SSD persistent disks that balance performance and cost.
+     */
+    ComputeEngineDiskTypeBalanced: "COMPUTE_ENGINE_DISK_TYPE_BALANCED",
+} as const;
+
+/**
+ * The disk type to use.
+ */
+export type PersistentDiskDefaultsDiskType = (typeof PersistentDiskDefaultsDiskType)[keyof typeof PersistentDiskDefaultsDiskType];
 
 export const SchedulingNodeAffinityOperator = {
     /**

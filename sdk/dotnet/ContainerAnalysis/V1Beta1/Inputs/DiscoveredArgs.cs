@@ -54,6 +54,18 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         [Input("lastAnalysisTime")]
         public Input<string>? LastAnalysisTime { get; set; }
 
+        /// <summary>
+        /// The last time this resource was scanned.
+        /// </summary>
+        [Input("lastScanTime")]
+        public Input<string>? LastScanTime { get; set; }
+
+        /// <summary>
+        /// The status of an SBOM generation.
+        /// </summary>
+        [Input("sbomStatus")]
+        public Input<Inputs.SBOMStatusArgs>? SbomStatus { get; set; }
+
         public DiscoveredArgs()
         {
         }

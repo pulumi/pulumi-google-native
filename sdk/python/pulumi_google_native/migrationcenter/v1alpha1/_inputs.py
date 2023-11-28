@@ -19,8 +19,13 @@ __all__ = [
     'PayloadFileArgs',
     'RegionPreferencesArgs',
     'ReportConfigGroupPreferenceSetAssignmentArgs',
+    'SoleTenancyPreferencesArgs',
+    'SoleTenantNodeTypeArgs',
     'UploadFileInfoArgs',
+    'VirtualMachinePreferencesNetworkCostParametersArgs',
+    'VirtualMachinePreferencesSizingOptimizationCustomParametersArgs',
     'VirtualMachinePreferencesArgs',
+    'VmwareEnginePreferencesArgs',
 ]
 
 @pulumi.input_type
@@ -310,6 +315,102 @@ class ReportConfigGroupPreferenceSetAssignmentArgs:
 
 
 @pulumi.input_type
+class SoleTenancyPreferencesArgs:
+    def __init__(__self__, *,
+                 commitment_plan: Optional[pulumi.Input['SoleTenancyPreferencesCommitmentPlan']] = None,
+                 cpu_overcommit_ratio: Optional[pulumi.Input[float]] = None,
+                 host_maintenance_policy: Optional[pulumi.Input['SoleTenancyPreferencesHostMaintenancePolicy']] = None,
+                 node_types: Optional[pulumi.Input[Sequence[pulumi.Input['SoleTenantNodeTypeArgs']]]] = None):
+        """
+        Preferences concerning Sole Tenancy nodes and VMs.
+        :param pulumi.Input['SoleTenancyPreferencesCommitmentPlan'] commitment_plan: Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        :param pulumi.Input[float] cpu_overcommit_ratio: CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+        :param pulumi.Input['SoleTenancyPreferencesHostMaintenancePolicy'] host_maintenance_policy: Sole Tenancy nodes maintenance policy.
+        :param pulumi.Input[Sequence[pulumi.Input['SoleTenantNodeTypeArgs']]] node_types: A list of sole tenant node types. An empty list means that all possible node types will be considered.
+        """
+        if commitment_plan is not None:
+            pulumi.set(__self__, "commitment_plan", commitment_plan)
+        if cpu_overcommit_ratio is not None:
+            pulumi.set(__self__, "cpu_overcommit_ratio", cpu_overcommit_ratio)
+        if host_maintenance_policy is not None:
+            pulumi.set(__self__, "host_maintenance_policy", host_maintenance_policy)
+        if node_types is not None:
+            pulumi.set(__self__, "node_types", node_types)
+
+    @property
+    @pulumi.getter(name="commitmentPlan")
+    def commitment_plan(self) -> Optional[pulumi.Input['SoleTenancyPreferencesCommitmentPlan']]:
+        """
+        Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        """
+        return pulumi.get(self, "commitment_plan")
+
+    @commitment_plan.setter
+    def commitment_plan(self, value: Optional[pulumi.Input['SoleTenancyPreferencesCommitmentPlan']]):
+        pulumi.set(self, "commitment_plan", value)
+
+    @property
+    @pulumi.getter(name="cpuOvercommitRatio")
+    def cpu_overcommit_ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+        """
+        return pulumi.get(self, "cpu_overcommit_ratio")
+
+    @cpu_overcommit_ratio.setter
+    def cpu_overcommit_ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu_overcommit_ratio", value)
+
+    @property
+    @pulumi.getter(name="hostMaintenancePolicy")
+    def host_maintenance_policy(self) -> Optional[pulumi.Input['SoleTenancyPreferencesHostMaintenancePolicy']]:
+        """
+        Sole Tenancy nodes maintenance policy.
+        """
+        return pulumi.get(self, "host_maintenance_policy")
+
+    @host_maintenance_policy.setter
+    def host_maintenance_policy(self, value: Optional[pulumi.Input['SoleTenancyPreferencesHostMaintenancePolicy']]):
+        pulumi.set(self, "host_maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="nodeTypes")
+    def node_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SoleTenantNodeTypeArgs']]]]:
+        """
+        A list of sole tenant node types. An empty list means that all possible node types will be considered.
+        """
+        return pulumi.get(self, "node_types")
+
+    @node_types.setter
+    def node_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SoleTenantNodeTypeArgs']]]]):
+        pulumi.set(self, "node_types", value)
+
+
+@pulumi.input_type
+class SoleTenantNodeTypeArgs:
+    def __init__(__self__, *,
+                 node_name: Optional[pulumi.Input[str]] = None):
+        """
+        A Sole Tenant node type.
+        :param pulumi.Input[str] node_name: Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        """
+        if node_name is not None:
+            pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        """
+        return pulumi.get(self, "node_name")
+
+    @node_name.setter
+    def node_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_name", value)
+
+
+@pulumi.input_type
 class UploadFileInfoArgs:
     def __init__(__self__):
         """
@@ -319,27 +420,143 @@ class UploadFileInfoArgs:
 
 
 @pulumi.input_type
+class VirtualMachinePreferencesNetworkCostParametersArgs:
+    def __init__(__self__, *,
+                 estimated_egress_traffic_percentage: Optional[pulumi.Input[int]] = None):
+        """
+        Parameters that affect network cost estimations.
+        :param pulumi.Input[int] estimated_egress_traffic_percentage: Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+        """
+        if estimated_egress_traffic_percentage is not None:
+            pulumi.set(__self__, "estimated_egress_traffic_percentage", estimated_egress_traffic_percentage)
+
+    @property
+    @pulumi.getter(name="estimatedEgressTrafficPercentage")
+    def estimated_egress_traffic_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+        """
+        return pulumi.get(self, "estimated_egress_traffic_percentage")
+
+    @estimated_egress_traffic_percentage.setter
+    def estimated_egress_traffic_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "estimated_egress_traffic_percentage", value)
+
+
+@pulumi.input_type
+class VirtualMachinePreferencesSizingOptimizationCustomParametersArgs:
+    def __init__(__self__, *,
+                 aggregation_method: Optional[pulumi.Input['VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod']] = None,
+                 cpu_usage_percentage: Optional[pulumi.Input[int]] = None,
+                 memory_usage_percentage: Optional[pulumi.Input[int]] = None,
+                 storage_multiplier: Optional[pulumi.Input[float]] = None):
+        """
+        Custom data to use for sizing optimizations.
+        :param pulumi.Input['VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod'] aggregation_method: Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+        :param pulumi.Input[int] cpu_usage_percentage: Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+        :param pulumi.Input[int] memory_usage_percentage: Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+        :param pulumi.Input[float] storage_multiplier: Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+        """
+        if aggregation_method is not None:
+            pulumi.set(__self__, "aggregation_method", aggregation_method)
+        if cpu_usage_percentage is not None:
+            pulumi.set(__self__, "cpu_usage_percentage", cpu_usage_percentage)
+        if memory_usage_percentage is not None:
+            pulumi.set(__self__, "memory_usage_percentage", memory_usage_percentage)
+        if storage_multiplier is not None:
+            pulumi.set(__self__, "storage_multiplier", storage_multiplier)
+
+    @property
+    @pulumi.getter(name="aggregationMethod")
+    def aggregation_method(self) -> Optional[pulumi.Input['VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod']]:
+        """
+        Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+        """
+        return pulumi.get(self, "aggregation_method")
+
+    @aggregation_method.setter
+    def aggregation_method(self, value: Optional[pulumi.Input['VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod']]):
+        pulumi.set(self, "aggregation_method", value)
+
+    @property
+    @pulumi.getter(name="cpuUsagePercentage")
+    def cpu_usage_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+        """
+        return pulumi.get(self, "cpu_usage_percentage")
+
+    @cpu_usage_percentage.setter
+    def cpu_usage_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_usage_percentage", value)
+
+    @property
+    @pulumi.getter(name="memoryUsagePercentage")
+    def memory_usage_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+        """
+        return pulumi.get(self, "memory_usage_percentage")
+
+    @memory_usage_percentage.setter
+    def memory_usage_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_usage_percentage", value)
+
+    @property
+    @pulumi.getter(name="storageMultiplier")
+    def storage_multiplier(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+        """
+        return pulumi.get(self, "storage_multiplier")
+
+    @storage_multiplier.setter
+    def storage_multiplier(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "storage_multiplier", value)
+
+
+@pulumi.input_type
 class VirtualMachinePreferencesArgs:
     def __init__(__self__, *,
                  commitment_plan: Optional[pulumi.Input['VirtualMachinePreferencesCommitmentPlan']] = None,
                  compute_engine_preferences: Optional[pulumi.Input['ComputeEnginePreferencesArgs']] = None,
+                 network_cost_parameters: Optional[pulumi.Input['VirtualMachinePreferencesNetworkCostParametersArgs']] = None,
                  region_preferences: Optional[pulumi.Input['RegionPreferencesArgs']] = None,
-                 sizing_optimization_strategy: Optional[pulumi.Input['VirtualMachinePreferencesSizingOptimizationStrategy']] = None):
+                 sizing_optimization_custom_parameters: Optional[pulumi.Input['VirtualMachinePreferencesSizingOptimizationCustomParametersArgs']] = None,
+                 sizing_optimization_strategy: Optional[pulumi.Input['VirtualMachinePreferencesSizingOptimizationStrategy']] = None,
+                 sole_tenancy_preferences: Optional[pulumi.Input['SoleTenancyPreferencesArgs']] = None,
+                 target_product: Optional[pulumi.Input['VirtualMachinePreferencesTargetProduct']] = None,
+                 vmware_engine_preferences: Optional[pulumi.Input['VmwareEnginePreferencesArgs']] = None):
         """
-        VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+        VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
         :param pulumi.Input['VirtualMachinePreferencesCommitmentPlan'] commitment_plan: Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
         :param pulumi.Input['ComputeEnginePreferencesArgs'] compute_engine_preferences: Compute Engine preferences concern insights and recommendations for Compute Engine target.
-        :param pulumi.Input['RegionPreferencesArgs'] region_preferences: Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+        :param pulumi.Input['VirtualMachinePreferencesNetworkCostParametersArgs'] network_cost_parameters: Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+        :param pulumi.Input['RegionPreferencesArgs'] region_preferences: Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
+        :param pulumi.Input['VirtualMachinePreferencesSizingOptimizationCustomParametersArgs'] sizing_optimization_custom_parameters: Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
         :param pulumi.Input['VirtualMachinePreferencesSizingOptimizationStrategy'] sizing_optimization_strategy: Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
+        :param pulumi.Input['SoleTenancyPreferencesArgs'] sole_tenancy_preferences: Preferences concerning Sole Tenant nodes and virtual machines.
+        :param pulumi.Input['VirtualMachinePreferencesTargetProduct'] target_product: Target product for assets using this preference set. Specify either target product or business goal, but not both.
+        :param pulumi.Input['VmwareEnginePreferencesArgs'] vmware_engine_preferences: Preferences concerning insights and recommendations for Google Cloud VMware Engine.
         """
         if commitment_plan is not None:
             pulumi.set(__self__, "commitment_plan", commitment_plan)
         if compute_engine_preferences is not None:
             pulumi.set(__self__, "compute_engine_preferences", compute_engine_preferences)
+        if network_cost_parameters is not None:
+            pulumi.set(__self__, "network_cost_parameters", network_cost_parameters)
         if region_preferences is not None:
             pulumi.set(__self__, "region_preferences", region_preferences)
+        if sizing_optimization_custom_parameters is not None:
+            pulumi.set(__self__, "sizing_optimization_custom_parameters", sizing_optimization_custom_parameters)
         if sizing_optimization_strategy is not None:
             pulumi.set(__self__, "sizing_optimization_strategy", sizing_optimization_strategy)
+        if sole_tenancy_preferences is not None:
+            pulumi.set(__self__, "sole_tenancy_preferences", sole_tenancy_preferences)
+        if target_product is not None:
+            pulumi.set(__self__, "target_product", target_product)
+        if vmware_engine_preferences is not None:
+            pulumi.set(__self__, "vmware_engine_preferences", vmware_engine_preferences)
 
     @property
     @pulumi.getter(name="commitmentPlan")
@@ -366,16 +583,40 @@ class VirtualMachinePreferencesArgs:
         pulumi.set(self, "compute_engine_preferences", value)
 
     @property
+    @pulumi.getter(name="networkCostParameters")
+    def network_cost_parameters(self) -> Optional[pulumi.Input['VirtualMachinePreferencesNetworkCostParametersArgs']]:
+        """
+        Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+        """
+        return pulumi.get(self, "network_cost_parameters")
+
+    @network_cost_parameters.setter
+    def network_cost_parameters(self, value: Optional[pulumi.Input['VirtualMachinePreferencesNetworkCostParametersArgs']]):
+        pulumi.set(self, "network_cost_parameters", value)
+
+    @property
     @pulumi.getter(name="regionPreferences")
     def region_preferences(self) -> Optional[pulumi.Input['RegionPreferencesArgs']]:
         """
-        Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+        Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
         """
         return pulumi.get(self, "region_preferences")
 
     @region_preferences.setter
     def region_preferences(self, value: Optional[pulumi.Input['RegionPreferencesArgs']]):
         pulumi.set(self, "region_preferences", value)
+
+    @property
+    @pulumi.getter(name="sizingOptimizationCustomParameters")
+    def sizing_optimization_custom_parameters(self) -> Optional[pulumi.Input['VirtualMachinePreferencesSizingOptimizationCustomParametersArgs']]:
+        """
+        Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+        """
+        return pulumi.get(self, "sizing_optimization_custom_parameters")
+
+    @sizing_optimization_custom_parameters.setter
+    def sizing_optimization_custom_parameters(self, value: Optional[pulumi.Input['VirtualMachinePreferencesSizingOptimizationCustomParametersArgs']]):
+        pulumi.set(self, "sizing_optimization_custom_parameters", value)
 
     @property
     @pulumi.getter(name="sizingOptimizationStrategy")
@@ -388,5 +629,113 @@ class VirtualMachinePreferencesArgs:
     @sizing_optimization_strategy.setter
     def sizing_optimization_strategy(self, value: Optional[pulumi.Input['VirtualMachinePreferencesSizingOptimizationStrategy']]):
         pulumi.set(self, "sizing_optimization_strategy", value)
+
+    @property
+    @pulumi.getter(name="soleTenancyPreferences")
+    def sole_tenancy_preferences(self) -> Optional[pulumi.Input['SoleTenancyPreferencesArgs']]:
+        """
+        Preferences concerning Sole Tenant nodes and virtual machines.
+        """
+        return pulumi.get(self, "sole_tenancy_preferences")
+
+    @sole_tenancy_preferences.setter
+    def sole_tenancy_preferences(self, value: Optional[pulumi.Input['SoleTenancyPreferencesArgs']]):
+        pulumi.set(self, "sole_tenancy_preferences", value)
+
+    @property
+    @pulumi.getter(name="targetProduct")
+    def target_product(self) -> Optional[pulumi.Input['VirtualMachinePreferencesTargetProduct']]:
+        """
+        Target product for assets using this preference set. Specify either target product or business goal, but not both.
+        """
+        return pulumi.get(self, "target_product")
+
+    @target_product.setter
+    def target_product(self, value: Optional[pulumi.Input['VirtualMachinePreferencesTargetProduct']]):
+        pulumi.set(self, "target_product", value)
+
+    @property
+    @pulumi.getter(name="vmwareEnginePreferences")
+    def vmware_engine_preferences(self) -> Optional[pulumi.Input['VmwareEnginePreferencesArgs']]:
+        """
+        Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+        """
+        return pulumi.get(self, "vmware_engine_preferences")
+
+    @vmware_engine_preferences.setter
+    def vmware_engine_preferences(self, value: Optional[pulumi.Input['VmwareEnginePreferencesArgs']]):
+        pulumi.set(self, "vmware_engine_preferences", value)
+
+
+@pulumi.input_type
+class VmwareEnginePreferencesArgs:
+    def __init__(__self__, *,
+                 commitment_plan: Optional[pulumi.Input['VmwareEnginePreferencesCommitmentPlan']] = None,
+                 cpu_overcommit_ratio: Optional[pulumi.Input[float]] = None,
+                 memory_overcommit_ratio: Optional[pulumi.Input[float]] = None,
+                 storage_deduplication_compression_ratio: Optional[pulumi.Input[float]] = None):
+        """
+        The user preferences relating to Google Cloud VMware Engine target platform.
+        :param pulumi.Input['VmwareEnginePreferencesCommitmentPlan'] commitment_plan: Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        :param pulumi.Input[float] cpu_overcommit_ratio: CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+        :param pulumi.Input[float] memory_overcommit_ratio: Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+        :param pulumi.Input[float] storage_deduplication_compression_ratio: The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+        """
+        if commitment_plan is not None:
+            pulumi.set(__self__, "commitment_plan", commitment_plan)
+        if cpu_overcommit_ratio is not None:
+            pulumi.set(__self__, "cpu_overcommit_ratio", cpu_overcommit_ratio)
+        if memory_overcommit_ratio is not None:
+            pulumi.set(__self__, "memory_overcommit_ratio", memory_overcommit_ratio)
+        if storage_deduplication_compression_ratio is not None:
+            pulumi.set(__self__, "storage_deduplication_compression_ratio", storage_deduplication_compression_ratio)
+
+    @property
+    @pulumi.getter(name="commitmentPlan")
+    def commitment_plan(self) -> Optional[pulumi.Input['VmwareEnginePreferencesCommitmentPlan']]:
+        """
+        Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        """
+        return pulumi.get(self, "commitment_plan")
+
+    @commitment_plan.setter
+    def commitment_plan(self, value: Optional[pulumi.Input['VmwareEnginePreferencesCommitmentPlan']]):
+        pulumi.set(self, "commitment_plan", value)
+
+    @property
+    @pulumi.getter(name="cpuOvercommitRatio")
+    def cpu_overcommit_ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+        """
+        return pulumi.get(self, "cpu_overcommit_ratio")
+
+    @cpu_overcommit_ratio.setter
+    def cpu_overcommit_ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu_overcommit_ratio", value)
+
+    @property
+    @pulumi.getter(name="memoryOvercommitRatio")
+    def memory_overcommit_ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+        """
+        return pulumi.get(self, "memory_overcommit_ratio")
+
+    @memory_overcommit_ratio.setter
+    def memory_overcommit_ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_overcommit_ratio", value)
+
+    @property
+    @pulumi.getter(name="storageDeduplicationCompressionRatio")
+    def storage_deduplication_compression_ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+        """
+        return pulumi.get(self, "storage_deduplication_compression_ratio")
+
+    @storage_deduplication_compression_ratio.setter
+    def storage_deduplication_compression_ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "storage_deduplication_compression_ratio", value)
 
 

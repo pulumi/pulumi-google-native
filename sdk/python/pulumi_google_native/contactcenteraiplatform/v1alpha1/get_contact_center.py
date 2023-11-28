@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetContactCenterResult:
-    def __init__(__self__, admin_user=None, ccaip_managed_users=None, create_time=None, customer_domain_prefix=None, display_name=None, instance_config=None, labels=None, name=None, saml_params=None, state=None, update_time=None, uris=None, user_email=None):
+    def __init__(__self__, admin_user=None, ccaip_managed_users=None, create_time=None, customer_domain_prefix=None, display_name=None, instance_config=None, kms_key=None, labels=None, name=None, saml_params=None, state=None, update_time=None, uris=None, user_email=None):
         if admin_user and not isinstance(admin_user, dict):
             raise TypeError("Expected argument 'admin_user' to be a dict")
         pulumi.set(__self__, "admin_user", admin_user)
@@ -38,6 +38,9 @@ class GetContactCenterResult:
         if instance_config and not isinstance(instance_config, dict):
             raise TypeError("Expected argument 'instance_config' to be a dict")
         pulumi.set(__self__, "instance_config", instance_config)
+        if kms_key and not isinstance(kms_key, str):
+            raise TypeError("Expected argument 'kms_key' to be a str")
+        pulumi.set(__self__, "kms_key", kms_key)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -109,6 +112,14 @@ class GetContactCenterResult:
         return pulumi.get(self, "instance_config")
 
     @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
@@ -177,6 +188,7 @@ class AwaitableGetContactCenterResult(GetContactCenterResult):
             customer_domain_prefix=self.customer_domain_prefix,
             display_name=self.display_name,
             instance_config=self.instance_config,
+            kms_key=self.kms_key,
             labels=self.labels,
             name=self.name,
             saml_params=self.saml_params,
@@ -207,6 +219,7 @@ def get_contact_center(contact_center_id: Optional[str] = None,
         customer_domain_prefix=pulumi.get(__ret__, 'customer_domain_prefix'),
         display_name=pulumi.get(__ret__, 'display_name'),
         instance_config=pulumi.get(__ret__, 'instance_config'),
+        kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         saml_params=pulumi.get(__ret__, 'saml_params'),

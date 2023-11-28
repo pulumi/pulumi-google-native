@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetVersionResult:
-    def __init__(__self__, create_time=None, database_persistence_policy=None, description=None, error_catcher_configs=None, integration_parameters=None, integration_parameters_internal=None, last_modifier_email=None, lock_holder=None, name=None, origin=None, parent_template_id=None, run_as_service_account=None, snapshot_number=None, state=None, status=None, task_configs=None, task_configs_internal=None, teardown=None, trigger_configs=None, trigger_configs_internal=None, update_time=None, user_label=None):
+    def __init__(__self__, cloud_logging_details=None, create_time=None, database_persistence_policy=None, description=None, error_catcher_configs=None, integration_parameters=None, integration_parameters_internal=None, last_modifier_email=None, lock_holder=None, name=None, origin=None, parent_template_id=None, run_as_service_account=None, snapshot_number=None, state=None, status=None, task_configs=None, task_configs_internal=None, teardown=None, trigger_configs=None, trigger_configs_internal=None, update_time=None, user_label=None):
+        if cloud_logging_details and not isinstance(cloud_logging_details, dict):
+            raise TypeError("Expected argument 'cloud_logging_details' to be a dict")
+        pulumi.set(__self__, "cloud_logging_details", cloud_logging_details)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -86,6 +89,14 @@ class GetVersionResult:
         if user_label and not isinstance(user_label, str):
             raise TypeError("Expected argument 'user_label' to be a str")
         pulumi.set(__self__, "user_label", user_label)
+
+    @property
+    @pulumi.getter(name="cloudLoggingDetails")
+    def cloud_logging_details(self) -> 'outputs.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse':
+        """
+        Optional. Cloud Logging details for the integration version
+        """
+        return pulumi.get(self, "cloud_logging_details")
 
     @property
     @pulumi.getter(name="createTime")
@@ -270,6 +281,7 @@ class AwaitableGetVersionResult(GetVersionResult):
         if False:
             yield self
         return GetVersionResult(
+            cloud_logging_details=self.cloud_logging_details,
             create_time=self.create_time,
             database_persistence_policy=self.database_persistence_policy,
             description=self.description,
@@ -313,6 +325,7 @@ def get_version(integration_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:integrations/v1alpha:getVersion', __args__, opts=opts, typ=GetVersionResult).value
 
     return AwaitableGetVersionResult(
+        cloud_logging_details=pulumi.get(__ret__, 'cloud_logging_details'),
         create_time=pulumi.get(__ret__, 'create_time'),
         database_persistence_policy=pulumi.get(__ret__, 'database_persistence_policy'),
         description=pulumi.get(__ret__, 'description'),

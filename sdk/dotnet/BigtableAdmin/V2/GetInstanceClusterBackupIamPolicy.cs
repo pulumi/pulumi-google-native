@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public static class GetInstanceClusterBackupIamPolicy
     {
         /// <summary>
-        /// Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+        /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
         /// </summary>
         public static Task<GetInstanceClusterBackupIamPolicyResult> InvokeAsync(GetInstanceClusterBackupIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClusterBackupIamPolicyResult>("google-native:bigtableadmin/v2:getInstanceClusterBackupIamPolicy", args ?? new GetInstanceClusterBackupIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+        /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
         /// </summary>
         public static Output<GetInstanceClusterBackupIamPolicyResult> Invoke(GetInstanceClusterBackupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClusterBackupIamPolicyResult>("google-native:bigtableadmin/v2:getInstanceClusterBackupIamPolicy", args ?? new GetInstanceClusterBackupIamPolicyInvokeArgs(), options.WithDefaults());

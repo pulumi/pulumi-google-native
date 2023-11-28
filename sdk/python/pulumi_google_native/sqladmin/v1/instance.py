@@ -48,6 +48,7 @@ class InstanceArgs:
                  server_ca_cert: Optional[pulumi.Input['SslCertArgs']] = None,
                  service_account_email_address: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input['SettingsArgs']] = None,
+                 sql_network_architecture: Optional[pulumi.Input['InstanceSqlNetworkArchitecture']] = None,
                  state: Optional[pulumi.Input['InstanceState']] = None,
                  suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None):
         """
@@ -154,6 +155,8 @@ class InstanceArgs:
             pulumi.set(__self__, "service_account_email_address", service_account_email_address)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+        if sql_network_architecture is not None:
+            pulumi.set(__self__, "sql_network_architecture", sql_network_architecture)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if suspension_reason is not None:
@@ -538,6 +541,15 @@ class InstanceArgs:
         pulumi.set(self, "settings", value)
 
     @property
+    @pulumi.getter(name="sqlNetworkArchitecture")
+    def sql_network_architecture(self) -> Optional[pulumi.Input['InstanceSqlNetworkArchitecture']]:
+        return pulumi.get(self, "sql_network_architecture")
+
+    @sql_network_architecture.setter
+    def sql_network_architecture(self, value: Optional[pulumi.Input['InstanceSqlNetworkArchitecture']]):
+        pulumi.set(self, "sql_network_architecture", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input['InstanceState']]:
         """
@@ -598,6 +610,7 @@ class Instance(pulumi.CustomResource):
                  server_ca_cert: Optional[pulumi.Input[pulumi.InputType['SslCertArgs']]] = None,
                  service_account_email_address: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[pulumi.InputType['SettingsArgs']]] = None,
+                 sql_network_architecture: Optional[pulumi.Input['InstanceSqlNetworkArchitecture']] = None,
                  state: Optional[pulumi.Input['InstanceState']] = None,
                  suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None,
                  __props__=None):
@@ -695,6 +708,7 @@ class Instance(pulumi.CustomResource):
                  server_ca_cert: Optional[pulumi.Input[pulumi.InputType['SslCertArgs']]] = None,
                  service_account_email_address: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[pulumi.InputType['SettingsArgs']]] = None,
+                 sql_network_architecture: Optional[pulumi.Input['InstanceSqlNetworkArchitecture']] = None,
                  state: Optional[pulumi.Input['InstanceState']] = None,
                  suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None,
                  __props__=None):
@@ -743,11 +757,16 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["server_ca_cert"] = server_ca_cert
             __props__.__dict__["service_account_email_address"] = service_account_email_address
             __props__.__dict__["settings"] = settings
+            __props__.__dict__["sql_network_architecture"] = sql_network_architecture
             __props__.__dict__["state"] = state
             __props__.__dict__["suspension_reason"] = suspension_reason
             __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["database_installed_version"] = None
+            __props__.__dict__["dns_name"] = None
+            __props__.__dict__["primary_dns_name"] = None
+            __props__.__dict__["psc_service_attachment_link"] = None
+            __props__.__dict__["write_endpoint"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Instance, __self__).__init__(
@@ -781,6 +800,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["database_version"] = None
         __props__.__dict__["disk_encryption_configuration"] = None
         __props__.__dict__["disk_encryption_status"] = None
+        __props__.__dict__["dns_name"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["failover_replica"] = None
         __props__.__dict__["gce_zone"] = None
@@ -794,7 +814,9 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["on_premises_configuration"] = None
         __props__.__dict__["out_of_disk_report"] = None
+        __props__.__dict__["primary_dns_name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["psc_service_attachment_link"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["replica_configuration"] = None
         __props__.__dict__["replica_names"] = None
@@ -806,8 +828,10 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["server_ca_cert"] = None
         __props__.__dict__["service_account_email_address"] = None
         __props__.__dict__["settings"] = None
+        __props__.__dict__["sql_network_architecture"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["suspension_reason"] = None
+        __props__.__dict__["write_endpoint"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -881,6 +905,14 @@ class Instance(pulumi.CustomResource):
         Disk encryption status specific to an instance.
         """
         return pulumi.get(self, "disk_encryption_status")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> pulumi.Output[str]:
+        """
+        The dns name of the instance.
+        """
+        return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter
@@ -993,9 +1025,28 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "out_of_disk_report")
 
     @property
+    @pulumi.getter(name="primaryDnsName")
+    def primary_dns_name(self) -> pulumi.Output[str]:
+        """
+        DEPRECATED: please use write_endpoint instead.
+        """
+        warnings.warn("""Output only. DEPRECATED: please use write_endpoint instead.""", DeprecationWarning)
+        pulumi.log.warn("""primary_dns_name is deprecated: Output only. DEPRECATED: please use write_endpoint instead.""")
+
+        return pulumi.get(self, "primary_dns_name")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscServiceAttachmentLink")
+    def psc_service_attachment_link(self) -> pulumi.Output[str]:
+        """
+        The link to service attachment of PSC instance.
+        """
+        return pulumi.get(self, "psc_service_attachment_link")
 
     @property
     @pulumi.getter
@@ -1086,6 +1137,11 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "settings")
 
     @property
+    @pulumi.getter(name="sqlNetworkArchitecture")
+    def sql_network_architecture(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "sql_network_architecture")
+
+    @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
@@ -1100,4 +1156,12 @@ class Instance(pulumi.CustomResource):
         If the instance state is SUSPENDED, the reason for the suspension.
         """
         return pulumi.get(self, "suspension_reason")
+
+    @property
+    @pulumi.getter(name="writeEndpoint")
+    def write_endpoint(self) -> pulumi.Output[str]:
+        """
+        The dns name of the primary instance in a replication group.
+        """
+        return pulumi.get(self, "write_endpoint")
 

@@ -36,11 +36,11 @@ export const ContactSettingsPrivacy = {
      */
     PublicContactData: "PUBLIC_CONTACT_DATA",
     /**
-     * None of the data from `ContactSettings` is publicly available. Instead, proxy contact data is published for your domain. Email sent to the proxy email address is forwarded to the registrant's email address. Cloud Domains provides this privacy proxy service at no additional cost.
+     * Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) None of the data from `ContactSettings` is publicly available. Instead, proxy contact data is published for your domain. Email sent to the proxy email address is forwarded to the registrant's email address. Cloud Domains provides this privacy proxy service at no additional cost.
      */
     PrivateContactData: "PRIVATE_CONTACT_DATA",
     /**
-     * Some data from `ContactSettings` is publicly available. The actual information redacted depends on the domain. For details, see [the registration privacy article](https://support.google.com/domains/answer/3251242).
+     * The organization name (if provided) and limited non-identifying data from `ContactSettings` is available to the public (e.g. country and state). The remaining data is marked as `REDACTED FOR PRIVACY` in the WHOIS database. The actual information redacted depends on the domain. For details, see [the registration privacy article](https://support.google.com/domains/answer/3251242).
      */
     RedactedContactData: "REDACTED_CONTACT_DATA",
 } as const;
@@ -177,6 +177,30 @@ export const GoogleDomainsDnsDsState = {
  * Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
  */
 export type GoogleDomainsDnsDsState = (typeof GoogleDomainsDnsDsState)[keyof typeof GoogleDomainsDnsDsState];
+
+export const ManagementSettingsPreferredRenewalMethod = {
+    /**
+     * The renewal method is undefined.
+     */
+    RenewalMethodUnspecified: "RENEWAL_METHOD_UNSPECIFIED",
+    /**
+     * The domain is automatically renewed each year.
+     */
+    AutomaticRenewal: "AUTOMATIC_RENEWAL",
+    /**
+     * Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) This option was never used. Use RENEWAL_DISABLED instead.
+     */
+    ManualRenewal: "MANUAL_RENEWAL",
+    /**
+     * The domain won't be renewed and will expire at its expiration time.
+     */
+    RenewalDisabled: "RENEWAL_DISABLED",
+} as const;
+
+/**
+ * Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+ */
+export type ManagementSettingsPreferredRenewalMethod = (typeof ManagementSettingsPreferredRenewalMethod)[keyof typeof ManagementSettingsPreferredRenewalMethod];
 
 export const ManagementSettingsTransferLockState = {
     /**

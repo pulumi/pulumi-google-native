@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
     public sealed class OverlayResponse
     {
         /// <summary>
-        /// List of Animations. The list should be chronological, without any time overlap.
+        /// List of animations. The list should be chronological, without any time overlap.
         /// </summary>
         public readonly ImmutableArray<Outputs.AnimationResponse> Animations;
         /// <summary>

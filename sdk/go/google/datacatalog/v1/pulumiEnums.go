@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+// The type of the entry. For details, see [`EntryType`](#entrytype).
 type EntryType string
 
 const (
@@ -19,7 +19,7 @@ const (
 	EntryTypeEntryTypeUnspecified = EntryType("ENTRY_TYPE_UNSPECIFIED")
 	// The entry type that has a GoogleSQL schema, including logical views.
 	EntryTypeTable = EntryType("TABLE")
-	// Output only. The type of models. For more information, see [Supported models in BigQuery ML] (https://cloud.google.com/bigquery-ml/docs/introduction#supported_models_in).
+	// The type of models. For more information, see [Supported models in BigQuery ML](/bigquery/docs/bqml-introduction#supported_models).
 	EntryTypeModel = EntryType("MODEL")
 	// An entry type for streaming entries. For example, a Pub/Sub topic.
 	EntryTypeDataStream = EntryType("DATA_STREAM")
@@ -29,9 +29,9 @@ const (
 	EntryTypeCluster = EntryType("CLUSTER")
 	// A database.
 	EntryTypeDatabase = EntryType("DATABASE")
-	// Output only. Connection to a data source. For example, a BigQuery connection.
+	// Connection to a data source. For example, a BigQuery connection.
 	EntryTypeDataSourceConnection = EntryType("DATA_SOURCE_CONNECTION")
-	// Output only. Routine, for example, a BigQuery routine.
+	// Routine, for example, a BigQuery routine.
 	EntryTypeRoutine = EntryType("ROUTINE")
 	// A Dataplex lake.
 	EntryTypeLake = EntryType("LAKE")
@@ -1358,6 +1358,404 @@ func (in *googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ToOutput(ctx contex
 	}
 }
 
+// Type of the dataset.
+type GoogleCloudDatacatalogV1VertexDatasetSpecDataType string
+
+const (
+	// Should not be used.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeDataTypeUnspecified = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("DATA_TYPE_UNSPECIFIED")
+	// Structured data dataset.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTable = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TABLE")
+	// Image dataset which supports ImageClassification, ImageObjectDetection and ImageSegmentation problems.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeImage = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("IMAGE")
+	// Document dataset which supports TextClassification, TextExtraction and TextSentiment problems.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeText = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TEXT")
+	// Video dataset which supports VideoClassification, VideoObjectTracking and VideoActionRecognition problems.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeVideo = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("VIDEO")
+	// Conversation dataset which supports conversation problems.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeConversation = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("CONVERSATION")
+	// TimeSeries dataset.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTimeSeries = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TIME_SERIES")
+	// Document dataset which supports DocumentAnnotation problems.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeDocument = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("DOCUMENT")
+	// TextToSpeech dataset which supports TextToSpeech problems.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTextToSpeech = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TEXT_TO_SPEECH")
+	// Translation dataset which supports Translation problems.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTranslation = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TRANSLATION")
+	// Store Vision dataset which is used for HITL integration.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeStoreVision = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("STORE_VISION")
+	// Enterprise Knowledge Graph dataset which is used for HITL labeling integration.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnterpriseKnowledgeGraph = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("ENTERPRISE_KNOWLEDGE_GRAPH")
+	// Text prompt dataset which supports Large Language Models.
+	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTextPrompt = GoogleCloudDatacatalogV1VertexDatasetSpecDataType("TEXT_PROMPT")
+)
+
+func (GoogleCloudDatacatalogV1VertexDatasetSpecDataType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1VertexDatasetSpecDataType)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput() GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput() GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput {
+	return GoogleCloudDatacatalogV1VertexDatasetSpecDataType(e).ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1VertexDatasetSpecDataType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput() GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput() GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1VertexDatasetSpecDataType) *GoogleCloudDatacatalogV1VertexDatasetSpecDataType {
+		return &v
+	}).(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1VertexDatasetSpecDataType] {
+	return pulumix.Output[GoogleCloudDatacatalogV1VertexDatasetSpecDataType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1VertexDatasetSpecDataType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1VertexDatasetSpecDataType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput() GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1VertexDatasetSpecDataType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1VertexDatasetSpecDataType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput) Elem() GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1VertexDatasetSpecDataType) GoogleCloudDatacatalogV1VertexDatasetSpecDataType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1VertexDatasetSpecDataType
+		return ret
+	}).(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput)
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1VertexDatasetSpecDataType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeInput is an input type that accepts GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeArgs and GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeInput` via:
+//
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeArgs{...}
+type GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput() GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput
+	ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput
+}
+
+var googleCloudDatacatalogV1VertexDatasetSpecDataTypePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1VertexDatasetSpecDataType)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput() GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput
+	ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput
+}
+
+type googleCloudDatacatalogV1VertexDatasetSpecDataTypePtr string
+
+func GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtr(v string) GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrInput {
+	return (*googleCloudDatacatalogV1VertexDatasetSpecDataTypePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1VertexDatasetSpecDataTypePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1VertexDatasetSpecDataTypePtrType
+}
+
+func (in *googleCloudDatacatalogV1VertexDatasetSpecDataTypePtr) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput() GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1VertexDatasetSpecDataTypePtr) ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1VertexDatasetSpecDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1VertexDatasetSpecDataType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1VertexDatasetSpecDataType]{
+		OutputState: in.ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Type of the model source.
+type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType string
+
+const (
+	// Should not be used.
+	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeModelSourceTypeUnspecified = GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("MODEL_SOURCE_TYPE_UNSPECIFIED")
+	// The Model is uploaded by automl training pipeline.
+	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeAutoml = GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("AUTOML")
+	// The Model is uploaded by user or custom training pipeline.
+	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeCustom = GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("CUSTOM")
+	// The Model is registered and sync'ed from BigQuery ML.
+	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeBqml = GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("BQML")
+	// The Model is saved or tuned from Model Garden.
+	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeModelGarden = GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("MODEL_GARDEN")
+)
+
+func (GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput() GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput() GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput {
+	return GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType(e).ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput() GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput() GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) *GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType {
+		return &v
+	}).(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType] {
+	return pulumix.Output[GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput() GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput) Elem() GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType
+		return ret
+	}).(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput)
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput is an input type that accepts GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeArgs and GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput` via:
+//
+//	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeArgs{...}
+type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput() GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput
+	ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput
+}
+
+var googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput() GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput
+	ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput
+}
+
+type googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr string
+
+func GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr(v string) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrInput {
+	return (*googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrType
+}
+
+func (in *googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput() GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr) ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType]{
+		OutputState: in.ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaxonomyActivatedPolicyTypesItem string
 
 const (
@@ -1614,6 +2012,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1VertexDatasetSpecDataType("DATA_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1VertexDatasetSpecDataType("DATA_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("MODEL_SOURCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("MODEL_SOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItem("POLICY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemPtrInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItem("POLICY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemArrayInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItemArray{})
@@ -1631,6 +2033,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemOutput{})
 	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemArrayOutput{})

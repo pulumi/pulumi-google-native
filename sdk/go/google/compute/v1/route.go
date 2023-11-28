@@ -22,7 +22,7 @@ type Route struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
 	DestRange pulumi.StringOutput `pulumi:"destRange"`
 	// Type of this resource. Always compute#routes for Route resources.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -32,11 +32,13 @@ type Route struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
 	NextHopGateway pulumi.StringOutput `pulumi:"nextHopGateway"`
+	// The full resource name of the Network Connectivity Center hub that will handle matching packets.
+	NextHopHub pulumi.StringOutput `pulumi:"nextHopHub"`
 	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 	NextHopIlb pulumi.StringOutput `pulumi:"nextHopIlb"`
 	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
 	NextHopInstance pulumi.StringOutput `pulumi:"nextHopInstance"`
-	// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+	// The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
 	NextHopIp pulumi.StringOutput `pulumi:"nextHopIp"`
 	// The URL of the local network if it should handle matching packets.
 	NextHopNetwork pulumi.StringOutput `pulumi:"nextHopNetwork"`
@@ -107,7 +109,7 @@ func (RouteState) ElementType() reflect.Type {
 type routeArgs struct {
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description *string `pulumi:"description"`
-	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
 	DestRange *string `pulumi:"destRange"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name *string `pulumi:"name"`
@@ -119,7 +121,7 @@ type routeArgs struct {
 	NextHopIlb *string `pulumi:"nextHopIlb"`
 	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
 	NextHopInstance *string `pulumi:"nextHopInstance"`
-	// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+	// The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
 	NextHopIp *string `pulumi:"nextHopIp"`
 	// The URL of the local network if it should handle matching packets.
 	NextHopNetwork *string `pulumi:"nextHopNetwork"`
@@ -138,7 +140,7 @@ type routeArgs struct {
 type RouteArgs struct {
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringPtrInput
-	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
 	DestRange pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name pulumi.StringPtrInput
@@ -150,7 +152,7 @@ type RouteArgs struct {
 	NextHopIlb pulumi.StringPtrInput
 	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
 	NextHopInstance pulumi.StringPtrInput
-	// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+	// The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
 	NextHopIp pulumi.StringPtrInput
 	// The URL of the local network if it should handle matching packets.
 	NextHopNetwork pulumi.StringPtrInput
@@ -229,7 +231,7 @@ func (o RouteOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
 func (o RouteOutput) DestRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.DestRange }).(pulumi.StringOutput)
 }
@@ -254,6 +256,11 @@ func (o RouteOutput) NextHopGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopGateway }).(pulumi.StringOutput)
 }
 
+// The full resource name of the Network Connectivity Center hub that will handle matching packets.
+func (o RouteOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopHub }).(pulumi.StringOutput)
+}
+
 // The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 func (o RouteOutput) NextHopIlb() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopIlb }).(pulumi.StringOutput)
@@ -264,7 +271,7 @@ func (o RouteOutput) NextHopInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopInstance }).(pulumi.StringOutput)
 }
 
-// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+// The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
 func (o RouteOutput) NextHopIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopIp }).(pulumi.StringOutput)
 }

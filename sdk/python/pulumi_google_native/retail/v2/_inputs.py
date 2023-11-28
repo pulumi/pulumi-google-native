@@ -26,9 +26,12 @@ __all__ = [
     'GoogleCloudRetailV2RuleBoostActionArgs',
     'GoogleCloudRetailV2RuleDoNotAssociateActionArgs',
     'GoogleCloudRetailV2RuleFilterActionArgs',
+    'GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs',
+    'GoogleCloudRetailV2RuleForceReturnFacetActionArgs',
     'GoogleCloudRetailV2RuleIgnoreActionArgs',
     'GoogleCloudRetailV2RuleOnewaySynonymsActionArgs',
     'GoogleCloudRetailV2RuleRedirectActionArgs',
+    'GoogleCloudRetailV2RuleRemoveFacetActionArgs',
     'GoogleCloudRetailV2RuleReplacementActionArgs',
     'GoogleCloudRetailV2RuleTwowaySynonymsActionArgs',
     'GoogleCloudRetailV2RuleArgs',
@@ -200,14 +203,18 @@ class GoogleCloudRetailV2ConditionTimeRangeArgs:
 class GoogleCloudRetailV2ConditionArgs:
     def __init__(__self__, *,
                  active_time_range: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionTimeRangeArgs']]]] = None,
+                 page_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  query_terms: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionQueryTermArgs']]]] = None):
         """
         Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionTimeRangeArgs']]] active_time_range: Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_categories: Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionQueryTermArgs']]] query_terms: A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
         """
         if active_time_range is not None:
             pulumi.set(__self__, "active_time_range", active_time_range)
+        if page_categories is not None:
+            pulumi.set(__self__, "page_categories", page_categories)
         if query_terms is not None:
             pulumi.set(__self__, "query_terms", query_terms)
 
@@ -222,6 +229,18 @@ class GoogleCloudRetailV2ConditionArgs:
     @active_time_range.setter
     def active_time_range(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionTimeRangeArgs']]]]):
         pulumi.set(self, "active_time_range", value)
+
+    @property
+    @pulumi.getter(name="pageCategories")
+    def page_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
+        """
+        return pulumi.get(self, "page_categories")
+
+    @page_categories.setter
+    def page_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "page_categories", value)
 
     @property
     @pulumi.getter(name="queryTerms")
@@ -684,6 +703,70 @@ class GoogleCloudRetailV2RuleFilterActionArgs:
 
 
 @pulumi.input_type
+class GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs:
+    def __init__(__self__, *,
+                 attribute_name: Optional[pulumi.Input[str]] = None,
+                 position: Optional[pulumi.Input[int]] = None):
+        """
+        Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position.
+        :param pulumi.Input[str] attribute_name: The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
+        :param pulumi.Input[int] position: This is the position in the request as explained above. It should be strictly positive be at most 100.
+        """
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        This is the position in the request as explained above. It should be strictly positive be at most 100.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "position", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleForceReturnFacetActionArgs:
+    def __init__(__self__, *,
+                 facet_position_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs']]]] = None):
+        """
+        Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size" in among the top 8 positions in the request, then it will stay at its current rank.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs']]] facet_position_adjustments: Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
+        """
+        if facet_position_adjustments is not None:
+            pulumi.set(__self__, "facet_position_adjustments", facet_position_adjustments)
+
+    @property
+    @pulumi.getter(name="facetPositionAdjustments")
+    def facet_position_adjustments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs']]]]:
+        """
+        Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
+        """
+        return pulumi.get(self, "facet_position_adjustments")
+
+    @facet_position_adjustments.setter
+    def facet_position_adjustments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs']]]]):
+        pulumi.set(self, "facet_position_adjustments", value)
+
+
+@pulumi.input_type
 class GoogleCloudRetailV2RuleIgnoreActionArgs:
     def __init__(__self__, *,
                  ignore_terms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -768,7 +851,7 @@ class GoogleCloudRetailV2RuleRedirectActionArgs:
     def __init__(__self__, *,
                  redirect_uri: Optional[pulumi.Input[str]] = None):
         """
-        Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+        Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
         :param pulumi.Input[str] redirect_uri: URL must have length equal or less than 2000 characters.
         """
         if redirect_uri is not None:
@@ -785,6 +868,30 @@ class GoogleCloudRetailV2RuleRedirectActionArgs:
     @redirect_uri.setter
     def redirect_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "redirect_uri", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleRemoveFacetActionArgs:
+    def __init__(__self__, *,
+                 attribute_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name "size", then facet key "size" will be removed from the request (if it is present).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] attribute_names: The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
+        """
+        if attribute_names is not None:
+            pulumi.set(__self__, "attribute_names", attribute_names)
+
+    @property
+    @pulumi.getter(name="attributeNames")
+    def attribute_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
+        """
+        return pulumi.get(self, "attribute_names")
+
+    @attribute_names.setter
+    def attribute_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "attribute_names", value)
 
 
 @pulumi.input_type
@@ -874,9 +981,11 @@ class GoogleCloudRetailV2RuleArgs:
                  boost_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleBoostActionArgs']] = None,
                  do_not_associate_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleDoNotAssociateActionArgs']] = None,
                  filter_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleFilterActionArgs']] = None,
+                 force_return_facet_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleForceReturnFacetActionArgs']] = None,
                  ignore_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleIgnoreActionArgs']] = None,
                  oneway_synonyms_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleOnewaySynonymsActionArgs']] = None,
                  redirect_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleRedirectActionArgs']] = None,
+                 remove_facet_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleRemoveFacetActionArgs']] = None,
                  replacement_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleReplacementActionArgs']] = None,
                  twoway_synonyms_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleTwowaySynonymsActionArgs']] = None):
         """
@@ -885,9 +994,11 @@ class GoogleCloudRetailV2RuleArgs:
         :param pulumi.Input['GoogleCloudRetailV2RuleBoostActionArgs'] boost_action: A boost action.
         :param pulumi.Input['GoogleCloudRetailV2RuleDoNotAssociateActionArgs'] do_not_associate_action: Prevents term from being associated with other terms.
         :param pulumi.Input['GoogleCloudRetailV2RuleFilterActionArgs'] filter_action: Filters results.
+        :param pulumi.Input['GoogleCloudRetailV2RuleForceReturnFacetActionArgs'] force_return_facet_action: Force returns an attribute as a facet in the request.
         :param pulumi.Input['GoogleCloudRetailV2RuleIgnoreActionArgs'] ignore_action: Ignores specific terms from query during search.
         :param pulumi.Input['GoogleCloudRetailV2RuleOnewaySynonymsActionArgs'] oneway_synonyms_action: Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
         :param pulumi.Input['GoogleCloudRetailV2RuleRedirectActionArgs'] redirect_action: Redirects a shopper to a specific page.
+        :param pulumi.Input['GoogleCloudRetailV2RuleRemoveFacetActionArgs'] remove_facet_action: Remove an attribute as a facet in the request (if present).
         :param pulumi.Input['GoogleCloudRetailV2RuleReplacementActionArgs'] replacement_action: Replaces specific terms in the query.
         :param pulumi.Input['GoogleCloudRetailV2RuleTwowaySynonymsActionArgs'] twoway_synonyms_action: Treats a set of terms as synonyms of one another.
         """
@@ -898,12 +1009,16 @@ class GoogleCloudRetailV2RuleArgs:
             pulumi.set(__self__, "do_not_associate_action", do_not_associate_action)
         if filter_action is not None:
             pulumi.set(__self__, "filter_action", filter_action)
+        if force_return_facet_action is not None:
+            pulumi.set(__self__, "force_return_facet_action", force_return_facet_action)
         if ignore_action is not None:
             pulumi.set(__self__, "ignore_action", ignore_action)
         if oneway_synonyms_action is not None:
             pulumi.set(__self__, "oneway_synonyms_action", oneway_synonyms_action)
         if redirect_action is not None:
             pulumi.set(__self__, "redirect_action", redirect_action)
+        if remove_facet_action is not None:
+            pulumi.set(__self__, "remove_facet_action", remove_facet_action)
         if replacement_action is not None:
             pulumi.set(__self__, "replacement_action", replacement_action)
         if twoway_synonyms_action is not None:
@@ -958,6 +1073,18 @@ class GoogleCloudRetailV2RuleArgs:
         pulumi.set(self, "filter_action", value)
 
     @property
+    @pulumi.getter(name="forceReturnFacetAction")
+    def force_return_facet_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleForceReturnFacetActionArgs']]:
+        """
+        Force returns an attribute as a facet in the request.
+        """
+        return pulumi.get(self, "force_return_facet_action")
+
+    @force_return_facet_action.setter
+    def force_return_facet_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleForceReturnFacetActionArgs']]):
+        pulumi.set(self, "force_return_facet_action", value)
+
+    @property
     @pulumi.getter(name="ignoreAction")
     def ignore_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleIgnoreActionArgs']]:
         """
@@ -992,6 +1119,18 @@ class GoogleCloudRetailV2RuleArgs:
     @redirect_action.setter
     def redirect_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleRedirectActionArgs']]):
         pulumi.set(self, "redirect_action", value)
+
+    @property
+    @pulumi.getter(name="removeFacetAction")
+    def remove_facet_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleRemoveFacetActionArgs']]:
+        """
+        Remove an attribute as a facet in the request (if present).
+        """
+        return pulumi.get(self, "remove_facet_action")
+
+    @remove_facet_action.setter
+    def remove_facet_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleRemoveFacetActionArgs']]):
+        pulumi.set(self, "remove_facet_action", value)
 
     @property
     @pulumi.getter(name="replacementAction")

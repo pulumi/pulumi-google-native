@@ -176,6 +176,10 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         public readonly string ReservedIpRange;
         /// <summary>
+        /// Optional. Output only. Reserved for future use. Zone Separation compliance state of the instance. Field name and documentation is obfuscated according to go/zs-resource-status.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
+        /// <summary>
         /// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
         /// </summary>
         public readonly string SecondaryIpRange;
@@ -262,6 +266,8 @@ namespace Pulumi.GoogleNative.Redis.V1
 
             string reservedIpRange,
 
+            bool satisfiesPzs,
+
             string secondaryIpRange,
 
             ImmutableArray<Outputs.TlsCertificateResponse> serverCaCerts,
@@ -304,6 +310,7 @@ namespace Pulumi.GoogleNative.Redis.V1
             RedisVersion = redisVersion;
             ReplicaCount = replicaCount;
             ReservedIpRange = reservedIpRange;
+            SatisfiesPzs = satisfiesPzs;
             SecondaryIpRange = secondaryIpRange;
             ServerCaCerts = serverCaCerts;
             State = state;

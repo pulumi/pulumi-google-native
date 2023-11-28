@@ -14,6 +14,202 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The consent-related logs are included as part of `protoPayload.metadata`.
+type AccessDeterminationLogConfig struct {
+	// Optional. Controls the amount of detail to include as part of the audit logs.
+	LogLevel *AccessDeterminationLogConfigLogLevel `pulumi:"logLevel"`
+}
+
+// AccessDeterminationLogConfigInput is an input type that accepts AccessDeterminationLogConfigArgs and AccessDeterminationLogConfigOutput values.
+// You can construct a concrete instance of `AccessDeterminationLogConfigInput` via:
+//
+//	AccessDeterminationLogConfigArgs{...}
+type AccessDeterminationLogConfigInput interface {
+	pulumi.Input
+
+	ToAccessDeterminationLogConfigOutput() AccessDeterminationLogConfigOutput
+	ToAccessDeterminationLogConfigOutputWithContext(context.Context) AccessDeterminationLogConfigOutput
+}
+
+// Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The consent-related logs are included as part of `protoPayload.metadata`.
+type AccessDeterminationLogConfigArgs struct {
+	// Optional. Controls the amount of detail to include as part of the audit logs.
+	LogLevel AccessDeterminationLogConfigLogLevelPtrInput `pulumi:"logLevel"`
+}
+
+func (AccessDeterminationLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessDeterminationLogConfig)(nil)).Elem()
+}
+
+func (i AccessDeterminationLogConfigArgs) ToAccessDeterminationLogConfigOutput() AccessDeterminationLogConfigOutput {
+	return i.ToAccessDeterminationLogConfigOutputWithContext(context.Background())
+}
+
+func (i AccessDeterminationLogConfigArgs) ToAccessDeterminationLogConfigOutputWithContext(ctx context.Context) AccessDeterminationLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessDeterminationLogConfigOutput)
+}
+
+func (i AccessDeterminationLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AccessDeterminationLogConfig] {
+	return pulumix.Output[AccessDeterminationLogConfig]{
+		OutputState: i.ToAccessDeterminationLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AccessDeterminationLogConfigArgs) ToAccessDeterminationLogConfigPtrOutput() AccessDeterminationLogConfigPtrOutput {
+	return i.ToAccessDeterminationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AccessDeterminationLogConfigArgs) ToAccessDeterminationLogConfigPtrOutputWithContext(ctx context.Context) AccessDeterminationLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessDeterminationLogConfigOutput).ToAccessDeterminationLogConfigPtrOutputWithContext(ctx)
+}
+
+// AccessDeterminationLogConfigPtrInput is an input type that accepts AccessDeterminationLogConfigArgs, AccessDeterminationLogConfigPtr and AccessDeterminationLogConfigPtrOutput values.
+// You can construct a concrete instance of `AccessDeterminationLogConfigPtrInput` via:
+//
+//	        AccessDeterminationLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessDeterminationLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToAccessDeterminationLogConfigPtrOutput() AccessDeterminationLogConfigPtrOutput
+	ToAccessDeterminationLogConfigPtrOutputWithContext(context.Context) AccessDeterminationLogConfigPtrOutput
+}
+
+type accessDeterminationLogConfigPtrType AccessDeterminationLogConfigArgs
+
+func AccessDeterminationLogConfigPtr(v *AccessDeterminationLogConfigArgs) AccessDeterminationLogConfigPtrInput {
+	return (*accessDeterminationLogConfigPtrType)(v)
+}
+
+func (*accessDeterminationLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessDeterminationLogConfig)(nil)).Elem()
+}
+
+func (i *accessDeterminationLogConfigPtrType) ToAccessDeterminationLogConfigPtrOutput() AccessDeterminationLogConfigPtrOutput {
+	return i.ToAccessDeterminationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *accessDeterminationLogConfigPtrType) ToAccessDeterminationLogConfigPtrOutputWithContext(ctx context.Context) AccessDeterminationLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessDeterminationLogConfigPtrOutput)
+}
+
+func (i *accessDeterminationLogConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessDeterminationLogConfig] {
+	return pulumix.Output[*AccessDeterminationLogConfig]{
+		OutputState: i.ToAccessDeterminationLogConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The consent-related logs are included as part of `protoPayload.metadata`.
+type AccessDeterminationLogConfigOutput struct{ *pulumi.OutputState }
+
+func (AccessDeterminationLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessDeterminationLogConfig)(nil)).Elem()
+}
+
+func (o AccessDeterminationLogConfigOutput) ToAccessDeterminationLogConfigOutput() AccessDeterminationLogConfigOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigOutput) ToAccessDeterminationLogConfigOutputWithContext(ctx context.Context) AccessDeterminationLogConfigOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigOutput) ToAccessDeterminationLogConfigPtrOutput() AccessDeterminationLogConfigPtrOutput {
+	return o.ToAccessDeterminationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AccessDeterminationLogConfigOutput) ToAccessDeterminationLogConfigPtrOutputWithContext(ctx context.Context) AccessDeterminationLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessDeterminationLogConfig) *AccessDeterminationLogConfig {
+		return &v
+	}).(AccessDeterminationLogConfigPtrOutput)
+}
+
+func (o AccessDeterminationLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AccessDeterminationLogConfig] {
+	return pulumix.Output[AccessDeterminationLogConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Controls the amount of detail to include as part of the audit logs.
+func (o AccessDeterminationLogConfigOutput) LogLevel() AccessDeterminationLogConfigLogLevelPtrOutput {
+	return o.ApplyT(func(v AccessDeterminationLogConfig) *AccessDeterminationLogConfigLogLevel { return v.LogLevel }).(AccessDeterminationLogConfigLogLevelPtrOutput)
+}
+
+type AccessDeterminationLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessDeterminationLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessDeterminationLogConfig)(nil)).Elem()
+}
+
+func (o AccessDeterminationLogConfigPtrOutput) ToAccessDeterminationLogConfigPtrOutput() AccessDeterminationLogConfigPtrOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigPtrOutput) ToAccessDeterminationLogConfigPtrOutputWithContext(ctx context.Context) AccessDeterminationLogConfigPtrOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessDeterminationLogConfig] {
+	return pulumix.Output[*AccessDeterminationLogConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AccessDeterminationLogConfigPtrOutput) Elem() AccessDeterminationLogConfigOutput {
+	return o.ApplyT(func(v *AccessDeterminationLogConfig) AccessDeterminationLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AccessDeterminationLogConfig
+		return ret
+	}).(AccessDeterminationLogConfigOutput)
+}
+
+// Optional. Controls the amount of detail to include as part of the audit logs.
+func (o AccessDeterminationLogConfigPtrOutput) LogLevel() AccessDeterminationLogConfigLogLevelPtrOutput {
+	return o.ApplyT(func(v *AccessDeterminationLogConfig) *AccessDeterminationLogConfigLogLevel {
+		if v == nil {
+			return nil
+		}
+		return v.LogLevel
+	}).(AccessDeterminationLogConfigLogLevelPtrOutput)
+}
+
+// Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The consent-related logs are included as part of `protoPayload.metadata`.
+type AccessDeterminationLogConfigResponse struct {
+	// Optional. Controls the amount of detail to include as part of the audit logs.
+	LogLevel string `pulumi:"logLevel"`
+}
+
+// Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The consent-related logs are included as part of `protoPayload.metadata`.
+type AccessDeterminationLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessDeterminationLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessDeterminationLogConfigResponse)(nil)).Elem()
+}
+
+func (o AccessDeterminationLogConfigResponseOutput) ToAccessDeterminationLogConfigResponseOutput() AccessDeterminationLogConfigResponseOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigResponseOutput) ToAccessDeterminationLogConfigResponseOutputWithContext(ctx context.Context) AccessDeterminationLogConfigResponseOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessDeterminationLogConfigResponse] {
+	return pulumix.Output[AccessDeterminationLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Controls the amount of detail to include as part of the audit logs.
+func (o AccessDeterminationLogConfigResponseOutput) LogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessDeterminationLogConfigResponse) string { return v.LogLevel }).(pulumi.StringOutput)
+}
+
 // Specifies a selection of tags and an `Action` to apply to each one.
 type Action struct {
 	// Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
@@ -1944,7 +2140,7 @@ func (o CharacterMaskConfigResponseOutput) MaskingCharacter() pulumi.StringOutpu
 	return o.ApplyT(func(v CharacterMaskConfigResponse) string { return v.MaskingCharacter }).(pulumi.StringOutput)
 }
 
-// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CharacterMaskField struct {
 }
 
@@ -1959,7 +2155,7 @@ type CharacterMaskFieldInput interface {
 	ToCharacterMaskFieldOutputWithContext(context.Context) CharacterMaskFieldOutput
 }
 
-// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CharacterMaskFieldArgs struct {
 }
 
@@ -2028,7 +2224,7 @@ func (i *characterMaskFieldPtrType) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CharacterMaskFieldOutput struct{ *pulumi.OutputState }
 
 func (CharacterMaskFieldOutput) ElementType() reflect.Type {
@@ -2089,11 +2285,11 @@ func (o CharacterMaskFieldPtrOutput) Elem() CharacterMaskFieldOutput {
 	}).(CharacterMaskFieldOutput)
 }
 
-// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CharacterMaskFieldResponse struct {
 }
 
-// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CharacterMaskFieldResponseOutput struct{ *pulumi.OutputState }
 
 func (CharacterMaskFieldResponseOutput) ElementType() reflect.Type {
@@ -2114,7 +2310,7 @@ func (o CharacterMaskFieldResponseOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional infoType during inspection.
 type CleanDescriptorsOption struct {
 }
 
@@ -2129,7 +2325,7 @@ type CleanDescriptorsOptionInput interface {
 	ToCleanDescriptorsOptionOutputWithContext(context.Context) CleanDescriptorsOptionOutput
 }
 
-// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional infoType during inspection.
 type CleanDescriptorsOptionArgs struct {
 }
 
@@ -2198,7 +2394,7 @@ func (i *cleanDescriptorsOptionPtrType) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional infoType during inspection.
 type CleanDescriptorsOptionOutput struct{ *pulumi.OutputState }
 
 func (CleanDescriptorsOptionOutput) ElementType() reflect.Type {
@@ -2259,11 +2455,11 @@ func (o CleanDescriptorsOptionPtrOutput) Elem() CleanDescriptorsOptionOutput {
 	}).(CleanDescriptorsOptionOutput)
 }
 
-// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional infoType during inspection.
 type CleanDescriptorsOptionResponse struct {
 }
 
-// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional infoType during inspection.
 type CleanDescriptorsOptionResponseOutput struct{ *pulumi.OutputState }
 
 func (CleanDescriptorsOptionResponseOutput) ElementType() reflect.Type {
@@ -2284,7 +2480,7 @@ func (o CleanDescriptorsOptionResponseOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Inspect text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CleanTextField struct {
 }
 
@@ -2299,7 +2495,7 @@ type CleanTextFieldInput interface {
 	ToCleanTextFieldOutputWithContext(context.Context) CleanTextFieldOutput
 }
 
-// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Inspect text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CleanTextFieldArgs struct {
 }
 
@@ -2368,7 +2564,7 @@ func (i *cleanTextFieldPtrType) ToOutput(ctx context.Context) pulumix.Output[*Cl
 	}
 }
 
-// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Inspect text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CleanTextFieldOutput struct{ *pulumi.OutputState }
 
 func (CleanTextFieldOutput) ElementType() reflect.Type {
@@ -2429,11 +2625,11 @@ func (o CleanTextFieldPtrOutput) Elem() CleanTextFieldOutput {
 	}).(CleanTextFieldOutput)
 }
 
-// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Inspect text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CleanTextFieldResponse struct {
 }
 
-// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Inspect text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CleanTextFieldResponseOutput struct{ *pulumi.OutputState }
 
 func (CleanTextFieldResponseOutput) ElementType() reflect.Type {
@@ -2454,7 +2650,7 @@ func (o CleanTextFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+// Inspect text and transform sensitive text. Configurable using TextConfig. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
 type CleanTextTag struct {
 }
 
@@ -2469,7 +2665,7 @@ type CleanTextTagInput interface {
 	ToCleanTextTagOutputWithContext(context.Context) CleanTextTagOutput
 }
 
-// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+// Inspect text and transform sensitive text. Configurable using TextConfig. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
 type CleanTextTagArgs struct {
 }
 
@@ -2538,7 +2734,7 @@ func (i *cleanTextTagPtrType) ToOutput(ctx context.Context) pulumix.Output[*Clea
 	}
 }
 
-// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+// Inspect text and transform sensitive text. Configurable using TextConfig. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
 type CleanTextTagOutput struct{ *pulumi.OutputState }
 
 func (CleanTextTagOutput) ElementType() reflect.Type {
@@ -2599,11 +2795,11 @@ func (o CleanTextTagPtrOutput) Elem() CleanTextTagOutput {
 	}).(CleanTextTagOutput)
 }
 
-// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+// Inspect text and transform sensitive text. Configurable using TextConfig. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
 type CleanTextTagResponse struct {
 }
 
-// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+// Inspect text and transform sensitive text. Configurable using TextConfig. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
 type CleanTextTagResponseOutput struct{ *pulumi.OutputState }
 
 func (CleanTextTagResponseOutput) ElementType() reflect.Type {
@@ -2820,7 +3016,505 @@ func (o CloudHealthcareSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudHealthcareSourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+// Configures whether to enforce consent for the FHIR store and which consent enforcement version is being used.
+type ConsentConfig struct {
+	// Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used.
+	AccessDeterminationLogConfig *AccessDeterminationLogConfig `pulumi:"accessDeterminationLogConfig"`
+	// Optional. If set to true, when accessing FHIR resources, the consent headers provided using [SMART-on-FHIR](https://cloud.google.com/healthcare/private/docs/how-tos/smart-on-fhir) will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+	AccessEnforced *bool `pulumi:"accessEnforced"`
+	// Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope` header.
+	ConsentHeaderHandling *ConsentHeaderHandling `pulumi:"consentHeaderHandling"`
+	// The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents.
+	EnforcedAdminConsents []string `pulumi:"enforcedAdminConsents"`
+	// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+	Version ConsentConfigVersion `pulumi:"version"`
+}
+
+// ConsentConfigInput is an input type that accepts ConsentConfigArgs and ConsentConfigOutput values.
+// You can construct a concrete instance of `ConsentConfigInput` via:
+//
+//	ConsentConfigArgs{...}
+type ConsentConfigInput interface {
+	pulumi.Input
+
+	ToConsentConfigOutput() ConsentConfigOutput
+	ToConsentConfigOutputWithContext(context.Context) ConsentConfigOutput
+}
+
+// Configures whether to enforce consent for the FHIR store and which consent enforcement version is being used.
+type ConsentConfigArgs struct {
+	// Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used.
+	AccessDeterminationLogConfig AccessDeterminationLogConfigPtrInput `pulumi:"accessDeterminationLogConfig"`
+	// Optional. If set to true, when accessing FHIR resources, the consent headers provided using [SMART-on-FHIR](https://cloud.google.com/healthcare/private/docs/how-tos/smart-on-fhir) will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+	AccessEnforced pulumi.BoolPtrInput `pulumi:"accessEnforced"`
+	// Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope` header.
+	ConsentHeaderHandling ConsentHeaderHandlingPtrInput `pulumi:"consentHeaderHandling"`
+	// The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents.
+	EnforcedAdminConsents pulumi.StringArrayInput `pulumi:"enforcedAdminConsents"`
+	// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+	Version ConsentConfigVersionInput `pulumi:"version"`
+}
+
+func (ConsentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentConfig)(nil)).Elem()
+}
+
+func (i ConsentConfigArgs) ToConsentConfigOutput() ConsentConfigOutput {
+	return i.ToConsentConfigOutputWithContext(context.Background())
+}
+
+func (i ConsentConfigArgs) ToConsentConfigOutputWithContext(ctx context.Context) ConsentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentConfigOutput)
+}
+
+func (i ConsentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConsentConfig] {
+	return pulumix.Output[ConsentConfig]{
+		OutputState: i.ToConsentConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConsentConfigArgs) ToConsentConfigPtrOutput() ConsentConfigPtrOutput {
+	return i.ToConsentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConsentConfigArgs) ToConsentConfigPtrOutputWithContext(ctx context.Context) ConsentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentConfigOutput).ToConsentConfigPtrOutputWithContext(ctx)
+}
+
+// ConsentConfigPtrInput is an input type that accepts ConsentConfigArgs, ConsentConfigPtr and ConsentConfigPtrOutput values.
+// You can construct a concrete instance of `ConsentConfigPtrInput` via:
+//
+//	        ConsentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConsentConfigPtrInput interface {
+	pulumi.Input
+
+	ToConsentConfigPtrOutput() ConsentConfigPtrOutput
+	ToConsentConfigPtrOutputWithContext(context.Context) ConsentConfigPtrOutput
+}
+
+type consentConfigPtrType ConsentConfigArgs
+
+func ConsentConfigPtr(v *ConsentConfigArgs) ConsentConfigPtrInput {
+	return (*consentConfigPtrType)(v)
+}
+
+func (*consentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentConfig)(nil)).Elem()
+}
+
+func (i *consentConfigPtrType) ToConsentConfigPtrOutput() ConsentConfigPtrOutput {
+	return i.ToConsentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *consentConfigPtrType) ToConsentConfigPtrOutputWithContext(ctx context.Context) ConsentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentConfigPtrOutput)
+}
+
+func (i *consentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConsentConfig] {
+	return pulumix.Output[*ConsentConfig]{
+		OutputState: i.ToConsentConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configures whether to enforce consent for the FHIR store and which consent enforcement version is being used.
+type ConsentConfigOutput struct{ *pulumi.OutputState }
+
+func (ConsentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentConfig)(nil)).Elem()
+}
+
+func (o ConsentConfigOutput) ToConsentConfigOutput() ConsentConfigOutput {
+	return o
+}
+
+func (o ConsentConfigOutput) ToConsentConfigOutputWithContext(ctx context.Context) ConsentConfigOutput {
+	return o
+}
+
+func (o ConsentConfigOutput) ToConsentConfigPtrOutput() ConsentConfigPtrOutput {
+	return o.ToConsentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentConfigOutput) ToConsentConfigPtrOutputWithContext(ctx context.Context) ConsentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentConfig) *ConsentConfig {
+		return &v
+	}).(ConsentConfigPtrOutput)
+}
+
+func (o ConsentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentConfig] {
+	return pulumix.Output[ConsentConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used.
+func (o ConsentConfigOutput) AccessDeterminationLogConfig() AccessDeterminationLogConfigPtrOutput {
+	return o.ApplyT(func(v ConsentConfig) *AccessDeterminationLogConfig { return v.AccessDeterminationLogConfig }).(AccessDeterminationLogConfigPtrOutput)
+}
+
+// Optional. If set to true, when accessing FHIR resources, the consent headers provided using [SMART-on-FHIR](https://cloud.google.com/healthcare/private/docs/how-tos/smart-on-fhir) will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+func (o ConsentConfigOutput) AccessEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConsentConfig) *bool { return v.AccessEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope` header.
+func (o ConsentConfigOutput) ConsentHeaderHandling() ConsentHeaderHandlingPtrOutput {
+	return o.ApplyT(func(v ConsentConfig) *ConsentHeaderHandling { return v.ConsentHeaderHandling }).(ConsentHeaderHandlingPtrOutput)
+}
+
+// The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents.
+func (o ConsentConfigOutput) EnforcedAdminConsents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConsentConfig) []string { return v.EnforcedAdminConsents }).(pulumi.StringArrayOutput)
+}
+
+// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+func (o ConsentConfigOutput) Version() ConsentConfigVersionOutput {
+	return o.ApplyT(func(v ConsentConfig) ConsentConfigVersion { return v.Version }).(ConsentConfigVersionOutput)
+}
+
+type ConsentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentConfig)(nil)).Elem()
+}
+
+func (o ConsentConfigPtrOutput) ToConsentConfigPtrOutput() ConsentConfigPtrOutput {
+	return o
+}
+
+func (o ConsentConfigPtrOutput) ToConsentConfigPtrOutputWithContext(ctx context.Context) ConsentConfigPtrOutput {
+	return o
+}
+
+func (o ConsentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentConfig] {
+	return pulumix.Output[*ConsentConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConsentConfigPtrOutput) Elem() ConsentConfigOutput {
+	return o.ApplyT(func(v *ConsentConfig) ConsentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConsentConfig
+		return ret
+	}).(ConsentConfigOutput)
+}
+
+// Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used.
+func (o ConsentConfigPtrOutput) AccessDeterminationLogConfig() AccessDeterminationLogConfigPtrOutput {
+	return o.ApplyT(func(v *ConsentConfig) *AccessDeterminationLogConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AccessDeterminationLogConfig
+	}).(AccessDeterminationLogConfigPtrOutput)
+}
+
+// Optional. If set to true, when accessing FHIR resources, the consent headers provided using [SMART-on-FHIR](https://cloud.google.com/healthcare/private/docs/how-tos/smart-on-fhir) will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+func (o ConsentConfigPtrOutput) AccessEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConsentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AccessEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope` header.
+func (o ConsentConfigPtrOutput) ConsentHeaderHandling() ConsentHeaderHandlingPtrOutput {
+	return o.ApplyT(func(v *ConsentConfig) *ConsentHeaderHandling {
+		if v == nil {
+			return nil
+		}
+		return v.ConsentHeaderHandling
+	}).(ConsentHeaderHandlingPtrOutput)
+}
+
+// The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents.
+func (o ConsentConfigPtrOutput) EnforcedAdminConsents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConsentConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforcedAdminConsents
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+func (o ConsentConfigPtrOutput) Version() ConsentConfigVersionPtrOutput {
+	return o.ApplyT(func(v *ConsentConfig) *ConsentConfigVersion {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(ConsentConfigVersionPtrOutput)
+}
+
+// Configures whether to enforce consent for the FHIR store and which consent enforcement version is being used.
+type ConsentConfigResponse struct {
+	// Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used.
+	AccessDeterminationLogConfig AccessDeterminationLogConfigResponse `pulumi:"accessDeterminationLogConfig"`
+	// Optional. If set to true, when accessing FHIR resources, the consent headers provided using [SMART-on-FHIR](https://cloud.google.com/healthcare/private/docs/how-tos/smart-on-fhir) will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+	AccessEnforced bool `pulumi:"accessEnforced"`
+	// Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope` header.
+	ConsentHeaderHandling ConsentHeaderHandlingResponse `pulumi:"consentHeaderHandling"`
+	// The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents.
+	EnforcedAdminConsents []string `pulumi:"enforcedAdminConsents"`
+	// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+	Version string `pulumi:"version"`
+}
+
+// Configures whether to enforce consent for the FHIR store and which consent enforcement version is being used.
+type ConsentConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ConsentConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentConfigResponse)(nil)).Elem()
+}
+
+func (o ConsentConfigResponseOutput) ToConsentConfigResponseOutput() ConsentConfigResponseOutput {
+	return o
+}
+
+func (o ConsentConfigResponseOutput) ToConsentConfigResponseOutputWithContext(ctx context.Context) ConsentConfigResponseOutput {
+	return o
+}
+
+func (o ConsentConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentConfigResponse] {
+	return pulumix.Output[ConsentConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used.
+func (o ConsentConfigResponseOutput) AccessDeterminationLogConfig() AccessDeterminationLogConfigResponseOutput {
+	return o.ApplyT(func(v ConsentConfigResponse) AccessDeterminationLogConfigResponse {
+		return v.AccessDeterminationLogConfig
+	}).(AccessDeterminationLogConfigResponseOutput)
+}
+
+// Optional. If set to true, when accessing FHIR resources, the consent headers provided using [SMART-on-FHIR](https://cloud.google.com/healthcare/private/docs/how-tos/smart-on-fhir) will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+func (o ConsentConfigResponseOutput) AccessEnforced() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConsentConfigResponse) bool { return v.AccessEnforced }).(pulumi.BoolOutput)
+}
+
+// Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope` header.
+func (o ConsentConfigResponseOutput) ConsentHeaderHandling() ConsentHeaderHandlingResponseOutput {
+	return o.ApplyT(func(v ConsentConfigResponse) ConsentHeaderHandlingResponse { return v.ConsentHeaderHandling }).(ConsentHeaderHandlingResponseOutput)
+}
+
+// The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents.
+func (o ConsentConfigResponseOutput) EnforcedAdminConsents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConsentConfigResponse) []string { return v.EnforcedAdminConsents }).(pulumi.StringArrayOutput)
+}
+
+// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+func (o ConsentConfigResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsentConfigResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// How the server handles the consent header.
+type ConsentHeaderHandling struct {
+	// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+	Profile *ConsentHeaderHandlingProfile `pulumi:"profile"`
+}
+
+// ConsentHeaderHandlingInput is an input type that accepts ConsentHeaderHandlingArgs and ConsentHeaderHandlingOutput values.
+// You can construct a concrete instance of `ConsentHeaderHandlingInput` via:
+//
+//	ConsentHeaderHandlingArgs{...}
+type ConsentHeaderHandlingInput interface {
+	pulumi.Input
+
+	ToConsentHeaderHandlingOutput() ConsentHeaderHandlingOutput
+	ToConsentHeaderHandlingOutputWithContext(context.Context) ConsentHeaderHandlingOutput
+}
+
+// How the server handles the consent header.
+type ConsentHeaderHandlingArgs struct {
+	// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+	Profile ConsentHeaderHandlingProfilePtrInput `pulumi:"profile"`
+}
+
+func (ConsentHeaderHandlingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentHeaderHandling)(nil)).Elem()
+}
+
+func (i ConsentHeaderHandlingArgs) ToConsentHeaderHandlingOutput() ConsentHeaderHandlingOutput {
+	return i.ToConsentHeaderHandlingOutputWithContext(context.Background())
+}
+
+func (i ConsentHeaderHandlingArgs) ToConsentHeaderHandlingOutputWithContext(ctx context.Context) ConsentHeaderHandlingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentHeaderHandlingOutput)
+}
+
+func (i ConsentHeaderHandlingArgs) ToOutput(ctx context.Context) pulumix.Output[ConsentHeaderHandling] {
+	return pulumix.Output[ConsentHeaderHandling]{
+		OutputState: i.ToConsentHeaderHandlingOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConsentHeaderHandlingArgs) ToConsentHeaderHandlingPtrOutput() ConsentHeaderHandlingPtrOutput {
+	return i.ToConsentHeaderHandlingPtrOutputWithContext(context.Background())
+}
+
+func (i ConsentHeaderHandlingArgs) ToConsentHeaderHandlingPtrOutputWithContext(ctx context.Context) ConsentHeaderHandlingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentHeaderHandlingOutput).ToConsentHeaderHandlingPtrOutputWithContext(ctx)
+}
+
+// ConsentHeaderHandlingPtrInput is an input type that accepts ConsentHeaderHandlingArgs, ConsentHeaderHandlingPtr and ConsentHeaderHandlingPtrOutput values.
+// You can construct a concrete instance of `ConsentHeaderHandlingPtrInput` via:
+//
+//	        ConsentHeaderHandlingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConsentHeaderHandlingPtrInput interface {
+	pulumi.Input
+
+	ToConsentHeaderHandlingPtrOutput() ConsentHeaderHandlingPtrOutput
+	ToConsentHeaderHandlingPtrOutputWithContext(context.Context) ConsentHeaderHandlingPtrOutput
+}
+
+type consentHeaderHandlingPtrType ConsentHeaderHandlingArgs
+
+func ConsentHeaderHandlingPtr(v *ConsentHeaderHandlingArgs) ConsentHeaderHandlingPtrInput {
+	return (*consentHeaderHandlingPtrType)(v)
+}
+
+func (*consentHeaderHandlingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentHeaderHandling)(nil)).Elem()
+}
+
+func (i *consentHeaderHandlingPtrType) ToConsentHeaderHandlingPtrOutput() ConsentHeaderHandlingPtrOutput {
+	return i.ToConsentHeaderHandlingPtrOutputWithContext(context.Background())
+}
+
+func (i *consentHeaderHandlingPtrType) ToConsentHeaderHandlingPtrOutputWithContext(ctx context.Context) ConsentHeaderHandlingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentHeaderHandlingPtrOutput)
+}
+
+func (i *consentHeaderHandlingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConsentHeaderHandling] {
+	return pulumix.Output[*ConsentHeaderHandling]{
+		OutputState: i.ToConsentHeaderHandlingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// How the server handles the consent header.
+type ConsentHeaderHandlingOutput struct{ *pulumi.OutputState }
+
+func (ConsentHeaderHandlingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentHeaderHandling)(nil)).Elem()
+}
+
+func (o ConsentHeaderHandlingOutput) ToConsentHeaderHandlingOutput() ConsentHeaderHandlingOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingOutput) ToConsentHeaderHandlingOutputWithContext(ctx context.Context) ConsentHeaderHandlingOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingOutput) ToConsentHeaderHandlingPtrOutput() ConsentHeaderHandlingPtrOutput {
+	return o.ToConsentHeaderHandlingPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentHeaderHandlingOutput) ToConsentHeaderHandlingPtrOutputWithContext(ctx context.Context) ConsentHeaderHandlingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentHeaderHandling) *ConsentHeaderHandling {
+		return &v
+	}).(ConsentHeaderHandlingPtrOutput)
+}
+
+func (o ConsentHeaderHandlingOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentHeaderHandling] {
+	return pulumix.Output[ConsentHeaderHandling]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+func (o ConsentHeaderHandlingOutput) Profile() ConsentHeaderHandlingProfilePtrOutput {
+	return o.ApplyT(func(v ConsentHeaderHandling) *ConsentHeaderHandlingProfile { return v.Profile }).(ConsentHeaderHandlingProfilePtrOutput)
+}
+
+type ConsentHeaderHandlingPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsentHeaderHandlingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentHeaderHandling)(nil)).Elem()
+}
+
+func (o ConsentHeaderHandlingPtrOutput) ToConsentHeaderHandlingPtrOutput() ConsentHeaderHandlingPtrOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingPtrOutput) ToConsentHeaderHandlingPtrOutputWithContext(ctx context.Context) ConsentHeaderHandlingPtrOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentHeaderHandling] {
+	return pulumix.Output[*ConsentHeaderHandling]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConsentHeaderHandlingPtrOutput) Elem() ConsentHeaderHandlingOutput {
+	return o.ApplyT(func(v *ConsentHeaderHandling) ConsentHeaderHandling {
+		if v != nil {
+			return *v
+		}
+		var ret ConsentHeaderHandling
+		return ret
+	}).(ConsentHeaderHandlingOutput)
+}
+
+// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+func (o ConsentHeaderHandlingPtrOutput) Profile() ConsentHeaderHandlingProfilePtrOutput {
+	return o.ApplyT(func(v *ConsentHeaderHandling) *ConsentHeaderHandlingProfile {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(ConsentHeaderHandlingProfilePtrOutput)
+}
+
+// How the server handles the consent header.
+type ConsentHeaderHandlingResponse struct {
+	// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+	Profile string `pulumi:"profile"`
+}
+
+// How the server handles the consent header.
+type ConsentHeaderHandlingResponseOutput struct{ *pulumi.OutputState }
+
+func (ConsentHeaderHandlingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentHeaderHandlingResponse)(nil)).Elem()
+}
+
+func (o ConsentHeaderHandlingResponseOutput) ToConsentHeaderHandlingResponseOutput() ConsentHeaderHandlingResponseOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingResponseOutput) ToConsentHeaderHandlingResponseOutputWithContext(ctx context.Context) ConsentHeaderHandlingResponseOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentHeaderHandlingResponse] {
+	return pulumix.Output[ConsentHeaderHandlingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+func (o ConsentHeaderHandlingResponseOutput) Profile() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsentHeaderHandlingResponse) string { return v.Profile }).(pulumi.StringOutput)
+}
+
+// Fields that don't match a KeepField or CleanTextField `action` in the BASIC profile are collected into a contextual phrase list. For fields that match a CleanTextField `action` in FieldMetadata or ProfileType, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
 type ContextualDeidConfig struct {
 }
 
@@ -2835,7 +3529,7 @@ type ContextualDeidConfigInput interface {
 	ToContextualDeidConfigOutputWithContext(context.Context) ContextualDeidConfigOutput
 }
 
-// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+// Fields that don't match a KeepField or CleanTextField `action` in the BASIC profile are collected into a contextual phrase list. For fields that match a CleanTextField `action` in FieldMetadata or ProfileType, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
 type ContextualDeidConfigArgs struct {
 }
 
@@ -2904,7 +3598,7 @@ func (i *contextualDeidConfigPtrType) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+// Fields that don't match a KeepField or CleanTextField `action` in the BASIC profile are collected into a contextual phrase list. For fields that match a CleanTextField `action` in FieldMetadata or ProfileType, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
 type ContextualDeidConfigOutput struct{ *pulumi.OutputState }
 
 func (ContextualDeidConfigOutput) ElementType() reflect.Type {
@@ -2965,11 +3659,11 @@ func (o ContextualDeidConfigPtrOutput) Elem() ContextualDeidConfigOutput {
 	}).(ContextualDeidConfigOutput)
 }
 
-// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+// Fields that don't match a KeepField or CleanTextField `action` in the BASIC profile are collected into a contextual phrase list. For fields that match a CleanTextField `action` in FieldMetadata or ProfileType, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
 type ContextualDeidConfigResponse struct {
 }
 
-// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+// Fields that don't match a KeepField or CleanTextField `action` in the BASIC profile are collected into a contextual phrase list. For fields that match a CleanTextField `action` in FieldMetadata or ProfileType, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
 type ContextualDeidConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (ContextualDeidConfigResponseOutput) ElementType() reflect.Type {
@@ -2992,9 +3686,9 @@ func (o ContextualDeidConfigResponseOutput) ToOutput(ctx context.Context) pulumi
 
 // Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output. For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
 type CryptoHashConfig struct {
-	// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
 	CryptoKey *string `pulumi:"cryptoKey"`
-	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. Must not be set if crypto_key is set.
 	KmsWrapped *KmsWrappedCryptoKey `pulumi:"kmsWrapped"`
 }
 
@@ -3011,9 +3705,9 @@ type CryptoHashConfigInput interface {
 
 // Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output. For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
 type CryptoHashConfigArgs struct {
-	// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
 	CryptoKey pulumi.StringPtrInput `pulumi:"cryptoKey"`
-	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. Must not be set if crypto_key is set.
 	KmsWrapped KmsWrappedCryptoKeyPtrInput `pulumi:"kmsWrapped"`
 }
 
@@ -3113,12 +3807,12 @@ func (o CryptoHashConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Cry
 	}
 }
 
-// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
 func (o CryptoHashConfigOutput) CryptoKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoHashConfig) *string { return v.CryptoKey }).(pulumi.StringPtrOutput)
 }
 
-// KMS wrapped key. Must not be set if `crypto_key` is set.
+// KMS wrapped key. Must not be set if crypto_key is set.
 func (o CryptoHashConfigOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v CryptoHashConfig) *KmsWrappedCryptoKey { return v.KmsWrapped }).(KmsWrappedCryptoKeyPtrOutput)
 }
@@ -3153,7 +3847,7 @@ func (o CryptoHashConfigPtrOutput) Elem() CryptoHashConfigOutput {
 	}).(CryptoHashConfigOutput)
 }
 
-// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
 func (o CryptoHashConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoHashConfig) *string {
 		if v == nil {
@@ -3163,7 +3857,7 @@ func (o CryptoHashConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// KMS wrapped key. Must not be set if `crypto_key` is set.
+// KMS wrapped key. Must not be set if crypto_key is set.
 func (o CryptoHashConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v *CryptoHashConfig) *KmsWrappedCryptoKey {
 		if v == nil {
@@ -3175,9 +3869,9 @@ func (o CryptoHashConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 
 // Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output. For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
 type CryptoHashConfigResponse struct {
-	// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
 	CryptoKey string `pulumi:"cryptoKey"`
-	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. Must not be set if crypto_key is set.
 	KmsWrapped KmsWrappedCryptoKeyResponse `pulumi:"kmsWrapped"`
 }
 
@@ -3202,17 +3896,17 @@ func (o CryptoHashConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
 func (o CryptoHashConfigResponseOutput) CryptoKey() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoHashConfigResponse) string { return v.CryptoKey }).(pulumi.StringOutput)
 }
 
-// KMS wrapped key. Must not be set if `crypto_key` is set.
+// KMS wrapped key. Must not be set if crypto_key is set.
 func (o CryptoHashConfigResponseOutput) KmsWrapped() KmsWrappedCryptoKeyResponseOutput {
 	return o.ApplyT(func(v CryptoHashConfigResponse) KmsWrappedCryptoKeyResponse { return v.KmsWrapped }).(KmsWrappedCryptoKeyResponseOutput)
 }
 
-// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CryptoHashField struct {
 }
 
@@ -3227,7 +3921,7 @@ type CryptoHashFieldInput interface {
 	ToCryptoHashFieldOutputWithContext(context.Context) CryptoHashFieldOutput
 }
 
-// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CryptoHashFieldArgs struct {
 }
 
@@ -3296,7 +3990,7 @@ func (i *cryptoHashFieldPtrType) ToOutput(ctx context.Context) pulumix.Output[*C
 	}
 }
 
-// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CryptoHashFieldOutput struct{ *pulumi.OutputState }
 
 func (CryptoHashFieldOutput) ElementType() reflect.Type {
@@ -3357,11 +4051,11 @@ func (o CryptoHashFieldPtrOutput) Elem() CryptoHashFieldOutput {
 	}).(CryptoHashFieldOutput)
 }
 
-// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CryptoHashFieldResponse struct {
 }
 
-// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 type CryptoHashFieldResponseOutput struct{ *pulumi.OutputState }
 
 func (CryptoHashFieldResponseOutput) ElementType() reflect.Type {
@@ -3384,9 +4078,9 @@ func (o CryptoHashFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfig struct {
-	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If crypto_key is not set, then kms_wrapped is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if kms_wrapped is set.
 	CryptoKey *string `pulumi:"cryptoKey"`
-	// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. If kms_wrapped is not set, then crypto_key is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if crypto_key is set.
 	KmsWrapped *KmsWrappedCryptoKey `pulumi:"kmsWrapped"`
 }
 
@@ -3403,9 +4097,9 @@ type DateShiftConfigInput interface {
 
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfigArgs struct {
-	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If crypto_key is not set, then kms_wrapped is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if kms_wrapped is set.
 	CryptoKey pulumi.StringPtrInput `pulumi:"cryptoKey"`
-	// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. If kms_wrapped is not set, then crypto_key is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if crypto_key is set.
 	KmsWrapped KmsWrappedCryptoKeyPtrInput `pulumi:"kmsWrapped"`
 }
 
@@ -3505,12 +4199,12 @@ func (o DateShiftConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Date
 	}
 }
 
-// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If crypto_key is not set, then kms_wrapped is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if kms_wrapped is set.
 func (o DateShiftConfigOutput) CryptoKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DateShiftConfig) *string { return v.CryptoKey }).(pulumi.StringPtrOutput)
 }
 
-// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
+// KMS wrapped key. If kms_wrapped is not set, then crypto_key is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if crypto_key is set.
 func (o DateShiftConfigOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v DateShiftConfig) *KmsWrappedCryptoKey { return v.KmsWrapped }).(KmsWrappedCryptoKeyPtrOutput)
 }
@@ -3545,7 +4239,7 @@ func (o DateShiftConfigPtrOutput) Elem() DateShiftConfigOutput {
 	}).(DateShiftConfigOutput)
 }
 
-// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If crypto_key is not set, then kms_wrapped is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if kms_wrapped is set.
 func (o DateShiftConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DateShiftConfig) *string {
 		if v == nil {
@@ -3555,7 +4249,7 @@ func (o DateShiftConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
+// KMS wrapped key. If kms_wrapped is not set, then crypto_key is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if crypto_key is set.
 func (o DateShiftConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v *DateShiftConfig) *KmsWrappedCryptoKey {
 		if v == nil {
@@ -3567,9 +4261,9 @@ func (o DateShiftConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfigResponse struct {
-	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If crypto_key is not set, then kms_wrapped is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if kms_wrapped is set.
 	CryptoKey string `pulumi:"cryptoKey"`
-	// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. If kms_wrapped is not set, then crypto_key is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if crypto_key is set.
 	KmsWrapped KmsWrappedCryptoKeyResponse `pulumi:"kmsWrapped"`
 }
 
@@ -3594,17 +4288,17 @@ func (o DateShiftConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If crypto_key is not set, then kms_wrapped is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if kms_wrapped is set.
 func (o DateShiftConfigResponseOutput) CryptoKey() pulumi.StringOutput {
 	return o.ApplyT(func(v DateShiftConfigResponse) string { return v.CryptoKey }).(pulumi.StringOutput)
 }
 
-// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
+// KMS wrapped key. If kms_wrapped is not set, then crypto_key is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if crypto_key is set.
 func (o DateShiftConfigResponseOutput) KmsWrapped() KmsWrappedCryptoKeyResponseOutput {
 	return o.ApplyT(func(v DateShiftConfigResponse) KmsWrappedCryptoKeyResponse { return v.KmsWrapped }).(KmsWrappedCryptoKeyResponseOutput)
 }
 
-// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 type DateShiftField struct {
 }
 
@@ -3619,7 +4313,7 @@ type DateShiftFieldInput interface {
 	ToDateShiftFieldOutputWithContext(context.Context) DateShiftFieldOutput
 }
 
-// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 type DateShiftFieldArgs struct {
 }
 
@@ -3688,7 +4382,7 @@ func (i *dateShiftFieldPtrType) ToOutput(ctx context.Context) pulumix.Output[*Da
 	}
 }
 
-// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 type DateShiftFieldOutput struct{ *pulumi.OutputState }
 
 func (DateShiftFieldOutput) ElementType() reflect.Type {
@@ -3749,11 +4443,11 @@ func (o DateShiftFieldPtrOutput) Elem() DateShiftFieldOutput {
 	}).(DateShiftFieldOutput)
 }
 
-// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 type DateShiftFieldResponse struct {
 }
 
-// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 type DateShiftFieldResponseOutput struct{ *pulumi.OutputState }
 
 func (DateShiftFieldResponseOutput) ElementType() reflect.Type {
@@ -4020,7 +4714,7 @@ type DeidentifyConfig struct {
 	OperationMetadata *DeidentifyOperationMetadata `pulumi:"operationMetadata"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text *TextConfig `pulumi:"text"`
-	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 	UseRegionalDataProcessing *bool `pulumi:"useRegionalDataProcessing"`
 }
 
@@ -4059,7 +4753,7 @@ type DeidentifyConfigArgs struct {
 	OperationMetadata DeidentifyOperationMetadataPtrInput `pulumi:"operationMetadata"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text TextConfigPtrInput `pulumi:"text"`
-	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 	UseRegionalDataProcessing pulumi.BoolPtrInput `pulumi:"useRegionalDataProcessing"`
 }
 
@@ -4205,7 +4899,7 @@ func (o DeidentifyConfigOutput) Text() TextConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *TextConfig { return v.Text }).(TextConfigPtrOutput)
 }
 
-// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 func (o DeidentifyConfigOutput) UseRegionalDataProcessing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *bool { return v.UseRegionalDataProcessing }).(pulumi.BoolPtrOutput)
 }
@@ -4326,7 +5020,7 @@ func (o DeidentifyConfigPtrOutput) Text() TextConfigPtrOutput {
 	}).(TextConfigPtrOutput)
 }
 
-// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 func (o DeidentifyConfigPtrOutput) UseRegionalDataProcessing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeidentifyConfig) *bool {
 		if v == nil {
@@ -4360,7 +5054,7 @@ type DeidentifyConfigResponse struct {
 	OperationMetadata DeidentifyOperationMetadataResponse `pulumi:"operationMetadata"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text TextConfigResponse `pulumi:"text"`
-	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 	UseRegionalDataProcessing bool `pulumi:"useRegionalDataProcessing"`
 }
 
@@ -4431,7 +5125,7 @@ func (o DeidentifyConfigResponseOutput) Text() TextConfigResponseOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) TextConfigResponse { return v.Text }).(TextConfigResponseOutput)
 }
 
-// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
 func (o DeidentifyConfigResponseOutput) UseRegionalDataProcessing() pulumi.BoolOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) bool { return v.UseRegionalDataProcessing }).(pulumi.BoolOutput)
 }
@@ -5822,9 +6516,9 @@ func (o FhirConfigResponseOutput) FieldMetadataList() FieldMetadataResponseArray
 
 // Specifies how to handle the de-identification of a FHIR store.
 type FhirFieldConfig struct {
-	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
 	FieldMetadataList []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata `pulumi:"fieldMetadataList"`
-	// Specifies additional options, overriding the base `profile`.
+	// Specifies additional options, overriding the base ProfileType.
 	Options *GoogleCloudHealthcareV1beta1DeidentifyOptions `pulumi:"options"`
 	// Base profile type for handling FHIR fields.
 	ProfileType *FhirFieldConfigProfileType `pulumi:"profileType"`
@@ -5843,9 +6537,9 @@ type FhirFieldConfigInput interface {
 
 // Specifies how to handle the de-identification of a FHIR store.
 type FhirFieldConfigArgs struct {
-	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
 	FieldMetadataList GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayInput `pulumi:"fieldMetadataList"`
-	// Specifies additional options, overriding the base `profile`.
+	// Specifies additional options, overriding the base ProfileType.
 	Options GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrInput `pulumi:"options"`
 	// Base profile type for handling FHIR fields.
 	ProfileType FhirFieldConfigProfileTypePtrInput `pulumi:"profileType"`
@@ -5947,14 +6641,14 @@ func (o FhirFieldConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Fhir
 	}
 }
 
-// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
 func (o FhirFieldConfigOutput) FieldMetadataList() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput {
 	return o.ApplyT(func(v FhirFieldConfig) []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata {
 		return v.FieldMetadataList
 	}).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput)
 }
 
-// Specifies additional options, overriding the base `profile`.
+// Specifies additional options, overriding the base ProfileType.
 func (o FhirFieldConfigOutput) Options() GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
 	return o.ApplyT(func(v FhirFieldConfig) *GoogleCloudHealthcareV1beta1DeidentifyOptions { return v.Options }).(GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput)
 }
@@ -5994,7 +6688,7 @@ func (o FhirFieldConfigPtrOutput) Elem() FhirFieldConfigOutput {
 	}).(FhirFieldConfigOutput)
 }
 
-// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
 func (o FhirFieldConfigPtrOutput) FieldMetadataList() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput {
 	return o.ApplyT(func(v *FhirFieldConfig) []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata {
 		if v == nil {
@@ -6004,7 +6698,7 @@ func (o FhirFieldConfigPtrOutput) FieldMetadataList() GoogleCloudHealthcareV1bet
 	}).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput)
 }
 
-// Specifies additional options, overriding the base `profile`.
+// Specifies additional options, overriding the base ProfileType.
 func (o FhirFieldConfigPtrOutput) Options() GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
 	return o.ApplyT(func(v *FhirFieldConfig) *GoogleCloudHealthcareV1beta1DeidentifyOptions {
 		if v == nil {
@@ -6026,9 +6720,9 @@ func (o FhirFieldConfigPtrOutput) ProfileType() FhirFieldConfigProfileTypePtrOut
 
 // Specifies how to handle the de-identification of a FHIR store.
 type FhirFieldConfigResponse struct {
-	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
 	FieldMetadataList []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse `pulumi:"fieldMetadataList"`
-	// Specifies additional options, overriding the base `profile`.
+	// Specifies additional options, overriding the base ProfileType.
 	Options GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse `pulumi:"options"`
 	// Base profile type for handling FHIR fields.
 	ProfileType string `pulumi:"profileType"`
@@ -6055,14 +6749,14 @@ func (o FhirFieldConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
 func (o FhirFieldConfigResponseOutput) FieldMetadataList() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput {
 	return o.ApplyT(func(v FhirFieldConfigResponse) []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse {
 		return v.FieldMetadataList
 	}).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput)
 }
 
-// Specifies additional options, overriding the base `profile`.
+// Specifies additional options, overriding the base ProfileType.
 func (o FhirFieldConfigResponseOutput) Options() GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput {
 	return o.ApplyT(func(v FhirFieldConfigResponse) GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse {
 		return v.Options
@@ -6080,7 +6774,7 @@ type FhirNotificationConfig struct {
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
 	SendFullResource *bool `pulumi:"sendFullResource"`
-	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 	SendPreviousResourceOnDelete *bool `pulumi:"sendPreviousResourceOnDelete"`
 }
 
@@ -6101,7 +6795,7 @@ type FhirNotificationConfigArgs struct {
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
 	// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
 	SendFullResource pulumi.BoolPtrInput `pulumi:"sendFullResource"`
-	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 	SendPreviousResourceOnDelete pulumi.BoolPtrInput `pulumi:"sendPreviousResourceOnDelete"`
 }
 
@@ -6185,7 +6879,7 @@ func (o FhirNotificationConfigOutput) SendFullResource() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FhirNotificationConfig) *bool { return v.SendFullResource }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 func (o FhirNotificationConfigOutput) SendPreviousResourceOnDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FhirNotificationConfig) *bool { return v.SendPreviousResourceOnDelete }).(pulumi.BoolPtrOutput)
 }
@@ -6222,7 +6916,7 @@ type FhirNotificationConfigResponse struct {
 	PubsubTopic string `pulumi:"pubsubTopic"`
 	// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
 	SendFullResource bool `pulumi:"sendFullResource"`
-	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 	SendPreviousResourceOnDelete bool `pulumi:"sendPreviousResourceOnDelete"`
 }
 
@@ -6257,7 +6951,7 @@ func (o FhirNotificationConfigResponseOutput) SendFullResource() pulumi.BoolOutp
 	return o.ApplyT(func(v FhirNotificationConfigResponse) bool { return v.SendFullResource }).(pulumi.BoolOutput)
 }
 
-// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
 func (o FhirNotificationConfigResponseOutput) SendPreviousResourceOnDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v FhirNotificationConfigResponse) bool { return v.SendPreviousResourceOnDelete }).(pulumi.BoolOutput)
 }
@@ -6290,7 +6984,7 @@ func (o FhirNotificationConfigResponseArrayOutput) Index(i pulumi.IntInput) Fhir
 
 // Details about the FHIR store to write the output to.
 type FhirOutput struct {
-	// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set `enable_update_create` to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
+	// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enableUpdateCreate to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
 	FhirStore *string `pulumi:"fhirStore"`
 }
 
@@ -6307,7 +7001,7 @@ type FhirOutputInput interface {
 
 // Details about the FHIR store to write the output to.
 type FhirOutputArgs struct {
-	// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set `enable_update_create` to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
+	// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enableUpdateCreate to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
 	FhirStore pulumi.StringPtrInput `pulumi:"fhirStore"`
 }
 
@@ -6407,7 +7101,7 @@ func (o FhirOutputOutput) ToOutput(ctx context.Context) pulumix.Output[FhirOutpu
 	}
 }
 
-// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set `enable_update_create` to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
+// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enableUpdateCreate to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
 func (o FhirOutputOutput) FhirStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirOutput) *string { return v.FhirStore }).(pulumi.StringPtrOutput)
 }
@@ -6442,7 +7136,7 @@ func (o FhirOutputPtrOutput) Elem() FhirOutputOutput {
 	}).(FhirOutputOutput)
 }
 
-// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set `enable_update_create` to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
+// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enableUpdateCreate to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
 func (o FhirOutputPtrOutput) FhirStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FhirOutput) *string {
 		if v == nil {
@@ -6454,7 +7148,7 @@ func (o FhirOutputPtrOutput) FhirStore() pulumi.StringPtrOutput {
 
 // Details about the FHIR store to write the output to.
 type FhirOutputResponse struct {
-	// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set `enable_update_create` to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
+	// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enableUpdateCreate to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
 	FhirStore string `pulumi:"fhirStore"`
 }
 
@@ -6479,7 +7173,7 @@ func (o FhirOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[F
 	}
 }
 
-// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set `enable_update_create` to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
+// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enableUpdateCreate to true. The destination store must use FHIR version R4. Writing these resources will consume FHIR operations quota from the project containing the source data. De-identify operation metadata is only generated for DICOM de-identification operations.
 func (o FhirOutputResponseOutput) FhirStore() pulumi.StringOutput {
 	return o.ApplyT(func(v FhirOutputResponse) string { return v.FhirStore }).(pulumi.StringOutput)
 }
@@ -7130,17 +7824,17 @@ func (o GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput) Index(i pu
 
 // Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
 type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata struct {
-	// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	CharacterMaskField *CharacterMaskField `pulumi:"characterMaskField"`
-	// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Inspect the field's text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	CleanTextField *CleanTextField `pulumi:"cleanTextField"`
-	// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	CryptoHashField *CryptoHashField `pulumi:"cryptoHashField"`
-	// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+	// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 	DateShiftField *DateShiftField `pulumi:"dateShiftField"`
 	// Keep the field unchanged.
 	KeepField *KeepField `pulumi:"keepField"`
-	// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+	// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR [type](https://www.hl7.org/fhir/datatypes.html) name. All types begin with an upper case letter. For example, the resource field `Patient.Address.city`, which uses a [string](https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be matched by `Patient.Address.String`. Partial matching is supported. For example, `Patient.Address.city` can be matched by `Address.city` (with `Patient` omitted). Partial matching and type matching can be combined, for example `Patient.Address.city` can be matched by `Address.String`. For "choice" types (those defined in the FHIR spec with the format `field[x]`), use two separate components. For example, `deceasedAge.unit` is matched by `Deceased.Age.unit`. The following types are supported: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`, `HumanName.family`) can be omitted.
 	Paths []string `pulumi:"paths"`
 	// Remove the field.
 	RemoveField *RemoveField `pulumi:"removeField"`
@@ -7159,17 +7853,17 @@ type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataInput interface {
 
 // Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
 type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs struct {
-	// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	CharacterMaskField CharacterMaskFieldPtrInput `pulumi:"characterMaskField"`
-	// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Inspect the field's text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	CleanTextField CleanTextFieldPtrInput `pulumi:"cleanTextField"`
-	// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	CryptoHashField CryptoHashFieldPtrInput `pulumi:"cryptoHashField"`
-	// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+	// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 	DateShiftField DateShiftFieldPtrInput `pulumi:"dateShiftField"`
 	// Keep the field unchanged.
 	KeepField KeepFieldPtrInput `pulumi:"keepField"`
-	// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+	// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR [type](https://www.hl7.org/fhir/datatypes.html) name. All types begin with an upper case letter. For example, the resource field `Patient.Address.city`, which uses a [string](https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be matched by `Patient.Address.String`. Partial matching is supported. For example, `Patient.Address.city` can be matched by `Address.city` (with `Patient` omitted). Partial matching and type matching can be combined, for example `Patient.Address.city` can be matched by `Address.String`. For "choice" types (those defined in the FHIR spec with the format `field[x]`), use two separate components. For example, `deceasedAge.unit` is matched by `Deceased.Age.unit`. The following types are supported: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`, `HumanName.family`) can be omitted.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
 	// Remove the field.
 	RemoveField RemoveFieldPtrInput `pulumi:"removeField"`
@@ -7245,24 +7939,24 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) ToOutput(ctx 
 	}
 }
 
-// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) CharacterMaskField() CharacterMaskFieldPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *CharacterMaskField {
 		return v.CharacterMaskField
 	}).(CharacterMaskFieldPtrOutput)
 }
 
-// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Inspect the field's text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) CleanTextField() CleanTextFieldPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *CleanTextField { return v.CleanTextField }).(CleanTextFieldPtrOutput)
 }
 
-// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) CryptoHashField() CryptoHashFieldPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *CryptoHashField { return v.CryptoHashField }).(CryptoHashFieldPtrOutput)
 }
 
-// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) DateShiftField() DateShiftFieldPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *DateShiftField { return v.DateShiftField }).(DateShiftFieldPtrOutput)
 }
@@ -7272,7 +7966,7 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) KeepField() K
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *KeepField { return v.KeepField }).(KeepFieldPtrOutput)
 }
 
-// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR [type](https://www.hl7.org/fhir/datatypes.html) name. All types begin with an upper case letter. For example, the resource field `Patient.Address.city`, which uses a [string](https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be matched by `Patient.Address.String`. Partial matching is supported. For example, `Patient.Address.city` can be matched by `Address.city` (with `Patient` omitted). Partial matching and type matching can be combined, for example `Patient.Address.city` can be matched by `Address.String`. For "choice" types (those defined in the FHIR spec with the format `field[x]`), use two separate components. For example, `deceasedAge.unit` is matched by `Deceased.Age.unit`. The following types are supported: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`, `HumanName.family`) can be omitted.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
@@ -7310,17 +8004,17 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput) Index(i 
 
 // Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
 type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse struct {
-	// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	CharacterMaskField CharacterMaskFieldResponse `pulumi:"characterMaskField"`
-	// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Inspect the field's text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	CleanTextField CleanTextFieldResponse `pulumi:"cleanTextField"`
-	// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	CryptoHashField CryptoHashFieldResponse `pulumi:"cryptoHashField"`
-	// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+	// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 	DateShiftField DateShiftFieldResponse `pulumi:"dateShiftField"`
 	// Keep the field unchanged.
 	KeepField KeepFieldResponse `pulumi:"keepField"`
-	// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+	// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR [type](https://www.hl7.org/fhir/datatypes.html) name. All types begin with an upper case letter. For example, the resource field `Patient.Address.city`, which uses a [string](https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be matched by `Patient.Address.String`. Partial matching is supported. For example, `Patient.Address.city` can be matched by `Address.city` (with `Patient` omitted). Partial matching and type matching can be combined, for example `Patient.Address.city` can be matched by `Address.String`. For "choice" types (those defined in the FHIR spec with the format `field[x]`), use two separate components. For example, `deceasedAge.unit` is matched by `Deceased.Age.unit`. The following types are supported: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`, `HumanName.family`) can be omitted.
 	Paths []string `pulumi:"paths"`
 	// Remove the field.
 	RemoveField RemoveFieldResponse `pulumi:"removeField"`
@@ -7347,28 +8041,28 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) ToOut
 	}
 }
 
-// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) CharacterMaskField() CharacterMaskFieldResponseOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) CharacterMaskFieldResponse {
 		return v.CharacterMaskField
 	}).(CharacterMaskFieldResponseOutput)
 }
 
-// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Inspect the field's text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) CleanTextField() CleanTextFieldResponseOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) CleanTextFieldResponse {
 		return v.CleanTextField
 	}).(CleanTextFieldResponseOutput)
 }
 
-// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) CryptoHashField() CryptoHashFieldResponseOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) CryptoHashFieldResponse {
 		return v.CryptoHashField
 	}).(CryptoHashFieldResponseOutput)
 }
 
-// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) DateShiftField() DateShiftFieldResponseOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) DateShiftFieldResponse {
 		return v.DateShiftField
@@ -7382,7 +8076,7 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) KeepF
 	}).(KeepFieldResponseOutput)
 }
 
-// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR [type](https://www.hl7.org/fhir/datatypes.html) name. All types begin with an upper case letter. For example, the resource field `Patient.Address.city`, which uses a [string](https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be matched by `Patient.Address.String`. Partial matching is supported. For example, `Patient.Address.city` can be matched by `Address.city` (with `Patient` omitted). Partial matching and type matching can be combined, for example `Patient.Address.city` can be matched by `Address.String`. For "choice" types (those defined in the FHIR spec with the format `field[x]`), use two separate components. For example, `deceasedAge.unit` is matched by `Deceased.Age.unit`. The following types are supported: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`, `HumanName.family`) can be omitted.
 func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
@@ -7420,15 +8114,15 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput) 
 	}).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput)
 }
 
-// Specifies additional options to apply to the base `profile`.
+// Specifies additional options to apply to the base ProfileType.
 type GoogleCloudHealthcareV1beta1DeidentifyOptions struct {
-	// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+	// Character mask config for CharacterMaskField.
 	CharacterMaskConfig *CharacterMaskConfig `pulumi:"characterMaskConfig"`
 	// Configure contextual de-id.
 	ContextualDeid *ContextualDeidConfig `pulumi:"contextualDeid"`
-	// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+	// Crypto hash config for CharacterMaskField.
 	CryptoHashConfig *CryptoHashConfig `pulumi:"cryptoHashConfig"`
-	// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+	// Date shifting config for CharacterMaskField.
 	DateShiftConfig *DateShiftConfig `pulumi:"dateShiftConfig"`
 	// Configure keeping extensions by default.
 	KeepExtensions *KeepExtensionsConfig `pulumi:"keepExtensions"`
@@ -7445,15 +8139,15 @@ type GoogleCloudHealthcareV1beta1DeidentifyOptionsInput interface {
 	ToGoogleCloudHealthcareV1beta1DeidentifyOptionsOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput
 }
 
-// Specifies additional options to apply to the base `profile`.
+// Specifies additional options to apply to the base ProfileType.
 type GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs struct {
-	// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+	// Character mask config for CharacterMaskField.
 	CharacterMaskConfig CharacterMaskConfigPtrInput `pulumi:"characterMaskConfig"`
 	// Configure contextual de-id.
 	ContextualDeid ContextualDeidConfigPtrInput `pulumi:"contextualDeid"`
-	// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+	// Crypto hash config for CharacterMaskField.
 	CryptoHashConfig CryptoHashConfigPtrInput `pulumi:"cryptoHashConfig"`
-	// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+	// Date shifting config for CharacterMaskField.
 	DateShiftConfig DateShiftConfigPtrInput `pulumi:"dateShiftConfig"`
 	// Configure keeping extensions by default.
 	KeepExtensions KeepExtensionsConfigPtrInput `pulumi:"keepExtensions"`
@@ -7524,7 +8218,7 @@ func (i *googleCloudHealthcareV1beta1DeidentifyOptionsPtrType) ToOutput(ctx cont
 	}
 }
 
-// Specifies additional options to apply to the base `profile`.
+// Specifies additional options to apply to the base ProfileType.
 type GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) ElementType() reflect.Type {
@@ -7555,7 +8249,7 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) ToOutput(ctx contex
 	}
 }
 
-// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+// Character mask config for CharacterMaskField.
 func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) CharacterMaskConfig() CharacterMaskConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptions) *CharacterMaskConfig {
 		return v.CharacterMaskConfig
@@ -7567,12 +8261,12 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) ContextualDeid() Co
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptions) *ContextualDeidConfig { return v.ContextualDeid }).(ContextualDeidConfigPtrOutput)
 }
 
-// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+// Crypto hash config for CharacterMaskField.
 func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) CryptoHashConfig() CryptoHashConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptions) *CryptoHashConfig { return v.CryptoHashConfig }).(CryptoHashConfigPtrOutput)
 }
 
-// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+// Date shifting config for CharacterMaskField.
 func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) DateShiftConfig() DateShiftConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptions) *DateShiftConfig { return v.DateShiftConfig }).(DateShiftConfigPtrOutput)
 }
@@ -7612,7 +8306,7 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) Elem() GoogleClo
 	}).(GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput)
 }
 
-// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+// Character mask config for CharacterMaskField.
 func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) CharacterMaskConfig() CharacterMaskConfigPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudHealthcareV1beta1DeidentifyOptions) *CharacterMaskConfig {
 		if v == nil {
@@ -7632,7 +8326,7 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) ContextualDeid()
 	}).(ContextualDeidConfigPtrOutput)
 }
 
-// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+// Crypto hash config for CharacterMaskField.
 func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) CryptoHashConfig() CryptoHashConfigPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudHealthcareV1beta1DeidentifyOptions) *CryptoHashConfig {
 		if v == nil {
@@ -7642,7 +8336,7 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) CryptoHashConfig
 	}).(CryptoHashConfigPtrOutput)
 }
 
-// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+// Date shifting config for CharacterMaskField.
 func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) DateShiftConfig() DateShiftConfigPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudHealthcareV1beta1DeidentifyOptions) *DateShiftConfig {
 		if v == nil {
@@ -7662,21 +8356,21 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) KeepExtensions()
 	}).(KeepExtensionsConfigPtrOutput)
 }
 
-// Specifies additional options to apply to the base `profile`.
+// Specifies additional options to apply to the base ProfileType.
 type GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse struct {
-	// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+	// Character mask config for CharacterMaskField.
 	CharacterMaskConfig CharacterMaskConfigResponse `pulumi:"characterMaskConfig"`
 	// Configure contextual de-id.
 	ContextualDeid ContextualDeidConfigResponse `pulumi:"contextualDeid"`
-	// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+	// Crypto hash config for CharacterMaskField.
 	CryptoHashConfig CryptoHashConfigResponse `pulumi:"cryptoHashConfig"`
-	// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+	// Date shifting config for CharacterMaskField.
 	DateShiftConfig DateShiftConfigResponse `pulumi:"dateShiftConfig"`
 	// Configure keeping extensions by default.
 	KeepExtensions KeepExtensionsConfigResponse `pulumi:"keepExtensions"`
 }
 
-// Specifies additional options to apply to the base `profile`.
+// Specifies additional options to apply to the base ProfileType.
 type GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) ElementType() reflect.Type {
@@ -7697,7 +8391,7 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) ToOutput(ct
 	}
 }
 
-// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+// Character mask config for CharacterMaskField.
 func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) CharacterMaskConfig() CharacterMaskConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse) CharacterMaskConfigResponse {
 		return v.CharacterMaskConfig
@@ -7711,14 +8405,14 @@ func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) ContextualD
 	}).(ContextualDeidConfigResponseOutput)
 }
 
-// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+// Crypto hash config for CharacterMaskField.
 func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) CryptoHashConfig() CryptoHashConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse) CryptoHashConfigResponse {
 		return v.CryptoHashConfig
 	}).(CryptoHashConfigResponseOutput)
 }
 
-// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+// Date shifting config for CharacterMaskField.
 func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) DateShiftConfig() DateShiftConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse) DateShiftConfigResponse {
 		return v.DateShiftConfig
@@ -10079,7 +10773,7 @@ func (o InfoTypeTransformationResponseArrayOutput) Index(i pulumi.IntInput) Info
 	}).(InfoTypeTransformationResponseOutput)
 }
 
-// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+// The behavior for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
 type KeepExtensionsConfig struct {
 }
 
@@ -10094,7 +10788,7 @@ type KeepExtensionsConfigInput interface {
 	ToKeepExtensionsConfigOutputWithContext(context.Context) KeepExtensionsConfigOutput
 }
 
-// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+// The behavior for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
 type KeepExtensionsConfigArgs struct {
 }
 
@@ -10163,7 +10857,7 @@ func (i *keepExtensionsConfigPtrType) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+// The behavior for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
 type KeepExtensionsConfigOutput struct{ *pulumi.OutputState }
 
 func (KeepExtensionsConfigOutput) ElementType() reflect.Type {
@@ -10224,11 +10918,11 @@ func (o KeepExtensionsConfigPtrOutput) Elem() KeepExtensionsConfigOutput {
 	}).(KeepExtensionsConfigOutput)
 }
 
-// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+// The behavior for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
 type KeepExtensionsConfigResponse struct {
 }
 
-// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+// The behavior for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
 type KeepExtensionsConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (KeepExtensionsConfigResponseOutput) ElementType() reflect.Type {
@@ -16710,6 +17404,8 @@ func (o VertexResponseArrayOutput) Index(i pulumi.IntInput) VertexResponseOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessDeterminationLogConfigInput)(nil)).Elem(), AccessDeterminationLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessDeterminationLogConfigPtrInput)(nil)).Elem(), AccessDeterminationLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionInput)(nil)).Elem(), ActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionArrayInput)(nil)).Elem(), ActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationConfigInput)(nil)).Elem(), AnnotationConfigArgs{})
@@ -16738,6 +17434,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CleanTextTagPtrInput)(nil)).Elem(), CleanTextTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudHealthcareSourceInput)(nil)).Elem(), CloudHealthcareSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudHealthcareSourcePtrInput)(nil)).Elem(), CloudHealthcareSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentConfigInput)(nil)).Elem(), ConsentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentConfigPtrInput)(nil)).Elem(), ConsentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentHeaderHandlingInput)(nil)).Elem(), ConsentHeaderHandlingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentHeaderHandlingPtrInput)(nil)).Elem(), ConsentHeaderHandlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContextualDeidConfigInput)(nil)).Elem(), ContextualDeidConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContextualDeidConfigPtrInput)(nil)).Elem(), ContextualDeidConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoHashConfigInput)(nil)).Elem(), CryptoHashConfigArgs{})
@@ -16863,6 +17563,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceArrayInput)(nil)).Elem(), VersionSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VertexInput)(nil)).Elem(), VertexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VertexArrayInput)(nil)).Elem(), VertexArray{})
+	pulumi.RegisterOutputType(AccessDeterminationLogConfigOutput{})
+	pulumi.RegisterOutputType(AccessDeterminationLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(AccessDeterminationLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(ActionOutput{})
 	pulumi.RegisterOutputType(ActionArrayOutput{})
 	pulumi.RegisterOutputType(ActionResponseOutput{})
@@ -16911,6 +17614,12 @@ func init() {
 	pulumi.RegisterOutputType(CloudHealthcareSourceOutput{})
 	pulumi.RegisterOutputType(CloudHealthcareSourcePtrOutput{})
 	pulumi.RegisterOutputType(CloudHealthcareSourceResponseOutput{})
+	pulumi.RegisterOutputType(ConsentConfigOutput{})
+	pulumi.RegisterOutputType(ConsentConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConsentConfigResponseOutput{})
+	pulumi.RegisterOutputType(ConsentHeaderHandlingOutput{})
+	pulumi.RegisterOutputType(ConsentHeaderHandlingPtrOutput{})
+	pulumi.RegisterOutputType(ConsentHeaderHandlingResponseOutput{})
 	pulumi.RegisterOutputType(ContextualDeidConfigOutput{})
 	pulumi.RegisterOutputType(ContextualDeidConfigPtrOutput{})
 	pulumi.RegisterOutputType(ContextualDeidConfigResponseOutput{})

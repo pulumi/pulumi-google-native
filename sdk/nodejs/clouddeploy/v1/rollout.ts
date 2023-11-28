@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Rollout in a given project and location.
- * Auto-naming is currently not supported for this resource.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
@@ -41,7 +40,7 @@ export class Rollout extends pulumi.CustomResource {
     }
 
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -53,7 +52,7 @@ export class Rollout extends pulumi.CustomResource {
      */
     public /*out*/ readonly approveTime!: pulumi.Output<string>;
     /**
-     * Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+     * Name of the `ControllerRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
      */
     public /*out*/ readonly controllerRollout!: pulumi.Output<string>;
     /**
@@ -94,7 +93,7 @@ export class Rollout extends pulumi.CustomResource {
      */
     public /*out*/ readonly failureReason!: pulumi.Output<string>;
     /**
-     * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
@@ -103,7 +102,7 @@ export class Rollout extends pulumi.CustomResource {
      */
     public /*out*/ readonly metadata!: pulumi.Output<outputs.clouddeploy.v1.MetadataResponse>;
     /**
-     * Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+     * Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -116,6 +115,14 @@ export class Rollout extends pulumi.CustomResource {
      * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the `Rollout` that is rolled back by this `Rollout`. Empty if this `Rollout` wasn't created as a rollback.
+     */
+    public /*out*/ readonly rollbackOfRollout!: pulumi.Output<string>;
+    /**
+     * Names of `Rollouts` that rolled back this `Rollout`.
+     */
+    public /*out*/ readonly rolledBackByRollouts!: pulumi.Output<string[]>;
     /**
      * Required. ID of the `Rollout`.
      */
@@ -185,6 +192,8 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["failureReason"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["phases"] = undefined /*out*/;
+            resourceInputs["rollbackOfRollout"] = undefined /*out*/;
+            resourceInputs["rolledBackByRollouts"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         } else {
@@ -210,6 +219,8 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["releaseId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["rollbackOfRollout"] = undefined /*out*/;
+            resourceInputs["rolledBackByRollouts"] = undefined /*out*/;
             resourceInputs["rolloutId"] = undefined /*out*/;
             resourceInputs["startingPhaseId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -228,7 +239,7 @@ export class Rollout extends pulumi.CustomResource {
  */
 export interface RolloutArgs {
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     deliveryPipelineId: pulumi.Input<string>;
@@ -241,12 +252,12 @@ export interface RolloutArgs {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+     * Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

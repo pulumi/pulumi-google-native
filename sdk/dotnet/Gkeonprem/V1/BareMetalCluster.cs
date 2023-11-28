@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         public Output<string> BareMetalVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Binary Authorization related configurations.
+        /// </summary>
+        [Output("binaryAuthorization")]
+        public Output<Outputs.BinaryAuthorizationResponse> BinaryAuthorization { get; private set; } = null!;
+
+        /// <summary>
         /// Cluster operations configuration.
         /// </summary>
         [Output("clusterOperations")]
@@ -202,6 +208,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The cluster upgrade policy.
+        /// </summary>
+        [Output("upgradePolicy")]
+        public Output<Outputs.BareMetalClusterUpgradePolicyResponse> UpgradePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The result of the preflight check.
         /// </summary>
         [Output("validationCheck")]
@@ -289,6 +301,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         public Input<string> BareMetalVersion { get; set; } = null!;
 
         /// <summary>
+        /// Binary Authorization related configurations.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.BinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
+
+        /// <summary>
         /// Cluster operations configuration.
         /// </summary>
         [Input("clusterOperations")]
@@ -371,6 +389,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         [Input("storage", required: true)]
         public Input<Inputs.BareMetalStorageConfigArgs> Storage { get; set; } = null!;
+
+        /// <summary>
+        /// The cluster upgrade policy.
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.BareMetalClusterUpgradePolicyArgs>? UpgradePolicy { get; set; }
 
         public BareMetalClusterArgs()
         {

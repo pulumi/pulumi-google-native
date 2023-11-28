@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         private InputList<Inputs.EditAtomArgs>? _editList;
 
         /// <summary>
-        /// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+        /// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
         /// </summary>
         public InputList<Inputs.EditAtomArgs> EditList
         {
@@ -49,6 +49,18 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         {
             get => _elementaryStreams ?? (_elementaryStreams = new InputList<Inputs.ElementaryStreamArgs>());
             set => _elementaryStreams = value;
+        }
+
+        [Input("encryptions")]
+        private InputList<Inputs.EncryptionArgs>? _encryptions;
+
+        /// <summary>
+        /// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+        /// </summary>
+        public InputList<Inputs.EncryptionArgs> Encryptions
+        {
+            get => _encryptions ?? (_encryptions = new InputList<Inputs.EncryptionArgs>());
+            set => _encryptions = value;
         }
 
         [Input("inputs")]

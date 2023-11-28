@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Whether this disk is using confidential compute mode.
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
+
         [Input("guestOsFeatures")]
         private InputList<Inputs.GuestOsFeatureArgs>? _guestOsFeatures;
 
@@ -109,7 +115,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<string>? _replicaZones;
 
         /// <summary>
-        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
         /// </summary>
         public InputList<string> ReplicaZones
         {
@@ -152,6 +158,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// </summary>
         [Input("sourceImageEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceImageEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.
+        /// </summary>
+        [Input("sourceInstantSnapshot")]
+        public Input<string>? SourceInstantSnapshot { get; set; }
 
         /// <summary>
         /// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.

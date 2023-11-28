@@ -750,6 +750,8 @@ func (o ConsumerArrayOutput) Index(i pulumi.IntInput) ConsumerOutput {
 
 // Contains information of the customer's network configurations.
 type ConsumerResponse struct {
+	// The location of the endpoint URI. Format: projects/{project}/locations/{location}.
+	EndpointLocation string `pulumi:"endpointLocation"`
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri string `pulumi:"endpointUri"`
 	// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
@@ -775,6 +777,11 @@ func (o ConsumerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Con
 	return pulumix.Output[ConsumerResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// The location of the endpoint URI. Format: projects/{project}/locations/{location}.
+func (o ConsumerResponseOutput) EndpointLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerResponse) string { return v.EndpointLocation }).(pulumi.StringOutput)
 }
 
 // The URI of the endpoint used to access the metastore service.
@@ -815,7 +822,7 @@ func (o ConsumerResponseArrayOutput) Index(i pulumi.IntInput) ConsumerResponseOu
 
 // Specifies how metastore metadata should be integrated with the Data Catalog service.
 type DataCatalogConfig struct {
-	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -832,7 +839,7 @@ type DataCatalogConfigInput interface {
 
 // Specifies how metastore metadata should be integrated with the Data Catalog service.
 type DataCatalogConfigArgs struct {
-	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -932,7 +939,7 @@ func (o DataCatalogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Da
 	}
 }
 
-// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
 func (o DataCatalogConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DataCatalogConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -967,7 +974,7 @@ func (o DataCatalogConfigPtrOutput) Elem() DataCatalogConfigOutput {
 	}).(DataCatalogConfigOutput)
 }
 
-// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
 func (o DataCatalogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DataCatalogConfig) *bool {
 		if v == nil {
@@ -979,7 +986,7 @@ func (o DataCatalogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 // Specifies how metastore metadata should be integrated with the Data Catalog service.
 type DataCatalogConfigResponse struct {
-	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -1004,7 +1011,7 @@ func (o DataCatalogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
 func (o DataCatalogConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v DataCatalogConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -2807,7 +2814,7 @@ func (o MetadataExportResponseArrayOutput) Index(i pulumi.IntInput) MetadataExpo
 
 // Specifies how metastore metadata should be integrated with external services.
 type MetadataIntegration struct {
-	// The integration config for the Data Catalog service.
+	// Optional. The integration config for the Data Catalog service.
 	DataCatalogConfig *DataCatalogConfig `pulumi:"dataCatalogConfig"`
 	// The integration config for the Dataplex service.
 	DataplexConfig *DataplexConfig `pulumi:"dataplexConfig"`
@@ -2826,7 +2833,7 @@ type MetadataIntegrationInput interface {
 
 // Specifies how metastore metadata should be integrated with external services.
 type MetadataIntegrationArgs struct {
-	// The integration config for the Data Catalog service.
+	// Optional. The integration config for the Data Catalog service.
 	DataCatalogConfig DataCatalogConfigPtrInput `pulumi:"dataCatalogConfig"`
 	// The integration config for the Dataplex service.
 	DataplexConfig DataplexConfigPtrInput `pulumi:"dataplexConfig"`
@@ -2928,7 +2935,7 @@ func (o MetadataIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// The integration config for the Data Catalog service.
+// Optional. The integration config for the Data Catalog service.
 func (o MetadataIntegrationOutput) DataCatalogConfig() DataCatalogConfigPtrOutput {
 	return o.ApplyT(func(v MetadataIntegration) *DataCatalogConfig { return v.DataCatalogConfig }).(DataCatalogConfigPtrOutput)
 }
@@ -2968,7 +2975,7 @@ func (o MetadataIntegrationPtrOutput) Elem() MetadataIntegrationOutput {
 	}).(MetadataIntegrationOutput)
 }
 
-// The integration config for the Data Catalog service.
+// Optional. The integration config for the Data Catalog service.
 func (o MetadataIntegrationPtrOutput) DataCatalogConfig() DataCatalogConfigPtrOutput {
 	return o.ApplyT(func(v *MetadataIntegration) *DataCatalogConfig {
 		if v == nil {
@@ -2990,7 +2997,7 @@ func (o MetadataIntegrationPtrOutput) DataplexConfig() DataplexConfigPtrOutput {
 
 // Specifies how metastore metadata should be integrated with external services.
 type MetadataIntegrationResponse struct {
-	// The integration config for the Data Catalog service.
+	// Optional. The integration config for the Data Catalog service.
 	DataCatalogConfig DataCatalogConfigResponse `pulumi:"dataCatalogConfig"`
 	// The integration config for the Dataplex service.
 	DataplexConfig DataplexConfigResponse `pulumi:"dataplexConfig"`
@@ -3017,7 +3024,7 @@ func (o MetadataIntegrationResponseOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// The integration config for the Data Catalog service.
+// Optional. The integration config for the Data Catalog service.
 func (o MetadataIntegrationResponseOutput) DataCatalogConfig() DataCatalogConfigResponseOutput {
 	return o.ApplyT(func(v MetadataIntegrationResponse) DataCatalogConfigResponse { return v.DataCatalogConfig }).(DataCatalogConfigResponseOutput)
 }
@@ -3292,6 +3299,8 @@ func (o NetworkConfigResponseOutput) CustomRoutesEnabled() pulumi.BoolOutput {
 type RestoreResponse struct {
 	// The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
 	Backup string `pulumi:"backup"`
+	// Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
+	BackupLocation string `pulumi:"backupLocation"`
 	// The restore details containing the revision of the service to be restored to, in format of JSON.
 	Details string `pulumi:"details"`
 	// The time when the restore ended.
@@ -3328,6 +3337,11 @@ func (o RestoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Rest
 // The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
 func (o RestoreResponseOutput) Backup() pulumi.StringOutput {
 	return o.ApplyT(func(v RestoreResponse) string { return v.Backup }).(pulumi.StringOutput)
+}
+
+// Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
+func (o RestoreResponseOutput) BackupLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreResponse) string { return v.BackupLocation }).(pulumi.StringOutput)
 }
 
 // The restore details containing the revision of the service to be restored to, in format of JSON.
@@ -3817,7 +3831,7 @@ type ServiceResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
-	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationResponse `pulumi:"metadataIntegration"`
 	// The metadata management activities of the metastore service.
 	MetadataManagementActivity MetadataManagementActivityResponse `pulumi:"metadataManagementActivity"`
@@ -3908,7 +3922,7 @@ func (o ServiceResponseOutput) MaintenanceWindow() MaintenanceWindowResponseOutp
 	return o.ApplyT(func(v ServiceResponse) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
 }
 
-// The setting that defines how metastore metadata should be integrated with external services and systems.
+// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
 func (o ServiceResponseOutput) MetadataIntegration() MetadataIntegrationResponseOutput {
 	return o.ApplyT(func(v ServiceResponse) MetadataIntegrationResponse { return v.MetadataIntegration }).(MetadataIntegrationResponseOutput)
 }

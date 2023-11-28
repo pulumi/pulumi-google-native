@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVersionResult:
-    def __init__(__self__, api_config=None, app_engine_apis=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, flexible_runtime_settings=None, handlers=None, health_check=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None, zones=None):
+    def __init__(__self__, api_config=None, app_engine_apis=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, flexible_runtime_settings=None, generated_customer_metadata=None, handlers=None, health_check=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None, zones=None):
         if api_config and not isinstance(api_config, dict):
             raise TypeError("Expected argument 'api_config' to be a dict")
         pulumi.set(__self__, "api_config", api_config)
@@ -71,6 +71,9 @@ class GetVersionResult:
         if flexible_runtime_settings and not isinstance(flexible_runtime_settings, dict):
             raise TypeError("Expected argument 'flexible_runtime_settings' to be a dict")
         pulumi.set(__self__, "flexible_runtime_settings", flexible_runtime_settings)
+        if generated_customer_metadata and not isinstance(generated_customer_metadata, dict):
+            raise TypeError("Expected argument 'generated_customer_metadata' to be a dict")
+        pulumi.set(__self__, "generated_customer_metadata", generated_customer_metadata)
         if handlers and not isinstance(handlers, list):
             raise TypeError("Expected argument 'handlers' to be a list")
         pulumi.set(__self__, "handlers", handlers)
@@ -278,6 +281,14 @@ class GetVersionResult:
         return pulumi.get(self, "flexible_runtime_settings")
 
     @property
+    @pulumi.getter(name="generatedCustomerMetadata")
+    def generated_customer_metadata(self) -> Mapping[str, str]:
+        """
+        Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+        """
+        return pulumi.get(self, "generated_customer_metadata")
+
+    @property
     @pulumi.getter
     def handlers(self) -> Sequence['outputs.UrlMapResponse']:
         """
@@ -289,7 +300,7 @@ class GetVersionResult:
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> 'outputs.HealthCheckResponse':
         """
-        Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
         """
         return pulumi.get(self, "health_check")
 
@@ -321,7 +332,7 @@ class GetVersionResult:
     @pulumi.getter(name="livenessCheck")
     def liveness_check(self) -> 'outputs.LivenessCheckResponse':
         """
-        Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
         """
         return pulumi.get(self, "liveness_check")
 
@@ -361,7 +372,7 @@ class GetVersionResult:
     @pulumi.getter(name="readinessCheck")
     def readiness_check(self) -> 'outputs.ReadinessCheckResponse':
         """
-        Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         """
         return pulumi.get(self, "readiness_check")
 
@@ -488,6 +499,7 @@ class AwaitableGetVersionResult(GetVersionResult):
             env_variables=self.env_variables,
             error_handlers=self.error_handlers,
             flexible_runtime_settings=self.flexible_runtime_settings,
+            generated_customer_metadata=self.generated_customer_metadata,
             handlers=self.handlers,
             health_check=self.health_check,
             inbound_services=self.inbound_services,
@@ -547,6 +559,7 @@ def get_version(app_id: Optional[str] = None,
         env_variables=pulumi.get(__ret__, 'env_variables'),
         error_handlers=pulumi.get(__ret__, 'error_handlers'),
         flexible_runtime_settings=pulumi.get(__ret__, 'flexible_runtime_settings'),
+        generated_customer_metadata=pulumi.get(__ret__, 'generated_customer_metadata'),
         handlers=pulumi.get(__ret__, 'handlers'),
         health_check=pulumi.get(__ret__, 'health_check'),
         inbound_services=pulumi.get(__ret__, 'inbound_services'),

@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new VMware cluster in a given project and location.
+ * Creates a new VMware user cluster in a given project and location.
  */
 export class VmwareCluster extends pulumi.CustomResource {
     /**
@@ -82,6 +82,10 @@ export class VmwareCluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Disable bundled ingress.
+     */
+    public readonly disableBundledIngress!: pulumi.Output<boolean>;
+    /**
      * Enable control plane V2. Default to false.
      */
     public readonly enableControlPlaneV2!: pulumi.Output<boolean>;
@@ -115,7 +119,7 @@ export class VmwareCluster extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.gkeonprem.v1.VmwareNetworkConfigResponse>;
     /**
-     * The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+     * The Anthos clusters on the VMware version for your user cluster.
      */
     public readonly onPremVersion!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -144,13 +148,17 @@ export class VmwareCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
+     * Specifies upgrade policy for the cluster.
+     */
+    public readonly upgradePolicy!: pulumi.Output<outputs.gkeonprem.v1.VmwareClusterUpgradePolicyResponse>;
+    /**
      * ValidationCheck represents the result of the preflight check job.
      */
     public /*out*/ readonly validationCheck!: pulumi.Output<outputs.gkeonprem.v1.ValidationCheckResponse>;
     /**
-     * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+     * VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
      */
-    public /*out*/ readonly vcenter!: pulumi.Output<outputs.gkeonprem.v1.VmwareVCenterConfigResponse>;
+    public readonly vcenter!: pulumi.Output<outputs.gkeonprem.v1.VmwareVCenterConfigResponse>;
     /**
      * Enable VM tracking.
      */
@@ -174,6 +182,9 @@ export class VmwareCluster extends pulumi.CustomResource {
             if ((!args || args.adminClusterMembership === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'adminClusterMembership'");
             }
+            if ((!args || args.onPremVersion === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'onPremVersion'");
+            }
             resourceInputs["adminClusterMembership"] = args ? args.adminClusterMembership : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["antiAffinityGroups"] = args ? args.antiAffinityGroups : undefined;
@@ -182,6 +193,7 @@ export class VmwareCluster extends pulumi.CustomResource {
             resourceInputs["controlPlaneNode"] = args ? args.controlPlaneNode : undefined;
             resourceInputs["dataplaneV2"] = args ? args.dataplaneV2 : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableBundledIngress"] = args ? args.disableBundledIngress : undefined;
             resourceInputs["enableControlPlaneV2"] = args ? args.enableControlPlaneV2 : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
@@ -191,6 +203,8 @@ export class VmwareCluster extends pulumi.CustomResource {
             resourceInputs["onPremVersion"] = args ? args.onPremVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
+            resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
+            resourceInputs["vcenter"] = args ? args.vcenter : undefined;
             resourceInputs["vmTrackingEnabled"] = args ? args.vmTrackingEnabled : undefined;
             resourceInputs["vmwareClusterId"] = args ? args.vmwareClusterId : undefined;
             resourceInputs["adminClusterName"] = undefined /*out*/;
@@ -205,7 +219,6 @@ export class VmwareCluster extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["validationCheck"] = undefined /*out*/;
-            resourceInputs["vcenter"] = undefined /*out*/;
         } else {
             resourceInputs["adminClusterMembership"] = undefined /*out*/;
             resourceInputs["adminClusterName"] = undefined /*out*/;
@@ -218,6 +231,7 @@ export class VmwareCluster extends pulumi.CustomResource {
             resourceInputs["dataplaneV2"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["disableBundledIngress"] = undefined /*out*/;
             resourceInputs["enableControlPlaneV2"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -235,6 +249,7 @@ export class VmwareCluster extends pulumi.CustomResource {
             resourceInputs["storage"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgradePolicy"] = undefined /*out*/;
             resourceInputs["validationCheck"] = undefined /*out*/;
             resourceInputs["vcenter"] = undefined /*out*/;
             resourceInputs["vmTrackingEnabled"] = undefined /*out*/;
@@ -284,6 +299,10 @@ export interface VmwareClusterArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Disable bundled ingress.
+     */
+    disableBundledIngress?: pulumi.Input<boolean>;
+    /**
      * Enable control plane V2. Default to false.
      */
     enableControlPlaneV2?: pulumi.Input<boolean>;
@@ -305,14 +324,22 @@ export interface VmwareClusterArgs {
      */
     networkConfig?: pulumi.Input<inputs.gkeonprem.v1.VmwareNetworkConfigArgs>;
     /**
-     * The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+     * The Anthos clusters on the VMware version for your user cluster.
      */
-    onPremVersion?: pulumi.Input<string>;
+    onPremVersion: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Storage configuration.
      */
     storage?: pulumi.Input<inputs.gkeonprem.v1.VmwareStorageConfigArgs>;
+    /**
+     * Specifies upgrade policy for the cluster.
+     */
+    upgradePolicy?: pulumi.Input<inputs.gkeonprem.v1.VmwareClusterUpgradePolicyArgs>;
+    /**
+     * VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
+     */
+    vcenter?: pulumi.Input<inputs.gkeonprem.v1.VmwareVCenterConfigArgs>;
     /**
      * Enable VM tracking.
      */

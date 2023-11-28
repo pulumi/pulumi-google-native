@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// </summary>
         public readonly Outputs.AwsSourceDetailsResponse Aws;
         /// <summary>
+        /// Azure type source details.
+        /// </summary>
+        public readonly Outputs.AzureSourceDetailsResponse Azure;
+        /// <summary>
         /// The create time timestamp.
         /// </summary>
         public readonly string CreateTime;
@@ -75,6 +79,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// User-provided description of the source.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Optional. Immutable. The encryption details of the source data stored by the service.
+        /// </summary>
+        public readonly Outputs.EncryptionResponse Encryption;
         /// <summary>
         /// The labels of the source.
         /// </summary>
@@ -96,9 +104,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         private GetSourceResult(
             Outputs.AwsSourceDetailsResponse aws,
 
+            Outputs.AzureSourceDetailsResponse azure,
+
             string createTime,
 
             string description,
+
+            Outputs.EncryptionResponse encryption,
 
             ImmutableDictionary<string, string> labels,
 
@@ -109,8 +121,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1
             Outputs.VmwareSourceDetailsResponse vmware)
         {
             Aws = aws;
+            Azure = azure;
             CreateTime = createTime;
             Description = description;
+            Encryption = encryption;
             Labels = labels;
             Name = name;
             UpdateTime = updateTime;

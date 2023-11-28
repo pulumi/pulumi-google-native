@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class StoragePool : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Provisioning type of the byte capacity of the pool.
+        /// </summary>
+        [Output("capacityProvisioningType")]
+        public Output<string> CapacityProvisioningType { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -51,6 +57,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+        /// </summary>
+        [Output("performanceProvisioningType")]
+        public Output<string> PerformanceProvisioningType { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -59,6 +71,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("provisionedIops")]
         public Output<string> ProvisionedIops { get; private set; } = null!;
+
+        /// <summary>
+        /// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        /// </summary>
+        [Output("provisionedThroughput")]
+        public Output<string> ProvisionedThroughput { get; private set; } = null!;
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -97,10 +115,16 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the storage pool
+        /// Status information for the storage pool resource.
         /// </summary>
-        [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
+        [Output("status")]
+        public Output<Outputs.StoragePoolResourceStatusResponse> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of the storage pool.
+        /// </summary>
+        [Output("storagePoolType")]
+        public Output<string> StoragePoolType { get; private set; } = null!;
 
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -156,6 +180,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class StoragePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Provisioning type of the byte capacity of the pool.
+        /// </summary>
+        [Input("capacityProvisioningType")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.StoragePoolCapacityProvisioningType>? CapacityProvisioningType { get; set; }
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -179,6 +209,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+        /// </summary>
+        [Input("performanceProvisioningType")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.StoragePoolPerformanceProvisioningType>? PerformanceProvisioningType { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -187,6 +223,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("provisionedIops")]
         public Input<string>? ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        /// </summary>
+        [Input("provisionedThroughput")]
+        public Input<string>? ProvisionedThroughput { get; set; }
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -201,10 +243,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? SizeGb { get; set; }
 
         /// <summary>
-        /// Type of the storage pool
+        /// Type of the storage pool.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.Compute.Alpha.StoragePoolType>? Type { get; set; }
+        [Input("storagePoolType")]
+        public Input<string>? StoragePoolType { get; set; }
 
         [Input("zone")]
         public Input<string>? Zone { get; set; }

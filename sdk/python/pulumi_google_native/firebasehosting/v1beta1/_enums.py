@@ -5,12 +5,39 @@
 from enum import Enum
 
 __all__ = [
+    'CustomDomainCertPreference',
     'DomainRedirectType',
     'ReleaseType',
     'ServingConfigAppAssociation',
     'ServingConfigTrailingSlashBehavior',
     'VersionStatus',
 ]
+
+
+class CustomDomainCertPreference(str, Enum):
+    """
+    A field that lets you specify which SSL certificate type Hosting creates for your domain name. Spark plan custom domains only have access to the `GROUPED` cert type, while Blaze plan domains can select any option.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    The certificate's type is unspecified. The message is invalid if this is unspecified.
+    """
+    TEMPORARY = "TEMPORARY"
+    """
+    A short-lived certificate type that covers a domain name temporarily, while Hosting creates a more permanent certificate.
+    """
+    GROUPED = "GROUPED"
+    """
+    The standard certificate for Spark plan custom domains.
+    """
+    PROJECT_GROUPED = "PROJECT_GROUPED"
+    """
+    Blaze plan only. A certificate that covers from 1 to 100 domain names with custom domains on the same Firebase project.
+    """
+    DEDICATED = "DEDICATED"
+    """
+    Blaze plan only. A certificate that covers a single domain name.
+    """
 
 
 class DomainRedirectType(str, Enum):

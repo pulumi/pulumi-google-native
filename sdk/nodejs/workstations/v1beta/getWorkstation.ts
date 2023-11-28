@@ -29,27 +29,27 @@ export interface GetWorkstationArgs {
 
 export interface GetWorkstationResult {
     /**
-     * Client-specified annotations.
+     * Optional. Client-specified annotations.
      */
     readonly annotations: {[key: string]: string};
     /**
-     * Time when this resource was created.
+     * Time when this workstation was created.
      */
     readonly createTime: string;
     /**
-     * Time when this resource was soft-deleted.
+     * Time when this workstation was soft-deleted.
      */
     readonly deleteTime: string;
     /**
-     * Human-readable name for this resource.
+     * Optional. Human-readable name for this workstation.
      */
     readonly displayName: string;
     /**
-     * Environment variables passed to the workstation container's entrypoint.
+     * Optional. Environment variables passed to the workstation container's entrypoint.
      */
     readonly env: {[key: string]: string};
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+     * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     readonly etag: string;
     /**
@@ -57,27 +57,31 @@ export interface GetWorkstationResult {
      */
     readonly host: string;
     /**
-     * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
      */
     readonly labels: {[key: string]: string};
     /**
-     * Full name of this resource.
+     * Identifier. Full name of this workstation.
      */
     readonly name: string;
     /**
-     * Indicates whether this resource is currently being updated to match its intended state.
+     * Indicates whether this workstation is currently being updated to match its intended state.
      */
     readonly reconciling: boolean;
+    /**
+     * Time when this workstation was most recently successfully started, regardless of the workstation's initial state.
+     */
+    readonly startTime: string;
     /**
      * Current state of the workstation.
      */
     readonly state: string;
     /**
-     * A system-assigned unique identified for this resource.
+     * A system-assigned unique identifier for this workstation.
      */
     readonly uid: string;
     /**
-     * Time when this resource was most recently updated.
+     * Time when this workstation was most recently updated.
      */
     readonly updateTime: string;
 }

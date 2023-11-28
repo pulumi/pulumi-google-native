@@ -2418,6 +2418,204 @@ func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
 	}).(RuleResponseOutput)
 }
 
+// Defines what action to take for a specific severity match.
+type SeverityOverride struct {
+	// Threat action override.
+	Action SeverityOverrideAction `pulumi:"action"`
+	// Severity level to match.
+	Severity SeverityOverrideSeverity `pulumi:"severity"`
+}
+
+// SeverityOverrideInput is an input type that accepts SeverityOverrideArgs and SeverityOverrideOutput values.
+// You can construct a concrete instance of `SeverityOverrideInput` via:
+//
+//	SeverityOverrideArgs{...}
+type SeverityOverrideInput interface {
+	pulumi.Input
+
+	ToSeverityOverrideOutput() SeverityOverrideOutput
+	ToSeverityOverrideOutputWithContext(context.Context) SeverityOverrideOutput
+}
+
+// Defines what action to take for a specific severity match.
+type SeverityOverrideArgs struct {
+	// Threat action override.
+	Action SeverityOverrideActionInput `pulumi:"action"`
+	// Severity level to match.
+	Severity SeverityOverrideSeverityInput `pulumi:"severity"`
+}
+
+func (SeverityOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverride)(nil)).Elem()
+}
+
+func (i SeverityOverrideArgs) ToSeverityOverrideOutput() SeverityOverrideOutput {
+	return i.ToSeverityOverrideOutputWithContext(context.Background())
+}
+
+func (i SeverityOverrideArgs) ToSeverityOverrideOutputWithContext(ctx context.Context) SeverityOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SeverityOverrideOutput)
+}
+
+func (i SeverityOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[SeverityOverride] {
+	return pulumix.Output[SeverityOverride]{
+		OutputState: i.ToSeverityOverrideOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SeverityOverrideArrayInput is an input type that accepts SeverityOverrideArray and SeverityOverrideArrayOutput values.
+// You can construct a concrete instance of `SeverityOverrideArrayInput` via:
+//
+//	SeverityOverrideArray{ SeverityOverrideArgs{...} }
+type SeverityOverrideArrayInput interface {
+	pulumi.Input
+
+	ToSeverityOverrideArrayOutput() SeverityOverrideArrayOutput
+	ToSeverityOverrideArrayOutputWithContext(context.Context) SeverityOverrideArrayOutput
+}
+
+type SeverityOverrideArray []SeverityOverrideInput
+
+func (SeverityOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SeverityOverride)(nil)).Elem()
+}
+
+func (i SeverityOverrideArray) ToSeverityOverrideArrayOutput() SeverityOverrideArrayOutput {
+	return i.ToSeverityOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i SeverityOverrideArray) ToSeverityOverrideArrayOutputWithContext(ctx context.Context) SeverityOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SeverityOverrideArrayOutput)
+}
+
+func (i SeverityOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]SeverityOverride] {
+	return pulumix.Output[[]SeverityOverride]{
+		OutputState: i.ToSeverityOverrideArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Defines what action to take for a specific severity match.
+type SeverityOverrideOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverride)(nil)).Elem()
+}
+
+func (o SeverityOverrideOutput) ToSeverityOverrideOutput() SeverityOverrideOutput {
+	return o
+}
+
+func (o SeverityOverrideOutput) ToSeverityOverrideOutputWithContext(ctx context.Context) SeverityOverrideOutput {
+	return o
+}
+
+func (o SeverityOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[SeverityOverride] {
+	return pulumix.Output[SeverityOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Threat action override.
+func (o SeverityOverrideOutput) Action() SeverityOverrideActionOutput {
+	return o.ApplyT(func(v SeverityOverride) SeverityOverrideAction { return v.Action }).(SeverityOverrideActionOutput)
+}
+
+// Severity level to match.
+func (o SeverityOverrideOutput) Severity() SeverityOverrideSeverityOutput {
+	return o.ApplyT(func(v SeverityOverride) SeverityOverrideSeverity { return v.Severity }).(SeverityOverrideSeverityOutput)
+}
+
+type SeverityOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SeverityOverride)(nil)).Elem()
+}
+
+func (o SeverityOverrideArrayOutput) ToSeverityOverrideArrayOutput() SeverityOverrideArrayOutput {
+	return o
+}
+
+func (o SeverityOverrideArrayOutput) ToSeverityOverrideArrayOutputWithContext(ctx context.Context) SeverityOverrideArrayOutput {
+	return o
+}
+
+func (o SeverityOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SeverityOverride] {
+	return pulumix.Output[[]SeverityOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SeverityOverrideArrayOutput) Index(i pulumi.IntInput) SeverityOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SeverityOverride {
+		return vs[0].([]SeverityOverride)[vs[1].(int)]
+	}).(SeverityOverrideOutput)
+}
+
+// Defines what action to take for a specific severity match.
+type SeverityOverrideResponse struct {
+	// Threat action override.
+	Action string `pulumi:"action"`
+	// Severity level to match.
+	Severity string `pulumi:"severity"`
+}
+
+// Defines what action to take for a specific severity match.
+type SeverityOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverrideResponse)(nil)).Elem()
+}
+
+func (o SeverityOverrideResponseOutput) ToSeverityOverrideResponseOutput() SeverityOverrideResponseOutput {
+	return o
+}
+
+func (o SeverityOverrideResponseOutput) ToSeverityOverrideResponseOutputWithContext(ctx context.Context) SeverityOverrideResponseOutput {
+	return o
+}
+
+func (o SeverityOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SeverityOverrideResponse] {
+	return pulumix.Output[SeverityOverrideResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Threat action override.
+func (o SeverityOverrideResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SeverityOverrideResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Severity level to match.
+func (o SeverityOverrideResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v SeverityOverrideResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type SeverityOverrideResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SeverityOverrideResponse)(nil)).Elem()
+}
+
+func (o SeverityOverrideResponseArrayOutput) ToSeverityOverrideResponseArrayOutput() SeverityOverrideResponseArrayOutput {
+	return o
+}
+
+func (o SeverityOverrideResponseArrayOutput) ToSeverityOverrideResponseArrayOutputWithContext(ctx context.Context) SeverityOverrideResponseArrayOutput {
+	return o
+}
+
+func (o SeverityOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SeverityOverrideResponse] {
+	return pulumix.Output[[]SeverityOverrideResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SeverityOverrideResponseArrayOutput) Index(i pulumi.IntInput) SeverityOverrideResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SeverityOverrideResponse {
+		return vs[0].([]SeverityOverrideResponse)[vs[1].(int)]
+	}).(SeverityOverrideResponseOutput)
+}
+
 // Specification of traffic source attributes.
 type Source struct {
 	// Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted.
@@ -2614,6 +2812,433 @@ func (o SourceResponseArrayOutput) Index(i pulumi.IntInput) SourceResponseOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SourceResponse {
 		return vs[0].([]SourceResponse)[vs[1].(int)]
 	}).(SourceResponseOutput)
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverride struct {
+	// Threat action override. For some threat types, only a subset of actions applies.
+	Action ThreatOverrideAction `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId string `pulumi:"threatId"`
+}
+
+// ThreatOverrideInput is an input type that accepts ThreatOverrideArgs and ThreatOverrideOutput values.
+// You can construct a concrete instance of `ThreatOverrideInput` via:
+//
+//	ThreatOverrideArgs{...}
+type ThreatOverrideInput interface {
+	pulumi.Input
+
+	ToThreatOverrideOutput() ThreatOverrideOutput
+	ToThreatOverrideOutputWithContext(context.Context) ThreatOverrideOutput
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverrideArgs struct {
+	// Threat action override. For some threat types, only a subset of actions applies.
+	Action ThreatOverrideActionInput `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId pulumi.StringInput `pulumi:"threatId"`
+}
+
+func (ThreatOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatOverride)(nil)).Elem()
+}
+
+func (i ThreatOverrideArgs) ToThreatOverrideOutput() ThreatOverrideOutput {
+	return i.ToThreatOverrideOutputWithContext(context.Background())
+}
+
+func (i ThreatOverrideArgs) ToThreatOverrideOutputWithContext(ctx context.Context) ThreatOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatOverrideOutput)
+}
+
+func (i ThreatOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatOverride] {
+	return pulumix.Output[ThreatOverride]{
+		OutputState: i.ToThreatOverrideOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ThreatOverrideArrayInput is an input type that accepts ThreatOverrideArray and ThreatOverrideArrayOutput values.
+// You can construct a concrete instance of `ThreatOverrideArrayInput` via:
+//
+//	ThreatOverrideArray{ ThreatOverrideArgs{...} }
+type ThreatOverrideArrayInput interface {
+	pulumi.Input
+
+	ToThreatOverrideArrayOutput() ThreatOverrideArrayOutput
+	ToThreatOverrideArrayOutputWithContext(context.Context) ThreatOverrideArrayOutput
+}
+
+type ThreatOverrideArray []ThreatOverrideInput
+
+func (ThreatOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ThreatOverride)(nil)).Elem()
+}
+
+func (i ThreatOverrideArray) ToThreatOverrideArrayOutput() ThreatOverrideArrayOutput {
+	return i.ToThreatOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ThreatOverrideArray) ToThreatOverrideArrayOutputWithContext(ctx context.Context) ThreatOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatOverrideArrayOutput)
+}
+
+func (i ThreatOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatOverride] {
+	return pulumix.Output[[]ThreatOverride]{
+		OutputState: i.ToThreatOverrideArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverrideOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatOverride)(nil)).Elem()
+}
+
+func (o ThreatOverrideOutput) ToThreatOverrideOutput() ThreatOverrideOutput {
+	return o
+}
+
+func (o ThreatOverrideOutput) ToThreatOverrideOutputWithContext(ctx context.Context) ThreatOverrideOutput {
+	return o
+}
+
+func (o ThreatOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatOverride] {
+	return pulumix.Output[ThreatOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Threat action override. For some threat types, only a subset of actions applies.
+func (o ThreatOverrideOutput) Action() ThreatOverrideActionOutput {
+	return o.ApplyT(func(v ThreatOverride) ThreatOverrideAction { return v.Action }).(ThreatOverrideActionOutput)
+}
+
+// Vendor-specific ID of a threat to override.
+func (o ThreatOverrideOutput) ThreatId() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreatOverride) string { return v.ThreatId }).(pulumi.StringOutput)
+}
+
+type ThreatOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ThreatOverride)(nil)).Elem()
+}
+
+func (o ThreatOverrideArrayOutput) ToThreatOverrideArrayOutput() ThreatOverrideArrayOutput {
+	return o
+}
+
+func (o ThreatOverrideArrayOutput) ToThreatOverrideArrayOutputWithContext(ctx context.Context) ThreatOverrideArrayOutput {
+	return o
+}
+
+func (o ThreatOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatOverride] {
+	return pulumix.Output[[]ThreatOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ThreatOverrideArrayOutput) Index(i pulumi.IntInput) ThreatOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ThreatOverride {
+		return vs[0].([]ThreatOverride)[vs[1].(int)]
+	}).(ThreatOverrideOutput)
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverrideResponse struct {
+	// Threat action override. For some threat types, only a subset of actions applies.
+	Action string `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId string `pulumi:"threatId"`
+	// Type of the threat (read only).
+	Type string `pulumi:"type"`
+}
+
+// Defines what action to take for a specific threat_id match.
+type ThreatOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatOverrideResponse)(nil)).Elem()
+}
+
+func (o ThreatOverrideResponseOutput) ToThreatOverrideResponseOutput() ThreatOverrideResponseOutput {
+	return o
+}
+
+func (o ThreatOverrideResponseOutput) ToThreatOverrideResponseOutputWithContext(ctx context.Context) ThreatOverrideResponseOutput {
+	return o
+}
+
+func (o ThreatOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatOverrideResponse] {
+	return pulumix.Output[ThreatOverrideResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Threat action override. For some threat types, only a subset of actions applies.
+func (o ThreatOverrideResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreatOverrideResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Vendor-specific ID of a threat to override.
+func (o ThreatOverrideResponseOutput) ThreatId() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreatOverrideResponse) string { return v.ThreatId }).(pulumi.StringOutput)
+}
+
+// Type of the threat (read only).
+func (o ThreatOverrideResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreatOverrideResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ThreatOverrideResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ThreatOverrideResponse)(nil)).Elem()
+}
+
+func (o ThreatOverrideResponseArrayOutput) ToThreatOverrideResponseArrayOutput() ThreatOverrideResponseArrayOutput {
+	return o
+}
+
+func (o ThreatOverrideResponseArrayOutput) ToThreatOverrideResponseArrayOutputWithContext(ctx context.Context) ThreatOverrideResponseArrayOutput {
+	return o
+}
+
+func (o ThreatOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatOverrideResponse] {
+	return pulumix.Output[[]ThreatOverrideResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ThreatOverrideResponseArrayOutput) Index(i pulumi.IntInput) ThreatOverrideResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ThreatOverrideResponse {
+		return vs[0].([]ThreatOverrideResponse)[vs[1].(int)]
+	}).(ThreatOverrideResponseOutput)
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfile struct {
+	// Optional. Configuration for overriding threats actions by severity match.
+	SeverityOverrides []SeverityOverride `pulumi:"severityOverrides"`
+	// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+	ThreatOverrides []ThreatOverride `pulumi:"threatOverrides"`
+}
+
+// ThreatPreventionProfileInput is an input type that accepts ThreatPreventionProfileArgs and ThreatPreventionProfileOutput values.
+// You can construct a concrete instance of `ThreatPreventionProfileInput` via:
+//
+//	ThreatPreventionProfileArgs{...}
+type ThreatPreventionProfileInput interface {
+	pulumi.Input
+
+	ToThreatPreventionProfileOutput() ThreatPreventionProfileOutput
+	ToThreatPreventionProfileOutputWithContext(context.Context) ThreatPreventionProfileOutput
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfileArgs struct {
+	// Optional. Configuration for overriding threats actions by severity match.
+	SeverityOverrides SeverityOverrideArrayInput `pulumi:"severityOverrides"`
+	// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+	ThreatOverrides ThreatOverrideArrayInput `pulumi:"threatOverrides"`
+}
+
+func (ThreatPreventionProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatPreventionProfile)(nil)).Elem()
+}
+
+func (i ThreatPreventionProfileArgs) ToThreatPreventionProfileOutput() ThreatPreventionProfileOutput {
+	return i.ToThreatPreventionProfileOutputWithContext(context.Background())
+}
+
+func (i ThreatPreventionProfileArgs) ToThreatPreventionProfileOutputWithContext(ctx context.Context) ThreatPreventionProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatPreventionProfileOutput)
+}
+
+func (i ThreatPreventionProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatPreventionProfile] {
+	return pulumix.Output[ThreatPreventionProfile]{
+		OutputState: i.ToThreatPreventionProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ThreatPreventionProfileArgs) ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput {
+	return i.ToThreatPreventionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ThreatPreventionProfileArgs) ToThreatPreventionProfilePtrOutputWithContext(ctx context.Context) ThreatPreventionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatPreventionProfileOutput).ToThreatPreventionProfilePtrOutputWithContext(ctx)
+}
+
+// ThreatPreventionProfilePtrInput is an input type that accepts ThreatPreventionProfileArgs, ThreatPreventionProfilePtr and ThreatPreventionProfilePtrOutput values.
+// You can construct a concrete instance of `ThreatPreventionProfilePtrInput` via:
+//
+//	        ThreatPreventionProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ThreatPreventionProfilePtrInput interface {
+	pulumi.Input
+
+	ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput
+	ToThreatPreventionProfilePtrOutputWithContext(context.Context) ThreatPreventionProfilePtrOutput
+}
+
+type threatPreventionProfilePtrType ThreatPreventionProfileArgs
+
+func ThreatPreventionProfilePtr(v *ThreatPreventionProfileArgs) ThreatPreventionProfilePtrInput {
+	return (*threatPreventionProfilePtrType)(v)
+}
+
+func (*threatPreventionProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreatPreventionProfile)(nil)).Elem()
+}
+
+func (i *threatPreventionProfilePtrType) ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput {
+	return i.ToThreatPreventionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *threatPreventionProfilePtrType) ToThreatPreventionProfilePtrOutputWithContext(ctx context.Context) ThreatPreventionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatPreventionProfilePtrOutput)
+}
+
+func (i *threatPreventionProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ThreatPreventionProfile] {
+	return pulumix.Output[*ThreatPreventionProfile]{
+		OutputState: i.ToThreatPreventionProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfileOutput struct{ *pulumi.OutputState }
+
+func (ThreatPreventionProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatPreventionProfile)(nil)).Elem()
+}
+
+func (o ThreatPreventionProfileOutput) ToThreatPreventionProfileOutput() ThreatPreventionProfileOutput {
+	return o
+}
+
+func (o ThreatPreventionProfileOutput) ToThreatPreventionProfileOutputWithContext(ctx context.Context) ThreatPreventionProfileOutput {
+	return o
+}
+
+func (o ThreatPreventionProfileOutput) ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput {
+	return o.ToThreatPreventionProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ThreatPreventionProfileOutput) ToThreatPreventionProfilePtrOutputWithContext(ctx context.Context) ThreatPreventionProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ThreatPreventionProfile) *ThreatPreventionProfile {
+		return &v
+	}).(ThreatPreventionProfilePtrOutput)
+}
+
+func (o ThreatPreventionProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatPreventionProfile] {
+	return pulumix.Output[ThreatPreventionProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Configuration for overriding threats actions by severity match.
+func (o ThreatPreventionProfileOutput) SeverityOverrides() SeverityOverrideArrayOutput {
+	return o.ApplyT(func(v ThreatPreventionProfile) []SeverityOverride { return v.SeverityOverrides }).(SeverityOverrideArrayOutput)
+}
+
+// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+func (o ThreatPreventionProfileOutput) ThreatOverrides() ThreatOverrideArrayOutput {
+	return o.ApplyT(func(v ThreatPreventionProfile) []ThreatOverride { return v.ThreatOverrides }).(ThreatOverrideArrayOutput)
+}
+
+type ThreatPreventionProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ThreatPreventionProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreatPreventionProfile)(nil)).Elem()
+}
+
+func (o ThreatPreventionProfilePtrOutput) ToThreatPreventionProfilePtrOutput() ThreatPreventionProfilePtrOutput {
+	return o
+}
+
+func (o ThreatPreventionProfilePtrOutput) ToThreatPreventionProfilePtrOutputWithContext(ctx context.Context) ThreatPreventionProfilePtrOutput {
+	return o
+}
+
+func (o ThreatPreventionProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThreatPreventionProfile] {
+	return pulumix.Output[*ThreatPreventionProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ThreatPreventionProfilePtrOutput) Elem() ThreatPreventionProfileOutput {
+	return o.ApplyT(func(v *ThreatPreventionProfile) ThreatPreventionProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ThreatPreventionProfile
+		return ret
+	}).(ThreatPreventionProfileOutput)
+}
+
+// Optional. Configuration for overriding threats actions by severity match.
+func (o ThreatPreventionProfilePtrOutput) SeverityOverrides() SeverityOverrideArrayOutput {
+	return o.ApplyT(func(v *ThreatPreventionProfile) []SeverityOverride {
+		if v == nil {
+			return nil
+		}
+		return v.SeverityOverrides
+	}).(SeverityOverrideArrayOutput)
+}
+
+// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+func (o ThreatPreventionProfilePtrOutput) ThreatOverrides() ThreatOverrideArrayOutput {
+	return o.ApplyT(func(v *ThreatPreventionProfile) []ThreatOverride {
+		if v == nil {
+			return nil
+		}
+		return v.ThreatOverrides
+	}).(ThreatOverrideArrayOutput)
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfileResponse struct {
+	// Optional. Configuration for overriding threats actions by severity match.
+	SeverityOverrides []SeverityOverrideResponse `pulumi:"severityOverrides"`
+	// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+	ThreatOverrides []ThreatOverrideResponse `pulumi:"threatOverrides"`
+}
+
+// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+type ThreatPreventionProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (ThreatPreventionProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatPreventionProfileResponse)(nil)).Elem()
+}
+
+func (o ThreatPreventionProfileResponseOutput) ToThreatPreventionProfileResponseOutput() ThreatPreventionProfileResponseOutput {
+	return o
+}
+
+func (o ThreatPreventionProfileResponseOutput) ToThreatPreventionProfileResponseOutputWithContext(ctx context.Context) ThreatPreventionProfileResponseOutput {
+	return o
+}
+
+func (o ThreatPreventionProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatPreventionProfileResponse] {
+	return pulumix.Output[ThreatPreventionProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Configuration for overriding threats actions by severity match.
+func (o ThreatPreventionProfileResponseOutput) SeverityOverrides() SeverityOverrideResponseArrayOutput {
+	return o.ApplyT(func(v ThreatPreventionProfileResponse) []SeverityOverrideResponse { return v.SeverityOverrides }).(SeverityOverrideResponseArrayOutput)
+}
+
+// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+func (o ThreatPreventionProfileResponseOutput) ThreatOverrides() ThreatOverrideResponseArrayOutput {
+	return o.ApplyT(func(v ThreatPreventionProfileResponse) []ThreatOverrideResponse { return v.ThreatOverrides }).(ThreatOverrideResponseArrayOutput)
 }
 
 // Specification of ValidationCA. Defines the mechanism to obtain the Certificate Authority certificate to validate the peer certificate.
@@ -2839,8 +3464,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyPtrInput)(nil)).Elem(), MTLSPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTypeInput)(nil)).Elem(), RuleTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTypeArrayInput)(nil)).Elem(), RuleTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SeverityOverrideInput)(nil)).Elem(), SeverityOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SeverityOverrideArrayInput)(nil)).Elem(), SeverityOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceArrayInput)(nil)).Elem(), SourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatOverrideInput)(nil)).Elem(), ThreatOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatOverrideArrayInput)(nil)).Elem(), ThreatOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatPreventionProfileInput)(nil)).Elem(), ThreatPreventionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatPreventionProfilePtrInput)(nil)).Elem(), ThreatPreventionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationCAInput)(nil)).Elem(), ValidationCAArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationCAArrayInput)(nil)).Elem(), ValidationCAArray{})
 	pulumi.RegisterOutputType(CertificateProviderInstanceOutput{})
@@ -2881,10 +3512,21 @@ func init() {
 	pulumi.RegisterOutputType(RuleTypeArrayOutput{})
 	pulumi.RegisterOutputType(RuleResponseOutput{})
 	pulumi.RegisterOutputType(RuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideArrayOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideResponseOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideResponseArrayOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourceArrayOutput{})
 	pulumi.RegisterOutputType(SourceResponseOutput{})
 	pulumi.RegisterOutputType(SourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideArrayOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideResponseOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideResponseArrayOutput{})
+	pulumi.RegisterOutputType(ThreatPreventionProfileOutput{})
+	pulumi.RegisterOutputType(ThreatPreventionProfilePtrOutput{})
+	pulumi.RegisterOutputType(ThreatPreventionProfileResponseOutput{})
 	pulumi.RegisterOutputType(ValidationCAOutput{})
 	pulumi.RegisterOutputType(ValidationCAArrayOutput{})
 	pulumi.RegisterOutputType(ValidationCAResponseOutput{})

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Outputs
         /// </summary>
         public readonly bool DisableDefaultIamRecipients;
         /// <summary>
+        /// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+        /// </summary>
+        public readonly bool EnableProjectLevelRecipients;
+        /// <summary>
         /// Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details.
         /// </summary>
         public readonly ImmutableArray<string> MonitoringNotificationChannels;
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Outputs
         private GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse(
             bool disableDefaultIamRecipients,
 
+            bool enableProjectLevelRecipients,
+
             ImmutableArray<string> monitoringNotificationChannels,
 
             string pubsubTopic,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Outputs
             string schemaVersion)
         {
             DisableDefaultIamRecipients = disableDefaultIamRecipients;
+            EnableProjectLevelRecipients = enableProjectLevelRecipients;
             MonitoringNotificationChannels = monitoringNotificationChannels;
             PubsubTopic = pubsubTopic;
             SchemaVersion = schemaVersion;

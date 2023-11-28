@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// The time to which this token is valid.
         /// </summary>
         public readonly string ExpireTime;
@@ -102,6 +106,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 
             string description,
 
+            string etag,
+
             string expireTime,
 
             ImmutableDictionary<string, string> labels,
@@ -116,6 +122,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         {
             CreateTime = createTime;
             Description = description;
+            Etag = etag;
             ExpireTime = expireTime;
             Labels = labels;
             Name = name;

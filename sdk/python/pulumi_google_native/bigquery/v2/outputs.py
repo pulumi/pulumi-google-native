@@ -18,6 +18,7 @@ __all__ = [
     'AvroOptionsResponse',
     'BiEngineReasonResponse',
     'BiEngineStatisticsResponse',
+    'BigLakeConfigurationResponse',
     'BigQueryModelTrainingResponse',
     'BigtableColumnFamilyResponse',
     'BigtableColumnResponse',
@@ -43,6 +44,7 @@ __all__ = [
     'ExplainQueryStepResponse',
     'ExprResponse',
     'ExternalDataConfigurationResponse',
+    'ExternalDatasetReferenceResponse',
     'GoogleSheetsOptionsResponse',
     'HivePartitioningOptionsResponse',
     'IndexUnusedReasonResponse',
@@ -61,6 +63,7 @@ __all__ = [
     'JobStatisticsReservationUsageItemResponse',
     'JobStatisticsResponse',
     'JobStatusResponse',
+    'JsonOptionsResponse',
     'MaterializedViewDefinitionResponse',
     'MlStatisticsResponse',
     'ModelDefinitionModelOptionsResponse',
@@ -98,6 +101,7 @@ __all__ = [
     'TableConstraintsResponse',
     'TableFieldSchemaCategoriesResponse',
     'TableFieldSchemaPolicyTagsResponse',
+    'TableFieldSchemaRangeElementTypeResponse',
     'TableFieldSchemaResponse',
     'TableReferenceResponse',
     'TableSchemaResponse',
@@ -119,6 +123,8 @@ class ArgumentResponse(dict):
             suggest = "argument_kind"
         elif key == "dataType":
             suggest = "data_type"
+        elif key == "isAggregate":
+            suggest = "is_aggregate"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ArgumentResponse. Access the value via the '{suggest}' property getter instead.")
@@ -134,17 +140,20 @@ class ArgumentResponse(dict):
     def __init__(__self__, *,
                  argument_kind: str,
                  data_type: 'outputs.StandardSqlDataTypeResponse',
+                 is_aggregate: bool,
                  mode: str,
                  name: str):
         """
         Input/output argument of a function or a stored procedure.
         :param str argument_kind: Optional. Defaults to FIXED_TYPE.
         :param 'StandardSqlDataTypeResponse' data_type: Required unless argument_kind = ANY_TYPE.
+        :param bool is_aggregate: Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
         :param str mode: Optional. Specifies whether the argument is input or output. Can be set for procedures only.
         :param str name: Optional. The name of this argument. Can be absent for function return argument.
         """
         pulumi.set(__self__, "argument_kind", argument_kind)
         pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "is_aggregate", is_aggregate)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "name", name)
 
@@ -163,6 +172,14 @@ class ArgumentResponse(dict):
         Required unless argument_kind = ANY_TYPE.
         """
         return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter(name="isAggregate")
+    def is_aggregate(self) -> bool:
+        """
+        Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+        """
+        return pulumi.get(self, "is_aggregate")
 
     @property
     @pulumi.getter
@@ -406,6 +423,80 @@ class BiEngineStatisticsResponse(dict):
         In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated.
         """
         return pulumi.get(self, "bi_engine_reasons")
+
+
+@pulumi.output_type
+class BigLakeConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionId":
+            suggest = "connection_id"
+        elif key == "fileFormat":
+            suggest = "file_format"
+        elif key == "storageUri":
+            suggest = "storage_uri"
+        elif key == "tableFormat":
+            suggest = "table_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigLakeConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigLakeConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigLakeConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_id: str,
+                 file_format: str,
+                 storage_uri: str,
+                 table_format: str):
+        """
+        :param str connection_id: [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+        :param str file_format: [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+        :param str storage_uri: [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+        :param str table_format: [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "storage_uri", storage_uri)
+        pulumi.set(__self__, "table_format", table_format)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> str:
+        """
+        [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> str:
+        """
+        [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+        """
+        return pulumi.get(self, "file_format")
+
+    @property
+    @pulumi.getter(name="storageUri")
+    def storage_uri(self) -> str:
+        """
+        [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+        """
+        return pulumi.get(self, "storage_uri")
+
+    @property
+    @pulumi.getter(name="tableFormat")
+    def table_format(self) -> str:
+        """
+        [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+        """
+        return pulumi.get(self, "table_format")
 
 
 @pulumi.output_type
@@ -1668,7 +1759,7 @@ class EncryptionConfigurationResponse(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
         """
-        :param str kms_key_name: [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+        :param str kms_key_name: Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -1676,7 +1767,7 @@ class EncryptionConfigurationResponse(dict):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> str:
         """
-        [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+        Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -2241,12 +2332,16 @@ class ExternalDataConfigurationResponse(dict):
             suggest = "csv_options"
         elif key == "decimalTargetTypes":
             suggest = "decimal_target_types"
+        elif key == "fileSetSpecType":
+            suggest = "file_set_spec_type"
         elif key == "googleSheetsOptions":
             suggest = "google_sheets_options"
         elif key == "hivePartitioningOptions":
             suggest = "hive_partitioning_options"
         elif key == "ignoreUnknownValues":
             suggest = "ignore_unknown_values"
+        elif key == "jsonOptions":
+            suggest = "json_options"
         elif key == "maxBadRecords":
             suggest = "max_bad_records"
         elif key == "metadataCacheMode":
@@ -2281,9 +2376,11 @@ class ExternalDataConfigurationResponse(dict):
                  connection_id: str,
                  csv_options: 'outputs.CsvOptionsResponse',
                  decimal_target_types: Sequence[str],
+                 file_set_spec_type: str,
                  google_sheets_options: 'outputs.GoogleSheetsOptionsResponse',
                  hive_partitioning_options: 'outputs.HivePartitioningOptionsResponse',
                  ignore_unknown_values: bool,
+                 json_options: 'outputs.JsonOptionsResponse',
                  max_bad_records: int,
                  metadata_cache_mode: str,
                  object_metadata: str,
@@ -2300,9 +2397,11 @@ class ExternalDataConfigurationResponse(dict):
         :param str connection_id: [Optional, Trusted Tester] Connection for external data source.
         :param 'CsvOptionsResponse' csv_options: Additional properties to set if sourceFormat is set to CSV.
         :param Sequence[str] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        :param str file_set_spec_type: [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
         :param 'GoogleSheetsOptionsResponse' google_sheets_options: [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
         :param 'HivePartitioningOptionsResponse' hive_partitioning_options: [Optional] Options to configure hive partitioning support.
         :param bool ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
+        :param 'JsonOptionsResponse' json_options: Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
         :param int max_bad_records: [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
         :param str metadata_cache_mode: [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
         :param str object_metadata: ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
@@ -2319,9 +2418,11 @@ class ExternalDataConfigurationResponse(dict):
         pulumi.set(__self__, "connection_id", connection_id)
         pulumi.set(__self__, "csv_options", csv_options)
         pulumi.set(__self__, "decimal_target_types", decimal_target_types)
+        pulumi.set(__self__, "file_set_spec_type", file_set_spec_type)
         pulumi.set(__self__, "google_sheets_options", google_sheets_options)
         pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
         pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
+        pulumi.set(__self__, "json_options", json_options)
         pulumi.set(__self__, "max_bad_records", max_bad_records)
         pulumi.set(__self__, "metadata_cache_mode", metadata_cache_mode)
         pulumi.set(__self__, "object_metadata", object_metadata)
@@ -2388,6 +2489,14 @@ class ExternalDataConfigurationResponse(dict):
         return pulumi.get(self, "decimal_target_types")
 
     @property
+    @pulumi.getter(name="fileSetSpecType")
+    def file_set_spec_type(self) -> str:
+        """
+        [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        """
+        return pulumi.get(self, "file_set_spec_type")
+
+    @property
     @pulumi.getter(name="googleSheetsOptions")
     def google_sheets_options(self) -> 'outputs.GoogleSheetsOptionsResponse':
         """
@@ -2410,6 +2519,14 @@ class ExternalDataConfigurationResponse(dict):
         [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
         """
         return pulumi.get(self, "ignore_unknown_values")
+
+    @property
+    @pulumi.getter(name="jsonOptions")
+    def json_options(self) -> 'outputs.JsonOptionsResponse':
+        """
+        Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+        """
+        return pulumi.get(self, "json_options")
 
     @property
     @pulumi.getter(name="maxBadRecords")
@@ -2474,6 +2591,52 @@ class ExternalDataConfigurationResponse(dict):
         [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
         """
         return pulumi.get(self, "source_uris")
+
+
+@pulumi.output_type
+class ExternalDatasetReferenceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalSource":
+            suggest = "external_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExternalDatasetReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExternalDatasetReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExternalDatasetReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection: str,
+                 external_source: str):
+        """
+        :param str connection: [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        :param str external_source: [Required] External source that backs this dataset.
+        """
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "external_source", external_source)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> str:
+        """
+        [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter(name="externalSource")
+    def external_source(self) -> str:
+        """
+        [Required] External source that backs this dataset.
+        """
+        return pulumi.get(self, "external_source")
 
 
 @pulumi.output_type
@@ -2909,6 +3072,8 @@ class JobConfigurationLoadResponse(dict):
             suggest = "destination_table_properties"
         elif key == "fieldDelimiter":
             suggest = "field_delimiter"
+        elif key == "fileSetSpecType":
+            suggest = "file_set_spec_type"
         elif key == "hivePartitioningOptions":
             suggest = "hive_partitioning_options"
         elif key == "ignoreUnknownValues":
@@ -2973,6 +3138,7 @@ class JobConfigurationLoadResponse(dict):
                  destination_table_properties: 'outputs.DestinationTablePropertiesResponse',
                  encoding: str,
                  field_delimiter: str,
+                 file_set_spec_type: str,
                  hive_partitioning_options: 'outputs.HivePartitioningOptionsResponse',
                  ignore_unknown_values: bool,
                  json_extension: str,
@@ -3008,6 +3174,7 @@ class JobConfigurationLoadResponse(dict):
         :param 'DestinationTablePropertiesResponse' destination_table_properties: [Beta] [Optional] Properties with which to create the destination table if it is new.
         :param str encoding: [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
         :param str field_delimiter: [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator. The default value is a comma (',').
+        :param str file_set_spec_type: [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
         :param 'HivePartitioningOptionsResponse' hive_partitioning_options: [Optional] Options to configure hive partitioning support.
         :param bool ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
         :param str json_extension: [Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON.
@@ -3043,6 +3210,7 @@ class JobConfigurationLoadResponse(dict):
         pulumi.set(__self__, "destination_table_properties", destination_table_properties)
         pulumi.set(__self__, "encoding", encoding)
         pulumi.set(__self__, "field_delimiter", field_delimiter)
+        pulumi.set(__self__, "file_set_spec_type", file_set_spec_type)
         pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
         pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
         pulumi.set(__self__, "json_extension", json_extension)
@@ -3168,6 +3336,14 @@ class JobConfigurationLoadResponse(dict):
         [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator. The default value is a comma (',').
         """
         return pulumi.get(self, "field_delimiter")
+
+    @property
+    @pulumi.getter(name="fileSetSpecType")
+    def file_set_spec_type(self) -> str:
+        """
+        [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        """
+        return pulumi.get(self, "file_set_spec_type")
 
     @property
     @pulumi.getter(name="hivePartitioningOptions")
@@ -4151,7 +4327,7 @@ class JobStatistics2Response(dict):
         :param str ddl_affected_row_access_policy_count: [Output only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
         :param 'TableReferenceResponse' ddl_destination_table: [Output only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
         :param str ddl_operation_performed: The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-        :param 'DatasetReferenceResponse' ddl_target_dataset: [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+        :param 'DatasetReferenceResponse' ddl_target_dataset: [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP/UNDROP SCHEMA queries.
         :param 'RoutineReferenceResponse' ddl_target_routine: The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
         :param 'RowAccessPolicyReferenceResponse' ddl_target_row_access_policy: [Output only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
         :param 'TableReferenceResponse' ddl_target_table: [Output only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
@@ -4265,7 +4441,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlTargetDataset")
     def ddl_target_dataset(self) -> 'outputs.DatasetReferenceResponse':
         """
-        [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+        [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP/UNDROP SCHEMA queries.
         """
         return pulumi.get(self, "ddl_target_dataset")
 
@@ -5048,6 +5224,24 @@ class JobStatusResponse(dict):
 
 
 @pulumi.output_type
+class JsonOptionsResponse(dict):
+    def __init__(__self__, *,
+                 encoding: str):
+        """
+        :param str encoding: [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        """
+        pulumi.set(__self__, "encoding", encoding)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> str:
+        """
+        [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+
+@pulumi.output_type
 class MaterializedViewDefinitionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5318,9 +5512,9 @@ class ModelReferenceResponse(dict):
                  model_id: str,
                  project: str):
         """
-        :param str dataset_id: [Required] The ID of the dataset containing this model.
-        :param str model_id: [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-        :param str project: [Required] The ID of the project containing this model.
+        :param str dataset_id: The ID of the dataset containing this model.
+        :param str model_id: The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        :param str project: The ID of the project containing this model.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "model_id", model_id)
@@ -5330,7 +5524,7 @@ class ModelReferenceResponse(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         """
-        [Required] The ID of the dataset containing this model.
+        The ID of the dataset containing this model.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -5338,7 +5532,7 @@ class ModelReferenceResponse(dict):
     @pulumi.getter(name="modelId")
     def model_id(self) -> str:
         """
-        [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "model_id")
 
@@ -5346,7 +5540,7 @@ class ModelReferenceResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        [Required] The ID of the project containing this model.
+        The ID of the project containing this model.
         """
         return pulumi.get(self, "project")
 
@@ -5889,9 +6083,9 @@ class RoutineReferenceResponse(dict):
                  project: str,
                  routine_id: str):
         """
-        :param str dataset_id: [Required] The ID of the dataset containing this routine.
-        :param str project: [Required] The ID of the project containing this routine.
-        :param str routine_id: [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+        :param str dataset_id: The ID of the dataset containing this routine.
+        :param str project: The ID of the project containing this routine.
+        :param str routine_id: The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project", project)
@@ -5901,7 +6095,7 @@ class RoutineReferenceResponse(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         """
-        [Required] The ID of the dataset containing this routine.
+        The ID of the dataset containing this routine.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -5909,7 +6103,7 @@ class RoutineReferenceResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        [Required] The ID of the project containing this routine.
+        The ID of the project containing this routine.
         """
         return pulumi.get(self, "project")
 
@@ -5917,7 +6111,7 @@ class RoutineReferenceResponse(dict):
     @pulumi.getter(name="routineId")
     def routine_id(self) -> str:
         """
-        [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+        The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         """
         return pulumi.get(self, "routine_id")
 
@@ -5951,10 +6145,10 @@ class RowAccessPolicyReferenceResponse(dict):
                  project: str,
                  table_id: str):
         """
-        :param str dataset_id: [Required] The ID of the dataset containing this row access policy.
-        :param str policy_id: [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-        :param str project: [Required] The ID of the project containing this row access policy.
-        :param str table_id: [Required] The ID of the table containing this row access policy.
+        :param str dataset_id: The ID of the dataset containing this row access policy.
+        :param str policy_id: The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+        :param str project: The ID of the project containing this row access policy.
+        :param str table_id: The ID of the table containing this row access policy.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "policy_id", policy_id)
@@ -5965,7 +6159,7 @@ class RowAccessPolicyReferenceResponse(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         """
-        [Required] The ID of the dataset containing this row access policy.
+        The ID of the dataset containing this row access policy.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -5973,7 +6167,7 @@ class RowAccessPolicyReferenceResponse(dict):
     @pulumi.getter(name="policyId")
     def policy_id(self) -> str:
         """
-        [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+        The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         """
         return pulumi.get(self, "policy_id")
 
@@ -5981,7 +6175,7 @@ class RowAccessPolicyReferenceResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        [Required] The ID of the project containing this row access policy.
+        The ID of the project containing this row access policy.
         """
         return pulumi.get(self, "project")
 
@@ -5989,7 +6183,7 @@ class RowAccessPolicyReferenceResponse(dict):
     @pulumi.getter(name="tableId")
     def table_id(self) -> str:
         """
-        [Required] The ID of the table containing this row access policy.
+        The ID of the table containing this row access policy.
         """
         return pulumi.get(self, "table_id")
 
@@ -6180,8 +6374,8 @@ class SearchStatisticsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "indexUnusedReason":
-            suggest = "index_unused_reason"
+        if key == "indexUnusedReasons":
+            suggest = "index_unused_reasons"
         elif key == "indexUsageMode":
             suggest = "index_usage_mode"
 
@@ -6197,22 +6391,22 @@ class SearchStatisticsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 index_unused_reason: Sequence['outputs.IndexUnusedReasonResponse'],
+                 index_unused_reasons: Sequence['outputs.IndexUnusedReasonResponse'],
                  index_usage_mode: str):
         """
-        :param Sequence['IndexUnusedReasonResponse'] index_unused_reason: When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
+        :param Sequence['IndexUnusedReasonResponse'] index_unused_reasons: When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
         :param str index_usage_mode: Specifies index usage mode for the query.
         """
-        pulumi.set(__self__, "index_unused_reason", index_unused_reason)
+        pulumi.set(__self__, "index_unused_reasons", index_unused_reasons)
         pulumi.set(__self__, "index_usage_mode", index_usage_mode)
 
     @property
-    @pulumi.getter(name="indexUnusedReason")
-    def index_unused_reason(self) -> Sequence['outputs.IndexUnusedReasonResponse']:
+    @pulumi.getter(name="indexUnusedReasons")
+    def index_unused_reasons(self) -> Sequence['outputs.IndexUnusedReasonResponse']:
         """
         When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
         """
-        return pulumi.get(self, "index_unused_reason")
+        return pulumi.get(self, "index_unused_reasons")
 
     @property
     @pulumi.getter(name="indexUsageMode")
@@ -6311,9 +6505,7 @@ class SparkLoggingInfoResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "projectId":
-            suggest = "project_id"
-        elif key == "resourceType":
+        if key == "resourceType":
             suggest = "resource_type"
 
         if suggest:
@@ -6328,22 +6520,22 @@ class SparkLoggingInfoResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 project_id: str,
+                 project: str,
                  resource_type: str):
         """
-        :param str project_id: Project ID used for logging
+        :param str project: Project ID used for logging
         :param str resource_type: Resource type used for logging
         """
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "resource_type", resource_type)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         Project ID used for logging
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="resourceType")
@@ -6588,6 +6780,8 @@ class StandardSqlDataTypeResponse(dict):
         suggest = None
         if key == "arrayElementType":
             suggest = "array_element_type"
+        elif key == "rangeElementType":
+            suggest = "range_element_type"
         elif key == "structType":
             suggest = "struct_type"
         elif key == "typeKind":
@@ -6606,15 +6800,18 @@ class StandardSqlDataTypeResponse(dict):
 
     def __init__(__self__, *,
                  array_element_type: 'outputs.StandardSqlDataTypeResponse',
+                 range_element_type: 'outputs.StandardSqlDataTypeResponse',
                  struct_type: 'outputs.StandardSqlStructTypeResponse',
                  type_kind: str):
         """
         The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } }
         :param 'StandardSqlDataTypeResponse' array_element_type: The type of the array's elements, if type_kind = "ARRAY".
+        :param 'StandardSqlDataTypeResponse' range_element_type: The type of the range's elements, if type_kind = "RANGE".
         :param 'StandardSqlStructTypeResponse' struct_type: The fields of this struct, in order, if type_kind = "STRUCT".
         :param str type_kind: The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
         """
         pulumi.set(__self__, "array_element_type", array_element_type)
+        pulumi.set(__self__, "range_element_type", range_element_type)
         pulumi.set(__self__, "struct_type", struct_type)
         pulumi.set(__self__, "type_kind", type_kind)
 
@@ -6625,6 +6822,14 @@ class StandardSqlDataTypeResponse(dict):
         The type of the array's elements, if type_kind = "ARRAY".
         """
         return pulumi.get(self, "array_element_type")
+
+    @property
+    @pulumi.getter(name="rangeElementType")
+    def range_element_type(self) -> 'outputs.StandardSqlDataTypeResponse':
+        """
+        The type of the range's elements, if type_kind = "RANGE".
+        """
+        return pulumi.get(self, "range_element_type")
 
     @property
     @pulumi.getter(name="structType")
@@ -6678,13 +6883,23 @@ class StandardSqlFieldResponse(dict):
 
 @pulumi.output_type
 class StandardSqlStructTypeResponse(dict):
+    """
+    The representation of a SQL STRUCT type.
+    """
     def __init__(__self__, *,
                  fields: Sequence['outputs.StandardSqlFieldResponse']):
+        """
+        The representation of a SQL STRUCT type.
+        :param Sequence['StandardSqlFieldResponse'] fields: Fields within the struct.
+        """
         pulumi.set(__self__, "fields", fields)
 
     @property
     @pulumi.getter
     def fields(self) -> Sequence['outputs.StandardSqlFieldResponse']:
+        """
+        Fields within the struct.
+        """
         return pulumi.get(self, "fields")
 
 
@@ -7006,6 +7221,28 @@ class TableFieldSchemaPolicyTagsResponse(dict):
 
 
 @pulumi.output_type
+class TableFieldSchemaRangeElementTypeResponse(dict):
+    """
+    Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+    """
+    def __init__(__self__, *,
+                 type: str):
+        """
+        Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+        :param str type: The field element type of a RANGE
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The field element type of a RANGE
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class TableFieldSchemaResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7016,6 +7253,8 @@ class TableFieldSchemaResponse(dict):
             suggest = "max_length"
         elif key == "policyTags":
             suggest = "policy_tags"
+        elif key == "rangeElementType":
+            suggest = "range_element_type"
         elif key == "roundingMode":
             suggest = "rounding_mode"
 
@@ -7041,6 +7280,7 @@ class TableFieldSchemaResponse(dict):
                  name: str,
                  policy_tags: 'outputs.TableFieldSchemaPolicyTagsResponse',
                  precision: str,
+                 range_element_type: 'outputs.TableFieldSchemaRangeElementTypeResponse',
                  rounding_mode: str,
                  scale: str,
                  type: str):
@@ -7054,6 +7294,7 @@ class TableFieldSchemaResponse(dict):
         :param str mode: [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
         :param str name: [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
         :param str precision: [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+        :param 'TableFieldSchemaRangeElementTypeResponse' range_element_type: Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
         :param str rounding_mode: Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
         :param str scale: [Optional] See documentation for precision.
         :param str type: [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
@@ -7068,6 +7309,7 @@ class TableFieldSchemaResponse(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "policy_tags", policy_tags)
         pulumi.set(__self__, "precision", precision)
+        pulumi.set(__self__, "range_element_type", range_element_type)
         pulumi.set(__self__, "rounding_mode", rounding_mode)
         pulumi.set(__self__, "scale", scale)
         pulumi.set(__self__, "type", type)
@@ -7148,6 +7390,14 @@ class TableFieldSchemaResponse(dict):
         [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
         """
         return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="rangeElementType")
+    def range_element_type(self) -> 'outputs.TableFieldSchemaRangeElementTypeResponse':
+        """
+        Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+        """
+        return pulumi.get(self, "range_element_type")
 
     @property
     @pulumi.getter(name="roundingMode")

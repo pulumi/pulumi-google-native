@@ -22,7 +22,9 @@ type Routine struct {
 	Arguments ArgumentResponseArrayOutput `pulumi:"arguments"`
 	// The time when this routine was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
-	DatasetId    pulumi.StringOutput `pulumi:"datasetId"`
+	// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+	DataGovernanceType pulumi.StringOutput `pulumi:"dataGovernanceType"`
+	DatasetId          pulumi.StringOutput `pulumi:"datasetId"`
 	// The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
 	DefinitionBody pulumi.StringOutput `pulumi:"definitionBody"`
 	// Optional. The description of the routine, if defined.
@@ -48,6 +50,8 @@ type Routine struct {
 	RoutineReference RoutineReferenceResponseOutput `pulumi:"routineReference"`
 	// The type of routine.
 	RoutineType pulumi.StringOutput `pulumi:"routineType"`
+	// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+	SecurityMode pulumi.StringOutput `pulumi:"securityMode"`
 	// Optional. Spark specific options.
 	SparkOptions SparkOptionsResponseOutput `pulumi:"sparkOptions"`
 	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
@@ -113,7 +117,9 @@ func (RoutineState) ElementType() reflect.Type {
 type routineArgs struct {
 	// Optional.
 	Arguments []Argument `pulumi:"arguments"`
-	DatasetId string     `pulumi:"datasetId"`
+	// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+	DataGovernanceType *RoutineDataGovernanceType `pulumi:"dataGovernanceType"`
+	DatasetId          string                     `pulumi:"datasetId"`
 	// The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
 	DefinitionBody string `pulumi:"definitionBody"`
 	// Optional. The description of the routine, if defined.
@@ -135,6 +141,8 @@ type routineArgs struct {
 	RoutineReference RoutineReference `pulumi:"routineReference"`
 	// The type of routine.
 	RoutineType RoutineRoutineType `pulumi:"routineType"`
+	// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+	SecurityMode *RoutineSecurityMode `pulumi:"securityMode"`
 	// Optional. Spark specific options.
 	SparkOptions *SparkOptions `pulumi:"sparkOptions"`
 	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
@@ -145,7 +153,9 @@ type routineArgs struct {
 type RoutineArgs struct {
 	// Optional.
 	Arguments ArgumentArrayInput
-	DatasetId pulumi.StringInput
+	// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+	DataGovernanceType RoutineDataGovernanceTypePtrInput
+	DatasetId          pulumi.StringInput
 	// The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
 	DefinitionBody pulumi.StringInput
 	// Optional. The description of the routine, if defined.
@@ -167,6 +177,8 @@ type RoutineArgs struct {
 	RoutineReference RoutineReferenceInput
 	// The type of routine.
 	RoutineType RoutineRoutineTypeInput
+	// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+	SecurityMode RoutineSecurityModePtrInput
 	// Optional. Spark specific options.
 	SparkOptions SparkOptionsPtrInput
 	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
@@ -230,6 +242,11 @@ func (o RoutineOutput) Arguments() ArgumentResponseArrayOutput {
 // The time when this routine was created, in milliseconds since the epoch.
 func (o RoutineOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+func (o RoutineOutput) DataGovernanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.DataGovernanceType }).(pulumi.StringOutput)
 }
 
 func (o RoutineOutput) DatasetId() pulumi.StringOutput {
@@ -298,6 +315,11 @@ func (o RoutineOutput) RoutineReference() RoutineReferenceResponseOutput {
 // The type of routine.
 func (o RoutineOutput) RoutineType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.RoutineType }).(pulumi.StringOutput)
+}
+
+// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+func (o RoutineOutput) SecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.SecurityMode }).(pulumi.StringOutput)
 }
 
 // Optional. Spark specific options.

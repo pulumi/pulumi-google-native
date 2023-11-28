@@ -29,8 +29,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionIamMember{}
 	case "google-native:connectors/v1:ConnectionIamPolicy":
 		r = &ConnectionIamPolicy{}
+	case "google-native:connectors/v1:CustomConnector":
+		r = &CustomConnector{}
+	case "google-native:connectors/v1:CustomConnectorVersion":
+		r = &CustomConnectorVersion{}
 	case "google-native:connectors/v1:EndpointAttachment":
 		r = &EndpointAttachment{}
+	case "google-native:connectors/v1:EventSubscription":
+		r = &EventSubscription{}
 	case "google-native:connectors/v1:ManagedZone":
 		r = &ManagedZone{}
 	case "google-native:connectors/v1:ProviderIamBinding":

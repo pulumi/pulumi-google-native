@@ -22,14 +22,19 @@ type Namespace struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// When the namespace was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	Location   pulumi.StringOutput `pulumi:"location"`
+	// Optional. Labels for this Namespace.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
-	Project     pulumi.StringOutput `pulumi:"project"`
+	// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels pulumi.StringMapOutput `pulumi:"namespaceLabels"`
+	Project         pulumi.StringOutput    `pulumi:"project"`
 	// Scope associated with the namespace
-	Scope pulumi.StringOutput `pulumi:"scope"`
+	Scope   pulumi.StringOutput `pulumi:"scope"`
+	ScopeId pulumi.StringOutput `pulumi:"scopeId"`
+	// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+	ScopeNamespaceId pulumi.StringOutput `pulumi:"scopeNamespaceId"`
 	// State of the namespace resource.
 	State NamespaceLifecycleStateResponseOutput `pulumi:"state"`
 	// Google-generated UUID for this resource. This is unique across all namespace resources. If a namespace resource is deleted and another resource with the same name is created, it gets a different uid.
@@ -45,16 +50,20 @@ func NewNamespace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NamespaceId == nil {
-		return nil, errors.New("invalid value for required argument 'NamespaceId'")
-	}
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
+	if args.ScopeId == nil {
+		return nil, errors.New("invalid value for required argument 'ScopeId'")
+	}
+	if args.ScopeNamespaceId == nil {
+		return nil, errors.New("invalid value for required argument 'ScopeNamespaceId'")
+	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"location",
-		"namespaceId",
 		"project",
+		"scopeId",
+		"scopeNamespaceId",
 	})
 	opts = append(opts, replaceOnChanges)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -90,26 +99,36 @@ func (NamespaceState) ElementType() reflect.Type {
 }
 
 type namespaceArgs struct {
-	Location *string `pulumi:"location"`
+	// Optional. Labels for this Namespace.
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
 	// The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
 	Name *string `pulumi:"name"`
-	// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-	NamespaceId string  `pulumi:"namespaceId"`
-	Project     *string `pulumi:"project"`
+	// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels map[string]string `pulumi:"namespaceLabels"`
+	Project         *string           `pulumi:"project"`
 	// Scope associated with the namespace
-	Scope string `pulumi:"scope"`
+	Scope   string `pulumi:"scope"`
+	ScopeId string `pulumi:"scopeId"`
+	// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+	ScopeNamespaceId string `pulumi:"scopeNamespaceId"`
 }
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
+	// Optional. Labels for this Namespace.
+	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
 	Name pulumi.StringPtrInput
-	// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-	NamespaceId pulumi.StringInput
-	Project     pulumi.StringPtrInput
+	// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels pulumi.StringMapInput
+	Project         pulumi.StringPtrInput
 	// Scope associated with the namespace
-	Scope pulumi.StringInput
+	Scope   pulumi.StringInput
+	ScopeId pulumi.StringInput
+	// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+	ScopeNamespaceId pulumi.StringInput
 }
 
 func (NamespaceArgs) ElementType() reflect.Type {
@@ -171,6 +190,11 @@ func (o NamespaceOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// Optional. Labels for this Namespace.
+func (o NamespaceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 func (o NamespaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -180,9 +204,9 @@ func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-func (o NamespaceOutput) NamespaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
+func (o NamespaceOutput) NamespaceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.NamespaceLabels }).(pulumi.StringMapOutput)
 }
 
 func (o NamespaceOutput) Project() pulumi.StringOutput {
@@ -192,6 +216,15 @@ func (o NamespaceOutput) Project() pulumi.StringOutput {
 // Scope associated with the namespace
 func (o NamespaceOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
+}
+
+func (o NamespaceOutput) ScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.ScopeId }).(pulumi.StringOutput)
+}
+
+// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+func (o NamespaceOutput) ScopeNamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.ScopeNamespaceId }).(pulumi.StringOutput)
 }
 
 // State of the namespace resource.

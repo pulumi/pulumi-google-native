@@ -17,15 +17,15 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
     public sealed class GceShieldedInstanceConfigResponse
     {
         /// <summary>
-        /// Whether the instance has integrity monitoring enabled.
+        /// Optional. Whether the instance has integrity monitoring enabled.
         /// </summary>
         public readonly bool EnableIntegrityMonitoring;
         /// <summary>
-        /// Whether the instance has Secure Boot enabled.
+        /// Optional. Whether the instance has Secure Boot enabled.
         /// </summary>
         public readonly bool EnableSecureBoot;
         /// <summary>
-        /// Whether the instance has the vTPM enabled.
+        /// Optional. Whether the instance has the vTPM enabled.
         /// </summary>
         public readonly bool EnableVtpm;
 

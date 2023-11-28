@@ -11,6 +11,195 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Optional. Controls the amount of detail to include as part of the audit logs.
+type AccessDeterminationLogConfigLogLevel string
+
+const (
+	// No log level specified. This value is unused.
+	AccessDeterminationLogConfigLogLevelLogLevelUnspecified = AccessDeterminationLogConfigLogLevel("LOG_LEVEL_UNSPECIFIED")
+	// No additional consent-related logging is added to audit logs.
+	AccessDeterminationLogConfigLogLevelDisabled = AccessDeterminationLogConfigLogLevel("DISABLED")
+	// The following information is included: - One of the following [`consentMode`](https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-consent#audit_logs) fields: (`off`|`emptyScope`|`enforced`|`btg`|`bypass`). - The accessor's request headers - The `log_level` of the [AccessDeterminationLogConfig](google.cloud.healthcare.v1beta1.fhir.FhirStore.ConsentConfig.AccessDeterminationLogConfig) - The final consent evaluation (`PERMIT`, `DENY`, or `NO_CONSENT`) - A human-readable summary of the evaluation
+	AccessDeterminationLogConfigLogLevelMinimum = AccessDeterminationLogConfigLogLevel("MINIMUM")
+	// Includes `MINIMUM` and, for each resource owner, returns: - The resource owner's name - Most specific part of the `X-Consent-Scope` resulting in consensual determination - Timestamp of the applied enforcement leading to the decision - Enforcement version at the time the applicable consents were applied - The Consent resource name - The timestamp of the Consent resource used for enforcement - Policy type (PATIENT or ADMIN) Note that this mode adds some overhead to CRUD operations.
+	AccessDeterminationLogConfigLogLevelVerbose = AccessDeterminationLogConfigLogLevel("VERBOSE")
+)
+
+func (AccessDeterminationLogConfigLogLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessDeterminationLogConfigLogLevel)(nil)).Elem()
+}
+
+func (e AccessDeterminationLogConfigLogLevel) ToAccessDeterminationLogConfigLogLevelOutput() AccessDeterminationLogConfigLogLevelOutput {
+	return pulumi.ToOutput(e).(AccessDeterminationLogConfigLogLevelOutput)
+}
+
+func (e AccessDeterminationLogConfigLogLevel) ToAccessDeterminationLogConfigLogLevelOutputWithContext(ctx context.Context) AccessDeterminationLogConfigLogLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AccessDeterminationLogConfigLogLevelOutput)
+}
+
+func (e AccessDeterminationLogConfigLogLevel) ToAccessDeterminationLogConfigLogLevelPtrOutput() AccessDeterminationLogConfigLogLevelPtrOutput {
+	return e.ToAccessDeterminationLogConfigLogLevelPtrOutputWithContext(context.Background())
+}
+
+func (e AccessDeterminationLogConfigLogLevel) ToAccessDeterminationLogConfigLogLevelPtrOutputWithContext(ctx context.Context) AccessDeterminationLogConfigLogLevelPtrOutput {
+	return AccessDeterminationLogConfigLogLevel(e).ToAccessDeterminationLogConfigLogLevelOutputWithContext(ctx).ToAccessDeterminationLogConfigLogLevelPtrOutputWithContext(ctx)
+}
+
+func (e AccessDeterminationLogConfigLogLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AccessDeterminationLogConfigLogLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AccessDeterminationLogConfigLogLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AccessDeterminationLogConfigLogLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AccessDeterminationLogConfigLogLevelOutput struct{ *pulumi.OutputState }
+
+func (AccessDeterminationLogConfigLogLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessDeterminationLogConfigLogLevel)(nil)).Elem()
+}
+
+func (o AccessDeterminationLogConfigLogLevelOutput) ToAccessDeterminationLogConfigLogLevelOutput() AccessDeterminationLogConfigLogLevelOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigLogLevelOutput) ToAccessDeterminationLogConfigLogLevelOutputWithContext(ctx context.Context) AccessDeterminationLogConfigLogLevelOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigLogLevelOutput) ToAccessDeterminationLogConfigLogLevelPtrOutput() AccessDeterminationLogConfigLogLevelPtrOutput {
+	return o.ToAccessDeterminationLogConfigLogLevelPtrOutputWithContext(context.Background())
+}
+
+func (o AccessDeterminationLogConfigLogLevelOutput) ToAccessDeterminationLogConfigLogLevelPtrOutputWithContext(ctx context.Context) AccessDeterminationLogConfigLogLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessDeterminationLogConfigLogLevel) *AccessDeterminationLogConfigLogLevel {
+		return &v
+	}).(AccessDeterminationLogConfigLogLevelPtrOutput)
+}
+
+func (o AccessDeterminationLogConfigLogLevelOutput) ToOutput(ctx context.Context) pulumix.Output[AccessDeterminationLogConfigLogLevel] {
+	return pulumix.Output[AccessDeterminationLogConfigLogLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AccessDeterminationLogConfigLogLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AccessDeterminationLogConfigLogLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessDeterminationLogConfigLogLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AccessDeterminationLogConfigLogLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AccessDeterminationLogConfigLogLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessDeterminationLogConfigLogLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessDeterminationLogConfigLogLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessDeterminationLogConfigLogLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessDeterminationLogConfigLogLevel)(nil)).Elem()
+}
+
+func (o AccessDeterminationLogConfigLogLevelPtrOutput) ToAccessDeterminationLogConfigLogLevelPtrOutput() AccessDeterminationLogConfigLogLevelPtrOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigLogLevelPtrOutput) ToAccessDeterminationLogConfigLogLevelPtrOutputWithContext(ctx context.Context) AccessDeterminationLogConfigLogLevelPtrOutput {
+	return o
+}
+
+func (o AccessDeterminationLogConfigLogLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessDeterminationLogConfigLogLevel] {
+	return pulumix.Output[*AccessDeterminationLogConfigLogLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AccessDeterminationLogConfigLogLevelPtrOutput) Elem() AccessDeterminationLogConfigLogLevelOutput {
+	return o.ApplyT(func(v *AccessDeterminationLogConfigLogLevel) AccessDeterminationLogConfigLogLevel {
+		if v != nil {
+			return *v
+		}
+		var ret AccessDeterminationLogConfigLogLevel
+		return ret
+	}).(AccessDeterminationLogConfigLogLevelOutput)
+}
+
+func (o AccessDeterminationLogConfigLogLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AccessDeterminationLogConfigLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AccessDeterminationLogConfigLogLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AccessDeterminationLogConfigLogLevelInput is an input type that accepts AccessDeterminationLogConfigLogLevelArgs and AccessDeterminationLogConfigLogLevelOutput values.
+// You can construct a concrete instance of `AccessDeterminationLogConfigLogLevelInput` via:
+//
+//	AccessDeterminationLogConfigLogLevelArgs{...}
+type AccessDeterminationLogConfigLogLevelInput interface {
+	pulumi.Input
+
+	ToAccessDeterminationLogConfigLogLevelOutput() AccessDeterminationLogConfigLogLevelOutput
+	ToAccessDeterminationLogConfigLogLevelOutputWithContext(context.Context) AccessDeterminationLogConfigLogLevelOutput
+}
+
+var accessDeterminationLogConfigLogLevelPtrType = reflect.TypeOf((**AccessDeterminationLogConfigLogLevel)(nil)).Elem()
+
+type AccessDeterminationLogConfigLogLevelPtrInput interface {
+	pulumi.Input
+
+	ToAccessDeterminationLogConfigLogLevelPtrOutput() AccessDeterminationLogConfigLogLevelPtrOutput
+	ToAccessDeterminationLogConfigLogLevelPtrOutputWithContext(context.Context) AccessDeterminationLogConfigLogLevelPtrOutput
+}
+
+type accessDeterminationLogConfigLogLevelPtr string
+
+func AccessDeterminationLogConfigLogLevelPtr(v string) AccessDeterminationLogConfigLogLevelPtrInput {
+	return (*accessDeterminationLogConfigLogLevelPtr)(&v)
+}
+
+func (*accessDeterminationLogConfigLogLevelPtr) ElementType() reflect.Type {
+	return accessDeterminationLogConfigLogLevelPtrType
+}
+
+func (in *accessDeterminationLogConfigLogLevelPtr) ToAccessDeterminationLogConfigLogLevelPtrOutput() AccessDeterminationLogConfigLogLevelPtrOutput {
+	return pulumi.ToOutput(in).(AccessDeterminationLogConfigLogLevelPtrOutput)
+}
+
+func (in *accessDeterminationLogConfigLogLevelPtr) ToAccessDeterminationLogConfigLogLevelPtrOutputWithContext(ctx context.Context) AccessDeterminationLogConfigLogLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AccessDeterminationLogConfigLogLevelPtrOutput)
+}
+
+func (in *accessDeterminationLogConfigLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessDeterminationLogConfigLogLevel] {
+	return pulumix.Output[*AccessDeterminationLogConfigLogLevel]{
+		OutputState: in.ToAccessDeterminationLogConfigLogLevelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. The category of the attribute. The value of this field cannot be changed after creation.
 type AttributeDefinitionCategory string
 
@@ -384,6 +573,378 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
 	return pulumix.Output[*AuditLogConfigLogType]{
 		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+type ConsentConfigVersion string
+
+const (
+	// Users must specify an enforcement version or an error is returned.
+	ConsentConfigVersionConsentEnforcementVersionUnspecified = ConsentConfigVersion("CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED")
+	// Enforcement version 1. See the [FHIR Consent resources in the Cloud Healthcare API](https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-consent) guide for more details.
+	ConsentConfigVersionV1 = ConsentConfigVersion("V1")
+)
+
+func (ConsentConfigVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentConfigVersion)(nil)).Elem()
+}
+
+func (e ConsentConfigVersion) ToConsentConfigVersionOutput() ConsentConfigVersionOutput {
+	return pulumi.ToOutput(e).(ConsentConfigVersionOutput)
+}
+
+func (e ConsentConfigVersion) ToConsentConfigVersionOutputWithContext(ctx context.Context) ConsentConfigVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConsentConfigVersionOutput)
+}
+
+func (e ConsentConfigVersion) ToConsentConfigVersionPtrOutput() ConsentConfigVersionPtrOutput {
+	return e.ToConsentConfigVersionPtrOutputWithContext(context.Background())
+}
+
+func (e ConsentConfigVersion) ToConsentConfigVersionPtrOutputWithContext(ctx context.Context) ConsentConfigVersionPtrOutput {
+	return ConsentConfigVersion(e).ToConsentConfigVersionOutputWithContext(ctx).ToConsentConfigVersionPtrOutputWithContext(ctx)
+}
+
+func (e ConsentConfigVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConsentConfigVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConsentConfigVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConsentConfigVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConsentConfigVersionOutput struct{ *pulumi.OutputState }
+
+func (ConsentConfigVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentConfigVersion)(nil)).Elem()
+}
+
+func (o ConsentConfigVersionOutput) ToConsentConfigVersionOutput() ConsentConfigVersionOutput {
+	return o
+}
+
+func (o ConsentConfigVersionOutput) ToConsentConfigVersionOutputWithContext(ctx context.Context) ConsentConfigVersionOutput {
+	return o
+}
+
+func (o ConsentConfigVersionOutput) ToConsentConfigVersionPtrOutput() ConsentConfigVersionPtrOutput {
+	return o.ToConsentConfigVersionPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentConfigVersionOutput) ToConsentConfigVersionPtrOutputWithContext(ctx context.Context) ConsentConfigVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentConfigVersion) *ConsentConfigVersion {
+		return &v
+	}).(ConsentConfigVersionPtrOutput)
+}
+
+func (o ConsentConfigVersionOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentConfigVersion] {
+	return pulumix.Output[ConsentConfigVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConsentConfigVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConsentConfigVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsentConfigVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConsentConfigVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentConfigVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsentConfigVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConsentConfigVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsentConfigVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentConfigVersion)(nil)).Elem()
+}
+
+func (o ConsentConfigVersionPtrOutput) ToConsentConfigVersionPtrOutput() ConsentConfigVersionPtrOutput {
+	return o
+}
+
+func (o ConsentConfigVersionPtrOutput) ToConsentConfigVersionPtrOutputWithContext(ctx context.Context) ConsentConfigVersionPtrOutput {
+	return o
+}
+
+func (o ConsentConfigVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentConfigVersion] {
+	return pulumix.Output[*ConsentConfigVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConsentConfigVersionPtrOutput) Elem() ConsentConfigVersionOutput {
+	return o.ApplyT(func(v *ConsentConfigVersion) ConsentConfigVersion {
+		if v != nil {
+			return *v
+		}
+		var ret ConsentConfigVersion
+		return ret
+	}).(ConsentConfigVersionOutput)
+}
+
+func (o ConsentConfigVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentConfigVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConsentConfigVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConsentConfigVersionInput is an input type that accepts ConsentConfigVersionArgs and ConsentConfigVersionOutput values.
+// You can construct a concrete instance of `ConsentConfigVersionInput` via:
+//
+//	ConsentConfigVersionArgs{...}
+type ConsentConfigVersionInput interface {
+	pulumi.Input
+
+	ToConsentConfigVersionOutput() ConsentConfigVersionOutput
+	ToConsentConfigVersionOutputWithContext(context.Context) ConsentConfigVersionOutput
+}
+
+var consentConfigVersionPtrType = reflect.TypeOf((**ConsentConfigVersion)(nil)).Elem()
+
+type ConsentConfigVersionPtrInput interface {
+	pulumi.Input
+
+	ToConsentConfigVersionPtrOutput() ConsentConfigVersionPtrOutput
+	ToConsentConfigVersionPtrOutputWithContext(context.Context) ConsentConfigVersionPtrOutput
+}
+
+type consentConfigVersionPtr string
+
+func ConsentConfigVersionPtr(v string) ConsentConfigVersionPtrInput {
+	return (*consentConfigVersionPtr)(&v)
+}
+
+func (*consentConfigVersionPtr) ElementType() reflect.Type {
+	return consentConfigVersionPtrType
+}
+
+func (in *consentConfigVersionPtr) ToConsentConfigVersionPtrOutput() ConsentConfigVersionPtrOutput {
+	return pulumi.ToOutput(in).(ConsentConfigVersionPtrOutput)
+}
+
+func (in *consentConfigVersionPtr) ToConsentConfigVersionPtrOutputWithContext(ctx context.Context) ConsentConfigVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConsentConfigVersionPtrOutput)
+}
+
+func (in *consentConfigVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ConsentConfigVersion] {
+	return pulumix.Output[*ConsentConfigVersion]{
+		OutputState: in.ToConsentConfigVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+type ConsentHeaderHandlingProfile string
+
+const (
+	// If not specified, the default value `PERMIT_EMPTY_SCOPE` is used.
+	ConsentHeaderHandlingProfileScopeProfileUnspecified = ConsentHeaderHandlingProfile("SCOPE_PROFILE_UNSPECIFIED")
+	// When no consent scopes are provided (for example, if there's an empty or missing header), then consent check is disabled, similar to when `access_enforced` is `false`. You can use audit logs to differentiate these two cases by looking at the value of `protopayload.metadata.consentMode`. If consents scopes are present, they must be valid and within the allowed limits, otherwise the request will be rejected with a `4xx` code.
+	ConsentHeaderHandlingProfilePermitEmptyScope = ConsentHeaderHandlingProfile("PERMIT_EMPTY_SCOPE")
+	// The consent header must be non-empty when performing read and search operations, otherwise the request is rejected with a `4xx` code. Additionally, invalid consent scopes or scopes exceeding the allowed limits are rejected.
+	ConsentHeaderHandlingProfileRequiredOnRead = ConsentHeaderHandlingProfile("REQUIRED_ON_READ")
+)
+
+func (ConsentHeaderHandlingProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentHeaderHandlingProfile)(nil)).Elem()
+}
+
+func (e ConsentHeaderHandlingProfile) ToConsentHeaderHandlingProfileOutput() ConsentHeaderHandlingProfileOutput {
+	return pulumi.ToOutput(e).(ConsentHeaderHandlingProfileOutput)
+}
+
+func (e ConsentHeaderHandlingProfile) ToConsentHeaderHandlingProfileOutputWithContext(ctx context.Context) ConsentHeaderHandlingProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConsentHeaderHandlingProfileOutput)
+}
+
+func (e ConsentHeaderHandlingProfile) ToConsentHeaderHandlingProfilePtrOutput() ConsentHeaderHandlingProfilePtrOutput {
+	return e.ToConsentHeaderHandlingProfilePtrOutputWithContext(context.Background())
+}
+
+func (e ConsentHeaderHandlingProfile) ToConsentHeaderHandlingProfilePtrOutputWithContext(ctx context.Context) ConsentHeaderHandlingProfilePtrOutput {
+	return ConsentHeaderHandlingProfile(e).ToConsentHeaderHandlingProfileOutputWithContext(ctx).ToConsentHeaderHandlingProfilePtrOutputWithContext(ctx)
+}
+
+func (e ConsentHeaderHandlingProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConsentHeaderHandlingProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConsentHeaderHandlingProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConsentHeaderHandlingProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConsentHeaderHandlingProfileOutput struct{ *pulumi.OutputState }
+
+func (ConsentHeaderHandlingProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentHeaderHandlingProfile)(nil)).Elem()
+}
+
+func (o ConsentHeaderHandlingProfileOutput) ToConsentHeaderHandlingProfileOutput() ConsentHeaderHandlingProfileOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingProfileOutput) ToConsentHeaderHandlingProfileOutputWithContext(ctx context.Context) ConsentHeaderHandlingProfileOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingProfileOutput) ToConsentHeaderHandlingProfilePtrOutput() ConsentHeaderHandlingProfilePtrOutput {
+	return o.ToConsentHeaderHandlingProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ConsentHeaderHandlingProfileOutput) ToConsentHeaderHandlingProfilePtrOutputWithContext(ctx context.Context) ConsentHeaderHandlingProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentHeaderHandlingProfile) *ConsentHeaderHandlingProfile {
+		return &v
+	}).(ConsentHeaderHandlingProfilePtrOutput)
+}
+
+func (o ConsentHeaderHandlingProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentHeaderHandlingProfile] {
+	return pulumix.Output[ConsentHeaderHandlingProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConsentHeaderHandlingProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConsentHeaderHandlingProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsentHeaderHandlingProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConsentHeaderHandlingProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentHeaderHandlingProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsentHeaderHandlingProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConsentHeaderHandlingProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ConsentHeaderHandlingProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentHeaderHandlingProfile)(nil)).Elem()
+}
+
+func (o ConsentHeaderHandlingProfilePtrOutput) ToConsentHeaderHandlingProfilePtrOutput() ConsentHeaderHandlingProfilePtrOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingProfilePtrOutput) ToConsentHeaderHandlingProfilePtrOutputWithContext(ctx context.Context) ConsentHeaderHandlingProfilePtrOutput {
+	return o
+}
+
+func (o ConsentHeaderHandlingProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentHeaderHandlingProfile] {
+	return pulumix.Output[*ConsentHeaderHandlingProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConsentHeaderHandlingProfilePtrOutput) Elem() ConsentHeaderHandlingProfileOutput {
+	return o.ApplyT(func(v *ConsentHeaderHandlingProfile) ConsentHeaderHandlingProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ConsentHeaderHandlingProfile
+		return ret
+	}).(ConsentHeaderHandlingProfileOutput)
+}
+
+func (o ConsentHeaderHandlingProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentHeaderHandlingProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConsentHeaderHandlingProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConsentHeaderHandlingProfileInput is an input type that accepts ConsentHeaderHandlingProfileArgs and ConsentHeaderHandlingProfileOutput values.
+// You can construct a concrete instance of `ConsentHeaderHandlingProfileInput` via:
+//
+//	ConsentHeaderHandlingProfileArgs{...}
+type ConsentHeaderHandlingProfileInput interface {
+	pulumi.Input
+
+	ToConsentHeaderHandlingProfileOutput() ConsentHeaderHandlingProfileOutput
+	ToConsentHeaderHandlingProfileOutputWithContext(context.Context) ConsentHeaderHandlingProfileOutput
+}
+
+var consentHeaderHandlingProfilePtrType = reflect.TypeOf((**ConsentHeaderHandlingProfile)(nil)).Elem()
+
+type ConsentHeaderHandlingProfilePtrInput interface {
+	pulumi.Input
+
+	ToConsentHeaderHandlingProfilePtrOutput() ConsentHeaderHandlingProfilePtrOutput
+	ToConsentHeaderHandlingProfilePtrOutputWithContext(context.Context) ConsentHeaderHandlingProfilePtrOutput
+}
+
+type consentHeaderHandlingProfilePtr string
+
+func ConsentHeaderHandlingProfilePtr(v string) ConsentHeaderHandlingProfilePtrInput {
+	return (*consentHeaderHandlingProfilePtr)(&v)
+}
+
+func (*consentHeaderHandlingProfilePtr) ElementType() reflect.Type {
+	return consentHeaderHandlingProfilePtrType
+}
+
+func (in *consentHeaderHandlingProfilePtr) ToConsentHeaderHandlingProfilePtrOutput() ConsentHeaderHandlingProfilePtrOutput {
+	return pulumi.ToOutput(in).(ConsentHeaderHandlingProfilePtrOutput)
+}
+
+func (in *consentHeaderHandlingProfilePtr) ToConsentHeaderHandlingProfilePtrOutputWithContext(ctx context.Context) ConsentHeaderHandlingProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConsentHeaderHandlingProfilePtrOutput)
+}
+
+func (in *consentHeaderHandlingProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*ConsentHeaderHandlingProfile] {
+	return pulumix.Output[*ConsentHeaderHandlingProfile]{
+		OutputState: in.ToConsentHeaderHandlingProfilePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -968,11 +1529,11 @@ type FhirFieldConfigProfileType string
 const (
 	// No profile provided. Same as `BASIC`.
 	FhirFieldConfigProfileTypeProfileTypeUnspecified = FhirFieldConfigProfileType("PROFILE_TYPE_UNSPECIFIED")
-	// `Keep` all fields.
+	// Keep all fields.
 	FhirFieldConfigProfileTypeKeepAll = FhirFieldConfigProfileType("KEEP_ALL")
-	// Transforms known HIPAA 18 fields and cleans known unstructured text fields.
+	// Transforms known [HIPAA 18](https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html#standard) fields and cleans known unstructured text fields.
 	FhirFieldConfigProfileTypeBasic = FhirFieldConfigProfileType("BASIC")
-	// Cleans all supported tags. Applies to types: Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	// Cleans all supported tags. Applies to types: Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
 	FhirFieldConfigProfileTypeCleanAll = FhirFieldConfigProfileType("CLEAN_ALL")
 )
 
@@ -3230,11 +3791,11 @@ func (in *schemaPackageUnexpectedSegmentHandlingPtr) ToOutput(ctx context.Contex
 type TextConfigProfileType string
 
 const (
-	// Same as BASIC.
+	// No profile provided. Same as BASIC.
 	TextConfigProfileTypeProfileTypeUnspecified = TextConfigProfileType("PROFILE_TYPE_UNSPECIFIED")
 	// Empty profile which does not perform any transformations.
 	TextConfigProfileTypeEmpty = TextConfigProfileType("EMPTY")
-	// Basic profile applies: DATE -> DateShift Default -> ReplaceWithInfoType
+	// Automatically converts "DATE" infoTypes using a DateShiftConfig, and all other infoTypes using a ReplaceWithInfoTypeConfig.
 	TextConfigProfileTypeBasic = TextConfigProfileType("BASIC")
 )
 
@@ -3794,10 +4355,16 @@ func (in *typePrimitivePtr) ToOutput(ctx context.Context) pulumix.Output[*TypePr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessDeterminationLogConfigLogLevelInput)(nil)).Elem(), AccessDeterminationLogConfigLogLevel("LOG_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessDeterminationLogConfigLogLevelPtrInput)(nil)).Elem(), AccessDeterminationLogConfigLogLevel("LOG_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttributeDefinitionCategoryInput)(nil)).Elem(), AttributeDefinitionCategory("CATEGORY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttributeDefinitionCategoryPtrInput)(nil)).Elem(), AttributeDefinitionCategory("CATEGORY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentConfigVersionInput)(nil)).Elem(), ConsentConfigVersion("CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentConfigVersionPtrInput)(nil)).Elem(), ConsentConfigVersion("CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentHeaderHandlingProfileInput)(nil)).Elem(), ConsentHeaderHandlingProfile("SCOPE_PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentHeaderHandlingProfilePtrInput)(nil)).Elem(), ConsentHeaderHandlingProfile("SCOPE_PROFILE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStateEnumInput)(nil)).Elem(), ConsentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStateEnumPtrInput)(nil)).Elem(), ConsentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomConfigFilterProfileInput)(nil)).Elem(), DicomConfigFilterProfile("TAG_FILTER_PROFILE_UNSPECIFIED"))
@@ -3834,10 +4401,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningTypePtrInput)(nil)).Elem(), TimePartitioningType("PARTITION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TypePrimitiveInput)(nil)).Elem(), TypePrimitive("PRIMITIVE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TypePrimitivePtrInput)(nil)).Elem(), TypePrimitive("PRIMITIVE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(AccessDeterminationLogConfigLogLevelOutput{})
+	pulumi.RegisterOutputType(AccessDeterminationLogConfigLogLevelPtrOutput{})
 	pulumi.RegisterOutputType(AttributeDefinitionCategoryOutput{})
 	pulumi.RegisterOutputType(AttributeDefinitionCategoryPtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(ConsentConfigVersionOutput{})
+	pulumi.RegisterOutputType(ConsentConfigVersionPtrOutput{})
+	pulumi.RegisterOutputType(ConsentHeaderHandlingProfileOutput{})
+	pulumi.RegisterOutputType(ConsentHeaderHandlingProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConsentStateEnumOutput{})
 	pulumi.RegisterOutputType(ConsentStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(DicomConfigFilterProfileOutput{})

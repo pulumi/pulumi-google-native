@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetFlowResult:
-    def __init__(__self__, description=None, display_name=None, event_handlers=None, name=None, nlu_settings=None, transition_route_groups=None, transition_routes=None):
+    def __init__(__self__, advanced_settings=None, description=None, display_name=None, event_handlers=None, knowledge_connector_settings=None, name=None, nlu_settings=None, transition_route_groups=None, transition_routes=None):
+        if advanced_settings and not isinstance(advanced_settings, dict):
+            raise TypeError("Expected argument 'advanced_settings' to be a dict")
+        pulumi.set(__self__, "advanced_settings", advanced_settings)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -29,6 +32,9 @@ class GetFlowResult:
         if event_handlers and not isinstance(event_handlers, list):
             raise TypeError("Expected argument 'event_handlers' to be a list")
         pulumi.set(__self__, "event_handlers", event_handlers)
+        if knowledge_connector_settings and not isinstance(knowledge_connector_settings, dict):
+            raise TypeError("Expected argument 'knowledge_connector_settings' to be a dict")
+        pulumi.set(__self__, "knowledge_connector_settings", knowledge_connector_settings)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -41,6 +47,14 @@ class GetFlowResult:
         if transition_routes and not isinstance(transition_routes, list):
             raise TypeError("Expected argument 'transition_routes' to be a list")
         pulumi.set(__self__, "transition_routes", transition_routes)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse':
+        """
+        Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
 
     @property
     @pulumi.getter
@@ -67,6 +81,14 @@ class GetFlowResult:
         return pulumi.get(self, "event_handlers")
 
     @property
+    @pulumi.getter(name="knowledgeConnectorSettings")
+    def knowledge_connector_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse':
+        """
+        Optional. Knowledge connector configuration.
+        """
+        return pulumi.get(self, "knowledge_connector_settings")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -86,7 +108,7 @@ class GetFlowResult:
     @pulumi.getter(name="transitionRouteGroups")
     def transition_route_groups(self) -> Sequence[str]:
         """
-        A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         """
         return pulumi.get(self, "transition_route_groups")
 
@@ -105,9 +127,11 @@ class AwaitableGetFlowResult(GetFlowResult):
         if False:
             yield self
         return GetFlowResult(
+            advanced_settings=self.advanced_settings,
             description=self.description,
             display_name=self.display_name,
             event_handlers=self.event_handlers,
+            knowledge_connector_settings=self.knowledge_connector_settings,
             name=self.name,
             nlu_settings=self.nlu_settings,
             transition_route_groups=self.transition_route_groups,
@@ -133,9 +157,11 @@ def get_flow(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3beta1:getFlow', __args__, opts=opts, typ=GetFlowResult).value
 
     return AwaitableGetFlowResult(
+        advanced_settings=pulumi.get(__ret__, 'advanced_settings'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         event_handlers=pulumi.get(__ret__, 'event_handlers'),
+        knowledge_connector_settings=pulumi.get(__ret__, 'knowledge_connector_settings'),
         name=pulumi.get(__ret__, 'name'),
         nlu_settings=pulumi.get(__ret__, 'nlu_settings'),
         transition_route_groups=pulumi.get(__ret__, 'transition_route_groups'),

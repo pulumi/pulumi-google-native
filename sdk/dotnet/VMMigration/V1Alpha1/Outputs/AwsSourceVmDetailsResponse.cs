@@ -21,18 +21,32 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
         /// </summary>
         public readonly string CommittedStorageBytes;
         /// <summary>
+        /// The disks attached to the source VM.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AwsDiskDetailsResponse> Disks;
+        /// <summary>
         /// The firmware type of the source VM.
         /// </summary>
         public readonly string Firmware;
+        /// <summary>
+        /// Information about VM capabilities needed for some Compute Engine features.
+        /// </summary>
+        public readonly Outputs.VmCapabilitiesResponse VmCapabilitiesInfo;
 
         [OutputConstructor]
         private AwsSourceVmDetailsResponse(
             string committedStorageBytes,
 
-            string firmware)
+            ImmutableArray<Outputs.AwsDiskDetailsResponse> disks,
+
+            string firmware,
+
+            Outputs.VmCapabilitiesResponse vmCapabilitiesInfo)
         {
             CommittedStorageBytes = committedStorageBytes;
+            Disks = disks;
             Firmware = firmware;
+            VmCapabilitiesInfo = vmCapabilitiesInfo;
         }
     }
 }

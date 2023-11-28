@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string DiskSizeGb;
         /// <summary>
+        /// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        public readonly bool EnableConfidentialCompute;
+        /// <summary>
         /// The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
         /// </summary>
         public readonly string Family;
@@ -208,6 +212,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string diskSizeGb,
 
+            bool enableConfidentialCompute,
+
             string family,
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
@@ -270,6 +276,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Deprecated = deprecated;
             Description = description;
             DiskSizeGb = diskSizeGb;
+            EnableConfidentialCompute = enableConfidentialCompute;
             Family = family;
             GuestOsFeatures = guestOsFeatures;
             ImageEncryptionKey = imageEncryptionKey;

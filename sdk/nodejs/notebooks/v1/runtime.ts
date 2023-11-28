@@ -60,6 +60,10 @@ export class Runtime extends pulumi.CustomResource {
      */
     public /*out*/ readonly metrics!: pulumi.Output<outputs.notebooks.v1.RuntimeMetricsResponse>;
     /**
+     * Bool indicating whether this notebook has been migrated to a Workbench Instance
+     */
+    public /*out*/ readonly migrated!: pulumi.Output<boolean>;
+    /**
      * The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -72,6 +76,10 @@ export class Runtime extends pulumi.CustomResource {
      * Required. User-defined unique ID of this Runtime.
      */
     public readonly runtimeId!: pulumi.Output<string>;
+    /**
+     * Checks how feasible a migration from GmN to WbI is.
+     */
+    public /*out*/ readonly runtimeMigrationEligibility!: pulumi.Output<outputs.notebooks.v1.RuntimeMigrationEligibilityResponse>;
     /**
      * The config settings for software inside the runtime.
      */
@@ -114,7 +122,9 @@ export class Runtime extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["healthState"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["migrated"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["runtimeMigrationEligibility"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
@@ -124,10 +134,12 @@ export class Runtime extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["migrated"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["runtimeId"] = undefined /*out*/;
+            resourceInputs["runtimeMigrationEligibility"] = undefined /*out*/;
             resourceInputs["softwareConfig"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

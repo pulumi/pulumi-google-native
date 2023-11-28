@@ -38,6 +38,10 @@ export interface GetNodePoolResult {
      */
     readonly autoscaling: outputs.container.v1beta1.NodePoolAutoscalingResponse;
     /**
+     * Enable best effort provisioning for nodes
+     */
+    readonly bestEffortProvisioning: outputs.container.v1beta1.BestEffortProvisioningResponse;
+    /**
      * Which conditions caused the current node pool state.
      */
     readonly conditions: outputs.container.v1beta1.StatusConditionResponse[];
@@ -85,6 +89,10 @@ export interface GetNodePoolResult {
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     readonly podIpv4CidrSize: number;
+    /**
+     * Specifies the configuration of queued provisioning.
+     */
+    readonly queuedProvisioning: outputs.container.v1beta1.QueuedProvisioningResponse;
     /**
      * [Output only] Server-defined URL for the resource.
      */

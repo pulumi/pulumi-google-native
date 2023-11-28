@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
 {
 
     /// <summary>
-    /// Message details. Describe the attribute that a message should have. Without specified message attributes, no message will be sent by default.
+    /// Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.
     /// </summary>
     public sealed class MessageArgs : global::Pulumi.ResourceArgs
     {

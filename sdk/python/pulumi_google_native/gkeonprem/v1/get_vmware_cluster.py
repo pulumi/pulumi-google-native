@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVmwareClusterResult:
-    def __init__(__self__, admin_cluster_membership=None, admin_cluster_name=None, annotations=None, anti_affinity_groups=None, authorization=None, auto_repair_config=None, control_plane_node=None, create_time=None, dataplane_v2=None, delete_time=None, description=None, enable_control_plane_v2=None, endpoint=None, etag=None, fleet=None, load_balancer=None, local_name=None, name=None, network_config=None, on_prem_version=None, reconciling=None, state=None, status=None, storage=None, uid=None, update_time=None, validation_check=None, vcenter=None, vm_tracking_enabled=None):
+    def __init__(__self__, admin_cluster_membership=None, admin_cluster_name=None, annotations=None, anti_affinity_groups=None, authorization=None, auto_repair_config=None, control_plane_node=None, create_time=None, dataplane_v2=None, delete_time=None, description=None, disable_bundled_ingress=None, enable_control_plane_v2=None, endpoint=None, etag=None, fleet=None, load_balancer=None, local_name=None, name=None, network_config=None, on_prem_version=None, reconciling=None, state=None, status=None, storage=None, uid=None, update_time=None, upgrade_policy=None, validation_check=None, vcenter=None, vm_tracking_enabled=None):
         if admin_cluster_membership and not isinstance(admin_cluster_membership, str):
             raise TypeError("Expected argument 'admin_cluster_membership' to be a str")
         pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
@@ -53,6 +53,9 @@ class GetVmwareClusterResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if disable_bundled_ingress and not isinstance(disable_bundled_ingress, bool):
+            raise TypeError("Expected argument 'disable_bundled_ingress' to be a bool")
+        pulumi.set(__self__, "disable_bundled_ingress", disable_bundled_ingress)
         if enable_control_plane_v2 and not isinstance(enable_control_plane_v2, bool):
             raise TypeError("Expected argument 'enable_control_plane_v2' to be a bool")
         pulumi.set(__self__, "enable_control_plane_v2", enable_control_plane_v2)
@@ -98,6 +101,9 @@ class GetVmwareClusterResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if upgrade_policy and not isinstance(upgrade_policy, dict):
+            raise TypeError("Expected argument 'upgrade_policy' to be a dict")
+        pulumi.set(__self__, "upgrade_policy", upgrade_policy)
         if validation_check and not isinstance(validation_check, dict):
             raise TypeError("Expected argument 'validation_check' to be a dict")
         pulumi.set(__self__, "validation_check", validation_check)
@@ -197,6 +203,14 @@ class GetVmwareClusterResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="disableBundledIngress")
+    def disable_bundled_ingress(self) -> bool:
+        """
+        Disable bundled ingress.
+        """
+        return pulumi.get(self, "disable_bundled_ingress")
+
+    @property
     @pulumi.getter(name="enableControlPlaneV2")
     def enable_control_plane_v2(self) -> bool:
         """
@@ -264,7 +278,7 @@ class GetVmwareClusterResult:
     @pulumi.getter(name="onPremVersion")
     def on_prem_version(self) -> str:
         """
-        The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+        The Anthos clusters on the VMware version for your user cluster.
         """
         return pulumi.get(self, "on_prem_version")
 
@@ -317,6 +331,14 @@ class GetVmwareClusterResult:
         return pulumi.get(self, "update_time")
 
     @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> 'outputs.VmwareClusterUpgradePolicyResponse':
+        """
+        Specifies upgrade policy for the cluster.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @property
     @pulumi.getter(name="validationCheck")
     def validation_check(self) -> 'outputs.ValidationCheckResponse':
         """
@@ -328,7 +350,7 @@ class GetVmwareClusterResult:
     @pulumi.getter
     def vcenter(self) -> 'outputs.VmwareVCenterConfigResponse':
         """
-        VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+        VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
         """
         return pulumi.get(self, "vcenter")
 
@@ -358,6 +380,7 @@ class AwaitableGetVmwareClusterResult(GetVmwareClusterResult):
             dataplane_v2=self.dataplane_v2,
             delete_time=self.delete_time,
             description=self.description,
+            disable_bundled_ingress=self.disable_bundled_ingress,
             enable_control_plane_v2=self.enable_control_plane_v2,
             endpoint=self.endpoint,
             etag=self.etag,
@@ -373,6 +396,7 @@ class AwaitableGetVmwareClusterResult(GetVmwareClusterResult):
             storage=self.storage,
             uid=self.uid,
             update_time=self.update_time,
+            upgrade_policy=self.upgrade_policy,
             validation_check=self.validation_check,
             vcenter=self.vcenter,
             vm_tracking_enabled=self.vm_tracking_enabled)
@@ -406,6 +430,7 @@ def get_vmware_cluster(location: Optional[str] = None,
         dataplane_v2=pulumi.get(__ret__, 'dataplane_v2'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
         description=pulumi.get(__ret__, 'description'),
+        disable_bundled_ingress=pulumi.get(__ret__, 'disable_bundled_ingress'),
         enable_control_plane_v2=pulumi.get(__ret__, 'enable_control_plane_v2'),
         endpoint=pulumi.get(__ret__, 'endpoint'),
         etag=pulumi.get(__ret__, 'etag'),
@@ -421,6 +446,7 @@ def get_vmware_cluster(location: Optional[str] = None,
         storage=pulumi.get(__ret__, 'storage'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'),
+        upgrade_policy=pulumi.get(__ret__, 'upgrade_policy'),
         validation_check=pulumi.get(__ret__, 'validation_check'),
         vcenter=pulumi.get(__ret__, 'vcenter'),
         vm_tracking_enabled=pulumi.get(__ret__, 'vm_tracking_enabled'))

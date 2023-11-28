@@ -10,20 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
 {
     /// <summary>
-    /// Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and tenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
+    /// Creates a new BeyondCorp Enterprise ProxyConfig in a given organization and PartnerTenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
     /// Auto-naming is currently not supported for this resource.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1alpha:ProxyConfig")]
     public partial class ProxyConfig : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Optional. Information to facilitate Authentication against the proxy server.
-        /// </summary>
-        [Output("authenticationInfo")]
-        public Output<Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse> AuthenticationInfo { get; private set; } = null!;
-
         /// <summary>
         /// Timestamp when the resource was created.
         /// </summary>
@@ -37,6 +29,12 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Information to encrypt JWT for the proxy server.
+        /// </summary>
+        [Output("encryptionInfo")]
+        public Output<Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse> EncryptionInfo { get; private set; } = null!;
+
+        /// <summary>
         /// ProxyConfig resource name.
         /// </summary>
         [Output("name")]
@@ -44,6 +42,9 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
 
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
+
+        [Output("partnerTenantId")]
+        public Output<string> PartnerTenantId { get; private set; } = null!;
 
         /// <summary>
         /// The URI of the proxy server.
@@ -62,9 +63,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// </summary>
         [Output("routingInfo")]
         public Output<Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse> RoutingInfo { get; private set; } = null!;
-
-        [Output("tenantId")]
-        public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
         /// Transport layer information to verify for the proxy server.
@@ -104,7 +102,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
                 ReplaceOnChanges =
                 {
                     "organizationId",
-                    "tenantId",
+                    "partnerTenantId",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -129,19 +127,22 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public sealed class ProxyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Information to facilitate Authentication against the proxy server.
-        /// </summary>
-        [Input("authenticationInfo")]
-        public Input<Inputs.GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs>? AuthenticationInfo { get; set; }
-
-        /// <summary>
         /// Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Optional. Information to encrypt JWT for the proxy server.
+        /// </summary>
+        [Input("encryptionInfo")]
+        public Input<Inputs.GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs>? EncryptionInfo { get; set; }
+
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("partnerTenantId", required: true)]
+        public Input<string> PartnerTenantId { get; set; } = null!;
 
         /// <summary>
         /// The URI of the proxy server.
@@ -160,9 +161,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// </summary>
         [Input("routingInfo", required: true)]
         public Input<Inputs.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs> RoutingInfo { get; set; } = null!;
-
-        [Input("tenantId", required: true)]
-        public Input<string> TenantId { get; set; } = null!;
 
         /// <summary>
         /// Transport layer information to verify for the proxy server.

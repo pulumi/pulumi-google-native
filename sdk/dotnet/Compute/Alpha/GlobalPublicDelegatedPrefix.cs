@@ -16,6 +16,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class GlobalPublicDelegatedPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        /// </summary>
+        [Output("allocatablePrefixLength")]
+        public Output<int> AllocatablePrefixLength { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of BYOIP API.
+        /// </summary>
+        [Output("byoipApiVersion")]
+        public Output<string> ByoipApiVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -34,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
@@ -50,6 +62,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The public delegated prefix mode for IPv6 only.
+        /// </summary>
+        [Output("mode")]
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -152,13 +170,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GlobalPublicDelegatedPrefixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        /// </summary>
+        [Input("allocatablePrefixLength")]
+        public Input<int>? AllocatablePrefixLength { get; set; }
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
@@ -168,6 +192,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("isLiveMigration")]
         public Input<bool>? IsLiveMigration { get; set; }
+
+        /// <summary>
+        /// The public delegated prefix mode for IPv6 only.
+        /// </summary>
+        [Input("mode")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.GlobalPublicDelegatedPrefixMode>? Mode { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

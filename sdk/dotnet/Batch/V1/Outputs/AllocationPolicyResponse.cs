@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly Outputs.LocationPolicyResponse Location;
         /// <summary>
-        /// The network policy.
+        /// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
         /// </summary>
         public readonly Outputs.NetworkPolicyResponse Network;
         /// <summary>

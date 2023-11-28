@@ -28,6 +28,18 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         }
 
         /// <summary>
+        /// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+        /// </summary>
+        [Input("postdeploy")]
+        public Input<Inputs.PostdeployArgs>? Postdeploy { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+        /// </summary>
+        [Input("predeploy")]
+        public Input<Inputs.PredeployArgs>? Predeploy { get; set; }
+
+        /// <summary>
         /// Whether to run verify tests after each percentage deployment.
         /// </summary>
         [Input("verify")]

@@ -11,11 +11,15 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
 {
 
     /// <summary>
-    /// A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.
+    /// A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#section-4.1.2.7). Public keys of this type are typically textually encoded using the PEM format.
     /// </summary>
     [OutputType]
     public sealed class PkixPublicKeyResponse
     {
+        /// <summary>
+        /// Optional. The ID of this public key. Signatures verified by Binary Authorization must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. This may be explicitly provided by the caller, but it MUST be a valid RFC3986 URI. If `key_id` is left blank and this `PkixPublicKey` is not used in the context of a wrapper (see next paragraph), a default key ID will be computed based on the digest of the DER encoding of the public key. If this `PkixPublicKey` is used in the context of a wrapper that has its own notion of key ID (e.g. `AttestorPublicKey`), then this field can either: * Match that value exactly. * Or be left blank, in which case it behaves exactly as though it is equal to that wrapper value.
+        /// </summary>
+        public readonly string KeyId;
         /// <summary>
         /// A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
         /// </summary>
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
 
         [OutputConstructor]
         private PkixPublicKeyResponse(
+            string keyId,
+
             string publicKeyPem,
 
             string signatureAlgorithm)
         {
+            KeyId = keyId;
             PublicKeyPem = publicKeyPem;
             SignatureAlgorithm = signatureAlgorithm;
         }

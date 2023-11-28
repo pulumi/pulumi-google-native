@@ -36,6 +36,8 @@ type Dataset struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A hash of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+	ExternalDatasetReference ExternalDatasetReferenceResponseOutput `pulumi:"externalDatasetReference"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
 	// [Optional] Indicates if table names are case insensitive in the dataset.
@@ -116,6 +118,8 @@ type datasetArgs struct {
 	DefaultTableExpirationMs *string `pulumi:"defaultTableExpirationMs"`
 	// [Optional] A user-friendly description of the dataset.
 	Description *string `pulumi:"description"`
+	// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+	ExternalDatasetReference *ExternalDatasetReference `pulumi:"externalDatasetReference"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName *string `pulumi:"friendlyName"`
 	// [Optional] Indicates if table names are case insensitive in the dataset.
@@ -146,6 +150,8 @@ type DatasetArgs struct {
 	DefaultTableExpirationMs pulumi.StringPtrInput
 	// [Optional] A user-friendly description of the dataset.
 	Description pulumi.StringPtrInput
+	// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+	ExternalDatasetReference ExternalDatasetReferencePtrInput
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName pulumi.StringPtrInput
 	// [Optional] Indicates if table names are case insensitive in the dataset.
@@ -259,6 +265,11 @@ func (o DatasetOutput) Description() pulumi.StringOutput {
 // A hash of the resource.
 func (o DatasetOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+func (o DatasetOutput) ExternalDatasetReference() ExternalDatasetReferenceResponseOutput {
+	return o.ApplyT(func(v *Dataset) ExternalDatasetReferenceResponseOutput { return v.ExternalDatasetReference }).(ExternalDatasetReferenceResponseOutput)
 }
 
 // [Optional] A descriptive name for the dataset.

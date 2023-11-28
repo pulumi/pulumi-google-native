@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public partial class Source : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}" or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+        /// The canonical name of the finding source. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}", or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
         /// </summary>
         [Output("canonicalName")]
         public Output<string> CanonicalName { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}" or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+        /// The canonical name of the finding source. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}", or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
         /// </summary>
         [Input("canonicalName")]
         public Input<string>? CanonicalName { get; set; }

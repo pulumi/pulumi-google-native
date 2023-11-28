@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public Input<Inputs.GrpcRouteRetryPolicyArgs>? RetryPolicy { get; set; }
 
         /// <summary>
+        /// Optional. Specifies cookie-based stateful session affinity.
+        /// </summary>
+        [Input("statefulSessionAffinity")]
+        public Input<Inputs.GrpcRouteStatefulSessionAffinityPolicyArgs>? StatefulSessionAffinity { get; set; }
+
+        /// <summary>
         /// Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
         /// </summary>
         [Input("timeout")]

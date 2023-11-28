@@ -13,12 +13,22 @@ from ._enums import *
 __all__ = [
     'AccessKeyCredentialsArgs',
     'AwsSourceDetailsArgs',
+    'AzureSourceDetailsArgs',
+    'BootDiskDefaultsArgs',
+    'ClientSecretCredentialsArgs',
+    'ComputeEngineDisksTargetDefaultsArgs',
     'ComputeEngineTargetDefaultsArgs',
     'ComputeSchedulingArgs',
+    'DiskImageDefaultsArgs',
+    'DisksMigrationDisksTargetDefaultsArgs',
+    'DisksMigrationVmTargetDefaultsArgs',
+    'EncryptionArgs',
     'NetworkInterfaceArgs',
+    'PersistentDiskDefaultsArgs',
     'SchedulePolicyArgs',
     'SchedulingNodeAffinityArgs',
     'TagArgs',
+    'VmAttachmentDetailsArgs',
     'VmUtilizationInfoArgs',
     'VmUtilizationMetricsArgs',
     'VmwareSourceDetailsArgs',
@@ -170,11 +180,316 @@ class AwsSourceDetailsArgs:
 
 
 @pulumi.input_type
+class AzureSourceDetailsArgs:
+    def __init__(__self__, *,
+                 azure_location: Optional[pulumi.Input[str]] = None,
+                 client_secret_creds: Optional[pulumi.Input['ClientSecretCredentialsArgs']] = None,
+                 migration_resources_user_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 subscription_id: Optional[pulumi.Input[str]] = None):
+        """
+        AzureSourceDetails message describes a specific source details for the Azure source type.
+        :param pulumi.Input[str] azure_location: Immutable. The Azure location (region) that the source VMs will be migrated from.
+        :param pulumi.Input['ClientSecretCredentialsArgs'] client_secret_creds: Azure Credentials using tenant ID, client ID and secret.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] migration_resources_user_tags: User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+        :param pulumi.Input[str] subscription_id: Immutable. Azure subscription ID.
+        """
+        if azure_location is not None:
+            pulumi.set(__self__, "azure_location", azure_location)
+        if client_secret_creds is not None:
+            pulumi.set(__self__, "client_secret_creds", client_secret_creds)
+        if migration_resources_user_tags is not None:
+            pulumi.set(__self__, "migration_resources_user_tags", migration_resources_user_tags)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @property
+    @pulumi.getter(name="azureLocation")
+    def azure_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The Azure location (region) that the source VMs will be migrated from.
+        """
+        return pulumi.get(self, "azure_location")
+
+    @azure_location.setter
+    def azure_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "azure_location", value)
+
+    @property
+    @pulumi.getter(name="clientSecretCreds")
+    def client_secret_creds(self) -> Optional[pulumi.Input['ClientSecretCredentialsArgs']]:
+        """
+        Azure Credentials using tenant ID, client ID and secret.
+        """
+        return pulumi.get(self, "client_secret_creds")
+
+    @client_secret_creds.setter
+    def client_secret_creds(self, value: Optional[pulumi.Input['ClientSecretCredentialsArgs']]):
+        pulumi.set(self, "client_secret_creds", value)
+
+    @property
+    @pulumi.getter(name="migrationResourcesUserTags")
+    def migration_resources_user_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+        """
+        return pulumi.get(self, "migration_resources_user_tags")
+
+    @migration_resources_user_tags.setter
+    def migration_resources_user_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "migration_resources_user_tags", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Azure subscription ID.
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_id", value)
+
+
+@pulumi.input_type
+class BootDiskDefaultsArgs:
+    def __init__(__self__, *,
+                 device_name: Optional[pulumi.Input[str]] = None,
+                 disk_name: Optional[pulumi.Input[str]] = None,
+                 disk_type: Optional[pulumi.Input['BootDiskDefaultsDiskType']] = None,
+                 encryption: Optional[pulumi.Input['EncryptionArgs']] = None,
+                 image: Optional[pulumi.Input['DiskImageDefaultsArgs']] = None):
+        """
+        BootDiskDefaults hold information about the boot disk of a VM.
+        :param pulumi.Input[str] device_name: Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        :param pulumi.Input[str] disk_name: Optional. The name of the disk.
+        :param pulumi.Input['BootDiskDefaultsDiskType'] disk_type: Optional. The type of disk provisioning to use for the VM.
+        :param pulumi.Input['EncryptionArgs'] encryption: Optional. The encryption to apply to the boot disk.
+        :param pulumi.Input['DiskImageDefaultsArgs'] image: The image to use when creating the disk.
+        """
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+        if disk_name is not None:
+            pulumi.set(__self__, "disk_name", disk_name)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the disk.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @disk_name.setter
+    def disk_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_name", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input['BootDiskDefaultsDiskType']]:
+        """
+        Optional. The type of disk provisioning to use for the VM.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input['BootDiskDefaultsDiskType']]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['EncryptionArgs']]:
+        """
+        Optional. The encryption to apply to the boot disk.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['EncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['DiskImageDefaultsArgs']]:
+        """
+        The image to use when creating the disk.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['DiskImageDefaultsArgs']]):
+        pulumi.set(self, "image", value)
+
+
+@pulumi.input_type
+class ClientSecretCredentialsArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        Message describing Azure Credentials using tenant ID, client ID and secret.
+        :param pulumi.Input[str] client_id: Azure client ID.
+        :param pulumi.Input[str] client_secret: Input only. Azure client secret.
+        :param pulumi.Input[str] tenant_id: Azure tenant ID.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure client ID.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. Azure client secret.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure tenant ID.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+
+@pulumi.input_type
+class ComputeEngineDisksTargetDefaultsArgs:
+    def __init__(__self__, *,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['PersistentDiskDefaultsArgs']]]] = None,
+                 disks_target_defaults: Optional[pulumi.Input['DisksMigrationDisksTargetDefaultsArgs']] = None,
+                 target_project: Optional[pulumi.Input[str]] = None,
+                 vm_target_defaults: Optional[pulumi.Input['DisksMigrationVmTargetDefaultsArgs']] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
+        :param pulumi.Input[Sequence[pulumi.Input['PersistentDiskDefaultsArgs']]] disks: The details of each Persistent Disk to create.
+        :param pulumi.Input['DisksMigrationDisksTargetDefaultsArgs'] disks_target_defaults: Details of the disk only migration target.
+        :param pulumi.Input[str] target_project: The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+        :param pulumi.Input['DisksMigrationVmTargetDefaultsArgs'] vm_target_defaults: Details of the VM migration target.
+        :param pulumi.Input[str] zone: The zone in which to create the Persistent Disks.
+        """
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if disks_target_defaults is not None:
+            pulumi.set(__self__, "disks_target_defaults", disks_target_defaults)
+        if target_project is not None:
+            pulumi.set(__self__, "target_project", target_project)
+        if vm_target_defaults is not None:
+            pulumi.set(__self__, "vm_target_defaults", vm_target_defaults)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PersistentDiskDefaultsArgs']]]]:
+        """
+        The details of each Persistent Disk to create.
+        """
+        return pulumi.get(self, "disks")
+
+    @disks.setter
+    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PersistentDiskDefaultsArgs']]]]):
+        pulumi.set(self, "disks", value)
+
+    @property
+    @pulumi.getter(name="disksTargetDefaults")
+    def disks_target_defaults(self) -> Optional[pulumi.Input['DisksMigrationDisksTargetDefaultsArgs']]:
+        """
+        Details of the disk only migration target.
+        """
+        return pulumi.get(self, "disks_target_defaults")
+
+    @disks_target_defaults.setter
+    def disks_target_defaults(self, value: Optional[pulumi.Input['DisksMigrationDisksTargetDefaultsArgs']]):
+        pulumi.set(self, "disks_target_defaults", value)
+
+    @property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+        """
+        return pulumi.get(self, "target_project")
+
+    @target_project.setter
+    def target_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_project", value)
+
+    @property
+    @pulumi.getter(name="vmTargetDefaults")
+    def vm_target_defaults(self) -> Optional[pulumi.Input['DisksMigrationVmTargetDefaultsArgs']]:
+        """
+        Details of the VM migration target.
+        """
+        return pulumi.get(self, "vm_target_defaults")
+
+    @vm_target_defaults.setter
+    def vm_target_defaults(self, value: Optional[pulumi.Input['DisksMigrationVmTargetDefaultsArgs']]):
+        pulumi.set(self, "vm_target_defaults", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone in which to create the Persistent Disks.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
+@pulumi.input_type
 class ComputeEngineTargetDefaultsArgs:
     def __init__(__self__, *,
                  additional_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  compute_scheduling: Optional[pulumi.Input['ComputeSchedulingArgs']] = None,
                  disk_type: Optional[pulumi.Input['ComputeEngineTargetDefaultsDiskType']] = None,
+                 encryption: Optional[pulumi.Input['EncryptionArgs']] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  license_type: Optional[pulumi.Input['ComputeEngineTargetDefaultsLicenseType']] = None,
@@ -193,6 +508,7 @@ class ComputeEngineTargetDefaultsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_licenses: Additional licenses to assign to the VM.
         :param pulumi.Input['ComputeSchedulingArgs'] compute_scheduling: Compute instance scheduling information (if empty default is used).
         :param pulumi.Input['ComputeEngineTargetDefaultsDiskType'] disk_type: The disk type to use in the VM.
+        :param pulumi.Input['EncryptionArgs'] encryption: Optional. Immutable. The encryption to apply to the VM disks.
         :param pulumi.Input[str] hostname: The hostname to assign to the VM.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels to associate with the VM.
         :param pulumi.Input['ComputeEngineTargetDefaultsLicenseType'] license_type: The license type to use in OS adaptation.
@@ -200,8 +516,8 @@ class ComputeEngineTargetDefaultsArgs:
         :param pulumi.Input[str] machine_type_series: The machine type series to create the VM with.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key/value pairs to assign to the VM.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: List of NICs connected to this VM.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: A map of network tags to associate with the VM.
-        :param pulumi.Input[bool] secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: A list of network tags to associate with the VM.
+        :param pulumi.Input[bool] secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
         :param pulumi.Input[str] service_account: The service account to associate the VM with.
         :param pulumi.Input[str] target_project: The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
         :param pulumi.Input[str] vm_name: The name of the VM to create.
@@ -213,6 +529,8 @@ class ComputeEngineTargetDefaultsArgs:
             pulumi.set(__self__, "compute_scheduling", compute_scheduling)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if labels is not None:
@@ -275,6 +593,18 @@ class ComputeEngineTargetDefaultsArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input['ComputeEngineTargetDefaultsDiskType']]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['EncryptionArgs']]:
+        """
+        Optional. Immutable. The encryption to apply to the VM disks.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['EncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
 
     @property
     @pulumi.getter
@@ -364,7 +694,7 @@ class ComputeEngineTargetDefaultsArgs:
     @pulumi.getter(name="networkTags")
     def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A map of network tags to associate with the VM.
+        A list of network tags to associate with the VM.
         """
         return pulumi.get(self, "network_tags")
 
@@ -376,7 +706,7 @@ class ComputeEngineTargetDefaultsArgs:
     @pulumi.getter(name="secureBoot")
     def secure_boot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
         """
         return pulumi.get(self, "secure_boot")
 
@@ -506,6 +836,291 @@ class ComputeSchedulingArgs:
 
 
 @pulumi.input_type
+class DiskImageDefaultsArgs:
+    def __init__(__self__, *,
+                 source_image: pulumi.Input[str]):
+        """
+        Contains details about the image source used to create the disk.
+        :param pulumi.Input[str] source_image: The Image resource used when creating the disk.
+        """
+        pulumi.set(__self__, "source_image", source_image)
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> pulumi.Input[str]:
+        """
+        The Image resource used when creating the disk.
+        """
+        return pulumi.get(self, "source_image")
+
+    @source_image.setter
+    def source_image(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_image", value)
+
+
+@pulumi.input_type
+class DisksMigrationDisksTargetDefaultsArgs:
+    def __init__(__self__):
+        """
+        Details for a disk only migration.
+        """
+        pass
+
+
+@pulumi.input_type
+class DisksMigrationVmTargetDefaultsArgs:
+    def __init__(__self__, *,
+                 machine_type: pulumi.Input[str],
+                 vm_name: pulumi.Input[str],
+                 additional_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 boot_disk_defaults: Optional[pulumi.Input['BootDiskDefaultsArgs']] = None,
+                 compute_scheduling: Optional[pulumi.Input['ComputeSchedulingArgs']] = None,
+                 encryption: Optional[pulumi.Input['EncryptionArgs']] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 machine_type_series: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
+                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 secure_boot: Optional[pulumi.Input[bool]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None):
+        """
+        Details for creation of a VM that migrated data disks will be attached to.
+        :param pulumi.Input[str] machine_type: The machine type to create the VM with.
+        :param pulumi.Input[str] vm_name: The name of the VM to create.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_licenses: Optional. Additional licenses to assign to the VM.
+        :param pulumi.Input['BootDiskDefaultsArgs'] boot_disk_defaults: Optional. Details of the boot disk of the VM.
+        :param pulumi.Input['ComputeSchedulingArgs'] compute_scheduling: Optional. Compute instance scheduling information (if empty default is used).
+        :param pulumi.Input['EncryptionArgs'] encryption: Optional. The encryption to apply to the VM.
+        :param pulumi.Input[str] hostname: Optional. The hostname to assign to the VM.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A map of labels to associate with the VM.
+        :param pulumi.Input[str] machine_type_series: Optional. The machine type series to create the VM with. For presentation only.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. The metadata key/value pairs to assign to the VM.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: Optional. NICs to attach to the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: Optional. A list of network tags to associate with the VM.
+        :param pulumi.Input[bool] secure_boot: Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+        :param pulumi.Input[str] service_account: Optional. The service account to associate the VM with.
+        """
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "vm_name", vm_name)
+        if additional_licenses is not None:
+            pulumi.set(__self__, "additional_licenses", additional_licenses)
+        if boot_disk_defaults is not None:
+            pulumi.set(__self__, "boot_disk_defaults", boot_disk_defaults)
+        if compute_scheduling is not None:
+            pulumi.set(__self__, "compute_scheduling", compute_scheduling)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if machine_type_series is not None:
+            pulumi.set(__self__, "machine_type_series", machine_type_series)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+        if secure_boot is not None:
+            pulumi.set(__self__, "secure_boot", secure_boot)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[str]:
+        """
+        The machine type to create the VM with.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="vmName")
+    def vm_name(self) -> pulumi.Input[str]:
+        """
+        The name of the VM to create.
+        """
+        return pulumi.get(self, "vm_name")
+
+    @vm_name.setter
+    def vm_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vm_name", value)
+
+    @property
+    @pulumi.getter(name="additionalLicenses")
+    def additional_licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Additional licenses to assign to the VM.
+        """
+        return pulumi.get(self, "additional_licenses")
+
+    @additional_licenses.setter
+    def additional_licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_licenses", value)
+
+    @property
+    @pulumi.getter(name="bootDiskDefaults")
+    def boot_disk_defaults(self) -> Optional[pulumi.Input['BootDiskDefaultsArgs']]:
+        """
+        Optional. Details of the boot disk of the VM.
+        """
+        return pulumi.get(self, "boot_disk_defaults")
+
+    @boot_disk_defaults.setter
+    def boot_disk_defaults(self, value: Optional[pulumi.Input['BootDiskDefaultsArgs']]):
+        pulumi.set(self, "boot_disk_defaults", value)
+
+    @property
+    @pulumi.getter(name="computeScheduling")
+    def compute_scheduling(self) -> Optional[pulumi.Input['ComputeSchedulingArgs']]:
+        """
+        Optional. Compute instance scheduling information (if empty default is used).
+        """
+        return pulumi.get(self, "compute_scheduling")
+
+    @compute_scheduling.setter
+    def compute_scheduling(self, value: Optional[pulumi.Input['ComputeSchedulingArgs']]):
+        pulumi.set(self, "compute_scheduling", value)
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['EncryptionArgs']]:
+        """
+        Optional. The encryption to apply to the VM.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['EncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The hostname to assign to the VM.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. A map of labels to associate with the VM.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="machineTypeSeries")
+    def machine_type_series(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The machine type series to create the VM with. For presentation only.
+        """
+        return pulumi.get(self, "machine_type_series")
+
+    @machine_type_series.setter
+    def machine_type_series(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type_series", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. The metadata key/value pairs to assign to the VM.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]]:
+        """
+        Optional. NICs to attach to the VM.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A list of network tags to associate with the VM.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_tags", value)
+
+    @property
+    @pulumi.getter(name="secureBoot")
+    def secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+        """
+        return pulumi.get(self, "secure_boot")
+
+    @secure_boot.setter
+    def secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "secure_boot", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The service account to associate the VM with.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+
+@pulumi.input_type
+class EncryptionArgs:
+    def __init__(__self__, *,
+                 kms_key: pulumi.Input[str]):
+        """
+        Encryption message describes the details of the applied encryption.
+        :param pulumi.Input[str] kms_key: The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Input[str]:
+        """
+        The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key", value)
+
+
+@pulumi.input_type
 class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  external_ip: Optional[pulumi.Input[str]] = None,
@@ -575,6 +1190,109 @@ class NetworkInterfaceArgs:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
+
+
+@pulumi.input_type
+class PersistentDiskDefaultsArgs:
+    def __init__(__self__, *,
+                 source_disk_number: pulumi.Input[int],
+                 additional_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 disk_name: Optional[pulumi.Input[str]] = None,
+                 disk_type: Optional[pulumi.Input['PersistentDiskDefaultsDiskType']] = None,
+                 encryption: Optional[pulumi.Input['EncryptionArgs']] = None,
+                 vm_attachment_details: Optional[pulumi.Input['VmAttachmentDetailsArgs']] = None):
+        """
+        Details for creation of a Persistent Disk.
+        :param pulumi.Input[int] source_disk_number: The ordinal number of the source VM disk.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_labels: A map of labels to associate with the Persistent Disk.
+        :param pulumi.Input[str] disk_name: Optional. The name of the Persistent Disk to create.
+        :param pulumi.Input['PersistentDiskDefaultsDiskType'] disk_type: The disk type to use.
+        :param pulumi.Input['EncryptionArgs'] encryption: Optional. The encryption to apply to the disk.
+        :param pulumi.Input['VmAttachmentDetailsArgs'] vm_attachment_details: Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+        """
+        pulumi.set(__self__, "source_disk_number", source_disk_number)
+        if additional_labels is not None:
+            pulumi.set(__self__, "additional_labels", additional_labels)
+        if disk_name is not None:
+            pulumi.set(__self__, "disk_name", disk_name)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if vm_attachment_details is not None:
+            pulumi.set(__self__, "vm_attachment_details", vm_attachment_details)
+
+    @property
+    @pulumi.getter(name="sourceDiskNumber")
+    def source_disk_number(self) -> pulumi.Input[int]:
+        """
+        The ordinal number of the source VM disk.
+        """
+        return pulumi.get(self, "source_disk_number")
+
+    @source_disk_number.setter
+    def source_disk_number(self, value: pulumi.Input[int]):
+        pulumi.set(self, "source_disk_number", value)
+
+    @property
+    @pulumi.getter(name="additionalLabels")
+    def additional_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of labels to associate with the Persistent Disk.
+        """
+        return pulumi.get(self, "additional_labels")
+
+    @additional_labels.setter
+    def additional_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_labels", value)
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the Persistent Disk to create.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @disk_name.setter
+    def disk_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_name", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input['PersistentDiskDefaultsDiskType']]:
+        """
+        The disk type to use.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input['PersistentDiskDefaultsDiskType']]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['EncryptionArgs']]:
+        """
+        Optional. The encryption to apply to the disk.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['EncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @property
+    @pulumi.getter(name="vmAttachmentDetails")
+    def vm_attachment_details(self) -> Optional[pulumi.Input['VmAttachmentDetailsArgs']]:
+        """
+        Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+        """
+        return pulumi.get(self, "vm_attachment_details")
+
+    @vm_attachment_details.setter
+    def vm_attachment_details(self, value: Optional[pulumi.Input['VmAttachmentDetailsArgs']]):
+        pulumi.set(self, "vm_attachment_details", value)
 
 
 @pulumi.input_type
@@ -711,6 +1429,30 @@ class TagArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class VmAttachmentDetailsArgs:
+    def __init__(__self__, *,
+                 device_name: Optional[pulumi.Input[str]] = None):
+        """
+        Details for attachment of the disk to a VM.
+        :param pulumi.Input[str] device_name: Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        """
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_name", value)
 
 
 @pulumi.input_type

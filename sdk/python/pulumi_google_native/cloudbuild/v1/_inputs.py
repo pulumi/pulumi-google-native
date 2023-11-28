@@ -19,6 +19,7 @@ __all__ = [
     'BuildOptionsArgs',
     'BuildStepArgs',
     'BuildArgs',
+    'ConnectedRepositoryArgs',
     'GitFileSourceArgs',
     'GitHubEnterpriseSecretsArgs',
     'GitHubEventsConfigArgs',
@@ -345,6 +346,7 @@ class BitbucketServerTriggerConfigArgs:
 @pulumi.input_type
 class BuildOptionsArgs:
     def __init__(__self__, *,
+                 automap_substitutions: Optional[pulumi.Input[bool]] = None,
                  default_logs_bucket_behavior: Optional[pulumi.Input['BuildOptionsDefaultLogsBucketBehavior']] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  dynamic_substitutions: Optional[pulumi.Input[bool]] = None,
@@ -361,11 +363,12 @@ class BuildOptionsArgs:
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
         Optional arguments to enable specific features of builds.
+        :param pulumi.Input[bool] automap_substitutions: Option to include built-in and custom substitutions as env variables for all build steps.
         :param pulumi.Input['BuildOptionsDefaultLogsBucketBehavior'] default_logs_bucket_behavior: Optional. Option to specify how default logs buckets are setup.
         :param pulumi.Input[str] disk_size_gb: Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
         :param pulumi.Input[bool] dynamic_substitutions: Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] env: A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
-        :param pulumi.Input['BuildOptionsLogStreamingOption'] log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
+        :param pulumi.Input['BuildOptionsLogStreamingOption'] log_streaming_option: Option to define build log streaming behavior to Cloud Storage.
         :param pulumi.Input['BuildOptionsLogging'] logging: Option to specify the logging mode, which determines if and where build logs are stored.
         :param pulumi.Input['BuildOptionsMachineType'] machine_type: Compute Engine machine type on which to run the build.
         :param pulumi.Input['PoolOptionArgs'] pool: Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
@@ -376,6 +379,8 @@ class BuildOptionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]] volumes: Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
         :param pulumi.Input[str] worker_pool: This field deprecated; please use `pool.name` instead.
         """
+        if automap_substitutions is not None:
+            pulumi.set(__self__, "automap_substitutions", automap_substitutions)
         if default_logs_bucket_behavior is not None:
             pulumi.set(__self__, "default_logs_bucket_behavior", default_logs_bucket_behavior)
         if disk_size_gb is not None:
@@ -404,6 +409,18 @@ class BuildOptionsArgs:
             pulumi.set(__self__, "volumes", volumes)
         if worker_pool is not None:
             pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="automapSubstitutions")
+    def automap_substitutions(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to include built-in and custom substitutions as env variables for all build steps.
+        """
+        return pulumi.get(self, "automap_substitutions")
+
+    @automap_substitutions.setter
+    def automap_substitutions(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "automap_substitutions", value)
 
     @property
     @pulumi.getter(name="defaultLogsBucketBehavior")
@@ -457,7 +474,7 @@ class BuildOptionsArgs:
     @pulumi.getter(name="logStreamingOption")
     def log_streaming_option(self) -> Optional[pulumi.Input['BuildOptionsLogStreamingOption']]:
         """
-        Option to define build log streaming behavior to Google Cloud Storage.
+        Option to define build log streaming behavior to Cloud Storage.
         """
         return pulumi.get(self, "log_streaming_option")
 
@@ -581,6 +598,7 @@ class BuildStepArgs:
                  allow_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  allow_failure: Optional[pulumi.Input[bool]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 automap_substitutions: Optional[pulumi.Input[bool]] = None,
                  dir: Optional[pulumi.Input[str]] = None,
                  entrypoint: Optional[pulumi.Input[str]] = None,
                  env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -596,6 +614,7 @@ class BuildStepArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allow_exit_codes: Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
         :param pulumi.Input[bool] allow_failure: Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
+        :param pulumi.Input[bool] automap_substitutions: Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
         :param pulumi.Input[str] dir: Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         :param pulumi.Input[str] entrypoint: Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] env: A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
@@ -613,6 +632,8 @@ class BuildStepArgs:
             pulumi.set(__self__, "allow_failure", allow_failure)
         if args is not None:
             pulumi.set(__self__, "args", args)
+        if automap_substitutions is not None:
+            pulumi.set(__self__, "automap_substitutions", automap_substitutions)
         if dir is not None:
             pulumi.set(__self__, "dir", dir)
         if entrypoint is not None:
@@ -679,6 +700,18 @@ class BuildStepArgs:
     @args.setter
     def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter(name="automapSubstitutions")
+    def automap_substitutions(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
+        """
+        return pulumi.get(self, "automap_substitutions")
+
+    @automap_substitutions.setter
+    def automap_substitutions(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "automap_substitutions", value)
 
     @property
     @pulumi.getter
@@ -811,7 +844,7 @@ class BuildArgs:
         :param pulumi.Input['ArtifactsArgs'] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         :param pulumi.Input['SecretsArgs'] available_secrets: Secrets and secret environment variables.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-        :param pulumi.Input[str] logs_bucket: Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        :param pulumi.Input[str] logs_bucket: Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         :param pulumi.Input['BuildOptionsArgs'] options: Special options for this build.
         :param pulumi.Input[str] queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
         :param pulumi.Input[Sequence[pulumi.Input['SecretArgs']]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
@@ -899,7 +932,7 @@ class BuildArgs:
     @pulumi.getter(name="logsBucket")
     def logs_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         """
         return pulumi.get(self, "logs_bucket")
 
@@ -1005,6 +1038,61 @@ class BuildArgs:
 
 
 @pulumi.input_type
+class ConnectedRepositoryArgs:
+    def __init__(__self__, *,
+                 repository: pulumi.Input[str],
+                 dir: Optional[pulumi.Input[str]] = None,
+                 revision: Optional[pulumi.Input[str]] = None):
+        """
+        Location of the source in a 2nd-gen Google Cloud Build repository resource.
+        :param pulumi.Input[str] repository: Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+        :param pulumi.Input[str] dir: Directory, relative to the source root, in which to run the build.
+        :param pulumi.Input[str] revision: The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        """
+        pulumi.set(__self__, "repository", repository)
+        if dir is not None:
+            pulumi.set(__self__, "dir", dir)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[str]:
+        """
+        Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        Directory, relative to the source root, in which to run the build.
+        """
+        return pulumi.get(self, "dir")
+
+    @dir.setter
+    def dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dir", value)
+
+    @property
+    @pulumi.getter
+    def revision(self) -> Optional[pulumi.Input[str]]:
+        """
+        The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision", value)
+
+
+@pulumi.input_type
 class GitFileSourceArgs:
     def __init__(__self__, *,
                  bitbucket_server_config: Optional[pulumi.Input[str]] = None,
@@ -1020,7 +1108,7 @@ class GitFileSourceArgs:
         :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param pulumi.Input[str] path: The path of the file, with the repo root as the root of the path.
         :param pulumi.Input['GitFileSourceRepoType'] repo_type: See RepoType above.
-        :param pulumi.Input[str] repository: The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        :param pulumi.Input[str] repository: The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         :param pulumi.Input[str] revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
         :param pulumi.Input[str] uri: The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
@@ -1091,7 +1179,7 @@ class GitFileSourceArgs:
     @pulumi.getter
     def repository(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
         return pulumi.get(self, "repository")
 
@@ -1598,8 +1686,8 @@ class GitRepoSourceArgs:
         :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param pulumi.Input[str] ref: The branch or tag to use. Must start with "refs/" (required).
         :param pulumi.Input['GitRepoSourceRepoType'] repo_type: See RepoType below.
-        :param pulumi.Input[str] repository: The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
-        :param pulumi.Input[str] uri: The URI of the repo. Either uri or repository can be specified and is required.
+        :param pulumi.Input[str] repository: The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
+        :param pulumi.Input[str] uri: The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
         """
         if bitbucket_server_config is not None:
             pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
@@ -1666,7 +1754,7 @@ class GitRepoSourceArgs:
     @pulumi.getter
     def repository(self) -> Optional[pulumi.Input[str]]:
         """
-        The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+        The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
         """
         return pulumi.get(self, "repository")
 
@@ -1678,7 +1766,7 @@ class GitRepoSourceArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the repo. Either uri or repository can be specified and is required.
+        The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
         """
         return pulumi.get(self, "uri")
 
@@ -2577,17 +2665,21 @@ class ServiceDirectoryConfigArgs:
 @pulumi.input_type
 class SourceArgs:
     def __init__(__self__, *,
+                 connected_repository: Optional[pulumi.Input['ConnectedRepositoryArgs']] = None,
                  git_source: Optional[pulumi.Input['GitSourceArgs']] = None,
                  repo_source: Optional[pulumi.Input['RepoSourceArgs']] = None,
                  storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None,
                  storage_source_manifest: Optional[pulumi.Input['StorageSourceManifestArgs']] = None):
         """
         Location of the source in a supported storage service.
+        :param pulumi.Input['ConnectedRepositoryArgs'] connected_repository: Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
         :param pulumi.Input['GitSourceArgs'] git_source: If provided, get the source from this Git repository.
         :param pulumi.Input['RepoSourceArgs'] repo_source: If provided, get the source from this location in a Cloud Source Repository.
-        :param pulumi.Input['StorageSourceArgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
-        :param pulumi.Input['StorageSourceManifestArgs'] storage_source_manifest: If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        :param pulumi.Input['StorageSourceArgs'] storage_source: If provided, get the source from this location in Cloud Storage.
+        :param pulumi.Input['StorageSourceManifestArgs'] storage_source_manifest: If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         """
+        if connected_repository is not None:
+            pulumi.set(__self__, "connected_repository", connected_repository)
         if git_source is not None:
             pulumi.set(__self__, "git_source", git_source)
         if repo_source is not None:
@@ -2596,6 +2688,18 @@ class SourceArgs:
             pulumi.set(__self__, "storage_source", storage_source)
         if storage_source_manifest is not None:
             pulumi.set(__self__, "storage_source_manifest", storage_source_manifest)
+
+    @property
+    @pulumi.getter(name="connectedRepository")
+    def connected_repository(self) -> Optional[pulumi.Input['ConnectedRepositoryArgs']]:
+        """
+        Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+        """
+        return pulumi.get(self, "connected_repository")
+
+    @connected_repository.setter
+    def connected_repository(self, value: Optional[pulumi.Input['ConnectedRepositoryArgs']]):
+        pulumi.set(self, "connected_repository", value)
 
     @property
     @pulumi.getter(name="gitSource")
@@ -2625,7 +2729,7 @@ class SourceArgs:
     @pulumi.getter(name="storageSource")
     def storage_source(self) -> Optional[pulumi.Input['StorageSourceArgs']]:
         """
-        If provided, get the source from this location in Google Cloud Storage.
+        If provided, get the source from this location in Cloud Storage.
         """
         return pulumi.get(self, "storage_source")
 
@@ -2637,7 +2741,7 @@ class SourceArgs:
     @pulumi.getter(name="storageSourceManifest")
     def storage_source_manifest(self) -> Optional[pulumi.Input['StorageSourceManifestArgs']]:
         """
-        If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         """
         return pulumi.get(self, "storage_source_manifest")
 
@@ -2653,10 +2757,10 @@ class StorageSourceManifestArgs:
                  generation: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None):
         """
-        Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
-        :param pulumi.Input[str] bucket: Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-        :param pulumi.Input[str] generation: Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-        :param pulumi.Input[str] object: Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+        Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        :param pulumi.Input[str] bucket: Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        :param pulumi.Input[str] generation: Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        :param pulumi.Input[str] object: Cloud Storage object containing the source manifest. This object must be a JSON file.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -2669,7 +2773,7 @@ class StorageSourceManifestArgs:
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         """
         return pulumi.get(self, "bucket")
 
@@ -2681,7 +2785,7 @@ class StorageSourceManifestArgs:
     @pulumi.getter
     def generation(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         """
         return pulumi.get(self, "generation")
 
@@ -2693,7 +2797,7 @@ class StorageSourceManifestArgs:
     @pulumi.getter
     def object(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+        Cloud Storage object containing the source manifest. This object must be a JSON file.
         """
         return pulumi.get(self, "object")
 
@@ -2707,12 +2811,14 @@ class StorageSourceArgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
-                 object: Optional[pulumi.Input[str]] = None):
+                 object: Optional[pulumi.Input[str]] = None,
+                 source_fetcher: Optional[pulumi.Input['StorageSourceSourceFetcher']] = None):
         """
-        Location of the source in an archive file in Google Cloud Storage.
-        :param pulumi.Input[str] bucket: Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-        :param pulumi.Input[str] generation: Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-        :param pulumi.Input[str] object: Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        Location of the source in an archive file in Cloud Storage.
+        :param pulumi.Input[str] bucket: Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        :param pulumi.Input[str] generation: Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        :param pulumi.Input[str] object: Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        :param pulumi.Input['StorageSourceSourceFetcher'] source_fetcher: Optional. Option to specify the tool to fetch the source file for the build.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -2720,12 +2826,14 @@ class StorageSourceArgs:
             pulumi.set(__self__, "generation", generation)
         if object is not None:
             pulumi.set(__self__, "object", object)
+        if source_fetcher is not None:
+            pulumi.set(__self__, "source_fetcher", source_fetcher)
 
     @property
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         """
         return pulumi.get(self, "bucket")
 
@@ -2737,7 +2845,7 @@ class StorageSourceArgs:
     @pulumi.getter
     def generation(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         """
         return pulumi.get(self, "generation")
 
@@ -2749,13 +2857,25 @@ class StorageSourceArgs:
     @pulumi.getter
     def object(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         """
         return pulumi.get(self, "object")
 
     @object.setter
     def object(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter(name="sourceFetcher")
+    def source_fetcher(self) -> Optional[pulumi.Input['StorageSourceSourceFetcher']]:
+        """
+        Optional. Option to specify the tool to fetch the source file for the build.
+        """
+        return pulumi.get(self, "source_fetcher")
+
+    @source_fetcher.setter
+    def source_fetcher(self, value: Optional[pulumi.Input['StorageSourceSourceFetcher']]):
+        pulumi.set(self, "source_fetcher", value)
 
 
 @pulumi.input_type

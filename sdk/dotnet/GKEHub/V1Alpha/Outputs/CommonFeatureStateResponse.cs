@@ -21,9 +21,17 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
         /// </summary>
         public readonly Outputs.AppDevExperienceFeatureStateResponse Appdevexperience;
         /// <summary>
+        /// ClusterUpgrade fleet-level state.
+        /// </summary>
+        public readonly Outputs.ClusterUpgradeFleetStateResponse Clusterupgrade;
+        /// <summary>
         /// FleetObservability feature state.
         /// </summary>
         public readonly Outputs.FleetObservabilityFeatureStateResponse Fleetobservability;
+        /// <summary>
+        /// Namespace Actuation feature state.
+        /// </summary>
+        public readonly Outputs.NamespaceActuationFeatureStateResponse Namespaceactuation;
         /// <summary>
         /// Service Mesh-specific state.
         /// </summary>
@@ -37,14 +45,20 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
         private CommonFeatureStateResponse(
             Outputs.AppDevExperienceFeatureStateResponse appdevexperience,
 
+            Outputs.ClusterUpgradeFleetStateResponse clusterupgrade,
+
             Outputs.FleetObservabilityFeatureStateResponse fleetobservability,
+
+            Outputs.NamespaceActuationFeatureStateResponse namespaceactuation,
 
             Outputs.ServiceMeshFeatureStateResponse servicemesh,
 
             Outputs.FeatureStateResponse state)
         {
             Appdevexperience = appdevexperience;
+            Clusterupgrade = clusterupgrade;
             Fleetobservability = fleetobservability;
+            Namespaceactuation = namespaceactuation;
             Servicemesh = servicemesh;
             State = state;
         }

@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Inputs.GcfsConfigArgs>? GcfsConfig { get; set; }
 
         /// <summary>
+        /// HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts.
+        /// </summary>
+        [Input("hostMaintenancePolicy")]
+        public Input<Inputs.HostMaintenancePolicyArgs>? HostMaintenancePolicy { get; set; }
+
+        /// <summary>
         /// Logging configuration for node pools.
         /// </summary>
         [Input("loggingConfig")]

@@ -71,6 +71,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly maintenanceWindow!: pulumi.Output<outputs.metastore.v1.MaintenanceWindowResponse>;
     /**
+     * Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+     */
+    public readonly metadataIntegration!: pulumi.Output<outputs.metastore.v1.MetadataIntegrationResponse>;
+    /**
      * The metadata management activities of the metastore service.
      */
     public /*out*/ readonly metadataManagementActivity!: pulumi.Output<outputs.metastore.v1.MetadataManagementActivityResponse>;
@@ -152,6 +156,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
+            resourceInputs["metadataIntegration"] = args ? args.metadataIntegration : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
@@ -181,6 +186,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maintenanceWindow"] = undefined /*out*/;
+            resourceInputs["metadataIntegration"] = undefined /*out*/;
             resourceInputs["metadataManagementActivity"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
@@ -230,6 +236,10 @@ export interface ServiceArgs {
      * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
      */
     maintenanceWindow?: pulumi.Input<inputs.metastore.v1.MaintenanceWindowArgs>;
+    /**
+     * Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+     */
+    metadataIntegration?: pulumi.Input<inputs.metastore.v1.MetadataIntegrationArgs>;
     /**
      * Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
      */

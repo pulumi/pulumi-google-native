@@ -23,6 +23,8 @@ class ConnectionArgs:
                  config_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationConfigArgs']]]] = None,
+                 eventing_config: Optional[pulumi.Input['EventingConfigArgs']] = None,
+                 eventing_enablement_type: Optional[pulumi.Input['ConnectionEventingEnablementType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input['LockConfigArgs']] = None,
@@ -40,11 +42,13 @@ class ConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] config_variables: Optional. Configuration for configuring the connection with an external system.
         :param pulumi.Input[str] description: Optional. Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['DestinationConfigArgs']]] destination_configs: Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+        :param pulumi.Input['EventingConfigArgs'] eventing_config: Optional. Eventing config of a connection
+        :param pulumi.Input['ConnectionEventingEnablementType'] eventing_enablement_type: Optional. Eventing enablement type. Will be nil if eventing is not enabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['LockConfigArgs'] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
         :param pulumi.Input['ConnectorsLogConfigArgs'] log_config: Optional. Log configuration for the connection.
         :param pulumi.Input['NodeConfigArgs'] node_config: Optional. Node configuration for the connection.
-        :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
+        :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access Google Cloud resources.
         :param pulumi.Input['SslConfigArgs'] ssl_config: Optional. Ssl config of a connection
         :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
@@ -58,6 +62,10 @@ class ConnectionArgs:
             pulumi.set(__self__, "description", description)
         if destination_configs is not None:
             pulumi.set(__self__, "destination_configs", destination_configs)
+        if eventing_config is not None:
+            pulumi.set(__self__, "eventing_config", eventing_config)
+        if eventing_enablement_type is not None:
+            pulumi.set(__self__, "eventing_enablement_type", eventing_enablement_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -150,6 +158,30 @@ class ConnectionArgs:
         pulumi.set(self, "destination_configs", value)
 
     @property
+    @pulumi.getter(name="eventingConfig")
+    def eventing_config(self) -> Optional[pulumi.Input['EventingConfigArgs']]:
+        """
+        Optional. Eventing config of a connection
+        """
+        return pulumi.get(self, "eventing_config")
+
+    @eventing_config.setter
+    def eventing_config(self, value: Optional[pulumi.Input['EventingConfigArgs']]):
+        pulumi.set(self, "eventing_config", value)
+
+    @property
+    @pulumi.getter(name="eventingEnablementType")
+    def eventing_enablement_type(self) -> Optional[pulumi.Input['ConnectionEventingEnablementType']]:
+        """
+        Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+        """
+        return pulumi.get(self, "eventing_enablement_type")
+
+    @eventing_enablement_type.setter
+    def eventing_enablement_type(self, value: Optional[pulumi.Input['ConnectionEventingEnablementType']]):
+        pulumi.set(self, "eventing_enablement_type", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -219,7 +251,7 @@ class ConnectionArgs:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Service account needed for runtime plane to access GCP resources.
+        Optional. Service account needed for runtime plane to access Google Cloud resources.
         """
         return pulumi.get(self, "service_account")
 
@@ -263,6 +295,8 @@ class Connection(pulumi.CustomResource):
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]]]] = None,
+                 eventing_config: Optional[pulumi.Input[pulumi.InputType['EventingConfigArgs']]] = None,
+                 eventing_enablement_type: Optional[pulumi.Input['ConnectionEventingEnablementType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input[pulumi.InputType['LockConfigArgs']]] = None,
@@ -285,11 +319,13 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] connector_version: Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         :param pulumi.Input[str] description: Optional. Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]]] destination_configs: Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+        :param pulumi.Input[pulumi.InputType['EventingConfigArgs']] eventing_config: Optional. Eventing config of a connection
+        :param pulumi.Input['ConnectionEventingEnablementType'] eventing_enablement_type: Optional. Eventing enablement type. Will be nil if eventing is not enabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[pulumi.InputType['LockConfigArgs']] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
         :param pulumi.Input[pulumi.InputType['ConnectorsLogConfigArgs']] log_config: Optional. Log configuration for the connection.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Optional. Node configuration for the connection.
-        :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
+        :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access Google Cloud resources.
         :param pulumi.Input[pulumi.InputType['SslConfigArgs']] ssl_config: Optional. Ssl config of a connection
         :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
@@ -324,6 +360,8 @@ class Connection(pulumi.CustomResource):
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]]]] = None,
+                 eventing_config: Optional[pulumi.Input[pulumi.InputType['EventingConfigArgs']]] = None,
+                 eventing_enablement_type: Optional[pulumi.Input['ConnectionEventingEnablementType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input[pulumi.InputType['LockConfigArgs']]] = None,
@@ -352,6 +390,8 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["connector_version"] = connector_version
             __props__.__dict__["description"] = description
             __props__.__dict__["destination_configs"] = destination_configs
+            __props__.__dict__["eventing_config"] = eventing_config
+            __props__.__dict__["eventing_enablement_type"] = eventing_enablement_type
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["lock_config"] = lock_config
@@ -361,9 +401,14 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["ssl_config"] = ssl_config
             __props__.__dict__["suspended"] = suspended
+            __props__.__dict__["connection_revision"] = None
+            __props__.__dict__["connector_version_infra_config"] = None
+            __props__.__dict__["connector_version_launch_stage"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["envoy_image_location"] = None
+            __props__.__dict__["eventing_runtime_data"] = None
             __props__.__dict__["image_location"] = None
+            __props__.__dict__["is_trusted_tester"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["service_directory"] = None
             __props__.__dict__["status"] = None
@@ -396,12 +441,19 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["auth_config"] = None
         __props__.__dict__["config_variables"] = None
         __props__.__dict__["connection_id"] = None
+        __props__.__dict__["connection_revision"] = None
         __props__.__dict__["connector_version"] = None
+        __props__.__dict__["connector_version_infra_config"] = None
+        __props__.__dict__["connector_version_launch_stage"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["destination_configs"] = None
         __props__.__dict__["envoy_image_location"] = None
+        __props__.__dict__["eventing_config"] = None
+        __props__.__dict__["eventing_enablement_type"] = None
+        __props__.__dict__["eventing_runtime_data"] = None
         __props__.__dict__["image_location"] = None
+        __props__.__dict__["is_trusted_tester"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["lock_config"] = None
@@ -443,12 +495,36 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "connection_id")
 
     @property
+    @pulumi.getter(name="connectionRevision")
+    def connection_revision(self) -> pulumi.Output[str]:
+        """
+        Connection revision. This field is only updated when the connection is created or updated by User.
+        """
+        return pulumi.get(self, "connection_revision")
+
+    @property
     @pulumi.getter(name="connectorVersion")
     def connector_version(self) -> pulumi.Output[str]:
         """
         Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         """
         return pulumi.get(self, "connector_version")
+
+    @property
+    @pulumi.getter(name="connectorVersionInfraConfig")
+    def connector_version_infra_config(self) -> pulumi.Output['outputs.ConnectorVersionInfraConfigResponse']:
+        """
+        Infra configs supported by Connector Version.
+        """
+        return pulumi.get(self, "connector_version_infra_config")
+
+    @property
+    @pulumi.getter(name="connectorVersionLaunchStage")
+    def connector_version_launch_stage(self) -> pulumi.Output[str]:
+        """
+        Flag to mark the version indicating the launch stage.
+        """
+        return pulumi.get(self, "connector_version_launch_stage")
 
     @property
     @pulumi.getter(name="createTime")
@@ -483,12 +559,44 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "envoy_image_location")
 
     @property
+    @pulumi.getter(name="eventingConfig")
+    def eventing_config(self) -> pulumi.Output['outputs.EventingConfigResponse']:
+        """
+        Optional. Eventing config of a connection
+        """
+        return pulumi.get(self, "eventing_config")
+
+    @property
+    @pulumi.getter(name="eventingEnablementType")
+    def eventing_enablement_type(self) -> pulumi.Output[str]:
+        """
+        Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+        """
+        return pulumi.get(self, "eventing_enablement_type")
+
+    @property
+    @pulumi.getter(name="eventingRuntimeData")
+    def eventing_runtime_data(self) -> pulumi.Output['outputs.EventingRuntimeDataResponse']:
+        """
+        Eventing Runtime Data.
+        """
+        return pulumi.get(self, "eventing_runtime_data")
+
+    @property
     @pulumi.getter(name="imageLocation")
     def image_location(self) -> pulumi.Output[str]:
         """
         GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
         """
         return pulumi.get(self, "image_location")
+
+    @property
+    @pulumi.getter(name="isTrustedTester")
+    def is_trusted_tester(self) -> pulumi.Output[bool]:
+        """
+        Is trusted tester program enabled for the project.
+        """
+        return pulumi.get(self, "is_trusted_tester")
 
     @property
     @pulumi.getter
@@ -544,7 +652,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Output[str]:
         """
-        Optional. Service account needed for runtime plane to access GCP resources.
+        Optional. Service account needed for runtime plane to access Google Cloud resources.
         """
         return pulumi.get(self, "service_account")
 

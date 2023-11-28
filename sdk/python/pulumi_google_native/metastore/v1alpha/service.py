@@ -43,7 +43,7 @@ class ServiceArgs:
         :param pulumi.Input['HiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
-        :param pulumi.Input['MetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+        :param pulumi.Input['MetadataIntegrationArgs'] metadata_integration: Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         :param pulumi.Input['NetworkConfigArgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
@@ -175,7 +175,7 @@ class ServiceArgs:
     @pulumi.getter(name="metadataIntegration")
     def metadata_integration(self) -> Optional[pulumi.Input['MetadataIntegrationArgs']]:
         """
-        The setting that defines how metastore metadata should be integrated with external services and systems.
+        Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         """
         return pulumi.get(self, "metadata_integration")
 
@@ -335,7 +335,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
         :param pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
-        :param pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+        :param pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']] metadata_integration: Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
@@ -551,7 +551,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="metadataIntegration")
     def metadata_integration(self) -> pulumi.Output['outputs.MetadataIntegrationResponse']:
         """
-        The setting that defines how metastore metadata should be integrated with external services and systems.
+        Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         """
         return pulumi.get(self, "metadata_integration")
 

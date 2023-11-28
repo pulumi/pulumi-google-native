@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<string> DagTimeout { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Encryption settings for the encrypting customer core content.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse> EncryptionConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         [Output("jobs")]
@@ -131,6 +137,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
+
+        /// <summary>
+        /// Optional. Encryption settings for the encrypting customer core content.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs>? EncryptionConfig { get; set; }
 
         [Input("id")]
         public Input<string>? Id { get; set; }

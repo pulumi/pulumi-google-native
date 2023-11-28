@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -48,7 +51,7 @@ export class Processor extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
      */
     public readonly kmsKeyName!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
@@ -60,6 +63,10 @@ export class Processor extends pulumi.CustomResource {
      * Immutable. The http endpoint that can be called to invoke processing.
      */
     public /*out*/ readonly processEndpoint!: pulumi.Output<string>;
+    /**
+     * The processor version aliases.
+     */
+    public /*out*/ readonly processorVersionAliases!: pulumi.Output<outputs.documentai.v1.GoogleCloudDocumentaiV1ProcessorVersionAliasResponse[]>;
     public readonly project!: pulumi.Output<string>;
     /**
      * The state of the processor.
@@ -90,6 +97,7 @@ export class Processor extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["processEndpoint"] = undefined /*out*/;
+            resourceInputs["processorVersionAliases"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -99,6 +107,7 @@ export class Processor extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["processEndpoint"] = undefined /*out*/;
+            resourceInputs["processorVersionAliases"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -127,7 +136,7 @@ export interface ProcessorArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
      */
     kmsKeyName?: pulumi.Input<string>;
     location?: pulumi.Input<string>;

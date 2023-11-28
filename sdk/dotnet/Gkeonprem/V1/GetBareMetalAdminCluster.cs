@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         public readonly string BareMetalVersion;
         /// <summary>
+        /// Binary Authorization related configurations.
+        /// </summary>
+        public readonly Outputs.BinaryAuthorizationResponse BinaryAuthorization;
+        /// <summary>
         /// Cluster operations configuration.
         /// </summary>
         public readonly Outputs.BareMetalAdminClusterOperationsConfigResponse ClusterOperations;
@@ -188,6 +192,8 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
 
             string bareMetalVersion,
 
+            Outputs.BinaryAuthorizationResponse binaryAuthorization,
+
             Outputs.BareMetalAdminClusterOperationsConfigResponse clusterOperations,
 
             Outputs.BareMetalAdminControlPlaneConfigResponse controlPlane,
@@ -242,6 +248,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         {
             Annotations = annotations;
             BareMetalVersion = bareMetalVersion;
+            BinaryAuthorization = binaryAuthorization;
             ClusterOperations = clusterOperations;
             ControlPlane = controlPlane;
             CreateTime = createTime;

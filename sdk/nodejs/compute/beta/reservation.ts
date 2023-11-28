@@ -38,6 +38,10 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
+     * Reservation for aggregated resources, providing shape flexibility.
+     */
+    public readonly aggregateReservation!: pulumi.Output<outputs.compute.beta.AllocationAggregateReservationResponse>;
+    /**
      * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
      */
     public /*out*/ readonly commitment!: pulumi.Output<string>;
@@ -45,6 +49,14 @@ export class Reservation extends pulumi.CustomResource {
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * Duration time relative to reservation creation when GCE will automatically delete this resource.
+     */
+    public readonly deleteAfterDuration!: pulumi.Output<outputs.compute.beta.DurationResponse>;
+    /**
+     * Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+     */
+    public readonly deleteAtTime!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -107,6 +119,9 @@ export class Reservation extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["aggregateReservation"] = args ? args.aggregateReservation : undefined;
+            resourceInputs["deleteAfterDuration"] = args ? args.deleteAfterDuration : undefined;
+            resourceInputs["deleteAtTime"] = args ? args.deleteAtTime : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -124,8 +139,11 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
+            resourceInputs["aggregateReservation"] = undefined /*out*/;
             resourceInputs["commitment"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["deleteAfterDuration"] = undefined /*out*/;
+            resourceInputs["deleteAtTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -152,6 +170,18 @@ export class Reservation extends pulumi.CustomResource {
  * The set of arguments for constructing a Reservation resource.
  */
 export interface ReservationArgs {
+    /**
+     * Reservation for aggregated resources, providing shape flexibility.
+     */
+    aggregateReservation?: pulumi.Input<inputs.compute.beta.AllocationAggregateReservationArgs>;
+    /**
+     * Duration time relative to reservation creation when GCE will automatically delete this resource.
+     */
+    deleteAfterDuration?: pulumi.Input<inputs.compute.beta.DurationArgs>;
+    /**
+     * Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+     */
+    deleteAtTime?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

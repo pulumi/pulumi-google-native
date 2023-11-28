@@ -30,6 +30,7 @@ class BucketObjectArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
+                 hard_delete_time: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  if_generation_match: Optional[pulumi.Input[str]] = None,
                  if_generation_not_match: Optional[pulumi.Input[str]] = None,
@@ -45,9 +46,11 @@ class BucketObjectArgs:
                  owner: Optional[pulumi.Input['BucketObjectOwnerArgs']] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input['BucketObjectRetentionArgs']] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 soft_delete_time: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  temporary_hold: Optional[pulumi.Input[bool]] = None,
@@ -72,6 +75,7 @@ class BucketObjectArgs:
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the object.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
         :param pulumi.Input[str] generation: The content generation of this object. Used for object versioning.
+        :param pulumi.Input[str] hard_delete_time: This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
         :param pulumi.Input[str] id: The ID of the object, including the bucket name, object name, and generation number.
         :param pulumi.Input[str] if_generation_match: Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
         :param pulumi.Input[str] if_generation_not_match: Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
@@ -87,13 +91,15 @@ class BucketObjectArgs:
         :param pulumi.Input['BucketObjectOwnerArgs'] owner: The owner of the object. This will always be the uploader of the object.
         :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this object.
         :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+        :param pulumi.Input['BucketObjectRetentionArgs'] retention: A collection of object level retention parameters.
         :param pulumi.Input[str] retention_expiration_time: A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         :param pulumi.Input[str] self_link: The link to this object.
         :param pulumi.Input[str] size: Content-Length of the data in bytes.
+        :param pulumi.Input[str] soft_delete_time: The time at which the object became soft-deleted in RFC 3339 format.
         :param pulumi.Input[str] storage_class: Storage class of the object.
         :param pulumi.Input[bool] temporary_hold: Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
         :param pulumi.Input[str] time_created: The creation time of the object in RFC 3339 format.
-        :param pulumi.Input[str] time_deleted: The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        :param pulumi.Input[str] time_deleted: The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         :param pulumi.Input[str] time_storage_class_updated: The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
         :param pulumi.Input[str] updated: The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
@@ -125,6 +131,8 @@ class BucketObjectArgs:
             pulumi.set(__self__, "event_based_hold", event_based_hold)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
+        if hard_delete_time is not None:
+            pulumi.set(__self__, "hard_delete_time", hard_delete_time)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if if_generation_match is not None:
@@ -155,12 +163,16 @@ class BucketObjectArgs:
             pulumi.set(__self__, "predefined_acl", predefined_acl)
         if projection is not None:
             pulumi.set(__self__, "projection", projection)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
         if retention_expiration_time is not None:
             pulumi.set(__self__, "retention_expiration_time", retention_expiration_time)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if soft_delete_time is not None:
+            pulumi.set(__self__, "soft_delete_time", soft_delete_time)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if storage_class is not None:
@@ -347,6 +359,18 @@ class BucketObjectArgs:
         pulumi.set(self, "generation", value)
 
     @property
+    @pulumi.getter(name="hardDeleteTime")
+    def hard_delete_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+        """
+        return pulumi.get(self, "hard_delete_time")
+
+    @hard_delete_time.setter
+    def hard_delete_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hard_delete_time", value)
+
+    @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -527,6 +551,18 @@ class BucketObjectArgs:
         pulumi.set(self, "projection", value)
 
     @property
+    @pulumi.getter
+    def retention(self) -> Optional[pulumi.Input['BucketObjectRetentionArgs']]:
+        """
+        A collection of object level retention parameters.
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: Optional[pulumi.Input['BucketObjectRetentionArgs']]):
+        pulumi.set(self, "retention", value)
+
+    @property
     @pulumi.getter(name="retentionExpirationTime")
     def retention_expiration_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -561,6 +597,18 @@ class BucketObjectArgs:
     @size.setter
     def size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="softDeleteTime")
+    def soft_delete_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which the object became soft-deleted in RFC 3339 format.
+        """
+        return pulumi.get(self, "soft_delete_time")
+
+    @soft_delete_time.setter
+    def soft_delete_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "soft_delete_time", value)
 
     @property
     @pulumi.getter
@@ -611,7 +659,7 @@ class BucketObjectArgs:
     @pulumi.getter(name="timeDeleted")
     def time_deleted(self) -> Optional[pulumi.Input[str]]:
         """
-        The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         """
         return pulumi.get(self, "time_deleted")
 
@@ -675,6 +723,7 @@ class BucketObject(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
+                 hard_delete_time: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  if_generation_match: Optional[pulumi.Input[str]] = None,
                  if_generation_not_match: Optional[pulumi.Input[str]] = None,
@@ -690,9 +739,11 @@ class BucketObject(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[pulumi.InputType['BucketObjectOwnerArgs']]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 soft_delete_time: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  temporary_hold: Optional[pulumi.Input[bool]] = None,
@@ -721,6 +772,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the object.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
         :param pulumi.Input[str] generation: The content generation of this object. Used for object versioning.
+        :param pulumi.Input[str] hard_delete_time: This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
         :param pulumi.Input[str] id: The ID of the object, including the bucket name, object name, and generation number.
         :param pulumi.Input[str] if_generation_match: Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
         :param pulumi.Input[str] if_generation_not_match: Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
@@ -736,13 +788,15 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketObjectOwnerArgs']] owner: The owner of the object. This will always be the uploader of the object.
         :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this object.
         :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+        :param pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']] retention: A collection of object level retention parameters.
         :param pulumi.Input[str] retention_expiration_time: A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         :param pulumi.Input[str] self_link: The link to this object.
         :param pulumi.Input[str] size: Content-Length of the data in bytes.
+        :param pulumi.Input[str] soft_delete_time: The time at which the object became soft-deleted in RFC 3339 format.
         :param pulumi.Input[str] storage_class: Storage class of the object.
         :param pulumi.Input[bool] temporary_hold: Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
         :param pulumi.Input[str] time_created: The creation time of the object in RFC 3339 format.
-        :param pulumi.Input[str] time_deleted: The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        :param pulumi.Input[str] time_deleted: The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         :param pulumi.Input[str] time_storage_class_updated: The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
         :param pulumi.Input[str] updated: The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
@@ -785,6 +839,7 @@ class BucketObject(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
+                 hard_delete_time: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  if_generation_match: Optional[pulumi.Input[str]] = None,
                  if_generation_not_match: Optional[pulumi.Input[str]] = None,
@@ -800,9 +855,11 @@ class BucketObject(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[pulumi.InputType['BucketObjectOwnerArgs']]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
+                 soft_delete_time: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  temporary_hold: Optional[pulumi.Input[bool]] = None,
@@ -836,6 +893,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["etag"] = etag
             __props__.__dict__["event_based_hold"] = event_based_hold
             __props__.__dict__["generation"] = generation
+            __props__.__dict__["hard_delete_time"] = hard_delete_time
             __props__.__dict__["id"] = id
             __props__.__dict__["if_generation_match"] = if_generation_match
             __props__.__dict__["if_generation_not_match"] = if_generation_not_match
@@ -851,9 +909,11 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["owner"] = owner
             __props__.__dict__["predefined_acl"] = predefined_acl
             __props__.__dict__["projection"] = projection
+            __props__.__dict__["retention"] = retention
             __props__.__dict__["retention_expiration_time"] = retention_expiration_time
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["size"] = size
+            __props__.__dict__["soft_delete_time"] = soft_delete_time
             __props__.__dict__["source"] = source
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["temporary_hold"] = temporary_hold
@@ -900,6 +960,7 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["etag"] = None
         __props__.__dict__["event_based_hold"] = None
         __props__.__dict__["generation"] = None
+        __props__.__dict__["hard_delete_time"] = None
         __props__.__dict__["if_generation_match"] = None
         __props__.__dict__["if_generation_not_match"] = None
         __props__.__dict__["if_metageneration_match"] = None
@@ -914,9 +975,11 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["owner"] = None
         __props__.__dict__["predefined_acl"] = None
         __props__.__dict__["projection"] = None
+        __props__.__dict__["retention"] = None
         __props__.__dict__["retention_expiration_time"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["size"] = None
+        __props__.__dict__["soft_delete_time"] = None
         __props__.__dict__["storage_class"] = None
         __props__.__dict__["temporary_hold"] = None
         __props__.__dict__["time_created"] = None
@@ -1036,6 +1099,14 @@ class BucketObject(pulumi.CustomResource):
         return pulumi.get(self, "generation")
 
     @property
+    @pulumi.getter(name="hardDeleteTime")
+    def hard_delete_time(self) -> pulumi.Output[str]:
+        """
+        This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+        """
+        return pulumi.get(self, "hard_delete_time")
+
+    @property
     @pulumi.getter(name="ifGenerationMatch")
     def if_generation_match(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1119,7 +1190,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
+        Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
         """
         return pulumi.get(self, "name")
 
@@ -1148,6 +1219,14 @@ class BucketObject(pulumi.CustomResource):
         return pulumi.get(self, "projection")
 
     @property
+    @pulumi.getter
+    def retention(self) -> pulumi.Output['outputs.BucketObjectRetentionResponse']:
+        """
+        A collection of object level retention parameters.
+        """
+        return pulumi.get(self, "retention")
+
+    @property
     @pulumi.getter(name="retentionExpirationTime")
     def retention_expiration_time(self) -> pulumi.Output[str]:
         """
@@ -1170,6 +1249,14 @@ class BucketObject(pulumi.CustomResource):
         Content-Length of the data in bytes.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="softDeleteTime")
+    def soft_delete_time(self) -> pulumi.Output[str]:
+        """
+        The time at which the object became soft-deleted in RFC 3339 format.
+        """
+        return pulumi.get(self, "soft_delete_time")
 
     @property
     @pulumi.getter(name="storageClass")
@@ -1199,7 +1286,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter(name="timeDeleted")
     def time_deleted(self) -> pulumi.Output[str]:
         """
-        The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         """
         return pulumi.get(self, "time_deleted")
 

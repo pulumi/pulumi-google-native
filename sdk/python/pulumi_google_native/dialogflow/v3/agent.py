@@ -20,10 +20,13 @@ class AgentArgs:
                  display_name: pulumi.Input[str],
                  time_zone: pulumi.Input[str],
                  advanced_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']] = None,
+                 answer_feedback_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsArgs']] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
+                 gen_app_builder_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsArgs']] = None,
+                 git_integration_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -39,10 +42,13 @@ class AgentArgs:
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[str] time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         :param pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsArgs'] answer_feedback_settings: Optional. Answer feedback collection settings.
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         :param pulumi.Input[str] description: The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsArgs'] gen_app_builder_settings: Gen App Builder-related agent-level settings.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs'] git_integration_settings: Git integration settings for this agent.
         :param pulumi.Input[bool] locked: Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         :param pulumi.Input[str] name: The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
@@ -56,6 +62,8 @@ class AgentArgs:
         pulumi.set(__self__, "time_zone", time_zone)
         if advanced_settings is not None:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if answer_feedback_settings is not None:
+            pulumi.set(__self__, "answer_feedback_settings", answer_feedback_settings)
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
         if description is not None:
@@ -64,6 +72,10 @@ class AgentArgs:
             pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
         if enable_stackdriver_logging is not None:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+        if gen_app_builder_settings is not None:
+            pulumi.set(__self__, "gen_app_builder_settings", gen_app_builder_settings)
+        if git_integration_settings is not None:
+            pulumi.set(__self__, "git_integration_settings", git_integration_settings)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if locked is not None:
@@ -132,6 +144,18 @@ class AgentArgs:
         pulumi.set(self, "advanced_settings", value)
 
     @property
+    @pulumi.getter(name="answerFeedbackSettings")
+    def answer_feedback_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsArgs']]:
+        """
+        Optional. Answer feedback collection settings.
+        """
+        return pulumi.get(self, "answer_feedback_settings")
+
+    @answer_feedback_settings.setter
+    def answer_feedback_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsArgs']]):
+        pulumi.set(self, "answer_feedback_settings", value)
+
+    @property
     @pulumi.getter(name="avatarUri")
     def avatar_uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -178,6 +202,30 @@ class AgentArgs:
     @enable_stackdriver_logging.setter
     def enable_stackdriver_logging(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_stackdriver_logging", value)
+
+    @property
+    @pulumi.getter(name="genAppBuilderSettings")
+    def gen_app_builder_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsArgs']]:
+        """
+        Gen App Builder-related agent-level settings.
+        """
+        return pulumi.get(self, "gen_app_builder_settings")
+
+    @gen_app_builder_settings.setter
+    def gen_app_builder_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsArgs']]):
+        pulumi.set(self, "gen_app_builder_settings", value)
+
+    @property
+    @pulumi.getter(name="gitIntegrationSettings")
+    def git_integration_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs']]:
+        """
+        Git integration settings for this agent.
+        """
+        return pulumi.get(self, "git_integration_settings")
+
+    @git_integration_settings.setter
+    def git_integration_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs']]):
+        pulumi.set(self, "git_integration_settings", value)
 
     @property
     @pulumi.getter
@@ -288,12 +336,15 @@ class Agent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]] = None,
+                 answer_feedback_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsArgs']]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
+                 gen_app_builder_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsArgs']]] = None,
+                 git_integration_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -311,12 +362,15 @@ class Agent(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsArgs']] answer_feedback_settings: Optional. Answer feedback collection settings.
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         :param pulumi.Input[str] default_language_code: Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         :param pulumi.Input[str] description: The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsArgs']] gen_app_builder_settings: Gen App Builder-related agent-level settings.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs']] git_integration_settings: Git integration settings for this agent.
         :param pulumi.Input[bool] locked: Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         :param pulumi.Input[str] name: The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
@@ -351,12 +405,15 @@ class Agent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]] = None,
+                 answer_feedback_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsArgs']]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
+                 gen_app_builder_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsArgs']]] = None,
+                 git_integration_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -377,6 +434,7 @@ class Agent(pulumi.CustomResource):
             __props__ = AgentArgs.__new__(AgentArgs)
 
             __props__.__dict__["advanced_settings"] = advanced_settings
+            __props__.__dict__["answer_feedback_settings"] = answer_feedback_settings
             __props__.__dict__["avatar_uri"] = avatar_uri
             if default_language_code is None and not opts.urn:
                 raise TypeError("Missing required property 'default_language_code'")
@@ -387,6 +445,8 @@ class Agent(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_spell_correction"] = enable_spell_correction
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
+            __props__.__dict__["gen_app_builder_settings"] = gen_app_builder_settings
+            __props__.__dict__["git_integration_settings"] = git_integration_settings
             __props__.__dict__["location"] = location
             __props__.__dict__["locked"] = locked
             __props__.__dict__["name"] = name
@@ -424,12 +484,15 @@ class Agent(pulumi.CustomResource):
         __props__ = AgentArgs.__new__(AgentArgs)
 
         __props__.__dict__["advanced_settings"] = None
+        __props__.__dict__["answer_feedback_settings"] = None
         __props__.__dict__["avatar_uri"] = None
         __props__.__dict__["default_language_code"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["enable_spell_correction"] = None
         __props__.__dict__["enable_stackdriver_logging"] = None
+        __props__.__dict__["gen_app_builder_settings"] = None
+        __props__.__dict__["git_integration_settings"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["locked"] = None
         __props__.__dict__["name"] = None
@@ -449,6 +512,14 @@ class Agent(pulumi.CustomResource):
         Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
         """
         return pulumi.get(self, "advanced_settings")
+
+    @property
+    @pulumi.getter(name="answerFeedbackSettings")
+    def answer_feedback_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse']:
+        """
+        Optional. Answer feedback collection settings.
+        """
+        return pulumi.get(self, "answer_feedback_settings")
 
     @property
     @pulumi.getter(name="avatarUri")
@@ -497,6 +568,22 @@ class Agent(pulumi.CustomResource):
         Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
+
+    @property
+    @pulumi.getter(name="genAppBuilderSettings")
+    def gen_app_builder_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponse']:
+        """
+        Gen App Builder-related agent-level settings.
+        """
+        return pulumi.get(self, "gen_app_builder_settings")
+
+    @property
+    @pulumi.getter(name="gitIntegrationSettings")
+    def git_integration_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse']:
+        """
+        Git integration settings for this agent.
+        """
+        return pulumi.get(self, "git_integration_settings")
 
     @property
     @pulumi.getter

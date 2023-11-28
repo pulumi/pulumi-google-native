@@ -16,9 +16,9 @@ var _ = internal.GetEnvOrDefault
 
 // An accelerator card attached to the instance.
 type Accelerator struct {
-	// Number of accelerator cards exposed to the instance.
+	// Optional. Number of accelerator cards exposed to the instance.
 	Count *int `pulumi:"count"`
-	// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+	// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
 	Type *string `pulumi:"type"`
 }
 
@@ -35,9 +35,9 @@ type AcceleratorInput interface {
 
 // An accelerator card attached to the instance.
 type AcceleratorArgs struct {
-	// Number of accelerator cards exposed to the instance.
+	// Optional. Number of accelerator cards exposed to the instance.
 	Count pulumi.IntPtrInput `pulumi:"count"`
-	// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+	// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -111,12 +111,12 @@ func (o AcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[Accelera
 	}
 }
 
-// Number of accelerator cards exposed to the instance.
+// Optional. Number of accelerator cards exposed to the instance.
 func (o AcceleratorOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Accelerator) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
-// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
 func (o AcceleratorOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Accelerator) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -149,9 +149,9 @@ func (o AcceleratorArrayOutput) Index(i pulumi.IntInput) AcceleratorOutput {
 
 // An accelerator card attached to the instance.
 type AcceleratorResponse struct {
-	// Number of accelerator cards exposed to the instance.
+	// Optional. Number of accelerator cards exposed to the instance.
 	Count int `pulumi:"count"`
-	// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+	// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
 	Type string `pulumi:"type"`
 }
 
@@ -176,12 +176,12 @@ func (o AcceleratorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// Number of accelerator cards exposed to the instance.
+// Optional. Number of accelerator cards exposed to the instance.
 func (o AcceleratorResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v AcceleratorResponse) int { return v.Count }).(pulumi.IntOutput)
 }
 
-// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
 func (o AcceleratorResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -824,17 +824,17 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // A Docker container.
 type Container struct {
-	// Arguments passed to the entrypoint.
+	// Optional. Arguments passed to the entrypoint.
 	Args []string `pulumi:"args"`
-	// If set, overrides the default ENTRYPOINT specified by the image.
+	// Optional. If set, overrides the default ENTRYPOINT specified by the image.
 	Command []string `pulumi:"command"`
-	// Environment variables passed to the container's entrypoint.
+	// Optional. Environment variables passed to the container's entrypoint.
 	Env map[string]string `pulumi:"env"`
-	// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
+	// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
 	Image *string `pulumi:"image"`
-	// If set, overrides the USER specified in the image with the given uid.
+	// Optional. If set, overrides the USER specified in the image with the given uid.
 	RunAsUser *int `pulumi:"runAsUser"`
-	// If set, overrides the default DIR specified by the image.
+	// Optional. If set, overrides the default DIR specified by the image.
 	WorkingDir *string `pulumi:"workingDir"`
 }
 
@@ -851,17 +851,17 @@ type ContainerInput interface {
 
 // A Docker container.
 type ContainerArgs struct {
-	// Arguments passed to the entrypoint.
+	// Optional. Arguments passed to the entrypoint.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// If set, overrides the default ENTRYPOINT specified by the image.
+	// Optional. If set, overrides the default ENTRYPOINT specified by the image.
 	Command pulumi.StringArrayInput `pulumi:"command"`
-	// Environment variables passed to the container's entrypoint.
+	// Optional. Environment variables passed to the container's entrypoint.
 	Env pulumi.StringMapInput `pulumi:"env"`
-	// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
+	// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
 	Image pulumi.StringPtrInput `pulumi:"image"`
-	// If set, overrides the USER specified in the image with the given uid.
+	// Optional. If set, overrides the USER specified in the image with the given uid.
 	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
-	// If set, overrides the default DIR specified by the image.
+	// Optional. If set, overrides the default DIR specified by the image.
 	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
 }
 
@@ -961,32 +961,32 @@ func (o ContainerOutput) ToOutput(ctx context.Context) pulumix.Output[Container]
 	}
 }
 
-// Arguments passed to the entrypoint.
+// Optional. Arguments passed to the entrypoint.
 func (o ContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// If set, overrides the default ENTRYPOINT specified by the image.
+// Optional. If set, overrides the default ENTRYPOINT specified by the image.
 func (o ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// Environment variables passed to the container's entrypoint.
+// Optional. Environment variables passed to the container's entrypoint.
 func (o ContainerOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Container) map[string]string { return v.Env }).(pulumi.StringMapOutput)
 }
 
-// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
+// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
 func (o ContainerOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// If set, overrides the USER specified in the image with the given uid.
+// Optional. If set, overrides the USER specified in the image with the given uid.
 func (o ContainerOutput) RunAsUser() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Container) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
 }
 
-// If set, overrides the default DIR specified by the image.
+// Optional. If set, overrides the default DIR specified by the image.
 func (o ContainerOutput) WorkingDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
 }
@@ -1021,7 +1021,7 @@ func (o ContainerPtrOutput) Elem() ContainerOutput {
 	}).(ContainerOutput)
 }
 
-// Arguments passed to the entrypoint.
+// Optional. Arguments passed to the entrypoint.
 func (o ContainerPtrOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Container) []string {
 		if v == nil {
@@ -1031,7 +1031,7 @@ func (o ContainerPtrOutput) Args() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// If set, overrides the default ENTRYPOINT specified by the image.
+// Optional. If set, overrides the default ENTRYPOINT specified by the image.
 func (o ContainerPtrOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Container) []string {
 		if v == nil {
@@ -1041,7 +1041,7 @@ func (o ContainerPtrOutput) Command() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Environment variables passed to the container's entrypoint.
+// Optional. Environment variables passed to the container's entrypoint.
 func (o ContainerPtrOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Container) map[string]string {
 		if v == nil {
@@ -1051,7 +1051,7 @@ func (o ContainerPtrOutput) Env() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
+// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
 func (o ContainerPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) *string {
 		if v == nil {
@@ -1061,7 +1061,7 @@ func (o ContainerPtrOutput) Image() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set, overrides the USER specified in the image with the given uid.
+// Optional. If set, overrides the USER specified in the image with the given uid.
 func (o ContainerPtrOutput) RunAsUser() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Container) *int {
 		if v == nil {
@@ -1071,7 +1071,7 @@ func (o ContainerPtrOutput) RunAsUser() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// If set, overrides the default DIR specified by the image.
+// Optional. If set, overrides the default DIR specified by the image.
 func (o ContainerPtrOutput) WorkingDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) *string {
 		if v == nil {
@@ -1083,17 +1083,17 @@ func (o ContainerPtrOutput) WorkingDir() pulumi.StringPtrOutput {
 
 // A Docker container.
 type ContainerResponse struct {
-	// Arguments passed to the entrypoint.
+	// Optional. Arguments passed to the entrypoint.
 	Args []string `pulumi:"args"`
-	// If set, overrides the default ENTRYPOINT specified by the image.
+	// Optional. If set, overrides the default ENTRYPOINT specified by the image.
 	Command []string `pulumi:"command"`
-	// Environment variables passed to the container's entrypoint.
+	// Optional. Environment variables passed to the container's entrypoint.
 	Env map[string]string `pulumi:"env"`
-	// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
+	// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
 	Image string `pulumi:"image"`
-	// If set, overrides the USER specified in the image with the given uid.
+	// Optional. If set, overrides the USER specified in the image with the given uid.
 	RunAsUser int `pulumi:"runAsUser"`
-	// If set, overrides the default DIR specified by the image.
+	// Optional. If set, overrides the default DIR specified by the image.
 	WorkingDir string `pulumi:"workingDir"`
 }
 
@@ -1118,39 +1118,39 @@ func (o ContainerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Co
 	}
 }
 
-// Arguments passed to the entrypoint.
+// Optional. Arguments passed to the entrypoint.
 func (o ContainerResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// If set, overrides the default ENTRYPOINT specified by the image.
+// Optional. If set, overrides the default ENTRYPOINT specified by the image.
 func (o ContainerResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// Environment variables passed to the container's entrypoint.
+// Optional. Environment variables passed to the container's entrypoint.
 func (o ContainerResponseOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ContainerResponse) map[string]string { return v.Env }).(pulumi.StringMapOutput)
 }
 
-// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
+// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
 func (o ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// If set, overrides the USER specified in the image with the given uid.
+// Optional. If set, overrides the USER specified in the image with the given uid.
 func (o ContainerResponseOutput) RunAsUser() pulumi.IntOutput {
 	return o.ApplyT(func(v ContainerResponse) int { return v.RunAsUser }).(pulumi.IntOutput)
 }
 
-// If set, overrides the default DIR specified by the image.
+// Optional. If set, overrides the default DIR specified by the image.
 func (o ContainerResponseOutput) WorkingDir() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.WorkingDir }).(pulumi.StringOutput)
 }
 
-// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
 type CustomerEncryptionKey struct {
-	// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+	// Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
@@ -1167,9 +1167,9 @@ type CustomerEncryptionKeyInput interface {
 	ToCustomerEncryptionKeyOutputWithContext(context.Context) CustomerEncryptionKeyOutput
 }
 
-// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
 type CustomerEncryptionKeyArgs struct {
-	// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+	// Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
@@ -1240,7 +1240,7 @@ func (i *customerEncryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
 type CustomerEncryptionKeyOutput struct{ *pulumi.OutputState }
 
 func (CustomerEncryptionKeyOutput) ElementType() reflect.Type {
@@ -1271,7 +1271,7 @@ func (o CustomerEncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+// Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
 func (o CustomerEncryptionKeyOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -1311,7 +1311,7 @@ func (o CustomerEncryptionKeyPtrOutput) Elem() CustomerEncryptionKeyOutput {
 	}).(CustomerEncryptionKeyOutput)
 }
 
-// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+// Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
 func (o CustomerEncryptionKeyPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -1331,15 +1331,15 @@ func (o CustomerEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
 type CustomerEncryptionKeyResponse struct {
-	// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+	// Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
 	KmsKey string `pulumi:"kmsKey"`
 	// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
 }
 
-// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
 type CustomerEncryptionKeyResponseOutput struct{ *pulumi.OutputState }
 
 func (CustomerEncryptionKeyResponseOutput) ElementType() reflect.Type {
@@ -1360,7 +1360,7 @@ func (o CustomerEncryptionKeyResponseOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+// Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
 func (o CustomerEncryptionKeyResponseOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
@@ -1368,6 +1368,400 @@ func (o CustomerEncryptionKeyResponseOutput) KmsKey() pulumi.StringOutput {
 // Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 func (o CustomerEncryptionKeyResponseOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+// Configuration options for a custom domain.
+type DomainConfig struct {
+	// Immutable. Domain used by Workstations for HTTP ingress.
+	Domain *string `pulumi:"domain"`
+}
+
+// DomainConfigInput is an input type that accepts DomainConfigArgs and DomainConfigOutput values.
+// You can construct a concrete instance of `DomainConfigInput` via:
+//
+//	DomainConfigArgs{...}
+type DomainConfigInput interface {
+	pulumi.Input
+
+	ToDomainConfigOutput() DomainConfigOutput
+	ToDomainConfigOutputWithContext(context.Context) DomainConfigOutput
+}
+
+// Configuration options for a custom domain.
+type DomainConfigArgs struct {
+	// Immutable. Domain used by Workstations for HTTP ingress.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+}
+
+func (DomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfig)(nil)).Elem()
+}
+
+func (i DomainConfigArgs) ToDomainConfigOutput() DomainConfigOutput {
+	return i.ToDomainConfigOutputWithContext(context.Background())
+}
+
+func (i DomainConfigArgs) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput)
+}
+
+func (i DomainConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DomainConfig] {
+	return pulumix.Output[DomainConfig]{
+		OutputState: i.ToDomainConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DomainConfigArgs) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return i.ToDomainConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DomainConfigArgs) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput).ToDomainConfigPtrOutputWithContext(ctx)
+}
+
+// DomainConfigPtrInput is an input type that accepts DomainConfigArgs, DomainConfigPtr and DomainConfigPtrOutput values.
+// You can construct a concrete instance of `DomainConfigPtrInput` via:
+//
+//	        DomainConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DomainConfigPtrInput interface {
+	pulumi.Input
+
+	ToDomainConfigPtrOutput() DomainConfigPtrOutput
+	ToDomainConfigPtrOutputWithContext(context.Context) DomainConfigPtrOutput
+}
+
+type domainConfigPtrType DomainConfigArgs
+
+func DomainConfigPtr(v *DomainConfigArgs) DomainConfigPtrInput {
+	return (*domainConfigPtrType)(v)
+}
+
+func (*domainConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainConfig)(nil)).Elem()
+}
+
+func (i *domainConfigPtrType) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return i.ToDomainConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *domainConfigPtrType) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigPtrOutput)
+}
+
+func (i *domainConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DomainConfig] {
+	return pulumix.Output[*DomainConfig]{
+		OutputState: i.ToDomainConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration options for a custom domain.
+type DomainConfigOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfig)(nil)).Elem()
+}
+
+func (o DomainConfigOutput) ToDomainConfigOutput() DomainConfigOutput {
+	return o
+}
+
+func (o DomainConfigOutput) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
+	return o
+}
+
+func (o DomainConfigOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return o.ToDomainConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DomainConfigOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainConfig) *DomainConfig {
+		return &v
+	}).(DomainConfigPtrOutput)
+}
+
+func (o DomainConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DomainConfig] {
+	return pulumix.Output[DomainConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Immutable. Domain used by Workstations for HTTP ingress.
+func (o DomainConfigOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+type DomainConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainConfig)(nil)).Elem()
+}
+
+func (o DomainConfigPtrOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return o
+}
+
+func (o DomainConfigPtrOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return o
+}
+
+func (o DomainConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainConfig] {
+	return pulumix.Output[*DomainConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DomainConfigPtrOutput) Elem() DomainConfigOutput {
+	return o.ApplyT(func(v *DomainConfig) DomainConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainConfig
+		return ret
+	}).(DomainConfigOutput)
+}
+
+// Immutable. Domain used by Workstations for HTTP ingress.
+func (o DomainConfigPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration options for a custom domain.
+type DomainConfigResponse struct {
+	// Immutable. Domain used by Workstations for HTTP ingress.
+	Domain string `pulumi:"domain"`
+}
+
+// Configuration options for a custom domain.
+type DomainConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfigResponse)(nil)).Elem()
+}
+
+func (o DomainConfigResponseOutput) ToDomainConfigResponseOutput() DomainConfigResponseOutput {
+	return o
+}
+
+func (o DomainConfigResponseOutput) ToDomainConfigResponseOutputWithContext(ctx context.Context) DomainConfigResponseOutput {
+	return o
+}
+
+func (o DomainConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DomainConfigResponse] {
+	return pulumix.Output[DomainConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Immutable. Domain used by Workstations for HTTP ingress.
+func (o DomainConfigResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainConfigResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectory struct {
+	// An EphemeralDirectory backed by a Compute Engine persistent disk.
+	GcePd *GcePersistentDisk `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath string `pulumi:"mountPath"`
+}
+
+// EphemeralDirectoryInput is an input type that accepts EphemeralDirectoryArgs and EphemeralDirectoryOutput values.
+// You can construct a concrete instance of `EphemeralDirectoryInput` via:
+//
+//	EphemeralDirectoryArgs{...}
+type EphemeralDirectoryInput interface {
+	pulumi.Input
+
+	ToEphemeralDirectoryOutput() EphemeralDirectoryOutput
+	ToEphemeralDirectoryOutputWithContext(context.Context) EphemeralDirectoryOutput
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectoryArgs struct {
+	// An EphemeralDirectory backed by a Compute Engine persistent disk.
+	GcePd GcePersistentDiskPtrInput `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+}
+
+func (EphemeralDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralDirectory)(nil)).Elem()
+}
+
+func (i EphemeralDirectoryArgs) ToEphemeralDirectoryOutput() EphemeralDirectoryOutput {
+	return i.ToEphemeralDirectoryOutputWithContext(context.Background())
+}
+
+func (i EphemeralDirectoryArgs) ToEphemeralDirectoryOutputWithContext(ctx context.Context) EphemeralDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EphemeralDirectoryOutput)
+}
+
+func (i EphemeralDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[EphemeralDirectory] {
+	return pulumix.Output[EphemeralDirectory]{
+		OutputState: i.ToEphemeralDirectoryOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EphemeralDirectoryArrayInput is an input type that accepts EphemeralDirectoryArray and EphemeralDirectoryArrayOutput values.
+// You can construct a concrete instance of `EphemeralDirectoryArrayInput` via:
+//
+//	EphemeralDirectoryArray{ EphemeralDirectoryArgs{...} }
+type EphemeralDirectoryArrayInput interface {
+	pulumi.Input
+
+	ToEphemeralDirectoryArrayOutput() EphemeralDirectoryArrayOutput
+	ToEphemeralDirectoryArrayOutputWithContext(context.Context) EphemeralDirectoryArrayOutput
+}
+
+type EphemeralDirectoryArray []EphemeralDirectoryInput
+
+func (EphemeralDirectoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EphemeralDirectory)(nil)).Elem()
+}
+
+func (i EphemeralDirectoryArray) ToEphemeralDirectoryArrayOutput() EphemeralDirectoryArrayOutput {
+	return i.ToEphemeralDirectoryArrayOutputWithContext(context.Background())
+}
+
+func (i EphemeralDirectoryArray) ToEphemeralDirectoryArrayOutputWithContext(ctx context.Context) EphemeralDirectoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EphemeralDirectoryArrayOutput)
+}
+
+func (i EphemeralDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]EphemeralDirectory] {
+	return pulumix.Output[[]EphemeralDirectory]{
+		OutputState: i.ToEphemeralDirectoryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectoryOutput struct{ *pulumi.OutputState }
+
+func (EphemeralDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralDirectory)(nil)).Elem()
+}
+
+func (o EphemeralDirectoryOutput) ToEphemeralDirectoryOutput() EphemeralDirectoryOutput {
+	return o
+}
+
+func (o EphemeralDirectoryOutput) ToEphemeralDirectoryOutputWithContext(ctx context.Context) EphemeralDirectoryOutput {
+	return o
+}
+
+func (o EphemeralDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[EphemeralDirectory] {
+	return pulumix.Output[EphemeralDirectory]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An EphemeralDirectory backed by a Compute Engine persistent disk.
+func (o EphemeralDirectoryOutput) GcePd() GcePersistentDiskPtrOutput {
+	return o.ApplyT(func(v EphemeralDirectory) *GcePersistentDisk { return v.GcePd }).(GcePersistentDiskPtrOutput)
+}
+
+// Location of this directory in the running workstation.
+func (o EphemeralDirectoryOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v EphemeralDirectory) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+type EphemeralDirectoryArrayOutput struct{ *pulumi.OutputState }
+
+func (EphemeralDirectoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EphemeralDirectory)(nil)).Elem()
+}
+
+func (o EphemeralDirectoryArrayOutput) ToEphemeralDirectoryArrayOutput() EphemeralDirectoryArrayOutput {
+	return o
+}
+
+func (o EphemeralDirectoryArrayOutput) ToEphemeralDirectoryArrayOutputWithContext(ctx context.Context) EphemeralDirectoryArrayOutput {
+	return o
+}
+
+func (o EphemeralDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EphemeralDirectory] {
+	return pulumix.Output[[]EphemeralDirectory]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EphemeralDirectoryArrayOutput) Index(i pulumi.IntInput) EphemeralDirectoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EphemeralDirectory {
+		return vs[0].([]EphemeralDirectory)[vs[1].(int)]
+	}).(EphemeralDirectoryOutput)
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectoryResponse struct {
+	// An EphemeralDirectory backed by a Compute Engine persistent disk.
+	GcePd GcePersistentDiskResponse `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath string `pulumi:"mountPath"`
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectoryResponseOutput struct{ *pulumi.OutputState }
+
+func (EphemeralDirectoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralDirectoryResponse)(nil)).Elem()
+}
+
+func (o EphemeralDirectoryResponseOutput) ToEphemeralDirectoryResponseOutput() EphemeralDirectoryResponseOutput {
+	return o
+}
+
+func (o EphemeralDirectoryResponseOutput) ToEphemeralDirectoryResponseOutputWithContext(ctx context.Context) EphemeralDirectoryResponseOutput {
+	return o
+}
+
+func (o EphemeralDirectoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EphemeralDirectoryResponse] {
+	return pulumix.Output[EphemeralDirectoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An EphemeralDirectory backed by a Compute Engine persistent disk.
+func (o EphemeralDirectoryResponseOutput) GcePd() GcePersistentDiskResponseOutput {
+	return o.ApplyT(func(v EphemeralDirectoryResponse) GcePersistentDiskResponse { return v.GcePd }).(GcePersistentDiskResponseOutput)
+}
+
+// Location of this directory in the running workstation.
+func (o EphemeralDirectoryResponseOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v EphemeralDirectoryResponse) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+type EphemeralDirectoryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EphemeralDirectoryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EphemeralDirectoryResponse)(nil)).Elem()
+}
+
+func (o EphemeralDirectoryResponseArrayOutput) ToEphemeralDirectoryResponseArrayOutput() EphemeralDirectoryResponseArrayOutput {
+	return o
+}
+
+func (o EphemeralDirectoryResponseArrayOutput) ToEphemeralDirectoryResponseArrayOutputWithContext(ctx context.Context) EphemeralDirectoryResponseArrayOutput {
+	return o
+}
+
+func (o EphemeralDirectoryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EphemeralDirectoryResponse] {
+	return pulumix.Output[[]EphemeralDirectoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EphemeralDirectoryResponseArrayOutput) Index(i pulumi.IntInput) EphemeralDirectoryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EphemeralDirectoryResponse {
+		return vs[0].([]EphemeralDirectoryResponse)[vs[1].(int)]
+	}).(EphemeralDirectoryResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1646,7 +2040,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // A set of Compute Engine Confidential VM instance options.
 type GceConfidentialInstanceConfig struct {
-	// Whether the instance has confidential compute enabled.
+	// Optional. Whether the instance has confidential compute enabled.
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 }
 
@@ -1663,7 +2057,7 @@ type GceConfidentialInstanceConfigInput interface {
 
 // A set of Compute Engine Confidential VM instance options.
 type GceConfidentialInstanceConfigArgs struct {
-	// Whether the instance has confidential compute enabled.
+	// Optional. Whether the instance has confidential compute enabled.
 	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
 }
 
@@ -1763,7 +2157,7 @@ func (o GceConfidentialInstanceConfigOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// Whether the instance has confidential compute enabled.
+// Optional. Whether the instance has confidential compute enabled.
 func (o GceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GceConfidentialInstanceConfig) *bool { return v.EnableConfidentialCompute }).(pulumi.BoolPtrOutput)
 }
@@ -1798,7 +2192,7 @@ func (o GceConfidentialInstanceConfigPtrOutput) Elem() GceConfidentialInstanceCo
 	}).(GceConfidentialInstanceConfigOutput)
 }
 
-// Whether the instance has confidential compute enabled.
+// Optional. Whether the instance has confidential compute enabled.
 func (o GceConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GceConfidentialInstanceConfig) *bool {
 		if v == nil {
@@ -1810,7 +2204,7 @@ func (o GceConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulu
 
 // A set of Compute Engine Confidential VM instance options.
 type GceConfidentialInstanceConfigResponse struct {
-	// Whether the instance has confidential compute enabled.
+	// Optional. Whether the instance has confidential compute enabled.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 }
 
@@ -1835,30 +2229,34 @@ func (o GceConfidentialInstanceConfigResponseOutput) ToOutput(ctx context.Contex
 	}
 }
 
-// Whether the instance has confidential compute enabled.
+// Optional. Whether the instance has confidential compute enabled.
 func (o GceConfidentialInstanceConfigResponseOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GceConfidentialInstanceConfigResponse) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 // A runtime using a Compute Engine instance.
 type GceInstance struct {
-	// A list of the type and count of accelerator cards attached to the instance.
+	// Optional. A list of the type and count of accelerator cards attached to the instance.
 	Accelerators []Accelerator `pulumi:"accelerators"`
-	// Size of the boot disk in GB. Defaults to 50.
+	// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
-	// A set of Compute Engine Confidential VM instance options.
+	// Optional. A set of Compute Engine Confidential VM instance options.
 	ConfidentialInstanceConfig *GceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
-	// Whether instances have no public IP address.
+	// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
 	DisablePublicIpAddresses *bool `pulumi:"disablePublicIpAddresses"`
-	// The name of a Compute Engine machine type.
+	// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
 	MachineType *string `pulumi:"machineType"`
-	// Number of instances to pool for faster workstation startup.
+	// Optional. The number of VMs that the system should keep idle so that new workstations can be started quickly for new users. Defaults to `0` in the API.
 	PoolSize *int `pulumi:"poolSize"`
-	// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
+	// Optional. The email address of the service account for Cloud Workstations VMs created with this configuration. When specified, be sure that the service account has `logginglogEntries.create` permission on the project so it can write logs out to Cloud Logging. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. If you as the administrator want to be able to `ssh` into the underlying VM, you need to set this value to a service account for which you have the `iam.serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be able to `ssh` into the underlying VM, use a service account where no one has that permission. If not set, VMs run with a service account provided by the Cloud Workstations service, and the image must be publicly accessible.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// A set of Compute Engine Shielded instance options.
+	// Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// Optional. A set of Compute Engine Shielded instance options.
 	ShieldedInstanceConfig *GceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	// Network tags to add to the Compute Engine machines backing the Workstations.
+	// Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
 	Tags []string `pulumi:"tags"`
 }
 
@@ -1875,23 +2273,27 @@ type GceInstanceInput interface {
 
 // A runtime using a Compute Engine instance.
 type GceInstanceArgs struct {
-	// A list of the type and count of accelerator cards attached to the instance.
+	// Optional. A list of the type and count of accelerator cards attached to the instance.
 	Accelerators AcceleratorArrayInput `pulumi:"accelerators"`
-	// Size of the boot disk in GB. Defaults to 50.
+	// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
-	// A set of Compute Engine Confidential VM instance options.
+	// Optional. A set of Compute Engine Confidential VM instance options.
 	ConfidentialInstanceConfig GceConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
-	// Whether instances have no public IP address.
+	// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
 	DisablePublicIpAddresses pulumi.BoolPtrInput `pulumi:"disablePublicIpAddresses"`
-	// The name of a Compute Engine machine type.
+	// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// Number of instances to pool for faster workstation startup.
+	// Optional. The number of VMs that the system should keep idle so that new workstations can be started quickly for new users. Defaults to `0` in the API.
 	PoolSize pulumi.IntPtrInput `pulumi:"poolSize"`
-	// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
+	// Optional. The email address of the service account for Cloud Workstations VMs created with this configuration. When specified, be sure that the service account has `logginglogEntries.create` permission on the project so it can write logs out to Cloud Logging. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. If you as the administrator want to be able to `ssh` into the underlying VM, you need to set this value to a service account for which you have the `iam.serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be able to `ssh` into the underlying VM, use a service account where no one has that permission. If not set, VMs run with a service account provided by the Cloud Workstations service, and the image must be publicly accessible.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
-	// A set of Compute Engine Shielded instance options.
+	// Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+	ServiceAccountScopes pulumi.StringArrayInput `pulumi:"serviceAccountScopes"`
+	// Optional. A set of Compute Engine Shielded instance options.
 	ShieldedInstanceConfig GceShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	// Network tags to add to the Compute Engine machines backing the Workstations.
+	// Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -1991,47 +2393,57 @@ func (o GceInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GceInsta
 	}
 }
 
-// A list of the type and count of accelerator cards attached to the instance.
+// Optional. A list of the type and count of accelerator cards attached to the instance.
 func (o GceInstanceOutput) Accelerators() AcceleratorArrayOutput {
 	return o.ApplyT(func(v GceInstance) []Accelerator { return v.Accelerators }).(AcceleratorArrayOutput)
 }
 
-// Size of the boot disk in GB. Defaults to 50.
+// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 func (o GceInstanceOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GceInstance) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
-// A set of Compute Engine Confidential VM instance options.
+// Optional. A set of Compute Engine Confidential VM instance options.
 func (o GceInstanceOutput) ConfidentialInstanceConfig() GceConfidentialInstanceConfigPtrOutput {
 	return o.ApplyT(func(v GceInstance) *GceConfidentialInstanceConfig { return v.ConfidentialInstanceConfig }).(GceConfidentialInstanceConfigPtrOutput)
 }
 
-// Whether instances have no public IP address.
+// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
 func (o GceInstanceOutput) DisablePublicIpAddresses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GceInstance) *bool { return v.DisablePublicIpAddresses }).(pulumi.BoolPtrOutput)
 }
 
-// The name of a Compute Engine machine type.
+// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+func (o GceInstanceOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GceInstance) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
 func (o GceInstanceOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceInstance) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// Number of instances to pool for faster workstation startup.
+// Optional. The number of VMs that the system should keep idle so that new workstations can be started quickly for new users. Defaults to `0` in the API.
 func (o GceInstanceOutput) PoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GceInstance) *int { return v.PoolSize }).(pulumi.IntPtrOutput)
 }
 
-// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
+// Optional. The email address of the service account for Cloud Workstations VMs created with this configuration. When specified, be sure that the service account has `logginglogEntries.create` permission on the project so it can write logs out to Cloud Logging. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. If you as the administrator want to be able to `ssh` into the underlying VM, you need to set this value to a service account for which you have the `iam.serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be able to `ssh` into the underlying VM, use a service account where no one has that permission. If not set, VMs run with a service account provided by the Cloud Workstations service, and the image must be publicly accessible.
 func (o GceInstanceOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceInstance) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// A set of Compute Engine Shielded instance options.
+// Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+func (o GceInstanceOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GceInstance) []string { return v.ServiceAccountScopes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A set of Compute Engine Shielded instance options.
 func (o GceInstanceOutput) ShieldedInstanceConfig() GceShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v GceInstance) *GceShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(GceShieldedInstanceConfigPtrOutput)
 }
 
-// Network tags to add to the Compute Engine machines backing the Workstations.
+// Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
 func (o GceInstanceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GceInstance) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -2066,7 +2478,7 @@ func (o GceInstancePtrOutput) Elem() GceInstanceOutput {
 	}).(GceInstanceOutput)
 }
 
-// A list of the type and count of accelerator cards attached to the instance.
+// Optional. A list of the type and count of accelerator cards attached to the instance.
 func (o GceInstancePtrOutput) Accelerators() AcceleratorArrayOutput {
 	return o.ApplyT(func(v *GceInstance) []Accelerator {
 		if v == nil {
@@ -2076,7 +2488,7 @@ func (o GceInstancePtrOutput) Accelerators() AcceleratorArrayOutput {
 	}).(AcceleratorArrayOutput)
 }
 
-// Size of the boot disk in GB. Defaults to 50.
+// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 func (o GceInstancePtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *int {
 		if v == nil {
@@ -2086,7 +2498,7 @@ func (o GceInstancePtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// A set of Compute Engine Confidential VM instance options.
+// Optional. A set of Compute Engine Confidential VM instance options.
 func (o GceInstancePtrOutput) ConfidentialInstanceConfig() GceConfidentialInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *GceConfidentialInstanceConfig {
 		if v == nil {
@@ -2096,7 +2508,7 @@ func (o GceInstancePtrOutput) ConfidentialInstanceConfig() GceConfidentialInstan
 	}).(GceConfidentialInstanceConfigPtrOutput)
 }
 
-// Whether instances have no public IP address.
+// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
 func (o GceInstancePtrOutput) DisablePublicIpAddresses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *bool {
 		if v == nil {
@@ -2106,7 +2518,17 @@ func (o GceInstancePtrOutput) DisablePublicIpAddresses() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The name of a Compute Engine machine type.
+// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+func (o GceInstancePtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GceInstance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
 func (o GceInstancePtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *string {
 		if v == nil {
@@ -2116,7 +2538,7 @@ func (o GceInstancePtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of instances to pool for faster workstation startup.
+// Optional. The number of VMs that the system should keep idle so that new workstations can be started quickly for new users. Defaults to `0` in the API.
 func (o GceInstancePtrOutput) PoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *int {
 		if v == nil {
@@ -2126,7 +2548,7 @@ func (o GceInstancePtrOutput) PoolSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
+// Optional. The email address of the service account for Cloud Workstations VMs created with this configuration. When specified, be sure that the service account has `logginglogEntries.create` permission on the project so it can write logs out to Cloud Logging. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. If you as the administrator want to be able to `ssh` into the underlying VM, you need to set this value to a service account for which you have the `iam.serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be able to `ssh` into the underlying VM, use a service account where no one has that permission. If not set, VMs run with a service account provided by the Cloud Workstations service, and the image must be publicly accessible.
 func (o GceInstancePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *string {
 		if v == nil {
@@ -2136,7 +2558,17 @@ func (o GceInstancePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A set of Compute Engine Shielded instance options.
+// Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+func (o GceInstancePtrOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GceInstance) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. A set of Compute Engine Shielded instance options.
 func (o GceInstancePtrOutput) ShieldedInstanceConfig() GceShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *GceShieldedInstanceConfig {
 		if v == nil {
@@ -2146,7 +2578,7 @@ func (o GceInstancePtrOutput) ShieldedInstanceConfig() GceShieldedInstanceConfig
 	}).(GceShieldedInstanceConfigPtrOutput)
 }
 
-// Network tags to add to the Compute Engine machines backing the Workstations.
+// Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
 func (o GceInstancePtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GceInstance) []string {
 		if v == nil {
@@ -2158,25 +2590,29 @@ func (o GceInstancePtrOutput) Tags() pulumi.StringArrayOutput {
 
 // A runtime using a Compute Engine instance.
 type GceInstanceResponse struct {
-	// A list of the type and count of accelerator cards attached to the instance.
+	// Optional. A list of the type and count of accelerator cards attached to the instance.
 	Accelerators []AcceleratorResponse `pulumi:"accelerators"`
-	// Size of the boot disk in GB. Defaults to 50.
+	// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb int `pulumi:"bootDiskSizeGb"`
-	// A set of Compute Engine Confidential VM instance options.
+	// Optional. A set of Compute Engine Confidential VM instance options.
 	ConfidentialInstanceConfig GceConfidentialInstanceConfigResponse `pulumi:"confidentialInstanceConfig"`
-	// Whether instances have no public IP address.
+	// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
 	DisablePublicIpAddresses bool `pulumi:"disablePublicIpAddresses"`
-	// The name of a Compute Engine machine type.
+	// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
 	MachineType string `pulumi:"machineType"`
-	// Number of instances to pool for faster workstation startup.
+	// Optional. The number of VMs that the system should keep idle so that new workstations can be started quickly for new users. Defaults to `0` in the API.
 	PoolSize int `pulumi:"poolSize"`
 	// Number of instances currently available in the pool for faster workstation startup.
 	PooledInstances int `pulumi:"pooledInstances"`
-	// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
+	// Optional. The email address of the service account for Cloud Workstations VMs created with this configuration. When specified, be sure that the service account has `logginglogEntries.create` permission on the project so it can write logs out to Cloud Logging. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. If you as the administrator want to be able to `ssh` into the underlying VM, you need to set this value to a service account for which you have the `iam.serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be able to `ssh` into the underlying VM, use a service account where no one has that permission. If not set, VMs run with a service account provided by the Cloud Workstations service, and the image must be publicly accessible.
 	ServiceAccount string `pulumi:"serviceAccount"`
-	// A set of Compute Engine Shielded instance options.
+	// Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// Optional. A set of Compute Engine Shielded instance options.
 	ShieldedInstanceConfig GceShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
-	// Network tags to add to the Compute Engine machines backing the Workstations.
+	// Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
 	Tags []string `pulumi:"tags"`
 }
 
@@ -2201,32 +2637,37 @@ func (o GceInstanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// A list of the type and count of accelerator cards attached to the instance.
+// Optional. A list of the type and count of accelerator cards attached to the instance.
 func (o GceInstanceResponseOutput) Accelerators() AcceleratorResponseArrayOutput {
 	return o.ApplyT(func(v GceInstanceResponse) []AcceleratorResponse { return v.Accelerators }).(AcceleratorResponseArrayOutput)
 }
 
-// Size of the boot disk in GB. Defaults to 50.
+// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 func (o GceInstanceResponseOutput) BootDiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GceInstanceResponse) int { return v.BootDiskSizeGb }).(pulumi.IntOutput)
 }
 
-// A set of Compute Engine Confidential VM instance options.
+// Optional. A set of Compute Engine Confidential VM instance options.
 func (o GceInstanceResponseOutput) ConfidentialInstanceConfig() GceConfidentialInstanceConfigResponseOutput {
 	return o.ApplyT(func(v GceInstanceResponse) GceConfidentialInstanceConfigResponse { return v.ConfidentialInstanceConfig }).(GceConfidentialInstanceConfigResponseOutput)
 }
 
-// Whether instances have no public IP address.
+// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
 func (o GceInstanceResponseOutput) DisablePublicIpAddresses() pulumi.BoolOutput {
 	return o.ApplyT(func(v GceInstanceResponse) bool { return v.DisablePublicIpAddresses }).(pulumi.BoolOutput)
 }
 
-// The name of a Compute Engine machine type.
+// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+func (o GceInstanceResponseOutput) EnableNestedVirtualization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GceInstanceResponse) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
 func (o GceInstanceResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GceInstanceResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// Number of instances to pool for faster workstation startup.
+// Optional. The number of VMs that the system should keep idle so that new workstations can be started quickly for new users. Defaults to `0` in the API.
 func (o GceInstanceResponseOutput) PoolSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GceInstanceResponse) int { return v.PoolSize }).(pulumi.IntOutput)
 }
@@ -2236,32 +2677,311 @@ func (o GceInstanceResponseOutput) PooledInstances() pulumi.IntOutput {
 	return o.ApplyT(func(v GceInstanceResponse) int { return v.PooledInstances }).(pulumi.IntOutput)
 }
 
-// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
+// Optional. The email address of the service account for Cloud Workstations VMs created with this configuration. When specified, be sure that the service account has `logginglogEntries.create` permission on the project so it can write logs out to Cloud Logging. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. If you as the administrator want to be able to `ssh` into the underlying VM, you need to set this value to a service account for which you have the `iam.serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be able to `ssh` into the underlying VM, use a service account where no one has that permission. If not set, VMs run with a service account provided by the Cloud Workstations service, and the image must be publicly accessible.
 func (o GceInstanceResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GceInstanceResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-// A set of Compute Engine Shielded instance options.
+// Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+func (o GceInstanceResponseOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GceInstanceResponse) []string { return v.ServiceAccountScopes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A set of Compute Engine Shielded instance options.
 func (o GceInstanceResponseOutput) ShieldedInstanceConfig() GceShieldedInstanceConfigResponseOutput {
 	return o.ApplyT(func(v GceInstanceResponse) GceShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(GceShieldedInstanceConfigResponseOutput)
 }
 
-// Network tags to add to the Compute Engine machines backing the Workstations.
+// Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
 func (o GceInstanceResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GceInstanceResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk.
-type GceRegionalPersistentDisk struct {
-	// Type of the disk to use. Defaults to pd-standard.
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDisk struct {
+	// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
 	DiskType *string `pulumi:"diskType"`
-	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
+	// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceImage *string `pulumi:"sourceImage"`
+	// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
+}
+
+// GcePersistentDiskInput is an input type that accepts GcePersistentDiskArgs and GcePersistentDiskOutput values.
+// You can construct a concrete instance of `GcePersistentDiskInput` via:
+//
+//	GcePersistentDiskArgs{...}
+type GcePersistentDiskInput interface {
+	pulumi.Input
+
+	ToGcePersistentDiskOutput() GcePersistentDiskOutput
+	ToGcePersistentDiskOutputWithContext(context.Context) GcePersistentDiskOutput
+}
+
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDiskArgs struct {
+	// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceImage pulumi.StringPtrInput `pulumi:"sourceImage"`
+	// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
+}
+
+func (GcePersistentDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcePersistentDisk)(nil)).Elem()
+}
+
+func (i GcePersistentDiskArgs) ToGcePersistentDiskOutput() GcePersistentDiskOutput {
+	return i.ToGcePersistentDiskOutputWithContext(context.Background())
+}
+
+func (i GcePersistentDiskArgs) ToGcePersistentDiskOutputWithContext(ctx context.Context) GcePersistentDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcePersistentDiskOutput)
+}
+
+func (i GcePersistentDiskArgs) ToOutput(ctx context.Context) pulumix.Output[GcePersistentDisk] {
+	return pulumix.Output[GcePersistentDisk]{
+		OutputState: i.ToGcePersistentDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GcePersistentDiskArgs) ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput {
+	return i.ToGcePersistentDiskPtrOutputWithContext(context.Background())
+}
+
+func (i GcePersistentDiskArgs) ToGcePersistentDiskPtrOutputWithContext(ctx context.Context) GcePersistentDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcePersistentDiskOutput).ToGcePersistentDiskPtrOutputWithContext(ctx)
+}
+
+// GcePersistentDiskPtrInput is an input type that accepts GcePersistentDiskArgs, GcePersistentDiskPtr and GcePersistentDiskPtrOutput values.
+// You can construct a concrete instance of `GcePersistentDiskPtrInput` via:
+//
+//	        GcePersistentDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcePersistentDiskPtrInput interface {
+	pulumi.Input
+
+	ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput
+	ToGcePersistentDiskPtrOutputWithContext(context.Context) GcePersistentDiskPtrOutput
+}
+
+type gcePersistentDiskPtrType GcePersistentDiskArgs
+
+func GcePersistentDiskPtr(v *GcePersistentDiskArgs) GcePersistentDiskPtrInput {
+	return (*gcePersistentDiskPtrType)(v)
+}
+
+func (*gcePersistentDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcePersistentDisk)(nil)).Elem()
+}
+
+func (i *gcePersistentDiskPtrType) ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput {
+	return i.ToGcePersistentDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *gcePersistentDiskPtrType) ToGcePersistentDiskPtrOutputWithContext(ctx context.Context) GcePersistentDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcePersistentDiskPtrOutput)
+}
+
+func (i *gcePersistentDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*GcePersistentDisk] {
+	return pulumix.Output[*GcePersistentDisk]{
+		OutputState: i.ToGcePersistentDiskPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDiskOutput struct{ *pulumi.OutputState }
+
+func (GcePersistentDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcePersistentDisk)(nil)).Elem()
+}
+
+func (o GcePersistentDiskOutput) ToGcePersistentDiskOutput() GcePersistentDiskOutput {
+	return o
+}
+
+func (o GcePersistentDiskOutput) ToGcePersistentDiskOutputWithContext(ctx context.Context) GcePersistentDiskOutput {
+	return o
+}
+
+func (o GcePersistentDiskOutput) ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput {
+	return o.ToGcePersistentDiskPtrOutputWithContext(context.Background())
+}
+
+func (o GcePersistentDiskOutput) ToGcePersistentDiskPtrOutputWithContext(ctx context.Context) GcePersistentDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcePersistentDisk) *GcePersistentDisk {
+		return &v
+	}).(GcePersistentDiskPtrOutput)
+}
+
+func (o GcePersistentDiskOutput) ToOutput(ctx context.Context) pulumix.Output[GcePersistentDisk] {
+	return pulumix.Output[GcePersistentDisk]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+func (o GcePersistentDiskOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcePersistentDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+func (o GcePersistentDiskOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcePersistentDisk) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskOutput) SourceImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcePersistentDisk) *string { return v.SourceImage }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcePersistentDisk) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
+type GcePersistentDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (GcePersistentDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcePersistentDisk)(nil)).Elem()
+}
+
+func (o GcePersistentDiskPtrOutput) ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput {
+	return o
+}
+
+func (o GcePersistentDiskPtrOutput) ToGcePersistentDiskPtrOutputWithContext(ctx context.Context) GcePersistentDiskPtrOutput {
+	return o
+}
+
+func (o GcePersistentDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcePersistentDisk] {
+	return pulumix.Output[*GcePersistentDisk]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GcePersistentDiskPtrOutput) Elem() GcePersistentDiskOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) GcePersistentDisk {
+		if v != nil {
+			return *v
+		}
+		var ret GcePersistentDisk
+		return ret
+	}).(GcePersistentDiskOutput)
+}
+
+// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+func (o GcePersistentDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+func (o GcePersistentDiskPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskPtrOutput) SourceImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceSnapshot
+	}).(pulumi.StringPtrOutput)
+}
+
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDiskResponse struct {
+	// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+	DiskType string `pulumi:"diskType"`
+	// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+	ReadOnly bool `pulumi:"readOnly"`
+	// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceImage string `pulumi:"sourceImage"`
+	// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceSnapshot string `pulumi:"sourceSnapshot"`
+}
+
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDiskResponseOutput struct{ *pulumi.OutputState }
+
+func (GcePersistentDiskResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcePersistentDiskResponse)(nil)).Elem()
+}
+
+func (o GcePersistentDiskResponseOutput) ToGcePersistentDiskResponseOutput() GcePersistentDiskResponseOutput {
+	return o
+}
+
+func (o GcePersistentDiskResponseOutput) ToGcePersistentDiskResponseOutputWithContext(ctx context.Context) GcePersistentDiskResponseOutput {
+	return o
+}
+
+func (o GcePersistentDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcePersistentDiskResponse] {
+	return pulumix.Output[GcePersistentDiskResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+func (o GcePersistentDiskResponseOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GcePersistentDiskResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+func (o GcePersistentDiskResponseOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GcePersistentDiskResponse) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskResponseOutput) SourceImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GcePersistentDiskResponse) string { return v.SourceImage }).(pulumi.StringOutput)
+}
+
+// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskResponseOutput) SourceSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GcePersistentDiskResponse) string { return v.SourceSnapshot }).(pulumi.StringOutput)
+}
+
+// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
+type GceRegionalPersistentDisk struct {
+	// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
+	DiskType *string `pulumi:"diskType"`
+	// Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
 	FsType *string `pulumi:"fsType"`
-	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+	// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 	ReclaimPolicy *GceRegionalPersistentDiskReclaimPolicy `pulumi:"reclaimPolicy"`
-	// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
+	// Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
 	SizeGb *int `pulumi:"sizeGb"`
-	// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+	// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 }
 
@@ -2276,17 +2996,17 @@ type GceRegionalPersistentDiskInput interface {
 	ToGceRegionalPersistentDiskOutputWithContext(context.Context) GceRegionalPersistentDiskOutput
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk.
+// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDiskArgs struct {
-	// Type of the disk to use. Defaults to pd-standard.
+	// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
+	// Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
 	FsType pulumi.StringPtrInput `pulumi:"fsType"`
-	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+	// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 	ReclaimPolicy GceRegionalPersistentDiskReclaimPolicyPtrInput `pulumi:"reclaimPolicy"`
-	// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
+	// Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
-	// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+	// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
 	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
 }
 
@@ -2355,7 +3075,7 @@ func (i *gceRegionalPersistentDiskPtrType) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk.
+// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDiskOutput struct{ *pulumi.OutputState }
 
 func (GceRegionalPersistentDiskOutput) ElementType() reflect.Type {
@@ -2386,27 +3106,27 @@ func (o GceRegionalPersistentDiskOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// Type of the disk to use. Defaults to pd-standard.
+// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
 func (o GceRegionalPersistentDiskOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
+// Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
 func (o GceRegionalPersistentDiskOutput) FsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDisk) *string { return v.FsType }).(pulumi.StringPtrOutput)
 }
 
-// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 func (o GceRegionalPersistentDiskOutput) ReclaimPolicy() GceRegionalPersistentDiskReclaimPolicyPtrOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDisk) *GceRegionalPersistentDiskReclaimPolicy { return v.ReclaimPolicy }).(GceRegionalPersistentDiskReclaimPolicyPtrOutput)
 }
 
-// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
+// Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
 func (o GceRegionalPersistentDiskOutput) SizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
 }
 
-// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
 func (o GceRegionalPersistentDiskOutput) SourceSnapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDisk) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
 }
@@ -2441,7 +3161,7 @@ func (o GceRegionalPersistentDiskPtrOutput) Elem() GceRegionalPersistentDiskOutp
 	}).(GceRegionalPersistentDiskOutput)
 }
 
-// Type of the disk to use. Defaults to pd-standard.
+// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
 func (o GceRegionalPersistentDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GceRegionalPersistentDisk) *string {
 		if v == nil {
@@ -2451,7 +3171,7 @@ func (o GceRegionalPersistentDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
+// Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
 func (o GceRegionalPersistentDiskPtrOutput) FsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GceRegionalPersistentDisk) *string {
 		if v == nil {
@@ -2461,7 +3181,7 @@ func (o GceRegionalPersistentDiskPtrOutput) FsType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 func (o GceRegionalPersistentDiskPtrOutput) ReclaimPolicy() GceRegionalPersistentDiskReclaimPolicyPtrOutput {
 	return o.ApplyT(func(v *GceRegionalPersistentDisk) *GceRegionalPersistentDiskReclaimPolicy {
 		if v == nil {
@@ -2471,7 +3191,7 @@ func (o GceRegionalPersistentDiskPtrOutput) ReclaimPolicy() GceRegionalPersisten
 	}).(GceRegionalPersistentDiskReclaimPolicyPtrOutput)
 }
 
-// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
+// Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
 func (o GceRegionalPersistentDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GceRegionalPersistentDisk) *int {
 		if v == nil {
@@ -2481,7 +3201,7 @@ func (o GceRegionalPersistentDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
 func (o GceRegionalPersistentDiskPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GceRegionalPersistentDisk) *string {
 		if v == nil {
@@ -2491,21 +3211,21 @@ func (o GceRegionalPersistentDiskPtrOutput) SourceSnapshot() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk.
+// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDiskResponse struct {
-	// Type of the disk to use. Defaults to pd-standard.
+	// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
 	DiskType string `pulumi:"diskType"`
-	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
+	// Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
 	FsType string `pulumi:"fsType"`
-	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+	// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 	ReclaimPolicy string `pulumi:"reclaimPolicy"`
-	// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
+	// Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
 	SizeGb int `pulumi:"sizeGb"`
-	// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+	// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
 	SourceSnapshot string `pulumi:"sourceSnapshot"`
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk.
+// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDiskResponseOutput struct{ *pulumi.OutputState }
 
 func (GceRegionalPersistentDiskResponseOutput) ElementType() reflect.Type {
@@ -2526,38 +3246,38 @@ func (o GceRegionalPersistentDiskResponseOutput) ToOutput(ctx context.Context) p
 	}
 }
 
-// Type of the disk to use. Defaults to pd-standard.
+// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
 func (o GceRegionalPersistentDiskResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
-// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
+// Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
 func (o GceRegionalPersistentDiskResponseOutput) FsType() pulumi.StringOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) string { return v.FsType }).(pulumi.StringOutput)
 }
 
-// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 func (o GceRegionalPersistentDiskResponseOutput) ReclaimPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) string { return v.ReclaimPolicy }).(pulumi.StringOutput)
 }
 
-// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
+// Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
 func (o GceRegionalPersistentDiskResponseOutput) SizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) int { return v.SizeGb }).(pulumi.IntOutput)
 }
 
-// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
 func (o GceRegionalPersistentDiskResponseOutput) SourceSnapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) string { return v.SourceSnapshot }).(pulumi.StringOutput)
 }
 
 // A set of Compute Engine Shielded instance options.
 type GceShieldedInstanceConfig struct {
-	// Whether the instance has integrity monitoring enabled.
+	// Optional. Whether the instance has integrity monitoring enabled.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
-	// Whether the instance has Secure Boot enabled.
+	// Optional. Whether the instance has Secure Boot enabled.
 	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
-	// Whether the instance has the vTPM enabled.
+	// Optional. Whether the instance has the vTPM enabled.
 	EnableVtpm *bool `pulumi:"enableVtpm"`
 }
 
@@ -2574,11 +3294,11 @@ type GceShieldedInstanceConfigInput interface {
 
 // A set of Compute Engine Shielded instance options.
 type GceShieldedInstanceConfigArgs struct {
-	// Whether the instance has integrity monitoring enabled.
+	// Optional. Whether the instance has integrity monitoring enabled.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
-	// Whether the instance has Secure Boot enabled.
+	// Optional. Whether the instance has Secure Boot enabled.
 	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
-	// Whether the instance has the vTPM enabled.
+	// Optional. Whether the instance has the vTPM enabled.
 	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
 }
 
@@ -2678,17 +3398,17 @@ func (o GceShieldedInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// Whether the instance has integrity monitoring enabled.
+// Optional. Whether the instance has integrity monitoring enabled.
 func (o GceShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GceShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the instance has Secure Boot enabled.
+// Optional. Whether the instance has Secure Boot enabled.
 func (o GceShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GceShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the instance has the vTPM enabled.
+// Optional. Whether the instance has the vTPM enabled.
 func (o GceShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GceShieldedInstanceConfig) *bool { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
 }
@@ -2723,7 +3443,7 @@ func (o GceShieldedInstanceConfigPtrOutput) Elem() GceShieldedInstanceConfigOutp
 	}).(GceShieldedInstanceConfigOutput)
 }
 
-// Whether the instance has integrity monitoring enabled.
+// Optional. Whether the instance has integrity monitoring enabled.
 func (o GceShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GceShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -2733,7 +3453,7 @@ func (o GceShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether the instance has Secure Boot enabled.
+// Optional. Whether the instance has Secure Boot enabled.
 func (o GceShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GceShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -2743,7 +3463,7 @@ func (o GceShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether the instance has the vTPM enabled.
+// Optional. Whether the instance has the vTPM enabled.
 func (o GceShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GceShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -2755,11 +3475,11 @@ func (o GceShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
 
 // A set of Compute Engine Shielded instance options.
 type GceShieldedInstanceConfigResponse struct {
-	// Whether the instance has integrity monitoring enabled.
+	// Optional. Whether the instance has integrity monitoring enabled.
 	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
-	// Whether the instance has Secure Boot enabled.
+	// Optional. Whether the instance has Secure Boot enabled.
 	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
-	// Whether the instance has the vTPM enabled.
+	// Optional. Whether the instance has the vTPM enabled.
 	EnableVtpm bool `pulumi:"enableVtpm"`
 }
 
@@ -2784,17 +3504,17 @@ func (o GceShieldedInstanceConfigResponseOutput) ToOutput(ctx context.Context) p
 	}
 }
 
-// Whether the instance has integrity monitoring enabled.
+// Optional. Whether the instance has integrity monitoring enabled.
 func (o GceShieldedInstanceConfigResponseOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v GceShieldedInstanceConfigResponse) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
 }
 
-// Whether the instance has Secure Boot enabled.
+// Optional. Whether the instance has Secure Boot enabled.
 func (o GceShieldedInstanceConfigResponseOutput) EnableSecureBoot() pulumi.BoolOutput {
 	return o.ApplyT(func(v GceShieldedInstanceConfigResponse) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
 }
 
-// Whether the instance has the vTPM enabled.
+// Optional. Whether the instance has the vTPM enabled.
 func (o GceShieldedInstanceConfigResponseOutput) EnableVtpm() pulumi.BoolOutput {
 	return o.ApplyT(func(v GceShieldedInstanceConfigResponse) bool { return v.EnableVtpm }).(pulumi.BoolOutput)
 }
@@ -2999,7 +3719,7 @@ func (o HostResponseOutput) GceInstance() GceInstanceResponseOutput {
 type PersistentDirectory struct {
 	// A PersistentDirectory backed by a Compute Engine persistent disk.
 	GcePd *GceRegionalPersistentDisk `pulumi:"gcePd"`
-	// Location of this directory in the running workstation.
+	// Optional. Location of this directory in the running workstation.
 	MountPath *string `pulumi:"mountPath"`
 }
 
@@ -3018,7 +3738,7 @@ type PersistentDirectoryInput interface {
 type PersistentDirectoryArgs struct {
 	// A PersistentDirectory backed by a Compute Engine persistent disk.
 	GcePd GceRegionalPersistentDiskPtrInput `pulumi:"gcePd"`
-	// Location of this directory in the running workstation.
+	// Optional. Location of this directory in the running workstation.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
 }
 
@@ -3097,7 +3817,7 @@ func (o PersistentDirectoryOutput) GcePd() GceRegionalPersistentDiskPtrOutput {
 	return o.ApplyT(func(v PersistentDirectory) *GceRegionalPersistentDisk { return v.GcePd }).(GceRegionalPersistentDiskPtrOutput)
 }
 
-// Location of this directory in the running workstation.
+// Optional. Location of this directory in the running workstation.
 func (o PersistentDirectoryOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PersistentDirectory) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
@@ -3132,7 +3852,7 @@ func (o PersistentDirectoryArrayOutput) Index(i pulumi.IntInput) PersistentDirec
 type PersistentDirectoryResponse struct {
 	// A PersistentDirectory backed by a Compute Engine persistent disk.
 	GcePd GceRegionalPersistentDiskResponse `pulumi:"gcePd"`
-	// Location of this directory in the running workstation.
+	// Optional. Location of this directory in the running workstation.
 	MountPath string `pulumi:"mountPath"`
 }
 
@@ -3162,7 +3882,7 @@ func (o PersistentDirectoryResponseOutput) GcePd() GceRegionalPersistentDiskResp
 	return o.ApplyT(func(v PersistentDirectoryResponse) GceRegionalPersistentDiskResponse { return v.GcePd }).(GceRegionalPersistentDiskResponseOutput)
 }
 
-// Location of this directory in the running workstation.
+// Optional. Location of this directory in the running workstation.
 func (o PersistentDirectoryResponseOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v PersistentDirectoryResponse) string { return v.MountPath }).(pulumi.StringOutput)
 }
@@ -3193,9 +3913,9 @@ func (o PersistentDirectoryResponseArrayOutput) Index(i pulumi.IntInput) Persist
 	}).(PersistentDirectoryResponseOutput)
 }
 
-// Configuration options for private clusters.
+// Configuration options for private workstation clusters.
 type PrivateClusterConfig struct {
-	// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+	// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
 	AllowedProjects []string `pulumi:"allowedProjects"`
 	// Immutable. Whether Workstations endpoint is private.
 	EnablePrivateEndpoint *bool `pulumi:"enablePrivateEndpoint"`
@@ -3212,9 +3932,9 @@ type PrivateClusterConfigInput interface {
 	ToPrivateClusterConfigOutputWithContext(context.Context) PrivateClusterConfigOutput
 }
 
-// Configuration options for private clusters.
+// Configuration options for private workstation clusters.
 type PrivateClusterConfigArgs struct {
-	// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+	// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
 	AllowedProjects pulumi.StringArrayInput `pulumi:"allowedProjects"`
 	// Immutable. Whether Workstations endpoint is private.
 	EnablePrivateEndpoint pulumi.BoolPtrInput `pulumi:"enablePrivateEndpoint"`
@@ -3285,7 +4005,7 @@ func (i *privateClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// Configuration options for private clusters.
+// Configuration options for private workstation clusters.
 type PrivateClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (PrivateClusterConfigOutput) ElementType() reflect.Type {
@@ -3316,7 +4036,7 @@ func (o PrivateClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
 func (o PrivateClusterConfigOutput) AllowedProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivateClusterConfig) []string { return v.AllowedProjects }).(pulumi.StringArrayOutput)
 }
@@ -3356,7 +4076,7 @@ func (o PrivateClusterConfigPtrOutput) Elem() PrivateClusterConfigOutput {
 	}).(PrivateClusterConfigOutput)
 }
 
-// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
 func (o PrivateClusterConfigPtrOutput) AllowedProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PrivateClusterConfig) []string {
 		if v == nil {
@@ -3376,19 +4096,19 @@ func (o PrivateClusterConfigPtrOutput) EnablePrivateEndpoint() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configuration options for private clusters.
+// Configuration options for private workstation clusters.
 type PrivateClusterConfigResponse struct {
-	// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+	// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
 	AllowedProjects []string `pulumi:"allowedProjects"`
-	// Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
+	// Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
 	ClusterHostname string `pulumi:"clusterHostname"`
 	// Immutable. Whether Workstations endpoint is private.
 	EnablePrivateEndpoint bool `pulumi:"enablePrivateEndpoint"`
-	// Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
+	// Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the workstation cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
 	ServiceAttachmentUri string `pulumi:"serviceAttachmentUri"`
 }
 
-// Configuration options for private clusters.
+// Configuration options for private workstation clusters.
 type PrivateClusterConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateClusterConfigResponseOutput) ElementType() reflect.Type {
@@ -3409,12 +4129,12 @@ func (o PrivateClusterConfigResponseOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
-// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
 func (o PrivateClusterConfigResponseOutput) AllowedProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivateClusterConfigResponse) []string { return v.AllowedProjects }).(pulumi.StringArrayOutput)
 }
 
-// Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
+// Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
 func (o PrivateClusterConfigResponseOutput) ClusterHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateClusterConfigResponse) string { return v.ClusterHostname }).(pulumi.StringOutput)
 }
@@ -3424,16 +4144,16 @@ func (o PrivateClusterConfigResponseOutput) EnablePrivateEndpoint() pulumi.BoolO
 	return o.ApplyT(func(v PrivateClusterConfigResponse) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
 }
 
-// Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
+// Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the workstation cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
 func (o PrivateClusterConfigResponseOutput) ServiceAttachmentUri() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateClusterConfigResponse) string { return v.ServiceAttachmentUri }).(pulumi.StringOutput)
 }
 
 // A readiness check to be performed on a workstation.
 type ReadinessCheck struct {
-	// Path to which the request should be sent.
+	// Optional. Path to which the request should be sent.
 	Path *string `pulumi:"path"`
-	// Port to which the request should be sent.
+	// Optional. Port to which the request should be sent.
 	Port *int `pulumi:"port"`
 }
 
@@ -3450,9 +4170,9 @@ type ReadinessCheckInput interface {
 
 // A readiness check to be performed on a workstation.
 type ReadinessCheckArgs struct {
-	// Path to which the request should be sent.
+	// Optional. Path to which the request should be sent.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Port to which the request should be sent.
+	// Optional. Port to which the request should be sent.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -3526,12 +4246,12 @@ func (o ReadinessCheckOutput) ToOutput(ctx context.Context) pulumix.Output[Readi
 	}
 }
 
-// Path to which the request should be sent.
+// Optional. Path to which the request should be sent.
 func (o ReadinessCheckOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReadinessCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Port to which the request should be sent.
+// Optional. Port to which the request should be sent.
 func (o ReadinessCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ReadinessCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -3564,9 +4284,9 @@ func (o ReadinessCheckArrayOutput) Index(i pulumi.IntInput) ReadinessCheckOutput
 
 // A readiness check to be performed on a workstation.
 type ReadinessCheckResponse struct {
-	// Path to which the request should be sent.
+	// Optional. Path to which the request should be sent.
 	Path string `pulumi:"path"`
-	// Port to which the request should be sent.
+	// Optional. Port to which the request should be sent.
 	Port int `pulumi:"port"`
 }
 
@@ -3591,12 +4311,12 @@ func (o ReadinessCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// Path to which the request should be sent.
+// Optional. Path to which the request should be sent.
 func (o ReadinessCheckResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ReadinessCheckResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Port to which the request should be sent.
+// Optional. Port to which the request should be sent.
 func (o ReadinessCheckResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ReadinessCheckResponse) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -3712,12 +4432,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPtrInput)(nil)).Elem(), ContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyPtrInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigInput)(nil)).Elem(), DomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigPtrInput)(nil)).Elem(), DomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralDirectoryInput)(nil)).Elem(), EphemeralDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralDirectoryArrayInput)(nil)).Elem(), EphemeralDirectoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceConfidentialInstanceConfigInput)(nil)).Elem(), GceConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceConfidentialInstanceConfigPtrInput)(nil)).Elem(), GceConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceInstanceInput)(nil)).Elem(), GceInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceInstancePtrInput)(nil)).Elem(), GceInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskInput)(nil)).Elem(), GcePersistentDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskPtrInput)(nil)).Elem(), GcePersistentDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceRegionalPersistentDiskInput)(nil)).Elem(), GceRegionalPersistentDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceRegionalPersistentDiskPtrInput)(nil)).Elem(), GceRegionalPersistentDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceShieldedInstanceConfigInput)(nil)).Elem(), GceShieldedInstanceConfigArgs{})
@@ -3752,6 +4478,13 @@ func init() {
 	pulumi.RegisterOutputType(CustomerEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyResponseOutput{})
+	pulumi.RegisterOutputType(DomainConfigOutput{})
+	pulumi.RegisterOutputType(DomainConfigPtrOutput{})
+	pulumi.RegisterOutputType(DomainConfigResponseOutput{})
+	pulumi.RegisterOutputType(EphemeralDirectoryOutput{})
+	pulumi.RegisterOutputType(EphemeralDirectoryArrayOutput{})
+	pulumi.RegisterOutputType(EphemeralDirectoryResponseOutput{})
+	pulumi.RegisterOutputType(EphemeralDirectoryResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -3761,6 +4494,9 @@ func init() {
 	pulumi.RegisterOutputType(GceInstanceOutput{})
 	pulumi.RegisterOutputType(GceInstancePtrOutput{})
 	pulumi.RegisterOutputType(GceInstanceResponseOutput{})
+	pulumi.RegisterOutputType(GcePersistentDiskOutput{})
+	pulumi.RegisterOutputType(GcePersistentDiskPtrOutput{})
+	pulumi.RegisterOutputType(GcePersistentDiskResponseOutput{})
 	pulumi.RegisterOutputType(GceRegionalPersistentDiskOutput{})
 	pulumi.RegisterOutputType(GceRegionalPersistentDiskPtrOutput{})
 	pulumi.RegisterOutputType(GceRegionalPersistentDiskResponseOutput{})

@@ -30,6 +30,7 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input['MemcacheParametersArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reserved_ip_range_id: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -44,6 +45,7 @@ class InstanceArgs:
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         :param pulumi.Input['MemcacheParametersArgs'] parameters: User defined parameters to apply to the memcached process on each node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_ip_range_id: Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -69,6 +71,8 @@ class InstanceArgs:
             pulumi.set(__self__, "parameters", parameters)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if reserved_ip_range_id is not None:
+            pulumi.set(__self__, "reserved_ip_range_id", reserved_ip_range_id)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
 
@@ -223,6 +227,18 @@ class InstanceArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="reservedIpRangeId")
+    def reserved_ip_range_id(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+        """
+        return pulumi.get(self, "reserved_ip_range_id")
+
+    @reserved_ip_range_id.setter
+    def reserved_ip_range_id(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "reserved_ip_range_id", value)
+
+    @property
     @pulumi.getter
     def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -253,6 +269,7 @@ class Instance(pulumi.CustomResource):
                  node_count: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[pulumi.InputType['MemcacheParametersArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reserved_ip_range_id: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -271,6 +288,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Configuration for Memcached nodes.
         :param pulumi.Input[int] node_count: Number of nodes in the Memcached instance.
         :param pulumi.Input[pulumi.InputType['MemcacheParametersArgs']] parameters: User defined parameters to apply to the memcached process on each node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_ip_range_id: Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
         ...
@@ -310,6 +328,7 @@ class Instance(pulumi.CustomResource):
                  node_count: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[pulumi.InputType['MemcacheParametersArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reserved_ip_range_id: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -339,6 +358,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["project"] = project
+            __props__.__dict__["reserved_ip_range_id"] = reserved_ip_range_id
             __props__.__dict__["zones"] = zones
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoint"] = None
@@ -389,6 +409,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["node_count"] = None
         __props__.__dict__["parameters"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["reserved_ip_range_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["zones"] = None
@@ -531,6 +552,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="reservedIpRangeId")
+    def reserved_ip_range_id(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+        """
+        return pulumi.get(self, "reserved_ip_range_id")
 
     @property
     @pulumi.getter

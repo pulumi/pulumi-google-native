@@ -26,6 +26,7 @@ class ApiProductArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  graphql_operation_group: Optional[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationGroupArgs']] = None,
+                 grpc_operation_group: Optional[pulumi.Input['GoogleCloudApigeeV1GrpcOperationGroupArgs']] = None,
                  last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_group: Optional[pulumi.Input['GoogleCloudApigeeV1OperationGroupArgs']] = None,
@@ -45,6 +46,7 @@ class ApiProductArgs:
         :param pulumi.Input[str] display_name: Name displayed in the UI or developer portal to developers registering for API access.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] environments: Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected. By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment. This setting is used, for example, to prevent resources associated with API proxies in `prod` from being accessed by API proxies deployed in `test`.
         :param pulumi.Input['GoogleCloudApigeeV1GraphQLOperationGroupArgs'] graphql_operation_group: Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
+        :param pulumi.Input['GoogleCloudApigeeV1GrpcOperationGroupArgs'] grpc_operation_group: Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
         :param pulumi.Input[str] last_modified_at: Response only. Modified time of this environment as milliseconds since epoch.
         :param pulumi.Input[str] name: Internal name of the API product. Characters you can use in the name are restricted to: `A-Z0-9._\\-$ %`. **Note:** The internal name cannot be edited when updating the API product.
         :param pulumi.Input['GoogleCloudApigeeV1OperationGroupArgs'] operation_group: Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
@@ -72,6 +74,8 @@ class ApiProductArgs:
             pulumi.set(__self__, "environments", environments)
         if graphql_operation_group is not None:
             pulumi.set(__self__, "graphql_operation_group", graphql_operation_group)
+        if grpc_operation_group is not None:
+            pulumi.set(__self__, "grpc_operation_group", grpc_operation_group)
         if last_modified_at is not None:
             pulumi.set(__self__, "last_modified_at", last_modified_at)
         if name is not None:
@@ -197,6 +201,18 @@ class ApiProductArgs:
         pulumi.set(self, "graphql_operation_group", value)
 
     @property
+    @pulumi.getter(name="grpcOperationGroup")
+    def grpc_operation_group(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1GrpcOperationGroupArgs']]:
+        """
+        Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+        """
+        return pulumi.get(self, "grpc_operation_group")
+
+    @grpc_operation_group.setter
+    def grpc_operation_group(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1GrpcOperationGroupArgs']]):
+        pulumi.set(self, "grpc_operation_group", value)
+
+    @property
     @pulumi.getter(name="lastModifiedAt")
     def last_modified_at(self) -> Optional[pulumi.Input[str]]:
         """
@@ -318,6 +334,7 @@ class ApiProduct(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  graphql_operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1GraphQLOperationGroupArgs']]] = None,
+                 grpc_operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1GrpcOperationGroupArgs']]] = None,
                  last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1OperationGroupArgs']]] = None,
@@ -342,6 +359,7 @@ class ApiProduct(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name displayed in the UI or developer portal to developers registering for API access.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] environments: Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected. By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment. This setting is used, for example, to prevent resources associated with API proxies in `prod` from being accessed by API proxies deployed in `test`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1GraphQLOperationGroupArgs']] graphql_operation_group: Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1GrpcOperationGroupArgs']] grpc_operation_group: Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
         :param pulumi.Input[str] last_modified_at: Response only. Modified time of this environment as milliseconds since epoch.
         :param pulumi.Input[str] name: Internal name of the API product. Characters you can use in the name are restricted to: `A-Z0-9._\\-$ %`. **Note:** The internal name cannot be edited when updating the API product.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1OperationGroupArgs']] operation_group: Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
@@ -384,6 +402,7 @@ class ApiProduct(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  graphql_operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1GraphQLOperationGroupArgs']]] = None,
+                 grpc_operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1GrpcOperationGroupArgs']]] = None,
                  last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1OperationGroupArgs']]] = None,
@@ -411,6 +430,7 @@ class ApiProduct(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["environments"] = environments
             __props__.__dict__["graphql_operation_group"] = graphql_operation_group
+            __props__.__dict__["grpc_operation_group"] = grpc_operation_group
             __props__.__dict__["last_modified_at"] = last_modified_at
             __props__.__dict__["name"] = name
             __props__.__dict__["operation_group"] = operation_group
@@ -455,6 +475,7 @@ class ApiProduct(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["environments"] = None
         __props__.__dict__["graphql_operation_group"] = None
+        __props__.__dict__["grpc_operation_group"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operation_group"] = None
@@ -530,6 +551,14 @@ class ApiProduct(pulumi.CustomResource):
         Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
         """
         return pulumi.get(self, "graphql_operation_group")
+
+    @property
+    @pulumi.getter(name="grpcOperationGroup")
+    def grpc_operation_group(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1GrpcOperationGroupResponse']:
+        """
+        Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+        """
+        return pulumi.get(self, "grpc_operation_group")
 
     @property
     @pulumi.getter(name="lastModifiedAt")

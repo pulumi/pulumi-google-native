@@ -15,12 +15,14 @@ export function getDataset(args: GetDatasetArgs, opts?: pulumi.InvokeOptions): P
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigquery/v2:getDataset", {
         "datasetId": args.datasetId,
+        "datasetView": args.datasetView,
         "project": args.project,
     }, opts);
 }
 
 export interface GetDatasetArgs {
     datasetId: string;
+    datasetView?: string;
     project?: string;
 }
 
@@ -62,6 +64,10 @@ export interface GetDatasetResult {
      * A hash of the resource.
      */
     readonly etag: string;
+    /**
+     * [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+     */
+    readonly externalDatasetReference: outputs.bigquery.v2.ExternalDatasetReferenceResponse;
     /**
      * [Optional] A descriptive name for the dataset.
      */
@@ -116,5 +122,6 @@ export function getDatasetOutput(args: GetDatasetOutputArgs, opts?: pulumi.Invok
 
 export interface GetDatasetOutputArgs {
     datasetId: pulumi.Input<string>;
+    datasetView?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

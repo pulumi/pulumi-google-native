@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         }
 
         /// <summary>
+        /// Optional. Dependency repository configuration.
+        /// </summary>
+        [Input("repositoryConfig")]
+        public Input<Inputs.RepositoryConfigArgs>? RepositoryConfig { get; set; }
+
+        /// <summary>
         /// Optional. Version of the batch runtime.
         /// </summary>
         [Input("version")]

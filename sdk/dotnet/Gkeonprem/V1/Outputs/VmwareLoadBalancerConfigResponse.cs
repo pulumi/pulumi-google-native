@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
         /// </summary>
         public readonly Outputs.VmwareMetalLbConfigResponse MetalLbConfig;
         /// <summary>
+        /// Configuration for Seesaw typed load balancers.
+        /// </summary>
+        public readonly Outputs.VmwareSeesawConfigResponse SeesawConfig;
+        /// <summary>
         /// The VIPs used by the load balancer.
         /// </summary>
         public readonly Outputs.VmwareVipConfigResponse VipConfig;
@@ -41,11 +45,14 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
 
             Outputs.VmwareMetalLbConfigResponse metalLbConfig,
 
+            Outputs.VmwareSeesawConfigResponse seesawConfig,
+
             Outputs.VmwareVipConfigResponse vipConfig)
         {
             F5Config = f5Config;
             ManualLbConfig = manualLbConfig;
             MetalLbConfig = metalLbConfig;
+            SeesawConfig = seesawConfig;
             VipConfig = vipConfig;
         }
     }

@@ -11,6 +11,197 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// A field that lets you specify which SSL certificate type Hosting creates for your domain name. Spark plan custom domains only have access to the `GROUPED` cert type, while Blaze plan domains can select any option.
+type CustomDomainCertPreference string
+
+const (
+	// The certificate's type is unspecified. The message is invalid if this is unspecified.
+	CustomDomainCertPreferenceTypeUnspecified = CustomDomainCertPreference("TYPE_UNSPECIFIED")
+	// A short-lived certificate type that covers a domain name temporarily, while Hosting creates a more permanent certificate.
+	CustomDomainCertPreferenceTemporary = CustomDomainCertPreference("TEMPORARY")
+	// The standard certificate for Spark plan custom domains.
+	CustomDomainCertPreferenceGrouped = CustomDomainCertPreference("GROUPED")
+	// Blaze plan only. A certificate that covers from 1 to 100 domain names with custom domains on the same Firebase project.
+	CustomDomainCertPreferenceProjectGrouped = CustomDomainCertPreference("PROJECT_GROUPED")
+	// Blaze plan only. A certificate that covers a single domain name.
+	CustomDomainCertPreferenceDedicated = CustomDomainCertPreference("DEDICATED")
+)
+
+func (CustomDomainCertPreference) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainCertPreference)(nil)).Elem()
+}
+
+func (e CustomDomainCertPreference) ToCustomDomainCertPreferenceOutput() CustomDomainCertPreferenceOutput {
+	return pulumi.ToOutput(e).(CustomDomainCertPreferenceOutput)
+}
+
+func (e CustomDomainCertPreference) ToCustomDomainCertPreferenceOutputWithContext(ctx context.Context) CustomDomainCertPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CustomDomainCertPreferenceOutput)
+}
+
+func (e CustomDomainCertPreference) ToCustomDomainCertPreferencePtrOutput() CustomDomainCertPreferencePtrOutput {
+	return e.ToCustomDomainCertPreferencePtrOutputWithContext(context.Background())
+}
+
+func (e CustomDomainCertPreference) ToCustomDomainCertPreferencePtrOutputWithContext(ctx context.Context) CustomDomainCertPreferencePtrOutput {
+	return CustomDomainCertPreference(e).ToCustomDomainCertPreferenceOutputWithContext(ctx).ToCustomDomainCertPreferencePtrOutputWithContext(ctx)
+}
+
+func (e CustomDomainCertPreference) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomDomainCertPreference) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomDomainCertPreference) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CustomDomainCertPreference) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CustomDomainCertPreferenceOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainCertPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainCertPreference)(nil)).Elem()
+}
+
+func (o CustomDomainCertPreferenceOutput) ToCustomDomainCertPreferenceOutput() CustomDomainCertPreferenceOutput {
+	return o
+}
+
+func (o CustomDomainCertPreferenceOutput) ToCustomDomainCertPreferenceOutputWithContext(ctx context.Context) CustomDomainCertPreferenceOutput {
+	return o
+}
+
+func (o CustomDomainCertPreferenceOutput) ToCustomDomainCertPreferencePtrOutput() CustomDomainCertPreferencePtrOutput {
+	return o.ToCustomDomainCertPreferencePtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainCertPreferenceOutput) ToCustomDomainCertPreferencePtrOutputWithContext(ctx context.Context) CustomDomainCertPreferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainCertPreference) *CustomDomainCertPreference {
+		return &v
+	}).(CustomDomainCertPreferencePtrOutput)
+}
+
+func (o CustomDomainCertPreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[CustomDomainCertPreference] {
+	return pulumix.Output[CustomDomainCertPreference]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CustomDomainCertPreferenceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CustomDomainCertPreferenceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomDomainCertPreference) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CustomDomainCertPreferenceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainCertPreferenceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomDomainCertPreference) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomDomainCertPreferencePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainCertPreferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainCertPreference)(nil)).Elem()
+}
+
+func (o CustomDomainCertPreferencePtrOutput) ToCustomDomainCertPreferencePtrOutput() CustomDomainCertPreferencePtrOutput {
+	return o
+}
+
+func (o CustomDomainCertPreferencePtrOutput) ToCustomDomainCertPreferencePtrOutputWithContext(ctx context.Context) CustomDomainCertPreferencePtrOutput {
+	return o
+}
+
+func (o CustomDomainCertPreferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomDomainCertPreference] {
+	return pulumix.Output[*CustomDomainCertPreference]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CustomDomainCertPreferencePtrOutput) Elem() CustomDomainCertPreferenceOutput {
+	return o.ApplyT(func(v *CustomDomainCertPreference) CustomDomainCertPreference {
+		if v != nil {
+			return *v
+		}
+		var ret CustomDomainCertPreference
+		return ret
+	}).(CustomDomainCertPreferenceOutput)
+}
+
+func (o CustomDomainCertPreferencePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainCertPreferencePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomDomainCertPreference) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CustomDomainCertPreferenceInput is an input type that accepts CustomDomainCertPreferenceArgs and CustomDomainCertPreferenceOutput values.
+// You can construct a concrete instance of `CustomDomainCertPreferenceInput` via:
+//
+//	CustomDomainCertPreferenceArgs{...}
+type CustomDomainCertPreferenceInput interface {
+	pulumi.Input
+
+	ToCustomDomainCertPreferenceOutput() CustomDomainCertPreferenceOutput
+	ToCustomDomainCertPreferenceOutputWithContext(context.Context) CustomDomainCertPreferenceOutput
+}
+
+var customDomainCertPreferencePtrType = reflect.TypeOf((**CustomDomainCertPreference)(nil)).Elem()
+
+type CustomDomainCertPreferencePtrInput interface {
+	pulumi.Input
+
+	ToCustomDomainCertPreferencePtrOutput() CustomDomainCertPreferencePtrOutput
+	ToCustomDomainCertPreferencePtrOutputWithContext(context.Context) CustomDomainCertPreferencePtrOutput
+}
+
+type customDomainCertPreferencePtr string
+
+func CustomDomainCertPreferencePtr(v string) CustomDomainCertPreferencePtrInput {
+	return (*customDomainCertPreferencePtr)(&v)
+}
+
+func (*customDomainCertPreferencePtr) ElementType() reflect.Type {
+	return customDomainCertPreferencePtrType
+}
+
+func (in *customDomainCertPreferencePtr) ToCustomDomainCertPreferencePtrOutput() CustomDomainCertPreferencePtrOutput {
+	return pulumi.ToOutput(in).(CustomDomainCertPreferencePtrOutput)
+}
+
+func (in *customDomainCertPreferencePtr) ToCustomDomainCertPreferencePtrOutputWithContext(ctx context.Context) CustomDomainCertPreferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CustomDomainCertPreferencePtrOutput)
+}
+
+func (in *customDomainCertPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomDomainCertPreference] {
+	return pulumix.Output[*CustomDomainCertPreference]{
+		OutputState: in.ToCustomDomainCertPreferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. The redirect status code.
 type DomainRedirectType string
 
@@ -778,6 +969,8 @@ const (
 )
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainCertPreferenceInput)(nil)).Elem(), CustomDomainCertPreference("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainCertPreferencePtrInput)(nil)).Elem(), CustomDomainCertPreference("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectTypeInput)(nil)).Elem(), DomainRedirectType("REDIRECT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectTypePtrInput)(nil)).Elem(), DomainRedirectType("REDIRECT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseTypeInput)(nil)).Elem(), ReleaseType("TYPE_UNSPECIFIED"))
@@ -786,6 +979,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigAppAssociationPtrInput)(nil)).Elem(), ServingConfigAppAssociation("AUTO"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigTrailingSlashBehaviorInput)(nil)).Elem(), ServingConfigTrailingSlashBehavior("TRAILING_SLASH_BEHAVIOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigTrailingSlashBehaviorPtrInput)(nil)).Elem(), ServingConfigTrailingSlashBehavior("TRAILING_SLASH_BEHAVIOR_UNSPECIFIED"))
+	pulumi.RegisterOutputType(CustomDomainCertPreferenceOutput{})
+	pulumi.RegisterOutputType(CustomDomainCertPreferencePtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectTypeOutput{})
 	pulumi.RegisterOutputType(DomainRedirectTypePtrOutput{})
 	pulumi.RegisterOutputType(ReleaseTypeOutput{})

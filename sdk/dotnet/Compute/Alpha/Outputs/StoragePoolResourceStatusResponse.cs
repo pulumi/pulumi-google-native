@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class StoragePoolResourceStatusResponse
     {
         /// <summary>
-        /// Sum of all the disk' provisioned IOPS.
+        /// Sum of all the disks' provisioned IOPS.
         /// </summary>
         public readonly string AggregateDiskProvisionedIops;
         /// <summary>
@@ -44,6 +44,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
         /// </summary>
         public readonly string UsedReducedBytes;
+        /// <summary>
+        /// Sum of all the disks' provisioned throughput in MB/s.
+        /// </summary>
+        public readonly string UsedThroughput;
 
         [OutputConstructor]
         private StoragePoolResourceStatusResponse(
@@ -59,7 +63,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string usedBytes,
 
-            string usedReducedBytes)
+            string usedReducedBytes,
+
+            string usedThroughput)
         {
             AggregateDiskProvisionedIops = aggregateDiskProvisionedIops;
             AggregateDiskSizeGb = aggregateDiskSizeGb;
@@ -68,6 +74,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             NumberOfDisks = numberOfDisks;
             UsedBytes = usedBytes;
             UsedReducedBytes = usedReducedBytes;
+            UsedThroughput = usedThroughput;
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.DataLineage.V1
         public Output<string> RunId { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+        /// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
         /// </summary>
         [Output("startTime")]
         public Output<string> StartTime { get; private set; } = null!;
@@ -152,10 +152,10 @@ namespace Pulumi.GoogleNative.DataLineage.V1
         public Input<string> RunId { get; set; } = null!;
 
         /// <summary>
-        /// Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+        /// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
         /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
+        [Input("startTime", required: true)]
+        public Input<string> StartTime { get; set; } = null!;
 
         public LineageEventArgs()
         {

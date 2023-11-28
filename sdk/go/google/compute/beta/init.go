@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FirewallPolicyIamPolicy{}
 	case "google-native:compute/beta:ForwardingRule":
 		r = &ForwardingRule{}
+	case "google-native:compute/beta:FutureReservation":
+		r = &FutureReservation{}
 	case "google-native:compute/beta:GlobalAddress":
 		r = &GlobalAddress{}
 	case "google-native:compute/beta:GlobalForwardingRule":
@@ -91,6 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceGroup{}
 	case "google-native:compute/beta:InstanceGroupManager":
 		r = &InstanceGroupManager{}
+	case "google-native:compute/beta:InstanceGroupManagerResizeRequest":
+		r = &InstanceGroupManagerResizeRequest{}
 	case "google-native:compute/beta:InstanceIamBinding":
 		r = &InstanceIamBinding{}
 	case "google-native:compute/beta:InstanceIamMember":

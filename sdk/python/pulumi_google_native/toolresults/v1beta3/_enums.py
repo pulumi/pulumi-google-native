@@ -381,3 +381,7 @@ class TestIssueType(str, Enum):
     """
     Robo detected a splash screen provided by app (vs. Android OS splash screen).
     """
+    ASSET_ISSUE = "assetIssue"
+    """
+    There was an issue with the assets in this test.
+    """

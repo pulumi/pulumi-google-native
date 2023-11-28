@@ -578,6 +578,7 @@ func (in *logsPolicyDestinationPtr) ToOutput(ctx context.Context) pulumix.Output
 type MessageNewJobState string
 
 const (
+	// Job state unspecified.
 	MessageNewJobStateStateUnspecified = MessageNewJobState("STATE_UNSPECIFIED")
 	// Job is admitted (validated and persisted) and waiting for resources.
 	MessageNewJobStateQueued = MessageNewJobState("QUEUED")
@@ -1150,6 +1151,193 @@ func (in *messageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageT
 	}
 }
 
+// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+type TaskGroupSchedulingPolicy string
+
+const (
+	// Unspecified.
+	TaskGroupSchedulingPolicySchedulingPolicyUnspecified = TaskGroupSchedulingPolicy("SCHEDULING_POLICY_UNSPECIFIED")
+	// Run Tasks as soon as resources are available. Tasks might be executed in parallel depending on parallelism and task_count values.
+	TaskGroupSchedulingPolicyAsSoonAsPossible = TaskGroupSchedulingPolicy("AS_SOON_AS_POSSIBLE")
+	// Run Tasks sequentially with increased task index.
+	TaskGroupSchedulingPolicyInOrder = TaskGroupSchedulingPolicy("IN_ORDER")
+)
+
+func (TaskGroupSchedulingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskGroupSchedulingPolicy)(nil)).Elem()
+}
+
+func (e TaskGroupSchedulingPolicy) ToTaskGroupSchedulingPolicyOutput() TaskGroupSchedulingPolicyOutput {
+	return pulumi.ToOutput(e).(TaskGroupSchedulingPolicyOutput)
+}
+
+func (e TaskGroupSchedulingPolicy) ToTaskGroupSchedulingPolicyOutputWithContext(ctx context.Context) TaskGroupSchedulingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TaskGroupSchedulingPolicyOutput)
+}
+
+func (e TaskGroupSchedulingPolicy) ToTaskGroupSchedulingPolicyPtrOutput() TaskGroupSchedulingPolicyPtrOutput {
+	return e.ToTaskGroupSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e TaskGroupSchedulingPolicy) ToTaskGroupSchedulingPolicyPtrOutputWithContext(ctx context.Context) TaskGroupSchedulingPolicyPtrOutput {
+	return TaskGroupSchedulingPolicy(e).ToTaskGroupSchedulingPolicyOutputWithContext(ctx).ToTaskGroupSchedulingPolicyPtrOutputWithContext(ctx)
+}
+
+func (e TaskGroupSchedulingPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TaskGroupSchedulingPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TaskGroupSchedulingPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TaskGroupSchedulingPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TaskGroupSchedulingPolicyOutput struct{ *pulumi.OutputState }
+
+func (TaskGroupSchedulingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskGroupSchedulingPolicy)(nil)).Elem()
+}
+
+func (o TaskGroupSchedulingPolicyOutput) ToTaskGroupSchedulingPolicyOutput() TaskGroupSchedulingPolicyOutput {
+	return o
+}
+
+func (o TaskGroupSchedulingPolicyOutput) ToTaskGroupSchedulingPolicyOutputWithContext(ctx context.Context) TaskGroupSchedulingPolicyOutput {
+	return o
+}
+
+func (o TaskGroupSchedulingPolicyOutput) ToTaskGroupSchedulingPolicyPtrOutput() TaskGroupSchedulingPolicyPtrOutput {
+	return o.ToTaskGroupSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TaskGroupSchedulingPolicyOutput) ToTaskGroupSchedulingPolicyPtrOutputWithContext(ctx context.Context) TaskGroupSchedulingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskGroupSchedulingPolicy) *TaskGroupSchedulingPolicy {
+		return &v
+	}).(TaskGroupSchedulingPolicyPtrOutput)
+}
+
+func (o TaskGroupSchedulingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[TaskGroupSchedulingPolicy] {
+	return pulumix.Output[TaskGroupSchedulingPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TaskGroupSchedulingPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TaskGroupSchedulingPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaskGroupSchedulingPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TaskGroupSchedulingPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaskGroupSchedulingPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaskGroupSchedulingPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskGroupSchedulingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskGroupSchedulingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskGroupSchedulingPolicy)(nil)).Elem()
+}
+
+func (o TaskGroupSchedulingPolicyPtrOutput) ToTaskGroupSchedulingPolicyPtrOutput() TaskGroupSchedulingPolicyPtrOutput {
+	return o
+}
+
+func (o TaskGroupSchedulingPolicyPtrOutput) ToTaskGroupSchedulingPolicyPtrOutputWithContext(ctx context.Context) TaskGroupSchedulingPolicyPtrOutput {
+	return o
+}
+
+func (o TaskGroupSchedulingPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaskGroupSchedulingPolicy] {
+	return pulumix.Output[*TaskGroupSchedulingPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TaskGroupSchedulingPolicyPtrOutput) Elem() TaskGroupSchedulingPolicyOutput {
+	return o.ApplyT(func(v *TaskGroupSchedulingPolicy) TaskGroupSchedulingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TaskGroupSchedulingPolicy
+		return ret
+	}).(TaskGroupSchedulingPolicyOutput)
+}
+
+func (o TaskGroupSchedulingPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaskGroupSchedulingPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TaskGroupSchedulingPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TaskGroupSchedulingPolicyInput is an input type that accepts TaskGroupSchedulingPolicyArgs and TaskGroupSchedulingPolicyOutput values.
+// You can construct a concrete instance of `TaskGroupSchedulingPolicyInput` via:
+//
+//	TaskGroupSchedulingPolicyArgs{...}
+type TaskGroupSchedulingPolicyInput interface {
+	pulumi.Input
+
+	ToTaskGroupSchedulingPolicyOutput() TaskGroupSchedulingPolicyOutput
+	ToTaskGroupSchedulingPolicyOutputWithContext(context.Context) TaskGroupSchedulingPolicyOutput
+}
+
+var taskGroupSchedulingPolicyPtrType = reflect.TypeOf((**TaskGroupSchedulingPolicy)(nil)).Elem()
+
+type TaskGroupSchedulingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTaskGroupSchedulingPolicyPtrOutput() TaskGroupSchedulingPolicyPtrOutput
+	ToTaskGroupSchedulingPolicyPtrOutputWithContext(context.Context) TaskGroupSchedulingPolicyPtrOutput
+}
+
+type taskGroupSchedulingPolicyPtr string
+
+func TaskGroupSchedulingPolicyPtr(v string) TaskGroupSchedulingPolicyPtrInput {
+	return (*taskGroupSchedulingPolicyPtr)(&v)
+}
+
+func (*taskGroupSchedulingPolicyPtr) ElementType() reflect.Type {
+	return taskGroupSchedulingPolicyPtrType
+}
+
+func (in *taskGroupSchedulingPolicyPtr) ToTaskGroupSchedulingPolicyPtrOutput() TaskGroupSchedulingPolicyPtrOutput {
+	return pulumi.ToOutput(in).(TaskGroupSchedulingPolicyPtrOutput)
+}
+
+func (in *taskGroupSchedulingPolicyPtr) ToTaskGroupSchedulingPolicyPtrOutputWithContext(ctx context.Context) TaskGroupSchedulingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TaskGroupSchedulingPolicyPtrOutput)
+}
+
+func (in *taskGroupSchedulingPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*TaskGroupSchedulingPolicy] {
+	return pulumix.Output[*TaskGroupSchedulingPolicy]{
+		OutputState: in.ToTaskGroupSchedulingPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePolicyProvisioningModelInput)(nil)).Elem(), InstancePolicyProvisioningModel("PROVISIONING_MODEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePolicyProvisioningModelPtrInput)(nil)).Elem(), InstancePolicyProvisioningModel("PROVISIONING_MODEL_UNSPECIFIED"))
@@ -1163,6 +1351,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageNewTaskStatePtrInput)(nil)).Elem(), MessageNewTaskState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageTypeInput)(nil)).Elem(), MessageType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageTypePtrInput)(nil)).Elem(), MessageType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskGroupSchedulingPolicyInput)(nil)).Elem(), TaskGroupSchedulingPolicy("SCHEDULING_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskGroupSchedulingPolicyPtrInput)(nil)).Elem(), TaskGroupSchedulingPolicy("SCHEDULING_POLICY_UNSPECIFIED"))
 	pulumi.RegisterOutputType(InstancePolicyProvisioningModelOutput{})
 	pulumi.RegisterOutputType(InstancePolicyProvisioningModelPtrOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyActionOutput{})
@@ -1175,4 +1365,6 @@ func init() {
 	pulumi.RegisterOutputType(MessageNewTaskStatePtrOutput{})
 	pulumi.RegisterOutputType(MessageTypeOutput{})
 	pulumi.RegisterOutputType(MessageTypePtrOutput{})
+	pulumi.RegisterOutputType(TaskGroupSchedulingPolicyOutput{})
+	pulumi.RegisterOutputType(TaskGroupSchedulingPolicyPtrOutput{})
 }

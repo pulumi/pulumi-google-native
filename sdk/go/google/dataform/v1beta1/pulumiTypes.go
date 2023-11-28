@@ -961,10 +961,12 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Controls Git remote configuration for a repository.
 type GitRemoteSettings struct {
-	// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-	AuthenticationTokenSecretVersion string `pulumi:"authenticationTokenSecretVersion"`
+	// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+	AuthenticationTokenSecretVersion *string `pulumi:"authenticationTokenSecretVersion"`
 	// The Git remote's default branch name.
 	DefaultBranch string `pulumi:"defaultBranch"`
+	// Optional. Authentication fields for remote uris using SSH protocol.
+	SshAuthenticationConfig *SshAuthenticationConfig `pulumi:"sshAuthenticationConfig"`
 	// The Git remote's URL.
 	Url string `pulumi:"url"`
 }
@@ -982,10 +984,12 @@ type GitRemoteSettingsInput interface {
 
 // Controls Git remote configuration for a repository.
 type GitRemoteSettingsArgs struct {
-	// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-	AuthenticationTokenSecretVersion pulumi.StringInput `pulumi:"authenticationTokenSecretVersion"`
+	// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+	AuthenticationTokenSecretVersion pulumi.StringPtrInput `pulumi:"authenticationTokenSecretVersion"`
 	// The Git remote's default branch name.
 	DefaultBranch pulumi.StringInput `pulumi:"defaultBranch"`
+	// Optional. Authentication fields for remote uris using SSH protocol.
+	SshAuthenticationConfig SshAuthenticationConfigPtrInput `pulumi:"sshAuthenticationConfig"`
 	// The Git remote's URL.
 	Url pulumi.StringInput `pulumi:"url"`
 }
@@ -1086,14 +1090,19 @@ func (o GitRemoteSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[Gi
 	}
 }
 
-// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-func (o GitRemoteSettingsOutput) AuthenticationTokenSecretVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GitRemoteSettings) string { return v.AuthenticationTokenSecretVersion }).(pulumi.StringOutput)
+// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+func (o GitRemoteSettingsOutput) AuthenticationTokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitRemoteSettings) *string { return v.AuthenticationTokenSecretVersion }).(pulumi.StringPtrOutput)
 }
 
 // The Git remote's default branch name.
 func (o GitRemoteSettingsOutput) DefaultBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRemoteSettings) string { return v.DefaultBranch }).(pulumi.StringOutput)
+}
+
+// Optional. Authentication fields for remote uris using SSH protocol.
+func (o GitRemoteSettingsOutput) SshAuthenticationConfig() SshAuthenticationConfigPtrOutput {
+	return o.ApplyT(func(v GitRemoteSettings) *SshAuthenticationConfig { return v.SshAuthenticationConfig }).(SshAuthenticationConfigPtrOutput)
 }
 
 // The Git remote's URL.
@@ -1131,13 +1140,13 @@ func (o GitRemoteSettingsPtrOutput) Elem() GitRemoteSettingsOutput {
 	}).(GitRemoteSettingsOutput)
 }
 
-// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
 func (o GitRemoteSettingsPtrOutput) AuthenticationTokenSecretVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitRemoteSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.AuthenticationTokenSecretVersion
+		return v.AuthenticationTokenSecretVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1149,6 +1158,16 @@ func (o GitRemoteSettingsPtrOutput) DefaultBranch() pulumi.StringPtrOutput {
 		}
 		return &v.DefaultBranch
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Authentication fields for remote uris using SSH protocol.
+func (o GitRemoteSettingsPtrOutput) SshAuthenticationConfig() SshAuthenticationConfigPtrOutput {
+	return o.ApplyT(func(v *GitRemoteSettings) *SshAuthenticationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SshAuthenticationConfig
+	}).(SshAuthenticationConfigPtrOutput)
 }
 
 // The Git remote's URL.
@@ -1163,11 +1182,15 @@ func (o GitRemoteSettingsPtrOutput) Url() pulumi.StringPtrOutput {
 
 // Controls Git remote configuration for a repository.
 type GitRemoteSettingsResponse struct {
-	// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+	// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
 	AuthenticationTokenSecretVersion string `pulumi:"authenticationTokenSecretVersion"`
 	// The Git remote's default branch name.
 	DefaultBranch string `pulumi:"defaultBranch"`
-	// Indicates the status of the Git access token.
+	// Optional. Authentication fields for remote uris using SSH protocol.
+	SshAuthenticationConfig SshAuthenticationConfigResponse `pulumi:"sshAuthenticationConfig"`
+	// Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
+	//
+	// Deprecated: Output only. Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
 	TokenStatus string `pulumi:"tokenStatus"`
 	// The Git remote's URL.
 	Url string `pulumi:"url"`
@@ -1194,7 +1217,7 @@ func (o GitRemoteSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
 func (o GitRemoteSettingsResponseOutput) AuthenticationTokenSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRemoteSettingsResponse) string { return v.AuthenticationTokenSecretVersion }).(pulumi.StringOutput)
 }
@@ -1204,7 +1227,14 @@ func (o GitRemoteSettingsResponseOutput) DefaultBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRemoteSettingsResponse) string { return v.DefaultBranch }).(pulumi.StringOutput)
 }
 
-// Indicates the status of the Git access token.
+// Optional. Authentication fields for remote uris using SSH protocol.
+func (o GitRemoteSettingsResponseOutput) SshAuthenticationConfig() SshAuthenticationConfigResponseOutput {
+	return o.ApplyT(func(v GitRemoteSettingsResponse) SshAuthenticationConfigResponse { return v.SshAuthenticationConfig }).(SshAuthenticationConfigResponseOutput)
+}
+
+// Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
+//
+// Deprecated: Output only. Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
 func (o GitRemoteSettingsResponseOutput) TokenStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRemoteSettingsResponse) string { return v.TokenStatus }).(pulumi.StringOutput)
 }
@@ -1261,6 +1291,8 @@ type InvocationConfig struct {
 	IncludedTags []string `pulumi:"includedTags"`
 	// Optional. The set of action identifiers to include.
 	IncludedTargets []Target `pulumi:"includedTargets"`
+	// Optional. The service account to run workflow invocations under.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. When set to true, transitive dependencies of included actions will be executed.
 	TransitiveDependenciesIncluded *bool `pulumi:"transitiveDependenciesIncluded"`
 	// Optional. When set to true, transitive dependents of included actions will be executed.
@@ -1286,6 +1318,8 @@ type InvocationConfigArgs struct {
 	IncludedTags pulumi.StringArrayInput `pulumi:"includedTags"`
 	// Optional. The set of action identifiers to include.
 	IncludedTargets TargetArrayInput `pulumi:"includedTargets"`
+	// Optional. The service account to run workflow invocations under.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Optional. When set to true, transitive dependencies of included actions will be executed.
 	TransitiveDependenciesIncluded pulumi.BoolPtrInput `pulumi:"transitiveDependenciesIncluded"`
 	// Optional. When set to true, transitive dependents of included actions will be executed.
@@ -1403,6 +1437,11 @@ func (o InvocationConfigOutput) IncludedTargets() TargetArrayOutput {
 	return o.ApplyT(func(v InvocationConfig) []Target { return v.IncludedTargets }).(TargetArrayOutput)
 }
 
+// Optional. The service account to run workflow invocations under.
+func (o InvocationConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvocationConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
 // Optional. When set to true, transitive dependencies of included actions will be executed.
 func (o InvocationConfigOutput) TransitiveDependenciesIncluded() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InvocationConfig) *bool { return v.TransitiveDependenciesIncluded }).(pulumi.BoolPtrOutput)
@@ -1473,6 +1512,16 @@ func (o InvocationConfigPtrOutput) IncludedTargets() TargetArrayOutput {
 	}).(TargetArrayOutput)
 }
 
+// Optional. The service account to run workflow invocations under.
+func (o InvocationConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InvocationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. When set to true, transitive dependencies of included actions will be executed.
 func (o InvocationConfigPtrOutput) TransitiveDependenciesIncluded() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InvocationConfig) *bool {
@@ -1501,6 +1550,8 @@ type InvocationConfigResponse struct {
 	IncludedTags []string `pulumi:"includedTags"`
 	// Optional. The set of action identifiers to include.
 	IncludedTargets []TargetResponse `pulumi:"includedTargets"`
+	// Optional. The service account to run workflow invocations under.
+	ServiceAccount string `pulumi:"serviceAccount"`
 	// Optional. When set to true, transitive dependencies of included actions will be executed.
 	TransitiveDependenciesIncluded bool `pulumi:"transitiveDependenciesIncluded"`
 	// Optional. When set to true, transitive dependents of included actions will be executed.
@@ -1541,6 +1592,11 @@ func (o InvocationConfigResponseOutput) IncludedTags() pulumi.StringArrayOutput 
 // Optional. The set of action identifiers to include.
 func (o InvocationConfigResponseOutput) IncludedTargets() TargetResponseArrayOutput {
 	return o.ApplyT(func(v InvocationConfigResponse) []TargetResponse { return v.IncludedTargets }).(TargetResponseArrayOutput)
+}
+
+// Optional. The service account to run workflow invocations under.
+func (o InvocationConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v InvocationConfigResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 // Optional. When set to true, transitive dependencies of included actions will be executed.
@@ -1695,6 +1751,228 @@ func (o ScheduledReleaseRecordResponseArrayOutput) Index(i pulumi.IntInput) Sche
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduledReleaseRecordResponse {
 		return vs[0].([]ScheduledReleaseRecordResponse)[vs[1].(int)]
 	}).(ScheduledReleaseRecordResponseOutput)
+}
+
+// Configures fields for performing SSH authentication.
+type SshAuthenticationConfig struct {
+	// Content of a public SSH key to verify an identity of a remote Git host.
+	HostPublicKey string `pulumi:"hostPublicKey"`
+	// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+	UserPrivateKeySecretVersion string `pulumi:"userPrivateKeySecretVersion"`
+}
+
+// SshAuthenticationConfigInput is an input type that accepts SshAuthenticationConfigArgs and SshAuthenticationConfigOutput values.
+// You can construct a concrete instance of `SshAuthenticationConfigInput` via:
+//
+//	SshAuthenticationConfigArgs{...}
+type SshAuthenticationConfigInput interface {
+	pulumi.Input
+
+	ToSshAuthenticationConfigOutput() SshAuthenticationConfigOutput
+	ToSshAuthenticationConfigOutputWithContext(context.Context) SshAuthenticationConfigOutput
+}
+
+// Configures fields for performing SSH authentication.
+type SshAuthenticationConfigArgs struct {
+	// Content of a public SSH key to verify an identity of a remote Git host.
+	HostPublicKey pulumi.StringInput `pulumi:"hostPublicKey"`
+	// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+	UserPrivateKeySecretVersion pulumi.StringInput `pulumi:"userPrivateKeySecretVersion"`
+}
+
+func (SshAuthenticationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshAuthenticationConfig)(nil)).Elem()
+}
+
+func (i SshAuthenticationConfigArgs) ToSshAuthenticationConfigOutput() SshAuthenticationConfigOutput {
+	return i.ToSshAuthenticationConfigOutputWithContext(context.Background())
+}
+
+func (i SshAuthenticationConfigArgs) ToSshAuthenticationConfigOutputWithContext(ctx context.Context) SshAuthenticationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshAuthenticationConfigOutput)
+}
+
+func (i SshAuthenticationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SshAuthenticationConfig] {
+	return pulumix.Output[SshAuthenticationConfig]{
+		OutputState: i.ToSshAuthenticationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SshAuthenticationConfigArgs) ToSshAuthenticationConfigPtrOutput() SshAuthenticationConfigPtrOutput {
+	return i.ToSshAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SshAuthenticationConfigArgs) ToSshAuthenticationConfigPtrOutputWithContext(ctx context.Context) SshAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshAuthenticationConfigOutput).ToSshAuthenticationConfigPtrOutputWithContext(ctx)
+}
+
+// SshAuthenticationConfigPtrInput is an input type that accepts SshAuthenticationConfigArgs, SshAuthenticationConfigPtr and SshAuthenticationConfigPtrOutput values.
+// You can construct a concrete instance of `SshAuthenticationConfigPtrInput` via:
+//
+//	        SshAuthenticationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SshAuthenticationConfigPtrInput interface {
+	pulumi.Input
+
+	ToSshAuthenticationConfigPtrOutput() SshAuthenticationConfigPtrOutput
+	ToSshAuthenticationConfigPtrOutputWithContext(context.Context) SshAuthenticationConfigPtrOutput
+}
+
+type sshAuthenticationConfigPtrType SshAuthenticationConfigArgs
+
+func SshAuthenticationConfigPtr(v *SshAuthenticationConfigArgs) SshAuthenticationConfigPtrInput {
+	return (*sshAuthenticationConfigPtrType)(v)
+}
+
+func (*sshAuthenticationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshAuthenticationConfig)(nil)).Elem()
+}
+
+func (i *sshAuthenticationConfigPtrType) ToSshAuthenticationConfigPtrOutput() SshAuthenticationConfigPtrOutput {
+	return i.ToSshAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sshAuthenticationConfigPtrType) ToSshAuthenticationConfigPtrOutputWithContext(ctx context.Context) SshAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshAuthenticationConfigPtrOutput)
+}
+
+func (i *sshAuthenticationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SshAuthenticationConfig] {
+	return pulumix.Output[*SshAuthenticationConfig]{
+		OutputState: i.ToSshAuthenticationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configures fields for performing SSH authentication.
+type SshAuthenticationConfigOutput struct{ *pulumi.OutputState }
+
+func (SshAuthenticationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshAuthenticationConfig)(nil)).Elem()
+}
+
+func (o SshAuthenticationConfigOutput) ToSshAuthenticationConfigOutput() SshAuthenticationConfigOutput {
+	return o
+}
+
+func (o SshAuthenticationConfigOutput) ToSshAuthenticationConfigOutputWithContext(ctx context.Context) SshAuthenticationConfigOutput {
+	return o
+}
+
+func (o SshAuthenticationConfigOutput) ToSshAuthenticationConfigPtrOutput() SshAuthenticationConfigPtrOutput {
+	return o.ToSshAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SshAuthenticationConfigOutput) ToSshAuthenticationConfigPtrOutputWithContext(ctx context.Context) SshAuthenticationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SshAuthenticationConfig) *SshAuthenticationConfig {
+		return &v
+	}).(SshAuthenticationConfigPtrOutput)
+}
+
+func (o SshAuthenticationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SshAuthenticationConfig] {
+	return pulumix.Output[SshAuthenticationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Content of a public SSH key to verify an identity of a remote Git host.
+func (o SshAuthenticationConfigOutput) HostPublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SshAuthenticationConfig) string { return v.HostPublicKey }).(pulumi.StringOutput)
+}
+
+// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+func (o SshAuthenticationConfigOutput) UserPrivateKeySecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SshAuthenticationConfig) string { return v.UserPrivateKeySecretVersion }).(pulumi.StringOutput)
+}
+
+type SshAuthenticationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SshAuthenticationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshAuthenticationConfig)(nil)).Elem()
+}
+
+func (o SshAuthenticationConfigPtrOutput) ToSshAuthenticationConfigPtrOutput() SshAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o SshAuthenticationConfigPtrOutput) ToSshAuthenticationConfigPtrOutputWithContext(ctx context.Context) SshAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o SshAuthenticationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SshAuthenticationConfig] {
+	return pulumix.Output[*SshAuthenticationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SshAuthenticationConfigPtrOutput) Elem() SshAuthenticationConfigOutput {
+	return o.ApplyT(func(v *SshAuthenticationConfig) SshAuthenticationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SshAuthenticationConfig
+		return ret
+	}).(SshAuthenticationConfigOutput)
+}
+
+// Content of a public SSH key to verify an identity of a remote Git host.
+func (o SshAuthenticationConfigPtrOutput) HostPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SshAuthenticationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostPublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+func (o SshAuthenticationConfigPtrOutput) UserPrivateKeySecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SshAuthenticationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserPrivateKeySecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configures fields for performing SSH authentication.
+type SshAuthenticationConfigResponse struct {
+	// Content of a public SSH key to verify an identity of a remote Git host.
+	HostPublicKey string `pulumi:"hostPublicKey"`
+	// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+	UserPrivateKeySecretVersion string `pulumi:"userPrivateKeySecretVersion"`
+}
+
+// Configures fields for performing SSH authentication.
+type SshAuthenticationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SshAuthenticationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshAuthenticationConfigResponse)(nil)).Elem()
+}
+
+func (o SshAuthenticationConfigResponseOutput) ToSshAuthenticationConfigResponseOutput() SshAuthenticationConfigResponseOutput {
+	return o
+}
+
+func (o SshAuthenticationConfigResponseOutput) ToSshAuthenticationConfigResponseOutputWithContext(ctx context.Context) SshAuthenticationConfigResponseOutput {
+	return o
+}
+
+func (o SshAuthenticationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SshAuthenticationConfigResponse] {
+	return pulumix.Output[SshAuthenticationConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Content of a public SSH key to verify an identity of a remote Git host.
+func (o SshAuthenticationConfigResponseOutput) HostPublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SshAuthenticationConfigResponse) string { return v.HostPublicKey }).(pulumi.StringOutput)
+}
+
+// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+func (o SshAuthenticationConfigResponseOutput) UserPrivateKeySecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SshAuthenticationConfigResponse) string { return v.UserPrivateKeySecretVersion }).(pulumi.StringOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -2216,6 +2494,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitRemoteSettingsPtrInput)(nil)).Elem(), GitRemoteSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InvocationConfigInput)(nil)).Elem(), InvocationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InvocationConfigPtrInput)(nil)).Elem(), InvocationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SshAuthenticationConfigInput)(nil)).Elem(), SshAuthenticationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SshAuthenticationConfigPtrInput)(nil)).Elem(), SshAuthenticationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetInput)(nil)).Elem(), TargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetArrayInput)(nil)).Elem(), TargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceCompilationOverridesInput)(nil)).Elem(), WorkspaceCompilationOverridesArgs{})
@@ -2243,6 +2523,9 @@ func init() {
 	pulumi.RegisterOutputType(ScheduledExecutionRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScheduledReleaseRecordResponseOutput{})
 	pulumi.RegisterOutputType(ScheduledReleaseRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(SshAuthenticationConfigOutput{})
+	pulumi.RegisterOutputType(SshAuthenticationConfigPtrOutput{})
+	pulumi.RegisterOutputType(SshAuthenticationConfigResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(TargetOutput{})
 	pulumi.RegisterOutputType(TargetArrayOutput{})

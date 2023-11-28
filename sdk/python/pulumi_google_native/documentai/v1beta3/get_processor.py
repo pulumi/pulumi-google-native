@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetProcessorResult',
@@ -18,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProcessorResult:
-    def __init__(__self__, create_time=None, default_processor_version=None, display_name=None, kms_key_name=None, name=None, process_endpoint=None, state=None, type=None):
+    def __init__(__self__, create_time=None, default_processor_version=None, display_name=None, kms_key_name=None, name=None, process_endpoint=None, processor_version_aliases=None, state=None, type=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,6 +38,9 @@ class GetProcessorResult:
         if process_endpoint and not isinstance(process_endpoint, str):
             raise TypeError("Expected argument 'process_endpoint' to be a str")
         pulumi.set(__self__, "process_endpoint", process_endpoint)
+        if processor_version_aliases and not isinstance(processor_version_aliases, list):
+            raise TypeError("Expected argument 'processor_version_aliases' to be a list")
+        pulumi.set(__self__, "processor_version_aliases", processor_version_aliases)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -72,7 +76,7 @@ class GetProcessorResult:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> str:
         """
-        The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -91,6 +95,14 @@ class GetProcessorResult:
         Immutable. The http endpoint that can be called to invoke processing.
         """
         return pulumi.get(self, "process_endpoint")
+
+    @property
+    @pulumi.getter(name="processorVersionAliases")
+    def processor_version_aliases(self) -> Sequence['outputs.GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse']:
+        """
+        The processor version aliases.
+        """
+        return pulumi.get(self, "processor_version_aliases")
 
     @property
     @pulumi.getter
@@ -121,6 +133,7 @@ class AwaitableGetProcessorResult(GetProcessorResult):
             kms_key_name=self.kms_key_name,
             name=self.name,
             process_endpoint=self.process_endpoint,
+            processor_version_aliases=self.processor_version_aliases,
             state=self.state,
             type=self.type)
 
@@ -146,6 +159,7 @@ def get_processor(location: Optional[str] = None,
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         name=pulumi.get(__ret__, 'name'),
         process_endpoint=pulumi.get(__ret__, 'process_endpoint'),
+        processor_version_aliases=pulumi.get(__ret__, 'processor_version_aliases'),
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'))
 

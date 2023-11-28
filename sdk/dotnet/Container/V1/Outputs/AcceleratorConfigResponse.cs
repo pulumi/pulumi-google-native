@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly string AcceleratorType;
         /// <summary>
+        /// The configuration for auto installation of GPU driver.
+        /// </summary>
+        public readonly Outputs.GPUDriverInstallationConfigResponse GpuDriverInstallationConfig;
+        /// <summary>
         /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         /// </summary>
         public readonly string GpuPartitionSize;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string acceleratorType,
 
+            Outputs.GPUDriverInstallationConfigResponse gpuDriverInstallationConfig,
+
             string gpuPartitionSize,
 
             Outputs.GPUSharingConfigResponse gpuSharingConfig)
         {
             AcceleratorCount = acceleratorCount;
             AcceleratorType = acceleratorType;
+            GpuDriverInstallationConfig = gpuDriverInstallationConfig;
             GpuPartitionSize = gpuPartitionSize;
             GpuSharingConfig = gpuSharingConfig;
         }

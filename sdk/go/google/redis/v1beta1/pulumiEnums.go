@@ -11,6 +11,380 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
+type ClusterAuthorizationMode string
+
+const (
+	// Not set.
+	ClusterAuthorizationModeAuthModeUnspecified = ClusterAuthorizationMode("AUTH_MODE_UNSPECIFIED")
+	// IAM basic authorization mode
+	ClusterAuthorizationModeAuthModeIamAuth = ClusterAuthorizationMode("AUTH_MODE_IAM_AUTH")
+	// Authorization disabled mode
+	ClusterAuthorizationModeAuthModeDisabled = ClusterAuthorizationMode("AUTH_MODE_DISABLED")
+)
+
+func (ClusterAuthorizationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAuthorizationMode)(nil)).Elem()
+}
+
+func (e ClusterAuthorizationMode) ToClusterAuthorizationModeOutput() ClusterAuthorizationModeOutput {
+	return pulumi.ToOutput(e).(ClusterAuthorizationModeOutput)
+}
+
+func (e ClusterAuthorizationMode) ToClusterAuthorizationModeOutputWithContext(ctx context.Context) ClusterAuthorizationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClusterAuthorizationModeOutput)
+}
+
+func (e ClusterAuthorizationMode) ToClusterAuthorizationModePtrOutput() ClusterAuthorizationModePtrOutput {
+	return e.ToClusterAuthorizationModePtrOutputWithContext(context.Background())
+}
+
+func (e ClusterAuthorizationMode) ToClusterAuthorizationModePtrOutputWithContext(ctx context.Context) ClusterAuthorizationModePtrOutput {
+	return ClusterAuthorizationMode(e).ToClusterAuthorizationModeOutputWithContext(ctx).ToClusterAuthorizationModePtrOutputWithContext(ctx)
+}
+
+func (e ClusterAuthorizationMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterAuthorizationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterAuthorizationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterAuthorizationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ClusterAuthorizationModeOutput struct{ *pulumi.OutputState }
+
+func (ClusterAuthorizationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAuthorizationMode)(nil)).Elem()
+}
+
+func (o ClusterAuthorizationModeOutput) ToClusterAuthorizationModeOutput() ClusterAuthorizationModeOutput {
+	return o
+}
+
+func (o ClusterAuthorizationModeOutput) ToClusterAuthorizationModeOutputWithContext(ctx context.Context) ClusterAuthorizationModeOutput {
+	return o
+}
+
+func (o ClusterAuthorizationModeOutput) ToClusterAuthorizationModePtrOutput() ClusterAuthorizationModePtrOutput {
+	return o.ToClusterAuthorizationModePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAuthorizationModeOutput) ToClusterAuthorizationModePtrOutputWithContext(ctx context.Context) ClusterAuthorizationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAuthorizationMode) *ClusterAuthorizationMode {
+		return &v
+	}).(ClusterAuthorizationModePtrOutput)
+}
+
+func (o ClusterAuthorizationModeOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterAuthorizationMode] {
+	return pulumix.Output[ClusterAuthorizationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterAuthorizationModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ClusterAuthorizationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterAuthorizationMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ClusterAuthorizationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAuthorizationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterAuthorizationMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterAuthorizationModePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAuthorizationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAuthorizationMode)(nil)).Elem()
+}
+
+func (o ClusterAuthorizationModePtrOutput) ToClusterAuthorizationModePtrOutput() ClusterAuthorizationModePtrOutput {
+	return o
+}
+
+func (o ClusterAuthorizationModePtrOutput) ToClusterAuthorizationModePtrOutputWithContext(ctx context.Context) ClusterAuthorizationModePtrOutput {
+	return o
+}
+
+func (o ClusterAuthorizationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterAuthorizationMode] {
+	return pulumix.Output[*ClusterAuthorizationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterAuthorizationModePtrOutput) Elem() ClusterAuthorizationModeOutput {
+	return o.ApplyT(func(v *ClusterAuthorizationMode) ClusterAuthorizationMode {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAuthorizationMode
+		return ret
+	}).(ClusterAuthorizationModeOutput)
+}
+
+func (o ClusterAuthorizationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAuthorizationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterAuthorizationMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClusterAuthorizationModeInput is an input type that accepts ClusterAuthorizationModeArgs and ClusterAuthorizationModeOutput values.
+// You can construct a concrete instance of `ClusterAuthorizationModeInput` via:
+//
+//	ClusterAuthorizationModeArgs{...}
+type ClusterAuthorizationModeInput interface {
+	pulumi.Input
+
+	ToClusterAuthorizationModeOutput() ClusterAuthorizationModeOutput
+	ToClusterAuthorizationModeOutputWithContext(context.Context) ClusterAuthorizationModeOutput
+}
+
+var clusterAuthorizationModePtrType = reflect.TypeOf((**ClusterAuthorizationMode)(nil)).Elem()
+
+type ClusterAuthorizationModePtrInput interface {
+	pulumi.Input
+
+	ToClusterAuthorizationModePtrOutput() ClusterAuthorizationModePtrOutput
+	ToClusterAuthorizationModePtrOutputWithContext(context.Context) ClusterAuthorizationModePtrOutput
+}
+
+type clusterAuthorizationModePtr string
+
+func ClusterAuthorizationModePtr(v string) ClusterAuthorizationModePtrInput {
+	return (*clusterAuthorizationModePtr)(&v)
+}
+
+func (*clusterAuthorizationModePtr) ElementType() reflect.Type {
+	return clusterAuthorizationModePtrType
+}
+
+func (in *clusterAuthorizationModePtr) ToClusterAuthorizationModePtrOutput() ClusterAuthorizationModePtrOutput {
+	return pulumi.ToOutput(in).(ClusterAuthorizationModePtrOutput)
+}
+
+func (in *clusterAuthorizationModePtr) ToClusterAuthorizationModePtrOutputWithContext(ctx context.Context) ClusterAuthorizationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClusterAuthorizationModePtrOutput)
+}
+
+func (in *clusterAuthorizationModePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterAuthorizationMode] {
+	return pulumix.Output[*ClusterAuthorizationMode]{
+		OutputState: in.ToClusterAuthorizationModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+type ClusterTransitEncryptionMode string
+
+const (
+	// In-transit encryption not set.
+	ClusterTransitEncryptionModeTransitEncryptionModeUnspecified = ClusterTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED")
+	// In-transit encryption disabled.
+	ClusterTransitEncryptionModeTransitEncryptionModeDisabled = ClusterTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
+	// Use server managed encryption for in-transit encryption.
+	ClusterTransitEncryptionModeTransitEncryptionModeServerAuthentication = ClusterTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION")
+)
+
+func (ClusterTransitEncryptionMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTransitEncryptionMode)(nil)).Elem()
+}
+
+func (e ClusterTransitEncryptionMode) ToClusterTransitEncryptionModeOutput() ClusterTransitEncryptionModeOutput {
+	return pulumi.ToOutput(e).(ClusterTransitEncryptionModeOutput)
+}
+
+func (e ClusterTransitEncryptionMode) ToClusterTransitEncryptionModeOutputWithContext(ctx context.Context) ClusterTransitEncryptionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClusterTransitEncryptionModeOutput)
+}
+
+func (e ClusterTransitEncryptionMode) ToClusterTransitEncryptionModePtrOutput() ClusterTransitEncryptionModePtrOutput {
+	return e.ToClusterTransitEncryptionModePtrOutputWithContext(context.Background())
+}
+
+func (e ClusterTransitEncryptionMode) ToClusterTransitEncryptionModePtrOutputWithContext(ctx context.Context) ClusterTransitEncryptionModePtrOutput {
+	return ClusterTransitEncryptionMode(e).ToClusterTransitEncryptionModeOutputWithContext(ctx).ToClusterTransitEncryptionModePtrOutputWithContext(ctx)
+}
+
+func (e ClusterTransitEncryptionMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterTransitEncryptionMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterTransitEncryptionMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterTransitEncryptionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ClusterTransitEncryptionModeOutput struct{ *pulumi.OutputState }
+
+func (ClusterTransitEncryptionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTransitEncryptionMode)(nil)).Elem()
+}
+
+func (o ClusterTransitEncryptionModeOutput) ToClusterTransitEncryptionModeOutput() ClusterTransitEncryptionModeOutput {
+	return o
+}
+
+func (o ClusterTransitEncryptionModeOutput) ToClusterTransitEncryptionModeOutputWithContext(ctx context.Context) ClusterTransitEncryptionModeOutput {
+	return o
+}
+
+func (o ClusterTransitEncryptionModeOutput) ToClusterTransitEncryptionModePtrOutput() ClusterTransitEncryptionModePtrOutput {
+	return o.ToClusterTransitEncryptionModePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTransitEncryptionModeOutput) ToClusterTransitEncryptionModePtrOutputWithContext(ctx context.Context) ClusterTransitEncryptionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterTransitEncryptionMode) *ClusterTransitEncryptionMode {
+		return &v
+	}).(ClusterTransitEncryptionModePtrOutput)
+}
+
+func (o ClusterTransitEncryptionModeOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterTransitEncryptionMode] {
+	return pulumix.Output[ClusterTransitEncryptionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterTransitEncryptionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ClusterTransitEncryptionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterTransitEncryptionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ClusterTransitEncryptionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTransitEncryptionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterTransitEncryptionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterTransitEncryptionModePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTransitEncryptionModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTransitEncryptionMode)(nil)).Elem()
+}
+
+func (o ClusterTransitEncryptionModePtrOutput) ToClusterTransitEncryptionModePtrOutput() ClusterTransitEncryptionModePtrOutput {
+	return o
+}
+
+func (o ClusterTransitEncryptionModePtrOutput) ToClusterTransitEncryptionModePtrOutputWithContext(ctx context.Context) ClusterTransitEncryptionModePtrOutput {
+	return o
+}
+
+func (o ClusterTransitEncryptionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterTransitEncryptionMode] {
+	return pulumix.Output[*ClusterTransitEncryptionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterTransitEncryptionModePtrOutput) Elem() ClusterTransitEncryptionModeOutput {
+	return o.ApplyT(func(v *ClusterTransitEncryptionMode) ClusterTransitEncryptionMode {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterTransitEncryptionMode
+		return ret
+	}).(ClusterTransitEncryptionModeOutput)
+}
+
+func (o ClusterTransitEncryptionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTransitEncryptionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterTransitEncryptionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClusterTransitEncryptionModeInput is an input type that accepts ClusterTransitEncryptionModeArgs and ClusterTransitEncryptionModeOutput values.
+// You can construct a concrete instance of `ClusterTransitEncryptionModeInput` via:
+//
+//	ClusterTransitEncryptionModeArgs{...}
+type ClusterTransitEncryptionModeInput interface {
+	pulumi.Input
+
+	ToClusterTransitEncryptionModeOutput() ClusterTransitEncryptionModeOutput
+	ToClusterTransitEncryptionModeOutputWithContext(context.Context) ClusterTransitEncryptionModeOutput
+}
+
+var clusterTransitEncryptionModePtrType = reflect.TypeOf((**ClusterTransitEncryptionMode)(nil)).Elem()
+
+type ClusterTransitEncryptionModePtrInput interface {
+	pulumi.Input
+
+	ToClusterTransitEncryptionModePtrOutput() ClusterTransitEncryptionModePtrOutput
+	ToClusterTransitEncryptionModePtrOutputWithContext(context.Context) ClusterTransitEncryptionModePtrOutput
+}
+
+type clusterTransitEncryptionModePtr string
+
+func ClusterTransitEncryptionModePtr(v string) ClusterTransitEncryptionModePtrInput {
+	return (*clusterTransitEncryptionModePtr)(&v)
+}
+
+func (*clusterTransitEncryptionModePtr) ElementType() reflect.Type {
+	return clusterTransitEncryptionModePtrType
+}
+
+func (in *clusterTransitEncryptionModePtr) ToClusterTransitEncryptionModePtrOutput() ClusterTransitEncryptionModePtrOutput {
+	return pulumi.ToOutput(in).(ClusterTransitEncryptionModePtrOutput)
+}
+
+func (in *clusterTransitEncryptionModePtr) ToClusterTransitEncryptionModePtrOutputWithContext(ctx context.Context) ClusterTransitEncryptionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClusterTransitEncryptionModePtrOutput)
+}
+
+func (in *clusterTransitEncryptionModePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterTransitEncryptionMode] {
+	return pulumix.Output[*ClusterTransitEncryptionMode]{
+		OutputState: in.ToClusterTransitEncryptionModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 type InstanceConnectMode string
 
@@ -1576,6 +1950,10 @@ func (in *weeklyMaintenanceWindowDayPtr) ToOutput(ctx context.Context) pulumix.O
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAuthorizationModeInput)(nil)).Elem(), ClusterAuthorizationMode("AUTH_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAuthorizationModePtrInput)(nil)).Elem(), ClusterAuthorizationMode("AUTH_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTransitEncryptionModeInput)(nil)).Elem(), ClusterTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTransitEncryptionModePtrInput)(nil)).Elem(), ClusterTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConnectModeInput)(nil)).Elem(), InstanceConnectMode("CONNECT_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConnectModePtrInput)(nil)).Elem(), InstanceConnectMode("CONNECT_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadReplicasModeInput)(nil)).Elem(), InstanceReadReplicasMode("READ_REPLICAS_MODE_UNSPECIFIED"))
@@ -1593,6 +1971,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigRdbSnapshotPeriodPtrInput)(nil)).Elem(), PersistenceConfigRdbSnapshotPeriod("SNAPSHOT_PERIOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowDayInput)(nil)).Elem(), WeeklyMaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowDayPtrInput)(nil)).Elem(), WeeklyMaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED"))
+	pulumi.RegisterOutputType(ClusterAuthorizationModeOutput{})
+	pulumi.RegisterOutputType(ClusterAuthorizationModePtrOutput{})
+	pulumi.RegisterOutputType(ClusterTransitEncryptionModeOutput{})
+	pulumi.RegisterOutputType(ClusterTransitEncryptionModePtrOutput{})
 	pulumi.RegisterOutputType(InstanceConnectModeOutput{})
 	pulumi.RegisterOutputType(InstanceConnectModePtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadReplicasModeOutput{})

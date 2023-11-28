@@ -52,6 +52,10 @@ namespace Pulumi.GoogleNative.File.V1
         /// ZONAL instances offer expanded capacity and performance scaling capabilities.
         /// </summary>
         public static InstanceTier Zonal { get; } = new InstanceTier("ZONAL");
+        /// <summary>
+        /// REGIONAL instances offer the features and availability needed for mission-critical workloads.
+        /// </summary>
+        public static InstanceTier Regional { get; } = new InstanceTier("REGIONAL");
 
         public static bool operator ==(InstanceTier left, InstanceTier right) => left.Equals(right);
         public static bool operator !=(InstanceTier left, InstanceTier right) => !left.Equals(right);

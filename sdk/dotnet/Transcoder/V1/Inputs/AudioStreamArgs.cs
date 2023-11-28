@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         private InputList<Inputs.AudioMappingArgs>? _mapping;
 
         /// <summary>
-        /// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+        /// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
         /// </summary>
         public InputList<Inputs.AudioMappingArgs> Mapping
         {

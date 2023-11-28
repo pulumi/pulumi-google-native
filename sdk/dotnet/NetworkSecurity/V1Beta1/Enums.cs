@@ -256,4 +256,290 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Immutable. The single ProfileType that the SecurityProfile resource configures.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityProfileType : IEquatable<SecurityProfileType>
+    {
+        private readonly string _value;
+
+        private SecurityProfileType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Profile type not specified.
+        /// </summary>
+        public static SecurityProfileType ProfileTypeUnspecified { get; } = new SecurityProfileType("PROFILE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Profile type for threat prevention.
+        /// </summary>
+        public static SecurityProfileType ThreatPrevention { get; } = new SecurityProfileType("THREAT_PREVENTION");
+
+        public static bool operator ==(SecurityProfileType left, SecurityProfileType right) => left.Equals(right);
+        public static bool operator !=(SecurityProfileType left, SecurityProfileType right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityProfileType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityProfileType other && Equals(other);
+        public bool Equals(SecurityProfileType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Threat action override.
+    /// </summary>
+    [EnumType]
+    public readonly struct SeverityOverrideAction : IEquatable<SeverityOverrideAction>
+    {
+        private readonly string _value;
+
+        private SeverityOverrideAction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Threat action not specified.
+        /// </summary>
+        public static SeverityOverrideAction ThreatActionUnspecified { get; } = new SeverityOverrideAction("THREAT_ACTION_UNSPECIFIED");
+        /// <summary>
+        /// The default action (as specified by the vendor) is taken.
+        /// </summary>
+        public static SeverityOverrideAction DefaultAction { get; } = new SeverityOverrideAction("DEFAULT_ACTION");
+        /// <summary>
+        /// The packet matching this rule will be allowed to transmit.
+        /// </summary>
+        public static SeverityOverrideAction Allow { get; } = new SeverityOverrideAction("ALLOW");
+        /// <summary>
+        /// The packet matching this rule will be allowed to transmit, but a threat_log entry will be sent to the consumer project.
+        /// </summary>
+        public static SeverityOverrideAction Alert { get; } = new SeverityOverrideAction("ALERT");
+        /// <summary>
+        /// The packet matching this rule will be dropped, and a threat_log entry will be sent to the consumer project.
+        /// </summary>
+        public static SeverityOverrideAction Deny { get; } = new SeverityOverrideAction("DENY");
+
+        public static bool operator ==(SeverityOverrideAction left, SeverityOverrideAction right) => left.Equals(right);
+        public static bool operator !=(SeverityOverrideAction left, SeverityOverrideAction right) => !left.Equals(right);
+
+        public static explicit operator string(SeverityOverrideAction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SeverityOverrideAction other && Equals(other);
+        public bool Equals(SeverityOverrideAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Severity level to match.
+    /// </summary>
+    [EnumType]
+    public readonly struct SeverityOverrideSeverity : IEquatable<SeverityOverrideSeverity>
+    {
+        private readonly string _value;
+
+        private SeverityOverrideSeverity(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Severity level not specified.
+        /// </summary>
+        public static SeverityOverrideSeverity SeverityUnspecified { get; } = new SeverityOverrideSeverity("SEVERITY_UNSPECIFIED");
+        /// <summary>
+        /// Suspicious events that do not pose an immediate threat, but that are reported to call attention to deeper problems that could possibly exist.
+        /// </summary>
+        public static SeverityOverrideSeverity Informational { get; } = new SeverityOverrideSeverity("INFORMATIONAL");
+        /// <summary>
+        /// Warning-level threats that have very little impact on an organization's infrastructure. They usually require local or physical system access and may often result in victim privacy issues and information leakage.
+        /// </summary>
+        public static SeverityOverrideSeverity Low { get; } = new SeverityOverrideSeverity("LOW");
+        /// <summary>
+        /// Minor threats in which impact is minimized, that do not compromise the target or exploits that require an attacker to reside on the same local network as the victim, affect only non-standard configurations or obscure applications, or provide very limited access.
+        /// </summary>
+        public static SeverityOverrideSeverity Medium { get; } = new SeverityOverrideSeverity("MEDIUM");
+        /// <summary>
+        /// Threats that have the ability to become critical but have mitigating factors; for example, they may be difficult to exploit, do not result in elevated privileges, or do not have a large victim pool.
+        /// </summary>
+        public static SeverityOverrideSeverity High { get; } = new SeverityOverrideSeverity("HIGH");
+        /// <summary>
+        /// Serious threats, such as those that affect default installations of widely deployed software, result in root compromise of servers, and the exploit code is widely available to attackers. The attacker usually does not need any special authentication credentials or knowledge about the individual victims and the target does not need to be manipulated into performing any special functions.
+        /// </summary>
+        public static SeverityOverrideSeverity Critical { get; } = new SeverityOverrideSeverity("CRITICAL");
+
+        public static bool operator ==(SeverityOverrideSeverity left, SeverityOverrideSeverity right) => left.Equals(right);
+        public static bool operator !=(SeverityOverrideSeverity left, SeverityOverrideSeverity right) => !left.Equals(right);
+
+        public static explicit operator string(SeverityOverrideSeverity value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SeverityOverrideSeverity other && Equals(other);
+        public bool Equals(SeverityOverrideSeverity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Threat action override. For some threat types, only a subset of actions applies.
+    /// </summary>
+    [EnumType]
+    public readonly struct ThreatOverrideAction : IEquatable<ThreatOverrideAction>
+    {
+        private readonly string _value;
+
+        private ThreatOverrideAction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Threat action not specified.
+        /// </summary>
+        public static ThreatOverrideAction ThreatActionUnspecified { get; } = new ThreatOverrideAction("THREAT_ACTION_UNSPECIFIED");
+        /// <summary>
+        /// The default action (as specified by the vendor) is taken.
+        /// </summary>
+        public static ThreatOverrideAction DefaultAction { get; } = new ThreatOverrideAction("DEFAULT_ACTION");
+        /// <summary>
+        /// The packet matching this rule will be allowed to transmit.
+        /// </summary>
+        public static ThreatOverrideAction Allow { get; } = new ThreatOverrideAction("ALLOW");
+        /// <summary>
+        /// The packet matching this rule will be allowed to transmit, but a threat_log entry will be sent to the consumer project.
+        /// </summary>
+        public static ThreatOverrideAction Alert { get; } = new ThreatOverrideAction("ALERT");
+        /// <summary>
+        /// The packet matching this rule will be dropped, and a threat_log entry will be sent to the consumer project.
+        /// </summary>
+        public static ThreatOverrideAction Deny { get; } = new ThreatOverrideAction("DENY");
+
+        public static bool operator ==(ThreatOverrideAction left, ThreatOverrideAction right) => left.Equals(right);
+        public static bool operator !=(ThreatOverrideAction left, ThreatOverrideAction right) => !left.Equals(right);
+
+        public static explicit operator string(ThreatOverrideAction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ThreatOverrideAction other && Equals(other);
+        public bool Equals(ThreatOverrideAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+    /// </summary>
+    [EnumType]
+    public readonly struct TlsInspectionPolicyMinTlsVersion : IEquatable<TlsInspectionPolicyMinTlsVersion>
+    {
+        private readonly string _value;
+
+        private TlsInspectionPolicyMinTlsVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Indicates no TLS version was specified.
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion TlsVersionUnspecified { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// TLS 1.0
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion Tls10 { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_1_0");
+        /// <summary>
+        /// TLS 1.1
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion Tls11 { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_1_1");
+        /// <summary>
+        /// TLS 1.2
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion Tls12 { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_1_2");
+        /// <summary>
+        /// TLS 1.3
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion Tls13 { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_1_3");
+
+        public static bool operator ==(TlsInspectionPolicyMinTlsVersion left, TlsInspectionPolicyMinTlsVersion right) => left.Equals(right);
+        public static bool operator !=(TlsInspectionPolicyMinTlsVersion left, TlsInspectionPolicyMinTlsVersion right) => !left.Equals(right);
+
+        public static explicit operator string(TlsInspectionPolicyMinTlsVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TlsInspectionPolicyMinTlsVersion other && Equals(other);
+        public bool Equals(TlsInspectionPolicyMinTlsVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+    /// </summary>
+    [EnumType]
+    public readonly struct TlsInspectionPolicyTlsFeatureProfile : IEquatable<TlsInspectionPolicyTlsFeatureProfile>
+    {
+        private readonly string _value;
+
+        private TlsInspectionPolicyTlsFeatureProfile(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Indicates no profile was specified.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileUnspecified { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_UNSPECIFIED");
+        /// <summary>
+        /// Compatible profile. Allows the broadest set of clients, even those which support only out-of-date SSL features to negotiate with the TLS inspection proxy.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileCompatible { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_COMPATIBLE");
+        /// <summary>
+        /// Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the TLS inspection proxy.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileModern { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_MODERN");
+        /// <summary>
+        /// Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileRestricted { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_RESTRICTED");
+        /// <summary>
+        /// Custom profile. Allow only the set of allowed SSL features specified in the custom_features field of SslPolicy.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileCustom { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_CUSTOM");
+
+        public static bool operator ==(TlsInspectionPolicyTlsFeatureProfile left, TlsInspectionPolicyTlsFeatureProfile right) => left.Equals(right);
+        public static bool operator !=(TlsInspectionPolicyTlsFeatureProfile left, TlsInspectionPolicyTlsFeatureProfile right) => !left.Equals(right);
+
+        public static explicit operator string(TlsInspectionPolicyTlsFeatureProfile value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TlsInspectionPolicyTlsFeatureProfile other && Equals(other);
+        public bool Equals(TlsInspectionPolicyTlsFeatureProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:redis/v1beta1:Cluster":
+		r = &Cluster{}
 	case "google-native:redis/v1beta1:Instance":
 		r = &Instance{}
 	default:

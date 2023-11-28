@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -37,7 +40,7 @@ export interface GetProcessorResult {
      */
     readonly displayName: string;
     /**
-     * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
      */
     readonly kmsKeyName: string;
     /**
@@ -48,6 +51,10 @@ export interface GetProcessorResult {
      * Immutable. The http endpoint that can be called to invoke processing.
      */
     readonly processEndpoint: string;
+    /**
+     * The processor version aliases.
+     */
+    readonly processorVersionAliases: outputs.documentai.v1.GoogleCloudDocumentaiV1ProcessorVersionAliasResponse[];
     /**
      * The state of the processor.
      */

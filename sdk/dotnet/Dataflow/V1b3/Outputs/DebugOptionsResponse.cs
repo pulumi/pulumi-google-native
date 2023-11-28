@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
     public sealed class DebugOptionsResponse
     {
         /// <summary>
+        /// Configuration options for sampling elements from a running pipeline.
+        /// </summary>
+        public readonly Outputs.DataSamplingConfigResponse DataSampling;
+        /// <summary>
         /// When true, enables the logging of the literal hot key to the user's Cloud Logging.
         /// </summary>
         public readonly bool EnableHotKeyLogging;
 
         [OutputConstructor]
-        private DebugOptionsResponse(bool enableHotKeyLogging)
+        private DebugOptionsResponse(
+            Outputs.DataSamplingConfigResponse dataSampling,
+
+            bool enableHotKeyLogging)
         {
+            DataSampling = dataSampling;
             EnableHotKeyLogging = enableHotKeyLogging;
         }
     }

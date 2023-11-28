@@ -18,9 +18,12 @@ __all__ = [
     'BindingResponse',
     'ContainerResponse',
     'CustomerEncryptionKeyResponse',
+    'DomainConfigResponse',
+    'EphemeralDirectoryResponse',
     'ExprResponse',
     'GceConfidentialInstanceConfigResponse',
     'GceInstanceResponse',
+    'GcePersistentDiskResponse',
     'GceRegionalPersistentDiskResponse',
     'GceShieldedInstanceConfigResponse',
     'HostResponse',
@@ -40,8 +43,8 @@ class AcceleratorResponse(dict):
                  type: str):
         """
         An accelerator card attached to the instance.
-        :param int count: Number of accelerator cards exposed to the instance.
-        :param str type: Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        :param int count: Optional. Number of accelerator cards exposed to the instance.
+        :param str type: Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -50,7 +53,7 @@ class AcceleratorResponse(dict):
     @pulumi.getter
     def count(self) -> int:
         """
-        Number of accelerator cards exposed to the instance.
+        Optional. Number of accelerator cards exposed to the instance.
         """
         return pulumi.get(self, "count")
 
@@ -58,7 +61,7 @@ class AcceleratorResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
         """
         return pulumi.get(self, "type")
 
@@ -242,12 +245,12 @@ class ContainerResponse(dict):
                  working_dir: str):
         """
         A Docker container.
-        :param Sequence[str] args: Arguments passed to the entrypoint.
-        :param Sequence[str] command: If set, overrides the default ENTRYPOINT specified by the image.
-        :param Mapping[str, str] env: Environment variables passed to the container's entrypoint.
-        :param str image: Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
-        :param int run_as_user: If set, overrides the USER specified in the image with the given uid.
-        :param str working_dir: If set, overrides the default DIR specified by the image.
+        :param Sequence[str] args: Optional. Arguments passed to the entrypoint.
+        :param Sequence[str] command: Optional. If set, overrides the default ENTRYPOINT specified by the image.
+        :param Mapping[str, str] env: Optional. Environment variables passed to the container's entrypoint.
+        :param str image: Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
+        :param int run_as_user: Optional. If set, overrides the USER specified in the image with the given uid.
+        :param str working_dir: Optional. If set, overrides the default DIR specified by the image.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "command", command)
@@ -260,7 +263,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def args(self) -> Sequence[str]:
         """
-        Arguments passed to the entrypoint.
+        Optional. Arguments passed to the entrypoint.
         """
         return pulumi.get(self, "args")
 
@@ -268,7 +271,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def command(self) -> Sequence[str]:
         """
-        If set, overrides the default ENTRYPOINT specified by the image.
+        Optional. If set, overrides the default ENTRYPOINT specified by the image.
         """
         return pulumi.get(self, "command")
 
@@ -276,7 +279,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def env(self) -> Mapping[str, str]:
         """
-        Environment variables passed to the container's entrypoint.
+        Optional. Environment variables passed to the container's entrypoint.
         """
         return pulumi.get(self, "env")
 
@@ -284,7 +287,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def image(self) -> str:
         """
-        Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
+        Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
         """
         return pulumi.get(self, "image")
 
@@ -292,7 +295,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="runAsUser")
     def run_as_user(self) -> int:
         """
-        If set, overrides the USER specified in the image with the given uid.
+        Optional. If set, overrides the USER specified in the image with the given uid.
         """
         return pulumi.get(self, "run_as_user")
 
@@ -300,7 +303,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="workingDir")
     def working_dir(self) -> str:
         """
-        If set, overrides the default DIR specified by the image.
+        Optional. If set, overrides the default DIR specified by the image.
         """
         return pulumi.get(self, "working_dir")
 
@@ -308,7 +311,7 @@ class ContainerResponse(dict):
 @pulumi.output_type
 class CustomerEncryptionKeyResponse(dict):
     """
-    A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
+    A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -333,8 +336,8 @@ class CustomerEncryptionKeyResponse(dict):
                  kms_key: str,
                  kms_key_service_account: str):
         """
-        A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
-        :param str kms_key: Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
+        :param str kms_key: Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
         :param str kms_key_service_account: Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
         """
         pulumi.set(__self__, "kms_key", kms_key)
@@ -344,7 +347,7 @@ class CustomerEncryptionKeyResponse(dict):
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> str:
         """
-        Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
         """
         return pulumi.get(self, "kms_key")
 
@@ -355,6 +358,80 @@ class CustomerEncryptionKeyResponse(dict):
         Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
         """
         return pulumi.get(self, "kms_key_service_account")
+
+
+@pulumi.output_type
+class DomainConfigResponse(dict):
+    """
+    Configuration options for a custom domain.
+    """
+    def __init__(__self__, *,
+                 domain: str):
+        """
+        Configuration options for a custom domain.
+        :param str domain: Immutable. Domain used by Workstations for HTTP ingress.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        Immutable. Domain used by Workstations for HTTP ingress.
+        """
+        return pulumi.get(self, "domain")
+
+
+@pulumi.output_type
+class EphemeralDirectoryResponse(dict):
+    """
+    An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcePd":
+            suggest = "gce_pd"
+        elif key == "mountPath":
+            suggest = "mount_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EphemeralDirectoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EphemeralDirectoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EphemeralDirectoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gce_pd: 'outputs.GcePersistentDiskResponse',
+                 mount_path: str):
+        """
+        An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+        :param 'GcePersistentDiskResponse' gce_pd: An EphemeralDirectory backed by a Compute Engine persistent disk.
+        :param str mount_path: Location of this directory in the running workstation.
+        """
+        pulumi.set(__self__, "gce_pd", gce_pd)
+        pulumi.set(__self__, "mount_path", mount_path)
+
+    @property
+    @pulumi.getter(name="gcePd")
+    def gce_pd(self) -> 'outputs.GcePersistentDiskResponse':
+        """
+        An EphemeralDirectory backed by a Compute Engine persistent disk.
+        """
+        return pulumi.get(self, "gce_pd")
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        """
+        Location of this directory in the running workstation.
+        """
+        return pulumi.get(self, "mount_path")
 
 
 @pulumi.output_type
@@ -438,7 +515,7 @@ class GceConfidentialInstanceConfigResponse(dict):
                  enable_confidential_compute: bool):
         """
         A set of Compute Engine Confidential VM instance options.
-        :param bool enable_confidential_compute: Whether the instance has confidential compute enabled.
+        :param bool enable_confidential_compute: Optional. Whether the instance has confidential compute enabled.
         """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
@@ -446,7 +523,7 @@ class GceConfidentialInstanceConfigResponse(dict):
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> bool:
         """
-        Whether the instance has confidential compute enabled.
+        Optional. Whether the instance has confidential compute enabled.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -465,6 +542,8 @@ class GceInstanceResponse(dict):
             suggest = "confidential_instance_config"
         elif key == "disablePublicIpAddresses":
             suggest = "disable_public_ip_addresses"
+        elif key == "enableNestedVirtualization":
+            suggest = "enable_nested_virtualization"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "poolSize":
@@ -473,6 +552,8 @@ class GceInstanceResponse(dict):
             suggest = "pooled_instances"
         elif key == "serviceAccount":
             suggest = "service_account"
+        elif key == "serviceAccountScopes":
+            suggest = "service_account_scopes"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
 
@@ -492,33 +573,39 @@ class GceInstanceResponse(dict):
                  boot_disk_size_gb: int,
                  confidential_instance_config: 'outputs.GceConfidentialInstanceConfigResponse',
                  disable_public_ip_addresses: bool,
+                 enable_nested_virtualization: bool,
                  machine_type: str,
                  pool_size: int,
                  pooled_instances: int,
                  service_account: str,
+                 service_account_scopes: Sequence[str],
                  shielded_instance_config: 'outputs.GceShieldedInstanceConfigResponse',
                  tags: Sequence[str]):
         """
         A runtime using a Compute Engine instance.
-        :param Sequence['AcceleratorResponse'] accelerators: A list of the type and count of accelerator cards attached to the instance.
-        :param int boot_disk_size_gb: Size of the boot disk in GB. Defaults to 50.
-        :param 'GceConfidentialInstanceConfigResponse' confidential_instance_config: A set of Compute Engine Confidential VM instance options.
-        :param bool disable_public_ip_addresses: Whether instances have no public IP address.
-        :param str machine_type: The name of a Compute Engine machine type.
-        :param int pool_size: Number of instances to pool for faster workstation startup.
+        :param Sequence['AcceleratorResponse'] accelerators: Optional. A list of the type and count of accelerator cards attached to the instance.
+        :param int boot_disk_size_gb: Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
+        :param 'GceConfidentialInstanceConfigResponse' confidential_instance_config: Optional. A set of Compute Engine Confidential VM instance options.
+        :param bool disable_public_ip_addresses: Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
+        :param bool enable_nested_virtualization: Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+        :param str machine_type: Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
+        :param int pool_size: Optional. The number of VMs that the system should keep idle so that new workstations can be started quickly for new users. Defaults to `0` in the API.
         :param int pooled_instances: Number of instances currently available in the pool for faster workstation startup.
-        :param str service_account: Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
-        :param 'GceShieldedInstanceConfigResponse' shielded_instance_config: A set of Compute Engine Shielded instance options.
-        :param Sequence[str] tags: Network tags to add to the Compute Engine machines backing the Workstations.
+        :param str service_account: Optional. The email address of the service account for Cloud Workstations VMs created with this configuration. When specified, be sure that the service account has `logginglogEntries.create` permission on the project so it can write logs out to Cloud Logging. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. If you as the administrator want to be able to `ssh` into the underlying VM, you need to set this value to a service account for which you have the `iam.serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be able to `ssh` into the underlying VM, use a service account where no one has that permission. If not set, VMs run with a service account provided by the Cloud Workstations service, and the image must be publicly accessible.
+        :param Sequence[str] service_account_scopes: Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+        :param 'GceShieldedInstanceConfigResponse' shielded_instance_config: Optional. A set of Compute Engine Shielded instance options.
+        :param Sequence[str] tags: Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
         """
         pulumi.set(__self__, "accelerators", accelerators)
         pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         pulumi.set(__self__, "disable_public_ip_addresses", disable_public_ip_addresses)
+        pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "pool_size", pool_size)
         pulumi.set(__self__, "pooled_instances", pooled_instances)
         pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "service_account_scopes", service_account_scopes)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         pulumi.set(__self__, "tags", tags)
 
@@ -526,7 +613,7 @@ class GceInstanceResponse(dict):
     @pulumi.getter
     def accelerators(self) -> Sequence['outputs.AcceleratorResponse']:
         """
-        A list of the type and count of accelerator cards attached to the instance.
+        Optional. A list of the type and count of accelerator cards attached to the instance.
         """
         return pulumi.get(self, "accelerators")
 
@@ -534,7 +621,7 @@ class GceInstanceResponse(dict):
     @pulumi.getter(name="bootDiskSizeGb")
     def boot_disk_size_gb(self) -> int:
         """
-        Size of the boot disk in GB. Defaults to 50.
+        Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
@@ -542,7 +629,7 @@ class GceInstanceResponse(dict):
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> 'outputs.GceConfidentialInstanceConfigResponse':
         """
-        A set of Compute Engine Confidential VM instance options.
+        Optional. A set of Compute Engine Confidential VM instance options.
         """
         return pulumi.get(self, "confidential_instance_config")
 
@@ -550,15 +637,23 @@ class GceInstanceResponse(dict):
     @pulumi.getter(name="disablePublicIpAddresses")
     def disable_public_ip_addresses(self) -> bool:
         """
-        Whether instances have no public IP address.
+        Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
         """
         return pulumi.get(self, "disable_public_ip_addresses")
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> bool:
+        """
+        Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
 
     @property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         """
-        The name of a Compute Engine machine type.
+        Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
         """
         return pulumi.get(self, "machine_type")
 
@@ -566,7 +661,7 @@ class GceInstanceResponse(dict):
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> int:
         """
-        Number of instances to pool for faster workstation startup.
+        Optional. The number of VMs that the system should keep idle so that new workstations can be started quickly for new users. Defaults to `0` in the API.
         """
         return pulumi.get(self, "pool_size")
 
@@ -582,15 +677,23 @@ class GceInstanceResponse(dict):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
         """
-        Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
+        Optional. The email address of the service account for Cloud Workstations VMs created with this configuration. When specified, be sure that the service account has `logginglogEntries.create` permission on the project so it can write logs out to Cloud Logging. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. If you as the administrator want to be able to `ssh` into the underlying VM, you need to set this value to a service account for which you have the `iam.serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be able to `ssh` into the underlying VM, use a service account where no one has that permission. If not set, VMs run with a service account provided by the Cloud Workstations service, and the image must be publicly accessible.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="serviceAccountScopes")
+    def service_account_scopes(self) -> Sequence[str]:
+        """
+        Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+        """
+        return pulumi.get(self, "service_account_scopes")
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> 'outputs.GceShieldedInstanceConfigResponse':
         """
-        A set of Compute Engine Shielded instance options.
+        Optional. A set of Compute Engine Shielded instance options.
         """
         return pulumi.get(self, "shielded_instance_config")
 
@@ -598,15 +701,93 @@ class GceInstanceResponse(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Network tags to add to the Compute Engine machines backing the Workstations.
+        Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
         """
         return pulumi.get(self, "tags")
 
 
 @pulumi.output_type
+class GcePersistentDiskResponse(dict):
+    """
+    An EphemeralDirectory is backed by a Compute Engine persistent disk.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskType":
+            suggest = "disk_type"
+        elif key == "readOnly":
+            suggest = "read_only"
+        elif key == "sourceImage":
+            suggest = "source_image"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcePersistentDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcePersistentDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcePersistentDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_type: str,
+                 read_only: bool,
+                 source_image: str,
+                 source_snapshot: str):
+        """
+        An EphemeralDirectory is backed by a Compute Engine persistent disk.
+        :param str disk_type: Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+        :param bool read_only: Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+        :param str source_image: Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+        :param str source_snapshot: Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+        """
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "read_only", read_only)
+        pulumi.set(__self__, "source_image", source_image)
+        pulumi.set(__self__, "source_snapshot", source_snapshot)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> bool:
+        """
+        Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+        """
+        return pulumi.get(self, "read_only")
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> str:
+        """
+        Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+        """
+        return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> str:
+        """
+        Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+        """
+        return pulumi.get(self, "source_snapshot")
+
+
+@pulumi.output_type
 class GceRegionalPersistentDiskResponse(dict):
     """
-    A PersistentDirectory backed by a Compute Engine regional persistent disk.
+    A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -640,12 +821,12 @@ class GceRegionalPersistentDiskResponse(dict):
                  size_gb: int,
                  source_snapshot: str):
         """
-        A PersistentDirectory backed by a Compute Engine regional persistent disk.
-        :param str disk_type: Type of the disk to use. Defaults to pd-standard.
-        :param str fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
-        :param str reclaim_policy: What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-        :param int size_gb: Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
-        :param str source_snapshot: Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+        A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
+        :param str disk_type: Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
+        :param str fs_type: Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
+        :param str reclaim_policy: Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
+        :param int size_gb: Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
+        :param str source_snapshot: Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
         """
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "fs_type", fs_type)
@@ -657,7 +838,7 @@ class GceRegionalPersistentDiskResponse(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         """
-        Type of the disk to use. Defaults to pd-standard.
+        Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -665,7 +846,7 @@ class GceRegionalPersistentDiskResponse(dict):
     @pulumi.getter(name="fsType")
     def fs_type(self) -> str:
         """
-        Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
+        Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
         """
         return pulumi.get(self, "fs_type")
 
@@ -673,7 +854,7 @@ class GceRegionalPersistentDiskResponse(dict):
     @pulumi.getter(name="reclaimPolicy")
     def reclaim_policy(self) -> str:
         """
-        What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+        Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
         """
         return pulumi.get(self, "reclaim_policy")
 
@@ -681,7 +862,7 @@ class GceRegionalPersistentDiskResponse(dict):
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> int:
         """
-        Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
+        Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
         """
         return pulumi.get(self, "size_gb")
 
@@ -689,7 +870,7 @@ class GceRegionalPersistentDiskResponse(dict):
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> str:
         """
-        Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+        Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
         """
         return pulumi.get(self, "source_snapshot")
 
@@ -726,9 +907,9 @@ class GceShieldedInstanceConfigResponse(dict):
                  enable_vtpm: bool):
         """
         A set of Compute Engine Shielded instance options.
-        :param bool enable_integrity_monitoring: Whether the instance has integrity monitoring enabled.
-        :param bool enable_secure_boot: Whether the instance has Secure Boot enabled.
-        :param bool enable_vtpm: Whether the instance has the vTPM enabled.
+        :param bool enable_integrity_monitoring: Optional. Whether the instance has integrity monitoring enabled.
+        :param bool enable_secure_boot: Optional. Whether the instance has Secure Boot enabled.
+        :param bool enable_vtpm: Optional. Whether the instance has the vTPM enabled.
         """
         pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
         pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
@@ -738,7 +919,7 @@ class GceShieldedInstanceConfigResponse(dict):
     @pulumi.getter(name="enableIntegrityMonitoring")
     def enable_integrity_monitoring(self) -> bool:
         """
-        Whether the instance has integrity monitoring enabled.
+        Optional. Whether the instance has integrity monitoring enabled.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
@@ -746,7 +927,7 @@ class GceShieldedInstanceConfigResponse(dict):
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> bool:
         """
-        Whether the instance has Secure Boot enabled.
+        Optional. Whether the instance has Secure Boot enabled.
         """
         return pulumi.get(self, "enable_secure_boot")
 
@@ -754,7 +935,7 @@ class GceShieldedInstanceConfigResponse(dict):
     @pulumi.getter(name="enableVtpm")
     def enable_vtpm(self) -> bool:
         """
-        Whether the instance has the vTPM enabled.
+        Optional. Whether the instance has the vTPM enabled.
         """
         return pulumi.get(self, "enable_vtpm")
 
@@ -828,7 +1009,7 @@ class PersistentDirectoryResponse(dict):
         """
         A directory to persist across workstation sessions.
         :param 'GceRegionalPersistentDiskResponse' gce_pd: A PersistentDirectory backed by a Compute Engine persistent disk.
-        :param str mount_path: Location of this directory in the running workstation.
+        :param str mount_path: Optional. Location of this directory in the running workstation.
         """
         pulumi.set(__self__, "gce_pd", gce_pd)
         pulumi.set(__self__, "mount_path", mount_path)
@@ -845,7 +1026,7 @@ class PersistentDirectoryResponse(dict):
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> str:
         """
-        Location of this directory in the running workstation.
+        Optional. Location of this directory in the running workstation.
         """
         return pulumi.get(self, "mount_path")
 
@@ -853,7 +1034,7 @@ class PersistentDirectoryResponse(dict):
 @pulumi.output_type
 class PrivateClusterConfigResponse(dict):
     """
-    Configuration options for private clusters.
+    Configuration options for private workstation clusters.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -884,11 +1065,11 @@ class PrivateClusterConfigResponse(dict):
                  enable_private_endpoint: bool,
                  service_attachment_uri: str):
         """
-        Configuration options for private clusters.
-        :param Sequence[str] allowed_projects: Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
-        :param str cluster_hostname: Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
+        Configuration options for private workstation clusters.
+        :param Sequence[str] allowed_projects: Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        :param str cluster_hostname: Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
         :param bool enable_private_endpoint: Immutable. Whether Workstations endpoint is private.
-        :param str service_attachment_uri: Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
+        :param str service_attachment_uri: Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the workstation cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
         """
         pulumi.set(__self__, "allowed_projects", allowed_projects)
         pulumi.set(__self__, "cluster_hostname", cluster_hostname)
@@ -899,7 +1080,7 @@ class PrivateClusterConfigResponse(dict):
     @pulumi.getter(name="allowedProjects")
     def allowed_projects(self) -> Sequence[str]:
         """
-        Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
         """
         return pulumi.get(self, "allowed_projects")
 
@@ -907,7 +1088,7 @@ class PrivateClusterConfigResponse(dict):
     @pulumi.getter(name="clusterHostname")
     def cluster_hostname(self) -> str:
         """
-        Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
+        Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
         """
         return pulumi.get(self, "cluster_hostname")
 
@@ -923,7 +1104,7 @@ class PrivateClusterConfigResponse(dict):
     @pulumi.getter(name="serviceAttachmentUri")
     def service_attachment_uri(self) -> str:
         """
-        Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
+        Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the workstation cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
         """
         return pulumi.get(self, "service_attachment_uri")
 
@@ -938,8 +1119,8 @@ class ReadinessCheckResponse(dict):
                  port: int):
         """
         A readiness check to be performed on a workstation.
-        :param str path: Path to which the request should be sent.
-        :param int port: Port to which the request should be sent.
+        :param str path: Optional. Path to which the request should be sent.
+        :param int port: Optional. Port to which the request should be sent.
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "port", port)
@@ -948,7 +1129,7 @@ class ReadinessCheckResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Path to which the request should be sent.
+        Optional. Path to which the request should be sent.
         """
         return pulumi.get(self, "path")
 
@@ -956,7 +1137,7 @@ class ReadinessCheckResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        Port to which the request should be sent.
+        Optional. Port to which the request should be sent.
         """
         return pulumi.get(self, "port")
 

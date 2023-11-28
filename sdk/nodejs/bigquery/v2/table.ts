@@ -39,6 +39,10 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
+     * [Optional] Specifies the configuration of a BigLake managed table.
+     */
+    public readonly biglakeConfiguration!: pulumi.Output<outputs.bigquery.v2.BigLakeConfigurationResponse>;
+    /**
      * Clone definition.
      */
     public /*out*/ readonly cloneDefinition!: pulumi.Output<outputs.bigquery.v2.CloneDefinitionResponse>;
@@ -169,6 +173,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly requirePartitionFilter!: pulumi.Output<boolean>;
     /**
+     * [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+     */
+    public readonly resourceTags!: pulumi.Output<{[key: string]: string}>;
+    /**
      * [Optional] Describes the schema of this table.
      */
     public readonly schema!: pulumi.Output<outputs.bigquery.v2.TableSchemaResponse>;
@@ -219,6 +227,7 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
+            resourceInputs["biglakeConfiguration"] = args ? args.biglakeConfiguration : undefined;
             resourceInputs["clustering"] = args ? args.clustering : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -233,6 +242,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
             resourceInputs["requirePartitionFilter"] = args ? args.requirePartitionFilter : undefined;
+            resourceInputs["resourceTags"] = args ? args.resourceTags : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["tableConstraints"] = args ? args.tableConstraints : undefined;
             resourceInputs["tableReference"] = args ? args.tableReference : undefined;
@@ -263,6 +273,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["streamingBuffer"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["biglakeConfiguration"] = undefined /*out*/;
             resourceInputs["cloneDefinition"] = undefined /*out*/;
             resourceInputs["clustering"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
@@ -297,6 +308,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rangePartitioning"] = undefined /*out*/;
             resourceInputs["requirePartitionFilter"] = undefined /*out*/;
+            resourceInputs["resourceTags"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotDefinition"] = undefined /*out*/;
@@ -318,6 +330,10 @@ export class Table extends pulumi.CustomResource {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    /**
+     * [Optional] Specifies the configuration of a BigLake managed table.
+     */
+    biglakeConfiguration?: pulumi.Input<inputs.bigquery.v2.BigLakeConfigurationArgs>;
     /**
      * [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
      */
@@ -368,6 +384,10 @@ export interface TableArgs {
      * [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
+    /**
+     * [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+     */
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * [Optional] Describes the schema of this table.
      */

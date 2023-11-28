@@ -371,6 +371,8 @@ type GoogleCloudBillingBudgetsV1Filter struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on.
 	Projects []string `pulumi:"projects"`
+	// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+	ResourceAncestors []string `pulumi:"resourceAncestors"`
 	// Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services []string `pulumi:"services"`
 	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account is included. If the field is omitted, the report includes usage from the parent account and all subaccounts, if they exist.
@@ -402,6 +404,8 @@ type GoogleCloudBillingBudgetsV1FilterArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
+	// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+	ResourceAncestors pulumi.StringArrayInput `pulumi:"resourceAncestors"`
 	// Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services pulumi.StringArrayInput `pulumi:"services"`
 	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account is included. If the field is omitted, the report includes usage from the parent account and all subaccounts, if they exist.
@@ -540,6 +544,11 @@ func (o GoogleCloudBillingBudgetsV1FilterOutput) Projects() pulumi.StringArrayOu
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1Filter) []string { return v.Projects }).(pulumi.StringArrayOutput)
 }
 
+// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+func (o GoogleCloudBillingBudgetsV1FilterOutput) ResourceAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1Filter) []string { return v.ResourceAncestors }).(pulumi.StringArrayOutput)
+}
+
 // Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 func (o GoogleCloudBillingBudgetsV1FilterOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1Filter) []string { return v.Services }).(pulumi.StringArrayOutput)
@@ -640,6 +649,16 @@ func (o GoogleCloudBillingBudgetsV1FilterPtrOutput) Projects() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+func (o GoogleCloudBillingBudgetsV1FilterPtrOutput) ResourceAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1Filter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceAncestors
+	}).(pulumi.StringArrayOutput)
+}
+
 // Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 func (o GoogleCloudBillingBudgetsV1FilterPtrOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1Filter) []string {
@@ -674,6 +693,8 @@ type GoogleCloudBillingBudgetsV1FilterResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on.
 	Projects []string `pulumi:"projects"`
+	// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+	ResourceAncestors []string `pulumi:"resourceAncestors"`
 	// Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services []string `pulumi:"services"`
 	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account is included. If the field is omitted, the report includes usage from the parent account and all subaccounts, if they exist.
@@ -731,6 +752,11 @@ func (o GoogleCloudBillingBudgetsV1FilterResponseOutput) Labels() pulumi.StringM
 // Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on.
 func (o GoogleCloudBillingBudgetsV1FilterResponseOutput) Projects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1FilterResponse) []string { return v.Projects }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+func (o GoogleCloudBillingBudgetsV1FilterResponseOutput) ResourceAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1FilterResponse) []string { return v.ResourceAncestors }).(pulumi.StringArrayOutput)
 }
 
 // Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
@@ -917,6 +943,8 @@ func (o GoogleCloudBillingBudgetsV1LastPeriodAmountResponseOutput) ToOutput(ctx 
 type GoogleCloudBillingBudgetsV1NotificationsRule struct {
 	// Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
 	DisableDefaultIamRecipients *bool `pulumi:"disableDefaultIamRecipients"`
+	// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+	EnableProjectLevelRecipients *bool `pulumi:"enableProjectLevelRecipients"`
 	// Optional. Email targets to send notifications to when a threshold is exceeded. This is in addition to the `DefaultIamRecipients` who receive alert emails based on their billing account IAM role. The value is the full REST resource name of a Cloud Monitoring email notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 email notifications are allowed. To customize budget alert email recipients with monitoring notification channels, you _must create the monitoring notification channels before you link them to a budget_. For guidance on setting up notification channels to use with budgets, see [Customize budget alert email recipients](https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients). For Cloud Billing budget alerts, you _must use email notification channels_. The other types of notification channels are _not_ supported, such as Slack, SMS, or PagerDuty. If you want to [send budget notifications to Slack](https://cloud.google.com/billing/docs/how-to/notify#send_notifications_to_slack), use a pubsubTopic and configure [programmatic notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
 	MonitoringNotificationChannels []string `pulumi:"monitoringNotificationChannels"`
 	// Optional. The name of the Pub/Sub topic where budget-related messages are published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent to the topic at regular intervals; the timing of the updates is not dependent on the [threshold rules](#thresholdrule) you've set. Note that if you want your [Pub/Sub JSON object](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format) to contain data for `alertThresholdExceeded`, you need at least one [alert threshold rule](#thresholdrule). When you set threshold rules, you must also enable at least one of the email notification options, either using the default IAM recipients or Cloud Monitoring email notification channels. To use Pub/Sub topics with budgets, you must do the following: 1. Create the Pub/Sub topic before connecting it to your budget. For guidance, see [Manage programmatic budget alert notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications). 2. Grant the API caller the `pubsub.topics.setIamPolicy` permission on the Pub/Sub topic. If not set, the API call fails with PERMISSION_DENIED. For additional details on Pub/Sub roles and permissions, see [Permissions required for this task](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task).
@@ -940,6 +968,8 @@ type GoogleCloudBillingBudgetsV1NotificationsRuleInput interface {
 type GoogleCloudBillingBudgetsV1NotificationsRuleArgs struct {
 	// Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
 	DisableDefaultIamRecipients pulumi.BoolPtrInput `pulumi:"disableDefaultIamRecipients"`
+	// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+	EnableProjectLevelRecipients pulumi.BoolPtrInput `pulumi:"enableProjectLevelRecipients"`
 	// Optional. Email targets to send notifications to when a threshold is exceeded. This is in addition to the `DefaultIamRecipients` who receive alert emails based on their billing account IAM role. The value is the full REST resource name of a Cloud Monitoring email notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 email notifications are allowed. To customize budget alert email recipients with monitoring notification channels, you _must create the monitoring notification channels before you link them to a budget_. For guidance on setting up notification channels to use with budgets, see [Customize budget alert email recipients](https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients). For Cloud Billing budget alerts, you _must use email notification channels_. The other types of notification channels are _not_ supported, such as Slack, SMS, or PagerDuty. If you want to [send budget notifications to Slack](https://cloud.google.com/billing/docs/how-to/notify#send_notifications_to_slack), use a pubsubTopic and configure [programmatic notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
 	MonitoringNotificationChannels pulumi.StringArrayInput `pulumi:"monitoringNotificationChannels"`
 	// Optional. The name of the Pub/Sub topic where budget-related messages are published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent to the topic at regular intervals; the timing of the updates is not dependent on the [threshold rules](#thresholdrule) you've set. Note that if you want your [Pub/Sub JSON object](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format) to contain data for `alertThresholdExceeded`, you need at least one [alert threshold rule](#thresholdrule). When you set threshold rules, you must also enable at least one of the email notification options, either using the default IAM recipients or Cloud Monitoring email notification channels. To use Pub/Sub topics with budgets, you must do the following: 1. Create the Pub/Sub topic before connecting it to your budget. For guidance, see [Manage programmatic budget alert notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications). 2. Grant the API caller the `pubsub.topics.setIamPolicy` permission on the Pub/Sub topic. If not set, the API call fails with PERMISSION_DENIED. For additional details on Pub/Sub roles and permissions, see [Permissions required for this task](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task).
@@ -1049,6 +1079,11 @@ func (o GoogleCloudBillingBudgetsV1NotificationsRuleOutput) DisableDefaultIamRec
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1NotificationsRule) *bool { return v.DisableDefaultIamRecipients }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+func (o GoogleCloudBillingBudgetsV1NotificationsRuleOutput) EnableProjectLevelRecipients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1NotificationsRule) *bool { return v.EnableProjectLevelRecipients }).(pulumi.BoolPtrOutput)
+}
+
 // Optional. Email targets to send notifications to when a threshold is exceeded. This is in addition to the `DefaultIamRecipients` who receive alert emails based on their billing account IAM role. The value is the full REST resource name of a Cloud Monitoring email notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 email notifications are allowed. To customize budget alert email recipients with monitoring notification channels, you _must create the monitoring notification channels before you link them to a budget_. For guidance on setting up notification channels to use with budgets, see [Customize budget alert email recipients](https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients). For Cloud Billing budget alerts, you _must use email notification channels_. The other types of notification channels are _not_ supported, such as Slack, SMS, or PagerDuty. If you want to [send budget notifications to Slack](https://cloud.google.com/billing/docs/how-to/notify#send_notifications_to_slack), use a pubsubTopic and configure [programmatic notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
 func (o GoogleCloudBillingBudgetsV1NotificationsRuleOutput) MonitoringNotificationChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1NotificationsRule) []string { return v.MonitoringNotificationChannels }).(pulumi.StringArrayOutput)
@@ -1104,6 +1139,16 @@ func (o GoogleCloudBillingBudgetsV1NotificationsRulePtrOutput) DisableDefaultIam
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+func (o GoogleCloudBillingBudgetsV1NotificationsRulePtrOutput) EnableProjectLevelRecipients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1NotificationsRule) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableProjectLevelRecipients
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Optional. Email targets to send notifications to when a threshold is exceeded. This is in addition to the `DefaultIamRecipients` who receive alert emails based on their billing account IAM role. The value is the full REST resource name of a Cloud Monitoring email notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 email notifications are allowed. To customize budget alert email recipients with monitoring notification channels, you _must create the monitoring notification channels before you link them to a budget_. For guidance on setting up notification channels to use with budgets, see [Customize budget alert email recipients](https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients). For Cloud Billing budget alerts, you _must use email notification channels_. The other types of notification channels are _not_ supported, such as Slack, SMS, or PagerDuty. If you want to [send budget notifications to Slack](https://cloud.google.com/billing/docs/how-to/notify#send_notifications_to_slack), use a pubsubTopic and configure [programmatic notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
 func (o GoogleCloudBillingBudgetsV1NotificationsRulePtrOutput) MonitoringNotificationChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1NotificationsRule) []string {
@@ -1138,6 +1183,8 @@ func (o GoogleCloudBillingBudgetsV1NotificationsRulePtrOutput) SchemaVersion() p
 type GoogleCloudBillingBudgetsV1NotificationsRuleResponse struct {
 	// Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
 	DisableDefaultIamRecipients bool `pulumi:"disableDefaultIamRecipients"`
+	// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+	EnableProjectLevelRecipients bool `pulumi:"enableProjectLevelRecipients"`
 	// Optional. Email targets to send notifications to when a threshold is exceeded. This is in addition to the `DefaultIamRecipients` who receive alert emails based on their billing account IAM role. The value is the full REST resource name of a Cloud Monitoring email notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 email notifications are allowed. To customize budget alert email recipients with monitoring notification channels, you _must create the monitoring notification channels before you link them to a budget_. For guidance on setting up notification channels to use with budgets, see [Customize budget alert email recipients](https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients). For Cloud Billing budget alerts, you _must use email notification channels_. The other types of notification channels are _not_ supported, such as Slack, SMS, or PagerDuty. If you want to [send budget notifications to Slack](https://cloud.google.com/billing/docs/how-to/notify#send_notifications_to_slack), use a pubsubTopic and configure [programmatic notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
 	MonitoringNotificationChannels []string `pulumi:"monitoringNotificationChannels"`
 	// Optional. The name of the Pub/Sub topic where budget-related messages are published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent to the topic at regular intervals; the timing of the updates is not dependent on the [threshold rules](#thresholdrule) you've set. Note that if you want your [Pub/Sub JSON object](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format) to contain data for `alertThresholdExceeded`, you need at least one [alert threshold rule](#thresholdrule). When you set threshold rules, you must also enable at least one of the email notification options, either using the default IAM recipients or Cloud Monitoring email notification channels. To use Pub/Sub topics with budgets, you must do the following: 1. Create the Pub/Sub topic before connecting it to your budget. For guidance, see [Manage programmatic budget alert notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications). 2. Grant the API caller the `pubsub.topics.setIamPolicy` permission on the Pub/Sub topic. If not set, the API call fails with PERMISSION_DENIED. For additional details on Pub/Sub roles and permissions, see [Permissions required for this task](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task).
@@ -1171,6 +1218,13 @@ func (o GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput) ToOutput(ctx
 func (o GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput) DisableDefaultIamRecipients() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1NotificationsRuleResponse) bool {
 		return v.DisableDefaultIamRecipients
+	}).(pulumi.BoolOutput)
+}
+
+// Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+func (o GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput) EnableProjectLevelRecipients() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1NotificationsRuleResponse) bool {
+		return v.EnableProjectLevelRecipients
 	}).(pulumi.BoolOutput)
 }
 

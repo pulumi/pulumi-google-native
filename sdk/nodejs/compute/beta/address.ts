@@ -54,7 +54,7 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+     * The IP version that will be used by this address. Valid options are IPV4 or IPV6.
      */
     public readonly ipVersion!: pulumi.Output<string>;
     /**
@@ -198,7 +198,7 @@ export interface AddressArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+     * The IP version that will be used by this address. Valid options are IPV4 or IPV6.
      */
     ipVersion?: pulumi.Input<enums.compute.beta.AddressIpVersion>;
     /**

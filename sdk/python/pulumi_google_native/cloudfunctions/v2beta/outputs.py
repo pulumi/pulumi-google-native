@@ -194,6 +194,8 @@ class BuildConfigResponse(dict):
             suggest = "environment_variables"
         elif key == "sourceProvenance":
             suggest = "source_provenance"
+        elif key == "sourceToken":
+            suggest = "source_token"
         elif key == "workerPool":
             suggest = "worker_pool"
 
@@ -217,6 +219,7 @@ class BuildConfigResponse(dict):
                  runtime: str,
                  source: 'outputs.SourceResponse',
                  source_provenance: 'outputs.SourceProvenanceResponse',
+                 source_token: str,
                  worker_pool: str):
         """
         Describes the Build step of the function that builds a container from the given source.
@@ -228,6 +231,7 @@ class BuildConfigResponse(dict):
         :param str runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         :param 'SourceResponse' source: The location of the function source code.
         :param 'SourceProvenanceResponse' source_provenance: A permanent fixed identifier for source.
+        :param str source_token: An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
         :param str worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
         """
         pulumi.set(__self__, "build", build)
@@ -238,6 +242,7 @@ class BuildConfigResponse(dict):
         pulumi.set(__self__, "runtime", runtime)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_provenance", source_provenance)
+        pulumi.set(__self__, "source_token", source_token)
         pulumi.set(__self__, "worker_pool", worker_pool)
 
     @property
@@ -303,6 +308,14 @@ class BuildConfigResponse(dict):
         A permanent fixed identifier for source.
         """
         return pulumi.get(self, "source_provenance")
+
+    @property
+    @pulumi.getter(name="sourceToken")
+    def source_token(self) -> str:
+        """
+        An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+        """
+        return pulumi.get(self, "source_token")
 
     @property
     @pulumi.getter(name="workerPool")
@@ -594,8 +607,6 @@ class RepoSourceResponse(dict):
             suggest = "branch_name"
         elif key == "commitSha":
             suggest = "commit_sha"
-        elif key == "invertRegex":
-            suggest = "invert_regex"
         elif key == "repoName":
             suggest = "repo_name"
         elif key == "tagName":
@@ -616,7 +627,6 @@ class RepoSourceResponse(dict):
                  branch_name: str,
                  commit_sha: str,
                  dir: str,
-                 invert_regex: bool,
                  project: str,
                  repo_name: str,
                  tag_name: str):
@@ -625,7 +635,6 @@ class RepoSourceResponse(dict):
         :param str branch_name: Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         :param str commit_sha: Explicit commit SHA to build.
         :param str dir: Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
-        :param bool invert_regex: Only trigger a build if the revision regex does NOT match the revision regex.
         :param str project: ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
         :param str repo_name: Name of the Cloud Source Repository.
         :param str tag_name: Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -633,7 +642,6 @@ class RepoSourceResponse(dict):
         pulumi.set(__self__, "branch_name", branch_name)
         pulumi.set(__self__, "commit_sha", commit_sha)
         pulumi.set(__self__, "dir", dir)
-        pulumi.set(__self__, "invert_regex", invert_regex)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "repo_name", repo_name)
         pulumi.set(__self__, "tag_name", tag_name)
@@ -661,14 +669,6 @@ class RepoSourceResponse(dict):
         Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
         """
         return pulumi.get(self, "dir")
-
-    @property
-    @pulumi.getter(name="invertRegex")
-    def invert_regex(self) -> bool:
-        """
-        Only trigger a build if the revision regex does NOT match the revision regex.
-        """
-        return pulumi.get(self, "invert_regex")
 
     @property
     @pulumi.getter
@@ -1117,7 +1117,9 @@ class SourceProvenanceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resolvedRepoSource":
+        if key == "gitUri":
+            suggest = "git_uri"
+        elif key == "resolvedRepoSource":
             suggest = "resolved_repo_source"
         elif key == "resolvedStorageSource":
             suggest = "resolved_storage_source"
@@ -1134,15 +1136,26 @@ class SourceProvenanceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 git_uri: str,
                  resolved_repo_source: 'outputs.RepoSourceResponse',
                  resolved_storage_source: 'outputs.StorageSourceResponse'):
         """
         Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
+        :param str git_uri: A copy of the build's `source.git_uri`, if exists, with any commits resolved.
         :param 'RepoSourceResponse' resolved_repo_source: A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
         :param 'StorageSourceResponse' resolved_storage_source: A copy of the build's `source.storage_source`, if exists, with any generations resolved.
         """
+        pulumi.set(__self__, "git_uri", git_uri)
         pulumi.set(__self__, "resolved_repo_source", resolved_repo_source)
         pulumi.set(__self__, "resolved_storage_source", resolved_storage_source)
+
+    @property
+    @pulumi.getter(name="gitUri")
+    def git_uri(self) -> str:
+        """
+        A copy of the build's `source.git_uri`, if exists, with any commits resolved.
+        """
+        return pulumi.get(self, "git_uri")
 
     @property
     @pulumi.getter(name="resolvedRepoSource")
@@ -1169,7 +1182,9 @@ class SourceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "repoSource":
+        if key == "gitUri":
+            suggest = "git_uri"
+        elif key == "repoSource":
             suggest = "repo_source"
         elif key == "storageSource":
             suggest = "storage_source"
@@ -1186,15 +1201,26 @@ class SourceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 git_uri: str,
                  repo_source: 'outputs.RepoSourceResponse',
                  storage_source: 'outputs.StorageSourceResponse'):
         """
         The location of the function source code.
+        :param str git_uri: If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
         :param 'RepoSourceResponse' repo_source: If provided, get the source from this location in a Cloud Source Repository.
         :param 'StorageSourceResponse' storage_source: If provided, get the source from this location in Google Cloud Storage.
         """
+        pulumi.set(__self__, "git_uri", git_uri)
         pulumi.set(__self__, "repo_source", repo_source)
         pulumi.set(__self__, "storage_source", storage_source)
+
+    @property
+    @pulumi.getter(name="gitUri")
+    def git_uri(self) -> str:
+        """
+        If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+        """
+        return pulumi.get(self, "git_uri")
 
     @property
     @pulumi.getter(name="repoSource")

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Inputs
 {
 
     /// <summary>
-    /// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+    /// VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
     /// </summary>
     public sealed class VirtualMachinePreferencesArgs : global::Pulumi.ResourceArgs
     {
@@ -28,16 +28,46 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Inputs
         public Input<Inputs.ComputeEnginePreferencesArgs>? ComputeEnginePreferences { get; set; }
 
         /// <summary>
-        /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+        /// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+        /// </summary>
+        [Input("networkCostParameters")]
+        public Input<Inputs.VirtualMachinePreferencesNetworkCostParametersArgs>? NetworkCostParameters { get; set; }
+
+        /// <summary>
+        /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
         /// </summary>
         [Input("regionPreferences")]
         public Input<Inputs.RegionPreferencesArgs>? RegionPreferences { get; set; }
+
+        /// <summary>
+        /// Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+        /// </summary>
+        [Input("sizingOptimizationCustomParameters")]
+        public Input<Inputs.VirtualMachinePreferencesSizingOptimizationCustomParametersArgs>? SizingOptimizationCustomParameters { get; set; }
 
         /// <summary>
         /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
         /// </summary>
         [Input("sizingOptimizationStrategy")]
         public Input<Pulumi.GoogleNative.MigrationCenter.V1Alpha1.VirtualMachinePreferencesSizingOptimizationStrategy>? SizingOptimizationStrategy { get; set; }
+
+        /// <summary>
+        /// Preferences concerning Sole Tenant nodes and virtual machines.
+        /// </summary>
+        [Input("soleTenancyPreferences")]
+        public Input<Inputs.SoleTenancyPreferencesArgs>? SoleTenancyPreferences { get; set; }
+
+        /// <summary>
+        /// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+        /// </summary>
+        [Input("targetProduct")]
+        public Input<Pulumi.GoogleNative.MigrationCenter.V1Alpha1.VirtualMachinePreferencesTargetProduct>? TargetProduct { get; set; }
+
+        /// <summary>
+        /// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+        /// </summary>
+        [Input("vmwareEnginePreferences")]
+        public Input<Inputs.VmwareEnginePreferencesArgs>? VmwareEnginePreferences { get; set; }
 
         public VirtualMachinePreferencesArgs()
         {

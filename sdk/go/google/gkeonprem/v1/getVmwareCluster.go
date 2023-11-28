@@ -53,6 +53,8 @@ type LookupVmwareClusterResult struct {
 	DeleteTime string `pulumi:"deleteTime"`
 	// A human readable description of this VMware user cluster.
 	Description string `pulumi:"description"`
+	// Disable bundled ingress.
+	DisableBundledIngress bool `pulumi:"disableBundledIngress"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 bool `pulumi:"enableControlPlaneV2"`
 	// The DNS name of VMware user cluster's API server.
@@ -69,7 +71,7 @@ type LookupVmwareClusterResult struct {
 	Name string `pulumi:"name"`
 	// The VMware user cluster network configuration.
 	NetworkConfig VmwareNetworkConfigResponse `pulumi:"networkConfig"`
-	// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+	// The Anthos clusters on the VMware version for your user cluster.
 	OnPremVersion string `pulumi:"onPremVersion"`
 	// If set, there are currently changes in flight to the VMware user cluster.
 	Reconciling bool `pulumi:"reconciling"`
@@ -83,9 +85,11 @@ type LookupVmwareClusterResult struct {
 	Uid string `pulumi:"uid"`
 	// The time at which VMware user cluster was last updated.
 	UpdateTime string `pulumi:"updateTime"`
+	// Specifies upgrade policy for the cluster.
+	UpgradePolicy VmwareClusterUpgradePolicyResponse `pulumi:"upgradePolicy"`
 	// ValidationCheck represents the result of the preflight check job.
 	ValidationCheck ValidationCheckResponse `pulumi:"validationCheck"`
-	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+	// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
 	Vcenter VmwareVCenterConfigResponse `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled bool `pulumi:"vmTrackingEnabled"`
@@ -190,6 +194,11 @@ func (o LookupVmwareClusterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmwareClusterResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Disable bundled ingress.
+func (o LookupVmwareClusterResultOutput) DisableBundledIngress() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVmwareClusterResult) bool { return v.DisableBundledIngress }).(pulumi.BoolOutput)
+}
+
 // Enable control plane V2. Default to false.
 func (o LookupVmwareClusterResultOutput) EnableControlPlaneV2() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupVmwareClusterResult) bool { return v.EnableControlPlaneV2 }).(pulumi.BoolOutput)
@@ -230,7 +239,7 @@ func (o LookupVmwareClusterResultOutput) NetworkConfig() VmwareNetworkConfigResp
 	return o.ApplyT(func(v LookupVmwareClusterResult) VmwareNetworkConfigResponse { return v.NetworkConfig }).(VmwareNetworkConfigResponseOutput)
 }
 
-// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+// The Anthos clusters on the VMware version for your user cluster.
 func (o LookupVmwareClusterResultOutput) OnPremVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmwareClusterResult) string { return v.OnPremVersion }).(pulumi.StringOutput)
 }
@@ -265,12 +274,17 @@ func (o LookupVmwareClusterResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmwareClusterResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// Specifies upgrade policy for the cluster.
+func (o LookupVmwareClusterResultOutput) UpgradePolicy() VmwareClusterUpgradePolicyResponseOutput {
+	return o.ApplyT(func(v LookupVmwareClusterResult) VmwareClusterUpgradePolicyResponse { return v.UpgradePolicy }).(VmwareClusterUpgradePolicyResponseOutput)
+}
+
 // ValidationCheck represents the result of the preflight check job.
 func (o LookupVmwareClusterResultOutput) ValidationCheck() ValidationCheckResponseOutput {
 	return o.ApplyT(func(v LookupVmwareClusterResult) ValidationCheckResponse { return v.ValidationCheck }).(ValidationCheckResponseOutput)
 }
 
-// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
 func (o LookupVmwareClusterResultOutput) Vcenter() VmwareVCenterConfigResponseOutput {
 	return o.ApplyT(func(v LookupVmwareClusterResult) VmwareVCenterConfigResponse { return v.Vcenter }).(VmwareVCenterConfigResponseOutput)
 }

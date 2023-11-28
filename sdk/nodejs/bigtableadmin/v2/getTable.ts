@@ -30,6 +30,10 @@ export interface GetTableArgs {
 
 export interface GetTableResult {
     /**
+     * If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+     */
+    readonly changeStreamConfig: outputs.bigtableadmin.v2.ChangeStreamConfigResponse;
+    /**
      * Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
      */
     readonly clusterStates: {[key: string]: string};

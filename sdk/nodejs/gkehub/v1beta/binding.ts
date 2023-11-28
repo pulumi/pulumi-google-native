@@ -47,9 +47,9 @@ export class Binding extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
-     * Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+     * Optional. Labels for this MembershipBinding.
      */
-    public readonly fleet!: pulumi.Output<boolean>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Required. The ID to use for the MembershipBinding.
@@ -62,7 +62,7 @@ export class Binding extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * A Workspace resource name in the format `projects/*&#47;locations/*&#47;scopes/*`.
+     * A Scope resource name in the format `projects/*&#47;locations/*&#47;scopes/*`.
      */
     public readonly scope!: pulumi.Output<string>;
     /**
@@ -95,7 +95,7 @@ export class Binding extends pulumi.CustomResource {
             if ((!args || args.membershipId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'membershipId'");
             }
-            resourceInputs["fleet"] = args ? args.fleet : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["membershipBindingId"] = args ? args.membershipBindingId : undefined;
             resourceInputs["membershipId"] = args ? args.membershipId : undefined;
@@ -110,7 +110,7 @@ export class Binding extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
-            resourceInputs["fleet"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["membershipBindingId"] = undefined /*out*/;
             resourceInputs["membershipId"] = undefined /*out*/;
@@ -133,9 +133,9 @@ export class Binding extends pulumi.CustomResource {
  */
 export interface BindingArgs {
     /**
-     * Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+     * Optional. Labels for this MembershipBinding.
      */
-    fleet?: pulumi.Input<boolean>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * Required. The ID to use for the MembershipBinding.
@@ -148,7 +148,7 @@ export interface BindingArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * A Workspace resource name in the format `projects/*&#47;locations/*&#47;scopes/*`.
+     * A Scope resource name in the format `projects/*&#47;locations/*&#47;scopes/*`.
      */
     scope?: pulumi.Input<string>;
 }

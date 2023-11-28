@@ -147,6 +147,9 @@ namespace Pulumi.GoogleNative.Batch.V1
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Job state unspecified.
+        /// </summary>
         public static MessageNewJobState StateUnspecified { get; } = new MessageNewJobState("STATE_UNSPECIFIED");
         /// <summary>
         /// Job is admitted (validated and persisted) and waiting for resources.
@@ -279,6 +282,47 @@ namespace Pulumi.GoogleNative.Batch.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is MessageType other && Equals(other);
         public bool Equals(MessageType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+    /// </summary>
+    [EnumType]
+    public readonly struct TaskGroupSchedulingPolicy : IEquatable<TaskGroupSchedulingPolicy>
+    {
+        private readonly string _value;
+
+        private TaskGroupSchedulingPolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static TaskGroupSchedulingPolicy SchedulingPolicyUnspecified { get; } = new TaskGroupSchedulingPolicy("SCHEDULING_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// Run Tasks as soon as resources are available. Tasks might be executed in parallel depending on parallelism and task_count values.
+        /// </summary>
+        public static TaskGroupSchedulingPolicy AsSoonAsPossible { get; } = new TaskGroupSchedulingPolicy("AS_SOON_AS_POSSIBLE");
+        /// <summary>
+        /// Run Tasks sequentially with increased task index.
+        /// </summary>
+        public static TaskGroupSchedulingPolicy InOrder { get; } = new TaskGroupSchedulingPolicy("IN_ORDER");
+
+        public static bool operator ==(TaskGroupSchedulingPolicy left, TaskGroupSchedulingPolicy right) => left.Equals(right);
+        public static bool operator !=(TaskGroupSchedulingPolicy left, TaskGroupSchedulingPolicy right) => !left.Equals(right);
+
+        public static explicit operator string(TaskGroupSchedulingPolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TaskGroupSchedulingPolicy other && Equals(other);
+        public bool Equals(TaskGroupSchedulingPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

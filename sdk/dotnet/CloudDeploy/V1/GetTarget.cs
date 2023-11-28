@@ -64,17 +64,21 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     public sealed class GetTargetResult
     {
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
-        /// Information specifying an Anthos Cluster.
+        /// Optional. Information specifying an Anthos Cluster.
         /// </summary>
         public readonly Outputs.AnthosClusterResponse AnthosCluster;
         /// <summary>
         /// Time at which the `Target` was created.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Optional. The deploy parameters to use for this target.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> DeployParameters;
         /// <summary>
         /// Optional. Description of the `Target`. Max length is 255 characters.
         /// </summary>
@@ -88,19 +92,19 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.ExecutionConfigResponse> ExecutionConfigs;
         /// <summary>
-        /// Information specifying a GKE Cluster.
+        /// Optional. Information specifying a GKE Cluster.
         /// </summary>
         public readonly Outputs.GkeClusterResponse Gke;
         /// <summary>
-        /// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Information specifying a multiTarget.
+        /// Optional. Information specifying a multiTarget.
         /// </summary>
         public readonly Outputs.MultiTargetResponse MultiTarget;
         /// <summary>
-        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+        /// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -108,7 +112,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly bool RequireApproval;
         /// <summary>
-        /// Information specifying a Cloud Run deployment target.
+        /// Optional. Information specifying a Cloud Run deployment target.
         /// </summary>
         public readonly Outputs.CloudRunLocationResponse Run;
         /// <summary>
@@ -131,6 +135,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Outputs.AnthosClusterResponse anthosCluster,
 
             string createTime,
+
+            ImmutableDictionary<string, string> deployParameters,
 
             string description,
 
@@ -159,6 +165,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Annotations = annotations;
             AnthosCluster = anthosCluster;
             CreateTime = createTime;
+            DeployParameters = deployParameters;
             Description = description;
             Etag = etag;
             ExecutionConfigs = executionConfigs;

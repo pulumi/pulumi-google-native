@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2RegexResponse Regex;
         /// <summary>
-        /// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+        /// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2SensitivityScoreResponse SensitivityScore;
         /// <summary>

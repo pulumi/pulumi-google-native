@@ -67,6 +67,10 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly databaseTableSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1DatabaseTableSpecResponse>;
     /**
+     * Specification that applies to a dataset.
+     */
+    public readonly datasetSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1DatasetSpecResponse>;
+    /**
      * Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
      */
     public readonly description!: pulumi.Output<string>;
@@ -109,6 +113,10 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly lookerSystemSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1LookerSystemSpecResponse>;
     /**
+     * Model specification.
+     */
+    public readonly modelSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1ModelSpecResponse>;
+    /**
      * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -138,7 +146,7 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly sqlDatabaseSystemSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse>;
     /**
-     * The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+     * The type of the entry. For details, see [`EntryType`](#entrytype).
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -175,6 +183,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["cloudBigtableSystemSpec"] = args ? args.cloudBigtableSystemSpec : undefined;
             resourceInputs["dataSourceConnectionSpec"] = args ? args.dataSourceConnectionSpec : undefined;
             resourceInputs["databaseTableSpec"] = args ? args.databaseTableSpec : undefined;
+            resourceInputs["datasetSpec"] = args ? args.datasetSpec : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["entryGroupId"] = args ? args.entryGroupId : undefined;
@@ -186,6 +195,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["linkedResource"] = args ? args.linkedResource : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["lookerSystemSpec"] = args ? args.lookerSystemSpec : undefined;
+            resourceInputs["modelSpec"] = args ? args.modelSpec : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["routineSpec"] = args ? args.routineSpec : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
@@ -210,6 +220,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["dataSource"] = undefined /*out*/;
             resourceInputs["dataSourceConnectionSpec"] = undefined /*out*/;
             resourceInputs["databaseTableSpec"] = undefined /*out*/;
+            resourceInputs["datasetSpec"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["entryGroupId"] = undefined /*out*/;
@@ -222,6 +233,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["linkedResource"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["lookerSystemSpec"] = undefined /*out*/;
+            resourceInputs["modelSpec"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["personalDetails"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -263,6 +275,10 @@ export interface EntryArgs {
      */
     databaseTableSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1DatabaseTableSpecArgs>;
     /**
+     * Specification that applies to a dataset.
+     */
+    datasetSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1DatasetSpecArgs>;
+    /**
      * Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
      */
     description?: pulumi.Input<string>;
@@ -300,6 +316,10 @@ export interface EntryArgs {
      * Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
      */
     lookerSystemSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1LookerSystemSpecArgs>;
+    /**
+     * Model specification.
+     */
+    modelSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1ModelSpecArgs>;
     project?: pulumi.Input<string>;
     /**
      * Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
@@ -322,7 +342,7 @@ export interface EntryArgs {
      */
     sqlDatabaseSystemSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs>;
     /**
-     * The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+     * The type of the entry. For details, see [`EntryType`](#entrytype).
      */
     type?: pulumi.Input<enums.datacatalog.v1.EntryType>;
     /**

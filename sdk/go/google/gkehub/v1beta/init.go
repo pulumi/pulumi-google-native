@@ -33,18 +33,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureIamPolicy{}
 	case "google-native:gkehub/v1beta:Fleet":
 		r = &Fleet{}
+	case "google-native:gkehub/v1beta:Membership":
+		r = &Membership{}
 	case "google-native:gkehub/v1beta:MembershipIamBinding":
 		r = &MembershipIamBinding{}
 	case "google-native:gkehub/v1beta:MembershipIamMember":
 		r = &MembershipIamMember{}
 	case "google-native:gkehub/v1beta:MembershipIamPolicy":
 		r = &MembershipIamPolicy{}
+	case "google-native:gkehub/v1beta:MembershipRbacRoleBinding":
+		r = &MembershipRbacRoleBinding{}
 	case "google-native:gkehub/v1beta:Namespace":
 		r = &Namespace{}
-	case "google-native:gkehub/v1beta:Rbacrolebinding":
-		r = &Rbacrolebinding{}
 	case "google-native:gkehub/v1beta:Scope":
 		r = &Scope{}
+	case "google-native:gkehub/v1beta:ScopeIamBinding":
+		r = &ScopeIamBinding{}
+	case "google-native:gkehub/v1beta:ScopeIamMember":
+		r = &ScopeIamMember{}
+	case "google-native:gkehub/v1beta:ScopeIamPolicy":
+		r = &ScopeIamPolicy{}
+	case "google-native:gkehub/v1beta:ScopeRbacRoleBinding":
+		r = &ScopeRbacRoleBinding{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

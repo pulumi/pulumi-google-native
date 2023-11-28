@@ -48,6 +48,10 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
         /// Instance Size STANDARD_3XLARGE.
         /// </summary>
         public static InstanceConfigInstanceSize Standard3xlarge { get; } = new InstanceConfigInstanceSize("STANDARD_3XLARGE");
+        /// <summary>
+        /// Instance Size DEV_EXTRA_SMALL.
+        /// </summary>
+        public static InstanceConfigInstanceSize DevXsmall { get; } = new InstanceConfigInstanceSize("DEV_XSMALL");
 
         public static bool operator ==(InstanceConfigInstanceSize left, InstanceConfigInstanceSize right) => left.Equals(right);
         public static bool operator !=(InstanceConfigInstanceSize left, InstanceConfigInstanceSize right) => !left.Equals(right);

@@ -19,6 +19,7 @@ class GlobalNetworkEndpointGroupArgs:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_engine: Optional[pulumi.Input['NetworkEndpointGroupAppEngineArgs']] = None,
+                 client_port_mapping_mode: Optional[pulumi.Input['GlobalNetworkEndpointGroupClientPortMappingMode']] = None,
                  cloud_function: Optional[pulumi.Input['NetworkEndpointGroupCloudFunctionArgs']] = None,
                  cloud_run: Optional[pulumi.Input['NetworkEndpointGroupCloudRunArgs']] = None,
                  default_port: Optional[pulumi.Input[int]] = None,
@@ -38,6 +39,7 @@ class GlobalNetworkEndpointGroupArgs:
         The set of arguments for constructing a GlobalNetworkEndpointGroup resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Metadata defined as annotations on the network endpoint group.
         :param pulumi.Input['NetworkEndpointGroupAppEngineArgs'] app_engine: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input['GlobalNetworkEndpointGroupClientPortMappingMode'] client_port_mapping_mode: Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
         :param pulumi.Input['NetworkEndpointGroupCloudFunctionArgs'] cloud_function: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         :param pulumi.Input['NetworkEndpointGroupCloudRunArgs'] cloud_run: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint.
@@ -56,6 +58,8 @@ class GlobalNetworkEndpointGroupArgs:
             pulumi.set(__self__, "annotations", annotations)
         if app_engine is not None:
             pulumi.set(__self__, "app_engine", app_engine)
+        if client_port_mapping_mode is not None:
+            pulumi.set(__self__, "client_port_mapping_mode", client_port_mapping_mode)
         if cloud_function is not None:
             pulumi.set(__self__, "cloud_function", cloud_function)
         if cloud_run is not None:
@@ -113,6 +117,18 @@ class GlobalNetworkEndpointGroupArgs:
     @app_engine.setter
     def app_engine(self, value: Optional[pulumi.Input['NetworkEndpointGroupAppEngineArgs']]):
         pulumi.set(self, "app_engine", value)
+
+    @property
+    @pulumi.getter(name="clientPortMappingMode")
+    def client_port_mapping_mode(self) -> Optional[pulumi.Input['GlobalNetworkEndpointGroupClientPortMappingMode']]:
+        """
+        Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+        """
+        return pulumi.get(self, "client_port_mapping_mode")
+
+    @client_port_mapping_mode.setter
+    def client_port_mapping_mode(self, value: Optional[pulumi.Input['GlobalNetworkEndpointGroupClientPortMappingMode']]):
+        pulumi.set(self, "client_port_mapping_mode", value)
 
     @property
     @pulumi.getter(name="cloudFunction")
@@ -299,6 +315,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_engine: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']]] = None,
+                 client_port_mapping_mode: Optional[pulumi.Input['GlobalNetworkEndpointGroupClientPortMappingMode']] = None,
                  cloud_function: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']]] = None,
                  cloud_run: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']]] = None,
                  default_port: Optional[pulumi.Input[int]] = None,
@@ -322,6 +339,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Metadata defined as annotations on the network endpoint group.
         :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']] app_engine: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input['GlobalNetworkEndpointGroupClientPortMappingMode'] client_port_mapping_mode: Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
         :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']] cloud_function: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']] cloud_run: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint.
@@ -362,6 +380,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_engine: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']]] = None,
+                 client_port_mapping_mode: Optional[pulumi.Input['GlobalNetworkEndpointGroupClientPortMappingMode']] = None,
                  cloud_function: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']]] = None,
                  cloud_run: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']]] = None,
                  default_port: Optional[pulumi.Input[int]] = None,
@@ -388,6 +407,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["app_engine"] = app_engine
+            __props__.__dict__["client_port_mapping_mode"] = client_port_mapping_mode
             __props__.__dict__["cloud_function"] = cloud_function
             __props__.__dict__["cloud_run"] = cloud_run
             __props__.__dict__["default_port"] = default_port
@@ -439,6 +459,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = None
         __props__.__dict__["app_engine"] = None
+        __props__.__dict__["client_port_mapping_mode"] = None
         __props__.__dict__["cloud_function"] = None
         __props__.__dict__["cloud_run"] = None
         __props__.__dict__["creation_timestamp"] = None
@@ -478,6 +499,14 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "app_engine")
+
+    @property
+    @pulumi.getter(name="clientPortMappingMode")
+    def client_port_mapping_mode(self) -> pulumi.Output[str]:
+        """
+        Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+        """
+        return pulumi.get(self, "client_port_mapping_mode")
 
     @property
     @pulumi.getter(name="cloudFunction")

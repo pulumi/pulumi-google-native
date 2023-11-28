@@ -58,6 +58,10 @@ class CryptoKeyPurpose(str, Enum):
     """
     CryptoKeys with this purpose may be used with AsymmetricDecrypt and GetPublicKey.
     """
+    RAW_ENCRYPT_DECRYPT = "RAW_ENCRYPT_DECRYPT"
+    """
+    CryptoKeys with this purpose may be used with RawEncrypt and RawDecrypt. This purpose is meant to be used for interoperable symmetric encryption and does not support automatic CryptoKey rotation.
+    """
     MAC = "MAC"
     """
     CryptoKeys with this purpose may be used with MacSign.
@@ -125,6 +129,30 @@ class CryptoKeyVersionTemplateAlgorithm(str, Enum):
     GOOGLE_SYMMETRIC_ENCRYPTION = "GOOGLE_SYMMETRIC_ENCRYPTION"
     """
     Creates symmetric encryption keys.
+    """
+    AES128_GCM = "AES_128_GCM"
+    """
+    AES-GCM (Galois Counter Mode) using 128-bit keys.
+    """
+    AES256_GCM = "AES_256_GCM"
+    """
+    AES-GCM (Galois Counter Mode) using 256-bit keys.
+    """
+    AES128_CBC = "AES_128_CBC"
+    """
+    AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+    """
+    AES256_CBC = "AES_256_CBC"
+    """
+    AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+    """
+    AES128_CTR = "AES_128_CTR"
+    """
+    AES-CTR (Counter Mode) using 128-bit keys.
+    """
+    AES256_CTR = "AES_256_CTR"
+    """
+    AES-CTR (Counter Mode) using 256-bit keys.
     """
     RSA_SIGN_PSS2048_SHA256 = "RSA_SIGN_PSS_2048_SHA256"
     """

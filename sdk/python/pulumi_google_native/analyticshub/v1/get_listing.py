@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetListingResult:
-    def __init__(__self__, bigquery_dataset=None, categories=None, data_provider=None, description=None, display_name=None, documentation=None, icon=None, name=None, primary_contact=None, publisher=None, request_access=None, state=None):
+    def __init__(__self__, bigquery_dataset=None, categories=None, data_provider=None, description=None, display_name=None, documentation=None, icon=None, name=None, primary_contact=None, publisher=None, request_access=None, restricted_export_config=None, state=None):
         if bigquery_dataset and not isinstance(bigquery_dataset, dict):
             raise TypeError("Expected argument 'bigquery_dataset' to be a dict")
         pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
@@ -53,6 +53,9 @@ class GetListingResult:
         if request_access and not isinstance(request_access, str):
             raise TypeError("Expected argument 'request_access' to be a str")
         pulumi.set(__self__, "request_access", request_access)
+        if restricted_export_config and not isinstance(restricted_export_config, dict):
+            raise TypeError("Expected argument 'restricted_export_config' to be a dict")
+        pulumi.set(__self__, "restricted_export_config", restricted_export_config)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -146,6 +149,14 @@ class GetListingResult:
         return pulumi.get(self, "request_access")
 
     @property
+    @pulumi.getter(name="restrictedExportConfig")
+    def restricted_export_config(self) -> 'outputs.RestrictedExportConfigResponse':
+        """
+        Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        """
+        return pulumi.get(self, "restricted_export_config")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -171,6 +182,7 @@ class AwaitableGetListingResult(GetListingResult):
             primary_contact=self.primary_contact,
             publisher=self.publisher,
             request_access=self.request_access,
+            restricted_export_config=self.restricted_export_config,
             state=self.state)
 
 
@@ -202,6 +214,7 @@ def get_listing(data_exchange_id: Optional[str] = None,
         primary_contact=pulumi.get(__ret__, 'primary_contact'),
         publisher=pulumi.get(__ret__, 'publisher'),
         request_access=pulumi.get(__ret__, 'request_access'),
+        restricted_export_config=pulumi.get(__ret__, 'restricted_export_config'),
         state=pulumi.get(__ret__, 'state'))
 
 

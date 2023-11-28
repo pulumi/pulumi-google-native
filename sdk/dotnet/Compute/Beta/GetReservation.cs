@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetReservationResult
     {
         /// <summary>
+        /// Reservation for aggregated resources, providing shape flexibility.
+        /// </summary>
+        public readonly Outputs.AllocationAggregateReservationResponse AggregateReservation;
+        /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         /// </summary>
         public readonly string Commitment;
@@ -71,6 +75,14 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
+        /// <summary>
+        /// Duration time relative to reservation creation when GCE will automatically delete this resource.
+        /// </summary>
+        public readonly Outputs.DurationResponse DeleteAfterDuration;
+        /// <summary>
+        /// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        /// </summary>
+        public readonly string DeleteAtTime;
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
@@ -122,9 +134,15 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [OutputConstructor]
         private GetReservationResult(
+            Outputs.AllocationAggregateReservationResponse aggregateReservation,
+
             string commitment,
 
             string creationTimestamp,
+
+            Outputs.DurationResponse deleteAfterDuration,
+
+            string deleteAtTime,
 
             string description,
 
@@ -150,8 +168,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string zone)
         {
+            AggregateReservation = aggregateReservation;
             Commitment = commitment;
             CreationTimestamp = creationTimestamp;
+            DeleteAfterDuration = deleteAfterDuration;
+            DeleteAtTime = deleteAtTime;
             Description = description;
             Kind = kind;
             Name = name;

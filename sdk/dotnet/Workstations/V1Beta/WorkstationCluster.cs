@@ -16,55 +16,61 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
     public partial class WorkstationCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Client-specified annotations.
+        /// Optional. Client-specified annotations.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Status conditions describing the current resource state.
+        /// Status conditions describing the workstation cluster's current state.
         /// </summary>
         [Output("conditions")]
         public Output<ImmutableArray<Outputs.StatusResponse>> Conditions { get; private set; } = null!;
 
         /// <summary>
-        /// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        /// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
         /// </summary>
         [Output("controlPlaneIp")]
         public Output<string> ControlPlaneIp { get; private set; } = null!;
 
         /// <summary>
-        /// Time when this resource was created.
+        /// Time when this workstation cluster was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+        /// Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
         /// </summary>
         [Output("degraded")]
         public Output<bool> Degraded { get; private set; } = null!;
 
         /// <summary>
-        /// Time when this resource was soft-deleted.
+        /// Time when this workstation cluster was soft-deleted.
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// Human-readable name for this resource.
+        /// Optional. Human-readable name for this workstation cluster.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        /// Optional. Configuration options for a custom domain.
+        /// </summary>
+        [Output("domainConfig")]
+        public Output<Outputs.DomainConfigResponse> DomainConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -73,19 +79,19 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Full name of this resource.
+        /// Identifier. Full name of this workstation cluster.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+        /// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for private cluster.
+        /// Optional. Configuration for private workstation cluster.
         /// </summary>
         [Output("privateClusterConfig")]
         public Output<Outputs.PrivateClusterConfigResponse> PrivateClusterConfig { get; private set; } = null!;
@@ -94,25 +100,25 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether this resource is currently being updated to match its intended state.
+        /// Indicates whether this workstation cluster is currently being updated to match its intended state.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+        /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
         /// </summary>
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
 
         /// <summary>
-        /// A system-assigned unique identified for this resource.
+        /// A system-assigned unique identifier for this workstation cluster.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// Time when this resource was most recently updated.
+        /// Time when this workstation cluster was most recently updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -178,7 +184,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Client-specified annotations.
+        /// Optional. Client-specified annotations.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -187,13 +193,19 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         }
 
         /// <summary>
-        /// Human-readable name for this resource.
+        /// Optional. Human-readable name for this workstation cluster.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        /// Optional. Configuration options for a custom domain.
+        /// </summary>
+        [Input("domainConfig")]
+        public Input<Inputs.DomainConfigArgs>? DomainConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -202,7 +214,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -214,19 +226,19 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Full name of this resource.
+        /// Identifier. Full name of this workstation cluster.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+        /// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Configuration for private cluster.
+        /// Optional. Configuration for private workstation cluster.
         /// </summary>
         [Input("privateClusterConfig")]
         public Input<Inputs.PrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
@@ -235,7 +247,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+        /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

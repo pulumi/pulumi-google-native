@@ -3286,8 +3286,12 @@ const (
 	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeFaq = GoogleCloudDialogflowV2beta1SuggestionFeatureType("FAQ")
 	// Run smart reply model for chat.
 	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeSmartReply = GoogleCloudDialogflowV2beta1SuggestionFeatureType("SMART_REPLY")
+	// Run Dialogflow assist model for chat, which will return automated agent response as suggestion.
+	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeDialogflowAssist = GoogleCloudDialogflowV2beta1SuggestionFeatureType("DIALOGFLOW_ASSIST")
 	// Run conversation summarization model for chat.
 	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeConversationSummarization = GoogleCloudDialogflowV2beta1SuggestionFeatureType("CONVERSATION_SUMMARIZATION")
+	// Run knowledge search with text input from agent or text generated query.
+	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeKnowledgeSearch = GoogleCloudDialogflowV2beta1SuggestionFeatureType("KNOWLEDGE_SEARCH")
 )
 
 func (GoogleCloudDialogflowV2beta1SuggestionFeatureType) ElementType() reflect.Type {

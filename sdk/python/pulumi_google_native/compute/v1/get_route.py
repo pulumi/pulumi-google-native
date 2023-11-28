@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRouteResult:
-    def __init__(__self__, as_paths=None, creation_timestamp=None, description=None, dest_range=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, tags=None, warnings=None):
+    def __init__(__self__, as_paths=None, creation_timestamp=None, description=None, dest_range=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_hub=None, next_hop_ilb=None, next_hop_instance=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, tags=None, warnings=None):
         if as_paths and not isinstance(as_paths, list):
             raise TypeError("Expected argument 'as_paths' to be a list")
         pulumi.set(__self__, "as_paths", as_paths)
@@ -44,6 +44,9 @@ class GetRouteResult:
         if next_hop_gateway and not isinstance(next_hop_gateway, str):
             raise TypeError("Expected argument 'next_hop_gateway' to be a str")
         pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        if next_hop_hub and not isinstance(next_hop_hub, str):
+            raise TypeError("Expected argument 'next_hop_hub' to be a str")
+        pulumi.set(__self__, "next_hop_hub", next_hop_hub)
         if next_hop_ilb and not isinstance(next_hop_ilb, str):
             raise TypeError("Expected argument 'next_hop_ilb' to be a str")
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
@@ -109,7 +112,7 @@ class GetRouteResult:
     @pulumi.getter(name="destRange")
     def dest_range(self) -> str:
         """
-        The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+        The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
         """
         return pulumi.get(self, "dest_range")
 
@@ -146,6 +149,14 @@ class GetRouteResult:
         return pulumi.get(self, "next_hop_gateway")
 
     @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> str:
+        """
+        The full resource name of the Network Connectivity Center hub that will handle matching packets.
+        """
+        return pulumi.get(self, "next_hop_hub")
+
+    @property
     @pulumi.getter(name="nextHopIlb")
     def next_hop_ilb(self) -> str:
         """
@@ -165,7 +176,7 @@ class GetRouteResult:
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> str:
         """
-        The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+        The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
         """
         return pulumi.get(self, "next_hop_ip")
 
@@ -256,6 +267,7 @@ class AwaitableGetRouteResult(GetRouteResult):
             name=self.name,
             network=self.network,
             next_hop_gateway=self.next_hop_gateway,
+            next_hop_hub=self.next_hop_hub,
             next_hop_ilb=self.next_hop_ilb,
             next_hop_instance=self.next_hop_instance,
             next_hop_ip=self.next_hop_ip,
@@ -291,6 +303,7 @@ def get_route(project: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
         next_hop_gateway=pulumi.get(__ret__, 'next_hop_gateway'),
+        next_hop_hub=pulumi.get(__ret__, 'next_hop_hub'),
         next_hop_ilb=pulumi.get(__ret__, 'next_hop_ilb'),
         next_hop_instance=pulumi.get(__ret__, 'next_hop_instance'),
         next_hop_ip=pulumi.get(__ret__, 'next_hop_ip'),
